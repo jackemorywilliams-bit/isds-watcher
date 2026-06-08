@@ -53,7 +53,7 @@ STRONG_SUBTOTAL = 18
 MAX_TEXT_CHARS = 6000
 
 # Default model IDs (overridable via env).
-DEFAULT_GEMINI_MODEL = "gemini-1.5-flash"
+DEFAULT_GEMINI_MODEL = "gemini-2.0-flash"
 # Anthropic Haiku 4.5 -- current fast/cheap model (full ID form).
 DEFAULT_ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 

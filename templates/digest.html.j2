@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISDS Thematic Watch — {{ date_str }}</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+         color: #1a1a1a; line-height: 1.5; margin: 0; padding: 0; background: #f4f5f7; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 18px; }
+  .head { background: #0b3d5c; color: #fff; padding: 20px 22px; border-radius: 8px 8px 0 0; }
+  .head h1 { margin: 0 0 4px; font-size: 20px; }
+  .head .sub { font-size: 13px; opacity: .85; }
+  .band { margin: 22px 0 8px; font-size: 14px; font-weight: 700; text-transform: uppercase;
+          letter-spacing: .04em; color: #0b3d5c; border-bottom: 2px solid #0b3d5c; padding-bottom: 4px; }
+  .band.medium { color: #8a5a00; border-color: #8a5a00; }
+  .item { background: #fff; border: 1px solid #e2e5ea; border-radius: 8px;
+          padding: 14px 16px; margin: 10px 0; }
+  .item .score { display: inline-block; font-weight: 700; color: #fff; background: #1a7f37;
+          border-radius: 4px; padding: 1px 8px; font-size: 12px; }
+  .item .score.medium { background: #b8860b; }
+  .item .src { font-size: 12px; color: #6a7280; text-transform: uppercase; letter-spacing: .03em; }
+  .item h3 { margin: 6px 0; font-size: 16px; }
+  .item h3 a { color: #0b3d5c; text-decoration: none; }
+  .item .meta { font-size: 12px; color: #6a7280; margin: 4px 0; }
+  .item .summary { font-size: 14px; margin: 8px 0 4px; }
+  .tags span { display: inline-block; background: #eef2f6; color: #334; border-radius: 10px;
+          padding: 1px 9px; font-size: 11px; margin: 2px 4px 2px 0; }
+  .rings span { display: inline-block; background: #0b3d5c; color: #fff; border-radius: 4px;
+          padding: 1px 7px; font-size: 11px; margin: 2px 4px 2px 0; }
+  .empty { background: #fff; border: 1px dashed #cbd2da; border-radius: 8px; padding: 24px;
+          text-align: center; color: #6a7280; margin: 16px 0; }
+  .footer { margin-top: 28px; padding: 16px; background: #fff; border: 1px solid #e2e5ea;
+          border-radius: 8px; font-size: 12px; color: #6a7280; }
+  .footer table { width: 100%; border-collapse: collapse; }
+  .footer td { padding: 2px 0; }
+  a { color: #0b5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>ISDS Thematic Watch — {{ date_str }}</h1>
+    <div class="sub">Window: since {{ since.strftime("%Y-%m-%d") }} ·
+      {{ stats.above_threshold }} match{{ "" if stats.above_threshold == 1 else "es" }} ·
+      {{ stats.total_candidates }} candidates screened</div>
+  </div>
+
+  {% macro render_item(it, band) %}
+  <div class="item">
+    <span class="score {{ band }}">{{ it.relevance_score }}</span>
+    <span class="src">{{ it.source }}</span>
+    <h3><a href="{{ it.url }}">{{ it.title }}</a></h3>
+    <div class="meta">{{ it.published.strftime("%Y-%m-%d") if it.published else "" }}</div>
+    {% if it.matched_rings %}<div class="rings">{% for r in it.matched_rings %}<span>{{ r }}</span>{% endfor %}</div>{% endif %}
+    <div class="summary">{{ it.digest_summary }}</div>
+    {% if it.thematic_tags %}<div class="tags">{% for t in it.thematic_tags %}<span>{{ t }}</span>{% endfor %}</div>{% endif %}
+  </div>
+  {% endmacro %}
+
+  {% if not items %}
+    <div class="empty">No new matches above threshold this week.<br>
+      {{ stats.total_candidates }} candidates were screened across the sources below.</div>
+  {% endif %}
+
+  {% if high %}
+    <div class="band">High relevance ({{ high|length }})</div>
+    {% for it in high %}{{ render_item(it, "") }}{% endfor %}
+  {% endif %}
+
+  {% if medium %}
+    <div class="band medium">Medium relevance ({{ medium|length }})</div>
+    {% for it in medium %}{{ render_item(it, "medium") }}{% endfor %}
+  {% endif %}
+
+  <div class="footer">
+    <p><strong>Theme:</strong> {{ theme }}</p>
+    <table>
+      <tr><td>Generated</td><td>{{ generated_at.strftime("%Y-%m-%d %H:%M UTC") }}</td></tr>
+      <tr><td>New candidates</td><td>{{ stats.total_candidates }}</td></tr>
+      <tr><td>Classified</td><td>{{ stats.classified }}</td></tr>
+      <tr><td>Above threshold ({{ stats.threshold }})</td><td>{{ stats.above_threshold }}</td></tr>
+    </table>
+    <p><strong>Per source:</strong>
+      {% for s, n in stats.per_source.items() %}{{ s }}={{ n }}{{ ", " if not loop.last }}{% endfor %}</p>
+    {% if stats.dropped_sources %}<p><strong>Dropped/empty:</strong> {{ stats.dropped_sources|join(", ") }}</p>{% endif %}
+    <p>Provider: {{ stats.provider or "keyword-fallback" }} ·
+      <a href="{{ repo_url }}">{{ repo_url }}</a></p>
+  </div>
+</div>
+</body>
+</html>

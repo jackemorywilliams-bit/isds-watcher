@@ -1,0 +1,29 @@
+source: unctad_isds
+type: html
+usable: false
+priority: secondary
+base_url: "https://investmentpolicy.unctad.org/investment-dispute-settlement"
+robots: "robots.txt: 'Allow: /' for generic agents but explicit 'Disallow: /' for ClaudeBot and several AI crawlers. Listing path not path-disallowed for a generic UA."
+fetch:
+  urls:
+    - "https://investmentpolicy.unctad.org/investment-dispute-settlement"
+  notes: >
+    A polite GET returned HTTP 403 Forbidden on every attempt (3x, consistent). The server
+    blocks the request before any HTML is returned — likely UA/bot filtering or WAF
+    (robots.txt explicitly Disallows ClaudeBot and other AI agents). Did NOT attempt to
+    evade. Could not determine page structure or whether data is in raw HTML vs JS-rendered.
+parse:
+  item_selector_primary: "UNKNOWN — page never loaded (403)"
+  title_selector_primary: "UNKNOWN"
+  link_attr: "href"
+  date_selector_primary: "UNKNOWN"
+  fallback_strategy: >
+    Not verifiable. If a real crawler with a normal browser User-Agent can fetch it, UNCTAD's
+    ISDS Navigator typically exposes per-case pages; an internal JSON/search API likely backs
+    the listing — would need investigation with a non-blocked UA. Until then treat as unusable.
+  id_strategy: "UNKNOWN"
+fields_available: []
+warnings: >
+    BLOCKED: consistent 403 to polite WebFetch GET. Mark unusable from this probing context.
+    Retry from the production crawler with a browser-like User-Agent and respect robots
+    (note robots.txt Disallows ClaudeBot specifically). Do not evade.

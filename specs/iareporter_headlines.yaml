@@ -1,0 +1,30 @@
+source: iareporter_headlines
+type: html
+usable: true
+priority: primary
+base_url: "https://www.iareporter.com/"
+robots: "robots.txt not checked here; HOMEPAGE HEADLINES ONLY — do not fetch article bodies (paywalled). Polite homepage GET succeeded (200)."
+fetch:
+  urls:
+    - "https://www.iareporter.com/"
+  notes: >
+    HEADLINES ONLY — site is paywalled; DO NOT fetch /articles/<slug>/ bodies. Homepage
+    headline titles + links ARE present in raw HTML (not JS-rendered). Verified live:
+    "Czech Republic claims victory in outdoor advertising case",
+    "ICSID tribunal finds Kyrgyzstan liable for treaty breach in uranium mining dispute",
+    "Airport construction investor announces arbitration against Albania".
+parse:
+  item_selector_primary: "homepage 'News Headlines' section; each headline = an <a> in a heading wrapping the article link"
+  title_selector_primary: "a (headline anchor text)"
+  link_attr: "href"
+  date_selector_primary: "none reliably on homepage -> use fetch time"
+  fallback_strategy: >
+    All <a> tags whose href contains '/articles/' and ends in '/', with anchor text
+    length > 20; derive title from link text; dedupe by href. Title is the only reliable
+    signal; treat the slug as content fingerprint too.
+  id_strategy: "absolute article URL, e.g. https://www.iareporter.com/articles/<slug>/"
+fields_available: [title, url]
+warnings: >
+    Paywalled — capture title + URL ONLY, never fetch the article body. No date on homepage
+    (use fetch/discovery time). Exact CSS classes not confirmable via WebFetch; rely on the
+    '/articles/<slug>/' href structural rule.

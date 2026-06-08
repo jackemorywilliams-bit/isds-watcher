@@ -1,0 +1,24 @@
+source: iisd_itn
+type: rss
+usable: true
+priority: primary
+base_url: "https://www.iisd.org/itn/feed/"
+robots: "RSS feed; robots.txt not gating /itn/feed/ (treat as allowed)"
+fetch:
+  urls:
+    - "https://www.iisd.org/itn/feed/"
+  notes: >
+    Valid RSS 2.0 feed (root <rss version="2.0"> with atom/dc/content namespaces).
+    Returns full item set with substantive descriptions. The /itn/en/feed/ variant
+    returned 403, so use /itn/feed/ ONLY. Verified live: returned ITN Issue 2, 2026
+    and recent articles with real pubDates and descriptions.
+parse:
+  feed_entry_fields:
+    title: "entry.title"
+    link: "entry.link"
+    date: "entry.published   # RFC822 pubDate, e.g. 'Tue, 21 Apr 2026 17:02:05 +0000'"
+    summary: "entry.summary  # description present, substantive"
+    id: "entry.id / entry.link (use link as stable id)"
+  id_strategy: "entry.link absolute URL (e.g. https://www.iisd.org/itn/YYYY/MM/DD/slug/)"
+fields_available: [title, url, date, summary]
+warnings: "Use /itn/feed/ not /itn/en/feed/ (the /en/ variant 403s). Feed is article/newsletter-level, not per-case."

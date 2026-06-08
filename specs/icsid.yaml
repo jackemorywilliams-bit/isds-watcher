@@ -1,0 +1,34 @@
+source: icsid
+type: html
+usable: true
+priority: secondary
+base_url: "https://icsid.worldbank.org/news-events"
+robots: "robots.txt blocks /admin/ /search/ /node/add/ etc.; /cases and /news-events not disallowed (treat as allowed)"
+fetch:
+  urls:
+    - "https://icsid.worldbank.org/news-events"
+  notes: >
+    The case database at https://icsid.worldbank.org/cases/case-database is JS-RENDERED:
+    a polite GET returns only an app shell ("Search Cases" heading) with NO case data in
+    raw HTML — UNUSABLE without a headless browser. No public RSS/JSON case endpoint found.
+    FALLBACK USED: https://icsid.worldbank.org/news-events is static HTML and works.
+    (Note: /news-and-events 404s — the correct path is /news-events.)
+    Verified live: "Honduras Signs the ICSID Convention" (March 06, 2026),
+    "ICSID Releases 2025 Caseload Statistics" (February 17, 2026), etc. Has pagination.
+parse:
+  item_selector_primary: "news item blocks each containing a date and an <h3><a> title"
+  title_selector_primary: "h3 a"
+  link_attr: "href"
+  date_selector_primary: "date text above each title, format 'MMMM DD, YYYY' (e.g. 'March 06, 2026')"
+  fallback_strategy: >
+    All <a> tags whose href contains '/news-and-events/' (article href pattern) with
+    anchor text length > 20; derive title from link text; dedupe by href. If date not
+    parseable, use fetch time.
+  id_strategy: "absolute article URL, e.g. https://icsid.worldbank.org/news-and-events/news-releases/<slug>"
+fields_available: [title, url, date]
+warnings: >
+    PRIMARY case-database is JS-only and cannot be scraped with a plain GET — this spec
+    falls back to the NEWS page (announcements of new cases/awards/registrations), which
+    is lower-coverage than the full case DB. If full case coverage is required, a headless
+    browser (Playwright) against /cases/case-database would be needed, or check for an
+    internal JSON API the SPA calls (not investigated here).

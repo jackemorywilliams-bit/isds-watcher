@@ -1,0 +1,32 @@
+source: italaw
+type: html
+usable: true
+priority: primary
+base_url: "https://www.italaw.com/"
+robots: "robots.txt present; blocks /admin/ /search/ /user/ and cron/install only. /cases not disallowed (treat as allowed). Note: Amazonbot/CCBot specifically blocked but generic agents fine."
+fetch:
+  urls:
+    - "https://www.italaw.com/"
+  notes: >
+    IMPORTANT: https://www.italaw.com/cases returns HTTP 404 to a polite GET — do NOT
+    use it. The HOMEPAGE (https://www.italaw.com/) is the working listing: it renders a
+    static-HTML feed titled "Newly Posted Awards, Decisions & Materials" with most-recent
+    case documents. Content is in raw HTML (not JS-rendered). Verified live: showed
+    Telefonica v. Colombia (/cases/12153), Frazer Solar v. Lesotho (/cases/10174),
+    Posco v. National Centre (/cases/14650), each with a date heading like "2 Jun 2026".
+parse:
+  item_selector_primary: "homepage 'Newly Posted' feed entries; each entry = a date heading followed by a case-title link to /cases/{id}"
+  title_selector_primary: "a[href^='/cases/']"
+  link_attr: "href"
+  date_selector_primary: "date heading text adjacent to entry (format like '2 Jun 2026'); parse with dateutil"
+  fallback_strategy: >
+    All <a> tags whose href matches '^/cases/[0-9]+$' (case-profile links) with anchor
+    text length > 15; derive title from link text; dedupe by href. If no date parseable
+    from the heading, use fetch time. Document PDF/HTML links live under
+    /sites/default/files/case-documents/ and /case-html-files/ if document-level granularity needed.
+  id_strategy: "absolute case-profile URL, e.g. https://www.italaw.com/cases/12153"
+fields_available: [title, url, date]
+warnings: >
+    Exact CSS class names of the row containers were not confirmable via WebFetch markdown
+    conversion — rely on the structural href rule '^/cases/[0-9]+$' as the robust primary.
+    /cases listing path is 404; only the homepage feed is verified working.

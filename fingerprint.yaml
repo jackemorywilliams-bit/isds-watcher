@@ -1,0 +1,176 @@
+version: 1
+threshold: 60
+scoring:
+  high: 70
+  medium: 40
+  low: 0
+
+# Three rings. Their INTERSECTION is the theme. Within-ring keyword weights
+# sum to exactly 100 per ring. Phrases are extracted verbatim from the three
+# seed awards (see PLAN.md "Thematic fingerprint" section); seed tags:
+#   eli_lilly = Eli Lilly v Canada
+#   philip_morris = Philip Morris v Australia
+#   bridgestone = Bridgestone v Panama
+# A few phrases are flagged theme_extension (same doctrinal family, not literal
+# in the seeds) and carry deliberately small weights.
+rings:
+
+  ip_as_investment:
+    weight: 100
+    extra_weight: false
+    keywords:
+      - {phrase: "promise utility doctrine", weight: 14, seed: eli_lilly}
+      - {phrase: "promise doctrine", weight: 8, seed: eli_lilly}
+      - {phrase: "utility requirement", weight: 10, seed: eli_lilly}
+      - {phrase: "patent invalidation", weight: 8, seed: eli_lilly}
+      - {phrase: "covered investment", weight: 8, seed: "philip_morris,bridgestone"}
+      - {phrase: "intellectual property", weight: 8, seed: bridgestone}
+      - {phrase: "trademark", weight: 8, seed: bridgestone}
+      - {phrase: "exploitation of the trademark", weight: 5, seed: bridgestone}
+      - {phrase: "licenses that constitute its investment", weight: 7, seed: bridgestone}
+      - {phrase: "licensor", weight: 4, seed: bridgestone}
+      - {phrase: "licensee", weight: 4, seed: bridgestone}
+      - {phrase: "brand value", weight: 4, seed: theme_extension}
+      - {phrase: "geographical indication", weight: 4, seed: theme_extension}
+      - {phrase: "data exclusivity", weight: 4, seed: theme_extension}
+      - {phrase: "copyright", weight: 4, seed: theme_extension}
+    # sum: 14+8+10+8+8+8+8+5+7+4+4+4+4+4+4 = 100
+
+  judicial_or_regulatory_measure:
+    weight: 100
+    extra_weight: true        # this ring alone (strong hit) -> >= MEDIUM
+    keywords:
+      - {phrase: "denial of justice", weight: 14, seed: "eli_lilly,bridgestone"}
+      - {phrase: "judicial measure", weight: 8, seed: eli_lilly}
+      - {phrase: "domestic court", weight: 7, seed: eli_lilly}
+      - {phrase: "Supreme Court", weight: 7, seed: bridgestone}
+      - {phrase: "judicial conduct", weight: 6, seed: eli_lilly}
+      - {phrase: "judicial propriety", weight: 6, seed: "eli_lilly,bridgestone"}
+      - {phrase: "manifestly unjust judgment", weight: 6, seed: bridgestone}
+      - {phrase: "shocks a sense of judicial propriety", weight: 5, seed: bridgestone}
+      - {phrase: "egregiously wrong that no honest or competent court could", weight: 5, seed: bridgestone}
+      - {phrase: "systemic failure in the administration of justice", weight: 4, seed: bridgestone}
+      - {phrase: "gross denial of justice, manifest arbitrariness, blatant unfairness", weight: 5, seed: eli_lilly}
+      - {phrase: "minimum standard of treatment", weight: 6, seed: "eli_lilly,bridgestone"}
+      - {phrase: "manifest arbitrariness", weight: 5, seed: eli_lilly}
+      - {phrase: "arbitrary or discriminatory", weight: 5, seed: eli_lilly}
+      - {phrase: "Plain Packaging Measures", weight: 4, seed: philip_morris}
+      - {phrase: "public-interest legislation", weight: 4, seed: philip_morris}
+      - {phrase: "dramatic change in the utility requirement", weight: 3, seed: eli_lilly}
+    # sum: 14+8+7+7+6+6+6+5+5+4+5+6+5+5+4+4+3 = 100
+
+  jurisdictional_admissibility:
+    weight: 100
+    extra_weight: false
+    keywords:
+      - {phrase: "abuse of right", weight: 12, seed: philip_morris}
+      - {phrase: "abuse of process", weight: 9, seed: philip_morris}
+      - {phrase: "treaty shopping", weight: 9, seed: philip_morris}
+      - {phrase: "corporate restructuring", weight: 8, seed: philip_morris}
+      - {phrase: "restructure its investment to gain Treaty protection", weight: 8, seed: philip_morris}
+      - {phrase: "reasonably foreseeable", weight: 7, seed: philip_morris}
+      - {phrase: "pre-existing or reasonably foreseeable dispute", weight: 7, seed: philip_morris}
+      - {phrase: "critical date", weight: 6, seed: philip_morris}
+      - {phrase: "treaty protection", weight: 5, seed: philip_morris}
+      - {phrase: "shell subsidiary", weight: 6, seed: bridgestone}
+      - {phrase: "abusive tactics", weight: 4, seed: bridgestone}
+      - {phrase: "definition of investor", weight: 5, seed: bridgestone}
+      - {phrase: "standing of licensor vs licensee", weight: 4, seed: bridgestone}
+      - {phrase: "standing to claim denial of justice when not a party", weight: 4, seed: bridgestone}
+      - {phrase: "exhaustion of local remedies", weight: 3, seed: bridgestone}
+      - {phrase: "denial of benefits", weight: 2, seed: theme_extension}
+      - {phrase: "substantial business activities", weight: 1, seed: theme_extension}
+    # sum: 12+9+9+8+8+7+7+6+5+6+4+5+4+4+3+2+1 = 100
+
+combination_rules:
+  - "two or more rings with at least one strong (ring keyword-weight subtotal >= 30) keyword hit each -> HIGH (>=70)"
+  - "judicial_or_regulatory_measure ring alone with a strong hit -> MEDIUM (>=40)"
+  - "any case challenging a domestic court judgment or judicial conduct -> at least MEDIUM, even with no other ring (Ring 2 extra_weight)"
+  - "one ring strong (subtotal >= 30) + a weak hit (subtotal < 30) in a second ring -> MEDIUM (40-69)"
+  - "single non-extra-weight ring, weak hit (subtotal < 30) -> LOW (<40)"
+  - "negative_signals present and NO ring rescues (no IP-as-investment and no judicial/regulatory measure) -> force LOW"
+
+negative_signals:           # push toward LOW unless a ring rescues
+  - "mining / oil / gas / mineral concession"
+  - "sovereign debt / bond / restructuring of sovereign debt"
+  - "intra-EU energy / Energy Charter Treaty solar / feed-in tariff"
+  - "vanilla direct expropriation with no IP and no judicial measure"
+  - "tax assessment dispute with no judicial-conduct or IP angle"
+
+few_shot_examples:
+  - title: "Pharma claimant challenges patent invalidation under heightened utility test"
+    summary: >
+      A multinational pharmaceutical company brings a NAFTA/USMCA claim after its
+      drug patents are invalidated by domestic courts applying a newly raised
+      "promise utility" / utility-requirement standard, framing the patents as a
+      covered investment and the court rulings as a judicial measure amounting to
+      denial of justice and a breach of the minimum standard of treatment.
+    expected_band: HIGH
+    expected_score: 88
+    matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
+    why: "IP-as-investment (patent/utility requirement) intersects a judicial-measure denial-of-justice claim — two strong rings."
+
+  - title: "Trademark licensor/licensee restructures into BIT-state shell after adverse Supreme Court ruling"
+    summary: >
+      A brand owner splits trademark ownership between a licensor and an in-country
+      licensee and channels the holding through a shell subsidiary in a treaty state
+      to manufacture standing, then claims the host Supreme Court's manifestly unjust
+      judgment denied justice. Respondent pleads abuse of process, treaty shopping,
+      and that the licensor lacks standing to claim denial of justice when not a party.
+    expected_band: HIGH
+    expected_score: 84
+    matched_rings: [ip_as_investment, jurisdictional_admissibility, judicial_or_regulatory_measure]
+    why: "Trademark/licenses as investment + shell-subsidiary treaty-shopping jurisdiction fight + Supreme Court judgment — three rings."
+
+  - title: "Data-exclusivity and GI dispute over generics regulation"
+    summary: >
+      An originator pharma company alleges that a host state's regulation eroding
+      data exclusivity and cancelling a geographical indication destroyed brand value
+      protected as a covered investment, tying the regulatory measure loosely to a
+      single first-instance court decision it disputes.
+    expected_band: MEDIUM
+    expected_score: 58
+    matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
+    why: "Strong IP-as-investment ring (data exclusivity, GI, brand value) with only a weak regulatory/judicial tie."
+
+  - title: "Copyright-levy claimant challenges a Supreme Court ruling as denial of justice"
+    summary: >
+      A collecting society's investor challenges a host-state Supreme Court judgment
+      that struck down private-copying copyright levies, alleging the ruling was
+      egregiously wrong such that no honest or competent court could have reached it,
+      amounting to a gross denial of justice and breach of the minimum standard of
+      treatment. No jurisdictional restructuring is alleged.
+    expected_band: MEDIUM
+    expected_score: 52
+    matched_rings: [judicial_or_regulatory_measure]
+    why: "Judicial-measure case alone (Supreme Court judgment, denial of justice) -> at least MEDIUM via Ring 2 extra weight."
+
+  - title: "Investor sues over revoked copper mining concession (direct expropriation)"
+    summary: >
+      A mining company claims the host state directly expropriated its copper mineral
+      concession by executive decree, seeking compensation. No intellectual property,
+      no domestic court judgment, and no jurisdictional/abuse-of-right issue is involved.
+    expected_band: LOW
+    expected_score: 12
+    matched_rings: []
+    why: "Vanilla mining/mineral-concession expropriation; negative signal, no ring rescues."
+
+  - title: "Bondholder claim over sovereign debt restructuring"
+    summary: >
+      Foreign holders of government bonds bring a claim challenging a sovereign debt
+      restructuring and haircut as an indirect expropriation and unfair treatment.
+      Purely financial; no IP and no judicial-conduct measure.
+    expected_band: LOW
+    expected_score: 8
+    matched_rings: []
+    why: "Sovereign debt/bond negative signal with no IP and no judicial measure -> forced LOW."
+
+  - title: "Solar investor claims under the Energy Charter Treaty over feed-in tariff cuts"
+    summary: >
+      An intra-EU solar investor claims that retroactive cuts to renewable feed-in
+      tariffs breached the Energy Charter Treaty's fair-and-equitable-treatment
+      standard. No IP-as-investment angle and no domestic court judgment is challenged.
+    expected_band: LOW
+    expected_score: 10
+    matched_rings: []
+    why: "Intra-EU energy / ECT solar negative signal; no ring present."

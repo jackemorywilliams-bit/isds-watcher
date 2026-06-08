@@ -1,0 +1,25 @@
+source: pca_press
+type: html
+usable: false
+priority: low
+base_url: "https://pca-cpa.org/en/news/"
+robots: "robots.txt not reachable to confirm (page itself 403s)"
+fetch:
+  urls:
+    - "https://pca-cpa.org/en/news/"
+  notes: >
+    A polite GET returned HTTP 403 Forbidden — the server blocked the request before any
+    HTML was returned (likely UA/WAF filtering). Could not determine whether the news list
+    is static HTML or JS-rendered. Did NOT attempt to evade.
+parse:
+  item_selector_primary: "UNKNOWN — page never loaded (403)"
+  title_selector_primary: "UNKNOWN"
+  link_attr: "href"
+  date_selector_primary: "UNKNOWN"
+  fallback_strategy: "Not verifiable from this context. Low priority per brief; requires a browser-like UA to even load."
+  id_strategy: "UNKNOWN"
+fields_available: []
+warnings: >
+    LOW priority and BLOCKED (403 to polite GET). Marked unusable per the brief's rule
+    (only usable:true if a stable simple HTML structure is found, which could not be
+    verified). Optionally retry from production crawler with a normal browser User-Agent.

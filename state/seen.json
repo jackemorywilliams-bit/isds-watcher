@@ -1,3 +1,50 @@
 {
-  "sources": {}
+  "sources": {
+    "iareporter_headlines": {
+      "https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/canadian-companys-subsidiaries-lodge-unclos-proceedings-against-international-seabed-authority-over-deep-sea-mining-venture/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/icsid-af-tribunal-dismisses-venezuelas-objection-that-insurance-investors-claims-manifestly-lack-legal-merit/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/icsid-tribunal-finds-kyrgyzstan-liable-for-treaty-breach-in-uranium-mining-dispute/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/tribunal-in-bacilio-amorrortu-v-peru-declines-to-strike-evidence-from-the-record/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/tribunal-orders-colombian-government-agency-to-pay-damages-to-highway-concessionaire/": "2026-06-08T23:00:56.178141+00:00",
+      "https://www.iareporter.com/articles/uncitral-tribunal-in-elliott-v-south-korea-sets-out-timetable-to-hear-resubmitted-questions/": "2026-06-08T23:00:56.178141+00:00"
+    },
+    "italaw": {
+      "https://www.italaw.com/cases/12153": "2026-06-08T23:00:56.178141+00:00"
+    },
+    "pca_press": {
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-01-the-indus-waters-western-rivers-arbitration-islamic-republic-of-pakistan-v-republic-of-india-5/": "2026-06-08T23:00:56.178141+00:00",
+      "https://pca-cpa.org/en/news/pca-publishes-contribution-to-2026-report-of-united-nations-secretary-general-on-oceans-and-the-law-of-the-sea/": "2026-06-08T23:00:56.178141+00:00"
+    },
+    "unctad_isds": {
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1414/asesores-financieros-v-uruguay": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1415/arcelormittal-v-italy": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1417/allianz-v-mexico": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1419/estate-of-ian-colin-orr-ewing-and-others-v-mexico": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1422/aeroc-investment-v-ukraine": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1429/eta-star-v-angola": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1433/amec-foster-wheeler-and-others-v-colombia-ii-": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1435/brookfield-v-peru": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1439/draslovka-holding-v-mexico": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1441/centauro-and-natanor-v-colombia": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1446/bright-mountain-v-myanmar": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1448/bghl-v-ghana": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1449/emco-v-honduras": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1457/edp-v-colombia": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1458/alam-and-others-v-bangladesh": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1459/bupa-v-chile": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1460/aria-capital-and-publio-administration-v-mexico": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1462/ferrer-v-ecuador": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1463/afik-and-others-v-cyprus": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1465/enwell-energy-v-ukraine": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1466/buried-hill-serdar-v-turkmenistan": "2026-06-08T23:00:56.178141+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1467/arg-ello-v-panama": "2026-06-08T23:00:56.178141+00:00"
+    }
+  }
 }

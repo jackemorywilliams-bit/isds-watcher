@@ -11,7 +11,7 @@
 > iareporter headlines. "Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle." 09 Jun 2026. https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/
 
 ## Annotation
-Individual gambling investors have filed an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a claim brought by their corporate vehicle, suggesting a jurisdictional dispute over investor standing and the use of an intermediary entity. This implicates the jurisdictional-admissibility ring through issues of corporate structuring, shell-subsidiary tactics, and the definition of 'investor' under investment-treaty law, but lacks any IP-as-investment or judicial-measure component, placing it at MEDIUM.
+Individual gambling investors have filed an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a prior claim brought by their corporate vehicle, suggesting a restructuring strategy to circumvent an earlier dismissal. The case raises core jurisdictional-admissibility issues around the definition of investor, standing, and potential shell-subsidiary abuse to manufacture or resurrect a treaty claim, but involves no intellectual property or judicial measure, placing it at MEDIUM-HIGH on the jurisdictional ring alone.
 
 ## Notable line (from source)
 > “Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle”

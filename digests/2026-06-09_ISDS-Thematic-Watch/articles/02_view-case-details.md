@@ -3,15 +3,15 @@
 - **Source:** Italaw — [Read the original ↗](https://www.italaw.com/cases/12153)
 - **Date:** 02 June 2026
 - **Link:** https://www.italaw.com/cases/12153
-- **Relevance:** 28 (WATCH)
+- **Relevance:** 35 (WATCH)
 - **Rings matched:** judicial_or_regulatory_measure
-- **Tags:** judicial_measure, constitutional_court, legislative_framework, fair_and_equitable_treatment, legitimate_expectations
+- **Tags:** judicial_measure, constitutional_court, legislative_measure, fair_and_equitable_treatment, legitimate_expectations, regulatory_change
 
 ## Citation
 > italaw. "View case details." 02 Jun 2026. https://www.italaw.com/cases/12153
 
 ## Annotation
-Telefónica challenged Colombia's legislative and judicial measures (Laws 422, 1341, and a Constitutional Court ruling) that altered the legal framework governing asset reversion under telecommunications concessions, alleging breach of FET under a BIT. Although the case involves a judicial act (Sentencia C-555) and regulatory measures, it is purely a concessions/FET dispute with no intellectual property or jurisdictional/admissibility doctrine at issue, scoring MEDIUM-LOW on the judicial-measure ring alone but falling short of the thematic intersection because IP-as-investment and abuse-of-right/corporate-restructuring doctrines are entirely absent.
+A telecommunications investor (Telefónica) challenged Colombia's Constitutional Court judgment and legislative changes that altered asset-reversion rules under its concession, alleging breach of fair-and-equitable treatment. Although the case involves a judicial measure (the Constitutional Court's Sentencia C-555) and regulatory legislation, it concerns ordinary concession assets—not intellectual property—and raises no jurisdictional abuse-of-right, treaty-shopping, or standing doctrine; it therefore matches only the judicial-measure ring weakly and scores LOW-MEDIUM.
 
 ## Notable line (from source)
 > “Colombia contended that the acts of its Constitutional Court (Sentencia C-555) could only constitute a treaty breach if they amounted to a denial of justice, which was not alleged or proven.”

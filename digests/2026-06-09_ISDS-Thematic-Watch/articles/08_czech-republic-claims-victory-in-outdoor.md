@@ -1,4 +1,4 @@
-# 6. Czech Republic claims victory in outdoor advertising case
+# 8. Czech Republic claims victory in outdoor advertising case
 
 - **Source:** Iareporter Headlines — [Read the original ↗](https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/)
 - **Date:** 09 June 2026
@@ -11,7 +11,7 @@
 > iareporter headlines. "Czech Republic claims victory in outdoor advertising case." 09 Jun 2026. https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/
 
 ## Annotation
-The item reports that the Czech Republic claims victory in an outdoor advertising dispute, but provides no substantive detail about the nature of the claim, the parties, or the legal basis. Without evidence of intellectual property rights, a judicial or regulatory measure, or jurisdictional/admissibility doctrine, it does not match any of the three rings and scores LOW.
+The item reports that Czech Republic has claimed victory in an outdoor advertising dispute, but provides no substantive details about the nature of the claim, the parties involved, or the legal issues at stake. Without information on IP rights, judicial measures, or jurisdictional doctrines, it cannot be mapped to any of the three rings and scores LOW.
 
 ## Notable line (from source)
 > “Czech Republic claims victory in outdoor advertising case”

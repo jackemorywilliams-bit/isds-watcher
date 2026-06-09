@@ -11,7 +11,7 @@
 > unctad isds. "Air Liquide and Azerus v. Mexico." 09 Jun 2026. https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico
 
 ## Annotation
-Air Liquide and Azerus v. Mexico is a treaty arbitration case listed in the UNCTAD ISDS database, but the item provides only a title and case identifier with no substantive facts. Without detail on the investment type, the nature of state conduct, or jurisdictional issues, no ring can be matched, and the case defaults to LOW scoring absent evidence of IP-as-investment, a judicial measure, or admissibility doctrine.
+Air Liquide and Azerus v. Mexico is a case entry with no substantive factual detail provided. Without information on the nature of the investment, the state conduct at issue, or any admissibility/jurisdictional arguments, no rings can be matched and the item scores LOW as off-theme.
 
 ## Notable line (from source)
 > “Air Liquide and Azerus v.”

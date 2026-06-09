@@ -5,235 +5,301 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ISDS Thematic Watch — 2026-06-09</title>
 <style>
-  body { font-family: Georgia, 'Times New Roman', serif; color: #1c2530;
-         line-height: 1.55; margin: 0; padding: 0; background: #eef1f4; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 0 32px; background: #ffffff; }
-  .head { background: #0b3d5c; color: #fff; padding: 26px 34px; }
-  .head h1 { margin: 0 0 6px; font-size: 21px; letter-spacing: .2px; }
-  .head .sub { font-size: 13px; opacity: .9; font-family: Arial, sans-serif; }
-  .intro { padding: 18px 34px 4px; font-size: 14px; color: #33414f; }
-  .section { padding: 6px 34px; }
-  .secttl { font-family: Arial, sans-serif; font-size: 12px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: .08em; color: #0b3d5c;
-            border-bottom: 2px solid #0b3d5c; padding: 14px 0 5px; margin-top: 18px; }
-  .entry { padding: 16px 0; border-bottom: 1px solid #e3e8ee; }
-  .entry .num { font-weight: 700; color: #0b3d5c; }
-  .cite { font-size: 15px; margin: 2px 0 6px; }
-  .cite a { color: #0b3d5c; text-decoration: none; }
-  .cite .src { font-variant: small-caps; color: #50606e; font-size: 13px;
-               font-family: Arial, sans-serif; letter-spacing: .03em; }
-  .badges { font-family: Arial, sans-serif; font-size: 11px; margin: 4px 0 8px; }
-  .badges .score { background: #1a7f37; color: #fff; border-radius: 3px;
-                   padding: 1px 7px; font-weight: 700; }
-  .badges .score.med { background: #b8860b; }
-  .badges .score.low { background: #6a7280; }
-  .badges .ring { background: #0b3d5c; color: #fff; border-radius: 3px;
-                  padding: 1px 7px; margin-left: 3px; }
-  .annot { font-size: 14px; margin: 6px 0; color: #26323d; }
-  .annot .lbl, .source .lbl { font-family: Arial, sans-serif; font-size: 11px; font-weight: 700;
-                text-transform: uppercase; letter-spacing: .05em; color: #50606e; }
-  .source { font-family: Arial, sans-serif; font-size: 13px; margin: 6px 0 2px; color: #26323d; }
-  .source a { color: #0b5cae; font-weight: 700; text-decoration: none; }
-  .source .rawurl { display: block; color: #8a93a0; font-size: 11px; word-break: break-all; margin-top: 2px; }
-  .quote { border-left: 3px solid #b8860b; background: #faf6ec; padding: 8px 12px;
-           margin: 8px 0 4px; font-style: italic; font-size: 14px; color: #3a3322; }
-  .tags { font-family: Arial, sans-serif; font-size: 11px; color: #6a7280; margin-top: 6px; }
-  .empty { padding: 24px 34px; color: #50606e; }
-  .footer { margin: 18px 34px 0; padding: 16px 0 0; border-top: 1px solid #e3e8ee;
-            font-family: Arial, sans-serif; font-size: 12px; color: #6a7280; }
-  .footer a { color: #0b5cae; }
-  .footer table { border-collapse: collapse; }
-  .footer td { padding: 1px 14px 1px 0; }
+  body { margin:0; padding:0; background:#eceef1;
+         font-family: Georgia, 'Times New Roman', serif; color:#1b252e; line-height:1.55; }
+  .sheet { max-width:680px; margin:0 auto; background:#ffffff; }
+  /* Masthead */
+  .mast { padding:22px 36px 16px; border-bottom:3px double #0b3d5c; }
+  .mast .kicker { font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:.22em;
+         text-transform:uppercase; color:#9a7b2e; margin:0 0 4px; }
+  .mast h1 { margin:0; font-size:25px; letter-spacing:.3px; color:#0b3d5c; }
+  .mast .issue { font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#5a6672; margin-top:6px; }
+  .mast .standing { font-size:13px; color:#3a4651; margin:10px 0 0; font-style:italic; }
+  /* Utility nav at top */
+  .util { padding:9px 36px; background:#0b3d5c; }
+  .util a { color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11.5px;
+         text-decoration:none; letter-spacing:.03em; }
+  .util a:hover { text-decoration:underline; }
+  .util .sep { color:#5b86a6; padding:0 8px; }
+  /* In this issue */
+  .lede { padding:16px 36px 4px; font-size:14px; color:#33414f; }
+  .lede strong { color:#0b3d5c; }
+  /* Section label */
+  .secttl { font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700;
+         text-transform:uppercase; letter-spacing:.12em; color:#0b3d5c;
+         padding:20px 36px 0; }
+  .secttl .rule { display:block; border-bottom:1px solid #d6dbe1; margin-top:6px; }
+  /* Entries */
+  .entry { padding:16px 36px; border-bottom:1px solid #e6e9ed; }
+  .entry .head { font-size:16px; line-height:1.4; margin:0 0 5px; }
+  .entry .num { color:#9a7b2e; font-weight:bold; }
+  .entry .head a { color:#0b3d5c; text-decoration:none; }
+  .entry .head a:hover { text-decoration:underline; }
+  .meta { font-family:Arial,Helvetica,sans-serif; font-size:11.5px; color:#5a6672; margin:0 0 8px; }
+  .meta .band { display:inline-block; background:#1a7f37; color:#fff; border-radius:3px;
+         padding:1px 7px; font-weight:700; letter-spacing:.02em; }
+  .meta .band.med { background:#b8860b; } .meta .band.low { background:#6a7280; }
+  .meta .ring { color:#0b3d5c; }
+  .annot { font-size:14px; margin:0 0 8px; }
+  .quote { border-left:3px solid #b8860b; background:#faf6ec; padding:8px 12px; margin:0 0 8px;
+         font-style:italic; font-size:13.5px; color:#3a3322; }
+  .src { font-family:Arial,Helvetica,sans-serif; font-size:12px; background:#f3f5f8;
+         border:1px solid #e0e5 ea; border-radius:5px; padding:8px 11px; }
+  .src .lab { color:#5a6672; text-transform:uppercase; letter-spacing:.06em; font-size:10.5px; }
+  .src a { color:#0b5cae; font-weight:700; text-decoration:none; word-break:break-all; }
+  .tags { font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#7a828c; margin-top:7px; }
+  .empty { padding:24px 36px; color:#5a6672; font-size:14px; }
+  /* Footer */
+  .foot { background:#0b2e44; color:#cdd8e2; padding:22px 36px 26px;
+         font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:1.6; }
+  .foot h4 { color:#fff; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+         margin:0 0 8px; font-weight:700; }
+  .foot a { color:#9cc4e6; text-decoration:none; }
+  .foot a:hover { text-decoration:underline; }
+  .foot .cols { width:100%; }
+  .foot .cols td { vertical-align:top; padding-right:22px; }
+  .foot .navlink { display:block; margin:3px 0; }
+  .foot .fine { color:#7e93a6; margin-top:16px; font-size:11px; line-height:1.5; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="head">
-    <h1>ISDS Thematic Watch — 2026-06-09</h1>
-    <div class="sub">An annotated digest of investor–state dispute developments at the
-      IP-as-investment / judicial-or-regulatory-measure / jurisdictional-admissibility intersection.</div>
+<div class="sheet">
+
+  <div class="util">
+    <a href="https://jackemorywilliams-bit.github.io/isds-watcher/">View on the web</a><span class="sep">·</span>
+    <a href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/METHODOLOGY.md">Methodology</a><span class="sep">·</span>
+    <a href="https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests/2026-06-09_ISDS-Thematic-Watch">Full archive</a>
   </div>
 
-  <div class="intro">
-    <strong>10</strong> items surfaced
-    for the window beginning 09 June 2025, screened from
-    78 candidates across 7 sources and
-    scored by claude. Entries are ordered by thematic
-    relevance; each carries a two-sentence annotation and a notable line drawn from the source.
+  <div class="mast">
+    <p class="kicker">Investor–State Dispute Settlement · Current Awareness</p>
+    <h1>ISDS Thematic Watch</h1>
+    <p class="issue">Tuesday, 09 June 2026 &nbsp;·&nbsp;
+       Window from 09 Jun 2025 &nbsp;·&nbsp;
+       10 items</p>
+    <p class="standing">Developments at the intersection of intellectual property as a
+       protected investment, regulatory or judicial measures as the disputed conduct, and
+       jurisdictional and admissibility doctrine.</p>
+  </div>
+
+  <div class="lede">
+    This issue surfaces <strong>10</strong> developments
+    from 78 candidates screened across 7 sources,
+    classified by claude. Entries are ordered by thematic
+    relevance; each carries a short descriptive-and-evaluative annotation, a notable line drawn
+    from the source, and a direct link to the original.
   </div>
 
   
 
   
-    <div class="section">
-      <div class="secttl">Annotated bibliography — 10 entries</div>
-      
+    <p class="secttl">Annotated developments<span class="rule"></span></p>
+    
+  
   
   <div class="entry">
-    <div class="cite"><span class="num">1.</span>
-      <span class="src">iareporter headlines</span> —
-      <a href="https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/">Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score med">relevance 62</span><span class="ring">jurisdictional admissibility</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> Individual gambling investors have filed an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a claim brought by their corporate vehicle, suggesting a jurisdictional dispute over investor standing and the use of an intermediary entity. This implicates the jurisdictional-admissibility ring through issues of corporate structuring, shell-subsidiary tactics, and the definition of &#39;investor&#39; under investment-treaty law, but lacks any IP-as-investment or judicial-measure component, placing it at MEDIUM.</div>
+    <p class="head"><span class="num">1.</span>
+       <a href="https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/">Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle</a></p>
+    <p class="meta">
+      Iareporter Headlines &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band med">Medium · 62</span>
+      &nbsp;·&nbsp; <span class="ring">jurisdictional admissibility</span>
+    </p>
+    <p class="annot">Individual gambling investors have filed an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a prior claim brought by their corporate vehicle, suggesting a restructuring strategy to circumvent an earlier dismissal. The case raises core jurisdictional-admissibility issues around the definition of investor, standing, and potential shell-subsidiary abuse to manufacture or resurrect a treaty claim, but involves no intellectual property or judicial measure, placing it at MEDIUM-HIGH on the jurisdictional ring alone.</p>
     <div class="quote">“Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iareporter Headlines — <a href="https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/</span></div>
-    <div class="tags">Tags: shell_subsidiary · corporate_restructuring · definition_of_investor · standing · treaty_shopping</div>
+    <div class="src"><span class="lab">Source —</span>
+      Iareporter Headlines:
+      <a href="https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/">https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/</a></div>
+    <p class="tags">Tags: shell_subsidiary · corporate_restructuring · definition_of_investor · standing · treaty_shopping</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">2.</span>
-      <span class="src">italaw</span> —
-      <a href="https://www.italaw.com/cases/12153">View case details</a>,
-      02 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 28</span><span class="ring">judicial or regulatory measure</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> Telefónica challenged Colombia&#39;s legislative and judicial measures (Laws 422, 1341, and a Constitutional Court ruling) that altered the legal framework governing asset reversion under telecommunications concessions, alleging breach of FET under a BIT. Although the case involves a judicial act (Sentencia C-555) and regulatory measures, it is purely a concessions/FET dispute with no intellectual property or jurisdictional/admissibility doctrine at issue, scoring MEDIUM-LOW on the judicial-measure ring alone but falling short of the thematic intersection because IP-as-investment and abuse-of-right/corporate-restructuring doctrines are entirely absent.</div>
+    <p class="head"><span class="num">2.</span>
+       <a href="https://www.italaw.com/cases/12153">View case details</a></p>
+    <p class="meta">
+      Italaw &nbsp;·&nbsp; 02 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 35</span>
+      &nbsp;·&nbsp; <span class="ring">judicial or regulatory measure</span>
+    </p>
+    <p class="annot">A telecommunications investor (Telefónica) challenged Colombia&#39;s Constitutional Court judgment and legislative changes that altered asset-reversion rules under its concession, alleging breach of fair-and-equitable treatment. Although the case involves a judicial measure (the Constitutional Court&#39;s Sentencia C-555) and regulatory legislation, it concerns ordinary concession assets—not intellectual property—and raises no jurisdictional abuse-of-right, treaty-shopping, or standing doctrine; it therefore matches only the judicial-measure ring weakly and scores LOW-MEDIUM.</p>
     <div class="quote">“Colombia contended that the acts of its Constitutional Court (Sentencia C-555) could only constitute a treaty breach if they amounted to a denial of justice, which was not alleged or proven.”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Italaw — <a href="https://www.italaw.com/cases/12153">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.italaw.com/cases/12153</span></div>
-    <div class="tags">Tags: judicial_measure · constitutional_court · legislative_framework · fair_and_equitable_treatment · legitimate_expectations</div>
+    <div class="src"><span class="lab">Source —</span>
+      Italaw:
+      <a href="https://www.italaw.com/cases/12153">https://www.italaw.com/cases/12153</a></div>
+    <p class="tags">Tags: judicial_measure · constitutional_court · legislative_measure · fair_and_equitable_treatment · legitimate_expectations · regulatory_change</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">3.</span>
-      <span class="src">iareporter headlines</span> —
-      <a href="https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/">South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 25</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> A South African appeals court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho but found the state&#39;s set-aside application time-barred. While it involves a domestic court judgment, the item provides no evidence of intellectual property, investor-state treaty arbitration, or admissibility/jurisdictional doctrines central to the thematic focus, making it LOW-scoring.</div>
+    <p class="head"><span class="num">3.</span>
+       <a href="https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/">South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred</a></p>
+    <p class="meta">
+      Iareporter Headlines &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 25</span>
+      
+    </p>
+    <p class="annot">A South African appeals court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho but dismissed the state&#39;s set-aside application as time-barred, turning on domestic civil procedure and judgment enforcement. While it involves a domestic court judgment, the item contains no reference to intellectual property, investment-treaty protection, or jurisdictional/admissibility doctrines under the treaty-law framework, so it does not match the three-ring theme.</p>
     <div class="quote">“South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iareporter Headlines — <a href="https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/</span></div>
-    <div class="tags">Tags: domestic_court_judgment · default_judgment · set_aside_application</div>
+    <div class="src"><span class="lab">Source —</span>
+      Iareporter Headlines:
+      <a href="https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/">https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/</a></div>
+    <p class="tags">Tags: domestic_court_judgment · set_aside_application · procedural_time_bar</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">4.</span>
-      <span class="src">unctad isds</span> —
-      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama">FCC Construcción v. Panama</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 20</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> FCC Construcción v. Panama is a construction-sector investment dispute with no information provided about intellectual property, judicial measures, or jurisdictional admissibility doctrines. Without additional details indicating IP-as-investment, a challenge to a domestic court judgment, or abuse-of-right/treaty-shopping arguments, it does not match the thematic intersection and scores LOW.</div>
+    <p class="head"><span class="num">4.</span>
+       <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama">FCC Construcción v. Panama</a></p>
+    <p class="meta">
+      Unctad Isds &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 25</span>
+      
+    </p>
+    <p class="annot">FCC Construcción v. Panama is a construction dispute between a foreign investor and the State of Panama, likely involving concession or contract claims typical of infrastructure investment disputes. Without access to the substantive facts, no intellectual property, judicial-measure challenge, or jurisdictional-admissibility doctrine can be confirmed, placing it outside the thematic intersection.</p>
     <div class="quote">“FCC Construcción v.”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Unctad Isds — <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama</span></div>
-    <div class="tags">Tags: construction · panama</div>
+    <div class="src"><span class="lab">Source —</span>
+      Unctad Isds:
+      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama</a></div>
+    <p class="tags">Tags: construction · panama</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">5.</span>
-      <span class="src">iisd itn</span> —
-      <a href="https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/">Consent after denunciation—jurisdiction and damages</a>,
-      21 Apr 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> This is a final award in Smurfit Holdings v. Venezuela concerning consent and jurisdiction following treaty denunciation, likely addressing damages and treaty withdrawal mechanics. The item provides no indication of intellectual property, domestic court judgments, or jurisdictional/admissibility doctrines (abuse of right, treaty-shopping, restructuring), so it does not match any of the three rings and scores LOW.</div>
+    <p class="head"><span class="num">5.</span>
+       <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine">EMIS v. Ukraine</a></p>
+    <p class="meta">
+      Unctad Isds &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 20</span>
+      
+    </p>
+    <p class="annot">EMIS v. Ukraine is a case in the UNCTAD ISDS database, but the provided text contains only the case title and no substantive facts or legal claims. Without information about whether the dispute involves intellectual property as an investment, a judicial or regulatory measure, or jurisdictional/admissibility doctrines, no rings can be reliably matched and the item scores LOW.</p>
+    <div class="quote">“EMIS v.”</div>
+    <div class="src"><span class="lab">Source —</span>
+      Unctad Isds:
+      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine</a></div>
+    
+  </div>
+  
+  
+  
+  <div class="entry">
+    <p class="head"><span class="num">6.</span>
+       <a href="https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/">Consent after denunciation—jurisdiction and damages</a></p>
+    <p class="meta">
+      Iisd Itn &nbsp;·&nbsp; 21 Apr 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 15</span>
+      
+    </p>
+    <p class="annot">Smurfit Holdings v. Venezuela concerns the jurisdictional effect of treaty denunciation and consent to arbitration in an ICSID case, addressing whether a state&#39;s withdrawal from a treaty extinguishes an arbitral tribunal&#39;s jurisdiction. The dispute does not involve intellectual property as a covered investment, does not challenge a domestic court judgment or public-interest regulatory measure, and does not engage abuse-of-right or treaty-shopping doctrines, so it matches none of the three rings and scores LOW.</p>
     <div class="quote">“Smurfit Holdings B.V. v.”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iisd Itn — <a href="https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/</span></div>
-    <div class="tags">Tags: consent · denunciation · jurisdiction · damages</div>
+    <div class="src"><span class="lab">Source —</span>
+      Iisd Itn:
+      <a href="https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/">https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/</a></div>
+    <p class="tags">Tags: consent_to_arbitration · treaty_denunciation · jurisdiction</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">6.</span>
-      <span class="src">iareporter headlines</span> —
-      <a href="https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/">Czech Republic claims victory in outdoor advertising case</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> The item reports that the Czech Republic claims victory in an outdoor advertising dispute, but provides no substantive detail about the nature of the claim, the parties, or the legal basis. Without evidence of intellectual property rights, a judicial or regulatory measure, or jurisdictional/admissibility doctrine, it does not match any of the three rings and scores LOW.</div>
+    <p class="head"><span class="num">7.</span>
+       <a href="https://icsid.worldbank.org/news-and-events/news-releases/fernando-paiz-andrade-and-anabella-schloesser-de-leon-de-paiz-v">Fernando Paiz Andrade and Anabella Schloesser de León de Paiz v. Republic of Honduras (ICSID Case No. ARB/23/43) - Public Hearing</a></p>
+    <p class="meta">
+      Icsid &nbsp;·&nbsp; 15 Sep 2025
+      &nbsp;·&nbsp; <span class="band low">Watch · 15</span>
+      
+    </p>
+    <p class="annot">This is a bare case caption and hearing announcement for an ICSID dispute between private investors and Honduras, with no substantive details about the claims, investments, or measures at issue. Without information about whether intellectual property is involved, whether judicial or regulatory measures are disputed, or whether jurisdictional/admissibility doctrines feature in the case, no thematic rings can be matched, so it scores LOW.</p>
+    <div class="quote">“Fernando Paiz Andrade and Anabella Schloesser de León de Paiz v.”</div>
+    <div class="src"><span class="lab">Source —</span>
+      Icsid:
+      <a href="https://icsid.worldbank.org/news-and-events/news-releases/fernando-paiz-andrade-and-anabella-schloesser-de-leon-de-paiz-v">https://icsid.worldbank.org/news-and-events/news-releases/fernando-paiz-andrade-and-anabella-schloesser-de-leon-de-paiz-v</a></div>
+    
+  </div>
+  
+  
+  
+  <div class="entry">
+    <p class="head"><span class="num">8.</span>
+       <a href="https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/">Czech Republic claims victory in outdoor advertising case</a></p>
+    <p class="meta">
+      Iareporter Headlines &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 15</span>
+      
+    </p>
+    <p class="annot">The item reports that Czech Republic has claimed victory in an outdoor advertising dispute, but provides no substantive details about the nature of the claim, the parties involved, or the legal issues at stake. Without information on IP rights, judicial measures, or jurisdictional doctrines, it cannot be mapped to any of the three rings and scores LOW.</p>
     <div class="quote">“Czech Republic claims victory in outdoor advertising case”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iareporter Headlines — <a href="https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/</span></div>
-    <div class="tags">Tags: outdoor_advertising</div>
+    <div class="src"><span class="lab">Source —</span>
+      Iareporter Headlines:
+      <a href="https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/">https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/</a></div>
+    <p class="tags">Tags: outdoor_advertising</p>
   </div>
   
   
+  
   <div class="entry">
-    <div class="cite"><span class="num">7.</span>
-      <span class="src">iareporter headlines</span> —
-      <a href="https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/">Airport construction investor announces arbitration against Albania</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> An airport construction investor has announced arbitration against Albania, a typical infrastructure concession dispute with no details provided in the headline. Without evidence of intellectual property claims, a domestic court judgment, or jurisdictional/admissibility doctrine, this scores LOW and matches no ring.</div>
-    <div class="quote">“Airport construction investor announces arbitration against Albania”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iareporter Headlines — <a href="https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/</span></div>
-    <div class="tags">Tags: airport_construction · concession · arbitration</div>
+    <p class="head"><span class="num">9.</span>
+       <a href="https://www.iareporter.com/articles/uncitral-tribunal-in-elliott-v-south-korea-sets-out-timetable-to-hear-resubmitted-questions/">UNCITRAL tribunal in Elliott v. South Korea sets out timetable to hear resubmitted questions</a></p>
+    <p class="meta">
+      Iareporter Headlines &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 15</span>
+      
+    </p>
+    <p class="annot">The item reports a procedural scheduling order in Elliott v. South Korea setting a timetable for resubmitted questions before a UNCITRAL tribunal. Without details on the underlying dispute&#39;s subject matter, IP involvement, judicial measures, or jurisdictional doctrines, this procedural headline does not match any of the three thematic rings and scores LOW.</p>
+    <div class="quote">“South Korea sets out timetable to hear resubmitted questions”</div>
+    <div class="src"><span class="lab">Source —</span>
+      Iareporter Headlines:
+      <a href="https://www.iareporter.com/articles/uncitral-tribunal-in-elliott-v-south-korea-sets-out-timetable-to-hear-resubmitted-questions/">https://www.iareporter.com/articles/uncitral-tribunal-in-elliott-v-south-korea-sets-out-timetable-to-hear-resubmitted-questions/</a></div>
+    <p class="tags">Tags: uncitral · procedural_scheduling</p>
   </div>
   
   
-  <div class="entry">
-    <div class="cite"><span class="num">8.</span>
-      <span class="src">iareporter headlines</span> —
-      <a href="https://www.iareporter.com/articles/tribunal-orders-colombian-government-agency-to-pay-damages-to-highway-concessionaire/">Tribunal orders Colombian government agency to pay damages to highway concessionaire</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> A tribunal ordered a Colombian government agency to pay damages to a highway concessionaire, an infrastructure-concession dispute. Without more detail on IP involvement, judicial-measure challenges, or jurisdictional-admissibility doctrines, this appears to be a vanilla concession claim scoring LOW.</div>
-    <div class="quote">“Tribunal orders Colombian government agency to pay damages to highway concessionaire”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Iareporter Headlines — <a href="https://www.iareporter.com/articles/tribunal-orders-colombian-government-agency-to-pay-damages-to-highway-concessionaire/">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://www.iareporter.com/articles/tribunal-orders-colombian-government-agency-to-pay-damages-to-highway-concessionaire/</span></div>
-    <div class="tags">Tags: concession · infrastructure</div>
-  </div>
-  
   
   <div class="entry">
-    <div class="cite"><span class="num">9.</span>
-      <span class="src">unctad isds</span> —
-      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1422/aeroc-investment-v-ukraine">AEROC Investment v. Ukraine</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> AEROC Investment v. Ukraine is a case record entry in the UNCTAD ISDS database with no substantive details provided in the source text. Without information on the nature of the investment, the disputed state conduct, or any jurisdictional issues, it cannot be assessed against the three-ring theme of IP-as-investment, judicial/regulatory measures, or jurisdictional/admissibility doctrines, and scores LOW.</div>
-    <div class="quote">“AEROC Investment v.”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Unctad Isds — <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1422/aeroc-investment-v-ukraine">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1422/aeroc-investment-v-ukraine</span></div>
-    
-  </div>
-  
-  
-  <div class="entry">
-    <div class="cite"><span class="num">10.</span>
-      <span class="src">unctad isds</span> —
-      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico">Air Liquide and Azerus v. Mexico</a>,
-      09 Jun 2026.</div>
-    <div class="badges"><span class="score low">relevance 15</span></div>
-    <div class="annot"><span class="lbl">Annotation.</span> Air Liquide and Azerus v. Mexico is a treaty arbitration case listed in the UNCTAD ISDS database, but the item provides only a title and case identifier with no substantive facts. Without detail on the investment type, the nature of state conduct, or jurisdictional issues, no ring can be matched, and the case defaults to LOW scoring absent evidence of IP-as-investment, a judicial measure, or admissibility doctrine.</div>
+    <p class="head"><span class="num">10.</span>
+       <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico">Air Liquide and Azerus v. Mexico</a></p>
+    <p class="meta">
+      Unctad Isds &nbsp;·&nbsp; 09 Jun 2026
+      &nbsp;·&nbsp; <span class="band low">Watch · 15</span>
+      
+    </p>
+    <p class="annot">Air Liquide and Azerus v. Mexico is a case entry with no substantive factual detail provided. Without information on the nature of the investment, the state conduct at issue, or any admissibility/jurisdictional arguments, no rings can be matched and the item scores LOW as off-theme.</p>
     <div class="quote">“Air Liquide and Azerus v.”</div>
-    <div class="source"><span class="lbl">Source.</span>
-      Unctad Isds — <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico">Read the original&nbsp;↗</a>
-      <span class="rawurl">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico</span></div>
+    <div class="src"><span class="lab">Source —</span>
+      Unctad Isds:
+      <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico">https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico</a></div>
     
   </div>
   
-    </div>
   
 
-  <div class="footer">
-    <p><strong>Theme.</strong> ISDS at the intersection of IP-as-investment, regulatory/judicial measures as the disputed conduct, and jurisdictional/admissibility doctrines (abuse of right, treaty-shopping, denial of justice).</p>
-    <table>
-      <tr><td>Generated</td><td>2026-06-09 03:05 UTC</td></tr>
-      <tr><td>Candidates screened</td><td>78</td></tr>
-      <tr><td>At/above threshold (40)</td><td>1</td></tr>
-      <tr><td>Surfaced in this digest</td><td>10</td></tr>
-      <tr><td>Classifier</td><td>claude</td></tr>
-    </table>
-    <p>Per source: iisd_itn=10, google_news_rss=0, italaw=3, icsid=20, iareporter_headlines=10, unctad_isds=25, pca_press=10 · dropped/empty: google_news_rss</p>
-    <p>Full archive for this date (one file per surfaced article): <a href="https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests/2026-06-09_ISDS-Thematic-Watch">https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests/2026-06-09_ISDS-Thematic-Watch</a></p>
-    <p>Methodology: <a href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/METHODOLOGY.md">METHODOLOGY.md</a> · Repository: <a href="https://github.com/jackemorywilliams-bit/isds-watcher">https://github.com/jackemorywilliams-bit/isds-watcher</a></p>
+  <div class="foot">
+    <table class="cols" role="presentation"><tr>
+      <td>
+        <h4>Navigate</h4>
+        <a class="navlink" href="https://jackemorywilliams-bit.github.io/isds-watcher/">Website home</a>
+        <a class="navlink" href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/METHODOLOGY.md">Methodology memo</a>
+        <a class="navlink" href="https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests/2026-06-09_ISDS-Thematic-Watch">This week's full archive</a>
+        <a class="navlink" href="https://github.com/jackemorywilliams-bit/isds-watcher">Source repository</a>
+      </td>
+      <td>
+        <h4>This issue</h4>
+        Generated 09 Jun 2026, 13:45 UTC<br>
+        Candidates screened: 78<br>
+        At or above threshold (40): 1<br>
+        Classifier: claude
+      </td>
+    </tr></table>
+    <p class="fine">A standing current-awareness bulletin produced for the Benavides ISDS
+       research project. Sources are open-access only; Google News RSS is omitted where its
+       robots policy disallows it, and paywalled reporting is read at headline level only.
+       Selection and scoring are documented in the methodology memo linked above.</p>
   </div>
+
 </div>
 </body>
 </html>

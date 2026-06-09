@@ -1,17 +1,17 @@
-# 5. Consent after denunciation—jurisdiction and damages
+# 6. Consent after denunciation—jurisdiction and damages
 
 - **Source:** Iisd Itn — [Read the original ↗](https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/)
 - **Date:** 21 April 2026
 - **Link:** https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/
 - **Relevance:** 15 (WATCH)
 - **Rings matched:** —
-- **Tags:** consent, denunciation, jurisdiction, damages
+- **Tags:** consent_to_arbitration, treaty_denunciation, jurisdiction
 
 ## Citation
 > iisd itn. "Consent after denunciation—jurisdiction and damages." 21 Apr 2026. https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/
 
 ## Annotation
-This is a final award in Smurfit Holdings v. Venezuela concerning consent and jurisdiction following treaty denunciation, likely addressing damages and treaty withdrawal mechanics. The item provides no indication of intellectual property, domestic court judgments, or jurisdictional/admissibility doctrines (abuse of right, treaty-shopping, restructuring), so it does not match any of the three rings and scores LOW.
+Smurfit Holdings v. Venezuela concerns the jurisdictional effect of treaty denunciation and consent to arbitration in an ICSID case, addressing whether a state's withdrawal from a treaty extinguishes an arbitral tribunal's jurisdiction. The dispute does not involve intellectual property as a covered investment, does not challenge a domestic court judgment or public-interest regulatory measure, and does not engage abuse-of-right or treaty-shopping doctrines, so it matches none of the three rings and scores LOW.
 
 ## Notable line (from source)
 > “Smurfit Holdings B.V. v.”

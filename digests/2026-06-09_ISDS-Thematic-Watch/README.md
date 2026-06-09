@@ -6,16 +6,16 @@ Open `index.html` for the formatted digest, or browse `articles/` for one file p
 
 | # | Relevance | Source | Article | Notable line |
 |---|-----------|--------|---------|--------------|
-| 1 | 62 | iisd itn | [Chevron to collect over USD 200 million in decade-old arbitration](articles/01_chevron-to-collect-over-usd-200-million-in-decade.md) | The UNCITRAL tribunal found the initial and subsequent rulings to be contrary to… |
-| 2 | 62 | iareporter headlines | [Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle](articles/02_individual-gambling-investors-lodge-icsid.md) | Individual gambling investors lodge ICSID arbitration against Ecuador after UNCI… |
-| 3 | 35 | unctad isds | [FCC Construcción v. Panama](articles/03_fcc-construcci-n-v-panama.md) | FCC Construcción v. |
-| 4 | 28 | iisd itn | [Consent after denunciation—jurisdiction and damages](articles/04_consent-after-denunciation-jurisdiction-and-damages.md) | Bolivarian Republic of Venezuela , an ICSID tribunal ordered Venezuela to pay ~U… |
-| 5 | 28 | italaw | [View case details](articles/05_view-case-details.md) | Colombia contended that the acts of its Constitutional Court (Sentencia C-555) c… |
-| 6 | 25 | iareporter headlines | [South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred](articles/06_south-african-appeals-court-rescinds-default.md) | South African appeals court rescinds default judgment that enforced 50-million-E… |
-| 7 | 25 | unctad isds | [EMIS v. Ukraine](articles/07_emis-v-ukraine.md) | EMIS v. |
-| 8 | 15 | iisd itn | [Spentech Engineering Limited v. United Arab Emirates: The standard for manifest lack of legal merit under Rule 41](articles/08_spentech-engineering-limited-v-united-arab-emirates.md) | Spentech Engineering Limited v. |
-| 9 | 15 | iareporter headlines | [Czech Republic claims victory in outdoor advertising case](articles/09_czech-republic-claims-victory-in-outdoor.md) | Czech Republic claims victory in outdoor advertising case |
-| 10 | 15 | iareporter headlines | [Airport construction investor announces arbitration against Albania](articles/10_airport-construction-investor-announces-arbitration.md) | Airport construction investor announces arbitration against Albania |
+| 1 | 62 | iareporter headlines | [Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle](articles/01_individual-gambling-investors-lodge-icsid.md) | Individual gambling investors lodge ICSID arbitration against Ecuador after UNCI… |
+| 2 | 28 | italaw | [View case details](articles/02_view-case-details.md) | Colombia contended that the acts of its Constitutional Court (Sentencia C-555) c… |
+| 3 | 25 | iareporter headlines | [South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred](articles/03_south-african-appeals-court-rescinds-default.md) | South African appeals court rescinds default judgment that enforced 50-million-E… |
+| 4 | 20 | unctad isds | [FCC Construcción v. Panama](articles/04_fcc-construcci-n-v-panama.md) | FCC Construcción v. |
+| 5 | 15 | iisd itn | [Consent after denunciation—jurisdiction and damages](articles/05_consent-after-denunciation-jurisdiction-and-damages.md) | Smurfit Holdings B.V. v. |
+| 6 | 15 | iareporter headlines | [Czech Republic claims victory in outdoor advertising case](articles/06_czech-republic-claims-victory-in-outdoor.md) | Czech Republic claims victory in outdoor advertising case |
+| 7 | 15 | iareporter headlines | [Airport construction investor announces arbitration against Albania](articles/07_airport-construction-investor-announces-arbitration.md) | Airport construction investor announces arbitration against Albania |
+| 8 | 15 | iareporter headlines | [Tribunal orders Colombian government agency to pay damages to highway concessionaire](articles/08_tribunal-orders-colombian-government-agency-to-pay.md) | Tribunal orders Colombian government agency to pay damages to highway concession… |
+| 9 | 15 | unctad isds | [AEROC Investment v. Ukraine](articles/09_aeroc-investment-v-ukraine.md) | AEROC Investment v. |
+| 10 | 15 | unctad isds | [Air Liquide and Azerus v. Mexico](articles/10_air-liquide-and-azerus-v-mexico.md) | Air Liquide and Azerus v. |
 
 ---
 _See [/METHODOLOGY.md](../../METHODOLOGY.md) for the workflow and its scholarly justification._

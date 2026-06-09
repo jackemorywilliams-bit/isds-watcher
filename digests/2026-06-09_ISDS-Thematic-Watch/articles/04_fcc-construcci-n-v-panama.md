@@ -1,9 +1,9 @@
-# 3. FCC Construcción v. Panama
+# 4. FCC Construcción v. Panama
 
 - **Source:** Unctad Isds — [Read the original ↗](https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama)
 - **Date:** 09 June 2026
 - **Link:** https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama
-- **Relevance:** 35 (WATCH)
+- **Relevance:** 20 (WATCH)
 - **Rings matched:** —
 - **Tags:** construction, panama
 
@@ -11,7 +11,7 @@
 > unctad isds. "FCC Construcción v. Panama." 09 Jun 2026. https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama
 
 ## Annotation
-FCC Construcción v. Panama is a construction dispute case with insufficient information to determine whether it involves intellectual property, a judicial measure, or jurisdictional admissibility doctrines. Without detailed case facts beyond the case title and UNCTAD database reference, no rings are triggered and the case defaults to LOW relevance against the thematic intersection.
+FCC Construcción v. Panama is a construction-sector investment dispute with no information provided about intellectual property, judicial measures, or jurisdictional admissibility doctrines. Without additional details indicating IP-as-investment, a challenge to a domestic court judgment, or abuse-of-right/treaty-shopping arguments, it does not match the thematic intersection and scores LOW.
 
 ## Notable line (from source)
 > “FCC Construcción v.”

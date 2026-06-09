@@ -1,17 +1,17 @@
-# 6. South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred
+# 3. South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred
 
 - **Source:** Iareporter Headlines — [Read the original ↗](https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/)
 - **Date:** 09 June 2026
 - **Link:** https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/
 - **Relevance:** 25 (WATCH)
 - **Rings matched:** —
-- **Tags:** domestic_court_judgment, set_aside_application, procedural_time_bar
+- **Tags:** domestic_court_judgment, default_judgment, set_aside_application
 
 ## Citation
 > iareporter headlines. "South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred." 09 Jun 2026. https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/
 
 ## Annotation
-A South African appeals court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho while dismissing the state's set-aside application as time-barred, turning on domestic civil procedure rather than investor–state treaty claims. The item describes a domestic court judgment on a default and procedural time bar but contains no intellectual property, no regulatory measure, no treaty dispute, and no jurisdictional-admissibility doctrine, so it does not match the thematic intersection.
+A South African appeals court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho but found the state's set-aside application time-barred. While it involves a domestic court judgment, the item provides no evidence of intellectual property, investor-state treaty arbitration, or admissibility/jurisdictional doctrines central to the thematic focus, making it LOW-scoring.
 
 ## Notable line (from source)
 > “South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred”

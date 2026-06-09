@@ -3,15 +3,15 @@
 - **Source:** Iareporter Headlines — [Read the original ↗](https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/)
 - **Date:** 09 June 2026
 - **Link:** https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/
-- **Relevance:** 62 (MEDIUM)
+- **Relevance:** 35 (WATCH)
 - **Rings matched:** jurisdictional_admissibility
-- **Tags:** shell_subsidiary, corporate_restructuring, definition_of_investor, standing, treaty_shopping
+- **Tags:** corporate_restructuring, shell_subsidiary, definition_of_investor, standing
 
 ## Citation
 > iareporter headlines. "Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle." 09 Jun 2026. https://www.iareporter.com/articles/individual-gambling-investors-lodge-icsid-arbitration-against-ecuador-after-uncitral-tribunal-dismisses-claim-by-their-corporate-vehicle/
 
 ## Annotation
-Individual gambling investors have filed an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a prior claim brought by their corporate vehicle, suggesting a restructuring strategy to circumvent an earlier dismissal. The case raises core jurisdictional-admissibility issues around the definition of investor, standing, and potential shell-subsidiary abuse to manufacture or resurrect a treaty claim, but involves no intellectual property or judicial measure, placing it at MEDIUM-HIGH on the jurisdictional ring alone.
+Individual gambling investors are pursuing an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a parallel claim brought by their corporate vehicle, suggesting a potential shell-subsidiary or treaty-shopping restructuring. The case raises jurisdictional questions about investor standing and the legitimacy of the corporate structure used to advance the claim, but lacks any intellectual property or judicial-measure component.
 
 ## Notable line (from source)
 > “Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle”

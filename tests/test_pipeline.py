@@ -112,8 +112,8 @@ def test_classify_item_offline_never_raises(monkeypatch):
 
 # --- config ------------------------------------------------------------------
 def test_recipients_hardcoded():
-    assert "ximena.s.benavides@gmail.com" in config.RECIPIENTS
-    assert "jackemorywilliams@icloud.com" in config.RECIPIENTS
+    # Temporarily narrowed to a single recipient on request.
+    assert config.RECIPIENTS == ["jackemorywilliams@icloud.com"]
 
 
 def test_missing_email_secrets_detected():
@@ -131,12 +131,14 @@ def test_render_empty_and_populated():
              "per_source": {"iisd_itn": 0}, "dropped_sources": [], "threshold": 60,
              "provider": None}
     empty = render.render_digest([], now, now, stats)
-    assert "No new matches" in empty
+    assert "No items met the relevance floor" in empty
 
     ci = ClassifiedItem("iisd_itn", "id", "http://x", "Patent case", now,
                         "s", "r", relevance_score=85,
                         matched_rings=["ip_as_investment"], thematic_tags=["patent"],
                         digest_summary="One. Two.")
+    ci.metadata = {"notable_quote": "A notable doctrinal line."}
     stats["above_threshold"] = 1
     html = render.render_digest([ci], now, now, stats)
     assert "Patent case" in html and "85" in html
+    assert "notable doctrinal line" in html

@@ -13,11 +13,20 @@ from dataclasses import dataclass
 
 logger = logging.getLogger("isds.config")
 
-# Hard-coded digest recipients (per project spec).
+# Hard-coded digest recipients. Temporarily narrowed to a single recipient on
+# request; restore ximena.s.benavides@gmail.com here to resume sending to both.
 RECIPIENTS = [
-    "ximena.s.benavides@gmail.com",
     "jackemorywilliams@icloud.com",
 ]
+
+# Digest never goes out empty: always surface at least this many of the most
+# relevant items, drawing down to RELEVANCE_FLOOR when fewer clear threshold.
+MIN_DIGEST_ITEMS = 10
+RELEVANCE_FLOOR = 15
+
+# Enrich at most this many top-ranked candidates by fetching their source page
+# (bounds polite-fetch volume per run).
+ENRICH_TOP_N = 24
 
 REPO_URL = "https://github.com/jackemorywilliams-bit/isds-watcher"
 

@@ -3,7 +3,12 @@ name: weekly-isds-watch
 on:
   schedule:
     - cron: "0 13 * * 1"   # Mondays 13:00 UTC
-  workflow_dispatch: {}     # manual trigger
+  workflow_dispatch:        # manual trigger
+    inputs:
+      since:
+        description: "Look-back window (e.g. 7d, 30d, 365d)"
+        required: false
+        default: "7d"
 
 permissions:
   contents: write           # commit state + digests back
@@ -53,7 +58,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run watcher
-        run: python -m src.main --since 7d
+        run: python -m src.main --since "${{ github.event.inputs.since || '7d' }}"
 
       - name: Commit state + digests
         run: |

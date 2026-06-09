@@ -1,5 +1,8 @@
 version: 1
-threshold: 60
+# Lowered from 60 to 40 to broaden recall (more inclusive matching). The
+# pipeline additionally guarantees a non-empty digest by surfacing the top
+# most-relevant items even when few clear this gate (see src/config.py).
+threshold: 40
 scoring:
   high: 70
   medium: 40

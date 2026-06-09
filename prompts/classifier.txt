@@ -90,12 +90,20 @@ OUTPUT CONTRACT — return EXACTLY this JSON object, nothing else
   "relevance_score": <integer 0-100>,
   "matched_rings": [<subset, possibly empty, of exactly these keys: "ip_as_investment", "judicial_or_regulatory_measure", "jurisdictional_admissibility">],
   "thematic_tags": [<short snake_case tags drawn from the trigger phrases, e.g. "abuse_of_right", "denial_of_justice", "patent", "trademark", "promise_utility_doctrine", "treaty_shopping", "shell_subsidiary", "plain_packaging", "minimum_standard_of_treatment", "corporate_restructuring", "licensor_licensee">],
-  "digest_summary": "<exactly 2 sentences: sentence 1 describes the item; sentence 2 says WHY it matches (or does not match) the theme>"
+  "digest_summary": "<exactly 2 sentences: sentence 1 describes the item; sentence 2 says WHY it matches (or does not match) the theme>",
+  "notable_quote": "<the single most significant, citable VERBATIM sentence from {{TEXT}} — copied word-for-word>"
 }
 Rules for the output:
 - matched_rings MUST use only those three exact snake_case keys; include a key only if that
   ring is genuinely triggered. It may be empty [].
 - digest_summary MUST be exactly two sentences.
+- notable_quote MUST be copied VERBATIM from the item's text ({{TEXT}}) — do not paraphrase,
+  summarize, or invent it. Choose the one sentence a legal researcher would most likely pull
+  to QUOTE in a paper: a tribunal's holding or finding, a statement of the governing doctrine
+  or legal standard, or a striking evaluative line (e.g. that a judgment was "manifestly
+  unjust" or an act an "abuse of right"). Prefer a complete sentence of roughly 12-45 words.
+  Do NOT quote a headline, a case caption, a date line, navigation text, or boilerplate. If
+  {{TEXT}} contains nothing quotable (e.g. it is only a title or metadata), return "".
 - No markdown, no code fences, no commentary, no trailing text — ONLY the JSON object.
 
 =====================================================================================

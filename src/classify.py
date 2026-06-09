@@ -345,11 +345,16 @@ def parse_json_response(text: str) -> Optional[dict]:
     # Clamp score into [0, 100].
     score = max(0, min(100, int(score)))
 
+    # Optional: a verbatim, citable notable line the model lifted from the text.
+    quote = data.get("notable_quote")
+    quote = quote.strip().strip('"').strip() if isinstance(quote, str) else ""
+
     return {
         "relevance_score": score,
         "matched_rings": coerced_rings,
         "thematic_tags": coerced_tags,
         "digest_summary": summary,
+        "notable_quote": quote,
     }
 
 
@@ -459,13 +464,19 @@ def classify_item(
                 "Classification failed after retry.",
             )
 
-        return from_candidate(
+        ci = from_candidate(
             item,
             parsed["relevance_score"],
             parsed["matched_rings"],
             parsed["thematic_tags"],
             parsed["digest_summary"],
         )
+        # The model selects the single most citable verbatim line; prefer it
+        # over the keyword heuristic when present.
+        nq = parsed.get("notable_quote") or ""
+        if nq:
+            ci.metadata = {**(ci.metadata or {}), "notable_quote": nq}
+        return ci
 
     except Exception as exc:  # noqa: BLE001 - never let the pipeline crash
         logger.warning(

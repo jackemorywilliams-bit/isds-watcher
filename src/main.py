@@ -106,10 +106,13 @@ def main(argv=None) -> int:
                 ci = classify_item(it, provider=provider)
             else:
                 ci = classify_item(it, provider=None)  # forces keyword fallback
-            if not it.metadata.get("notable_quote"):
-                it.metadata["notable_quote"] = enrich_notable(
+            # Merge enrichment metadata with the classifier's; the classifier's
+            # LLM-selected notable_quote (if any) wins over the keyword heuristic.
+            meta = {**(it.metadata or {}), **(ci.metadata or {})}
+            if not meta.get("notable_quote"):
+                meta["notable_quote"] = enrich_notable(
                     it.raw_text or it.summary or it.title)
-            ci.metadata = it.metadata
+            ci.metadata = meta
         except Exception as exc:  # noqa: BLE001 - belt & braces
             logger.error("classify failed for %s: %s", it.source_id, exc)
             continue

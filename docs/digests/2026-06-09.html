@@ -18,14 +18,14 @@
         <span class="brand-mark">ISDS</span>
         <span class="brand-name">Thematic Watcher</span>
       </a>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
-      <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation">
+      <button type="button" class="nav-burger" id="nav-burger"
+              aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
-      </label>
-      <nav class="nav-links" aria-label="Primary">
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="Primary">
         <a href="../index.html" class="">Home</a>
         <a href="../methodology.html" class="">Methodology</a>
-        <a href="../digests/index.html" class="active">Digest Archive</a>
+        <a href="../digests/index.html" class="active" aria-current="page">Digest Archive</a>
         <a href="https://github.com/jackemorywilliams-bit/isds-watcher" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
       </nav>
     </div>
@@ -34,7 +34,13 @@
   <main id="main">
 <section class="page-head">
   <div class="measure">
-    <p class="page-kicker"><a href="index.html" class="back-link">&#8592; Digest Archive</a></p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Digest Archive</a></li>
+        <li aria-current="page">2026-06-09</li>
+      </ol>
+    </nav>
     <h1 class="page-title">ISDS Thematic Watch</h1>
     <p class="page-date">2026-06-09</p>
     <p class="page-lede">
@@ -362,18 +368,88 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-title">ISDS Thematic Watcher</div>
-      <p class="footer-note">Built for the Benavides ISDS research project.</p>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="../methodology.html">Methodology</a>
-        <span class="dot">·</span>
-        <a href="../digests/index.html">Digest Archive</a>
-        <span class="dot">·</span>
-        <a href="https://github.com/jackemorywilliams-bit/isds-watcher" target="_blank" rel="noopener">GitHub repository &#8599;</a>
-      </nav>
-      <p class="footer-fine">A zero-cost, open-sources research instrument. Sources read at headline level
-        where access is restricted; the Robots Exclusion Protocol is honored, never evaded.</p>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-title">ISDS Thematic Watcher</div>
+          <p class="footer-note">A doctrinal monitor for investor&ndash;State dispute settlement at the
+            IP-as-investment / judicial-measure / jurisdictional-admissibility intersection.</p>
+        </div>
+        <nav class="footer-cols" aria-label="Footer">
+          <div class="footer-col">
+            <h2 class="footer-h">Project</h2>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../methodology.html">Methodology</a></li>
+              <li><a href="../digests/index.html">Digest Archive</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="footer-h">Resources</h2>
+            <ul>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher" target="_blank" rel="noopener">GitHub repository &#8599;</a></li>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/METHODOLOGY.md" target="_blank" rel="noopener">METHODOLOGY.md &#8599;</a></li>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests" target="_blank" rel="noopener">Archive source &#8599;</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-about">A research instrument for the Benavides ISDS project &mdash; zero-cost, open-source,
+          and built on free GitHub Actions minutes.</p>
+        <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
+          Protocol is honored, never evaded.</p>
+      </div>
     </div>
   </footer>
+  <script>
+  (function () {
+    var burger = document.getElementById('nav-burger');
+    var nav = document.getElementById('primary-nav');
+    if (burger && nav) {
+      burger.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        burger.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          nav.classList.remove('open');
+          burger.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Table-of-contents scroll-spy (methodology page).
+    var tocLinks = Array.prototype.slice.call(
+      document.querySelectorAll('.toc-list a[href^="#"]'));
+    if (tocLinks.length && 'IntersectionObserver' in window) {
+      var byId = {};
+      tocLinks.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        byId[id] = a;
+      });
+      var headings = tocLinks
+        .map(function (a) { return document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))); })
+        .filter(Boolean);
+      var current = null;
+      function setActive(id) {
+        if (current === id) return;
+        current = id;
+        tocLinks.forEach(function (a) { a.classList.remove('active'); });
+        if (byId[id]) byId[id].classList.add('active');
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        var visible = entries
+          .filter(function (e) { return e.isIntersecting; })
+          .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+        if (visible.length) {
+          setActive(visible[0].target.id);
+        }
+      }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+      headings.forEach(function (h) { observer.observe(h); });
+    }
+  })();
+  </script>
 </body>
 </html>

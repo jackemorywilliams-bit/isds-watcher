@@ -5,7 +5,13 @@
 {% block content %}
 <section class="page-head">
   <div class="measure">
-    <p class="page-kicker"><a href="index.html" class="back-link">&#8592; Digest Archive</a></p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ root }}index.html">Home</a></li>
+        <li><a href="index.html">Digest Archive</a></li>
+        <li aria-current="page">{{ digest.date }}</li>
+      </ol>
+    </nav>
     <h1 class="page-title">ISDS Thematic Watch</h1>
     <p class="page-date">{{ digest.date }}</p>
     <p class="page-lede">

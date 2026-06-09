@@ -29,6 +29,7 @@ RELEVANCE_FLOOR = 15
 ENRICH_TOP_N = 24
 
 REPO_URL = "https://github.com/jackemorywilliams-bit/isds-watcher"
+SITE_URL = "https://jackemorywilliams-bit.github.io/isds-watcher/"
 
 # One-line description of the watch theme, surfaced in the digest footer.
 THEME_ONE_LINER = (

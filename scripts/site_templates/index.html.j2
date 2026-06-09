@@ -77,21 +77,20 @@
     </p>
 
     <div class="flow" role="img"
-         aria-label="Workflow: open sources are politely fetched, deduplicated, keyword pre-scored, the top items enriched, then classified by an LLM or a keyword fallback, banded, selected above threshold, rendered into an annotated digest, and emailed plus committed to the repository.">
-      <div class="flow-step"><span class="flow-k">1</span><div><strong>Collect</strong><br>ICSID · UNCTAD · italaw · IISD ITN · IAReporter</div></div>
-      <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">2</span><div><strong>Polite fetch &amp; deduplicate</strong><br>robots.txt · 3s/domain · identifying User-Agent · <code>state/seen.json</code></div></div>
-      <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">3</span><div><strong>Keyword pre-score &amp; enrich</strong><br><code>fingerprint.yaml</code> lexicon · pull the notable line</div></div>
-      <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">4</span><div><strong>Classify</strong><br>LLM few-shot, strict JSON &nbsp;<span class="flow-or">or</span>&nbsp; deterministic keyword fallback</div></div>
-      <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">5</span><div><strong>Band &amp; select</strong><br>HIGH / MEDIUM / LOW · threshold 40 · top-N floor so the digest is never empty</div></div>
-      <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step flow-end"><span class="flow-k">6</span><div><strong>Render &amp; deliver</strong><br>annotated digest + dated archive · email recipients · commit to repo</div></div>
+         aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
+      <div class="flow-step"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, and news from five open ISDS sources: ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter.</div></div>
+      <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
+      <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
+      <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
+      <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
+      <div class="flow-arrow" aria-hidden="true">&#8595;</div>
+      <div class="flow-step flow-end"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
     </div>
-    <p class="flow-caption">Figure 1. The collection-to-delivery pipeline. Each weekly run produces a
-      dated, version-controlled archive folder under <code>digests/</code>.</p>
+    <p class="flow-caption">Figure 1. The weekly workflow, from gathering new material to delivering the digest. Every run is saved as a dated, version-controlled archive.</p>
   </div>
 </section>
 
@@ -113,6 +112,31 @@
     <div class="cta-row">
       <a class="btn btn-primary" href="digests/index.html">Open the latest digest</a>
       <a class="btn btn-ghost" href="methodology.html">See how entries are scored</a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="measure closing-inner">
+    <div class="closing-text">
+      <p class="closing-kicker">Latest run</p>
+      {% if digests %}
+      <h2 class="closing-title">The most recent digest is dated {{ digests[0].date }}.</h2>
+      <p class="closing-sub">
+        {{ digests[0].surfaced }} annotated {{ 'entry' if digests[0].surfaced == 1 else 'entries' }}
+        {% if digests[0].candidates %}screened from {{ digests[0].candidates }} candidates{% endif %} —
+        each with its source named, linked, and quoted.
+      </p>
+      {% else %}
+      <h2 class="closing-title">No digests have been archived yet.</h2>
+      <p class="closing-sub">The archive will populate after the first weekly run.</p>
+      {% endif %}
+    </div>
+    <div class="closing-actions">
+      {% if digests %}
+      <a class="btn btn-primary" href="digests/{{ digests[0].date }}.html">Read the {{ digests[0].date }} digest</a>
+      {% endif %}
+      <a class="btn btn-ghost" href="digests/index.html">View all runs</a>
     </div>
   </div>
 </section>

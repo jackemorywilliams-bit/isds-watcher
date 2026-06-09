@@ -5,103 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ISDS Thematic Watch — {{ date_str }}</title>
 <style>
-  body { font-family: Georgia, 'Times New Roman', serif; color: #1c2530;
-         line-height: 1.55; margin: 0; padding: 0; background: #eef1f4; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 0 32px; background: #ffffff; }
-  .head { background: #0b3d5c; color: #fff; padding: 26px 34px; }
-  .head h1 { margin: 0 0 6px; font-size: 21px; letter-spacing: .2px; }
-  .head .sub { font-size: 13px; opacity: .9; font-family: Arial, sans-serif; }
-  .intro { padding: 18px 34px 4px; font-size: 14px; color: #33414f; }
-  .section { padding: 6px 34px; }
-  .secttl { font-family: Arial, sans-serif; font-size: 12px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: .08em; color: #0b3d5c;
-            border-bottom: 2px solid #0b3d5c; padding: 14px 0 5px; margin-top: 18px; }
-  .entry { padding: 16px 0; border-bottom: 1px solid #e3e8ee; }
-  .entry .num { font-weight: 700; color: #0b3d5c; }
-  .cite { font-size: 15px; margin: 2px 0 6px; }
-  .cite a { color: #0b3d5c; text-decoration: none; }
-  .cite .src { font-variant: small-caps; color: #50606e; font-size: 13px;
-               font-family: Arial, sans-serif; letter-spacing: .03em; }
-  .badges { font-family: Arial, sans-serif; font-size: 11px; margin: 4px 0 8px; }
-  .badges .score { background: #1a7f37; color: #fff; border-radius: 3px;
-                   padding: 1px 7px; font-weight: 700; }
-  .badges .score.med { background: #b8860b; }
-  .badges .score.low { background: #6a7280; }
-  .badges .ring { background: #0b3d5c; color: #fff; border-radius: 3px;
-                  padding: 1px 7px; margin-left: 3px; }
-  .annot { font-size: 14px; margin: 6px 0; color: #26323d; }
-  .annot .lbl, .source .lbl { font-family: Arial, sans-serif; font-size: 11px; font-weight: 700;
-                text-transform: uppercase; letter-spacing: .05em; color: #50606e; }
-  .source { font-family: Arial, sans-serif; font-size: 13px; margin: 6px 0 2px; color: #26323d; }
-  .source a { color: #0b5cae; font-weight: 700; text-decoration: none; }
-  .source .rawurl { display: block; color: #8a93a0; font-size: 11px; word-break: break-all; margin-top: 2px; }
-  .quote { border-left: 3px solid #b8860b; background: #faf6ec; padding: 8px 12px;
-           margin: 8px 0 4px; font-style: italic; font-size: 14px; color: #3a3322; }
-  .tags { font-family: Arial, sans-serif; font-size: 11px; color: #6a7280; margin-top: 6px; }
-  .empty { padding: 24px 34px; color: #50606e; }
-  .footer { margin: 18px 34px 0; padding: 16px 0 0; border-top: 1px solid #e3e8ee;
-            font-family: Arial, sans-serif; font-size: 12px; color: #6a7280; }
-  .footer a { color: #0b5cae; }
-  .footer table { border-collapse: collapse; }
-  .footer td { padding: 1px 14px 1px 0; }
+  body { margin:0; padding:0; background:#eceef1;
+         font-family: Georgia, 'Times New Roman', serif; color:#1b252e; line-height:1.55; }
+  .sheet { max-width:680px; margin:0 auto; background:#ffffff; }
+  /* Masthead */
+  .mast { padding:22px 36px 16px; border-bottom:3px double #0b3d5c; }
+  .mast .kicker { font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:.22em;
+         text-transform:uppercase; color:#9a7b2e; margin:0 0 4px; }
+  .mast h1 { margin:0; font-size:25px; letter-spacing:.3px; color:#0b3d5c; }
+  .mast .issue { font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#5a6672; margin-top:6px; }
+  .mast .standing { font-size:13px; color:#3a4651; margin:10px 0 0; font-style:italic; }
+  /* Utility nav at top */
+  .util { padding:9px 36px; background:#0b3d5c; }
+  .util a { color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:11.5px;
+         text-decoration:none; letter-spacing:.03em; }
+  .util a:hover { text-decoration:underline; }
+  .util .sep { color:#5b86a6; padding:0 8px; }
+  /* In this issue */
+  .lede { padding:16px 36px 4px; font-size:14px; color:#33414f; }
+  .lede strong { color:#0b3d5c; }
+  /* Section label */
+  .secttl { font-family:Arial,Helvetica,sans-serif; font-size:11px; font-weight:700;
+         text-transform:uppercase; letter-spacing:.12em; color:#0b3d5c;
+         padding:20px 36px 0; }
+  .secttl .rule { display:block; border-bottom:1px solid #d6dbe1; margin-top:6px; }
+  /* Entries */
+  .entry { padding:16px 36px; border-bottom:1px solid #e6e9ed; }
+  .entry .head { font-size:16px; line-height:1.4; margin:0 0 5px; }
+  .entry .num { color:#9a7b2e; font-weight:bold; }
+  .entry .head a { color:#0b3d5c; text-decoration:none; }
+  .entry .head a:hover { text-decoration:underline; }
+  .meta { font-family:Arial,Helvetica,sans-serif; font-size:11.5px; color:#5a6672; margin:0 0 8px; }
+  .meta .band { display:inline-block; background:#1a7f37; color:#fff; border-radius:3px;
+         padding:1px 7px; font-weight:700; letter-spacing:.02em; }
+  .meta .band.med { background:#b8860b; } .meta .band.low { background:#6a7280; }
+  .meta .ring { color:#0b3d5c; }
+  .annot { font-size:14px; margin:0 0 8px; }
+  .quote { border-left:3px solid #b8860b; background:#faf6ec; padding:8px 12px; margin:0 0 8px;
+         font-style:italic; font-size:13.5px; color:#3a3322; }
+  .src { font-family:Arial,Helvetica,sans-serif; font-size:12px; background:#f3f5f8;
+         border:1px solid #e0e5 ea; border-radius:5px; padding:8px 11px; }
+  .src .lab { color:#5a6672; text-transform:uppercase; letter-spacing:.06em; font-size:10.5px; }
+  .src a { color:#0b5cae; font-weight:700; text-decoration:none; word-break:break-all; }
+  .tags { font-family:Arial,Helvetica,sans-serif; font-size:11px; color:#7a828c; margin-top:7px; }
+  .empty { padding:24px 36px; color:#5a6672; font-size:14px; }
+  /* Footer */
+  .foot { background:#0b2e44; color:#cdd8e2; padding:22px 36px 26px;
+         font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:1.6; }
+  .foot h4 { color:#fff; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+         margin:0 0 8px; font-weight:700; }
+  .foot a { color:#9cc4e6; text-decoration:none; }
+  .foot a:hover { text-decoration:underline; }
+  .foot .cols { width:100%; }
+  .foot .cols td { vertical-align:top; padding-right:22px; }
+  .foot .navlink { display:block; margin:3px 0; }
+  .foot .fine { color:#7e93a6; margin-top:16px; font-size:11px; line-height:1.5; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="head">
-    <h1>ISDS Thematic Watch — {{ date_str }}</h1>
-    <div class="sub">An annotated digest of investor–state dispute developments at the
-      IP-as-investment / judicial-or-regulatory-measure / jurisdictional-admissibility intersection.</div>
+<div class="sheet">
+
+  <div class="util">
+    {% if site_url %}<a href="{{ site_url }}">View on the web</a><span class="sep">·</span>{% endif %}
+    <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology</a><span class="sep">·</span>
+    {% if folder_url %}<a href="{{ folder_url }}">Full archive</a>{% endif %}
   </div>
 
-  <div class="intro">
-    <strong>{{ items|length }}</strong> item{{ "" if items|length == 1 else "s" }} surfaced
-    for the window beginning {{ since.strftime("%d %B %Y") }}, screened from
-    {{ stats.total_candidates }} candidates across {{ stats.per_source|length }} sources and
-    scored by {{ stats.provider or "the keyword model" }}. Entries are ordered by thematic
-    relevance; each carries a two-sentence annotation and a notable line drawn from the source.
+  <div class="mast">
+    <p class="kicker">Investor–State Dispute Settlement · Current Awareness</p>
+    <h1>ISDS Thematic Watch</h1>
+    <p class="issue">{{ generated_at.strftime("%A, %d %B %Y") }} &nbsp;·&nbsp;
+       Window from {{ since.strftime("%d %b %Y") }} &nbsp;·&nbsp;
+       {{ items|length }} item{{ "" if items|length == 1 else "s" }}</p>
+    <p class="standing">Developments at the intersection of intellectual property as a
+       protected investment, regulatory or judicial measures as the disputed conduct, and
+       jurisdictional and admissibility doctrine.</p>
+  </div>
+
+  <div class="lede">
+    This issue surfaces <strong>{{ items|length }}</strong> development{{ "" if items|length == 1 else "s" }}
+    from {{ stats.total_candidates }} candidates screened across {{ stats.per_source|length }} sources,
+    classified by {{ stats.provider or "the keyword model" }}. Entries are ordered by thematic
+    relevance; each carries a short descriptive-and-evaluative annotation, a notable line drawn
+    from the source, and a direct link to the original.
   </div>
 
   {% macro entry(it, idx) %}
-  {% set band = "score" if it.relevance_score >= 70 else ("score med" if it.relevance_score >= 40 else "score low") %}
+  {% set band = "band" if it.relevance_score >= 70 else ("band med" if it.relevance_score >= 40 else "band low") %}
+  {% set bandname = "High" if it.relevance_score >= 70 else ("Medium" if it.relevance_score >= 40 else "Watch") %}
   <div class="entry">
-    <div class="cite"><span class="num">{{ idx }}.</span>
-      <span class="src">{{ it.source|replace("_", " ") }}</span> —
-      <a href="{{ it.url }}">{{ it.title }}</a>{% if it.published %},
-      {{ it.published.strftime("%d %b %Y") }}{% endif %}.</div>
-    <div class="badges"><span class="{{ band }}">relevance {{ it.relevance_score }}</span>{% for r in it.matched_rings %}<span class="ring">{{ r|replace("_"," ") }}</span>{% endfor %}</div>
-    <div class="annot"><span class="lbl">Annotation.</span> {{ it.digest_summary }}</div>
+    <p class="head"><span class="num">{{ idx }}.</span>
+       <a href="{{ it.url }}">{{ it.title }}</a></p>
+    <p class="meta">
+      {{ it.source|replace("_", " ")|title }}{% if it.published %} &nbsp;·&nbsp; {{ it.published.strftime("%d %b %Y") }}{% endif %}
+      &nbsp;·&nbsp; <span class="{{ band }}">{{ bandname }} · {{ it.relevance_score }}</span>
+      {% if it.matched_rings %}&nbsp;·&nbsp; <span class="ring">{{ it.matched_rings|map("replace","_"," ")|join(", ") }}</span>{% endif %}
+    </p>
+    <p class="annot">{{ it.digest_summary }}</p>
     {% if it.metadata.get("notable_quote") %}<div class="quote">“{{ it.metadata.get("notable_quote") }}”</div>{% endif %}
-    <div class="source"><span class="lbl">Source.</span>
-      {{ it.source|replace("_", " ")|title }} — <a href="{{ it.url }}">Read the original&nbsp;↗</a>
-      <span class="rawurl">{{ it.url }}</span></div>
-    {% if it.thematic_tags %}<div class="tags">Tags: {{ it.thematic_tags|reject("equalto","keyword_fallback")|join(" · ") }}</div>{% endif %}
+    <div class="src"><span class="lab">Source —</span>
+      {{ it.source|replace("_", " ")|title }}:
+      <a href="{{ it.url }}">{{ it.url }}</a></div>
+    {% if it.thematic_tags %}<p class="tags">Tags: {{ it.thematic_tags|reject("equalto","keyword_fallback")|join(" · ") }}</p>{% endif %}
   </div>
   {% endmacro %}
 
   {% if not items %}
-    <div class="empty">No items met the relevance floor this cycle. Sources screened:
-      {% for s, n in stats.per_source.items() %}{{ s }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}.</div>
+    <div class="empty">No items met the relevance floor this cycle.
+      Sources screened: {% for s, n in stats.per_source.items() %}{{ s }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}.</div>
   {% else %}
-    <div class="section">
-      <div class="secttl">Annotated bibliography — {{ items|length }} entr{{ "y" if items|length == 1 else "ies" }}</div>
-      {% for it in items %}{{ entry(it, loop.index) }}{% endfor %}
-    </div>
+    <p class="secttl">Annotated developments<span class="rule"></span></p>
+    {% for it in items %}{{ entry(it, loop.index) }}{% endfor %}
   {% endif %}
 
-  <div class="footer">
-    <p><strong>Theme.</strong> {{ theme }}</p>
-    <table>
-      <tr><td>Generated</td><td>{{ generated_at.strftime("%Y-%m-%d %H:%M UTC") }}</td></tr>
-      <tr><td>Candidates screened</td><td>{{ stats.total_candidates }}</td></tr>
-      <tr><td>At/above threshold ({{ stats.threshold }})</td><td>{{ stats.above_threshold }}</td></tr>
-      <tr><td>Surfaced in this digest</td><td>{{ items|length }}</td></tr>
-      <tr><td>Classifier</td><td>{{ stats.provider or "keyword-fallback" }}</td></tr>
-    </table>
-    <p>Per source: {% for s, n in stats.per_source.items() %}{{ s }}={{ n }}{{ ", " if not loop.last }}{% endfor %}{% if stats.dropped_sources %} · dropped/empty: {{ stats.dropped_sources|join(", ") }}{% endif %}</p>
-    {% if folder_url %}<p>Full archive for this date (one file per surfaced article): <a href="{{ folder_url }}">{{ folder_url }}</a></p>{% endif %}
-    <p>Methodology: <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">METHODOLOGY.md</a> · Repository: <a href="{{ repo_url }}">{{ repo_url }}</a></p>
+  <div class="foot">
+    <table class="cols" role="presentation"><tr>
+      <td>
+        <h4>Navigate</h4>
+        {% if site_url %}<a class="navlink" href="{{ site_url }}">Website home</a>{% endif %}
+        <a class="navlink" href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology memo</a>
+        {% if folder_url %}<a class="navlink" href="{{ folder_url }}">This week's full archive</a>{% endif %}
+        <a class="navlink" href="{{ repo_url }}">Source repository</a>
+      </td>
+      <td>
+        <h4>This issue</h4>
+        Generated {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
+        Candidates screened: {{ stats.total_candidates }}<br>
+        At or above threshold ({{ stats.threshold }}): {{ stats.above_threshold }}<br>
+        Classifier: {{ stats.provider or "keyword fallback" }}
+      </td>
+    </tr></table>
+    <p class="fine">A standing current-awareness bulletin produced for the Benavides ISDS
+       research project. Sources are open-access only; Google News RSS is omitted where its
+       robots policy disallows it, and paywalled reporting is read at headline level only.
+       Selection and scoring are documented in the methodology memo linked above.</p>
   </div>
+
 </div>
 </body>
 </html>

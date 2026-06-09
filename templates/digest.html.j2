@@ -30,8 +30,11 @@
   .badges .ring { background: #0b3d5c; color: #fff; border-radius: 3px;
                   padding: 1px 7px; margin-left: 3px; }
   .annot { font-size: 14px; margin: 6px 0; color: #26323d; }
-  .annot .lbl { font-family: Arial, sans-serif; font-size: 11px; font-weight: 700;
+  .annot .lbl, .source .lbl { font-family: Arial, sans-serif; font-size: 11px; font-weight: 700;
                 text-transform: uppercase; letter-spacing: .05em; color: #50606e; }
+  .source { font-family: Arial, sans-serif; font-size: 13px; margin: 6px 0 2px; color: #26323d; }
+  .source a { color: #0b5cae; font-weight: 700; text-decoration: none; }
+  .source .rawurl { display: block; color: #8a93a0; font-size: 11px; word-break: break-all; margin-top: 2px; }
   .quote { border-left: 3px solid #b8860b; background: #faf6ec; padding: 8px 12px;
            margin: 8px 0 4px; font-style: italic; font-size: 14px; color: #3a3322; }
   .tags { font-family: Arial, sans-serif; font-size: 11px; color: #6a7280; margin-top: 6px; }
@@ -69,6 +72,9 @@
     <div class="badges"><span class="{{ band }}">relevance {{ it.relevance_score }}</span>{% for r in it.matched_rings %}<span class="ring">{{ r|replace("_"," ") }}</span>{% endfor %}</div>
     <div class="annot"><span class="lbl">Annotation.</span> {{ it.digest_summary }}</div>
     {% if it.metadata.get("notable_quote") %}<div class="quote">“{{ it.metadata.get("notable_quote") }}”</div>{% endif %}
+    <div class="source"><span class="lbl">Source.</span>
+      {{ it.source|replace("_", " ")|title }} — <a href="{{ it.url }}">Read the original&nbsp;↗</a>
+      <span class="rawurl">{{ it.url }}</span></div>
     {% if it.thematic_tags %}<div class="tags">Tags: {{ it.thematic_tags|reject("equalto","keyword_fallback")|join(" · ") }}</div>{% endif %}
   </div>
   {% endmacro %}

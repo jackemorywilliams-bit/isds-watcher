@@ -22,9 +22,15 @@ _env = Environment(
 )
 
 
-def _slug(text: str, n: int = 48) -> str:
+def _slug(text: str, n: int = 52) -> str:
+    """Clean, readable, word-boundary slug — never truncates mid-word."""
     s = re.sub(r"[^a-z0-9]+", "-", (text or "item").lower()).strip("-")
-    return (s[:n].rstrip("-")) or "item"
+    if len(s) <= n:
+        return s or "item"
+    cut = s[:n]
+    if "-" in cut:
+        cut = cut.rsplit("-", 1)[0]  # back off to the last whole word
+    return cut.strip("-") or "item"
 
 
 def folder_name(date_str: str) -> str:
@@ -61,9 +67,9 @@ def _article_md(it, idx: int) -> str:
     lines = [
         f"# {idx}. {it.title}",
         "",
-        f"- **Source:** {it.source.replace('_', ' ')}",
+        f"- **Source:** {it.source.replace('_', ' ').title()} — [Read the original ↗]({it.url})",
         f"- **Date:** {it.published.strftime('%d %B %Y') if getattr(it, 'published', None) else 'n.d.'}",
-        f"- **URL:** {it.url}",
+        f"- **Link:** {it.url}",
         f"- **Relevance:** {it.relevance_score} ({band})",
         f"- **Rings matched:** {rings}",
         f"- **Tags:** {', '.join(tags) if tags else '—'}",
@@ -131,6 +137,41 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
 
     logger.info("render: wrote folder %s (%d articles)", folder, len(files))
     return folder
+
+
+def update_digests_index(out_root: str = "digests") -> str:
+    """Rewrite digests/README.md as a navigable index of every dated digest."""
+    folders = []
+    if os.path.isdir(out_root):
+        for name in sorted(os.listdir(out_root), reverse=True):
+            full = os.path.join(out_root, name)
+            if os.path.isdir(full) and name.endswith(FOLDER_SUFFIX):
+                date = name.split("_")[0]
+                n = 0
+                arts = os.path.join(full, "articles")
+                if os.path.isdir(arts):
+                    n = len([f for f in os.listdir(arts) if f.endswith(".md")])
+                folders.append((date, name, n))
+    lines = [
+        "# ISDS Thematic Watch — Digest Archive",
+        "",
+        "Each weekly run is archived below, newest first. Open a date to read the formatted",
+        "digest (`index.html`) or browse `articles/` for one annotated entry per development.",
+        "",
+        "| Date | Digest | Entries |",
+        "|------|--------|---------|",
+    ]
+    for date, name, n in folders:
+        lines.append(f"| {date} | [{name}](./{name}/) · "
+                     f"[README](./{name}/README.md) | {n} |")
+    if not folders:
+        lines.append("| — | _No digests yet._ | — |")
+    lines += ["", "_See [/METHODOLOGY.md](../METHODOLOGY.md) for how entries are selected and scored._"]
+    path = os.path.join(out_root, "README.md")
+    os.makedirs(out_root, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines) + "\n")
+    return path
 
 
 def write_digest(html: str, date_str: str, out_dir: str = "digests") -> str:

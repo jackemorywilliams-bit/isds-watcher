@@ -69,5 +69,11 @@ jobs:
             echo "No state/digest changes to commit."
           else
             git commit -m "chore: weekly digest + state update [skip ci]"
-            git push
+            # Rebase onto any changes pushed since checkout, then push, so a
+            # concurrent commit can't fail the run on a non-fast-forward.
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && break
+              echo "push attempt $attempt failed; retrying"
+              sleep 3
+            done
           fi

@@ -138,6 +138,7 @@ def main(argv=None) -> int:
     folder_url = f"{config.REPO_URL}/tree/main/{folder_rel}"
     html = render.render_digest(surfaced, generated_at, since, stats, folder_url=folder_url)
     folder_path = render.write_digest_folder(html, surfaced, generated_at, stats)
+    render.update_digests_index()
     digest_path = render.write_digest(html, date_str)
 
     # 6. Email (unless dry-run / no-email).

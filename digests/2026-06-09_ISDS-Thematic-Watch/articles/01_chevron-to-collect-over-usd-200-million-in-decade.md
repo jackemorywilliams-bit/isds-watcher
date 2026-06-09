@@ -4,14 +4,14 @@
 - **Date:** 21 April 2026
 - **Link:** https://www.iisd.org/itn/2026/04/21/chevron-collect-over-usd-200-million-decade-old-arbitration-ben-hefter/
 - **Relevance:** 62 (MEDIUM)
-- **Rings matched:** ip_as_investment, judicial_or_regulatory_measure
-- **Tags:** trademark, intellectual_property, judicial_measure, denial_of_justice, domestic_court_judgment, supreme_court, corruption, manifest_arbitrariness
+- **Rings matched:** judicial_or_regulatory_measure, ip_as_investment
+- **Tags:** denial_of_justice, judicial_measure, supreme_court_judgment, trademark, intellectual_property, domestic_court, manifest_arbitrariness, judicial_corruption
 
 ## Citation
 > iisd itn. "Chevron to collect over USD 200 million in decade-old arbitration." 21 Apr 2026. https://www.iisd.org/itn/2026/04/21/chevron-collect-over-usd-200-million-decade-old-arbitration-ben-hefter/
 
 ## Annotation
-Chevron's UNCITRAL claim against Ecuador challenged the Lago Agrio domestic court judgment as a denial of justice caused by judicial corruption and ghostwritten awards, while also claiming damages for embargoes of Chevron trademarks and intellectual property in Ecuador. The case combines a challenge to a domestic court judgment (Ring 2) with claims over IP embargoes (Ring 1), placing it at a two-ring intersection, though the IP component is secondary to the core denial-of-justice dispute and the Track III decision focuses primarily on attorneys' fees rather than substantive liability, moderating the overall score to MEDIUM-HIGH.
+Chevron's UNCITRAL award against Ecuador stems from a challenge to the Lago Agrio domestic court judgment, which the tribunal found to be corrupt, ghostwritten, and contrary to international public policy—a classic denial of justice over a judicial measure. The case also involves Chevron's claims for damages to trademarks and intellectual property embargoes, triggering both the judicial-measure ring and a secondary IP-as-investment angle, though the IP element is peripheral to the core denial-of-justice holding.
 
 ## Notable line (from source)
 > “The UNCITRAL tribunal found the initial and subsequent rulings to be contrary to international public policy and demanded that no part of the judgment should be recognized or enforced by any state with knowledge of Ecuador’s denial of…”

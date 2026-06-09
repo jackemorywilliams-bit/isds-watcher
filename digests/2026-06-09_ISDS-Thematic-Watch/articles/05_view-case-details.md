@@ -3,15 +3,15 @@
 - **Source:** Italaw — [Read the original ↗](https://www.italaw.com/cases/12153)
 - **Date:** 02 June 2026
 - **Link:** https://www.italaw.com/cases/12153
-- **Relevance:** 32 (WATCH)
+- **Relevance:** 28 (WATCH)
 - **Rings matched:** judicial_or_regulatory_measure
-- **Tags:** judicial_measure, constitutional_court, regulatory_measure, fair_and_equitable_treatment, legislative_framework
+- **Tags:** judicial_measure, constitutional_court, legislative_framework, fair_and_equitable_treatment, state_measures
 
 ## Citation
 > italaw. "View case details." 02 Jun 2026. https://www.italaw.com/cases/12153
 
 ## Annotation
-Telefónica challenged Colombia's Constitutional Court judgment and legislative measures (Laws 422 and 1341) that altered asset-reversion rules under telecommunications concessions, alleging breach of fair and equitable treatment under a BIT. The case involves a judicial measure (Sentencia C-555) and regulatory legislation, but concerns telecommunications concessions and contractual asset reversion rather than intellectual property, so only the judicial/regulatory-measure ring is weakly triggered, scoring LOW-MEDIUM without IP or jurisdictional-admissibility doctrine.
+A telecommunications investor challenged Colombia's Constitutional Court judgment and legislative changes that altered asset-reversion rules under concession contracts, alleging breach of fair-and-equitable-treatment obligations. Although the case involves a judicial measure (Constitutional Court Sentencia C-555) and state regulatory conduct, it concerns telecommunications concessions and legitimate expectations rather than intellectual property, and raises no jurisdictional-admissibility doctrine (abuse of right, treaty-shopping, shell-subsidiary, or standing issues), so it matches only one ring weakly and scores LOW-to-MEDIUM.
 
 ## Notable line (from source)
 > “Colombia contended that the acts of its Constitutional Court (Sentencia C-555) could only constitute a treaty breach if they amounted to a denial of justice, which was not alleged or proven.”

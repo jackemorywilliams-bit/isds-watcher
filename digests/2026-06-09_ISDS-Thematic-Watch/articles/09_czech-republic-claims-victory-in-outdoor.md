@@ -11,7 +11,7 @@
 > iareporter headlines. "Czech Republic claims victory in outdoor advertising case." 09 Jun 2026. https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/
 
 ## Annotation
-The item reports that the Czech Republic claims victory in an outdoor advertising dispute, but provides no substantive detail about the nature of the case, the parties involved, or the legal claims at issue. Without information about intellectual property (trademarks, signs, or brand rights), any judicial measure or denial of justice, or jurisdictional/admissibility doctrines, it does not match any of the three rings and scores LOW.
+The item reports that the Czech Republic claims victory in an outdoor advertising dispute, but provides no substantive detail about the nature of the dispute, the parties involved, or the legal claims at issue. Without information about intellectual property assertions, judicial or regulatory measures, or jurisdictional/admissibility doctrines, the item cannot be matched to any of the three thematic rings and scores LOW.
 
 ## Notable line (from source)
 > “Czech Republic claims victory in outdoor advertising case”

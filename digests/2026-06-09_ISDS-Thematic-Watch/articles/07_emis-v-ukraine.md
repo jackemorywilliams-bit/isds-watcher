@@ -1,4 +1,4 @@
-# 4. EMIS v. Ukraine
+# 7. EMIS v. Ukraine
 
 - **Source:** Unctad Isds — [Read the original ↗](https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine)
 - **Date:** 09 June 2026
@@ -11,7 +11,7 @@
 > unctad isds. "EMIS v. Ukraine." 09 Jun 2026. https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine
 
 ## Annotation
-EMIS v. Ukraine is a case in the UNCTAD ISDS database, but the provided text contains only the case title with no substantive information about the dispute, the investor's claims, or the state's conduct. Without details on whether IP is asserted as a covered investment, whether judicial or regulatory measures are at issue, or whether jurisdictional/admissibility doctrines are contested, no thematic rings can be reliably matched, and the item scores LOW.
+EMIS v. Ukraine is a case indexed in the UNCTAD ISDS database, but the provided text contains no factual information about the dispute, the nature of the investment, the state conduct, or any jurisdictional issues. Without substantive case details, no rings can be matched and the item scores LOW as it cannot be evaluated against the three-ring theme.
 
 ## Notable line (from source)
 > “EMIS v.”

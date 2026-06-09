@@ -93,6 +93,12 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     date_str = generated_at.strftime("%Y-%m-%d")
     folder = os.path.join(out_root, folder_name(date_str))
     arts = os.path.join(folder, "articles")
+    # Clear any prior run's article files so stale, differently-slugged entries
+    # never accumulate in the same dated folder.
+    if os.path.isdir(arts):
+        for old in os.listdir(arts):
+            if old.endswith(".md"):
+                os.remove(os.path.join(arts, old))
     os.makedirs(arts, exist_ok=True)
 
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as fh:

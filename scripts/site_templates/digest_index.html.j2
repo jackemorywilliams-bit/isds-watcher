@@ -1,0 +1,48 @@
+{% extends "base.html.j2" %}
+{% block title %}Digest Archive — ISDS Thematic Watcher{% endblock %}
+{% block description %}Every weekly run of the ISDS Thematic Watcher, newest first, each with one annotated entry per development and a direct link to the original source.{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="measure">
+    <p class="page-kicker">Annotated-bibliography digests</p>
+    <h1 class="page-title">Digest Archive</h1>
+    <p class="page-lede">
+      Each weekly run is archived below, newest first. Open a date to read the formatted digest:
+      its run summary followed by one annotated entry per surfaced development, with the source
+      named, linked, and its URL shown in full.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    {% if digests %}
+    <ol class="archive-list">
+      {% for d in digests %}
+      <li class="archive-item">
+        <a class="archive-card" href="{{ d.date }}.html">
+          <div class="archive-date">{{ d.date }}</div>
+          <div class="archive-body">
+            <h2 class="archive-h">ISDS Thematic Watch</h2>
+            <p class="archive-stats">
+              <span class="count">{{ d.surfaced }}</span> annotated
+              {{ 'entry' if d.surfaced == 1 else 'entries' }}
+              {% if d.candidates %}· screened from {{ d.candidates }} candidates{% endif %}
+              {% if d.classifier %}· classifier: {{ d.classifier }}{% endif %}
+            </p>
+          </div>
+          <div class="archive-go" aria-hidden="true">Read &#8594;</div>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="empty">No digests have been archived yet.</p>
+    {% endif %}
+    <p class="archive-foot">
+      See the <a href="../methodology.html">methodology</a> for how entries are selected and scored.
+    </p>
+  </div>
+</section>
+{% endblock %}

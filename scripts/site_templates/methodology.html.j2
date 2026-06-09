@@ -1,0 +1,44 @@
+{% extends "base.html.j2" %}
+{% block title %}Methodology — ISDS Thematic Watcher{% endblock %}
+{% block description %}The full methodology memo: theoretical frame, source architecture, the two-stage classification cascade, calibration, validation, and the authorities behind each choice.{% endblock %}
+
+{% block content %}
+<div class="doc-wrap">
+  <aside class="toc" aria-label="Table of contents">
+    <div class="toc-title">Contents</div>
+    <nav>
+      <ol class="toc-list">
+        {% for item in memo.toc %}
+        <li class="toc-l{{ item.level }}"><a href="#{{ item.anchor }}">{{ item.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+  </aside>
+
+  <article class="doc">
+    <header class="doc-header">
+      <p class="doc-kicker">Research Methodology Memorandum</p>
+      <h1 class="doc-title">The ISDS Thematic Watcher</h1>
+    </header>
+
+    {% if memo.fields %}
+    <div class="memo">
+      <table class="memo-table">
+        <tbody>
+        {% for label, value in memo.fields %}
+          <tr>
+            <th scope="row">{{ label }}</th>
+            <td>{{ value | safe }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    <div class="doc-body">
+      {{ memo.body_html | safe }}
+    </div>
+  </article>
+</div>
+{% endblock %}

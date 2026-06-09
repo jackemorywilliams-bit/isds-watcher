@@ -5,13 +5,13 @@
 - **Link:** https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/
 - **Relevance:** 15 (WATCH)
 - **Rings matched:** —
-- **Tags:** airport_construction, investment_arbitration
+- **Tags:** airport_construction, arbitration
 
 ## Citation
 > iareporter headlines. "Airport construction investor announces arbitration against Albania." 09 Jun 2026. https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/
 
 ## Annotation
-An airport construction investor has announced an arbitration claim against Albania, but the headline and text provide no substantive detail about the nature of the dispute. Without information about intellectual property, judicial measures, or jurisdictional/admissibility doctrines, this cannot be matched to the thematic intersection and scores LOW.
+An airport construction investor has announced arbitration against Albania, but the headline and text provide no substantive detail about the underlying dispute. Without information on IP claims, judicial measures, or jurisdictional objections, this item cannot be matched to any of the three rings and scores LOW.
 
 ## Notable line (from source)
 > “Airport construction investor announces arbitration against Albania”

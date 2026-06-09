@@ -5,13 +5,13 @@
 - **Link:** https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/
 - **Relevance:** 25 (WATCH)
 - **Rings matched:** —
-- **Tags:** domestic_court_judgment, procedural_default, time_bar
+- **Tags:** domestic_court_judgment, set_aside_application, procedural_time_bar
 
 ## Citation
 > iareporter headlines. "South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred." 09 Jun 2026. https://www.iareporter.com/articles/south-african-appeals-court-rescinds-default-judgment-that-enforced-50-million-eur-award-against-lesotho-but-finds-the-states-set-aside-application-time-barred/
 
 ## Annotation
-A South African appellate court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho while finding the state's set-aside application time-barred on procedural grounds. The item involves a domestic court judgment but provides no evidence of intellectual property, a challenge to a regulatory or public-interest measure, or jurisdictional/admissibility doctrines (abuse of right, treaty-shopping, denial of benefits); it appears to be a routine procedural dispute over enforcement and limitation periods.
+A South African appeals court rescinded a default judgment enforcing a 50-million-EUR award against Lesotho while dismissing the state's set-aside application as time-barred, turning on domestic civil procedure rather than investor–state treaty claims. The item describes a domestic court judgment on a default and procedural time bar but contains no intellectual property, no regulatory measure, no treaty dispute, and no jurisdictional-admissibility doctrine, so it does not match the thematic intersection.
 
 ## Notable line (from source)
 > “South African appeals court rescinds default judgment that enforced 50-million-EUR award against Lesotho, but finds the state’s set-aside application time-barred”

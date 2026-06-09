@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISDS Thematic Watcher — A doctrinal monitor for investor–State practice</title>
+  <meta name="description" content="An automated thematic monitor for investor–State dispute settlement developments at the IP-as-investment / judicial-measure / jurisdictional-admissibility intersection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">ISDS</span>
+        <span class="brand-name">Thematic Watcher</span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="methodology.html" class="">Methodology</a>
+        <a href="digests/index.html" class="">Digest Archive</a>
+        <a href="https://github.com/jackemorywilliams-bit/isds-watcher" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">An automated thematic-surveillance instrument</p>
+    <h1 class="hero-title">The ISDS Thematic Watcher</h1>
+    <p class="hero-thesis">
+      A zero-cost, weekly monitor for investor–State dispute settlement at one precise
+      doctrinal intersection — where intellectual property is asserted as a protected
+      investment, a regulatory or judicial measure is the disputed conduct, and the case
+      turns on jurisdiction and admissibility.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="methodology.html">Read the Methodology</a>
+      <a class="btn btn-ghost" href="digests/index.html">Browse the Digest Archive</a>
+    </div>
+    <p class="hero-meta">
+      A research instrument for the Benavides ISDS project · open feeds and primary
+      repositories only · runs on free GitHub Actions minutes.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">What it watches</h2>
+    <p class="lede">
+      The object of surveillance is not a word but a <em>relationship between three doctrines</em>.
+      The theme was induced verbatim from three seed awards — <em>Philip Morris v. Australia</em>,
+      <em>Eli Lilly v. Canada</em>, and <em>Bridgestone v. Panama</em> — and operationalised as the
+      overlap of three doctrinal &ldquo;rings.&rdquo;
+    </p>
+
+    <div class="rings">
+      <article class="ring-card">
+        <div class="ring-num">Ring&nbsp;I</div>
+        <h3>IP as a protected investment</h3>
+        <p>Patents, trademarks and licences, copyrights, geographical indications, data
+          exclusivity, and brand value asserted as a covered investment — most acute where
+          the asset is informational or split across holding and operating entities.</p>
+      </article>
+      <article class="ring-card ring-weighted">
+        <div class="ring-num">Ring&nbsp;II <span class="weight-tag">weighted</span></div>
+        <h3>A regulatory or judicial measure</h3>
+        <p>Public-interest legislation, a domestic court judgment, or judicial conduct itself
+          as the disputed conduct. A credible challenge to a court judgment reaches the
+          MEDIUM band on its own.</p>
+      </article>
+      <article class="ring-card">
+        <div class="ring-num">Ring&nbsp;III</div>
+        <h3>Jurisdiction &amp; admissibility</h3>
+        <p>Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring for
+          treaty protection, and the contested definition of &ldquo;investor&rdquo; — the
+          threshold on which the seed cases were decided.</p>
+      </article>
+    </div>
+
+    <div class="scoring-note">
+      <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
+      <span class="sep">·</span>
+      <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
+      <span class="sep">·</span>
+      <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">How it works</h2>
+    <p class="lede">
+      Each stage is defensive: a failing source or item is logged and skipped, never fatal.
+      With no network the sources return empty; with no API key the classifier falls back to a
+      deterministic keyword scorer — so a dry run works fully offline.
+    </p>
+
+    <div class="flow" role="img"
+         aria-label="Workflow: open sources are politely fetched, deduplicated, keyword pre-scored, the top items enriched, then classified by an LLM or a keyword fallback, banded, selected above threshold, rendered into an annotated digest, and emailed plus committed to the repository.">
+      <div class="flow-step"><span class="flow-k">1</span><div><strong>Collect</strong><br>ICSID · UNCTAD · italaw · IISD ITN · IAReporter</div></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">2</span><div><strong>Polite fetch &amp; deduplicate</strong><br>robots.txt · 3s/domain · identifying User-Agent · <code>state/seen.json</code></div></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">3</span><div><strong>Keyword pre-score &amp; enrich</strong><br><code>fingerprint.yaml</code> lexicon · pull the notable line</div></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">4</span><div><strong>Classify</strong><br>LLM few-shot, strict JSON &nbsp;<span class="flow-or">or</span>&nbsp; deterministic keyword fallback</div></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-k">5</span><div><strong>Band &amp; select</strong><br>HIGH / MEDIUM / LOW · threshold 40 · top-N floor so the digest is never empty</div></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step flow-end"><span class="flow-k">6</span><div><strong>Render &amp; deliver</strong><br>annotated digest + dated archive · email recipients · commit to repo</div></div>
+    </div>
+    <p class="flow-caption">Figure 1. The collection-to-delivery pipeline. Each weekly run produces a
+      dated, version-controlled archive folder under <code>digests/</code>.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">What you receive</h2>
+    <p class="lede">
+      Every Monday, an <strong>annotated-bibliography digest</strong>: each surfaced development
+      as a citation line, a two-sentence descriptive-and-evaluative annotation, a quoted notable
+      line drawn from the source, and the rings it matched. The same content is committed to the
+      repository under a dated archive folder — browsable and citable.
+    </p>
+    <ul class="receive-list">
+      <li><strong>A citation</strong> in Chicago form, with the source named and the URL supplied liberally.</li>
+      <li><strong>An annotation</strong> that is both descriptive and evaluative, reflecting on which rings the development implicates and why it matters to the project.</li>
+      <li><strong>A verbatim notable line</strong> from the source, so the reader can proceed directly to backsourcing.</li>
+      <li><strong>A direct link to the original</strong> on every entry — sources are impossible to miss.</li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="digests/index.html">Open the latest digest</a>
+      <a class="btn btn-ghost" href="methodology.html">See how entries are scored</a>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-title">ISDS Thematic Watcher</div>
+      <p class="footer-note">Built for the Benavides ISDS research project.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="methodology.html">Methodology</a>
+        <span class="dot">·</span>
+        <a href="digests/index.html">Digest Archive</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/jackemorywilliams-bit/isds-watcher" target="_blank" rel="noopener">GitHub repository &#8599;</a>
+      </nav>
+      <p class="footer-fine">A zero-cost, open-sources research instrument. Sources read at headline level
+        where access is restricted; the Robots Exclusion Protocol is honored, never evaded.</p>
+    </div>
+  </footer>
+</body>
+</html>

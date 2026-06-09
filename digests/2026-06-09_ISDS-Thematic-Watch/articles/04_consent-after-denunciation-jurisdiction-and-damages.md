@@ -3,15 +3,15 @@
 - **Source:** Iisd Itn — [Read the original ↗](https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/)
 - **Date:** 21 April 2026
 - **Link:** https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/
-- **Relevance:** 32 (WATCH)
+- **Relevance:** 28 (WATCH)
 - **Rings matched:** jurisdictional_admissibility
-- **Tags:** definition_of_investor, standing, indirect_shareholding, corporate_restructuring, treaty_protection, shell_subsidiary
+- **Tags:** jurisdiction_ratione_voluntatis, denunciation_of_icsid_convention, consent_to_arbitration, definition_of_investor, indirect_shareholding, standing, corporate_restructuring, treaty_protection
 
 ## Citation
 > iisd itn. "Consent after denunciation—jurisdiction and damages." 21 Apr 2026. https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/
 
 ## Annotation
-Smurfit Holdings challenged Venezuela's expropriation of its Venezuelan subsidiaries, with the tribunal upheld jurisdiction over consent to ICSID arbitration despite Venezuela's denunciation, and rejected admissibility objections to indirect shareholding claims. While the case engages jurisdictional-admissibility doctrine (investor definition, standing, corporate restructuring post-2008), it involves vanilla expropriation of paper/packaging assets with no intellectual property or judicial measure at issue, so it scores LOW-MEDIUM on a single weak ring.
+Smurfit Holdings challenged Venezuela's expropriation of its paper-packaging subsidiaries; the tribunal upheld jurisdiction despite Venezuela's denunciation of the ICSID Convention and rejected admissibility objections over indirect shareholding and post-2008 restructurings. The case triggers only the jurisdictional-admissibility ring through debates over consent perfection, definition of investor, and standing to sue as an indirect shareholder, but lacks any intellectual-property investment claim or judicial/regulatory measure, so it scores LOW.
 
 ## Notable line (from source)
 > “Bolivarian Republic of Venezuela , an ICSID tribunal ordered Venezuela to pay ~USD 468.7 million in damages and costs for breaches of the Agreement on Encouragement and Reciprocal Protection of Investments between the Kingdom of the…”

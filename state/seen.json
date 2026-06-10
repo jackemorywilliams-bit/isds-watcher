@@ -1,3 +1,95 @@
 {
-  "sources": {}
+  "sources": {
+    "iareporter_headlines": {
+      "https://www.iareporter.com/articles/airport-construction-investor-announces-arbitration-against-albania/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/analysis-tribunal-majority-finds-that-context-of-exchange-of-notes-between-the-uk-and-rwanda-evinces-mutual-intent-to-amend-treaty-on-finance-arrangements-related-to-controversial-uk-refugee-resettle/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/czech-republic-claims-victory-in-outdoor-advertising-dispute/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/difc-court-enforces-anti-suit-injunctions-against-russia-and-rejects-states-challenges-to-arbitrators-sitting-in-wintershall-v-russia-2-arbitration/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/european-court-of-human-rights-finds-that-finnish-courts-enforcement-of-agreement-for-unreasoned-arbitral-award-in-expedited-arbitration-does-not-breach-right-to-fair-trial/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/fishing-investor-reportedly-files-arbitration-against-chinese-state-owned-company-over-operation-of-peruvian-port/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/icsid-tribunal-finds-kyrgyzstan-liable-for-treaty-breach-in-uranium-mining-dispute/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/paris-court-of-appeal-confirms-that-french-judges-cannot-hear-challenge-to-icsid-award-annulment-decision-or-ruling-on-revision-request/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/peruvian-government-reaches-agreement-with-airport-operator-avoiding-arbitration-claim/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/three-are-in-place-to-hear-power-plant-dispute-with-panama/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iareporter.com/articles/tribunal-chair-resigns-from-mining-arbitration-against-venezuela/": "2026-06-10T19:13:05.248435+00:00"
+    },
+    "icsid": {
+      "https://icsid.worldbank.org/news-and-events/communiques/angel-samuel-seda-and-others-v-republic-colombia-icsid-case-no-arb196": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/communiques/international-centre-settlement-investment-disputes-establish-office": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/fernando-paiz-andrade-and-anabella-schloesser-de-leon-de-paiz-v": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/gabriel-resources-ltd-and-gabriel-resources-jersey-v-romania-icsid-0": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/gabriel-resources-ltd-and-gabriel-resources-jersey-v-romania-icsid-case": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/icsid-publishes-2025-annual-report-expanded-caseload-statistics": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/icsid-releases-caseload-statistics-2025-fiscal-year-expanded-data": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/comunicados/jll-capital-sapi-de-cv-v-republic-honduras-icsid-case-no-arb233-public": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/alberta-petroleum-marketing-commission-v-united-states-america-icsid": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/fernando-paiz-andrade-and-anabella-schloesser-de-leon-de-paiz-v": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/gabriela-alvarez-avila-elected-icsid-deputy-secretary-general": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/honduras-signs-icsid-convention": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/icsid-releases-2025-caseload-statistics": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/international-centre-settlement-investment-disputes-paris-office": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/jll-capital-sapi-de-cv-v-republic-honduras-icsid-case-no-arb233": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/kurt-harald-gruninger-alexandra-gruninger-and-sascha-spittel-v": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/now-available-special-issue-icsid-review-energy-transition": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/orla-mining-ltd-v-republic-panama-icsid-case-no-arb2427-notice-public": "2026-06-10T19:13:05.248435+00:00",
+      "https://icsid.worldbank.org/news-and-events/news-releases/recruitment-search-icsid-deputy-secretary-general": "2026-06-10T19:13:05.248435+00:00",
+      "https://worldbankgroup.csod.com/ux/ats/careersite/1/home/requisition/35773?c=worldbankgroup": "2026-06-10T19:13:05.248435+00:00"
+    },
+    "iisd_itn": {
+      "https://www.iisd.org/itn/2026/04/21/chevron-collect-over-usd-200-million-decade-old-arbitration-ben-hefter/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/committees-international-investment-agreements-joshua-paine/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/importance-of-public-access-to-information-treaty-isds-reform-lise-johnson/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/investment-treaties-strategy-practice-chile-experience-mariana-pinto-schmidt/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/itn-issue-2-2026/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/new-tribunal-constituted-for-rockhopper-v-italy-resubmission-with-meg-kinnear-as-chair/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/treaty-data-evolving-international-investment-regime-josef-ostransky-dafina-atanasova/": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.iisd.org/itn/2026/04/21/updated-oecd-guidelines-mandate-climate-risk-due-diligence-for-multinational-investors/": "2026-06-10T19:13:05.248435+00:00"
+    },
+    "italaw": {
+      "https://www.italaw.com/cases/10174": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.italaw.com/cases/12153": "2026-06-10T19:13:05.248435+00:00",
+      "https://www.italaw.com/cases/3958": "2026-06-10T19:13:05.248435+00:00"
+    },
+    "pca_press": {
+      "https://pca-cpa.org/en/news/high-level-conference-in-dakar-dedicated-to-the-universalization-of-the-pca-and-the-hcch/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-entry-into-force-of-the-host-country-agreement-between-the-permanent-court-of-arbitration-and-the-kingdom-of-bahrain/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-issuance-of-an-award-on-the-dispute-concerning-coastal-state-rights-in-the-black-sea-sea-of-azov-and-kerch-strait-ukraine-v-the-russian-federation/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-01-the-indus-waters-western-rivers-arbitration-islamic-republic-of-pakistan-v-republic-of-india-4/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-01-the-indus-waters-western-rivers-arbitration-islamic-republic-of-pakistan-v-republic-of-india-5/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-65-energy-charter-treaty-arbitration-the-republic-of-azerbaijan-v-the-republic-of-armenia-2/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2025-21-1-blue-gold-holdings-limited-united-kingdom-and-2-future-global-resources-limited-united-kingdom-v-the-republic-of-ghana/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2025-45-arbitration-pursuant-to-the-asylum-partnership-agreement-the-republic-of-rwanda-v-the-united-kingdom-of-great-britain-and-northern-ireland-3/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-press-release-signature-of-a-cooperation-agreement-between-the-pca-and-the-dispute-resolution-commission-of-guatemalas-chamber-of-industry/": "2026-06-10T19:13:05.248435+00:00",
+      "https://pca-cpa.org/en/news/pca-publishes-contribution-to-2026-report-of-united-nations-secretary-general-on-oceans-and-the-law-of-the-sea/": "2026-06-10T19:13:05.248435+00:00"
+    },
+    "unctad_isds": {
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1414/asesores-financieros-v-uruguay": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1415/arcelormittal-v-italy": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1417/allianz-v-mexico": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1419/estate-of-ian-colin-orr-ewing-and-others-v-mexico": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1421/fcc-construcci-n-v-panama": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1422/aeroc-investment-v-ukraine": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1429/eta-star-v-angola": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1432/air-liquide-and-azerus-v-mexico": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1433/amec-foster-wheeler-and-others-v-colombia-ii-": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1435/brookfield-v-peru": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1438/emis-v-ukraine": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1439/draslovka-holding-v-mexico": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1441/centauro-and-natanor-v-colombia": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1446/bright-mountain-v-myanmar": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1448/bghl-v-ghana": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1449/emco-v-honduras": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1457/edp-v-colombia": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1458/alam-and-others-v-bangladesh": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1459/bupa-v-chile": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1460/aria-capital-and-publio-administration-v-mexico": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1462/ferrer-v-ecuador": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1463/afik-and-others-v-cyprus": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1465/enwell-energy-v-ukraine": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1466/buried-hill-serdar-v-turkmenistan": "2026-06-10T19:13:05.248435+00:00",
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1467/arg-ello-v-panama": "2026-06-10T19:13:05.248435+00:00"
+    }
+  }
 }

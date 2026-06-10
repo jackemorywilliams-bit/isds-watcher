@@ -19,10 +19,11 @@ RECIPIENTS = [
     "jackemorywilliams@icloud.com",
 ]
 
-# Digest never goes out empty: always surface at least this many of the most
-# relevant items, drawing down to RELEVANCE_FLOOR when fewer clear threshold.
+# Digest always carries the top MIN_DIGEST_ITEMS most-relevant items. Items at or
+# above `threshold` are matches; the rest are filled in, best-ranked first, as
+# watch-list leads (floor 0 = always show the top N by score).
 MIN_DIGEST_ITEMS = 10
-RELEVANCE_FLOOR = 15
+RELEVANCE_FLOOR = 0
 
 # Enrich at most this many top-ranked candidates by fetching their source page
 # (bounds polite-fetch volume per run).

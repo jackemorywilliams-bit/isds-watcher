@@ -88,7 +88,20 @@ def notable_quote(text: str, max_len: int = 300) -> str:
         # Nothing doctrinally salient: take the first full sentence, or "".
         best = next((s for s in _split_sentences(text)
                      if 55 <= len(s) <= max_len), "")
-    return best
+    return best if _is_quotable(best) else ""
+
+
+def _is_quotable(s: str) -> bool:
+    """Reject case captions and fragments so we never emit a non-sentence quote."""
+    s = (s or "").strip()
+    if len(s) < 55:
+        return False
+    if re.search(r"\bv\.?$", s):                      # ends like a case caption
+        return False
+    # Require a lowercase content word (a real sentence, not a Title-Cased caption).
+    if not re.search(r"\b[a-z]{4,}\b", s):
+        return False
+    return True
 
 
 def _extract_body(soup) -> str:

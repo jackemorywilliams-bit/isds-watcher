@@ -121,6 +121,26 @@ def test_parse_json_rejects_garbage():
     assert parse_json_response("not json at all") is None
 
 
+# --- verbatim-quote integrity -------------------------------------------------
+def test_quote_in_source_accepts_verbatim_and_curly():
+    from src.classify import _quote_in_source
+    it = _item("Title", "", "The tribunal found the ruling manifestly unjust and shocking.")
+    # exact substring
+    assert _quote_in_source("the ruling manifestly unjust and shocking", it)
+    # only differs by curly quotes / em dash typography
+    it2 = _item("T", "", 'He called it an "abuse of right" — a clear one indeed.')
+    assert _quote_in_source('an “abuse of right” — a clear one indeed', it2)
+
+
+def test_quote_in_source_rejects_paraphrase_and_short():
+    from src.classify import _quote_in_source
+    it = _item("Title", "", "The tribunal dismissed the claim on abuse of right grounds.")
+    # a paraphrase that is not actually in the text
+    assert not _quote_in_source("the panel threw out the case for treaty shopping reasons", it)
+    # too short to be meaningful
+    assert not _quote_in_source("abuse", it)
+
+
 def test_parse_json_coerces_invalid_rings():
     raw = '{"relevance_score": 50, "matched_rings": ["ip_as_investment", "bogus"], ' \
           '"thematic_tags": [], "digest_summary": "A. B."}'

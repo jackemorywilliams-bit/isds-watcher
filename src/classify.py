@@ -410,17 +410,35 @@ def _provider_ready(provider: str) -> bool:
     return False
 
 
+# Smart/curly quote and dash characters normalized to their ASCII equivalents
+# before the substring check, so a quote that only differs by typography still
+# verifies against the source.
+_QUOTE_TRANSLATE = str.maketrans({
+    "“": '"', "”": '"', "„": '"', "‟": '"',
+    "‘": "'", "’": "'", "‚": "'", "‛": "'",
+    "–": "-", "—": "-", "−": "-",
+    " ": " ",
+})
+
+
+def _normalize_for_match(s: str) -> str:
+    """Lower-case, collapse whitespace, and fold smart quotes/dashes to ASCII."""
+    s = (s or "").translate(_QUOTE_TRANSLATE)
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
 def _quote_in_source(quote: str, item: CandidateItem) -> bool:
     """True if ``quote`` is a normalized substring (>=20 chars) of item text.
 
     Guards against the LLM paraphrasing a "verbatim" notable_quote: we only
-    trust the quote if it actually appears in the item's source text.
+    trust the quote if it actually appears in the item's source text. Whitespace
+    and quote/dash typography are normalized first so a genuine quote isn't
+    rejected over a curly-vs-straight quote mark.
     """
     if not quote:
         return False
-    norm = lambda s: re.sub(r"\s+", " ", (s or "")).strip().lower()
-    q = norm(quote)
-    hay = norm(
+    q = _normalize_for_match(quote)
+    hay = _normalize_for_match(
         getattr(item, "raw_text", "")
         + " "
         + getattr(item, "summary", "")

@@ -57,6 +57,33 @@ def test_parse_since_is_tz_aware():
     assert parse_since("7d").tzinfo is not None
 
 
+# --- digest selection / padding floor -----------------------------------------
+def _classified(score, sid=None):
+    from src.classify import ClassifiedItem
+    now = datetime.datetime.now(UTC)
+    return ClassifiedItem("s", sid or f"id{score}", "u", "t", now, "", "",
+                          relevance_score=score)
+
+
+def test_select_surfaced_never_below_floor():
+    from src.main import select_surfaced
+    items = [_classified(s) for s in (80, 45, 30, 24, 10, 0)]
+    out = select_surfaced(items, threshold=40, min_items=6, floor=25)
+    # No item below the floor may ever be surfaced.
+    assert all(c.relevance_score >= 25 for c in out)
+    # Every match (>= threshold) is included, with no upper cap.
+    assert {c.relevance_score for c in out} >= {80, 45}
+    # The 30 (>= floor) fills toward the minimum; 24/10/0 never appear.
+    assert 24 not in {c.relevance_score for c in out}
+
+
+def test_select_surfaced_quiet_week_is_empty_not_padded():
+    from src.main import select_surfaced
+    # Nothing above the floor -> empty digest rather than padding to min_items.
+    items = [_classified(s) for s in (24, 10, 0)]
+    assert select_surfaced(items, threshold=40, min_items=6, floor=25) == []
+
+
 # --- date parsing ------------------------------------------------------------
 def test_parse_date_to_utc():
     d = parse_date("Tue, 21 Apr 2026 17:02:05 +0000")

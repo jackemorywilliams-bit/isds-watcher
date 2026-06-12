@@ -37,6 +37,29 @@ def parse_since(spec: str) -> datetime:
     return now - delta
 
 
+def select_surfaced(classified, threshold, min_items, floor):
+    """Choose which classified items appear in the digest.
+
+    Every item at or above ``threshold`` is included (a match; no upper cap).
+    If that is fewer than ``min_items``, the digest is filled up to the minimum
+    with the next-highest items, but only those at or above ``floor``. No item
+    scoring below ``floor`` is ever surfaced, so a genuinely quiet week yields
+    fewer than ``min_items`` items — possibly zero — rather than padding with
+    irrelevant filler.
+    """
+    ordered = sorted(classified, key=lambda c: c.relevance_score, reverse=True)
+    surfaced = [c for c in ordered if c.relevance_score >= threshold]
+    if len(surfaced) < min_items:
+        for c in ordered:
+            if c in surfaced:
+                continue
+            if c.relevance_score >= floor:
+                surfaced.append(c)
+            if len(surfaced) >= min_items:
+                break
+    return surfaced
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="isds-watcher")
     p.add_argument("--dry-run", action="store_true", help="don't send email; still write digest")
@@ -142,20 +165,11 @@ def main(argv=None) -> int:
         state.mark_seen(st, it.source, it.source_id, when=generated_at)
     stats["classified"] = len(classified)
 
-    # 4. Select what to surface: everything at/above threshold, but never an
-    #    empty digest — backfill with the next-highest items down to the floor.
-    ordered = sorted(classified, key=lambda c: c.relevance_score, reverse=True)
-    above = [c for c in ordered if c.relevance_score >= cfg.threshold]
-    stats["above_threshold"] = len(above)
-    surfaced = list(above)
-    if len(surfaced) < config.MIN_DIGEST_ITEMS:
-        for c in ordered:
-            if c in surfaced:
-                continue
-            if c.relevance_score >= config.RELEVANCE_FLOOR:
-                surfaced.append(c)
-            if len(surfaced) >= config.MIN_DIGEST_ITEMS:
-                break
+    # 4. Select what to surface (see select_surfaced for the rule).
+    stats["above_threshold"] = sum(
+        1 for c in classified if c.relevance_score >= cfg.threshold)
+    surfaced = select_surfaced(
+        classified, cfg.threshold, config.MIN_DIGEST_ITEMS, config.RELEVANCE_FLOOR)
 
     # 5. Render + write the dated archive folder (one file per surfaced item).
     date_str = generated_at.strftime("%Y-%m-%d")

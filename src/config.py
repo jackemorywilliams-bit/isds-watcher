@@ -19,10 +19,12 @@ RECIPIENTS = [
     "jackemorywilliams@icloud.com",
 ]
 
-# Digest always carries the top MIN_DIGEST_ITEMS most-relevant items. Items at or
-# above `threshold` are matches; the rest are filled in, best-ranked first, as
-# watch-list leads (floor 0 = always show the top N by score).
-MIN_DIGEST_ITEMS = 10
+# Hybrid digest size. Report every item at or above `threshold` (a match); there is
+# no upper cap, so a strong week shows all of them. But the digest never carries
+# fewer than MIN_DIGEST_ITEMS: when fewer items match, fill up to the minimum with
+# the closest near-misses, ranked by relevance (RELEVANCE_FLOOR 0 = take the top
+# remaining regardless of score), labeled as watch-list leads.
+MIN_DIGEST_ITEMS = 6
 RELEVANCE_FLOOR = 0
 
 # Enrich at most this many top-ranked candidates by fetching their source page

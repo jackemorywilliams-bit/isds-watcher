@@ -79,7 +79,7 @@ First, a ring must earn its place. A ring counts as "present" only once its lexi
 
 Second, the digest threshold was lowered on purpose, from an initial 60 to 40, a reduction of twenty. A monitoring instrument is not an adjudicative one; its job is to surface leads, and the recall-for-precision trade was made consciously.
 
-Third, the digest is never allowed to be empty. Because the theme is narrow, there are silent intervals, and a reader who keeps opening an empty report soon stops opening it at all. So when too few items clear the threshold, the instrument surfaces the highest-ranked remaining material down to a relevance floor, and labels it a watch-list item rather than a match. (A match is an item at or above the threshold; a watch-list item is one surfaced below it to keep the digest from going empty.) This preference for recall over precision suits a surveillance instrument and would be wrong in an adjudicative one, and the watch-list label is there so that no reader mistakes a lead for a holding.
+Third, the digest carries a minimum of six items each week, with no upper limit. Every item at or above the threshold is reported as a match, so a strong week reports all of them. When fewer than six items clear the threshold, the instrument fills the digest up to six with the closest near-misses, ranked by relevance and labeled as watch-list leads rather than matches. (A match is an item at or above the threshold; a watch-list item is one of the nearest misses, surfaced so that the digest is never thin.) This preference for recall over precision suits a surveillance instrument and would be wrong in an adjudicative one, and the watch-list label is there so that no reader mistakes a lead for a holding.
 
 ### B. Validation
 

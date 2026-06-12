@@ -20,12 +20,12 @@ RECIPIENTS = [
 ]
 
 # Hybrid digest size. Report every item at or above `threshold` (a match); there is
-# no upper cap, so a strong week shows all of them. But the digest never carries
-# fewer than MIN_DIGEST_ITEMS: when fewer items match, fill up to the minimum with
-# the closest near-misses, ranked by relevance (RELEVANCE_FLOOR 0 = take the top
-# remaining regardless of score), labeled as watch-list leads.
+# no upper cap, so a strong week shows all of them. When fewer items match, fill up
+# to MIN_DIGEST_ITEMS with the closest near-misses, but only those at or above
+# RELEVANCE_FLOOR. With the floor at 25 a genuinely quiet week may send only 0–3
+# items rather than padding the digest to the minimum with weak near-misses.
 MIN_DIGEST_ITEMS = 6
-RELEVANCE_FLOOR = 0
+RELEVANCE_FLOOR = 25
 
 # Enrich at most this many top-ranked candidates by fetching their source page
 # (bounds polite-fetch volume per run).

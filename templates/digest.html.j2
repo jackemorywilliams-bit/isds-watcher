@@ -111,8 +111,8 @@
   {% endmacro %}
 
   {% if not items %}
-    <div class="empty">No items met the relevance floor this cycle.
-      Sources screened: {% for s, n in stats.per_source.items() %}{{ s }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}.</div>
+    <div class="empty">No thematically relevant developments this week.
+      {{ stats.total_candidates }} candidates were screened across the sources below.</div>
   {% else %}
     <p class="secttl">Annotated developments<span class="rule"></span></p>
     {% for it in items %}{{ entry(it, loop.index) }}{% endfor %}

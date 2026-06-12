@@ -71,7 +71,7 @@ Legend: **[PM]** Philip Morris v Australia · **[EL]** Eli Lilly v Canada · **[
 - HIGH (70+): intersection of any two rings.
 - MEDIUM (40–69): one ring strong + weaker tie to another; OR any judicial-measure case alone (a new case challenging a domestic court judgment scores ≥ MEDIUM even with no other ring — Ring 2 carries extra weight because 2/3 seeds are judicial-measure cases).
 - LOW (<40): one ring weakly, or none. Vanilla expropriation / mining / oil & gas / sovereign debt / intra-EU energy → LOW unless a judicial-measure or IP angle is present.
-- Starting threshold: 60 (retune in dry-run if 0 or 50+ matches).
+- Starting threshold: 60 (retune in dry-run if 0 or 50+ matches). [Superseded: now 40 — see "Post-build deviations".]
 
 ## Source list with scrapability confidence
 | Source | Type | Priority | Scrapability | Notes |
@@ -96,7 +96,7 @@ B,C ► E: classifier-builder┤
                       F: pipeline-builder ─► G: ci-builder ─► H: docs-and-tests
 ```
 - A → specs/<source>.yaml (primary + fallback selectors per HTML source)
-- B → fingerprint.yaml (weights summing to 100/ring, threshold 60, 5+ few-shot incl. negatives)
+- B → fingerprint.yaml (weights summing to 100/ring, threshold 60 [now 40], 5+ few-shot incl. negatives)
 - C → prompts/classifier.txt (3+ few-shot)
 - D → src/sources/*.py (primary + fallback parse, logs when fallback fires)
 - E → src/classify.py (Gemini + Anthropic via MODEL_PROVIDER; 1 retry then score 0 + "classification_failed")
@@ -107,8 +107,17 @@ B,C ► E: classifier-builder┤
 ## Phase 3 dry-run outcomes (verified)
 - **robots.txt fix**: `urllib.robotparser` mis-treated Cloudflare-blocked robots fetches as "disallow-all". Switched to fetching robots.txt with our identifying UA via `requests` and failing open on errors/404. After the fix iisd/icsid/italaw/iareporter all return 200.
 - **Sources returning data** (clean run, 400-day window): iisd_itn=10, italaw=3, icsid=20, iareporter=10, unctad_isds=25, pca_press=10. `google_news_rss=0` — **robots-disallowed** for `*` (honored, not evaded; auto-re-enables if Google changes policy).
-- **Scorer calibration**: keyword fallback now 7/7 on the fingerprint few-shot bands (PRESENT_FLOOR=12, STRONG=18). Seed awards score MEDIUM–HIGH on their own text (Eli Lilly 75/HIGH). Off-theme live items correctly score 0 — so a 0-match week is correct behavior, not a threshold bug. Threshold stays 60; will re-confirm against the live LLM in Phase 5.
+- **Scorer calibration**: keyword fallback now 7/7 on the fingerprint few-shot bands (PRESENT_FLOOR=12, STRONG=18). Seed awards score MEDIUM–HIGH on their own text (Eli Lilly 75/HIGH). Off-theme live items correctly score 0 — so a 0-match week is correct behavior, not a threshold bug. (At this point the threshold was still 60; it was subsequently lowered to 40 to broaden recall — see "Post-build deviations".)
 - **Tests**: 15/15 pass.
 
 ## Runtime cost posture
-Zero-cost: public GitHub repo (unlimited Actions) + Gemini Flash free tier (default) or Claude Haiku (~$1/mo). Both code paths exist; `MODEL_PROVIDER` selects at runtime.
+Public GitHub repo gives unlimited Actions minutes. Both classifier code paths exist and `MODEL_PROVIDER` selects at runtime: Claude Haiku (~$1/mo) or Gemini Flash. See "Post-build deviations" below for the current live default.
+
+## Post-build deviations (current state)
+The original plan above is preserved as written; the following are the changes the build/operation actually settled on, and supersede any conflicting forward-looking statement above.
+
+- **Threshold is 40**, not 60. It was lowered from the initial 60 to broaden recall (`threshold: 40` in `fingerprint.yaml`, read by `src/config.py`).
+- **Claude is the live default classifier** (`MODEL_PROVIDER=claude`, model `claude-haiku-4-5-20251001`; ~$1/mo). Gemini (`gemini-2.0-flash`) remains a supported alternate but is not zero-cost in practice — the available Gemini key had no free-tier quota, which is why Claude runs live. The "Gemini Flash free tier (default)" posture above no longer holds.
+- **One recipient**: `jackemorywilliams@icloud.com`. `ximena.s.benavides@gmail.com` is commented out in `src/config.py` and can be restored later.
+- **Hybrid digest sizing**: report every match at/above threshold (no upper cap), with a minimum of six items filled from the closest near-misses only down to a relevance floor of 25 (`MIN_DIGEST_ITEMS=6`, `RELEVANCE_FLOOR=25`). A quiet week may send only 0–3 items; a week with nothing above 25 sends a one-sentence "no thematically relevant developments this week — N candidates screened" note instead of padding.
+- **First-run baseline**: the first run indexes all existing items as a baseline and sends only a baseline note, so ongoing digests contain only genuinely new items.

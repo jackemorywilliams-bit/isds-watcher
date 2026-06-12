@@ -368,7 +368,7 @@ def _call_gemini(prompt: str) -> str:
     genai.configure(api_key=os.environ["GEMINI_API_KEY"])
     model_name = os.environ.get("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
     model = genai.GenerativeModel(model_name)
-    resp = model.generate_content(prompt)
+    resp = model.generate_content(prompt, generation_config={"temperature": 0})
     return getattr(resp, "text", "") or ""
 
 
@@ -381,6 +381,7 @@ def _call_anthropic(prompt: str) -> str:
     resp = client.messages.create(
         model=model_name,
         max_tokens=1024,
+        temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )
     # resp.content is a list of content blocks; the first is the text block.
@@ -407,6 +408,26 @@ def _provider_ready(provider: str) -> bool:
     if provider == "anthropic":
         return bool(os.environ.get("ANTHROPIC_API_KEY"))
     return False
+
+
+def _quote_in_source(quote: str, item: CandidateItem) -> bool:
+    """True if ``quote`` is a normalized substring (>=20 chars) of item text.
+
+    Guards against the LLM paraphrasing a "verbatim" notable_quote: we only
+    trust the quote if it actually appears in the item's source text.
+    """
+    if not quote:
+        return False
+    norm = lambda s: re.sub(r"\s+", " ", (s or "")).strip().lower()
+    q = norm(quote)
+    hay = norm(
+        getattr(item, "raw_text", "")
+        + " "
+        + getattr(item, "summary", "")
+        + " "
+        + getattr(item, "title", "")
+    )
+    return len(q) >= 20 and q in hay
 
 
 # --------------------------------------------------------------------------- #
@@ -474,8 +495,14 @@ def classify_item(
         # The model selects the single most citable verbatim line; prefer it
         # over the keyword heuristic when present.
         nq = parsed.get("notable_quote") or ""
-        if nq:
+        if nq and _quote_in_source(nq, item):
             ci.metadata = {**(ci.metadata or {}), "notable_quote": nq}
+        elif nq:
+            logger.info(
+                "classify: rejecting LLM notable_quote as unverifiable "
+                "(not a verbatim substring of source) for %s",
+                getattr(item, "url", "") or getattr(item, "title", ""),
+            )
         return ci
 
     except Exception as exc:  # noqa: BLE001 - never let the pipeline crash

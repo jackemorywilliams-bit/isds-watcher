@@ -45,11 +45,21 @@ dry run works entirely offline. The full method, with its scholarly grounding, i
 
 ## What you receive
 
-Every Monday, an annotated-bibliography digest goes to the configured recipients. Each
+Every Monday, an annotated-bibliography digest goes to the configured recipient. Each
 surfaced development appears as a citation, a two-sentence descriptive-and-evaluative
 annotation, a quoted notable line from the source, and the rings it matched. The same
 content is committed to the repository under `digests/YYYY-MM-DD_ISDS-Thematic-Watch/`,
 with one Markdown file per entry, and is published to the website.
+
+The digest reports every match at or above the threshold with no upper cap, so a busy week
+shows all of them. To keep a normal week substantive it fills up to a minimum of six items
+with the closest near-misses, but only those at or above a relevance floor of 25
+(`MIN_DIGEST_ITEMS=6`, `RELEVANCE_FLOOR=25` in `src/config.py`). Honesty is preferred over
+padding: a genuinely quiet week may carry only 0–3 items, and a week with nothing above 25
+sends a one-sentence note ("no thematically relevant developments this week — N candidates
+screened") rather than weak filler. The very first run indexes all existing items as a
+baseline and sends only a baseline note, so every subsequent digest contains only genuinely
+new developments.
 
 ## Configuration
 
@@ -85,9 +95,11 @@ manual `since` input for wider one-off windows.
 
 ## Cost
 
-A public repository gets unlimited GitHub Actions minutes. Claude Haiku runs about a dollar
-a month; Gemini Flash is free. There are no paid data sources — the watcher reads open
-feeds and pages only.
+A public repository gets unlimited GitHub Actions minutes. The live default classifier is
+Claude Haiku, which runs about a dollar a month. Gemini Flash is a supported alternate (its
+free tier would be cheaper, but the available Gemini key had no free-tier quota, which is
+why Claude is the default). There are no paid data sources — the watcher reads open feeds
+and pages only.
 
 ## Operations and documentation
 

@@ -52,6 +52,11 @@ def save_state(state: dict, path: str = STATE_PATH) -> None:
         fh.write("\n")
 
 
+def is_empty(state: dict) -> bool:
+    """True on a genuinely first run: no sources recorded yet."""
+    return not state.get("sources")
+
+
 def seen_ids(state: dict, source: str) -> set[str]:
     return set(state.get("sources", {}).get(source, {}).keys())
 

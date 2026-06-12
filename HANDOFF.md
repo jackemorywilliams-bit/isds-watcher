@@ -7,16 +7,18 @@
   commit `state/` + `digests/` back as `github-actions[bot]`.
 
 ## Secrets / variables (set on the repo)
-Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `GEMINI_API_KEY` **or**
-`ANTHROPIC_API_KEY`. Variable: `MODEL_PROVIDER` (`gemini` or `claude`).
+Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_KEY`
+**or** `GEMINI_API_KEY`. Variable: `MODEL_PROVIDER` (`claude` is the live default; `gemini`
+is a supported alternate). The available Gemini key had no free-tier quota, which is why
+Claude (~$1/mo) runs live.
 
 ```bash
 gh secret set SMTP_HOST --body "smtp.gmail.com"
 gh secret set SMTP_PORT --body "465"
 gh secret set SMTP_USER --body "you@gmail.com"
 gh secret set SMTP_PASS --body "your16charapppassword"
-gh secret set GEMINI_API_KEY --body "AIza..."      # or ANTHROPIC_API_KEY sk-ant-...
-gh variable set MODEL_PROVIDER --body "gemini"      # or claude
+gh secret set ANTHROPIC_API_KEY --body "sk-ant-..."   # or GEMINI_API_KEY AIza...
+gh variable set MODEL_PROVIDER --body "claude"         # default; or gemini
 ```
 
 ## Trigger / observe
@@ -28,21 +30,28 @@ gh run view --log-failed      # if it fails
 ```
 
 ## Recipients
-Hard-coded in `src/config.py`: `ximena.s.benavides@gmail.com`, `jackemorywilliams@icloud.com`.
-Edit that list and push to change them.
+Hard-coded in `src/config.py`: one recipient, `jackemorywilliams@icloud.com`.
+`ximena.s.benavides@gmail.com` is commented out in that file — uncomment it to resume
+sending to both. Edit that list and push to change recipients.
 
 ## If no email arrives
 1. **Check spam/junk** on first send (new sender).
 2. Confirm the run was green and the logs show `email: sent ...`. If they show
    `email: missing secrets` → a secret is empty. If `email: send failed (...534...)` →
    the Gmail App Password is wrong/expired or 2FA isn't enabled on that account.
-3. A green run with **0 matches still sends** a "No new matches this week" digest, so an
-   empty inbox usually means a delivery/secret issue, not "nothing matched".
+3. A green run **always sends an email**, even a quiet week: a week with nothing above the
+   relevance floor (25) sends a one-sentence "no thematically relevant developments this
+   week — N candidates screened" note. So an empty inbox usually means a delivery/secret
+   issue, not "nothing matched". (The very first run sends only a one-time baseline note
+   while it indexes existing items.)
 4. Re-run manually with `gh workflow run weekly.yml`.
 
 ## Tuning the theme / threshold
-- **Threshold** lives in `fingerprint.yaml` (`threshold: 60`) and is read by `src/config.py`.
-  Raise it if the digest is noisy; lower it if real cases are being missed.
+- **Threshold** lives in `fingerprint.yaml` (`threshold: 40`, lowered from an initial 60 to
+  broaden recall) and is read by `src/config.py`. Raise it if the digest is noisy; lower it
+  if real cases are being missed. Digest size is a hybrid (see `src/config.py`): every match
+  at/above threshold with no cap, a minimum of six filled from the closest near-misses but
+  only down to `RELEVANCE_FLOOR=25`, so a quiet week may carry only 0–3 items.
 - **Vocabulary / weights**: edit `fingerprint.yaml` rings (within-ring weights should sum to
   100). `tests/test_pipeline.py::test_scorer_matches_fingerprint_examples` guards the bands —
   update the `few_shot_examples` if you change the model and re-run `pytest`.

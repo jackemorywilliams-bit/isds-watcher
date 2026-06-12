@@ -131,7 +131,7 @@ def test_render_empty_and_populated():
              "per_source": {"iisd_itn": 0}, "dropped_sources": [], "threshold": 60,
              "provider": None}
     empty = render.render_digest([], now, now, stats)
-    assert "No items met the relevance floor" in empty
+    assert "No thematically relevant developments this week" in empty
 
     ci = ClassifiedItem("iisd_itn", "id", "http://x", "Patent case", now,
                         "s", "r", relevance_score=85,

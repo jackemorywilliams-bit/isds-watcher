@@ -57,6 +57,7 @@ def main(argv=None) -> int:
 
     cfg = config.load_config()
     st = state.load_state()
+    bootstrap = state.is_empty(st)
     since = parse_since(args.since)
     generated_at = datetime.now(timezone.utc)
     provider = args.provider or cfg.model_provider
@@ -86,6 +87,27 @@ def main(argv=None) -> int:
         new_candidates.extend(fresh)
     stats["total_candidates"] = len(new_candidates)
     logger.info("main: %d new candidates across sources", len(new_candidates))
+
+    # 1b. First-run bootstrap (flood fix). On a genuinely empty seen-state, index
+    #     every current item as already-seen and send only a baseline note — never
+    #     classify or surface a historical backlog. Thematic monitoring begins next
+    #     run. Respect --dry-run/--no-email (just index + save, no send).
+    if bootstrap:
+        for it in new_candidates:
+            state.mark_seen(st, it.source, it.source_id, when=generated_at)
+        state.save_state(st)
+        n = len(new_candidates)
+        email_status = "skipped"
+        if not (args.dry_run or args.no_email):
+            subject = f"ISDS Thematic Watch — baseline established ({n} items indexed)"
+            body = (f"<p>Baseline established; {n} existing items indexed. "
+                    f"Thematic monitoring begins with the next run.</p>")
+            email_status = "sent" if send_digest(body, subject, cfg) else "failed"
+        logger.info("main: bootstrap run — indexed %d items as seen, no digest", n)
+        print("\n=== ISDS Watcher run summary (baseline bootstrap) ===")
+        print(f"new candidates indexed: {n}")
+        print(f"email:                  {email_status}")
+        return 0
 
     # 2. Cheap keyword pre-score to rank candidates, then enrich the most
     #    promising ones (fetch their source page) so the LLM and the digest have
@@ -147,9 +169,14 @@ def main(argv=None) -> int:
     # 6. Email (unless dry-run / no-email).
     email_status = "skipped"
     if not (args.dry_run or args.no_email):
-        subject = (f"ISDS Thematic Watch — {date_str} "
-                   f"({len(surfaced)} item{'' if len(surfaced)==1 else 's'}, "
-                   f"{len(above)} at threshold)")
+        if len(surfaced) == 0:
+            subject = (f"ISDS Thematic Watch — {date_str} "
+                       f"(no thematically relevant developments, "
+                       f"{stats['total_candidates']} screened)")
+        else:
+            subject = (f"ISDS Thematic Watch — {date_str} "
+                       f"({len(surfaced)} item{'' if len(surfaced)==1 else 's'}, "
+                       f"{len(above)} at threshold)")
         email_status = "sent" if send_digest(html, subject, cfg) else "failed"
 
     # 7. Persist state.

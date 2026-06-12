@@ -1,10 +1,18 @@
 # HANDOFF — operating the ISDS watcher
 
+- **Repository:** https://github.com/jackemorywilliams-bit/isds-watcher
+- **Website (GitHub Pages):** https://jackemorywilliams-bit.github.io/isds-watcher/
+- **Digest format:** an annotated bibliography (citation + descriptive-and-evaluative
+  annotation + a verbatim notable line + matched rings), emailed and archived per run.
+- **Recipient:** `jackemorywilliams@icloud.com` (single; `ximena.s.benavides@gmail.com`
+  is commented out in `src/config.py` and can be restored).
+- **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
+
 ## What runs, when
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),
   plus manual `workflow_dispatch`. Concurrency group `isds-watcher` prevents overlap.
 - The job: fail-fast on missing secrets → install deps → `python -m src.main --since 7d` →
-  commit `state/` + `digests/` back as `github-actions[bot]`.
+  rebuild the website → commit `state/`, `digests/`, and `docs/` back as `github-actions[bot]`.
 
 ## Secrets / variables (set on the repo)
 Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_KEY`

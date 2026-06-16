@@ -28,6 +28,10 @@ jobs:
       SMTP_PORT: ${{ secrets.SMTP_PORT }}
       SMTP_USER: ${{ secrets.SMTP_USER }}
       SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      # Google Scholar via Gmail/IMAP — optional; absent = source stays inactive.
+      GMAIL_ALERT_USER: ${{ secrets.GMAIL_ALERT_USER }}
+      GMAIL_ALERT_PASS: ${{ secrets.GMAIL_ALERT_PASS }}
+      GMAIL_ALERT_LABEL: ${{ vars.GMAIL_ALERT_LABEL }}
     steps:
       - uses: actions/checkout@v4
 

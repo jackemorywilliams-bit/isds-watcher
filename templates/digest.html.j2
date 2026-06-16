@@ -76,7 +76,7 @@
     <h1>ISDS Thematic Watch</h1>
     <p class="issue">{{ generated_at.strftime("%A, %d %B %Y") }} &nbsp;·&nbsp;
        Window from {{ since.strftime("%d %b %Y") }} &nbsp;·&nbsp;
-       {{ items|length }} item{{ "" if items|length == 1 else "s" }}</p>
+       {{ matches }} match{{ "" if matches == 1 else "es" }} &middot; {{ leads }} watch-list lead{{ "" if leads == 1 else "s" }}</p>
     <p class="standing">Developments at the intersection of intellectual property as a
        protected investment, regulatory or judicial measures as the disputed conduct, and
        jurisdictional and admissibility doctrine.</p>

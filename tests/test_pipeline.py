@@ -148,6 +148,8 @@ def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
     assert "Screened: 80" in html
     assert "Matches (&ge;40): 0" in html
     assert "Accepted (shown): 1" in html
+    # Fix 2: header splits matches from watch-list leads (no bare "1 item").
+    assert "0 matches &middot; 1 watch-list lead" in html
 
     folder = render.write_digest_folder(html, items, now, stats)
     meta = json.loads(Path(folder, "meta.json").read_text())

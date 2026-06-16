@@ -157,6 +157,20 @@ def test_classify_item_offline_never_raises(monkeypatch):
     assert isinstance(ci.matched_rings, list)
 
 
+def test_classify_records_model_in_metadata(monkeypatch):
+    # Offline path records the keyword model; the LLM paths record the model ID.
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+    ci = classify_item(_item("t", "denial of justice supreme court", ""))
+    assert ci.metadata.get("model") == "keyword"
+
+
+def test_resolved_model_ids():
+    from src.classify import _resolved_model, DEFAULT_ANTHROPIC_MODEL, DEFAULT_GEMINI_MODEL
+    assert _resolved_model("anthropic") == DEFAULT_ANTHROPIC_MODEL
+    assert _resolved_model("gemini") == DEFAULT_GEMINI_MODEL
+    assert _resolved_model(None) is None
+
+
 # --- config ------------------------------------------------------------------
 def test_recipients_hardcoded():
     # Temporarily narrowed to a single recipient on request.

@@ -57,6 +57,15 @@ DEFAULT_GEMINI_MODEL = "gemini-2.0-flash"
 # Anthropic Haiku 4.5 -- current fast/cheap model (full ID form).
 DEFAULT_ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
+
+def _resolved_model(provider) -> "Optional[str]":
+    """The concrete model ID that would be used for a normalized provider name."""
+    if provider == "gemini":
+        return os.environ.get("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
+    if provider == "anthropic":
+        return os.environ.get("ANTHROPIC_MODEL", DEFAULT_ANTHROPIC_MODEL)
+    return None
+
 _FINGERPRINT_PATH = Path(__file__).resolve().parent.parent / "fingerprint.yaml"
 
 # Module-level cache for the parsed fingerprint.
@@ -466,15 +475,18 @@ def classify_item(
     if norm is None or not _provider_ready(norm):
         logger.info("classify: using keyword fallback (no provider/key)")
         result = keyword_score(item)
-        return from_candidate(
+        ci = from_candidate(
             item,
             result["relevance_score"],
             result["matched_rings"],
             result["thematic_tags"],
             result["digest_summary"],
         )
+        ci.metadata = {**(ci.metadata or {}), "model": "keyword"}
+        return ci
 
     caller = _call_gemini if norm == "gemini" else _call_anthropic
+    model_id = _resolved_model(norm)
 
     try:
         prompt = build_prompt(item)
@@ -495,13 +507,15 @@ def classify_item(
                 "classify: JSON parse failed after retry for %s",
                 getattr(item, "url", "") or getattr(item, "title", ""),
             )
-            return from_candidate(
+            ci = from_candidate(
                 item,
                 0,
                 [],
                 ["classification_failed"],
                 "Classification failed after retry.",
             )
+            ci.metadata = {**(ci.metadata or {}), "model": model_id}
+            return ci
 
         ci = from_candidate(
             item,
@@ -510,6 +524,8 @@ def classify_item(
             parsed["thematic_tags"],
             parsed["digest_summary"],
         )
+        # Record the concrete model ID that produced this classification.
+        ci.metadata = {**(ci.metadata or {}), "model": model_id}
         # The model selects the single most citable verbatim line; prefer it
         # over the keyword heuristic when present.
         nq = parsed.get("notable_quote") or ""
@@ -532,13 +548,15 @@ def classify_item(
         result = keyword_score(item)
         tags = list(result["thematic_tags"])
         tags.append("classification_error_fallback")
-        return from_candidate(
+        ci = from_candidate(
             item,
             result["relevance_score"],
             result["matched_rings"],
             tags,
             result["digest_summary"],
         )
+        ci.metadata = {**(ci.metadata or {}), "model": "keyword"}
+        return ci
 
 
 def classify_all(

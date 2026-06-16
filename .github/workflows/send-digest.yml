@@ -1,0 +1,30 @@
+name: send-digest
+
+# Manual: re-send one archived digest's finalized email (the exact index.html and
+# reconciled counts from its folder) to the configured recipients.
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: "Archived digest folder (e.g. 2026-06-16_ISDS-Thematic-Watch)"
+        required: true
+        default: "2026-06-16_ISDS-Thematic-Watch"
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      DIGEST_FOLDER: ${{ inputs.folder }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Send archived digest
+        run: python scripts/send_archived.py

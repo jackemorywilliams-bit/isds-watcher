@@ -211,7 +211,9 @@ def main(argv=None) -> int:
     print(f"folder:           {folder_path}")
     print(f"digest:           {digest_path}")
     print(f"email:            {email_status}")
-    return 0
+    # A failed send marks the whole run failed, so "green == delivered" and the
+    # workflow's failure-alert step fires.
+    return 1 if email_status == "failed" else 0
 
 
 if __name__ == "__main__":

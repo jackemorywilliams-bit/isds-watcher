@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ISDS Thematic Watch — {{ date_str }}</title>
+<title>ISDS Thematic Watch: {{ date_str }}</title>
 <style>
   body { margin:0; padding:0; background:#eceef1;
          font-family: Georgia, 'Times New Roman', serif; color:#1b252e; line-height:1.55; }
@@ -103,7 +103,7 @@
     </p>
     <p class="annot">{{ it.digest_summary }}</p>
     {% if it.metadata.get("notable_quote") %}<div class="quote">“{{ it.metadata.get("notable_quote") }}”</div>{% endif %}
-    <div class="src"><span class="lab">Source —</span>
+    <div class="src"><span class="lab">Source:</span>
       {{ it.source|replace("_", " ")|title }}:
       <a href="{{ it.url }}">{{ it.url }}</a></div>
     {% if it.thematic_tags %}<p class="tags">Tags: {{ it.thematic_tags|reject("equalto","keyword_fallback")|join(" · ") }}</p>{% endif %}
@@ -129,7 +129,7 @@
       </td>
       <td>
         <h4>This issue</h4>
-        Generated {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
+        Compiled {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
         Candidates screened: {{ stats.total_candidates }}<br>
         At or above threshold ({{ stats.threshold }}): {{ stats.above_threshold }}<br>
         Classifier: {{ stats.provider or "keyword fallback" }}

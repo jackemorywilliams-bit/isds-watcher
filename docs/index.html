@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISDS Thematic Watcher — A doctrinal monitor for investor–State practice</title>
+  <title>ISDS Thematic Watcher: a doctrinal monitor for investor–State practice</title>
   <meta name="description" content="An automated thematic monitor for investor–State dispute settlement developments at the IP-as-investment / judicial-measure / jurisdictional-admissibility intersection.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
     <h1 class="hero-title">The ISDS Thematic Watcher</h1>
     <p class="hero-thesis">
       A zero-cost, weekly monitor for investor–State dispute settlement at one precise
-      doctrinal intersection — where intellectual property is asserted as a protected
+      doctrinal intersection: where intellectual property is asserted as a protected
       investment, a regulatory or judicial measure is the disputed conduct, and the case
       turns on jurisdiction and admissibility.
     </p>
@@ -58,8 +58,8 @@
     <h2 class="section-head">What it watches</h2>
     <p class="lede">
       The object of surveillance is not a word but a <em>relationship between three doctrines</em>.
-      The theme was induced verbatim from three seed awards — <em>Philip Morris v. Australia</em>,
-      <em>Eli Lilly v. Canada</em>, and <em>Bridgestone v. Panama</em> — and operationalised as the
+      The theme was induced verbatim from three seed awards (<em>Philip Morris v. Australia</em>,
+      <em>Eli Lilly v. Canada</em>, and <em>Bridgestone v. Panama</em>) and operationalised as the
       overlap of three doctrinal &ldquo;rings.&rdquo;
     </p>
 
@@ -68,8 +68,8 @@
         <div class="ring-num">Ring&nbsp;I</div>
         <h3>IP as a protected investment</h3>
         <p>Patents, trademarks and licences, copyrights, geographical indications, data
-          exclusivity, and brand value asserted as a covered investment — most acute where
-          the asset is informational or split across holding and operating entities.</p>
+          exclusivity, and brand value asserted as a covered investment. The question is most
+          acute where the asset is informational or split across holding and operating entities.</p>
       </article>
       <article class="ring-card ring-weighted">
         <div class="ring-num">Ring&nbsp;II <span class="weight-tag">weighted</span></div>
@@ -82,10 +82,41 @@
         <div class="ring-num">Ring&nbsp;III</div>
         <h3>Jurisdiction &amp; admissibility</h3>
         <p>Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring for
-          treaty protection, and the contested definition of &ldquo;investor&rdquo; — the
+          treaty protection, and the contested definition of &ldquo;investor&rdquo;: the
           threshold on which the seed cases were decided.</p>
       </article>
     </div>
+
+    <figure class="venn-figure">
+      <svg class="venn" viewBox="0 0 520 440" role="img"
+           aria-label="Venn diagram of the three doctrinal rings. Ring one, IP as a protected investment. Ring two, a regulatory or judicial measure. Ring three, a jurisdictional or admissibility doctrine. The watched theme lives in the central three-way overlap, and any two rings overlapping already reaches the HIGH band.">
+        <defs>
+          <radialGradient id="venn-core" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b8860b" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#9a7b2e" stop-opacity="0.30"/>
+          </radialGradient>
+        </defs>
+        <!-- Three overlapping rings -->
+        <circle class="venn-ring venn-ring-1" cx="200" cy="170" r="135"/>
+        <circle class="venn-ring venn-ring-2" cx="320" cy="170" r="135"/>
+        <circle class="venn-ring venn-ring-3" cx="260" cy="275" r="135"/>
+        <!-- Emphasised central three-way overlap -->
+        <circle class="venn-core" cx="260" cy="215" r="40" fill="url(#venn-core)"/>
+        <text class="venn-core-label" x="260" y="212" text-anchor="middle">THEME</text>
+        <text class="venn-core-sub" x="260" y="230" text-anchor="middle">three-way overlap</text>
+        <!-- Ring labels -->
+        <text class="venn-label" x="118" y="120" text-anchor="middle">IP as a protected</text>
+        <text class="venn-label" x="118" y="138" text-anchor="middle">investment</text>
+        <text class="venn-label" x="402" y="120" text-anchor="middle">Regulatory or</text>
+        <text class="venn-label" x="402" y="138" text-anchor="middle">judicial measure</text>
+        <text class="venn-label" x="260" y="375" text-anchor="middle">Jurisdictional /</text>
+        <text class="venn-label" x="260" y="393" text-anchor="middle">admissibility doctrine</text>
+      </svg>
+      <figcaption class="venn-caption">
+        The theme lives in the central intersection of all three rings. Any two rings overlapping
+        already reaches the HIGH band.
+      </figcaption>
+    </figure>
 
     <div class="scoring-note">
       <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
@@ -103,12 +134,12 @@
     <p class="lede">
       Each stage is defensive: a failing source or item is logged and skipped, never fatal.
       With no network the sources return empty; with no API key the classifier falls back to a
-      deterministic keyword scorer — so a dry run works fully offline.
+      deterministic keyword scorer, so a dry run works fully offline.
     </p>
 
     <div class="flow" role="img"
          aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
-      <div class="flow-step"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, and news from five open ISDS sources: ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter.</div></div>
+      <div class="flow-step"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
@@ -131,13 +162,13 @@
       Every Monday, an <strong>annotated-bibliography digest</strong>: each surfaced development
       as a citation line, a two-sentence descriptive-and-evaluative annotation, a quoted notable
       line drawn from the source, and the rings it matched. The same content is committed to the
-      repository under a dated archive folder — browsable and citable.
+      repository under a dated archive folder, browsable and citable.
     </p>
     <ul class="receive-list">
       <li><strong>A citation</strong> in Chicago form, with the source named and the URL supplied liberally.</li>
       <li><strong>An annotation</strong> that is both descriptive and evaluative, reflecting on which rings the development implicates and why it matters to the project.</li>
       <li><strong>A verbatim notable line</strong> from the source, so the reader can proceed directly to backsourcing.</li>
-      <li><strong>A direct link to the original</strong> on every entry — sources are impossible to miss.</li>
+      <li><strong>A direct link to the original</strong> on every entry, so sources are impossible to miss.</li>
     </ul>
     <div class="cta-row">
       <a class="btn btn-primary" href="digests/index.html">Open the latest digest</a>
@@ -152,9 +183,8 @@
       <p class="closing-kicker">Latest run</p>
       <h2 class="closing-title">The most recent digest is dated 2026-06-16.</h2>
       <p class="closing-sub">
-        1 annotated entry
- —
-        each with its source named, linked, and quoted.
+        1 accepted, 7 screened.
+        Each accepted item carries its source named, linked, and quoted.
       </p>
     </div>
     <div class="closing-actions">
@@ -193,7 +223,7 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <p class="footer-about">A research instrument for the Benavides ISDS project &mdash; zero-cost, open-source,
+        <p class="footer-about">A research instrument for the Benavides ISDS project: zero-cost, open-source,
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>

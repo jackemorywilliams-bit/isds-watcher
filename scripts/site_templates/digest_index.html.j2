@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}Digest Archive — ISDS Thematic Watcher{% endblock %}
+{% block title %}Digest Archive | ISDS Thematic Watcher{% endblock %}
 {% block description %}Every weekly run of the ISDS Thematic Watcher, newest first, each with one annotated entry per development and a direct link to the original source.{% endblock %}
 
 {% block content %}
@@ -32,10 +32,10 @@
           <div class="archive-body">
             <h2 class="archive-h">ISDS Thematic Watch</h2>
             <p class="archive-stats">
-              <span class="count">{{ d.surfaced }}</span> annotated
-              {{ 'entry' if d.surfaced == 1 else 'entries' }}
-              {% if d.candidates %}· screened from {{ d.candidates }} candidates{% endif %}
-              {% if d.classifier %}· classifier: {{ d.classifier }}{% endif %}
+              <span class="count">{{ d.accepted_str }}</span> accepted
+              <span class="sep">·</span>
+              <span class="count">{{ d.screened_str }}</span> screened
+              {% if d.classifier %}<span class="sep">·</span> classifier: {{ d.classifier }}{% endif %}
             </p>
           </div>
           <div class="archive-go" aria-hidden="true">Read &#8594;</div>

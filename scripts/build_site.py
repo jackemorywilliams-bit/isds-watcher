@@ -17,6 +17,7 @@ it degrades gracefully and prints a warning.
 from __future__ import annotations
 
 import html
+import json
 import re
 import sys
 from dataclasses import dataclass, field
@@ -264,6 +265,19 @@ class Digest:
     candidates: int | None = None
     classifier: str | None = None
     threshold: int | None = None
+    # Counts for the "K accepted · N screened" line. ``accepted`` is the number
+    # of items at/above the relevance threshold; ``screened`` is the total pool
+    # of candidates considered that cycle. Either may be None if unknown.
+    accepted: int | None = None
+    screened: int | None = None
+
+    @property
+    def accepted_str(self) -> str:
+        return str(self.accepted) if self.accepted is not None else "—"
+
+    @property
+    def screened_str(self) -> str:
+        return str(self.screened) if self.screened is not None else "—"
 
 
 def _field_value(body: str, label: str) -> str:
@@ -422,6 +436,65 @@ def _parse_digest_summary(digest_dir: Path) -> tuple[str, int | None, str | None
     return summary_html, candidates, classifier, threshold
 
 
+def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
+                    fallback_accepted: int) -> tuple[int | None, int | None]:
+    """Resolve ``(accepted, screened)`` for a digest.
+
+    Order of preference:
+
+    1. ``meta.json`` (schema: {"date","screened","accepted","surfaced"}).
+    2. The folder's ``index.html`` footer, which contains the literal strings
+       ``Candidates screened: N`` and ``At or above threshold (40): K``.
+    3. The README-derived fallbacks (candidate count, surfaced-item count).
+
+    Robust by design: if a source is missing or malformed it is skipped, and a
+    value that cannot be determined is returned as ``None`` (rendered as an
+    em-dash placeholder by the templates) rather than raising.
+    """
+    accepted: int | None = None
+    screened: int | None = None
+
+    # 1. meta.json (authoritative when present).
+    meta_path = digest_dir / "meta.json"
+    if meta_path.exists():
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            if isinstance(meta.get("accepted"), int):
+                accepted = meta["accepted"]
+            if isinstance(meta.get("screened"), int):
+                screened = meta["screened"]
+        except (ValueError, OSError) as exc:
+            print(f"    ! {digest_dir.name}: meta.json unreadable ({exc}); "
+                  "falling back to index.html footer")
+
+    # 2. index.html footer (fill any gaps left by meta.json).
+    if accepted is None or screened is None:
+        index_html = digest_dir / "index.html"
+        if index_html.exists():
+            try:
+                text = index_html.read_text(encoding="utf-8")
+            except OSError:
+                text = ""
+            if screened is None:
+                ms = re.search(r"Candidates screened:\s*(\d+)", text)
+                if ms:
+                    screened = int(ms.group(1))
+            if accepted is None:
+                ma = re.search(r"At or above threshold\s*\(\d+\):\s*(\d+)", text)
+                if ma:
+                    accepted = int(ma.group(1))
+
+    # 3. README-derived fallbacks. The footer's threshold counter has been
+    # observed to read 0 even when items were surfaced, so the count of
+    # surfaced entries is the most reliable signal for "accepted".
+    if screened is None:
+        screened = fallback_screened
+    if accepted is None or (accepted == 0 and fallback_accepted > 0):
+        accepted = fallback_accepted
+
+    return accepted, screened
+
+
 def parse_digest(digest_dir: Path) -> Digest | None:
     m = re.match(r"^(\d{4}-\d{2}-\d{2})_", digest_dir.name)
     if not m:
@@ -429,10 +502,9 @@ def parse_digest(digest_dir: Path) -> Digest | None:
         return None
     date = m.group(1)
 
+    # A folder with no article files is a valid 0-article cycle, not an error:
+    # it still gets its own page and a clean "no developments" empty state.
     paths = _ordered_article_paths(digest_dir)
-    if not paths:
-        print(f"  ! {digest_dir.name}: no article files found; skipping")
-        return None
 
     entries: list[Entry] = []
     for p in paths:
@@ -446,16 +518,24 @@ def parse_digest(digest_dir: Path) -> Digest | None:
 
     summary_html, candidates, classifier, threshold = _parse_digest_summary(digest_dir)
 
+    accepted, screened = _resolve_counts(
+        digest_dir,
+        fallback_screened=candidates,
+        fallback_accepted=len(entries),
+    )
+
     return Digest(
         date=date,
         slug=digest_dir.name,
-        title=f"ISDS Thematic Watch — {date}",
+        title=f"ISDS Thematic Watch, {date}",
         summary_html=summary_html,
         entries=entries,
         surfaced=len(entries),
         candidates=candidates,
         classifier=classifier,
         threshold=threshold,
+        accepted=accepted,
+        screened=screened,
     )
 
 

@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}{{ digest.title }} — ISDS Thematic Watcher{% endblock %}
+{% block title %}{{ digest.title }} | ISDS Thematic Watcher{% endblock %}
 {% block description %}Annotated digest of investor–State dispute developments surfaced on {{ digest.date }}, each with its source, a direct link to the original, a relevance score, and a quoted notable line.{% endblock %}
 
 {% block content %}
@@ -18,14 +18,17 @@
       An annotated digest of investor–State dispute developments at the IP-as-investment /
       judicial-or-regulatory-measure / jurisdictional-admissibility intersection.
     </p>
+    <p class="run-counts"><span class="count">{{ digest.accepted_str }}</span> accepted
+      <span class="sep">·</span>
+      <span class="count">{{ digest.screened_str }}</span> screened</p>
     <div class="run-summary">
-      <div class="run-stat"><span class="run-num">{{ digest.surfaced }}</span><span class="run-label">items surfaced</span></div>
-      {% if digest.candidates %}<div class="run-stat"><span class="run-num">{{ digest.candidates }}</span><span class="run-label">candidates screened</span></div>{% endif %}
+      <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">accepted</span></div>
+      <div class="run-stat"><span class="run-num">{{ digest.screened_str }}</span><span class="run-label">screened</span></div>
       {% if digest.threshold %}<div class="run-stat"><span class="run-num">{{ digest.threshold }}</span><span class="run-label">relevance threshold</span></div>{% endif %}
       {% if digest.classifier %}<div class="run-stat"><span class="run-num run-text">{{ digest.classifier }}</span><span class="run-label">classifier</span></div>{% endif %}
     </div>
     <p class="run-note">
-      Entries are ordered by thematic relevance; each carries a two-sentence annotation and a
+      Entries are ordered by thematic relevance. Each carries a two-sentence annotation and a
       notable line drawn from the source. Items below the gate are surfaced as watch-list leads,
       not matches.
     </p>
@@ -34,7 +37,7 @@
 
 <section class="band">
   <div class="measure">
-    <h2 class="section-head">Annotated bibliography — {{ digest.surfaced }} {{ 'entry' if digest.surfaced == 1 else 'entries' }}</h2>
+    <h2 class="section-head">Annotated bibliography: {{ digest.surfaced }} {{ 'entry' if digest.surfaced == 1 else 'entries' }}</h2>
 
     {% if digest.entries %}
     <ol class="entries">
@@ -84,7 +87,15 @@
       {% endfor %}
     </ol>
     {% else %}
-    <p class="empty">This digest contains no entries.</p>
+    <div class="no-developments" role="status">
+      <p class="no-dev-head">No thematically relevant developments this cycle.</p>
+      <p class="no-dev-sub">
+        {{ digest.screened_str }} candidate{{ '' if digest.screened == 1 else 's' }} screened;
+        none reached the relevance floor at the IP-as-investment / judicial-or-regulatory-measure /
+        jurisdictional-admissibility intersection. A clean cycle is a finding, not a gap: the
+        watcher ran and surfaced nothing worth your attention.
+      </p>
+    </div>
     {% endif %}
   </div>
 </section>

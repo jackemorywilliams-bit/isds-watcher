@@ -84,3 +84,21 @@ jobs:
               sleep 3
             done
           fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          python - <<'PY'
+          import os, smtplib
+          from email.mime.text import MIMEText
+          host=os.environ.get("SMTP_HOST","smtp.gmail.com"); port=int(os.environ.get("SMTP_PORT","465"))
+          user=os.environ.get("SMTP_USER"); pw=(os.environ.get("SMTP_PASS") or "").replace(" ","")
+          if not (user and pw):
+              print("no SMTP creds; cannot send failure alert"); raise SystemExit(0)
+          run_url=f"{os.environ.get('GITHUB_SERVER_URL','https://github.com')}/{os.environ.get('GITHUB_REPOSITORY','')}/actions/runs/{os.environ.get('GITHUB_RUN_ID','')}"
+          body=f"The weekly ISDS Thematic Watcher run FAILED.\n\nRun: {run_url}\n\nCheck the logs; the digest email may not have been sent."
+          msg=MIMEText(body); msg["Subject"]="ISDS Thematic Watch — RUN FAILED"; msg["From"]=user; msg["To"]="jackemorywilliams@icloud.com"
+          with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+              s.login(user, pw); s.sendmail(user, ["jackemorywilliams@icloud.com"], msg.as_string())
+          print("failure alert sent")
+          PY

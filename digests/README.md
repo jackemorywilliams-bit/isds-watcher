@@ -5,7 +5,7 @@ digest (`index.html`) or browse `articles/` for one annotated entry per developm
 
 | Date | Digest | Entries |
 |------|--------|---------|
-| 2026-06-16 | [2026-06-16_ISDS-Thematic-Watch](./2026-06-16_ISDS-Thematic-Watch/) · [README](./2026-06-16_ISDS-Thematic-Watch/README.md) | 1 |
+| 2026-06-16 | [2026-06-16_ISDS-Thematic-Watch](./2026-06-16_ISDS-Thematic-Watch/) · [README](./2026-06-16_ISDS-Thematic-Watch/README.md) | 0 |
 | 2026-06-15 | [2026-06-15_ISDS-Thematic-Watch](./2026-06-15_ISDS-Thematic-Watch/) · [README](./2026-06-15_ISDS-Thematic-Watch/README.md) | 0 |
 | 2026-06-10 | [2026-06-10_ISDS-Thematic-Watch](./2026-06-10_ISDS-Thematic-Watch/) · [README](./2026-06-10_ISDS-Thematic-Watch/README.md) | 10 |
 | 2026-06-09 | [2026-06-09_ISDS-Thematic-Watch](./2026-06-09_ISDS-Thematic-Watch/) · [README](./2026-06-09_ISDS-Thematic-Watch/README.md) | 4 |

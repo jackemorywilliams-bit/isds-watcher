@@ -109,6 +109,10 @@ def test_main_nonempty_subject_builds(tmp_path, monkeypatch):
     captured = {}
     monkeypatch.setattr(main_mod, "send_digest",
                         lambda html, subject, cfg, **k: captured.update(subject=subject) or True)
+    # Render needs the templates/ dir relative to cwd; copy it into the sandbox.
+    import shutil
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
     monkeypatch.chdir(tmp_path)
     # Pre-seed state so this is NOT a bootstrap run (so the item actually surfaces).
     state.save_state({"sources": {"iisd_itn": {"_seed": "t"}}}, "state/seen.json")

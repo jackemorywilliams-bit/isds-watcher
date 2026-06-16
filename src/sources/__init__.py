@@ -13,6 +13,7 @@ import logging
 from .base import CandidateItem, Source, parse_date
 from .iisd_itn import IISDITNSource
 from .google_alerts import GoogleAlertsSource
+from .gmail_scholar import GmailScholarSource
 from .google_news_rss import GoogleNewsRSSSource
 from .italaw import ItalawSource
 from .icsid import ICSIDSource
@@ -29,6 +30,7 @@ __all__ = [
     "all_sources",
     "IISDITNSource",
     "GoogleAlertsSource",
+    "GmailScholarSource",
     "GoogleNewsRSSSource",
     "ItalawSource",
     "ICSIDSource",
@@ -49,6 +51,7 @@ def all_sources(config=None) -> list[Source]:
     return [
         IISDITNSource(),
         GoogleAlertsSource(),
+        GmailScholarSource(),
         GoogleNewsRSSSource(),
         ItalawSource(),
         ICSIDSource(),

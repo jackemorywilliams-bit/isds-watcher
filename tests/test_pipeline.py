@@ -124,6 +124,31 @@ def test_google_alerts_resolve_redirect():
     assert GoogleAlertsSource().fetch(datetime.datetime.now(UTC)) == []
 
 
+def test_parse_scholar_email(monkeypatch):
+    from src.sources.gmail_scholar import parse_scholar_email, GmailScholarSource
+    html = (
+        "<div>"
+        '<h3><a href="https://scholar.google.com/scholar_url?url=https://example.org/paper1&hl=en">'
+        "Title One</a></h3>"
+        "<div>A. Author, B. Author - Journal, 2026</div>"
+        '<h3><a href="https://scholar.google.com/scholar_url?url=https://example.org/paper2&hl=en">'
+        "Title Two</a></h3>"
+        "<div>C. Author - Other Journal, 2026</div>"
+        "</div>"
+    )
+    entries = parse_scholar_email(html)
+    assert len(entries) == 2
+    assert entries[0]["title"] == "Title One"
+    assert entries[0]["url"] == "https://example.org/paper1"
+    assert entries[1]["title"] == "Title Two"
+    assert entries[1]["url"] == "https://example.org/paper2"
+
+    # no credentials -> inactive, returns [] (never raises)
+    monkeypatch.delenv("GMAIL_ALERT_USER", raising=False)
+    monkeypatch.delenv("GMAIL_ALERT_PASS", raising=False)
+    assert GmailScholarSource().fetch(datetime.datetime.now(UTC)) == []
+
+
 def test_parse_date_to_utc():
     d = parse_date("Tue, 21 Apr 2026 17:02:05 +0000")
     assert d is not None and d.tzinfo is not None

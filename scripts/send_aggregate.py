@@ -93,19 +93,57 @@ def main():
         ci.metadata = {"notable_quote": a["quote"]} if a["quote"] else {}
         items.append(ci)
 
+    # Real cumulative screening volume across every archived run.
+    import json
+    screened_total = 0
+    runs = 0
+    for folder in glob.glob("digests/*_ISDS-Thematic-Watch"):
+        meta = os.path.join(folder, "meta.json")
+        n = None
+        if os.path.exists(meta):
+            try:
+                n = json.load(open(meta)).get("screened")
+            except Exception:
+                n = None
+        if n is None:
+            try:
+                ix = open(os.path.join(folder, "index.html"), encoding="utf-8").read()
+                m = re.search(r"Candidates screened:\s*(\d+)", ix)
+                n = int(m.group(1)) if m else 0
+            except Exception:
+                n = 0
+        screened_total += int(n or 0)
+        runs += 1
+
     now = datetime.datetime.now(UTC)
     stats = {
-        "total_candidates": len(by_url), "classified": len(by_url),
+        "total_candidates": screened_total, "classified": screened_total,
         "above_threshold": sum(1 for a in found if a["relevance"] >= 40),
-        "per_source": {}, "dropped_sources": [], "threshold": 40,
-        "provider": "claude (aggregated across runs)",
+        "per_source": {}, "dropped_sources": [], "threshold": 40, "provider": "Claude",
     }
     for a in found:
         stats["per_source"][a["source"]] = stats["per_source"].get(a["source"], 0) + 1
 
+    n = len(items)
+    lede = (
+        "This is the first collected digest from the ISDS Thematic Watcher, an automated "
+        "monitor I built to scan investor-State dispute settlement (ISDS) for one narrow "
+        "doctrinal theme: intellectual property asserted as a protected investment, a "
+        "regulatory or judicial measure as the disputed conduct, and a case decided on "
+        "jurisdiction or admissibility rather than the merits. It draws on nine open sources, "
+        "namely the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter "
+        "repositories together with Google Alerts and Google Scholar, and it scores every new "
+        "item against the project's three-ring fingerprint. Across the "
+        f"{runs} runs that brought the system online it screened {screened_total} candidate "
+        f"items; the {n} entr{'y' if n == 1 else 'ies'} below {'is' if n == 1 else 'are'} "
+        "the ones that cleared the relevance bar, ordered by thematic relevance. Each carries "
+        "a short evaluative annotation, a verbatim line drawn from the source, and a direct "
+        "link to the original."
+    )
+
     folder_url = f"{config.REPO_URL}/tree/main/digests"
     html = render.render_digest(items, now, now - datetime.timedelta(days=365),
-                                stats, folder_url=folder_url)
+                                stats, folder_url=folder_url, lede=lede)
     subject = (f"ISDS Thematic Watch — First Official Digest "
                f"({len(items)} finding{'' if len(items) == 1 else 's'})")
     ok = send_digest(html, subject, config.load_config())

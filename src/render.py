@@ -39,8 +39,11 @@ def folder_name(date_str: str) -> str:
 
 
 def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
-                  folder_url: str | None = None) -> str:
-    """Render the annotated-bibliography digest (used as the email body)."""
+                  folder_url: str | None = None, lede: str | None = None) -> str:
+    """Render the annotated-bibliography digest (used as the email body).
+
+    ``lede`` overrides the default one-line summary paragraph when provided.
+    """
     tmpl = _env.get_template("digest.html.j2")
     return tmpl.render(
         items=items,
@@ -52,6 +55,7 @@ def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
         theme=config.THEME_ONE_LINER,
         date_str=generated_at.strftime("%Y-%m-%d"),
         folder_url=folder_url,
+        lede=lede,
     )
 
 

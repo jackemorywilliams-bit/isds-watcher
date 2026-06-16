@@ -83,11 +83,13 @@
   </div>
 
   <div class="lede">
+    {% if lede %}{{ lede }}{% else %}
     This issue surfaces <strong>{{ items|length }}</strong> development{{ "" if items|length == 1 else "s" }}
     from {{ stats.total_candidates }} candidates screened across {{ stats.per_source|length }} sources,
     classified by {{ stats.provider or "the keyword model" }}. Entries are ordered by thematic
     relevance; each carries a short descriptive-and-evaluative annotation, a notable line drawn
     from the source, and a direct link to the original.
+    {% endif %}
   </div>
 
   {% macro entry(it, idx) %}

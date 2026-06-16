@@ -265,15 +265,20 @@ class Digest:
     candidates: int | None = None
     classifier: str | None = None
     threshold: int | None = None
-    # Counts for the "K accepted · N screened" line. ``accepted`` is the number
-    # of items at/above the relevance threshold; ``screened`` is the total pool
-    # of candidates considered that cycle. Either may be None if unknown.
+    # Run counts, defined identically to the email and meta.json:
+    #   screened = candidates scored that cycle; matches = items >= threshold;
+    #   accepted = matches + watch-list leads actually shown. Any may be None.
     accepted: int | None = None
+    matches: int | None = None
     screened: int | None = None
 
     @property
     def accepted_str(self) -> str:
         return str(self.accepted) if self.accepted is not None else "—"
+
+    @property
+    def matches_str(self) -> str:
+        return str(self.matches) if self.matches is not None else "—"
 
     @property
     def screened_str(self) -> str:
@@ -437,21 +442,22 @@ def _parse_digest_summary(digest_dir: Path) -> tuple[str, int | None, str | None
 
 
 def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
-                    fallback_accepted: int) -> tuple[int | None, int | None]:
-    """Resolve ``(accepted, screened)`` for a digest.
+                    fallback_accepted: int) -> tuple[int | None, int | None, int | None]:
+    """Resolve ``(accepted, matches, screened)`` for a digest, defined identically
+    to the email and meta.json: ``screened`` = candidates scored; ``matches`` =
+    items at/above threshold; ``accepted`` = matches plus watch-list leads shown.
 
     Order of preference:
+    1. ``meta.json`` (schema {"date","screened","matches","watch_list_leads","accepted"}).
+    2. The folder's ``index.html`` footer (current "Screened:" / "Matches (>=N):",
+       or legacy "Candidates screened:" / "At or above threshold (N):").
+    3. README-derived fallbacks (candidate count for screened, surfaced-entry count
+       for accepted; matches defaults to 0 when otherwise unknown).
 
-    1. ``meta.json`` (schema: {"date","screened","accepted","surfaced"}).
-    2. The folder's ``index.html`` footer, which contains the literal strings
-       ``Candidates screened: N`` and ``At or above threshold (40): K``.
-    3. The README-derived fallbacks (candidate count, surfaced-item count).
-
-    Robust by design: if a source is missing or malformed it is skipped, and a
-    value that cannot be determined is returned as ``None`` (rendered as an
-    em-dash placeholder by the templates) rather than raising.
+    Robust by design: a missing or malformed source is skipped, never fatal.
     """
     accepted: int | None = None
+    matches: int | None = None
     screened: int | None = None
 
     # 1. meta.json (authoritative when present).
@@ -459,8 +465,16 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
     if meta_path.exists():
         try:
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
-            if isinstance(meta.get("accepted"), int):
-                accepted = meta["accepted"]
+            if "matches" in meta:  # current schema: accepted = shown, matches = >= thr
+                if isinstance(meta.get("accepted"), int):
+                    accepted = meta["accepted"]
+                if isinstance(meta.get("matches"), int):
+                    matches = meta["matches"]
+            else:  # legacy schema: accepted == matches, surfaced == shown
+                if isinstance(meta.get("surfaced"), int):
+                    accepted = meta["surfaced"]
+                if isinstance(meta.get("accepted"), int):
+                    matches = meta["accepted"]
             if isinstance(meta.get("screened"), int):
                 screened = meta["screened"]
         except (ValueError, OSError) as exc:
@@ -468,7 +482,7 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
                   "falling back to index.html footer")
 
     # 2. index.html footer (fill any gaps left by meta.json).
-    if accepted is None or screened is None:
+    if matches is None or screened is None:
         index_html = digest_dir / "index.html"
         if index_html.exists():
             try:
@@ -476,23 +490,25 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
             except OSError:
                 text = ""
             if screened is None:
-                ms = re.search(r"Candidates screened:\s*(\d+)", text)
+                ms = re.search(r"(?:Candidates screened|Screened):\s*(\d+)", text)
                 if ms:
                     screened = int(ms.group(1))
-            if accepted is None:
-                ma = re.search(r"At or above threshold\s*\(\d+\):\s*(\d+)", text)
-                if ma:
-                    accepted = int(ma.group(1))
+            if matches is None:
+                mm = re.search(
+                    r"(?:At or above threshold\s*\(\d+\)|Matches\s*\(\D*\d+\)):\s*(\d+)",
+                    text)
+                if mm:
+                    matches = int(mm.group(1))
 
-    # 3. README-derived fallbacks. The footer's threshold counter has been
-    # observed to read 0 even when items were surfaced, so the count of
-    # surfaced entries is the most reliable signal for "accepted".
+    # 3. README-derived fallbacks.
     if screened is None:
         screened = fallback_screened
-    if accepted is None or (accepted == 0 and fallback_accepted > 0):
-        accepted = fallback_accepted
+    if matches is None:
+        matches = 0
+    if accepted is None:
+        accepted = fallback_accepted  # surfaced-entry count = matches + leads shown
 
-    return accepted, screened
+    return accepted, matches, screened
 
 
 def parse_digest(digest_dir: Path) -> Digest | None:
@@ -518,7 +534,7 @@ def parse_digest(digest_dir: Path) -> Digest | None:
 
     summary_html, candidates, classifier, threshold = _parse_digest_summary(digest_dir)
 
-    accepted, screened = _resolve_counts(
+    accepted, matches, screened = _resolve_counts(
         digest_dir,
         fallback_screened=candidates,
         fallback_accepted=len(entries),
@@ -535,6 +551,7 @@ def parse_digest(digest_dir: Path) -> Digest | None:
         classifier=classifier,
         threshold=threshold,
         accepted=accepted,
+        matches=matches,
         screened=screened,
     )
 

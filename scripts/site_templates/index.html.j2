@@ -154,7 +154,8 @@
       {% if digests %}
       <h2 class="closing-title">The most recent digest is dated {{ digests[0].date }}.</h2>
       <p class="closing-sub">
-        {{ digests[0].accepted_str }} accepted, {{ digests[0].screened_str }} screened.
+        {{ digests[0].screened_str }} screened, {{ digests[0].matches_str }} matches,
+        {{ digests[0].accepted_str }} accepted.
         Each accepted item carries its source named, linked, and quoted.
       </p>
       {% else %}

@@ -18,12 +18,15 @@
       An annotated digest of investor–State dispute developments at the IP-as-investment /
       judicial-or-regulatory-measure / jurisdictional-admissibility intersection.
     </p>
-    <p class="run-counts"><span class="count">{{ digest.accepted_str }}</span> accepted
+    <p class="run-counts"><span class="count">{{ digest.screened_str }}</span> screened
       <span class="sep">·</span>
-      <span class="count">{{ digest.screened_str }}</span> screened</p>
+      <span class="count">{{ digest.matches_str }}</span> matches
+      <span class="sep">·</span>
+      <span class="count">{{ digest.accepted_str }}</span> accepted</p>
     <div class="run-summary">
-      <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">accepted</span></div>
       <div class="run-stat"><span class="run-num">{{ digest.screened_str }}</span><span class="run-label">screened</span></div>
+      <div class="run-stat"><span class="run-num">{{ digest.matches_str }}</span><span class="run-label">matches</span></div>
+      <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">accepted</span></div>
       {% if digest.threshold %}<div class="run-stat"><span class="run-num">{{ digest.threshold }}</span><span class="run-label">relevance threshold</span></div>{% endif %}
       {% if digest.classifier %}<div class="run-stat"><span class="run-num run-text">{{ digest.classifier }}</span><span class="run-label">classifier</span></div>{% endif %}
     </div>

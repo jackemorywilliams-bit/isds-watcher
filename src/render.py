@@ -45,11 +45,18 @@ def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
     ``lede`` overrides the default one-line summary paragraph when provided.
     """
     tmpl = _env.get_template("digest.html.j2")
+    # Single source of truth for the count split, shared with meta.json:
+    # matches score >= threshold; watch-list leads are the rest of the shown set.
+    matches = sum(1 for it in items
+                  if getattr(it, "relevance_score", 0) >= stats.get("threshold", 40))
+    leads = len(items) - matches
     return tmpl.render(
         items=items,
         generated_at=generated_at,
         since=since,
         stats=stats,
+        matches=matches,
+        leads=leads,
         repo_url=config.REPO_URL,
         site_url=config.SITE_URL,
         theme=config.THEME_ONE_LINER,
@@ -110,16 +117,23 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(html)
 
-    # Per-digest machine-readable summary.
+    # Per-digest machine-readable summary — the single source of truth for run
+    # counts, read by the email footer and the website. Definitions:
+    #   screened = candidates fetched and scored this run (after dedupe)
+    #   matches  = items scoring >= threshold
+    #   watch_list_leads = sub-threshold items surfaced to meet the minimum floor
+    #   accepted = matches + watch_list_leads actually shown in the digest
     screened = stats.get("total_candidates", 0)
-    accepted = stats.get("above_threshold", 0)
-    surfaced = len(items)
+    matches = stats.get("above_threshold", 0)
+    accepted = len(items)
+    watch_list_leads = accepted - matches
     threshold = stats.get("threshold")
     meta = {
         "date": date_str,
         "screened": screened,
+        "matches": matches,
+        "watch_list_leads": watch_list_leads,
         "accepted": accepted,
-        "surfaced": surfaced,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)
@@ -129,8 +143,8 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     rd = [
         f"# ISDS Thematic Watch — {date_str}",
         "",
-        f"**Accepted (≥ threshold {threshold}): {accepted} · "
-        f"Screened: {screened} · Surfaced incl. watch-list: {surfaced}**",
+        f"**Screened: {screened} · Matches (≥{threshold}): {matches} · "
+        f"Watch-list leads: {watch_list_leads} · Accepted (shown): {accepted}**",
         "",
         f"Annotated digest of **{len(items)}** surfaced item"
         f"{'' if len(items) == 1 else 's'} "

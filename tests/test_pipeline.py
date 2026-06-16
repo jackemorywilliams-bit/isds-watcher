@@ -4,6 +4,7 @@ config, and rendering. No network or API key required."""
 import datetime
 import json
 import os
+import sys
 
 import yaml
 
@@ -120,6 +121,43 @@ def test_main_nonempty_subject_builds(tmp_path, monkeypatch):
     rc = main_mod.main(["--since", "30d"])   # no --no-email -> builds the subject
     assert rc == 0
     assert "at threshold)" in captured.get("subject", "")
+
+
+def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
+    # Fix 1: the email footer, meta.json, and the website build must report the
+    # SAME screened / matches / accepted numbers for one run, with one definition.
+    import json
+    import shutil
+    import importlib
+    from pathlib import Path
+    from src import render
+    from src.classify import ClassifiedItem
+    now = datetime.datetime.now(UTC)
+    # One sub-threshold watch-list lead; 80 screened; 0 matches; 1 accepted (shown).
+    items = [ClassifiedItem("iisd_itn", "u1", "http://x/1", "Case A", now, "s", "r",
+                            relevance_score=30, matched_rings=[], thematic_tags=[],
+                            digest_summary="A. B.")]
+    stats = {"total_candidates": 80, "above_threshold": 0, "threshold": 40,
+             "classified": 80, "per_source": {"iisd_itn": 80}, "dropped_sources": [],
+             "provider": "claude"}
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+
+    html = render.render_digest(items, now, now, stats)
+    assert "Screened: 80" in html
+    assert "Matches (&ge;40): 0" in html
+    assert "Accepted (shown): 1" in html
+
+    folder = render.write_digest_folder(html, items, now, stats)
+    meta = json.loads(Path(folder, "meta.json").read_text())
+    assert (meta["screened"], meta["matches"], meta["accepted"], meta["watch_list_leads"]) \
+        == (80, 0, 1, 1)
+
+    sys.path.insert(0, os.path.join(repo, "scripts"))
+    bs = importlib.import_module("build_site")
+    accepted, matches, screened = bs._resolve_counts(Path(folder), 80, len(items))
+    assert (screened, matches, accepted) == (80, 0, 1)
 
 
 def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):

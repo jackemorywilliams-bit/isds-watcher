@@ -132,8 +132,10 @@
       <td>
         <h4>This issue</h4>
         Compiled {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
-        Candidates screened: {{ stats.total_candidates }}<br>
-        At or above threshold ({{ stats.threshold }}): {{ stats.above_threshold }}<br>
+        Screened: {{ stats.total_candidates }}<br>
+        Matches (&ge;{{ stats.threshold }}): {{ matches }}<br>
+        Watch-list leads: {{ leads }}<br>
+        Accepted (shown): {{ items|length }}<br>
         Classifier: {{ stats.provider or "keyword fallback" }}
       </td>
     </tr></table>

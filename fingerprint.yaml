@@ -23,21 +23,26 @@ rings:
     extra_weight: false
     keywords:
       - {phrase: "promise utility doctrine", weight: 14, seed: eli_lilly}
-      - {phrase: "promise doctrine", weight: 8, seed: eli_lilly}
+      - {phrase: "promise doctrine", weight: 3, seed: eli_lilly}
       - {phrase: "utility requirement", weight: 10, seed: eli_lilly}
-      - {phrase: "patent invalidation", weight: 8, seed: eli_lilly}
+      - {phrase: "patent invalidation", weight: 5, seed: eli_lilly}
       - {phrase: "covered investment", weight: 8, seed: "philip_morris,bridgestone"}
-      - {phrase: "intellectual property", weight: 8, seed: bridgestone}
+      - {phrase: "intellectual property", weight: 4, seed: bridgestone}
       - {phrase: "trademark", weight: 8, seed: bridgestone}
-      - {phrase: "exploitation of the trademark", weight: 5, seed: bridgestone}
-      - {phrase: "licenses that constitute its investment", weight: 7, seed: bridgestone}
+      - {phrase: "exploitation of the trademark", weight: 3, seed: bridgestone}
+      - {phrase: "licenses that constitute its investment", weight: 4, seed: bridgestone}
       - {phrase: "licensor", weight: 4, seed: bridgestone}
       - {phrase: "licensee", weight: 4, seed: bridgestone}
       - {phrase: "brand value", weight: 4, seed: theme_extension}
       - {phrase: "geographical indication", weight: 4, seed: theme_extension}
-      - {phrase: "data exclusivity", weight: 4, seed: theme_extension}
+      - {phrase: "data exclusivity", weight: 4, seed: "kim,ferguson"}
       - {phrase: "copyright", weight: 4, seed: theme_extension}
-    # sum: 14+8+10+8+8+8+8+5+7+4+4+4+4+4+4 = 100
+      # Trade-secret / clinical-data branch, from the Ferguson & Kim seed memos:
+      - {phrase: "trade secret", weight: 6, seed: "ferguson,kim"}
+      - {phrase: "clinical trial data", weight: 5, seed: kim}
+      - {phrase: "test data", weight: 3, seed: kim}
+      - {phrase: "unfair commercial use", weight: 3, seed: "ferguson,kim"}
+    # sum: 14+3+10+5+8+4+8+3+4+4+4+4+4+4+4+6+5+3+3 = 100
 
   judicial_or_regulatory_measure:
     weight: 100

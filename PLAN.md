@@ -38,6 +38,7 @@ Legend: **[PM]** Philip Morris v Australia · **[EL]** Eli Lilly v Canada · **[
 - "patent" invalidation; "utility requirement" in patent law [EL(633 / 414)]
 - "promise utility doctrine" / "promise doctrine" [EL(81 / 10)]
 - brand value, GIs, data exclusivity, copyright (theme extension; not all literal in seeds)
+- "trade secret" / "clinical trial data" / "test data" / "unfair commercial use" (TRIPS Art. 39(3)) / "data exclusivity" [Ferguson][Kim] — trade-secret & clinical-data branch (scholarly seed sources, fold into Ring 1 lexicon)
 
 ### Ring 2 — Regulatory or judicial measure as the disputed conduct (EXTRA WEIGHT: 2/3 seeds are judicial-measure cases)
 - "denial of justice" [EL(59)][BR(132)]

@@ -1,6 +1,8 @@
 # ISDS Thematic Watch — 2026-06-16
 
-Annotated digest of **1** surfaced item (screened from 7 candidates; classifier: claude; threshold 40).
+**Accepted (≥ threshold 40): 0 · Screened: 80 · Surfaced incl. watch-list: 1**
+
+Annotated digest of **1** surfaced item (screened from 80 candidates; classifier: claude; threshold 40).
 
 Open `index.html` for the formatted digest, or browse `articles/` for one file per entry.
 

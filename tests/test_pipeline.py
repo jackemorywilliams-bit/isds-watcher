@@ -162,6 +162,52 @@ def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
     assert (screened, matches, accepted) == (80, 0, 1)
 
 
+def test_empty_rerun_does_not_clobber_existing_record(tmp_path, monkeypatch):
+    # Run identity is keyed by date. A same-day empty re-run (0 screened, 0
+    # surfaced — e.g. everything already deduped against state) must NOT overwrite
+    # a substantive record already written for that date.
+    import json
+    import shutil
+    from pathlib import Path
+    from src import render
+    from src.classify import ClassifiedItem
+    now = datetime.datetime.now(UTC)
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+
+    # 1) A real run for the date: 80 screened, 1 surfaced watch-list lead.
+    real = [ClassifiedItem("iisd_itn", "u1", "http://x/1", "Case A", now, "s", "r",
+                           relevance_score=30, matched_rings=[], thematic_tags=[],
+                           digest_summary="A. B.")]
+    real_stats = {"total_candidates": 80, "above_threshold": 0, "threshold": 40,
+                  "per_source": {"iisd_itn": 80}, "provider": "claude"}
+    html = render.render_digest(real, now, now, real_stats)
+    folder = render.write_digest_folder(html, real, now, real_stats)
+    assert (tmp_path / folder / "articles" / "01_case-a.md").exists() or \
+        list((tmp_path / folder / "articles").glob("*.md"))
+
+    # 2) An empty re-run for the SAME date must preserve the substantive record.
+    empty_stats = {"total_candidates": 0, "above_threshold": 0, "threshold": 40,
+                   "per_source": {}, "provider": "claude"}
+    empty_html = render.render_digest([], now, now, empty_stats)
+    render.write_digest_folder(empty_html, [], now, empty_stats)
+    meta = json.loads(Path(folder, "meta.json").read_text())
+    assert (meta["screened"], meta["matches"], meta["accepted"]) == (80, 0, 1)
+    assert list((tmp_path / folder / "articles").glob("*.md"))  # article survived
+
+    # 3) A non-empty re-run (legitimate correction) DOES overwrite.
+    corr = [real[0], ClassifiedItem("italaw", "u2", "http://x/2", "Case B", now,
+                                    "s", "r", relevance_score=55, matched_rings=["R2"],
+                                    thematic_tags=[], digest_summary="C. D.")]
+    corr_stats = {"total_candidates": 90, "above_threshold": 1, "threshold": 40,
+                  "per_source": {"iisd_itn": 45, "italaw": 45}, "provider": "claude"}
+    render.write_digest_folder(render.render_digest(corr, now, now, corr_stats),
+                               corr, now, corr_stats)
+    meta = json.loads(Path(folder, "meta.json").read_text())
+    assert (meta["screened"], meta["matches"], meta["accepted"]) == (90, 1, 2)
+
+
 def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):
     import glob
     import src.main as main_mod

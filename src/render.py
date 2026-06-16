@@ -105,6 +105,28 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     and one Markdown file per surfaced article. Returns the folder path."""
     date_str = generated_at.strftime("%Y-%m-%d")
     folder = os.path.join(out_root, folder_name(date_str))
+
+    # Run identity is keyed by date: one date maps to exactly one record, and a
+    # re-run OVERWRITES that date's record. One guarded exception: an *empty*
+    # re-run (nothing screened, nothing surfaced — typically a same-day dispatch
+    # where every candidate is already deduped against state) must not silently
+    # destroy a substantive run already recorded for that date. If a populated
+    # record exists and this run produced nothing, preserve the existing record.
+    new_screened = stats.get("total_candidates", 0)
+    new_accepted = len(items)
+    prior_meta = os.path.join(folder, "meta.json")
+    if new_screened == 0 and new_accepted == 0 and os.path.exists(prior_meta):
+        try:
+            with open(prior_meta, encoding="utf-8") as fh:
+                prev = json.load(fh)
+            if (prev.get("screened") or 0) > 0 or (prev.get("accepted") or 0) > 0:
+                print(f"  ! {date_str}: empty re-run; preserving existing record "
+                      f"({prev.get('screened')} screened, {prev.get('accepted')} "
+                      f"accepted) rather than overwriting it.")
+                return folder
+        except (ValueError, OSError):
+            pass  # unreadable prior record: fall through and write the new one
+
     arts = os.path.join(folder, "articles")
     # Clear any prior run's article files so stale, differently-slugged entries
     # never accumulate in the same dated folder.

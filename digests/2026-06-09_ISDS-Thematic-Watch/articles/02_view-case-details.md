@@ -1,5 +1,4 @@
-# 2. View case details
-
+# 2. Telefónica, S.A. v. Republic of Colombia, ICSID Case No. ARB/18/3
 - **Source:** Italaw — [Read the original ↗](https://www.italaw.com/cases/12153)
 - **Date:** 02 June 2026
 - **Link:** https://www.italaw.com/cases/12153
@@ -8,7 +7,7 @@
 - **Tags:** judicial_measure, constitutional_court, denial_of_justice, legislative_change, fair_and_equitable_treatment, legitimate_expectations
 
 ## Citation
-> italaw. "View case details." 02 Jun 2026. https://www.italaw.com/cases/12153
+> italaw. "Telefónica, S.A. v. Republic of Colombia, ICSID Case No. ARB/18/3." 02 Jun 2026. https://www.italaw.com/cases/12153
 
 ## Annotation
 Telefónica challenged Colombia's reversion of telecommunications assets under its concession, alleging breaches of the Spain-Colombia BIT by legislation and a Constitutional Court judgment; the tribunal found a Fair and Equitable Treatment breach based on frustrated legitimate expectations. While the case involves a judicial measure (the Constitutional Court's Sentencia C-555) and legislative reform, it lacks any intellectual property element and does not centrally implicate jurisdictional admissibility doctrines such as abuse of right, treaty-shopping, or corporate restructuring, placing it outside the three-ring intersection.

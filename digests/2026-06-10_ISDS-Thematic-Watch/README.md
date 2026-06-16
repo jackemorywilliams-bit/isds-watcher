@@ -6,9 +6,9 @@ Open `index.html` for the formatted digest, or browse `articles/` for one file p
 
 | # | Relevance | Source | Article | Notable line |
 |---|-----------|--------|---------|--------------|
-| 1 | 28 | italaw | [View case details](articles/01_view-case-details.md) | The Tribunal held that the Tirana Judgment, being a post-award event, could not … |
-| 2 | 28 | italaw | [View case details](articles/02_view-case-details.md) | It affirmed its jurisdiction to assess whether state measures, including judicia… |
-| 3 | 15 | italaw | [View case details](articles/03_view-case-details.md) | The Arbitrator concluded that this failure constituted a breach of several warra… |
+| 1 | 28 | italaw | [Hydro S.r.l. and others v. Republic of Albania (I), ICSID Case No. ARB/15/28](articles/01_view-case-details.md) | The Tribunal held that the Tirana Judgment, being a post-award event, could not … |
+| 2 | 28 | italaw | [Telefónica, S.A. v. Republic of Colombia, ICSID Case No. ARB/18/3](articles/02_view-case-details.md) | It affirmed its jurisdiction to assess whether state measures, including judicia… |
+| 3 | 15 | italaw | [Frazer Solar GmbH v. Kingdom of Lesotho](articles/03_view-case-details.md) | The Arbitrator concluded that this failure constituted a breach of several warra… |
 | 4 | 15 | unctad isds | [Enwell Energy v. Ukraine](articles/04_enwell-energy-v-ukraine.md) |  |
 | 5 | 15 | pca press | [PCA Press Release – PCA Case No. 2025-21: (1) Blue Gold Holdings Limited (United Kingdom) and (2) Future Global Resources Limited (United Kingdom) v. The Republic of Ghana](articles/05_pca-press-release-pca-case-no-2025-21-1-blue-gold.md) | PCA Press Release – PCA Case No. 2025-21: (1) Blue Gold Holdings Limited (United… |
 | 6 | 10 | iareporter headlines | [Airport construction investor announces arbitration against Albania](articles/06_airport-construction-investor-announces-arbitration.md) | Airport construction investor announces arbitration against Albania |

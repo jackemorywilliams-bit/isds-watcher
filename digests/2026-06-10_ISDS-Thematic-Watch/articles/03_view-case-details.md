@@ -1,5 +1,4 @@
-# 3. View case details
-
+# 3. Frazer Solar GmbH v. Kingdom of Lesotho
 - **Source:** Italaw — [Read the original ↗](https://www.italaw.com/cases/10174)
 - **Date:** 22 May 2026
 - **Link:** https://www.italaw.com/cases/10174
@@ -8,7 +7,7 @@
 - **Tags:** renewable_energy, supply_agreement, breach_of_contract, liquidated_damages, international_arbitration
 
 ## Citation
-> italaw. "View case details." 22 May 2026. https://www.italaw.com/cases/10174
+> italaw. "Frazer Solar GmbH v. Kingdom of Lesotho." 22 May 2026. https://www.italaw.com/cases/10174
 
 ## Annotation
 This is a commercial arbitration award and subsequent court appeal in a dispute between a renewable energy company and the Kingdom of Lesotho over breach of a power-supply agreement, culminating in a €50 million liquidated-damages award. The case involves no intellectual property claims, no challenge to a regulatory or judicial measure on public-interest grounds, and no jurisdictional/admissibility doctrines such as abuse of right, treaty shopping, or denial of justice—it is a vanilla international commercial arbitration and enforcement dispute.

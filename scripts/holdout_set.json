@@ -1,0 +1,125 @@
+{
+ "_note": "Out-of-sample labelled holdout for validation. On-theme exemplars are NOT among the three development seeds; text snippets carry the awards' own doctrinal vocabulary (Loewen/Mondev verbatim; Apotex partial-verbatim; Philip Morris v. Uruguay paraphrase from concordant secondary summaries). Off-theme items are real listings fetched live, none used in development.",
+ "items": [
+  {
+   "id": "loewen_v_us",
+   "label": 1,
+   "prov": "verbatim",
+   "text": "The Loewen Group v. United States. By any standard of measurement the trial was a disgrace. Manifest injustice in the sense of a lack of due process leading to an outcome which offends a sense of judicial propriety is enough. The conduct amounted to a denial of justice under the minimum standard of treatment in NAFTA Article 1105. Loewen failed to pursue its domestic remedies, and under the exhaustion of local remedies rule no violation of customary international law was shown."
+  },
+  {
+   "id": "mondev_v_us",
+   "label": 1,
+   "prov": "verbatim",
+   "text": "Mondev International v. United States. The question is whether the impugned decision of the domestic court was clearly improper and discreditable, with the result that the investment was subjected to unfair and inequitable treatment under the minimum standard of treatment. Fair and equitable treatment and full protection and security are breached where a judicial measure shocks a sense of judicial propriety, amounting to a denial of justice."
+  },
+  {
+   "id": "apotex_v_us",
+   "label": 1,
+   "prov": "partial",
+   "text": "Apotex Holdings v. United States. Apotex asserted its FDA abbreviated new drug applications as a covered investment. The tribunal held that Apotex does not qualify as an investor who has made an investment in the United States; the regulatory rights merely supported cross-border sales and export business and were not a covered investment, disposing of the case on the definition of investor and jurisdiction."
+  },
+  {
+   "id": "pm_v_uruguay",
+   "label": 1,
+   "prov": "paraphrase",
+   "text": "Philip Morris Brands v. Uruguay. The claimant asserted that its cigarette trademarks were a covered investment and that the plain packaging measures were a regulatory expropriation breaching fair and equitable treatment. The tribunal also addressed a denial of justice claim arising from contradictory domestic court judgments, finding the conduct did not meet the high threshold for a denial of justice and upholding the measures as a legitimate exercise of regulatory power."
+  },
+  {
+   "id": "iisd_itn:ITN Issue 2, 2026",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "ITN Issue 2, 2026. ITN Special Issue \u2013 Treaty Data and the Evolving International Investment Regime\nInvestment Treaties, Strategy, and Practice in Chile\u2019s Experience\nCommittees in International Investment Agreements: Sketching a research agenda for a growing trend\nOn the Importance of Public Access to Information in the Context of Treaty and ISDS Reform"
+  },
+  {
+   "id": "iisd_itn:ITN Special Issue \u2013 Treaty Dat",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "ITN Special Issue \u2013 Treaty Data and the Evolving International Investment Regime. Josef Ostransky and Dafina Atanasova introduce this special ITN issue by highlighting how major 2025 updates to UNCTAD \u2019s treaty databases are transforming investment policy. Moving beyond a narrow focus on investor protection, this issue explores a regime in transition\u2014one increasingly defined by institutional cooperation, and multiplicity of treaty functions. Featuring insights from Joshua Paine on the rise of treaty committees, Mariana Pinto Schmidt on Chile\u2019s experience of evolving treaty portfolio, and Lise "
+  },
+  {
+   "id": "iisd_itn:Investment Treaties, Strategy,",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Investment Treaties, Strategy, and Practice in Chile\u2019s Experience. In this insight article, Mariana Pinto Schmidt examines Chile\u2019s transition from \"first-generation\" treaties to modern agreements aligned with sustainable development. Schmidt highlights how Chile maintains constitutional priorities\u2014such as excluding lithium from liberalization\u2014while strategically managing dispute settlement to avoid overlapping regimes. Ultimately, Chile\u2019s experience demonstrates that investment treaties are most effective when integrated into a broader regulatory ecosystem that is informed by evidence."
+  },
+  {
+   "id": "iisd_itn:Committees in International In",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Committees in International Investment Agreements: Sketching a research agenda for a growing trend. In this analysis, Joshua Paine analyzes the significant rise of treaty-based committees, which now appear in 60% of IIAs concluded since 2020. This shift marks a move away from the traditional delegation of authority solely to arbitral tribunals, favoring ongoing institutional cooperation between states. Paine identifies a diverse range of committee functions\u2014from monitoring treaty implementation and adopting binding interpretations to managing disputes and facilitating technical assistance. How"
+  },
+  {
+   "id": "iisd_itn:On the Importance of Public Ac",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "On the Importance of Public Access to Information in the Context of Treaty and ISDS Reform. In this insight article, Lise Johnson argues that public access to treaties and awards is the essential foundation for ISDS reform. Using data from repositories like UNCTAD , stakeholders can quantify arbitration costs, scrutinize arbitrator impartiality, and track treaty evolution. Johnson asserts that transparency is a diagnostic necessity; without it, states cannot evaluate if \"modern\" treaty language actually improves outcomes or if practices like third-party funding require regulation. To maintain "
+  },
+  {
+   "id": "iisd_itn:Chevron to collect over USD 20",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Chevron to collect over USD 200 million in decade-old arbitration. Chevron Corporation and Texaco Petroleum Corporation v. Ecuador (II), PCA Case No. 2009-23"
+  },
+  {
+   "id": "iisd_itn:Spentech Engineering Limited v",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Spentech Engineering Limited v. United Arab Emirates: The standard for manifest lack of legal merit under Rule 41. Spentech Engineering Limited v. United Arab Emirates"
+  },
+  {
+   "id": "iisd_itn:Consent after denunciation\u2014jur",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Consent after denunciation\u2014jurisdiction and damages. Smurfit Holdings B.V. v. Bolivarian Republic of Venezuela, ICSID Case No. ARB/18/49, Final Award dated 28 August 2024."
+  },
+  {
+   "id": "iisd_itn:Updated OECD Guidelines Mandat",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Updated OECD Guidelines Mandate Climate-Risk Due Diligence for Multinational Investors. In January 2026, the OECD released updated Guidelines for Multinational Enterprises on Responsible Business Conduct, introducing new expectations on climate-risk disclosure, human rights impact assessments, and expanded environmental supply-chain due diligence."
+  },
+  {
+   "id": "iisd_itn:New Tribunal Constituted for R",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "New Tribunal Constituted for Rockhopper v. Italy Resubmission, with Meg Kinnear as Chair. A new tribunal has been constituted for the resubmission of the long-running Rockhopper v. Italy ECT dispute over Italy's ban on offshore hydrocarbon extraction, with former ICSID Secretary-General Meg Kinnear appointed as chair."
+  },
+  {
+   "id": "icsid:Gabriel Resources Ltd. and Gab",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Gabriel Resources Ltd. and Gabriel Resources (Jersey) v. Romania (ICSID Case No. ARB/15/31) - Public Hearing. "
+  },
+  {
+   "id": "icsid:Angel Samuel Seda and others v",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Angel Samuel Seda and others v. Republic of Colombia (ICSID Case No. ARB/19/6) -\u2013 Public Hearing. "
+  },
+  {
+   "id": "icsid:International Centre for Settl",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "International Centre for Settlement of Investment Disputes to Establish Office in Paris. "
+  },
+  {
+   "id": "icsid:Kurt Harald Gr\u00fcninger, Alexand",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Kurt Harald Gr\u00fcninger, Alexandra Gr\u00fcninger, and Sascha Spittel v. Republic of Costa Rica (ICSID Case No. ARB/23/16) \u2013 Public Hearing. "
+  },
+  {
+   "id": "icsid:Honduras Signs the ICSID Conve",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Honduras Signs the ICSID Convention. "
+  },
+  {
+   "id": "icsid:Vacancy: Extended-Term Consult",
+   "label": 0,
+   "prov": "live-listing",
+   "text": "Vacancy: Extended-Term Consultant - Associate Counsel (4 positions). "
+  }
+ ]
+}

@@ -1,5 +1,7 @@
 # ISDS Thematic Watch — 2026-06-15
 
+**Screened: 14 · Matches (≥40): 0 · Watch-list leads: 0 · Accepted (shown): 0**
+
 Annotated digest of **0** surfaced items (screened from 14 candidates; classifier: claude; threshold 40).
 
 Open `index.html` for the formatted digest, or browse `articles/` for one file per entry.

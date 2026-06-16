@@ -188,11 +188,18 @@ def _respect_rate_limit(domain: str) -> None:
 # ---------------------------------------------------------------------------
 # Polite GET
 # ---------------------------------------------------------------------------
-def polite_get(url: str, timeout: int = 30):
+def polite_get(url: str, timeout: int = 30, check_robots: bool = True):
     """GET ``url`` politely. Returns a requests.Response or None.
 
     Returns None (and logs a warning) on robots-disallow, non-200, timeout,
     or any exception. NEVER raises.
+
+    ``check_robots`` defaults to True and must stay True for all third-party
+    content crawling. It is set False only for the operator's own subscribed
+    Google Alerts feeds (see sources/google_alerts.py): those are personal feeds
+    Google generates for the operator to poll in a feed reader, which is the
+    feed's intended use, not the site crawling robots.txt governs. The polite
+    rate limit and identifying User-Agent still apply.
     """
     try:
         import requests
@@ -200,7 +207,7 @@ def polite_get(url: str, timeout: int = 30):
         logger.warning("polite_get: requests not available; cannot fetch %s", url)
         return None
 
-    if not robots_allowed(url):
+    if check_robots and not robots_allowed(url):
         logger.warning("polite_get: robots.txt disallows %s for %s", url, USER_AGENT)
         return None
 
@@ -229,9 +236,9 @@ def polite_get(url: str, timeout: int = 30):
 # ---------------------------------------------------------------------------
 # RSS / HTML helpers
 # ---------------------------------------------------------------------------
-def fetch_rss(url: str):
+def fetch_rss(url: str, check_robots: bool = True):
     """Fetch and parse an RSS/Atom feed. Returns a feedparser result or None."""
-    resp = polite_get(url)
+    resp = polite_get(url, check_robots=check_robots)
     if resp is None:
         return None
     try:

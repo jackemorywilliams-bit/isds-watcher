@@ -75,7 +75,14 @@ class GoogleAlertsSource(Source):
         items: list[CandidateItem] = []
         seen: set[str] = set()
         for feed_url in urls:
-            feed = fetch_rss(feed_url)
+            # check_robots=False is used ONLY here: a Google Alerts feed is a
+            # personal feed the operator created and subscribed to, served by
+            # Google for polling in a feed reader (its intended use). Google's
+            # site-wide robots.txt disallows it as it does all crawling, but
+            # reading one's own subscribed alert feed is not the third-party
+            # site crawling that rule governs. The identifying User-Agent and
+            # the >=3s/domain rate limit still apply.
+            feed = fetch_rss(feed_url, check_robots=False)
             if feed is None:
                 logger.warning("google_alerts: feed unavailable %s", feed_url[:60])
                 continue

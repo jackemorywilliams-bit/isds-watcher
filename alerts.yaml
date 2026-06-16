@@ -19,4 +19,12 @@
 #   intellectual property "covered investment"
 #   "treaty shopping" ICSID
 
-feeds: []
+feeds:
+  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658210   # "treaty shopping" (ICSID/ISDS/BIT) -tax
+  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946659308   # IP/patent/trademark "covered investment"
+  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658263   # "promise utility doctrine" / promise doctrine Canada
+  - https://www.google.com/alerts/feeds/04626935624313668979/15863678449722547299  # "abuse of right" investment arbitration/ISDS/ICSID
+  - https://www.google.com/alerts/feeds/04626935624313668979/15774576077890170916  # "denial of justice" (ICSID/ISDS/UNCITRAL/BIT)
+  - https://www.google.com/alerts/feeds/04626935624313668979/15774576077890173922  # "Bridgestone" Panama (ICSID/ISDS) -tires -stock
+  - https://www.google.com/alerts/feeds/04626935624313668979/4140402732395586056   # "Philip Morris" trademark/IP arbitration -vape -earnings
+  - https://www.google.com/alerts/feeds/04626935624313668979/10091308279879477053  # "Eli Lilly" (ICSID/NAFTA/ISDS) -stock -shares -earnings

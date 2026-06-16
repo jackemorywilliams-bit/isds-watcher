@@ -29,6 +29,8 @@
          text-transform:uppercase; letter-spacing:.12em; color:#0b3d5c;
          padding:20px 36px 0; }
   .secttl .rule { display:block; border-bottom:1px solid #d6dbe1; margin-top:6px; }
+  .secttl .cnt { font-weight:400; color:#6a7280; letter-spacing:.04em; }
+  .nonenote { padding:8px 36px 0; color:#6a7280; font-size:13px; font-style:italic; }
   /* Entries */
   .entry { padding:16px 36px; border-bottom:1px solid #e6e9ed; }
   .entry .head { font-size:16px; line-height:1.4; margin:0 0 5px; }
@@ -116,8 +118,20 @@
     <div class="empty">No thematically relevant developments this week.
       {{ stats.total_candidates }} candidates were screened across the sources below.</div>
   {% else %}
-    <p class="secttl">Annotated developments<span class="rule"></span></p>
-    {% for it in items %}{{ entry(it, loop.index) }}{% endfor %}
+    {% set matched = items|selectattr("relevance_score", "ge", stats.threshold)|list %}
+    {% set near = items|rejectattr("relevance_score", "ge", stats.threshold)|list %}
+    <p class="secttl">Direct matches <span class="cnt">&ge;{{ stats.threshold }} · {{ matched|length }}</span><span class="rule"></span></p>
+    {% if matched %}
+      {% for it in matched %}{{ entry(it, loop.index) }}{% endfor %}
+    {% else %}
+      <div class="nonenote">No direct matches this week — no item reached the relevance threshold.</div>
+    {% endif %}
+    <p class="secttl">Watch-list near-matches <span class="cnt">25&ndash;{{ stats.threshold - 1 }} · {{ near|length }}</span><span class="rule"></span></p>
+    {% if near %}
+      {% for it in near %}{{ entry(it, matched|length + loop.index) }}{% endfor %}
+    {% else %}
+      <div class="nonenote">No watch-list near-matches this week.</div>
+    {% endif %}
   {% endif %}
 
   <div class="foot">

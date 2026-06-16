@@ -42,9 +42,7 @@
   <div class="measure">
     <h2 class="section-head">Annotated bibliography: {{ digest.surfaced }} {{ 'entry' if digest.surfaced == 1 else 'entries' }}</h2>
 
-    {% if digest.entries %}
-    <ol class="entries">
-      {% for e in digest.entries %}
+    {% macro entry(e) %}
       <li class="entry" id="entry-{{ e.number }}">
         <div class="entry-top">
           <span class="entry-num">{{ '%02d' % e.number }}</span>
@@ -87,8 +85,26 @@
         <p class="entry-tags">{% for t in e.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
         {% endif %}
       </li>
-      {% endfor %}
-    </ol>
+    {% endmacro %}
+
+    {% if digest.entries %}
+    {% set thr = digest.threshold or 40 %}
+    {% set matched = digest.entries | selectattr("relevance", "ge", thr) | list %}
+    {% set near = digest.entries | rejectattr("relevance", "ge", thr) | list %}
+
+    <h3 class="subsection-head">Direct matches <span class="sec-count">&ge;{{ thr }} &middot; {{ matched|length }}</span></h3>
+    {% if matched %}
+    <ol class="entries">{% for e in matched %}{{ entry(e) }}{% endfor %}</ol>
+    {% else %}
+    <p class="none-note">No direct matches this run — no item reached the relevance threshold.</p>
+    {% endif %}
+
+    <h3 class="subsection-head">Watch-list near-matches <span class="sec-count">25&ndash;{{ thr - 1 }} &middot; {{ near|length }}</span></h3>
+    {% if near %}
+    <ol class="entries">{% for e in near %}{{ entry(e) }}{% endfor %}</ol>
+    {% else %}
+    <p class="none-note">No watch-list near-matches this run.</p>
+    {% endif %}
     {% else %}
     <div class="no-developments" role="status">
       <p class="no-dev-head">No thematically relevant developments this cycle.</p>

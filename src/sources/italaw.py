@@ -1,11 +1,15 @@
 """italaw — HTML source (homepage "Newly Posted Awards, Decisions & Materials").
 
-PRIMARY: homepage <a> whose href matches ^/cases/[0-9]+$, anchor text > 15,
-dedupe by href, read an adjacent date heading (e.g. '2 Jun 2026') for published.
-FALLBACK (logged): all <a href^="/cases/"> with text length > 10.
+Each listing row carries a "View case details" link to /cases/<id> AND a
+sibling /node/<id> link whose anchor text is the real case name (same id), e.g.
+/cases/9748 ("View case details") + /node/9748 ("Windstream Energy v. Canada
+(II)"). We key on the /cases/<id> profile URL but take the TITLE from the
+matching /node/<id> link, falling back to the row's leading text. Generic anchor
+labels ("View case details", "Read more", …) are never used as a title.
 
 NOTE: https://www.italaw.com/cases is 404 — only the homepage feed works.
-No body fetch on the listing; raw_text = title.
+The case profile is body-fetched downstream (enrich) so the classifier scores on
+real content, not just the case name.
 """
 
 from __future__ import annotations
@@ -31,6 +35,18 @@ BASE_URL = "https://www.italaw.com/"
 CASE_RE = re.compile(r"^/cases/[0-9]+$")
 # Looser path for fallback: anything under /cases/.
 CASE_PREFIX_RE = re.compile(r"^/cases/")
+# The case id, shared by the /cases/<id> profile link and the /node/<id> title link.
+CASE_ID_RE = re.compile(r"^/cases/([0-9]+)")
+
+# Generic link labels that are never a real case title.
+GENERIC_LABELS = {
+    "view case details", "view details", "case details", "details",
+    "read more", "more", "view document", "view", "download",
+}
+
+
+def _is_generic(text: str) -> bool:
+    return (text or "").strip().lower() in GENERIC_LABELS
 
 # Date-ish heading like "2 Jun 2026" or "12 December 2025".
 DATE_TEXT_RE = re.compile(
@@ -97,6 +113,42 @@ class ItalawSource(Source):
             logger.debug("italaw: date lookup failed (%s)", exc)
         return None
 
+    def _resolve_title(self, anchor, case_id: str) -> str | None:
+        """Find the real case name for a /cases/<id> anchor.
+
+        Prefers the sibling /node/<id> link's text; otherwise reads the row's
+        leading text (before the generic "View case details" label). Returns None
+        when nothing usable is found, so the caller can skip the row.
+        """
+        # Walk up to the listing row container (Drupal 'views-row').
+        row = anchor
+        for _ in range(6):
+            row = getattr(row, "parent", None)
+            if row is None:
+                break
+            cls = row.get("class") if hasattr(row, "get") else None
+            if cls and any("views-row" in c for c in cls):
+                break
+        if row is None or not hasattr(row, "find_all"):
+            row = None
+
+        # 1) The /node/<id> sibling carries the clean case name.
+        if row is not None:
+            node = row.find("a", href=re.compile(rf"/node/{case_id}$"))
+            if node is not None:
+                t = node.get_text(" ", strip=True)
+                if t and not _is_generic(t) and len(t) > 6:
+                    return t
+
+        # 2) Fall back to the row's leading text, minus any date and the label.
+        if row is not None:
+            text = row.get_text(" ", strip=True)
+            text = DATE_TEXT_RE.sub("", text, count=1).strip()
+            text = re.split(r"\bView case details\b", text)[0].strip(" ,;–-")
+            if len(text) > 10:
+                return text[:200]
+        return None
+
     def _build_item(self, href: str, title: str, published) -> CandidateItem:
         url = urljoin(BASE_URL, href)
         metadata: dict = {}
@@ -120,16 +172,18 @@ class ItalawSource(Source):
         for anchor in soup.find_all("a", href=True):
             try:
                 href = anchor["href"]
-                if not CASE_RE.match(href):
-                    continue
-                text = anchor.get_text(" ", strip=True)
-                if len(text) <= 15:
+                m = CASE_RE.match(href)
+                if not m:
                     continue
                 if href in seen:
                     continue
+                case_id = CASE_ID_RE.match(href).group(1)
+                title = self._resolve_title(anchor, case_id)
+                if not title:  # no real case name found in this row — skip
+                    continue
                 seen.add(href)
                 published = self._find_nearby_date(anchor)
-                items.append(self._build_item(href, text, published))
+                items.append(self._build_item(href, title, published))
             except Exception as exc:
                 logger.warning("italaw: skipping anchor in primary parse (%s)", exc)
                 continue
@@ -143,14 +197,21 @@ class ItalawSource(Source):
                 href = anchor["href"]
                 if not CASE_PREFIX_RE.match(href):
                     continue
-                text = anchor.get_text(" ", strip=True)
-                if len(text) <= 10:
-                    continue
                 if href in seen:
+                    continue
+                text = anchor.get_text(" ", strip=True)
+                idm = CASE_ID_RE.match(href)
+                title = None
+                if idm:
+                    title = self._resolve_title(anchor, idm.group(1))
+                if not title:
+                    # last resort: use this anchor's own text if it is not generic
+                    title = text if (len(text) > 10 and not _is_generic(text)) else None
+                if not title:
                     continue
                 seen.add(href)
                 published = self._find_nearby_date(anchor)
-                items.append(self._build_item(href, text, published))
+                items.append(self._build_item(href, title, published))
             except Exception as exc:
                 logger.warning("italaw: skipping anchor in fallback parse (%s)", exc)
                 continue

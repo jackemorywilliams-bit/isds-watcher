@@ -152,6 +152,14 @@ main { display: block; }
   letter-spacing: .14em; font-weight: 700; color: var(--navy);
   margin: 0 0 18px; padding-bottom: 10px; border-bottom: 2px solid var(--navy);
 }
+.subsection-head {
+  font-size: 12px; font-family: var(--sans); text-transform: uppercase;
+  letter-spacing: .12em; font-weight: 700; color: var(--navy);
+  margin: 34px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+.subsection-head:first-of-type { margin-top: 6px; }
+.subsection-head .sec-count { font-weight: 400; color: var(--muted); letter-spacing: .04em; }
+.none-note { font-size: 15px; color: var(--muted); font-style: italic; margin: 0 0 8px; }
 .lede { font-size: 19px; color: var(--ink-soft); margin: 0 0 30px; }
 .lede em { font-style: italic; color: var(--ink); }
 

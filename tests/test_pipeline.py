@@ -150,6 +150,9 @@ def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
     assert "Accepted (shown): 1" in html
     # Fix 2: header splits matches from watch-list leads (no bare "1 item").
     assert "0 matches &middot; 1 watch-list lead" in html
+    # Two labeled sections, with the empty "Direct matches" block called out.
+    assert "Direct matches" in html and "Watch-list near-matches" in html
+    assert "No direct matches this week" in html
 
     folder = render.write_digest_folder(html, items, now, stats)
     meta = json.loads(Path(folder, "meta.json").read_text())
@@ -206,6 +209,35 @@ def test_empty_rerun_does_not_clobber_existing_record(tmp_path, monkeypatch):
                                corr, now, corr_stats)
     meta = json.loads(Path(folder, "meta.json").read_text())
     assert (meta["screened"], meta["matches"], meta["accepted"]) == (90, 1, 2)
+
+
+def test_italaw_uses_real_case_name_not_view_details():
+    # Regression: the homepage /cases/<id> link always reads "View case details";
+    # the real case name lives in the sibling /node/<id> link. The parser must use
+    # the case name, never the generic label.
+    from bs4 import BeautifulSoup
+    from src.sources.italaw import ItalawSource
+    html = """
+    <div class="view-content">
+      <div class="views-row views-row-1">
+        <span class="date-display-single">11 Jun 2026</span>
+        <a href="/node/9748">Windstream Energy v. Canada (II)</a>
+        <div class="views-field views-field-view-node">
+          <span class="field-content"><a href="/cases/9748">View case details</a></span>
+        </div>
+      </div>
+      <div class="views-row views-row-2">
+        <span class="date-display-single">9 Jun 2026</span>
+        <a href="/node/10666">Silver Bull v. Mexico</a>
+        <span class="field-content"><a href="/cases/10666">View case details</a></span>
+      </div>
+    </div>
+    """
+    items = ItalawSource()._parse_primary(BeautifulSoup(html, "html.parser"))
+    titles = {it.url.rsplit("/", 1)[-1]: it.title for it in items}
+    assert titles["9748"] == "Windstream Energy v. Canada (II)"
+    assert titles["10666"] == "Silver Bull v. Mexico"
+    assert all("View case details" not in it.title for it in items)
 
 
 def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):

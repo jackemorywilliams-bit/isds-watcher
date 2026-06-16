@@ -85,6 +85,39 @@ def test_select_surfaced_quiet_week_is_empty_not_padded():
 
 
 # --- first-run bootstrap (index without surfacing) ----------------------------
+def test_main_nonempty_subject_builds(tmp_path, monkeypatch):
+    # Regression: the non-empty email subject must build (it referenced a removed
+    # variable). Exercises the surfaced>0 path with the email block active.
+    import src.main as main_mod
+    import src.state as state
+    from src.sources.base import CandidateItem
+    now = datetime.datetime.now(UTC)
+    on_theme = ("denial of justice manifestly unjust judgment minimum standard of "
+                "treatment abuse of right shell subsidiary covered investment "
+                "promise utility doctrine trademark trade secret")
+
+    class FakeSource:
+        name = "iisd_itn"
+        priority = "primary"
+        def fetch(self, since):
+            return [CandidateItem("iisd_itn", "cand-1", "http://x/1",
+                                  "Patent denial of justice", now, on_theme, on_theme, {})]
+
+    monkeypatch.setattr(main_mod, "all_sources", lambda cfg=None: [FakeSource()])
+    monkeypatch.setattr(main_mod, "enrich", lambda it: it)      # offline
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)          # keyword fallback
+    captured = {}
+    monkeypatch.setattr(main_mod, "send_digest",
+                        lambda html, subject, cfg, **k: captured.update(subject=subject) or True)
+    monkeypatch.chdir(tmp_path)
+    # Pre-seed state so this is NOT a bootstrap run (so the item actually surfaces).
+    state.save_state({"sources": {"iisd_itn": {"_seed": "t"}}}, "state/seen.json")
+
+    rc = main_mod.main(["--since", "30d"])   # no --no-email -> builds the subject
+    assert rc == 0
+    assert "at threshold)" in captured.get("subject", "")
+
+
 def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):
     import glob
     import src.main as main_mod

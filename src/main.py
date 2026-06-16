@@ -190,7 +190,7 @@ def main(argv=None) -> int:
         else:
             subject = (f"ISDS Thematic Watch — {date_str} "
                        f"({len(surfaced)} item{'' if len(surfaced)==1 else 's'}, "
-                       f"{len(above)} at threshold)")
+                       f"{stats['above_threshold']} at threshold)")
         email_status = "sent" if send_digest(html, subject, cfg) else "failed"
 
     # 7. Persist state.

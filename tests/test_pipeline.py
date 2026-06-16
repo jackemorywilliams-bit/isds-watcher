@@ -84,6 +84,35 @@ def test_select_surfaced_quiet_week_is_empty_not_padded():
     assert select_surfaced(items, threshold=40, min_items=6, floor=25) == []
 
 
+# --- first-run bootstrap (index without surfacing) ----------------------------
+def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):
+    import glob
+    import src.main as main_mod
+    import src.state as state
+    from src.sources.base import CandidateItem
+    now = datetime.datetime.now(UTC)
+
+    class FakeSource:
+        name = "iisd_itn"
+        priority = "primary"
+        def fetch(self, since):
+            return [CandidateItem("iisd_itn", f"id{i}", f"http://x/{i}",
+                                  f"title {i}", now, "s", "r", {}) for i in range(3)]
+
+    monkeypatch.setattr(main_mod, "all_sources", lambda cfg=None: [FakeSource()])
+    monkeypatch.chdir(tmp_path)
+
+    rc = main_mod.main(["--dry-run", "--since", "7d", "--no-email"])
+    assert rc == 0
+
+    # Every fetched item is now indexed as seen...
+    st = state.load_state("state/seen.json")
+    assert not state.is_empty(st)
+    assert all(state.is_seen(st, "iisd_itn", f"id{i}") for i in range(3))
+    # ...but the bootstrap run surfaced nothing: no dated digest folder was written.
+    assert glob.glob("digests/*_ISDS-Thematic-Watch") == []
+
+
 # --- date parsing ------------------------------------------------------------
 def test_parse_date_to_utc():
     d = parse_date("Tue, 21 Apr 2026 17:02:05 +0000")

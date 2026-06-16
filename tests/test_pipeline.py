@@ -114,6 +114,16 @@ def test_main_bootstrap_indexes_without_surfacing(tmp_path, monkeypatch):
 
 
 # --- date parsing ------------------------------------------------------------
+def test_google_alerts_resolve_redirect():
+    from src.sources.google_alerts import resolve_redirect, GoogleAlertsSource
+    g = "https://www.google.com/url?rct=j&sa=t&url=https://www.iareporter.com/articles/x/&ct=ga"
+    assert resolve_redirect(g) == "https://www.iareporter.com/articles/x/"
+    # a plain (non-redirect) link is returned unchanged
+    assert resolve_redirect("https://example.org/a") == "https://example.org/a"
+    # no feeds configured -> inactive, returns [] (never raises)
+    assert GoogleAlertsSource().fetch(datetime.datetime.now(UTC)) == []
+
+
 def test_parse_date_to_utc():
     d = parse_date("Tue, 21 Apr 2026 17:02:05 +0000")
     assert d is not None and d.tzinfo is not None

@@ -1,0 +1,22 @@
+# Google Alerts RSS feeds polled by the watcher every Monday (fully automatic).
+#
+# ONE-TIME SETUP (operator, in a browser):
+#   1. Go to https://www.google.com/alerts
+#   2. Create an alert for each query you want (suggested queries below).
+#   3. Click "Show options" and set  Deliver to: RSS feed.
+#   4. After creating, click the RSS icon to copy the feed URL.
+#   5. Paste each feed URL under `feeds:` below, then commit/push.
+#
+# That's it. Empty list = source inactive; no error. No credentials needed.
+#
+# Suggested alert queries (derived from the three-ring fingerprint):
+#   "Eli Lilly" ICSID OR NAFTA arbitration
+#   "Philip Morris" trademark arbitration
+#   "Bridgestone" Panama ICSID
+#   "denial of justice" ICSID
+#   "abuse of right" investment arbitration
+#   "promise utility doctrine"
+#   intellectual property "covered investment"
+#   "treaty shopping" ICSID
+
+feeds: []

@@ -67,6 +67,12 @@ jobs:
       - name: Rebuild website
         run: python scripts/build_site.py
 
+      - name: Validate archive integrity
+        # Fails the run (and fires the failure alert) if any digest breaks the
+        # floor, ships a placeholder title, or has counts that disagree across
+        # meta.json / article files / email footer.
+        run: python scripts/validate_archive.py
+
       - name: Commit state + digests
         run: |
           git config user.name "github-actions[bot]"

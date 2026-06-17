@@ -68,6 +68,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
+        {% if build_stamp %}<p class="footer-build">Site built {{ build_stamp.at }}{% if build_stamp.commit %} &middot; {{ build_stamp.commit }}{% endif %}</p>{% endif %}
       </div>
     </div>
   </footer>

@@ -575,6 +575,22 @@ def collect_digests() -> list[Digest]:
 # --------------------------------------------------------------------------- #
 # Rendering
 # --------------------------------------------------------------------------- #
+def _build_stamp() -> dict:
+    """When the site was generated, and the commit it was built from — so a stale
+    GitHub Pages deploy is obvious at a glance (compare to the repo's HEAD)."""
+    import datetime
+    import subprocess
+    commit = ""
+    try:
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"], text=True,
+            stderr=subprocess.DEVNULL).strip()
+    except Exception:  # noqa: BLE001 - missing git must not break the build
+        commit = ""
+    at = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return {"at": at, "commit": commit}
+
+
 def make_env() -> Environment:
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATE_DIR)),
@@ -583,6 +599,7 @@ def make_env() -> Environment:
         lstrip_blocks=True,
     )
     env.globals["repo_url"] = REPO_URL
+    env.globals["build_stamp"] = _build_stamp()
 
     def band_class(band: str) -> str:
         b = (band or "").upper()

@@ -211,6 +211,32 @@ def test_empty_rerun_does_not_clobber_existing_record(tmp_path, monkeypatch):
     assert (meta["screened"], meta["matches"], meta["accepted"]) == (90, 1, 2)
 
 
+def test_cumulative_digest_relabels_counts_vs_per_run(tmp_path, monkeypatch):
+    # The aggregate pools many runs; its counts MUST be labeled cumulative so a
+    # reader never reads its "Screened: 251" as the website's per-run "Screened: 80".
+    import shutil
+    from src import render
+    from src.classify import ClassifiedItem
+    now = datetime.datetime.now(UTC)
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+    items = [ClassifiedItem("italaw", "u", "http://x", "Case", now, "s", "r",
+                            relevance_score=30, matched_rings=[], thematic_tags=[],
+                            digest_summary="A. B.")]
+    stats = {"total_candidates": 251, "above_threshold": 0, "threshold": 40,
+             "per_source": {"a": 1}, "provider": "claude"}
+
+    per_run = render.render_digest(items, now, now, stats)
+    assert "Screened:" in per_run and "cumulative" not in per_run.lower()
+
+    agg = render.render_digest(items, now, now, stats, cumulative_runs=4)
+    assert "Cumulative across 4 bring-up runs" in agg
+    assert "Screened (cumulative): 251" in agg
+    assert "Bring-up to date (4 runs)" in agg
+    assert "watch-list lead" in agg and "collected" in agg
+
+
 def test_italaw_uses_real_case_name_not_view_details():
     # Regression: the homepage /cases/<id> link always reads "View case details";
     # the real case name lives in the sibling /node/<id> link. The parser must use

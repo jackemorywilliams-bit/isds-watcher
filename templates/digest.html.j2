@@ -77,12 +77,12 @@
     <p class="kicker">Investor–State Dispute Settlement · Current Awareness</p>
     <h1>ISDS Thematic Watch</h1>
     <p class="issue">{{ generated_at.strftime("%A, %d %B %Y") }} &nbsp;·&nbsp;
-       Window from {{ since.strftime("%d %b %Y") }} &nbsp;·&nbsp;
-       {{ matches }} match{{ "" if matches == 1 else "es" }} &middot; {{ leads }} watch-list lead{{ "" if leads == 1 else "s" }}</p>
+       {% if cumulative_runs %}Cumulative across {{ cumulative_runs }} bring-up runs{% else %}Window from {{ since.strftime("%d %b %Y") }}{% endif %} &nbsp;·&nbsp;
+       {{ matches }} match{{ "" if matches == 1 else "es" }} &middot; {{ leads }} watch-list lead{{ "" if leads == 1 else "s" }}{% if cumulative_runs %} collected{% endif %}</p>
     <p class="standing">Developments at the intersection of intellectual property as a
        protected investment, regulatory or judicial measures as the disputed conduct, and
        jurisdictional and admissibility doctrine.{% if matches == 0 and items %} No item
-       reached a full match this period; those below are watch-list near-misses — a clean
+       reached a full match {{ "to date" if cumulative_runs else "this period" }}; those below are watch-list near-misses — a clean
        reading at a deliberately narrow intersection, not a gap in coverage.{% endif %}</p>
   </div>
 
@@ -146,6 +146,15 @@
         <a class="navlink" href="{{ repo_url }}">Source repository</a>
       </td>
       <td>
+        {% if cumulative_runs %}
+        <h4>Bring-up to date ({{ cumulative_runs }} runs)</h4>
+        Compiled {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
+        Screened (cumulative): {{ stats.total_candidates }}<br>
+        Matches (&ge;{{ stats.threshold }}): {{ matches }}<br>
+        Watch-list leads collected: {{ leads }}<br>
+        Distinct findings shown: {{ items|length }}<br>
+        Classifier: {{ stats.provider or "keyword fallback" }}
+        {% else %}
         <h4>This issue</h4>
         Compiled {{ generated_at.strftime("%d %b %Y, %H:%M UTC") }}<br>
         Screened: {{ stats.total_candidates }}<br>
@@ -153,6 +162,7 @@
         Watch-list leads: {{ leads }}<br>
         Accepted (shown): {{ items|length }}<br>
         Classifier: {{ stats.provider or "keyword fallback" }}
+        {% endif %}
       </td>
     </tr></table>
     <p class="fine">A standing current-awareness bulletin produced for the Benavides ISDS

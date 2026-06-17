@@ -39,10 +39,18 @@ def folder_name(date_str: str) -> str:
 
 
 def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
-                  folder_url: str | None = None, lede: str | None = None) -> str:
+                  folder_url: str | None = None, lede: str | None = None,
+                  cumulative_runs: int | None = None) -> str:
     """Render the annotated-bibliography digest (used as the email body).
 
     ``lede`` overrides the default one-line summary paragraph when provided.
+
+    ``cumulative_runs`` marks the digest as a *cumulative* artifact pooled across
+    that many runs (the aggregate bring-up digest), rather than a single run. When
+    set, the masthead and footer counts are relabeled ("cumulative", "collected",
+    "distinct findings") so a reader never reads a cumulative "Screened: 251"
+    as the same thing as the website's per-run "Screened: 80". Per-run digests
+    leave it None and read exactly as before.
     """
     tmpl = _env.get_template("digest.html.j2")
     # Single source of truth for the count split, shared with meta.json:
@@ -63,6 +71,7 @@ def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
         date_str=generated_at.strftime("%Y-%m-%d"),
         folder_url=folder_url,
         lede=lede,
+        cumulative_runs=cumulative_runs,
     )
 
 

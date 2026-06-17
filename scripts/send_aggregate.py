@@ -143,9 +143,11 @@ def main():
 
     folder_url = f"{config.REPO_URL}/tree/main/digests"
     html = render.render_digest(items, now, now - datetime.timedelta(days=365),
-                                stats, folder_url=folder_url, lede=lede)
+                                stats, folder_url=folder_url, lede=lede,
+                                cumulative_runs=runs)
     subject = (f"ISDS Thematic Watch — First Official Digest "
-               f"({len(items)} finding{'' if len(items) == 1 else 's'})")
+               f"(cumulative bring-up: {len(items)} finding"
+               f"{'' if len(items) == 1 else 's'} across {runs} runs)")
     ok = send_digest(html, subject, config.load_config())
     print(f"aggregated findings: {len(items)} | email: {'sent' if ok else 'FAILED'}")
     print("subject:", subject)

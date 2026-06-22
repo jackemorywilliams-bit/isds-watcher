@@ -68,9 +68,9 @@
 <div class="sheet">
 
   <div class="util">
-    {% if site_url %}<a href="{{ site_url }}">View on the web</a><span class="sep">·</span>{% endif %}
-    <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology</a><span class="sep">·</span>
-    {% if folder_url %}<a href="{{ folder_url }}">Full archive</a>{% endif %}
+    {% if site_url %}<a href="{{ site_url }}">View on the web</a><span class="sep">·</span>
+    <a href="{{ site_url }}digests/">Archive</a><span class="sep">·</span>{% endif %}
+    <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology</a>
   </div>
 
   <div class="mast">
@@ -141,9 +141,9 @@
     <table class="cols" role="presentation"><tr>
       <td>
         <h4>Navigate</h4>
-        {% if site_url %}<a class="navlink" href="{{ site_url }}">Website home</a>{% endif %}
+        {% if site_url %}<a class="navlink" href="{{ site_url }}">Website home</a>
+        <a class="navlink" href="{{ site_url }}digests/">Full archive (all weeks)</a>{% endif %}
         <a class="navlink" href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology memo</a>
-        {% if folder_url %}<a class="navlink" href="{{ folder_url }}">This week's full archive</a>{% endif %}
         <a class="navlink" href="{{ repo_url }}">Source repository</a>
       </td>
       <td>

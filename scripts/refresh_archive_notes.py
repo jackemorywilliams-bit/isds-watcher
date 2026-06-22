@@ -200,15 +200,54 @@ def rewrite_readme(folder: str) -> bool:
     return True
 
 
+_NOTE_HDR = "## Notable line (from source)"
+_NA_LINE = "> N/A — source paywalled (headline only); body not accessible."
+
+
+def clean_article_md(folder: str) -> int:
+    """Rewrite each article's "Notable line" blockquote so the website and the
+    per-article pages (both read from these files) show a genuine verbatim quote
+    or an honest N/A — never the headline."""
+    arts_dir = os.path.join(folder, "articles")
+    if not os.path.isdir(arts_dir):
+        return 0
+    changed = 0
+    block_re = re.compile(
+        re.escape(_NOTE_HDR) + r"\n>[^\n]*\n", re.M)
+    for fn in sorted(f for f in os.listdir(arts_dir) if f.endswith(".md")):
+        path = os.path.join(arts_dir, fn)
+        with open(path, encoding="utf-8") as fh:
+            text = fh.read()
+        a = parse_article(path)
+        raw = _raw_source(a["channel"])
+        if _is_genuine_quote(a["quote"], a["title"], raw):
+            new_block = f"{_NOTE_HDR}\n> “{a['quote']}”\n"
+        elif raw in _HEADLINE_ONLY_SOURCES:
+            new_block = f"{_NOTE_HDR}\n{_NA_LINE}\n"
+        else:
+            # Accessible source, but the stored line isn't a genuine body quote
+            # (e.g. it restates the title). Leave the file as-is rather than
+            # mislabel it "paywalled".
+            continue
+        new_text, n = block_re.subn(new_block, text)
+        if n and new_text != text:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(new_text)
+            changed += 1
+    return changed
+
+
 def main() -> None:
     folders = sorted(
         os.path.join(DIGESTS, n) for n in os.listdir(DIGESTS)
         if n.endswith(SUFFIX) and os.path.isdir(os.path.join(DIGESTS, n))
     )
     for folder in folders:
+        am = clean_article_md(folder)  # fix article files first (README reads them)
         rd = rewrite_readme(folder)
         ix = clean_index_html(folder)
-        flags = ",".join(p for p, c in (("readme", rd), ("index.html", ix)) if c)
+        flags = ",".join(
+            p for p, c in (("articles=%d" % am, am), ("readme", rd), ("index.html", ix)) if c)
         print(f"{folder}: {flags or 'no change'}")
 
 

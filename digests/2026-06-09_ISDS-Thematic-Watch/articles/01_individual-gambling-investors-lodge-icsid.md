@@ -14,7 +14,7 @@
 Individual gambling investors are pursuing an ICSID claim against Ecuador after a UNCITRAL tribunal dismissed a parallel claim brought by their corporate vehicle, suggesting a potential shell-subsidiary or treaty-shopping restructuring. The case raises jurisdictional questions about investor standing and the legitimacy of the corporate structure used to advance the claim, but lacks any intellectual property or judicial-measure component.
 
 ## Notable line (from source)
-> “Individual gambling investors lodge ICSID arbitration against Ecuador after UNCITRAL tribunal dismisses claim by their corporate vehicle”
+> N/A — source paywalled (headline only); body not accessible.
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md

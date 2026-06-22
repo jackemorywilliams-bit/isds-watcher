@@ -14,7 +14,7 @@
 An ICSID tribunal in a sanctions-related dispute with Ukraine declined to issue provisional measures but ordered parties to disclose material changes in ownership rights. The item provides only a headline-level summary with no substantive detail on the underlying dispute, and contains no indication of intellectual property, a judicial measure, or jurisdictional/admissibility doctrine.
 
 ## Notable line (from source)
-> “ICSID tribunal hearing sanctions-related treaty dispute with Ukraine declines to issue provisional measures, but directs parties to keep arbitrators informed of material changes in relevant ownership rights”
+> N/A — source paywalled (headline only); body not accessible.
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md

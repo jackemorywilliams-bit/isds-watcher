@@ -58,6 +58,21 @@
 
   <div class="dek">{{ brief.dek }}</div>
 
+  {% if brief.minutes %}
+  <p class="secttl">Chairman's note <span class="rule"></span></p>
+  <div class="sect">
+    <p>{{ brief.minutes.status }}</p>
+    {% if brief.minutes.escalations %}
+    <p style="margin-top:8px;"><strong>For your attention:</strong></p>
+    <ul class="threads" style="padding-left:0;">{% for e in brief.minutes.escalations %}<li>{{ e }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if brief.minutes.next_steps %}
+    <p style="margin-top:8px;"><strong>Next steps:</strong></p>
+    <ul class="threads" style="padding-left:0;">{% for n in brief.minutes.next_steps %}<li>{{ n }}</li>{% endfor %}</ul>
+    {% endif %}
+  </div>
+  {% endif %}
+
   {% for s in brief.sections %}
   <div class="sect">
     <h3>{{ s.heading }}</h3>

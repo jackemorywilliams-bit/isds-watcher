@@ -53,6 +53,22 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
   is skipped otherwise; set `RESEARCH_BRIEF_ENABLED=0` to suppress it. Model via
   `RESEARCH_MODEL` (default `claude-opus-4-8`).
 
+## Cadence & accountability
+
+- **Daily — the researcher checks in.** The research analyst works on a daily cadence,
+  at its own discretion, for further insight on the open threads and the research
+  question, and files a short check-in. This runs as a **scheduled Claude Code routine on
+  the operator's Claude Max plan** (not the API-billed GitHub Actions pipeline), with a
+  deliberately small daily budget so it does not eat into Max usage.
+- **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
+  with the chairman's **reconvene minutes**: a candid status, next steps, a per-member
+  **accountability** assessment, and **escalations to the principal** (surfaced in the
+  brief's "Chairman's note"). This runs in GitHub Actions against the API key.
+- **Accountability ledger.** Every session is recorded in `state/council_log.json` and
+  rendered to `analytics/council-log.md` — the chairman's written record for holding
+  members accountable, so quality is tracked over time rather than living in one model's
+  recollection.
+
 ## On the MCP overlay this was modeled on
 The structure was adapted from a Claude "council/overlay" layout. We deliberately did
 **not** install the third-party MCP plugin that inspired it (it wires auto-running

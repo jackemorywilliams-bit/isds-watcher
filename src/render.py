@@ -319,6 +319,21 @@ def write_brief(html: str, brief: dict, generated_at: datetime, seq: int,
         parts += ["## Analyst memo (raw)", "", memo, ""]
         if brief.get("_security"):
             parts += ["## Security officer's vetting note", "", brief["_security"], ""]
+        m = brief.get("minutes")
+        if m:
+            parts += ["## Chairman's reconvene minutes", "", f"**Status.** {m.get('status','')}", ""]
+            if m.get("accountability"):
+                parts.append("**Accountability.**")
+                parts += [f"- {a.get('member','?')}: {a.get('assessment','')}" for a in m["accountability"]]
+                parts.append("")
+            if m.get("next_steps"):
+                parts.append("**Next steps.**")
+                parts += [f"- {s}" for s in m["next_steps"]]
+                parts.append("")
+            if m.get("escalations"):
+                parts.append("**Escalations to the principal.**")
+                parts += [f"- {e}" for e in m["escalations"]]
+                parts.append("")
         with open(os.path.join(out_root, f"{date_str}-memo.md"), "w", encoding="utf-8") as fh:
             fh.write("\n".join(parts) + "\n")
     _update_briefs_index(out_root)

@@ -15,7 +15,7 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 
-from . import config, render, research_brief, research_state, state
+from . import config, council_log, render, research_brief, research_state, state
 from .classify import classify_item, keyword_score
 from .email_send import send_digest
 from .enrich import enrich, notable_quote as enrich_notable
@@ -235,6 +235,8 @@ def main(argv=None) -> int:
             brief_html = render.render_research_brief(brief, generated_at, seq)
             brief_path = render.write_brief(brief_html, brief, generated_at, seq)
             research_state.save(rlog)
+            # Record the weekly council session in the accountability ledger.
+            council_log.append_weekly(date_str, seq, brief, generated_at)
             if args.no_email:
                 brief_status = f"written #{seq}"
             else:

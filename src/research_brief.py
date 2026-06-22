@@ -75,6 +75,28 @@ EDITOR_SCHEMA = {
     "additionalProperties": False,
 }
 
+# The chairman's weekly reconvene minutes: status, next steps, per-member
+# accountability, and items to escalate to the principal.
+RECONVENE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "status": {"type": "string"},
+        "next_steps": {"type": "array", "items": {"type": "string"}},
+        "accountability": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {"member": {"type": "string"}, "assessment": {"type": "string"}},
+                "required": ["member", "assessment"],
+                "additionalProperties": False,
+            },
+        },
+        "escalations": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["status", "next_steps", "accountability", "escalations"],
+    "additionalProperties": False,
+}
+
 
 def _model() -> str:
     return os.environ.get("RESEARCH_MODEL", DEFAULT_MODEL)
@@ -224,6 +246,30 @@ def _run_editor(client, analyst_memo: str, security_note: str) -> dict:
     return json.loads(_text_of(resp))
 
 
+def _run_reconvene(client, agenda, memo, security, brief) -> dict:
+    """Chairman reconvenes: reviews the week against the agenda and produces the
+    minutes — status, next steps, per-member accountability, and escalations to the
+    principal."""
+    issue = (f"Headline: {brief.get('headline','')}\nDek: {brief.get('dek','')}\n"
+             f"Open threads: " + "; ".join(brief.get("open_threads", [])))
+    prompt = (
+        _read_prompt("council_reconvene.txt")
+        .replace("{{AGENDA}}", agenda or "(none)")
+        .replace("{{MEMO}}", memo or "(none)")
+        .replace("{{SECURITY}}", security or "(none)")
+        .replace("{{ISSUE}}", issue)
+    )
+    resp = client.messages.create(
+        model=_model(),
+        max_tokens=1500,
+        system=("You are the chairman of an ISDS research council writing the weekly "
+                "accountability minutes. Return only valid JSON for the schema."),
+        messages=[{"role": "user", "content": prompt}],
+        output_config={"format": {"type": "json_schema", "schema": RECONVENE_SCHEMA}},
+    )
+    return json.loads(_text_of(resp))
+
+
 def generate_brief(items, *, prior_threads, week_str, screened,
                    provider) -> Optional[dict]:
     """Convene the council: chairman → analyst (web search) → security → editor.
@@ -249,6 +295,14 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         brief["_memo"] = memo
         brief["_agenda"] = agenda
         brief["_security"] = security
+        # Chairman reconvenes to take stock and hold the council accountable.
+        try:
+            brief["minutes"] = _run_reconvene(client, agenda, memo, security, brief)
+            logger.info("research_brief: chairman filed weekly minutes (%d escalations)",
+                        len(brief["minutes"].get("escalations", [])))
+        except Exception as exc:  # noqa: BLE001 - minutes are best-effort
+            logger.warning("research_brief: reconvene failed (%s)", exc)
+            brief["minutes"] = None
         logger.info("research_brief: built '%s' (%d sections, %d supplemental, %d threads)",
                     brief.get("headline", "?"), len(brief.get("sections", [])),
                     len(brief.get("supplemental", [])), len(brief.get("open_threads", [])))

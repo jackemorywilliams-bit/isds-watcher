@@ -77,7 +77,11 @@
         {% if e.notable_line %}
         <blockquote class="entry-quote">
           <span class="quote-label">Notable line</span>
+          {% if e.notable_line.startswith("N/A") %}
+          <p>{{ e.notable_line }}</p>
+          {% else %}
           <p>&ldquo;{{ e.notable_line }}&rdquo;</p>
+          {% endif %}
         </blockquote>
         {% endif %}
 

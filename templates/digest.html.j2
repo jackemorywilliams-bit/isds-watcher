@@ -68,9 +68,9 @@
 <div class="sheet">
 
   <div class="util">
-    {% if site_url %}<a href="{{ site_url }}">View on the web</a><span class="sep">·</span>{% endif %}
-    <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology</a><span class="sep">·</span>
-    {% if folder_url %}<a href="{{ folder_url }}">Full archive</a>{% endif %}
+    {% if site_url %}<a href="{{ site_url }}">View on the web</a><span class="sep">·</span>
+    <a href="{{ site_url }}digests/">Archive</a><span class="sep">·</span>{% endif %}
+    <a href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology</a>
   </div>
 
   <div class="mast">
@@ -108,7 +108,8 @@
       {% if it.matched_rings %}&nbsp;·&nbsp; <span class="ring">{{ it.matched_rings|map("replace","_"," ")|join(", ") }}</span>{% endif %}
     </p>
     <p class="annot">{{ it.digest_summary }}</p>
-    {% if it.metadata.get("notable_quote") %}<div class="quote">“{{ it.metadata.get("notable_quote") }}”</div>{% endif %}
+    {% if it.metadata.get("notable_quote") %}<div class="quote">“{{ it.metadata.get("notable_quote") }}”</div>
+    {% elif it.metadata.get("notable_unavailable") %}<div class="quote">Notable line: N/A — source paywalled (headline only); body not accessible.</div>{% endif %}
     <div class="src"><span class="lab">Source:</span>
       {{ it.source|replace("_", " ")|title }}:
       <a href="{{ it.url }}">{{ it.url }}</a></div>
@@ -140,9 +141,9 @@
     <table class="cols" role="presentation"><tr>
       <td>
         <h4>Navigate</h4>
-        {% if site_url %}<a class="navlink" href="{{ site_url }}">Website home</a>{% endif %}
+        {% if site_url %}<a class="navlink" href="{{ site_url }}">Website home</a>
+        <a class="navlink" href="{{ site_url }}digests/">Full archive (all weeks)</a>{% endif %}
         <a class="navlink" href="{{ repo_url }}/blob/main/METHODOLOGY.md">Methodology memo</a>
-        {% if folder_url %}<a class="navlink" href="{{ folder_url }}">This week's full archive</a>{% endif %}
         <a class="navlink" href="{{ repo_url }}">Source repository</a>
       </td>
       <td>

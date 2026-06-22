@@ -8,7 +8,7 @@ Open `index.html` for the formatted digest, or browse `articles/` for one file p
 
 | # | Relevance | Source | Article | Notable line |
 |---|-----------|--------|---------|--------------|
-| 1 | 25 | iareporter headlines | [ICSID tribunal hearing sanctions-related treaty dispute with Ukraine declines to issue provisional measures, but directs parties to keep arbitrators informed of material changes in relevant ownership rights](articles/01_icsid-tribunal-hearing-sanctions-related-treaty.md) | ICSID tribunal hearing sanctions-related treaty dispute with Ukraine declines to… |
+| 1 | 25 | Iareporter Headlines | [ICSID tribunal hearing sanctions-related treaty dispute with Ukraine declines to issue provisional measures, but directs parties to keep arbitrators informed of material changes in relevant ownership rights](articles/01_icsid-tribunal-hearing-sanctions-related-treaty.md) | N/A |
 
 ---
 _See [/METHODOLOGY.md](../../METHODOLOGY.md) for the workflow and its scholarly justification._

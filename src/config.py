@@ -31,6 +31,12 @@ RELEVANCE_FLOOR = 25
 # (bounds polite-fetch volume per run).
 ENRICH_TOP_N = 24
 
+# Sources whose body we cannot read (paywalled / headline-only feeds). A
+# "notable line" from one of these is necessarily headline text, never a
+# verbatim quote from the source body, so the digest shows "N/A" for it rather
+# than presenting the headline as a quotation.
+HEADLINE_ONLY_SOURCES = {"iareporter_headlines"}
+
 REPO_URL = "https://github.com/jackemorywilliams-bit/isds-watcher"
 SITE_URL = "https://jackemorywilliams-bit.github.io/isds-watcher/"
 

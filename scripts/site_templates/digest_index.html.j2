@@ -37,7 +37,7 @@
               <span class="count">{{ d.matches_str }}</span> matches
               <span class="sep">·</span>
               <span class="count">{{ d.accepted_str }}</span> accepted
-              {% if d.classifier %}<span class="sep">·</span> classifier: {{ d.classifier }}{% endif %}
+              {% if d.sources %}<span class="sep">·</span> source{{ 's' if ',' in d.sources else '' }}: {{ d.sources }}{% endif %}
             </p>
           </div>
           <div class="archive-go" aria-hidden="true">Read &#8594;</div>

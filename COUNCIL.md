@@ -1,0 +1,81 @@
+# The ISDS Research Council
+
+The "council" is how this project organizes the work of turning raw ISDS developments
+into interpreted research. It is **not** a set of standing background agents — it is a
+set of clearly-defined **roles**, realized as coordinated stages in the weekly run
+(`python -m src.main`). Each role is a prompt or a pipeline component; the chairman
+coordinates them. This keeps the work auditable and reproducible (every role's output is
+archived) while giving the project the multi-perspective rigor of a council.
+
+## Members
+
+| Role | Realized as | Responsibility |
+|------|-------------|----------------|
+| **Data-scraping agents** ("scouts") | `src/sources/*` + `src/enrich.py` | Fetch and enrich candidate developments from the open sources (italaw, UNCTAD, ICSID, IISD ITN, IAReporter, Google Alerts, …). |
+| **Classifier** | `src/classify.py` + `fingerprint.yaml` | Score each candidate against the three-ring thematic fingerprint; produce the digest. |
+| **Chairman** | `prompts/council_chairman.txt` | Opens each weekly session. Reads the carried open threads + this week's items and **sets the agenda** — priority focus, what to verify, which threads are live. Steward of continuity. |
+| **Research analyst** | `prompts/research_analyst.txt` (+ Claude web search) | Interprets the week's items against the research question and **escalates to web search** for supplemental contemporary findings (always, on a quiet week), working to the chairman's agenda. |
+| **Security / integrity officer** | `prompts/council_security.txt` | Vets the analyst's memo before publication: flags fabricated/unverifiable sources, overreach, **inflated relevance**, and quote/access-integrity problems. Its vetting note is binding on the editor. |
+| **Autoprompt engineer (through the chairman)** | `src/research_state.py` + the open-threads loop | Each issue's open threads are persisted and fed back into next week's chairman agenda, so the prompting adapts and the research compounds rather than restarting cold. |
+| **Editor** | `prompts/research_editor.txt` | Turns the vetted memo into the structured, professional **ISDS Research Brief** (the second weekly email), honoring the security officer's note. |
+| **Analytics officer** | `scripts/source_analytics.py` + per-source counts in `meta.json` | Tracks which catalogue sources are receptive to the thematic intersection (surfaced yield now; receptivity = surfaced ÷ fresh candidates as per-source counts accrue), to tune coverage toward feeds that yield genuinely on-theme articles. Output: `analytics/source-receptivity.md`. |
+
+**Calibration (binding).** Every member applies the council calibration checklist
+(`prompts/council_calibration.md`) — a pre-publication, anti-hallucination behavioral
+calibration adapted from the documented "self-awareness" pre-response framework to this
+project: uncertainty handling, citation/quote/number verification, goal alignment,
+relevance honesty (anti-inflation), no sycophancy/filler, brevity, and constraint
+compliance. The **security officer** enforces it in full before anything is published.
+
+**Bounded web search.** The analyst's web search is *not* a collection channel. It is
+used only to deepen insight on the already-screened developments and to synthesize
+research around the research question; every web finding must connect back to a screened
+item or the question.
+
+## The weekly flow
+
+```
+scouts → classifier → DIGEST email (Thematic Watch, unchanged)
+                         │
+                         └─► chairman (agenda)
+                               → analyst (interpret + web search)
+                                 → security officer (vet)
+                                   → editor → RESEARCH BRIEF email (interpretive)
+                                       └─ open threads ─┐
+                                                        └─► carried to next week's chairman
+```
+
+- The **digest** (annotated bibliography) is unchanged and primary.
+- The **brief** is a separate, interpretive Monday email (`briefs/<date>.html`), with the
+  full council deliberation preserved at `briefs/<date>-memo.md` (agenda + analyst memo +
+  vetting note) as the audit trail.
+- The brief requires the Anthropic provider (web search is an Anthropic server tool) and
+  is skipped otherwise; set `RESEARCH_BRIEF_ENABLED=0` to suppress it. Model via
+  `RESEARCH_MODEL` (default `claude-opus-4-8`).
+
+## Cadence & accountability
+
+- **Daily — the researcher checks in.** The research analyst works on a daily cadence,
+  at its own discretion, for further insight on the open threads and the research
+  question, and files a short check-in. This runs as a **scheduled Claude Code routine on
+  the operator's Claude Max plan** (not the API-billed GitHub Actions pipeline), with a
+  deliberately small daily budget so it does not eat into Max usage.
+- **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
+  with the chairman's **reconvene minutes**: a candid status, next steps, a per-member
+  **accountability** assessment, and **escalations to the principal** (surfaced in the
+  brief's "Chairman's note"). This runs in GitHub Actions against the API key. The weekly
+  analyst **builds on the week's daily notes** (`analytics/daily-research/`) rather than
+  redoing the research, so the daily Max work feeds the weekly brief and the weekly run
+  searches less (lower API cost).
+- **Accountability ledger.** Every session is recorded in `state/council_log.json` and
+  rendered to `analytics/council-log.md` — the chairman's written record for holding
+  members accountable, so quality is tracked over time rather than living in one model's
+  recollection.
+
+## On the MCP overlay this was modeled on
+The structure was adapted from a Claude "council/overlay" layout. We deliberately did
+**not** install the third-party MCP plugin that inspired it (it wires auto-running
+session hooks, usage telemetry to an external service, and an embedded token). The
+council instead lives entirely in-repo. If a *trusted* MCP toolset is ever wanted, it can
+be attached to the analyst via the Messages API `mcp_servers` parameter without changing
+the council's structure.

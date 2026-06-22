@@ -28,7 +28,7 @@
       <div class="run-stat"><span class="run-num">{{ digest.matches_str }}</span><span class="run-label">matches</span></div>
       <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">accepted</span></div>
       {% if digest.threshold %}<div class="run-stat"><span class="run-num">{{ digest.threshold }}</span><span class="run-label">relevance threshold</span></div>{% endif %}
-      {% if digest.classifier %}<div class="run-stat"><span class="run-num run-text">{{ digest.classifier }}</span><span class="run-label">classifier</span></div>{% endif %}
+      {% if digest.sources %}<div class="run-stat"><span class="run-num run-text">{{ digest.sources }}</span><span class="run-label">source{{ 's' if ',' in digest.sources else '' }}</span></div>{% endif %}
     </div>
     <p class="run-note">
       Entries are ordered by thematic relevance. Each carries a two-sentence annotation and a

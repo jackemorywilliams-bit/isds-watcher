@@ -15,7 +15,7 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 
-from . import config, render, state
+from . import config, council_log, render, research_brief, research_state, state
 from .classify import classify_item, keyword_score
 from .email_send import send_digest
 from .enrich import enrich, notable_quote as enrich_notable
@@ -137,7 +137,9 @@ def main(argv=None) -> int:
         print("\n=== ISDS Watcher run summary (baseline bootstrap) ===")
         print(f"new candidates indexed: {n}")
         print(f"email:                  {email_status}")
-        return 0
+        # A failed baseline send must fail the run too, so the failure alert fires
+        # (consistent with the main path's "green == delivered" guarantee).
+        return 1 if email_status == "failed" else 0
 
     # 2. Cheap keyword pre-score to rank candidates, then enrich the most
     #    promising ones (fetch their source page) so the LLM and the digest have
@@ -213,6 +215,35 @@ def main(argv=None) -> int:
                        f"{stats['above_threshold']} at threshold)")
         email_status = "sent" if send_digest(html, subject, cfg) else "failed"
 
+    # 6b. Convene the research council and send the interpretive Research Brief — a
+    #     second, interpretive weekly email (chairman → analyst+web search → security
+    #     → editor). Skipped on --dry-run (it calls the API) and when disabled or the
+    #     provider can't run it. A brief failure is logged but never affects the digest.
+    brief_status = "skipped"
+    if config.RESEARCH_BRIEF_ENABLED and not args.dry_run:
+        rlog = research_state.load()
+        brief = research_brief.generate_brief(
+            surfaced,
+            prior_threads=rlog.get("open_threads", []),
+            week_str=date_str,
+            screened=stats["total_candidates"],
+            provider=provider,
+        )
+        if brief:
+            seq = research_state.record_issue(
+                rlog, date_str, brief.get("headline", ""), brief.get("open_threads", []))
+            brief_html = render.render_research_brief(brief, generated_at, seq)
+            brief_path = render.write_brief(brief_html, brief, generated_at, seq)
+            research_state.save(rlog)
+            # Record the weekly council session in the accountability ledger.
+            council_log.append_weekly(date_str, seq, brief, generated_at)
+            if args.no_email:
+                brief_status = f"written #{seq}"
+            else:
+                subj = f"ISDS Research Brief #{seq} — {date_str}: {brief['headline']}"
+                brief_status = f"sent #{seq}" if send_digest(brief_html, subj, cfg) else "failed"
+            print(f"brief:            {brief_status} ({brief_path})")
+
     # 7. Persist state.
     state.save_state(st)
 
@@ -228,6 +259,7 @@ def main(argv=None) -> int:
     print(f"classified:       {stats['classified']}")
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")
     print(f"surfaced in digest: {len(surfaced)}")
+    print(f"research brief:   {brief_status}")
     print(f"folder:           {folder_path}")
     print(f"digest:           {digest_path}")
     print(f"email:            {email_status}")

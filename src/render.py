@@ -181,12 +181,21 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     accepted = len(items)
     watch_list_leads = accepted - matches
     threshold = stats.get("threshold")
+    # Per-source counts feed the analytics member's source-receptivity analysis:
+    #   per_source        = fresh candidates fetched per source this run (the
+    #                       denominator for receptivity over time)
+    #   accepted_by_source = surfaced items per source this run (the numerator)
+    accepted_by_source: dict[str, int] = {}
+    for it in items:
+        accepted_by_source[it.source] = accepted_by_source.get(it.source, 0) + 1
     meta = {
         "date": date_str,
         "screened": screened,
         "matches": matches,
         "watch_list_leads": watch_list_leads,
         "accepted": accepted,
+        "per_source": dict(stats.get("per_source", {})),
+        "accepted_by_source": accepted_by_source,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)
@@ -277,6 +286,82 @@ def update_digests_index(out_root: str = "digests") -> str:
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
     return path
+
+
+def render_research_brief(brief: dict, generated_at: datetime, seq: int) -> str:
+    """Render the interpretive Research Brief (the council's second weekly email)."""
+    tmpl = _env.get_template("research_brief.html.j2")
+    return tmpl.render(
+        brief=brief,
+        seq=seq,
+        generated_at=generated_at,
+        date_str=generated_at.strftime("%Y-%m-%d"),
+        repo_url=config.REPO_URL,
+        site_url=config.SITE_URL,
+    )
+
+
+def write_brief(html: str, brief: dict, generated_at: datetime, seq: int,
+                out_root: str = "briefs") -> str:
+    """Write briefs/<DATE>.html, the analyst memo, and refresh briefs/README.md."""
+    os.makedirs(out_root, exist_ok=True)
+    date_str = generated_at.strftime("%Y-%m-%d")
+    path = os.path.join(out_root, f"{date_str}.html")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(html)
+    # Preserve the council's raw deliberation alongside the edited issue (audit trail):
+    # the chairman's agenda, the analyst memo, and the security officer's vetting note.
+    memo = brief.get("_memo")
+    if memo:
+        parts = [f"# ISDS Research Brief #{seq} — {date_str}", "", f"## {brief.get('headline','')}", ""]
+        if brief.get("_agenda"):
+            parts += ["## Chairman's agenda", "", brief["_agenda"], ""]
+        parts += ["## Analyst memo (raw)", "", memo, ""]
+        if brief.get("_security"):
+            parts += ["## Security officer's vetting note", "", brief["_security"], ""]
+        m = brief.get("minutes")
+        if m:
+            parts += ["## Chairman's reconvene minutes", "", f"**Status.** {m.get('status','')}", ""]
+            if m.get("accountability"):
+                parts.append("**Accountability.**")
+                parts += [f"- {a.get('member','?')}: {a.get('assessment','')}" for a in m["accountability"]]
+                parts.append("")
+            if m.get("next_steps"):
+                parts.append("**Next steps.**")
+                parts += [f"- {s}" for s in m["next_steps"]]
+                parts.append("")
+            if m.get("escalations"):
+                parts.append("**Escalations to the principal.**")
+                parts += [f"- {e}" for e in m["escalations"]]
+                parts.append("")
+        with open(os.path.join(out_root, f"{date_str}-memo.md"), "w", encoding="utf-8") as fh:
+            fh.write("\n".join(parts) + "\n")
+    _update_briefs_index(out_root)
+    return path
+
+
+def _update_briefs_index(out_root: str = "briefs") -> None:
+    issues = sorted(
+        (f for f in os.listdir(out_root)
+         if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.html", f)),
+        reverse=True,
+    ) if os.path.isdir(out_root) else []
+    lines = [
+        "# ISDS Research Brief — Archive",
+        "",
+        "The interpretive companion to the Thematic Watch: each weekly issue reads the",
+        "developments against the research question and carries open threads forward.",
+        "",
+        "| Date | Issue |",
+        "|------|-------|",
+    ]
+    for f in issues:
+        d = f[:-5]
+        lines.append(f"| {d} | [{d}.html](./{f}) · [memo](./{d}-memo.md) |")
+    if not issues:
+        lines.append("| — | _No issues yet._ |")
+    with open(os.path.join(out_root, "README.md"), "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines) + "\n")
 
 
 def write_digest(html: str, date_str: str, out_dir: str = "digests") -> str:

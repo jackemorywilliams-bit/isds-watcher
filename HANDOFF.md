@@ -23,6 +23,16 @@
   preserved at `briefs/<date>-memo.md`. Continuity: each issue's open threads persist in
   `state/research_log.json` and feed the next week's chairman.
 
+## Website stays in sync with source (guardrail)
+The website (`docs/`) is generated from source (`METHODOLOGY.md`, the digest folders, the
+site templates) by `scripts/build_site.py`. To stop the site drifting from source — which
+recurred because `build_site` stamps each page with a wall-clock footer, masking real
+drift — `.github/workflows/site-sync.yml` enforces it both ways: a **PR gate**
+(`scripts/check_site_sync.py`, which rebuilds and fails on any change other than the build
+stamp) and a **push-to-main auto-sync** that rebuilds and commits `docs/` whenever a source
+edit lands directly on main. So editing `METHODOLOGY.md` (or any site source) updates the
+website automatically; no manual rebuild needed. Locally: `python scripts/check_site_sync.py`.
+
 ## Secrets / variables (set on the repo)
 Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_KEY`
 **or** `GEMINI_API_KEY`. Variable: `MODEL_PROVIDER` (`claude` is the live default; `gemini`

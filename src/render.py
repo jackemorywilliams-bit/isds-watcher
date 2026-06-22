@@ -8,6 +8,7 @@ import logging
 import os
 import re
 from datetime import datetime
+from urllib.parse import urlparse
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -16,6 +17,23 @@ from . import config
 logger = logging.getLogger("isds.render")
 
 FOLDER_SUFFIX = "ISDS-Thematic-Watch"
+
+# Sources that aggregate third-party publishers rather than being the publisher
+# themselves. For these, the archive names the underlying publisher (parsed from
+# the item URL) alongside the channel, so provenance reads e.g.
+# "Google Alerts → reuters.com" rather than a bare "Google Alerts".
+_AGGREGATOR_SOURCES = {"google_alerts", "google_news_rss", "gmail_scholar"}
+
+
+def _source_label(it) -> str:
+    """Human-readable provenance: the source channel, plus the underlying
+    publisher domain when the channel is an aggregator."""
+    channel = it.source.replace("_", " ").title()
+    if it.source in _AGGREGATOR_SOURCES and getattr(it, "url", ""):
+        host = urlparse(it.url).netloc.replace("www.", "")
+        if host:
+            return f"{channel} → {host}"
+    return channel
 
 _env = Environment(
     loader=FileSystemLoader("templates"),
@@ -89,7 +107,7 @@ def _article_md(it, idx: int) -> str:
     lines = [
         f"# {idx}. {it.title}",
         "",
-        f"- **Source:** {it.source.replace('_', ' ').title()} — [Read the original ↗]({it.url})",
+        f"- **Source:** {_source_label(it)} — [Read the original ↗]({it.url})",
         f"- **Date:** {it.published.strftime('%d %B %Y') if getattr(it, 'published', None) else 'n.d.'}",
         f"- **Link:** {it.url}",
         f"- **Relevance:** {it.relevance_score} ({band})",
@@ -102,9 +120,13 @@ def _article_md(it, idx: int) -> str:
         "## Annotation",
         it.digest_summary or "(no annotation)",
     ]
+    unavailable = it.metadata.get("notable_unavailable") if isinstance(it.metadata, dict) else False
     if quote:
         lines += ["", "## Notable line (from source)", f"> “{quote}”"]
-    lines += ["", "---", f"Source: {it.source.replace('_', ' ').title()}. Methodology: METHODOLOGY.md"]
+    elif unavailable:
+        lines += ["", "## Notable line (from source)",
+                  "> N/A — source paywalled (headline only); body not accessible."]
+    lines += ["", "---", f"Source: {_source_label(it)}. Methodology: METHODOLOGY.md"]
     return "\n".join(lines) + "\n"
 
 
@@ -196,9 +218,17 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         quote = it.metadata.get("notable_quote", "") if isinstance(it.metadata, dict) else ""
         q = (quote[:80] + "…") if len(quote) > 80 else quote
         q = q.replace("|", "\\|")
+        # The notable line is a direct, verbatim quote from the source, so it is
+        # always shown in quotation marks (matching the newsletter and the
+        # per-article files). A paywalled/headline-only source has no quotable
+        # body, so it shows "N/A"; an accessible source with no salient line
+        # shows an em dash.
+        unavail = it.metadata.get("notable_unavailable") if isinstance(it.metadata, dict) else False
+        q_disp = f"“{q}”" if q else ("N/A" if unavail else "—")
         ttl = it.title.replace("|", "\\|")
-        rd.append(f"| {i} | {it.relevance_score} | {it.source.replace('_',' ')} "
-                  f"| [{ttl}](articles/{fn}) | {q} |")
+        src = _source_label(it).replace("|", "\\|")
+        rd.append(f"| {i} | {it.relevance_score} | {src} "
+                  f"| [{ttl}](articles/{fn}) | {q_disp} |")
     if not items:
         rd.append("| — | — | — | _No items met the relevance floor this cycle._ | — |")
     rd += ["", "---", "_See [/METHODOLOGY.md](../../METHODOLOGY.md) for the workflow and its"

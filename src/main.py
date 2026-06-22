@@ -24,6 +24,13 @@ from .sources import all_sources
 logger = logging.getLogger("isds.main")
 
 
+def _norm_line(s: str) -> str:
+    """Fold curly quotes, collapse whitespace, strip wrapping quotes/case — for
+    deciding whether a notable line merely restates the item's headline."""
+    s = (s or "").translate({0x201c: '"', 0x201d: '"', 0x2018: "'", 0x2019: "'"})
+    return re.sub(r"\s+", " ", s).strip().strip("\"'").lower()
+
+
 def parse_since(spec: str) -> datetime:
     """Parse '7d', '14d', '48h', '30m' into a tz-aware UTC cutoff."""
     now = datetime.now(timezone.utc)
@@ -157,6 +164,19 @@ def main(argv=None) -> int:
             if not meta.get("notable_quote"):
                 meta["notable_quote"] = enrich_notable(
                     it.raw_text or it.summary or it.title)
+            # Integrity: keep the notable line only when it is a genuine verbatim
+            # line from an accessible source body — not the item's own headline,
+            # and not from a paywalled/headline-only source. Otherwise drop it and
+            # (for paywalled sources) mark it unavailable so the digest shows
+            # "N/A" rather than passing the headline off as a quotation.
+            nq = (meta.get("notable_quote") or "").strip()
+            headline_only = it.source in config.HEADLINE_ONLY_SOURCES
+            if nq and not headline_only and _norm_line(nq) not in _norm_line(it.title):
+                meta["notable_quote"] = nq
+            else:
+                meta.pop("notable_quote", None)
+                if headline_only:
+                    meta["notable_unavailable"] = True
             ci.metadata = meta
         except Exception as exc:  # noqa: BLE001 - belt & braces
             logger.error("classify failed for %s: %s", it.source_id, exc)

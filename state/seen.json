@@ -1,14 +1,24 @@
 {
   "sources": {
     "iareporter_headlines": {
+      "https://www.iareporter.com/articles/analysis-uncitral-tribunal-hearing-nafta-legacy-arbitration-holds-that-findings-by-first-tribunal-are-covered-by-collateral-estoppel-and-sees-no-further-breaches-by-canada-in-terminating-offshore-win/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/bethlehem-chaired-tribunal-hearing-arguments-on-intra-eu-bit-termination-agreement-allows-non-disputing-party-submissions/": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.iareporter.com/articles/eurotunnel-reportedly-threatens-arbitration-against-the-uk-after-the-tripling-of-tax-rate/": "2026-06-22T17:28:18.632973+00:00",
+      "https://www.iareporter.com/articles/french-cour-de-cassation-rejects-shipyard-investors-bid-to-enforce-icc-award-against-assets-of-greeces-growthfund-finding-that-seizure-would-jeopardize-eu-measures-objectives/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/ghana-and-togo-refer-maritime-boundary-dispute-to-itlos-special-chamber/": "2026-06-16T21:59:27.957730+00:00",
       "https://www.iareporter.com/articles/icsid-tribunal-dismisses-french-telecom-companys-treaty-claim-against-iraq/": "2026-06-16T21:59:27.957730+00:00",
       "https://www.iareporter.com/articles/icsid-tribunal-hearing-sanctions-related-treaty-dispute-with-ukraine-declines-to-issue-provisional-measures-but-directs-parties-to-keep-arbitrators-informed-of-material-changes-in-relevant-ownership/": "2026-06-16T21:59:27.957730+00:00",
       "https://www.iareporter.com/articles/icsid-tribunal-majority-renders-decision-on-jurisdiction-in-arbitration-lodged-by-iranian-state-controlled-trading-company-against-bahrain/": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.iareporter.com/articles/russia-reportedly-fails-to-set-aside-crimea-award/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/russian-court-restrains-germany-owned-energy-trader-from-pursuing-icc-arbitration-against-gazprom-export-under-threat-of-600-million-eur-penalty/": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.iareporter.com/articles/scc-tribunal-reportedly-bifurcates-proceedings-in-politically-charged-arbitration-against-armenia/": "2026-06-22T17:28:18.632973+00:00",
+      "https://www.iareporter.com/articles/serbias-state-owned-gas-company-lodges-treaty-based-arbitration-against-lithuania/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/three-are-in-place-to-hear-29-billion-usd-mining-claim-against-the-republic-of-guinea/": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.iareporter.com/articles/three-are-in-place-to-hear-italys-bid-to-annul-ect-award/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/tribunal-majority-dismisses-banking-claim-against-portugal/": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.iareporter.com/articles/uk-court-stays-proceedings-to-enforce-16-billion-usd-judgment-against-argentina-which-was-reversed-while-enforcement-proceedings-were-ongoing/": "2026-06-22T17:28:18.632973+00:00",
+      "https://www.iareporter.com/articles/uk-government-revises-its-response-to-iareporters-freedom-for-information-request/": "2026-06-22T17:28:18.632973+00:00",
+      "https://www.iareporter.com/articles/uk-high-court-declines-states-request-to-amend-set-aside-application-directed-against-under-the-radar-treaty-award/": "2026-06-22T17:28:18.632973+00:00",
       "https://www.iareporter.com/articles/uncitral-tribunal-dismisses-us-windfarm-investors-claim-in-nafta-legacy-arbitration-against-canada/": "2026-06-16T21:59:27.957730+00:00",
       "https://www.iareporter.com/articles/us-appeals-court-splits-on-enforcement-of-100-million-usd-uncitral-award-against-venezuela-dissenter-opines-that-granting-enforcement-to-award-obtained-when-state-was-represented-by-maduro-government/": "2026-06-16T21:59:27.957730+00:00"
     },
@@ -51,7 +61,8 @@
       "https://www.italaw.com/cases/11988": "2026-06-16T21:59:27.957730+00:00",
       "https://www.italaw.com/cases/14103": "2026-06-16T21:59:27.957730+00:00",
       "https://www.italaw.com/cases/3996": "2026-06-16T21:59:27.957730+00:00",
-      "https://www.italaw.com/cases/9748": "2026-06-16T21:59:27.957730+00:00"
+      "https://www.italaw.com/cases/9748": "2026-06-16T21:59:27.957730+00:00",
+      "https://www.italaw.com/cases/9884": "2026-06-22T17:28:18.632973+00:00"
     },
     "pca_press": {
       "https://pca-cpa.org/en/news/pca-press-release-entry-into-force-of-the-host-country-agreement-between-the-permanent-court-of-arbitration-and-the-kingdom-of-bahrain/": "2026-06-16T21:59:27.957730+00:00",

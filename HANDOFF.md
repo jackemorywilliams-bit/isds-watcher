@@ -12,7 +12,16 @@
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),
   plus manual `workflow_dispatch`. Concurrency group `isds-watcher` prevents overlap.
 - The job: fail-fast on missing secrets → install deps → `python -m src.main --since 7d` →
-  rebuild the website → commit `state/`, `digests/`, and `docs/` back as `github-actions[bot]`.
+  rebuild the website → commit `state/`, `digests/`, `docs/`, and `briefs/` back as
+  `github-actions[bot]`.
+- Each run sends **two emails**: the **Thematic Watch digest** (annotated bibliography,
+  unchanged) and the interpretive **ISDS Research Brief** produced by the research council
+  (chairman → analyst+web search → security officer → editor). See `COUNCIL.md`. The brief
+  needs the Anthropic provider (web search is an Anthropic server tool); disable with
+  `RESEARCH_BRIEF_ENABLED=0`, choose the model with `RESEARCH_MODEL` (default
+  `claude-opus-4-8`). Issues land in `briefs/<date>.html`; the full council deliberation is
+  preserved at `briefs/<date>-memo.md`. Continuity: each issue's open threads persist in
+  `state/research_log.json` and feed the next week's chairman.
 
 ## Secrets / variables (set on the repo)
 Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_KEY`

@@ -31,6 +31,12 @@ RELEVANCE_FLOOR = 25
 # (bounds polite-fetch volume per run).
 ENRICH_TOP_N = 24
 
+# The interpretive Research Brief (the council's second weekly email). Enabled by
+# default; set RESEARCH_BRIEF_ENABLED=0 to suppress it. It requires the Anthropic
+# provider (web search is an Anthropic server tool) and is skipped otherwise.
+RESEARCH_BRIEF_ENABLED = os.getenv("RESEARCH_BRIEF_ENABLED", "1").strip().lower() not in (
+    "0", "false", "no", "off", "")
+
 # Sources whose body we cannot read (paywalled / headline-only feeds). A
 # "notable line" from one of these is necessarily headline text, never a
 # verbatim quote from the source body, so the digest shows "N/A" for it rather

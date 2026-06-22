@@ -279,6 +279,67 @@ def update_digests_index(out_root: str = "digests") -> str:
     return path
 
 
+def render_research_brief(brief: dict, generated_at: datetime, seq: int) -> str:
+    """Render the interpretive Research Brief (the council's second weekly email)."""
+    tmpl = _env.get_template("research_brief.html.j2")
+    return tmpl.render(
+        brief=brief,
+        seq=seq,
+        generated_at=generated_at,
+        date_str=generated_at.strftime("%Y-%m-%d"),
+        repo_url=config.REPO_URL,
+        site_url=config.SITE_URL,
+    )
+
+
+def write_brief(html: str, brief: dict, generated_at: datetime, seq: int,
+                out_root: str = "briefs") -> str:
+    """Write briefs/<DATE>.html, the analyst memo, and refresh briefs/README.md."""
+    os.makedirs(out_root, exist_ok=True)
+    date_str = generated_at.strftime("%Y-%m-%d")
+    path = os.path.join(out_root, f"{date_str}.html")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(html)
+    # Preserve the council's raw deliberation alongside the edited issue (audit trail):
+    # the chairman's agenda, the analyst memo, and the security officer's vetting note.
+    memo = brief.get("_memo")
+    if memo:
+        parts = [f"# ISDS Research Brief #{seq} — {date_str}", "", f"## {brief.get('headline','')}", ""]
+        if brief.get("_agenda"):
+            parts += ["## Chairman's agenda", "", brief["_agenda"], ""]
+        parts += ["## Analyst memo (raw)", "", memo, ""]
+        if brief.get("_security"):
+            parts += ["## Security officer's vetting note", "", brief["_security"], ""]
+        with open(os.path.join(out_root, f"{date_str}-memo.md"), "w", encoding="utf-8") as fh:
+            fh.write("\n".join(parts) + "\n")
+    _update_briefs_index(out_root)
+    return path
+
+
+def _update_briefs_index(out_root: str = "briefs") -> None:
+    issues = sorted(
+        (f for f in os.listdir(out_root)
+         if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.html", f)),
+        reverse=True,
+    ) if os.path.isdir(out_root) else []
+    lines = [
+        "# ISDS Research Brief — Archive",
+        "",
+        "The interpretive companion to the Thematic Watch: each weekly issue reads the",
+        "developments against the research question and carries open threads forward.",
+        "",
+        "| Date | Issue |",
+        "|------|-------|",
+    ]
+    for f in issues:
+        d = f[:-5]
+        lines.append(f"| {d} | [{d}.html](./{f}) · [memo](./{d}-memo.md) |")
+    if not issues:
+        lines.append("| — | _No issues yet._ |")
+    with open(os.path.join(out_root, "README.md"), "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines) + "\n")
+
+
 def write_digest(html: str, date_str: str, out_dir: str = "digests") -> str:
     """Also write a flat digests/<DATE>.html for quick access / backward-compat."""
     os.makedirs(out_dir, exist_ok=True)

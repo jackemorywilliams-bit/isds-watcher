@@ -63,7 +63,10 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
 - **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
   with the chairman's **reconvene minutes**: a candid status, next steps, a per-member
   **accountability** assessment, and **escalations to the principal** (surfaced in the
-  brief's "Chairman's note"). This runs in GitHub Actions against the API key.
+  brief's "Chairman's note"). This runs in GitHub Actions against the API key. The weekly
+  analyst **builds on the week's daily notes** (`analytics/daily-research/`) rather than
+  redoing the research, so the daily Max work feeds the weekly brief and the weekly run
+  searches less (lower API cost).
 - **Accountability ledger.** Every session is recorded in `state/council_log.json` and
   rendered to `analytics/council-log.md` — the chairman's written record for holding
   members accountable, so quality is tracked over time rather than living in one model's

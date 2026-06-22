@@ -43,10 +43,14 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
 2. ADVANCE THE OPEN THREADS — report what (if anything) this week moves on each carried
    thread, and surface new threads worth opening.
 
-3. FIND SUPPLEMENTAL INFORMATION — STRICTLY BOUNDED. Web search is NOT a general news
-   channel and NOT a way to introduce unrelated material. Use it only to gain further
-   insight on the screened developments above and to continue finding and synthesizing
-   research directly around the research question: deepen the context of a screened item
+3. FIND SUPPLEMENTAL INFORMATION — STRICTLY BOUNDED, AND BUILD ON THE DAILY WORK. The
+   daily researcher has already done substantial web research this week; its notes are
+   provided below. START from those notes — synthesize and extend them — and use web
+   search SPARINGLY, mainly to fill genuine gaps or to verify, not to redo work already
+   done. Web search is NOT a general news channel and NOT a way to introduce unrelated
+   material. Use it only to gain further insight on the screened developments above and to
+   continue finding and synthesizing research directly around the research question:
+   deepen the context of a screened item
    (the case's posture, the doctrine it turns on, related awards in the same line), or —
    on a quiet week — advance a carried thread by locating contemporary, on-theme
    developments that bear on the three-ring intersection. Every web finding MUST connect
@@ -78,5 +82,8 @@ you to prioritise, and address what it asks you to verify.
 
 ## This week's screened items
 {{ITEMS}}
+
+## The daily researcher's notes this week (build on these; don't redo them)
+{{DAILY_NOTES}}
 
 Now produce the research analysis.

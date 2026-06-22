@@ -41,6 +41,12 @@ WEB_SEARCH_TOOL = {"type": "web_search_20260209", "name": "web_search", "max_use
 MAX_CONTINUATIONS = 6
 # Bound the per-item source text handed to the analyst, to control token spend.
 MAX_ITEM_EXCERPT = 1500
+# How many recent daily research notes to feed the weekly analyst, and the total
+# character budget for them (so the weekly brief builds on the daily work rather
+# than redoing it — and searches less, lowering the weekly API cost).
+DAILY_NOTES_DIR = Path("analytics") / "daily-research"
+MAX_DAILY_NOTES = 7
+MAX_DAILY_NOTES_CHARS = 9000
 
 EDITOR_SCHEMA = {
     "type": "object",
@@ -142,6 +148,31 @@ def _items_block(items) -> str:
     return "\n".join(out)
 
 
+def _daily_notes_block() -> str:
+    """The most recent daily-researcher notes (committed by the Max routine), so the
+    weekly analyst builds on the week's daily work instead of redoing it."""
+    if not DAILY_NOTES_DIR.is_dir():
+        return "(No daily research notes this week.)"
+    files = sorted(
+        (p for p in DAILY_NOTES_DIR.glob("*.md")), reverse=True)[:MAX_DAILY_NOTES]
+    if not files:
+        return "(No daily research notes this week.)"
+    chunks, total = [], 0
+    for p in files:  # newest first
+        try:
+            text = p.read_text(encoding="utf-8").strip()
+        except OSError:
+            continue
+        block = f"### {p.stem}\n{text}"
+        if total + len(block) > MAX_DAILY_NOTES_CHARS:
+            block = block[: max(0, MAX_DAILY_NOTES_CHARS - total)] + "\n…(truncated)"
+        chunks.append(block)
+        total += len(block)
+        if total >= MAX_DAILY_NOTES_CHARS:
+            break
+    return "\n\n".join(chunks) if chunks else "(No daily research notes this week.)"
+
+
 def _threads_block(threads) -> str:
     if not threads:
         return ("(No prior threads — this is the first brief. Establish the initial "
@@ -190,6 +221,7 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
         .replace("{{SCREENED}}", str(screened))
         .replace("{{PRIOR_THREADS}}", _threads_block(prior_threads))
         .replace("{{ITEMS}}", _items_block(items))
+        .replace("{{DAILY_NOTES}}", _daily_notes_block())
     )
     messages = [{"role": "user", "content": prompt}]
     resp = None

@@ -18,6 +18,19 @@ archived) while giving the project the multi-perspective rigor of a council.
 | **Security / integrity officer** | `prompts/council_security.txt` | Vets the analyst's memo before publication: flags fabricated/unverifiable sources, overreach, **inflated relevance**, and quote/access-integrity problems. Its vetting note is binding on the editor. |
 | **Autoprompt engineer (through the chairman)** | `src/research_state.py` + the open-threads loop | Each issue's open threads are persisted and fed back into next week's chairman agenda, so the prompting adapts and the research compounds rather than restarting cold. |
 | **Editor** | `prompts/research_editor.txt` | Turns the vetted memo into the structured, professional **ISDS Research Brief** (the second weekly email), honoring the security officer's note. |
+| **Analytics officer** | `scripts/source_analytics.py` + per-source counts in `meta.json` | Tracks which catalogue sources are receptive to the thematic intersection (surfaced yield now; receptivity = surfaced ÷ fresh candidates as per-source counts accrue), to tune coverage toward feeds that yield genuinely on-theme articles. Output: `analytics/source-receptivity.md`. |
+
+**Calibration (binding).** Every member applies the council calibration checklist
+(`prompts/council_calibration.md`) — a pre-publication, anti-hallucination behavioral
+calibration adapted from the documented "self-awareness" pre-response framework to this
+project: uncertainty handling, citation/quote/number verification, goal alignment,
+relevance honesty (anti-inflation), no sycophancy/filler, brevity, and constraint
+compliance. The **security officer** enforces it in full before anything is published.
+
+**Bounded web search.** The analyst's web search is *not* a collection channel. It is
+used only to deepen insight on the already-screened developments and to synthesize
+research around the research question; every web finding must connect back to a screened
+item or the question.
 
 ## The weekly flow
 

@@ -181,12 +181,21 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     accepted = len(items)
     watch_list_leads = accepted - matches
     threshold = stats.get("threshold")
+    # Per-source counts feed the analytics member's source-receptivity analysis:
+    #   per_source        = fresh candidates fetched per source this run (the
+    #                       denominator for receptivity over time)
+    #   accepted_by_source = surfaced items per source this run (the numerator)
+    accepted_by_source: dict[str, int] = {}
+    for it in items:
+        accepted_by_source[it.source] = accepted_by_source.get(it.source, 0) + 1
     meta = {
         "date": date_str,
         "screened": screened,
         "matches": matches,
         "watch_list_leads": watch_list_leads,
         "accepted": accepted,
+        "per_source": dict(stats.get("per_source", {})),
+        "accepted_by_source": accepted_by_source,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)

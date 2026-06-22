@@ -284,6 +284,18 @@ class Digest:
     def screened_str(self) -> str:
         return str(self.screened) if self.screened is not None else "—"
 
+    @property
+    def sources(self) -> str:
+        """Distinct catalogue source(s) the accepted items came from — shown in
+        place of the classifier, so a reader sees which feed surfaced the week's
+        developments (e.g. "Italaw, Iareporter Headlines")."""
+        seen: list[str] = []
+        for e in self.entries:
+            ch = (e.source or "").split(" → ")[0].strip()
+            if ch and ch not in seen:
+                seen.append(ch)
+        return ", ".join(seen)
+
 
 def _field_value(body: str, label: str) -> str:
     """Pull a '- **Label:** value' line value from an article body."""

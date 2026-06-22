@@ -84,6 +84,15 @@ def _read_prompt(name: str) -> str:
     return (_PROMPTS / name).read_text(encoding="utf-8")
 
 
+def _calibration() -> str:
+    """The binding anti-hallucination / behavioral calibration checklist shared by
+    the council (council_calibration.md)."""
+    try:
+        return _read_prompt("council_calibration.md")
+    except OSError:
+        return "(calibration checklist unavailable)"
+
+
 def _items_block(items) -> str:
     if not items:
         return ("(No items cleared the relevance floor this week — a quiet week. "
@@ -153,6 +162,7 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
     chairman's agenda."""
     prompt = (
         _read_prompt("research_analyst.txt")
+        .replace("{{CALIBRATION}}", _calibration())
         .replace("{{AGENDA}}", agenda or "(No agenda set — use your judgement.)")
         .replace("{{WEEK}}", week_str)
         .replace("{{SCREENED}}", str(screened))
@@ -181,7 +191,11 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
 def _run_security(client, analyst_memo: str) -> str:
     """Security officer: vets the memo for fabrication, overreach, inflated relevance,
     and quote/access integrity before publication."""
-    prompt = _read_prompt("council_security.txt").replace("{{ANALYST_MEMO}}", analyst_memo)
+    prompt = (
+        _read_prompt("council_security.txt")
+        .replace("{{CALIBRATION}}", _calibration())
+        .replace("{{ANALYST_MEMO}}", analyst_memo)
+    )
     resp = client.messages.create(
         model=_model(),
         max_tokens=1500,

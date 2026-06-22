@@ -64,6 +64,9 @@ jobs:
       - name: Run watcher
         run: python -m src.main --since "${{ github.event.inputs.since || '7d' }}"
 
+      - name: Analytics — source receptivity
+        run: python scripts/source_analytics.py
+
       - name: Rebuild website
         run: python scripts/build_site.py
 
@@ -77,7 +80,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/ digests/ docs/ briefs/
+          git add state/ digests/ docs/ briefs/ analytics/
           if git diff --cached --quiet; then
             echo "No state/digest changes to commit."
           else

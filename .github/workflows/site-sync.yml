@@ -1,0 +1,60 @@
+name: site-sync
+
+# Keep the published website (docs/) in lockstep with its source (METHODOLOGY.md,
+# the digest folders, and the site templates), so a source edit is never left
+# unreflected on the site. Two layers:
+#   * pull_request — fail the check if docs/ is out of sync (catch it before merge).
+#   * push to main — rebuild and AUTO-COMMIT the site if it drifted, so main always
+#     self-heals even when a source file is edited directly.
+on:
+  pull_request:
+    paths:
+      - "METHODOLOGY.md"
+      - "digests/**"
+      - "scripts/build_site.py"
+      - "scripts/site_templates/**"
+      - "docs/**"
+  push:
+    branches: [main]
+    paths:
+      - "METHODOLOGY.md"
+      - "digests/**"
+      - "scripts/build_site.py"
+      - "scripts/site_templates/**"
+
+jobs:
+  site-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      # PR: surface drift early; the author runs build_site and commits.
+      - name: PR gate — docs/ must match source
+        if: github.event_name == 'pull_request'
+        run: python scripts/check_site_sync.py
+
+      # main: rebuild and auto-commit the site if it genuinely drifted (ignoring
+      # the build stamp), so the site always tracks source without manual steps.
+      - name: main — auto-sync the site
+        if: github.event_name == 'push'
+        run: |
+          python scripts/build_site.py
+          if git diff -- docs/ | grep -E '^[+-]' | grep -v '^[+-][+-]' | grep -v 'footer-build' | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/
+            git commit -m "chore: auto-sync site with source [skip ci]"
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin main && git push && break
+              echo "push attempt $attempt failed; retrying"
+            done
+          else
+            echo "Site already in sync with source (only the build stamp differs); nothing to commit."
+          fi

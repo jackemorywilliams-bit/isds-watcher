@@ -1,44 +1,100 @@
-# Roadmap — making the council genuinely multi-agent (cheapest, lowest-effort path)
+# Roadmap — making the council genuinely multi-agent (grounded, evidence-based)
 
-This is the deferred "big task": moving from the current **personas-in-a-pipeline** design
-to a genuinely multi-agent council, with the least grunt work and least cost from where the
-project is today. Produced by the research council (a `claude-code-guide` agent) on
-2026-06-23. Cost figures below are **indicative**, drawn partly from secondary sources —
-verify against current Anthropic pricing before committing spend.
+The deferred "big task": moving from the current **personas-in-a-pipeline** design to genuine
+multi-agent, with the least grunt work and least cost. This version is grounded in the real
+multi-agent ecosystem (the GitHub `multi-agent-systems` topic, LangGraph, AutoGen/AG2, CrewAI,
+OpenAI Agents SDK, Anthropic's own engineering) and the published evidence on when multi-agent
+helps — researched by a three-member council (ecosystem scout, fit architect, ROI skeptic) on
+2026-06-23. Sources are listed at the end. It supersedes the earlier, Anthropic-centric draft.
 
-## Where we are now (honest baseline)
-- **Weekly:** a Python process (GitHub Actions) makes sequential Anthropic API calls —
-  chairman → analyst (web_search) → security → editor → reconvene — all the **same model,
-  one rubric**. Real process separation (separate calls on frozen artifacts), but not
-  independent agents.
-- **Daily:** one Claude Code routine on the **Max plan** role-plays chairman + researcher
-  in a single session. One model talking to itself.
-- The programmatic fixes already shipped (citation verification, structured memory, eval
-  gate, reliability) close the biggest *integrity and reliability* gaps **without** going
-  multi-agent. Multi-agent mainly buys **independent parallel analysis** and **adversarial
-  cross-checking** — not, by itself, better facts.
+## The honest bottom line first
+For *this* project — a solo, narrow-domain, scheduled **research-and-verify** tool over an
+already-pre-filtered candidate set — the published evidence says full multi-agent mostly does
+**not** improve the output, and can hurt it (cost, latency, error-compounding). Multi-agent's
+wins are for **parallel breadth** (many independent directions at once); your task is
+**sequential depth**. The biggest quality wins were the **non-agentic** fixes already shipped
+(citation verification, compounding memory, eval gate). So the recommendation is: take the one
+cheap multi-agent pattern the literature actually endorses, optionally take the genuine
+multi-agent step now that it's cost-free on Max, and stop there unless a measured experiment
+says otherwise.
 
-## Options (cost / effort / what it actually adds)
+## The correction that reframes the whole question
+The earlier roadmap assumed "stay on the Max subscription" and "run genuinely multi-agent in a
+GitHub Actions cron" were mutually exclusive. **They are not.** The **Claude Agent SDK
+authenticates against a Pro/Max subscription** via `claude setup-token` → the
+`CLAUDE_CODE_OAUTH_TOKEN`, and that token **works in GitHub Actions** ([docs](https://code.claude.com/docs/en/github-actions)).
+So a cron-triggered Actions job can run the Agent SDK with **real subagents — each with its own
+isolated context window and tools — billed to the Max headless pool, not per-token API.**
+Caveat (new, 2026-06-15): headless Agent-SDK/Actions usage is metered **separately** from
+interactive Claude Code, so the daily budget is finite — keep it lean.
 
-| Option | Cost | Effort | Multi-agent value |
-|---|---|---|---|
-| **1. Separate Claude Code routines on Max** (researcher, security, editor as distinct staggered routines handing off via repo files) | **$0 — Max subscription** | Low (~2h) | Real async independence + separate session state; each role re-runnable on its own |
-| **2. Cross-model verifier** (security officer on a different/cheaper model, e.g. Sonnet/Haiku, vs analyst on Opus) | ~$ negligible–$20/mo | Low (1 line) | Two models, different blind spots — the cheapest real integrity gain |
-| **3. Weekly debate via an Agent Team** (spawn teammates in one session for live adversarial discussion) | Max (if it fits limits); ~4–7× tokens | Med (8–12h); experimental | Real-time disagreement/iteration — only worth it if debate measurably improves briefs |
-| **4. Claude Managed Agents** (server-managed coordinator + subagent threads, native message passing) | API per-token + session-hour fee (~hundreds/mo) | High (40h+ SDK refactor) | True orchestration; overkill for episodic weekly/daily work |
-| **5. MCP server as shared memory/tools** | $0 self-host – ~$50/mo | Med | Cleaner hand-offs; only worth it when integrating external systems (Slack/Linear) |
+## Why the popular frameworks are a poor fit here
+None of the major frameworks *require* a standing server for core agent logic, but each fails at
+least one hard constraint (cron + repo-as-state, daily heavy work on Max, solo/cost-sensitive):
 
-## Recommended staged path
-- **Stage 1 (do first):** split the daily meeting into **separate Max routines** (researcher → security → editor), handing off via committed files — staggered (e.g. 08:00 / 09:00 / 10:00 UTC). **$0, ~2h, genuine async multi-agent.** This is the single highest-leverage, lowest-cost step and keeps the daily work on Max.
-- **Stage 2:** make the **security/verifier a different model** than the analyst (weekly, and the daily security routine). Cheap, real cross-checking.
-- **Stage 3 (optional, validate first):** a weekly **Agent-Team debate** — but run one or two manual debate sessions and confirm the brief is actually better before automating. If it isn't, stop here.
-- **Stage 4 (only if scaling to always-on / a live dashboard):** Managed Agents. For a solo research project this is almost certainly overkill.
+| Option | Fits cron + repo, no server? | Daily heavy work on Max (no API $)? | Effort | Verdict |
+|---|---|---|---|---|
+| **Claude Agent SDK subagents** (cron Actions job, `CLAUDE_CODE_OAUTH_TOKEN`) | Yes — headless run, repo is the state | **Yes** — bills the Max headless pool | Low–Med | **The real multi-agent path that fits.** |
+| **Cross-model verifier** (security/verifier on a different model) | Yes (weekly, API) | N/A (weekly API, modest) | ~1 line | **Cheapest endorsed win — do first.** |
+| **LangGraph** (library) | Partial — its cron/durability/queues are the *Platform server* you'd avoid | No — per-token API | High | Impressive, poor fit; you'd pay API tokens to get hand-off you already have |
+| **AutoGen/AG2** (group-chat/debate) | Partial — debate state is in-memory, lost each cron run | No — per-token API | Med–High | Defer; episodic cron + in-memory state mismatch |
+| **CrewAI** (role/task crews) | Yes-ish | No — per-token API | Med | Skip — re-implements the existing pipeline, on API billing, no new capability |
+| **OpenAI Agents SDK** | Yes (script) | No — OpenAI-native; Claude only via beta adapter | High | Skip — wrong ecosystem for a Claude/Max project |
+| **Claude Managed Agents** | No — Anthropic-side sessions/containers, API + session-hour billing | No | High | Right answer only if this becomes always-on monitoring |
 
-## Honest verdict
-Stages 1 + 2 deliver real multi-agent value for roughly **$0–20/mo and ~3 hours** of work,
-and keep the heavy daily work on the Max subscription. Beyond Stage 2 you are paying for
-research-quality gains (debate, orchestration) whose benefit must be demonstrated, not
-assumed — the cost/benefit stops being worth it for a single-researcher project unless the
-scope grows to always-on monitoring or human+agent collaboration. The biggest near-term
-wins were the **non-agentic** fixes already shipped (real citation verification, compounding
-memory, reliability); multi-agent is the next increment, not a prerequisite.
+Note on legacy: AutoGen (original) is in maintenance mode — prefer AG2 or Microsoft Agent
+Framework if you ever go that route. MetaGPT's releases are stale. The GitHub topic's top
+entries are mostly Claude-Code harnesses and file-based-planning repos — i.e. they validate the
+repo-as-state + Claude-subagents pattern rather than pointing elsewhere.
+
+## Staged plan
+- **Stage 0 (done, keep):** the integrity layer — citation verification, `STATE_OF_THE_ANSWER.md`,
+  the dedup insight ledger, the eval gate. These were the real quality wins and are non-agentic.
+- **Stage 1 (do first — ~1 line, real value): cross-model verifier.** Run the security/verifier
+  on a *different* model from the analyst (analyst Opus 4.8; verifier Haiku 4.5 or Sonnet 4.6).
+  This is the single-threaded **generator–verifier** pattern the literature endorses — two
+  different reasoners, different blind spots — at near-zero marginal cost. Implement as a
+  `SECURITY_MODEL` env var (defaulting to the analyst model, so nothing changes until you flip it).
+- **Stage 2 (the genuine multi-agent step, if you want it): Agent-SDK subagents for the DAILY
+  meeting, on Max, in cron.** Replace the single role-playing routine with an Agent-SDK run where
+  a chairman delegates to a **researcher subagent** (own context + web tools) and a **verifier
+  subagent with a fresh, isolated context** that never saw the researcher's reasoning and
+  independently checks the day's insight against `insights.jsonl` and the cited sources. State and
+  hand-off stay in the repo (read `STATE_OF_THE_ANSWER.md` + recent notes; write the dated note +
+  one deduped insight); subagent hand-off is in-process. Runs on Max via `CLAUDE_CODE_OAUTH_TOKEN`
+  in a daily Actions cron — no server, no per-token API. Effort: Medium.
+- **Stage 3 (optional — validate before automating): weekly debate.** Only if Stages 1–2 leave a
+  measured gap. Test a 2–3 turn analyst vs. devil's-advocate exchange *manually* and check the
+  brief actually improves before shipping it (use the Batch API −50% + prompt caching if you do).
+- **Stop here.** Orchestration frameworks (LangGraph Platform) and Claude Managed Agents are
+  justified only if scope changes to always-on monitoring or a live human+agent dashboard — at
+  which point you're operating a server anyway and these constraints no longer bind. For a
+  cost-sensitive solo researcher, that day may never come, and that's fine.
+
+## What the evidence says about ROI (so the decision is informed, not faith)
+- Multi-agent helps **breadth-first, parallelizable, high-value** tasks and works largely by
+  spending **~15× the tokens** of a chat (Anthropic) — and is explicitly **a poor fit when agents
+  share context or have many dependencies**, which describes this pipeline.
+- "Readonly" research/verify subagents "mostly resemble tool calls rather than true multi-agent
+  collaboration"; the patterns that work keep **writes single-threaded** with extra agents adding
+  *intelligence, not actions* (Cognition). Parallel-writer swarms fail.
+- Empirically, multi-agent gains on benchmarks are "often minimal," with a documented failure
+  taxonomy (Berkeley MAST), and strong single-agent baselines match multi-agent at far lower cost,
+  the apparent gains explained by extra compute rather than architecture.
+- Therefore the highest-ROI next move is **not** more agents — it's hardening the **eval gate** so
+  it can detect quality regressions, plus the **cross-model verifier** (Stage 1), which is a
+  one-config-line experiment you can prove or kill on the holdout set.
+
+## Sources
+Anthropic — Building effective agents (https://www.anthropic.com/engineering/building-effective-agents) ·
+Anthropic — How we built our multi-agent research system (https://www.anthropic.com/engineering/multi-agent-research-system) ·
+Claude Code GitHub Actions / OAuth token (https://code.claude.com/docs/en/github-actions) ·
+LangGraph (https://github.com/langchain-ai/langgraph), Platform (https://www.langchain.com/langgraph-platform) ·
+AutoGen (https://github.com/microsoft/autogen), AG2 (https://github.com/ag2ai/ag2) ·
+CrewAI (https://github.com/crewAIInc/crewAI) ·
+OpenAI Agents SDK (https://github.com/openai/openai-agents-python) ·
+GitHub multi-agent-systems topic (https://github.com/topics/multi-agent-systems) ·
+Cognition — Don't Build Multi-Agents (https://cognition.com/blog/dont-build-multi-agents) and Multi-Agents: What's Actually Working (https://cognition.com/blog/multi-agents-working) ·
+MAST — Why Do Multi-Agent LLM Systems Fail? (https://arxiv.org/abs/2503.13657) ·
+Strong single-agent baseline (https://arxiv.org/pdf/2601.12307).
+Pricing (claude-api skill, cached 2026-06-04): Opus 4.8 $5/$25, Sonnet 4.6 $3/$15, Haiku 4.5 $1/$5 per MTok; Batch −50%; cache reads ~0.1×.

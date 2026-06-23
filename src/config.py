@@ -37,6 +37,13 @@ ENRICH_TOP_N = 24
 RESEARCH_BRIEF_ENABLED = os.getenv("RESEARCH_BRIEF_ENABLED", "1").strip().lower() not in (
     "0", "false", "no", "off", "")
 
+# Deterministic, model-free citation verification for the Research Brief: after the
+# editor runs, every cited URL is actually fetched and classified (ok / paywalled /
+# unreachable) — the anti-hallucination control no model provides. Enabled by default;
+# set CITATION_VERIFY=0 to skip the network fetches (e.g. offline or rate-limited).
+CITATION_VERIFY = os.getenv("CITATION_VERIFY", "1").strip().lower() not in (
+    "0", "false", "no", "off", "")
+
 # Sources whose body we cannot read (paywalled / headline-only feeds). A
 # "notable line" from one of these is necessarily headline text, never a
 # verbatim quote from the source body, so the digest shows "N/A" for it rather

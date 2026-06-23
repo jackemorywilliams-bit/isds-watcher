@@ -69,14 +69,17 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
    IISD ITN, law-review and practitioner commentary). Search deliberately, not
    exhaustively; a few well-chosen queries beat many.
 
-4. BACKSOURCE PAYWALLED OR HEADLINE-ONLY SOURCES. When a relevant item sits behind a
-   paywall or exposes only a headline, do not treat it as a dead end — backsource it.
-   Research the article's EXACT title to recover what is publicly knowable about it:
-   secondary coverage, the underlying docket or award, party press releases,
-   practitioner write-ups, and scholarship that cites it. Reconstruct what it reports
-   from those accessible sources, then pursue further research from what you find. Cite
-   each piece you rely on, and never state the contents of a body you could not actually
-   read — say "headline only, backsourced from X" instead.
+4. BACKSOURCE FROM THE TITLE. When a relevant item sits behind a paywall or exposes only
+   a headline, do not treat it as a dead end — treat the title as a LEAD, not the finding.
+   Use the exact title to identify the actual case, award, or topic it names (the parties,
+   the docket/citation, the doctrine at issue), then research THAT case or topic's details
+   from accessible primary and secondary sources — the docket or award itself, party press
+   releases, practitioner write-ups, and scholarship that discusses it — and draw the
+   insight from the reconstructed details. The title is the seed you research outward from;
+   the insight comes from the underlying case, not the headline. Cite each piece you rely
+   on, and never state the contents of a body you could not actually read — if you can only
+   confirm the topic but not the holding, say so ("backsourced from the title via X; the
+   award text itself was not accessible").
 
 ## Standards
 - Ground every claim. When you rely on web search, cite the source inline (name + URL).

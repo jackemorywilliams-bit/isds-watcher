@@ -26,12 +26,20 @@ from __future__ import annotations
 import json
 import logging
 import os
+import sys
 from pathlib import Path
 from typing import Optional
+
+from . import config
 
 logger = logging.getLogger("isds.research_brief")
 
 _PROMPTS = Path(__file__).resolve().parent.parent / "prompts"
+# scripts/ holds the deterministic, model-free citation verifier; import it lazily-ish
+# by adding scripts/ to the path (it is not a package).
+_SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
 
 # Interpretive work warrants the most capable model; override with RESEARCH_MODEL.
 DEFAULT_MODEL = "claude-opus-4-8"
@@ -78,6 +86,19 @@ EDITOR_SCHEMA = {
         "open_threads": {"type": "array", "items": {"type": "string"}},
     },
     "required": ["headline", "dek", "sections", "supplemental", "open_threads"],
+    "additionalProperties": False,
+}
+
+# The security officer's verdict, returned as STRUCTURED JSON rather than free text so
+# the ledger can read a real boolean instead of substring-sniffing the prose. ``issues``
+# is the human-readable list of flags (empty when clean); it still feeds the memo/editor.
+SECURITY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "clean": {"type": "boolean"},
+        "issues": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["clean", "issues"],
     "additionalProperties": False,
 }
 
@@ -242,9 +263,23 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
     return _text_of(resp) if resp else ""
 
 
-def _run_security(client, analyst_memo: str) -> str:
-    """Security officer: vets the memo for fabrication, overreach, inflated relevance,
-    and quote/access integrity before publication."""
+def _security_issues_text(verdict: dict) -> str:
+    """Render the structured verdict as the human-readable vetting note the editor and the
+    archived memo still expect (a bulleted list, or an explicit all-clear line)."""
+    issues = [i for i in (verdict.get("issues") or []) if i and i.strip()]
+    if verdict.get("clean") and not issues:
+        return "Clean — no fabrication, overreach, inflated relevance, or quote/access issues found."
+    if not issues:
+        return "Flagged — issues raised but not itemized; treat the memo with caution."
+    return "\n".join(f"- {i.strip()}" for i in issues)
+
+
+def _run_security(client, analyst_memo: str) -> dict:
+    """Security officer: vets the memo for fabrication, overreach, inflated relevance, and
+    quote/access integrity before publication. Returns a STRUCTURED verdict
+    ``{"clean": bool, "issues": [str], "note": str}`` (same model, JSON-schema output) so
+    the ledger reads a real boolean rather than substring-sniffing free text. ``note`` is
+    the human-readable rendering kept for the editor and the archived memo."""
     prompt = (
         _read_prompt("council_security.txt")
         .replace("{{CALIBRATION}}", _calibration())
@@ -253,10 +288,16 @@ def _run_security(client, analyst_memo: str) -> str:
     resp = client.messages.create(
         model=_model(),
         max_tokens=1500,
-        system="You are the security and integrity officer of an ISDS research council.",
+        system=("You are the security and integrity officer of an ISDS research council. "
+                "Return only valid JSON matching the provided schema: set \"clean\" true "
+                "only if the memo is free of every flagged category, and list each issue "
+                "(empty when clean) in \"issues\"."),
         messages=[{"role": "user", "content": prompt}],
+        output_config={"format": {"type": "json_schema", "schema": SECURITY_SCHEMA}},
     )
-    return _text_of(resp)
+    verdict = json.loads(_text_of(resp))
+    verdict["note"] = _security_issues_text(verdict)
+    return verdict
 
 
 def _run_editor(client, analyst_memo: str, security_note: str) -> dict:
@@ -302,6 +343,36 @@ def _run_reconvene(client, agenda, memo, security, brief) -> dict:
     return json.loads(_text_of(resp))
 
 
+def _verify_citations(brief: dict, memo: str) -> None:
+    """Deterministically fetch every URL the council cited — the editor's supplemental
+    links plus the analyst memo's inline URLs — and attach ``brief["citation_check"]``
+    (per-URL results) and ``brief["citation_summary"]`` (one-line tally). Model-free; uses
+    scripts/verify_citations.py. Guarded so a verifier failure never breaks the brief; on
+    failure the brief simply carries no citation check. ``unreachable`` results are the
+    signal worth surfacing (a cited source that does not resolve)."""
+    if not getattr(config, "CITATION_VERIFY", True):
+        brief["citation_check"] = []
+        brief["citation_summary"] = "Citation verification disabled."
+        return
+    try:
+        import verify_citations  # from scripts/ (added to sys.path above)
+        supp_urls = " ".join(
+            (s or {}).get("url", "") for s in brief.get("supplemental", []))
+        results = verify_citations.verify_text(f"{supp_urls}\n{memo or ''}")
+        brief["citation_check"] = results
+        brief["citation_summary"] = verify_citations.summarize(results)
+        unreachable = [r for r in results if r.get("verdict") == "unreachable"]
+        if unreachable:
+            logger.warning("research_brief: %d cited URL(s) unreachable — %s",
+                            len(unreachable), brief["citation_summary"])
+        else:
+            logger.info("research_brief: %s", brief["citation_summary"])
+    except Exception as exc:  # noqa: BLE001 - verification must never break the brief
+        logger.warning("research_brief: citation verification failed (%s)", exc)
+        brief["citation_check"] = []
+        brief["citation_summary"] = "Citation verification unavailable."
+
+
 def generate_brief(items, *, prior_threads, week_str, screened,
                    provider) -> Optional[dict]:
     """Convene the council: chairman → analyst (web search) → security → editor.
@@ -321,15 +392,23 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         if not memo:
             logger.warning("research_brief: analyst produced no text; skipping")
             return None
-        security = _run_security(client, memo)
-        logger.info("research_brief: security officer vetted the memo (%d chars)", len(security))
-        brief = _run_editor(client, memo, security)
+        verdict = _run_security(client, memo)
+        security_note = verdict.get("note", "")
+        logger.info("research_brief: security officer vetted the memo (clean=%s, %d issue(s))",
+                    verdict.get("clean"), len(verdict.get("issues") or []))
+        brief = _run_editor(client, memo, security_note)
         brief["_memo"] = memo
         brief["_agenda"] = agenda
-        brief["_security"] = security
+        # Keep the human-readable note for the memo/editor and the structured verdict for
+        # the ledger (the boolean, not a substring sniff of free text).
+        brief["_security"] = security_note
+        brief["_security_clean"] = bool(verdict.get("clean"))
+        brief["_security_issues"] = list(verdict.get("issues") or [])
+        # Deterministic, model-free citation check — the integrity control no model gives.
+        _verify_citations(brief, memo)
         # Chairman reconvenes to take stock and hold the council accountable.
         try:
-            brief["minutes"] = _run_reconvene(client, agenda, memo, security, brief)
+            brief["minutes"] = _run_reconvene(client, agenda, memo, security_note, brief)
             logger.info("research_brief: chairman filed weekly minutes (%d escalations)",
                         len(brief["minutes"].get("escalations", [])))
         except Exception as exc:  # noqa: BLE001 - minutes are best-effort

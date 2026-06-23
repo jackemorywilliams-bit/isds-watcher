@@ -1,0 +1,26 @@
+name: daily-update
+
+# Email the day's chairman + researcher meeting record (committed by the Max routine
+# at ~11:00 UTC) to the configured recipients. SMTP only -- no model API, no API cost.
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC daily, after the 11:00 UTC council meeting
+  workflow_dispatch: {}
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Email the daily council meeting record
+        run: python scripts/send_daily_update.py

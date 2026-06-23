@@ -75,6 +75,29 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
   members accountable, so quality is tracked over time rather than living in one model's
   recollection.
 
+## Compounding memory, dedup, and human review
+
+Three controls keep the research cumulative, non-repetitive, and verifiable — so days build on
+each other instead of starting cold, and "new" is measured rather than assumed.
+
+- **State-of-the-answer synthesis (`STATE_OF_THE_ANSWER.md`).** A living, structured document —
+  the project's cumulative best answer-so-far, organized by the three rings + the trade-secret /
+  clinical-data sub-question, each claim tied to its source(s), with an open-questions section.
+  The analyst reads it first each session and updates it after, so the research visibly
+  compounds. Unverifiable claims are marked `[unverified]` rather than asserted.
+- **Insight ledger (`analytics/insights.jsonl`).** An append-only, deduplicated record of each
+  genuinely new insight, one JSON object per line ({date, thread_id, ring, insight, sources,
+  confidence} — schema documented in `STATE_OF_THE_ANSWER.md`, since JSONL has no comment
+  syntax). It is the baseline against which "new" is judged: a session checks a candidate
+  insight against the ledger and, if already recorded, does not re-log it. On a quiet day the
+  honest output is "no new insight; standing watch" — this enforces the anti-inflation rule so
+  the one-insight-per-day mandate never degrades into padding on the quiet weeks the methodology
+  expects to be the norm.
+- **Human-review checkpoint (`HUMAN_REVIEW.md`).** A logged, recurring human spot-audit
+  (monthly, and on escalation) of a sample of cited claims from the period's records — pass/fail
+  recorded, verification debt cleared. This turns the methodology's "leads to be verified before
+  relied upon" stance into an auditable checkpoint rather than an assumption.
+
 ## On the MCP overlay this was modeled on
 The structure was adapted from a Claude "council/overlay" layout. We deliberately did
 **not** install the third-party MCP plugin that inspired it (it wires auto-running

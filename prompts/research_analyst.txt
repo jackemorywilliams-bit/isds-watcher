@@ -59,6 +59,15 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
    IISD ITN, law-review and practitioner commentary). Search deliberately, not
    exhaustively; a few well-chosen queries beat many.
 
+4. BACKSOURCE PAYWALLED OR HEADLINE-ONLY SOURCES. When a relevant item sits behind a
+   paywall or exposes only a headline, do not treat it as a dead end — backsource it.
+   Research the article's EXACT title to recover what is publicly knowable about it:
+   secondary coverage, the underlying docket or award, party press releases,
+   practitioner write-ups, and scholarship that cites it. Reconstruct what it reports
+   from those accessible sources, then pursue further research from what you find. Cite
+   each piece you rely on, and never state the contents of a body you could not actually
+   read — say "headline only, backsourced from X" instead.
+
 ## Standards
 - Ground every claim. When you rely on web search, cite the source inline (name + URL).
   Distinguish what an item *says* from your inference about it. Do not assert a holding
@@ -67,6 +76,17 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
   A clean, honest "the theme was quiet; here is the contemporary development I went and
   found, and how it bears on the question" is far more valuable than manufactured links.
 - Write for a legal researcher who knows the field. No filler, no throat-clearing.
+- Cite throughout — this is the anti-hallucination discipline. Every substantive claim,
+  case, holding, date, or figure carries an inline source (name + URL). A claim you cannot
+  source you do not make; flag it as unverified.
+- Advance the research materially every session: deliver at least ONE new, sourced insight
+  or takeaway for the project, building on prior days and threads rather than repeating
+  them.
+- Keep the end in view. The cumulative goal is to build, over time, a nuanced, accurate,
+  and comprehensive answer to the project's central question — when and how intellectual
+  property, especially trade secrets and clinical-trial data, is asserted as an investment,
+  attacked through a measure, and disposed of at the jurisdictional gate, as framed in the
+  Ferguson and Kim memos. Each session must move that answer forward.
 
 ## The chairman's agenda for this week
 The council chairman has set the direction below. Work to it — prioritise what it asks

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-23",
+  "last_updated": "2026-06-24",
   "open_threads": [
     {
       "id": "T01",
@@ -14,7 +14,8 @@
     {
       "id": "T03",
       "opened": "2026-06-23",
-      "thread": "USMCA/CUSMA architecture: US-Canada ISDS lapsed 30 June 2023, foreclosing successor pharmaceutical-IP claims under the principal North American framework; identify whether any non-North-American BIT or CPTPP three-ring case has been filed since 2020; monitor Mexico/USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
+      "updated": "2026-06-24",
+      "thread": "Treaty architecture closure: USMCA/CUSMA lapsed US-Canada ISDS after 30 June 2023; CPTPP pharmaceutical test data exclusivity provisions (TPP Art. 18.50) suspended — no direct ISDS hook for clinical data under either major multilateral framework. UK CPTPP accession (Dec 2024) adds investor pool without restoring suspended provisions. Monitor older bilateral BITs and any new ICSID/UNCITRAL pharmaceutical IP registration; monitor Mexico USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
     },
     {
       "id": "T04",
@@ -24,7 +25,8 @@
     {
       "id": "T05",
       "opened": "2026-06-23",
-      "thread": "Ring 3 doctrine — abuse of rights gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals a DOB-clause gap for natural-person nationality planning analogous to Philip Morris corporate restructuring; track UNCITRAL Working Group III Draft Article 17 (denial of benefits) reform and any IP-related case that triggers this doctrine."
+      "updated": "2026-06-24",
+      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture analogous to Philip Morris corporate restructuring. UNCITRAL Working Group III Draft Provision 17 (denial of benefits reform) appeared stalled at April 2025 session — risk of reframing to codify only existing practice rather than closing the gap. Track WG III subsequent sessions and any IP-related case that triggers this doctrine."
     }
   ]
 }

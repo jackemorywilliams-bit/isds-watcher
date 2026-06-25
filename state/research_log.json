@@ -1,10 +1,11 @@
 {
-  "last_updated": "2026-06-24",
+  "last_updated": "2026-06-25",
   "open_threads": [
     {
       "id": "T01",
       "opened": "2026-06-23",
-      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; NAFTA Article 1121 waiver objection pending; merits hearing concluded March 2025 — monitor for award."
+      "updated": "2026-06-25",
+      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; Canada's Art. 1121 waiver-consistency objection (double-dipping) now documented as a second Ring 3 mechanism — jurisdictional, not procedural (confirmed by Waste Management I and Detroit International Bridge); merits hearing concluded March 2025, post-hearing proceedings ongoing (testimony Aug 2025), no award as of June 2026 — monitor for award."
     },
     {
       "id": "T02",
@@ -20,13 +21,14 @@
     {
       "id": "T04",
       "opened": "2026-06-23",
-      "thread": "China NMPA 2026 pharmaceutical data exclusivity: clinical trial data and marketing-authorization registration certificates are now formally protectable and tradable under Chinese law (effective May 2026), establishing a Ring 1 foundation; monitor for ISDS claims if protections are subsequently restricted or unevenly applied."
+      "updated": "2026-06-25",
+      "thread": "China NMPA 2026 pharmaceutical data exclusivity: Ring 1 foundation established (May 2026); China-Switzerland BIT (2009) provides the clearest existing treaty Ring 1 basis for pharmaceutical data claims via its 'know-how' investment definition — the natural treaty characterisation for clinical trial data; China-Germany BIT (2003) and China-France BIT (2007) are third-generation BITs with full ISDS but their investment definitions' 'know-how' coverage is unverified; EU-China CAI remains suspended; monitor for ISDS claims if protections restricted, and verify Germany/France BIT investment definitions next session."
     },
     {
       "id": "T05",
       "opened": "2026-06-23",
-      "updated": "2026-06-24",
-      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture analogous to Philip Morris corporate restructuring. UNCITRAL Working Group III Draft Provision 17 (denial of benefits reform) appeared stalled at April 2025 session — risk of reframing to codify only existing practice rather than closing the gap. Track WG III subsequent sessions and any IP-related case that triggers this doctrine."
+      "updated": "2026-06-25",
+      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture. UNCITRAL WG III reform trajectory updated through January 2026 (53rd session): DOB provision renumbered Draft Provision 9 in WP.253; 9th intersessional (November 2025, Santiago) and 53rd session (January 2026, New York) converging on July 2026 Commission deliverable (procedural focus only); natural-person gap not confirmed as addressed; Ring 3 architecture unchanged. Next active milestone: July 2026 Commission meeting."
     }
   ]
 }

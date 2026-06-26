@@ -1,34 +1,35 @@
 {
-  "last_updated": "2026-06-25",
+  "last_updated": "2026-06-26",
   "open_threads": [
     {
       "id": "T01",
       "opened": "2026-06-23",
-      "updated": "2026-06-25",
-      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; Canada's Art. 1121 waiver-consistency objection (double-dipping) now documented as a second Ring 3 mechanism — jurisdictional, not procedural (confirmed by Waste Management I and Detroit International Bridge); merits hearing concluded March 2025, post-hearing proceedings ongoing (testimony Aug 2025), no award as of June 2026 — monitor for award."
+      "updated": "2026-06-26",
+      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; Canada's Art. 1121 waiver-consistency objection (double-dipping) documented as a second Ring 3 mechanism — jurisdictional, not procedural (confirmed by Waste Management I and Detroit International Bridge); merits hearing concluded March 2025, post-hearing proceedings ongoing (testimony Aug 2025), no award as of June 2026 — monitor for award."
     },
     {
       "id": "T02",
       "opened": "2026-06-23",
-      "thread": "Trade-secret / clinical-data gap: No publicly known ISDS case has yet asserted pharmaceutical trade secrets or clinical trial data as the primary covered investment — the Ferguson/Kim framework remains theoretical; track any new filing under BITs or CPTPP."
+      "updated": "2026-06-26",
+      "thread": "Trade-secret / clinical-data gap: No publicly known ISDS case has yet asserted pharmaceutical trade secrets or clinical trial data as the primary covered investment — the Ferguson/Kim framework remains theoretical; 1,463 total ISDS cases in UNCTAD Navigator as of December 31, 2025; approximately 13 historical pharmaceutical ISDS cases total; no pharmaceutical trade-secret or clinical-data case identified in 2025–2026 new registrations. Track any new filing under BITs or CPTPP."
     },
     {
       "id": "T03",
       "opened": "2026-06-23",
       "updated": "2026-06-24",
-      "thread": "Treaty architecture closure: USMCA/CUSMA lapsed US-Canada ISDS after 30 June 2023; CPTPP pharmaceutical test data exclusivity provisions (TPP Art. 18.50) suspended — no direct ISDS hook for clinical data under either major multilateral framework. UK CPTPP accession (Dec 2024) adds investor pool without restoring suspended provisions. Monitor older bilateral BITs and any new ICSID/UNCITRAL pharmaceutical IP registration; monitor Mexico USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
+      "thread": "Treaty architecture closure (COMPLETE — monitoring): USMCA/CUSMA lapsed US-Canada ISDS after 30 June 2023; CPTPP pharmaceutical test data exclusivity provisions (TPP Art. 18.50) suspended — no direct ISDS hook for clinical data under either major multilateral framework. UK CPTPP accession (Dec 2024) adds investor pool without restoring suspended provisions. Monitor older bilateral BITs and any new ICSID/UNCITRAL pharmaceutical IP registration; monitor Mexico USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
     },
     {
       "id": "T04",
       "opened": "2026-06-23",
-      "updated": "2026-06-25",
-      "thread": "China NMPA 2026 pharmaceutical data exclusivity: Ring 1 foundation established (May 2026); China-Switzerland BIT (2009) provides the clearest existing treaty Ring 1 basis for pharmaceutical data claims via its 'know-how' investment definition — the natural treaty characterisation for clinical trial data; China-Germany BIT (2003) and China-France BIT (2007) are third-generation BITs with full ISDS but their investment definitions' 'know-how' coverage is unverified; EU-China CAI remains suspended; monitor for ISDS claims if protections restricted, and verify Germany/France BIT investment definitions next session."
+      "updated": "2026-06-26",
+      "thread": "China BIT pharmaceutical data exclusivity — European BIT architecture COMPLETE (monitoring): Ring 1 foundation established (China NMPA 2026, May 2026); European BIT architecture survey complete — China-Germany BIT (2003) is the most direct treaty-text basis, explicitly covering 'trade and business secrets' and 'know-how' (Article 1; medium-high confidence from UNCTAD Navigator, EDIT/WTI, italaw); China-Switzerland BIT (2009) covers 'know-how' (confirmed from treaty text); China-France BIT (2007) covers 'know-how' (medium confidence, EDIT/WTI and Jusmundi). EU-China CAI suspended (March 2021 counter-sanctions, no lifting as of June 2026). Monitor for ISDS claims if protections restricted."
     },
     {
       "id": "T05",
       "opened": "2026-06-23",
-      "updated": "2026-06-25",
-      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture. UNCITRAL WG III reform trajectory updated through January 2026 (53rd session): DOB provision renumbered Draft Provision 9 in WP.253; 9th intersessional (November 2025, Santiago) and 53rd session (January 2026, New York) converging on July 2026 Commission deliverable (procedural focus only); natural-person gap not confirmed as addressed; Ring 3 architecture unchanged. Next active milestone: July 2026 Commission meeting."
+      "updated": "2026-06-26",
+      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture. UNCITRAL WG III milestone active NOW: 59th Commission session (June 29–July 10, 2026, New York) is the July 2026 delivery moment; Commission deliverable is A/CN.9/1246 (Draft supplementary provisions on the conduct of proceedings — procedural Protocol only: evidence, bifurcation, interim measures, manifest lack of legal merit, security for costs, TPF disclosure, counterclaims, cost allocation); DOB provision (Draft Provision 9, WP.253) NOT in A/CN.9/1246; natural-person DOB gap NOT addressed by July 2026 package; Ring 3 doctrine architecture unchanged. Next active WG III milestone: October 12–16, 2026 session, Vienna (tentative). Monitor 59th Commission session outcome (expected by July 10)."
     }
   ]
 }

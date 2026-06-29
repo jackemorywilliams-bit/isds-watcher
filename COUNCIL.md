@@ -3,9 +3,11 @@
 The "council" is how this project organizes the work of turning raw ISDS developments
 into interpreted research. It is **not** a set of standing background agents — it is a
 set of clearly-defined **roles**, realized as coordinated stages in the weekly run
-(`python -m src.main`). Each role is a prompt or a pipeline component; the chairman
-coordinates them. This keeps the work auditable and reproducible (every role's output is
-archived) while giving the project the multi-perspective rigor of a council.
+(`python -m src.main`). Each role is **trained to its task** — by a dedicated instruction
+prompt (with few-shot exemplars and the binding calibration checklist below) or implemented
+as a deterministic pipeline component — and the chairman coordinates them. This keeps the work
+auditable and reproducible (every role's output is archived) while giving the project the
+multi-perspective rigor of a council.
 
 ## Members
 
@@ -16,6 +18,7 @@ archived) while giving the project the multi-perspective rigor of a council.
 | **Chairman** | `prompts/council_chairman.txt` | Opens each weekly session. Reads the carried open threads + this week's items and **sets the agenda** — priority focus, what to verify, which threads are live. Steward of continuity. |
 | **Research analyst** | `prompts/research_analyst.txt` (+ Claude web search) | Interprets the week's items against the research question and **escalates to web search** for supplemental contemporary findings (always, on a quiet week), working to the chairman's agenda. |
 | **Security / integrity officer** | `prompts/council_security.txt` | Vets the analyst's memo before publication: flags fabricated/unverifiable sources, overreach, **inflated relevance**, and quote/access-integrity problems. Its vetting note is binding on the editor. |
+| **Citation / hallucination checker** | `scripts/check_citations.py` | Deterministic backstop to the security officer: machine-verifies every citation and high-risk claim in the brief — and, on demand, this methodology memo — against a real source, recording a structured clean/flagged verdict before publication. |
 | **Autoprompt engineer (through the chairman)** | `src/research_state.py` + the open-threads loop | Each issue's open threads are persisted and fed back into next week's chairman agenda, so the prompting adapts and the research compounds rather than restarting cold. |
 | **Editor** | `prompts/research_editor.txt` | Turns the vetted memo into the structured, professional **ISDS Research Brief** (the second weekly email), honoring the security officer's note. |
 | **Analytics officer** | `scripts/source_analytics.py` + per-source counts in `meta.json` | Tracks which catalogue sources are receptive to the thematic intersection (surfaced yield now; receptivity = surfaced ÷ fresh candidates as per-source counts accrue), to tune coverage toward feeds that yield genuinely on-theme articles. Output: `analytics/source-receptivity.md`. |

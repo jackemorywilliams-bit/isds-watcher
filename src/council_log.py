@@ -39,12 +39,18 @@ def _save(entries: list) -> None:
     os.replace(tmp, _JSON)
 
 
-def _security_verdict(security: str) -> str:
-    s = (security or "").lower()
-    if not s:
-        return "no note"
-    # The officer says so explicitly when the memo is clean.
-    return "clean" if "clean" in s[:160] else "flagged issues"
+def _security_verdict(brief: dict) -> str:
+    """The ledger's security verdict, read from the officer's STRUCTURED boolean
+    (``brief["_security_clean"]``) rather than substring-sniffing the free-text note.
+    Reports the issue count when the memo was flagged."""
+    clean = brief.get("_security_clean")
+    if clean is None:
+        # No structured verdict recorded (older brief / verdict step skipped).
+        return "no verdict" if not brief.get("_security") else "note only"
+    if clean:
+        return "clean"
+    n = len(brief.get("_security_issues") or [])
+    return f"flagged ({n} issue{'' if n == 1 else 's'})" if n else "flagged issues"
 
 
 def append_weekly(date_str: str, seq: int, brief: dict, generated_at: datetime) -> None:
@@ -59,7 +65,7 @@ def append_weekly(date_str: str, seq: int, brief: dict, generated_at: datetime) 
         "members": {
             "chairman": "agenda set" if brief.get("_agenda") else "no agenda",
             "analyst": f"memo {len(brief.get('_memo') or '')} chars",
-            "security": _security_verdict(brief.get("_security", "")),
+            "security": _security_verdict(brief),
             "editor": (f"{len(brief.get('sections') or [])} sections, "
                        f"{len(brief.get('open_threads') or [])} threads"),
         },

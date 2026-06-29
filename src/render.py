@@ -318,7 +318,18 @@ def write_brief(html: str, brief: dict, generated_at: datetime, seq: int,
             parts += ["## Chairman's agenda", "", brief["_agenda"], ""]
         parts += ["## Analyst memo (raw)", "", memo, ""]
         if brief.get("_security"):
-            parts += ["## Security officer's vetting note", "", brief["_security"], ""]
+            clean = brief.get("_security_clean")
+            verdict = "CLEAN" if clean else ("FLAGGED" if clean is False else "—")
+            parts += ["## Security officer's vetting note",
+                      "", f"**Verdict:** {verdict}", "", brief["_security"], ""]
+        # The deterministic, model-free citation check: every cited URL actually fetched.
+        if brief.get("citation_summary"):
+            parts += ["## Citation check (deterministic)", "", brief["citation_summary"], ""]
+            for r in brief.get("citation_check") or []:
+                status = r.get("status") if r.get("status") is not None else "—"
+                parts.append(f"- {r.get('verdict','?')} [{status}] {r.get('url','')}")
+            if brief.get("citation_check"):
+                parts.append("")
         m = brief.get("minutes")
         if m:
             parts += ["## Chairman's reconvene minutes", "", f"**Status.** {m.get('status','')}", ""]

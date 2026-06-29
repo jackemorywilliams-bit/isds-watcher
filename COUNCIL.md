@@ -55,13 +55,15 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
 
 ## Cadence & accountability
 
-- **Daily — the chairman and the researcher meet.** Every day the chairman and the
-  research analyst hold a working meeting: the chairman sets the day's agenda from the
-  open threads, the researcher pursues it against the research question, and the chairman
-  reviews the findings, holds the researcher to account, and decides next steps. This runs
-  as a **scheduled Claude Code routine on the operator's Claude Max plan** (not the
-  API-billed GitHub Actions pipeline), with a deliberately small daily budget so it does
-  not eat into Max usage. The meeting record is committed to `analytics/daily-research/`
+- **Daily — the full council meets.** Every day the whole council convenes (chairman
+  presiding; research analyst; security/integrity officer; editor; analytics officer): the
+  chairman sets the agenda, the analyst researches and the security officer vets, the
+  analytics officer relates the findings to that week's screened digest items, and the
+  council discusses how to advance the research question — raising at most one genuinely
+  new system/method improvement (deduped into `analytics/optimization-log.md`) toward a
+  breakthrough. This runs as a **scheduled Claude Code routine on the operator's Claude Max
+  plan** (not the API-billed GitHub Actions pipeline), with a deliberately small daily
+  budget so it does not eat into Max usage. The meeting record is committed to `analytics/daily-research/`
   and emailed each day by a free GitHub Actions job (`daily-update.yml`, SMTP only).
 - **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
   with the chairman's **reconvene minutes**: a candid status, next steps, a per-member
@@ -74,6 +76,29 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
   rendered to `analytics/council-log.md` — the chairman's written record for holding
   members accountable, so quality is tracked over time rather than living in one model's
   recollection.
+
+## Compounding memory, dedup, and human review
+
+Three controls keep the research cumulative, non-repetitive, and verifiable — so days build on
+each other instead of starting cold, and "new" is measured rather than assumed.
+
+- **State-of-the-answer synthesis (`STATE_OF_THE_ANSWER.md`).** A living, structured document —
+  the project's cumulative best answer-so-far, organized by the three rings + the trade-secret /
+  clinical-data sub-question, each claim tied to its source(s), with an open-questions section.
+  The analyst reads it first each session and updates it after, so the research visibly
+  compounds. Unverifiable claims are marked `[unverified]` rather than asserted.
+- **Insight ledger (`analytics/insights.jsonl`).** An append-only, deduplicated record of each
+  genuinely new insight, one JSON object per line ({date, thread_id, ring, insight, sources,
+  confidence} — schema documented in `STATE_OF_THE_ANSWER.md`, since JSONL has no comment
+  syntax). It is the baseline against which "new" is judged: a session checks a candidate
+  insight against the ledger and, if already recorded, does not re-log it. On a quiet day the
+  honest output is "no new insight; standing watch" — this enforces the anti-inflation rule so
+  the one-insight-per-day mandate never degrades into padding on the quiet weeks the methodology
+  expects to be the norm.
+- **Human-review checkpoint (`HUMAN_REVIEW.md`).** A logged, recurring human spot-audit
+  (monthly, and on escalation) of a sample of cited claims from the period's records — pass/fail
+  recorded, verification debt cleared. This turns the methodology's "leads to be verified before
+  relied upon" stance into an auditable checkpoint rather than an assumption.
 
 ## On the MCP overlay this was modeled on
 The structure was adapted from a Claude "council/overlay" layout. We deliberately did

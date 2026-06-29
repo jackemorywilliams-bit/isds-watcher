@@ -61,6 +61,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Classifier eval gate
+        # Score the labelled holdout and FAIL the run (firing the failure alert below)
+        # if classifier precision/recall regress past the floor — a scorer change that
+        # degrades quality breaks the build before any model API spend. Floors are
+        # conservative; current scores are precision 1.00 / recall 0.75.
+        run: python scripts/eval_holdout.py --fail-under-precision 0.9 --fail-under-recall 0.6
+
       - name: Run watcher
         run: python -m src.main --since "${{ github.event.inputs.since || '7d' }}"
 

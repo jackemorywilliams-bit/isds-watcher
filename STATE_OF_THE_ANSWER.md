@@ -7,6 +7,10 @@
 
 **Last updated:** 2026-06-29
 
+> **Caution — unverified research leads.** Every entry below is a machine-assisted research lead
+> carrying verification debt, not a settled finding. Nothing here is validated until a human review
+> cycle is logged for the period per `HUMAN_REVIEW.md`. Read accordingly.
+
 ---
 
 ## I. What Is Established

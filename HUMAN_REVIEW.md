@@ -36,6 +36,38 @@ auditable record rather than an assumption.
 4. Clear or update the "Verification debt" section of `STATE_OF_THE_ANSWER.md` for items
    audited this round; promote a confirmed `[unverified]` claim to verified.
 
+## What a review cycle entails
+
+The procedure above is the shape of a cycle. This section spells out, step by step, what the
+operator actually does at the keyboard so a cycle is reproducible and leaves an honest record.
+
+1. **Run the assisted first pass.** Regenerate the draft with `python scripts/review_prep.py`. It
+   samples cited claims from the period's digests and briefs and runs the deterministic URL check
+   (`scripts/verify_citations.py`) over the sampled sources. This produces the Cycle draft below —
+   reachability only, no judgement about substance.
+2. **Open each sampled cited source by hand.** For every sampled claim, open the cited source and
+   read it. The question is not whether the URL resolves — the assisted pass already answered that —
+   but whether the source **actually supports the claim**: the date, the holding, the figure, the
+   characterisation as stated. A URL that loads but does not say what the claim says is a **FAIL**.
+3. **Mark each pass or fail.** Fill in the "Human final pass/fail" field for every sampled claim.
+   Be specific about what failed (wrong date, source does not reach the holding, paywall obscures
+   the point cited, etc.).
+4. **Record any correction made.** Where a claim was wrong or overstated, note the fix taken —
+   corrected in place, marked `[unverified]`, or removed from `STATE_OF_THE_ANSWER.md` and
+   `analytics/insights.jsonl` — in the "Corrections made" field.
+5. **List what could not be confirmed as standing verification debt.** Any sampled source that is
+   paywalled, unreachable, or that you could not personally confirm supports the claim stays in the
+   "Verification debt" list and is carried forward, not silently cleared. Verification debt is only
+   cleared by a human who has read the source and confirmed it.
+6. **Sign and date the entry.** Complete the "Operator ratification" fields — reviewer, date, final
+   pass rate, debt cleared, corrections — and sign off. The cycle is not a review until this is done.
+
+**Standing rule.** Until a review cycle is logged for the period, the system's outputs for that
+period are described as **"machine-assisted research leads," not "validated findings."** The
+assisted first pass establishes only that cited URLs resolve; it never substitutes for the human
+read. A claim becomes a validated finding only after a person has opened its source, confirmed it
+supports the claim, and signed the entry below.
+
 ## Review log
 
 Append one entry per review. Template:

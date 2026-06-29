@@ -58,29 +58,25 @@
     </div>
 
     <figure class="venn-figure">
-      <svg class="venn" viewBox="0 0 520 440" role="img"
-           aria-label="Venn diagram of the three doctrinal rings. Ring one, IP as a protected investment. Ring two, a regulatory or judicial measure. Ring three, a jurisdictional or admissibility doctrine. The watched theme lives in the central three-way overlap, and any two rings overlapping already reaches the HIGH band.">
-        <defs>
-          <radialGradient id="venn-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#b8860b" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#9a7b2e" stop-opacity="0.30"/>
-          </radialGradient>
-        </defs>
-        <!-- Three overlapping rings -->
-        <circle class="venn-ring venn-ring-1" cx="200" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-2" cx="320" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-3" cx="260" cy="275" r="135"/>
-        <!-- Emphasised central three-way overlap -->
-        <circle class="venn-core" cx="260" cy="215" r="40" fill="url(#venn-core)"/>
-        <text class="venn-core-label" x="260" y="212" text-anchor="middle">THEME</text>
-        <text class="venn-core-sub" x="260" y="230" text-anchor="middle">three-way overlap</text>
-        <!-- Ring labels -->
-        <text class="venn-label" x="118" y="120" text-anchor="middle">IP as a protected</text>
-        <text class="venn-label" x="118" y="138" text-anchor="middle">investment</text>
-        <text class="venn-label" x="402" y="120" text-anchor="middle">Regulatory or</text>
-        <text class="venn-label" x="402" y="138" text-anchor="middle">judicial measure</text>
-        <text class="venn-label" x="260" y="375" text-anchor="middle">Jurisdictional /</text>
-        <text class="venn-label" x="260" y="393" text-anchor="middle">admissibility doctrine</text>
+      <svg class="venn" viewBox="0 0 560 512" role="img"
+           aria-label="Venn diagram of the three doctrinal rings: IP as a protected investment, a regulatory or judicial measure, and a jurisdiction and admissibility doctrine. The watched theme lives in the central three-way overlap; any two rings overlapping already reaches the HIGH band.">
+        <!-- Three equal rings, symmetric; overlaps darken via mix-blend-mode -->
+        <g class="venn-rings">
+          <circle class="venn-ring venn-ring-1" cx="210" cy="200" r="116"/>
+          <circle class="venn-ring venn-ring-2" cx="350" cy="200" r="116"/>
+          <circle class="venn-ring venn-ring-3" cx="280" cy="321" r="116"/>
+        </g>
+        <!-- Legible plaque + label over the central three-way overlap -->
+        <circle class="venn-core-disc" cx="280" cy="240" r="34"/>
+        <text class="venn-core-label" x="280" y="236" text-anchor="middle">THEME</text>
+        <text class="venn-core-sub" x="280" y="253" text-anchor="middle">three-way overlap</text>
+        <!-- Ring labels, lifted clear of the circles -->
+        <text class="venn-label" x="150" y="64" text-anchor="middle">IP as a protected</text>
+        <text class="venn-label" x="150" y="82" text-anchor="middle">investment</text>
+        <text class="venn-label" x="410" y="64" text-anchor="middle">Regulatory or</text>
+        <text class="venn-label" x="410" y="82" text-anchor="middle">judicial measure</text>
+        <text class="venn-label" x="280" y="478" text-anchor="middle">Jurisdiction &amp;</text>
+        <text class="venn-label" x="280" y="496" text-anchor="middle">admissibility</text>
       </svg>
       <figcaption class="venn-caption">
         The theme lives in the central intersection of all three rings. Any two rings overlapping

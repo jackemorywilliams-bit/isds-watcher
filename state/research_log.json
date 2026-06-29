@@ -1,30 +1,19 @@
 {
-  "last_updated": "2026-06-23",
+  "last_updated": "2026-06-29",
   "open_threads": [
+    "Can a dated Swedish Supreme Court judgment in Okuashvili be pinned to an accessible primary source to confirm or reject the inferred reversal of the Svea Court's MFN/jurisdiction holding?",
+    "Did the UNCITRAL 59th session in fact adopt the Procedural Protocol (A/CN.9/1246), and did the dual-nationality / natural-person gap remain off-package, per any post-session UN or IISD report?",
+    "Can the A/CN.9/1246 document number and date, and the agenda URL, be verified against a source actually retrieved?",
+    "Is there any update in Einarsson (T01) confirming whether an award has issued, given the last confirmed posture of post-hearing briefing through August 2025?",
+    "Has any new filing or full-award text surfaced in Hela Schwarz (T04) bearing on data exclusivity as a protected investment under the China–Germany BIT line?",
+    "Should the classifier add a posture-reconciliation check (by decision-date and instance) for any multi-forum case before logging a holding?"
+  ],
+  "seq": 1,
+  "history": [
     {
-      "id": "T01",
-      "opened": "2026-06-23",
-      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; NAFTA Article 1121 waiver objection pending; merits hearing concluded March 2025 — monitor for award."
-    },
-    {
-      "id": "T02",
-      "opened": "2026-06-23",
-      "thread": "Trade-secret / clinical-data gap: No publicly known ISDS case has yet asserted pharmaceutical trade secrets or clinical trial data as the primary covered investment — the Ferguson/Kim framework remains theoretical; track any new filing under BITs or CPTPP."
-    },
-    {
-      "id": "T03",
-      "opened": "2026-06-23",
-      "thread": "USMCA/CUSMA architecture: US-Canada ISDS lapsed 30 June 2023, foreclosing successor pharmaceutical-IP claims under the principal North American framework; identify whether any non-North-American BIT or CPTPP three-ring case has been filed since 2020; monitor Mexico/USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
-    },
-    {
-      "id": "T04",
-      "opened": "2026-06-23",
-      "thread": "China NMPA 2026 pharmaceutical data exclusivity: clinical trial data and marketing-authorization registration certificates are now formally protectable and tradable under Chinese law (effective May 2026), establishing a Ring 1 foundation; monitor for ISDS claims if protections are subsequently restricted or unevenly applied."
-    },
-    {
-      "id": "T05",
-      "opened": "2026-06-23",
-      "thread": "Ring 3 doctrine — abuse of rights gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals a DOB-clause gap for natural-person nationality planning analogous to Philip Morris corporate restructuring; track UNCITRAL Working Group III Draft Article 17 (denial of benefits) reform and any IP-related case that triggers this doctrine."
+      "seq": 1,
+      "date": "2026-06-29",
+      "headline": "A Quiet Week: Reconciling the Okuashvili Posture and a Still-Unconfirmed UNCITRAL Outcome"
     }
   ]
 }

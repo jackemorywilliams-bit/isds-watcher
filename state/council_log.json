@@ -1,0 +1,45 @@
+[
+  {
+    "ts": "2026-06-29T16:37:09.074379+00:00",
+    "date": "2026-06-29",
+    "type": "weekly-council",
+    "issue": 1,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 9724 chars",
+      "security": "flagged issues",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A genuinely quiet week on the theme, as anticipated — no screened item reaches the IP/trade-secret intersection, so this is a legitimate null result on the core question. The week's real output is a methodological catch (the screening layer inverted the Okuashvili procedural posture) and an honest non-result on T05, where the post-session UNCITRAL outcome could not be verified before the search budget ran out. Net value is modest but real; the council reported it without padding.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set an accurate, well-scoped agenda — correctly called the quiet week, flagged the paywalled-headline reconciliation risk, and prioritised the datable T05 event; the analyst's findings vindicate that framing."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Strong on candor and on catching the inverted Okuashvili posture, but injected unsourced precision (docket number, exact dates, doc date, dissenter name) that it could not have verified, and over-promoted a Ring-3-only artefact to 'directly transferable' to T04."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — caught every unsourced precision claim, the backsourced (c)-layer inference leaking into §3 as fact, and the inflated doctrine-bank relevance; the vetting note is the strongest work product this week."
+      },
+      {
+        "member": "editor",
+        "assessment": "Issue is honest and correctly headlines the quiet week and the unverified UNCITRAL outcome; framed the open threads as questions that absorb the security flags, though it could have stated more explicitly that the unsourced dates were to be stripped, not merely confirmed."
+      }
+    ],
+    "next_steps": [
+      "Make T05 the top priority next session: pull a primary UN document and/or IISD ITN / EJIL:Talk post-session coverage to confirm whether the Procedural Protocol (A/CN.9/1246) was actually adopted and whether the dual-nationality / natural-person gap stayed off-package.",
+      "Pin the Okuashvili Supreme Court posture to a dated, accessible source before any holding is logged; until then keep the three-layer chain (SCC award → Svea annulment → Supreme Court appeal) marked as unconfirmed inference and strip the asserted docket number and day-level dates.",
+      "Verify or strip the unsourced precision flagged by security: Svea Case T 11278-22, the 31 Aug 2022 award date, the A/CN.9/1246 15 April 2026 date, the agenda URL, the Knieper attribution, and the 10 July session-close date.",
+      "Implement the proposed classifier posture-reconciliation check (by decision-date and instance) for any multi-forum case, and re-screen item 3 once a dated source exists.",
+      "Re-confirm T01 (Einarsson award watch) and T04 (Hela Schwarz) next session, since both were carried as unchanged but not affirmatively re-verified this week."
+    ],
+    "escalations": [
+      "T05 outcome unresolved: whether the UNCITRAL 59th-session Procedural Protocol (A/CN.9/1246) was actually adopted remains unverified and is the most time-sensitive carried thread — decide whether to allocate priority search budget next session.",
+      "The screening layer inverted a procedural posture (Okuashvili item 3 vs item 1) by ingesting an undated paywalled headline alongside an earlier-instance document — recommend approving the classifier posture-reconciliation check for multi-forum cases.",
+      "Coverage gap: paywalled IAReporter/IISD sources are blocking confirmation of both the Okuashvili Supreme Court judgment and post-session UNCITRAL reporting — consider whether to secure access or an alternative primary-source route."
+    ]
+  }
+]

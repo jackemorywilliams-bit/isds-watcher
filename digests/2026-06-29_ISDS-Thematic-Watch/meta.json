@@ -1,0 +1,22 @@
+{
+  "date": "2026-06-29",
+  "screened": 12,
+  "matches": 0,
+  "watch_list_leads": 3,
+  "accepted": 3,
+  "per_source": {
+    "iisd_itn": 0,
+    "google_alerts": 0,
+    "gmail_scholar": 0,
+    "google_news_rss": 0,
+    "italaw": 2,
+    "icsid": 0,
+    "iareporter_headlines": 10,
+    "unctad_isds": 0,
+    "pca_press": 0
+  },
+  "accepted_by_source": {
+    "italaw": 1,
+    "iareporter_headlines": 2
+  }
+}

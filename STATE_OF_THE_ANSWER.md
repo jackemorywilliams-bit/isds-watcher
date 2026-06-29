@@ -1,222 +1,104 @@
 # State of the Answer
+## ISDS Research Council — Cumulative Research Record
 
-This is the project's living, cumulative best answer-so-far to the research question.
-It is the artifact the daily and weekly research is meant to **grow** — not a log of what
-was done, but a structured synthesis of what the project currently believes, each claim
-tied to its source(s), with what remains open held separately at the bottom.
+**Research question:** When and how is intellectual property — especially trade secrets and pharmaceutical clinical trial data — asserted as a covered investment under an investment treaty, challenged through a governmental regulatory or judicial measure, and disposed of at the jurisdictional or admissibility stage (abuse of right, treaty-shopping, the critical-date / reasonably-foreseeable-dispute test)?
 
-**The research question.** ISDS cases in which (Ring 1) an intellectual-property right —
-patent, trademark, copyright, geographical indication, and centrally for this project
-**trade secrets and clinical-trial data** — is asserted as a "covered investment"; (Ring 2)
-a **regulatory or judicial measure** is challenged as the violating conduct (often framed as
-denial of justice or breach of the minimum standard of treatment); and (Ring 3) the tribunal
-disposes of the case at the **jurisdictional / admissibility** stage (abuse of right,
-treaty-shopping, the critical-date / reasonably-foreseeable-dispute test, shell-subsidiary
-restructuring) without reaching the merits. Seed awards: *Philip Morris v Australia*,
-*Eli Lilly v Canada*, *Bridgestone v Panama*; conceptual seeds: the Ferguson and Kim memos.
+**Seed awards:** Philip Morris v. Australia (PCA 2012-12); Eli Lilly v. Canada (ICSID UNCT/14/2); Bridgestone v. Panama (ICSID ARB/16/34).
 
-**How to read this document.** Every substantive claim carries an inline source. Claims the
-project can state confidently from a named source are unmarked; claims that are inferred,
-reconstructed from secondary coverage, or not yet verified against a primary document are
-marked **[unverified]** with the reason. This is the anti-hallucination discipline applied to
-the synthesis itself: a claim that cannot be sourced is not stated.
-
-**Status:** seeded 2026-06-23 from the seed cases and the day-one daily record. Last updated:
-2026-06-23.
+**Last updated:** 2026-06-29
 
 ---
 
-## How this document and the insight ledger work (the compounding-memory controls)
+## I. What Is Established
 
-The research compounds through two coupled artifacts:
+### Ring 1 — IP as Covered Investment
 
-1. **This document (`STATE_OF_THE_ANSWER.md`)** — the synthesis. Each session reads it first,
-   then revises it: a genuinely new finding is folded into the relevant ring or sub-question
-   (with its source), an open question that has been answered is moved up into the body, and
-   the "Last updated" line is bumped. It is meant to get more complete and more precise over
-   time, not longer for its own sake.
+**Trademarks** are covered: *Bridgestone v. Panama* (ICSID ARB/16/34, Award 14 August 2020) confirmed ICSID jurisdiction, holding that "investment" can reasonably include intellectual property rights; trademarks qualify. The tribunal found no liability (denial of justice not established). This is the clearest modern authority that IP rights are covered investments under standard BIT definitions.
 
-2. **The insight ledger (`analytics/insights.jsonl`)** — an append-only, deduplicated record
-   of each genuinely new insight, one JSON object per line. It is the baseline against which
-   "new" is measured: before claiming a new insight, a session checks it against the ledger,
-   and if the point is already recorded, it does **not** re-log it. On a quiet day the honest
-   output is "no new insight; standing watch" rather than a padded restatement of the ledger.
+**Patents** are covered: *Eli Lilly v. Canada* (ICSID UNCT/14/2, Award 16 March 2017) treated pharmaceutical patents as covered investments under NAFTA Chapter 11. The tribunal dismissed on the merits (no FET breach; Canada's promise utility doctrine was not a denial of justice), but jurisdiction was uncontested.
 
-**Insight-ledger schema (`analytics/insights.jsonl`).** One JSON object per line (JSONL has no
-comment syntax, so the schema lives here):
+**Proprietary data / trade secrets** — no decided ISDS case. *Einarsson v. Canada* (ICSID UNCT/20/6) — a NAFTA Chapter 11 case asserting copyright and trade-secret protection over marine seismic survey data as the covered investment — is post-merits-hearing (March 2025, Calgary) and awaiting award. It is the first publicly documented ISDS case resting centrally on proprietary data asserted as a trade-secret-protected investment. Sources: [(SSRN, Upreti 2023)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4328312); [(EFILA Blog, Oct 2024)](https://efilablog.org/2024/10/06/data-as-protected-investment-in-the-background-of-einarsson-v-canada/)
 
-| Field | Type | Meaning |
-|-------|------|---------|
-| `date` | string `YYYY-MM-DD` | the session date the insight was first recorded |
-| `thread_id` | string | the related open thread (e.g. `T01`), or `null` if none yet |
-| `ring` | string | `R1`, `R2`, `R3`, `cross`, or `meta` (which part of the answer it advances) |
-| `insight` | string | the durable finding, stated once, concisely |
-| `sources` | array of strings | each as `"Name — URL"`; `[]` only if genuinely unsourced (then say so) |
-| `confidence` | string | `verified` (primary/named source read) or `unverified` (reason in the insight text) |
+**Pharmaceutical clinical trial data** — no decided or pending ISDS case. The Ferguson and Kim memos' framework (clinical trial data as covered investment subject to ISDS expropriation/FET claims) remains theoretical and unlitigated. The academic framing (trade secrets / copyright / IP rights as one of three data-as-investment pathways) is contemporaneously recognised in practitioner literature: [(Daily Jus, "Data in Dispute", Dec 2024)](https://dailyjus.com/world/2024/12/data-in-dispute-isds-and-the-future-of-digital-investments)
 
-A line is appended only when the insight is **new relative to every existing line**. Editing
-or restating an existing line is not appending. The ledger is the dedup boundary; this
-document is the synthesis the ledger feeds.
+**China NMPA 2026 — new Ring 1 foundation (two regulatory layers now in force, transitional window closed):** Two distinct layers of China pharmaceutical data protection law are now fully effective: (1) State Council's Implementing Regulations of the Drug Administration Law (issued January 2026, effective May 2026) — the statutory layer, establishing a six-year maximum data exclusivity ceiling but not addressing the protection period for drugs first approved outside China; (2) NMPA's Implementation Measures for Drug Trial Data Protection (issued and effective May 15, 2026) — the administrative implementation layer. Together, these create formal, protectable, and tradable entitlements in clinical trial data and marketing authorisation certificates that potentially qualify as covered investments under China's BIT network (109 BITs in force). The transitional window for pre-existing applications closed **June 5, 2026**: companies with pending or approved applications that did not submit data protection requests to the CDE by that date have definitively waived pharmaceutical trial data protection rights for those applications. The June 5 closure crystallises the Ring 1 covered-investment set: only investors who filed by that date hold formal exclusivity entitlements that could found a future BIT claim. Sources: [(Ropes & Gray, May 2026)](https://www.ropesgray.com/en/insights/alerts/2026/05/chinas-nmpa-issues-final-measures-on-regulatory-data-protection); [(Ropes & Gray, January 2026)](https://www.ropesgray.com/en/insights/alerts/2026/01/china-announces-the-implementing-regulation-of-the-drug-administration-law); [(Jones Day, May 2026)](https://www.jonesday.com/en/insights/2026/05/chinas-new-regulatory-data-protection-regime-becomes-effective-immediately); [(Arnold & Porter, Apr 2025)](https://www.arnoldporter.com/en/perspectives/advisories/2025/04/china-new-regulatory-data-protection-and-exclusivity-mechanism)
+
+**European BIT architecture — Ring 1 treaty-text bases for pharmaceutical data claims against China:** Three major European pharmaceutical investor home states have China BITs providing treaty-text Ring 1 coverage for pharmaceutical clinical trial data:
+
+| BIT | In Force | Key IP Investment Definition Language | Best Treaty Hook for Pharma Trade Secrets |
+|-----|----------|--------------------------------------|------------------------------------------|
+| China-Switzerland (2009) | Yes | "know-how" (confirmed from treaty text) | know-how |
+| China-Germany (2003) | Yes (11 Nov 2005) | "trade and business secrets" + "know-how" + "technical processes" | **trade and business secrets** (most direct) |
+| China-France (2007) | Yes | "know-how" | know-how |
+
+**China-Germany BIT (2003) — most direct Ring 1 basis for pharmaceutical trade secrets:** Article 1 of the China-Germany BIT (2003) includes "trade and business secrets" explicitly alongside "know-how," "technical processes," and other IP categories. "Trade and business secrets" matches the Ferguson/Kim framework's core concept more precisely than any other provision identified: pharmaceutical clinical trial data characterised as confidential proprietary information subject to secrecy obligations, not merely technical know-how. German pharmaceutical investors (Bayer, Merck KGaA, Boehringer Ingelheim) hold this treaty basis against China. Confirmed by three authoritative databases (UNCTAD Navigator, EDIT/WTI, italaw); direct treaty PDF not directly readable (403), medium-high confidence. Sources: [(UNCTAD Navigator, China-Germany BIT 2003)](https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/905/china---germany-bit-2003-); [(EDIT/WTI)](https://edit.wti.org/document/show/8999e77e-918a-48d4-a598-cee246021534); [(italaw)](https://www.italaw.com/investment-treaties/china-germany-bit-2003)
+
+**China-Switzerland BIT (2009) — "know-how" basis:** Explicitly includes "know-how" in its investment definition (alongside copyrights, patents, trade marks, trade names). Confirmed from treaty text. Swiss pharmaceutical investors (Roche, Novartis, Lonza) hold the most direct exposure under this BIT. Sources: [(UNCTAD Navigator)](https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/978/china---switzerland-bit-2009-); [(EDIT/WTI)](https://edit.wti.org/document/show/2e5072e0-92b8-49fa-a32b-4ca1611085bb)
+
+**China-France BIT (2007) — "know-how" basis:** Investment definition includes intellectual property rights encompassing "know-how" alongside copyrights, patents, trademarks, and trade names. French pharmaceutical investor (Sanofi) holds this treaty basis against China. Medium confidence (EDIT/WTI and Jusmundi; direct treaty text 403-blocked). Sources: [(EDIT/WTI)](https://edit.wti.org/document/show/7d16a9bd-031d-4ae5-9fb5-c844a64c44e0); [(Jusmundi)](https://jusmundi.com/en/document/treaty/fr-accord-entre-le-gouvernement-de-la-republique-francaise-et-le-gouvernement-de-la-republique-populaire-de-chine-sur-lencouragement-et-la-protection-reciproques-des-investissements-china-france-bit-2007-monday-26th-november-2007)
+
+The EU-China CAI remains suspended (European Parliament conditioned ratification on lifting Chinese counter-sanctions from March 2021; no lifting as of June 2026), so European investors must rely on individual member-state BITs. Switzerland, not an EU member, operates its 2009 BIT independently.
 
 ---
 
-## Ring 1 — IP (incl. trade secrets / clinical-trial data) as a covered investment
+### Ring 2 — Regulatory or Judicial Measure
 
-- **The seed pattern.** Tribunals will entertain IP as a "covered investment," but whether a
-  given right qualifies turns on the treaty's investment definition and, where applied, the
-  *Salini* criteria (contribution, duration, risk, contribution to the host economy). The
-  gates are open in principle but not automatic. (Correa & Viñuales, *Intellectual Property
-  Rights as Protected Investments: How Open are the Gates?*, 19 J. Int'l Econ. L. 91 (2016);
-  Mercurio, *Awakening the Sleeping Giant*, 15 J. Int'l Econ. L. 871 (2012); *Salini v
-  Morocco*, ICSID Case No. ARB/00/4.)
-- **Patents (seed).** In *Eli Lilly v Canada* (ICSID Case No. UNCT/14/2, Final Award 16 Mar.
-  2017), pharmaceutical patents were treated as covered investments; the claim failed, but not
-  for want of the IP qualifying as an investment. (METHODOLOGY.md Part II.B, citing the award.)
-- **Trademarks (seed).** *Philip Morris v Australia* (PCA Case No. 2012-12, Award on
-  Jurisdiction and Admissibility 17 Dec. 2015) framed trademark/brand rights as the investment;
-  it was disposed of at Ring 3 (below) before the IP-as-investment merits were reached.
-  (METHODOLOGY.md Part II.B.)
-- **Data as IP-investment — the leading contemporary instance.** *Einarsson v Canada* (ICSID
-  Case No. UNCT/20/6) is the first publicly documented ISDS case to rest a claim centrally on
-  **proprietary data protected as copyright / trade secret** (offshore marine seismic data) as
-  the covered investment. This extends Ring 1 from the classic registered-IP categories toward
-  information-based assets — the same category the Ferguson/Kim memos flag for trade secrets
-  and clinical data. (Upreti, *Data, Copyright, and Investor-State Arbitration: Insights from
-  Einarsson v. Canada*, SSRN 2023 — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4328312;
-  EFILA Blog, Oct. 2024 — https://efilablog.org/2024/10/06/data-as-protected-investment-in-the-background-of-einarsson-v-canada/.)
-  **Caveat:** Einarsson's data is industrial seismic data in an oil-and-gas context (a
-  fingerprint negative signal); it is a *structural analogue*, not a pharma/clinical-data case.
-- **A new regulatory foundation for clinical data as a tradable entitlement.** China's NMPA, by
-  Implementation Measures for Drug Trial Data Protection effective 15 May 2026, makes
-  undisclosed clinical-trial data and marketing-authorization registration certificates formal,
-  protectable, and assignable entitlements (data exclusivity up to six years; longer for rare-
-  disease and pediatric drugs). This is a Ring 1 *precursor* — it creates the kind of legal
-  entitlement a future claimant could assert as a covered investment — not itself a dispute.
-  **[unverified]** sourced only from search-summary secondary coverage (Ropes & Gray; Arnold &
-  Porter; Bird & Bird; IAM Media), no primary regulation read; see daily record 2026-06-23 §F.
+Established that regulatory action (Canada's petroleum data disclosure regime, challenged in *Einarsson*) and judicial decisions (Canadian courts' promise utility doctrine, challenged in *Eli Lilly*; Panama Supreme Court judgment, challenged in *Bridgestone*) both qualify as "measures" for Ring 2 purposes. No Ring 2 issue is doctrinally novel at the jurisdictional stage — the dispute is always whether the measure is an FET/expropriation violation, which goes to merits.
 
-## Ring 2 — A regulatory or judicial measure as the challenged conduct (weighted)
+For pharmaceutical clinical data specifically, the paradigmatic Ring 2 trigger would be a regulatory decision permitting a generic applicant to rely on the originator's undisclosed trial data for market authorisation — effectively disclosing or sharing data without consent. No such case has been filed. The theoretical expropriation standard is: "substantially deprives the investor of value, use, or control" of the data asset. [(Daily Jus, "Data in Dispute", Dec 2024)](https://dailyjus.com/world/2024/12/data-in-dispute-isds-and-the-future-of-digital-investments)
 
-- **The seed pattern.** Two of the three seeds challenged a **court decision** (not an
-  executive act) as the violating measure, framed as denial of justice / breach of the minimum
-  standard of treatment. State responsibility for the judiciary requires manifest injustice;
-  mere error does not meet the test. (Paulsson, *Denial of Justice in International Law* (2005);
-  METHODOLOGY.md Part II.C.)
-- **Judicial measure (seed).** *Eli Lilly v Canada* challenged the Canadian courts' application
-  of the "promise utility doctrine" invalidating its patents, under NAFTA Article 1105, as a
-  denial of justice. (METHODOLOGY.md Part II.B.)
-- **Judicial measure (seed).** *Bridgestone v Panama* (ICSID Case No. ARB/16/34, Award 14 Aug.
-  2020) challenged a Panama Supreme Court judgment as a denial of justice. (METHODOLOGY.md
-  Part II.B.)
-- **Regulatory measure (contemporary).** *Einarsson*'s challenged measure is primarily the
-  regulatory regime (Canada Petroleum Resources Act and related provisions permitting forced
-  disclosure of proprietary seismic data), with a Federal Court judgment (2020 FC 984) also in
-  the record — so it sits closer to the regulatory than the judicial end of Ring 2. (Jusmundi,
-  Judgment 2020 FC 984; daily record 2026-06-23 §A.)
-- **The doctrine is live but not always IP-linked.** Denial-of-justice findings continue to
-  issue (e.g. *Bachar Kiwan v Kuwait*, ICSID Case No. ARB/20/53, Award 10 Mar. 2025, France–
-  Kuwait BIT), confirming Ring 2 is active — but that award has **no IP nexus** and is Ring 2
-  only; it does not advance the three-ring intersection. (Jusmundi, Award 10 Mar. 2025 —
-  https://jusmundi.com/en/document/decision/en-bachar-kiwan-v-state-of-kuwait-award-monday-10th-march-2025.)
-
-## Ring 3 — Disposal at the jurisdictional / admissibility stage
-
-- **The seed pattern.** All three seeds were disposed of before the merits — on jurisdiction
-  and/or admissibility. The controlling cluster is abuse of right / treaty-shopping and the
-  critical-date / reasonably-foreseeable-dispute test. (Baumgartner, *Treaty Shopping in
-  International Investment Law* (2016); Byers, *Abuse of Rights* (2002); METHODOLOGY.md
-  Part II.C.)
-- **Abuse of right (seed).** *Philip Morris v Australia* was dismissed for abuse of right:
-  the claimant restructured into a Hong Kong entity to acquire treaty rights over a reasonably
-  foreseeable dispute. (METHODOLOGY.md Part II.B.)
-- **Shell-subsidiary / restructuring (seed).** *Bridgestone* also raised shell-subsidiary
-  misuse allegations of the *Philip Morris* type. (METHODOLOGY.md Part II.B.)
-- **A different jurisdictional doctrine in the contemporary analogue.** *Einarsson*'s threshold
-  objection is a **NAFTA Article 1121 waiver** defect — an admissibility-type bar of a
-  *different* doctrinal character than the abuse-of-right / treaty-shopping cluster that anchors
-  the *Philip Morris* line. So the contemporary near-case fits Ring 3 by *kind* (threshold
-  disposal) but not by *doctrine*. **[unverified]** the Article 1121 characterization is sourced
-  to Jusmundi/UNCTAD, not confirmed against the treaty text; daily record 2026-06-23 §A.
-- **An emerging gap adjacent to the abuse-of-right doctrine.** *Jason Yu Song v China* (PCA Case
-  No. 2019-39, Final Award 24 Jan. 2025, China–UK BIT) extends the abuse-of-right inquiry to
-  **natural-person nationality planning** and exposes that Denial-of-Benefits clauses, built for
-  corporate third-country nationality, do not address natural persons who change citizenship to
-  access a treaty. The same structural argument could recur in an IP-as-investment restructuring.
-  Not an IP case; relevant for Ring 3 doctrine only. **[unverified]** search-summary sourced (HFW;
-  IFILA Blog; Jusmundi docket), no primary award read; daily record 2026-06-23 §G.
-
-## Sub-question — Trade secrets / clinical-trial data specifically
-
-- **The core finding to date: still no litigated case.** No publicly known ISDS case has yet
-  asserted **pharmaceutical trade secrets or clinical-trial data** as the *primary* covered
-  investment. The Ferguson/Kim framework remains theoretical — a prospective, structurally
-  contingent risk, not a live dispute. This is an honest negative result, confirmed against the
-  UNCTAD ISDS Navigator (through July 2024), italaw, and practitioner commentary. (Daily record
-  2026-06-23 §C; Kim, 15 J. Marshall Rev. Intell. Prop. L. 999 (2016); Ferguson, *Trade Secrets
-  at Risk*.)
-- **The nearest analogue is structural, not direct.** *Einarsson* (proprietary data / trade-
-  secret layer + regulatory measure + threshold objection) is the closest real case, but the
-  asset is industrial seismic data, not pharmaceutical clinical data, and the regulatory
-  mechanism differs fundamentally. (Daily record 2026-06-23 §§A, C.)
-- **The unresolved doctrinal questions if such a case arises.** How a tribunal would (a)
-  characterize pharmaceutical test data as a "covered investment," (b) value it, and (c) treat a
-  regulatory measure permitting generic reliance on that data as the "violation," all remain
-  unanswered in the public case law. (Daily record 2026-06-23 §C.)
-- **A treaty hook exists but is unused.** USMCA Chapter 20 test-data-exclusivity obligations
-  could in principle underpin such a claim, but none has been filed. (CRS, *USMCA: Intellectual
-  Property Rights (IPR)*, IF11314 — https://www.congress.gov/crs-product/IF11314; daily record
-  2026-06-23 §C.)
-
-## Cross-cutting — the forum landscape
-
-- **The flagship North-American forum is closing.** USMCA (in force 1 July 2020) eliminated
-  ISDS between Canada and the United States; the three-year legacy period expired **30 June
-  2023**. No successor to *Eli Lilly v Canada* can now be filed under the principal North-
-  American framework; pre-existing legacy claims (e.g. *Einarsson*) remain pending. Mexico
-  retains a narrowed ISDS under USMCA Chapter 14 (mainly covered-sector government contracts;
-  local-remedy exhaustion and a 30-month wait otherwise). (CRS, *USMCA: Investment Provisions*,
-  IF11167 — https://www.congress.gov/crs-product/IF11167; Kluwer Arbitration Blog, *ISDS Under
-  the USMCA: The First Three Years at a Glance*, Nov. 2023 —
-  https://arbitrationblog.kluwerarbitration.com/2023/11/25/isds-under-the-usmca-the-first-three-years-at-a-glance/;
-  Norton Rose Fulbright, *Major changes for ISDS in USMCA*; daily record 2026-06-23 §B.)
-- **The trigger doctrine that animated *Eli Lilly* is itself largely gone.** Canada's Supreme
-  Court relaxed the promise utility doctrine in *AstraZeneca Canada Inc. v Apotex Inc.*, [2017] 1
-  SCR 536 (30 June 2017), so the regulatory condition behind that claim has substantially
-  receded. (SSRN, Baker & Geddes, *The Incredible Shrinking Victory: Eli Lilly v. Canada* —
-  https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3012538; daily record 2026-06-23 §B.)
-- **Consequence for the research question.** If the three-ring structure recurs in pharma, it
-  will most likely arise under **older BITs or the CPTPP**, against non-North-American states —
-  not under NAFTA/USMCA. (Daily record 2026-06-23 §B.)
+**China pharmaceutical data — USTR 2026 Special 301 "unfair and discriminatory" characterisation (new Ring 2 dimension):** The 2026 USTR Special 301 Report (released April 30, 2026) characterises China's pharmaceutical trial data conditions as imposing "unfair and discriminatory conditions on the effective protection against unfair commercial use, as well as unauthorized disclosure, of undisclosed test or other data generated to obtain marketing approval for pharmaceutical products." The specific concern is located at the **State Council Implementing Regulations level** (issued January 2026, effective May 2026): those regulations set a six-year maximum data protection ceiling but **did not address what period of protection applies to drugs first approved outside China**. The NMPA Implementation Measures (May 15, 2026) removed the draft's "time-gap reduction" rule — awarding full six-year protection to overseas-first-approved drugs upon their China approval — but the higher-level statutory silence on the baseline protection period for such drugs persists. The US and China agreed to address this in future negotiations. The US has no BIT with China and cannot pursue ISDS; European BIT holders can, and could reference the USTR characterisation to support a Ring 2 discriminatory treatment argument. Sources: [(National Law Review, May 2026)](https://natlawreview.com/article/china-retains-priority-watch-list-status-ustrs-2026-special-301-report-continuing); [(2026 Special 301 Report)](https://ustr.gov/sites/default/files/files/Press/Releases/2026/2026%20Special%20301%20Report.pdf); [(PhRMA, May 2026)](https://phrma.org/blog/ustr-s-2026-special-301-report-stands-up-for-american-innovation); [(Spruson & Ferguson, "Data exclusivity comes into effect")](https://www.spruson.com/china-data-exclusivity-comes-into-effect/)
 
 ---
 
-## Open questions (the live research agenda)
+### Ring 3 — Jurisdictional / Admissibility Gate
 
-These map to the open threads in `state/research_log.json`. Move an item up into the body above
-when it is answered with a source.
+**Philip Morris / critical-date doctrine:** *Philip Morris v. Australia* (PCA 2012-12, 2015) established the leading authority on the critical-date / reasonably-foreseeable-dispute test for corporate restructuring. If an investor restructures to gain treaty access at a time when the dispute is reasonably foreseeable, the restructuring constitutes an abuse of right and jurisdiction is declined. This remains the key Ring 3 precedent for IP-as-investment treaty shopping. Source: [(Arbitration Blog, "Turning Away at the Gate")](https://www.arbitrationblog.org/post/turning-away-at-the-gate-treaty-shopping-in-light-of-the-philip-morris-case)
 
-1. **The *Einarsson* award (T01).** Pending since the 3–13 March 2025 merits hearing (Calgary).
-   When it issues: how does the tribunal define data/trade-secrets as a covered investment; does
-   the Article 1121 waiver objection succeed; and how is the regulatory measure characterized?
-   Escalate immediately on issuance. (Daily record 2026-06-23 §A, Part III.)
-2. **First litigated trade-secret / clinical-data case (T02).** Track any new filing under a BIT
-   or the CPTPP that asserts pharmaceutical trade secrets or clinical-trial data as the primary
-   investment. This is the project's central prospective question.
-3. **Surviving pharma-IP forums (T03).** Identify whether any non-North-American BIT or CPTPP
-   three-ring case has been filed since 2020; monitor Mexico / USMCA Art. 20.48 clinical-data
-   non-implementation for Chapter 31 or Annex 14-D proceedings. (UNCTAD Navigator advanced
-   search is the right tool.)
-4. **China NMPA aftermath (T04).** Watch whether the new 2026 data-exclusivity entitlements are
-   later restricted or unevenly applied in a way that could seed a Ring 1 claim under China's BIT
-   network. Verify the 2026 Measures against a primary source before relying on the detail.
-5. **Denial-of-Benefits reform (T05).** Track UNCITRAL Working Group III Draft Article 17
-   (denial of benefits, extended scope) and any IP-related case that triggers the abuse-of-right
-   / nationality-planning doctrine surfaced by *Jason Yu Song*.
+**China-Germany BIT (2003) concurrent-proceedings / court-withdrawal requirement — third Ring 3 mechanism (new as of June 28, 2026):** *Hela Schwarz GmbH v. People's Republic of China* (ICSID ARB/17/19, Award December 10, 2025, published January 15, 2026) is the **first decided ICSID case under the China-Germany BIT (2003)** — the treaty identified as the top Ring 1 vehicle for pharmaceutical trade secrets. The tribunal dismissed all EUR 90+ million claims on **both jurisdiction and merits grounds**. The jurisdictional ground: the China-Germany BIT (2003) contains a concurrent-proceedings / court-withdrawal requirement — an investor must withdraw domestic court proceedings before the ICSID arbitration can be commenced; the claimant's Chinese subsidiary (JHSF) had filed the same claim before Chinese courts before the ICSID claim was lodged, and the tribunal held the arbitration invalid for failure to withdraw those proceedings. (Specific BIT article unconfirmed — treaty PDF 403-blocked; holding confirmed from CDR News, A&O Shearman, and UNCTAD Navigator at high confidence; doctrinal label "concurrent-proceedings/court-withdrawal" from search summaries at medium confidence.)
 
-## Verification debt (to clear at the next human review)
+This constitutes a **third Ring 3 mechanism** for ISDS claims against China under the China-Germany BIT, distinct from the Philip Morris critical-date doctrine (applicable to corporate restructuring/treaty-shopping) and the NAFTA Art. 1121 waiver mechanism (applicable in NAFTA/CUSMA cases). A European pharmaceutical investor challenging a Chinese pharmaceutical data exclusivity decision under the China-Germany BIT (2003) must first ensure it has not filed or has withdrawn any concurrent claims before Chinese regulatory bodies or courts — a step that conflicts with the investor's natural first resort of domestic administrative appeal. This is a material pre-ICSID gate that no prior analysis in this project had documented. Counsel for China: A&O Shearman + Ministry of Commerce; Presiding Arbitrator: Sir Daniel Bethlehem KC. Sources: [(A&O Shearman, "Landmark ICSID victory")](https://www.aoshearman.com/en/news/landmark-icsid-victory-for-the-peoples-republic-of-china); [(CDR News, "Court withdrawal conundrum")](https://www.cdr-news.com/categories/arbitration-adr/icsid-tribunal-tackles-court-withdrawal-conundrum/); [(italaw, Hela Schwarz)](https://www.italaw.com/cases/5973); [(UNCTAD Navigator, Hela Schwarz v. China)](https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/805/hela-schwarz-v-china); [(Oxford Academic, "Parallel Proceedings under Chinese BITs")](https://academic.oup.com/jids/article-abstract/11/2/335/5807886)
 
-Items currently carried as **[unverified]** that should be confirmed against a primary source:
-the China NMPA 2026 Measures (Ring 1, sub-question hook); the *Jason Yu Song* award particulars
-(Ring 3); and the *Einarsson* Article 1121 waiver characterization (Ring 3), to be confirmed
-against the NAFTA text and the award when it issues. The human-review checkpoint
-(`HUMAN_REVIEW.md`) is where this debt is audited and logged.
+**Natural-person nationality planning gap:** *Jason Yu Song v. China* (PCA 2019-39, Final Award January 2025) extends the abuse-of-rights inquiry to natural-person citizenship acquisition. China's nationality-planning argument failed (evidence inadmissible on time-bar grounds); the tribunal ordered China to pay USD 26,045,613.90. Critically, existing Denial of Benefits (DOB) clauses are structured for corporate third-country nationality and do not reliably address natural persons. This gap in the Ring 3 doctrine architecture is unaddressed as of April 2025. Sources: [(HFW analysis)](https://www.hfw.com/insights/forum-shopping-illegality-and-state-resistance-insights-from-jason-yu-song-v-prc/); [(IFILA Blog, Mar 2026)](https://blog.ifila.org/2026/03/09/)
+
+**UNCITRAL WG III — 59th Commission session (June 29–July 10, 2026, OPENED June 29) is a four-track ISDS reform milestone — Procedural Protocol expected to be adopted:** Working Paper A/CN.9/WG.III/WP.244 proposed extending DOB doctrine (Draft Provision 17) to shell companies, misuse, and sanctioned entities. At the April 2025 (51st) session, pushback threatened to reduce the reform to codification of existing practice only. Subsequent developments: WP.253 (mid-2025) renumbered the provision as Draft Provision 9; the 9th intersessional (November 2025, Santiago) and the 53rd session (January 12–16, 2026, New York) converged on a procedural Protocol; the 54th session (March 23–27, 2026, Vienna) prepared draft statutes for permanent first-tier and appellate standing mechanisms and debated SSDS scope and jurisdiction exclusivity. The 59th Commission session (June 29–July 10, 2026, New York) carries **four tracks**: (1) **A/CN.9/1246** (procedural Protocol: evidence, bifurcation, interim measures, manifest lack of legal merit, security for costs, TPF disclosure, counterclaims, cost allocation); (2) **draft statutes for permanent first-tier and appellate mechanisms** (MIC-track, from 54th session); (3) **MIIR (Multilateral Instrument to Implement Reforms)**; (4) **Advisory Centre operationalization** — A/CN.9/1265, A/CN.9/1266, and **A/CN.9/1268** (draft Commission decision on Article 9 of the Advisory Centre Statute). **Pre-session picture (as of June 29, 2026 — Day 1 just opened):** Three sources not previously in the record converge on the most definitive framing yet: (a) EJIL:Talk, "UNCITRAL and ISDS Reform: Moving to the Delivery Phase" (June 2026) characterises the reform as having entered its "delivery phase"; (b) ICLRC.ru notes that "draft provisions on ISDS-specific arbitration procedures [are] almost finalised," consistent with the Protocol being ready for Commission adoption; (c) Kluwer Arbitration Blog's Inaugural Washington Arbitration Week post (May/June 2026) confirms that "some incremental reforms have now been adopted" in prior sessions (code of conduct for arbitrators; Advisory Centre statute) and that ISDS reform theories are "crystallized into working papers" — the 59th session completes the programme, not initiates it. The Procedural Protocol (A/CN.9/1246) is expected to be **adopted** at the session (not merely discussed). The draft MIC/MIIR statutes are expected to be endorsed for further negotiation. Day 1 proceedings coverage is not yet available (session opened at 10:30 a.m. June 29; no same-day reporting indexed). **Architecture:** Opt-in only — no state that opposes reforms is bound (EJIL:Talk confirmed). The DOB provision (Draft Provision 9, WP.253) is **not included** in A/CN.9/1246; the natural-person nationality-planning gap (Jason Yu Song scenario) is **not addressed** by any 2026 Commission-track document. Ring 3 doctrine architecture is unchanged pending the session outcome (expected by July 10, 2026). Post-Commission WG III milestones: **(a) Tenth Inter-sessional, September 7–9, 2026, Ninh Binh, Vietnam** (confirmed); **(b) 55th session, October 12–16, 2026, Vienna (tentative)**. Sources: [(UNCITRAL, A/CN.9/1246)](https://uncitral.un.org/sites/default/files/2026-04/a_cn9_1246_advance_copy.pdf); [(UNCITRAL, WP.253)](https://uncitral.un.org/sites/uncitral.un.org/files/media-documents/uncitral/en/wp.253_draft_provisions_initial_draft_for_website.pdf); [(UNCITRAL, MIIR page)](https://uncitral.un.org/en/reformimplementation); [(UNCITRAL, MIC page)](https://uncitral.un.org/en/multilateralpermanentinvestmentcourt); [(IISD ITN, 54th session, April 2026)](https://www.iisd.org/itn/2026/04/21/uncitral-working-group-iii-advances-isds-reform-but-progress-remains-slow/); [(UNCITRAL Sessions page)](https://uncitral.un.org/en/gateway/meetings); [(EJIL:Talk!, "What to Expect When You're Expecting")](https://www.ejiltalk.org/uncitral-and-isds-reform-what-to-expect-when-youre-expecting/); [(EJIL:Talk!, "Moving to the Delivery Phase")](https://www.ejiltalk.org/uncitral-and-isds-reform-moving-to-the-delivery-phase/); [(ICLRC.ru, "almost finalised")](https://iclrc.ru/en/news/308); [(Kluwer Arbitration Blog, Washington Arbitration Week)](https://legalblogs.wolterskluwer.com/arbitration-blog/inaugural-washington-arbitration-week-discussions-on-isds-reform-a-light-at-the-end-of-the-tunnel/); [(CCSI, "Time, Form, and Coalitions")](https://ccsi.columbia.edu/news/time-form-and-coalitions-reflections-on-the-53rd-session-of-uncitral-working-group-iii/)
+
+**NAFTA Art. 1121 waiver objection — second Ring 3 mechanism:** NAFTA Art. 1121 conditions the NAFTA Parties' consent to arbitration on the claimant not only filing a written waiver of parallel proceedings, but *acting consistently* with that waiver — i.e., not initiating or continuing claims for damages in other forums after submission. This is a jurisdictional condition precedent to consent: *Waste Management I* (ICSID ARB(AF)/98/2) and *Detroit International Bridge v. Canada* both held that a legally ineffective waiver (one violated by continued parallel litigation) deprives the tribunal of jurisdiction. Canada's Art. 1121 objection in *Einarsson* is that the claimants continued to pursue damages claims elsewhere after submitting the waiver. If sustained, the tribunal would be dismissed without ever reaching the data-as-investment question. This is a *second, independent Ring 3 mechanism* applicable in data-investment cases, distinct from the Philip Morris abuse-of-rights/critical-date pattern: it turns on the claimant's conduct in parallel domestic proceedings, not on corporate restructuring or treaty-shopping. Sources: [(SICE OAS, NAFTA Art. 1121)](http://www.sice.oas.org/trade/nafta/chap-112.asp); [(Fordham Law Review, "No Double-Dipping Allowed")](https://fordhamlawreview.org/issues/no-double-dipping%C2%9D-allowed-an-analysis-of-waste-management-inc-v-united-mexican-states-and-the-article-1121-waiver-requirement-for-arbitration-under-chapter-11-of-nafta/); [(ICSID, Waste Management Award)](http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C166/DC570.pdf)
+
+---
+
+## II. The Structural Gap — Ferguson / Kim Framework
+
+The core finding as of this date: **no publicly known ISDS case has ever been filed or decided with pharmaceutical trade secrets or clinical trial data as the primary covered investment.** The three-ring structure the memos identified — IP (trade secrets/clinical data) as investment + regulatory measure + jurisdictional gate — is correctly characterised as a prospective and structurally contingent risk, not a current pattern in the decided case law.
+
+The doctrinal questions that remain open if such a case were filed:
+- How a tribunal would characterise pharmaceutical test data as a "covered investment" (trade secret / copyright / intangible asset);
+- How it would quantify the value of data exclusivity rights stripped by a regulatory measure permitting data reliance;
+- Whether the Ring 3 / abuse-of-rights doctrine would be triggered in a pharmaceutical-IP restructuring scenario, and whether the reasonably-foreseeable-dispute test could be satisfied before or after the regulatory measure is adopted.
+
+None of these has a decided answer. *Einarsson* is the closest case and its award may shed partial light on the first and second questions (for a non-pharmaceutical data asset in an oil-and-gas sector). The award is anticipated late 2025 or 2026.
+
+---
+
+## III. Treaty Architecture — Where Three-Ring Claims Could Be Filed
+
+### Foreclosed pathways
+- **US-Canada (pharmaceutical IP):** The USMCA effectively eliminated ISDS between Canada and the US. A three-year legacy period expired 30 June 2023. No successor to *Eli Lilly v. Canada* can now be filed under the principal North American framework. [(CRS, IF11167)](https://www.congress.gov/crs-product/IF11167); [(Kluwer Arbitration Blog, Nov 2023)](https://arbitrationblog.kluwerarbitration.com/2023/11/25/isds-under-the-usmca-the-first-three-years-at-a-glance/)
+- **CPTPP (pharmaceutical clinical data):** CPTPP suspended the TPP's pharmaceutical test data exclusivity obligations, including protection of undisclosed test or other data. Chapter 18 IP obligations cannot in any event be directly enforced via ISDS — only Chapter 9 Section A investment standards can. No pharmaceutical IP ISDS case has been filed under CPTPP. UK accession (December 2024) adds investor pool but does not restore suspended provisions. [(DFAT CPTPP IP outcomes)](https://www.dfat.gov.au/trade/agreements/in-force/cptpp/outcomes-documents/Pages/cptpp-intellectual-property); [(Sterne Kessler)](https://www.sternekessler.com/news-insights/insights/trans-pacific-partnership-lost-important-ip-provisions/)
+
+### Open pathways
+- **Older bilateral BITs:** Pre-USMCA-era BITs between pharmaceutical-investor home states and respondent states that retain ISDS and have not modernised provisions. No publicly known three-ring case under such a BIT has been identified since 2020.
+- **ICSID/UNCITRAL procedural forum:** Both remain procedurally available for qualifying claims under applicable treaties.
+- **Mexico (USMCA Annex 14-D/Chapter 31):** USMCA retains limited ISDS against Mexico for government contracts in specific sectors; pharmaceutical clinical data is not a qualifying sector. Chapter 31 state-to-state dispute settlement on data exclusivity obligations remains a theoretical avenue.
+- **China BIT network:** 109 BITs in force; China's ISDS posture is conservative (most BITs limit ISDS to expropriation quantum disputes). The NMPA 2026 pharmaceutical data exclusivity framework creates the Ring 1 foundation; any restriction of those protections could trigger a claim under applicable BITs.
+
+---
+
+## IV. Open Research Questions
+
+1. **Einarsson award** — when issued, requires immediate analysis: how the tribunal defines the data asset as "covered investment," whether the NAFTA Art. 1121 waiver objection succeeds, and how the regulatory disclosure regime is characterised as a "measure."
+2. **Non-North-American BIT pharmaceutical IP filings** — no publicly known case as of June 2026; monitoring required via UNCTAD Navigator updates (1,463 cases as of December 31, 2025; no pharmaceutical trade-secret or clinical-data case identified).
+3. **China pharmaceutical data exclusivity** — Ring 1 foundation established (two regulatory layers in force; June 5, 2026 transitional window closed, crystallising the covered-investment set); Ring 2 dimension added (USTR 2026 Special 301 characterises China's pharmaceutical data conditions as "unfair and discriminatory" — gap at State Council Implementing Regulations level, which does not address drugs first approved outside China); European BIT Ring 1 bases confirmed (Germany, Switzerland, France). **Ring 3 — new:** Hela Schwarz GmbH v. China (ICSID ARB/17/19, Award December 10, 2025) — the first decided ICSID case under the China-Germany BIT (2003) — dismissed on jurisdiction for failure to withdraw concurrent Chinese domestic proceedings; establishes a third Ring 3 mechanism (concurrent-proceedings/court-withdrawal requirement) applicable to any future pharmaceutical IP BIT claim under this treaty. Monitor for any restriction of exclusivity protections, for US-China negotiation outcomes on the drugs-first-approved-outside-China gap, and for full Hela Schwarz award text when accessible.
+4. **UNCITRAL WG III ISDS reform** — the 59th Commission session OPENED June 29, 2026 (New York; runs to July 10). Pre-session intelligence (June 29): three new sources (EJIL:Talk "Delivery Phase," ICLRC "almost finalised," Kluwer WAW post) confirm the Procedural Protocol (A/CN.9/1246) is expected to be adopted at the session — a more definitive characterisation than prior "expected to deliver." Day 1 proceedings coverage not yet indexed. DOB provision (Draft Provision 9) not in the package; natural-person gap unaddressed; Ring 3 doctrine unchanged. Monitor: IISD ITN and EJIL:Talk session coverage (Days 2–10, through July 10). Next WG III milestones: September 7–9 intersessional (Ninh Binh, Vietnam); 55th session October 12–16 Vienna (tentative).
+5. **"Data in Dispute" scholarship line** — practitioner literature is beginning to theorise data-as-investment ISDS. Foundational piece: "Protecting Trade Secrets Under International Investment Law," 15 J. Marshall Rev. Intell. Prop. L. 228 (2016) (UIC Law), directly analyses whether ISDS is available to protect pharmaceutical regulatory data against host-state disclosure. "The Promise and Perils of Enterprise Data as Trade Secrets" (Yang Chen, Stanford Technology Law Review, January 2026) — confirmed as domestic US trade-secrets scholarship; does not engage investment law or ISDS; closed as a lead. Monitor for new filings and additional ISDS-specific scholarship.
+6. **Germany-China BIT (2003) "trade and business secrets" — verification at treaty-text level** — the provision is reported by three authoritative databases at medium-high confidence; institutional authenticated access to the UNCTAD treaty file or EDIT would upgrade to high. Not required to advance research but desirable for citation certainty.

@@ -1,35 +1,19 @@
 {
   "last_updated": "2026-06-29",
   "open_threads": [
+    "Can a dated Swedish Supreme Court judgment in Okuashvili be pinned to an accessible primary source to confirm or reject the inferred reversal of the Svea Court's MFN/jurisdiction holding?",
+    "Did the UNCITRAL 59th session in fact adopt the Procedural Protocol (A/CN.9/1246), and did the dual-nationality / natural-person gap remain off-package, per any post-session UN or IISD report?",
+    "Can the A/CN.9/1246 document number and date, and the agenda URL, be verified against a source actually retrieved?",
+    "Is there any update in Einarsson (T01) confirming whether an award has issued, given the last confirmed posture of post-hearing briefing through August 2025?",
+    "Has any new filing or full-award text surfaced in Hela Schwarz (T04) bearing on data exclusivity as a protected investment under the China–Germany BIT line?",
+    "Should the classifier add a posture-reconciliation check (by decision-date and instance) for any multi-forum case before logging a holding?"
+  ],
+  "seq": 1,
+  "history": [
     {
-      "id": "T01",
-      "opened": "2026-06-23",
-      "updated": "2026-06-28",
-      "thread": "Einarsson v. Canada (ICSID Case No. UNCT/20/6): NAFTA Chapter 11 claim on proprietary seismic data as IP (copyright/trade-secret) investment; Canada's regulatory-disclosure regime challenged; Canada's Art. 1121 waiver-consistency objection (double-dipping) documented as a second Ring 3 mechanism — jurisdictional, not procedural (confirmed by Waste Management I and Detroit International Bridge); merits hearing concluded March 2025, post-hearing proceedings ongoing (testimony Aug 2025), no award as of June 2026; damage claim USD 2,529,000,000 (confirmed from ICSID case records). Monitor for award — when issued, analyse: definition of data as 'covered investment,' Art. 1121 waiver holding, and characterisation of regulatory-disclosure measure."
-    },
-    {
-      "id": "T02",
-      "opened": "2026-06-23",
-      "updated": "2026-06-26",
-      "thread": "Trade-secret / clinical-data gap: No publicly known ISDS case has yet asserted pharmaceutical trade secrets or clinical trial data as the primary covered investment — the Ferguson/Kim framework remains theoretical; 1,463 total ISDS cases in UNCTAD Navigator as of December 31, 2025; approximately 13 historical pharmaceutical ISDS cases total; no pharmaceutical trade-secret or clinical-data case identified in 2025–2026 new registrations. Yang Chen 2026 Stanford paper confirmed as domestic US trade-secrets scholarship; not ISDS-relevant; lead closed. Foundational ISDS-specific scholarship: UIC 2016 (15 J. Marshall Rev. Intell. Prop. L. 228). Track any new filing under BITs or CPTPP."
-    },
-    {
-      "id": "T03",
-      "opened": "2026-06-23",
-      "updated": "2026-06-24",
-      "thread": "Treaty architecture closure (COMPLETE — monitoring): USMCA/CUSMA lapsed US-Canada ISDS after 30 June 2023; CPTPP pharmaceutical test data exclusivity provisions (TPP Art. 18.50) suspended — no direct ISDS hook for clinical data under either major multilateral framework. UK CPTPP accession (Dec 2024) adds investor pool without restoring suspended provisions. Monitor older bilateral BITs and any new ICSID/UNCITRAL pharmaceutical IP registration; monitor Mexico USMCA Art. 20.48 clinical-data non-implementation for Chapter 31 or Annex 14-D proceedings."
-    },
-    {
-      "id": "T04",
-      "opened": "2026-06-23",
-      "updated": "2026-06-28",
-      "thread": "China BIT pharmaceutical data exclusivity — MONITORING (Ring 1 + Ring 2 + Ring 3 dimensions now established): Ring 1 — two regulatory layers in force (State Council DAL Implementing Regs, Jan 2026; NMPA Implementation Measures, May 15, 2026); June 5, 2026 transitional deadline passed — covered-investment set crystallised. Ring 2 — USTR 2026 Special 301 Report characterises China's pharmaceutical data conditions as 'unfair and discriminatory' (specifically, State Council Implementing Regulations do not address protection period for drugs first approved outside China — this is the statutory-level gap even though NMPA measures removed the time-gap reduction rule); US-China negotiations ongoing. European BIT architecture: China-Germany BIT (2003) covers 'trade and business secrets'; China-Switzerland BIT (2009) and China-France BIT (2007) cover 'know-how.' EU-China CAI suspended. Ring 3 — NEW: Hela Schwarz GmbH v. China (ICSID ARB/17/19, Award Dec 10, 2025) — first decided ICSID case under the China-Germany BIT (2003) — dismissed on jurisdiction for failure to withdraw concurrent Chinese domestic court proceedings; the BIT's concurrent-proceedings / court-withdrawal requirement is a third Ring 3 mechanism for any future pharmaceutical IP claim under this treaty. Monitor: US-China negotiations; any ISDS filings under European BITs; full Hela Schwarz award text (for specific BIT article)."
-    },
-    {
-      "id": "T05",
-      "opened": "2026-06-23",
-      "updated": "2026-06-29",
-      "thread": "Ring 3 doctrine — abuse of rights / DOB gap: Jason Yu Song v. China (PCA 2019-39, Jan 2025) reveals natural-person nationality-planning gap in DOB clause architecture. 59th Commission session OPENED June 29, 2026 (New York; runs to July 10) — four-track agenda: (1) Procedural Protocol A/CN.9/1246; (2) MIC first-tier and appellate statutes; (3) MIIR; (4) Advisory Centre (A/CN.9/1265/1266/1268). Pre-session picture (June 29 — Day 1): three new sources (EJIL:Talk 'Moving to the Delivery Phase,' ICLRC 'almost finalised,' Kluwer Washington Arbitration Week) upgrade characterisation from 'expected to deliver' to 'Procedural Protocol expected to be adopted.' Code of conduct for arbitrators and Advisory Centre statute already adopted in prior sessions. Day 1 proceedings coverage not yet indexed (session opened 10:30 a.m.; lag expected). DOB provision NOT in package; natural-person gap NOT addressed; Ring 3 doctrine unchanged. Monitor: IISD ITN and EJIL:Talk session coverage through July 10. Next WG III milestones: Tenth Inter-sessional September 7–9, 2026 (Ninh Binh, Vietnam); 55th session October 12–16 Vienna (tentative)."
+      "seq": 1,
+      "date": "2026-06-29",
+      "headline": "A Quiet Week: Reconciling the Okuashvili Posture and a Still-Unconfirmed UNCITRAL Outcome"
     }
   ]
 }

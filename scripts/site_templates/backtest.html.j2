@@ -1,6 +1,6 @@
 {% extends "base.html.j2" %}
 {% block title %}Backtest | ISDS Thematic Watcher{% endblock %}
-{% block description %}A small exploratory backtest of the deterministic scorer on a focused set of known investor&ndash;State cases &mdash; the three seed awards, four out-of-sample positives, and clear off-theme negatives &mdash; with a confusion matrix and a per-case breakdown.{% endblock %}
+{% block description %}A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the out-of-sample holdout that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.{% endblock %}
 
 {% block content %}
 <section class="page-head">
@@ -15,41 +15,47 @@
     <h1 class="page-title">Historical backtest</h1>
     <p class="page-lede">
       A small exploratory backtest on known cases &mdash; not a comprehensive validation.
-      It scores {{ bt.total }} familiar investor&ndash;State cases with the same deterministic
-      keyword scorer the pipeline uses, at the same digest threshold ({{ bt.threshold }}), and
-      reports where it agrees with the label and where it misses.
+      It scores familiar investor&ndash;State cases with the same deterministic keyword scorer
+      the pipeline uses, at the same digest threshold ({{ bt.threshold }}), and reports the results
+      in <strong>three separate buckets</strong> so the cases that trained the fingerprint never
+      inflate the headline.
     </p>
   </div>
 </section>
 
 <section class="band">
   <div class="measure">
-    <h2 class="section-head">What this is, and is not</h2>
+    <h2 class="section-head">Why three buckets</h2>
     <div class="doc-body">
       <p>
-        This page is an honest, narrow sanity check, not a validation study. The set is
-        only {{ bt.total }} cases, hand-picked because they are well known, and it deliberately
-        mixes two kinds of case:
+        An earlier version of this page folded every case into one blended confusion matrix. That
+        flattered the scorer: the development <em>seed</em> awards are the very cases whose vocabulary
+        <em>defines</em> the fingerprint, so recovering them proves only that the system recognises
+        what generated it &mdash; circular, not predictive. To keep the headline honest, the cases are
+        split into three clearly-labelled buckets, each reported on its own:
       </p>
       <ul>
         <li>
-          the three <strong>development seed awards</strong> (Eli&nbsp;Lilly v.&nbsp;Canada,
-          Philip&nbsp;Morris v.&nbsp;Australia, Bridgestone v.&nbsp;Panama). These are
-          <em>in-sample</em> &mdash; their vocabulary trained the fingerprint &mdash; so passing
-          them confirms the scorer recovers what it was built on, nothing more;
+          <strong>Seed recovery</strong> &mdash; the three development seed awards, scored
+          <em>in-sample</em>. A sanity check that the fingerprint recognises its own source material.
+          Its numbers never enter any headline.
         </li>
         <li>
-          four <strong>out-of-sample positives</strong> (Loewen, Mondev, Apotex, Philip&nbsp;Morris
-          v.&nbsp;Uruguay) and clear <strong>off-theme negatives</strong>, drawn from the labelled
-          holdout. These were not used in development, so they test generalisation.
+          <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
+          negatives, none of them used in development. This is the headline generalisation metric:
+          precision, recall, accuracy and F1 are computed on this bucket <em>alone</em>.
+        </li>
+        <li>
+          <strong>Live prospective</strong> &mdash; the live weekly digest archive, the only test
+          that scores cases the system has never seen before the outcome is known. Reported as an
+          honest status, not as numbers from this corpus.
         </li>
       </ul>
       <p>
         Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
         their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
         verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
-        text could not be resolved in-repo was excluded rather than invented. Read it as a smoke
-        test with a candid record of its one miss, not as evidence of field performance.
+        text could not be resolved in-repo was excluded rather than invented.
       </p>
     </div>
   </div>
@@ -57,15 +63,62 @@
 
 <section class="band band-alt">
   <div class="measure">
-    <h2 class="section-head">Confusion matrix</h2>
+    <p class="page-kicker">Bucket 1 &mdash; in-sample</p>
+    <h2 class="section-head">Seed recovery</h2>
     <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Predicted band at or above the threshold counts as a predicted match; below it counts as a
-      predicted pass. Rows are the true label; columns are the prediction.
+      The three development seed awards, scored against the lexicon their own text defines. This is a
+      recovery check, <strong>not predictive evidence</strong> &mdash; these numbers are deliberately
+      kept out of every headline.
+    </p>
+    <div class="doc-body">
+      <p>
+        Seeds recovered at the digest threshold ({{ bt.threshold }}):
+        <strong>{{ bt.seed.recovered }} of {{ bt.seed.total }}</strong>. Because the seeds trained the
+        fingerprint, a perfect recovery here is the expected, uninformative result &mdash; a failure
+        would signal a bug, but a pass says nothing about field performance.
+      </p>
+      <table>
+        <caption class="visually-hidden">
+          In-sample seed recovery: each seed award, the score the deterministic scorer assigned, and
+          the predicted band.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Seed award</th>
+            <th scope="col">Score</th>
+            <th scope="col">Predicted band</th>
+            <th scope="col">Recovered</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in bt.seed.cases %}
+          <tr>
+            <th scope="row">{{ c.name }}</th>
+            <td>{{ c.score }}</td>
+            <td><span class="badge badge-{{ c.band | band_class }}">{{ c.band }}</span></td>
+            <td>{{ 'yes' if c.pred == 1 else 'no' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <p class="page-kicker">Bucket 2 &mdash; out-of-sample (the headline)</p>
+    <h2 class="section-head">Out-of-sample holdout</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
+      off-theme negatives &mdash; {{ bt.holdout.total }} cases in all, none used in development. The
+      headline metrics below are computed on this bucket <strong>alone</strong>; the seeds are not in it.
     </p>
     <div class="doc-body">
       <table>
         <caption class="visually-hidden">
-          Confusion matrix of predicted match versus true label across {{ bt.total }} cases.
+          Confusion matrix of predicted match versus true label across {{ bt.holdout.total }}
+          out-of-sample cases.
         </caption>
         <thead>
           <tr>
@@ -78,21 +131,23 @@
         <tbody>
           <tr>
             <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
-            <td><strong>TP {{ bt.tp }}</strong></td>
-            <td>FN {{ bt.fn }}</td>
-            <td>{{ bt.n_pos }}</td>
+            <td><strong>TP {{ bt.holdout.tp }}</strong></td>
+            <td>FN {{ bt.holdout.fn }}</td>
+            <td>{{ bt.holdout.n_pos }}</td>
           </tr>
           <tr>
             <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
-            <td>FP {{ bt.fp }}</td>
-            <td><strong>TN {{ bt.tn }}</strong></td>
-            <td>{{ bt.n_neg }}</td>
+            <td>FP {{ bt.holdout.fp }}</td>
+            <td><strong>TN {{ bt.holdout.tn }}</strong></td>
+            <td>{{ bt.holdout.n_neg }}</td>
           </tr>
         </tbody>
       </table>
 
       <table>
-        <caption class="visually-hidden">Headline metrics derived from the confusion matrix.</caption>
+        <caption class="visually-hidden">
+          Headline generalisation metrics derived from the out-of-sample confusion matrix.
+        </caption>
         <thead>
           <tr>
             <th scope="col">Precision</th>
@@ -103,35 +158,25 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ '%.2f' | format(bt.precision) }}</td>
-            <td>{{ '%.2f' | format(bt.recall) }}</td>
-            <td>{{ '%.2f' | format(bt.accuracy) }}</td>
-            <td>{{ '%.2f' | format(bt.f1) }}</td>
+            <td>{{ '%.2f' | format(bt.holdout.precision) }}</td>
+            <td>{{ '%.2f' | format(bt.holdout.recall) }}</td>
+            <td>{{ '%.2f' | format(bt.holdout.accuracy) }}</td>
+            <td>{{ '%.2f' | format(bt.holdout.f1) }}</td>
           </tr>
         </tbody>
       </table>
       <p>
-        On this focused set the scorer makes
-        {{ bt.fp + bt.fn }} miss{{ 'es' if (bt.fp + bt.fn) != 1 else '' }}:
-        {{ bt.fn }} false negative{{ 's' if bt.fn != 1 else '' }} and
-        {{ bt.fp }} false positive{{ 's' if bt.fp != 1 else '' }}. The misses are listed in full
-        below &mdash; the point of a backtest is the failures, not the passes.
+        On this out-of-sample set the scorer makes
+        {{ bt.holdout.fp + bt.holdout.fn }} miss{{ 'es' if (bt.holdout.fp + bt.holdout.fn) != 1 else '' }}:
+        {{ bt.holdout.fn }} false negative{{ 's' if bt.holdout.fn != 1 else '' }} and
+        {{ bt.holdout.fp }} false positive{{ 's' if bt.holdout.fp != 1 else '' }}. The misses are
+        listed in full below &mdash; the point of a backtest is the failures, not the passes.
       </p>
-    </div>
-  </div>
-</section>
 
-<section class="band">
-  <div class="measure">
-    <h2 class="section-head">Per-case results</h2>
-    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Every case, its label, the score the deterministic scorer assigned, the predicted band, and
-      a note on any miss. Positives (seeds, then out-of-sample) first, then negatives.
-    </p>
-    <div class="doc-body">
+      <h3>Per-case results</h3>
       <table>
         <caption class="visually-hidden">
-          Per-case backtest results: case, group, label, score, predicted band, and miss note.
+          Per-case out-of-sample results: case, group, label, score, predicted band, and miss note.
         </caption>
         <thead>
           <tr>
@@ -144,7 +189,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for c in bt.cases %}
+          {% for c in bt.holdout.cases %}
           <tr>
             <th scope="row">{{ c.name }}</th>
             <td>{{ c.group }}</td>
@@ -160,37 +205,44 @@
           {% endfor %}
         </tbody>
       </table>
+
+      {% if bt.holdout.false_negatives or bt.holdout.false_positives %}
+      <h3>Where it misses, and why</h3>
+      {% if bt.holdout.false_negatives %}
+      <h4>False negatives</h4>
+      <ul>
+        {% for c in bt.holdout.false_negatives %}
+        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if bt.holdout.false_positives %}
+      <h4>False positives</h4>
+      <ul>
+        {% for c in bt.holdout.false_positives %}
+        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
     </div>
   </div>
 </section>
 
-{% if bt.false_negatives or bt.false_positives %}
 <section class="band band-alt">
   <div class="measure">
-    <h2 class="section-head">Where it misses, and why</h2>
+    <p class="page-kicker">Bucket 3 &mdash; live prospective</p>
+    <h2 class="section-head">Live prospective</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Status: <strong>{{ bt.live.status }}</strong>
+    </p>
     <div class="doc-body">
-      {% if bt.false_negatives %}
-      <h3>False negatives</h3>
-      <ul>
-        {% for c in bt.false_negatives %}
-        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-      {% if bt.false_positives %}
-      <h3>False positives</h3>
-      <ul>
-        {% for c in bt.false_positives %}
-        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      <p>{{ bt.live.detail }}</p>
     </div>
     <p class="archive-foot">
-      See the <a href="{{ root }}methodology.html">methodology</a> for how the scorer and its
-      threshold are defined.
+      See the <a href="{{ root }}digests/index.html">digest archive</a> for the live record, and the
+      <a href="{{ root }}methodology.html">methodology</a> for how the scorer and its threshold are defined.
     </p>
   </div>
 </section>
-{% endif %}
 {% endblock %}

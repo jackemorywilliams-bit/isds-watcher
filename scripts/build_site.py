@@ -1016,8 +1016,11 @@ def build() -> int:
         )
 
     # 5. Backtest page (root => same depth as home; deterministic, no I/O on
-    #    docs/). run_backtest() assembles a focused labelled set from in-repo
-    #    text and scores it with the same deterministic scorer the pipeline uses.
+    #    docs/). run_backtest() scores a focused in-repo labelled set with the
+    #    same deterministic scorer the pipeline uses and returns three separate
+    #    buckets (bt.seed in-sample recovery, bt.holdout out-of-sample headline
+    #    metrics, bt.live prospective status) so the seeds never inflate the
+    #    headline precision/recall/F1.
     backtest_tpl = env.get_template("backtest.html.j2")
     write(
         DOCS / "backtest.html",

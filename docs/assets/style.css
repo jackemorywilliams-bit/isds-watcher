@@ -17,7 +17,7 @@
   --paper:       #ffffff;
   --line:        #e3ddd1;
   --line-soft:   #ece7db;
-  --measure:     46rem;     /* ~736px reading measure */
+  --measure:     40rem;     /* ~640px reading measure (~70–80 characters per line) */
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans:  "Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
@@ -197,30 +197,332 @@ main { display: block; }
   align-items: center; text-align: center;
 }
 .venn {
-  width: 100%; max-width: 460px; height: auto; display: block;
+  width: 100%; max-width: 430px; height: auto; display: block;
 }
-.venn-ring {
-  fill: var(--navy); fill-opacity: 0.10;
-  stroke: var(--navy); stroke-width: 2; stroke-opacity: 0.55;
-}
-.venn-ring-2 { fill: var(--gold-bright); fill-opacity: 0.10; stroke: var(--gold); }
-.venn-ring-3 { fill: var(--navy); fill-opacity: 0.10; }
-.venn-core { stroke: var(--gold-bright); stroke-width: 2; stroke-opacity: 0.9; }
+/* The three rings multiply, so their intersections deepen on their own —
+   the centre needs no separate fill. Each ring keeps a muted, palette-tied tint. */
+.venn-rings { mix-blend-mode: multiply; }
+.venn-ring { fill-opacity: 0.30; stroke-width: 1.4; }
+.venn-ring-1 { fill: #c2cfd9; stroke: #51708a; }   /* IP — slate */
+.venn-ring-2 { fill: #e6d6a6; stroke: #a98f43; }   /* regulatory / judicial — gold (the weighted ring) */
+.venn-ring-3 { fill: #c8d5cc; stroke: #5d7c6c; }   /* jurisdiction — sage */
+.venn-core-disc { fill: #fbf9f3; fill-opacity: 0.86; }
 .venn-core-label {
-  font-family: var(--sans); font-size: 15px; font-weight: 700;
-  letter-spacing: .08em; fill: #20180a;
+  font-family: var(--sans); font-size: 14px; font-weight: 700;
+  letter-spacing: .14em; fill: var(--navy-deep);
 }
 .venn-core-sub {
-  font-family: var(--sans); font-size: 9px; font-weight: 600;
-  letter-spacing: .04em; fill: var(--ink-soft);
+  font-family: var(--sans); font-size: 9.5px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; fill: var(--muted);
 }
 .venn-label {
   font-family: var(--sans); font-size: 13px; font-weight: 600;
-  fill: var(--navy);
+  letter-spacing: .01em; fill: var(--ink);
 }
 .venn-caption {
   font-family: var(--sans); font-size: 13.5px; color: var(--ink-soft);
-  margin: 14px 0 0; max-width: 40rem; line-height: 1.5;
+  margin: 16px 0 0; max-width: 38rem; line-height: 1.55;
+}
+
+/* ------------------------------------------------- venn interactivity --- */
+/* The stage carries the pointer-driven 3D tilt; JS sets --rx / --ry on it.
+   Defaults to flat, so the figure is unchanged until the pointer moves. */
+.venn-stage {
+  --rx: 0deg; --ry: 0deg;
+  perspective: 1100px; width: 100%; display: flex; justify-content: center;
+}
+.venn {
+  width: 100%; max-width: 430px; height: auto; display: block;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+/* When the pointer is active over the stage, follow it immediately. */
+.venn-stage.is-tilting .venn { transition: transform .08s linear; }
+
+/* Each ring/centre is an affordance once JS is live: cursor + smooth emphasis. */
+.js .venn-ring,
+.js .venn-core-disc { cursor: pointer; transition: fill-opacity .2s ease, stroke-width .2s ease, stroke .2s ease; }
+.js .venn-ring { outline: none; }
+
+/* Emphasised ring: it lifts (denser fill, darker/thicker stroke). */
+.venn-ring.is-active { fill-opacity: 0.55; stroke-width: 2.6; }
+.venn-ring-1.is-active { stroke: #2f4f6b; }
+.venn-ring-2.is-active { stroke: #836a23; }
+.venn-ring-3.is-active { stroke: #3f5e4e; }
+/* Sibling rings recede so the active one reads clearly. */
+.venn-rings.has-active .venn-ring:not(.is-active) { fill-opacity: 0.14; }
+.venn-core-disc.is-active { stroke: var(--gold-bright); stroke-width: 2.2; fill-opacity: 1; }
+
+/* Keyboard focus: a clear, palette-tied ring that satisfies AA visibility. */
+.js .venn-ring:focus-visible,
+.js .venn-core-disc:focus-visible {
+  outline: none; stroke: var(--gold-bright); stroke-width: 3;
+}
+
+/* Description region below the figure. */
+.venn-readout {
+  font-family: var(--sans); background: var(--paper);
+  border: 1px solid var(--line); border-left: 4px solid var(--navy);
+  border-radius: 6px; padding: 14px 18px; margin: 0 0 22px;
+  min-height: 5.5rem;
+}
+.venn-readout.readout-weighted { border-left-color: var(--gold-bright); }
+.venn-readout.readout-core { border-left-color: var(--gold); }
+.venn-readout-eyebrow {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--navy); margin: 0 0 6px;
+}
+.venn-readout.readout-weighted .venn-readout-eyebrow { color: var(--gold); }
+.venn-readout-body { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+/* ----------------------------------------------------- scoring explorer --- */
+/* The interactive control is hidden by default and revealed only when JS marks
+   the page live, so the static .scoring-note remains the no-JS fallback. */
+.scoring-explorer[hidden] { display: none; }
+.js .scoring-explorer { display: block; }
+.js .scoring .scoring-note { display: none; }
+
+.scoring-explorer {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: 18px 20px 16px; font-family: var(--sans);
+}
+.scoring-explorer-head {
+  font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--navy);
+  margin: 0 0 14px;
+}
+.scoring-toggles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
+.scoring-toggle {
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--navy);
+  border-radius: 5px; padding: 11px 13px; cursor: pointer; font-family: var(--sans);
+  color: var(--ink-soft); transition: background .15s, border-color .15s, box-shadow .15s, transform .12s;
+}
+.scoring-toggle:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(11,46,74,.08); }
+.scoring-toggle-weighted { border-top-color: var(--gold-bright); }
+.scoring-toggle-num {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy);
+}
+.scoring-toggle-weighted .scoring-toggle-num { color: var(--gold); }
+.scoring-toggle-weight {
+  font-size: 9.5px; background: var(--gold-bright); color: #fff; border-radius: 3px;
+  padding: 1px 5px; margin-left: 3px; letter-spacing: .06em; vertical-align: middle;
+}
+.scoring-toggle-name { font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); }
+/* Pressed (selected) state — clearly filled, AA contrast. */
+.scoring-toggle[aria-pressed="true"] {
+  background: var(--navy); border-color: var(--navy); border-top-color: var(--gold-bright);
+}
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-num,
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-name { color: #fff; }
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-num { color: var(--gold-bright); }
+.scoring-toggle-weighted[aria-pressed="true"] { background: #6b5410; border-color: #6b5410; }
+.scoring-toggle-weighted[aria-pressed="true"] .scoring-toggle-num { color: #f3e7cf; }
+
+.scoring-result {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  border-top: 1px solid var(--line-soft); padding-top: 14px;
+}
+.scoring-result-badge { font-size: 12.5px; padding: 3px 11px; }
+.scoring-result-reason { font-size: 14px; line-height: 1.5; color: var(--ink-soft); flex: 1 1 240px; }
+
+/* Honour reduced-motion: no tilt, no lift transitions, no animated transforms. */
+@media (prefers-reduced-motion: reduce) {
+  .venn { transform: none !important; transition: none; will-change: auto; }
+  .venn-stage.is-tilting .venn { transition: none; }
+  .scoring-toggle { transition: background .15s, border-color .15s; }
+  .scoring-toggle:hover { transform: none; }
+}
+
+/* ===================================================== archive charts ===== */
+/* Two build-time inline-SVG charts on the Digest Archive (trend + source
+   receptivity). Axes/gridlines in --line, the screened series in --navy, the
+   accepted series in --gold-bright. JS only adds a hover readout and a
+   reduced-motion-gated draw-in; everything reads with JS off. Distinct
+   selectors — these do not touch the .venn / .scoring rules. */
+
+/* Visually-hidden utility: removes from the visual layer but keeps it in the
+   accessibility tree and the no-JS DOM (the authoritative chart data tables). */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.archive-charts { padding-bottom: 48px; }
+.archive-charts-lede {
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  color: var(--ink-soft); margin: 0 0 26px; max-width: 42rem;
+}
+
+.chart-figure {
+  margin: 0 0 30px; padding: 0;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(11, 46, 74, .05);
+}
+.chart-figure:last-of-type { margin-bottom: 0; }
+.chart-frame { padding: 18px 20px 6px; }
+
+.chart {
+  display: block; width: 100%; height: auto; overflow: visible;
+}
+
+/* Axes / gridlines / annotation text. */
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-axis-label {
+  font-family: var(--sans); font-size: 11px; fill: var(--muted);
+}
+.chart-src-label { font-size: 11.5px; fill: var(--ink-soft); }
+
+/* Trend chart: screened (navy) area + line, accepted (gold) line. */
+.chart-area-screened { fill: var(--navy); fill-opacity: .08; }
+.chart-line { fill: none; stroke-width: 2.2; }
+.chart-line-screened { stroke: var(--navy); }
+.chart-line-accepted { stroke: var(--gold-bright); stroke-dasharray: 5 4; }
+.chart-dot { stroke: var(--paper); stroke-width: 1.5; }
+.chart-dot-screened { fill: var(--navy); }
+.chart-dot-accepted { fill: var(--gold-bright); }
+
+/* The matches==0 baseline, explicitly annotated. */
+.chart-zero { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 3; opacity: .7; }
+.chart-zero-label {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .04em; fill: var(--muted);
+}
+
+/* Source chart bars: screened (navy) and accepted (gold). */
+.chart-bar-screened { fill: var(--navy); }
+.chart-bar-accepted { fill: var(--gold-bright); }
+.chart-bar-value {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  fill: var(--ink-soft); font-variant-numeric: tabular-nums;
+}
+
+/* Hover/focus targets are transparent and only "live" under JS. */
+.chart-hit { fill: transparent; }
+.chart-marker, .chart-srcrow { cursor: default; }
+.js .chart-marker, .js .chart-srcrow { cursor: pointer; }
+.chart-marker:focus-visible .chart-hit,
+.chart-srcrow:focus-visible .chart-hit {
+  outline: none; fill: rgba(184, 134, 11, .10);
+  stroke: var(--gold-bright); stroke-width: 1.4;
+}
+.chart-marker.is-active .chart-hit,
+.chart-srcrow.is-active .chart-hit { fill: rgba(11, 61, 92, .06); }
+.chart-marker.is-active .chart-dot { r: 5; }
+
+/* Worded readout below each chart (the exact figures on hover/focus). */
+.chart-readout {
+  font-family: var(--sans); font-size: 13.5px; line-height: 1.5;
+  color: var(--ink-soft); margin: 12px 0 0; padding: 10px 14px;
+  background: var(--cream-alt); border: 1px solid var(--line-soft);
+  border-left: 4px solid var(--navy); border-radius: 5px; min-height: 1.5rem;
+}
+.chart-readout strong { color: var(--ink); }
+.chart-readout .read-screened { color: var(--navy); font-weight: 700; }
+.chart-readout .read-accepted { color: var(--gold); font-weight: 700; }
+
+/* Figcaption: title + a label-and-swatch legend (never colour alone). */
+.chart-caption {
+  font-family: var(--sans); padding: 4px 20px 18px;
+  border-top: 1px solid var(--line-soft); margin-top: 6px;
+}
+.chart-caption-title {
+  display: block; font-size: 13.5px; font-weight: 700; color: var(--navy);
+  margin: 12px 0 0;
+}
+.chart-caption-note { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
+.chart-key {
+  position: relative; font-size: 12px; color: var(--ink-soft); padding-left: 22px;
+}
+.chart-key::before {
+  content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 3px; border-radius: 2px;
+}
+.chart-key-screened::before { background: var(--navy); }
+.chart-key-accepted::before { background: var(--gold-bright); }
+.chart-key-zero::before { background: var(--muted); height: 0; border-top: 2px dashed var(--muted); }
+
+/* Draw-in reveal: JS sets .chart-ready once the figure scrolls into view.
+   Motion is a guest — only animate when the user has no reduced-motion
+   preference; otherwise the final state is shown instantly (no opacity gate). */
+@media (prefers-reduced-motion: no-preference) {
+  .js .chart-area, .js .chart-line, .js .chart-bar { opacity: 0; }
+  .js .chart-figure.chart-ready .chart-area,
+  .js .chart-figure.chart-ready .chart-line,
+  .js .chart-figure.chart-ready .chart-bar {
+    opacity: 1; transition: opacity .6s ease;
+  }
+  .js .chart-figure.chart-ready .chart-bar {
+    transform-box: fill-box; transform-origin: left center;
+    animation: chart-bar-grow .55s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes chart-bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+@media (max-width: 720px) {
+  .chart-source .chart-src-label { font-size: 10px; }
+}
+
+/* ===================================================== motion & depth ===== */
+/* Sitewide polish layer (Upgrade D): scroll-reveal, hover depth, and a barely
+   perceptible hero-glow drift. Restraint is the point. Distinct selectors —
+   nothing here touches the .venn / .scoring / archive-chart rules.
+
+   Progressive-enhancement contract for the reveal: the hidden-initial state is
+   scoped under .reveal-ready, which JS adds to <html> only when motion is
+   allowed. With JS off, or under reduced-motion, .reveal-ready never appears,
+   so .reveal blocks are never hidden and the page reads in its final state. */
+
+/* Hidden-initial state — only ever active once JS has opted in. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+/* Animated arrival — gated so it only declares the transition when motion is
+   welcome (the .reveal-ready gate already guarantees JS + no reduced-motion). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal {
+    transition: opacity .6s ease, transform .6s cubic-bezier(.22, .61, .36, 1);
+  }
+}
+.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Depth via shadow (pure CSS, no motion): extend the .archive-card hover
+   shadow to the ring cards and digest entries. */
+.ring-card,
+.entry { transition: border-color .15s, box-shadow .15s; }
+.ring-card:hover,
+.entry:hover {
+  border-color: var(--gold-bright);
+  box-shadow: 0 4px 16px rgba(11, 46, 74, .10);
+}
+
+/* Hero glow drift: JS sets --glow-x / --glow-y (small px offsets) on pointer
+   move; the hero's existing radial-gradient glow reads them. Defaults to the
+   original 80% -10% position, so the hero is unchanged until the pointer moves
+   and on any device that never sets the variables. */
+.hero {
+  --glow-x: 0px;
+  --glow-y: 0px;
+  background:
+    radial-gradient(1200px 400px at calc(80% + var(--glow-x)) calc(-10% + var(--glow-y)), rgba(184,134,11,.10), transparent 60%),
+    linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 70%);
+}
+
+/* Reduced-motion: belt-and-braces. JS already skips the reveal entirely (never
+   adds .reveal-ready) and the drift, but if a stale .reveal-ready ever lingers,
+   show the final state instantly and neutralise any glow offset. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
+  .hero { --glow-x: 0px; --glow-y: 0px; }
 }
 
 /* ----------------------------------------------- run / archive counts --- */
@@ -540,6 +842,7 @@ main { display: block; }
   .toc-list { columns: 2; column-gap: 24px; }
   .toc-list li:has(a.active)::before { display: none; }
   .rings { grid-template-columns: 1fr; }
+  .scoring-toggles { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .footer-brand { grid-column: 1 / -1; }
 }

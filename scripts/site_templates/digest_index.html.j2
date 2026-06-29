@@ -21,13 +21,85 @@
   </div>
 </section>
 
+{% if charts and digests %}
+<section class="band archive-charts" aria-labelledby="archive-charts-h">
+  <div class="measure">
+    <h2 class="section-head" id="archive-charts-h">What the runs show</h2>
+    <p class="archive-charts-lede">
+      Two views of the archive, built from each run&rsquo;s recorded counts: how screening
+      volume and acceptances have moved week to week, and which catalogue sources actually
+      surface developments that reach the digest. No item has yet scored a true match
+      (&#8805;&#8202;the threshold), so the match line sits at zero throughout &mdash; the
+      charts track screening discipline and acceptances, not findings.
+    </p>
+
+    <figure class="chart-figure" role="group" aria-labelledby="trend-fig-cap">
+      <div class="chart-frame">
+        {{ charts.trend_svg | safe }}
+        <p class="chart-readout" id="trend-readout" aria-live="polite" data-default="{{ charts.trend_summary }}">{{ charts.trend_summary }}</p>
+      </div>
+      <figcaption id="trend-fig-cap" class="chart-caption">
+        <span class="chart-caption-title">Weekly trend &mdash; screened, accepted, and the zero match line.</span>
+        <span class="chart-legend" aria-hidden="true">
+          <span class="chart-key chart-key-screened">Screened</span>
+          <span class="chart-key chart-key-accepted">Accepted</span>
+          <span class="chart-key chart-key-zero">Matches&nbsp;=&nbsp;0</span>
+        </span>
+      </figcaption>
+      <table class="visually-hidden chart-data-table">
+        <caption>Weekly run counts: items screened, matches, and accepted, by run date.</caption>
+        <thead>
+          <tr><th scope="col">Run date</th><th scope="col">Screened</th><th scope="col">Matches</th><th scope="col">Accepted</th></tr>
+        </thead>
+        <tbody>
+          {% for r in charts.trend_rows %}
+          <tr><th scope="row">{{ r.date }}</th><td>{{ r.screened }}</td><td>{{ r.matches }}</td><td>{{ r.accepted }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </figure>
+
+    {% if charts.has_source %}
+    <figure class="chart-figure" role="group" aria-labelledby="source-fig-cap">
+      <div class="chart-frame">
+        {{ charts.source_svg | safe }}
+        <p class="chart-readout" id="source-readout" aria-live="polite" data-default="{{ charts.source_summary }}">{{ charts.source_summary }}</p>
+      </div>
+      <figcaption id="source-fig-cap" class="chart-caption">
+        <span class="chart-caption-title">Source receptivity &mdash; fresh candidates screened versus items accepted, per source.</span>
+        <span class="chart-legend" aria-hidden="true">
+          <span class="chart-key chart-key-screened">Screened</span>
+          <span class="chart-key chart-key-accepted">Accepted</span>
+        </span>
+        <span class="chart-caption-note">
+          From {{ charts.source_runs }} run{{ 's' if charts.source_runs != 1 else '' }} that
+          recorded per-source counts; earlier runs predate per-source tracking.
+        </span>
+      </figcaption>
+      <table class="visually-hidden chart-data-table">
+        <caption>Per-source totals across runs with per-source data: fresh candidates screened and items accepted.</caption>
+        <thead>
+          <tr><th scope="col">Source</th><th scope="col">Screened</th><th scope="col">Accepted</th></tr>
+        </thead>
+        <tbody>
+          {% for r in charts.source_rows %}
+          <tr><th scope="row">{{ r.label }}</th><td>{{ r.screened }}</td><td>{{ r.accepted }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </figure>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
 <section class="band">
   <div class="measure">
     {% if digests %}
     <ol class="archive-list">
       {% for d in digests %}
       <li class="archive-item">
-        <a class="archive-card" href="{{ d.date }}.html">
+        <a class="archive-card reveal" href="{{ d.date }}.html">
           <div class="archive-date">{{ d.date }}</div>
           <div class="archive-body">
             <h2 class="archive-h">ISDS Thematic Watch</h2>

@@ -34,21 +34,21 @@
     </p>
 
     <div class="rings">
-      <article class="ring-card">
+      <article class="ring-card reveal">
         <div class="ring-num">Ring&nbsp;I</div>
         <h3>IP as a protected investment</h3>
         <p>Patents, trademarks and licences, copyrights, geographical indications, data
           exclusivity, and brand value asserted as a covered investment. The question is most
           acute where the asset is informational or split across holding and operating entities.</p>
       </article>
-      <article class="ring-card ring-weighted">
+      <article class="ring-card ring-weighted reveal">
         <div class="ring-num">Ring&nbsp;II <span class="weight-tag">weighted</span></div>
         <h3>A regulatory or judicial measure</h3>
         <p>Public-interest legislation, a domestic court judgment, or judicial conduct itself
           as the disputed conduct. A credible challenge to a court judgment reaches the
           MEDIUM band on its own.</p>
       </article>
-      <article class="ring-card">
+      <article class="ring-card reveal">
         <div class="ring-num">Ring&nbsp;III</div>
         <h3>Jurisdiction &amp; admissibility</h3>
         <p>Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring for
@@ -57,43 +57,86 @@
       </article>
     </div>
 
-    <figure class="venn-figure">
-      <svg class="venn" viewBox="0 0 520 440" role="img"
-           aria-label="Venn diagram of the three doctrinal rings. Ring one, IP as a protected investment. Ring two, a regulatory or judicial measure. Ring three, a jurisdictional or admissibility doctrine. The watched theme lives in the central three-way overlap, and any two rings overlapping already reaches the HIGH band.">
-        <defs>
-          <radialGradient id="venn-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#b8860b" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#9a7b2e" stop-opacity="0.30"/>
-          </radialGradient>
-        </defs>
-        <!-- Three overlapping rings -->
-        <circle class="venn-ring venn-ring-1" cx="200" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-2" cx="320" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-3" cx="260" cy="275" r="135"/>
-        <!-- Emphasised central three-way overlap -->
-        <circle class="venn-core" cx="260" cy="215" r="40" fill="url(#venn-core)"/>
-        <text class="venn-core-label" x="260" y="212" text-anchor="middle">THEME</text>
-        <text class="venn-core-sub" x="260" y="230" text-anchor="middle">three-way overlap</text>
-        <!-- Ring labels -->
-        <text class="venn-label" x="118" y="120" text-anchor="middle">IP as a protected</text>
-        <text class="venn-label" x="118" y="138" text-anchor="middle">investment</text>
-        <text class="venn-label" x="402" y="120" text-anchor="middle">Regulatory or</text>
-        <text class="venn-label" x="402" y="138" text-anchor="middle">judicial measure</text>
-        <text class="venn-label" x="260" y="375" text-anchor="middle">Jurisdictional /</text>
-        <text class="venn-label" x="260" y="393" text-anchor="middle">admissibility doctrine</text>
-      </svg>
+    <figure class="venn-figure" id="venn-figure">
+      <div class="venn-stage" id="venn-stage">
+        <svg class="venn" viewBox="0 0 560 512" role="img"
+             aria-label="Venn diagram of the three doctrinal rings: IP as a protected investment, a regulatory or judicial measure, and a jurisdiction and admissibility doctrine. The watched theme lives in the central three-way overlap; any two rings overlapping already reaches the HIGH band.">
+          <!-- Three equal rings, symmetric; overlaps darken via mix-blend-mode -->
+          <g class="venn-rings">
+            <circle class="venn-ring venn-ring-1" cx="210" cy="200" r="116"
+                    data-ring="1" tabindex="0" role="button"
+                    aria-label="Ring one, IP as a protected investment. Select to read what it covers."/>
+            <circle class="venn-ring venn-ring-2" cx="350" cy="200" r="116"
+                    data-ring="2" tabindex="0" role="button"
+                    aria-label="Ring two, the weighted ring, a regulatory or judicial measure. Select to read what it covers."/>
+            <circle class="venn-ring venn-ring-3" cx="280" cy="321" r="116"
+                    data-ring="3" tabindex="0" role="button"
+                    aria-label="Ring three, jurisdiction and admissibility. Select to read what it covers."/>
+          </g>
+          <!-- Legible plaque + label over the central three-way overlap -->
+          <circle class="venn-core-disc" cx="280" cy="240" r="34"
+                  data-ring="core" tabindex="0" role="button"
+                  aria-label="The watched theme: the central overlap of all three rings. Select to read the scoring rule."/>
+          <text class="venn-core-label" x="280" y="236" text-anchor="middle">THEME</text>
+          <text class="venn-core-sub" x="280" y="253" text-anchor="middle">three-way overlap</text>
+          <!-- Ring labels, lifted clear of the circles -->
+          <text class="venn-label" x="150" y="64" text-anchor="middle">IP as a protected</text>
+          <text class="venn-label" x="150" y="82" text-anchor="middle">investment</text>
+          <text class="venn-label" x="410" y="64" text-anchor="middle">Regulatory or</text>
+          <text class="venn-label" x="410" y="82" text-anchor="middle">judicial measure</text>
+          <text class="venn-label" x="280" y="478" text-anchor="middle">Jurisdiction &amp;</text>
+          <text class="venn-label" x="280" y="496" text-anchor="middle">admissibility</text>
+        </svg>
+      </div>
       <figcaption class="venn-caption">
         The theme lives in the central intersection of all three rings. Any two rings overlapping
         already reaches the HIGH band.
       </figcaption>
     </figure>
 
-    <div class="scoring-note">
-      <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
-      <span class="sep">·</span>
-      <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
-      <span class="sep">·</span>
-      <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+    <!-- Description region for the figure. The default copy is present in markup so the
+         section reads sensibly without JavaScript; JS rewrites it on hover/focus. -->
+    <div class="venn-readout" id="venn-readout" aria-live="polite">
+      <p class="venn-readout-eyebrow" id="venn-readout-eyebrow">The three rings</p>
+      <p class="venn-readout-body" id="venn-readout-body">Each ring is one doctrinal
+        requirement the case must touch. Point at &mdash; or tab to &mdash; a ring to read what it
+        covers, or the centre to see how the rings combine into a relevance band.</p>
+    </div>
+
+    <!-- LIVE SCORING EXPLORER. The static legend (.scoring-note) is the no-JS fallback and
+         always renders; the interactive control is revealed only once JS marks it live. -->
+    <div class="scoring" data-scoring>
+      <div class="scoring-explorer" hidden>
+        <p class="scoring-explorer-head">Compose a hypothetical &mdash; which rings does the case touch?</p>
+        <div class="scoring-toggles" role="group"
+             aria-label="Select the doctrinal rings a hypothetical case satisfies">
+          <button type="button" class="scoring-toggle" data-ring="1" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;I</span>
+            <span class="scoring-toggle-name">IP as a protected investment</span>
+          </button>
+          <button type="button" class="scoring-toggle scoring-toggle-weighted" data-ring="2" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;II <span class="scoring-toggle-weight">weighted</span></span>
+            <span class="scoring-toggle-name">A regulatory or judicial measure</span>
+          </button>
+          <button type="button" class="scoring-toggle" data-ring="3" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;III</span>
+            <span class="scoring-toggle-name">Jurisdiction &amp; admissibility</span>
+          </button>
+        </div>
+        <div class="scoring-result" id="scoring-result" aria-live="polite">
+          <span class="badge badge-low scoring-result-badge" id="scoring-result-badge">LOW&nbsp;&lt;40</span>
+          <span class="scoring-result-reason" id="scoring-result-reason">No rings selected.
+            Toggle a ring to compose a hypothetical and watch the band it reaches.</span>
+        </div>
+      </div>
+
+      <div class="scoring-note">
+        <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
+        <span class="sep">·</span>
+        <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
+        <span class="sep">·</span>
+        <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+      </div>
     </div>
   </div>
 </section>
@@ -109,23 +152,23 @@
 
     <div class="flow" role="img"
          aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
-      <div class="flow-step"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step flow-end"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
+      <div class="flow-step flow-end reveal"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
     </div>
     <p class="flow-caption">Figure 1. The weekly workflow, from gathering new material to delivering the digest. Every run is saved as a dated, version-controlled archive.</p>
   </div>
 </section>
 
-<section class="band">
+<section class="band reveal">
   <div class="measure">
     <h2 class="section-head">What you receive</h2>
     <p class="lede">

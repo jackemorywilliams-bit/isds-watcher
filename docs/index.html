@@ -64,21 +64,21 @@
     </p>
 
     <div class="rings">
-      <article class="ring-card">
+      <article class="ring-card reveal">
         <div class="ring-num">Ring&nbsp;I</div>
         <h3>IP as a protected investment</h3>
         <p>Patents, trademarks and licences, copyrights, geographical indications, data
           exclusivity, and brand value asserted as a covered investment. The question is most
           acute where the asset is informational or split across holding and operating entities.</p>
       </article>
-      <article class="ring-card ring-weighted">
+      <article class="ring-card ring-weighted reveal">
         <div class="ring-num">Ring&nbsp;II <span class="weight-tag">weighted</span></div>
         <h3>A regulatory or judicial measure</h3>
         <p>Public-interest legislation, a domestic court judgment, or judicial conduct itself
           as the disputed conduct. A credible challenge to a court judgment reaches the
           MEDIUM band on its own.</p>
       </article>
-      <article class="ring-card">
+      <article class="ring-card reveal">
         <div class="ring-num">Ring&nbsp;III</div>
         <h3>Jurisdiction &amp; admissibility</h3>
         <p>Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring for
@@ -87,43 +87,86 @@
       </article>
     </div>
 
-    <figure class="venn-figure">
-      <svg class="venn" viewBox="0 0 520 440" role="img"
-           aria-label="Venn diagram of the three doctrinal rings. Ring one, IP as a protected investment. Ring two, a regulatory or judicial measure. Ring three, a jurisdictional or admissibility doctrine. The watched theme lives in the central three-way overlap, and any two rings overlapping already reaches the HIGH band.">
-        <defs>
-          <radialGradient id="venn-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#b8860b" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#9a7b2e" stop-opacity="0.30"/>
-          </radialGradient>
-        </defs>
-        <!-- Three overlapping rings -->
-        <circle class="venn-ring venn-ring-1" cx="200" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-2" cx="320" cy="170" r="135"/>
-        <circle class="venn-ring venn-ring-3" cx="260" cy="275" r="135"/>
-        <!-- Emphasised central three-way overlap -->
-        <circle class="venn-core" cx="260" cy="215" r="40" fill="url(#venn-core)"/>
-        <text class="venn-core-label" x="260" y="212" text-anchor="middle">THEME</text>
-        <text class="venn-core-sub" x="260" y="230" text-anchor="middle">three-way overlap</text>
-        <!-- Ring labels -->
-        <text class="venn-label" x="118" y="120" text-anchor="middle">IP as a protected</text>
-        <text class="venn-label" x="118" y="138" text-anchor="middle">investment</text>
-        <text class="venn-label" x="402" y="120" text-anchor="middle">Regulatory or</text>
-        <text class="venn-label" x="402" y="138" text-anchor="middle">judicial measure</text>
-        <text class="venn-label" x="260" y="375" text-anchor="middle">Jurisdictional /</text>
-        <text class="venn-label" x="260" y="393" text-anchor="middle">admissibility doctrine</text>
-      </svg>
+    <figure class="venn-figure" id="venn-figure">
+      <div class="venn-stage" id="venn-stage">
+        <svg class="venn" viewBox="0 0 560 512" role="img"
+             aria-label="Venn diagram of the three doctrinal rings: IP as a protected investment, a regulatory or judicial measure, and a jurisdiction and admissibility doctrine. The watched theme lives in the central three-way overlap; any two rings overlapping already reaches the HIGH band.">
+          <!-- Three equal rings, symmetric; overlaps darken via mix-blend-mode -->
+          <g class="venn-rings">
+            <circle class="venn-ring venn-ring-1" cx="210" cy="200" r="116"
+                    data-ring="1" tabindex="0" role="button"
+                    aria-label="Ring one, IP as a protected investment. Select to read what it covers."/>
+            <circle class="venn-ring venn-ring-2" cx="350" cy="200" r="116"
+                    data-ring="2" tabindex="0" role="button"
+                    aria-label="Ring two, the weighted ring, a regulatory or judicial measure. Select to read what it covers."/>
+            <circle class="venn-ring venn-ring-3" cx="280" cy="321" r="116"
+                    data-ring="3" tabindex="0" role="button"
+                    aria-label="Ring three, jurisdiction and admissibility. Select to read what it covers."/>
+          </g>
+          <!-- Legible plaque + label over the central three-way overlap -->
+          <circle class="venn-core-disc" cx="280" cy="240" r="34"
+                  data-ring="core" tabindex="0" role="button"
+                  aria-label="The watched theme: the central overlap of all three rings. Select to read the scoring rule."/>
+          <text class="venn-core-label" x="280" y="236" text-anchor="middle">THEME</text>
+          <text class="venn-core-sub" x="280" y="253" text-anchor="middle">three-way overlap</text>
+          <!-- Ring labels, lifted clear of the circles -->
+          <text class="venn-label" x="150" y="64" text-anchor="middle">IP as a protected</text>
+          <text class="venn-label" x="150" y="82" text-anchor="middle">investment</text>
+          <text class="venn-label" x="410" y="64" text-anchor="middle">Regulatory or</text>
+          <text class="venn-label" x="410" y="82" text-anchor="middle">judicial measure</text>
+          <text class="venn-label" x="280" y="478" text-anchor="middle">Jurisdiction &amp;</text>
+          <text class="venn-label" x="280" y="496" text-anchor="middle">admissibility</text>
+        </svg>
+      </div>
       <figcaption class="venn-caption">
         The theme lives in the central intersection of all three rings. Any two rings overlapping
         already reaches the HIGH band.
       </figcaption>
     </figure>
 
-    <div class="scoring-note">
-      <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
-      <span class="sep">·</span>
-      <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
-      <span class="sep">·</span>
-      <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+    <!-- Description region for the figure. The default copy is present in markup so the
+         section reads sensibly without JavaScript; JS rewrites it on hover/focus. -->
+    <div class="venn-readout" id="venn-readout" aria-live="polite">
+      <p class="venn-readout-eyebrow" id="venn-readout-eyebrow">The three rings</p>
+      <p class="venn-readout-body" id="venn-readout-body">Each ring is one doctrinal
+        requirement the case must touch. Point at &mdash; or tab to &mdash; a ring to read what it
+        covers, or the centre to see how the rings combine into a relevance band.</p>
+    </div>
+
+    <!-- LIVE SCORING EXPLORER. The static legend (.scoring-note) is the no-JS fallback and
+         always renders; the interactive control is revealed only once JS marks it live. -->
+    <div class="scoring" data-scoring>
+      <div class="scoring-explorer" hidden>
+        <p class="scoring-explorer-head">Compose a hypothetical &mdash; which rings does the case touch?</p>
+        <div class="scoring-toggles" role="group"
+             aria-label="Select the doctrinal rings a hypothetical case satisfies">
+          <button type="button" class="scoring-toggle" data-ring="1" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;I</span>
+            <span class="scoring-toggle-name">IP as a protected investment</span>
+          </button>
+          <button type="button" class="scoring-toggle scoring-toggle-weighted" data-ring="2" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;II <span class="scoring-toggle-weight">weighted</span></span>
+            <span class="scoring-toggle-name">A regulatory or judicial measure</span>
+          </button>
+          <button type="button" class="scoring-toggle" data-ring="3" aria-pressed="false">
+            <span class="scoring-toggle-num">Ring&nbsp;III</span>
+            <span class="scoring-toggle-name">Jurisdiction &amp; admissibility</span>
+          </button>
+        </div>
+        <div class="scoring-result" id="scoring-result" aria-live="polite">
+          <span class="badge badge-low scoring-result-badge" id="scoring-result-badge">LOW&nbsp;&lt;40</span>
+          <span class="scoring-result-reason" id="scoring-result-reason">No rings selected.
+            Toggle a ring to compose a hypothetical and watch the band it reaches.</span>
+        </div>
+      </div>
+
+      <div class="scoring-note">
+        <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
+        <span class="sep">·</span>
+        <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
+        <span class="sep">·</span>
+        <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+      </div>
     </div>
   </div>
 </section>
@@ -139,23 +182,23 @@
 
     <div class="flow" role="img"
          aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
-      <div class="flow-step"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step flow-end"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
+      <div class="flow-step flow-end reveal"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
     </div>
     <p class="flow-caption">Figure 1. The weekly workflow, from gathering new material to delivering the digest. Every run is saved as a dated, version-controlled archive.</p>
   </div>
 </section>
 
-<section class="band">
+<section class="band reveal">
   <div class="measure">
     <h2 class="section-head">What you receive</h2>
     <p class="lede">
@@ -228,7 +271,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-06-29 17:03 UTC &middot; 74513c1</p>      </div>
+<p class="footer-build">Site built 2026-06-29 18:21 UTC &middot; 04ab817</p>      </div>
     </div>
   </footer>
   <script>
@@ -279,7 +322,339 @@
       }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
       headings.forEach(function (h) { observer.observe(h); });
     }
+
+    /* -------------------------------------------------- "What it watches" --
+       Interactive Venn (hover/focus emphasis + readout + pointer tilt) and the
+       live scoring explorer. All progressive: without JS the section is static
+       and reads exactly as the markup does. */
+    var venn = document.querySelector('.venn');
+    var explorer = document.querySelector('.scoring-explorer');
+    if (venn || explorer) {
+      document.documentElement.classList.add('js');
+    }
+
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Per-ring copy for the description readout (and the centre/theme).
+    var RING_INFO = {
+      '1': {
+        eyebrow: 'Ring I — IP as a protected investment',
+        body: 'Patents, trademarks and licences, copyrights, geographical indications, data ' +
+              'exclusivity, and brand value asserted as a covered investment. The question is ' +
+              'most acute where the asset is informational or split across holding and ' +
+              'operating entities.',
+        mod: ''
+      },
+      '2': {
+        eyebrow: 'Ring II — a regulatory or judicial measure (weighted)',
+        body: 'Public-interest legislation, a domestic court judgment, or judicial conduct ' +
+              'itself as the disputed conduct. This ring carries weight: a credible challenge ' +
+              'to a court judgment reaches the MEDIUM band on its own.',
+        mod: 'readout-weighted'
+      },
+      '3': {
+        eyebrow: 'Ring III — jurisdiction & admissibility',
+        body: 'Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring ' +
+              'for treaty protection, and the contested definition of an "investor": the ' +
+              'threshold on which the seed cases were decided.',
+        mod: ''
+      },
+      'core': {
+        eyebrow: 'The theme — the three-way overlap',
+        body: 'The watched theme is the intersection of all three rings: IP asserted as an ' +
+              'investment, a regulatory or judicial measure as the disputed conduct, and a ' +
+              'live jurisdiction-and-admissibility question. The grammar is forgiving at the ' +
+              'top: any two rings overlapping already reaches the HIGH band.',
+        mod: 'readout-core'
+      }
+    };
+
+    var readout = document.getElementById('venn-readout');
+    var readoutEye = document.getElementById('venn-readout-eyebrow');
+    var readoutBody = document.getElementById('venn-readout-body');
+    var DEFAULT_READOUT = readoutBody ? {
+      eyebrow: readoutEye.textContent,
+      body: readoutBody.innerHTML
+    } : null;
+    var ringNodes = venn ? Array.prototype.slice.call(
+      venn.querySelectorAll('[data-ring]')) : [];
+    var ringGroup = venn ? venn.querySelector('.venn-rings') : null;
+
+    function setReadout(key) {
+      if (!readout) return;
+      readout.classList.remove('readout-weighted', 'readout-core');
+      if (key && RING_INFO[key]) {
+        var info = RING_INFO[key];
+        readoutEye.textContent = info.eyebrow;
+        readoutBody.textContent = info.body;
+        if (info.mod) readout.classList.add(info.mod);
+      } else if (DEFAULT_READOUT) {
+        readoutEye.textContent = DEFAULT_READOUT.eyebrow;
+        readoutBody.innerHTML = DEFAULT_READOUT.body;
+      }
+    }
+
+    // Emphasise one ring/centre (hover/focus) without disturbing explorer state.
+    function emphasise(key) {
+      if (!venn) return;
+      if (ringGroup) ringGroup.classList.toggle('has-active', !!key && key !== 'core');
+      ringNodes.forEach(function (n) {
+        var isThis = n.getAttribute('data-ring') === key;
+        if (n.classList.contains('venn-ring')) {
+          n.classList.toggle('is-active', isThis);
+        }
+      });
+      var core = venn.querySelector('.venn-core-disc');
+      if (core) core.classList.toggle('is-active', key === 'core');
+    }
+
+    if (venn && readout) {
+      ringNodes.forEach(function (node) {
+        var key = node.getAttribute('data-ring');
+        function enter() { emphasise(key); setReadout(key); }
+        function leave() { if (!hasExplorerSelection()) emphasise(null); restoreReadout(); }
+        node.addEventListener('mouseenter', enter);
+        node.addEventListener('mouseleave', leave);
+        node.addEventListener('focus', enter);
+        node.addEventListener('blur', leave);
+        // Allow Enter/Space to "activate" (keeps the readout pinned) for AT parity.
+        node.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); }
+        });
+      });
+    }
+
+    // When the explorer has a selection, leaving a hovered ring should fall back
+    // to showing the selected combination rather than the neutral default.
+    function restoreReadout() {
+      if (hasExplorerSelection()) { renderScore(); }
+      else { setReadout(null); reflectSelectionOnVenn(); }
+    }
+
+    // ---- Pointer-driven 3D tilt (disabled under reduced motion) ------------
+    var stage = document.getElementById('venn-stage');
+    if (stage && venn && !reduceMotion) {
+      var MAX_TILT = 6; // degrees — deliberately small and editorial
+      stage.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        var rect = stage.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        stage.classList.add('is-tilting');
+        stage.style.setProperty('--ry', (px * MAX_TILT).toFixed(2) + 'deg');
+        stage.style.setProperty('--rx', (-py * MAX_TILT).toFixed(2) + 'deg');
+      });
+      stage.addEventListener('pointerleave', function () {
+        stage.classList.remove('is-tilting');
+        stage.style.setProperty('--ry', '0deg');
+        stage.style.setProperty('--rx', '0deg');
+      });
+    }
+
+    // ---- Live scoring explorer --------------------------------------------
+    var toggles = explorer ? Array.prototype.slice.call(
+      explorer.querySelectorAll('.scoring-toggle')) : [];
+    var resultBadge = document.getElementById('scoring-result-badge');
+    var resultReason = document.getElementById('scoring-result-reason');
+
+    function selected() {
+      return toggles
+        .filter(function (t) { return t.getAttribute('aria-pressed') === 'true'; })
+        .map(function (t) { return t.getAttribute('data-ring'); });
+    }
+    function hasExplorerSelection() { return toggles.length > 0 && selected().length > 0; }
+
+    // The scoring grammar, exactly as documented in the static legend:
+    //   two rings intersect            -> HIGH   (>=70)
+    //   judicial-measure ring (II) alone, or one strong ring with a weaker tie
+    //                                  -> MEDIUM (40-69)
+    //   one weak ring, or none         -> LOW    (<40)
+    function band(rings) {
+      var n = rings.length;
+      var hasII = rings.indexOf('2') !== -1;
+      if (n === 0) {
+        return { cls: 'low', label: 'LOW <40',
+          reason: 'No rings selected. A development that touches none of the three doctrines falls below the threshold.' };
+      }
+      if (n >= 2) {
+        if (n === 3) {
+          return { cls: 'high', label: 'HIGH ≥70',
+            reason: 'All three rings — the watched theme itself, the central three-way overlap. Unambiguously HIGH.' };
+        }
+        return { cls: 'high', label: 'HIGH ≥70',
+          reason: 'Two rings intersect. Any two of the three doctrines overlapping already reaches the HIGH band.' };
+      }
+      // Exactly one ring.
+      if (hasII) {
+        return { cls: 'med', label: 'MEDIUM 40–69',
+          reason: 'The weighted ring alone: a credible challenge to a regulatory or judicial measure reaches MEDIUM on its own.' };
+      }
+      return { cls: 'low', label: 'LOW <40',
+        reason: 'A single unweighted ring with no tie to the others — one weak signal, below the threshold.' };
+    }
+
+    // Mirror the explorer's current selection onto the Venn rings.
+    function reflectSelectionOnVenn() {
+      if (!venn) return;
+      var sel = selected();
+      if (ringGroup) ringGroup.classList.toggle('has-active', sel.length > 0);
+      ringNodes.forEach(function (n) {
+        if (!n.classList.contains('venn-ring')) return;
+        n.classList.toggle('is-active', sel.indexOf(n.getAttribute('data-ring')) !== -1);
+      });
+      var core = venn.querySelector('.venn-core-disc');
+      if (core) core.classList.toggle('is-active', sel.length === 3);
+    }
+
+    function renderScore() {
+      var rings = selected();
+      var r = band(rings);
+      if (resultBadge) {
+        resultBadge.className = 'badge badge-' + r.cls + ' scoring-result-badge';
+        resultBadge.innerHTML = r.label;
+      }
+      if (resultReason) resultReason.textContent = r.reason;
+      reflectSelectionOnVenn();
+      // Keep the figure readout in step with the composed hypothetical.
+      if (rings.length === 3) { setReadout('core'); }
+      else if (rings.length === 1) { setReadout(rings[0]); }
+      else { setReadout(null); }
+    }
+
+    if (toggles.length) {
+      explorer.hidden = false;
+      toggles.forEach(function (t) {
+        t.addEventListener('click', function () {
+          var on = t.getAttribute('aria-pressed') === 'true';
+          t.setAttribute('aria-pressed', on ? 'false' : 'true');
+          renderScore();
+        });
+      });
+      renderScore();
+    }
+
+    /* -------------------------------------------------- archive charts ----
+       Two build-time inline-SVG charts (trend + source receptivity). JS only
+       adds a pointer/focus readout of the exact figures and a draw-in reveal.
+       The SVG and its visually-hidden data table already read with JS off. */
+    function archiveChartInit() {
+      var figures = Array.prototype.slice.call(
+        document.querySelectorAll('.chart-figure'));
+      if (!figures.length) return;
+      document.documentElement.classList.add('js');
+
+      // Worded readout: report a date/source's exact figures on hover/focus,
+      // falling back to the chart's default summary on leave/blur. Colour is
+      // never the only cue — the label names each series in words.
+      figures.forEach(function (fig) {
+        var readout = fig.querySelector('.chart-readout');
+        if (!readout) return;
+        var def = readout.getAttribute('data-default') || readout.textContent;
+        var targets = Array.prototype.slice.call(
+          fig.querySelectorAll('.chart-marker, .chart-srcrow'));
+
+        function show(node) {
+          targets.forEach(function (t) { t.classList.remove('is-active'); });
+          node.classList.add('is-active');
+          var scr = node.getAttribute('data-screened');
+          var acc = node.getAttribute('data-accepted');
+          var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
+          var zero = node.hasAttribute('data-date')
+            ? ', <span class="read-zero">0 matches</span>' : '';
+          readout.innerHTML = '<strong>' + label + '</strong> — ' +
+            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
+        }
+        function clear() {
+          targets.forEach(function (t) { t.classList.remove('is-active'); });
+          readout.textContent = def;
+        }
+        targets.forEach(function (node) {
+          node.addEventListener('mouseenter', function () { show(node); });
+          node.addEventListener('mouseleave', clear);
+          node.addEventListener('focus', function () { show(node); });
+          node.addEventListener('blur', clear);
+          node.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(node); }
+          });
+        });
+      });
+
+      // Draw-in reveal — reduced-motion users get the final state instantly.
+      if (reduceMotion) {
+        figures.forEach(function (f) { f.classList.add('chart-ready'); });
+        return;
+      }
+      if (!('IntersectionObserver' in window)) {
+        figures.forEach(function (f) { f.classList.add('chart-ready'); });
+        return;
+      }
+      var chartObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('chart-ready');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+      figures.forEach(function (f) { chartObserver.observe(f); });
+    }
+    archiveChartInit();
+
+    /* -------------------------------------------------- motion & depth ----
+       Sitewide polish (Upgrade D): a small rise+fade scroll-reveal and a
+       barely perceptible hero-glow drift. Both are progressive and gated for
+       reduced motion. Restraint is the point. */
+
+    /* Scroll-reveal. The hidden-initial state lives in CSS scoped under
+       .reveal-ready, which we add to <html> ONLY here. So with JS off nothing
+       is ever hidden, and reduced-motion users return early before the class
+       is added — they see every block in its final state. */
+    function revealInit() {
+      if (reduceMotion) return;
+      if (!('IntersectionObserver' in window)) return;
+      var blocks = Array.prototype.slice.call(
+        document.querySelectorAll('.reveal'));
+      if (!blocks.length) return;
+      // Opt in to the hidden-initial state only now that we know we can animate.
+      document.documentElement.classList.add('reveal-ready');
+      var revealObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      blocks.forEach(function (b) { revealObserver.observe(b); });
+    }
+    revealInit();
+
+    /* Hero-glow drift. A few-pixel parallax of the existing radial-gradient
+       glow on pointer move, driven by CSS custom properties. Pointer-capable,
+       fine-pointer devices only; reduced-motion-disabled; touch is skipped. */
+    function heroGlowInit() {
+      if (reduceMotion) return;
+      var hero = document.querySelector('.hero');
+      if (!hero || !window.matchMedia) return;
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var MAX_DRIFT = 10; // px — deliberately tiny, barely perceptible
+      hero.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        var rect = hero.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        hero.style.setProperty('--glow-x', (px * MAX_DRIFT).toFixed(1) + 'px');
+        hero.style.setProperty('--glow-y', (py * MAX_DRIFT).toFixed(1) + 'px');
+      });
+      hero.addEventListener('pointerleave', function () {
+        hero.style.setProperty('--glow-x', '0px');
+        hero.style.setProperty('--glow-y', '0px');
+      });
+    }
+    heroGlowInit();
   })();
-  </script>
+</script>
 </body>
 </html>

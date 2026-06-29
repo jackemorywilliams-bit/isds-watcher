@@ -88,7 +88,7 @@ There are significant limitations of this project regarding access and coverage.
 - Byers, M., *Abuse of Rights: An Old Principle, A New Age*, 47 McGill L.J. 389 (2002).
 - Mercurio, B., *Awakening the Sleeping Giant: Intellectual Property Rights in International Investment Agreements*, 15 J. Int'l Econ. L. 871 (2012).
 - Correa, C.M. & Viñuales, J.E., *Intellectual Property Rights as Protected Investments: How Open are the Gates?*, 19 J. Int'l Econ. L. 91 (2016).
-- Kim, D., *Protecting Trade Secrets under International Investment Law: What Secrets Investors Should Not Tell States*, 15 J. Marshall Rev. Intell. Prop. L. 999 (2016) — trade-secret and clinical-data seed source.
+- Kim, D., *Protecting Trade Secrets under International Investment Law: What Secrets Investors Should Not Tell States*, 15 J. Marshall Rev. Intell. Prop. L. 228 (2016) — trade-secret and clinical-data seed source.
 - Ferguson, A., *Trade Secrets at Risk: The Protection Against Expropriation of a Trade Secret* — trade-secret seed source.
 - Kingsbury, B. & Schill, S., *Investor-State Arbitration as Governance: Fair and Equitable Treatment, Proportionality and the Emerging Global Administrative Law* (IILJ Working Paper 2009/6) — proportionality and public-law review.
 - Dolzer, R. & Schreuer, C., *Principles of International Investment Law* (2d ed. 2012); McLachlan, C., Shore, L. & Weiniger, M., *International Investment Arbitration: Substantive Principles* (2d ed. 2017).

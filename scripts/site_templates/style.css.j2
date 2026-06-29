@@ -468,6 +468,63 @@ main { display: block; }
   .chart-source .chart-src-label { font-size: 10px; }
 }
 
+/* ===================================================== motion & depth ===== */
+/* Sitewide polish layer (Upgrade D): scroll-reveal, hover depth, and a barely
+   perceptible hero-glow drift. Restraint is the point. Distinct selectors —
+   nothing here touches the .venn / .scoring / archive-chart rules.
+
+   Progressive-enhancement contract for the reveal: the hidden-initial state is
+   scoped under .reveal-ready, which JS adds to <html> only when motion is
+   allowed. With JS off, or under reduced-motion, .reveal-ready never appears,
+   so .reveal blocks are never hidden and the page reads in its final state. */
+
+/* Hidden-initial state — only ever active once JS has opted in. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+/* Animated arrival — gated so it only declares the transition when motion is
+   welcome (the .reveal-ready gate already guarantees JS + no reduced-motion). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal {
+    transition: opacity .6s ease, transform .6s cubic-bezier(.22, .61, .36, 1);
+  }
+}
+.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Depth via shadow (pure CSS, no motion): extend the .archive-card hover
+   shadow to the ring cards and digest entries. */
+.ring-card,
+.entry { transition: border-color .15s, box-shadow .15s; }
+.ring-card:hover,
+.entry:hover {
+  border-color: var(--gold-bright);
+  box-shadow: 0 4px 16px rgba(11, 46, 74, .10);
+}
+
+/* Hero glow drift: JS sets --glow-x / --glow-y (small px offsets) on pointer
+   move; the hero's existing radial-gradient glow reads them. Defaults to the
+   original 80% -10% position, so the hero is unchanged until the pointer moves
+   and on any device that never sets the variables. */
+.hero {
+  --glow-x: 0px;
+  --glow-y: 0px;
+  background:
+    radial-gradient(1200px 400px at calc(80% + var(--glow-x)) calc(-10% + var(--glow-y)), rgba(184,134,11,.10), transparent 60%),
+    linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 70%);
+}
+
+/* Reduced-motion: belt-and-braces. JS already skips the reveal entirely (never
+   adds .reveal-ready) and the drift, but if a stale .reveal-ready ever lingers,
+   show the final state instantly and neutralise any glow offset. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal { opacity: 1; transform: none; transition: none; }
+  .hero { --glow-x: 0px; --glow-y: 0px; }
+}
+
 /* ----------------------------------------------- run / archive counts --- */
 .run-counts {
   font-family: var(--sans); font-size: 16px; font-weight: 600;

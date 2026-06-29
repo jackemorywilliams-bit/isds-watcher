@@ -43,7 +43,7 @@
     <h2 class="section-head">Annotated bibliography: {{ digest.surfaced }} {{ 'entry' if digest.surfaced == 1 else 'entries' }}</h2>
 
     {% macro entry(e) %}
-      <li class="entry" id="entry-{{ e.number }}">
+      <li class="entry reveal" id="entry-{{ e.number }}">
         <div class="entry-top">
           <span class="entry-num">{{ '%02d' % e.number }}</span>
           <div class="entry-headline">

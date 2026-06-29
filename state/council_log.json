@@ -1,5 +1,48 @@
 [
   {
+    "ts": "2026-06-29T19:07:07.366728+00:00",
+    "date": "2026-06-29",
+    "type": "weekly-council",
+    "issue": 2,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 12048 chars",
+      "security": "flagged (9 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A genuinely quiet, honest week: zero candidates cleared the relevance floor, and the one live development (UNCITRAL 59th session, T05) is system-level procedural reform that touches the project only prospectively at Ring 3. The analyst answered both agenda questions against the verified core — A/CN.9/1246 is submitted, not adopted (the session opens on the week-ending date, so no adoption report can yet exist), and the dual-nationality/natural-person gap appears off-package. The week is marred, however, by several fabrication risks the security officer caught: companion document numbers and pinpoint/IISD cites asserted as verified without retrieval in the search log.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set a tight, verifiable agenda with the right skeptical guardrails; the 'do not log as adopted unless retrieved' instruction proved load-bearing and caught a real risk."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Answered both priority questions against verified primary material and was candid about a quiet week, but undermined the work by presenting unretrieved document numbers, pinpoint cites, and IISD session details as verified, and by inflating a prospective off-theme procedural point into a logged insight."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — correctly flagged the A/CN.9/1269 and A/CN.9/1235 numbers, the paras 34-51 pinpoints, and the IISD/Transparency-Rules claims as unverified, and rightly pushed to hedge the off-package and non-retroactivity overreach."
+      },
+      {
+        "member": "editor",
+        "assessment": "Issued an honest, anti-inflation brief that foregrounds the quiet week and faithfully carries the unverified-source caveats into the open threads rather than papering over them."
+      }
+    ],
+    "next_steps": [
+      "After the 59th session concludes on 10 July 2026, retrieve the A/CN.9-series session report and record the actual disposition of A/CN.9/1246 — adopted, referred back, or noted — rejecting any secondary 'adoption' claim until the official report corroborates it.",
+      "Confirm or drop the unverified document numbers (A/CN.9/1269 comments-compilation, A/CN.9/1235 provisional agenda) and the 'paras 34-51' pinpoint cites against actually retrieved sources before they enter living memory as fact.",
+      "Downgrade the opt-in / non-retroactivity point from a logged insight (conf. 0.8) to context/near-miss, and confirm it against the body of A/CN.9/1246 itself rather than the Transparency Convention analogy.",
+      "Re-attempt a primary source for the Hela Schwarz data-exclusivity award and an accessible Swedish source for Okuashvili; both remain blocked and should not be inferred from paywalled-only material.",
+      "Adopt the posture-reconciliation classifier's decision-date/instance reconciliation rule, which still stands unadopted."
+    ],
+    "escalations": [
+      "The analyst's memo asserted A/CN.9/1269 and A/CN.9/1235 (and pinpoint paragraph cites) as verified without retrieval evidence — these are fabrication risks that must be confirmed or struck before they harden into living-memory fact.",
+      "The durable Ring 3 finding stands on verified ground: even if A/CN.9/1246 is adopted, its opt-in / non-retroactive design means the early-dismissal gate would not reach the legacy BITs generating IP-as-investment claims; worth the principal's attention, but should be carried as inference pending confirmation against the document body.",
+      "Coverage gap: Hela Schwarz, Einarsson, and Okuashvili all remain blocked behind paywalls or unindexed sources — a decision is needed on whether to invest in paid/primary-source access or hold these threads open indefinitely."
+    ]
+  },
+  {
     "ts": "2026-06-29T16:37:09.074379+00:00",
     "date": "2026-06-29",
     "type": "weekly-council",

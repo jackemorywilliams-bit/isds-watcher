@@ -224,6 +224,117 @@ main { display: block; }
   margin: 16px 0 0; max-width: 38rem; line-height: 1.55;
 }
 
+/* ------------------------------------------------- venn interactivity --- */
+/* The stage carries the pointer-driven 3D tilt; JS sets --rx / --ry on it.
+   Defaults to flat, so the figure is unchanged until the pointer moves. */
+.venn-stage {
+  --rx: 0deg; --ry: 0deg;
+  perspective: 1100px; width: 100%; display: flex; justify-content: center;
+}
+.venn {
+  width: 100%; max-width: 430px; height: auto; display: block;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+/* When the pointer is active over the stage, follow it immediately. */
+.venn-stage.is-tilting .venn { transition: transform .08s linear; }
+
+/* Each ring/centre is an affordance once JS is live: cursor + smooth emphasis. */
+.js .venn-ring,
+.js .venn-core-disc { cursor: pointer; transition: fill-opacity .2s ease, stroke-width .2s ease, stroke .2s ease; }
+.js .venn-ring { outline: none; }
+
+/* Emphasised ring: it lifts (denser fill, darker/thicker stroke). */
+.venn-ring.is-active { fill-opacity: 0.55; stroke-width: 2.6; }
+.venn-ring-1.is-active { stroke: #2f4f6b; }
+.venn-ring-2.is-active { stroke: #836a23; }
+.venn-ring-3.is-active { stroke: #3f5e4e; }
+/* Sibling rings recede so the active one reads clearly. */
+.venn-rings.has-active .venn-ring:not(.is-active) { fill-opacity: 0.14; }
+.venn-core-disc.is-active { stroke: var(--gold-bright); stroke-width: 2.2; fill-opacity: 1; }
+
+/* Keyboard focus: a clear, palette-tied ring that satisfies AA visibility. */
+.js .venn-ring:focus-visible,
+.js .venn-core-disc:focus-visible {
+  outline: none; stroke: var(--gold-bright); stroke-width: 3;
+}
+
+/* Description region below the figure. */
+.venn-readout {
+  font-family: var(--sans); background: var(--paper);
+  border: 1px solid var(--line); border-left: 4px solid var(--navy);
+  border-radius: 6px; padding: 14px 18px; margin: 0 0 22px;
+  min-height: 5.5rem;
+}
+.venn-readout.readout-weighted { border-left-color: var(--gold-bright); }
+.venn-readout.readout-core { border-left-color: var(--gold); }
+.venn-readout-eyebrow {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--navy); margin: 0 0 6px;
+}
+.venn-readout.readout-weighted .venn-readout-eyebrow { color: var(--gold); }
+.venn-readout-body { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+/* ----------------------------------------------------- scoring explorer --- */
+/* The interactive control is hidden by default and revealed only when JS marks
+   the page live, so the static .scoring-note remains the no-JS fallback. */
+.scoring-explorer[hidden] { display: none; }
+.js .scoring-explorer { display: block; }
+.js .scoring .scoring-note { display: none; }
+
+.scoring-explorer {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: 18px 20px 16px; font-family: var(--sans);
+}
+.scoring-explorer-head {
+  font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--navy);
+  margin: 0 0 14px;
+}
+.scoring-toggles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
+.scoring-toggle {
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  background: var(--cream); border: 1px solid var(--line); border-top: 3px solid var(--navy);
+  border-radius: 5px; padding: 11px 13px; cursor: pointer; font-family: var(--sans);
+  color: var(--ink-soft); transition: background .15s, border-color .15s, box-shadow .15s, transform .12s;
+}
+.scoring-toggle:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(11,46,74,.08); }
+.scoring-toggle-weighted { border-top-color: var(--gold-bright); }
+.scoring-toggle-num {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy);
+}
+.scoring-toggle-weighted .scoring-toggle-num { color: var(--gold); }
+.scoring-toggle-weight {
+  font-size: 9.5px; background: var(--gold-bright); color: #fff; border-radius: 3px;
+  padding: 1px 5px; margin-left: 3px; letter-spacing: .06em; vertical-align: middle;
+}
+.scoring-toggle-name { font-size: 13.5px; line-height: 1.35; color: var(--ink-soft); }
+/* Pressed (selected) state — clearly filled, AA contrast. */
+.scoring-toggle[aria-pressed="true"] {
+  background: var(--navy); border-color: var(--navy); border-top-color: var(--gold-bright);
+}
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-num,
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-name { color: #fff; }
+.scoring-toggle[aria-pressed="true"] .scoring-toggle-num { color: var(--gold-bright); }
+.scoring-toggle-weighted[aria-pressed="true"] { background: #6b5410; border-color: #6b5410; }
+.scoring-toggle-weighted[aria-pressed="true"] .scoring-toggle-num { color: #f3e7cf; }
+
+.scoring-result {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  border-top: 1px solid var(--line-soft); padding-top: 14px;
+}
+.scoring-result-badge { font-size: 12.5px; padding: 3px 11px; }
+.scoring-result-reason { font-size: 14px; line-height: 1.5; color: var(--ink-soft); flex: 1 1 240px; }
+
+/* Honour reduced-motion: no tilt, no lift transitions, no animated transforms. */
+@media (prefers-reduced-motion: reduce) {
+  .venn { transform: none !important; transition: none; will-change: auto; }
+  .venn-stage.is-tilting .venn { transition: none; }
+  .scoring-toggle { transition: background .15s, border-color .15s; }
+  .scoring-toggle:hover { transform: none; }
+}
+
 /* ----------------------------------------------- run / archive counts --- */
 .run-counts {
   font-family: var(--sans); font-size: 16px; font-weight: 600;
@@ -541,6 +652,7 @@ main { display: block; }
   .toc-list { columns: 2; column-gap: 24px; }
   .toc-list li:has(a.active)::before { display: none; }
   .rings { grid-template-columns: 1fr; }
+  .scoring-toggles { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .footer-brand { grid-column: 1 / -1; }
 }

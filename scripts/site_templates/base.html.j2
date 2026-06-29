@@ -120,6 +120,217 @@
       }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
       headings.forEach(function (h) { observer.observe(h); });
     }
+
+    /* -------------------------------------------------- "What it watches" --
+       Interactive Venn (hover/focus emphasis + readout + pointer tilt) and the
+       live scoring explorer. All progressive: without JS the section is static
+       and reads exactly as the markup does. */
+    var venn = document.querySelector('.venn');
+    var explorer = document.querySelector('.scoring-explorer');
+    if (venn || explorer) {
+      document.documentElement.classList.add('js');
+    }
+
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Per-ring copy for the description readout (and the centre/theme).
+    var RING_INFO = {
+      '1': {
+        eyebrow: 'Ring I — IP as a protected investment',
+        body: 'Patents, trademarks and licences, copyrights, geographical indications, data ' +
+              'exclusivity, and brand value asserted as a covered investment. The question is ' +
+              'most acute where the asset is informational or split across holding and ' +
+              'operating entities.',
+        mod: ''
+      },
+      '2': {
+        eyebrow: 'Ring II — a regulatory or judicial measure (weighted)',
+        body: 'Public-interest legislation, a domestic court judgment, or judicial conduct ' +
+              'itself as the disputed conduct. This ring carries weight: a credible challenge ' +
+              'to a court judgment reaches the MEDIUM band on its own.',
+        mod: 'readout-weighted'
+      },
+      '3': {
+        eyebrow: 'Ring III — jurisdiction & admissibility',
+        body: 'Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring ' +
+              'for treaty protection, and the contested definition of an "investor": the ' +
+              'threshold on which the seed cases were decided.',
+        mod: ''
+      },
+      'core': {
+        eyebrow: 'The theme — the three-way overlap',
+        body: 'The watched theme is the intersection of all three rings: IP asserted as an ' +
+              'investment, a regulatory or judicial measure as the disputed conduct, and a ' +
+              'live jurisdiction-and-admissibility question. The grammar is forgiving at the ' +
+              'top: any two rings overlapping already reaches the HIGH band.',
+        mod: 'readout-core'
+      }
+    };
+
+    var readout = document.getElementById('venn-readout');
+    var readoutEye = document.getElementById('venn-readout-eyebrow');
+    var readoutBody = document.getElementById('venn-readout-body');
+    var DEFAULT_READOUT = readoutBody ? {
+      eyebrow: readoutEye.textContent,
+      body: readoutBody.innerHTML
+    } : null;
+    var ringNodes = venn ? Array.prototype.slice.call(
+      venn.querySelectorAll('[data-ring]')) : [];
+    var ringGroup = venn ? venn.querySelector('.venn-rings') : null;
+
+    function setReadout(key) {
+      if (!readout) return;
+      readout.classList.remove('readout-weighted', 'readout-core');
+      if (key && RING_INFO[key]) {
+        var info = RING_INFO[key];
+        readoutEye.textContent = info.eyebrow;
+        readoutBody.textContent = info.body;
+        if (info.mod) readout.classList.add(info.mod);
+      } else if (DEFAULT_READOUT) {
+        readoutEye.textContent = DEFAULT_READOUT.eyebrow;
+        readoutBody.innerHTML = DEFAULT_READOUT.body;
+      }
+    }
+
+    // Emphasise one ring/centre (hover/focus) without disturbing explorer state.
+    function emphasise(key) {
+      if (!venn) return;
+      if (ringGroup) ringGroup.classList.toggle('has-active', !!key && key !== 'core');
+      ringNodes.forEach(function (n) {
+        var isThis = n.getAttribute('data-ring') === key;
+        if (n.classList.contains('venn-ring')) {
+          n.classList.toggle('is-active', isThis);
+        }
+      });
+      var core = venn.querySelector('.venn-core-disc');
+      if (core) core.classList.toggle('is-active', key === 'core');
+    }
+
+    if (venn && readout) {
+      ringNodes.forEach(function (node) {
+        var key = node.getAttribute('data-ring');
+        function enter() { emphasise(key); setReadout(key); }
+        function leave() { if (!hasExplorerSelection()) emphasise(null); restoreReadout(); }
+        node.addEventListener('mouseenter', enter);
+        node.addEventListener('mouseleave', leave);
+        node.addEventListener('focus', enter);
+        node.addEventListener('blur', leave);
+        // Allow Enter/Space to "activate" (keeps the readout pinned) for AT parity.
+        node.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); }
+        });
+      });
+    }
+
+    // When the explorer has a selection, leaving a hovered ring should fall back
+    // to showing the selected combination rather than the neutral default.
+    function restoreReadout() {
+      if (hasExplorerSelection()) { renderScore(); }
+      else { setReadout(null); reflectSelectionOnVenn(); }
+    }
+
+    // ---- Pointer-driven 3D tilt (disabled under reduced motion) ------------
+    var stage = document.getElementById('venn-stage');
+    if (stage && venn && !reduceMotion) {
+      var MAX_TILT = 6; // degrees — deliberately small and editorial
+      stage.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        var rect = stage.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        stage.classList.add('is-tilting');
+        stage.style.setProperty('--ry', (px * MAX_TILT).toFixed(2) + 'deg');
+        stage.style.setProperty('--rx', (-py * MAX_TILT).toFixed(2) + 'deg');
+      });
+      stage.addEventListener('pointerleave', function () {
+        stage.classList.remove('is-tilting');
+        stage.style.setProperty('--ry', '0deg');
+        stage.style.setProperty('--rx', '0deg');
+      });
+    }
+
+    // ---- Live scoring explorer --------------------------------------------
+    var toggles = explorer ? Array.prototype.slice.call(
+      explorer.querySelectorAll('.scoring-toggle')) : [];
+    var resultBadge = document.getElementById('scoring-result-badge');
+    var resultReason = document.getElementById('scoring-result-reason');
+
+    function selected() {
+      return toggles
+        .filter(function (t) { return t.getAttribute('aria-pressed') === 'true'; })
+        .map(function (t) { return t.getAttribute('data-ring'); });
+    }
+    function hasExplorerSelection() { return toggles.length > 0 && selected().length > 0; }
+
+    // The scoring grammar, exactly as documented in the static legend:
+    //   two rings intersect            -> HIGH   (>=70)
+    //   judicial-measure ring (II) alone, or one strong ring with a weaker tie
+    //                                  -> MEDIUM (40-69)
+    //   one weak ring, or none         -> LOW    (<40)
+    function band(rings) {
+      var n = rings.length;
+      var hasII = rings.indexOf('2') !== -1;
+      if (n === 0) {
+        return { cls: 'low', label: 'LOW <40',
+          reason: 'No rings selected. A development that touches none of the three doctrines falls below the threshold.' };
+      }
+      if (n >= 2) {
+        if (n === 3) {
+          return { cls: 'high', label: 'HIGH ≥70',
+            reason: 'All three rings — the watched theme itself, the central three-way overlap. Unambiguously HIGH.' };
+        }
+        return { cls: 'high', label: 'HIGH ≥70',
+          reason: 'Two rings intersect. Any two of the three doctrines overlapping already reaches the HIGH band.' };
+      }
+      // Exactly one ring.
+      if (hasII) {
+        return { cls: 'med', label: 'MEDIUM 40–69',
+          reason: 'The weighted ring alone: a credible challenge to a regulatory or judicial measure reaches MEDIUM on its own.' };
+      }
+      return { cls: 'low', label: 'LOW <40',
+        reason: 'A single unweighted ring with no tie to the others — one weak signal, below the threshold.' };
+    }
+
+    // Mirror the explorer's current selection onto the Venn rings.
+    function reflectSelectionOnVenn() {
+      if (!venn) return;
+      var sel = selected();
+      if (ringGroup) ringGroup.classList.toggle('has-active', sel.length > 0);
+      ringNodes.forEach(function (n) {
+        if (!n.classList.contains('venn-ring')) return;
+        n.classList.toggle('is-active', sel.indexOf(n.getAttribute('data-ring')) !== -1);
+      });
+      var core = venn.querySelector('.venn-core-disc');
+      if (core) core.classList.toggle('is-active', sel.length === 3);
+    }
+
+    function renderScore() {
+      var rings = selected();
+      var r = band(rings);
+      if (resultBadge) {
+        resultBadge.className = 'badge badge-' + r.cls + ' scoring-result-badge';
+        resultBadge.innerHTML = r.label;
+      }
+      if (resultReason) resultReason.textContent = r.reason;
+      reflectSelectionOnVenn();
+      // Keep the figure readout in step with the composed hypothetical.
+      if (rings.length === 3) { setReadout('core'); }
+      else if (rings.length === 1) { setReadout(rings[0]); }
+      else { setReadout(null); }
+    }
+
+    if (toggles.length) {
+      explorer.hidden = false;
+      toggles.forEach(function (t) {
+        t.addEventListener('click', function () {
+          var on = t.getAttribute('aria-pressed') === 'true';
+          t.setAttribute('aria-pressed', on ? 'false' : 'true');
+          renderScore();
+        });
+      });
+      renderScore();
+    }
   })();
   </script>
 </body>

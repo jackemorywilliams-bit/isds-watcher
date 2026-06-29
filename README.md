@@ -1,10 +1,14 @@
 # ISDS Thematic Watcher
 
-An automated weekly monitor for investor–State dispute settlement (ISDS) developments at
-one narrow doctrinal intersection: cases where intellectual property is asserted as a
-protected investment, where the disputed conduct is a regulatory or judicial measure, and
-where the outcome turns on jurisdiction and admissibility. It was built as a research
-instrument for the Benavides ISDS project and runs at no cost on GitHub Actions.
+A weekly, zero-cost monitor for investor–State dispute settlement (ISDS) developments at one
+narrow doctrinal intersection.
+
+It watches for cases where intellectual property is asserted as a protected investment, where
+the disputed conduct is a regulatory or judicial measure, and where the outcome turns on
+jurisdiction and admissibility. Built as a research instrument for the Benavides ISDS project,
+it runs entirely on GitHub Actions and produces two weekly emails: an annotated-bibliography
+digest of what surfaced, and an interpretive research brief that reads those developments
+against the project's research question.
 
 **Website:** https://jackemorywilliams-bit.github.io/isds-watcher/
 **Methodology:** [METHODOLOGY.md](METHODOLOGY.md) · **Digest archive:** [digests/](digests/)
@@ -43,7 +47,7 @@ run. With no API key the classifier falls back to the deterministic keyword scor
 dry run works entirely offline. The full method, with its scholarly grounding, is in
 [METHODOLOGY.md](METHODOLOGY.md).
 
-## What you receive
+## The weekly digest
 
 Every Monday, an annotated-bibliography digest goes to the configured recipient. Each
 surfaced development appears as a citation, a two-sentence descriptive-and-evaluative
@@ -60,6 +64,26 @@ sends a one-sentence note ("no thematically relevant developments this week — 
 screened") rather than weak filler. The very first run indexes all existing items as a
 baseline and sends only a baseline note, so every subsequent digest contains only genuinely
 new developments.
+
+## The research council and the weekly brief
+
+The digest reports *what* surfaced; a second weekly email — the **ISDS Research Brief** —
+interprets it. The brief is produced by what the project calls its research council: not a
+set of standing background agents, but a set of clearly-defined roles realized as coordinated
+stages of the same weekly run. A chairman sets the agenda from this week's items and the open
+threads carried forward from prior weeks; a research analyst interprets the developments
+against the research question and escalates to web search for supplemental findings; a
+security/integrity officer vets the memo for fabricated sources, overreach, and inflated
+relevance before publication; and an editor turns the vetted memo into the structured brief.
+Each role is a prompt or pipeline component, and every role's output is archived, so the work
+stays auditable and reproducible while gaining the multi-perspective rigor of a council. The
+open threads from each issue are persisted and fed back into the next week's agenda, so the
+research compounds rather than restarting cold. The full account of the roles is in
+[COUNCIL.md](COUNCIL.md); brief issues are archived under [briefs/](briefs/).
+
+The brief requires the Anthropic provider and key (its web search is an Anthropic server
+tool). When that is unavailable, or on a dry run, or on any error, the brief is simply skipped
+and the digest is unaffected.
 
 ## Configuration
 
@@ -87,7 +111,7 @@ python -m src.main --dry-run --since 7d --no-email
 
 # Live (language model and email); requires a .env — see .env.example:
 python -m src.main --since 7d
-pytest tests/          # 15 tests, no network required
+pytest tests/          # offline, no network required
 ```
 
 `--since` accepts forms like `7d`, `14d`, `48h`, `1w`. The weekly workflow also accepts a
@@ -101,24 +125,19 @@ free tier would be cheaper, but the available Gemini key had no free-tier quota,
 why Claude is the default). There are no paid data sources — the watcher reads open feeds
 and pages only.
 
-## Operations and documentation
-
-- [METHODOLOGY.md](METHODOLOGY.md) — the research-memo write-up: theoretical frame, source
-  architecture, classification cascade, calibration, validation, and the authorities
-  behind each choice.
-- [HANDOFF.md](HANDOFF.md) — secrets, triggering, troubleshooting, and tuning.
-- [PLAN.md](PLAN.md) — the per-ring vocabulary extracted from the seed awards.
-
 ## Repository layout
 
 ```
 src/            sources/ (RSS + HTML, defensive), classify.py, enrich.py,
-                render.py, email_send.py, state.py, main.py, config.py
-prompts/        classifier.txt (the few-shot LLM prompt)
-templates/      digest.html.j2 (the annotated-bibliography email)
+                render.py, email_send.py, state.py, research_brief.py,
+                research_state.py, main.py, config.py
+prompts/        classifier.txt (few-shot classifier) + the council role prompts
+                (chairman, research analyst, security officer, editor, calibration)
+templates/      digest.html.j2 and research_brief.html.j2 (the two weekly emails)
 scripts/        build_site.py + site templates (regenerates the website)
 fingerprint.yaml   the three-ring lexicon (weights sum to 100 per ring)
-digests/        dated archive folders, committed each run
+digests/        dated digest archive folders, committed each run
+briefs/         archived issues of the interpretive Research Brief
 docs/           the generated website (served via GitHub Pages)
 tests/          pytest suite
 ```
@@ -126,3 +145,13 @@ tests/          pytest suite
 Two coverage notes: Google News RSS is currently disallowed by its `robots.txt` and is
 therefore inactive (honored, not circumvented), and IAReporter is read at headline level
 only, never the paywalled body.
+
+## Documentation
+
+- [METHODOLOGY.md](METHODOLOGY.md) — the research-memo write-up: theoretical frame, source
+  architecture, classification cascade, calibration, validation, and the authorities
+  behind each choice.
+- [COUNCIL.md](COUNCIL.md) — the research-council roles and how each maps to a prompt or
+  pipeline stage.
+- [HANDOFF.md](HANDOFF.md) — secrets, triggering, troubleshooting, and tuning.
+- [PLAN.md](PLAN.md) — the per-ring vocabulary extracted from the seed awards.

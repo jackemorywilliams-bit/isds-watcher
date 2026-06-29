@@ -25,6 +25,12 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+# The backtest harness lives alongside this script. Ensure its directory is
+# importable whether the build is launched as ``python scripts/build_site.py``
+# (dir already on sys.path) or as ``python -m scripts.build_site`` (it is not).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from backtest import run_backtest  # noqa: E402
+
 # --------------------------------------------------------------------------- #
 # Paths
 # --------------------------------------------------------------------------- #
@@ -724,7 +730,7 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
             f'data-screened="{screened_vals[i]}" '
             f'data-accepted="{accepted_vals[i]}" '
             f'aria-label="{html.escape(r["date"])}: {screened_vals[i]} screened, '
-            f'{accepted_vals[i]} accepted, 0 matches">'
+            f'{accepted_vals[i]} watch-list leads shown, 0 matches">'
             f'<rect class="chart-hit" x="{_fmt_num(x(i) - plot_w / (2 * max(n - 1, 1)))}" '
             f'y="{pad_t}" width="{_fmt_num(plot_w / max(n - 1, 1))}" height="{plot_h}" />'
             f'<circle class="chart-dot chart-dot-screened" cx="{_fmt_num(sx)}" '
@@ -737,7 +743,7 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-trend" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="trend-title trend-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="trend-title">Weekly screened-and-accepted trend</title>'
+        f'<title id="trend-title">Weekly screened and watch-list leads trend</title>'
         f'<desc id="trend-desc">{html.escape(_trend_summary_text(rows))}</desc>'
         + "".join(grid)
         + f'<path class="chart-area chart-area-screened" d="{area_d}" />'
@@ -760,7 +766,7 @@ def _trend_summary_text(rows: list[dict]) -> str:
         f"Across {len(rows)} weekly runs from {first['date']} to {last['date']}, "
         f"items screened fell from {first['screened']} to {last['screened']} as "
         f"deduplication matured, while matches stayed at zero throughout and "
-        f"accepted items were a steady trickle totalling {accepted_total}.")
+        f"watch-list leads shown were a steady trickle totalling {accepted_total}.")
 
 
 def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
@@ -801,7 +807,7 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
             f'data-source="{html.escape(label)}" '
             f'data-screened="{r["screened"]}" data-accepted="{r["accepted"]}" '
             f'aria-label="{html.escape(label)}: {r["screened"]} screened, '
-            f'{r["accepted"]} accepted">'
+            f'{r["accepted"]} watch-list leads shown">'
             f'<rect class="chart-hit" x="{pad_l}" y="{_fmt_num(top + 2)}" '
             f'width="{_fmt_num(plot_w)}" height="{row_h - 4}" />'
             f'<rect class="chart-bar chart-bar-screened" x="{pad_l}" '
@@ -819,7 +825,7 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-source" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="source-title source-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="source-title">Per-source screened and accepted totals</title>'
+        f'<title id="source-title">Per-source screened and watch-list leads totals</title>'
         f'<desc id="source-desc">{html.escape(_source_summary_text(rows))}</desc>'
         + "".join(parts)
         + "</svg>"
@@ -839,7 +845,7 @@ def _source_summary_text(rows: list[dict]) -> str:
     return (
         f"Of the catalogue sources, {feeders} contributed fresh candidates; "
         f"{_src_label(top['key'])} dominated the screened volume, and "
-        f"{accepted_total} item(s) were accepted across all sources.")
+        f"{accepted_total} item(s) were shown as watch-list leads across all sources.")
 
 
 def build_archive_charts(digests: list[Digest]) -> ChartData:
@@ -1009,11 +1015,24 @@ def build() -> int:
             ),
         )
 
-    # 5. Stylesheet.
+    # 5. Backtest page (root => same depth as home; deterministic, no I/O on
+    #    docs/). run_backtest() assembles a focused labelled set from in-repo
+    #    text and scores it with the same deterministic scorer the pipeline uses.
+    backtest_tpl = env.get_template("backtest.html.j2")
+    write(
+        DOCS / "backtest.html",
+        backtest_tpl.render(
+            active="backtest",
+            root="",
+            bt=run_backtest(),
+        ),
+    )
+
+    # 6. Stylesheet.
     css_tpl = env.get_template("style.css.j2")
     write(DOCS / "assets" / "style.css", css_tpl.render())
 
-    # 6. .nojekyll marker.
+    # 7. .nojekyll marker.
     write(DOCS / ".nojekyll", "")
 
     print("Done.")

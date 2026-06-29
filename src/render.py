@@ -206,7 +206,7 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         f"# ISDS Thematic Watch — {date_str}",
         "",
         f"**Screened: {screened} · Matches (≥{threshold}): {matches} · "
-        f"Watch-list leads: {watch_list_leads} · Accepted (shown): {accepted}**",
+        f"Watch-list leads: {watch_list_leads} · Watch-list leads shown (total): {accepted}**",
         "",
         f"Annotated digest of **{len(items)}** surfaced item"
         f"{'' if len(items) == 1 else 's'} "

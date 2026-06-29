@@ -1,14 +1,16 @@
 # ISDS Thematic Watcher
 
-A weekly, zero-cost monitor for investor–State dispute settlement (ISDS) developments at one
-narrow doctrinal intersection.
+A transparent, automated lead-generation and annotated-bibliography tool for one narrow
+investor–State dispute settlement (ISDS) research question. It is a weekly, zero-cost
+instrument — not a validated doctrinal monitor or a comprehensive census of ISDS activity.
 
 It watches for cases where intellectual property is asserted as a protected investment, where
-the disputed conduct is a regulatory or judicial measure, and where the outcome turns on
-jurisdiction and admissibility. Built as a research instrument for the Benavides ISDS project,
-it runs entirely on GitHub Actions and produces two weekly emails: an annotated-bibliography
-digest of what surfaced, and an interpretive research brief that reads those developments
-against the project's research question.
+the disputed conduct is a regulatory or judicial measure, and where threshold questions of
+jurisdiction and admissibility may be in play. Built as a research instrument for the
+Benavides ISDS project, it runs entirely on GitHub Actions and produces two weekly emails: an
+annotated-bibliography digest of what surfaced, and an interpretive research brief that reads
+those developments against the project's research question. Its results are leads to be
+verified before they are relied upon, not adjudications.
 
 **Website:** https://jackemorywilliams-bit.github.io/isds-watcher/
 **Methodology:** [METHODOLOGY.md](METHODOLOGY.md) · **Digest archive:** [digests/](digests/)
@@ -142,9 +144,24 @@ docs/           the generated website (served via GitHub Pages)
 tests/          pytest suite
 ```
 
-Two coverage notes: Google News RSS is currently disallowed by its `robots.txt` and is
-therefore inactive (honored, not circumvented), and IAReporter is read at headline level
-only, never the paywalled body.
+### Source scope: what is read in full, in headline, or not at all
+
+Sources fall into three tiers of access depth, and this is stated openly rather than implied:
+
+- **Read in FULL** — the ICSID docket, UNCTAD (ISDS Navigator and World Investment Report),
+  the italaw archive, IISD Investment Treaty News, and the operator's own Google Alerts and
+  Google Scholar feeds. The instrument fetches and reads the linked pages in full where the
+  publisher allows.
+- **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled, so only the title and lead
+  are scored. Genuinely on-theme IAReporter items can under-score when the dispositive detail
+  sits in the body the instrument cannot read; those surface as watch-list leads, not matches.
+- **DISABLED** — Google News RSS, currently disallowed by its `robots.txt` and therefore
+  inactive (honored, not circumvented), along with any individual page denied by robots or
+  login.
+
+Because of these tiers, the watcher is a **lead-generation floor** — the minimum of relevant
+developments visible in openly readable text — not a comprehensive census or monitor of all
+ISDS activity at the intersection.
 
 ## Documentation
 

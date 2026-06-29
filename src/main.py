@@ -23,6 +23,12 @@ from .sources import all_sources
 
 logger = logging.getLogger("isds.main")
 
+# Sources we treat as DISABLED in the source-health table when they yield nothing:
+# best-effort feeds whose robots policy disallows our crawl (Google News RSS), so a
+# zero from them reads as "suppressed", not "quiet". If such a feed does return
+# items, it is reported honestly as RETURNED instead.
+ROBOTS_BLOCKED_SOURCES = {"google_news_rss"}
+
 
 def _norm_line(s: str) -> str:
     """Fold curly quotes, collapse whitespace, strip wrapping quotes/case — for
@@ -97,23 +103,43 @@ def main(argv=None) -> int:
     stats = {
         "total_candidates": 0, "classified": 0, "above_threshold": 0,
         "per_source": {}, "dropped_sources": [], "threshold": cfg.threshold,
-        "provider": provider,
+        "provider": provider, "source_health": [],
     }
 
-    # 1. Fetch + dedupe (per-source failure is non-fatal).
+    # 1. Fetch + dedupe (per-source failure is non-fatal). Alongside the counts,
+    #    capture an honest per-source SOURCE-HEALTH status so each digest shows
+    #    which feeds were actually readable this run:
+    #      RETURNED      — fetched and yielded N items
+    #      FAILED        — fetch raised (network / parse error)
+    #      HEADLINE-ONLY — paywalled feed read at headline level only (e.g. IAReporter)
+    #      DISABLED      — robots-blocked / suppressed feed that yielded nothing
+    #                      (e.g. Google News RSS where robots.txt disallows us)
+    #    A quiet or failed feed shows as such here — it is never hidden.
     new_candidates = []
     for src in all_sources(cfg):
         if only and src.name not in only:
             continue
+        failed = False
         try:
             items = src.fetch(since)
         except Exception as exc:  # noqa: BLE001
             logger.error("source %s failed: %s", src.name, exc)
             items = []
+            failed = True
         fresh = [it for it in items if not state.is_seen(st, src.name, it.source_id)]
         stats["per_source"][src.name] = len(fresh)
         if not items:
             stats["dropped_sources"].append(src.name)
+        if failed:
+            status = "FAILED"
+        elif src.name in config.HEADLINE_ONLY_SOURCES:
+            status = "HEADLINE-ONLY"
+        elif src.name in ROBOTS_BLOCKED_SOURCES and not items:
+            status = "DISABLED"
+        else:
+            status = "RETURNED"
+        stats["source_health"].append(
+            {"name": src.name, "status": status, "count": len(items)})
         new_candidates.extend(fresh)
     stats["total_candidates"] = len(new_candidates)
     logger.info("main: %d new candidates across sources", len(new_candidates))
@@ -269,6 +295,10 @@ def main(argv=None) -> int:
         print(f"  source {s:<22} new={n}")
     if stats["dropped_sources"]:
         print(f"dropped/empty:    {', '.join(stats['dropped_sources'])}")
+    if stats["source_health"]:
+        print("source health:")
+        for sh in stats["source_health"]:
+            print(f"  {sh['name']:<22} {sh['status']:<14} items={sh['count']}")
     print(f"new candidates:   {stats['total_candidates']}")
     print(f"classified:       {stats['classified']}")
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")

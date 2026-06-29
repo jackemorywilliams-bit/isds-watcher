@@ -188,6 +188,12 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     accepted_by_source: dict[str, int] = {}
     for it in items:
         accepted_by_source[it.source] = accepted_by_source.get(it.source, 0) + 1
+    # Per-source SOURCE-HEALTH: which feeds were actually readable this run, each
+    # with an honest status (RETURNED / FAILED / HEADLINE-ONLY / DISABLED) and the
+    # raw item count it yielded. Captured in src/main.py during the fetch loop and
+    # persisted here additively (new key; existing keys are untouched) so a quiet
+    # or failed feed is recorded, not hidden.
+    source_health = [dict(sh) for sh in stats.get("source_health", [])]
     meta = {
         "date": date_str,
         "screened": screened,
@@ -196,6 +202,7 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         "accepted": accepted,
         "per_source": dict(stats.get("per_source", {})),
         "accepted_by_source": accepted_by_source,
+        "source_health": source_health,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISDS Thematic Watch, 2026-06-10 | ISDS Thematic Watcher</title>
-  <meta name="description" content="Annotated digest of investor–State dispute developments surfaced on 2026-06-10, each with its source, a direct link to the original, a relevance score, and a quoted notable line.">
+  <title>Backtest | ISDS Thematic Watcher</title>
+  <meta name="description" content="A small exploratory backtest of the deterministic scorer on a focused set of known investor&ndash;State cases &mdash; the three seed awards, four out-of-sample positives, and clear off-theme negatives &mdash; with a confusion matrix and a per-case breakdown.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="../index.html">
+      <a class="brand" href="index.html">
         <span class="brand-mark">ISDS</span>
         <span class="brand-name">Thematic Watcher</span>
       </a>
@@ -23,10 +23,10 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="primary-nav" aria-label="Primary">
-        <a href="../index.html" class="">Home</a>
-        <a href="../methodology.html" class="">Methodology</a>
-        <a href="../digests/index.html" class="active" aria-current="page">Digest Archive</a>
-        <a href="../backtest.html" class="">Backtest</a>
+        <a href="index.html" class="">Home</a>
+        <a href="methodology.html" class="">Methodology</a>
+        <a href="digests/index.html" class="">Digest Archive</a>
+        <a href="backtest.html" class="active" aria-current="page">Backtest</a>
         <a href="https://github.com/jackemorywilliams-bit/isds-watcher" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
       </nav>
     </div>
@@ -37,106 +37,327 @@
   <div class="measure">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="index.html">Digest Archive</a></li>
-        <li aria-current="page">2026-06-10</li>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Backtest</li>
       </ol>
     </nav>
-    <h1 class="page-title">ISDS Thematic Watch</h1>
-    <p class="page-date">2026-06-10</p>
+    <p class="page-kicker">Scorer evaluation</p>
+    <h1 class="page-title">Historical backtest</h1>
     <p class="page-lede">
-      An annotated digest of investor–State dispute developments at the IP-as-investment /
-      judicial-or-regulatory-measure / jurisdictional-admissibility intersection.
-    </p>
-    <p class="run-counts"><span class="count">79</span> screened
-      <span class="sep">·</span>
-      <span class="count">0</span> matches
-      <span class="sep">·</span>
-      <span class="count">2</span> watch-list leads shown</p>
-    <div class="run-summary">
-      <div class="run-stat"><span class="run-num">79</span><span class="run-label">screened</span></div>
-      <div class="run-stat"><span class="run-num">0</span><span class="run-label">matches</span></div>
-      <div class="run-stat"><span class="run-num">2</span><span class="run-label">watch-list leads</span></div>
-<div class="run-stat"><span class="run-num">40</span><span class="run-label">relevance threshold</span></div><div class="run-stat"><span class="run-num run-text">Italaw</span><span class="run-label">source</span></div>    </div>
-    <p class="run-note">
-      Entries are ordered by thematic relevance. Each carries a two-sentence annotation and a
-      notable line drawn from the source. Items below the gate are surfaced as watch-list leads,
-      not matches.
+      A small exploratory backtest on known cases &mdash; not a comprehensive validation.
+      It scores 15 familiar investor&ndash;State cases with the same deterministic
+      keyword scorer the pipeline uses, at the same digest threshold (40), and
+      reports where it agrees with the label and where it misses.
     </p>
   </div>
 </section>
 
 <section class="band">
   <div class="measure">
-    <h2 class="section-head">Annotated bibliography: 2 entries</h2>
+    <h2 class="section-head">What this is, and is not</h2>
+    <div class="doc-body">
+      <p>
+        This page is an honest, narrow sanity check, not a validation study. The set is
+        only 15 cases, hand-picked because they are well known, and it deliberately
+        mixes two kinds of case:
+      </p>
+      <ul>
+        <li>
+          the three <strong>development seed awards</strong> (Eli&nbsp;Lilly v.&nbsp;Canada,
+          Philip&nbsp;Morris v.&nbsp;Australia, Bridgestone v.&nbsp;Panama). These are
+          <em>in-sample</em> &mdash; their vocabulary trained the fingerprint &mdash; so passing
+          them confirms the scorer recovers what it was built on, nothing more;
+        </li>
+        <li>
+          four <strong>out-of-sample positives</strong> (Loewen, Mondev, Apotex, Philip&nbsp;Morris
+          v.&nbsp;Uruguay) and clear <strong>off-theme negatives</strong>, drawn from the labelled
+          holdout. These were not used in development, so they test generalisation.
+        </li>
+      </ul>
+      <p>
+        Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
+        their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
+        verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
+        text could not be resolved in-repo was excluded rather than invented. Read it as a smoke
+        test with a candid record of its one miss, not as evidence of field performance.
+      </p>
+    </div>
+  </div>
+</section>
 
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Confusion matrix</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Predicted band at or above the threshold counts as a predicted match; below it counts as a
+      predicted pass. Rows are the true label; columns are the prediction.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Confusion matrix of predicted match versus true label across 15 cases.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Predicted match (&#8805;&nbsp;40)</th>
+            <th scope="col">Predicted pass (&lt;&nbsp;40)</th>
+            <th scope="col">Row total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
+            <td><strong>TP 6</strong></td>
+            <td>FN 1</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
+            <td>FP 0</td>
+            <td><strong>TN 8</strong></td>
+            <td>8</td>
+          </tr>
+        </tbody>
+      </table>
 
+      <table>
+        <caption class="visually-hidden">Headline metrics derived from the confusion matrix.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Precision</th>
+            <th scope="col">Recall</th>
+            <th scope="col">Accuracy</th>
+            <th scope="col">F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.00</td>
+            <td>0.86</td>
+            <td>0.93</td>
+            <td>0.92</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        On this focused set the scorer makes
+        1 miss:
+        1 false negative and
+        0 false positives. The misses are listed in full
+        below &mdash; the point of a backtest is the failures, not the passes.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <h3 class="subsection-head">Direct matches <span class="sec-count">&ge;40 &middot; 0</span></h3>
-    <p class="none-note">No direct matches this run — no item reached the relevance threshold.</p>
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">Per-case results</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Every case, its label, the score the deterministic scorer assigned, the predicted band, and
+      a note on any miss. Positives (seeds, then out-of-sample) first, then negatives.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Per-case backtest results: case, group, label, score, predicted band, and miss note.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Case</th>
+            <th scope="col">Group</th>
+            <th scope="col">Label</th>
+            <th scope="col">Score</th>
+            <th scope="col">Predicted band</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Bridgestone v. Panama</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>79</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Eli Lilly v. Canada</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>78</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Philip Morris v. Australia</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>66</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Philip Morris v. Uruguay</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>73</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mondev v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>62</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Loewen Group v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>56</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Apotex Holdings v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>8</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+<strong>false negative</strong>            </td>
+          </tr>
+          <tr>
+            <th scope="row">Chevron v. Ecuador — award collection (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Committees in IIAs (ITN analysis)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Gabriel Resources v. Romania — public hearing (ICSID)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Honduras signs the ICSID Convention</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Investment treaties in Chile’s experience (ITN insight)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">OECD Guidelines climate due-diligence update (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Rockhopper v. Italy resubmission tribunal (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Smurfit v. Venezuela — consent after denunciation (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-    <h3 class="subsection-head">Watch-list near-matches <span class="sec-count">25&ndash;39 &middot; 2</span></h3>
-    <ol class="entries">      <li class="entry reveal" id="entry-1">
-        <div class="entry-top">
-          <span class="entry-num">01</span>
-          <div class="entry-headline">
-            <h3 class="entry-title">
-              <a href="https://www.italaw.com/cases/3958" target="_blank" rel="noopener">Hydro S.r.l. and others v. Republic of Albania (I), ICSID Case No. ARB/15/28</a>
-            </h3>
-            <div class="entry-badges">
-              <span class="badge badge-watch">WATCH · 28</span>
-              <span class="badge badge-none">no ring matched</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="source-block">
-          <span class="source-label">Source</span>
-          <span class="source-name">Italaw</span>
-          <a class="source-read" href="https://www.italaw.com/cases/3958" target="_blank" rel="noopener">Read the original &#8599;</a>
-          <a class="source-url" href="https://www.italaw.com/cases/3958" target="_blank" rel="noopener">https://www.italaw.com/cases/3958</a>
-<span class="source-date">26 May 2026</span>        </div>
-
-        <p class="entry-annotation">This order concerns a provisional measures application and revision proceeding in a dispute between Hydro S.r.l. and Albania, involving criminal and tax proceedings allegedly retaliatory to the arbitration, and a subsequent challenge to a Tirana court judgment on revision grounds. The case involves a domestic criminal judgment and allegations of procedural impropriety, but fails to trigger the three-ring theme because there is no intellectual property at stake, the judicial measure is tangential to the core investment dispute (which concerns water concessions or similar assets, not IP), and the jurisdictional questions (Article 51 revision grounds, pre-award vs. post-award facts) do not engage abuse-of-right, treaty-shopping, or standing doctrines relevant to IP-as-investment.</p>
-
-        <blockquote class="entry-quote">
-          <span class="quote-label">Notable line</span>
-          <p>&ldquo;The Tribunal held that the Tirana Judgment, being a post-award event, could not constitute a pre-award 'fact' capable of supporting revision under Article 51 of the ICSID Convention.&rdquo;</p>
-        </blockquote>
-
-        <p class="entry-tags"><span class="tag">criminal_proceedings</span><span class="tag">judicial_measure</span><span class="tag">denial_of_justice_adjacent</span><span class="tag">procedural_integrity</span><span class="tag">police_powers_defense</span></p>
-      </li>
-      <li class="entry reveal" id="entry-2">
-        <div class="entry-top">
-          <span class="entry-num">02</span>
-          <div class="entry-headline">
-            <h3 class="entry-title">
-              <a href="https://www.italaw.com/cases/12153" target="_blank" rel="noopener">Telefónica, S.A. v. Republic of Colombia, ICSID Case No. ARB/18/3</a>
-            </h3>
-            <div class="entry-badges">
-              <span class="badge badge-watch">WATCH · 28</span>
-              <span class="badge badge-none">no ring matched</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="source-block">
-          <span class="source-label">Source</span>
-          <span class="source-name">Italaw</span>
-          <a class="source-read" href="https://www.italaw.com/cases/12153" target="_blank" rel="noopener">Read the original &#8599;</a>
-          <a class="source-url" href="https://www.italaw.com/cases/12153" target="_blank" rel="noopener">https://www.italaw.com/cases/12153</a>
-<span class="source-date">02 June 2026</span>        </div>
-
-        <p class="entry-annotation">A telecommunications investor challenged Colombia's Constitutional Court judgment and legislative measures that altered asset-reversion rules for its concession, alleging breach of fair-and-equitable treatment and frustration of legitimate expectations. While the dispute involves a judicial measure (the Constitutional Court's Sentencia C-555), it concerns telecommunications concession assets and contractual reversion obligations, not intellectual property, and raises no IP-as-investment angle, abuse-of-right, treaty-shopping, or shell-subsidiary doctrine; the case thus falls below the thematic intersection and scores LOW.</p>
-
-        <blockquote class="entry-quote">
-          <span class="quote-label">Notable line</span>
-          <p>&ldquo;It affirmed its jurisdiction to assess whether state measures, including judicial acts, complied with the treaty, irrespective of a denial of justice claim.&rdquo;</p>
-        </blockquote>
-
-        <p class="entry-tags"><span class="tag">judicial_measure</span><span class="tag">constitutional_court</span><span class="tag">res_judicata</span><span class="tag">legitimate_expectations</span><span class="tag">fair_and_equitable_treatment</span></p>
-      </li>
-</ol>
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Where it misses, and why</h2>
+    <div class="doc-body">
+      <h3>False negatives</h3>
+      <ul>
+        <li><strong>Apotex Holdings v. United States</strong> (score 8). Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit.</li>
+      </ul>
+    </div>
+    <p class="archive-foot">
+      See the <a href="methodology.html">methodology</a> for how the scorer and its
+      threshold are defined.
+    </p>
   </div>
 </section>
   </main>
@@ -153,10 +374,10 @@
           <div class="footer-col">
             <h2 class="footer-h">Project</h2>
             <ul>
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../methodology.html">Methodology</a></li>
-              <li><a href="../digests/index.html">Digest Archive</a></li>
-              <li><a href="../backtest.html">Backtest</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="methodology.html">Methodology</a></li>
+              <li><a href="digests/index.html">Digest Archive</a></li>
+              <li><a href="backtest.html">Backtest</a></li>
             </ul>
           </div>
           <div class="footer-col">

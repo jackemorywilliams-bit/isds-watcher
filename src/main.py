@@ -202,9 +202,22 @@ def main(argv=None) -> int:
     render.update_digests_index()
     digest_path = render.write_digest(html, date_str)
 
-    # 6. Email (unless dry-run / no-email).
+    # 6. Email (unless dry-run / no-email). An EMPTY run — zero candidates screened,
+    #    typically a re-run of an already-processed window where every candidate deduped
+    #    as already seen — has nothing to report. "0 screened" is meaningless and an
+    #    empty digest contradicts the never-empty / watch-list-floor rule, so we send
+    #    nothing and leave the existing archived record untouched. When candidates DO
+    #    exist but none clear the floor, that is a genuine quiet week and still earns the
+    #    honest "no thematically relevant developments, N screened" note.
+    empty_run = stats["total_candidates"] == 0
     email_status = "skipped"
-    if not (args.dry_run or args.no_email):
+    if args.dry_run or args.no_email:
+        pass
+    elif empty_run:
+        email_status = "skipped (empty run: 0 candidates — nothing to send)"
+        logger.info("empty run (0 candidates screened) — not sending a digest email; "
+                    "existing record preserved")
+    else:
         if len(surfaced) == 0:
             subject = (f"ISDS Thematic Watch — {date_str} "
                        f"(no thematically relevant developments, "
@@ -219,8 +232,9 @@ def main(argv=None) -> int:
     #     second, interpretive weekly email (chairman → analyst+web search → security
     #     → editor). Skipped on --dry-run (it calls the API) and when disabled or the
     #     provider can't run it. A brief failure is logged but never affects the digest.
+    #    On an empty run we also skip the brief, so a re-run cannot re-send a duplicate.
     brief_status = "skipped"
-    if config.RESEARCH_BRIEF_ENABLED and not args.dry_run:
+    if config.RESEARCH_BRIEF_ENABLED and not args.dry_run and not empty_run:
         rlog = research_state.load()
         brief = research_brief.generate_brief(
             surfaced,

@@ -5,7 +5,13 @@
 
 **Seed awards:** Philip Morris v. Australia (PCA 2012-12); Eli Lilly v. Canada (ICSID UNCT/14/2); Bridgestone v. Panama (ICSID ARB/16/34).
 
+**Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), a four-risk taxonomy (disclosure/use/regulation), a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay's Salini-as-discretionary-backstop), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality / police-powers carve-out. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
+
 **Last updated:** 2026-06-29
+
+> **Caution — unverified research leads.** Every entry below is a machine-assisted research lead
+> carrying verification debt, not a settled finding. Nothing here is validated until a human review
+> cycle is logged for the period per `HUMAN_REVIEW.md`. Read accordingly.
 
 ---
 

@@ -44,6 +44,17 @@ RESEARCH_BRIEF_ENABLED = os.getenv("RESEARCH_BRIEF_ENABLED", "1").strip().lower(
 CITATION_VERIFY = os.getenv("CITATION_VERIFY", "1").strip().lower() not in (
     "0", "false", "no", "off", "")
 
+# The brief's INTEGRITY-CHECK stage: after the security officer vets the memo, run the
+# model-free hallucination checker (scripts/check_citations.py) over the brief's own
+# citations — resolving every cited URL AND recording URL-less bibliographic authorities
+# (law-review articles, treatises, awards by case number) as "needs human verification" —
+# and record a structured verdict (clean / flagged) the brief and ledger can surface.
+# This covers the BRIEF and methodology-style citations, not just bare digest URLs.
+# Enabled by default; set BRIEF_INTEGRITY_CHECK=0 to skip it (e.g. offline or
+# rate-limited), mirroring the CITATION_VERIFY guard above.
+BRIEF_INTEGRITY_CHECK = os.getenv("BRIEF_INTEGRITY_CHECK", "1").strip().lower() not in (
+    "0", "false", "no", "off", "")
+
 # Sources whose body we cannot read (paywalled / headline-only feeds). A
 # "notable line" from one of these is necessarily headline text, never a
 # verbatim quote from the source body, so the digest shows "N/A" for it rather

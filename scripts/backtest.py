@@ -1,30 +1,42 @@
 #!/usr/bin/env python3
-"""Historical backtest of the deterministic scorer on a focused labelled set.
+"""Historical backtest of the deterministic scorer, reported in three buckets.
 
 This is a small, candid, *exploratory* backtest — not a comprehensive
 validation. It assembles ~12-15 KNOWN cases entirely from text already in the
 repository (nothing is fabricated) and scores each one with the *same*
 deterministic keyword scorer the production pipeline uses
-(``src.classify.keyword_score``), at the same digest threshold (40). From the
-predictions it computes a confusion matrix (TP / FP / FN / TN), precision,
-recall, accuracy and F1, and the explicit lists of false positives and false
-negatives with a one-line reason for each miss.
+(``src.classify.keyword_score``), at the same digest threshold (40).
 
-The labelled corpus (``scripts/backtest_corpus.json``) is three groups:
+The audit lesson baked into this rewrite: a single blended confusion matrix
+that folds the in-sample seed awards in with the out-of-sample holdout inflates
+the headline. The seeds *trained* the lexicon, so recovering them proves only
+that the fingerprint recognises what generated it — circular, not predictive.
+So the cases are split into three clearly-labelled buckets, each reported
+separately:
 
-* the three development SEED cases (Eli Lilly v. Canada, Philip Morris v.
-  Australia, Bridgestone v. Panama). Their text is the verbatim doctrinal
-  vocabulary extracted from each award and tagged to that seed in
-  ``fingerprint.yaml`` — the same phrases that *define* the fingerprint;
-* four OUT-OF-SAMPLE holdout positives (Loewen, Mondev, Apotex, Philip Morris
-  v. Uruguay), pulled by id from ``scripts/holdout_set.json``;
-* clear off-theme NEGATIVES, also pulled by id from the holdout file (real
-  live listings — ICSID hearings, ITN headlines, OECD guidance, etc.).
+* **SEED RECOVERY** — the three development SEED cases only (Eli Lilly v.
+  Canada, Philip Morris v. Australia, Bridgestone v. Panama). Their text is the
+  verbatim doctrinal vocabulary extracted from each award and tagged to that
+  seed in ``fingerprint.yaml`` — the same phrases that *define* the
+  fingerprint. This bucket is strictly *in-sample*: it confirms the scorer
+  recovers the cases it was built on, and is NOT predictive evidence. Its
+  numbers never enter any headline.
 
-Because the seeds are *in-sample* (they trained the lexicon) and the holdout
-positives/negatives are *out-of-sample*, the set deliberately mixes both: it
-shows the scorer recovers the cases it was built on AND generalises to known
-out-of-sample ones — while honestly surfacing where it misses (Apotex).
+* **OUT-OF-SAMPLE HOLDOUT** — the four holdout positives (Loewen, Mondev,
+  Apotex, Philip Morris v. Uruguay) plus the clear off-theme NEGATIVES (real
+  live listings — ICSID hearings, ITN headlines, OECD guidance, etc.), all
+  pulled by id from ``scripts/holdout_set.json``. None of these were used in
+  development, so this bucket is the headline generalisation metric:
+  precision / recall / accuracy / F1 are computed on it *alone*. It keeps the
+  candid Apotex miss.
+
+* **LIVE PROSPECTIVE** — not numbers from this corpus. The honest prospective
+  test is the live weekly digest archive, whose current status is reported in
+  prose (see ``live_prospective`` below).
+
+Holdout items are referenced by id rather than copied so the holdout stays the
+single source of truth. Any case whose text cannot be resolved in-repo is
+*excluded*, never faked.
 
 Run standalone:   python scripts/backtest.py
 As a library:     from scripts.backtest import run_backtest
@@ -34,9 +46,8 @@ from __future__ import annotations
 
 import datetime
 import json
-import os
 import sys
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 # Allow ``python scripts/backtest.py`` from anywhere (repo root on sys.path).
@@ -78,23 +89,53 @@ class CaseResult:
 
 
 @dataclass
+class SeedRecovery:
+    """In-sample seed bucket. Confirms recovery, not generalisation.
+
+    Reported as a simple recovered/total count, never as headline P/R/F1: the
+    seeds defined the lexicon, so any precision/recall here would be circular.
+    """
+    cases: list[dict] = field(default_factory=list)
+    recovered: int = 0          # seeds scoring >= THRESHOLD
+    total: int = 0
+
+
+@dataclass
+class HoldoutMetrics:
+    """Out-of-sample bucket: the headline generalisation metric."""
+    cases: list[dict] = field(default_factory=list)
+    tp: int = 0
+    fp: int = 0
+    fn: int = 0
+    tn: int = 0
+    total: int = 0
+    n_pos: int = 0
+    n_neg: int = 0
+    precision: float = 1.0
+    recall: float = 1.0
+    accuracy: float = 0.0
+    f1: float = 0.0
+    false_positives: list[dict] = field(default_factory=list)
+    false_negatives: list[dict] = field(default_factory=list)
+
+
+@dataclass
+class LiveProspective:
+    """The true prospective test: the live weekly digest archive.
+
+    Not derived from this corpus. Honest current status only.
+    """
+    status: str = ""            # one-line summary
+    detail: str = ""            # short paragraph of candid framing
+
+
+@dataclass
 class BacktestResult:
-    """Everything the build needs to render the backtest page."""
+    """Everything the build needs to render the three-bucket backtest page."""
     threshold: int
-    cases: list[dict]           # [CaseResult as dict], ordered for display
-    tp: int
-    fp: int
-    fn: int
-    tn: int
-    total: int
-    n_pos: int
-    n_neg: int
-    precision: float
-    recall: float
-    accuracy: float
-    f1: float
-    false_positives: list[dict]  # subset of cases (misses)
-    false_negatives: list[dict]  # subset of cases (misses)
+    seed: SeedRecovery
+    holdout: HoldoutMetrics
+    live: LiveProspective
 
 
 def _load_corpus() -> dict:
@@ -113,64 +154,66 @@ def _score_text(case_id: str, text: str) -> int:
     return int(keyword_score(ci)["relevance_score"])
 
 
-def _assemble_cases() -> list[dict]:
-    """Build the focused labelled set from in-repo text only.
+def _make_case(cid: str, name: str, group: str, label: int, text: str,
+               miss_reasons: dict) -> dict:
+    """Score one case and tag any miss with a one-line reason."""
+    score = _score_text(cid, text)
+    pred = 1 if score >= THRESHOLD else 0
+    correct = pred == label
+    miss_kind = ""
+    reason = ""
+    if not correct:
+        if pred == 1 and label == 0:
+            miss_kind = "false positive"
+            reason = miss_reasons.get(
+                cid, "Off-theme listing scored at or above threshold.")
+        else:
+            miss_kind = "false negative"
+            reason = miss_reasons.get(
+                cid, "On-theme case scored below threshold.")
+    return asdict(CaseResult(
+        id=cid, name=name, group=group, label=label, score=score,
+        band=_band_from_score(score), pred=pred, correct=correct,
+        miss_kind=miss_kind, reason=reason,
+    ))
 
-    Seeds carry their text inline (verbatim seed-tagged phrases from
-    fingerprint.yaml); holdout items are looked up by id in holdout_set.json.
-    Any case whose text cannot be resolved in-repo is *excluded*, never faked.
-    """
-    corpus = _load_corpus()
-    holdout = _load_holdout_by_id()
-    display = corpus.get("display_names", {})
-    miss_reasons = corpus.get("miss_reasons", {})
 
-    raw: list[tuple[str, str, str, int, str]] = []  # (id, name, group, label, text)
-
+def _build_seed(corpus: dict, miss_reasons: dict) -> SeedRecovery:
+    """In-sample seed recovery bucket."""
+    cases: list[dict] = []
     for s in corpus.get("seed_cases", []):
-        raw.append((s["id"], s["name"], "seed", int(s["label"]), s["text"]))
+        cases.append(_make_case(
+            s["id"], s["name"], "seed", int(s["label"]), s["text"], miss_reasons))
+    # Highest score first — most legible for a reader scanning recovery.
+    cases.sort(key=lambda c: (-c["score"], c["name"]))
+    recovered = sum(1 for c in cases if c["pred"] == 1)
+    return SeedRecovery(cases=cases, recovered=recovered, total=len(cases))
+
+
+def _build_holdout(corpus: dict, holdout: dict, display: dict,
+                   miss_reasons: dict) -> HoldoutMetrics:
+    """Out-of-sample holdout bucket: the headline metric.
+
+    Computes the confusion matrix and precision/recall/accuracy/F1 on the
+    holdout positives + negatives ALONE — no seeds folded in.
+    """
+    cases: list[dict] = []
 
     for cid in corpus.get("holdout_positive_ids", []):
         it = holdout.get(cid)
         if not it or not it.get("text"):
             print(f"  ! holdout positive {cid!r} not found in holdout_set.json; excluding")
             continue
-        raw.append((cid, display.get(cid, cid), "holdout-positive", 1, it["text"]))
+        cases.append(_make_case(
+            cid, display.get(cid, cid), "holdout-positive", 1, it["text"], miss_reasons))
 
     for cid in corpus.get("holdout_negative_ids", []):
         it = holdout.get(cid)
         if not it or not it.get("text"):
             print(f"  ! holdout negative {cid!r} not found in holdout_set.json; excluding")
             continue
-        raw.append((cid, display.get(cid, cid), "holdout-negative", 0, it["text"]))
-
-    cases: list[dict] = []
-    for cid, name, group, label, text in raw:
-        score = _score_text(cid, text)
-        pred = 1 if score >= THRESHOLD else 0
-        correct = pred == label
-        miss_kind = ""
-        reason = ""
-        if not correct:
-            if pred == 1 and label == 0:
-                miss_kind = "false positive"
-                reason = miss_reasons.get(
-                    cid, "Off-theme listing scored at or above threshold.")
-            else:
-                miss_kind = "false negative"
-                reason = miss_reasons.get(
-                    cid, "On-theme case scored below threshold.")
-        cases.append(asdict(CaseResult(
-            id=cid, name=name, group=group, label=label, score=score,
-            band=_band_from_score(score), pred=pred, correct=correct,
-            miss_kind=miss_kind, reason=reason,
-        )))
-    return cases
-
-
-def run_backtest() -> BacktestResult:
-    """Assemble, score and tabulate the focused backtest. Pure / deterministic."""
-    cases = _assemble_cases()
+        cases.append(_make_case(
+            cid, display.get(cid, cid), "holdout-negative", 0, it["text"], miss_reasons))
 
     tp = sum(1 for c in cases if c["label"] == 1 and c["pred"] == 1)
     fp = sum(1 for c in cases if c["label"] == 0 and c["pred"] == 1)
@@ -184,47 +227,91 @@ def run_backtest() -> BacktestResult:
     f1 = (2 * precision * recall / (precision + recall)
           if (precision + recall) else 0.0)
 
-    # Display order: positives first (seeds, then holdout positives), then
-    # negatives — most legible for a reader scanning the per-case table.
-    order = {"seed": 0, "holdout-positive": 1, "holdout-negative": 2}
+    # Display order: positives first, then negatives; within each, high score first.
+    order = {"holdout-positive": 0, "holdout-negative": 1}
     cases.sort(key=lambda c: (order.get(c["group"], 9), -c["score"], c["name"]))
 
     false_positives = [c for c in cases if c["miss_kind"] == "false positive"]
     false_negatives = [c for c in cases if c["miss_kind"] == "false negative"]
 
-    return BacktestResult(
-        threshold=THRESHOLD,
+    return HoldoutMetrics(
         cases=cases,
         tp=tp, fp=fp, fn=fn, tn=tn, total=total,
         n_pos=tp + fn, n_neg=tn + fp,
         precision=precision, recall=recall, accuracy=accuracy, f1=f1,
-        false_positives=false_positives,
-        false_negatives=false_negatives,
+        false_positives=false_positives, false_negatives=false_negatives,
+    )
+
+
+def _build_live(corpus: dict) -> LiveProspective:
+    """Live prospective status — prose, not corpus numbers."""
+    lp = corpus.get("live_prospective", {})
+    return LiveProspective(
+        status=lp.get(
+            "status",
+            "Zero direct thematic matches to date."),
+        detail=lp.get(
+            "detail",
+            "The live weekly digest archive is the true prospective test. To "
+            "date it has produced no direct thematic hit; what it has shown is "
+            "disciplined negative filtering and watch-list triage."),
+    )
+
+
+def run_backtest() -> BacktestResult:
+    """Assemble, score and tabulate the three-bucket backtest.
+
+    Pure / deterministic. The headline precision/recall/accuracy/F1 live on the
+    ``holdout`` bucket alone; seed recovery is reported separately as in-sample.
+    """
+    corpus = _load_corpus()
+    holdout = _load_holdout_by_id()
+    display = corpus.get("display_names", {})
+    miss_reasons = corpus.get("miss_reasons", {})
+
+    return BacktestResult(
+        threshold=THRESHOLD,
+        seed=_build_seed(corpus, miss_reasons),
+        holdout=_build_holdout(corpus, holdout, display, miss_reasons),
+        live=_build_live(corpus),
     )
 
 
 def main(argv=None) -> int:
     res = run_backtest()
-    print(f"Backtest: {res.total} known cases "
-          f"({res.n_pos} on-theme, {res.n_neg} off-theme) | "
+
+    print("=== SEED RECOVERY (in-sample — confirms recovery, NOT predictive) ===")
+    print(f"Seeds recovered: {res.seed.recovered}/{res.seed.total} "
+          f"at threshold {res.threshold} (these numbers never enter a headline)")
+    for c in res.seed.cases:
+        mark = "ok" if c["pred"] == 1 else "X "
+        print(f"  {mark} score={c['score']:>3} band={c['band']:<6}  {c['name']}")
+
+    h = res.holdout
+    print("\n=== OUT-OF-SAMPLE HOLDOUT (the headline generalisation metric) ===")
+    print(f"Holdout: {h.total} cases ({h.n_pos} on-theme, {h.n_neg} off-theme) | "
           f"threshold = {res.threshold}")
-    for c in res.cases:
+    for c in h.cases:
         mark = "ok" if c["correct"] else "X "
         print(f"  {mark} label={c['label']} score={c['score']:>3} "
               f"band={c['band']:<6} [{c['group']}]  {c['name']}")
-    print(f"\nConfusion: TP={res.tp} FP={res.fp} FN={res.fn} TN={res.tn}")
-    print(f"Precision={res.precision:.2f}  Recall={res.recall:.2f}  "
-          f"Accuracy={res.accuracy:.2f}  F1={res.f1:.2f}")
-    if res.false_negatives:
+    print(f"\nConfusion: TP={h.tp} FP={h.fp} FN={h.fn} TN={h.tn}")
+    print(f"Precision={h.precision:.2f}  Recall={h.recall:.2f}  "
+          f"Accuracy={h.accuracy:.2f}  F1={h.f1:.2f}")
+    if h.false_negatives:
         print("\nFalse negatives:")
-        for c in res.false_negatives:
+        for c in h.false_negatives:
             print(f"  - {c['name']} (score {c['score']}): {c['reason']}")
-    if res.false_positives:
+    if h.false_positives:
         print("\nFalse positives:")
-        for c in res.false_positives:
+        for c in h.false_positives:
             print(f"  - {c['name']} (score {c['score']}): {c['reason']}")
-    if not res.false_negatives and not res.false_positives:
-        print("\nNo misses on this focused set.")
+    if not h.false_negatives and not h.false_positives:
+        print("\nNo misses on the holdout bucket.")
+
+    print("\n=== LIVE PROSPECTIVE (the true prospective test — not corpus numbers) ===")
+    print(res.live.status)
+    print(res.live.detail)
     return 0
 
 

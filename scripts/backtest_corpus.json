@@ -1,5 +1,5 @@
 {
- "_note": "Focused labelled corpus for the historical backtest (scripts/backtest.py). It is deliberately small (~12-15 known cases) and assembled ENTIRELY from text already in the repo so nothing is fabricated. Three groups: (1) the three development SEED cases, whose text here is the verbatim doctrinal vocabulary extracted from each award and tagged to that seed in fingerprint.yaml (the same phrases that define the fingerprint); (2) four OUT-OF-SAMPLE holdout positives pulled by id from scripts/holdout_set.json; (3) clear off-theme NEGATIVES pulled by id from the same holdout file (real live listings). Holdout items are referenced by id rather than copied so the holdout stays the single source of truth.",
+ "_note": "Focused labelled corpus for the historical backtest (scripts/backtest.py). It is deliberately small (~12-15 known cases) and assembled ENTIRELY from text already in the repo so nothing is fabricated. The backtest reports THREE separate buckets, never one blended matrix: (1) SEED RECOVERY — the three development SEED cases, whose text here is the verbatim doctrinal vocabulary extracted from each award and tagged to that seed in fingerprint.yaml (the same phrases that define the fingerprint); this is strictly in-sample and its numbers NEVER enter a headline; (2) OUT-OF-SAMPLE HOLDOUT — four holdout positives plus clear off-theme NEGATIVES, all pulled by id from scripts/holdout_set.json; the headline precision/recall/accuracy/F1 are computed on THIS bucket alone; (3) LIVE PROSPECTIVE — prose status of the live weekly digest archive (live_prospective), not corpus numbers. Holdout items are referenced by id rather than copied so the holdout stays the single source of truth.",
  "seed_cases": [
   {
    "id": "eli_lilly_v_canada",
@@ -55,5 +55,9 @@
   "iisd_itn:New Tribunal Constituted for R": "Rockhopper v. Italy resubmission tribunal (ITN)",
   "icsid:Gabriel Resources Ltd. and Gab": "Gabriel Resources v. Romania — public hearing (ICSID)",
   "icsid:Honduras Signs the ICSID Conve": "Honduras signs the ICSID Convention"
+ },
+ "live_prospective": {
+  "status": "Zero direct thematic matches to date.",
+  "detail": "The live weekly digest archive is the true prospective test — the only one that scores items the system has never seen, in real time, before the outcome is known. To date it has produced no direct thematic hit: across the published weeks not a single live listing has cleared the digest threshold as an on-theme match. What it has shown is the discipline you would want from a watcher running quiet — clean negative filtering of off-theme noise (ICSID procedural notices, ITN headlines, OECD guidance) and watch-list triage of near-misses held below threshold, not a live direct hit. Treat the holdout numbers above as the generalisation estimate and this archive as the honest, still-open prospective record."
  }
 }

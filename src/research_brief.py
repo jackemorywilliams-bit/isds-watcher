@@ -343,34 +343,78 @@ def _run_reconvene(client, agenda, memo, security, brief) -> dict:
     return json.loads(_text_of(resp))
 
 
+def _brief_citation_text(brief: dict, memo: str) -> str:
+    """Assemble the prose whose citations the INTEGRITY-CHECK stage scans: the editor's
+    supplemental link URLs/titles/notes, the structured section bodies, and the raw analyst
+    memo. The section bodies and notes carry the bibliographic authorities (law-review
+    articles, treatises, awards by case number) that a bare-URL scan would miss."""
+    bits: list[str] = []
+    for s in brief.get("supplemental", []) or []:
+        s = s or {}
+        bits.append(f"{s.get('title','')} {s.get('url','')} {s.get('note','')}")
+    for sec in brief.get("sections", []) or []:
+        sec = sec or {}
+        bits.append(sec.get("body", "") or "")
+    bits.append(memo or "")
+    return "\n".join(b for b in bits if b)
+
+
 def _verify_citations(brief: dict, memo: str) -> None:
-    """Deterministically fetch every URL the council cited — the editor's supplemental
-    links plus the analyst memo's inline URLs — and attach ``brief["citation_check"]``
-    (per-URL results) and ``brief["citation_summary"]`` (one-line tally). Model-free; uses
-    scripts/verify_citations.py. Guarded so a verifier failure never breaks the brief; on
-    failure the brief simply carries no citation check. ``unreachable`` results are the
-    signal worth surfacing (a cited source that does not resolve)."""
-    if not getattr(config, "CITATION_VERIFY", True):
+    """INTEGRITY-CHECK stage. After the security officer, run the model-free hallucination
+    checker (scripts/check_citations.py) over the brief's OWN citations — resolving every
+    cited URL AND recording URL-less bibliographic authorities (law-review articles,
+    treatises, awards by case number) as "needs human verification". This extends the
+    earlier URL-only verification to cover the kind of citations the methodology memo and
+    the brief carry, not just bare digest URLs.
+
+    Attaches, for the brief/ledger to surface:
+      * ``brief["citation_check"]``   — per-URL results (unchanged shape; render/ledger read it)
+      * ``brief["citation_summary"]`` — one-line tally across URLs + bibliographic citations
+      * ``brief["citation_verdict"]`` — structured {clean, flagged_urls, needs_human, counts}
+      * ``brief["_integrity_clean"]`` — boolean verdict (clean unless a URL looks fabricated)
+
+    Model-free and fully guarded: a missing dependency or any failure degrades to an empty
+    verdict and NEVER breaks the brief. ``check_citations`` falls back to the URL-only
+    verifier internally, so this remains the deterministic, no-model integrity gate."""
+    if not getattr(config, "BRIEF_INTEGRITY_CHECK", True) \
+            and not getattr(config, "CITATION_VERIFY", True):
         brief["citation_check"] = []
-        brief["citation_summary"] = "Citation verification disabled."
+        brief["citation_summary"] = "Citation integrity check disabled."
+        brief["citation_verdict"] = {"clean": True, "flagged_urls": [],
+                                     "needs_human": [], "counts": {}}
+        brief["_integrity_clean"] = True
         return
     try:
-        import verify_citations  # from scripts/ (added to sys.path above)
-        supp_urls = " ".join(
-            (s or {}).get("url", "") for s in brief.get("supplemental", []))
-        results = verify_citations.verify_text(f"{supp_urls}\n{memo or ''}")
-        brief["citation_check"] = results
-        brief["citation_summary"] = verify_citations.summarize(results)
-        unreachable = [r for r in results if r.get("verdict") == "unreachable"]
-        if unreachable:
-            logger.warning("research_brief: %d cited URL(s) unreachable — %s",
-                            len(unreachable), brief["citation_summary"])
+        import check_citations  # from scripts/ (added to sys.path above)
+        report = check_citations.check_text(_brief_citation_text(brief, memo))
+        # Keep the per-URL list render.py/council_log already consume (same shape).
+        brief["citation_check"] = report.get("url_results", [])
+        brief["citation_summary"] = report.get("summary", "")
+        flagged = [r for r in report.get("url_results", [])
+                   if r.get("verdict") == check_citations.FABRICATION]
+        needs_human = [b.get("citation", "") for b in report.get("bibliographic", [])]
+        clean = not report.get("fabrication_suspected", False)
+        brief["citation_verdict"] = {
+            "clean": clean,
+            "flagged_urls": [r.get("url", "") for r in flagged],
+            "needs_human": needs_human,
+            "counts": report.get("counts", {}),
+        }
+        brief["_integrity_clean"] = clean
+        if flagged:
+            logger.warning("research_brief: integrity check FLAGGED %d cited URL(s) "
+                            "as possibly fabricated — %s",
+                            len(flagged), brief["citation_summary"])
         else:
-            logger.info("research_brief: %s", brief["citation_summary"])
-    except Exception as exc:  # noqa: BLE001 - verification must never break the brief
-        logger.warning("research_brief: citation verification failed (%s)", exc)
+            logger.info("research_brief: integrity check clean — %s (%d need human review)",
+                        brief["citation_summary"], len(needs_human))
+    except Exception as exc:  # noqa: BLE001 - integrity check must never break the brief
+        logger.warning("research_brief: citation integrity check failed (%s)", exc)
         brief["citation_check"] = []
-        brief["citation_summary"] = "Citation verification unavailable."
+        brief["citation_summary"] = "Citation integrity check unavailable."
+        brief["citation_verdict"] = {"clean": True, "flagged_urls": [],
+                                     "needs_human": [], "counts": {}}
+        brief["_integrity_clean"] = True
 
 
 def generate_brief(items, *, prior_threads, week_str, screened,
@@ -404,7 +448,10 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         brief["_security"] = security_note
         brief["_security_clean"] = bool(verdict.get("clean"))
         brief["_security_issues"] = list(verdict.get("issues") or [])
-        # Deterministic, model-free citation check — the integrity control no model gives.
+        # INTEGRITY-CHECK stage (after the security officer): the deterministic, model-free
+        # hallucination check over the brief's own citations — URLs resolved, URL-less
+        # bibliographic authorities recorded for human verification. The integrity control
+        # no model gives.
         _verify_citations(brief, memo)
         # Chairman reconvenes to take stock and hold the council accountable.
         try:

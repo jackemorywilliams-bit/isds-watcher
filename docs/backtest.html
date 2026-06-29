@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}ISDS Thematic Watcher{% endblock %}</title>
-  <meta name="description" content="{% block description %}An automated thematic monitor for investor–State dispute settlement developments at the IP-as-investment / judicial-measure / jurisdictional-admissibility intersection.{% endblock %}">
+  <title>Backtest | ISDS Thematic Watcher</title>
+  <meta name="description" content="A small exploratory backtest of the deterministic scorer on a focused set of known investor&ndash;State cases &mdash; the three seed awards, four out-of-sample positives, and clear off-theme negatives &mdash; with a confusion matrix and a per-case breakdown.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ root }}assets/style.css">
-  {% block head_extra %}{% endblock %}
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="{{ root }}index.html">
+      <a class="brand" href="index.html">
         <span class="brand-mark">ISDS</span>
         <span class="brand-name">Thematic Watcher</span>
       </a>
@@ -24,17 +23,343 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="primary-nav" aria-label="Primary">
-        <a href="{{ root }}index.html" class="{{ 'active' if active == 'home' }}"{{ ' aria-current="page"' | safe if active == 'home' }}>Home</a>
-        <a href="{{ root }}methodology.html" class="{{ 'active' if active == 'methodology' }}"{{ ' aria-current="page"' | safe if active == 'methodology' }}>Methodology</a>
-        <a href="{{ root }}digests/index.html" class="{{ 'active' if active == 'digests' }}"{{ ' aria-current="page"' | safe if active == 'digests' }}>Digest Archive</a>
-        <a href="{{ root }}backtest.html" class="{{ 'active' if active == 'backtest' }}"{{ ' aria-current="page"' | safe if active == 'backtest' }}>Backtest</a>
-        <a href="{{ repo_url }}" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
+        <a href="index.html" class="">Home</a>
+        <a href="methodology.html" class="">Methodology</a>
+        <a href="digests/index.html" class="">Digest Archive</a>
+        <a href="backtest.html" class="active" aria-current="page">Backtest</a>
+        <a href="https://github.com/jackemorywilliams-bit/isds-watcher" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    {% block content %}{% endblock %}
+<section class="page-head">
+  <div class="measure">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Backtest</li>
+      </ol>
+    </nav>
+    <p class="page-kicker">Scorer evaluation</p>
+    <h1 class="page-title">Historical backtest</h1>
+    <p class="page-lede">
+      A small exploratory backtest on known cases &mdash; not a comprehensive validation.
+      It scores 15 familiar investor&ndash;State cases with the same deterministic
+      keyword scorer the pipeline uses, at the same digest threshold (40), and
+      reports where it agrees with the label and where it misses.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">What this is, and is not</h2>
+    <div class="doc-body">
+      <p>
+        This page is an honest, narrow sanity check, not a validation study. The set is
+        only 15 cases, hand-picked because they are well known, and it deliberately
+        mixes two kinds of case:
+      </p>
+      <ul>
+        <li>
+          the three <strong>development seed awards</strong> (Eli&nbsp;Lilly v.&nbsp;Canada,
+          Philip&nbsp;Morris v.&nbsp;Australia, Bridgestone v.&nbsp;Panama). These are
+          <em>in-sample</em> &mdash; their vocabulary trained the fingerprint &mdash; so passing
+          them confirms the scorer recovers what it was built on, nothing more;
+        </li>
+        <li>
+          four <strong>out-of-sample positives</strong> (Loewen, Mondev, Apotex, Philip&nbsp;Morris
+          v.&nbsp;Uruguay) and clear <strong>off-theme negatives</strong>, drawn from the labelled
+          holdout. These were not used in development, so they test generalisation.
+        </li>
+      </ul>
+      <p>
+        Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
+        their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
+        verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
+        text could not be resolved in-repo was excluded rather than invented. Read it as a smoke
+        test with a candid record of its one miss, not as evidence of field performance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Confusion matrix</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Predicted band at or above the threshold counts as a predicted match; below it counts as a
+      predicted pass. Rows are the true label; columns are the prediction.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Confusion matrix of predicted match versus true label across 15 cases.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Predicted match (&#8805;&nbsp;40)</th>
+            <th scope="col">Predicted pass (&lt;&nbsp;40)</th>
+            <th scope="col">Row total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
+            <td><strong>TP 6</strong></td>
+            <td>FN 1</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
+            <td>FP 0</td>
+            <td><strong>TN 8</strong></td>
+            <td>8</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption class="visually-hidden">Headline metrics derived from the confusion matrix.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Precision</th>
+            <th scope="col">Recall</th>
+            <th scope="col">Accuracy</th>
+            <th scope="col">F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.00</td>
+            <td>0.86</td>
+            <td>0.93</td>
+            <td>0.92</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        On this focused set the scorer makes
+        1 miss:
+        1 false negative and
+        0 false positives. The misses are listed in full
+        below &mdash; the point of a backtest is the failures, not the passes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">Per-case results</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Every case, its label, the score the deterministic scorer assigned, the predicted band, and
+      a note on any miss. Positives (seeds, then out-of-sample) first, then negatives.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Per-case backtest results: case, group, label, score, predicted band, and miss note.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Case</th>
+            <th scope="col">Group</th>
+            <th scope="col">Label</th>
+            <th scope="col">Score</th>
+            <th scope="col">Predicted band</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Bridgestone v. Panama</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>79</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Eli Lilly v. Canada</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>78</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Philip Morris v. Australia</th>
+            <td>seed</td>
+            <td>on-theme</td>
+            <td>66</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Philip Morris v. Uruguay</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>73</td>
+            <td>
+              <span class="badge badge-high">HIGH</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Mondev v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>62</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Loewen Group v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>56</td>
+            <td>
+              <span class="badge badge-med">MEDIUM</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Apotex Holdings v. United States</th>
+            <td>holdout-positive</td>
+            <td>on-theme</td>
+            <td>8</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+<strong>false negative</strong>            </td>
+          </tr>
+          <tr>
+            <th scope="row">Chevron v. Ecuador — award collection (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Committees in IIAs (ITN analysis)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Gabriel Resources v. Romania — public hearing (ICSID)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Honduras signs the ICSID Convention</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Investment treaties in Chile’s experience (ITN insight)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">OECD Guidelines climate due-diligence update (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Rockhopper v. Italy resubmission tribunal (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+          <tr>
+            <th scope="row">Smurfit v. Venezuela — consent after denunciation (ITN)</th>
+            <td>holdout-negative</td>
+            <td>off-theme</td>
+            <td>0</td>
+            <td>
+              <span class="badge badge-low">LOW</span>
+            </td>
+            <td>
+correct            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Where it misses, and why</h2>
+    <div class="doc-body">
+      <h3>False negatives</h3>
+      <ul>
+        <li><strong>Apotex Holdings v. United States</strong> (score 8). Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit.</li>
+      </ul>
+    </div>
+    <p class="archive-foot">
+      See the <a href="methodology.html">methodology</a> for how the scorer and its
+      threshold are defined.
+    </p>
+  </div>
+</section>
   </main>
 
   <footer class="site-footer">
@@ -49,18 +374,18 @@
           <div class="footer-col">
             <h2 class="footer-h">Project</h2>
             <ul>
-              <li><a href="{{ root }}index.html">Home</a></li>
-              <li><a href="{{ root }}methodology.html">Methodology</a></li>
-              <li><a href="{{ root }}digests/index.html">Digest Archive</a></li>
-              <li><a href="{{ root }}backtest.html">Backtest</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="methodology.html">Methodology</a></li>
+              <li><a href="digests/index.html">Digest Archive</a></li>
+              <li><a href="backtest.html">Backtest</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h2 class="footer-h">Resources</h2>
             <ul>
-              <li><a href="{{ repo_url }}" target="_blank" rel="noopener">GitHub repository &#8599;</a></li>
-              <li><a href="{{ repo_url }}/blob/main/METHODOLOGY.md" target="_blank" rel="noopener">METHODOLOGY.md &#8599;</a></li>
-              <li><a href="{{ repo_url }}/tree/main/digests" target="_blank" rel="noopener">Archive source &#8599;</a></li>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher" target="_blank" rel="noopener">GitHub repository &#8599;</a></li>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/METHODOLOGY.md" target="_blank" rel="noopener">METHODOLOGY.md &#8599;</a></li>
+              <li><a href="https://github.com/jackemorywilliams-bit/isds-watcher/tree/main/digests" target="_blank" rel="noopener">Archive source &#8599;</a></li>
             </ul>
           </div>
         </nav>
@@ -70,8 +395,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-        {% if build_stamp %}<p class="footer-build">Site built {{ build_stamp.at }}{% if build_stamp.commit %} &middot; {{ build_stamp.commit }}{% endif %}</p>{% endif %}
-      </div>
+<p class="footer-build">Site built 2026-06-29 18:56 UTC &middot; 4010885</p>      </div>
     </div>
   </footer>
   <script>

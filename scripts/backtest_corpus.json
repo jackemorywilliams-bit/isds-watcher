@@ -1,0 +1,59 @@
+{
+ "_note": "Focused labelled corpus for the historical backtest (scripts/backtest.py). It is deliberately small (~12-15 known cases) and assembled ENTIRELY from text already in the repo so nothing is fabricated. Three groups: (1) the three development SEED cases, whose text here is the verbatim doctrinal vocabulary extracted from each award and tagged to that seed in fingerprint.yaml (the same phrases that define the fingerprint); (2) four OUT-OF-SAMPLE holdout positives pulled by id from scripts/holdout_set.json; (3) clear off-theme NEGATIVES pulled by id from the same holdout file (real live listings). Holdout items are referenced by id rather than copied so the holdout stays the single source of truth.",
+ "seed_cases": [
+  {
+   "id": "eli_lilly_v_canada",
+   "name": "Eli Lilly v. Canada",
+   "label": 1,
+   "prov": "seed-lexicon (fingerprint.yaml, seed=eli_lilly)",
+   "text": "Eli Lilly v. Canada. promise utility doctrine. promise doctrine. utility requirement. patent invalidation. denial of justice. judicial measure. domestic court. judicial conduct. judicial propriety. gross denial of justice, manifest arbitrariness, blatant unfairness. minimum standard of treatment. manifest arbitrariness. arbitrary or discriminatory. dramatic change in the utility requirement."
+  },
+  {
+   "id": "philip_morris_v_australia",
+   "name": "Philip Morris v. Australia",
+   "label": 1,
+   "prov": "seed-lexicon (fingerprint.yaml, seed=philip_morris)",
+   "text": "Philip Morris v. Australia. covered investment. Plain Packaging Measures. public-interest legislation. abuse of right. abuse of process. treaty shopping. corporate restructuring. restructure its investment to gain Treaty protection. reasonably foreseeable. pre-existing or reasonably foreseeable dispute. critical date. treaty protection."
+  },
+  {
+   "id": "bridgestone_v_panama",
+   "name": "Bridgestone v. Panama",
+   "label": 1,
+   "prov": "seed-lexicon (fingerprint.yaml, seed=bridgestone)",
+   "text": "Bridgestone v. Panama. covered investment. intellectual property. trademark. exploitation of the trademark. licenses that constitute its investment. licensor. licensee. denial of justice. Supreme Court. judicial propriety. manifestly unjust judgment. shocks a sense of judicial propriety. egregiously wrong that no honest or competent court could. systemic failure in the administration of justice. minimum standard of treatment. shell subsidiary. abusive tactics. definition of investor. standing of licensor vs licensee. standing to claim denial of justice when not a party. exhaustion of local remedies."
+  }
+ ],
+ "holdout_positive_ids": [
+  "loewen_v_us",
+  "mondev_v_us",
+  "apotex_v_us",
+  "pm_v_uruguay"
+ ],
+ "holdout_negative_ids": [
+  "iisd_itn:Investment Treaties, Strategy,",
+  "iisd_itn:Committees in International In",
+  "iisd_itn:Chevron to collect over USD 20",
+  "iisd_itn:Consent after denunciation—jur",
+  "iisd_itn:Updated OECD Guidelines Mandat",
+  "iisd_itn:New Tribunal Constituted for R",
+  "icsid:Gabriel Resources Ltd. and Gab",
+  "icsid:Honduras Signs the ICSID Conve"
+ ],
+ "miss_reasons": {
+  "apotex_v_us": "Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit."
+ },
+ "display_names": {
+  "loewen_v_us": "Loewen Group v. United States",
+  "mondev_v_us": "Mondev v. United States",
+  "apotex_v_us": "Apotex Holdings v. United States",
+  "pm_v_uruguay": "Philip Morris v. Uruguay",
+  "iisd_itn:Investment Treaties, Strategy,": "Investment treaties in Chile’s experience (ITN insight)",
+  "iisd_itn:Committees in International In": "Committees in IIAs (ITN analysis)",
+  "iisd_itn:Chevron to collect over USD 20": "Chevron v. Ecuador — award collection (ITN)",
+  "iisd_itn:Consent after denunciation—jur": "Smurfit v. Venezuela — consent after denunciation (ITN)",
+  "iisd_itn:Updated OECD Guidelines Mandat": "OECD Guidelines climate due-diligence update (ITN)",
+  "iisd_itn:New Tribunal Constituted for R": "Rockhopper v. Italy resubmission tribunal (ITN)",
+  "icsid:Gabriel Resources Ltd. and Gab": "Gabriel Resources v. Romania — public hearing (ICSID)",
+  "icsid:Honduras Signs the ICSID Conve": "Honduras signs the ICSID Convention"
+ }
+}

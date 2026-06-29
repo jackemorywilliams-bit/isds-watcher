@@ -1,5 +1,5 @@
 {% extends "base.html.j2" %}
-{% block title %}ISDS Thematic Watcher: a doctrinal monitor for investor–State practice{% endblock %}
+{% block title %}ISDS Thematic Watcher: a lead-generation tool for a narrow investor–State research question{% endblock %}
 
 {% block content %}
 <section class="hero">
@@ -17,8 +17,9 @@
       <a class="btn btn-ghost" href="digests/index.html">Browse the Digest Archive</a>
     </div>
     <p class="hero-meta">
-      A research instrument for the Benavides ISDS project · open feeds and primary
-      repositories only · runs on free GitHub Actions minutes.
+      A research instrument for the Benavides ISDS project · open primary repositories,
+      public institutional sources, and selected headline-level secondary feeds · runs on
+      free GitHub Actions minutes.
     </p>
   </div>
 </section>
@@ -198,8 +199,8 @@
       <h2 class="closing-title">The most recent digest is dated {{ digests[0].date }}.</h2>
       <p class="closing-sub">
         {{ digests[0].screened_str }} screened, {{ digests[0].matches_str }} matches,
-        {{ digests[0].accepted_str }} accepted.
-        Each accepted item carries its source named, linked, and quoted.
+        {{ digests[0].accepted_str }} watch-list leads shown.
+        Each item shown carries its source named, linked, and quoted.
       </p>
       {% else %}
       <h2 class="closing-title">No digests have been archived yet.</h2>

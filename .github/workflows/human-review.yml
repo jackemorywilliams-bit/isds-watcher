@@ -1,0 +1,53 @@
+name: human-review
+
+# Email the council-prepared human-review DRAFT to the operator for ratification.
+# Human review is a delivered artifact: this fires every Monday (and on demand), runs the
+# assisted first pass, and emails the rendered draft over SMTP. No model API, no API cost.
+on:
+  schedule:
+    # Mondays 13:00 UTC — the weekly human-review email.
+    - cron: "0 13 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: human-review
+  cancel-in-progress: false
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Email the human-review draft
+        run: python scripts/send_human_review.py
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          python - <<'PY'
+          import os, smtplib
+          from email.mime.text import MIMEText
+          host=os.environ.get("SMTP_HOST","smtp.gmail.com"); port=int(os.environ.get("SMTP_PORT","465"))
+          user=os.environ.get("SMTP_USER"); pw=(os.environ.get("SMTP_PASS") or "").replace(" ","")
+          if not (user and pw):
+              print("no SMTP creds; cannot send failure alert"); raise SystemExit(0)
+          run_url=f"{os.environ.get('GITHUB_SERVER_URL','https://github.com')}/{os.environ.get('GITHUB_REPOSITORY','')}/actions/runs/{os.environ.get('GITHUB_RUN_ID','')}"
+          body=f"The human-review workflow FAILED.\n\nRun: {run_url}\n\nThe weekly human-review draft email may not have been sent."
+          msg=MIMEText(body); msg["Subject"]="ISDS Human Review — RUN FAILED"; msg["From"]=user; msg["To"]="jackemorywilliams@icloud.com"
+          with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+              s.login(user, pw); s.sendmail(user, ["jackemorywilliams@icloud.com"], msg.as_string())
+          print("failure alert sent")
+          PY

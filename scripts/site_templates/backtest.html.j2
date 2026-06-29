@@ -1,0 +1,196 @@
+{% extends "base.html.j2" %}
+{% block title %}Backtest | ISDS Thematic Watcher{% endblock %}
+{% block description %}A small exploratory backtest of the deterministic scorer on a focused set of known investor&ndash;State cases &mdash; the three seed awards, four out-of-sample positives, and clear off-theme negatives &mdash; with a confusion matrix and a per-case breakdown.{% endblock %}
+
+{% block content %}
+<section class="page-head">
+  <div class="measure">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ root }}index.html">Home</a></li>
+        <li aria-current="page">Backtest</li>
+      </ol>
+    </nav>
+    <p class="page-kicker">Scorer evaluation</p>
+    <h1 class="page-title">Historical backtest</h1>
+    <p class="page-lede">
+      A small exploratory backtest on known cases &mdash; not a comprehensive validation.
+      It scores {{ bt.total }} familiar investor&ndash;State cases with the same deterministic
+      keyword scorer the pipeline uses, at the same digest threshold ({{ bt.threshold }}), and
+      reports where it agrees with the label and where it misses.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">What this is, and is not</h2>
+    <div class="doc-body">
+      <p>
+        This page is an honest, narrow sanity check, not a validation study. The set is
+        only {{ bt.total }} cases, hand-picked because they are well known, and it deliberately
+        mixes two kinds of case:
+      </p>
+      <ul>
+        <li>
+          the three <strong>development seed awards</strong> (Eli&nbsp;Lilly v.&nbsp;Canada,
+          Philip&nbsp;Morris v.&nbsp;Australia, Bridgestone v.&nbsp;Panama). These are
+          <em>in-sample</em> &mdash; their vocabulary trained the fingerprint &mdash; so passing
+          them confirms the scorer recovers what it was built on, nothing more;
+        </li>
+        <li>
+          four <strong>out-of-sample positives</strong> (Loewen, Mondev, Apotex, Philip&nbsp;Morris
+          v.&nbsp;Uruguay) and clear <strong>off-theme negatives</strong>, drawn from the labelled
+          holdout. These were not used in development, so they test generalisation.
+        </li>
+      </ul>
+      <p>
+        Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
+        their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
+        verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
+        text could not be resolved in-repo was excluded rather than invented. Read it as a smoke
+        test with a candid record of its one miss, not as evidence of field performance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Confusion matrix</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Predicted band at or above the threshold counts as a predicted match; below it counts as a
+      predicted pass. Rows are the true label; columns are the prediction.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Confusion matrix of predicted match versus true label across {{ bt.total }} cases.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Predicted match (&#8805;&nbsp;{{ bt.threshold }})</th>
+            <th scope="col">Predicted pass (&lt;&nbsp;{{ bt.threshold }})</th>
+            <th scope="col">Row total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
+            <td><strong>TP {{ bt.tp }}</strong></td>
+            <td>FN {{ bt.fn }}</td>
+            <td>{{ bt.n_pos }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
+            <td>FP {{ bt.fp }}</td>
+            <td><strong>TN {{ bt.tn }}</strong></td>
+            <td>{{ bt.n_neg }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption class="visually-hidden">Headline metrics derived from the confusion matrix.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Precision</th>
+            <th scope="col">Recall</th>
+            <th scope="col">Accuracy</th>
+            <th scope="col">F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ '%.2f' | format(bt.precision) }}</td>
+            <td>{{ '%.2f' | format(bt.recall) }}</td>
+            <td>{{ '%.2f' | format(bt.accuracy) }}</td>
+            <td>{{ '%.2f' | format(bt.f1) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        On this focused set the scorer makes
+        {{ bt.fp + bt.fn }} miss{{ 'es' if (bt.fp + bt.fn) != 1 else '' }}:
+        {{ bt.fn }} false negative{{ 's' if bt.fn != 1 else '' }} and
+        {{ bt.fp }} false positive{{ 's' if bt.fp != 1 else '' }}. The misses are listed in full
+        below &mdash; the point of a backtest is the failures, not the passes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <h2 class="section-head">Per-case results</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Every case, its label, the score the deterministic scorer assigned, the predicted band, and
+      a note on any miss. Positives (seeds, then out-of-sample) first, then negatives.
+    </p>
+    <div class="doc-body">
+      <table>
+        <caption class="visually-hidden">
+          Per-case backtest results: case, group, label, score, predicted band, and miss note.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Case</th>
+            <th scope="col">Group</th>
+            <th scope="col">Label</th>
+            <th scope="col">Score</th>
+            <th scope="col">Predicted band</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in bt.cases %}
+          <tr>
+            <th scope="row">{{ c.name }}</th>
+            <td>{{ c.group }}</td>
+            <td>{{ 'on-theme' if c.label == 1 else 'off-theme' }}</td>
+            <td>{{ c.score }}</td>
+            <td>
+              <span class="badge badge-{{ c.band | band_class }}">{{ c.band }}</span>
+            </td>
+            <td>
+              {% if c.correct %}correct{% else %}<strong>{{ c.miss_kind }}</strong>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% if bt.false_negatives or bt.false_positives %}
+<section class="band band-alt">
+  <div class="measure">
+    <h2 class="section-head">Where it misses, and why</h2>
+    <div class="doc-body">
+      {% if bt.false_negatives %}
+      <h3>False negatives</h3>
+      <ul>
+        {% for c in bt.false_negatives %}
+        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if bt.false_positives %}
+      <h3>False positives</h3>
+      <ul>
+        {% for c in bt.false_positives %}
+        <li><strong>{{ c.name }}</strong> (score {{ c.score }}). {{ c.reason }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <p class="archive-foot">
+      See the <a href="{{ root }}methodology.html">methodology</a> for how the scorer and its
+      threshold are defined.
+    </p>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

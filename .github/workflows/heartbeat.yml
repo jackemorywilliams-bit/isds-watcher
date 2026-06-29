@@ -1,0 +1,80 @@
+name: heartbeat
+
+# Dead-man's-switch for the daily chairman + researcher meeting.
+#
+# Once a day this checks the newest analytics/daily-research/*.md. If the freshest
+# record is older than ~36h (or none exists at all), the meeting has gone stale and
+# this emails an ALERT over SMTP. 36h gives one full daily cycle of slack — a single
+# missed day does not page; two missed days does.
+#
+# HONEST CAVEAT: this watchdog sends its alert over the SAME SMTP path used by the
+# thing it watches. If SMTP itself is down, this alert is lost too — it shares fate
+# with what it monitors. A truly independent dead-man's-switch needs an out-of-band
+# channel (e.g. a hosted cron pinging a separate service, SMS, or a status page).
+# That is a deliberate future improvement; this is the cheap, in-band first cut.
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 22:00 UTC daily, after the late daily-update fallback
+  workflow_dispatch: {}
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      STALE_HOURS: "36"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check daily-meeting freshness and alert if stale
+        run: |
+          python - <<'PY'
+          import glob, os, smtplib, time
+          from email.mime.text import MIMEText
+
+          stale_hours = float(os.environ.get("STALE_HOURS", "36"))
+          paths = sorted(glob.glob(os.path.join("analytics", "daily-research", "*.md")))
+          now = time.time()
+
+          if paths:
+              newest = max(paths, key=os.path.getmtime)
+              age_h = (now - os.path.getmtime(newest)) / 3600.0
+              stale = age_h > stale_hours
+              detail = f"newest record: {os.path.basename(newest)} (~{age_h:.1f}h old)"
+          else:
+              stale = True
+              detail = "no daily-research records exist at all"
+
+          print(detail)
+          if not stale:
+              print("heartbeat OK — daily meeting is fresh.")
+              raise SystemExit(0)
+
+          user = os.environ.get("SMTP_USER")
+          pw = (os.environ.get("SMTP_PASS") or "").replace(" ", "")
+          if not (user and pw):
+              print("STALE but no SMTP creds; cannot send heartbeat alert")
+              raise SystemExit(0)
+          host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+          port = int(os.environ.get("SMTP_PORT", "465"))
+          body = (
+              "HEARTBEAT ALERT — the daily ISDS chairman + researcher meeting has gone stale.\n\n"
+              f"{detail}\n"
+              f"Staleness threshold: {stale_hours:.0f}h.\n\n"
+              "The meeting runs at 11:00 UTC on Claude Max and commits its record to "
+              "analytics/daily-research/<DATE>.md. A stale record means the routine has "
+              "not run, or cannot push its work back to the repository.\n\n"
+              "(Note: this alert shares the same SMTP path as the daily email; if SMTP "
+              "itself were down you would not receive this.)")
+          msg = MIMEText(body)
+          msg["Subject"] = "ISDS Daily Meeting — HEARTBEAT ALERT (stale)"
+          msg["From"] = user
+          msg["To"] = "jackemorywilliams@icloud.com"
+          with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+              s.login(user, pw)
+              s.sendmail(user, ["jackemorywilliams@icloud.com"], msg.as_string())
+          print("heartbeat alert sent")
+          PY

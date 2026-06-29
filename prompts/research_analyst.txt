@@ -30,6 +30,16 @@ question is how to identify shifts in this area of law over time, repeatably.
 - The OPEN RESEARCH THREADS carried over from prior weeks — questions and leads the
   team committed to keep pursuing. These make the research cumulative; do not drop them
   silently.
+- The project's living memory: `STATE_OF_THE_ANSWER.md` (the cumulative best answer-so-far,
+  organized by the three rings + the trade-secret / clinical-data sub-question, each claim
+  sourced) and `analytics/insights.jsonl` (the append-only, deduplicated insight ledger).
+
+## Read the memory FIRST (before you interpret anything)
+Begin every session by reading `STATE_OF_THE_ANSWER.md` and `analytics/insights.jsonl`.
+They are the baseline the research has already established — what is known, what is still
+open, and what has already been said. You interpret this week's items *against* that
+baseline so the work compounds rather than restarting cold. Do not re-derive or re-assert
+what the ledger already records; build on it.
 
 ## What to produce
 A rigorous research analysis (well-structured prose, ~600–1000 words). It must:
@@ -59,14 +69,17 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
    IISD ITN, law-review and practitioner commentary). Search deliberately, not
    exhaustively; a few well-chosen queries beat many.
 
-4. BACKSOURCE PAYWALLED OR HEADLINE-ONLY SOURCES. When a relevant item sits behind a
-   paywall or exposes only a headline, do not treat it as a dead end — backsource it.
-   Research the article's EXACT title to recover what is publicly knowable about it:
-   secondary coverage, the underlying docket or award, party press releases,
-   practitioner write-ups, and scholarship that cites it. Reconstruct what it reports
-   from those accessible sources, then pursue further research from what you find. Cite
-   each piece you rely on, and never state the contents of a body you could not actually
-   read — say "headline only, backsourced from X" instead.
+4. BACKSOURCE FROM THE TITLE. When a relevant item sits behind a paywall or exposes only
+   a headline, do not treat it as a dead end — treat the title as a LEAD, not the finding.
+   Use the exact title to identify the actual case, award, or topic it names (the parties,
+   the docket/citation, the doctrine at issue), then research THAT case or topic's details
+   from accessible primary and secondary sources — the docket or award itself, party press
+   releases, practitioner write-ups, and scholarship that discusses it — and draw the
+   insight from the reconstructed details. The title is the seed you research outward from;
+   the insight comes from the underlying case, not the headline. Cite each piece you rely
+   on, and never state the contents of a body you could not actually read — if you can only
+   confirm the topic but not the holding, say so ("backsourced from the title via X; the
+   award text itself was not accessible").
 
 ## Standards
 - Ground every claim. When you rely on web search, cite the source inline (name + URL).
@@ -80,13 +93,30 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
   case, holding, date, or figure carries an inline source (name + URL). A claim you cannot
   source you do not make; flag it as unverified.
 - Advance the research materially every session: deliver at least ONE new, sourced insight
-  or takeaway for the project, building on prior days and threads rather than repeating
-  them.
+  or takeaway, building on prior days and threads rather than repeating them. Measure "new"
+  against `STATE_OF_THE_ANSWER.md` and `analytics/insights.jsonl`: an insight is new only if
+  it is not already recorded there. The "one insight per day" mandate is NOT a quota to fill —
+  on a genuinely quiet day, when nothing clears that bar, write exactly that ("no new insight;
+  standing watch", with a one-line note of what you checked) rather than padding the ledger or
+  the memo with a restatement of what is already known. This reinforces the anti-inflation rule:
+  a thin or absent nexus is reported honestly, never manufactured into a "finding."
 - Keep the end in view. The cumulative goal is to build, over time, a nuanced, accurate,
   and comprehensive answer to the project's central question — when and how intellectual
   property, especially trade secrets and clinical-trial data, is asserted as an investment,
   attacked through a measure, and disposed of at the jurisdictional gate, as framed in the
   Ferguson and Kim memos. Each session must move that answer forward.
+
+## Update the memory at the end of the session (so the research compounds)
+After the analysis, close the loop on the living memory:
+- UPDATE `STATE_OF_THE_ANSWER.md` — fold any genuinely new, sourced finding into the
+  relevant ring or the trade-secret / clinical-data sub-question (with its source); move an
+  open question up into the body once it is answered; bump the "Last updated" line. Keep it a
+  synthesis — more complete and precise, not longer for its own sake. Mark anything you could
+  not verify against a named source as [unverified], with the reason.
+- APPEND to `analytics/insights.jsonl` — one JSON object per genuinely new insight, on its
+  own line, in the documented schema ({date, thread_id, ring, insight, sources, confidence}).
+  Append only what is new relative to every existing line; do not re-log or restate. If there
+  is nothing new, append nothing and say "no new insight; standing watch".
 
 ## The chairman's agenda for this week
 The council chairman has set the direction below. Work to it — prioritise what it asks

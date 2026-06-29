@@ -1,11 +1,43 @@
 name: daily-update
 
 # Email the day's chairman + researcher meeting record (committed by the Max routine
-# at ~11:00 UTC) to the configured recipients. SMTP only -- no model API, no API cost.
+# at ~11:00 UTC) to the configured recipients. SMTP only — no model API, no API cost.
+#
+# Why this is more than a single fixed cron:
+#   * The routine finishes at an unpredictable hour, sometimes after the old 13:00
+#     send, so a fixed time produced "no record yet" false negatives.
+#   * The routine commits with "[skip ci]", which GitHub honors to SKIP workflows.
+#     So the push trigger below will NOT fire on the routine's own commit. We keep
+#     `on: push` for any non-skip push (and manual pushes), but we do NOT rely on it.
+#   * The real delivery path is the recurring cron: it runs several times across the
+#     day, sends the record once it exists, and de-duplicates via a marker file
+#     (analytics/daily-research/.sent/<DATE>) committed back to the repo — so the
+#     email goes out at most once per day on the day the record lands.
+#   * A late fallback cron (21:00 UTC) escalates with an ALERT subject if the day's
+#     record is still missing by end of day.
 on:
+  push:
+    paths:
+      - "analytics/daily-research/**"
   schedule:
-    - cron: "0 13 * * *"   # 13:00 UTC daily, after the 11:00 UTC council meeting
-  workflow_dispatch: {}
+    # Recurring sends — fire once the record exists, de-duplicated to one email/day.
+    - cron: "0 12,15,18 * * *"
+    # Late fallback — escalate if the day's record is still missing.
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+    inputs:
+      escalate:
+        description: "Force the late ESCALATION path (alert if no record)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write           # commit the per-day "sent" marker back
+
+concurrency:
+  # Serialize daily-update runs so two crons can't both send / both write the marker.
+  group: daily-update
+  cancel-in-progress: false
 
 jobs:
   email:
@@ -22,5 +54,55 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+
+      # The 21:00 cron (or a dispatch with escalate=true) takes the ESCALATION path,
+      # which sends an ALERT subject when no record was found by end of day.
+      - name: Decide escalation mode
+        id: mode
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 21 * * *" ] || \
+             [ "${{ github.event.inputs.escalate }}" = "true" ]; then
+            echo "flag=--escalate" >> "$GITHUB_OUTPUT"
+          else
+            echo "flag=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Email the daily council meeting record
-        run: python scripts/send_daily_update.py
+        run: python scripts/send_daily_update.py ${{ steps.mode.outputs.flag }}
+
+      # Persist the per-day "sent" marker so the next cron of the day de-duplicates.
+      # Records and the council log are written by the routine on its own branch;
+      # we only ever add the small marker file under analytics/daily-research/.sent/.
+      - name: Commit sent marker
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics/daily-research/.sent/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new sent marker to commit."
+          else
+            git commit -m "chore: daily-update sent marker [skip ci]"
+            for attempt in 1 2 3; do
+              git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && break
+              echo "push attempt $attempt failed; retrying"
+              sleep 3
+            done
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          python - <<'PY'
+          import os, smtplib
+          from email.mime.text import MIMEText
+          host=os.environ.get("SMTP_HOST","smtp.gmail.com"); port=int(os.environ.get("SMTP_PORT","465"))
+          user=os.environ.get("SMTP_USER"); pw=(os.environ.get("SMTP_PASS") or "").replace(" ","")
+          if not (user and pw):
+              print("no SMTP creds; cannot send failure alert"); raise SystemExit(0)
+          run_url=f"{os.environ.get('GITHUB_SERVER_URL','https://github.com')}/{os.environ.get('GITHUB_REPOSITORY','')}/actions/runs/{os.environ.get('GITHUB_RUN_ID','')}"
+          body=f"The daily-update workflow FAILED.\n\nRun: {run_url}\n\nCheck the logs; the day's council meeting email may not have been sent."
+          msg=MIMEText(body); msg["Subject"]="ISDS Daily Update — RUN FAILED"; msg["From"]=user; msg["To"]="jackemorywilliams@icloud.com"
+          with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+              s.login(user, pw); s.sendmail(user, ["jackemorywilliams@icloud.com"], msg.as_string())
+          print("failure alert sent")
+          PY

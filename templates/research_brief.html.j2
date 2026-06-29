@@ -35,6 +35,10 @@
   .threads { padding:10px 36px 18px; }
   .threads li { font-size:14px; margin:6px 0; }
   .empty { padding:10px 36px; color:#6a7280; font-size:13.5px; font-style:italic; }
+  .cite { padding:12px 36px 14px; border-top:1px solid #eef0f3;
+         font-family:Arial,Helvetica,sans-serif; font-size:12px; color:#5a6672; }
+  .cite strong { color:#3a4651; }
+  .cite .flag { color:#9a3b2e; }
   .foot { background:#3a1f28; color:#e6d6db; padding:22px 36px 26px;
          font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:1.6; }
   .foot a { color:#e0b3c0; text-decoration:none; }
@@ -98,6 +102,17 @@
   <ul class="threads">
     {% for t in brief.open_threads %}<li>{{ t }}</li>{% endfor %}
   </ul>
+  {% endif %}
+
+  {% if brief.citation_summary %}
+  <div class="cite">
+    <strong>Citation check.</strong> {{ brief.citation_summary }}
+    {% set unreachable = (brief.citation_check or []) | selectattr("verdict", "equalto", "unreachable") | list %}
+    {% if unreachable %}
+    <span class="flag">— {{ unreachable | length }} cited source{{ "" if unreachable | length == 1 else "s" }} did not resolve and should be checked before relying on the finding{{ "" if unreachable | length == 1 else "s" }}.</span>
+    {% endif %}
+    <span style="display:block; margin-top:4px; color:#8a929c;">Every cited URL was fetched programmatically (ok / paywalled / unreachable); this is a reachability check, not a fact check.</span>
+  </div>
   {% endif %}
 
   <div class="foot">

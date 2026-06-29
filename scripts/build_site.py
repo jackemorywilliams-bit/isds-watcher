@@ -271,6 +271,10 @@ class Digest:
     accepted: int | None = None
     matches: int | None = None
     screened: int | None = None
+    # Per-source fresh-candidate and surfaced counts from meta.json. Older runs
+    # predate per-source counting, so these are empty dicts there (guarded for).
+    per_source: dict[str, int] = field(default_factory=dict)
+    accepted_by_source: dict[str, int] = field(default_factory=dict)
 
     @property
     def accepted_str(self) -> str:
@@ -454,13 +458,18 @@ def _parse_digest_summary(digest_dir: Path) -> tuple[str, int | None, str | None
 
 
 def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
-                    fallback_accepted: int) -> tuple[int | None, int | None, int | None]:
-    """Resolve ``(accepted, matches, screened)`` for a digest, defined identically
-    to the email and meta.json: ``screened`` = candidates scored; ``matches`` =
-    items at/above threshold; ``accepted`` = matches plus watch-list leads shown.
+                    fallback_accepted: int) -> tuple[int | None, int | None, int | None,
+                                                     dict[str, int], dict[str, int]]:
+    """Resolve ``(accepted, matches, screened, per_source, accepted_by_source)`` for a
+    digest, defined identically to the email and meta.json: ``screened`` = candidates
+    scored; ``matches`` = items at/above threshold; ``accepted`` = matches plus
+    watch-list leads shown. ``per_source`` / ``accepted_by_source`` map each catalogue
+    source to its fresh-candidate / surfaced count (empty for runs that predate
+    per-source counting).
 
     Order of preference:
-    1. ``meta.json`` (schema {"date","screened","matches","watch_list_leads","accepted"}).
+    1. ``meta.json`` (schema {"date","screened","matches","watch_list_leads","accepted",
+       optionally "per_source","accepted_by_source"}).
     2. The folder's ``index.html`` footer (current "Screened:" / "Matches (>=N):",
        or legacy "Candidates screened:" / "At or above threshold (N):").
     3. README-derived fallbacks (candidate count for screened, surfaced-entry count
@@ -471,6 +480,8 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
     accepted: int | None = None
     matches: int | None = None
     screened: int | None = None
+    per_source: dict[str, int] = {}
+    accepted_by_source: dict[str, int] = {}
 
     # 1. meta.json (authoritative when present).
     meta_path = digest_dir / "meta.json"
@@ -489,6 +500,13 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
                     matches = meta["accepted"]
             if isinstance(meta.get("screened"), int):
                 screened = meta["screened"]
+            # Per-source maps are optional (absent in older runs); keep only int values.
+            ps = meta.get("per_source")
+            if isinstance(ps, dict):
+                per_source = {str(k): v for k, v in ps.items() if isinstance(v, int)}
+            abs_ = meta.get("accepted_by_source")
+            if isinstance(abs_, dict):
+                accepted_by_source = {str(k): v for k, v in abs_.items() if isinstance(v, int)}
         except (ValueError, OSError) as exc:
             print(f"    ! {digest_dir.name}: meta.json unreadable ({exc}); "
                   "falling back to index.html footer")
@@ -520,7 +538,7 @@ def _resolve_counts(digest_dir: Path, fallback_screened: int | None,
     if accepted is None:
         accepted = fallback_accepted  # surfaced-entry count = matches + leads shown
 
-    return accepted, matches, screened
+    return accepted, matches, screened, per_source, accepted_by_source
 
 
 def parse_digest(digest_dir: Path) -> Digest | None:
@@ -546,7 +564,7 @@ def parse_digest(digest_dir: Path) -> Digest | None:
 
     summary_html, candidates, classifier, threshold = _parse_digest_summary(digest_dir)
 
-    accepted, matches, screened = _resolve_counts(
+    accepted, matches, screened, per_source, accepted_by_source = _resolve_counts(
         digest_dir,
         fallback_screened=candidates,
         fallback_accepted=len(entries),
@@ -565,6 +583,8 @@ def parse_digest(digest_dir: Path) -> Digest | None:
         accepted=accepted,
         matches=matches,
         screened=screened,
+        per_source=per_source,
+        accepted_by_source=accepted_by_source,
     )
 
 
@@ -582,6 +602,302 @@ def collect_digests() -> list[Digest]:
         if dg:
             digests.append(dg)
     return digests
+
+
+# --------------------------------------------------------------------------- #
+# Archive charts (Upgrade C): build-time inline SVG from per-digest data.
+#
+# All coordinate math lives here in Python; the template only drops the finished
+# SVG markup in place and carries the same numbers in a visually-hidden table for
+# the accessible / no-JS path. JS (archiveChartInit) only adds a hover readout and
+# an IntersectionObserver draw-in, so the charts read fully without it.
+# --------------------------------------------------------------------------- #
+
+# Palette tokens, mirrored from style.css.j2 so the SVG fills match the stylesheet.
+_CHART = {
+    "navy": "#0b3d5c",        # var(--navy)      — screened series
+    "gold_bright": "#b8860b", # var(--gold-bright)— accepted series
+    "line": "#e3ddd1",        # var(--line)      — axes / gridlines
+    "muted": "#6a7280",       # var(--muted)     — annotation text
+    "ink_soft": "#3a4654",    # var(--ink-soft)  — axis labels
+}
+
+
+def _src_label(key: str) -> str:
+    """Human label for a per-source key, consistent with the rest of the site
+    (the digest 'sources' line and the .source-name capitalize rule)."""
+    return key.replace("_", " ").strip().capitalize()
+
+
+def _fmt_num(value: float) -> str:
+    """Trim trailing zeros from a coordinate for compact, stable SVG output."""
+    return f"{value:.1f}".rstrip("0").rstrip(".")
+
+
+@dataclass
+class ChartData:
+    """Numeric series + ready-to-drop inline SVG for the two archive charts.
+
+    Every field is template-safe: ``trend_svg`` / ``source_svg`` are pre-escaped
+    SVG strings, and the ``*_rows`` lists feed the visually-hidden data tables.
+    ``has_source`` is False when no run carries per-source counts (older archives),
+    in which case the source figure is omitted entirely rather than faked.
+    """
+    trend_svg: str
+    trend_rows: list[dict]          # [{date, screened, accepted}]
+    trend_summary: str              # worded summary for the chart's aria description
+    source_svg: str
+    source_rows: list[dict]         # [{label, screened, accepted}]
+    source_summary: str
+    has_source: bool
+    source_runs: int                # how many runs contributed per-source data
+
+
+def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
+    """A weekly trend chart (screened area+line and accepted line) with the
+    matches==0 baseline annotated. Returns ``(svg, worded_summary)``."""
+    W, H = 640, 240
+    pad_l, pad_r, pad_t, pad_b = 44, 16, 18, 40
+    plot_w = W - pad_l - pad_r
+    plot_h = H - pad_t - pad_b
+    n = len(rows)
+
+    screened_vals = [r["screened"] or 0 for r in rows]
+    accepted_vals = [r["accepted"] or 0 for r in rows]
+    y_max = max(screened_vals + accepted_vals + [1])
+    # Round the top gridline up to a clean number for readable ticks.
+    step = 20 if y_max > 40 else (5 if y_max > 10 else 2)
+    y_top = ((y_max // step) + 1) * step if y_max % step else y_max
+
+    def x(i: int) -> float:
+        return pad_l if n <= 1 else pad_l + plot_w * i / (n - 1)
+
+    def y(v: float) -> float:
+        return pad_t + plot_h * (1 - (v / y_top if y_top else 0))
+
+    # Gridlines + y-axis tick labels.
+    grid: list[str] = []
+    ticks = list(range(0, y_top + 1, step))
+    for tv in ticks:
+        gy = _fmt_num(y(tv))
+        grid.append(
+            f'<line class="chart-grid" x1="{pad_l}" y1="{gy}" '
+            f'x2="{W - pad_r}" y2="{gy}" />')
+        grid.append(
+            f'<text class="chart-axis-label" x="{pad_l - 8}" y="{gy}" '
+            f'text-anchor="end" dominant-baseline="middle">{tv}</text>')
+
+    # x-axis date labels (short MM-DD).
+    xlabels: list[str] = []
+    for i, r in enumerate(rows):
+        short = r["date"][5:]  # MM-DD
+        xlabels.append(
+            f'<text class="chart-axis-label" x="{_fmt_num(x(i))}" '
+            f'y="{H - pad_b + 16}" text-anchor="middle">{html.escape(short)}</text>')
+
+    # Screened: filled area under a line.
+    pts_scr = [(x(i), y(v)) for i, v in enumerate(screened_vals)]
+    line_scr = " ".join(f"{_fmt_num(px)},{_fmt_num(py)}" for px, py in pts_scr)
+    area_d = (f"M {_fmt_num(pts_scr[0][0])},{_fmt_num(y(0))} "
+              + " ".join(f"L {_fmt_num(px)},{_fmt_num(py)}" for px, py in pts_scr)
+              + f" L {_fmt_num(pts_scr[-1][0])},{_fmt_num(y(0))} Z")
+
+    pts_acc = [(x(i), y(v)) for i, v in enumerate(accepted_vals)]
+    line_acc = " ".join(f"{_fmt_num(px)},{_fmt_num(py)}" for px, py in pts_acc)
+
+    # Matches==0 baseline, explicitly annotated (matches has been 0 throughout).
+    zero_y = _fmt_num(y(0))
+    zero_line = (
+        f'<line class="chart-zero" x1="{pad_l}" y1="{zero_y}" '
+        f'x2="{W - pad_r}" y2="{zero_y}" />'
+        f'<text class="chart-zero-label" x="{W - pad_r}" y="{float(zero_y) - 6:.1f}" '
+        f'text-anchor="end">matches = 0 throughout</text>')
+
+    # Hover/focus targets: one transparent marker group per date (JS reads data-*).
+    markers: list[str] = []
+    for i, r in enumerate(rows):
+        sx, sy = x(i), y(screened_vals[i])
+        ax, ay = x(i), y(accepted_vals[i])
+        markers.append(
+            f'<g class="chart-marker" tabindex="0" role="listitem" '
+            f'data-date="{html.escape(r["date"])}" '
+            f'data-screened="{screened_vals[i]}" '
+            f'data-accepted="{accepted_vals[i]}" '
+            f'aria-label="{html.escape(r["date"])}: {screened_vals[i]} screened, '
+            f'{accepted_vals[i]} accepted, 0 matches">'
+            f'<rect class="chart-hit" x="{_fmt_num(x(i) - plot_w / (2 * max(n - 1, 1)))}" '
+            f'y="{pad_t}" width="{_fmt_num(plot_w / max(n - 1, 1))}" height="{plot_h}" />'
+            f'<circle class="chart-dot chart-dot-screened" cx="{_fmt_num(sx)}" '
+            f'cy="{_fmt_num(sy)}" r="3.5" />'
+            f'<circle class="chart-dot chart-dot-accepted" cx="{_fmt_num(ax)}" '
+            f'cy="{_fmt_num(ay)}" r="3.5" />'
+            f'</g>')
+
+    svg = (
+        f'<svg class="chart chart-trend" viewBox="0 0 {W} {H}" '
+        f'role="img" aria-labelledby="trend-title trend-desc" '
+        f'preserveAspectRatio="xMidYMid meet">'
+        f'<title id="trend-title">Weekly screened-and-accepted trend</title>'
+        f'<desc id="trend-desc">{html.escape(_trend_summary_text(rows))}</desc>'
+        + "".join(grid)
+        + f'<path class="chart-area chart-area-screened" d="{area_d}" />'
+        + f'<polyline class="chart-line chart-line-screened" points="{line_scr}" />'
+        + f'<polyline class="chart-line chart-line-accepted" points="{line_acc}" />'
+        + zero_line
+        + f'<g class="chart-markers" role="list">' + "".join(markers) + "</g>"
+        + "".join(xlabels)
+        + "</svg>"
+    )
+    return svg, _trend_summary_text(rows)
+
+
+def _trend_summary_text(rows: list[dict]) -> str:
+    if not rows:
+        return "No runs archived yet."
+    first, last = rows[0], rows[-1]
+    accepted_total = sum(r["accepted"] or 0 for r in rows)
+    return (
+        f"Across {len(rows)} weekly runs from {first['date']} to {last['date']}, "
+        f"items screened fell from {first['screened']} to {last['screened']} as "
+        f"deduplication matured, while matches stayed at zero throughout and "
+        f"accepted items were a steady trickle totalling {accepted_total}.")
+
+
+def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
+    """A horizontal per-source bar chart: screened vs accepted per source, sorted
+    by screened volume. Returns ``(svg, worded_summary)``."""
+    W = 640
+    pad_l, pad_r, pad_t, pad_b = 150, 40, 14, 28
+    row_h, bar_h, gap = 30, 9, 3
+    n = len(rows)
+    H = pad_t + pad_b + n * row_h
+    plot_w = W - pad_l - pad_r
+    x_max = max([r["screened"] for r in rows] + [1])
+
+    def bar_w(v: int) -> float:
+        return plot_w * v / x_max if x_max else 0
+
+    parts: list[str] = []
+    # A light baseline axis at the left of the bars.
+    parts.append(
+        f'<line class="chart-grid" x1="{pad_l}" y1="{pad_t}" '
+        f'x2="{pad_l}" y2="{H - pad_b}" />')
+
+    for i, r in enumerate(rows):
+        top = pad_t + i * row_h
+        cy = top + row_h / 2
+        label = _src_label(r["key"])
+        # Source label (left gutter).
+        parts.append(
+            f'<text class="chart-axis-label chart-src-label" x="{pad_l - 10}" '
+            f'y="{_fmt_num(cy)}" text-anchor="end" dominant-baseline="middle">'
+            f'{html.escape(label)}</text>')
+        sw = bar_w(r["screened"])
+        aw = bar_w(r["accepted"])
+        y_scr = top + (row_h - (2 * bar_h + gap)) / 2
+        y_acc = y_scr + bar_h + gap
+        group = (
+            f'<g class="chart-srcrow" tabindex="0" role="listitem" '
+            f'data-source="{html.escape(label)}" '
+            f'data-screened="{r["screened"]}" data-accepted="{r["accepted"]}" '
+            f'aria-label="{html.escape(label)}: {r["screened"]} screened, '
+            f'{r["accepted"]} accepted">'
+            f'<rect class="chart-hit" x="{pad_l}" y="{_fmt_num(top + 2)}" '
+            f'width="{_fmt_num(plot_w)}" height="{row_h - 4}" />'
+            f'<rect class="chart-bar chart-bar-screened" x="{pad_l}" '
+            f'y="{_fmt_num(y_scr)}" width="{_fmt_num(sw)}" height="{bar_h}" rx="1.5" />'
+            f'<rect class="chart-bar chart-bar-accepted" x="{pad_l}" '
+            f'y="{_fmt_num(y_acc)}" width="{_fmt_num(max(aw, 1) if r["accepted"] else 0)}" '
+            f'height="{bar_h}" rx="1.5" />'
+            f'<text class="chart-bar-value" x="{_fmt_num(pad_l + max(sw, aw) + 6)}" '
+            f'y="{_fmt_num(cy)}" dominant-baseline="middle">'
+            f'{r["screened"]}/{r["accepted"]}</text>'
+            f'</g>')
+        parts.append(group)
+
+    svg = (
+        f'<svg class="chart chart-source" viewBox="0 0 {W} {H}" '
+        f'role="img" aria-labelledby="source-title source-desc" '
+        f'preserveAspectRatio="xMidYMid meet">'
+        f'<title id="source-title">Per-source screened and accepted totals</title>'
+        f'<desc id="source-desc">{html.escape(_source_summary_text(rows))}</desc>'
+        + "".join(parts)
+        + "</svg>"
+    )
+    return svg, _source_summary_text(rows)
+
+
+def _source_summary_text(rows: list[dict]) -> str:
+    if not rows:
+        return "No per-source data is available yet."
+    active = [r for r in rows if r["screened"] > 0]
+    if not active:
+        return "No source surfaced fresh candidates in the runs with per-source data."
+    top = active[0]
+    accepted_total = sum(r["accepted"] for r in rows)
+    feeders = ", ".join(f"{_src_label(r['key'])} ({r['screened']})" for r in active)
+    return (
+        f"Of the catalogue sources, {feeders} contributed fresh candidates; "
+        f"{_src_label(top['key'])} dominated the screened volume, and "
+        f"{accepted_total} item(s) were accepted across all sources.")
+
+
+def build_archive_charts(digests: list[Digest]) -> ChartData:
+    """Aggregate the per-digest series and emit both inline SVGs (build-time)."""
+    # Trend rows in chronological order (digests arrive newest-first).
+    ordered = sorted(digests, key=lambda d: d.date)
+    trend_rows = [
+        {"date": d.date,
+         "screened": d.screened if d.screened is not None else 0,
+         "accepted": d.accepted if d.accepted is not None else 0,
+         "matches": d.matches if d.matches is not None else 0}
+        for d in ordered
+    ]
+    trend_svg, trend_summary = (_build_trend_svg(trend_rows) if trend_rows
+                                else ("", _trend_summary_text(trend_rows)))
+
+    # Per-source aggregation across every run that carries per-source data.
+    screened_by: dict[str, int] = {}
+    accepted_by: dict[str, int] = {}
+    source_runs = 0
+    for d in digests:
+        if not d.per_source:
+            continue  # older runs predate per-source counting — guarded.
+        source_runs += 1
+        for k, v in d.per_source.items():
+            screened_by[k] = screened_by.get(k, 0) + v
+        for k, v in d.accepted_by_source.items():
+            accepted_by[k] = accepted_by.get(k, 0) + v
+
+    keys = sorted(
+        set(screened_by) | set(accepted_by),
+        key=lambda k: (-screened_by.get(k, 0), -accepted_by.get(k, 0), k),
+    )
+    source_rows = [
+        {"key": k, "label": _src_label(k),
+         "screened": screened_by.get(k, 0), "accepted": accepted_by.get(k, 0)}
+        for k in keys
+    ]
+    has_source = bool(source_rows)
+    # The chart shows only sources that surfaced fresh candidates (the ones that
+    # "earn their place"); the visually-hidden table below keeps every source,
+    # including the dead/quiet ones at zero, as the authoritative record.
+    chart_rows = [r for r in source_rows if r["screened"] > 0] or source_rows
+    if has_source:
+        source_svg, source_summary = _build_source_svg(chart_rows)
+    else:
+        source_svg, source_summary = "", _source_summary_text(source_rows)
+
+    return ChartData(
+        trend_svg=trend_svg,
+        trend_rows=trend_rows,
+        trend_summary=trend_summary,
+        source_svg=source_svg,
+        source_rows=source_rows,
+        source_summary=source_summary,
+        has_source=has_source,
+        source_runs=source_runs,
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -669,6 +985,7 @@ def build() -> int:
         )
 
     # 3. Digest archive index (under docs/digests/, depth 1 -> root "../").
+    charts = build_archive_charts(digests)
     archive_tpl = env.get_template("digest_index.html.j2")
     write(
         DOCS / "digests" / "index.html",
@@ -676,6 +993,7 @@ def build() -> int:
             active="digests",
             root="../",
             digests=digests,
+            charts=charts,
         ),
     )
 

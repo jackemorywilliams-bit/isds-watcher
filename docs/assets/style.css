@@ -335,6 +335,139 @@ main { display: block; }
   .scoring-toggle:hover { transform: none; }
 }
 
+/* ===================================================== archive charts ===== */
+/* Two build-time inline-SVG charts on the Digest Archive (trend + source
+   receptivity). Axes/gridlines in --line, the screened series in --navy, the
+   accepted series in --gold-bright. JS only adds a hover readout and a
+   reduced-motion-gated draw-in; everything reads with JS off. Distinct
+   selectors — these do not touch the .venn / .scoring rules. */
+
+/* Visually-hidden utility: removes from the visual layer but keeps it in the
+   accessibility tree and the no-JS DOM (the authoritative chart data tables). */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.archive-charts { padding-bottom: 48px; }
+.archive-charts-lede {
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  color: var(--ink-soft); margin: 0 0 26px; max-width: 42rem;
+}
+
+.chart-figure {
+  margin: 0 0 30px; padding: 0;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(11, 46, 74, .05);
+}
+.chart-figure:last-of-type { margin-bottom: 0; }
+.chart-frame { padding: 18px 20px 6px; }
+
+.chart {
+  display: block; width: 100%; height: auto; overflow: visible;
+}
+
+/* Axes / gridlines / annotation text. */
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-axis-label {
+  font-family: var(--sans); font-size: 11px; fill: var(--muted);
+}
+.chart-src-label { font-size: 11.5px; fill: var(--ink-soft); }
+
+/* Trend chart: screened (navy) area + line, accepted (gold) line. */
+.chart-area-screened { fill: var(--navy); fill-opacity: .08; }
+.chart-line { fill: none; stroke-width: 2.2; }
+.chart-line-screened { stroke: var(--navy); }
+.chart-line-accepted { stroke: var(--gold-bright); stroke-dasharray: 5 4; }
+.chart-dot { stroke: var(--paper); stroke-width: 1.5; }
+.chart-dot-screened { fill: var(--navy); }
+.chart-dot-accepted { fill: var(--gold-bright); }
+
+/* The matches==0 baseline, explicitly annotated. */
+.chart-zero { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 3; opacity: .7; }
+.chart-zero-label {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .04em; fill: var(--muted);
+}
+
+/* Source chart bars: screened (navy) and accepted (gold). */
+.chart-bar-screened { fill: var(--navy); }
+.chart-bar-accepted { fill: var(--gold-bright); }
+.chart-bar-value {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  fill: var(--ink-soft); font-variant-numeric: tabular-nums;
+}
+
+/* Hover/focus targets are transparent and only "live" under JS. */
+.chart-hit { fill: transparent; }
+.chart-marker, .chart-srcrow { cursor: default; }
+.js .chart-marker, .js .chart-srcrow { cursor: pointer; }
+.chart-marker:focus-visible .chart-hit,
+.chart-srcrow:focus-visible .chart-hit {
+  outline: none; fill: rgba(184, 134, 11, .10);
+  stroke: var(--gold-bright); stroke-width: 1.4;
+}
+.chart-marker.is-active .chart-hit,
+.chart-srcrow.is-active .chart-hit { fill: rgba(11, 61, 92, .06); }
+.chart-marker.is-active .chart-dot { r: 5; }
+
+/* Worded readout below each chart (the exact figures on hover/focus). */
+.chart-readout {
+  font-family: var(--sans); font-size: 13.5px; line-height: 1.5;
+  color: var(--ink-soft); margin: 12px 0 0; padding: 10px 14px;
+  background: var(--cream-alt); border: 1px solid var(--line-soft);
+  border-left: 4px solid var(--navy); border-radius: 5px; min-height: 1.5rem;
+}
+.chart-readout strong { color: var(--ink); }
+.chart-readout .read-screened { color: var(--navy); font-weight: 700; }
+.chart-readout .read-accepted { color: var(--gold); font-weight: 700; }
+
+/* Figcaption: title + a label-and-swatch legend (never colour alone). */
+.chart-caption {
+  font-family: var(--sans); padding: 4px 20px 18px;
+  border-top: 1px solid var(--line-soft); margin-top: 6px;
+}
+.chart-caption-title {
+  display: block; font-size: 13.5px; font-weight: 700; color: var(--navy);
+  margin: 12px 0 0;
+}
+.chart-caption-note { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
+.chart-key {
+  position: relative; font-size: 12px; color: var(--ink-soft); padding-left: 22px;
+}
+.chart-key::before {
+  content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 3px; border-radius: 2px;
+}
+.chart-key-screened::before { background: var(--navy); }
+.chart-key-accepted::before { background: var(--gold-bright); }
+.chart-key-zero::before { background: var(--muted); height: 0; border-top: 2px dashed var(--muted); }
+
+/* Draw-in reveal: JS sets .chart-ready once the figure scrolls into view.
+   Motion is a guest — only animate when the user has no reduced-motion
+   preference; otherwise the final state is shown instantly (no opacity gate). */
+@media (prefers-reduced-motion: no-preference) {
+  .js .chart-area, .js .chart-line, .js .chart-bar { opacity: 0; }
+  .js .chart-figure.chart-ready .chart-area,
+  .js .chart-figure.chart-ready .chart-line,
+  .js .chart-figure.chart-ready .chart-bar {
+    opacity: 1; transition: opacity .6s ease;
+  }
+  .js .chart-figure.chart-ready .chart-bar {
+    transform-box: fill-box; transform-origin: left center;
+    animation: chart-bar-grow .55s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes chart-bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+@media (max-width: 720px) {
+  .chart-source .chart-src-label { font-size: 10px; }
+}
+
 /* ----------------------------------------------- run / archive counts --- */
 .run-counts {
   font-family: var(--sans); font-size: 16px; font-weight: 600;

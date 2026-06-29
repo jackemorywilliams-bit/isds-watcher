@@ -167,7 +167,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-06-29 18:02 UTC &middot; 8aea861</p>      </div>
+<p class="footer-build">Site built 2026-06-29 18:13 UTC &middot; e93bd53</p>      </div>
     </div>
   </footer>
   <script>
@@ -429,6 +429,74 @@
       });
       renderScore();
     }
+
+    /* -------------------------------------------------- archive charts ----
+       Two build-time inline-SVG charts (trend + source receptivity). JS only
+       adds a pointer/focus readout of the exact figures and a draw-in reveal.
+       The SVG and its visually-hidden data table already read with JS off. */
+    function archiveChartInit() {
+      var figures = Array.prototype.slice.call(
+        document.querySelectorAll('.chart-figure'));
+      if (!figures.length) return;
+      document.documentElement.classList.add('js');
+
+      // Worded readout: report a date/source's exact figures on hover/focus,
+      // falling back to the chart's default summary on leave/blur. Colour is
+      // never the only cue — the label names each series in words.
+      figures.forEach(function (fig) {
+        var readout = fig.querySelector('.chart-readout');
+        if (!readout) return;
+        var def = readout.getAttribute('data-default') || readout.textContent;
+        var targets = Array.prototype.slice.call(
+          fig.querySelectorAll('.chart-marker, .chart-srcrow'));
+
+        function show(node) {
+          targets.forEach(function (t) { t.classList.remove('is-active'); });
+          node.classList.add('is-active');
+          var scr = node.getAttribute('data-screened');
+          var acc = node.getAttribute('data-accepted');
+          var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
+          var zero = node.hasAttribute('data-date')
+            ? ', <span class="read-zero">0 matches</span>' : '';
+          readout.innerHTML = '<strong>' + label + '</strong> — ' +
+            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
+        }
+        function clear() {
+          targets.forEach(function (t) { t.classList.remove('is-active'); });
+          readout.textContent = def;
+        }
+        targets.forEach(function (node) {
+          node.addEventListener('mouseenter', function () { show(node); });
+          node.addEventListener('mouseleave', clear);
+          node.addEventListener('focus', function () { show(node); });
+          node.addEventListener('blur', clear);
+          node.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(node); }
+          });
+        });
+      });
+
+      // Draw-in reveal — reduced-motion users get the final state instantly.
+      if (reduceMotion) {
+        figures.forEach(function (f) { f.classList.add('chart-ready'); });
+        return;
+      }
+      if (!('IntersectionObserver' in window)) {
+        figures.forEach(function (f) { f.classList.add('chart-ready'); });
+        return;
+      }
+      var chartObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('chart-ready');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+      figures.forEach(function (f) { chartObserver.observe(f); });
+    }
+    archiveChartInit();
   })();
   </script>
 </body>

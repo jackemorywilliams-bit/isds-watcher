@@ -55,13 +55,15 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
 
 ## Cadence & accountability
 
-- **Daily — the chairman and the researcher meet.** Every day the chairman and the
-  research analyst hold a working meeting: the chairman sets the day's agenda from the
-  open threads, the researcher pursues it against the research question, and the chairman
-  reviews the findings, holds the researcher to account, and decides next steps. This runs
-  as a **scheduled Claude Code routine on the operator's Claude Max plan** (not the
-  API-billed GitHub Actions pipeline), with a deliberately small daily budget so it does
-  not eat into Max usage. The meeting record is committed to `analytics/daily-research/`
+- **Daily — the full council meets.** Every day the whole council convenes (chairman
+  presiding; research analyst; security/integrity officer; editor; analytics officer): the
+  chairman sets the agenda, the analyst researches and the security officer vets, the
+  analytics officer relates the findings to that week's screened digest items, and the
+  council discusses how to advance the research question — raising at most one genuinely
+  new system/method improvement (deduped into `analytics/optimization-log.md`) toward a
+  breakthrough. This runs as a **scheduled Claude Code routine on the operator's Claude Max
+  plan** (not the API-billed GitHub Actions pipeline), with a deliberately small daily
+  budget so it does not eat into Max usage. The meeting record is committed to `analytics/daily-research/`
   and emailed each day by a free GitHub Actions job (`daily-update.yml`, SMTP only).
 - **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
   with the chairman's **reconvene minutes**: a candid status, next steps, a per-member

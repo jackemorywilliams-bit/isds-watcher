@@ -147,7 +147,7 @@ def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
     html = render.render_digest(items, now, now, stats)
     assert "Screened: 80" in html
     assert "Matches (&ge;40): 0" in html
-    assert "Accepted (shown): 1" in html
+    assert "Watch-list leads shown: 1" in html
     # Fix 2: header splits matches from watch-list leads (no bare "1 item").
     assert "0 matches &middot; 1 watch-list lead" in html
     # Two labeled sections, with the empty "Direct matches" block called out.
@@ -161,7 +161,8 @@ def test_counts_consistent_across_surfaces(tmp_path, monkeypatch):
 
     sys.path.insert(0, os.path.join(repo, "scripts"))
     bs = importlib.import_module("build_site")
-    accepted, matches, screened = bs._resolve_counts(Path(folder), 80, len(items))
+    accepted, matches, screened, _per_source, _accepted_by_source = bs._resolve_counts(
+        Path(folder), 80, len(items))
     assert (screened, matches, accepted) == (80, 0, 1)
 
 

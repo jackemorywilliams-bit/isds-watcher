@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Backtest | ISDS Thematic Watcher</title>
-  <meta name="description" content="A small exploratory backtest of the deterministic scorer on a focused set of known investor&ndash;State cases &mdash; the three seed awards, four out-of-sample positives, and clear off-theme negatives &mdash; with a confusion matrix and a per-case breakdown.">
+  <meta name="description" content="A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the out-of-sample holdout that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,41 +45,47 @@
     <h1 class="page-title">Historical backtest</h1>
     <p class="page-lede">
       A small exploratory backtest on known cases &mdash; not a comprehensive validation.
-      It scores 15 familiar investor&ndash;State cases with the same deterministic
-      keyword scorer the pipeline uses, at the same digest threshold (40), and
-      reports where it agrees with the label and where it misses.
+      It scores familiar investor&ndash;State cases with the same deterministic keyword scorer
+      the pipeline uses, at the same digest threshold (40), and reports the results
+      in <strong>three separate buckets</strong> so the cases that trained the fingerprint never
+      inflate the headline.
     </p>
   </div>
 </section>
 
 <section class="band">
   <div class="measure">
-    <h2 class="section-head">What this is, and is not</h2>
+    <h2 class="section-head">Why three buckets</h2>
     <div class="doc-body">
       <p>
-        This page is an honest, narrow sanity check, not a validation study. The set is
-        only 15 cases, hand-picked because they are well known, and it deliberately
-        mixes two kinds of case:
+        An earlier version of this page folded every case into one blended confusion matrix. That
+        flattered the scorer: the development <em>seed</em> awards are the very cases whose vocabulary
+        <em>defines</em> the fingerprint, so recovering them proves only that the system recognises
+        what generated it &mdash; circular, not predictive. To keep the headline honest, the cases are
+        split into three clearly-labelled buckets, each reported on its own:
       </p>
       <ul>
         <li>
-          the three <strong>development seed awards</strong> (Eli&nbsp;Lilly v.&nbsp;Canada,
-          Philip&nbsp;Morris v.&nbsp;Australia, Bridgestone v.&nbsp;Panama). These are
-          <em>in-sample</em> &mdash; their vocabulary trained the fingerprint &mdash; so passing
-          them confirms the scorer recovers what it was built on, nothing more;
+          <strong>Seed recovery</strong> &mdash; the three development seed awards, scored
+          <em>in-sample</em>. A sanity check that the fingerprint recognises its own source material.
+          Its numbers never enter any headline.
         </li>
         <li>
-          four <strong>out-of-sample positives</strong> (Loewen, Mondev, Apotex, Philip&nbsp;Morris
-          v.&nbsp;Uruguay) and clear <strong>off-theme negatives</strong>, drawn from the labelled
-          holdout. These were not used in development, so they test generalisation.
+          <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
+          negatives, none of them used in development. This is the headline generalisation metric:
+          precision, recall, accuracy and F1 are computed on this bucket <em>alone</em>.
+        </li>
+        <li>
+          <strong>Live prospective</strong> &mdash; the live weekly digest archive, the only test
+          that scores cases the system has never seen before the outcome is known. Reported as an
+          honest status, not as numbers from this corpus.
         </li>
       </ul>
       <p>
         Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
         their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
         verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
-        text could not be resolved in-repo was excluded rather than invented. Read it as a smoke
-        test with a candid record of its one miss, not as evidence of field performance.
+        text could not be resolved in-repo was excluded rather than invented.
       </p>
     </div>
   </div>
@@ -87,15 +93,72 @@
 
 <section class="band band-alt">
   <div class="measure">
-    <h2 class="section-head">Confusion matrix</h2>
+    <p class="page-kicker">Bucket 1 &mdash; in-sample</p>
+    <h2 class="section-head">Seed recovery</h2>
     <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Predicted band at or above the threshold counts as a predicted match; below it counts as a
-      predicted pass. Rows are the true label; columns are the prediction.
+      The three development seed awards, scored against the lexicon their own text defines. This is a
+      recovery check, <strong>not predictive evidence</strong> &mdash; these numbers are deliberately
+      kept out of every headline.
+    </p>
+    <div class="doc-body">
+      <p>
+        Seeds recovered at the digest threshold (40):
+        <strong>3 of 3</strong>. Because the seeds trained the
+        fingerprint, a perfect recovery here is the expected, uninformative result &mdash; a failure
+        would signal a bug, but a pass says nothing about field performance.
+      </p>
+      <table>
+        <caption class="visually-hidden">
+          In-sample seed recovery: each seed award, the score the deterministic scorer assigned, and
+          the predicted band.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Seed award</th>
+            <th scope="col">Score</th>
+            <th scope="col">Predicted band</th>
+            <th scope="col">Recovered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Bridgestone v. Panama</th>
+            <td>79</td>
+            <td><span class="badge badge-high">HIGH</span></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Eli Lilly v. Canada</th>
+            <td>78</td>
+            <td><span class="badge badge-high">HIGH</span></td>
+            <td>yes</td>
+          </tr>
+          <tr>
+            <th scope="row">Philip Morris v. Australia</th>
+            <td>66</td>
+            <td><span class="badge badge-med">MEDIUM</span></td>
+            <td>yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <p class="page-kicker">Bucket 2 &mdash; out-of-sample (the headline)</p>
+    <h2 class="section-head">Out-of-sample holdout</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
+      off-theme negatives &mdash; 12 cases in all, none used in development. The
+      headline metrics below are computed on this bucket <strong>alone</strong>; the seeds are not in it.
     </p>
     <div class="doc-body">
       <table>
         <caption class="visually-hidden">
-          Confusion matrix of predicted match versus true label across 15 cases.
+          Confusion matrix of predicted match versus true label across 12
+          out-of-sample cases.
         </caption>
         <thead>
           <tr>
@@ -108,9 +171,9 @@
         <tbody>
           <tr>
             <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
-            <td><strong>TP 6</strong></td>
+            <td><strong>TP 3</strong></td>
             <td>FN 1</td>
-            <td>7</td>
+            <td>4</td>
           </tr>
           <tr>
             <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
@@ -122,7 +185,9 @@
       </table>
 
       <table>
-        <caption class="visually-hidden">Headline metrics derived from the confusion matrix.</caption>
+        <caption class="visually-hidden">
+          Headline generalisation metrics derived from the out-of-sample confusion matrix.
+        </caption>
         <thead>
           <tr>
             <th scope="col">Precision</th>
@@ -134,34 +199,24 @@
         <tbody>
           <tr>
             <td>1.00</td>
-            <td>0.86</td>
-            <td>0.93</td>
+            <td>0.75</td>
             <td>0.92</td>
+            <td>0.86</td>
           </tr>
         </tbody>
       </table>
       <p>
-        On this focused set the scorer makes
+        On this out-of-sample set the scorer makes
         1 miss:
         1 false negative and
-        0 false positives. The misses are listed in full
-        below &mdash; the point of a backtest is the failures, not the passes.
+        0 false positives. The misses are
+        listed in full below &mdash; the point of a backtest is the failures, not the passes.
       </p>
-    </div>
-  </div>
-</section>
 
-<section class="band">
-  <div class="measure">
-    <h2 class="section-head">Per-case results</h2>
-    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Every case, its label, the score the deterministic scorer assigned, the predicted band, and
-      a note on any miss. Positives (seeds, then out-of-sample) first, then negatives.
-    </p>
-    <div class="doc-body">
+      <h3>Per-case results</h3>
       <table>
         <caption class="visually-hidden">
-          Per-case backtest results: case, group, label, score, predicted band, and miss note.
+          Per-case out-of-sample results: case, group, label, score, predicted band, and miss note.
         </caption>
         <thead>
           <tr>
@@ -174,39 +229,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Bridgestone v. Panama</th>
-            <td>seed</td>
-            <td>on-theme</td>
-            <td>79</td>
-            <td>
-              <span class="badge badge-high">HIGH</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Eli Lilly v. Canada</th>
-            <td>seed</td>
-            <td>on-theme</td>
-            <td>78</td>
-            <td>
-              <span class="badge badge-high">HIGH</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Philip Morris v. Australia</th>
-            <td>seed</td>
-            <td>on-theme</td>
-            <td>66</td>
-            <td>
-              <span class="badge badge-med">MEDIUM</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
           <tr>
             <th scope="row">Philip Morris v. Uruguay</th>
             <td>holdout-positive</td>
@@ -341,22 +363,29 @@ correct            </td>
           </tr>
         </tbody>
       </table>
+
+      <h3>Where it misses, and why</h3>
+      <h4>False negatives</h4>
+      <ul>
+        <li><strong>Apotex Holdings v. United States</strong> (score 8). Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit.</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section class="band band-alt">
   <div class="measure">
-    <h2 class="section-head">Where it misses, and why</h2>
+    <p class="page-kicker">Bucket 3 &mdash; live prospective</p>
+    <h2 class="section-head">Live prospective</h2>
+    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
+      Status: <strong>Zero direct thematic matches to date.</strong>
+    </p>
     <div class="doc-body">
-      <h3>False negatives</h3>
-      <ul>
-        <li><strong>Apotex Holdings v. United States</strong> (score 8). Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit.</li>
-      </ul>
+      <p>The live weekly digest archive is the true prospective test — the only one that scores items the system has never seen, in real time, before the outcome is known. To date it has produced no direct thematic hit: across the published weeks not a single live listing has cleared the digest threshold as an on-theme match. What it has shown is the discipline you would want from a watcher running quiet — clean negative filtering of off-theme noise (ICSID procedural notices, ITN headlines, OECD guidance) and watch-list triage of near-misses held below threshold, not a live direct hit. Treat the holdout numbers above as the generalisation estimate and this archive as the honest, still-open prospective record.</p>
     </div>
     <p class="archive-foot">
-      See the <a href="methodology.html">methodology</a> for how the scorer and its
-      threshold are defined.
+      See the <a href="digests/index.html">digest archive</a> for the live record, and the
+      <a href="methodology.html">methodology</a> for how the scorer and its threshold are defined.
     </p>
   </div>
 </section>
@@ -395,7 +424,7 @@ correct            </td>
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-06-29 19:53 UTC &middot; 84c85eb</p>      </div>
+<p class="footer-build">Site built 2026-06-29 19:58 UTC &middot; 148af88</p>      </div>
     </div>
   </footer>
   <script>

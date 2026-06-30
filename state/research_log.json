@@ -1,15 +1,20 @@
 {
-  "last_updated": "2026-06-29",
+  "last_updated": "2026-06-30",
   "open_threads": [
-    "After the 59th session concludes on 10 July 2026, does the A/CN.9-series session report record adoption, referral back, or noting of A/CN.9/1246 — and can the unverified companion comments-compilation and agenda document numbers be confirmed against retrieved sources?",
+    "After the 59th session concludes on 10 July 2026, does the A/CN.9-series session report record adoption, referral back, or noting of A/CN.9/1246? (A/CN.9/1269 companion comments compilation confirmed on agenda as of June 30.)",
     "Does any State adopting the Protocol/MIIR opt to apply the early-dismissal provisions to pre-existing treaties, which would for the first time give a harmonised jurisdictional-gate tool to IP-investment respondents?",
-    "Can the opt-in / non-retroactivity architecture be confirmed against the body of A/CN.9/1246 itself rather than inferred from the Transparency Convention precedent?",
-    "Does an accessible primary source for the Hela Schwarz data-exclusivity award emerge, given the ICSID paywall has so far blocked the full text?",
+    "Can the opt-in / non-retroactivity architecture be confirmed from the body of A/CN.9/1246 itself? (Partial advance June 30: search-engine summary suggests 'treaties concluded on or after 1 April 2027' as the temporal scope — unconfirmed at primary text level; attempt UN ODS access at https://documents.un.org.)",
+    "Does an accessible primary source for the Hela Schwarz award emerge? (Award December 10, 2025; underlying dispute is a real estate/land-use case in Shandong, not pharmaceutical; ICSID and italaw PDFs both 403-blocked.)",
     "Is there any new signal on the Einarsson award beyond the prior baseline of post-hearing briefing through August 2025?",
-    "Can an accessible Swedish primary source for Okuashvili be located rather than a paywalled-only confirmation?"
+    "Can the full text of the Swedish Supreme Court's June 15, 2026 Okuashvili decision be accessed beyond the paywalled IAReporter headline? (Three-instance chain confirmed: SCC Partial Award August 2022 → Svea annulment November 2024 → Supreme Court reversal June 15, 2026; SCC jurisdiction restored; underlying dispute is tobacco sector, no IP nexus.)"
   ],
   "seq": 2,
   "history": [
+    {
+      "seq": 2,
+      "date": "2026-06-30",
+      "headline": "Okuashvili Swedish Supreme Court Reversal Confirmed (June 15, 2026): MFN-Forum-Access Doctrine Established; Ring 3 Near-Miss; UNCITRAL Day 2 Watch Continues"
+    },
     {
       "seq": 2,
       "date": "2026-06-29",

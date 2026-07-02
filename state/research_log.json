@@ -1,15 +1,20 @@
 {
-  "last_updated": "2026-07-01",
+  "last_updated": "2026-07-02",
   "open_threads": [
     "After the 59th session concludes on 10 July 2026, does the A/CN.9-series session report record adoption, referral back, or noting of A/CN.9/1246? (A/CN.9/1269 companion comments compilation confirmed on agenda.)",
     "Did the 59th Commission session finalize the scope-of-application provision for A/CN.9/1246, and if so, what temporal scope and opt-in mechanism did it adopt? (July 1 advance: the April 2026 draft flagged the scope provision as needing development and used 'April 1, 2027' as an illustrative example — not a finalized cutoff. The Mauritius Convention-type opt-in mechanism is proposed for pre-existing BIT coverage. Medium confidence from search snippet; primary text unread.)",
     "Has any State made statements endorsing or opposing the Mauritius-type opt-in mechanism proposed in A/CN.9/1246 for applying the Protocol to pre-existing investment treaties (including the China-Germany 2003, China-Switzerland 2009, or China-France 2007 BITs)?",
     "Does an accessible primary source for the Hela Schwarz award emerge? (Award December 10, 2025; underlying dispute is a real estate/land-use case in Shandong, not pharmaceutical; ICSID and italaw PDFs both 403-blocked; italaw180871 link also 403-blocked as of July 1.)",
     "Is there any new signal on the Einarsson award beyond the prior baseline? (Procedural Order No. 9 is the latest italaw document; no award indexed as of July 1, 2026; 16 months post-merits-hearing.)",
-    "Can the full text of the Swedish Supreme Court's June 15, 2026 Okuashvili decision be accessed beyond the paywalled IAReporter headline? (Three-instance chain confirmed: SCC Partial Award August 2022 → Svea annulment November 2024 → Supreme Court reversal June 15, 2026; SCC jurisdiction restored; underlying dispute is tobacco sector, no IP nexus.)"
+    "Can the full text of the Swedish Supreme Court's June 2026 Okuashvili decision be accessed beyond the paywalled IAReporter headline? (Three-instance chain confirmed: SCC Partial Award August 2022 → Svea annulment November 2024 → Supreme Court reversal June 2026; SCC jurisdiction restored; underlying dispute is tobacco sector, no IP nexus.) Outstanding question: does any Svea Court remand proceeding remain open following the Supreme Court reversal, or is the SCC arbitration fully restored to proceed on the merits without further Swedish court involvement? China BIT architectural implication confirmed July 2: Okuashvili MFN-forum-bypass pathway is architecturally closed for China BITs — Chinese BITs explicitly exclude MFN from ISDS (MEDIUM confidence, secondary sources)."
   ],
-  "seq": 3,
+  "seq": 4,
   "history": [
+    {
+      "seq": 4,
+      "date": "2026-07-02",
+      "headline": "China BIT MFN Exclusion Confirmed as Negative Architectural Finding: Ring 3 Four-Mechanism Taxonomy Complete"
+    },
     {
       "seq": 3,
       "date": "2026-07-01",

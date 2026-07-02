@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-02 — daily council meeting
+Confirmed China BIT MFN exclusion as a negative architectural finding (MEDIUM confidence from SMU Law Review and Aceris Law secondary sources): Chinese BITs explicitly exclude MFN extension to procedural ISDS rights, closing the Okuashvili MFN-forum-bypass pathway for European pharmaceutical investors under the China-Germany (2003), China-Switzerland (2009), and China-France (2007) BITs. Assembled the Ring 3 four-mechanism taxonomy with China BIT applicability mapping for the first time — mechanisms 1 (Philip Morris) and 3 (Hela Schwarz) are operative; mechanism 4 (Okuashvili MFN bypass) is closed; mechanism 2 (NAFTA 1121) is inapplicable to China BITs. UNCITRAL Day 4, Einarsson, and Hela Schwarz all null; standing watch continues.
+
 ## 2026-07-01 — daily council meeting
 Day 3 of the UNCITRAL 59th Commission session; primary focus was implementing the UN ODS retrieval idea (failed — 403) and advancing the A/CN.9/1246 temporal scope open thread via targeted-phrase search. Key finding: the "April 1, 2027" language in A/CN.9/1246 is explicitly framed as an illustrative example, not a finalized cutoff; the scope provision "may need to be developed"; and a Mauritius Convention-type opt-in mechanism is proposed within the draft for legacy BIT coverage — all at medium confidence from a search-engine snippet of the still-inaccessible PDF. All monitoring threads null (Einarsson, Hela Schwarz, China pharmaceutical ISDS, Day 3 coverage). New optimization idea: targeted quoted-phrase search as a substitute for blocked PDFs, demonstrated successfully today.
 

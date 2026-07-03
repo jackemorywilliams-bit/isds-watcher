@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-03 — daily council meeting
+Day 5 of the UNCITRAL 59th Commission session. The session's primary backsourcing task — the Swedish Supreme Court's June 26, 2026 ruling in *Okuashvili v. Georgia* (digest item 3, June 29) — was completed: the three-layer Swedish court chain (SCC award → Svea Court of Appeal annulment → Supreme Court reversal) is now fully confirmed, with the ruling existence and holding at medium-high confidence and the specific doctrinal reasoning inaccessible. Open thread 6 substantially closed; NJA citation and full practitioner analysis pending. No mid-session UNCITRAL coverage indexed as of Day 5; Advisory Centre Statute finalization (A/CN.9/1265-1268) confirmed as an additional 59th session deliverable for December 2026 GA adoption. One new Ring 3 insight logged (Okuashvili MFN ruling); one new optimization idea logged (tagged-case posture tracker). Einarsson and China pharma: no change.
+
 ## 2026-07-02 — daily council meeting
 Confirmed China BIT MFN exclusion as a negative architectural finding (MEDIUM confidence from SMU Law Review and Aceris Law secondary sources): Chinese BITs explicitly exclude MFN extension to procedural ISDS rights, closing the Okuashvili MFN-forum-bypass pathway for European pharmaceutical investors under the China-Germany (2003), China-Switzerland (2009), and China-France (2007) BITs. Assembled the Ring 3 four-mechanism taxonomy with China BIT applicability mapping for the first time — mechanisms 1 (Philip Morris) and 3 (Hela Schwarz) are operative; mechanism 4 (Okuashvili MFN bypass) is closed; mechanism 2 (NAFTA 1121) is inapplicable to China BITs. UNCITRAL Day 4, Einarsson, and Hela Schwarz all null; standing watch continues.
 

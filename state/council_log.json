@@ -1,5 +1,49 @@
 [
   {
+    "ts": "2026-07-06T16:16:43.184529+00:00",
+    "date": "2026-07-06",
+    "type": "weekly-council",
+    "issue": 9,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 12356 chars",
+      "security": "flagged (8 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A legitimately quiet week on the core theme, honestly reported. The one substantive advance — the Okuashvili MFN finding — rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "chairman: agenda was correctly calibrated — called the quiet week, killed the Suez item, and set skepticism gates that the week's findings vindicated."
+      },
+      {
+        "member": "analyst",
+        "assessment": "analyst: disciplined on drops and on the Wingtech 'unconfirmed' call, but overreached by presenting the Okuashvili and Suez holdings as established when only headlines were read, and re-inflated the dropped Suez item into a 'contrary data point.'"
+      },
+      {
+        "member": "security",
+        "assessment": "security: strong week — correctly flagged the headline-only sourcing on Okuashvili, Suez, and GAR, and the overreach in elevating a two-headline proposition to 'affirmatively-supported.'"
+      },
+      {
+        "member": "editor",
+        "assessment": "editor: appropriately hedged the headline ('Where the Treaty Text Permits It'), framed the quiet week honestly, and surfaced the verification gaps as open threads."
+      }
+    ],
+    "next_steps": [
+      "Obtain the full Okuashvili v. Georgia Supreme Court judgment (and eventual NJA citation) to confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or a Svea remand remains open; do not rely on the IAReporter/GAR headlines.",
+      "Continue the Wingtech/Nexperia ICSID docket watch — upgrade from 'announced' to 'pending' only on an ICSID case number or registration page; monitor the parallel Dutch-court control litigation as a potential Ring 2 denial-of-justice anchor.",
+      "Re-check for the UNCITRAL 59th-session A/CN.9/1246 report (IISD ITN / EJIL:Talk) after the 10 July close for adoption/referral/noting and the scope-of-application and opt-in treatment of pre-existing China BITs.",
+      "Harvest practitioner analysis (Vinge, Baker Botts, GBS Disputes) on Okuashvili to verify disposition beyond headline level.",
+      "Keep the 'MFN-forum-bypass is live where treaty text permits' proposition at TENTATIVE, and the China-BIT-closure claim at MEDIUM/treaty-text-contingent, until full-text verification."
+    ],
+    "escalations": [
+      "The week's only advance (Okuashvili MFN holding) is headline-only and unverified from primary text — treat as a lead, not a finding, pending the full judgment.",
+      "Wingtech/Nexperia remains 'filed-not-confirmed' ~12 weeks past cooling-off with no ICSID docket; decision needed on how long to hold it as top priority absent registration.",
+      "The carried 'MFN-forum-bypass closed for China BITs' claim should be re-labelled as treaty-text-contingent (still MEDIUM), not doctrinally settled.",
+      "Recurring environment gap: living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were not present and had to be reconstructed, and the web-search budget was exhausted after three passes — both limit verification depth and warrant attention."
+    ]
+  },
+  {
     "ts": "2026-06-29T19:07:07.366728+00:00",
     "date": "2026-06-29",
     "type": "weekly-council",

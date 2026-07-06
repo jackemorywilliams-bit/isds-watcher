@@ -1,16 +1,20 @@
 {
   "last_updated": "2026-07-06",
   "open_threads": [
-    "After the 59th session concludes on 10 July 2026, does the A/CN.9-series session report record adoption, referral back, or noting of A/CN.9/1246? (A/CN.9/1269 companion comments compilation confirmed to exist as of July 5, 2026 — fabrication-risk escalation from June 29 weekly meeting cleared. A/CN.9/1270, June 24 2026, confirmed as ICSID's written comments on A/CN.9/1246. Advisory Centre Statute: corrected July 6 — adopted 'in principle' at the 57th session in 2024 [MEDIUM-HIGH confidence, three sources]; the 59th session work is operationalization and GA presentation in December 2026. Session closes July 10; no Day 8 proceedings coverage indexed.)",
-    "Did the 59th Commission session finalize the scope-of-application provision for A/CN.9/1246, and if so, what temporal scope and opt-in mechanism did it adopt? (July 1 advance: the April 2026 draft flagged the scope provision as needing development and used 'April 1, 2027' as an illustrative example — not a finalized cutoff. The Mauritius Convention-type opt-in mechanism is proposed for pre-existing BIT coverage. Medium confidence from search snippet; primary text unread.)",
-    "Has any State made statements endorsing or opposing the Mauritius-type opt-in mechanism proposed in A/CN.9/1246 for applying the Protocol to pre-existing investment treaties (including the China-Germany 2003, China-Switzerland 2009, or China-France 2007 BITs)?",
-    "Does an accessible primary source for the Hela Schwarz award emerge? (Award December 10, 2025; underlying dispute is a real estate/land-use case in Shandong, not pharmaceutical; ICSID and italaw PDFs both 403-blocked as of July 1.)",
-    "Is there any new signal on the Einarsson award beyond the prior baseline? (Procedural Order No. 9 is the latest italaw document; no award indexed as of July 3, 2026; 16 months post-merits-hearing.)",
-    "Can the full text of the Swedish Supreme Court's June 26, 2026 Okuashvili decision and its NJA citation be accessed, and what specific doctrinal reasoning did the court adopt? (Three-instance chain confirmed: SCC Partial Award August 2022 → Svea annulment November 2024 → Supreme Court reversal June 26, 2026; SCC jurisdiction restored; underlying dispute is tobacco sector, no IP nexus. China BIT architectural implication confirmed July 2: Okuashvili MFN-forum-bypass pathway is architecturally closed for China BITs — Chinese BITs explicitly exclude MFN from ISDS [MEDIUM confidence, secondary sources]. NJA citation not expected until ~December 2026 — NJA publishes ~6 months after ruling [MEDIUM confidence]. Practitioner analysis expected imminently from Vinge, Baker Botts, GBS Disputes. Outstanding question: does any Svea Court remand proceeding remain open, or is the SCC arbitration fully restored on the merits?)",
-    "Has Wingtech Technology (China) / Yuching Holding Limited (HK) formally filed ICSID arbitration against the Netherlands under the China-Netherlands BIT following the October 15, 2025 notice of dispute? (Six-month cooling-off expired ~April 15, 2026; formal ICSID filing status unconfirmed as of July 5, 2026. Dispute centres on the Dutch government's emergency intervention in Nexperia to prevent IP/technology transfer abroad — first confirmed Ring 1-2 near-miss under the China-European BIT network. BIT has no national security carve-out. USD 8 billion claim. Sources: Kluwer Jan. 2026, AMS Advocaten, NL Times May 2026. MEDIUM-HIGH confidence for notice facts; ICSID registration unconfirmed.)"
+    "Does the full Swedish Supreme Court judgment (and eventual NJA citation) in Okuashvili confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or subject to a remaining Svea remand?",
+    "Can the proposition that MFN-forum-bypass is live where the base BIT does not exclude it be verified from full-text sources, and does any tribunal or court apply it to an IP-as-investment claimant — the first direct Ring 1 × Ring 3 contact?",
+    "Has any ICSID case number or registration page appeared for Wingtech v. Netherlands, converting the announcement into a pending arbitration?",
+    "Does the parallel Dutch-court litigation over Nexperia control develop into a measure that could anchor a denial-of-justice framing under the China–Netherlands BIT?",
+    "Once the UNCITRAL 59th-session A/CN.9/1246 report is indexed, what does it say on scope-of-application, temporal cutoff, and opt-in treatment of pre-existing China–Germany/Switzerland/France BITs?",
+    "Do practitioner analyses (Vinge, Baker Botts, GBS Disputes) of Okuashvili become available to confirm the disposition beyond headline level?"
   ],
-  "seq": 8,
+  "seq": 9,
   "history": [
+    {
+      "seq": 9,
+      "date": "2026-07-06",
+      "headline": "Okuashvili Reversal Confirms MFN Forum-Access Is Live — Where the Treaty Text Permits It"
+    },
     {
       "seq": 8,
       "date": "2026-07-06",

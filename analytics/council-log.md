@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-07 — daily council meeting
+**Status.** A quiet, well-calibrated day. This week's only digest item — the IAReporter "Looking Back" retrospective on Suez v. Argentina (1) (ICSID ARB/03/17, 2006) — was backsourced and confirmed as a Ring 3 near-miss with no IP nexus, in the Maffezini line of MFN-bypass-of-pre-arbitration-conditions doctrine. One analytical corollary noted (inferential, low confidence): the same Chinese BIT MFN exclusion that closes Okuashvili-type forum bypass also closes Suez-type pre-condition bypass — precision refinement of the July 2 finding, carried to STATE_OF_THE_ANSWER as a note, not logged as a new sourced insight. UNCITRAL Day 9 (session closes July 10); no post-session coverage indexed. Okuashvili practitioner analysis still within the 1–4 week window. Wingtech/Nexperia Day 83, unconfirmed. No new sourced insight; standing watch.
+
 ## 2026-07-06 — weekly council (issue #9)
 **Status.** A legitimately quiet week on the core theme, honestly reported. The one substantive advance — the Okuashvili MFN finding — rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.
 **Members.** chairman: agenda set; analyst: memo 12356 chars; security: flagged (8 issues); editor: 4 sections, 6 threads

@@ -1,16 +1,21 @@
 {
-  "last_updated": "2026-07-08",
+  "last_updated": "2026-07-09",
   "open_threads": [
     "Does the full Swedish Supreme Court judgment (and eventual NJA citation) in Okuashvili confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or subject to a remaining Svea remand?",
     "Can the proposition that MFN-forum-bypass is live where the base BIT does not exclude it be verified from full-text sources, and does any tribunal or court apply it to an IP-as-investment claimant — the first direct Ring 1 × Ring 3 contact?",
-    "Has any ICSID case number or registration page appeared for Wingtech v. Netherlands, converting the announcement into a pending arbitration?",
-    "Does the parallel Dutch-court litigation over Nexperia control develop into a measure that could anchor a denial-of-justice framing under the China–Netherlands BIT?",
-    "Once the UNCITRAL 59th-session A/CN.9/1246 report is indexed, what does it say on scope-of-application, temporal cutoff, and opt-in treatment of pre-existing China–Germany/Switzerland/France BITs?",
-    "Do practitioner analyses (Vinge, Baker Botts, GBS Disputes) of Okuashvili become available to confirm the disposition beyond headline level?",
-    "Hela Schwarz BIT article precision: is the China-Germany BIT (2003) concurrent-proceedings provision a pure fork-in-the-road (irrevocable election), a no-U-turn clause, or a withdrawal-permitting clause — and what is the specific article number? Requires primary BIT text or award PDF access."
+    "Has any ICSID case number or registration page appeared for Wingtech v. Netherlands? If no registration by Day 104 (~July 28), downgrade to lower-priority. China-Netherlands BIT Art. 10 concurrent-proceedings architecture (MEDIUM): confirm 'at any time' language for investments-in-Netherlands branch from primary Article 10 text.",
+    "Once the UNCITRAL 59th-session A/CN.9/1246 report is indexed (expected July 11+), what does it say on adoption/referral, scope-of-application, temporal cutoff, DOB provision, and opt-in treatment of pre-existing China–Germany/Switzerland/France BITs?",
+    "Do practitioner analyses (Vinge, Baker Botts, GBS Disputes) of the Okuashvili Swedish Supreme Court ruling (June 26, 2026) become available to confirm the disposition beyond headline level? Window through approximately July 24.",
+    "Hela Schwarz BIT article precision: Article 9 of Protocol confirmed from secondary sources (MEDIUM); sub-provision (c) at LOWER confidence. Confirm from primary BIT text or award PDF. Determine whether no-U-turn (cure by withdrawal before judgment) vs. pure FITR (irrevocable).",
+    "Wingtech/Nexperia domestic proceedings tracker: monitor concurrent Chinese (Dongguan/AFSL, accepted May 22) and Dutch court proceedings monthly; assess triple-identity-test risk if Netherlands invokes concurrent-proceedings defense to BIT claim."
   ],
-  "seq": 11,
+  "seq": 12,
   "history": [
+    {
+      "seq": 12,
+      "date": "2026-07-09",
+      "headline": "Wingtech AFSL Domestic Claim in Dongguan Court (May 22, 2026) Discovered; China-Netherlands BIT Art. 10 Asymmetric Architecture Identified (MEDIUM); Hela Schwarz Provision Pinned to Protocol Art. 9 (MEDIUM); UNCITRAL Day 11 No Coverage; New Sourced Insight Logged"
+    },
     {
       "seq": 11,
       "date": "2026-07-08",

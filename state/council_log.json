@@ -1,5 +1,48 @@
 [
   {
+    "ts": "2026-07-13T15:44:09.443682+00:00",
+    "date": "2026-07-13",
+    "type": "weekly-council",
+    "issue": 17,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 8647 chars",
+      "security": "flagged (7 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A legitimately quiet week — a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set a correctly scoped agenda for a quiet week — dropped B-Mex, pointed effort at the time-sensitive UNCITRAL window, and named specific verification duties; sound direction."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Honest on the quiet result and correctly dropped B-Mex, but overreached by presenting budget-limited snippet searches as 'verified' facts (document IDs, titles, dates) and asserted the Okuashvili date/holding without a neutral source — the memory-file reconstruction adds fragility."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — sharply and specifically flagged the fabrication/overreach risks on the UNCITRAL document IDs, the unfetched PDF titles, the Okuashvili holding, and the 'host still open' inference; the strongest performance this week."
+      },
+      {
+        "member": "editor",
+        "assessment": "Faithfully carried the security hedges into the brief — headline and dek accurately frame it as architecture 'verified' but disposition pending, and the open threads correctly foreground the confirmation gaps rather than overstating findings."
+      }
+    ],
+    "next_steps": [
+      "Recheck IISD ITN and EJIL:Talk across the July 14–22 window for the actual disposition of A/CN.9/1246 (adoption, referral, or continued negotiation), the MIC/MIIR track, and the Advisory Centre host outcome — with named authoritative sources.",
+      "Downgrade every UNCITRAL document identifier, title, and date (A/CN.9/1246, 1265, 1266, 1268, 1270) to unverified/snippet-level until each is backed by a retrieved primary source; strip the '15 April 2026' and 'host still open' inferences pending confirmation.",
+      "Obtain a neutral source (Vinge, Baker Botts, or GBS) on the Okuashvili Svea CoA remand before recording the 26 June 2026 date or the MFN-forum-access holding as anything but claimant's-counsel account.",
+      "Re-attempt the three standing 403-blocked PDFs (AJIL/Okuashvili, ICSID Review 2021, Hela Schwarz Award) via ResearchGate/SSRN mirrors — this was not done this session.",
+      "Hold Wingtech for the ~July 28 day-104 downgrade checkpoint and continue the Okuashvili alert window through ~July 24."
+    ],
+    "escalations": [
+      "Canonical memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were absent from the environment; the analyst reconstructed them from the prompt. Confirm the canonical files exist and reconcile before any reconstructed [carried] claim is cited as independently verified.",
+      "Verification infrastructure gap: no direct network path in the sandbox and a web-search budget too tight to fetch primary PDFs — this is what forced snippet-level 'verification.' Decide whether to provision reliable retrieval before the July 22 UNCITRAL window closes.",
+      "The Okuashvili 26 June 2026 Supreme Court remand / MFN-forum-access holding is potentially the closest Ring-3-adjacent doctrine but currently rests only on claimant's-counsel account — flag as unverified and prioritize neutral corroboration before it informs any finding."
+    ]
+  },
+  {
     "ts": "2026-07-06T16:16:43.184529+00:00",
     "date": "2026-07-06",
     "type": "weekly-council",

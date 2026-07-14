@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-14 — daily council meeting
+**Status.** Quiet day; no new sourced insight. The single WATCH item from this week's digest — B-Mex v. Mexico (IAReporter, July 13) — was backsourced today as a gaming/casino regulatory interference case with no IP nexus: the Ontario Court of Appeal (July 7, 2026) refused Mexico's attempt to set aside a USD 130M+ NAFTA award, closing the item as a near-miss. UNCITRAL Day 4 post-session: no IISD ITN or EJIL:Talk coverage indexed; reporting lag continues through the July 14–22 window. All other threads — Okuashvili remand (no new neutral source), Wingtech (Day 90, no ICSID registration), Einarsson (no award), Hela Schwarz academic note (still blocked) — on standing watch. No optimization idea raised (the Ontario courts monitoring gap identified from B-Mex is an extension of the existing July 8 proposal, not a new one). Council performance: sound; inflation discipline held.
+
 ## 2026-07-13 — weekly council (issue #17)
 **Status.** A legitimately quiet week — a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.
 **Members.** chairman: agenda set; analyst: memo 8647 chars; security: flagged (7 issues); editor: 4 sections, 6 threads

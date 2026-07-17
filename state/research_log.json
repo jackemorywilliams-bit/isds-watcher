@@ -1,15 +1,20 @@
 {
-  "last_updated": "2026-07-16",
+  "last_updated": "2026-07-17",
   "open_threads": [
-    "UNCITRAL adoption confirmed at MEDIUM confidence (AFTINET/Both ENDS, July 2026): Supplementary Provisions on the Conduct of Proceedings + Advisory Centre Statute adopted; neither includes DOB provision; MIIR not yet adopted. Monitor IISD ITN/EJIL:Talk for upgrade to MEDIUM-HIGH and MIC/MIIR/host-country outcome. Next milestone: September 7–9, 2026 intersessional, Ninh Binh.",
-    "Okuashvili v. Georgia (T 9380-24): Gleiss Lutz (neutral German firm) confirmed as first neutral practitioner source; SC case number T 9380-24 confirmed; remand posture still Westerberg-only; monitor through ~July 24 for Baker Botts post-reversal update or Freshfields Germany; Svea CoA remand proceedings open.",
-    "Has Wingtech reached ICSID registration by the day-104 downgrade checkpoint (July 28)? If not, downgrade to background thread.",
-    "Einarsson v. Canada (UNCT/20/6): award pending; 16+ months post-hearing; standing watch.",
-    "Hela Schwarz Protocol Article 9 — Ad Article 9(a) at MEDIUM confidence, Ad Article 9(c) at MEDIUM-HIGH; Award reasoning on each sub-provision unconfirmed (PDF blocked); pursue JIDS/ICSID Review case note on December 2025 Award via SSRN/Google Scholar.",
+    "UNCITRAL adoption confirmed at MEDIUM-HIGH confidence (IAReporter indexed headline + UNIS Vienna press release + AFTINET/Both ENDS, July 2026): Supplementary Provisions on the Conduct of Proceedings + Advisory Centre Statute + awards in electronic form adopted; neither Supplementary Provisions nor Advisory Centre Statute includes DOB provision; MIIR not yet adopted. Monitor IISD ITN/EJIL:Talk for full-text and MIC/MIIR/host-country outcome. Next milestone: September 7–9, 2026 intersessional, Ninh Binh.",
+    "Okuashvili v. Georgia (T 9380-24): Gleiss Lutz (neutral German firm) confirmed as first neutral practitioner source (Day 21 as of July 17); SC case number T 9380-24 confirmed; remand posture still Westerberg-only; monitor through ~July 24 for Baker Botts post-reversal update or Freshfields Germany; Svea CoA remand proceedings open.",
+    "Has Wingtech reached ICSID registration by the day-104 downgrade checkpoint (July 28)? Day 93 as of July 17 — no registration. If not registered by July 28, downgrade to background thread.",
+    "Einarsson v. Canada (UNCT/20/6): award pending; 16+ months post-hearing; standing watch. Note: July 17 AI search synthesis appeared to surface an award/rejection — correctly rejected by security as likely AI conflation of Canada's defence argument with a tribunal ruling; no primary source found; standing-watch posture unchanged.",
+    "Hela Schwarz Protocol Article 9 — three-condition pre-ICSID architecture now fully mapped: Ad Article 9(a) mandatory administrative exhaustion at MEDIUM confidence (JIDS 2020, July 15); Ad Article 9(b) three-month temporal gate at MEDIUM-HIGH confidence (July 17, new); Ad Article 9(c) no-U-turn withdrawal of concurrent proceedings at MEDIUM-HIGH confidence (JIDS 2020, July 11). Award reasoning on each sub-provision unconfirmed (PDF blocked); pursue JIDS/ICSID Review case note on December 2025 Award via SSRN/Google Scholar.",
     "DOB provision (Draft Provision 9 / WP.253) and natural-person nationality gap: unaddressed by July 2026 UNCITRAL adoption; standing watch for September 2026 intersessional."
   ],
-  "seq": 20,
+  "seq": 21,
   "history": [
+    {
+      "seq": 21,
+      "date": "2026-07-17",
+      "headline": "Protocol Article 9(b) Three-Month Temporal Gate Identified (MEDIUM-HIGH), Completing Three-Condition Pre-ICSID Architecture for China-Germany BIT 2003; UNCITRAL Adoption Upgraded to MEDIUM-HIGH (IAReporter + UNIS Vienna); Einarsson False Positive Rejected; New Optimization: New-Treaty-Intake Protocol Scan"
+    },
     {
       "seq": 20,
       "date": "2026-07-16",

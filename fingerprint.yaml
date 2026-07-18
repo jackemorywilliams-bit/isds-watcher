@@ -36,13 +36,17 @@ rings:
       - {phrase: "brand value", weight: 4, seed: theme_extension}
       - {phrase: "geographical indication", weight: 4, seed: theme_extension}
       - {phrase: "data exclusivity", weight: 4, seed: "kim,ferguson"}
-      - {phrase: "copyright", weight: 4, seed: theme_extension}
+      - {phrase: "copyright", weight: 2, seed: theme_extension}
       # Trade-secret / clinical-data branch, from the Ferguson & Kim seed memos:
       - {phrase: "trade secret", weight: 6, seed: "ferguson,kim"}
       - {phrase: "clinical trial data", weight: 5, seed: kim}
       - {phrase: "test data", weight: 3, seed: kim}
       - {phrase: "unfair commercial use", weight: 3, seed: "ferguson,kim"}
-    # sum: 14+3+10+5+8+4+8+3+4+4+4+4+4+4+4+6+5+3+3 = 100
+      # TRIPS Article 39(3) hinge from the Ferguson & Kim memos (IP-specific). "indirect
+      # expropriation" is deliberately NOT a Ring-1 phrase: it fires on non-IP cases (e.g.
+      # sovereign-debt claims), so it lives in the doctrinal stakes, not the lexicon.
+      - {phrase: "trips article 39", weight: 2, seed: "ferguson,kim"}
+    # sum: 100 (trips-article-39 +2 offset by copyright -2)
 
   judicial_or_regulatory_measure:
     weight: 100

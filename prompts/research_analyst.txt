@@ -136,4 +136,27 @@ you to prioritise, and address what it asks you to verify.
 ## The daily researcher's notes this week (build on these; don't redo them)
 {{DAILY_NOTES}}
 
+## Candidate-claims contract (MANDATORY — the memo is incomplete without it)
+At the very end of the memo, emit one fenced JSON block proposing every substantive
+legal/factual claim your memo relies on. You PROPOSE; the operator-controlled
+verification ledger decides what may be asserted — you do not decide verification
+status, and any status you emit is ignored. Exactly this shape:
+
+```json
+{"candidate_claims": [
+  {"claim_text": "<one precise, checkable sentence>",
+   "source_url": "<the URL you actually consulted — required; no URL, no claim>",
+   "access_status": "full|partial|paywalled|blocked|unavailable",
+   "source_authority": "primary|official_secondary|academic_secondary|media|unknown",
+   "claim_type": "holding|procedural|factual|interpretive|lead",
+   "assertion_status": "candidate|lead",
+   "supporting_quote": "<exact substring from the source, or null>",
+   "supporting_locator": "<page/paragraph/anchor, or null>"}
+]}
+```
+
+Rules: a tribunal HOLDING may only cite a primary source (the award/decision itself);
+secondary coverage of a holding is claim_type "lead". A malformed or missing block
+fails this stage — it is never treated as "no claims".
+
 Now produce the research analysis.

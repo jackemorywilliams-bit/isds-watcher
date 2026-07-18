@@ -30,7 +30,28 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from . import config
+from . import config, integrity_gate
+from .integrity_gate import verify  # the append-only ledger (scripts/verify.py)
+
+
+def _gate_note(gated: dict) -> str:
+    """Render the deterministic gate outcome as the vetting note the editor honors:
+    what may be asserted, what stays a lead, what routes for library access."""
+    lines = ["INTEGRITY GATE (deterministic, ledger-backed): " + gated["header"], ""]
+    if gated["asserted"]:
+        lines.append("May be ASSERTED (operator-verified):")
+        lines += [f"- {c['claim_text']}" for c in gated["asserted"]]
+    if gated["leads"]:
+        lines.append("UNVERIFIED LEADS only — present with explicit unverified framing, "
+                     "never as established holdings/facts:")
+        lines += [f"- {c['claim_text']}" for c in gated["leads"]]
+    if gated["library"]:
+        lines.append("FOR PROFESSOR / LIBRARY ACCESS only (paywalled or blocked):")
+        lines += [f"- {c['claim_text']}" for c in gated["library"]]
+    if gated["rejected"]:
+        lines.append("OPERATOR-REJECTED — must not appear in the brief at all:")
+        lines += [f"- {c['claim_text']}" for c in gated["rejected"]]
+    return "\n".join(lines)
 
 logger = logging.getLogger("isds.research_brief")
 
@@ -86,19 +107,6 @@ EDITOR_SCHEMA = {
         "open_threads": {"type": "array", "items": {"type": "string"}},
     },
     "required": ["headline", "dek", "sections", "supplemental", "open_threads"],
-    "additionalProperties": False,
-}
-
-# The security officer's verdict, returned as STRUCTURED JSON rather than free text so
-# the ledger can read a real boolean instead of substring-sniffing the prose. ``issues``
-# is the human-readable list of flags (empty when clean); it still feeds the memo/editor.
-SECURITY_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "clean": {"type": "boolean"},
-        "issues": {"type": "array", "items": {"type": "string"}},
-    },
-    "required": ["clean", "issues"],
     "additionalProperties": False,
 }
 
@@ -263,41 +271,9 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
     return _text_of(resp) if resp else ""
 
 
-def _security_issues_text(verdict: dict) -> str:
-    """Render the structured verdict as the human-readable vetting note the editor and the
-    archived memo still expect (a bulleted list, or an explicit all-clear line)."""
-    issues = [i for i in (verdict.get("issues") or []) if i and i.strip()]
-    if verdict.get("clean") and not issues:
-        return "Clean — no fabrication, overreach, inflated relevance, or quote/access issues found."
-    if not issues:
-        return "Flagged — issues raised but not itemized; treat the memo with caution."
-    return "\n".join(f"- {i.strip()}" for i in issues)
-
-
-def _run_security(client, analyst_memo: str) -> dict:
-    """Security officer: vets the memo for fabrication, overreach, inflated relevance, and
-    quote/access integrity before publication. Returns a STRUCTURED verdict
-    ``{"clean": bool, "issues": [str], "note": str}`` (same model, JSON-schema output) so
-    the ledger reads a real boolean rather than substring-sniffing free text. ``note`` is
-    the human-readable rendering kept for the editor and the archived memo."""
-    prompt = (
-        _read_prompt("council_security.txt")
-        .replace("{{CALIBRATION}}", _calibration())
-        .replace("{{ANALYST_MEMO}}", analyst_memo)
-    )
-    resp = client.messages.create(
-        model=_model(),
-        max_tokens=1500,
-        system=("You are the security and integrity officer of an ISDS research council. "
-                "Return only valid JSON matching the provided schema: set \"clean\" true "
-                "only if the memo is free of every flagged category, and list each issue "
-                "(empty when clean) in \"issues\"."),
-        messages=[{"role": "user", "content": prompt}],
-        output_config={"format": {"type": "json_schema", "schema": SECURITY_SCHEMA}},
-    )
-    verdict = json.loads(_text_of(resp))
-    verdict["note"] = _security_issues_text(verdict)
-    return verdict
+# The LLM security-officer stage was replaced by the deterministic integrity gate
+# (src/integrity_gate.py) — assertion decisions now come from exact claim_id lookup
+# against the operator verification ledger, not from a model verdict.
 
 
 def _run_editor(client, analyst_memo: str, security_note: str) -> dict:
@@ -436,18 +412,39 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         if not memo:
             logger.warning("research_brief: analyst produced no text; skipping")
             return None
-        verdict = _run_security(client, memo)
-        security_note = verdict.get("note", "")
-        logger.info("research_brief: security officer vetted the memo (clean=%s, %d issue(s))",
-                    verdict.get("clean"), len(verdict.get("issues") or []))
+        # INTEGRITY GATE (deterministic; replaces the LLM security officer for
+        # assertion decisions). The analyst proposes candidate claims; the operator
+        # verification ledger — exact claim_id lookup only — decides what may be
+        # asserted. Malformed analyst output FAILS this stage with a structured
+        # error artifact; it is never converted into a successful empty brief.
+        try:
+            candidates = integrity_gate.parse_candidate_claims(memo)
+        except integrity_gate.MalformedAnalystOutput as exc:
+            logger.error("research_brief: analyst output violated the candidate-claims "
+                         "contract (%s); error artifact: %s", exc, exc.artifact_path)
+            return None
+        for c in candidates:  # ledger the proposals (claim_created only; never a status)
+            try:
+                verify.create_claim(
+                    c["claim_text"], c["source_url"],
+                    supporting_locator=c.get("supporting_locator"),
+                    access_status=c["access_status"],
+                    source_authority=c["source_authority"])
+            except Exception as exc:  # noqa: BLE001 - ledgering must not kill the brief
+                logger.warning("research_brief: could not ledger claim (%s)", exc)
+        gated = integrity_gate.classify(candidates)
+        integrity_gate.gate_brief(gated["asserted"])  # invariant: asserted ⇒ verified
+        security_note = _gate_note(gated)
+        logger.info("research_brief: integrity gate — %s", gated["header"])
         brief = _run_editor(client, memo, security_note)
         brief["_memo"] = memo
         brief["_agenda"] = agenda
-        # Keep the human-readable note for the memo/editor and the structured verdict for
-        # the ledger (the boolean, not a substring sniff of free text).
+        # The deterministic gate note stands where the LLM vetting note used to.
         brief["_security"] = security_note
-        brief["_security_clean"] = bool(verdict.get("clean"))
-        brief["_security_issues"] = list(verdict.get("issues") or [])
+        brief["_security_clean"] = not gated["rejected"]
+        brief["_security_issues"] = [
+            f"operator-rejected claim resurfaced: {c['claim_text'][:120]}"
+            for c in gated["rejected"]]
         # INTEGRITY-CHECK stage (after the security officer): the deterministic, model-free
         # hallucination check over the brief's own citations — URLs resolved, URL-less
         # bibliographic authorities recorded for human verification. The integrity control

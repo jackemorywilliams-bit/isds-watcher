@@ -21,6 +21,7 @@ multi-perspective rigor of a council.
 | **Citation / hallucination checker** | `scripts/check_citations.py` | Deterministic backstop to the security officer: machine-verifies every citation and high-risk claim in the brief — and, on demand, this methodology memo — against a real source, recording a structured clean/flagged verdict before publication. |
 | **Autoprompt engineer (through the chairman)** | `src/research_state.py` + the open-threads loop | Each issue's open threads are persisted and fed back into next week's chairman agenda, so the prompting adapts and the research compounds rather than restarting cold. |
 | **Editor** | `prompts/research_editor.txt` | Turns the vetted memo into the structured, professional **ISDS Research Brief** (the second weekly email), honoring the security officer's note. |
+| **Systems researcher** | `prompts/systems_researcher.txt` | Second daily researcher, working in parallel with the research analyst but studying the **instrument itself**: mines open GitHub scraper/monitor projects, IR and text-classification literature, and LLM/automation tooling for concrete, sourced, component-specific ways to make this pipeline more efficient and effective. Daily note committed to `analytics/systems-research/<DATE>.md`; the week's notes feed the Monday roundtable's workflow-improvement question. |
 | **Analytics officer** | `scripts/source_analytics.py` + per-source counts in `meta.json` | Tracks which catalogue sources are receptive to the thematic intersection (surfaced yield now; receptivity = surfaced ÷ fresh candidates as per-source counts accrue), to tune coverage toward feeds that yield genuinely on-theme articles. Output: `analytics/source-receptivity.md`. |
 
 **Calibration (binding).** Every member applies the council calibration checklist
@@ -68,6 +69,24 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
   plan** (not the API-billed GitHub Actions pipeline), with a deliberately small daily
   budget so it does not eat into Max usage. The meeting record is committed to `analytics/daily-research/`
   and emailed each day by a free GitHub Actions job (`daily-update.yml`, SMTP only).
+  The **systems researcher** runs in the same daily routine, in parallel, committing its
+  sourced improvement note to `analytics/systems-research/<DATE>.md`.
+  **Daily writing standard (binding).** The daily record is written for the operator as a
+  standalone, plain-language professional note: a reader with no prior context must be able
+  to follow it. Complete sentences and a short through-line — never fragmented mini-paragraphs
+  that presume the previous days' context; jargon spelled out on first use; a one-line
+  "where this leaves the research question" close. Honesty over volume: a quiet day is one
+  clean paragraph, not padding.
+- **Monday — the roundtable, before the operator's email.** Each Monday, before the
+  13:00 UTC review email fires, the routine convenes the **full-council roundtable**
+  (`prompts/council_roundtable.txt`): a genuine multi-role dialogue over three questions —
+  the researcher's findings (challenged by the security officer, tied to screened items by
+  the analytics officer), workflow improvements (presented by the systems researcher from
+  the week's notes), and the status of the research question. The transcript plus the
+  chairman's close-out is committed to `analytics/roundtable/<DATE>.md`, and the Monday
+  review packet (`scripts/send_human_review.py`) places its overview at the top of the
+  operator's email. The digest for the faculty mentor remains a separate email; the two are
+  never merged.
 - **Weekly — the council reconvenes.** The weekly run convenes the full council and ends
   with the chairman's **reconvene minutes**: a candid status, next steps, a per-member
   **accountability** assessment, and **escalations to the principal** (surfaced in the

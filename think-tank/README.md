@@ -10,3 +10,7 @@ Obsidian's graph view and backlinks work out of the box.
 2. Open `multi-agent/[[_MOC]]` (the Map of Content) and follow the links; use the graph view.
 
 It is versioned in the repo, so edits are tracked. Start at `multi-agent/_MOC`.
+
+<!-- graph:auto start -->
+Map: [[Research Question]]
+<!-- graph:auto end -->

@@ -16,3 +16,7 @@
 ## III. Implication for the Research Question
 
 **[RESEARCH-QUESTION IMPLICATION]** For the project's Ring 3 inquiry, *Bridgestone* is a case where every threshold gate opened — IP assets and even bare licenses qualified as investments, and a non-party licensee had standing — yet the claim failed on the merits under the high denial-of-justice bar, with a heavy adverse costs award (¶¶ 547, 590). It therefore cuts against reading jurisdictional dismissals as the primary filter: here the filter was substantive. What the award does *not* establish matters equally — it says nothing about trade secrets or regulatory disclosure, and the expropriation and national-treatment claims were withdrawn before decision (¶ 129), so the award cannot be cited on how such measures would fare. Its portability is also limited to judicial-conduct measures; it does not test regulatory action against the FET standard.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

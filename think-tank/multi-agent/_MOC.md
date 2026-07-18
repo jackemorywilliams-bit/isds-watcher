@@ -23,3 +23,7 @@ but the evidence ([[40 - Evidence on ROI]]) says the cheap **generator–verifie
 the value for this task. Decide in [[70 - Decisions]].
 
 #multi-agent #moc
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

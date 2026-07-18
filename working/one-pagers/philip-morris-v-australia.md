@@ -16,3 +16,7 @@
 ## III. What the Award Does and Does Not Establish
 
 **[RESEARCH-QUESTION IMPLICATION]** For the question of when IP asserted as a covered investment and challenged via a state measure is disposed of at the jurisdictional gate, this award establishes the timing-and-purpose pathway: a foreseeability-based abuse-of-rights test (¶¶ 554, 585) that lets a tribunal dismiss an IP-centered claim without ever characterizing the IP. It does not reach whether trademarks or get-up are themselves protected investments under the BIT; whether plain packaging amounted to expropriation or breached any substantive standard; or how a tribunal would treat an identical claim brought by an entity that held the investment before the measure became foreseeable. The merits of the IP claim were never adjudicated (¶¶ 9, 588–590). The case therefore supports the proposition that jurisdictional disposal of IP claims can be entirely orthogonal to the IP — a lesson about claimant structure and timing, not about the status of intangibles as investments.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

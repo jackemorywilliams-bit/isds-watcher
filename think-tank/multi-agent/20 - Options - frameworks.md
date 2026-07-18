@@ -22,3 +22,7 @@ stale. The topic's top repos are mostly Claude-Code harnesses + file-based plann
 
 Sources are listed in `MULTI_AGENT_ROADMAP.md`. Next: [[30 - The Max plus Agent SDK path]]
 #multi-agent #frameworks
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

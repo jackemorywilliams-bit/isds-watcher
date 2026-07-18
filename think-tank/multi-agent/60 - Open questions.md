@@ -18,3 +18,7 @@ tags: [multi-agent, open-questions]
 
 Move resolved questions to [[70 - Decisions]].
 #multi-agent #open-questions
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

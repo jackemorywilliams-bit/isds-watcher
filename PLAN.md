@@ -122,3 +122,7 @@ The original plan above is preserved as written; the following are the changes t
 - **One recipient**: `jackemorywilliams@icloud.com`. `ximena.s.benavides@gmail.com` is commented out in `src/config.py` and can be restored later.
 - **Hybrid digest sizing**: report every match at/above threshold (no upper cap), with a minimum of six items filled from the closest near-misses only down to a relevance floor of 25 (`MIN_DIGEST_ITEMS=6`, `RELEVANCE_FLOOR=25`). A quiet week may send only 0–3 items; a week with nothing above 25 sends a one-sentence "no thematically relevant developments this week — N candidates screened" note instead of padding.
 - **First-run baseline**: the first run indexes all existing items as a baseline and sends only a baseline note, so ongoing digests contain only genuinely new items.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

@@ -63,3 +63,7 @@ Three open questions for the project arise from this memo. First, can Kim's prop
 
 ## VII. Backsourced Annotated Bibliography
 *Follows the same template as the Ferguson memo (Bluebook + liberal URLs; ~80–200 word descriptive/evaluative/relevance annotations with a per-entry verification statement). Backsourced entries to add: Apotex v. United States; Philip Morris v. Uruguay; Eli Lilly v. Canada; the EMA disclosure policy and the InterMune, AbbVie, and PTC Therapeutics transparency cases; TRIPS Article 39(3); the Malicorp v. Egypt investment-definition language; and the secondary literature on clinical data exclusivity. Template grounded in: CUNY School of Law, Drafting a Law Office Memorandum; Columbia Law School, Memo Writing Checklist; Eric E. Johnson, Memo to Student Research Assistants re Research Deliverables (2023); Saldana, The Coding Manual for Qualitative Researchers (3d ed.); Linos & Carlson, Qualitative Methods for Law Review Writing, 84 U. Chi. L. Rev. 213 (2017); A Practical Framework for Conducting a Literature Review, The Qualitative Report (Nova Southeastern Univ.).*
+
+<!-- graph:auto start -->
+Map: [[Research Question]]
+<!-- graph:auto end -->

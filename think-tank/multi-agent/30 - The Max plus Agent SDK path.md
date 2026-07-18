@@ -22,3 +22,7 @@ interactive Claude Code — a finite weekly pool. Keep the daily run lean.
 
 Tension to resolve: is this worth doing over the cheap verifier? See [[40 - Evidence on ROI]].
 #multi-agent #key-finding
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

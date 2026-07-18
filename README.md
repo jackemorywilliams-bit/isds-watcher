@@ -172,3 +172,7 @@ ISDS activity at the intersection.
   pipeline stage.
 - [HANDOFF.md](HANDOFF.md) — secrets, triggering, troubleshooting, and tuning.
 - [PLAN.md](PLAN.md) — the per-ring vocabulary extracted from the seed awards.
+
+<!-- graph:auto start -->
+Map: [[00 - Project Map]]
+<!-- graph:auto end -->

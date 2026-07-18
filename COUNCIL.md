@@ -129,3 +129,7 @@ session hooks, usage telemetry to an external service, and an embedded token). T
 council instead lives entirely in-repo. If a *trusted* MCP toolset is ever wanted, it can
 be attached to the analyst via the Messages API `mcp_servers` parameter without changing
 the council's structure.
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

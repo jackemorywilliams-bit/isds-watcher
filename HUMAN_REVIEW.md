@@ -206,3 +206,7 @@ Jusmundi full texts, ICSID award PDFs) — paywalled claims are routed to the fa
 - Corrections made: `STATE_OF_THE_ANSWER.md` updated this date (see entries for the USTR
   characterisation and the China–Germany BIT).
 - Sign-off: operator confirmation received in-session, 2026-07-18.
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

@@ -18,3 +18,7 @@ quality wins. See `MULTI_AGENT_ROADMAP.md`.
 So the question in [[00 - The question]] is the **next increment**, not a prerequisite.
 Options: [[20 - Options - frameworks]] · [[30 - The Max plus Agent SDK path]]
 #multi-agent
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

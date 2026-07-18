@@ -98,3 +98,7 @@ Cognition — Don't Build Multi-Agents (https://cognition.com/blog/dont-build-mu
 MAST — Why Do Multi-Agent LLM Systems Fail? (https://arxiv.org/abs/2503.13657) ·
 Strong single-agent baseline (https://arxiv.org/pdf/2601.12307).
 Pricing (claude-api skill, cached 2026-06-04): Opus 4.8 $5/$25, Sonnet 4.6 $3/$15, Haiku 4.5 $1/$5 per MTok; Batch −50%; cache reads ~0.1×.
+
+<!-- graph:auto start -->
+Map: [[00 - Project Map]]
+<!-- graph:auto end -->

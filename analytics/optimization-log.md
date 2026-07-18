@@ -31,3 +31,7 @@ this list before adding. This is the running idea bank — ideas move to a PR/ro
 - 2026-06-23 — Agent-SDK subagents on Max in cron: a researcher subagent + an isolated-context
   verifier subagent, billed to the Max headless pool. The genuine multi-agent step. _Status:
   proposed (Stage 2 in the roadmap)._
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

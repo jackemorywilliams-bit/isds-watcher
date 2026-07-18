@@ -72,3 +72,7 @@ No citation in the memo is fabricated. Every cited book, article, case, standard
 3. **Ferguson (optional completeness).** The Ferguson source is cited without journal/volume/page. If the intended reference is the published article, the full pin is: Ferguson, A., *Trade secrets at risk — the protection against expropriation of a trade secret*, 40 Arb. Int'l 337 (2024). (If "the Ferguson memo" is a separate project-internal document, disregard.)
 
 None of these affects the memo's substantive arguments; (1) is a genuine error worth fixing before circulation, (2) and (3) are precision improvements.
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

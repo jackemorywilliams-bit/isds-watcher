@@ -58,3 +58,7 @@ threshold (40) without a second ring; (b) backtest F1 (illustrative 0.86) must b
 phrases they retain.
 
 **Decision requested from the operator:** approve as-is, approve with edits, or reject.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

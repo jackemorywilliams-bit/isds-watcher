@@ -71,3 +71,7 @@ Hard rule: **"denial of justice" must never be flattened to "injustice" or "unfa
 Source: `METHODOLOGY.md` §X.
 - Methodological: Saldaña, *The Coding Manual for Qualitative Researchers* (3d ed.); Linos & Carlson, *Qualitative Methods for Law Review Writing*, 84 U. Chi. L. Rev. 213 (2017); *A Practical Framework for Conducting a Literature Review*, The Qualitative Report; AALL *Law Library Journal*; The Chicago Manual of Style §§ 14.61–14.305; CUNY School of Law; Columbia Law School; Eric E. Johnson (2023); Salton & McGill (1983); Manning, Raghavan & Schütze (2008); Brown et al., *Language Models are Few-Shot Learners*, NeurIPS 33 (2020); Koster, Illyes, Zeller & Sassman, RFC 9309 (2022).
 - Doctrinal: Paulsson, *Denial of Justice in International Law* (2005); Baumgartner, *Treaty Shopping in International Investment Law* (2016); Byers, 47 McGill L.J. 389 (2002); Mercurio, 15 J. Int'l Econ. L. 871 (2012); Correa & Viñuales, 19 J. Int'l Econ. L. 91 (2016); Kingsbury & Schill (IILJ Working Paper 2009/6); Dolzer & Schreuer (2d ed. 2012); McLachlan, Shore & Weiniger (2d ed. 2017).
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

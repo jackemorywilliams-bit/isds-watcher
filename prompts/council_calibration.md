@@ -35,3 +35,7 @@ enforces all of them before anything is published.
 7. CONSTRAINT COMPLIANCE. Honor the structural limits exactly (the editor's section,
    dek, and thread counts; the relevance floor; quote-integrity rules). Verify compliance
    before emitting — do not assume it.
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

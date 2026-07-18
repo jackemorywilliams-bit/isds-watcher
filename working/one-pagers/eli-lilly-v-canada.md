@@ -22,3 +22,7 @@
 **[RESEARCH-QUESTION IMPLICATION]** *Eli Lilly* is the clean counter-case to any thesis that tribunals dodge IP-plus-judicial-measure claims at the jurisdictional threshold. This claim was decided on the merits — the tribunal took jurisdiction over a pure judicial-measure patent claim, reached the substance, and dismissed for failure of factual proof, with no damages phase (¶¶ 469, 471–472). For the Ring 3 line of inquiry, that means the jurisdictional-exit pattern is not universal: here the gate opened, and the screening work was done instead by the merits burden (the dramatic-change factual predicate, ¶¶ 388–389) and by heavy deference to national courts (¶ 224). What the award does establish: patents can pass through Rings 1 and 3 without resistance, and Article 1105/1110 claims against judicial acts are cognizable in principle beyond denial of justice (¶ 223). What it does not establish: any affirmative holding that patents are investments (uncontested, so no reasoned ruling), any resolution of the denial-of-justice-only debate (expressly reserved, ¶ 220), or any merits standard actually met by an investor. The costs award (¶ 460) is also a data point on the price of losing a merits-stage IP claim.
 
 **[UNVERIFIED EXTERNAL CONTEXT]** Omitted — nothing external is needed for this memo.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

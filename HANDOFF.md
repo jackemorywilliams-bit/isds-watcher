@@ -108,3 +108,7 @@ python -m src.main --dry-run --since 400d --no-email --verbose     # wide window
 python -m src.main --dry-run --since 7d --no-email --limit-sources iisd_itn,italaw
 ```
 Generated digests land in `digests/<YYYY-MM-DD>.html` — open in a browser to preview the email.
+
+<!-- graph:auto start -->
+Map: [[00 - Project Map]]
+<!-- graph:auto end -->

@@ -168,3 +168,41 @@ when a person completes the "Operator ratification" fields and signs off. To reg
 - Verification-debt items cleared this cycle: __________________________
 - Corrections made (to `STATE_OF_THE_ANSWER.md` / `analytics/insights.jsonl`): __________________________
 - Sign-off (operator confirms the above is reviewed and accurate): __________________________
+
+### 2026-07-18 — Cycle 1 — COMPLETED (operator review, conducted in-session)
+
+Reviewer: Jack Emory Williams (operator). Method: operator opened the open-web sources and
+pasted their contents back for assessment; outcomes recorded verbatim below. Standing
+constraint recorded: **the operator has no access to paywalled databases** (IAReporter,
+Jusmundi full texts, ICSID award PDFs) — paywalled claims are routed to the faculty mentor
+(Dr. Benavides) and are never assigned to the operator again.
+
+1. **USTR 2026 Special 301 — China pharmaceutical trial-data conditions called "unfair and
+   discriminatory"** — **VERIFIED by operator** against the full 2026 Special 301 Report
+   (USTR, April 2026). The report also confirms context the record now carries: China remains
+   on the Priority Watch List; trade-secret protection inadequacies in China are a named
+   concern; Mexico's April 2026 amended regulations on undisclosed test data are a comparator
+   development.
+2. **China–Germany BIT (2003) as the top Ring 1 vehicle** — **PARTIALLY VERIFIED.** The
+   operator retrieved UNCTAD's IIA Mapping Project entry for the treaty. It confirms: an
+   **asset-based, non-exhaustive investment definition** (no closed list of covered assets, no
+   asset exclusions, no "in accordance with host State law" requirement) — consistent with IP
+   and trade-secret coverage; ISDS with **ICSID and UNCITRAL** forum options; and a
+   **"no U-turn" (waiver clause)** governing the relationship between forums — independent
+   corroboration of the *Hela Schwarz* court-withdrawal jurisdictional mechanism. NOT
+   confirmed by this source: the literal "trade and business secrets" wording, which sits in
+   the treaty's Article 1 text (not reproduced in the mapping). Also noted from the mapping:
+   no denial-of-benefits clause; dual nationals not excluded; MFN clause post-establishment
+   with **no exception for ISDS-procedural or substantive standards** (relevant to
+   Okuashvili-style MFN forum arguments). Caveat: UNCTAD's mapping is student-mapped
+   (Xiamen/La Plata, 03-2013), informational, non-authoritative.
+   **Residual item → faculty mentor:** confirm "trade and business secrets" in Article 1 of
+   the treaty text.
+3. **Hela Schwarz v. China dismissed on jurisdiction (court-withdrawal)** — **OPEN** (not
+   reviewed this cycle), though indirectly strengthened by the mapping's "no U-turn" waiver
+   clause. Remains on the operator's open-check list.
+
+- Final pass rate: 1 verified + 1 partial / 3 assigned
+- Corrections made: `STATE_OF_THE_ANSWER.md` updated this date (see entries for the USTR
+  characterisation and the China–Germany BIT).
+- Sign-off: operator confirmation received in-session, 2026-07-18.

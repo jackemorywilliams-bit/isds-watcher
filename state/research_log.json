@@ -1,15 +1,120 @@
 {
-  "last_updated": "2026-06-29",
+  "last_updated": "2026-07-18",
   "open_threads": [
-    "After the 59th session concludes on 10 July 2026, does the A/CN.9-series session report record adoption, referral back, or noting of A/CN.9/1246 — and can the unverified companion comments-compilation and agenda document numbers be confirmed against retrieved sources?",
-    "Does any State adopting the Protocol/MIIR opt to apply the early-dismissal provisions to pre-existing treaties, which would for the first time give a harmonised jurisdictional-gate tool to IP-investment respondents?",
-    "Can the opt-in / non-retroactivity architecture be confirmed against the body of A/CN.9/1246 itself rather than inferred from the Transparency Convention precedent?",
-    "Does an accessible primary source for the Hela Schwarz data-exclusivity award emerge, given the ICSID paywall has so far blocked the full text?",
-    "Is there any new signal on the Einarsson award beyond the prior baseline of post-hearing briefing through August 2025?",
-    "Can an accessible Swedish primary source for Okuashvili be located rather than a paywalled-only confirmation?"
+    "UNCITRAL adoption confirmed at MEDIUM-HIGH confidence (IAReporter indexed headline + UNIS Vienna press release + AFTINET/Both ENDS, July 2026): Supplementary Provisions on the Conduct of Proceedings + Advisory Centre Statute + awards in electronic form adopted; SPS content characterized (early dismissal, TPF disclosure, cost allocation, bifurcation, security for costs, counterclaims, interim measures); neither Supplementary Provisions nor Advisory Centre Statute includes DOB provision; MIIR not yet adopted. Monitor IISD ITN/EJIL:Talk for full-text and MIC/MIIR/host-country outcome. Next milestone: September 7–9, 2026 intersessional, Ninh Binh.",
+    "Okuashvili v. Georgia (T 9380-24): Gleiss Lutz (neutral German firm) confirmed as first neutral practitioner source (Day 22 as of July 18); SC case number T 9380-24 confirmed; remand posture still Westerberg-only; monitor through ~July 24 for Baker Botts post-reversal update or Freshfields Germany; Svea CoA remand proceedings open.",
+    "Has Wingtech reached ICSID registration by the day-104 downgrade checkpoint (July 28)? Day 94 as of July 18 — no registration. China-Netherlands BIT (2001) Exchange of Notes administrative exhaustion requirement confirmed as cross-BIT structural feature (new, July 18, MEDIUM). If not registered by July 28, downgrade to background thread.",
+    "Einarsson v. Canada (UNCT/20/6): award pending; 16+ months post-hearing; standing watch. Note: July 17 AI search synthesis appeared to surface an award/rejection — correctly rejected by security as likely AI conflation of Canada's defence argument with a tribunal ruling; no primary source found; standing-watch posture unchanged.",
+    "Hela Schwarz Protocol Article 9 — three-condition pre-ICSID architecture now fully mapped: Ad Article 9(a) mandatory administrative exhaustion at MEDIUM confidence (JIDS 2020, July 15); Ad Article 9(b) three-month temporal gate at MEDIUM-HIGH confidence (July 17, new); Ad Article 9(c) no-U-turn withdrawal of concurrent proceedings at MEDIUM-HIGH confidence (JIDS 2020, July 11). Award reasoning on each sub-provision unconfirmed (PDF blocked); pursue JIDS/ICSID Review case note on December 2025 Award via SSRN/Google Scholar. Expected Hela Schwarz ICSID Review case note window: August–October 2027 (calibrated from AsiaPhos case note publication timing, July 18).",
+    "DOB provision (Draft Provision 9 / WP.253) and natural-person nationality gap: unaddressed by July 2026 UNCITRAL adoption; standing watch for September 2026 intersessional."
   ],
-  "seq": 2,
+  "seq": 22,
   "history": [
+    {
+      "seq": 22,
+      "date": "2026-07-18",
+      "headline": "AsiaPhos v. China (ICSID ADM/21/1) Discovered as Fifth Ring 3 Mechanism (First-Generation BIT ISDS Scope Limitation, MEDIUM-HIGH); China-Netherlands BIT Protocol Administrative Exhaustion Confirmed as Cross-BIT Structural Feature (MEDIUM); Ring 3 Taxonomy Updated to Five Mechanisms; New Optimization: Cross-BIT Provision Consistency Check"
+    },
+    {
+      "seq": 21,
+      "date": "2026-07-17",
+      "headline": "Protocol Article 9(b) Three-Month Temporal Gate Identified (MEDIUM-HIGH), Completing Three-Condition Pre-ICSID Architecture for China-Germany BIT 2003; UNCITRAL Adoption Upgraded to MEDIUM-HIGH (IAReporter + UNIS Vienna); Einarsson False Positive Rejected; New Optimization: New-Treaty-Intake Protocol Scan"
+    },
+    {
+      "seq": 20,
+      "date": "2026-07-16",
+      "headline": "UNCITRAL 59th Session Adoption Confirmed at MEDIUM Confidence (Supplementary Provisions + Advisory Centre Statute; AFTINET/Both ENDS Civil-Society Source); Gleiss Lutz First Neutral Okuashvili Practitioner Source (T 9380-24); Hela Schwarz 'Ad Article' Labeling Confirmed; Wingtech Day 92 No Registration; No New Optimization Idea"
+    },
+    {
+      "seq": 19,
+      "date": "2026-07-15",
+      "headline": "China-Germany BIT Protocol Article 9(a) Administrative-Exhaustion Pre-Condition Identified (MEDIUM confidence); UNCITRAL Day 5 No Post-Session Coverage; Okuashvili No Neutral Source (Day 19); Wingtech Day 91 No Registration; New Optimization: Chinese BIT Protocol Provision Audit"
+    },
+    {
+      "seq": 18,
+      "date": "2026-07-14",
+      "headline": "B-Mex v. Mexico Backsourced as Near-Miss (Gaming/Casino, No IP Nexus); UNCITRAL Day 4 Post-Session No Coverage; All Threads Standing Watch; No New Insight"
+    },
+    {
+      "seq": 17,
+      "date": "2026-07-13",
+      "headline": "UNCITRAL 59th Session: Document Architecture Verified, Disposition Still Pending"
+    },
+    {
+      "seq": 16,
+      "date": "2026-07-13",
+      "headline": "Okuashvili Svea Court of Appeal Remand Confirmed (MEDIUM-HIGH, Westerberg & Partners): SC Unanimous, SCC Arbitration Not Yet Restored; Posture Corrected; UNCITRAL Day 3 Post-Session No Coverage; New Sourced Insight Logged; Counsel-Identification Optimization Proposed"
+    },
+    {
+      "seq": 15,
+      "date": "2026-07-12",
+      "headline": "Hela Schwarz Sector Confirmed (Food Additives/Real Estate, Not Pharmaceutical); ICSID Review 2021 Article on Chinese BIT Concurrent Proceedings Identified; UNCITRAL Day 2 Post-Session No Coverage; No New Sourced Insight; Sector-Labeling in insights.jsonl Proposed"
+    },
+    {
+      "seq": 14,
+      "date": "2026-07-11",
+      "headline": "Article 9(c) of China-Germany BIT Protocol Text Recovered from JIDS 2020 (MEDIUM-HIGH): No-U-Turn Confirmed, Cure-by-Withdrawal Mechanism Identified; UNCITRAL Day 1 Post-Session No Coverage; New Sourced Insight Logged"
+    },
+    {
+      "seq": 13,
+      "date": "2026-07-10",
+      "headline": "UNCITRAL 59th Session Closes (Day 12); No Post-Session Coverage Yet; Wingtech BIS Entity List (December 2024) and AFSL Precision Added; Morgan Lewis German Scrutiny Context; AJIL Case Note (2023) on Okuashvili SCC Award Confirmed; Guide to DPs URL Confirmed; No New Sourced Insight; Academic Case Note Intake Proposed"
+    },
+    {
+      "seq": 12,
+      "date": "2026-07-09",
+      "headline": "Wingtech AFSL Domestic Claim in Dongguan Court (May 22, 2026) Discovered; China-Netherlands BIT Art. 10 Asymmetric Architecture Identified (MEDIUM); Hela Schwarz Provision Pinned to Protocol Art. 9 (MEDIUM); UNCITRAL Day 11 No Coverage; New Sourced Insight Logged"
+    },
+    {
+      "seq": 11,
+      "date": "2026-07-08",
+      "headline": "Jason Yu Song v. China Post-Award Litigation Chain Complete: Two Swiss FSC Challenges Dismissed (4A_46/2024, April 17, 2025; 4A_528/2024, June 26, 2025); Criminal-Conviction Post-Award Jurisdictional Attack Documented and Rejected; Hela Schwarz Doctrinal Label Refined to Fork-in-the-Road; UNCITRAL Day 10 No Coverage; New Sourced Insight Logged"
+    },
+    {
+      "seq": 10,
+      "date": "2026-07-07",
+      "headline": "Suez v. Argentina (1) Backsourced as Ring 3 Near-Miss (Maffezini Line, No IP); Suez-Type MFN Pre-Condition Bypass Also Foreclosed by Chinese BIT Architecture (Inferential Corollary); UNCITRAL Day 9; No New Sourced Insight; Standing Watch"
+    },
+    {
+      "seq": 9,
+      "date": "2026-07-06",
+      "headline": "Okuashvili Reversal Confirms MFN Forum-Access Is Live — Where the Treaty Text Permits It"
+    },
+    {
+      "seq": 8,
+      "date": "2026-07-06",
+      "headline": "Advisory Centre Statute Corrected: Adopted In Principle at 57th Session (2024), Not 59th; Joyvio/Australis Confirmed False Positive Ring 2; Ring 2 Measure-Taker Sub-Criterion Proposed; UNCITRAL Day 8 Watch"
+    },
+    {
+      "seq": 7,
+      "date": "2026-07-05",
+      "headline": "Wingtech/Nexperia v. Netherlands: First Confirmed Ring 1-2 Near-Miss Under China-European BIT Network; A/CN.9/1269 Fabrication-Risk Cleared; NJA December 2026 Timeline; UNCITRAL Day 7 Standing Watch"
+    },
+    {
+      "seq": 6,
+      "date": "2026-07-04",
+      "headline": "China SAMR Order No. 126 (effective June 1, 2026): Parallel Trade-Secret Framework for Data Found; Drug Registration Certificate Tradability Sourced; MIIR Named Instrument Confirmed; UNCITRAL Day 6 Standing Watch"
+    },
+    {
+      "seq": 5,
+      "date": "2026-07-03",
+      "headline": "Okuashvili Three-Layer Chain Fully Confirmed (Swedish SC June 26, 2026); UNCITRAL Day 5 Watch; Advisory Centre Statute Finalization Noted"
+    },
+    {
+      "seq": 4,
+      "date": "2026-07-02",
+      "headline": "China BIT MFN Exclusion Confirmed as Negative Architectural Finding: Ring 3 Four-Mechanism Taxonomy Complete"
+    },
+    {
+      "seq": 3,
+      "date": "2026-07-01",
+      "headline": "A/CN.9/1246 Temporal Scope Clarified: 'April 1, 2027' Is an Illustrative Example, Not a Finalized Cutoff; Mauritius Opt-In Mechanism Proposed; UNCITRAL Day 3 Watch Continues"
+    },
+    {
+      "seq": 2,
+      "date": "2026-06-30",
+      "headline": "Okuashvili Swedish Supreme Court Reversal Confirmed (June 26, 2026): MFN-Forum-Access Doctrine Established; Ring 3 Near-Miss; UNCITRAL Day 2 Watch Continues"
+    },
     {
       "seq": 2,
       "date": "2026-06-29",

@@ -62,8 +62,8 @@ _SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
 if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
 
-# Interpretive work warrants the most capable model; override with RESEARCH_MODEL.
-DEFAULT_MODEL = "claude-opus-4-8"
+# Model ids come from the single config location (src/models.py); RESEARCH_MODEL
+# remains an explicit operator override for every stage.
 # Anthropic server-side web search (latest tool version; runs its own loop).
 WEB_SEARCH_TOOL = {"type": "web_search_20260209", "name": "web_search", "max_uses": 6}
 # Cap the server-tool continuation loop (pause_turn) so a run can't spin forever.
@@ -133,8 +133,38 @@ RECONVENE_SCHEMA = {
 }
 
 
-def _model() -> str:
-    return os.environ.get("RESEARCH_MODEL", DEFAULT_MODEL)
+def _model_for(role: str) -> str:
+    """Per-role model from the centralized config: chairman -> CHAIRMAN_MODEL,
+    heavy (analyst) -> HEAVY_MODEL, everything else -> UTILITY_MODEL. The
+    RESEARCH_MODEL env var stays as an explicit operator override for all roles."""
+    override = os.environ.get("RESEARCH_MODEL")
+    if override:
+        return override
+    from . import models
+    return {"chairman": models.CHAIRMAN_MODEL,
+            "heavy": models.HEAVY_MODEL}.get(role, models.UTILITY_MODEL)
+
+
+def _create_with_fallback(client, role: str, **kwargs):
+    """Run a stage on its requested model; if the runtime reports the model id as
+    unavailable, do NOT silently substitute — fall back to FALLBACK_MODEL and record
+    REQUESTED vs ACTUAL in HANDOFF.md so the discrepancy stays visible."""
+    from . import models
+    requested = kwargs.get("model")
+    try:
+        return client.messages.create(**kwargs)
+    except Exception as exc:  # noqa: BLE001 - inspect, then either fall back or re-raise
+        msg = str(exc).lower()
+        unavailable = "model" in msg and any(t in msg for t in
+                                             ("not_found", "not found", "invalid"))
+        if unavailable and requested != models.FALLBACK_MODEL:
+            models.record_fallback(role, requested, models.FALLBACK_MODEL)
+            logger.warning("research_brief: model %s unavailable for %s; running on "
+                           "%s (recorded in HANDOFF.md)", requested, role,
+                           models.FALLBACK_MODEL)
+            kwargs["model"] = models.FALLBACK_MODEL
+            return client.messages.create(**kwargs)
+        raise
 
 
 def _read_prompt(name: str) -> str:
@@ -229,8 +259,9 @@ def _run_chairman(client, items, prior_threads, week_str, screened) -> str:
         .replace("{{PRIOR_THREADS}}", _threads_block(prior_threads))
         .replace("{{ITEMS}}", _items_block(items))
     )
-    resp = client.messages.create(
-        model=_model(),
+    resp = _create_with_fallback(
+        client, "chairman",
+        model=_model_for("chairman"),
         max_tokens=1200,
         system="You are the chairman of an investor-State dispute settlement research council.",
         messages=[{"role": "user", "content": prompt}],
@@ -255,8 +286,9 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
     messages = [{"role": "user", "content": prompt}]
     resp = None
     for _ in range(MAX_CONTINUATIONS):
-        resp = client.messages.create(
-            model=_model(),
+        resp = _create_with_fallback(
+            client, "analyst",
+            model=_model_for("heavy"),
             max_tokens=8000,
             system="You are a meticulous investor-State dispute settlement research analyst.",
             tools=[WEB_SEARCH_TOOL],
@@ -284,8 +316,9 @@ def _run_editor(client, analyst_memo: str, security_note: str) -> dict:
         .replace("{{SECURITY_NOTE}}", security_note or "(No issues flagged.)")
         .replace("{{ANALYST_MEMO}}", analyst_memo)
     )
-    resp = client.messages.create(
-        model=_model(),
+    resp = _create_with_fallback(
+        client, "editor",
+        model=_model_for("utility"),
         max_tokens=4000,
         system=("You are the editor of a professional ISDS research newsletter. "
                 "Return only valid JSON matching the provided schema."),
@@ -308,8 +341,9 @@ def _run_reconvene(client, agenda, memo, security, brief) -> dict:
         .replace("{{SECURITY}}", security or "(none)")
         .replace("{{ISSUE}}", issue)
     )
-    resp = client.messages.create(
-        model=_model(),
+    resp = _create_with_fallback(
+        client, "chairman-reconvene",
+        model=_model_for("chairman"),
         max_tokens=1500,
         system=("You are the chairman of an ISDS research council writing the weekly "
                 "accountability minutes. Return only valid JSON for the schema."),

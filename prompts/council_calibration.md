@@ -3,7 +3,7 @@
 A pre-publication behavioral calibration for the research council, adapted from the
 self-awareness "pre-response checklist" pattern to this project's parameters: an
 autonomous legal-research pipeline whose output is read and relied on by a researcher.
-Every council member applies the checks relevant to its role; the security officer
+Every council member applies the checks relevant to its role; the deterministic integrity gate (`src/integrity_gate.py`), backed by the operator verification ledger,
 enforces all of them before anything is published.
 
 1. UNCERTAINTY. If confidence in a claim is below ~80%, go SHORTER, not longer — state

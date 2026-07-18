@@ -16,8 +16,8 @@ multi-perspective rigor of a council.
 | **Data-scraping agents** ("scouts") | `src/sources/*` + `src/enrich.py` | Fetch and enrich candidate developments from the open sources (italaw, UNCTAD, ICSID, IISD ITN, IAReporter, Google Alerts, …). |
 | **Classifier** | `src/classify.py` + `fingerprint.yaml` | Score each candidate against the three-ring thematic fingerprint; produce the digest. |
 | **Chairman** | `prompts/council_chairman.txt` | Opens each weekly session. Reads the carried open threads + this week's items and **sets the agenda** — priority focus, what to verify, which threads are live. Steward of continuity. |
-| **Research analyst** | `prompts/research_analyst.txt` (+ Claude web search) | Interprets the week's items against the research question and **escalates to web search** for supplemental contemporary findings (always, on a quiet week), working to the chairman's agenda. |
-| **Security / integrity officer** | `prompts/council_security.txt` | Vets the analyst's memo before publication: flags fabricated/unverifiable sources, overreach, **inflated relevance**, and quote/access-integrity problems. Its vetting note is binding on the editor. |
+| **Research analyst** | `prompts/research_analyst.txt` (+ Claude web search) | Interprets the week's items against the research question and **escalates to web search** for supplemental contemporary findings (always, on a quiet week), working to the chairman's agenda. **Proposes only:** its memo must end with a `candidate_claims` JSON block; it never decides verification status, and malformed output fails the stage with a structured error artifact rather than passing as empty. |
+| **Integrity officer (deterministic gate)** | `src/integrity_gate.py` + the verification ledger (`analytics/verification_ledger.jsonl`, CLI `scripts/verify.py`) | Replaces the former LLM security officer for assertion decisions. Exact claim_id lookup against the operator-controlled append-only ledger sorts every analyst-proposed claim into **asserted** (operator-verified; primary source required for holdings), **unverified leads**, or **for professor / library access** (paywalled). An asserted finding without operator verification fails the brief build, naming the claim_id. Its gate note is binding on the editor. |
 | **Citation / hallucination checker** | `scripts/check_citations.py` | Deterministic backstop to the security officer: machine-verifies every citation and high-risk claim in the brief — and, on demand, this methodology memo — against a real source, recording a structured clean/flagged verdict before publication. |
 | **Autoprompt engineer (through the chairman)** | `src/research_state.py` + the open-threads loop | Each issue's open threads are persisted and fed back into next week's chairman agenda, so the prompting adapts and the research compounds rather than restarting cold. |
 | **Editor** | `prompts/research_editor.txt` | Turns the vetted memo into the structured, professional **ISDS Research Brief** (the second weekly email), honoring the security officer's note. |
@@ -42,8 +42,8 @@ item or the question.
 scouts → classifier → DIGEST email (Thematic Watch, unchanged)
                          │
                          └─► chairman (agenda)
-                               → analyst (interpret + web search)
-                                 → security officer (vet)
+                               → analyst (interpret + web search; proposes candidate claims)
+                                 → integrity gate (deterministic; ledger decides assertability)
                                    → editor → RESEARCH BRIEF email (interpretive)
                                        └─ open threads ─┐
                                                         └─► carried to next week's chairman
@@ -54,8 +54,21 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
   full council deliberation preserved at `briefs/<date>-memo.md` (agenda + analyst memo +
   vetting note) as the audit trail.
 - The brief requires the Anthropic provider (web search is an Anthropic server tool) and
-  is skipped otherwise; set `RESEARCH_BRIEF_ENABLED=0` to suppress it. Model via
-  `RESEARCH_MODEL` (default `claude-opus-4-8`).
+  is skipped otherwise; set `RESEARCH_BRIEF_ENABLED=0` to suppress it. Model ids come
+  from the single config location `src/models.py` (see the model-assignment block below);
+  `RESEARCH_MODEL` remains an explicit operator override for every stage.
+
+## Model assignments (single source: `src/models.py`)
+
+| Role | Model |
+|------|-------|
+| Orchestrator / chairman | `claude-fable-5` |
+| Heavy-reasoning sub-agents (research analyst, one-pager drafting) | `claude-opus-4-8` |
+| Utility sub-agents (integrity helper, editor, graph classifier) | `claude-opus-4-8` |
+| Digest classifier | unchanged (`claude-haiku-4-5-20251001`, in `src/classify.py`) |
+
+If a requested id is unavailable at runtime the stage runs on the fallback and the
+REQUESTED vs ACTUAL discrepancy is recorded in `HANDOFF.md` — never silently substituted.
 
 ## Cadence & accountability
 

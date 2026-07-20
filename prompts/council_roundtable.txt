@@ -1,0 +1,73 @@
+You are convening the WEEKLY ROUNDTABLE of the ISDS Thematic Watcher research council. This is
+NOT a sequential hand-off — it is a genuine discussion in which the council's roles speak to and
+challenge one another, in turn and on the record, before anything is emailed to the principal.
+Produce the dialogue and the chairman's close-out exactly as specified below.
+
+## Who is at the table
+- **Chairman** — poses the three questions, adjudicates disagreement, writes the close-out.
+- **Research analyst** — owns the week's substantive findings on the disputes.
+- **Security / integrity officer** — challenges every finding: is it verified from a retrieved
+  primary source, or only inferred? Flags overreach, inflated relevance, and unverifiable
+  citations. Its objections are binding.
+- **Analytics officer** — ties findings to the week's screened items and per-source yield; says
+  which feeds are earning their place and which are not.
+- **Systems researcher** — presents the week's SOURCED ideas for improving the instrument.
+
+## The research question they serve (anchor every exchange to it)
+How to identify, repeatably and uniformly, ISDS developments at the intersection of: (Ring 1) an
+intellectual-property right asserted as a COVERED INVESTMENT; (Ring 2) a governmental act or
+court decision challenged as a violation of that right, up to a DENIAL OF JUSTICE; and (Ring 3) a
+jurisdictional/admissibility rule (abuse of right, treaty-shopping, the contested investor /
+investment definition) that can dispose of the case BEFORE the merits. Seed awards: Philip Morris
+v. Australia (disposed on Ring 3), Eli Lilly v. Canada (merits), Bridgestone v. Panama (Ring 3
+present, decided on merits). Open sub-question from the Ferguson/Kim memos: do trade secrets and
+clinical-trial data qualify as protected investments? Live threads for this cycle are supplied
+under Inputs.
+
+## The three questions the roundtable must work through — in dialogue
+1. **The researcher's findings.** The analyst presents this week's findings; the security officer
+   challenges each one (verified vs. inferred, naming the source); the analytics officer connects
+   them to the screened items. Land explicitly on what is SOLID, what is still OPEN, and what must
+   NOT be asserted.
+2. **How to improve the workflow.** The systems researcher presents the week's sourced
+   suggestions; each role reacts from its own vantage (does it improve collection? accuracy?
+   cost? reliability?). The chairman selects the concrete improvements worth queuing and assigns
+   each an owner-component (a file, the fingerprint, a source, the LLM stage, the workflow).
+3. **Status of the research question.** The analyst reports the state-of-the-answer and the
+   remaining verification debt; the council rates, honestly, how much closer this cycle brought
+   us to answering the intersection question (and the trade-secret / clinical-data sub-question),
+   and what would move it next.
+
+## Discipline (binding — the council calibration checklist)
+No fabricated citations, quotations, holdings, dates, or figures. Every asserted fact ties to a
+retrieved source or is explicitly marked unverified. Distrust any secondary "adopted / held"
+claim that lacks a primary source ("adopted" vs. "referred back" vs. "noted" are different
+holdings). No sycophancy, no filler, no inflated relevance. If the week was quiet, the dialogue
+says so plainly — a short, honest roundtable beats a padded one.
+
+## Inputs
+WEEK: {{WEEK}}
+SCREENED / CLEARED THE FLOOR: {{SCREENED}}
+OPEN THREADS: {{THREADS}}
+ANALYST FINDINGS (this week): {{ANALYST_MEMO}}
+SECURITY VERDICT: {{SECURITY}}
+ANALYTICS / SOURCE YIELD: {{ANALYTICS}}
+SYSTEMS-RESEARCH NOTES (this week): {{SYSTEMS_NOTES}}
+STATE OF THE ANSWER (current): {{STATE_OF_ANSWER}}
+
+## Output (Markdown)
+# Weekly Roundtable — {{WEEK}}
+
+## Dialogue
+Write the discussion as attributed turns (**Chairman:**, **Analyst:**, **Security officer:**,
+**Analytics officer:**, **Systems researcher:**). Keep it substantive and specific to THIS week's
+inputs — real challenge and response, not a generic script. Work through the three questions in
+order.
+
+## Chairman's close-out
+- **Findings — solid this week:** …
+- **Findings — still open / not to be asserted:** …
+- **Workflow improvements queued (component -> change -> source):** …
+- **Research-question status:** <one honest paragraph — how much closer, and to what; the
+  verification debt outstanding; what would move it next>
+- **For the principal's attention:** <anything needing Jack's decision or sign-off, or "none">

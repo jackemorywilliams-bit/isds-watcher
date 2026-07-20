@@ -270,59 +270,61 @@ def _verdict_to_automated(verdict: str) -> str:
 
 
 def render(draft: dict) -> str:
-    """Render the draft as a human-readable review-log entry. Scrupulously labels
-    itself a council-prepared DRAFT pending operator ratification — never a review."""
+    """Render the draft as a PLAIN-LANGUAGE operator review packet with two buckets:
+    what the operator can check themselves (open sources) and what to forward (paywalled).
+    No jargon, and it never asks the operator to verify something behind a paywall they
+    cannot open — per the operator's standing constraint (no paywalled-site access)."""
     today = draft["generated"]
+    sampled = draft["sampled"]
+
+    def _openable(c: dict) -> bool:
+        # Reachable AND not self-reported paywalled = the operator can actually open it.
+        return c["check"]["verdict"] == "ok" and not c.get("self_reported_paywalled")
+
+    openable = [c for c in sampled if _openable(c)]
+    gated = [c for c in sampled if not _openable(c)]
+
     out: list[str] = []
-    out.append(f"### {today} — Cycle 1 — DRAFT (council-prepared, pending operator ratification)")
+    out.append(f"## Your review packet — {today}")
     out.append("")
-    out.append("> This is an ASSISTED FIRST PASS produced mechanically by `scripts/review_prep.py`.")
-    out.append("> It is NOT a human review and asserts no human has reviewed anything. The automated")
-    out.append("> source-check confirms only whether a cited URL resolves and is openable — it does")
-    out.append("> NOT confirm the source supports the claim. The operator (Jack) must complete the")
-    out.append("> blank fields and sign off before any of this counts as reviewed.")
+    out.append("A few of this period's cited claims, sorted by what you can actually do. "
+               "Nothing here is a settled finding — these are research leads, and this is the "
+               "one place a human checks them before the project relies on them.")
     out.append("")
-    t = draft["tally"]
-    out.append(
-        f"- Automated source-check tally: {t['n']} sampled — {t['ok']} reachable, "
-        f"{t['paywalled']} paywalled, {t['unreachable']} unreachable, {t['unchecked']} unchecked"
-    )
-    if not draft["checker_available"]:
-        out.append(f"- NOTE: deterministic checker unavailable ({draft['checker_detail']}); "
-                   "all URLs marked unchecked — entire sample is verification debt.")
+
+    out.append("### You can check these yourself (open sources, ~2 min each)")
+    out.append("Open the link and confirm the source really says what the claim says, then "
+               "mark it good or wrong.")
     out.append("")
-    out.append("#### Sampled claims and automated source-check outcomes")
-    out.append("")
-    for i, c in enumerate(draft["sampled"], 1):
-        chk = c["check"]
-        status = chk["status"] if chk["status"] is not None else "—"
-        detail = f" ({chk['detail']})" if chk.get("detail") else ""
-        out.append(f"{i}. **{c['claim']}**")
-        out.append(f"   - URL: {c['url'] or '(none cited)'}")
-        out.append(f"   - Origin: {c['origin']}")
-        if c.get("item_date"):
-            out.append(f"   - Item date (as stated): {c['item_date']}")
-        out.append(f"   - {_verdict_to_automated(chk['verdict'])} [HTTP {status}]{detail}")
-        out.append(f"   - Human final pass/fail: __________   Corrections made: __________")
-        out.append("")
-    out.append("#### Verification debt (claims whose sources could not be machine-confirmed — NEEDS HUMAN EYES)")
-    out.append("")
-    if not draft["debt"]:
-        out.append("- none flagged by the automated pass (human substance-check still required on each PASS-candidate above)")
+    if not openable:
+        out.append("- Nothing openable in this sample.")
     else:
-        for d in draft["debt"]:
-            out.append(f"- **{d['claim']}** — {d['url'] or '(no URL)'}")
-            for r in d["reasons"]:
-                out.append(f"    - {r}")
+        for i, c in enumerate(openable, 1):
+            out.append(f"{i}. **Claim:** {c['claim']}")
+            out.append(f"   - Check here: {c['url']}")
+            out.append("   - Does the source say this?  [ ] yes   [ ] no — note: __________")
+            out.append("")
+
+    out.append("### Forward these to your professor (paywalled — you can't verify them)")
+    out.append("These sit behind a paywall or login you don't have, so don't spend time on "
+               "them — send them to Dr. Benavides, who can check them.")
     out.append("")
-    out.append("#### Operator ratification (to be completed by the human)")
-    out.append("")
-    out.append("- Reviewer: __________________________")
-    out.append("- Date reviewed: ______________________")
-    out.append("- Final pass rate: ______ / " + str(t["n"]))
-    out.append("- Verification-debt items cleared this cycle: __________________________")
-    out.append("- Corrections made (to `STATE_OF_THE_ANSWER.md` / `analytics/insights.jsonl`): __________________________")
-    out.append("- Sign-off (operator confirms the above is reviewed and accurate): __________________________")
+    if not gated:
+        out.append("- Nothing paywalled in this sample.")
+    else:
+        for i, c in enumerate(gated, 1):
+            v = c["check"]["verdict"]
+            why = ("paywalled" if (v == "paywalled" or c.get("self_reported_paywalled"))
+                   else "link didn't resolve" if v == "unreachable"
+                   else "not machine-checkable")
+            out.append(f"{i}. **Claim:** {c['claim']}")
+            out.append(f"   - Source ({why}): {c['url'] or '(no link on record)'}")
+            out.append("")
+
+    out.append("### Sign-off (one line)")
+    out.append(f"- Reviewed by: __________   Date: __________   "
+               f"Open items confirmed good: ____ / {len(openable)}   "
+               "Anything wrong to fix: __________")
     out.append("")
     return "\n".join(out)
 

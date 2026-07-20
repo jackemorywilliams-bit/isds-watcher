@@ -50,3 +50,7 @@ labeling, or selection, a test asserts the new invariant.
 
 If a defect slips past this list, the fix is not only to patch it but to add the
 missing check here and in the backstop, so the same class can't return.
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

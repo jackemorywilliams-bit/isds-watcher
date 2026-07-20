@@ -16,10 +16,13 @@
   `github-actions[bot]`.
 - Each run sends **two emails**: the **Thematic Watch digest** (annotated bibliography,
   unchanged) and the interpretive **ISDS Research Brief** produced by the research council
-  (chairman → analyst+web search → security officer → editor). See `COUNCIL.md`. The brief
-  needs the Anthropic provider (web search is an Anthropic server tool); disable with
-  `RESEARCH_BRIEF_ENABLED=0`, choose the model with `RESEARCH_MODEL` (default
-  `claude-opus-4-8`). Issues land in `briefs/<date>.html`; the full council deliberation is
+  (chairman → analyst+web search → deterministic integrity gate → editor). See `COUNCIL.md`.
+  The brief needs the Anthropic provider (web search is an Anthropic server tool); disable
+  with `RESEARCH_BRIEF_ENABLED=0`. Model ids come from the single config location
+  `src/models.py` (chairman `claude-fable-5`; heavy/utility `claude-opus-4-8`; digest
+  classifier unchanged in `src/classify.py`); `RESEARCH_MODEL` remains an explicit
+  operator override for every stage, and any requested-vs-actual runtime fallback is
+  appended to this file automatically. Issues land in `briefs/<date>.html`; the full council deliberation is
   preserved at `briefs/<date>-memo.md`. Continuity: each issue's open threads persist in
   `state/research_log.json` and feed the next week's chairman.
 
@@ -108,3 +111,38 @@ python -m src.main --dry-run --since 400d --no-email --verbose     # wide window
 python -m src.main --dry-run --since 7d --no-email --limit-sources iisd_itn,italaw
 ```
 Generated digests land in `digests/<YYYY-MM-DD>.html` — open in a browser to preview the email.
+
+<!-- graph:auto start -->
+Map: [[00 - Project Map]]
+<!-- graph:auto end -->
+
+## Verification ledger & vault graph (July 2026)
+
+- **Ledger:** `analytics/verification_ledger.jsonl` is an append-only event log; state is
+  derived by replay. Only you can change a claim's status:
+  `python scripts/verify.py list --status unverified` · `python scripts/verify.py mark
+  <claim_id> --verified|--rejected --note "..."` · `python scripts/verify.py status`.
+  Paywalled/blocked claims are labeled "forward to professor" — never self-verify those.
+- **Seeded claim_ids awaiting your CLI mark** (created as candidates only; your in-chat
+  review of 2026-07-18 is logged in HUMAN_REVIEW.md, but the ledger needs your `mark`):
+  `721ffab48baf0098ca77…` (USTR 2026 Special 301 characterisation — you verified this),
+  `5c25faf36673d6f3d789…` (China–Germany BIT "trade and business secrets" — partial; treaty
+  text still with the professor), `7dd2f272f130f859d1d2…` (Hela Schwarz jurisdictional
+  dismissal — still open). Run `python scripts/verify.py list` for the full ids.
+- **Vault graph:** `python scripts/build_graph.py --dry-run` to preview, then without the
+  flag to apply. Hubs live in `moc/`; `.obsidian/` stays untracked/gitignored.
+- **One-pagers:** canonical copies in `working/one-pagers/`; the Desktop copies titled
+  "(MACHINE-WRITTEN DRAFT)" are exports of those canonicals. The WalterWrites style pass
+  did NOT run (runtime permission denial); to apply it manually, paste a canonical into
+  the WalterWrites humanizer with quotes/case names/¶ pinpoints protected, then diff
+  against the canonical before using — quotes must remain exact substrings.
+
+## Model runtime assignments (requested)
+
+- chairman: `claude-fable-5` · analyst/one-pager drafting: `claude-opus-4-8` ·
+  utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
+  classifier: unchanged `claude-haiku-4-5-20251001` (kept in `src/classify.py`, outside
+  the change manifest). Any runtime fallback appends a REQUESTED vs ACTUAL line below
+  automatically (`src/models.py record_fallback`). This session's one-pager drafting ran
+  on Opus 4.8 subagents as assigned; the orchestrating session itself runs on
+  `claude-fable-5` (requested and actual).

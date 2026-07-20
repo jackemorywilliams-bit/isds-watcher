@@ -20,3 +20,7 @@ tags: [multi-agent, plan]
 
 Open items to settle before each stage: [[60 - Open questions]]. Choices logged in [[70 - Decisions]].
 #multi-agent #plan
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

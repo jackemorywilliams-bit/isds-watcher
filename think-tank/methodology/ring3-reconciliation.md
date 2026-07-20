@@ -145,3 +145,7 @@ The holdout therefore confirms the corrected position: the fingerprint generaliz
 ## 5. One-paragraph bottom line
 
 The audit is right, and the fix is small. The false "all three dismissed on jurisdiction" sentence is a justification over-reach in METHODOLOGY.md Part II.C with **no representation anywhere in the scoring** — not in `fingerprint.yaml`'s weights, bands, triggers, or combination rules, and not in `src/classify.py`. Ring 3 earns its place as a doctrinal dimension on independent and now-corrected grounds (dispositive in Philip Morris; a live, contested threshold question in Bridgestone; the explicit subject of the research question), and the out-of-sample holdout confirms the fingerprint keys on doctrines engaged rather than on dispositions — a merits case (Philip Morris v. Uruguay) scores HIGH, and the one jurisdiction-disposed case (Apotex) is the scorer's only miss. The minimal, sufficient reconciliation is to correct the prose of the Ring-3 justification to state the true dispositions and to recast the rationale as doctrinal salience, with **no change to any weight, band, threshold, or trigger.** Honesty preserved; basis intact.
+
+<!-- graph:auto start -->
+Map: [[Research Question]]
+<!-- graph:auto end -->

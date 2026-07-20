@@ -1,0 +1,28 @@
+# One-Pager — Eli Lilly and Company v. Government of Canada (ICSID Case No. UNCT/14/2)
+
+**TO:** Dr. Ximena Benavides, Department of Legal Studies, Terry College of Business
+**FROM:** Emory Williams, Undergraduate Research Assistant
+**DATE:** 07/18/2026
+**RE:** One-Pager — Eli Lilly and Company v. Government of Canada (ICSID Case No. UNCT/14/2)
+
+## I. Case Identification and Disposition
+
+**[SOURCE FACT]** *Eli Lilly & Co. v. Government of Canada*, ICSID Case No. UNCT/14/2, Final Award (Mar. 16, 2017), was an arbitration under NAFTA Chapter Eleven and the 1976 UNCITRAL Arbitration Rules, with ICSID serving as administering authority (¶ 4), before a tribunal of Albert Jan van den Berg (President), Daniel Bethlehem, and Gary Born (caption page). Lilly commenced the arbitration by Notice of Arbitration dated 12 September 2013 under NAFTA Articles 1116, 1117, and 1120 (¶ 10), claiming that Canadian courts' invalidation of its Zyprexa and Strattera patents in 2010 and 2011 — under what Lilly called the promise utility doctrine — was an unlawful expropriation under NAFTA Article 1110 and a breach of the Article 1105 minimum standard of treatment (¶ 5). Canada raised one jurisdictional objection, ratione temporis time-bar under Articles 1116(2) and 1117(2), alongside its merits defenses (¶ 6). The Tribunal rejected the objection, fixing the limitation clock at the Supreme Court of Canada's leave denials of 8 December 2011 and 16 May 2013 (¶ 170), and held in the dispositive: "Respondent’s objection to the Tribunal’s jurisdiction ratione temporis is dismissed." (¶ 480(1)). On the merits, "Claimant has failed to establish the factual premise of its claims." (¶ 469); "Having failed to demonstrate a fundamental or dramatic change in Canadian patent law, the Tribunal would properly dismiss the claims without further inquiry." (¶ 389). The operative disposition: "Claimant’s claim is dismissed in its entirety." (¶ 480(2)). Lilly bore the arbitration costs (paying Canada USD 374,848.99) plus 75 percent of Canada's legal costs, CAD 4,448,625.32 (¶¶ 459–460, 480(3)–(4)).
+
+## II. Three-Ring Framework Analysis
+
+**[FRAMEWORK ANALYSIS]** *Ring 1 — IP as covered investment.* Nothing in the award records any contest over whether the patents qualified as investments. The Tribunal simply refers to the Zyprexa and Strattera Patents as the investments at issue in this arbitration (¶ 167), and the footnoted jurisdictional analysis treats each patent as an investment whose alleged breach was its invalidation (¶ 170 & n.159). Ring 1 was, on this record, assumed rather than litigated.
+
+*Ring 2 — the judicial measure.* This is the award's doctrinal core. Canada argued that a national court decision can breach Chapter Eleven only through denial of justice, which Lilly had not alleged (¶ 6). The Tribunal expressly declined to resolve that debate as unnecessary (¶ 220), but in obiter it was "unwilling to shut the door to the possibility that judicial conduct characterized other than as a denial of justice may engage a respondent’s obligations under NAFTA Article 1105" (¶ 223) — while insisting a Chapter Eleven tribunal is not an appellate tier and that "considerable deference is to be accorded to the conduct and decisions" of national courts (¶ 224). On the facts, the Tribunal found only incremental, evolutionary change in the utility requirement (¶ 386), no fundamental or dramatic change (¶ 387), and, addressing Lilly's arbitrariness and discrimination allegations for completeness, held the challenged court decisions "neither arbitrary nor discriminatory" under any plausible standard (¶ 418; see ¶ 442).
+
+*Ring 3 — the jurisdictional gate.* The only gate raised was the time bar, and it failed: the Tribunal found the Notice of Arbitration timely and took jurisdiction (¶¶ 170, 465), stating "The Tribunal has jurisdiction to hear the claims submitted to it in this arbitration." (¶ 480(1)). It declined to decide whether Canada's objection was itself untimely under UNCITRAL Article 21(3) (¶ 466). No jurisdictional disposal occurred.
+
+## III. Implications for the Research Question
+
+**[RESEARCH-QUESTION IMPLICATION]** *Eli Lilly* is the clean counter-case to any thesis that tribunals dodge IP-plus-judicial-measure claims at the jurisdictional threshold. This claim was decided on the merits — the tribunal took jurisdiction over a pure judicial-measure patent claim, reached the substance, and dismissed for failure of factual proof, with no damages phase (¶¶ 469, 471–472). For the Ring 3 line of inquiry, that means the jurisdictional-exit pattern is not universal: here the gate opened, and the screening work was done instead by the merits burden (the dramatic-change factual predicate, ¶¶ 388–389) and by heavy deference to national courts (¶ 224). What the award does establish: patents can pass through Rings 1 and 3 without resistance, and Article 1105/1110 claims against judicial acts are cognizable in principle beyond denial of justice (¶ 223). What it does not establish: any affirmative holding that patents are investments (uncontested, so no reasoned ruling), any resolution of the denial-of-justice-only debate (expressly reserved, ¶ 220), or any merits standard actually met by an investor. The costs award (¶ 460) is also a data point on the price of losing a merits-stage IP claim.
+
+**[UNVERIFIED EXTERNAL CONTEXT]** Omitted — nothing external is needed for this memo.
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

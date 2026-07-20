@@ -13,3 +13,7 @@ A running log of what we actually decide and why — so the design is auditable,
 
 When a decision is made, replace `_pending_` with the date + outcome and note any follow-up PR.
 #multi-agent #decisions
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

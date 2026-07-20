@@ -24,3 +24,7 @@ says it likely won't move the output much beyond the verifier.
 
 Decide with eyes open: [[70 - Decisions]]. Sources in `MULTI_AGENT_ROADMAP.md`.
 #multi-agent #evidence
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

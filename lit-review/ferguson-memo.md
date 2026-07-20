@@ -62,3 +62,7 @@ Three open questions for the project. First: does the four-question test survive
 
 ## VII. Backsourced Annotated Bibliography
 *Methodological note and backsourced entries follow the project's annotated-bibliography template (Bluebook + liberal URLs; ~80–200 word descriptive/evaluative annotations with a verification statement per entry). Template grounded in: CUNY School of Law, Drafting a Law Office Memorandum; Columbia Law School, Memo Writing Checklist; Eric E. Johnson, Memo to Student Research Assistants re Research Deliverables (2023); Saldana, The Coding Manual for Qualitative Researchers (3d ed.); Linos & Carlson, Qualitative Methods for Law Review Writing, 84 U. Chi. L. Rev. 213 (2017); A Practical Framework for Conducting a Literature Review, The Qualitative Report (Nova Southeastern U.).*
+
+<!-- graph:auto start -->
+Map: [[Research Question]]
+<!-- graph:auto end -->

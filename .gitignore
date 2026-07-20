@@ -21,3 +21,9 @@ __pycache__/
 
 # Humanization workflow scratch (keep term-preservation.md tracked)
 working/*.txt
+
+# Obsidian vault scratch (operator-local; never tracked)
+.obsidian/
+*.canvas
+*.base
+Untitled*

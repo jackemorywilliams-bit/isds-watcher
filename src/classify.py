@@ -55,7 +55,7 @@ MAX_TEXT_CHARS = 6000
 # Default model IDs (overridable via env).
 DEFAULT_GEMINI_MODEL = "gemini-2.0-flash"
 # Anthropic Haiku 4.5 -- current fast/cheap model (full ID form).
-DEFAULT_ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
+from .models import DIGEST_CLASSIFIER_MODEL as DEFAULT_ANTHROPIC_MODEL  # single config location
 
 
 def _resolved_model(provider) -> "Optional[str]":

@@ -79,3 +79,7 @@ shippable, reversible, and keeps the no-JS site fully functional.
 - CSS-Tricks — charts with SVG (no-JS inline charts): https://css-tricks.com/how-to-make-charts-with-svg/
 - DEV — 3D parallax via CSS variables: https://dev.to/webdiscus/3d-parallax-effect-by-moving-mouse-using-htmlcss-7b2
 - Let's Build UI — 3D hover via CSS transforms: https://www.letsbuildui.dev/articles/a-3d-hover-effect-using-css-transforms/
+
+<!-- graph:auto start -->
+Map: [[Research Question]]
+<!-- graph:auto end -->

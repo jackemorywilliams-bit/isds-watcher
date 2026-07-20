@@ -18,3 +18,7 @@ that answer forward more than the simpler fixes already shipped ([[40 - Evidence
 
 Related: [[10 - Current state]] · [[50 - Staged plan]]
 #multi-agent
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

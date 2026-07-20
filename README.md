@@ -75,8 +75,11 @@ set of standing background agents, but a set of clearly-defined roles realized a
 stages of the same weekly run. A chairman sets the agenda from this week's items and the open
 threads carried forward from prior weeks; a research analyst interprets the developments
 against the research question and escalates to web search for supplemental findings; a
-security/integrity officer vets the memo for fabricated sources, overreach, and inflated
-relevance before publication; and an editor turns the vetted memo into the structured brief.
+deterministic integrity gate checks every claim the analyst proposes against the operator's
+append-only verification ledger; and an editor turns the vetted memo into the structured brief.
+Brief findings are now gated on operator verification: only claims the operator has marked
+verified (`python scripts/verify.py mark`) may be asserted — everything else is presented as
+an unverified lead or routed for library access, never as an established finding.
 Each role is a prompt or pipeline component, and every role's output is archived, so the work
 stays auditable and reproducible while gaining the multi-perspective rigor of a council. The
 open threads from each issue are persisted and fed back into the next week's agenda, so the
@@ -132,17 +135,29 @@ and pages only.
 ```
 src/            sources/ (RSS + HTML, defensive), classify.py, enrich.py,
                 render.py, email_send.py, state.py, research_brief.py,
-                research_state.py, main.py, config.py
+                integrity_gate.py (deterministic assertion gate), models.py
+                (the single model-config location), research_state.py, main.py,
+                config.py
 prompts/        classifier.txt (few-shot classifier) + the council role prompts
-                (chairman, research analyst, security officer, editor, calibration)
+                (chairman, research analyst, editor, roundtable, systems
+                researcher, calibration)
 templates/      digest.html.j2 and research_brief.html.j2 (the two weekly emails)
-scripts/        build_site.py + site templates (regenerates the website)
+scripts/        build_site.py + site templates (regenerates the website),
+                verify.py (operator verification-ledger CLI),
+                build_graph.py (on-demand vault mapper)
 fingerprint.yaml   the three-ring lexicon (weights sum to 100 per ring)
+analytics/      verification_ledger.jsonl (append-only claim ledger) + records
+moc/            the vault's hand-authored map-of-content hubs
+working/        one-pagers/ (seed-award case memos) + FINGERPRINT_DRIFT.md
 digests/        dated digest archive folders, committed each run
 briefs/         archived issues of the interpretive Research Brief
 docs/           the generated website (served via GitHub Pages)
 tests/          pytest suite
 ```
+
+Navigating the vault: start at [moc/00 - Project Map.md](<moc/00 - Project Map.md>) —
+the six map-of-content hubs link every note; regenerate the map on demand with
+`python scripts/build_graph.py` (an on-demand vault-mapping script, not an agent).
 
 ### Source scope: what is read in full, in headline, or not at all
 
@@ -172,3 +187,7 @@ ISDS activity at the intersection.
   pipeline stage.
 - [HANDOFF.md](HANDOFF.md) — secrets, triggering, troubleshooting, and tuning.
 - [PLAN.md](PLAN.md) — the per-ring vocabulary extracted from the seed awards.
+
+<!-- graph:auto start -->
+Map: [[00 - Project Map]]
+<!-- graph:auto end -->

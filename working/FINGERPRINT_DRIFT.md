@@ -1,8 +1,19 @@
 # Fingerprint drift — Ring 1 vs the live research question
 
-**Status: RECOMMENDATION ONLY. No weights have been changed.** Proposed reweighting
-awaits operator approval; apply by editing `fingerprint.yaml` and re-running the
-backtest (`analytics/backtest.md`) before trusting new scores.
+**Status: APPROVED AND APPLIED at cluster weight 40 (operator decision, 2026-07-19),
+not the memo's proposed 51.** The operator's reasoning: trade secrets become the
+dominant Ring 1 weight while preserving sensitivity to the patent/trademark case
+shapes (the Eli Lilly and Bridgestone forms) that the project's analogical reasoning
+still runs through. **Revisit upward when *Einarsson v. Canada* or another decided
+trade-secret ISDS case converts the hypothesized pathway into case law.** The table
+below records the original 51-weight proposal for reference; the applied 40-weight
+variant scales the same raises down (trade secret 9, clinical trial data 8, data
+exclusivity 6, unfair commercial use 5, TRIPS article 39 4, test data 3, new
+"regulatory data protection" 3, new "undisclosed test or other data" 2) funded by
+the same patent/trademark trims (promise utility doctrine 8, utility requirement 6,
+patent invalidation 4, trademark 6, brand value 2, geographical indication 3,
+copyright 1); "know-how" was deferred. Ring sums remain 100; the band-guard tests
+pass unchanged.
 
 ## What Ring 1 currently rewards
 

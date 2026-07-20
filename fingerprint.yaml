@@ -22,30 +22,32 @@ rings:
     weight: 100
     extra_weight: false
     keywords:
-      - {phrase: "promise utility doctrine", weight: 14, seed: eli_lilly}
+      - {phrase: "promise utility doctrine", weight: 8, seed: eli_lilly}
       - {phrase: "promise doctrine", weight: 3, seed: eli_lilly}
-      - {phrase: "utility requirement", weight: 10, seed: eli_lilly}
-      - {phrase: "patent invalidation", weight: 5, seed: eli_lilly}
+      - {phrase: "utility requirement", weight: 6, seed: eli_lilly}
+      - {phrase: "patent invalidation", weight: 4, seed: eli_lilly}
       - {phrase: "covered investment", weight: 8, seed: "philip_morris,bridgestone"}
       - {phrase: "intellectual property", weight: 4, seed: bridgestone}
-      - {phrase: "trademark", weight: 8, seed: bridgestone}
+      - {phrase: "trademark", weight: 6, seed: bridgestone}
       - {phrase: "exploitation of the trademark", weight: 3, seed: bridgestone}
       - {phrase: "licenses that constitute its investment", weight: 4, seed: bridgestone}
       - {phrase: "licensor", weight: 4, seed: bridgestone}
       - {phrase: "licensee", weight: 4, seed: bridgestone}
-      - {phrase: "brand value", weight: 4, seed: theme_extension}
-      - {phrase: "geographical indication", weight: 4, seed: theme_extension}
-      - {phrase: "data exclusivity", weight: 4, seed: "kim,ferguson"}
-      - {phrase: "copyright", weight: 2, seed: theme_extension}
+      - {phrase: "brand value", weight: 2, seed: theme_extension}
+      - {phrase: "geographical indication", weight: 3, seed: theme_extension}
+      - {phrase: "data exclusivity", weight: 6, seed: "kim,ferguson"}
+      - {phrase: "copyright", weight: 1, seed: theme_extension}
       # Trade-secret / clinical-data branch, from the Ferguson & Kim seed memos:
-      - {phrase: "trade secret", weight: 6, seed: "ferguson,kim"}
-      - {phrase: "clinical trial data", weight: 5, seed: kim}
+      - {phrase: "trade secret", weight: 9, seed: "ferguson,kim"}
+      - {phrase: "clinical trial data", weight: 8, seed: kim}
       - {phrase: "test data", weight: 3, seed: kim}
-      - {phrase: "unfair commercial use", weight: 3, seed: "ferguson,kim"}
+      - {phrase: "unfair commercial use", weight: 5, seed: "ferguson,kim"}
       # TRIPS Article 39(3) hinge from the Ferguson & Kim memos (IP-specific). "indirect
       # expropriation" is deliberately NOT a Ring-1 phrase: it fires on non-IP cases (e.g.
       # sovereign-debt claims), so it lives in the doctrinal stakes, not the lexicon.
-      - {phrase: "trips article 39", weight: 2, seed: "ferguson,kim"}
+      - {phrase: "trips article 39", weight: 4, seed: "ferguson,kim"}
+      - {phrase: "regulatory data protection", weight: 3, seed: theme_extension}
+      - {phrase: "undisclosed test or other data", weight: 2, seed: theme_extension}
     # sum: 100 (trips-article-39 +2 offset by copyright -2)
 
   judicial_or_regulatory_measure:

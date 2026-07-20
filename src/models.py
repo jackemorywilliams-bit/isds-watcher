@@ -25,6 +25,10 @@ CHAIRMAN_MODEL = "claude-fable-5"
 HEAVY_MODEL = "claude-opus-4-8"
 UTILITY_MODEL = "claude-opus-4-8"
 
+# Digest classifier: operator assignment is "unchanged". The id lives HERE and is
+# read by src/classify.py, so no model id is defined in more than one place.
+DIGEST_CLASSIFIER_MODEL = "claude-haiku-4-5-20251001"
+
 # Where an unavailable requested model lands (the strongest generally-available id).
 FALLBACK_MODEL = "claude-opus-4-8"
 

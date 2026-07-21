@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-21 — daily council meeting
+**Status.** Quiet day — no new screened items passed the relevance threshold and no new insight entered the ledger. Two factual corrections were logged: A/80/17 is the 58th UNCITRAL Commission session report (July 2025); the 59th session report will be A/81/17 (not yet published as of July 21). The Gáspár-Szilágyi JIDS article on Chinese outbound investment BIT claims is confirmed at 15(2):195 (SSRN abstract_id=4432373), likely a different article from the 15(1):1 citation in the prior project record; Baker Botts was identified as Georgia's respondent counsel in Okuashvili (losing party), narrowing the neutral-practitioner-source window to Gleiss Lutz. The China-France BIT Protocol administrative exhaustion gap remains UNCONFIRMED; a new optimization idea — UNCITRAL Indico session page and UNCITRAL press releases page as primary post-session monitoring channels — was proposed and logged.
+
 ## 2026-07-20 — weekly council (issue #25)
 **Members.** chairman: agenda set; analyst: memo 17437 chars; security: clean; editor: 4 sections, 6 threads
 

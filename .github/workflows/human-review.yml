@@ -5,8 +5,12 @@ name: human-review
 # assisted first pass, and emails the rendered draft over SMTP. No model API, no API cost.
 on:
   schedule:
-    # Mondays 13:00 UTC — the weekly human-review email.
-    - cron: "0 13 * * 1"
+    # Mondays 16:30 UTC — AFTER the weekly council (weekly.yml, 13:00 UTC cron).
+    # The packet's roundtable section reads the council's committed record
+    # (state/council_log.json), so this must fire once that run has finished and
+    # pushed: the 2026-07-20 council finished at 15:07 UTC, hours after this
+    # workflow's old 13:00 cron had already sent a packet with no council in it.
+    - cron: "30 16 * * 1"
   workflow_dispatch: {}
 
 permissions:

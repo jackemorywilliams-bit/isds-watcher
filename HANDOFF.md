@@ -11,6 +11,13 @@
 ## What runs, when
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),
   plus manual `workflow_dispatch`. Concurrency group `isds-watcher` prevents overlap.
+- `.github/workflows/human-review.yml` (the operator's Monday review packet) fires at
+  `30 16 * * 1` — deliberately AFTER the weekly council so the packet's roundtable
+  section can read the council's committed record. The section is sourced from
+  `state/council_log.json` (never a side-channel directory); a session whose chairman
+  minutes failed renders a loud MISSING banner, and a missing/stale weekly entry flags
+  the pipeline itself. Guarded by `tests/test_monday_packet.py`, including a test that
+  fails if the two crons are ever put back within two hours of each other.
 - The job: fail-fast on missing secrets → install deps → `python -m src.main --since 7d` →
   rebuild the website → commit `state/`, `digests/`, `docs/`, and `briefs/` back as
   `github-actions[bot]`.

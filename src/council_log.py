@@ -73,7 +73,14 @@ def append_weekly(date_str: str, seq: int, brief: dict, generated_at: datetime) 
         "accountability": minutes.get("accountability", []),
         "next_steps": minutes.get("next_steps", []),
         "escalations": minutes.get("escalations", []),
+        # A stub entry (reconvene stage failed) must be self-describing, so every
+        # downstream reader — this log's md render, the Monday review packet —
+        # can surface the failure instead of silently showing nothing.
+        "minutes_missing": not minutes,
     }
+    if entry["minutes_missing"]:
+        logger.error("council_log: weekly entry for %s recorded WITHOUT chairman "
+                     "minutes (reconvene stage failed)", date_str)
     _write(entry)
 
 
@@ -110,6 +117,11 @@ def _render_md(entries: list) -> None:
     for e in entries[:60]:
         if e.get("type") == "weekly-council":
             lines.append(f"## {e['date']} — weekly council (issue #{e.get('issue', '?')})")
+            if e.get("minutes_missing"):
+                lines.append("**MINUTES MISSING.** The chairman reconvene stage failed "
+                             "this run; per-member assessment, next steps, and "
+                             "escalations were not recorded. See the weekly workflow "
+                             "logs for the error.")
             if e.get("status"):
                 lines.append(f"**Status.** {e['status']}")
             members = e.get("members") or {}

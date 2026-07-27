@@ -9,3 +9,13 @@ The entry point to the ISDS Thematic Watcher vault. Start here.
 - [[Digest Archive]] — everything published to the faculty mentor.
 
 Key top-level notes: [[README]], [[HANDOFF]], [[METHODOLOGY]].
+
+<!-- workflow-3d:start -->
+## ISDS Watcher — 3D Workflow
+
+```dataviewjs
+await dv.view("views/isds-workflow-3d", {
+  data: "views/isds-workflow-3d/workflow.json"
+});
+```
+<!-- workflow-3d:end -->

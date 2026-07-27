@@ -207,6 +207,41 @@ def _items_block(items) -> str:
     return "\n".join(out)
 
 
+_MAX_STATE_CHARS = 9000
+_MAX_INSIGHT_LINES = 30
+
+
+def _living_memory_block() -> str:
+    """The canonical living memory, embedded into the analyst prompt. The analyst
+    session has no filesystem, so if these are not in the prompt they do not exist —
+    which is exactly what produced the recurring 'living-memory files were not
+    present in this session's environment' escalations. Missing files render a loud
+    MISSING marker (and log an ERROR) instead of an empty string, so a broken
+    checkout can never silently masquerade as an empty record."""
+    parts: list[str] = []
+    try:
+        state = open("STATE_OF_THE_ANSWER.md", encoding="utf-8").read().strip()
+        if len(state) > _MAX_STATE_CHARS:
+            state = state[:_MAX_STATE_CHARS] + "\n…(truncated for length; full file in repo)"
+        parts.append("### STATE_OF_THE_ANSWER.md\n" + state)
+    except OSError:
+        logger.error("research_brief: STATE_OF_THE_ANSWER.md MISSING from checkout")
+        parts.append("### STATE_OF_THE_ANSWER.md\nMISSING — the canonical file was not "
+                     "found in the run environment. Flag this in your procedural caveat.")
+    try:
+        with open(os.path.join("analytics", "insights.jsonl"), encoding="utf-8") as fh:
+            lines = [ln.strip() for ln in fh if ln.strip()]
+        recent = lines[-_MAX_INSIGHT_LINES:]
+        parts.append(f"### analytics/insights.jsonl (newest {len(recent)} of "
+                     f"{len(lines)} entries)\n" + "\n".join(recent))
+    except OSError:
+        logger.error("research_brief: analytics/insights.jsonl MISSING from checkout")
+        parts.append("### analytics/insights.jsonl\nMISSING — the canonical ledger was "
+                     "not found in the run environment. Flag this in your procedural "
+                     "caveat.")
+    return "\n\n".join(parts)
+
+
 def _daily_notes_block() -> str:
     """The most recent daily-researcher notes (committed by the Max routine), so the
     weekly analyst builds on the week's daily work instead of redoing it."""
@@ -282,6 +317,7 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
         .replace("{{PRIOR_THREADS}}", _threads_block(prior_threads))
         .replace("{{ITEMS}}", _items_block(items))
         .replace("{{DAILY_NOTES}}", _daily_notes_block())
+        .replace("{{LIVING_MEMORY}}", _living_memory_block())
     )
     messages = [{"role": "user", "content": prompt}]
     resp = None

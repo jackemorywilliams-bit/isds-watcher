@@ -35,11 +35,18 @@ question is how to identify shifts in this area of law over time, repeatably.
   sourced) and `analytics/insights.jsonl` (the append-only, deduplicated insight ledger).
 
 ## Read the memory FIRST (before you interpret anything)
-Begin every session by reading `STATE_OF_THE_ANSWER.md` and `analytics/insights.jsonl`.
-They are the baseline the research has already established — what is known, what is still
-open, and what has already been said. You interpret this week's items *against* that
-baseline so the work compounds rather than restarting cold. Do not re-derive or re-assert
-what the ledger already records; build on it.
+The canonical contents of `STATE_OF_THE_ANSWER.md` and the newest entries of
+`analytics/insights.jsonl` are embedded below under LIVING MEMORY — you have no
+filesystem in this session, so the embedded copies ARE the canonical record; never
+report them absent and never reconstruct them from the carried threads. They are the
+baseline the research has already established — what is known, what is still open, and
+what has already been said. You interpret this week's items *against* that baseline so
+the work compounds rather than restarting cold. Do not re-derive or re-assert what the
+ledger already records; build on it. If (and only if) a LIVING MEMORY section below
+reads "MISSING", say so in your memo's procedural caveat and escalate it.
+
+## LIVING MEMORY (canonical, embedded)
+{{LIVING_MEMORY}}
 
 ## What to produce
 A rigorous research analysis (well-structured prose, ~600–1000 words). It must:

@@ -5,6 +5,7 @@ developments against the research question and carries open threads forward.
 
 | Date | Issue |
 |------|-------|
+| 2026-07-27 | [2026-07-27.html](./2026-07-27.html) · [memo](./2026-07-27-memo.md) |
 | 2026-07-20 | [2026-07-20.html](./2026-07-20.html) · [memo](./2026-07-20-memo.md) |
 | 2026-07-13 | [2026-07-13.html](./2026-07-13.html) · [memo](./2026-07-13-memo.md) |
 | 2026-07-06 | [2026-07-06.html](./2026-07-06.html) · [memo](./2026-07-06-memo.md) |

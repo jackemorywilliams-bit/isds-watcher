@@ -43,6 +43,15 @@ stamp) and a **push-to-main auto-sync** that rebuilds and commits `docs/` whenev
 edit lands directly on main. So editing `METHODOLOGY.md` (or any site source) updates the
 website automatically; no manual rebuild needed. Locally: `python scripts/check_site_sync.py`.
 
+## Branch protection (main)
+Applied 2026-07-27 after the council found main fully unprotected (force-pushable and
+deletable — able to silently rewrite the append-only research record): force pushes and
+deletion are blocked for everyone including admins, with NO pull-request or status-check
+requirement — deliberately, because daily-update, site-sync, weekly, and the Max routine
+all push directly to main (GitHub's one-click default would have broken them all). The
+heartbeat workflow re-checks `.protected` daily and emails a BRANCH PROTECTION ALERT if
+it ever reads false again.
+
 ## Secrets / variables (set on the repo)
 Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_KEY`
 **or** `GEMINI_API_KEY`. Variable: `MODEL_PROVIDER` (`claude` is the live default; `gemini`

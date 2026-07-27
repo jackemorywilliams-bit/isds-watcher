@@ -107,6 +107,20 @@ def utcnow() -> datetime:
     return datetime.now(tz=timezone.utc)
 
 
+def day_floor(dt: datetime) -> datetime:
+    """Floor a tz-aware datetime to the start of its UTC day.
+
+    Sources whose pages carry date-only publication stamps (parsed to midnight
+    UTC) must compare against a day-floored ``since``: the weekly run fires at
+    13:00 UTC with a 7-day window, so an item stamped Monday 00:00 but posted
+    after Monday 13:00 would otherwise fall outside BOTH adjacent windows and
+    be lost forever (observed on pca_press: every missed item was Monday-dated).
+    Re-including already-processed items is safe — the pipeline dedupes against
+    state/seen.json.
+    """
+    return dt.astimezone(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+
+
 # ---------------------------------------------------------------------------
 # Robots
 # ---------------------------------------------------------------------------

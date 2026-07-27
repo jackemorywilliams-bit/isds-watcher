@@ -20,6 +20,7 @@ from urllib.parse import urljoin
 from .base import (
     CandidateItem,
     Source,
+    day_floor,
     fetch_html,
     parse_date,
     utcnow,
@@ -59,10 +60,15 @@ class PCAPressSource(Source):
             logger.warning(_DROP_MSG)
             return []
 
+        # Dates on this page are date-only (midnight UTC), so filter against the
+        # day-floored cutoff: an item stamped on the cutoff's calendar day must
+        # be kept (posted after the previous run's clock time), or Monday-dated
+        # releases are silently lost. Dedup absorbs any re-included items.
+        cutoff = day_floor(since)
         filtered: list[CandidateItem] = []
         for item in items:
             has_real_date = not item.metadata.get("date_inferred", False)
-            if has_real_date and item.published is not None and item.published < since:
+            if has_real_date and item.published is not None and item.published < cutoff:
                 continue
             filtered.append(item)
 

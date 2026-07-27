@@ -18,6 +18,7 @@ from urllib.parse import urljoin
 from .base import (
     CandidateItem,
     Source,
+    day_floor,
     fetch_html,
     parse_date,
     utcnow,
@@ -51,10 +52,15 @@ class ICSIDSource(Source):
             logger.warning("icsid: primary selector yielded 0 items, using fallback strategy")
             items = self._parse_fallback(soup)
 
+        # Dates are parsed from 'March 06, 2026'-style text (midnight UTC), so
+        # filter against the day-floored cutoff: items stamped on the cutoff's
+        # calendar day but posted after the previous run's clock time must not
+        # be lost. Dedup absorbs any re-included items.
+        cutoff = day_floor(since)
         filtered: list[CandidateItem] = []
         for item in items:
             has_real_date = not item.metadata.get("date_inferred", False)
-            if has_real_date and item.published is not None and item.published < since:
+            if has_real_date and item.published is not None and item.published < cutoff:
                 continue
             filtered.append(item)
 

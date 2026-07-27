@@ -146,45 +146,53 @@ def sample_digest_claims(repo_root: str, n_digests: int) -> list[dict]:
     return claims
 
 
-def sample_brief_claims(repo_root: str, limit: int) -> list[dict]:
-    """Sample cited URLs from the most recent research brief memo.
+def sample_ledger_claims(repo_root: str, limit: int) -> list[dict]:
+    """Sample the newest UNVERIFIED claims from the verification ledger.
 
-    A brief is prose, not structured per-claim, so we treat each distinct cited URL
-    as a sampled citation, captioned with a short snippet of its surrounding line so
-    the human knows what claim the URL is backing."""
-    memos = sorted(glob.glob(os.path.join(repo_root, "briefs", "*-memo.md")), reverse=True)
-    if not memos:
-        memos = sorted(glob.glob(os.path.join(repo_root, "briefs", "*.md")), reverse=True)
+    This replaces the old brief-memo URL scraping, which captioned each URL with
+    "the prose around it" — and when the URL sat inside one of the memo's embedded
+    candidate_claims JSON blocks, that caption degenerated to a bare JSON key
+    ('"sourceurl": ""'), mailing the operator claims with NO CLAIM TEXT (the
+    2026-07-27 packet). The ledger is the structured record those same claims land
+    in, so sampling it always yields the full claim sentence, the supporting quote
+    when one was recorded, and the claim id the operator marks."""
+    sys.path.insert(0, os.path.join(repo_root, "scripts"))
+    try:
+        import verify  # noqa: PLC0415 - guarded, optional
+    except Exception:  # noqa: BLE001 - a broken ledger module must not block the packet
+        return []
+    try:
+        states = verify.replay(os.path.join(repo_root, verify.LEDGER_PATH))
+    except Exception:  # noqa: BLE001
+        return []
+    rows = []
+    for cid, st in states.items():
+        if cid == "_malformed" or st.get("claim") is None:
+            continue
+        if st.get("status") != "unverified":
+            continue
+        c = st["claim"]
+        rows.append((c.get("ts", ""), cid, c))
+    rows.sort(reverse=True)  # newest first
     claims: list[dict] = []
-    if not memos:
-        return claims
-    memo = memos[0]
-    text = _read(memo)
-    seen: set[str] = set()
-    for line in text.splitlines():
-        for raw in _URL_RE.findall(line):
-            url = _norm_url(raw)
-            if not url or url in seen:
-                continue
-            seen.add(url)
-            # Caption the URL with the prose around it, minus the URL itself and
-            # markdown bold/heading markers, so the human sees what the citation backs.
-            snippet = line.replace(raw, "").strip()
-            snippet = re.sub(r"[*_#`>]+", "", snippet).strip(" -—:")
-            snippet = re.sub(r"\s+", " ", snippet)
-            if len(snippet) > 140:
-                snippet = snippet[:137].rstrip() + "..."
-            claims.append({
-                "claim": f"(brief citation) {snippet}" if snippet else "(brief citation)",
-                "url": url,
-                "origin": f"brief — {os.path.relpath(memo, repo_root)}",
-                "item_date": "",
-                "source": "research brief",
-                "self_reported_paywalled": False,
-                "digest_matches": None,
-            })
-            if len(claims) >= limit:
-                return claims
+    for ts, cid, c in rows[:limit]:
+        text = (c.get("claim_text") or "").strip()
+        if not text:
+            continue  # a claim with no text is never mailed (fail-closed)
+        locator = c.get("source_locator") or ""
+        claims.append({
+            "claim": text,
+            "claim_id": cid,
+            "url": locator if locator.startswith("http") else "",
+            "locator": locator,
+            "quote": (c.get("source_snapshot") or "").strip(),
+            "pinpoint": (c.get("supporting_locator") or "").strip(),
+            "origin": "verification ledger",
+            "item_date": ts[:10],
+            "source": c.get("source_authority") or "",
+            "self_reported_paywalled": c.get("access_status") in ("paywalled", "blocked"),
+            "digest_matches": None,
+        })
     return claims
 
 
@@ -220,8 +228,14 @@ def build_draft(repo_root: str, max_claims: int, n_digests: int) -> dict:
     source substantiates the claim. This draft never marks a claim verified."""
     digest_claims = sample_digest_claims(repo_root, n_digests)
     remaining = max(0, max_claims - len(digest_claims))
-    brief_claims = sample_brief_claims(repo_root, remaining) if remaining else []
-    sampled = (digest_claims + brief_claims)[:max_claims]
+    ledger_claims = sample_ledger_claims(repo_root, remaining) if remaining else []
+    sampled = (digest_claims + ledger_claims)[:max_claims]
+
+    # Fail-closed legibility guard: a claim with no human-readable text is dropped
+    # and counted — the operator must never be asked to verify an empty claim.
+    dropped_empty = [c for c in sampled if not (c.get("claim") or "").strip()
+                     or c["claim"].startswith("(brief citation)")]
+    sampled = [c for c in sampled if c not in dropped_empty]
 
     for c in sampled:
         c["check"] = check_url(c["url"])
@@ -252,6 +266,7 @@ def build_draft(repo_root: str, max_claims: int, n_digests: int) -> dict:
         "checker_detail": _CHECKER_DETAIL,
         "sampled": sampled,
         "debt": debt,
+        "dropped_empty": len(dropped_empty),
         "tally": {"n": n, "ok": ok, "paywalled": pay, "unreachable": un, "unchecked": unchecked},
     }
 
@@ -293,16 +308,24 @@ def render(draft: dict) -> str:
     out.append("")
 
     out.append("### You can check these yourself (open sources, ~2 min each)")
-    out.append("Open the link and confirm the source really says what the claim says, then "
-               "mark it good or wrong.")
+    out.append("For each one: open the link, confirm the source really says what the claim "
+               "says, then run the command under it (swap --verified for --rejected if the "
+               "source does not back it).")
     out.append("")
     if not openable:
         out.append("- Nothing openable in this sample.")
     else:
         for i, c in enumerate(openable, 1):
-            out.append(f"{i}. **Claim:** {c['claim']}")
-            out.append(f"   - Check here: {c['url']}")
-            out.append("   - Does the source say this?  [ ] yes   [ ] no — note: __________")
+            out.append(f"{i}. **The claim:** {c['claim']}")
+            if c.get("quote"):
+                out.append(f'   - Look for this exact line in the source: "{c["quote"]}"'
+                           + (f" ({c['pinpoint']})" if c.get("pinpoint") else ""))
+            out.append(f"   - Open: {c['url'] or c.get('locator', '')}")
+            if c.get("claim_id"):
+                out.append(f"   - If it checks out: `python scripts/verify.py mark "
+                           f"{c['claim_id'][:16]} --verified --quote-ok`")
+            else:
+                out.append("   - Does the source say this?  [ ] yes   [ ] no — note: __________")
             out.append("")
 
     out.append("### Forward these to your professor (paywalled — you can't verify them)")
@@ -317,9 +340,14 @@ def render(draft: dict) -> str:
             why = ("paywalled" if (v == "paywalled" or c.get("self_reported_paywalled"))
                    else "link didn't resolve" if v == "unreachable"
                    else "not machine-checkable")
-            out.append(f"{i}. **Claim:** {c['claim']}")
-            out.append(f"   - Source ({why}): {c['url'] or '(no link on record)'}")
+            out.append(f"{i}. **The claim:** {c['claim']}")
+            out.append(f"   - Source ({why}): {c['url'] or c.get('locator') or '(no link on record)'}")
             out.append("")
+    if draft.get("dropped_empty"):
+        out.append(f"_({draft['dropped_empty']} malformed claim record(s) were caught and "
+                   "excluded from this packet instead of being shown empty — see the run "
+                   "log if this repeats.)_")
+        out.append("")
 
     out.append("### Sign-off (one line)")
     out.append(f"- Reviewed by: __________   Date: __________   "

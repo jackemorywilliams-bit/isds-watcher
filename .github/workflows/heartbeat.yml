@@ -29,6 +29,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Council guard (2026-07-27): main was found UNPROTECTED — force-pushable and
+      # deletable, which would let the append-only research record be rewritten.
+      # Protection (block force-push + deletion, enforce for admins, NO PR/status
+      # requirement so the bots' direct pushes keep working) was applied via the
+      # API; a setting can be silently flipped back off, so this step re-checks it
+      # daily and ALERTS if it ever reads unprotected again. The `.protected` field
+      # is readable with the default GITHUB_TOKEN (no admin scope needed).
+      - name: Check main branch protection and alert if disabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          PROT=$(gh api "repos/${GITHUB_REPOSITORY}/branches/main" --jq '.protected')
+          echo "main protected: ${PROT}"
+          if [ "${PROT}" != "true" ]; then
+            python - <<'PY'
+          import os, smtplib
+          from email.mime.text import MIMEText
+          user = os.environ.get("SMTP_USER")
+          pw = (os.environ.get("SMTP_PASS") or "").replace(" ", "")
+          if not (user and pw):
+              print("UNPROTECTED but no SMTP creds; cannot alert")
+              raise SystemExit(1)
+          host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+          port = int(os.environ.get("SMTP_PORT", "465"))
+          body = ("BRANCH PROTECTION ALERT - the main branch of isds-watcher is NOT "
+                  "protected.\n\nForce-pushes and deletion are currently possible, which "
+                  "could silently rewrite the append-only research record (digests, "
+                  "verification ledger, council log).\n\nRestore it: repo Settings -> "
+                  "Branches -> add protection for 'main' blocking force pushes and "
+                  "deletions (do NOT require pull requests - the daily/weekly bots push "
+                  "directly to main).")
+          msg = MIMEText(body)
+          msg["Subject"] = "ISDS Repo - BRANCH PROTECTION ALERT (main unprotected)"
+          msg["From"] = user
+          msg["To"] = "jackemorywilliams@icloud.com"
+          with smtplib.SMTP_SSL(host, port, timeout=30) as s:
+              s.login(user, pw)
+              s.sendmail(user, ["jackemorywilliams@icloud.com"], msg.as_string())
+          print("branch-protection alert sent")
+          PY
+            exit 1
+          fi
+
       - name: Check daily-meeting freshness and alert if stale
         run: |
           python - <<'PY'

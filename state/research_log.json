@@ -1,16 +1,50 @@
 {
-  "last_updated": "2026-07-21",
+  "last_updated": "2026-07-27",
   "open_threads": [
-    "Will indexed post-session analysis of A/CN.9/1246 (IISD ITN or EJIL:Talk!) appear in the July 21–31 window and confirm the adoption status the current record only infers?",
-    "How will the non-retroactivity limit play out — will pre-existing BITs hosting IP-as-investment claims continue to rely on tribunal-discretion doctrine rather than a codified 'manifest lack of merit' gate?",
-    "Can the IAReporter Okuashvili source and Gleiss Lutz body be read in full to verify the MFN-detour holding? (Baker Botts identified July 21 as Georgia's respondent counsel — losing party — not a neutral source; the neutral window closes approximately July 24.)",
-    "Does an accessible version of Manjiao Chi's JIDS article (or a UIBE/SSRN preprint) recover the China–France BIT Protocol administrative-review formulation and close the persisting gap?",
-    "Will a Wingtech/Nexperia ICSID registration surface before the day-104 downgrade decision (July 28), and does the semiconductor/economic-security framing ever acquire an IP-as-investment dimension?",
-    "Do the standing-watch dockets (Huawei award, Einarsson award, Hela Schwarz case note) produce any new primary source, and can the Gáspár-Szilágyi body be retrieved via SSRN abstract_id=4432373 (JIDS 15(2):195 — citation corrected July 21)?",
-    "Will A/81/17 (59th UNCITRAL Commission session annual report to the UN General Assembly) appear in the August–September 2026 window to confirm the adopted texts of the Supplementary Provisions and Advisory Centre Statute?"
+    "Does the ICSID pending-cases docket ever register a Wingtech v. Netherlands proceeding, and if so, is the investment characterized as shares/control or does any IP framing emerge?",
+    "If a Nexperia claim is filed, does the intervening-cause problem posed by the near-simultaneous Enterprise Chamber measures surface as a merits or an admissibility argument?",
+    "Will the spread of codified manifest-lack-of-merit gates (2026 ICC Art. 30; ICSID AF Rule 51(1)) produce any disposition touching IP-as-investment, as distinct from abuse-of-right admissibility?",
+    "Does A/81/17 (expected Aug–Sep 2026) confirm the A/CN.9/1246 threshold once escalated to the principal?",
+    "Any movement on the standing dockets (Huawei v Sweden, Hela Schwarz, Einarsson) that reaches the jurisdictional gate on an IP or data investment?",
+    "Does the China–France BIT (2007) Protocol operator request yield a text bearing on the non-retroactivity/critical-date thread?"
   ],
-  "seq": 26,
+  "seq": 33,
   "history": [
+    {
+      "seq": 33,
+      "date": "2026-07-27",
+      "headline": "Wingtech/Nexperia: A Control-and-FET Dispute, Not IP-as-Investment — and Still Unfiled"
+    },
+    {
+      "seq": 32,
+      "date": "2026-07-27",
+      "headline": "IISD ITN Day 17 Atypical Threshold Breached — Escalation to Principal Warranted; EJIL:Talk 'Lifelong Learning' False Positive Cleared (Roberts & St. John, Nov 2023, Not Post-Session Analysis); sps.pdf Document Identifier Confirmed; Wingtech Day 103 Downgrade Checkpoint Tomorrow; No New Insight; Standing Watch"
+    },
+    {
+      "seq": 31,
+      "date": "2026-07-26",
+      "headline": "Huawei v. Sweden Tribunal Composition Confirmed MEDIUM-HIGH (Kaufmann-Kohler, Willems, Douglas KC — Three Independent Sources; Award Will Carry Exceptional Doctrinal Weight); EJIL:Talk 'Lifelong Learning' Newly Indexed (Date/Content Unconfirmed); IISD ITN Day 16 Null (Atypical Threshold Tomorrow); Wingtech Day 102; Peru Near-Miss Confirmed Electricity Sector; White & Case Date Nov 2022; New Optimization Logged"
+    },
+    {
+      "seq": 30,
+      "date": "2026-07-25",
+      "headline": "Quiet Day: TDM Journal Corroborates China-Sweden 1982 BIT Lacks ISDS (2004 Protocol Sole Pathway, Now Two Independent Sources); Day 15 IISD ITN Null (Atypical Threshold Day 17 July 27); Wingtech Day 101; Jones Day False Positive Identified; No New Insight; Standing Watch"
+    },
+    {
+      "seq": 29,
+      "date": "2026-07-24",
+      "headline": "Quiet Day: Vinge Confirmed as Second Neutral Okuashvili Practitioner Source (MEDIUM-HIGH); Neutral-Window Monitoring Complete; 1982 China-Sweden BIT Lacks ISDS (2004 Protocol Sole Pathway); All Standing Watches Null; No New Ledger Insight"
+    },
+    {
+      "seq": 28,
+      "date": "2026-07-23",
+      "headline": "Hela Schwarz Tribunal Composition Confirmed MEDIUM-HIGH (McLachlan KC + Ziadé; McLachlan Co-Author of Leading Treatise — Heightens Doctrinal Weight of Protocol Art. 9 Disposition); Gáspár-Szilágyi Content Scope Clarified (Outbound ISDS Broadly, Not Pharmaceutical-Specific); China-France BIT Escalated to Operator UNCTAD IIA Mapping Navigator Action; UNCTAD Coverage and Wingtech Registration Still Open"
+    },
+    {
+      "seq": 27,
+      "date": "2026-07-22",
+      "headline": "Hela Schwarz Art. 9(a) Disposition Confirmed MEDIUM-HIGH (IAReporter Title: Both Administrative Review and Fork-in-the-Road Given Effect); Okuashvili Four-Factor MFN Test Recovered from Gleiss Lutz Snippet; Wingtech Hoge Raad Appeal Confirmed (5th Domestic Track); Two New Insights Logged; China-France BIT and UNCITRAL Coverage Still Open"
+    },
     {
       "seq": 26,
       "date": "2026-07-21",

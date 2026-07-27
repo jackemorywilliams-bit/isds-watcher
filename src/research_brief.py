@@ -485,13 +485,21 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         # no model gives.
         _verify_citations(brief, memo)
         # Chairman reconvenes to take stock and hold the council accountable.
-        try:
-            brief["minutes"] = _run_reconvene(client, agenda, memo, security_note, brief)
-            logger.info("research_brief: chairman filed weekly minutes (%d escalations)",
-                        len(brief["minutes"].get("escalations", [])))
-        except Exception as exc:  # noqa: BLE001 - minutes are best-effort
-            logger.warning("research_brief: reconvene failed (%s)", exc)
-            brief["minutes"] = None
+        # Non-fatal (the digest must still ship) but NEVER silent: one retry, then a
+        # loud ERROR — council_log marks the entry minutes_missing and the Monday
+        # review packet surfaces the failure to the operator (2026-07-20 regression:
+        # a single swallowed failure produced a stub accountability entry and an
+        # empty roundtable section without anyone being told).
+        brief["minutes"] = None
+        for attempt in (1, 2):
+            try:
+                brief["minutes"] = _run_reconvene(client, agenda, memo, security_note, brief)
+                logger.info("research_brief: chairman filed weekly minutes (%d escalations)",
+                            len(brief["minutes"].get("escalations", [])))
+                break
+            except Exception as exc:  # noqa: BLE001 - non-fatal, loudly recorded
+                logger.error("research_brief: reconvene attempt %d/2 failed (%s)",
+                             attempt, exc)
         logger.info("research_brief: built '%s' (%d sections, %d supplemental, %d threads)",
                     brief.get("headline", "?"), len(brief.get("sections", [])),
                     len(brief.get("supplemental", [])), len(brief.get("open_threads", [])))

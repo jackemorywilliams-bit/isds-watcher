@@ -125,3 +125,28 @@ def test_malformed_lines_reported_not_dropped(ledger):
         fh.write("{not valid json\n")
     claims = verify.replay(ledger)
     assert "_malformed" in claims and len(claims["_malformed"]["lines"]) == 1
+
+
+# ---- prefix resolution on operator marks (fail-closed) ----
+
+def test_mark_resolves_unique_prefix(tmp_path):
+    path = str(tmp_path / "ledger.jsonl")
+    cid = verify.create_claim("Prefix test claim.", "https://example.org/a", path=path)
+    ev = verify.mark(cid[:16], "operator_verified", note="via prefix", path=path)
+    assert ev["claim_id"] == cid
+    assert verify.replay(path)[cid]["status"] == "operator_verified"
+
+
+def test_mark_unknown_id_fails_closed(tmp_path):
+    path = str(tmp_path / "ledger.jsonl")
+    verify.create_claim("Prefix test claim.", "https://example.org/a", path=path)
+    with pytest.raises(ValueError, match="unknown claim id"):
+        verify.mark("deadbeef00000000", "operator_verified", path=path)
+
+
+def test_mark_empty_or_ambiguous_prefix_fails_closed(tmp_path):
+    path = str(tmp_path / "ledger.jsonl")
+    verify.create_claim("Claim one.", "https://example.org/1", path=path)
+    verify.create_claim("Claim two.", "https://example.org/2", path=path)
+    with pytest.raises(ValueError):
+        verify.mark("", "operator_verified", path=path)

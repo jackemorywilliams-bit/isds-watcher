@@ -213,6 +213,18 @@ def mark(cid: str, new_status: str, *, note: str = "", quote_ok: bool = False,
     if new_status not in OPERATOR_STATUSES:
         raise ValueError(f"operator may set {sorted(OPERATOR_STATUSES)}, not {new_status!r}")
     claims = replay(path)
+    # Resolve id prefixes (the CLI list shows 16-char prefixes) and fail closed on
+    # anything unknown or ambiguous — a mark must never attach to a nonexistent id.
+    if cid not in claims:
+        matches = [k for k in claims if k != "_malformed" and k.startswith(cid)]
+        if len(matches) == 1:
+            cid = matches[0]
+        elif not matches:
+            raise ValueError(f"unknown claim id {cid!r} — run 'verify.py list' and "
+                             "copy an id (a unique prefix is accepted)")
+        else:
+            raise ValueError(f"ambiguous claim id prefix {cid!r} matches "
+                             f"{len(matches)} claims — use more characters")
     st = claims.get(cid)
     prior = st["status"] if st else DEFAULT_STATUS
     ev = {

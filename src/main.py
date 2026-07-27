@@ -268,10 +268,15 @@ def main(argv=None) -> int:
             week_str=date_str,
             screened=stats["total_candidates"],
             provider=provider,
+            escalated_gaps=research_state.escalated_gaps(rlog),
         )
         if brief:
             seq = research_state.record_issue(
                 rlog, date_str, brief.get("headline", ""), brief.get("open_threads", []))
+            # G23: count GAP-UNRESOLVED markers deterministically; escalated gaps
+            # become standing operator-action items (next analyst prompt + Monday
+            # review packet) instead of endlessly re-searched dead ends.
+            research_state.update_gap_counters(rlog, brief.get("_memo") or "")
             brief_html = render.render_research_brief(brief, generated_at, seq)
             brief_path = render.write_brief(brief_html, brief, generated_at, seq)
             research_state.save(rlog)

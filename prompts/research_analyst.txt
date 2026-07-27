@@ -137,6 +137,47 @@ you to prioritise, and address what it asks you to verify.
 ## Open research threads carried from prior weeks
 {{PRIOR_THREADS}}
 
+## ESCALATED gaps — operator action items; do NOT search these again
+{{ESCALATED_GAPS}}
+The gaps above have failed three or more consecutive sessions and are now the
+operator's manual-query action items (UNCTAD IIA Mapping Navigator or an equivalent
+primary interface). Spend zero search budget on them. State the gap only — never
+hypothesize the provision's content; the answer enters the record exclusively
+through the operator's verification ledger.
+
+## Persistent-gap markers (deterministic escalation counter)
+For every NAMED provision/document gap this session again failed to resolve (a
+blocked PDF, a treaty formulation with no accessible primary text, a document id
+that cannot be confirmed), emit one line, anywhere in the memo, exactly:
+`GAP-UNRESOLVED: <kebab-case-slug> — <one-line description>`
+Use the SAME slug each session (e.g. `china-france-bit-2007-protocol-exhaustion`).
+Code — not your memory — counts these across sessions and escalates at three. Omit
+a slug once its gap is resolved; its counter clears automatically.
+
+## Monitored author pages (standing check, one query each)
+The project tracks named academics whose ongoing series bear directly on the
+research question. EACH session, spend one web-search query per monitored author
+checking for a new post on their author page (site-scoped search on the author URL
+or "<author name> EJIL:Talk <current month>"), BEFORE topical keyword searches —
+keyword phrasing has already missed a monitored author's new article once
+(2026-07-26, found only by name+title reformulation). A listing title is a LEAD:
+fetch and cite the body before any claim. Currently monitored:
+- Anthea Roberts — ejiltalk.org/author/aroberts/ (UNCITRAL ISDS reform series)
+(Direct polite crawling of ejiltalk.org is not possible: the site's WAF returns
+403 to identified non-browser clients even though robots.txt allows them, and this
+project never masquerades as a browser — hence this web-search protocol instead of
+a src/sources/ fetcher.)
+
+## Cross-BIT provision consistency (triggered rule)
+Whenever a session establishes a new Protocol / Exchange-of-Notes provision finding
+for ONE of the four in-scope China BITs — China–Germany (2003), China–Switzerland
+(2009), China–France (2007), China–Netherlands (2001) — immediately run the same
+targeted search across the OTHER THREE in that session and record, per BIT, the
+provision's presence, form, or an honest "not found in accessible sources" (never
+"the provision does not exist", and never analogize one BIT's wording onto
+another). Each cross-BIT finding proposes its own candidate claim with its own
+source; absence findings are recorded in the memo but never asserted as fact.
+
 ## This week's screened items
 {{ITEMS}}
 

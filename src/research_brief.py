@@ -242,6 +242,20 @@ def _living_memory_block() -> str:
     return "\n\n".join(parts)
 
 
+def _escalated_gaps_block(gaps) -> str:
+    """Named gaps at the escalation threshold (G23): the analyst must NOT keep
+    searching these — they are the operator's manual-query action items."""
+    if not gaps:
+        return "(none)"
+    lines = []
+    for g in gaps:
+        lines.append(f"- {g['slug']}: {g.get('description', '')} — ESCALATED after "
+                     f"{g.get('count', '?')} unresolved sessions. Do NOT search this "
+                     "again; it is an operator action item (manual UNCTAD IIA Mapping "
+                     "Navigator or equivalent primary query).")
+    return "\n".join(lines)
+
+
 def _daily_notes_block() -> str:
     """The most recent daily-researcher notes (committed by the Max routine), so the
     weekly analyst builds on the week's daily work instead of redoing it."""
@@ -304,7 +318,8 @@ def _run_chairman(client, items, prior_threads, week_str, screened) -> str:
     return _text_of(resp)
 
 
-def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> str:
+def _run_analyst(client, items, prior_threads, week_str, screened, agenda,
+                 escalated_gaps=None) -> str:
     """Research analyst: interprets the week's items against the research question and
     escalates to web search for supplemental contemporary findings, working to the
     chairman's agenda."""
@@ -318,6 +333,7 @@ def _run_analyst(client, items, prior_threads, week_str, screened, agenda) -> st
         .replace("{{ITEMS}}", _items_block(items))
         .replace("{{DAILY_NOTES}}", _daily_notes_block())
         .replace("{{LIVING_MEMORY}}", _living_memory_block())
+        .replace("{{ESCALATED_GAPS}}", _escalated_gaps_block(escalated_gaps))
     )
     messages = [{"role": "user", "content": prompt}]
     resp = None
@@ -464,7 +480,7 @@ def _verify_citations(brief: dict, memo: str) -> None:
 
 
 def generate_brief(items, *, prior_threads, week_str, screened,
-                   provider) -> Optional[dict]:
+                   provider, escalated_gaps=None) -> Optional[dict]:
     """Convene the council: chairman → analyst (web search) → security → editor.
 
     Returns the structured brief dict (with ``_memo``/``_agenda``/``_security`` keys
@@ -478,7 +494,8 @@ def generate_brief(items, *, prior_threads, week_str, screened,
         client = _client()
         agenda = _run_chairman(client, items, prior_threads, week_str, screened)
         logger.info("research_brief: chairman set the agenda (%d chars)", len(agenda))
-        memo = _run_analyst(client, items, prior_threads, week_str, screened, agenda)
+        memo = _run_analyst(client, items, prior_threads, week_str, screened, agenda,
+                            escalated_gaps=escalated_gaps)
         if not memo:
             logger.warning("research_brief: analyst produced no text; skipping")
             return None

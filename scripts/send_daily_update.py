@@ -109,6 +109,61 @@ def _mark_sent(date_str: str) -> None:
         print(f"warning: could not write sent marker ({exc})")
 
 
+_WORD_NUMS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+              "seven": 7, "eight": 8, "nine": 9, "ten": 10, "zero": 0, "no": 0}
+
+
+def _latest_digest_meta() -> tuple[str, dict] | None:
+    """(date, meta) of the newest digest folder with a meta.json, or None."""
+    import glob
+    import json
+    dirs = sorted(glob.glob(os.path.join("digests", "*_*")), reverse=True)
+    for d in dirs:
+        mp = os.path.join(d, "meta.json")
+        if os.path.isdir(d) and os.path.exists(mp):
+            try:
+                with open(mp, encoding="utf-8") as fh:
+                    return os.path.basename(d)[:10], json.load(fh)
+            except Exception:  # noqa: BLE001
+                continue
+    return None
+
+
+def _consistency_header(record: str) -> str:
+    """Deterministic 'numbers of record' banner + contradiction check.
+
+    The 2026-07-27 daily record described 'One screened item' for a digest whose
+    header said 'Screened: 10' — both were defensible readings of an ambiguous word,
+    and nothing machine-checked the prose against meta.json before it was emailed.
+    Now every daily email opens with the authoritative counts (from the digest's own
+    meta.json, with the terminology fixed: CANDIDATES EVALUATED vs ITEMS SURFACED),
+    and any 'N screened' phrase in the record that matches neither count draws a
+    visible CONSISTENCY WARNING instead of shipping silently."""
+    latest = _latest_digest_meta()
+    if not latest:
+        return ""
+    date, meta = latest
+    evaluated = meta.get("screened")
+    surfaced = (meta.get("matches") or 0) + (meta.get("watch_list_leads") or 0)
+    lines = [f"**Numbers of record (digest {date}):** {evaluated} candidates evaluated · "
+             f"{meta.get('matches', 0)} matches (≥40) · {meta.get('watch_list_leads', 0)} "
+             f"watch-list leads · {surfaced} items surfaced in the digest."]
+    mismatches = []
+    for m in re.finditer(r"\b(\d+|one|two|three|four|five|six|seven|eight|nine|ten|no|zero)\s+"
+                         r"screened\b|\bscreened\s+(\d+)\b", record, re.IGNORECASE):
+        raw = (m.group(1) or m.group(2) or "").lower()
+        n = _WORD_NUMS.get(raw, None) if not raw.isdigit() else int(raw)
+        if n is not None and n not in (evaluated, surfaced, meta.get("matches"),
+                                       meta.get("watch_list_leads")):
+            mismatches.append(f'"{m.group(0)}"')
+    if mismatches:
+        lines.append(f"**CONSISTENCY WARNING:** the record says {', '.join(sorted(set(mismatches)))} "
+                     f"but the digest meta records {evaluated} evaluated / {surfaced} surfaced — "
+                     "the prose below may be using 'screened' loosely; trust the numbers of "
+                     "record above.")
+    return "\n\n".join(lines) + "\n\n---\n\n"
+
+
 def _citation_footer(record: str) -> str:
     """One-line citation-check footer, only if verify_citations is available."""
     if _verify_citations is None:
@@ -144,7 +199,8 @@ def main(argv=None) -> int:
             print(f"sent:       skipped (de-duplicated)")
             return 0
         subject = f"ISDS Daily Council Meeting — {date_str}"
-        body_html = _md_to_html(record + _citation_footer(record))
+        body_html = _md_to_html(_consistency_header(record) + record
+                                + _citation_footer(record))
         cfg = config.load_config()
         ok = send_digest(body_html, subject, cfg)
         if ok:

@@ -130,6 +130,11 @@ Map: [[00 - Project Map]]
   `python scripts/verify.py list --status unverified` · `python scripts/verify.py mark
   <claim_id> --verified|--rejected --note "..."` · `python scripts/verify.py status`.
   Paywalled/blocked claims are labeled "forward to professor" — never self-verify those.
+  Operator convention (2026-07-27): a claim the operator verifies in chat, or whose
+  source the operator supplies verbatim (one-pagers, pasted primary text, a freely
+  fetchable primary PDF checked by exact substring), is marked by the assistant on the
+  operator's behalf with a provenance note; only genuinely operator-only or
+  professor-only sources go back as action items, always with live URLs.
 - **Seeded claim_ids awaiting your CLI mark** (created as candidates only; your in-chat
   review of 2026-07-18 is logged in HUMAN_REVIEW.md, but the ledger needs your `mark`):
   `721ffab48baf0098ca77…` (USTR 2026 Special 301 characterisation — you verified this),

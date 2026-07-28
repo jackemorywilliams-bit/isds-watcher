@@ -1,106 +1,90 @@
 #!/usr/bin/env node
-// Fail-closed validator for views/isds-workflow-3d/workflow.json.
-// Rules: 18-24 nodes; unique ids; every edge endpoint exists; normal edges move
-// forward or stay in stage; feedback edges return to a strictly earlier stage;
-// every node/edge carries evidence; lanes and kinds from the closed vocabularies.
+// Fail-closed validator for the v2 plain-language workflow manifest + render
+// config. Encodes every operator complaint from 2026-07-28 as a rule:
+// overlap impossible (unique grid cells), no upward arrows (feedback arcs
+// banned), plain-language descriptions required, all 9 sources present,
+// purpose-colored edge kinds only, legend/config sanity.
 import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const manifestPath = resolve(here, "../../views/isds-workflow-3d/workflow.json");
-const m = JSON.parse(readFileSync(manifestPath, "utf8"));
-
-const LANES = new Set(["control", "core", "digest", "council", "verification", "feedback"]);
-const NODE_KINDS = new Set(["input", "process", "gate", "output", "feedback"]);
-const EDGE_KINDS = new Set(["core", "control", "council", "gate", "delivery", "feedback"]);
+const m = JSON.parse(readFileSync(resolve(here, "../../views/isds-workflow-3d/workflow.json"), "utf8"));
+const rc = await import("./src/render-config.mjs");
 const errors = [];
 
-if (!(m.nodes.length >= 18 && m.nodes.length <= 24))
-  errors.push(`node count ${m.nodes.length} outside 18-24`);
+const NODE_KINDS = new Set(["auto", "process", "gate", "send", "role", "human"]);
+const EDGE_KINDS = new Set(Object.keys(rc.EDGE_STYLE));
 
-const ids = new Map();
-for (const n of m.nodes) {
-  if (ids.has(n.id)) errors.push(`duplicate node id: ${n.id}`);
-  ids.set(n.id, n);
-  if (!LANES.has(n.lane)) errors.push(`${n.id}: bad lane ${n.lane}`);
-  if (!NODE_KINDS.has(n.kind)) errors.push(`${n.id}: bad kind ${n.kind}`);
-  if (!Number.isInteger(n.stage) || n.stage < 0) errors.push(`${n.id}: bad stage`);
-  if (!Number.isInteger(n.depth) || n.depth < 0) errors.push(`${n.id}: bad depth`);
-  if (!n.label || !n.summary) errors.push(`${n.id}: missing label/summary`);
-  if (!n.target) errors.push(`${n.id}: missing markdown target`);
-  if (!Array.isArray(n.evidence) || n.evidence.length === 0)
-    errors.push(`${n.id}: no evidence`);
+// -- chips: all nine sources, individually visualized --
+if (m.chips.length !== 9) errors.push(`expected 9 source chips, got ${m.chips.length}`);
+for (const c of m.chips) {
+  if (!c.name || !c.tag) errors.push(`chip ${c.id}: missing name/tag`);
+  if (!Array.isArray(c.evidence) || !c.evidence.length) errors.push(`chip ${c.id}: no evidence`);
 }
 
-// No two nodes may share (lane, stage, depth) — they would occupy one 3D point.
+// -- nodes: plain language, evidence, explicit unique grid cells --
+if (!(m.nodes.length >= 20 && m.nodes.length <= 32))
+  errors.push(`node count ${m.nodes.length} outside 20-32`);
+const ids = new Map();
 const cells = new Map();
 for (const n of m.nodes) {
-  const key = `${n.lane}|${n.stage}|${n.depth}`;
-  if (cells.has(key)) errors.push(`coordinate collision: ${n.id} and ${cells.get(key)} both at ${key}`);
-  cells.set(key, n.id);
+  if (ids.has(n.id)) errors.push(`duplicate id: ${n.id}`);
+  ids.set(n.id, n);
+  if (!rc.COLUMNS.includes(n.col)) errors.push(`${n.id}: unknown column ${n.col}`);
+  if (!Number.isInteger(n.row) || n.row < 0) errors.push(`${n.id}: bad row`);
+  if (!NODE_KINDS.has(n.kind)) errors.push(`${n.id}: bad kind ${n.kind}`);
+  if (!n.title) errors.push(`${n.id}: missing title`);
+  if (!n.desc) errors.push(`${n.id}: missing plain-language description`);
+  else if (n.desc.length > rc.CARD.descChars * 3)
+    errors.push(`${n.id}: desc too long for the card (${n.desc.length} > ${rc.CARD.descChars * 3})`);
+  if (/\b(dedup|lexical|prescore|frontmatter|jsonl|SMIL|regex)\b/i.test(n.title))
+    errors.push(`${n.id}: title contains jargon ('${n.title}')`);
+  if (!n.target) errors.push(`${n.id}: missing markdown target`);
+  if (!Array.isArray(n.evidence) || !n.evidence.length) errors.push(`${n.id}: no evidence`);
+  const cell = `${n.col}|${n.row}`;
+  if (cells.has(cell)) errors.push(`OVERLAP: ${n.id} and ${cells.get(cell)} share cell ${cell}`);
+  cells.set(cell, n.id);
 }
 
-const edgeSeen = new Set();
+// -- edges: endpoints exist, purpose kinds only, NEVER upward --
+const seen = new Set();
 for (const e of m.edges) {
   const key = `${e.source}->${e.target}`;
-  if (edgeSeen.has(key)) errors.push(`duplicate edge: ${key}`);
-  edgeSeen.add(key);
-  const s = ids.get(e.source), t = ids.get(e.target);
+  if (seen.has(key)) errors.push(`duplicate edge ${key}`);
+  seen.add(key);
+  if (!EDGE_KINDS.has(e.kind)) errors.push(`edge ${key}: kind '${e.kind}' not in the legend vocabulary`);
+  if (!e.evidence) errors.push(`edge ${key}: no evidence`);
+  const s = e.source === "__sources" ? { row: -1 } : ids.get(e.source);
+  const t = ids.get(e.target);
   if (!s) { errors.push(`edge ${key}: unknown source`); continue; }
   if (!t) { errors.push(`edge ${key}: unknown target`); continue; }
-  if (!EDGE_KINDS.has(e.kind)) errors.push(`edge ${key}: bad kind ${e.kind}`);
-  if (!e.evidence) errors.push(`edge ${key}: no evidence`);
-  if (e.kind === "feedback") {
-    if (t.stage >= s.stage) errors.push(`feedback edge ${key} must return to an earlier stage (${s.stage} -> ${t.stage})`);
-  } else if (t.stage < s.stage) {
-    errors.push(`edge ${key} moves backward (${s.stage} -> ${t.stage}) without kind=feedback`);
-  }
+  if (t.row < s.row) errors.push(`UPWARD ARROW banned: ${key} (row ${s.row} -> ${t.row})`);
 }
 
-// Every node must be connected.
+// -- connectivity: no floating cards --
 const touched = new Set(m.edges.flatMap((e) => [e.source, e.target]));
-for (const n of m.nodes) if (!touched.has(n.id)) errors.push(`orphan node: ${n.id}`);
+for (const n of m.nodes) if (!touched.has(n.id)) errors.push(`floating card: ${n.id}`);
+
+// -- render config sanity: exact-pixel guarantees at 1:1 --
+if (rc.CARD.titlePx < 12) errors.push(`card title ${rc.CARD.titlePx}px < 12px`);
+if (rc.CARD.descPx < 10) errors.push(`card desc ${rc.CARD.descPx}px < 10px`);
+if (rc.CARD.w > rc.GRID.colWidth - 16) errors.push("card wider than its column");
+if (rc.GRID.rowPitch < rc.CARD.h + 22) errors.push("row pitch too tight — cards would collide");
+const totalW = rc.GRID.marginX * 2 + rc.COLUMNS.length * rc.GRID.colWidth;
+if (totalW > 1100) errors.push(`total width ${totalW}px exceeds the 1100px pane budget`);
+for (const kind of EDGE_KINDS) {
+  const f = rc.FLOW[kind];
+  if (!f || f.dots < 1) errors.push(`edge kind '${kind}' has no animated flow dots`);
+}
+// Every column used must have a title + color (feeds the legend).
+for (const col of rc.COLUMNS)
+  if (!rc.COL_TITLE[col] || !rc.COL_COLOR[col]) errors.push(`column '${col}' missing title/color`);
 
 if (errors.length) {
   console.error(`VALIDATION FAILED (${errors.length}):`);
   for (const e of errors) console.error("  - " + e);
   process.exit(1);
 }
-console.log(`OK: ${m.nodes.length} nodes, ${m.edges.length} edges, all rules pass.`);
-
-// ---- Legibility invariants (post-audit swimlane model) ----
-// The chart renders at natural 1:1 SVG scale, so these are EXACT guarantees,
-// not heuristics: text pixels, card fit inside lanes, row pitch clearance,
-// and the animated-flow layer on every edge kind.
-const rc = await import("./src/render-config.mjs");
-const legErrors = [];
-
-if (rc.CARD.textPx < 12) legErrors.push(`card text ${rc.CARD.textPx}px < 12px`);
-if (rc.CAPTION_PX < rc.CARD.textPx) legErrors.push("lane captions smaller than card text");
-// Cards must fit their lane with breathing room (incl. max depth offset seen in the manifest).
-const maxDepth = Math.max(...m.nodes.map((n) => n.depth));
-if (rc.CARD.w + maxDepth * rc.GRID.depthDX > rc.GRID.laneWidth - 10)
-  legErrors.push(`card ${rc.CARD.w}px + depth offsets overflow lane ${rc.GRID.laneWidth}px`);
-// Row pitch must clear the card plus edge room.
-if (rc.GRID.stagePitch < rc.CARD.h + 60)
-  legErrors.push(`stagePitch ${rc.GRID.stagePitch} too tight for card ${rc.CARD.h} + edges`);
-// Total width must fit a normal note pane without horizontal scrolling.
-const totalW = rc.GRID.marginX * 2 + rc.LANE_ORDER.length * rc.GRID.laneWidth;
-if (totalW > 1100) legErrors.push(`total width ${totalW}px exceeds a note pane (1100px budget)`);
-// Every lane used by the manifest must exist in the lane order.
-for (const lane of new Set(m.nodes.map((n) => n.lane)))
-  if (!rc.LANE_ORDER.includes(lane)) legErrors.push(`lane '${lane}' missing from LANE_ORDER`);
-// The flow must actually animate: dots on every edge kind, sane speeds.
-for (const kind of EDGE_KINDS) {
-  const f = rc.FLOW[kind];
-  if (!f || f.dots < 1) legErrors.push(`edge kind '${kind}' has no flow dots`);
-  else if (!(f.dur > 0.5 && f.dur < 30)) legErrors.push(`edge kind '${kind}' dur ${f.dur}s outside 0.5-30s`);
-}
-
-if (legErrors.length) {
-  console.error(`LEGIBILITY GUARD FAILED (${legErrors.length}):`);
-  for (const e of legErrors) console.error("  - " + e);
-  process.exit(1);
-}
-console.log(`Legibility guard OK (1:1 scale, ${rc.CARD.textPx}px card text, width ${totalW}px, animated dots on all ${EDGE_KINDS.size} edge kinds).`);
+console.log(`OK: 9 source chips, ${m.nodes.length} cards (all described, no overlaps), ` +
+            `${m.edges.length} edges (no upward arrows), width ${totalW}px, animated dots on all ${EDGE_KINDS.size} edge kinds.`);

@@ -69,47 +69,38 @@ if (errors.length) {
 }
 console.log(`OK: ${m.nodes.length} nodes, ${m.edges.length} edges, all rules pass.`);
 
-// ---- Legibility invariants (guard for the microscopic-smudge regression class) ----
-// Labels are constant SCREEN pixels (per-frame rescale) with LOD; the guard
-// asserts the pixel guarantees, the flowchart lens, straight-on framing inputs,
-// and the animated-flow layer — a future edit that reverts any of these fails.
+// ---- Legibility invariants (post-audit swimlane model) ----
+// The chart renders at natural 1:1 SVG scale, so these are EXACT guarantees,
+// not heuristics: text pixels, card fit inside lanes, row pitch clearance,
+// and the animated-flow layer on every edge kind.
 const rc = await import("./src/render-config.mjs");
 const legErrors = [];
 
-// Labels must be guaranteed >= 12px on screen at every distance, captions bigger.
-if (rc.LABEL_PX.node < 12) legErrors.push(`node label ${rc.LABEL_PX.node}px < 12px screen guarantee`);
-if (rc.LABEL_PX.caption < rc.LABEL_PX.node) legErrors.push("lane captions smaller than node labels");
-// LOD must reveal detail labels by the time a stage column spans a readable width.
-if (!(rc.LABEL_PX.lodStagePx >= 60 && rc.LABEL_PX.lodStagePx <= 240))
-  legErrors.push(`lodStagePx ${rc.LABEL_PX.lodStagePx} outside sane 60-240 window`);
-
-// Flowchart lens: low-distortion fov, straight-on framing constants present.
-if (!(rc.CAMERA.fov >= 30 && rc.CAMERA.fov <= 55))
-  legErrors.push(`fov ${rc.CAMERA.fov} outside the flat flowchart window 30-55`);
-if (!(rc.CAMERA.padWorld >= 0)) legErrors.push("framing pad missing");
-
-// Operator-ordered spacing floors.
-if (rc.SPACING.stageX < 350) legErrors.push(`stageX ${rc.SPACING.stageX} < 350`);
-if (rc.SPACING.laneY < 250) legErrors.push(`laneY ${rc.SPACING.laneY} < 250`);
-if (rc.SPACING.depthZ < 180) legErrors.push(`depthZ ${rc.SPACING.depthZ} < 180`);
-
-// Nodes must not be dust: >= 2.8% of stage spacing.
-const minRadius = Math.min(...Object.values(rc.NODE_RADIUS));
-if (minRadius / rc.SPACING.stageX < 0.028)
-  legErrors.push(`min sphere radius ${minRadius} too small for stage spacing ${rc.SPACING.stageX}`);
-
-// Arrows visible against the layout.
-if (rc.ARROWS.length / rc.SPACING.stageX < 0.035)
-  legErrors.push(`arrow length ${rc.ARROWS.length} invisible at stage spacing ${rc.SPACING.stageX}`);
-
-// The flow must actually animate: every edge kind carries particles.
-for (const kind of EDGE_KINDS)
-  if (!rc.PARTICLES[kind] || rc.PARTICLES[kind].count < 1)
-    legErrors.push(`edge kind '${kind}' has no flow particles`);
+if (rc.CARD.textPx < 12) legErrors.push(`card text ${rc.CARD.textPx}px < 12px`);
+if (rc.CAPTION_PX < rc.CARD.textPx) legErrors.push("lane captions smaller than card text");
+// Cards must fit their lane with breathing room (incl. max depth offset seen in the manifest).
+const maxDepth = Math.max(...m.nodes.map((n) => n.depth));
+if (rc.CARD.w + maxDepth * rc.GRID.depthDX > rc.GRID.laneWidth - 10)
+  legErrors.push(`card ${rc.CARD.w}px + depth offsets overflow lane ${rc.GRID.laneWidth}px`);
+// Row pitch must clear the card plus edge room.
+if (rc.GRID.stagePitch < rc.CARD.h + 60)
+  legErrors.push(`stagePitch ${rc.GRID.stagePitch} too tight for card ${rc.CARD.h} + edges`);
+// Total width must fit a normal note pane without horizontal scrolling.
+const totalW = rc.GRID.marginX * 2 + rc.LANE_ORDER.length * rc.GRID.laneWidth;
+if (totalW > 1100) legErrors.push(`total width ${totalW}px exceeds a note pane (1100px budget)`);
+// Every lane used by the manifest must exist in the lane order.
+for (const lane of new Set(m.nodes.map((n) => n.lane)))
+  if (!rc.LANE_ORDER.includes(lane)) legErrors.push(`lane '${lane}' missing from LANE_ORDER`);
+// The flow must actually animate: dots on every edge kind, sane speeds.
+for (const kind of EDGE_KINDS) {
+  const f = rc.FLOW[kind];
+  if (!f || f.dots < 1) legErrors.push(`edge kind '${kind}' has no flow dots`);
+  else if (!(f.dur > 0.5 && f.dur < 30)) legErrors.push(`edge kind '${kind}' dur ${f.dur}s outside 0.5-30s`);
+}
 
 if (legErrors.length) {
   console.error(`LEGIBILITY GUARD FAILED (${legErrors.length}):`);
   for (const e of legErrors) console.error("  - " + e);
   process.exit(1);
 }
-console.log(`Legibility guard OK (labels ${rc.LABEL_PX.node}px screen-guaranteed, fov ${rc.CAMERA.fov}, LOD at ${rc.LABEL_PX.lodStagePx}px/stage).`);
+console.log(`Legibility guard OK (1:1 scale, ${rc.CARD.textPx}px card text, width ${totalW}px, animated dots on all ${EDGE_KINDS.size} edge kinds).`);

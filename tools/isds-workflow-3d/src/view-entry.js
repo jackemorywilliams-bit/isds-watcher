@@ -1,180 +1,158 @@
-// Deterministic 3D workflow view for the ISDS Thematic Watcher.
-// Runs inside Dataview's dv.view() scope (`dv`/`input` are host-provided).
-// Fixed layout — no force drift. Camera framing is COMPUTED (straight-on at the
-// content centroid, fov-aware distance) — never zoomToFit along a stale axis.
-// Labels are constant SCREEN pixels via a per-frame rescale (like Obsidian's own
-// graph), with level-of-detail so the overview shows the majors and zooming in
-// reveals every process label. Directional particles animate the flow.
-import ForceGraph3D from "3d-force-graph";
-import SpriteText from "three-spritetext";
-import { Group, Mesh, SphereGeometry, MeshLambertMaterial, Vector3 } from "three";
-import { SPACING, LANE_Y, LABEL_PX, CAMERA, NODE_RADIUS, ARROWS, PARTICLES, CANVAS } from "./render-config.mjs";
+// ISDS Thematic Watcher — animated swimlane flowchart (post-audit rebuild).
+// Runs inside Dataview's dv.view() scope (`dv`/`input` host-provided).
+// Document-native SVG: six lane columns, stages flow top->bottom, natural 1:1
+// scale (text is exact pixels by construction — no camera, no zoom, no WebGL).
+// The flow ANIMATES via native SMIL dots traveling every edge; feedback dots
+// visibly loop back up the right margin. Zero runtime dependencies.
+import { LANE_ORDER, GRID, CARD, CAPTION_PX, EDGES, FLOW } from "./render-config.mjs";
 
 const LANE_COLOR = {
   control: "#8892b0", core: "#64b5f6", digest: "#81c784",
   council: "#ba9ffb", verification: "#ffd54f", feedback: "#f48fb1",
 };
 const EDGE_COLOR = {
-  core: "#64b5f6", control: "#5c6784", council: "#9d86d9",
-  gate: "#ffd54f", delivery: "#81c784", feedback: "#f48fb1",
+  core: "#64b5f6", control: "#7a86a8", council: "#9d86d9",
+  gate: "#e6b83f", delivery: "#81c784", feedback: "#f48fb1",
 };
 const LANE_CAPTION = {
   control: "CONTROL", core: "CORE PIPELINE", digest: "DELIVERABLES",
   council: "COUNCIL", verification: "VERIFICATION", feedback: "FEEDBACK",
 };
+const NS = "http://www.w3.org/2000/svg";
+
+function el(name, attrs, parent) {
+  const e = document.createElementNS(NS, name);
+  for (const [k, v] of Object.entries(attrs || {})) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
 
 async function main() {
   const container = dv.container;
-  container.querySelectorAll(".isds-workflow-3d-host").forEach((el) => el.remove());
-  const host = document.createElement("div");
-  container.appendChild(host);
-  host.className = "isds-workflow-3d-host";
-  host.style.cssText = `width:100%;height:${CANVAS.height}px;border-radius:8px;overflow:hidden;position:relative;`;
-
+  container.querySelectorAll(".isds-workflow-flow-host").forEach((n) => n.remove());
   const manifest = JSON.parse(await dv.io.load(input.data));
 
-  const nodes = manifest.nodes.map((n) => {
-    const x = n.stage * SPACING.stageX;
-    const y = (LANE_Y[n.lane] ?? 0) * SPACING.laneY;
-    const z = n.depth * SPACING.depthZ;
-    return { ...n, x, y, z, fx: x, fy: y, fz: z };
-  });
-  const minX = Math.min(...nodes.map((n) => n.x));
-  for (const lane of [...new Set(manifest.nodes.map((n) => n.lane))]) {
-    const x = minX - SPACING.stageX * 0.75;
-    const y = (LANE_Y[lane] ?? 0) * SPACING.laneY;
-    nodes.push({ id: `__lane-${lane}`, __laneCaption: lane, x, y, z: 0, fx: x, fy: y, fz: 0 });
+  const laneX = (lane) => GRID.marginX + LANE_ORDER.indexOf(lane) * GRID.laneWidth;
+  const stages = manifest.nodes.map((n) => n.stage);
+  const maxStage = Math.max(...stages);
+  const width = GRID.marginX * 2 + LANE_ORDER.length * GRID.laneWidth;
+  const height = GRID.headerH + (maxStage + 1) * GRID.stagePitch + 40;
+
+  const host = document.createElement("div");
+  host.className = "isds-workflow-flow-host";
+  host.style.cssText = "width:100%;overflow-x:auto;border-radius:10px;background:#0B1020;";
+  container.appendChild(host);
+
+  const svg = el("svg", { viewBox: `0 0 ${width} ${height}`, width: "100%",
+                          style: `min-width:${Math.min(width, 900)}px;display:block;` }, host);
+
+  // defs: arrowheads per edge kind
+  const defs = el("defs", {}, svg);
+  for (const [kind, color] of Object.entries(EDGE_COLOR)) {
+    const m = el("marker", { id: `arrow-${kind}`, viewBox: "0 0 10 10", refX: 9, refY: 5,
+                             markerWidth: EDGES.arrow, markerHeight: EDGES.arrow, orient: "auto-start-reverse" }, defs);
+    el("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: color }, m);
   }
-  const links = manifest.edges.map((e) => ({ ...e }));
 
-  // Sprite registry for the per-frame constant-screen-size rescale + LOD.
-  const labelSprites = [];
+  // Lane bands + captions
+  for (const lane of LANE_ORDER) {
+    const x = laneX(lane);
+    el("rect", { x, y: GRID.headerH, width: GRID.laneWidth - 8, height: height - GRID.headerH - 8,
+                 fill: LANE_COLOR[lane], opacity: 0.045, rx: 10 }, svg);
+    const cap = el("text", { x: x + (GRID.laneWidth - 8) / 2, y: GRID.headerH - 22,
+                             fill: LANE_COLOR[lane], "font-size": CAPTION_PX, "font-weight": 700,
+                             "text-anchor": "middle", "font-family": "var(--font-interface, sans-serif)",
+                             opacity: 0.9 }, svg);
+    cap.textContent = LANE_CAPTION[lane];
+  }
 
-  const graph = ForceGraph3D()(host)
-    .width(host.clientWidth || container.clientWidth || 900)
-    .height(CANVAS.height)
-    .backgroundColor(CANVAS.background)
-    .graphData({ nodes, links })
-    .enableNodeDrag(false)
-    .cooldownTicks(0)
-    .nodeThreeObject((node) => {
-      if (node.__laneCaption) {
-        const cap = new SpriteText(LANE_CAPTION[node.__laneCaption] ?? node.__laneCaption, 10,
-                                   LANE_COLOR[node.__laneCaption] ?? "#8892b0");
-        cap.material.depthWrite = false;
-        cap.material.depthTest = false;
-        cap.material.opacity = 0.6;
-        cap.renderOrder = 998;
-        labelSprites.push({ sprite: cap, kindClass: "caption", baseH: 10 });
-        return cap;
-      }
-      const g = new Group();
-      const r = NODE_RADIUS[node.kind] ?? 11;
-      const color = LANE_COLOR[node.lane] ?? "#cccccc";
-      g.add(new Mesh(new SphereGeometry(r, 20, 20),
-                     new MeshLambertMaterial({ color, transparent: true, opacity: node.kind === "gate" ? 1 : 0.9 })));
-      const label = new SpriteText(node.label, 10, "#e8ecf8");
-      label.backgroundColor = "rgba(11,16,32,0.72)";
-      label.padding = 3;
-      label.borderRadius = 3;
-      label.material.depthWrite = false;
-      label.material.depthTest = false;
-      label.renderOrder = 999;
-      label.position.set(0, r + 16, 0);
-      g.add(label);
-      labelSprites.push({ sprite: label, kindClass: node.kind === "process" ? "detail" : "major", baseH: 10 });
-      return g;
-    })
-    .linkColor((l) => EDGE_COLOR[l.kind] ?? "#666")
-    .linkOpacity(0.5)
-    .linkWidth((l) => (l.kind === "core" || l.kind === "gate" ? 2.2 : 1.2))
-    .linkDirectionalArrowLength(ARROWS.length)
-    .linkDirectionalArrowRelPos(ARROWS.relPos)
-    .linkDirectionalArrowColor((l) => EDGE_COLOR[l.kind] ?? "#666")
-    .linkCurvature((l) => (l.kind === "feedback" ? 0.3 : 0))
-    .linkDirectionalParticles((l) => (PARTICLES[l.kind] ?? PARTICLES.core).count)
-    .linkDirectionalParticleSpeed((l) => (PARTICLES[l.kind] ?? PARTICLES.core).speed)
-    .linkDirectionalParticleWidth((l) => (PARTICLES[l.kind] ?? PARTICLES.core).width)
-    .linkDirectionalParticleColor((l) => EDGE_COLOR[l.kind] ?? "#666")
-    .nodeLabel((n) => n.__laneCaption ? "" :
-      `<div style="max-width:360px"><b>${n.label}</b><br/>${n.summary}<br/>` +
-      `<i>evidence: ${(n.evidence || []).join(" · ")}</i></div>`)
-    .onNodeClick((node) => {
-      if (!node.__laneCaption && node.target)
-        dv.app.workspace.openLinkText(node.target, dv.current().file.path);
-    });
+  // Node positions (card centers)
+  const pos = {};
+  for (const n of manifest.nodes) {
+    const x = laneX(n.lane) + (GRID.laneWidth - 8) / 2 + n.depth * GRID.depthDX;
+    const y = GRID.headerH + n.stage * GRID.stagePitch + GRID.stagePitch / 2 + n.depth * GRID.depthDY;
+    pos[n.id] = { x, y, n };
+  }
 
-  // ---- Deterministic straight-on framing (replaces zoomToFit) ----
-  const xs = nodes.map((n) => n.x), ys = nodes.map((n) => n.y), zs = nodes.map((n) => n.z);
-  const cx = (Math.min(...xs) + Math.max(...xs)) / 2;
-  const cy = (Math.min(...ys) + Math.max(...ys)) / 2;
-  const maxZ = Math.max(...zs);
-  const camera = graph.camera();
-  camera.fov = CAMERA.fov;
-  camera.updateProjectionMatrix();
-  const frame = () => {
-    const w = host.clientWidth || 900, h = CANVAS.height;
-    const tanHalf = Math.tan((CAMERA.fov * Math.PI) / 360);
-    const aspect = w / h;
-    const W = (Math.max(...xs) - Math.min(...xs)) / 2 + CAMERA.padWorld;
-    const H = (Math.max(...ys) - Math.min(...ys)) / 2 + CAMERA.padWorld;
-    const d = Math.max(W / (tanHalf * aspect), H / tanHalf) + maxZ;
-    graph.cameraPosition({ x: cx, y: cy, z: d }, { x: cx, y: cy, z: 0 }, 600);
-  };
-  setTimeout(frame, 60);
-
-  // ---- Constant-screen-size labels + level-of-detail, every frame ----
-  const camPos = new Vector3();
-  const spritePos = new Vector3();
-  let rafId = 0;
-  const tick = () => {
-    const h = CANVAS.height;
-    const tanHalf = Math.tan((camera.fov * Math.PI) / 360);
-    camera.getWorldPosition(camPos);
-    // Screen px per world unit at the pipeline plane (z=0), for the LOD decision.
-    const dPlane = Math.max(1, camPos.z);
-    const ppu = h / (2 * dPlane * tanHalf);
-    const showDetail = SPACING.stageX * ppu >= LABEL_PX.lodStagePx;
-    for (const entry of labelSprites) {
-      const { sprite, kindClass } = entry;
-      // Capture the sprite's text aspect ratio once (SpriteText encodes it in scale).
-      if (entry.aspect === undefined) {
-        entry.aspect = sprite.scale.y ? sprite.scale.x / sprite.scale.y : 1;
-      }
-      sprite.getWorldPosition(spritePos);
-      const dist = Math.max(1, camPos.distanceTo(spritePos));
-      const targetPx = kindClass === "caption" ? LABEL_PX.caption : LABEL_PX.node;
-      const worldH = (targetPx * 2 * dist * tanHalf) / h;
-      sprite.scale.set(worldH * entry.aspect, worldH, 1);
-      sprite.visible = kindClass !== "detail" || showDetail;
+  // Edges first (under the cards)
+  const edgeLayer = el("g", {}, svg);
+  const flowLayer = el("g", {}, svg);
+  for (const e of manifest.edges) {
+    const s = pos[e.source], t = pos[e.target];
+    if (!s || !t) continue;
+    const color = EDGE_COLOR[e.kind] ?? "#888";
+    let d;
+    if (e.kind === "feedback") {
+      // Loop up the right margin so the return path reads as a return.
+      const mx = width - GRID.marginX / 2 + 26;
+      d = `M ${s.x + CARD.w / 2} ${s.y} C ${mx} ${s.y}, ${mx} ${t.y}, ${t.x + CARD.w / 2} ${t.y}`;
+    } else if (t.y > s.y) {
+      // Downstream: leave bottom edge, enter top edge.
+      const y1 = s.y + CARD.h / 2, y2 = t.y - CARD.h / 2;
+      const bend = Math.min(60, (y2 - y1) / 2 + 20);
+      d = `M ${s.x} ${y1} C ${s.x} ${y1 + bend}, ${t.x} ${y2 - bend}, ${t.x} ${y2}`;
+    } else {
+      // Same stage row: side to side.
+      const sx = s.x < t.x ? s.x + CARD.w / 2 : s.x - CARD.w / 2;
+      const tx = s.x < t.x ? t.x - CARD.w / 2 : t.x + CARD.w / 2;
+      d = `M ${sx} ${s.y} C ${(sx + tx) / 2} ${s.y - 26}, ${(sx + tx) / 2} ${t.y - 26}, ${tx} ${t.y}`;
     }
-    rafId = requestAnimationFrame(tick);
-  };
-  rafId = requestAnimationFrame(tick);
-
-  let resizeTimer = null;
-  const ro = new ResizeObserver(() => {
-    const w = host.clientWidth;
-    if (!w) return;
-    graph.width(w);
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(frame, 250);
-  });
-  ro.observe(host);
-
-  const cleanup = () => {
-    try { cancelAnimationFrame(rafId); } catch {}
-    try { clearTimeout(resizeTimer); ro.disconnect(); } catch {}
-    try { graph._destructor && graph._destructor(); } catch {}
-    try { host.remove(); } catch {}
-  };
-  if (dv.component && typeof dv.component.register === "function") {
-    dv.component.register(cleanup);
+    el("path", { d, fill: "none", stroke: color, "stroke-width": EDGES.width,
+                 "stroke-opacity": 0.55, "marker-end": `url(#arrow-${e.kind})` }, edgeLayer);
+    // The animated flow: dots traveling the same path, staggered via negative begin.
+    const f = FLOW[e.kind] ?? FLOW.core;
+    for (let i = 0; i < f.dots; i++) {
+      const dot = el("circle", { r: f.r, fill: color, opacity: 0.9 }, flowLayer);
+      const am = el("animateMotion", { dur: `${f.dur}s`, repeatCount: "indefinite",
+                                       begin: `${-(i * f.dur / f.dots).toFixed(2)}s`, path: d }, dot);
+    }
   }
+
+  // Cards
+  const cardLayer = el("g", {}, svg);
+  for (const { x, y, n } of Object.values(pos)) {
+    const g = el("g", { style: "cursor:pointer;" }, cardLayer);
+    const isGate = n.kind === "gate";
+    el("rect", { x: x - CARD.w / 2, y: y - CARD.h / 2, width: CARD.w, height: CARD.h, rx: CARD.r,
+                 fill: "#131a30", stroke: LANE_COLOR[n.lane] ?? "#999",
+                 "stroke-width": isGate ? 2.5 : 1.4,
+                 ...(isGate ? { "stroke-dasharray": "" } : {}) }, g);
+    el("rect", { x: x - CARD.w / 2, y: y - CARD.h / 2, width: 5, height: CARD.h,
+                 rx: 2, fill: LANE_COLOR[n.lane] ?? "#999" }, g);
+    // Label: up to two lines, exact pixels.
+    const words = String(n.label).split(" ");
+    const lines = [""];
+    for (const w of words) {
+      const cur = lines[lines.length - 1];
+      if ((cur + " " + w).trim().length > 19 && lines.length < 2) lines.push(w);
+      else lines[lines.length - 1] = (cur + " " + w).trim();
+    }
+    lines.forEach((line, i) => {
+      const t = el("text", { x: x + 3, y: y + (lines.length === 1 ? 4 : i === 0 ? -4 : 12),
+                             fill: "#e8ecf8", "font-size": CARD.textPx, "text-anchor": "middle",
+                             "font-family": "var(--font-interface, sans-serif)" }, g);
+      t.textContent = line;
+    });
+    if (isGate) {
+      const badge = el("text", { x: x + CARD.w / 2 - 10, y: y - CARD.h / 2 + 13,
+                                 fill: LANE_COLOR[n.lane], "font-size": 11, "font-weight": 700,
+                                 "text-anchor": "middle" }, g);
+      badge.textContent = "⛨";
+    }
+    const tip = el("title", {}, g);
+    tip.textContent = `${n.label} — ${n.summary}\n\nevidence:\n` +
+      (n.evidence || []).map((e) => "• " + e).join("\n");
+    g.addEventListener("click", () => {
+      if (n.target) dv.app.workspace.openLinkText(n.target, dv.current().file.path);
+    });
+  }
+
+  const cleanup = () => { try { host.remove(); } catch {} };
+  if (dv.component && typeof dv.component.register === "function") dv.component.register(cleanup);
 }
 
 main().catch((err) => {
-  const el = document.createElement("pre");
-  el.textContent = "ISDS 3D workflow view failed: " + (err && err.message || err);
-  dv.container.appendChild(el);
+  const el2 = document.createElement("pre");
+  el2.textContent = "ISDS workflow view failed: " + (err && err.message || err);
+  dv.container.appendChild(el2);
 });

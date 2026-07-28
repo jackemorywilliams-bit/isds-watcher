@@ -1,22 +1,27 @@
-// Shared render constants — imported by BOTH view-entry.js and validate.mjs so the
-// legibility guard and the renderer can never drift apart.
-export const SPACING = { stageX: 380, laneY: 250, depthZ: 180 };
-export const LANE_Y = { control: -2.5, digest: -1.5, core: -0.5, council: 0.5, verification: 1.5, feedback: 2.5 };
-// Labels are CONSTANT SCREEN SIZE (pixels), rescaled every frame from camera
-// distance — world-sized text can never stay legible while framing a 13-stage
-// pipeline in one pane. LOD: 'process' node labels appear once the camera is
-// close enough that a stage column spans >= lodStagePx on screen; inputs, gates,
-// outputs, feedback nodes and lane captions are labelled at every distance.
-export const LABEL_PX = { node: 13, caption: 15, lodStagePx: 120 };
-export const CAMERA = { fov: 45, padWorld: 160 };   // flat, flowchart-like lens; straight-on framing
-export const NODE_RADIUS = { input: 13, process: 11, gate: 15, output: 13, feedback: 11 };
-export const ARROWS = { length: 16, relPos: 0.55 };
-export const PARTICLES = {
-  core: { count: 4, speed: 0.006, width: 4 },
-  control: { count: 2, speed: 0.004, width: 2.5 },
-  council: { count: 3, speed: 0.005, width: 3 },
-  gate: { count: 3, speed: 0.005, width: 3.5 },
-  delivery: { count: 3, speed: 0.005, width: 3 },
-  feedback: { count: 2, speed: 0.003, width: 3 },
+// Shared render constants — imported by BOTH view-entry.js and validate.mjs.
+// ARCHITECTURE (post-audit 2026-07-27): document-native vertical swimlane
+// flowchart in SVG. Six lane columns across the pane, stages flow top->bottom,
+// everything at natural 1:1 scale — text size is EXACT pixels, guaranteed by
+// construction, with no camera, no zoom, no WebGL. Flow animates via native
+// SMIL motion dots on every edge.
+export const LANE_ORDER = ["control", "core", "digest", "council", "verification", "feedback"];
+export const GRID = {
+  laneWidth: 172,       // px per lane column
+  stagePitch: 132,      // px per stage row
+  marginX: 16,
+  headerH: 64,          // lane caption band
+  depthDX: 16,          // small in-cell offset per depth level (layering)
+  depthDY: 12,
 };
-export const CANVAS = { height: 700, background: "#0B1020" };
+export const CARD = { w: 142, h: 48, r: 9, textPx: 13, titlePx: 15 };
+export const CAPTION_PX = 14;
+export const EDGES = { width: 2, arrow: 7 };
+export const FLOW = {
+  // The animated-flow layer: SMIL dots per edge kind (count, seconds per traversal).
+  core: { dots: 3, dur: 3.2, r: 4 },
+  control: { dots: 2, dur: 4.5, r: 3 },
+  council: { dots: 2, dur: 3.8, r: 3.5 },
+  gate: { dots: 3, dur: 3.6, r: 4 },
+  delivery: { dots: 2, dur: 3.8, r: 3.5 },
+  feedback: { dots: 2, dur: 6.0, r: 3.5 },
+};

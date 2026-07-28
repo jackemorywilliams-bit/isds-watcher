@@ -2,6 +2,9 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-07-28 — daily council meeting
+**Status.** Day 18 post-close of the UNCITRAL 59th Commission session: both IISD ITN and EJIL:Talk monitoring channels remain null; escalation to principal confirmed from July 27 stands; project holds at MEDIUM-HIGH pending A/81/17 (expected Aug–Sep 2026). Wingtech/Nexperia downgrade executed on the Day 104 checkpoint: no ICSID case number identified in the 104-day post-cooling-off monitoring window; thread consolidated and shifted to monthly standing watch. One false positive cleared: EJIL:Talk "Visualising a Flexible Framework" (Anthea Roberts) confirmed as October 2019 article, not post-session content. China-France BIT Protocol gap logged UNRESOLVED for a 23rd-plus consecutive session (GAP-UNRESOLVED: china-france-bit-2007-protocol-exhaustion); operator action request reissued; no new ledger insight.
+
 ## 2026-07-27 — weekly council (issue #33)
 **Status.** A quiet week, and a legitimately quiet one: no new candidate cleared the theme's threshold. The council delivered what the agenda asked for — a clean negative confirmation that Wingtech/Nexperia is framed as a shares/control and FET dispute, not IP-as-investment, and remains unfiled at ICSID as of Day 103 — plus a useful doctrinal distinction between codified manifest-lack-of-merit gates and abuse-of-right admissibility. The one operational blemish is the absence of the living-memory files in the analyst's environment, which forced a reconstruction from carried notes and leaves the record's continuity unverified.
 **Members.** chairman: agenda set; analyst: memo 14821 chars; security: clean; editor: 4 sections, 6 threads

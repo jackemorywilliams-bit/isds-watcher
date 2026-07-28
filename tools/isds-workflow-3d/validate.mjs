@@ -69,45 +69,47 @@ if (errors.length) {
 }
 console.log(`OK: ${m.nodes.length} nodes, ${m.edges.length} edges, all rules pass.`);
 
-// ---- Legibility invariants (guard for the 2026-07-27 microscopic-smudge class) ----
-// The render constants are checked against the manifest's REAL bounding box: a
-// future edit that shrinks text/spheres relative to node spacing fails the build.
+// ---- Legibility invariants (guard for the microscopic-smudge regression class) ----
+// Labels are constant SCREEN pixels (per-frame rescale) with LOD; the guard
+// asserts the pixel guarantees, the flowchart lens, straight-on framing inputs,
+// and the animated-flow layer — a future edit that reverts any of these fails.
 const rc = await import("./src/render-config.mjs");
 const legErrors = [];
-const stages = m.nodes.map((n) => n.stage);
-const stageSpan = (Math.max(...stages) - Math.min(...stages)) || 1;
 
-// Labels: at least 5.5% of inter-stage spacing (old failure: 9/220 = 4.1%).
-const labelRatio = rc.TEXT.nodeLabelHeight / rc.SPACING.stageX;
-if (labelRatio < 0.055)
-  legErrors.push(`label/stage-spacing ratio ${labelRatio.toFixed(3)} < 0.055 — labels will be microscopic at full framing`);
+// Labels must be guaranteed >= 12px on screen at every distance, captions bigger.
+if (rc.LABEL_PX.node < 12) legErrors.push(`node label ${rc.LABEL_PX.node}px < 12px screen guarantee`);
+if (rc.LABEL_PX.caption < rc.LABEL_PX.node) legErrors.push("lane captions smaller than node labels");
+// LOD must reveal detail labels by the time a stage column spans a readable width.
+if (!(rc.LABEL_PX.lodStagePx >= 60 && rc.LABEL_PX.lodStagePx <= 240))
+  legErrors.push(`lodStagePx ${rc.LABEL_PX.lodStagePx} outside sane 60-240 window`);
 
-// Spheres: at least 2.8% of inter-stage spacing (old failure: 6/220 = 2.7%).
-const minRadius = Math.min(...Object.values(rc.NODE_RADIUS));
-if (minRadius / rc.SPACING.stageX < 0.028)
-  legErrors.push(`min sphere radius ${minRadius} too small for stage spacing ${rc.SPACING.stageX} — dust particles`);
+// Flowchart lens: low-distortion fov, straight-on framing constants present.
+if (!(rc.CAMERA.fov >= 30 && rc.CAMERA.fov <= 55))
+  legErrors.push(`fov ${rc.CAMERA.fov} outside the flat flowchart window 30-55`);
+if (!(rc.CAMERA.padWorld >= 0)) legErrors.push("framing pad missing");
 
-// Spacing floors (operator-ordered minimums).
+// Operator-ordered spacing floors.
 if (rc.SPACING.stageX < 350) legErrors.push(`stageX ${rc.SPACING.stageX} < 350`);
 if (rc.SPACING.laneY < 250) legErrors.push(`laneY ${rc.SPACING.laneY} < 250`);
 if (rc.SPACING.depthZ < 180) legErrors.push(`depthZ ${rc.SPACING.depthZ} < 180`);
 
-// Arrows must scale with the layout (visible against stage spacing).
+// Nodes must not be dust: >= 2.8% of stage spacing.
+const minRadius = Math.min(...Object.values(rc.NODE_RADIUS));
+if (minRadius / rc.SPACING.stageX < 0.028)
+  legErrors.push(`min sphere radius ${minRadius} too small for stage spacing ${rc.SPACING.stageX}`);
+
+// Arrows visible against the layout.
 if (rc.ARROWS.length / rc.SPACING.stageX < 0.035)
   legErrors.push(`arrow length ${rc.ARROWS.length} invisible at stage spacing ${rc.SPACING.stageX}`);
 
 // The flow must actually animate: every edge kind carries particles.
 for (const kind of EDGE_KINDS)
   if (!rc.PARTICLES[kind] || rc.PARTICLES[kind].count < 1)
-    legErrors.push(`edge kind '${kind}' has no flow particles — the animated-flow requirement`);
-
-// Camera must use zoomToFit framing, not a guessed fixed position.
-if (!(rc.CAMERA.zoomFitMs >= 0 && rc.CAMERA.zoomFitPadding >= 0))
-  legErrors.push("CAMERA zoomToFit parameters missing");
+    legErrors.push(`edge kind '${kind}' has no flow particles`);
 
 if (legErrors.length) {
   console.error(`LEGIBILITY GUARD FAILED (${legErrors.length}):`);
   for (const e of legErrors) console.error("  - " + e);
   process.exit(1);
 }
-console.log(`Legibility guard OK (stage span ${stageSpan}, label ratio ${labelRatio.toFixed(3)}, min radius ${minRadius}).`);
+console.log(`Legibility guard OK (labels ${rc.LABEL_PX.node}px screen-guaranteed, fov ${rc.CAMERA.fov}, LOD at ${rc.LABEL_PX.lodStagePx}px/stage).`);

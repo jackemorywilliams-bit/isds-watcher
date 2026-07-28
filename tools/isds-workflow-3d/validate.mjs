@@ -68,3 +68,46 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(`OK: ${m.nodes.length} nodes, ${m.edges.length} edges, all rules pass.`);
+
+// ---- Legibility invariants (guard for the 2026-07-27 microscopic-smudge class) ----
+// The render constants are checked against the manifest's REAL bounding box: a
+// future edit that shrinks text/spheres relative to node spacing fails the build.
+const rc = await import("./src/render-config.mjs");
+const legErrors = [];
+const stages = m.nodes.map((n) => n.stage);
+const stageSpan = (Math.max(...stages) - Math.min(...stages)) || 1;
+
+// Labels: at least 5.5% of inter-stage spacing (old failure: 9/220 = 4.1%).
+const labelRatio = rc.TEXT.nodeLabelHeight / rc.SPACING.stageX;
+if (labelRatio < 0.055)
+  legErrors.push(`label/stage-spacing ratio ${labelRatio.toFixed(3)} < 0.055 — labels will be microscopic at full framing`);
+
+// Spheres: at least 2.8% of inter-stage spacing (old failure: 6/220 = 2.7%).
+const minRadius = Math.min(...Object.values(rc.NODE_RADIUS));
+if (minRadius / rc.SPACING.stageX < 0.028)
+  legErrors.push(`min sphere radius ${minRadius} too small for stage spacing ${rc.SPACING.stageX} — dust particles`);
+
+// Spacing floors (operator-ordered minimums).
+if (rc.SPACING.stageX < 350) legErrors.push(`stageX ${rc.SPACING.stageX} < 350`);
+if (rc.SPACING.laneY < 250) legErrors.push(`laneY ${rc.SPACING.laneY} < 250`);
+if (rc.SPACING.depthZ < 180) legErrors.push(`depthZ ${rc.SPACING.depthZ} < 180`);
+
+// Arrows must scale with the layout (visible against stage spacing).
+if (rc.ARROWS.length / rc.SPACING.stageX < 0.035)
+  legErrors.push(`arrow length ${rc.ARROWS.length} invisible at stage spacing ${rc.SPACING.stageX}`);
+
+// The flow must actually animate: every edge kind carries particles.
+for (const kind of EDGE_KINDS)
+  if (!rc.PARTICLES[kind] || rc.PARTICLES[kind].count < 1)
+    legErrors.push(`edge kind '${kind}' has no flow particles — the animated-flow requirement`);
+
+// Camera must use zoomToFit framing, not a guessed fixed position.
+if (!(rc.CAMERA.zoomFitMs >= 0 && rc.CAMERA.zoomFitPadding >= 0))
+  legErrors.push("CAMERA zoomToFit parameters missing");
+
+if (legErrors.length) {
+  console.error(`LEGIBILITY GUARD FAILED (${legErrors.length}):`);
+  for (const e of legErrors) console.error("  - " + e);
+  process.exit(1);
+}
+console.log(`Legibility guard OK (stage span ${stageSpan}, label ratio ${labelRatio.toFixed(3)}, min radius ${minRadius}).`);

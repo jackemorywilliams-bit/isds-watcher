@@ -97,7 +97,7 @@
       "evidence": [
         ".github/workflows/weekly.yml: cron '0 13 * * 1'"
       ],
-      "meta": "GitHub Actions schedule — deterministic, no model involved"
+      "meta": "GitHub Actions schedule, set by Emory"
     },
     {
       "id": "collect",
@@ -111,7 +111,7 @@
         "src/sources/__init__.py: all_sources()",
         "src/main.py: fetch loop"
       ],
-      "meta": "Deterministic code (no AI) — src/sources/"
+      "meta": "Emory's collection code (GitHub Action)"
     },
     {
       "id": "skip-repeats",
@@ -125,7 +125,7 @@
         "src/state.py: seen-state",
         "state/seen.json"
       ],
-      "meta": "Deterministic code (no AI) — state/seen.json"
+      "meta": "Predetermined code — memory-file check"
     },
     {
       "id": "first-score",
@@ -139,7 +139,7 @@
         "src/classify.py: keyword_score",
         "fingerprint.yaml"
       ],
-      "meta": "Deterministic code (no AI) — fingerprint.yaml weights"
+      "meta": "Emory's scoring code — no AI"
     },
     {
       "id": "read-doc",
@@ -152,7 +152,7 @@
       "evidence": [
         "src/enrich.py: enrich(), notable_quote()"
       ],
-      "meta": "Deterministic code (no AI) — src/enrich.py"
+      "meta": "Predetermined extraction code"
     },
     {
       "id": "ai-check",
@@ -166,7 +166,7 @@
         "src/classify.py: classify_item",
         "prompts/classifier.txt"
       ],
-      "meta": "Model: Claude Haiku 4.5 — strict structured output; falls back to the keyword score"
+      "meta": "Model: Claude Haiku 4.5"
     },
     {
       "id": "quality-bar",
@@ -180,7 +180,7 @@
         "src/main.py: select_surfaced()",
         "src/config.py: threshold 40 / floor 25"
       ],
-      "meta": "Deterministic rule — threshold 40, floor 25, no exceptions"
+      "meta": "Fixed rule — 40 to pass, floor 25"
     },
     {
       "id": "daily-email",
@@ -194,7 +194,7 @@
         "scripts/send_daily_update.py",
         ".github/workflows/daily-update.yml"
       ],
-      "meta": "Deterministic code — includes the numbers-of-record banner"
+      "meta": "Automatic email step (GitHub Action)"
     },
     {
       "id": "digest-email",
@@ -208,7 +208,7 @@
         "src/email_send.py: send_digest",
         "src/render.py"
       ],
-      "meta": "Deterministic render of the scored items — no model writes the digest"
+      "meta": "Automatic email step (GitHub Action)"
     },
     {
       "id": "website",
@@ -222,7 +222,7 @@
         "scripts/build_site.py",
         ".github/workflows/site-sync.yml"
       ],
-      "meta": "Deterministic build — drift-guarded against the repo"
+      "meta": "Automatic publish (GitHub Action)"
     },
     {
       "id": "brief-email",
@@ -236,7 +236,7 @@
         "src/render.py: render_research_brief",
         "src/main.py: brief email step"
       ],
-      "meta": "Written by the council, sent by deterministic code"
+      "meta": "Council-written, sent automatically"
     },
     {
       "id": "packet",
@@ -250,7 +250,7 @@
         "scripts/send_human_review.py",
         "scripts/review_prep.py"
       ],
-      "meta": "Assembled by deterministic code from the week's records"
+      "meta": "Assembled by predetermined code"
     },
     {
       "id": "daily-researcher",
@@ -264,7 +264,7 @@
         "analytics/daily-research/",
         "prompts/council_roundtable.txt"
       ],
-      "meta": "Model: Claude (scheduled daily routine) — bound by the council calibration checklist"
+      "meta": "Model: Claude Opus 4.8"
     },
     {
       "id": "chairman",
@@ -278,7 +278,7 @@
         "src/research_brief.py: _run_chairman",
         "prompts/council_chairman.txt"
       ],
-      "meta": "Model: Claude Fable 5 — standing role prompt (council_chairman.txt)"
+      "meta": "Model: Claude Fable 5"
     },
     {
       "id": "analyst",
@@ -292,7 +292,7 @@
         "src/research_brief.py: _run_analyst",
         "prompts/research_analyst.txt"
       ],
-      "meta": "Model: Claude Opus 4.8 — role prompt + the no-source-no-claim rule"
+      "meta": "Model: Claude Opus 4.8"
     },
     {
       "id": "systems-researcher",
@@ -306,7 +306,7 @@
         "prompts/systems_researcher.txt",
         "analytics/optimization-log.md"
       ],
-      "meta": "Model: Claude (daily routine) — systems_researcher.txt prompt"
+      "meta": "Model: Claude Opus 4.8"
     },
     {
       "id": "editor",
@@ -320,7 +320,7 @@
         "src/research_brief.py: _run_editor",
         "prompts/research_editor.txt"
       ],
-      "meta": "Model: Claude Opus 4.8 — structured-output contract (strict JSON schema)"
+      "meta": "Model: Claude Opus 4.8"
     },
     {
       "id": "minutes",
@@ -334,21 +334,21 @@
         "src/research_brief.py: _run_reconvene",
         "src/council_log.py"
       ],
-      "meta": "Model: Claude Fable 5 — reconvene prompt; fail-loud if minutes are missing"
+      "meta": "Model: Claude Fable 5"
     },
     {
       "id": "next-week",
       "col": "council",
       "row": 13,
       "kind": "process",
-      "title": "The living memory — 'State of the Answer'",
-      "desc": "The cumulative answer and every open question are saved and feed next Monday's agenda — research compounds.",
+      "title": "The living memory",
+      "desc": "The cumulative 'State of the Answer' and every open question feed next Monday's agenda — research compounds.",
       "target": "STATE_OF_THE_ANSWER",
       "evidence": [
         "src/research_state.py: record_issue, gap counters",
         "state/research_log.json"
       ],
-      "meta": "Files: STATE_OF_THE_ANSWER.md + state/research_log.json"
+      "meta": "Saved files — seed Monday's agenda"
     },
     {
       "id": "jack-checks",
@@ -362,7 +362,7 @@
         "scripts/verify.py: mark",
         "HANDOFF.md: chat-verification convention"
       ],
-      "meta": "Human judgment — the one step no model is allowed to perform"
+      "meta": "Human judgment — Emory only"
     },
     {
       "id": "ledger",
@@ -376,7 +376,7 @@
         "analytics/verification_ledger.jsonl",
         "scripts/verify.py: operator-only enforcement"
       ],
-      "meta": "Append-only file — analytics/verification_ledger.jsonl"
+      "meta": "Append-only record file"
     },
     {
       "id": "claim-gate",
@@ -389,7 +389,7 @@
       "evidence": [
         "src/integrity_gate.py: exact claim-id lookup"
       ],
-      "meta": "Deterministic code (no AI) — src/integrity_gate.py"
+      "meta": "Predetermined check — no AI"
     },
     {
       "id": "citation-check",
@@ -403,7 +403,7 @@
         "scripts/check_citations.py",
         "src/research_brief.py: _verify_citations"
       ],
-      "meta": "Deterministic code (no AI) — scripts/check_citations.py"
+      "meta": "Predetermined link checker — no AI"
     }
   ],
   "edges": [

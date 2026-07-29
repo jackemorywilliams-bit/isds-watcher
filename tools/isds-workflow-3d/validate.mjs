@@ -47,7 +47,13 @@ for (const n of m.nodes) {
   if (!n.target) errors.push(`${n.id}: missing markdown target`);
   if (!Array.isArray(n.evidence) || !n.evidence.length) errors.push(`${n.id}: no evidence`);
   if (!n.meta) errors.push(`${n.id}: missing meta line (model / mechanism attribution)`);
-  else if (n.meta.length > 104) errors.push(`${n.id}: meta line too long (${n.meta.length})`);
+  // WIDTH-ENFORCED: text must stay inside the card. ~5.3px/char at 9.5px meta,
+  // ~6.6px/char at 13px title, against the 236px card (2026-07-29 overflow bug).
+  else if (n.meta.length > 40) errors.push(`${n.id}: meta overflows the card (${n.meta.length} > 40 chars)`);
+  if (n.title.length > 34) errors.push(`${n.id}: title overflows the card (${n.title.length} > 34 chars)`);
+  // Agent cards must name a real model — never a bare 'Claude'.
+  if ((n.kind === "role" || n.id === "ai-check") && !/Model: Claude (Fable|Opus|Haiku|Sonnet) [\d.]+/.test(n.meta))
+    errors.push(`${n.id}: agent card must name a specific model (got '${n.meta}')`);
   const cell = `${n.col}|${n.row}`;
   if (cells.has(cell)) errors.push(`OVERLAP: ${n.id} and ${cells.get(cell)} share cell ${cell}`);
   cells.set(cell, n.id);

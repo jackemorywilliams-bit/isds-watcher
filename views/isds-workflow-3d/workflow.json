@@ -292,7 +292,7 @@
         "src/research_brief.py: _run_analyst",
         "prompts/research_analyst.txt"
       ],
-      "meta": "Model: Claude Opus 4.8"
+      "meta": "Model: Claude Fable 5"
     },
     {
       "id": "systems-researcher",

@@ -160,7 +160,8 @@ Map: [[00 - Project Map]]
 
 ## Model runtime assignments (requested)
 
-- chairman: `claude-fable-5` · analyst/one-pager drafting: `claude-opus-4-8` ·
+- chairman: `claude-fable-5` · analyst: `claude-fable-5` (operator directive 2026-07-29:
+  the researcher gets the most advanced model) · one-pager drafting: `claude-opus-4-8` ·
   utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
   classifier: unchanged `claude-haiku-4-5-20251001` (kept in `src/classify.py`, outside
   the change manifest). Any runtime fallback appends a REQUESTED vs ACTUAL line below

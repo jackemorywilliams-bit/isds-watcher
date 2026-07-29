@@ -568,6 +568,42 @@
       "target": "next-week",
       "kind": "council",
       "evidence": "research_state.record_issue(open_threads)"
+    },
+    {
+      "source": "citation-check",
+      "target": "packet",
+      "kind": "check",
+      "evidence": "review_prep.py: unverifiable/URL-less citations become verification debt in Emory's Monday packet"
+    },
+    {
+      "source": "analyst",
+      "target": "ledger",
+      "kind": "check",
+      "evidence": "candidate_claims are recorded into the ledger as unverified claim_created events"
+    },
+    {
+      "source": "analyst",
+      "target": "editor",
+      "kind": "council",
+      "evidence": "src/research_brief.py: _run_editor receives the analyst memo itself, alongside the gate note"
+    },
+    {
+      "source": "quality-bar",
+      "target": "daily-researcher",
+      "kind": "council",
+      "evidence": "daily routine agenda: chairman reads the MOST RECENT digest's screened items and near-misses"
+    },
+    {
+      "source": "daily-researcher",
+      "target": "next-week",
+      "kind": "council",
+      "evidence": "daily sessions update STATE_OF_THE_ANSWER.md and append analytics/insights.jsonl"
+    },
+    {
+      "source": "systems-researcher",
+      "target": "packet",
+      "kind": "send",
+      "evidence": "send_human_review.py section 2: workflow-improvement ideas from the optimization log reach Emory's briefing"
     }
   ]
 }

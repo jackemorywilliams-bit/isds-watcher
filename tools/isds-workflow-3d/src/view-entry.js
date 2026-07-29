@@ -100,14 +100,34 @@ async function main() {
   }
 
   // ---- Edges (under cards), purpose-colored, downward/sideways only ----
+  // PORTS (operator fix 2026-07-29): every edge leaves and enters through its
+  // own slot along the card border, ordered left-to-right toward its
+  // destination — two arrows can never overlap, so a line is always one color.
   const edgeLayer = el("g", {}, svg);
   const flowLayer = el("g", {}, svg);
-  const anchors = (s, t) => {
+  const outsOf = {}, insOf = {};
+  for (const e of m.edges) {
+    (outsOf[e.source] = outsOf[e.source] || []).push(e);
+    (insOf[e.target] = insOf[e.target] || []).push(e);
+  }
+  const xOf = (id) => id === "__sources" ? bannerBottom.x : (pos[id] ? pos[id].x : 0);
+  const portOffset = (list, e, keyFn) => {
+    const sorted = list.slice().sort((a, b) => keyFn(a) - keyFn(b));
+    const i = sorted.indexOf(e);
+    const nSlots = sorted.length;
+    const span = Math.min(CARD.w - 40, nSlots * 44);
+    return nSlots <= 1 ? 0 : (i - (nSlots - 1) / 2) * (span / (nSlots - 1));
+  };
+  const anchors = (s, t, e) => {
+    const outOff = portOffset(outsOf[e.source] || [e], e, (x) => xOf(x.target));
+    const inOff = portOffset(insOf[e.target] || [e], e, (x) => xOf(x.source));
     if (Math.abs(t.y - s.y) < GRID.rowPitch / 2) {      // same row: side to side
       const dir = t.x > s.x ? 1 : -1;
-      return { x1: s.x + dir * CARD.w / 2, y1: s.y, x2: t.x - dir * CARD.w / 2, y2: t.y, side: true };
+      return { x1: s.x + dir * CARD.w / 2, y1: s.y + outOff / 3,
+               x2: t.x - dir * CARD.w / 2, y2: t.y + inOff / 3, side: true };
     }
-    return { x1: s.x, y1: s.y + CARD.h / 2, x2: t.x, y2: t.y - CARD.h / 2, side: false };
+    return { x1: s.x + outOff, y1: s.y + CARD.h / 2,
+             x2: t.x + inOff, y2: t.y - CARD.h / 2, side: false };
   };
   for (const e of m.edges) {
     const st = EDGE_STYLE[e.kind] ?? EDGE_STYLE.flow;
@@ -117,9 +137,10 @@ async function main() {
     if (!s || !t) continue;
     let d;
     if (e.source === "__sources") {
-      d = `M ${s.x} ${s.y} C ${s.x} ${s.y + 40}, ${t.x} ${t.y - CARD.h / 2 - 40}, ${t.x} ${t.y - CARD.h / 2}`;
+      const inOff = portOffset(insOf[e.target] || [e], e, (x) => xOf(x.source));
+      d = `M ${s.x} ${s.y} C ${s.x} ${s.y + 40}, ${t.x + inOff} ${t.y - CARD.h / 2 - 40}, ${t.x + inOff} ${t.y - CARD.h / 2}`;
     } else {
-      const a = anchors(pos[e.source], t);
+      const a = anchors(pos[e.source], t, e);
       if (a.side) {
         d = `M ${a.x1} ${a.y1} C ${(a.x1 + a.x2) / 2} ${a.y1 - 22}, ${(a.x1 + a.x2) / 2} ${a.y2 - 22}, ${a.x2} ${a.y2}`;
       } else {
@@ -128,7 +149,7 @@ async function main() {
       }
     }
     el("path", { d, fill: "none", stroke: st.color, "stroke-width": EDGES.width,
-                 "stroke-opacity": 0.5, "marker-end": `url(#arrow-${e.kind})` }, edgeLayer);
+                 "stroke-opacity": 0.75, "marker-end": `url(#arrow-${e.kind})` }, edgeLayer);
     const f = FLOW[e.kind] ?? FLOW.flow;
     for (let i = 0; i < f.dots; i++) {
       const dot = el("circle", { r: f.r, fill: st.color, opacity: 0.9 }, flowLayer);

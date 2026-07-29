@@ -258,7 +258,7 @@
       "row": 6,
       "kind": "role",
       "title": "Daily researcher",
-      "desc": "Meets every day: works the open questions and logs at most one genuinely new, sourced insight.",
+      "desc": "Meets daily: works the open questions, logs every genuinely new sourced insight, plus at most one improvement idea.",
       "target": "COUNCIL",
       "evidence": [
         "analytics/daily-research/",

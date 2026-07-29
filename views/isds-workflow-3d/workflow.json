@@ -458,7 +458,7 @@
     {
       "source": "quality-bar",
       "target": "chairman",
-      "kind": "council",
+      "kind": "flow",
       "evidence": "src/main.py: generate_brief over surfaced items"
     },
     {
@@ -470,7 +470,7 @@
     {
       "source": "daily-researcher",
       "target": "daily-email",
-      "kind": "send",
+      "kind": "council",
       "evidence": "scripts/send_daily_update.py"
     },
     {
@@ -536,7 +536,7 @@
     {
       "source": "editor",
       "target": "brief-email",
-      "kind": "send",
+      "kind": "council",
       "evidence": "brief rendered + emailed"
     },
     {
@@ -548,13 +548,13 @@
     {
       "source": "minutes",
       "target": "packet",
-      "kind": "send",
+      "kind": "council",
       "evidence": "packet reads the council log"
     },
     {
       "source": "ledger",
       "target": "packet",
-      "kind": "send",
+      "kind": "check",
       "evidence": "packet samples unverified ledger claims"
     },
     {
@@ -590,7 +590,7 @@
     {
       "source": "quality-bar",
       "target": "daily-researcher",
-      "kind": "council",
+      "kind": "flow",
       "evidence": "daily routine agenda: chairman reads the MOST RECENT digest's screened items and near-misses"
     },
     {
@@ -602,7 +602,7 @@
     {
       "source": "systems-researcher",
       "target": "packet",
-      "kind": "send",
+      "kind": "council",
       "evidence": "send_human_review.py section 2: workflow-improvement ideas from the optimization log reach Emory's briefing"
     }
   ]

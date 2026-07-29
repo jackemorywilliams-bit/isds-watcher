@@ -20,6 +20,7 @@ from .icsid import ICSIDSource
 from .iareporter_headlines import IAReporterHeadlinesSource
 from .unctad_isds import UNCTADISDSSource
 from .pca_press import PCAPressSource
+from .press_business import IndependentBusinessSource, StandardBusinessSource
 
 logger = logging.getLogger("isds.sources")
 
@@ -37,6 +38,8 @@ __all__ = [
     "IAReporterHeadlinesSource",
     "UNCTADISDSSource",
     "PCAPressSource",
+    "IndependentBusinessSource",
+    "StandardBusinessSource",
 ]
 
 
@@ -58,4 +61,6 @@ def all_sources(config=None) -> list[Source]:
         IAReporterHeadlinesSource(),
         UNCTADISDSSource(),
         PCAPressSource(),
+        IndependentBusinessSource(),
+        StandardBusinessSource(),
     ]

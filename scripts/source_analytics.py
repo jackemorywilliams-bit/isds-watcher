@@ -31,7 +31,6 @@ OUT = os.path.join(OUT_DIR, "source-receptivity.md")
 
 # Known structural facts about sources, surfaced so the analysis is actionable.
 _NOTES = {
-    "google_news_rss": "robots-disallowed — returns nothing; dead weight.",
     "iareporter_headlines": "headline-only (paywalled body) — capped at watch-list leads.",
     "google_alerts": "operator RSS alerts; quiet but live.",
     "iisd_itn": "only fetch-time full-text feed; intermittently empty.",
@@ -135,7 +134,7 @@ def main() -> None:
         "source's on-theme yield to date.",
         "- **Receptivity** needs per-source fresh counts; it populates as runs accrue "
         "under the per-source-recording build.",
-        "- Sources flagged dead (`google_news_rss`) or capped (`iareporter_headlines`) "
+        "- Sources flagged capped (`iareporter_headlines`) "
         "are structural limits, not tuning targets — prioritise full-text feeds that "
         "reach the IP-as-investment / judicial-measure / jurisdictional intersection.",
         "",

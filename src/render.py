@@ -22,7 +22,7 @@ FOLDER_SUFFIX = "ISDS-Thematic-Watch"
 # themselves. For these, the archive names the underlying publisher (parsed from
 # the item URL) alongside the channel, so provenance reads e.g.
 # "Google Alerts → reuters.com" rather than a bare "Google Alerts".
-_AGGREGATOR_SOURCES = {"google_alerts", "google_news_rss", "gmail_scholar"}
+_AGGREGATOR_SOURCES = {"google_alerts", "bing_news", "gmail_scholar"}
 
 
 def _source_label(it) -> str:

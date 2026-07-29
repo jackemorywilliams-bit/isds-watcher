@@ -25,7 +25,7 @@ from urllib.parse import urlparse
 
 DIGESTS = "digests"
 SUFFIX = "_ISDS-Thematic-Watch"
-_AGGREGATOR_SOURCES = {"google_alerts", "google_news_rss", "gmail_scholar"}
+_AGGREGATOR_SOURCES = {"google_alerts", "bing_news", "gmail_scholar"}
 # Sources that only ever expose a headline (no body fetched): a "notable line"
 # from one of these is necessarily headline text, never a verbatim body quote.
 _HEADLINE_ONLY_SOURCES = {"iareporter_headlines"}

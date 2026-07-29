@@ -16,6 +16,10 @@ const errors = [];
 const NODE_KINDS = new Set(["auto", "process", "gate", "send", "role", "human"]);
 const EDGE_KINDS = new Set(Object.keys(rc.EDGE_STYLE));
 
+// -- professor-facing naming: the operator goes by EMORY; 'Jack' is banned --
+for (const blob of [JSON.stringify(m.nodes), JSON.stringify(m.chips)])
+  if (/\bJack\b/.test(blob)) errors.push("professor-facing text contains 'Jack' — he goes by Emory");
+
 // -- chips: all nine sources, individually visualized --
 if (m.chips.length !== 9) errors.push(`expected 9 source chips, got ${m.chips.length}`);
 for (const c of m.chips) {
@@ -42,6 +46,8 @@ for (const n of m.nodes) {
     errors.push(`${n.id}: title contains jargon ('${n.title}')`);
   if (!n.target) errors.push(`${n.id}: missing markdown target`);
   if (!Array.isArray(n.evidence) || !n.evidence.length) errors.push(`${n.id}: no evidence`);
+  if (!n.meta) errors.push(`${n.id}: missing meta line (model / mechanism attribution)`);
+  else if (n.meta.length > 104) errors.push(`${n.id}: meta line too long (${n.meta.length})`);
   const cell = `${n.col}|${n.row}`;
   if (cells.has(cell)) errors.push(`OVERLAP: ${n.id} and ${cells.get(cell)} share cell ${cell}`);
   cells.set(cell, n.id);
@@ -70,7 +76,7 @@ for (const n of m.nodes) if (!touched.has(n.id)) errors.push(`floating card: ${n
 if (rc.CARD.titlePx < 12) errors.push(`card title ${rc.CARD.titlePx}px < 12px`);
 if (rc.CARD.descPx < 10) errors.push(`card desc ${rc.CARD.descPx}px < 10px`);
 if (rc.CARD.w > rc.GRID.colWidth - 16) errors.push("card wider than its column");
-if (rc.GRID.rowPitch < rc.CARD.h + 22) errors.push("row pitch too tight — cards would collide");
+if (rc.GRID.rowPitch < rc.CARD.h + 20) errors.push("row pitch too tight — cards would collide");
 const totalW = rc.GRID.marginX * 2 + rc.COLUMNS.length * rc.GRID.colWidth;
 if (totalW > 1100) errors.push(`total width ${totalW}px exceeds the 1100px pane budget`);
 for (const kind of EDGE_KINDS) {

@@ -9,6 +9,13 @@
 #
 # That's it. Empty list = source inactive; no error. No credentials needed.
 #
+# TALKWALKER ALERTS work here too (free Google Alerts alternative; the Google
+# feeds have been returning zero entries since mid-July 2026):
+#   1. Go to https://www.talkwalker.com/alerts and create the same queries.
+#   2. Choose RSS delivery and copy each feed URL.
+#   3. Paste the URLs under `feeds:` below alongside (or instead of) the Google
+#      ones — the poller treats every URL identically.
+#
 # Suggested alert queries (derived from the three-ring fingerprint):
 #   "Eli Lilly" ICSID OR NAFTA arbitration
 #   "Philip Morris" trademark arbitration

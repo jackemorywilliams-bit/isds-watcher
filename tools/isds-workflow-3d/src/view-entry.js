@@ -147,13 +147,23 @@ async function main() {
     el("rect", { x: x - CARD.w / 2, y: y - CARD.h / 2, width: CARD.w, height: CARD.h, rx: CARD.r,
                  fill: "#131a30", stroke: color, "stroke-width": heavy ? 2.4 : 1.3 }, g);
     el("rect", { x: x - CARD.w / 2, y: y - CARD.h / 2, width: 5, height: CARD.h, rx: 2, fill: color }, g);
-    text(g, x + 2, y - CARD.h / 2 + 19, n.title, CARD.titlePx, "#e8ecf8", { weight: 650 });
-    wrap(n.desc, CARD.descChars, 3).forEach((line, i) => {
-      text(g, x + 2, y - CARD.h / 2 + 35 + i * 13, line, CARD.descPx, "#9aa7c7");
-    });
+    // Badge gets its OWN reserved top strip (no collision with the title — the
+    // operator's overlap complaint), title sits on the next line, then up to
+    // three description lines, then the model/mechanism line.
+    const top = y - CARD.h / 2;
     const badge = KIND_BADGE[n.kind];
-    if (badge) text(g, x + CARD.w / 2 - 8, y - CARD.h / 2 + 11, badge, 8, color,
+    if (badge) text(g, x + CARD.w / 2 - 9, top + 13, badge, 8, color,
                     { anchor: "end", weight: 700, opacity: 0.9 });
+    text(g, x + 2, top + 31, n.title, CARD.titlePx, "#e8ecf8", { weight: 650 });
+    wrap(n.desc, CARD.descChars, CARD.descLines).forEach((line, i) => {
+      text(g, x + 2, top + 47 + i * 13, line, CARD.descPx, "#9aa7c7");
+    });
+    if (n.meta) {
+      const metaLines = wrap(n.meta, 52, 1);
+      const mt = text(g, x + 2, top + CARD.h - 9, metaLines[0], CARD.metaPx, color,
+                      { opacity: 0.85 });
+      mt.setAttribute("font-style", "italic");
+    }
     const tip = el("title", {}, g);
     tip.textContent = `${n.title} — ${n.desc}\n\nevidence:\n` +
       (n.evidence || []).map((e2) => "• " + e2).join("\n");

@@ -7,19 +7,19 @@ export const COL_TITLE = {
   machine: "THE MACHINE (runs itself)",
   deliverables: "WHAT GETS SENT",
   council: "THE AI RESEARCH COUNCIL",
-  jack: "JACK — HUMAN CHECKS",
+  jack: "EMORY — RESEARCHER CHECKS",
 };
 export const COL_COLOR = { machine: "#64b5f6", deliverables: "#81c784", council: "#ba9ffb", jack: "#ffd54f" };
 // Arrow colors mean the ACTION, not the lane (operator: editor->brief email must
 // read as a SEND). Legend rendered from this table.
 export const EDGE_STYLE = {
-  flow:    { color: "#64b5f6", label: "items moving through the machine" },
-  send:    { color: "#81c784", label: "something sent to a person / published" },
-  check:   { color: "#e6b83f", label: "fact-checking" },
-  council: { color: "#ba9ffb", label: "council hand-off" },
+  flow:    { color: "#64b5f6", label: "the automated pipeline moving items along" },
+  send:    { color: "#81c784", label: "delivered — an email to Emory or Dr. Benavides, or the public site" },
+  check:   { color: "#e6b83f", label: "verification and fact-checking" },
+  council: { color: "#ba9ffb", label: "a council member handing work to the next" },
 };
-export const GRID = { colWidth: 258, rowPitch: 100, marginX: 14, bannerH: 210, headerH: 40, legendH: 128 };
-export const CARD = { w: 236, h: 74, r: 10, titlePx: 13, descPx: 11, descChars: 42 };
+export const GRID = { colWidth: 258, rowPitch: 130, marginX: 14, bannerH: 210, headerH: 40, legendH: 128 };
+export const CARD = { w: 236, h: 104, r: 10, titlePx: 13, descPx: 11, descChars: 42, descLines: 3, metaPx: 9.5 };
 export const CHIP = { w: 214, h: 44, r: 8, cols: 3, gapX: 16, gapY: 12, namePx: 12, tagPx: 10 };
 export const FLOW = {
   flow: { dots: 3, dur: 3.2, r: 4 },

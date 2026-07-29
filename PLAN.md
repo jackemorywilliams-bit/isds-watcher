@@ -78,7 +78,7 @@ Legend: **[PM]** Philip Morris v Australia · **[EL]** Eli Lilly v Canada · **[
 | Source | Type | Priority | Scrapability | Notes |
 |--------|------|----------|--------------|-------|
 | iisd_itn | RSS | highest | HIGH | structured feed, polite |
-| google_news_rss | RSS | secondary | HIGH | fingerprint-derived queries |
+| bing_news | RSS | secondary | MEDIUM | fingerprint-derived queries (replaced retired Google News, 2026-07-29) |
 | italaw | HTML | primary | MEDIUM | homepage + /browse; needs fallback selectors |
 | icsid | HTML | primary | MEDIUM | cases/case-database; may be JS-heavy, verify |
 | unctad_isds | HTML | primary | MEDIUM | investment-dispute-settlement listing |
@@ -107,7 +107,7 @@ B,C ► E: classifier-builder┤
 
 ## Phase 3 dry-run outcomes (verified)
 - **robots.txt fix**: `urllib.robotparser` mis-treated Cloudflare-blocked robots fetches as "disallow-all". Switched to fetching robots.txt with our identifying UA via `requests` and failing open on errors/404. After the fix iisd/icsid/italaw/iareporter all return 200.
-- **Sources returning data** (clean run, 400-day window): iisd_itn=10, italaw=3, icsid=20, iareporter=10, unctad_isds=25, pca_press=10. `google_news_rss=0` — **robots-disallowed** for `*` (honored, not evaded; auto-re-enables if Google changes policy).
+- **Sources returning data** (clean run, 400-day window): iisd_itn=10, italaw=3, icsid=20, iareporter=10, unctad_isds=25, pca_press=10. `google_news_rss` — retired 2026-07-29 (robots-disallowed since launch, honored not evaded; replaced by `bing_news`).
 - **Scorer calibration**: keyword fallback now 7/7 on the fingerprint few-shot bands (PRESENT_FLOOR=12, STRONG=18). Seed awards score MEDIUM–HIGH on their own text (Eli Lilly 75/HIGH). Off-theme live items correctly score 0 — so a 0-match week is correct behavior, not a threshold bug. (At this point the threshold was still 60; it was subsequently lowered to 40 to broaden recall — see "Post-build deviations".)
 - **Tests**: 15/15 pass.
 

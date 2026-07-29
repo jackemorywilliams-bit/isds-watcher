@@ -1,77 +1,573 @@
 {
   "meta": {
-    "version": 2,
+    "version": 2.1,
     "title": "ISDS Thematic Watcher — how the whole thing works",
     "derived": "2026-07-28",
-    "note": "Plain-language manifest (operator feedback 2026-07-28): explicit grid (no overlap possible), 9 sources visualized individually, full council + all deliverables + the human-in-the-loop column, purpose-colored arrows, no feedback arcs.",
-    "columns": ["machine", "deliverables", "council", "jack"]
+    "note": "v2.1 (operator revisions 2026-07-29): Emory naming, per-agent models + training lines, substantive plain language, badge layout fix, Bing News in / Google News retired, delivery legend reworded.",
+    "columns": [
+      "machine",
+      "deliverables",
+      "council",
+      "jack"
+    ]
   },
   "chips": [
-    {"id": "src-icsid", "name": "ICSID", "tag": "official case docket", "evidence": ["src/sources/icsid.py"]},
-    {"id": "src-italaw", "name": "italaw", "tag": "award archive", "evidence": ["src/sources/italaw.py"]},
-    {"id": "src-iisd", "name": "IISD ITN", "tag": "treaty news journal", "evidence": ["src/sources/iisd_itn.py"]},
-    {"id": "src-iareporter", "name": "IAReporter", "tag": "headlines only (paywalled)", "evidence": ["src/sources/iareporter_headlines.py"]},
-    {"id": "src-unctad", "name": "UNCTAD", "tag": "UN case database", "evidence": ["src/sources/unctad_isds.py"]},
-    {"id": "src-pca", "name": "PCA", "tag": "court press releases", "evidence": ["src/sources/pca_press.py"]},
-    {"id": "src-galerts", "name": "Google Alerts", "tag": "case-name news alerts", "evidence": ["src/sources/google_alerts.py"]},
-    {"id": "src-scholar", "name": "Scholar Alerts", "tag": "new academic papers", "evidence": ["src/sources/gmail_scholar.py"]},
-    {"id": "src-gnews", "name": "Google News", "tag": "off — site blocks robots", "evidence": ["src/sources/google_news_rss.py"]}
+    {
+      "id": "src-icsid",
+      "name": "ICSID",
+      "tag": "official case docket",
+      "evidence": [
+        "src/sources/icsid.py"
+      ]
+    },
+    {
+      "id": "src-italaw",
+      "name": "italaw",
+      "tag": "award archive",
+      "evidence": [
+        "src/sources/italaw.py"
+      ]
+    },
+    {
+      "id": "src-iisd",
+      "name": "IISD ITN",
+      "tag": "treaty news journal",
+      "evidence": [
+        "src/sources/iisd_itn.py"
+      ]
+    },
+    {
+      "id": "src-iareporter",
+      "name": "IAReporter",
+      "tag": "headlines only (paywalled)",
+      "evidence": [
+        "src/sources/iareporter_headlines.py"
+      ]
+    },
+    {
+      "id": "src-unctad",
+      "name": "UNCTAD",
+      "tag": "UN case database",
+      "evidence": [
+        "src/sources/unctad_isds.py"
+      ]
+    },
+    {
+      "id": "src-pca",
+      "name": "PCA",
+      "tag": "court press releases",
+      "evidence": [
+        "src/sources/pca_press.py"
+      ]
+    },
+    {
+      "id": "src-galerts",
+      "name": "Google Alerts",
+      "tag": "keyword alerts (feeds quiet lately)",
+      "evidence": [
+        "src/sources/google_alerts.py"
+      ]
+    },
+    {
+      "id": "src-scholar",
+      "name": "Scholar Alerts",
+      "tag": "new academic papers",
+      "evidence": [
+        "src/sources/gmail_scholar.py"
+      ]
+    },
+    {
+      "id": "src-bing",
+      "name": "Bing News",
+      "tag": "keyword news search",
+      "evidence": [
+        "src/sources/bing_news.py"
+      ]
+    }
   ],
   "nodes": [
-    {"id": "trigger", "col": "machine", "row": 0, "kind": "auto", "title": "Runs by itself every Monday", "desc": "A scheduled timer starts the whole pipeline — nobody has to remember.", "target": "HANDOFF", "evidence": [".github/workflows/weekly.yml: cron '0 13 * * 1'"]},
-    {"id": "collect", "col": "machine", "row": 1, "kind": "process", "title": "Collect everything new", "desc": "Pulls this week's listings from all 9 sources above into one pile.", "target": "moc/Workflow", "evidence": ["src/sources/__init__.py: all_sources()", "src/main.py: fetch loop"]},
-    {"id": "skip-repeats", "col": "machine", "row": 2, "kind": "process", "title": "Skip repeats", "desc": "A memory file remembers every item ever seen, so nothing is processed twice.", "target": "METHODOLOGY", "evidence": ["src/state.py: seen-state", "state/seen.json"]},
-    {"id": "first-score", "col": "machine", "row": 3, "kind": "process", "title": "First scoring pass", "desc": "Counts legal key-phrases (the three 'rings') for a quick relevance score.", "target": "METHODOLOGY", "evidence": ["src/classify.py: keyword_score", "fingerprint.yaml"]},
-    {"id": "read-doc", "col": "machine", "row": 4, "kind": "process", "title": "Read the document", "desc": "Fetches each promising item and pulls out its single most quotable line.", "target": "METHODOLOGY", "evidence": ["src/enrich.py: enrich(), notable_quote()"]},
-    {"id": "ai-check", "col": "machine", "row": 5, "kind": "process", "title": "AI relevance check", "desc": "An AI model double-checks each item against the research question.", "target": "METHODOLOGY", "evidence": ["src/classify.py: classify_item", "prompts/classifier.txt"]},
-    {"id": "quality-bar", "col": "machine", "row": 6, "kind": "gate", "title": "Quality bar", "desc": "Items scoring 40+ make the digest; near-misses only fill quiet weeks, clearly labeled.", "target": "METHODOLOGY", "evidence": ["src/main.py: select_surfaced()", "src/config.py: threshold 40 / floor 25"]},
-
-    {"id": "daily-email", "col": "deliverables", "row": 7, "kind": "send", "title": "Daily research email", "desc": "Each day's meeting record, emailed to Jack with the numbers-of-record banner.", "target": "COUNCIL", "evidence": ["scripts/send_daily_update.py", ".github/workflows/daily-update.yml"]},
-    {"id": "digest-email", "col": "deliverables", "row": 8, "kind": "send", "title": "Weekly digest email", "desc": "The annotated reading list of this week's finds — sent to Dr. Benavides.", "target": "moc/Digest Archive", "evidence": ["src/email_send.py: send_digest", "src/render.py"]},
-    {"id": "website", "col": "deliverables", "row": 9, "kind": "send", "title": "Public website", "desc": "The digest archive and methodology, published automatically to the project site.", "target": "METHODOLOGY", "evidence": ["scripts/build_site.py", ".github/workflows/site-sync.yml"]},
-    {"id": "brief-email", "col": "deliverables", "row": 11, "kind": "send", "title": "Research brief email", "desc": "The council's plain-English interpretation of the week — sent to Dr. Benavides.", "target": "moc/Digest Archive", "evidence": ["src/render.py: render_research_brief", "src/main.py: brief email step"]},
-    {"id": "packet", "col": "deliverables", "row": 12, "kind": "send", "title": "Monday review packet", "desc": "Jack's checklist: the few claims only a human can verify, with ready-to-run commands.", "target": "HUMAN_REVIEW", "evidence": ["scripts/send_human_review.py", "scripts/review_prep.py"]},
-
-    {"id": "daily-researcher", "col": "council", "row": 6, "kind": "role", "title": "Daily researcher", "desc": "Meets every day: digs at open questions, logs at most one genuinely new idea.", "target": "COUNCIL", "evidence": ["analytics/daily-research/", "prompts/council_roundtable.txt"]},
-    {"id": "chairman", "col": "council", "row": 7, "kind": "role", "title": "Chairman", "desc": "Sets the week's agenda from whatever is still unanswered.", "target": "COUNCIL", "evidence": ["src/research_brief.py: _run_chairman", "prompts/council_chairman.txt"]},
-    {"id": "analyst", "col": "council", "row": 8, "kind": "role", "title": "Analyst", "desc": "Reads the week's finds, does careful web research, proposes factual claims.", "target": "COUNCIL", "evidence": ["src/research_brief.py: _run_analyst", "prompts/research_analyst.txt"]},
-    {"id": "systems-researcher", "col": "council", "row": 9, "kind": "role", "title": "Systems researcher", "desc": "Studies the instrument itself and suggests one improvement at a time.", "target": "COUNCIL", "evidence": ["prompts/systems_researcher.txt", "analytics/optimization-log.md"]},
-    {"id": "editor", "col": "council", "row": 10, "kind": "role", "title": "Editor", "desc": "Writes the final brief — only claims that passed the gates get stated as fact.", "target": "COUNCIL", "evidence": ["src/research_brief.py: _run_editor", "prompts/research_editor.txt"]},
-    {"id": "minutes", "col": "council", "row": 11, "kind": "role", "title": "Meeting minutes", "desc": "The chairman grades each member's week and logs next steps — on the record.", "target": "COUNCIL", "evidence": ["src/research_brief.py: _run_reconvene", "src/council_log.py"]},
-    {"id": "next-week", "col": "council", "row": 13, "kind": "process", "title": "Notes for next week", "desc": "Open questions carry forward, so the research builds instead of restarting.", "target": "STATE_OF_THE_ANSWER", "evidence": ["src/research_state.py: record_issue, gap counters", "state/research_log.json"]},
-
-    {"id": "jack-checks", "col": "jack", "row": 7, "kind": "human", "title": "Jack verifies facts", "desc": "Jack checks claims against real sources — in chat or with one command.", "target": "HUMAN_REVIEW", "evidence": ["scripts/verify.py: mark", "HANDOFF.md: chat-verification convention"]},
-    {"id": "ledger", "col": "jack", "row": 8, "kind": "human", "title": "Verified-facts ledger", "desc": "A permanent record. Only Jack's sign-off can make a claim 'verified'.", "target": "HUMAN_REVIEW", "evidence": ["analytics/verification_ledger.jsonl", "scripts/verify.py: operator-only enforcement"]},
-    {"id": "claim-gate", "col": "jack", "row": 9, "kind": "gate", "title": "Claim gate (automatic)", "desc": "A program — not an AI — blocks any claim the ledger hasn't verified.", "target": "HUMAN_REVIEW", "evidence": ["src/integrity_gate.py: exact claim-id lookup"]},
-    {"id": "citation-check", "col": "jack", "row": 10, "kind": "gate", "title": "Citation check (automatic)", "desc": "A script re-tests every link and citation in the brief before it ships.", "target": "HUMAN_REVIEW", "evidence": ["scripts/check_citations.py", "src/research_brief.py: _verify_citations"]}
+    {
+      "id": "trigger",
+      "col": "machine",
+      "row": 0,
+      "kind": "auto",
+      "title": "Runs by itself every Monday",
+      "desc": "A scheduled timer starts the whole pipeline — nobody has to remember.",
+      "target": "HANDOFF",
+      "evidence": [
+        ".github/workflows/weekly.yml: cron '0 13 * * 1'"
+      ],
+      "meta": "GitHub Actions schedule — deterministic, no model involved"
+    },
+    {
+      "id": "collect",
+      "col": "machine",
+      "row": 1,
+      "kind": "process",
+      "title": "Collect everything new",
+      "desc": "Pulls this week's listings from all 9 sources above into one pile.",
+      "target": "moc/Workflow",
+      "evidence": [
+        "src/sources/__init__.py: all_sources()",
+        "src/main.py: fetch loop"
+      ],
+      "meta": "Deterministic code (no AI) — src/sources/"
+    },
+    {
+      "id": "skip-repeats",
+      "col": "machine",
+      "row": 2,
+      "kind": "process",
+      "title": "Skip repeats",
+      "desc": "A memory file remembers every item ever seen, so nothing is processed twice.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "src/state.py: seen-state",
+        "state/seen.json"
+      ],
+      "meta": "Deterministic code (no AI) — state/seen.json"
+    },
+    {
+      "id": "first-score",
+      "col": "machine",
+      "row": 3,
+      "kind": "process",
+      "title": "First scoring pass",
+      "desc": "Counts legal key-phrases (the three 'rings') for a quick relevance score.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "src/classify.py: keyword_score",
+        "fingerprint.yaml"
+      ],
+      "meta": "Deterministic code (no AI) — fingerprint.yaml weights"
+    },
+    {
+      "id": "read-doc",
+      "col": "machine",
+      "row": 4,
+      "kind": "process",
+      "title": "Read the document",
+      "desc": "Fetches each promising item and pulls out its single most quotable line.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "src/enrich.py: enrich(), notable_quote()"
+      ],
+      "meta": "Deterministic code (no AI) — src/enrich.py"
+    },
+    {
+      "id": "ai-check",
+      "col": "machine",
+      "row": 5,
+      "kind": "process",
+      "title": "AI relevance check",
+      "desc": "Claude reads each item and scores its relevance to the research question, with reasons.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "src/classify.py: classify_item",
+        "prompts/classifier.txt"
+      ],
+      "meta": "Model: Claude Haiku 4.5 — strict structured output; falls back to the keyword score"
+    },
+    {
+      "id": "quality-bar",
+      "col": "machine",
+      "row": 6,
+      "kind": "gate",
+      "title": "Quality bar",
+      "desc": "Items scoring 40+ enter the digest. Near-misses (25+) may fill a quiet week, always labeled as leads.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "src/main.py: select_surfaced()",
+        "src/config.py: threshold 40 / floor 25"
+      ],
+      "meta": "Deterministic rule — threshold 40, floor 25, no exceptions"
+    },
+    {
+      "id": "daily-email",
+      "col": "deliverables",
+      "row": 7,
+      "kind": "send",
+      "title": "Daily research email",
+      "desc": "Each day's meeting record, emailed to Emory with the numbers-of-record banner.",
+      "target": "COUNCIL",
+      "evidence": [
+        "scripts/send_daily_update.py",
+        ".github/workflows/daily-update.yml"
+      ],
+      "meta": "Deterministic code — includes the numbers-of-record banner"
+    },
+    {
+      "id": "digest-email",
+      "col": "deliverables",
+      "row": 8,
+      "kind": "send",
+      "title": "Weekly digest email",
+      "desc": "The annotated reading list of this week's finds — sent to Dr. Benavides.",
+      "target": "moc/Digest Archive",
+      "evidence": [
+        "src/email_send.py: send_digest",
+        "src/render.py"
+      ],
+      "meta": "Deterministic render of the scored items — no model writes the digest"
+    },
+    {
+      "id": "website",
+      "col": "deliverables",
+      "row": 9,
+      "kind": "send",
+      "title": "Public website",
+      "desc": "The digest archive and methodology, published automatically to the project site.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "scripts/build_site.py",
+        ".github/workflows/site-sync.yml"
+      ],
+      "meta": "Deterministic build — drift-guarded against the repo"
+    },
+    {
+      "id": "brief-email",
+      "col": "deliverables",
+      "row": 11,
+      "kind": "send",
+      "title": "Research brief email",
+      "desc": "The council's plain-English interpretation of the week — sent to Dr. Benavides.",
+      "target": "moc/Digest Archive",
+      "evidence": [
+        "src/render.py: render_research_brief",
+        "src/main.py: brief email step"
+      ],
+      "meta": "Written by the council, sent by deterministic code"
+    },
+    {
+      "id": "packet",
+      "col": "deliverables",
+      "row": 12,
+      "kind": "send",
+      "title": "Monday review packet",
+      "desc": "Emory's Monday briefing: council minutes and grades, workflow ideas, the state of the answer, and claims needing his check.",
+      "target": "HUMAN_REVIEW",
+      "evidence": [
+        "scripts/send_human_review.py",
+        "scripts/review_prep.py"
+      ],
+      "meta": "Assembled by deterministic code from the week's records"
+    },
+    {
+      "id": "daily-researcher",
+      "col": "council",
+      "row": 6,
+      "kind": "role",
+      "title": "Daily researcher",
+      "desc": "Meets every day: works the open questions and logs at most one genuinely new, sourced insight.",
+      "target": "COUNCIL",
+      "evidence": [
+        "analytics/daily-research/",
+        "prompts/council_roundtable.txt"
+      ],
+      "meta": "Model: Claude (scheduled daily routine) — bound by the council calibration checklist"
+    },
+    {
+      "id": "chairman",
+      "col": "council",
+      "row": 7,
+      "kind": "role",
+      "title": "Chairman",
+      "desc": "Sets the weekly agenda from the open questions and directs where the analyst spends effort.",
+      "target": "COUNCIL",
+      "evidence": [
+        "src/research_brief.py: _run_chairman",
+        "prompts/council_chairman.txt"
+      ],
+      "meta": "Model: Claude Fable 5 — standing role prompt (council_chairman.txt)"
+    },
+    {
+      "id": "analyst",
+      "col": "council",
+      "row": 8,
+      "kind": "role",
+      "title": "Analyst",
+      "desc": "Interprets the week against the research question with bounded web research; proposes claims with exact quotes.",
+      "target": "COUNCIL",
+      "evidence": [
+        "src/research_brief.py: _run_analyst",
+        "prompts/research_analyst.txt"
+      ],
+      "meta": "Model: Claude Opus 4.8 — role prompt + the no-source-no-claim rule"
+    },
+    {
+      "id": "systems-researcher",
+      "col": "council",
+      "row": 9,
+      "kind": "role",
+      "title": "Systems researcher",
+      "desc": "Studies the instrument itself and proposes one sourced improvement at a time.",
+      "target": "COUNCIL",
+      "evidence": [
+        "prompts/systems_researcher.txt",
+        "analytics/optimization-log.md"
+      ],
+      "meta": "Model: Claude (daily routine) — systems_researcher.txt prompt"
+    },
+    {
+      "id": "editor",
+      "col": "council",
+      "row": 10,
+      "kind": "role",
+      "title": "Editor",
+      "desc": "Writes the reader-facing brief. May state as fact only what survived the gates.",
+      "target": "COUNCIL",
+      "evidence": [
+        "src/research_brief.py: _run_editor",
+        "prompts/research_editor.txt"
+      ],
+      "meta": "Model: Claude Opus 4.8 — structured-output contract (strict JSON schema)"
+    },
+    {
+      "id": "minutes",
+      "col": "council",
+      "row": 11,
+      "kind": "role",
+      "title": "Meeting minutes",
+      "desc": "The chairman reviews each member's week on the record: status, grades, next steps, escalations to Emory.",
+      "target": "COUNCIL",
+      "evidence": [
+        "src/research_brief.py: _run_reconvene",
+        "src/council_log.py"
+      ],
+      "meta": "Model: Claude Fable 5 — reconvene prompt; fail-loud if minutes are missing"
+    },
+    {
+      "id": "next-week",
+      "col": "council",
+      "row": 13,
+      "kind": "process",
+      "title": "The living memory — 'State of the Answer'",
+      "desc": "The cumulative answer and every open question are saved and feed next Monday's agenda — research compounds.",
+      "target": "STATE_OF_THE_ANSWER",
+      "evidence": [
+        "src/research_state.py: record_issue, gap counters",
+        "state/research_log.json"
+      ],
+      "meta": "Files: STATE_OF_THE_ANSWER.md + state/research_log.json"
+    },
+    {
+      "id": "jack-checks",
+      "col": "jack",
+      "row": 7,
+      "kind": "human",
+      "title": "Emory verifies facts",
+      "desc": "Each claim is checked against its original source. Emory confirms or rejects it — the system cannot verify facts itself.",
+      "target": "HUMAN_REVIEW",
+      "evidence": [
+        "scripts/verify.py: mark",
+        "HANDOFF.md: chat-verification convention"
+      ],
+      "meta": "Human judgment — the one step no model is allowed to perform"
+    },
+    {
+      "id": "ledger",
+      "col": "jack",
+      "row": 8,
+      "kind": "human",
+      "title": "Verified-facts ledger",
+      "desc": "A permanent record of every claim and its status. Events are only ever added, so nothing can be quietly rewritten.",
+      "target": "HUMAN_REVIEW",
+      "evidence": [
+        "analytics/verification_ledger.jsonl",
+        "scripts/verify.py: operator-only enforcement"
+      ],
+      "meta": "Append-only file — analytics/verification_ledger.jsonl"
+    },
+    {
+      "id": "claim-gate",
+      "col": "jack",
+      "row": 9,
+      "kind": "gate",
+      "title": "Claim gate (automatic)",
+      "desc": "Code looks up every claim in the ledger by exact ID. Unverified claims must be labeled as leads; rejected ones are blocked.",
+      "target": "HUMAN_REVIEW",
+      "evidence": [
+        "src/integrity_gate.py: exact claim-id lookup"
+      ],
+      "meta": "Deterministic code (no AI) — src/integrity_gate.py"
+    },
+    {
+      "id": "citation-check",
+      "col": "jack",
+      "row": 10,
+      "kind": "gate",
+      "title": "Citation check (automatic)",
+      "desc": "A checking program opens every cited link to confirm it exists and is reachable; unlinked citations are flagged for Emory.",
+      "target": "HUMAN_REVIEW",
+      "evidence": [
+        "scripts/check_citations.py",
+        "src/research_brief.py: _verify_citations"
+      ],
+      "meta": "Deterministic code (no AI) — scripts/check_citations.py"
+    }
   ],
   "edges": [
-    {"source": "trigger", "target": "collect", "kind": "flow", "evidence": "weekly.yml runs python -m src.main"},
-    {"source": "__sources", "target": "collect", "kind": "flow", "evidence": "src/main.py: fetch loop over all_sources()"},
-    {"source": "collect", "target": "skip-repeats", "kind": "flow", "evidence": "src/main.py: seen-state filter"},
-    {"source": "skip-repeats", "target": "first-score", "kind": "flow", "evidence": "src/main.py: classification pass"},
-    {"source": "first-score", "target": "read-doc", "kind": "flow", "evidence": "src/main.py: enrichment"},
-    {"source": "read-doc", "target": "ai-check", "kind": "flow", "evidence": "src/main.py: classify_item"},
-    {"source": "ai-check", "target": "quality-bar", "kind": "flow", "evidence": "src/main.py: select_surfaced"},
-    {"source": "quality-bar", "target": "digest-email", "kind": "send", "evidence": "src/main.py: digest email"},
-    {"source": "quality-bar", "target": "chairman", "kind": "council", "evidence": "src/main.py: generate_brief over surfaced items"},
-    {"source": "digest-email", "target": "website", "kind": "send", "evidence": "site built from digest folders"},
-    {"source": "daily-researcher", "target": "daily-email", "kind": "send", "evidence": "scripts/send_daily_update.py"},
-    {"source": "daily-researcher", "target": "analyst", "kind": "council", "evidence": "src/research_brief.py: _daily_notes_block"},
-    {"source": "daily-researcher", "target": "systems-researcher", "kind": "council", "evidence": "daily optimization ideas feed the systems log"},
-    {"source": "chairman", "target": "analyst", "kind": "council", "evidence": "agenda passed to _run_analyst"},
-    {"source": "analyst", "target": "claim-gate", "kind": "check", "evidence": "candidate_claims into integrity_gate"},
-    {"source": "jack-checks", "target": "ledger", "kind": "check", "evidence": "verify.py mark appends operator events"},
-    {"source": "ledger", "target": "claim-gate", "kind": "check", "evidence": "integrity_gate replays the ledger"},
-    {"source": "claim-gate", "target": "editor", "kind": "council", "evidence": "_gate_note handed to the editor"},
-    {"source": "citation-check", "target": "editor", "kind": "check", "evidence": "citation verdict attached to the brief"},
-    {"source": "analyst", "target": "citation-check", "kind": "check", "evidence": "_verify_citations over the memo"},
-    {"source": "systems-researcher", "target": "minutes", "kind": "council", "evidence": "improvement queue lands in the close-out"},
-    {"source": "editor", "target": "brief-email", "kind": "send", "evidence": "brief rendered + emailed"},
-    {"source": "editor", "target": "minutes", "kind": "council", "evidence": "reconvene runs on the finished brief"},
-    {"source": "minutes", "target": "packet", "kind": "send", "evidence": "packet reads the council log"},
-    {"source": "ledger", "target": "packet", "kind": "send", "evidence": "packet samples unverified ledger claims"},
-    {"source": "minutes", "target": "next-week", "kind": "council", "evidence": "next steps + open threads persist"},
-    {"source": "editor", "target": "next-week", "kind": "council", "evidence": "research_state.record_issue(open_threads)"}
+    {
+      "source": "trigger",
+      "target": "collect",
+      "kind": "flow",
+      "evidence": "weekly.yml runs python -m src.main"
+    },
+    {
+      "source": "__sources",
+      "target": "collect",
+      "kind": "flow",
+      "evidence": "src/main.py: fetch loop over all_sources()"
+    },
+    {
+      "source": "collect",
+      "target": "skip-repeats",
+      "kind": "flow",
+      "evidence": "src/main.py: seen-state filter"
+    },
+    {
+      "source": "skip-repeats",
+      "target": "first-score",
+      "kind": "flow",
+      "evidence": "src/main.py: classification pass"
+    },
+    {
+      "source": "first-score",
+      "target": "read-doc",
+      "kind": "flow",
+      "evidence": "src/main.py: enrichment"
+    },
+    {
+      "source": "read-doc",
+      "target": "ai-check",
+      "kind": "flow",
+      "evidence": "src/main.py: classify_item"
+    },
+    {
+      "source": "ai-check",
+      "target": "quality-bar",
+      "kind": "flow",
+      "evidence": "src/main.py: select_surfaced"
+    },
+    {
+      "source": "quality-bar",
+      "target": "digest-email",
+      "kind": "send",
+      "evidence": "src/main.py: digest email"
+    },
+    {
+      "source": "quality-bar",
+      "target": "chairman",
+      "kind": "council",
+      "evidence": "src/main.py: generate_brief over surfaced items"
+    },
+    {
+      "source": "digest-email",
+      "target": "website",
+      "kind": "send",
+      "evidence": "site built from digest folders"
+    },
+    {
+      "source": "daily-researcher",
+      "target": "daily-email",
+      "kind": "send",
+      "evidence": "scripts/send_daily_update.py"
+    },
+    {
+      "source": "daily-researcher",
+      "target": "analyst",
+      "kind": "council",
+      "evidence": "src/research_brief.py: _daily_notes_block"
+    },
+    {
+      "source": "daily-researcher",
+      "target": "systems-researcher",
+      "kind": "council",
+      "evidence": "daily optimization ideas feed the systems log"
+    },
+    {
+      "source": "chairman",
+      "target": "analyst",
+      "kind": "council",
+      "evidence": "agenda passed to _run_analyst"
+    },
+    {
+      "source": "analyst",
+      "target": "claim-gate",
+      "kind": "check",
+      "evidence": "candidate_claims into integrity_gate"
+    },
+    {
+      "source": "jack-checks",
+      "target": "ledger",
+      "kind": "check",
+      "evidence": "verify.py mark appends operator events"
+    },
+    {
+      "source": "ledger",
+      "target": "claim-gate",
+      "kind": "check",
+      "evidence": "integrity_gate replays the ledger"
+    },
+    {
+      "source": "claim-gate",
+      "target": "editor",
+      "kind": "council",
+      "evidence": "_gate_note handed to the editor"
+    },
+    {
+      "source": "citation-check",
+      "target": "editor",
+      "kind": "check",
+      "evidence": "citation verdict attached to the brief"
+    },
+    {
+      "source": "analyst",
+      "target": "citation-check",
+      "kind": "check",
+      "evidence": "_verify_citations over the memo"
+    },
+    {
+      "source": "systems-researcher",
+      "target": "minutes",
+      "kind": "council",
+      "evidence": "improvement queue lands in the close-out"
+    },
+    {
+      "source": "editor",
+      "target": "brief-email",
+      "kind": "send",
+      "evidence": "brief rendered + emailed"
+    },
+    {
+      "source": "editor",
+      "target": "minutes",
+      "kind": "council",
+      "evidence": "reconvene runs on the finished brief"
+    },
+    {
+      "source": "minutes",
+      "target": "packet",
+      "kind": "send",
+      "evidence": "packet reads the council log"
+    },
+    {
+      "source": "ledger",
+      "target": "packet",
+      "kind": "send",
+      "evidence": "packet samples unverified ledger claims"
+    },
+    {
+      "source": "minutes",
+      "target": "next-week",
+      "kind": "council",
+      "evidence": "next steps + open threads persist"
+    },
+    {
+      "source": "editor",
+      "target": "next-week",
+      "kind": "council",
+      "evidence": "research_state.record_issue(open_threads)"
+    }
   ]
 }

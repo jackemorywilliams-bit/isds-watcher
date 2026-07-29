@@ -125,7 +125,7 @@
         "src/state.py: seen-state",
         "state/seen.json"
       ],
-      "meta": "Predetermined code — memory-file check"
+      "meta": "Emory's memory-file check"
     },
     {
       "id": "first-score",
@@ -139,7 +139,7 @@
         "src/classify.py: keyword_score",
         "fingerprint.yaml"
       ],
-      "meta": "Emory's scoring code — no AI"
+      "meta": "Emory's scoring code"
     },
     {
       "id": "read-doc",
@@ -152,7 +152,7 @@
       "evidence": [
         "src/enrich.py: enrich(), notable_quote()"
       ],
-      "meta": "Predetermined extraction code"
+      "meta": "Emory's extraction code"
     },
     {
       "id": "ai-check",
@@ -180,7 +180,7 @@
         "src/main.py: select_surfaced()",
         "src/config.py: threshold 40 / floor 25"
       ],
-      "meta": "Fixed rule — 40 to pass, floor 25"
+      "meta": "Emory's fixed rule — 40 pass, 25 floor"
     },
     {
       "id": "daily-email",
@@ -250,7 +250,7 @@
         "scripts/send_human_review.py",
         "scripts/review_prep.py"
       ],
-      "meta": "Assembled by predetermined code"
+      "meta": "Emory's packet-builder code"
     },
     {
       "id": "daily-researcher",
@@ -264,7 +264,7 @@
         "analytics/daily-research/",
         "prompts/council_roundtable.txt"
       ],
-      "meta": "Model: Claude Opus 4.8"
+      "meta": "Model: Claude Fable 5"
     },
     {
       "id": "chairman",
@@ -389,7 +389,7 @@
       "evidence": [
         "src/integrity_gate.py: exact claim-id lookup"
       ],
-      "meta": "Predetermined check — no AI"
+      "meta": "Emory's claim-gate code"
     },
     {
       "id": "citation-check",
@@ -403,7 +403,7 @@
         "scripts/check_citations.py",
         "src/research_brief.py: _verify_citations"
       ],
-      "meta": "Predetermined link checker — no AI"
+      "meta": "Emory's link-checker code"
     }
   ],
   "edges": [

@@ -273,7 +273,7 @@
       "kind": "role",
       "title": "Chairman",
       "desc": "Sets the weekly agenda from the open questions and directs where the analyst spends effort.",
-      "target": "COUNCIL",
+      "target": "agents/council-chairman",
       "evidence": [
         "src/research_brief.py: _run_chairman",
         "prompts/council_chairman.txt"
@@ -287,7 +287,7 @@
       "kind": "role",
       "title": "Analyst",
       "desc": "Interprets the week against the research question with bounded web research; proposes claims with exact quotes.",
-      "target": "COUNCIL",
+      "target": "agents/research-analyst",
       "evidence": [
         "src/research_brief.py: _run_analyst",
         "prompts/research_analyst.txt"
@@ -301,7 +301,7 @@
       "kind": "role",
       "title": "Systems researcher",
       "desc": "Studies the instrument itself and proposes one sourced improvement at a time.",
-      "target": "COUNCIL",
+      "target": "agents/systems-researcher",
       "evidence": [
         "prompts/systems_researcher.txt",
         "analytics/optimization-log.md"
@@ -315,7 +315,7 @@
       "kind": "role",
       "title": "Editor",
       "desc": "Writes the reader-facing brief. May state as fact only what survived the gates.",
-      "target": "COUNCIL",
+      "target": "agents/research-editor",
       "evidence": [
         "src/research_brief.py: _run_editor",
         "prompts/research_editor.txt"
@@ -329,7 +329,7 @@
       "kind": "role",
       "title": "Meeting minutes",
       "desc": "The chairman reviews each member's week on the record: status, grades, next steps, escalations to Emory.",
-      "target": "COUNCIL",
+      "target": "agents/council-chairman",
       "evidence": [
         "src/research_brief.py: _run_reconvene",
         "src/council_log.py"
@@ -404,6 +404,74 @@
         "src/research_brief.py: _verify_citations"
       ],
       "meta": "Emory's link-checker code"
+    },
+    {
+      "id": "integrity-officer",
+      "col": "jack",
+      "row": 11,
+      "kind": "role",
+      "title": "Integrity officer",
+      "desc": "Vets every memo for fabrication, overreach and inflation; objections binding. Trained on the calibration checklist.",
+      "meta": "Model: Claude Opus 4.8",
+      "target": "agents/integrity-officer",
+      "evidence": [
+        "prompts/council_security.txt",
+        ".claude/agents/integrity-officer.md"
+      ]
+    },
+    {
+      "id": "analytics-officer",
+      "col": "council",
+      "row": 12,
+      "kind": "role",
+      "title": "Analytics officer",
+      "desc": "Ties findings to screened items; source receptivity with copied numbers. Trained on the numbers-of-record rule.",
+      "meta": "Model: Claude Opus 4.8",
+      "target": "agents/analytics-officer",
+      "evidence": [
+        "prompts/council_roundtable.txt",
+        ".claude/agents/analytics-officer.md"
+      ]
+    },
+    {
+      "id": "obsidian-archivist",
+      "col": "council",
+      "row": 14,
+      "kind": "role",
+      "title": "Obsidian archivist",
+      "desc": "Keeps the vault's memory current: agent registry, change log, drift audits. Trained on the vault's conventions.",
+      "meta": "Model: Claude Opus 4.8",
+      "target": "agents/obsidian-archivist",
+      "evidence": [
+        ".claude/agents/obsidian-archivist.md"
+      ]
+    },
+    {
+      "id": "systems-designer",
+      "col": "machine",
+      "row": 7,
+      "kind": "role",
+      "title": "Systems designer",
+      "desc": "Builds the machinery: renderers, validators, pipelines — fail-closed, tested. Trained on this repo's guards.",
+      "meta": "Model: Claude Fable 5",
+      "target": "agents/systems-designer",
+      "evidence": [
+        ".claude/agents/systems-designer.md"
+      ]
+    },
+    {
+      "id": "site-experience",
+      "col": "machine",
+      "row": 8,
+      "kind": "role",
+      "title": "Site experience",
+      "desc": "Owns the professor-facing website, the emails and the README — every reader-facing surface. Trained on the site's templates.",
+      "meta": "Model: Claude Fable 5",
+      "target": "agents/site-experience",
+      "evidence": [
+        ".claude/agents/site-experience.md",
+        "scripts/build_site.py"
+      ]
     }
   ],
   "edges": [
@@ -604,6 +672,48 @@
       "target": "packet",
       "kind": "council",
       "evidence": "send_human_review.py section 2: workflow-improvement ideas from the optimization log reach Emory's briefing"
+    },
+    {
+      "source": "analyst",
+      "target": "integrity-officer",
+      "kind": "check",
+      "evidence": "daily meetings: the integrity-officer subagent vets the analyst memo"
+    },
+    {
+      "source": "integrity-officer",
+      "target": "packet",
+      "kind": "check",
+      "evidence": "vetting flags reach Emory through the meeting record and Monday packet"
+    },
+    {
+      "source": "quality-bar",
+      "target": "analytics-officer",
+      "kind": "flow",
+      "evidence": "analytics officer reads the digest's meta.json numbers of record"
+    },
+    {
+      "source": "analytics-officer",
+      "target": "next-week",
+      "kind": "council",
+      "evidence": "receptivity notes persist into the living memory"
+    },
+    {
+      "source": "next-week",
+      "target": "obsidian-archivist",
+      "kind": "council",
+      "evidence": "the archivist folds project changes into the vault's registry and change log"
+    },
+    {
+      "source": "systems-designer",
+      "target": "site-experience",
+      "kind": "flow",
+      "evidence": "designer builds artifacts the site agent publishes"
+    },
+    {
+      "source": "site-experience",
+      "target": "website",
+      "kind": "flow",
+      "evidence": "site agent owns build_site.py + templates behind the public site"
     }
   ]
 }

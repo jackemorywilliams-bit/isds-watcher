@@ -17,7 +17,8 @@ __pycache__/
 .DS_Store
 
 # Local Claude settings
-.claude/
+.claude/*
+!.claude/agents/
 
 # Humanization workflow scratch (keep term-preservation.md tracked)
 working/*.txt

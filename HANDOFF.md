@@ -108,7 +108,7 @@ sending to both. Edit that list and push to change recipients.
 | Source | Status |
 |--------|--------|
 | `iisd_itn` | RSS, working (substantive descriptions). |
-| `italaw` | HTML homepage "Newly Posted" feed, working (titles + dates). |
+| `italaw` | HTML homepage "Newly Posted" feed. **BLOCKED since ~2026-07**: Cloudflare managed challenge (403, `Cf-Mitigated: challenge`) on every path for non-browser clients, though robots.txt allows `*`. We never evade anti-bot, so it degrades to `[]`; the zero-streak guard (`state/source_health.json`) flags it `DEGRADED`. Parser kept for if/when the challenge is lifted. |
 | `icsid` | Case DB is JS-only; falls back to `/news-events` announcements. |
 | `iareporter_headlines` | Homepage **headlines only** (paywalled — no body fetch). |
 | `unctad_isds` | Worked from the build host; may 403 from some IPs (robots disallows ClaudeBot, not our UA). Degrades to `[]` + log. |

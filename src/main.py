@@ -15,7 +15,7 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 
-from . import config, council_log, render, research_brief, research_state, state
+from . import config, council_log, render, research_brief, research_state, source_health, state
 from .classify import classify_item, keyword_score
 from .email_send import send_digest
 from .enrich import enrich, notable_quote as enrich_notable
@@ -142,6 +142,20 @@ def main(argv=None) -> int:
         new_candidates.extend(fresh)
     stats["total_candidates"] = len(new_candidates)
     logger.info("main: %d new candidates across sources", len(new_candidates))
+
+    # 1a. Silent-decay guard. Persist per-source consecutive-zero-run streaks
+    #     (state/source_health.json); a documented-active source at 3+ zero runs
+    #     has its status rewritten to "DEGRADED (N zero runs)", and an
+    #     all-sources-but-one-zero run raises a COLLECTION ANOMALY warning. The
+    #     warnings surface in meta.json, the digest README, and the digest
+    #     header — a broken fetcher can no longer read as a quiet week.
+    #     Skipped for --limit-sources runs (a partial test run must not advance
+    #     the streaks of the sources it skipped or distort the anomaly check).
+    if not only:
+        stats["health_warnings"] = source_health.record_run(
+            stats["source_health"], generated_at.strftime("%Y-%m-%d"))
+    else:
+        stats["health_warnings"] = []
 
     # 1b. First-run bootstrap (flood fix). On a genuinely empty seen-state, index
     #     every current item as already-seen and send only a baseline note — never
@@ -303,6 +317,8 @@ def main(argv=None) -> int:
         print("source health:")
         for sh in stats["source_health"]:
             print(f"  {sh['name']:<22} {sh['status']:<14} items={sh['count']}")
+    for w in stats.get("health_warnings", []):
+        print(f"  !! {w}")
     print(f"new candidates:   {stats['total_candidates']}")
     print(f"classified:       {stats['classified']}")
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")

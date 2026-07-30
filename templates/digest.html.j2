@@ -66,6 +66,12 @@
   .health .st.failed { background:#a13a2e; }
   .health .st.headline { background:#b8860b; }
   .health .st.disabled { background:#6a7280; }
+  .health .st.degraded { background:#a13a2e; }
+  /* Source-health warning banner (silent-decay guard) */
+  .warnbanner { margin:0; padding:12px 36px; background:#fbecec; border-top:3px solid #a13a2e;
+         border-bottom:1px solid #e6c4c0; font-family:Arial,Helvetica,sans-serif;
+         font-size:12.5px; color:#6e2a21; line-height:1.5; }
+  .warnbanner strong { color:#a13a2e; }
   .health .note { color:#7a828c; font-size:11px; margin:8px 0 0; font-style:italic; }
   /* Footer */
   .foot { background:#0b2e44; color:#cdd8e2; padding:22px 36px 26px;
@@ -101,6 +107,12 @@
        reached a full match {{ "to date" if cumulative_runs else "this period" }}; those below are watch-list near-misses — a clean
        reading at a deliberately narrow intersection, not a gap in coverage.{% endif %}</p>
   </div>
+
+  {% if stats.health_warnings %}
+  {% for w in stats.health_warnings %}
+  <p class="warnbanner"><strong>&#9888;</strong> {{ w }}</p>
+  {% endfor %}
+  {% endif %}
 
   <div class="lede">
     {% if lede %}{{ lede }}{% else %}
@@ -159,7 +171,7 @@
     <table role="presentation">
       <tr><th>Source</th><th>Status</th><th style="text-align:right">Items</th></tr>
       {% for sh in stats.source_health %}
-      {% set cls = "returned" if sh.status == "RETURNED" else ("failed" if sh.status == "FAILED" else ("headline" if sh.status == "HEADLINE-ONLY" else "disabled")) %}
+      {% set cls = "returned" if sh.status == "RETURNED" else ("failed" if sh.status == "FAILED" else ("headline" if sh.status == "HEADLINE-ONLY" else ("degraded" if sh.status.startswith("DEGRADED") else "disabled"))) %}
       <tr>
         <td>{{ sh.name|replace("_", " ")|title }}</td>
         <td><span class="st {{ cls }}">{{ sh.status }}</span></td>
@@ -169,7 +181,9 @@
     </table>
     <p class="note">Which feeds were readable this run. A failed or suppressed feed is shown,
        not hidden: RETURNED yielded items, FAILED hit a fetch error, HEADLINE-ONLY is read at
-       headline level only, DISABLED was robots-blocked and yielded nothing.</p>
+       headline level only, DISABLED was robots-blocked and yielded nothing, DEGRADED is a
+       documented-active source at 3+ consecutive zero-item runs (its fetcher likely no
+       longer matches the live site).</p>
   </div>
   {% endif %}
 

@@ -22,6 +22,7 @@ from urllib.parse import urljoin
 from .base import (
     CandidateItem,
     Source,
+    day_floor,
     fetch_html,
     parse_date,
     utcnow,
@@ -62,7 +63,13 @@ class ItalawSource(Source):
     def fetch(self, since: datetime) -> list[CandidateItem]:
         soup = fetch_html(BASE_URL)
         if soup is None:
-            logger.warning("italaw: homepage unavailable, returning []")
+            # As of 2026-07: www.italaw.com serves a Cloudflare managed challenge
+            # (HTTP 403, Cf-Mitigated: challenge) to all non-browser clients on
+            # every path, although robots.txt allows 'User-agent: *'. We never
+            # evade anti-bot, so this degrades to [] — the pipeline's zero-streak
+            # guard (state/source_health.json) marks the source DEGRADED so the
+            # outage is visible instead of silently reading as a quiet week.
+            logger.warning("italaw: homepage unavailable (likely bot-challenge/403), returning []")
             return []
 
         items = self._parse_primary(soup)
@@ -71,11 +78,14 @@ class ItalawSource(Source):
             items = self._parse_fallback(soup)
 
         # Filter by since when a real date is available; keep fallback-dated
-        # (now) items so the pipeline can dedupe.
+        # (now) items so the pipeline can dedupe. Dates here are date-only
+        # (midnight UTC), so compare against the day-floored cutoff to avoid
+        # losing items stamped on the cutoff's calendar day.
+        cutoff = day_floor(since)
         filtered: list[CandidateItem] = []
         for item in items:
             has_real_date = not item.metadata.get("date_inferred", False)
-            if has_real_date and item.published is not None and item.published < since:
+            if has_real_date and item.published is not None and item.published < cutoff:
                 continue
             filtered.append(item)
 

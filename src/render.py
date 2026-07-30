@@ -194,6 +194,10 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     # persisted here additively (new key; existing keys are untouched) so a quiet
     # or failed feed is recorded, not hidden.
     source_health = [dict(sh) for sh in stats.get("source_health", [])]
+    # Silent-decay guard output: DEGRADED / COLLECTION ANOMALY warning lines
+    # (src/source_health.py). Persisted in meta.json and shown prominently in
+    # the README below so a broken feed can never read as a quiet week.
+    health_warnings = list(stats.get("health_warnings", []) or [])
     meta = {
         "date": date_str,
         "screened": screened,
@@ -203,6 +207,7 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         "per_source": dict(stats.get("per_source", {})),
         "accepted_by_source": accepted_by_source,
         "source_health": source_health,
+        "health_warnings": health_warnings,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)
@@ -215,6 +220,13 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         f"**Screened: {screened} · Matches (≥{threshold}): {matches} · "
         f"Watch-list leads: {watch_list_leads} · Watch-list leads shown (total): {accepted}**",
         "",
+    ]
+    # Visible source-health warnings (DEGRADED sources / COLLECTION ANOMALY) go
+    # directly under the header — never buried below the item table.
+    for w in health_warnings:
+        rd.append(f"> ⚠️ **{w}**")
+        rd.append("")
+    rd += [
         f"Annotated digest of **{len(items)}** surfaced item"
         f"{'' if len(items) == 1 else 's'} "
         f"(screened from {stats.get('total_candidates', 0)} candidates; "

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Trimmed live snapshot of https://www.iisd.org/itn/feed/ fetched 2026-07-27. First two items. --><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Investment Treaty News</title>
+	<atom:link href="https://www.iisd.org/itn/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.iisd.org/itn</link>
+	<description>News, analysis, and opinions on international investment law.</description>
+	<lastBuildDate>Thu, 23 Apr 2026 11:59:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.0.2</generator>
+	<item>
+		<title>ITN Issue 2, 2026</title>
+		<link>https://www.iisd.org/itn/2026/04/21/itn-issue-2-2026/</link>
+		
+		<dc:creator><![CDATA[shildebrandt]]></dc:creator>
+		<pubDate>Tue, 21 Apr 2026 17:02:05 +0000</pubDate>
+				<category><![CDATA[ITN]]></category>
+		<category><![CDATA[ITN Quarterly]]></category>
+		<category><![CDATA[Current Issue]]></category>
+		<guid isPermaLink="false">https://www.iisd.org/itn/?p=17244</guid>
+
+					<description><![CDATA[<span class='tooltipsall tooltipsincontent classtoolTips60'>ITN</span> Special Issue – Treaty Data and the Evolving International Investment Regime
+Investment Treaties, Strategy, and Practice in Chile’s Experience
+Committees in International Investment Agreements: Sketching a research agenda for a growing trend
+On the Importance of Public Access to Information in the Context of Treaty and <span class='tooltipsall tooltipsincontent classtoolTips43'>ISDS</span> Reform<script type="text/javascript"> toolTips('.classtoolTips43','investor–state dispute settlement'); </script><script type="text/javascript"> toolTips('.classtoolTips58','solución de controversias inversionista-Estado'); </script><script type="text/javascript"> toolTips('.classtoolTips60','Investment Treaty News'); </script><script type="text/javascript"> toolTips('.classtoolTips116','European Commission'); </script><script type="text/javascript"> toolTips('.classtoolTips118','Union européenne'); </script><script type="text/javascript"> toolTips('.classtoolTips119','Unión Europea'); </script>]]></description>
+		
+		
+		
+			</item>
+<item>
+		<title>ITN Special Issue – Treaty Data and the Evolving International Investment Regime</title>
+		<link>https://www.iisd.org/itn/2026/04/21/treaty-data-evolving-international-investment-regime-josef-ostransky-dafina-atanasova/</link>
+		
+		<dc:creator><![CDATA[shildebrandt]]></dc:creator>
+		<pubDate>Tue, 21 Apr 2026 16:49:54 +0000</pubDate>
+				<category><![CDATA[Analysis]]></category>
+		<category><![CDATA[Current Issue]]></category>
+		<guid isPermaLink="false">https://www.iisd.org/itn/?p=17086</guid>
+
+					<description><![CDATA[Josef Ostransky and Dafina Atanasova introduce this special <span class='tooltipsall tooltipsincontent classtoolTips60'>ITN</span> issue by highlighting how major 2025 updates to <span class='tooltipsall tooltipsincontent classtoolTips7'>UNCTAD</span>’s treaty databases are transforming investment policy. Moving beyond a narrow focus on investor protection, this issue explores a regime in transition—one increasingly defined by institutional cooperation, and multiplicity of treaty functions. Featuring insights from Joshua Paine on the rise of treaty committees, Mariana Pinto Schmidt on Chile’s experience of evolving treaty portfolio, and Lise Johnson on the necessity of transparency, the editorial underscores that meaningful reform relies on empirical evidence.<script type="text/javascript"> toolTips('.classtoolTips7','United Nations Conference on Trade and Development'); </script><script type="text/javascript"> toolTips('.classtoolTips8','Conferencia de las Naciones Unidas sobre Comercio y Desarrollo'); </script><script type="text/javascript"> toolTips('.classtoolTips60','Investment Treaty News'); </script><script type="text/javascript"> toolTips('.classtoolTips67','Energy Charter Treaty'); </script><script type="text/javascript"> toolTips('.classtoolTips100','investissement direct étranger'); </script><script type="text/javascript"> toolTips('.classtoolTips113','responsabilidad social corporativa'); </script><script type="text/javascript"> toolTips('.classtoolTips114','Sistema de Tribunales de Inversiones'); </script><script type="text/javascript"> toolTips('.classtoolTips116','European Commission'); </script><script type="text/javascript"> toolTips('.classtoolTips118','Union européenne'); </script><script type="text/javascript"> toolTips('.classtoolTips119','Unión Europea'); </script>]]></description>
+		
+		
+		
+			</item>
+</channel>
+</rss>

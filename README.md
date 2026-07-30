@@ -170,7 +170,7 @@ Sources fall into three tiers of access depth, and this is stated openly rather 
 - **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled, so only the title and lead
   are scored. Genuinely on-theme IAReporter items can under-score when the dispositive detail
   sits in the body the instrument cannot read; those surface as watch-list leads, not matches.
-- **DISABLED** — Google News RSS, currently disallowed by its `robots.txt` and therefore
+- **RETIRED** — Google News RSS, permanently disallowed by its `robots.txt` and therefore
   inactive (honored, not circumvented), along with any individual page denied by robots or
   login.
 

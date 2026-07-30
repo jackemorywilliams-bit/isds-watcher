@@ -24,14 +24,14 @@ The four docket strings — `PCA Case No. 2012-12`, `ICSID Case No. UNCT/14/2`, 
 
 ## 2. Source names (verbatim; these are the actual sources)
 Source: `src/sources/*.py` `name=` fields; `METHODOLOGY.md` §III.A.
-Internal identifiers: `iisd_itn`, `italaw`, `icsid`, `unctad_isds`, `iareporter_headlines`, `google_news_rss`, `pca_press`.
+Internal identifiers: `iisd_itn`, `italaw`, `icsid`, `unctad_isds`, `iareporter_headlines`, `bing_news`, `pca_press`.
 Human-facing names that must survive in the prose:
 - the **ICSID** docket
 - **UNCTAD**'s **Investment Dispute Settlement Navigator** and **World Investment Report**
 - the **italaw** primary-document archive
 - **IISD**'s **Investment Treaty News**
 - **IAReporter** (read at headline level only)
-- **Google News RSS** (currently disallowed by `robots.txt`, therefore inactive)
+- **Bing News** (keyword news search; replaced the retired Google News RSS, 2026-07-29)
 Do not let Walter Writes invent, merge, or substitute source names (e.g. no "Westlaw," "Kluwer," "Google Alerts," "Google Scholar," "SSRN").
 
 ## 3. Schedule (verbatim)

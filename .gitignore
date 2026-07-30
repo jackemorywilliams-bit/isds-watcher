@@ -27,3 +27,6 @@ working/*.txt
 *.canvas
 *.base
 Untitled*
+
+# 3D workflow view toolchain — deps are installed locally, never committed
+tools/isds-workflow-3d/node_modules/

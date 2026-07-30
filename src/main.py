@@ -24,10 +24,10 @@ from .sources import all_sources
 logger = logging.getLogger("isds.main")
 
 # Sources we treat as DISABLED in the source-health table when they yield nothing:
-# best-effort feeds whose robots policy disallows our crawl (Google News RSS), so a
-# zero from them reads as "suppressed", not "quiet". If such a feed does return
-# items, it is reported honestly as RETURNED instead.
-ROBOTS_BLOCKED_SOURCES = {"google_news_rss"}
+# best-effort feeds whose robots policy disallows our crawl, so a zero from them
+# reads as "suppressed", not "quiet". Empty since the Google News source was
+# retired (2026-07-29); kept for the next robots-blocked feed.
+ROBOTS_BLOCKED_SOURCES = set()
 
 
 def _norm_line(s: str) -> str:
@@ -113,7 +113,6 @@ def main(argv=None) -> int:
     #      FAILED        — fetch raised (network / parse error)
     #      HEADLINE-ONLY — paywalled feed read at headline level only (e.g. IAReporter)
     #      DISABLED      — robots-blocked / suppressed feed that yielded nothing
-    #                      (e.g. Google News RSS where robots.txt disallows us)
     #    A quiet or failed feed shows as such here — it is never hidden.
     new_candidates = []
     for src in all_sources(cfg):

@@ -112,7 +112,7 @@ sending to both. Edit that list and push to change recipients.
 | `icsid` | Case DB is JS-only; falls back to `/news-events` announcements. |
 | `iareporter_headlines` | Homepage **headlines only** (paywalled — no body fetch). |
 | `unctad_isds` | Worked from the build host; may 403 from some IPs (robots disallows ClaudeBot, not our UA). Degrades to `[]` + log. |
-| `google_news_rss` | **robots-disallowed** for `*` → honored, returns `[]`. Re-enables if Google changes robots. |
+| `bing_news` | Keyword news search via Bing RSS (robots-permitted, live-verified 2026-07-29). Replaced the retired `google_news_rss`. |
 | `pca_press` | Low priority; degrades to `[]` if unreachable. |
 
 ## Design guarantees
@@ -160,7 +160,8 @@ Map: [[00 - Project Map]]
 
 ## Model runtime assignments (requested)
 
-- chairman: `claude-fable-5` · analyst/one-pager drafting: `claude-opus-4-8` ·
+- chairman: `claude-fable-5` · analyst: `claude-fable-5` (operator directive 2026-07-29:
+  the researcher gets the most advanced model) · one-pager drafting: `claude-opus-4-8` ·
   utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
   classifier: unchanged `claude-haiku-4-5-20251001` (kept in `src/classify.py`, outside
   the change manifest). Any runtime fallback appends a REQUESTED vs ACTUAL line below

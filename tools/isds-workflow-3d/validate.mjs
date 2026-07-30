@@ -209,10 +209,10 @@ if (svgText !== null) {
   const edgePaths = count(/class="wf-edge /g);
   const motions = count(/<animateMotion /g);
   const expectDots = m.edges.reduce((a, e) => a + ((rc.FLOW[e.kind] ?? rc.FLOW.flow).dots), 0);
-  if (cards !== 23) errors.push(`${svgRel}: expected 23 cards, found ${cards}`);
+  if (cards !== m.nodes.length) errors.push(`${svgRel}: expected ${m.nodes.length} cards (manifest-derived), found ${cards}`);
   if (cards !== m.nodes.length) errors.push(`${svgRel}: ${cards} cards out of sync with manifest's ${m.nodes.length} nodes`);
-  if (chips !== 9) errors.push(`${svgRel}: expected 9 source chips, found ${chips}`);
-  if (edgePaths !== 33) errors.push(`${svgRel}: expected 33 edge paths, found ${edgePaths}`);
+  if (chips !== m.chips.length) errors.push(`${svgRel}: expected ${m.chips.length} source chips (manifest-derived), found ${chips}`);
+  if (edgePaths !== m.edges.length) errors.push(`${svgRel}: expected ${m.edges.length} edge paths (manifest-derived), found ${edgePaths}`);
   if (edgePaths !== m.edges.length) errors.push(`${svgRel}: ${edgePaths} edge paths out of sync with manifest's ${m.edges.length} edges`);
   if (motions < 33) errors.push(`${svgRel}: only ${motions} animateMotion dots (need >= 33)`);
   if (motions !== expectDots) errors.push(`${svgRel}: ${motions} animateMotion dots, FLOW config expects ${expectDots}`);

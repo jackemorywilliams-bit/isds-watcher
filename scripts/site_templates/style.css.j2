@@ -894,8 +894,18 @@ main { display: block; }
   .source-url { color: #000; }
 }
 
-/* How-it-works workflow chart */
-.workflow-figure { margin: 2rem 0; }
-.workflow-scroll { overflow-x: auto; border-radius: 10px; }
+/* How-it-works: the workflow chart. The SVG paints its own cream background
+   (the site's --cream), so a hairline border is all the framing it needs; the
+   radius matches the chart's own rounded corner. The chart scrolls inside the
+   figure on narrow screens — the page itself never scrolls sideways. */
+.workflow-figure { max-width: 64rem; margin: 34px auto 0; padding: 0 24px; }
+.workflow-scroll {
+  overflow-x: auto; background: var(--cream);
+  border: 1px solid var(--line); border-radius: 10px;
+}
+.workflow-scroll:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
 .workflow-scroll svg { display: block; min-width: 720px; width: 100%; height: auto; }
-.workflow-figure figcaption { font-size: 0.85rem; color: var(--muted, #667); margin-top: 0.6rem; }
+.workflow-figure figcaption {
+  font-family: var(--sans); font-size: 12.5px; line-height: 1.6;
+  color: var(--muted); margin-top: 10px;
+}

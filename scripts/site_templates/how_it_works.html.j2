@@ -1,28 +1,52 @@
 {% extends "base.html.j2" %}
-{% block title %}How It Works — ISDS Thematic Watcher{% endblock %}
+{% block title %}How It Works | ISDS Thematic Watcher{% endblock %}
+{% block description %}The whole instrument on one chart, drawn deterministically from the repository it describes: the nine public sources, the automated pipeline, the AI research council, the researcher's verification column, and every Monday deliverable.{% endblock %}
+
 {% block content %}
 <section class="page-head">
-  <h1>How the instrument works</h1>
-  <p class="lede">
-    The chart below is the whole instrument on one page, drawn directly from the
-    repository it describes. Reading top to bottom: the nine public sources we check
-    every run; the automated pipeline that collects, de-duplicates, scores, and
-    quality-gates each candidate development; the council of AI research agents
-    (each box names its model) that interprets the week under binding
-    fact-verification gates; the researcher's own verification column — no claim is
-    stated as fact without a human check against its original source; and the
-    deliverables each Monday. The moving dots show work flowing through the system.
-    Hover any box for its full description and the exact code behind it.
-  </p>
-</section>
-<figure class="workflow-figure">
-  <div class="workflow-scroll">
-    {{ workflow_svg | safe }}
+  <div class="measure">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ root }}index.html">Home</a></li>
+        <li aria-current="page">How It Works</li>
+      </ol>
+    </nav>
+    <p class="page-kicker">The instrument</p>
+    <h1 class="page-title">How the instrument works</h1>
+    <p class="page-lede">
+      The whole system on one chart, drawn directly from the repository it
+      describes &mdash; every box and arrow cites the file that implements it.
+    </p>
   </div>
-  <figcaption>
-    Generated deterministically from the same manifest that renders this chart in
-    the project's research vault; every box and arrow cites the file that
-    implements it.
-  </figcaption>
-</figure>
+</section>
+
+<section class="band">
+  <div class="measure">
+    <div class="doc-body">
+      <p>
+        Read it top to bottom. The first band is the nine public sources checked
+        on every run. Beneath it the work divides into four columns:
+        <strong>the machine</strong> &mdash; the automated pipeline that collects,
+        de-duplicates, scores, and quality-gates each candidate development;
+        <strong>what gets sent</strong> &mdash; the emails and site updates each
+        stage produces; <strong>the AI research council</strong> &mdash; the
+        research agents, each box naming the model it runs on, that interpret the
+        week under binding fact-verification gates; and <strong>Emory's
+        verification column</strong> &mdash; no claim is published as fact without
+        a human check against its original source. The moving dots trace work
+        flowing through the system. On a desktop browser, hovering over any box
+        shows its full description and the exact code behind it.
+      </p>
+    </div>
+  </div>
+  <figure class="workflow-figure">
+    <div class="workflow-scroll" role="region" aria-label="Workflow chart; scrolls horizontally on small screens" tabindex="0">
+      {{ workflow_svg | safe }}
+    </div>
+    <figcaption>
+      Drawn deterministically from the repository's own workflow description; a
+      build-time freshness check keeps it in step with the code it depicts.
+    </figcaption>
+  </figure>
+</section>
 {% endblock %}

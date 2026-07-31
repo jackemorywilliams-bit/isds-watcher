@@ -1,14 +1,19 @@
 {
-  "last_updated": "2026-07-29",
+  "last_updated": "2026-07-31",
   "open_threads": [
     "Monthly standing watch: does the ICSID pending-cases docket register a Wingtech v. Netherlands proceeding? (Downgraded July 28, 2026 — Day 104; no ICSID registration identified in 104-day monitoring window; check monthly.)",
     "Will the spread of codified manifest-lack-of-merit gates (2026 ICC Art. 30; ICSID AF Rule 51(1)) produce any disposition touching IP-as-investment, as distinct from abuse-of-right admissibility?",
     "Does A/81/17 (expected Aug–Sep 2026) confirm the A/CN.9/1246 threshold once escalated to the principal?",
     "Any movement on the standing dockets (Huawei v Sweden, Hela Schwarz, Einarsson) that reaches the jurisdictional gate on an IP or data investment?",
-    "Does the China–France BIT (2007) Protocol operator request yield a text bearing on the non-retroactivity/critical-date thread?"
+    "China–France BIT (2007): operator escalation RESOLVED at provision level 2026-07-27–31 (ledger da33a30be92ab234, operator_verified; quote_ok true / scope_ok false; snapshot amendment escalated). Ordinary residuals: Protocol full text (French) unread (GAP: china-france-bit-2007-protocol-text); China–Switzerland forum-relationship mapping (fork vs. no-U-turn) missing (GAP: china-switzerland-forum-relationship)."
   ],
-  "seq": 35,
+  "seq": 36,
   "history": [
+    {
+      "seq": 36,
+      "date": "2026-07-31",
+      "headline": "China–France BIT (2007) Escalation Resolved by Operator Action (Ledger da33a30b: No Mapped Prerequisite; Fork-in-the-Road) — Cross-BIT Typology Complete at Provision Level; Huawei ARB/22/2 Pendency Converted to Docket Fact (Both Costs Rounds Slipped; 2006 Rules Govern by Default); uncitral.un.org 403s Are User-Agent Artifacts (Two-Paths Item Closed); First Fully-Seated Delegated Session"
+    },
     {
       "seq": 35,
       "date": "2026-07-29",

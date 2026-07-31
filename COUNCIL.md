@@ -63,7 +63,7 @@ scouts → classifier → DIGEST email (Thematic Watch, unchanged)
 | Role | Model |
 |------|-------|
 | Orchestrator / chairman | `claude-fable-5` |
-| Heavy-reasoning sub-agents (research analyst, one-pager drafting) | `claude-opus-4-8` |
+| Heavy-reasoning sub-agents (research analyst) | `claude-fable-5` (operator directive 2026-07-29; one-pager drafting remains `claude-opus-4-8`) |
 | Utility sub-agents (integrity helper, editor, graph classifier) | `claude-opus-4-8` |
 | Digest classifier | unchanged (`claude-haiku-4-5-20251001`, in `src/classify.py`) |
 

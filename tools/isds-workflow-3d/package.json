@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "validate": "node validate.mjs",
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "render-static": "node render-static.mjs"
   },
   "dependencies": {},
   "devDependencies": {

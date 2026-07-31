@@ -41,3 +41,7 @@ forward." Minimum standard for Part V:
 These rules bind the daily routine regardless of any other prompt wording. If the
 routine's own instructions ever conflict, THIS file wins, and the conflict itself
 is worth a line in the record's procedural caveat.
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

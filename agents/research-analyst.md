@@ -104,3 +104,7 @@ sharpening beyond the seed corpus."
   agent definition committed in `16836d1`, and the model promotion to `claude-fable-5`
   committed in `4f8f981` ("feat(models): research analyst promoted to Claude Fable 5
   (operator directive)"). Roster and history: [[Agent Registry]] · [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

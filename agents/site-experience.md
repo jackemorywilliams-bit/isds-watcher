@@ -86,3 +86,7 @@ stands — no mandate is invented here.
   agent definition committed in `a852b80` ("feat(agents): durable project agent definitions
   — systems-designer + site-experience"; identical content committed earlier as `1c885b2`
   on the flowchart branch). Roster and history: [[Agent Registry]] · [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

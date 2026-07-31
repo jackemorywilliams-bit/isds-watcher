@@ -87,6 +87,16 @@ This is an index note. Its outgoing links exceed the four-link cap for spokes in
 WARN naming this file. That is expected for a roster and is recorded here so the warning is
 never mistaken for drift.
 
+As of 2026-07-31 a `build_graph` run prints **two** WARNs from this area — this note (11
+direct links) and [[Workflow Threads]] (9). Both are index notes and both are expected; the
+cap exists to keep ordinary spokes from becoming hubs, which is not what these are. A third
+WARN, `think-tank/multi-agent/_MOC.md`, predates the agent-memory area. Any WARN naming a
+per-agent note *would* be drift, and there are none.
+
+The notes under `agents/` carry their managed `Map:` blocks as of 2026-07-31, when
+`build_graph` was first run over this area after the `807666f` scan-boundary fix. Those
+blocks are generated: they are never hand-edited, and a run must leave them byte-identical.
+
 ## Maintenance
 
 When any agent's prompt, model, or contract changes, this table and the corresponding note
@@ -119,3 +129,7 @@ statements live in the seat's own note.
 - **2026-07-30** — Registry created with all nine agents, in the vault's inaugural
   agent-memory build. Sources: `16836d1` (seven council definitions) and `a852b80`
   (systems-designer, site-experience).
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

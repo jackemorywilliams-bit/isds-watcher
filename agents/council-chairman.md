@@ -104,3 +104,7 @@ meetings and fold in what fits."
   — 7 expert agent definitions bound to their canonical prompts"). Chairman's
   `claude-fable-5` assignment is unchanged by `4f8f981`, which moved only the analyst.
   Roster and history: [[Agent Registry]] · [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

@@ -25,8 +25,10 @@ rules written into its definition:
    (`moc/00 - Project Map.md` plus `views/isds-workflow-3d/`), `HANDOFF.md`, and the
    `agents/` memory area it owns.
 2. `scripts/build_graph.py` — the hub-and-spoke mapping script that owns the managed
-   `<!-- graph:auto start -->` blocks (idempotent; a second run is byte-identical; a
-   four-link cap on outgoing non-hub links per spoke).
+   `graph:auto` blocks (idempotent; a second run is byte-identical; a four-link cap on
+   outgoing non-hub links per spoke). **Never write that block's literal HTML start marker
+   into a note** — see the hazard recorded in the 2026-07-31 audit slice below; name the
+   convention, do not reproduce its delimiters.
 3. `scripts/build_site.py` — verified, not assumed: the public site is generated from
    `METHODOLOGY.md` and `digests/` only, so vault-internal notes such as these do not leak
    to the professor-facing surface.
@@ -94,6 +96,23 @@ Findings, all fixed in this change set except where noted:
    docket-page-first rules, the positive-control rule, the four new taxonomy entries, and the
    chairman's three session-protocol rules all existed only in the daily records. Each is now
    in the owning seat's note with its commit.
+6. **HAZARD, found by running `build_graph` and escalated: a note that quotes the managed
+   block's start marker destroys itself on the second run.** `scripts/build_graph.py:195`
+   builds its replacement pattern as
+   `re.escape(BLOCK_START) + r".*?" + re.escape(BLOCK_END)` under `re.DOTALL`, which matches
+   from the **first** occurrence of the start marker anywhere in the file — including one
+   sitting harmlessly inside backticks in prose. Run 1 appends a real block at the end of the
+   note; run 2 then matches the prose marker as the opening delimiter and the real block as
+   the closing one, and deletes everything in between. This note was the only file in the
+   vault that quoted the marker, being the note that documents the convention, and it lost 92
+   lines on the second run before being restored from `689a9e7`. Two consequences: the prose
+   above no longer reproduces the delimiters, and the idempotence guarantee the vault relies
+   on ("a second run is byte-identical") is **conditional** on no note ever quoting the start
+   marker. The narrow fix is machinery, so it is escalated rather than done here — anchor the
+   pattern to the last start marker, or skip markers inside code spans and fences (the module
+   already compiles `_CODE_FENCE`), or fail loudly on a duplicate start marker rather than
+   silently spanning it. Verified after the fix: two consecutive `build_graph` runs now leave
+   the tree byte-identical.
 
 **Audit slice, 2026-07-30.** Agents vs models. `src/models.py` sets
 `HEAVY_MODEL = "claude-fable-5"` and `HANDOFF.md` records the analyst on `claude-fable-5`
@@ -117,3 +136,7 @@ findings were fixed the same day by `807666f`; see item 4 of the 2026-07-31 slic
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`, which established this seat by operator order:
   "owns the vault as memory palace — per-agent notes, registry, change log, drift audits."
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

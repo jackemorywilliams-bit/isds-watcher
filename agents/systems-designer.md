@@ -90,3 +90,7 @@ stands — no mandate is invented here.
   on the flowchart branch), the commit that also unignored `.claude/agents/` so agent
   definitions became durable, tracked project artifacts. Roster and history:
   [[Agent Registry]] · [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

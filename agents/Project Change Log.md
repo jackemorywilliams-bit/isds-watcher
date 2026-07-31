@@ -70,6 +70,25 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
   the workflow-chart integration shipped in `665b3e7`: architecture accepted, page surface
   fixed, and the operator-name check performed explicitly ("every on-chart label and tooltip
   says Emory"). `3f6a6f8`, merged `784bd01`.
+- **The vault's managed blocks regenerated across `agents/` for the first time.** With the
+  `807666f` scan-boundary fix in place, `scripts/build_graph.py` was run over the vault: 99
+  notes in scope, 201 edges, 0 orphans, 33 files receiving their managed `Map:` block —
+  including all twelve notes under `agents/`, which had carried none since the area was
+  created. `.claude` is confirmed outside the scan boundary, so no agent definition was
+  touched. Verified afterwards: two consecutive runs leave all 123 markdown files
+  byte-identical, `scripts/check_site_sync.py` passes, and no managed markup appears anywhere
+  under `docs/`.
+- **HAZARD found by that run, and escalated: quoting the managed block's start marker in a
+  note destroys the note.** `scripts/build_graph.py:195` matches from the **first** start
+  marker in a file to the first following end marker, under `re.DOTALL`. A note that quotes
+  the marker in prose therefore survives run 1 (which appends a real block at the end) and is
+  gutted by run 2, which treats the prose marker as the opening delimiter. `agents/
+  obsidian-archivist.md` — the one note that documents the convention — lost 92 lines this
+  way and was restored from `689a9e7`. The prose no longer reproduces the delimiters, so the
+  vault is safe today, but the guarantee the vault relies on ("a second run is
+  byte-identical") is **conditional on no note ever quoting the start marker**, which is a
+  fragile guarantee for a convention every archivist is expected to document. Machinery fix
+  escalated, not done here.
 - **METHODOLOGY Parts III and VIII revised — on the open PR #33, not yet merged.**
   `984f5eb` ("docs(methodology): close source + council gaps surgically"), branch
   `feat/methodology-source-council-sync`. Part III's live-source list gains the PCA press
@@ -185,6 +204,15 @@ artifacts that only Emory can settle. Threads with a named agent owner live in
   definition or a card reading "inherits the invoking session" — an operator call. Raised
   2026-07-31; recorded in [[systems-designer]], [[site-experience]] and [[Agent Registry]].
   The generated chart is not hand-edited to hide it.
+- **`build_graph`'s block replacement spans a prose-quoted start marker.**
+  `scripts/build_graph.py:195` anchors to the first start marker in the file rather than the
+  managed one, so any note quoting that marker is gutted on the second run. Demonstrated and
+  contained on 2026-07-31 (see the entry above); the vault is safe only because no note now
+  quotes it. Narrow fixes, any one of which closes it: anchor to the **last** start marker,
+  skip markers inside code spans and fences (`_CODE_FENCE` is already compiled in the
+  module), or fail loudly on a duplicate start marker instead of silently spanning it. Wants
+  a regression test with a note that quotes the marker. Machinery work — [[systems-designer]]
+  on Emory's go-ahead.
 
 ### Closed
 
@@ -194,3 +222,7 @@ artifacts that only Emory can settle. Threads with a named agent owner live in
   (`.claude` added to `EXCLUDE_DIRS`). With the hazard gone, `scripts/build_graph.py` was run
   on 2026-07-31 and the `agents/` notes now carry their managed `Map:` blocks like every
   other spoke.
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

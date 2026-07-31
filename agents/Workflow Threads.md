@@ -274,7 +274,24 @@ specifically unblocks it.
   hand-edited to hide the discrepancy.
 - **Owner** — **Emory** decides; [[systems-designer]] regenerates.
 
-### C8 · PR #33 — METHODOLOGY Parts III and VIII
+### C8 · `build_graph` block replacement spans a prose-quoted marker
+
+- **State** — Found 2026-07-31 by actually running the script rather than reasoning about it.
+  `scripts/build_graph.py:195` builds its replacement pattern from the **first** start marker
+  in a file, so a note that quotes that marker in prose is destroyed on the second run — run 1
+  appends the real block, run 2 spans from the prose marker to it and deletes everything
+  between. `agents/obsidian-archivist.md` lost 92 lines this way and was restored from
+  `689a9e7`; its prose no longer reproduces the delimiters. The vault is byte-stable today
+  (two consecutive runs verified identical across 123 markdown files), but only because no
+  note quotes the marker.
+- **Recorded** — [[obsidian-archivist]] audit slice item 6, and the Open drift section of
+  [[Project Change Log]].
+- **Next** — Anchor to the last start marker, or skip markers inside code spans and fences
+  (`_CODE_FENCE` is already compiled in the module), or fail loudly on a duplicate start
+  marker. Wants a regression test whose fixture is a note that quotes the marker.
+- **Owner** — **Emory** authorizes; [[systems-designer]] implements. Machinery, not vault.
+
+### C9 · PR #33 — METHODOLOGY Parts III and VIII
 
 - **State** — Open, one commit, not merged. Part III's live-source list gains the PCA press
   page and Bing News; Part VIII is rewritten from "predetermined stages" to the real agent
@@ -335,4 +352,10 @@ the source of truth, and a disagreement between them is a defect in this note.
   corrections to the brief that produced it: the silent-decay guard reached main through
   PR #23 (`8178f1f`), not PR #32; and "Talkwalker URLs" is sourceable to `alerts.yaml`
   rather than to any council escalation, so it is recorded with that provenance. Six threads
-  not named in the brief were found open in the record and added: A2, A7, B3, C6, C8, D1.
+  not named in the brief were found open in the record and added: A2, A7, B3, C6, C7, C9,
+  D1. One more (C8) was found by running `scripts/build_graph.py` during this pass rather
+  than by reading the record — it is a live defect, not a documented one.
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

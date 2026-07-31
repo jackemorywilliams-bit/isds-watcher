@@ -92,3 +92,7 @@ source's priority — or its existence — should be revisited by Emory."
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`. Roster and history: [[Agent Registry]] ·
   [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

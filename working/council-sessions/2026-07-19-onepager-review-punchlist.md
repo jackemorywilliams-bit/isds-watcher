@@ -18,3 +18,7 @@ Rejections/merges:
 
 The three per-memo punch-lists (exact texts) are recorded in the operator-facing
 session report of this date; approval is per-item (PM-1..3, EL-1..3, B-1..3).
+
+<!-- graph:auto start -->
+Map: [[Workflow]]
+<!-- graph:auto end -->

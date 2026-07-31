@@ -49,6 +49,17 @@ run. With no API key the classifier falls back to the deterministic keyword scor
 dry run works entirely offline. The full method, with its scholarly grounding, is in
 [METHODOLOGY.md](METHODOLOGY.md).
 
+The entire system on one chart — the nine sources, the automated pipeline, the AI
+research council (with each agent's model), the researcher's human-verification
+column, and every Monday deliverable, with animated dots showing work flowing
+through it (drawn deterministically from this repository; every box cites the file
+that implements it):
+
+![ISDS Thematic Watcher workflow](docs/assets/workflow.svg)
+
+An annotated, hoverable version lives on the project site:
+[How It Works](https://jackemorywilliams-bit.github.io/isds-watcher/how-it-works.html).
+
 ## The weekly digest
 
 Every Monday, an annotated-bibliography digest goes to the configured recipient. Each

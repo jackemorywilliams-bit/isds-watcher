@@ -1015,6 +1015,28 @@ def build() -> int:
             ),
         )
 
+    # 4b. How-it-works page: the workflow chart, inlined so its SMIL animation
+    #     runs (an <img> would also animate, but inline keeps it self-contained and
+    #     lets the page ship with zero extra requests). The SVG artifact is built
+    #     and freshness-guarded by tools/isds-workflow-3d (validate.mjs fails the
+    #     chart build if it goes stale against the manifest).
+    workflow_svg_path = REPO_ROOT / "scripts" / "site_templates" / "assets" / "workflow.svg"
+    if workflow_svg_path.exists():
+        how_tpl = env.get_template("how_it_works.html.j2")
+        write(
+            DOCS / "how-it-works.html",
+            how_tpl.render(
+                active="how",
+                root="",
+                workflow_svg=workflow_svg_path.read_text(encoding="utf-8"),
+            ),
+        )
+        # Also publish the standalone artifact (the README embeds it from docs/).
+        write(DOCS / "assets" / "workflow.svg",
+              workflow_svg_path.read_text(encoding="utf-8"))
+    else:
+        print("    ! workflow.svg missing — how-it-works page skipped")
+
     # 5. Backtest page (root => same depth as home; deterministic, no I/O on
     #    docs/). run_backtest() scores a focused in-repo labelled set with the
     #    same deterministic scorer the pipeline uses and returns three separate

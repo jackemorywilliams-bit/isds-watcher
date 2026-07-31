@@ -893,3 +893,9 @@ main { display: block; }
   a { color: #000; text-decoration: underline; }
   .source-url { color: #000; }
 }
+
+/* How-it-works workflow chart */
+.workflow-figure { margin: 2rem 0; }
+.workflow-scroll { overflow-x: auto; border-radius: 10px; }
+.workflow-scroll svg { display: block; min-width: 720px; width: 100%; height: auto; }
+.workflow-figure figcaption { font-size: 0.85rem; color: var(--muted, #667); margin-top: 0.6rem; }

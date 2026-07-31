@@ -1,0 +1,28 @@
+{% extends "base.html.j2" %}
+{% block title %}How It Works — ISDS Thematic Watcher{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>How the instrument works</h1>
+  <p class="lede">
+    The chart below is the whole instrument on one page, drawn directly from the
+    repository it describes. Reading top to bottom: the nine public sources we check
+    every run; the automated pipeline that collects, de-duplicates, scores, and
+    quality-gates each candidate development; the council of AI research agents
+    (each box names its model) that interprets the week under binding
+    fact-verification gates; the researcher's own verification column — no claim is
+    stated as fact without a human check against its original source; and the
+    deliverables each Monday. The moving dots show work flowing through the system.
+    Hover any box for its full description and the exact code behind it.
+  </p>
+</section>
+<figure class="workflow-figure">
+  <div class="workflow-scroll">
+    {{ workflow_svg | safe }}
+  </div>
+  <figcaption>
+    Generated deterministically from the same manifest that renders this chart in
+    the project's research vault; every box and arrow cites the file that
+    implements it.
+  </figcaption>
+</figure>
+{% endblock %}

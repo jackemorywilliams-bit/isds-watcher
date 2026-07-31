@@ -13,6 +13,14 @@ Model ids are the ones in `src/models.py` — the single model-configuration loc
 together with each definition's frontmatter. Where a definition declares no model, that is
 recorded as "none declared" rather than inferred.
 
+Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
+
+**Definitions audited 2026-07-31 and unchanged since the registry was created:**
+`git log ede0f32..e153ce3 -- .claude/agents/ prompts/` returns no commits, so every model,
+contract, and prompt binding in the table below still reads as committed. What *did* change
+is each seat's working context — the method rules the council adopted in session — and the
+flowchart, which now carries a card for all nine seats.
+
 ## Roster
 
 | Agent | Model | Canonical prompts | Definition | Vault note |
@@ -32,28 +40,45 @@ Not an agent, but bound by the same model config: the digest classifier runs on
 runtime-fallback rule requires any REQUESTED-vs-ACTUAL discrepancy to be written into
 `HANDOFF.md` rather than silently substituted.
 
-## Flowchart boxes → notes
+## Flowchart cards → notes (click-through map)
 
-Every box in the council column of `views/isds-workflow-3d/workflow.json`, and the two
-automatic checks, now resolve to a real note. Boxes owned by no single agent say so.
+As of flowchart **v3.0** (`21f0240`, "all nine subagents on the chart, cards link to their
+vault training notes"), every one of the nine agents has its own card. Each role card's
+`target` is an Obsidian link text that `views/isds-workflow-3d/view.js` hands to
+`dv.app.workspace.openLinkText`, so `target: "agents/<name>"` must match a note filename
+exactly. **All nine resolve** — verified 2026-07-31 against
+`views/isds-workflow-3d/workflow.json` (28 nodes, 40 edges).
 
-| Box (`workflow.json` id) | Column | Resolves to |
+| Card (`workflow.json` id) | Column · row | `target` | Card model | Note |
+|---|---|---|---|---|
+| `chairman` | council · 7 | `agents/council-chairman` | Claude Fable 5 | [[council-chairman]] |
+| `minutes` | council · 11 | `agents/council-chairman` | Claude Fable 5 | [[council-chairman]] — the reconvene output of the same seat |
+| `analyst` | council · 8 | `agents/research-analyst` | Claude Fable 5 | [[research-analyst]] |
+| `systems-researcher` | council · 9 | `agents/systems-researcher` | Claude Opus 4.8 | [[systems-researcher]] |
+| `editor` | council · 10 | `agents/research-editor` | Claude Opus 4.8 | [[research-editor]] |
+| `analytics-officer` | council · 12 | `agents/analytics-officer` | Claude Opus 4.8 | [[analytics-officer]] |
+| `obsidian-archivist` | council · 14 | `agents/obsidian-archivist` | Claude Opus 4.8 | [[obsidian-archivist]] |
+| `integrity-officer` | Emory checks · 11 | `agents/integrity-officer` | Claude Opus 4.8 | [[integrity-officer]] |
+| `systems-designer` | machine · 7 | `agents/systems-designer` | Claude Fable 5 ⚠ | [[systems-designer]] |
+| `site-experience` | machine · 8 | `agents/site-experience` | Claude Fable 5 ⚠ | [[site-experience]] |
+
+⚠ **Card asserts a model no configuration file carries.** Neither
+`.claude/agents/systems-designer.md` nor `.claude/agents/site-experience.md` declares a
+`model:` key, and `src/models.py` does not cover repository-side seats — yet both cards read
+"Model: Claude Fable 5". Escalated to Emory; the resolution is either a `model: fable` line
+in each definition or a card that says "inherits the invoking session". The chart is not
+hand-edited to make the discrepancy disappear.
+
+Non-agent cards, unchanged:
+
+| Card | Column | Resolves to |
 |---|---|---|
-| `chairman` | council | [[council-chairman]] |
-| `minutes` | council | [[council-chairman]] — the reconvene output of the same seat (`prompts/council_reconvene.txt`) |
-| `analyst` | council | [[research-analyst]] |
-| `daily-researcher` | council | [[research-analyst]] — the substantive seat in the daily Claude Max routine, which convenes the full council |
-| `systems-researcher` | council | [[systems-researcher]] |
-| `editor` | council | [[research-editor]] |
-| `next-week` | council | No single owner: the living-memory files (`STATE_OF_THE_ANSWER.md`, `analytics/insights.jsonl`, `src/research_state.py`) written by the analyst and the chairman's minutes |
-| `claim-gate`, `citation-check` | Emory checks | [[integrity-officer]] — the deterministic half of that function (`src/integrity_gate.py`, `scripts/check_citations.py`) |
-| machine column (`collect` … `quality-bar`) | machine | [[systems-designer]] — code, not an agent seat; `ai-check` runs the digest classifier on Haiku 4.5 |
-| deliverables column (`daily-email` … `packet`) | deliverables | [[site-experience]] |
+| `daily-researcher` | council | `COUNCIL.md` — the daily routine that convenes the full council; the substantive seat in it is [[research-analyst]] |
+| `next-week` | council | `STATE_OF_THE_ANSWER.md` — no single owner: the living-memory files written by the analyst and the chairman's minutes |
+| `claim-gate`, `citation-check` | Emory checks | The deterministic half of the verification function (`src/integrity_gate.py`, `scripts/check_citations.py`); the judgment half is [[integrity-officer]] |
+| `collect` … `quality-bar` | machine | Code, not agent seats — built by [[systems-designer]]; `ai-check` runs the digest classifier on Haiku 4.5 |
+| `daily-email` … `packet` | deliverables | Owned by [[site-experience]] |
 | `emory-checks`, `ledger` | Emory checks | Emory — human judgment and the append-only ledger; no agent owns these |
-
-Two seats have no box at all, and that is by design: the analytics officer reads the
-machine column's `meta.json` output and speaks in the council's dialogue, and the archivist
-curates the vault in which this flowchart is rendered.
 
 ## Graph note
 
@@ -67,8 +92,30 @@ never mistaken for drift.
 When any agent's prompt, model, or contract changes, this table and the corresponding note
 change in the same commit, and the change is dated and cited in [[Project Change Log]].
 
+## Adopted method rules by seat
+
+Rules the council adopted in session that are now part of a seat's working context. Full
+statements live in the seat's own note.
+
+| Seat | Rule | Adopted | Commit |
+|---|---|---|---|
+| [[research-analyst]] | Fetch-first — attempt the direct fetch before reconstructing from search results | 2026-07-30 | `754ce32` (re-sequenced `e05f834`) |
+| [[research-analyst]] | Docket page before document hunt — for any ICSID question, fetch the case-detail page first | 2026-07-31 | `f03a90e` |
+| [[integrity-officer]] | Positive control before any HTTP-status objection | 2026-07-31 | `15c8131` |
+| [[integrity-officer]] | Fabrication taxonomy extended from six entries to ten | 2026-07-31 | `15c8131` |
+| [[council-chairman]] | Member return-path protocol (SendMessage to launcher; route via "main" on bounce) | 2026-07-30, first applied 07-31 | `de7b0fc` |
+| [[council-chairman]] | Spend checkpoint immediately after the vetting round | 2026-07-30, first applied 07-31 | `de7b0fc` / `15c8131` |
+| [[council-chairman]] | Name the proposition's latest dated refinement when delegating | 2026-07-31 | `f03a90e` |
+
 ## Change log
 
+- **2026-07-31** — Registry audited against `.claude/agents/`, `src/models.py`, and
+  `views/isds-workflow-3d/workflow.json`. Definitions unchanged (`ede0f32..e153ce3` touches
+  neither `.claude/agents/` nor `prompts/`). Two corrections: the flowchart mapping was
+  rewritten for **v3.0** (`21f0240`), which gave all nine seats a card and made the previous
+  "two seats have no box at all" sentence wrong; and the model conflict on the
+  `systems-designer` / `site-experience` cards is now recorded and escalated. Adopted method
+  rules added by seat. Threads note added: [[Workflow Threads]].
 - **2026-07-30** — Registry created with all nine agents, in the vault's inaugural
   agent-memory build. Sources: `16836d1` (seven council definitions) and `a852b80`
   (systems-designer, site-experience).

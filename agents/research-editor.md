@@ -44,7 +44,8 @@ deterministic gate's rulings.
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
 
-- Flowchart box: `editor` (council column).
+- Flowchart box: `editor` (council column, row 10). Unchanged by flowchart v3.0
+  (`21f0240`); card model reads "Model: Claude Opus 4.8", matching the definition.
 - Fed by: `claim-gate` ("`_gate_note` handed to the editor"), `citation-check` ("citation
   verdict attached to the brief"), and `analyst` ("`_run_editor` receives the analyst memo
   itself, alongside the gate note").
@@ -58,6 +59,16 @@ instances of the brief outrunning its evidence, measured issue over issue."
 
 ## Change log
 
+- **2026-07-31** — Audited, no drift. Model, definition, prompt contract, flowchart box and
+  edges all unchanged: no commit touched `.claude/agents/` or `prompts/` between `ede0f32`
+  and `e153ce3`, and v3.0 (`21f0240`) left the `editor` node as it stood. One context
+  addition worth carrying: `METHODOLOGY.md` Part VIII, which this seat writes into, was
+  rewritten to describe the real agent council — named models, the chairman directing but
+  never writing, and the security officer's objections binding what the editor may publish
+  (`984f5eb`, on the open PR #33, not yet merged). The binding relationship this note already
+  records is now the one the public methodology states. This seat did not sit in the
+  2026-07-31 daily session: it runs on the weekly brief, and the daily council's
+  accountability record covers the five seats that convened.
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`. Roster and history: [[Agent Registry]] ·
   [[Project Change Log]].

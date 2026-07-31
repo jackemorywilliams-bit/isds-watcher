@@ -47,14 +47,20 @@ rules written into its definition:
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
 
-- This seat has **no box** on the flowchart, by design: it is not a stage of the weekly run.
-  It curates the vault in which the flowchart is rendered — `moc/00 - Project Map.md`
-  embeds `views/isds-workflow-3d/` inside the managed `<!-- workflow-3d:start -->` block —
-  and it maintains the notes every council box now links to.
-- Fed by: the repository's own history (git log), the agent definitions under
-  `.claude/agents/`, and the council's records under `analytics/`.
-- Feeds: [[Agent Registry]] and [[Project Change Log]], and the drift escalations it raises
-  to Emory.
+- Flowchart box: `obsidian-archivist` (council column, row 14), added by flowchart v3.0
+  (`21f0240`) — "Keeps the vault's memory current: agent registry, change log, drift
+  audits." Card model reads "Model: Claude Opus 4.8", matching the definition.
+- Its one edge: fed by `next-week` ("the archivist folds project changes into the vault's
+  registry and change log"). It has no outbound edge on the chart, which is right — its
+  output is the vault the chart is rendered in, not a downstream pipeline stage.
+- Off-chart, it is also fed by the repository's own history (git log), the agent definitions
+  under `.claude/agents/`, and the council's records under `analytics/`; and it feeds
+  [[Agent Registry]], [[Project Change Log]], [[Workflow Threads]], and the drift
+  escalations it raises to Emory.
+- `moc/00 - Project Map.md` embeds `views/isds-workflow-3d/` inside the managed
+  `<!-- workflow-3d:start -->` block; every role card's `target` is an Obsidian link text
+  resolved by `dv.app.workspace.openLinkText` in `views/isds-workflow-3d/view.js`, which is
+  why each `agents/<name>` note must exist under exactly that name.
 
 ## Self-training mandate
 
@@ -63,19 +69,51 @@ registry, flowchart vs pipeline, HANDOFF vs workflows) and fix or escalate drift
 periodically research current Obsidian/PKM practice so the vault's organization stays
 state-of-the-art."
 
-**Audit slice, 2026-07-30 (this deployment).** Agents vs models. `src/models.py` sets
+**Audit slice, 2026-07-31.** Agents vs registry vs flowchart, plus the click-through check.
+Findings, all fixed in this change set except where noted:
+
+1. **Five notes claimed to have no flowchart box, and all five were wrong.** Flowchart v3.0
+   (`21f0240`) put every one of the nine agents on the chart. `integrity-officer`,
+   `analytics-officer`, `obsidian-archivist`, `systems-designer`, and `site-experience` all
+   gained boxes with real edges (40 edges, 28 nodes in
+   `views/isds-workflow-3d/workflow.json`). The registry's "two seats have no box at all"
+   sentence was wrong for the same reason.
+2. **Click-through check: all nine targets resolve.** Every `target` value of the form
+   `agents/<name>` in `workflow.json` has a matching note under `agents/`. Card models match
+   `src/models.py` and the definition frontmatter for the seven seats that declare a model.
+3. **Model conflict on two cards, escalated not resolved.** The `systems-designer` and
+   `site-experience` cards read "Model: Claude Fable 5" while neither definition declares a
+   `model:` key. The chart asserts an assignment no configuration file carries. Recorded in
+   both notes; Emory's call, and the chart is not hand-edited to make the problem disappear.
+4. **Both drifts escalated on 2026-07-30 are now closed** by `807666f` — `COUNCIL.md`'s model
+   row corrected to `claude-fable-5`, and `.claude` added to `EXCLUDE_DIRS` in
+   `scripts/build_graph.py`. A `--dry-run` on 2026-07-31 confirms `.claude` is out of the
+   scan boundary and no agent definition appears in the planned edits. The "Open drift,
+   escalated not fixed" section of [[Project Change Log]] has been corrected accordingly.
+5. **Adopted method rules were nowhere in agent memory.** The fetch-first and
+   docket-page-first rules, the positive-control rule, the four new taxonomy entries, and the
+   chairman's three session-protocol rules all existed only in the daily records. Each is now
+   in the owning seat's note with its commit.
+
+**Audit slice, 2026-07-30.** Agents vs models. `src/models.py` sets
 `HEAVY_MODEL = "claude-fable-5"` and `HANDOFF.md` records the analyst on `claude-fable-5`
 (commit `4f8f981`), but `COUNCIL.md`'s "Model assignments" table still reads
 "Heavy-reasoning sub-agents (research analyst, one-pager drafting) | `claude-opus-4-8`".
 That row is stale relative to the single source of truth. Escalated to Emory rather than
 edited here: `COUNCIL.md` is a project-facing document outside this note-building change
 set. A second finding from the same pass — `scripts/build_graph.py` would now write managed
-blocks into the agent definitions themselves — is recorded with its evidence in
-[[Project Change Log]] under "Open drift, escalated not fixed"; `build_graph` was therefore
-not run during this build.
+blocks into the agent definitions themselves — was recorded with its evidence in
+[[Project Change Log]]; `build_graph` was therefore not run during that build. *Both
+findings were fixed the same day by `807666f`; see item 4 of the 2026-07-31 slice above.*
 
 ## Change log
 
+- **2026-07-31** — Second deployment, by operator directive: linearize the vault's threads
+  and verify every agent's recorded context. Own drift fixed: the "no box" statement was
+  stale after flowchart v3.0 (`21f0240`), which gave this seat the `obsidian-archivist` box
+  and the `next-week → obsidian-archivist` edge. Added [[Workflow Threads]] — every open
+  thread as one linear chain with its owner. Both 2026-07-30 escalations confirmed closed by
+  `807666f`. Model and definition unchanged (`model: opus`).
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`, which established this seat by operator order:
   "owns the vault as memory palace — per-agent notes, registry, change log, drift audits."

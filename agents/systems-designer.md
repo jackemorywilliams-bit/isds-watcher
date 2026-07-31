@@ -16,6 +16,15 @@ agent inherits the invoking session's model; `src/models.py` assigns models to t
 pipeline's LLM stages and does not cover this repository-side seat. Recorded as-is rather
 than inferred.
 
+> **Unresolved conflict, recorded not papered over.** Flowchart v3.0 (`21f0240`) gave this
+> seat a card whose `meta` field reads "Model: Claude Fable 5"
+> (`views/isds-workflow-3d/workflow.json`, node `systems-designer`). The definition declares
+> no model at all. The chart therefore asserts an assignment no configuration file carries.
+> Either the definition should declare `model: fable` or the card should say "inherits the
+> invoking session" — but that is an operator decision about a project artifact, and the
+> chart is a generated-alongside artifact this seat does not hand-edit. Escalated to Emory;
+> the same conflict exists for [[site-experience]].
+
 ## Canonical training (binding)
 
 This seat binds no `prompts/*.txt` contract. Its canon is the repository's own machinery
@@ -42,13 +51,17 @@ and the standing constraints its definition names:
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
 
-- This seat has **no box** on the flowchart: it is not a stage of the weekly run. It builds
-  the stages. The machine-column boxes are the artifacts of its work — `collect`,
-  `skip-repeats`, `first-score`, `read-doc`, `ai-check`, `quality-bar` — as are the
-  automatic checks in the Emory column, `claim-gate` and `citation-check`, and the flowchart
-  view itself.
-- Fed by: operator directives and council-identified defects.
-- Feeds: the committed machinery every other agent's box runs on.
+- Flowchart box: `systems-designer` (machine column, row 7), added by flowchart v3.0
+  (`21f0240`) — "Builds the machinery: renderers, validators, pipelines — fail-closed,
+  tested." It sits in the machine column because that is what it builds, not because it is a
+  pipeline stage.
+- Its one edge: `systems-designer → site-experience` ("designer builds artifacts the site
+  agent publishes"). It has no inbound edge on the chart — it is fed by operator directives
+  and council-identified defects, which the chart does not draw.
+- The rest of the machine column is still the artifact of its work rather than its
+  successor: `collect`, `skip-repeats`, `first-score`, `read-doc`, `ai-check`,
+  `quality-bar`, plus `claim-gate` and `citation-check` in the Emory column, and the
+  flowchart view itself.
 
 ## Self-training mandate
 
@@ -59,6 +72,18 @@ stands — no mandate is invented here.
 
 ## Change log
 
+- **2026-07-31** — Two drifts fixed. (1) The "no box" statement was stale: this seat gained
+  the `systems-designer` box in flowchart v3.0 (`21f0240`), with the edge
+  `systems-designer → site-experience`. (2) The card's "Model: Claude Fable 5" conflicts with
+  a definition that declares no model; recorded above and escalated rather than resolved
+  here. Machinery landed in this seat's domain since the last audit, all fail-closed as the
+  contract requires: the chart's artifact machinery merged and regenerated for v3.0 with
+  manifest-derived guard counts (`0942d3f`, whose message names "systems-designer artifact
+  machinery"); the one-core / two-surface static workflow SVG — `tools/isds-workflow-3d/src/
+  chart-core.mjs` as a pure module feeding both the vault renderer and the site/README SVG —
+  with a freshness guard (`6ab7c05`); and the column-id `jack → emory` rename end to end
+  with a fail-closed token guard (`c06d8c8`, raised by the site-experience review). Definition
+  file itself unchanged. Threads: [[Workflow Threads]].
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `a852b80` ("feat(agents): durable project agent definitions
   — systems-designer + site-experience"; identical content committed earlier as `1c885b2`

@@ -44,7 +44,7 @@ SPOKE_BLOCK_EXEMPT = {"METHODOLOGY.md"}
 
 # Scan boundary. Excludes generated output, caches, deps, and .gitignore matches.
 EXCLUDE_DIRS = {".git", "docs", ".obsidian", "node_modules", ".venv", "venv",
-                "__pycache__", ".pytest_cache", "state", "seeds"}
+                "__pycache__", ".pytest_cache", "state", "seeds", ".claude"}
 EXCLUDE_TOP = {"digests"}  # generated digest archive: mapped via its hub, not per-file
 
 # 1) Exact path rules (first match wins; paths are repo-relative, "/"-separated).

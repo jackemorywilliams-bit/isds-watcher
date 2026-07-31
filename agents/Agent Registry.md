@@ -49,7 +49,7 @@ automatic checks, now resolve to a real note. Boxes owned by no single agent say
 | `claim-gate`, `citation-check` | Emory checks | [[integrity-officer]] — the deterministic half of that function (`src/integrity_gate.py`, `scripts/check_citations.py`) |
 | machine column (`collect` … `quality-bar`) | machine | [[systems-designer]] — code, not an agent seat; `ai-check` runs the digest classifier on Haiku 4.5 |
 | deliverables column (`daily-email` … `packet`) | deliverables | [[site-experience]] |
-| `jack-checks`, `ledger` | Emory checks | Emory — human judgment and the append-only ledger; no agent owns these |
+| `emory-checks`, `ledger` | Emory checks | Emory — human judgment and the append-only ledger; no agent owns these |
 
 Two seats have no box at all, and that is by design: the analytics officer reads the
 machine column's `meta.json` output and speaks in the council's dialogue, and the archivist

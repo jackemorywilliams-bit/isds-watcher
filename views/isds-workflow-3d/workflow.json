@@ -8,7 +8,7 @@
       "machine",
       "deliverables",
       "council",
-      "jack"
+      "emory"
     ]
   },
   "chips": [
@@ -351,8 +351,8 @@
       "meta": "Saved files — seed Monday's agenda"
     },
     {
-      "id": "jack-checks",
-      "col": "jack",
+      "id": "emory-checks",
+      "col": "emory",
       "row": 7,
       "kind": "human",
       "title": "Emory verifies facts",
@@ -366,7 +366,7 @@
     },
     {
       "id": "ledger",
-      "col": "jack",
+      "col": "emory",
       "row": 8,
       "kind": "human",
       "title": "Verified-facts ledger",
@@ -380,7 +380,7 @@
     },
     {
       "id": "claim-gate",
-      "col": "jack",
+      "col": "emory",
       "row": 9,
       "kind": "gate",
       "title": "Claim gate (automatic)",
@@ -393,7 +393,7 @@
     },
     {
       "id": "citation-check",
-      "col": "jack",
+      "col": "emory",
       "row": 10,
       "kind": "gate",
       "title": "Citation check (automatic)",
@@ -407,7 +407,7 @@
     },
     {
       "id": "integrity-officer",
-      "col": "jack",
+      "col": "emory",
       "row": 11,
       "kind": "role",
       "title": "Integrity officer",
@@ -566,7 +566,7 @@
       "evidence": "candidate_claims into integrity_gate"
     },
     {
-      "source": "jack-checks",
+      "source": "emory-checks",
       "target": "ledger",
       "kind": "check",
       "evidence": "verify.py mark appends operator events"

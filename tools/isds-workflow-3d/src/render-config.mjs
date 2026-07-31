@@ -8,14 +8,14 @@
 // site SVG (with views/isds-workflow-3d/workflow.json). Any change here —
 // layout OR palette — makes scripts/site_templates/assets/workflow.svg stale;
 // validate.mjs fails until 'npm run render-static' re-renders it.
-export const COLUMNS = ["machine", "deliverables", "council", "jack"];
+export const COLUMNS = ["machine", "deliverables", "council", "emory"];
 export const COL_TITLE = {
   machine: "THE MACHINE (runs itself)",
   deliverables: "WHAT GETS SENT",
   council: "THE AI RESEARCH COUNCIL",
-  jack: "EMORY — RESEARCHER CHECKS",
+  emory: "EMORY — RESEARCHER CHECKS",
 };
-export const COL_COLOR = { machine: "#64b5f6", deliverables: "#81c784", council: "#ba9ffb", jack: "#ffd54f" };
+export const COL_COLOR = { machine: "#64b5f6", deliverables: "#81c784", council: "#ba9ffb", emory: "#ffd54f" };
 // Arrow colors mean the ACTION, not the lane (operator: editor->brief email must
 // read as a SEND). Legend rendered from this table.
 export const EDGE_STYLE = {
@@ -63,7 +63,7 @@ export const THEMES = {
     chipName: "#1c2530", chipTag: "#6a7280", chipNameOff: "#6a7280", chipTagOff: "#9aa3ad",
     bannerTitle: "#0b3d5c", bannerTint: "#2a6496",
     legendBg: "#1c2530", legendTitle: "#0b3d5c", legendText: "#3a4654",
-    col: { machine: "#2a6496", deliverables: "#1a6b3a", council: "#6b4fa1", jack: "#9a7b2e" },
+    col: { machine: "#2a6496", deliverables: "#1a6b3a", council: "#6b4fa1", emory: "#9a7b2e" },
     edge: { flow: "#2a6496", send: "#1a6b3a", check: "#9a7b2e", council: "#6b4fa1" },
   },
 };

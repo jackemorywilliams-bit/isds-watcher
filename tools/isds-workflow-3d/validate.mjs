@@ -26,6 +26,25 @@ const EDGE_KINDS = new Set(Object.keys(rc.EDGE_STYLE));
 for (const blob of [JSON.stringify(m.nodes), JSON.stringify(m.chips)])
   if (/\bJack\b/.test(blob)) errors.push("professor-facing text contains 'Jack' — he goes by Emory");
 
+// -- internal vocabulary too: ids and column names are read by humans, so the
+// standalone token 'jack' (any case) is banned from every structural
+// identifier. Word-bounded match: hyphens/underscores count as boundaries
+// ('jack-checks', 'col-jack' are caught) while unrelated words containing the
+// letters ('hijack', 'jackpot') can never false-positive.
+const JACK_TOKEN = /\bjack\b/i;
+const banToken = (value, where) => {
+  if (typeof value === "string" && JACK_TOKEN.test(value))
+    errors.push(`${where} '${value}' contains the token 'jack' — the operator's column/id vocabulary is 'emory'`);
+};
+for (const col of rc.COLUMNS) banToken(col, "render-config column");
+for (const col of m.meta?.columns ?? []) banToken(col, "meta.columns entry");
+for (const n of m.nodes) { banToken(n.id, "node id"); banToken(n.col, "node col"); }
+for (const c of m.chips) banToken(c.id, "chip id");
+for (const e of m.edges) { banToken(e.source, "edge source"); banToken(e.target, "edge target"); }
+// meta.columns and the render config must agree — neither can be renamed alone.
+if (m.meta?.columns && JSON.stringify(m.meta.columns) !== JSON.stringify(rc.COLUMNS))
+  errors.push(`meta.columns [${m.meta.columns}] out of sync with render-config COLUMNS [${rc.COLUMNS}]`);
+
 // -- chips: all nine sources, individually visualized --
 if (m.chips.length !== 9) errors.push(`expected 9 source chips, got ${m.chips.length}`);
 for (const c of m.chips) {
@@ -220,6 +239,11 @@ if (svgText !== null) {
   for (const [kind, st] of Object.entries(rc.EDGE_STYLE))
     if (!svgText.includes(st.label)) errors.push(`${svgRel}: legend label for '${kind}' missing`);
   if (/\bJack\b/.test(svgText)) errors.push(`${svgRel} contains 'Jack' — he goes by Emory`);
+  // Class/id strings inside the artifact are read by humans too: the
+  // standalone token 'jack' (any case, word-bounded so 'wf-f-col-jack' is
+  // caught but 'hijack'-style words are not) can never regress into them.
+  for (const attr of svgText.matchAll(/\b(?:class|id)="([^"]*)"/g))
+    banToken(attr[1], `${svgRel} class/id`);
 }
 
 if (errors.length) {
@@ -230,4 +254,4 @@ if (errors.length) {
 console.log(`OK: 9 source chips, ${m.nodes.length} cards (all described, no overlaps), ` +
             `${m.edges.length} edges (no upward arrows), width ${totalW}px, animated dots on all ${EDGE_KINDS.size} edge kinds.`);
 console.log(`OK: ${svgRel} fresh (inputs-sha256 match), well-formed, ` +
-            `${m.nodes.length} cards / 9 chips / ${m.edges.length} edge paths / legend present, zero 'Jack'.`);
+            `${m.nodes.length} cards / 9 chips / ${m.edges.length} edge paths / legend present, zero 'Jack', zero 'jack' class/id tokens.`);

@@ -43,6 +43,31 @@ on the flowchart's `chairman` card ("Model: Claude Fable 5").
   stub." Escalated gaps (three or more unresolved sessions) are Emory's manual action
   items and receive zero search budget.
 
+## Adopted session protocol (session-derived, binding)
+
+Three rules this seat wrote for itself out of its own recorded defects. They govern how a
+delegated session is convened, and they are part of this seat's working context.
+
+- **Member return-path protocol** — adopted 2026-07-30, first applied 2026-07-31. Members
+  reply via SendMessage to their launcher; if a send bounces, the member routes via "main"
+  naming the intended recipient. Stated in the opening agenda of every delegated session.
+  Source: `analytics/daily-research/2026-07-31.md` Part 1, committed in `de7b0fc`; the
+  defect it answers (one bounce, one misroute) is recorded in the 2026-07-30 close-out
+  (`754ce32`). Result on first application: zero transport faults.
+- **Spend checkpoint after the vetting round** — adopted 2026-07-30, first applied
+  2026-07-31. The record through Part 3 is committed before further work, so a mid-session
+  termination never again loses the close-out. Source: same agenda (`de7b0fc`); the
+  checkpoint commit itself is `15c8131`, whose message names it.
+- **Name the latest refinement when delegating** — adopted 2026-07-31. A delegation that
+  asks a member to restate or build on a record proposition must name that proposition's
+  *latest dated refinement*, not its first statement; and agenda language must never assert
+  what the record does not hold ("the 403-returning path", never "the blocked path"). The
+  chairman adopted this into its delegation template after two of four binding objections in
+  that session traced to its own brief rather than to the member. Source: the chairman's
+  self-training note in `analytics/daily-research/2026-07-31.md`, committed in `f03a90e`;
+  the countermeasure originates in the integrity officer's *superseded-formulation
+  restatement* taxonomy entry from the same session.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
@@ -65,8 +90,21 @@ meetings and fold in what fits."
 
 ## Change log
 
+- **2026-07-31** — Adopted session protocol recorded: return-path protocol and spend
+  checkpoint (`de7b0fc`, checkpoint commit `15c8131`) and the name-the-latest-refinement
+  delegation rule (`f03a90e`). The 2026-07-31 session was the first in which every seat sat
+  and returned, run manually on the operator's standing order after the scheduled routine
+  did not fire (`analytics/daily-research/2026-07-31.md`, procedural caveat). Model,
+  definition, and prompt contract unchanged: `.claude/agents/council-chairman.md` still
+  declares `model: fable` against `CHAIRMAN_MODEL = "claude-fable-5"` in `src/models.py`,
+  and no commit touched `.claude/agents/` or `prompts/` between `ede0f32` and `e153ce3`.
+  Threads this seat directs: [[Workflow Threads]].
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1` ("feat(agents): complete trained council roster
   — 7 expert agent definitions bound to their canonical prompts"). Chairman's
   `claude-fable-5` assignment is unchanged by `4f8f981`, which moved only the analyst.
   Roster and history: [[Agent Registry]] · [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

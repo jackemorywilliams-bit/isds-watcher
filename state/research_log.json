@@ -1,14 +1,19 @@
 {
-  "last_updated": "2026-07-31",
+  "last_updated": "2026-08-01",
   "open_threads": [
     "Monthly standing watch: does the ICSID pending-cases docket register a Wingtech v. Netherlands proceeding? (Downgraded July 28, 2026 — Day 104; no ICSID registration identified in 104-day monitoring window; check monthly.)",
     "Will the spread of codified manifest-lack-of-merit gates (2026 ICC Art. 30; ICSID AF Rule 51(1)) produce any disposition touching IP-as-investment, as distinct from abuse-of-right admissibility?",
     "Does A/81/17 (expected Aug–Sep 2026) confirm the A/CN.9/1246 threshold once escalated to the principal?",
     "Any movement on the standing dockets (Huawei v Sweden, Hela Schwarz, Einarsson) that reaches the jurisdictional gate on an IP or data investment?",
-    "China–France BIT (2007): operator escalation RESOLVED at provision level 2026-07-27–31 (ledger da33a30be92ab234, operator_verified; quote_ok true / scope_ok false; snapshot amendment escalated). Ordinary residuals: Protocol full text (French) unread (GAP: china-france-bit-2007-protocol-text); China–Switzerland forum-relationship mapping (fork vs. no-U-turn) missing (GAP: china-switzerland-forum-relationship)."
+    "China–France BIT (2007): operator escalation RESOLVED at provision level 2026-07-27–31 (ledger da33a30be92ab234, operator_verified; quote_ok true / scope_ok false; snapshot amendment escalated). Ordinary residuals: Protocol full text (French) unread (GAP: china-france-bit-2007-protocol-text); China–Switzerland forum-relationship: CLOSED-PROVISIONAL 2026-08-01 (Art. 11(4) no-U-turn; MEDIUM confidence; primary text unread; article numbering CONTESTED — GAP-UNRESOLVED: china-switzerland-protocol-article-crossref, opened 2026-08-01)."
   ],
-  "seq": 36,
+  "seq": 37,
   "history": [
+    {
+      "seq": 37,
+      "date": "2026-08-01",
+      "headline": "China–Switzerland BIT Forum Relationship CLOSED-PROVISIONAL (Art. 11(4) No-U-Turn; MEDIUM Confidence); Montenero v. China NEW to Record (OUT-OF-CHANNEL; Entertainment Sector; Natural-Person Claimant); Daily Jus June 2026 Ring 1 Direct Hit ('copyrights, patents, trade secrets, or know-how'); A/81/17 Day 22 Null; GAP-UNRESOLVED: china-switzerland-protocol-article-crossref Opened"
+    },
     {
       "seq": 36,
       "date": "2026-07-31",

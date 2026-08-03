@@ -27,6 +27,11 @@
 #   "treaty shopping" ICSID
 
 feeds:
+  # Talkwalker (added 2026-08-03). Verified live: HTTP 200, application/rss+xml,
+  # parses. Its own title reports an aggregate of 4 alerts at 0 results — a new
+  # alert that has not collected yet, NOT a dead feed. Contrast the Google feeds
+  # below, which have returned zero entries since mid-July 2026.
+  - https://alerts.talkwalker.com/alerts/rss/DHKP4WJKEUOKWTM4VCYKBHJPLN7WTEOTIB3UBC22AXF37QNJVDFBBYLWE7VQ2UEEWQUGBV4U4U27K83
   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658210   # "treaty shopping" (ICSID/ISDS/BIT) -tax
   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946659308   # IP/patent/trademark "covered investment"
   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658263   # "promise utility doctrine" / promise doctrine Canada

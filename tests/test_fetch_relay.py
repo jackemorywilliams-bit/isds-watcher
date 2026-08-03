@@ -174,3 +174,54 @@ def test_environment_is_detected_never_asserted(monkeypatch):
     monkeypatch.setenv("GITHUB_RUN_ID", "12345")
     assert "github-actions-runner" in fetch_relay._environment()
     assert "12345" in fetch_relay._environment()
+
+
+# --- targeted excerpt -------------------------------------------------------
+
+def test_find_centres_the_window_on_the_match():
+    """The opening of a page is navigation; the answer is usually deep in it."""
+    body = "<nav>" + ("Menu item. " * 80) + "</nav><p>Relationship between forums: fork in the road.</p>"
+    plain = fetch_relay.excerpt_of(body, "text/html")
+    targeted = fetch_relay.excerpt_of(body, "text/html", find="relationship between forums")
+
+    assert "fork in the road" not in plain          # untargeted misses it
+    assert "fork in the road" in targeted            # targeted finds it
+    assert len(targeted) <= fetch_relay.EXCERPT_CHARS
+
+
+def test_find_with_no_match_returns_empty_not_the_page_opening():
+    body = "<p>Nothing relevant here at all.</p>"
+    assert fetch_relay.excerpt_of(body, "text/html", find="A/81/17") == ""
+
+
+def test_find_is_recorded_and_match_flagged(monkeypatch):
+    body = b"<p>Document symbol A/81/17 was issued.</p>"
+    monkeypatch.setattr(fetch_relay, "polite_get", lambda url: _Resp(body))
+    monkeypatch.setattr(fetch_relay, "reset_fetch_log", lambda: None)
+    monkeypatch.setattr(fetch_relay, "get_fetch_log", lambda: [])
+
+    hit = fetch_relay.fetch_one("https://uncitral.un.org/en/commission", find="A/81/17")
+    assert hit["find"] == "A/81/17"
+    assert hit["find_matched"] is True
+
+    miss = fetch_relay.fetch_one("https://uncitral.un.org/en/commission", find="A/82/17")
+    assert miss["find_matched"] is False
+    assert miss["excerpt"] == ""
+
+
+def test_request_accepts_plain_urls_and_targeted_entries(tmp_path, monkeypatch):
+    monkeypatch.setattr(fetch_relay, "polite_get", lambda url: _Resp(b"<p>fork in the road</p>"))
+    monkeypatch.setattr(fetch_relay, "reset_fetch_log", lambda: None)
+    monkeypatch.setattr(fetch_relay, "get_fetch_log", lambda: [])
+
+    req = tmp_path / "2026-08-03-mixed.json"
+    req.write_text(json.dumps({"urls": [
+        "https://icsid.worldbank.org/plain",
+        {"url": "https://investmentpolicy.unctad.org/t/978", "find": "fork"},
+    ]}))
+    manifest = fetch_relay.run(req, tmp_path / "out")
+
+    rows = manifest["records"][1:]
+    assert rows[0]["find"] == ""
+    assert rows[1]["find"] == "fork"
+    assert rows[1]["find_matched"] is True

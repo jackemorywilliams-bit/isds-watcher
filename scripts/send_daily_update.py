@@ -36,7 +36,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src import config  # noqa: E402
-from src.email_send import send_digest  # noqa: E402
+from src.email_send import send_digest
+from src import email_shell  # noqa: E402
 
 # Optional citation-check footer. scripts/verify_citations.py is built by a parallel
 # workstream and may not exist yet; guard the import so this script works either way.
@@ -199,8 +200,16 @@ def main(argv=None) -> int:
             print(f"sent:       skipped (de-duplicated)")
             return 0
         subject = f"ISDS Daily Council Meeting — {date_str}"
-        body_html = _md_to_html(_consistency_header(record) + record
-                                + _citation_footer(record))
+        body_html = email_shell.render(
+            _consistency_header(record) + record,
+            title="Daily Council Record",
+            kicker="ISDS Thematic Watcher",
+            issue=date_str,
+            lede=("The council's session for this date, as recorded — member "
+                  "contributions verbatim, the vetting note, and the chairman's "
+                  "close-out."),
+            footer=_citation_footer(record),
+        )
         cfg = config.load_config()
         ok = send_digest(body_html, subject, cfg)
         if ok:

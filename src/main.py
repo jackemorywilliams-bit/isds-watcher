@@ -19,7 +19,7 @@ from . import config, council_log, render, research_brief, research_state, sourc
 from .classify import classify_item, keyword_score
 from .email_send import send_digest
 from .enrich import enrich, notable_quote as enrich_notable
-from .sources import all_sources
+from .sources import all_sources, base
 
 logger = logging.getLogger("isds.main")
 
@@ -113,32 +113,57 @@ def main(argv=None) -> int:
     #      FAILED        — fetch raised (network / parse error)
     #      HEADLINE-ONLY — paywalled feed read at headline level only (e.g. IAReporter)
     #      DISABLED      — robots-blocked / suppressed feed that yielded nothing
-    #    A quiet or failed feed shows as such here — it is never hidden.
+    #      NOT-READ (r)  — HTTP was attempted, nothing was read, nothing yielded
+    #    A quiet or failed feed shows as such here — it is never hidden. NOT-READ
+    #    states only what WE could read: a 403 to our runner may be our own IP
+    #    class, so no status ever asserts a defect in the source itself.
     new_candidates = []
     for src in all_sources(cfg):
         if only and src.name not in only:
             continue
         failed = False
+        base.reset_fetch_log()
         try:
             items = src.fetch(since)
         except Exception as exc:  # noqa: BLE001
             logger.error("source %s failed: %s", src.name, exc)
             items = []
             failed = True
+        # polite_get swallows refusals into None, so a blocked source used to
+        # look exactly like a quiet one (italaw 403'd for four straight weeks
+        # while every digest called it healthy). Read the outcomes instead.
+        outcomes = base.get_fetch_log()
+        refusals = [o for o in outcomes if o["outcome"] in ("refused", "no_contact",
+                                                            "robots_disallowed")]
+        reached = any(o["outcome"] == "ok" for o in outcomes)
         fresh = [it for it in items if not state.is_seen(st, src.name, it.source_id)]
         stats["per_source"][src.name] = len(fresh)
         if not items:
             stats["dropped_sources"].append(src.name)
         if failed:
             status = "FAILED"
-        elif src.name in config.HEADLINE_ONLY_SOURCES:
-            status = "HEADLINE-ONLY"
         elif src.name in ROBOTS_BLOCKED_SOURCES and not items:
             status = "DISABLED"
+        elif refusals and not reached and not items:
+            # We attempted HTTP, read nothing, and yielded nothing. Say only
+            # what we could read — never that the source is at fault: a 403 to
+            # our runner may be our own IP class (council standing rule,
+            # 2026-08-03). Never a silently healthy zero.
+            reason = refusals[0]["detail"] or refusals[0]["outcome"]
+            status = f"NOT-READ ({reason})"
+        elif src.name in config.HEADLINE_ONLY_SOURCES:
+            status = "HEADLINE-ONLY"
         else:
             status = "RETURNED"
-        stats["source_health"].append(
-            {"name": src.name, "status": status, "count": len(items)})
+        entry = {"name": src.name, "status": status, "count": len(items)}
+        if refusals:
+            # Keep the evidence: what refused us, and how.
+            entry["refusals"] = [
+                {"url": o["url"], "outcome": o["outcome"], "detail": o["detail"]}
+                for o in refusals[:5]
+            ]
+            entry["refusal_count"] = len(refusals)
+        stats["source_health"].append(entry)
         new_candidates.extend(fresh)
     stats["total_candidates"] = len(new_candidates)
     logger.info("main: %d new candidates across sources", len(new_candidates))

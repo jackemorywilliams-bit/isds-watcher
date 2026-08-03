@@ -1,0 +1,59 @@
+{
+  "request": "2026-08-03-control.json",
+  "note": "First run: characterize the instrument. Three URLs with known answers plus the neutral control. Settles whether the UNCITRAL host (where A/81/17 will appear) is reachable from a runner.",
+  "fetched_at": "2026-08-03T18:23:13.959441+00:00",
+  "environment": "github-actions-runner (run 30841001381)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 2,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://uncitral.un.org/sites/default/files/2026-06/sps.pdf",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/sites/default/files/2026-06/sps.pdf",
+      "content_type": "application/pdf",
+      "bytes": 2104033,
+      "sha256": "8a1a9723626d9875969bb3f20aed63e3b5bbce4c42651d3ac5229fdae845de55",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.italaw.com/",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements",
+      "content_type": "text/html",
+      "bytes": 174574,
+      "sha256": "cc58921ffc19f21cce86465b9a0217b14f3f5c5baf3d83a25d95b4727e2cacfe",
+      "excerpt": "International Investment Agreements Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan &#197;land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Ber",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    }
+  ]
+}

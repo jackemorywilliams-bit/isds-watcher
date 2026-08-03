@@ -1,0 +1,8 @@
+{
+  "note": "First run: characterize the instrument. Three URLs with known answers plus the neutral control. Settles whether the UNCITRAL host (where A/81/17 will appear) is reachable from a runner.",
+  "urls": [
+    "https://uncitral.un.org/sites/default/files/2026-06/sps.pdf",
+    "https://www.italaw.com/",
+    "https://investmentpolicy.unctad.org/international-investment-agreements"
+  ]
+}

@@ -1,0 +1,60 @@
+name: fetch-relay
+
+# Retrieval for a research session that has no network of its own.
+#
+# The scheduled cloud council session cannot fetch anything — its proxy refuses
+# every outbound connection. This runner can. The session commits a request file;
+# that push fires this job; the job answers with a reduction (status, size,
+# sha256, short excerpt) committed back. No third-party document body is ever
+# written to the repository — the repo is public, and a commit is publication.
+#
+# Triggered by a pushed request file rather than the API: git is the one network
+# capability the fetch-dead session is proven to have, and a committed request
+# cannot be a shell-injection sink the way an interpolated input can.
+
+on:
+  push:
+    paths:
+      - 'analytics/fetch-requests/**'
+  workflow_dispatch: {}
+
+# Share the rate-limit domain with the weekly collection run. The per-domain
+# interval in polite_get is per-process, so two concurrent runs could hit one
+# host inside three seconds and make METHODOLOGY Part III's interval claim false.
+concurrency:
+  group: isds-watcher
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    # No secrets in this job: it fetches third-party content and parses it, so
+    # it must have nothing worth exfiltrating.
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run relay
+        run: python scripts/fetch_relay.py
+
+      - name: Commit results
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics/fetch-results/
+          if git diff --staged --quiet; then
+            echo "fetch-relay: no results to commit"
+            exit 0
+          fi
+          git commit -m "chore: fetch-relay results [skip ci]"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

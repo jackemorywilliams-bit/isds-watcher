@@ -310,3 +310,7 @@ Authoritative scores come from `src.classify.keyword_score`; the per-ring subtot
 breakdown is diagnostic instrumentation that mirrors the same substring loop.
 Proposed weights were applied to an in-memory deep copy of the fingerprint via the
 module cache; **`fingerprint.yaml` on disk was never edited.**
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

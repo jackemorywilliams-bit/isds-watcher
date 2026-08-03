@@ -29,6 +29,7 @@ MIN_INTERVAL_SECONDS = 3.0
 
 # Per-domain bookkeeping. Guarded by _lock so concurrent sources stay polite.
 _last_request_at: dict[str, float] = {}
+_fetch_log: list[dict] = []
 _robots_cache: dict[str, "robotparser.RobotFileParser | None"] = {}
 _lock = threading.Lock()
 
@@ -202,11 +203,34 @@ def _respect_rate_limit(domain: str) -> None:
 # ---------------------------------------------------------------------------
 # Polite GET
 # ---------------------------------------------------------------------------
+def _record_outcome(url: str, outcome: str, detail: str = "") -> None:
+    """Record one fetch outcome so callers can tell refusal from emptiness.
+
+    ``polite_get`` returns None for every failure, which makes a blocked source
+    look identical to a quiet one (italaw 403'd from CI for four consecutive
+    weeks while every digest reported it healthy). The log is the evidence that
+    a fetch was refused rather than simply finding nothing.
+    """
+    _fetch_log.append({"url": url, "outcome": outcome, "detail": detail})
+
+
+def reset_fetch_log() -> None:
+    """Clear the fetch log. Called before each source's fetch()."""
+    _fetch_log.clear()
+
+
+def get_fetch_log() -> list[dict]:
+    """Return outcomes recorded since the last reset (newest last)."""
+    return list(_fetch_log)
+
+
 def polite_get(url: str, timeout: int = 30, check_robots: bool = True):
     """GET ``url`` politely. Returns a requests.Response or None.
 
     Returns None (and logs a warning) on robots-disallow, non-200, timeout,
-    or any exception. NEVER raises.
+    or any exception. NEVER raises. Every outcome — including success — is
+    recorded via ``_record_outcome`` so the caller can distinguish "refused"
+    from "nothing there"; see ``get_fetch_log``.
 
     ``check_robots`` defaults to True and must stay True for all third-party
     content crawling. It is set False only for the operator's own subscribed
@@ -219,10 +243,12 @@ def polite_get(url: str, timeout: int = 30, check_robots: bool = True):
         import requests
     except Exception:  # pragma: no cover - dependency missing
         logger.warning("polite_get: requests not available; cannot fetch %s", url)
+        _record_outcome(url, "no_client")
         return None
 
     if check_robots and not robots_allowed(url):
         logger.warning("polite_get: robots.txt disallows %s for %s", url, USER_AGENT)
+        _record_outcome(url, "robots_disallowed")
         return None
 
     domain = _domain(url)
@@ -233,17 +259,22 @@ def polite_get(url: str, timeout: int = 30, check_robots: bool = True):
         resp = requests.get(url, headers=headers, timeout=timeout)
     except requests.exceptions.Timeout:
         logger.warning("polite_get: timeout fetching %s", url)
+        _record_outcome(url, "no_contact", "timeout")
         return None
     except requests.exceptions.RequestException as exc:
         logger.warning("polite_get: request error fetching %s (%s)", url, exc)
+        _record_outcome(url, "no_contact", type(exc).__name__)
         return None
     except Exception as exc:  # truly defensive
         logger.warning("polite_get: unexpected error fetching %s (%s)", url, exc)
+        _record_outcome(url, "no_contact", type(exc).__name__)
         return None
 
     if resp.status_code != 200:
         logger.warning("polite_get: non-200 (%s) for %s", resp.status_code, url)
+        _record_outcome(url, "refused", str(resp.status_code))
         return None
+    _record_outcome(url, "ok", "200")
     return resp
 
 

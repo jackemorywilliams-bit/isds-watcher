@@ -1,0 +1,65 @@
+name: vault-log
+
+# Emails the Obsidian archivist's session work log.
+#
+# The archivist runs on its own cadence as a scheduled cloud session and commits
+# a record to analytics/vault-sessions/<DATE>.md. This workflow notices records
+# that have not been sent and emails them.
+#
+# Why a cron rather than a push trigger: the routine's own commits carry
+# [skip ci], which GitHub honours by SKIPPING workflows, so a push-triggered
+# emailer would never fire on them. The daily-update workflow hit this first and
+# solved it the same way — run daily, send once, and commit the marker back so
+# the next run on a fresh checkout knows what has already gone out. The cadence
+# lives with the archivist routine; this job only asks "is there anything
+# unsent?", which makes it robust to the routine slipping a day.
+
+on:
+  schedule:
+    - cron: "0 16 * * *"   # 16:00 UTC daily — after the archivist's 15:00 window
+  workflow_dispatch: {}
+
+concurrency:
+  group: vault-log
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send vault work log
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: python scripts/send_vault_log.py
+
+      - name: Commit sent markers
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analytics/vault-sessions/.sent/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "vault-log: no new markers to commit"
+            exit 0
+          fi
+          git commit -m "chore: vault-log sent marker [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && \
+            git push origin "HEAD:${GITHUB_REF_NAME}" && break
+            echo "vault-log: push attempt $i failed; retrying"
+            sleep 5
+          done

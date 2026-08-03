@@ -1,8 +1,8 @@
 {
   "request": "2026-08-03-targeted.json",
   "note": "Retry of the two stuck items with targeted windows. (1) China-Switzerland BIT (2009) treaty 978 \u2014 the forum-relationship cell that completes the three-way comparison. (2) A/81/17 watch on the Commission Sessions page, day 3 of the publication window.",
-  "fetched_at": "2026-08-03T18:28:14.657820+00:00",
-  "environment": "github-actions-runner (run 30841369824)",
+  "fetched_at": "2026-08-03T18:31:21.397948+00:00",
+  "environment": "github-actions-runner (run 30841598377)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -32,7 +32,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "93ec6422cec757428b729055fae3caf6aa645f0d8d9795c11e733be969772ff6",
+      "sha256": "34ecc2cd2e9944afb429b24da9d16fc918961bc339ad72aa045ea6db6e1d5533",
       "excerpt": "ums ISDS forum options Domestic courts of the host State Yes ICSID Yes UNCITRAL Yes Other forums No Relationship between forums Preserving right to arbitration after domestic court proceedings Other specific ISDS features Limitation period for submission of claims No Provisional measures No Consolidation of claims No Limited remedies (specifying available types of remedies) No Treaty interpretatio",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -45,7 +45,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "6f3e82d5e662601988fbd6ec863c13280b4c74640d30f3da1710ee146f92f1d1",
+      "sha256": "c0861684e9fe51ebb588c75296038954a7096e88a86e8dd78df2d8b158441304",
       "excerpt": "",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": false

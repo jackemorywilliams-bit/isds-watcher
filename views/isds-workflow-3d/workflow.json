@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": 2.1,
+    "version": 2.2,
     "title": "ISDS Thematic Watcher — how the whole thing works",
     "derived": "2026-07-28",
-    "note": "v2.1 (operator revisions 2026-07-29): Emory naming, per-agent models + training lines, substantive plain language, badge layout fix, Bing News in / Google News retired, delivery legend reworded.",
+    "note": "v2.2 (2026-08-03): the fetch relay added to the machine lane — the daily council session has no network of its own, so it asks and a runner answers with a reduction (400 characters, never the document). Machine rows 7-8 hold the relay; the two builder agents move to 9-10, the digest email and site to 9-10, leaving deliverables row 8 clear as the corridor the relay's answer crosses. v2.1 (operator revisions 2026-07-29): Emory naming, per-agent models + training lines, substantive plain language, badge layout fix, Bing News in / Google News retired, delivery legend reworded.",
     "columns": [
       "machine",
       "deliverables",
@@ -183,6 +183,34 @@
       "meta": "Emory's fixed rule — 40 pass, 25 floor"
     },
     {
+      "id": "relay-request",
+      "col": "machine",
+      "row": 7,
+      "kind": "auto",
+      "title": "Ask for a page to be read",
+      "desc": "The daily council session cannot reach the internet at all, so it writes down the address it needs.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "analytics/fetch-requests/README.md: the request format and its rules",
+        ".github/workflows/fetch-relay.yml: push on analytics/fetch-requests/**"
+      ],
+      "meta": "Starts by itself when a request lands"
+    },
+    {
+      "id": "relay-answer",
+      "col": "machine",
+      "row": 8,
+      "kind": "gate",
+      "title": "Only a summary comes back",
+      "desc": "A separate run reads the page as politely as the weekly run does, then sends back 400 characters — never the page.",
+      "target": "METHODOLOGY",
+      "evidence": [
+        "scripts/fetch_relay.py: polite_get, 400-character excerpt, sha256 + byte length",
+        "scripts/fetch_relay.py: CONTROL_URL — a failed control voids the whole batch"
+      ],
+      "meta": "If the test link fails, nothing counts"
+    },
+    {
       "id": "daily-email",
       "col": "deliverables",
       "row": 7,
@@ -199,7 +227,7 @@
     {
       "id": "digest-email",
       "col": "deliverables",
-      "row": 8,
+      "row": 9,
       "kind": "send",
       "title": "Weekly digest email",
       "desc": "The annotated reading list of this week's finds — sent to Dr. Benavides.",
@@ -213,7 +241,7 @@
     {
       "id": "website",
       "col": "deliverables",
-      "row": 9,
+      "row": 10,
       "kind": "send",
       "title": "Public website",
       "desc": "The digest archive and methodology, published automatically to the project site.",
@@ -384,7 +412,7 @@
       "row": 9,
       "kind": "gate",
       "title": "Claim gate (automatic)",
-      "desc": "Code looks up every claim in the ledger by exact ID. Unverified claims must be labeled as leads; rejected ones are blocked.",
+      "desc": "Code looks up every claim in the ledger by exact ID. Unverified ones must be labeled leads; rejected ones are blocked.",
       "target": "HUMAN_REVIEW",
       "evidence": [
         "src/integrity_gate.py: exact claim-id lookup"
@@ -449,7 +477,7 @@
     {
       "id": "systems-designer",
       "col": "machine",
-      "row": 7,
+      "row": 9,
       "kind": "role",
       "title": "Systems designer",
       "desc": "Builds the machinery: renderers, validators, pipelines — fail-closed, tested. Trained on this repo's guards.",
@@ -462,10 +490,10 @@
     {
       "id": "site-experience",
       "col": "machine",
-      "row": 8,
+      "row": 10,
       "kind": "role",
       "title": "Site experience",
-      "desc": "Owns the professor-facing website, the emails and the README — every reader-facing surface. Trained on the site's templates.",
+      "desc": "Owns the professor-facing website, the emails and the README. Trained on the site's templates.",
       "meta": "Model: Claude Opus 5",
       "target": "agents/site-experience",
       "evidence": [
@@ -714,6 +742,30 @@
       "target": "website",
       "kind": "flow",
       "evidence": "site agent owns build_site.py + templates behind the public site"
+    },
+    {
+      "source": "daily-researcher",
+      "target": "relay-request",
+      "kind": "council",
+      "evidence": "the scheduled session's proxy refuses every outbound connection, so it commits analytics/fetch-requests/<name>.json instead of fetching"
+    },
+    {
+      "source": "relay-request",
+      "target": "relay-answer",
+      "kind": "flow",
+      "evidence": ".github/workflows/fetch-relay.yml: the pushed request fires a runner that runs scripts/fetch_relay.py through src.sources.base.polite_get"
+    },
+    {
+      "source": "relay-answer",
+      "target": "analyst",
+      "kind": "flow",
+      "evidence": "analytics/fetch-results/<name>.json: status, final url, byte length, sha256 and one 400-character excerpt — the reduction travels, never the document"
+    },
+    {
+      "source": "relay-answer",
+      "target": "systems-researcher",
+      "kind": "flow",
+      "evidence": "the same reductions answer the systems researcher's reading; the repository is public, so a commit is publication"
     }
   ]
 }

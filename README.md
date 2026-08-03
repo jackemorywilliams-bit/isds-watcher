@@ -50,8 +50,9 @@ dry run works entirely offline. The full method, with its scholarly grounding, i
 [METHODOLOGY.md](METHODOLOGY.md).
 
 The entire system on one chart — the nine sources, the automated pipeline, the AI
-research council (with each agent's model), the researcher's human-verification
-column, and every Monday deliverable, with animated dots showing work flowing
+research council (with each agent's model), the fetch relay the council reads
+through, the researcher's human-verification column, and every Monday
+deliverable, with animated dots showing work flowing
 through it (drawn deterministically from this repository; every box cites the file
 that implements it):
 
@@ -100,6 +101,25 @@ research compounds rather than restarting cold. The full account of the roles is
 The brief requires the Anthropic provider and key (its web search is an Anthropic server
 tool). When that is unavailable, or on a dry run, or on any error, the brief is simply skipped
 and the digest is unaffected.
+
+### The fetch relay
+
+The council's scheduled sessions run in the cloud with no network of their own — the proxy
+refuses every outbound connection — so a page they need is read by relay. The session commits
+a small request file under `analytics/fetch-requests/`; that push fires a GitHub Actions
+runner; the runner fetches each URL through the project's own `polite_get`, with the same
+identifying User-Agent, the same robots evaluation and the same three-second per-domain
+interval as the weekly collection run; and it commits back a **reduction** — status, final
+URL, byte length, SHA-256, and one excerpt capped at 400 characters. A request may name what
+it is looking for, so the excerpt is centred on the answer rather than on the page header.
+
+The standing rule is that the reduction travels, never the document. This repository is
+public and a commit is publication, so no third-party body is written into any file, branch,
+artifact or log. Every batch carries a control URL whose answer is already known; if the
+control fails, the batch is void and no row in it may be read as information about its
+resource — the runner was the problem, not the site. Like the analyst's web search, the relay
+retrieves only what the sources or the record already identified: it is not a second
+collection channel (`scripts/fetch_relay.py`, `.github/workflows/fetch-relay.yml`).
 
 ## Configuration
 
@@ -155,9 +175,12 @@ prompts/        classifier.txt (few-shot classifier) + the council role prompts
 templates/      digest.html.j2 and research_brief.html.j2 (the two weekly emails)
 scripts/        build_site.py + site templates (regenerates the website),
                 verify.py (operator verification-ledger CLI),
-                build_graph.py (on-demand vault mapper)
+                build_graph.py (on-demand vault mapper),
+                fetch_relay.py (runner-side fetch relay for the council)
 fingerprint.yaml   the three-ring lexicon (weights sum to 100 per ring)
-analytics/      verification_ledger.jsonl (append-only claim ledger) + records
+analytics/      verification_ledger.jsonl (append-only claim ledger) + records,
+                fetch-requests/ + fetch-results/ (the relay's request and
+                reduction files, committed as part of the run trail)
 moc/            the vault's hand-authored map-of-content hubs
 working/        one-pagers/ (seed-award case memos) + FINGERPRINT_DRIFT.md
 digests/        dated digest archive folders, committed each run
@@ -184,6 +207,14 @@ Sources fall into three tiers of access depth, and this is stated openly rather 
 - **RETIRED** — Google News RSS, permanently disallowed by its `robots.txt` and therefore
   inactive (honored, not circumvented), along with any individual page denied by robots or
   login.
+
+Access is also reported per run, never assumed. Every fetch records its outcome, so a source
+that attempted HTTP, read nothing and yielded nothing is reported as `NOT-READ (reason)` in
+that run's source health instead of as a healthy zero. The wording is deliberate: the status
+states what the instrument was able to read, and never asserts that the source is at fault —
+a 403 to a GitHub runner may be our own IP class rather than any refusal of the project.
+italaw answers a laptop and refuses CI under the identical User-Agent, and was reported
+healthy for four straight weeks before this status existed.
 
 Because of these tiers, the watcher is a **lead-generation floor** — the minimum of relevant
 developments visible in openly readable text — not a comprehensive census or monitor of all

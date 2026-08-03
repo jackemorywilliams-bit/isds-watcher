@@ -17,6 +17,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const manifestBytes = readFileSync(resolve(here, "../../views/isds-workflow-3d/workflow.json"));
 const m = JSON.parse(manifestBytes.toString("utf8"));
 const rc = await import("./src/render-config.mjs");
+const cc = await import("./src/chart-core.mjs");
 const errors = [];
 
 const NODE_KINDS = new Set(["auto", "process", "gate", "send", "role", "human"]);
@@ -67,6 +68,15 @@ for (const n of m.nodes) {
   if (!n.desc) errors.push(`${n.id}: missing plain-language description`);
   else if (n.desc.length > rc.CARD.descChars * 3)
     errors.push(`${n.id}: desc too long for the card (${n.desc.length} > ${rc.CARD.descChars * 3})`);
+  // LINE-ENFORCED, not just total-length-enforced: chart-core's greedy wrap
+  // stops breaking once it has descLines lines and dumps EVERY remaining word
+  // onto the last one, so a desc under the total cap can still paint a line
+  // that runs off the card (claim-gate + site-experience did exactly that
+  // until 2026-08-03). Re-run the real wrap and bound each painted line.
+  if (n.desc)
+    for (const line of cc.wrap(n.desc, rc.CARD.descChars, rc.CARD.descLines))
+      if (line.length > rc.CARD.descChars)
+        errors.push(`${n.id}: desc line runs off the card (${line.length} > ${rc.CARD.descChars} chars): '${line}'`);
   if (/\b(dedup|lexical|prescore|frontmatter|jsonl|SMIL|regex)\b/i.test(n.title))
     errors.push(`${n.id}: title contains jargon ('${n.title}')`);
   if (!n.target) errors.push(`${n.id}: missing markdown target`);

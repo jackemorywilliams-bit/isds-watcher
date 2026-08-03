@@ -113,20 +113,34 @@ def validate(url: str) -> str | None:
     return None
 
 
-def excerpt_of(text: str, content_type: str) -> str:
-    """A short opening excerpt of textual content; empty for non-text."""
+def excerpt_of(text: str, content_type: str, find: str = "") -> str:
+    """A short excerpt of textual content; empty for non-text.
+
+    With ``find``, the window is centred on the first case-insensitive match so
+    the excerpt answers the question that was asked — the opening of a page is
+    almost always navigation chrome. The cap is unchanged either way: what
+    travels is a locator-sized quotation, never the document.
+    """
     if "html" not in content_type and "text" not in content_type:
         return ""
     body = _TAG_RE.sub(" ", text)
     body = _ANY_TAG_RE.sub(" ", body)
     body = _WS_RE.sub(" ", body).strip()
+
+    if find:
+        idx = body.lower().find(find.lower())
+        if idx == -1:
+            return ""
+        start = max(0, idx - EXCERPT_CHARS // 4)
+        return body[start:start + EXCERPT_CHARS]
     return body[:EXCERPT_CHARS]
 
 
-def fetch_one(url: str) -> dict:
+def fetch_one(url: str, find: str = "") -> dict:
     """Fetch one URL and return its reduction. Never returns a body."""
     record = {
         "url": url,
+        "find": find,
         "outcome": "not_attempted",
         "status": None,
         "final_url": None,
@@ -163,26 +177,34 @@ def fetch_one(url: str) -> dict:
         "content_type": content_type,
         "bytes": len(content),
         "sha256": hashlib.sha256(content).hexdigest(),
-        "excerpt": excerpt_of(getattr(resp, "text", "") or "", content_type),
+        "excerpt": excerpt_of(getattr(resp, "text", "") or "", content_type, find),
+        "find_matched": bool(find) and bool(
+            excerpt_of(getattr(resp, "text", "") or "", content_type, find)),
     })
     return record
 
 
 def run(request_path: pathlib.Path, out_dir: pathlib.Path) -> dict:
     request = json.loads(request_path.read_text())
-    urls = [u for u in request.get("urls", []) if isinstance(u, str)]
-    truncated = len(urls) > MAX_URLS
-    urls = urls[:MAX_URLS]
+    targets = []
+    for entry in request.get("urls", []):
+        if isinstance(entry, str):
+            targets.append((entry, ""))
+        elif isinstance(entry, dict) and isinstance(entry.get("url"), str):
+            targets.append((entry["url"], str(entry.get("find", ""))))
+    truncated = len(targets) > MAX_URLS
+    targets = targets[:MAX_URLS]
+    urls = [u for u, _ in targets]
 
     records = [fetch_one(CONTROL_URL)]
     control_ok = records[0]["outcome"] == "ok"
-    for url in urls:
+    for url, find in targets:
         if control_ok:
-            records.append(fetch_one(url))
+            records.append(fetch_one(url, find))
         else:
             # Control failed: the instrument is not trustworthy this run, so no
             # row may be read as information about its resource.
-            records.append({"url": url, "outcome": "not_attempted",
+            records.append({"url": url, "find": find, "outcome": "not_attempted",
                             "status": None, "final_url": None, "content_type": None,
                             "bytes": None, "sha256": None, "excerpt": "",
                             "user_agent": USER_AGENT})

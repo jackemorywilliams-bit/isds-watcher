@@ -1,0 +1,80 @@
+{
+  "request": "2026-08-03-targeted.json",
+  "note": "Retry of the two stuck items with targeted windows. (1) China-Switzerland BIT (2009) treaty 978 \u2014 the forum-relationship cell that completes the three-way comparison. (2) A/81/17 watch on the Commission Sessions page, day 3 of the publication window.",
+  "fetched_at": "2026-08-03T18:28:14.657820+00:00",
+  "environment": "github-actions-runner (run 30841369824)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "find": "relationship between forums",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "content_type": "text/html",
+      "bytes": 207411,
+      "sha256": "93ec6422cec757428b729055fae3caf6aa645f0d8d9795c11e733be969772ff6",
+      "excerpt": "ums ISDS forum options Domestic courts of the host State Yes ICSID Yes UNCITRAL Yes Other forums No Relationship between forums Preserving right to arbitration after domestic court proceedings Other specific ISDS features Limitation period for submission of claims No Provisional measures No Consolidation of claims No Limited remedies (specifying available types of remedies) No Treaty interpretatio",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "find": "fork in the road",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "content_type": "text/html",
+      "bytes": 207411,
+      "sha256": "6f3e82d5e662601988fbd6ec863c13280b4c74640d30f3da1710ee146f92f1d1",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/commission",
+      "content_type": "text/html",
+      "bytes": 832338,
+      "sha256": "ca87a113c024605cac3538a1db73ec4559eaa0d8b447a2c1759488d5e1e21706",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "fifty-ninth",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/commission",
+      "content_type": "text/html",
+      "bytes": 832338,
+      "sha256": "ca87a113c024605cac3538a1db73ec4559eaa0d8b447a2c1759488d5e1e21706",
+      "excerpt": " York A/CN.9/1235/Rev.1 - Provisional agenda, annotations thereto and scheduling of meetings of the fifty-ninth session A/CN.9/1236 - Report of Working Group II (Dispute Settlement) on the work of its eighty-second session A/CN.9/1237 - Report of Working Group II (Dispute Settlement) on the work of its eighty-third session A/CN.9/1238 - Report of Working Group III (Investor-State Dispute Settlemen",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

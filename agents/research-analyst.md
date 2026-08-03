@@ -12,9 +12,9 @@ asserted fact.
 
 **Definition.** `.claude/agents/research-analyst.md`
 
-**Model.** `claude-fable-5` — `HEAVY_MODEL` in `src/models.py`; declared `model: fable` in
+**Model.** `claude-opus-5` — `HEAVY_MODEL` in `src/models.py`; declared `model: opus` in
 the definition; mirrored in `HANDOFF.md` and on the flowchart's `analyst` card ("Model:
-Claude Fable 5"). Promoted from `claude-opus-4-8` by operator directive 2026-07-29
+Claude Opus 5"). Promoted from `claude-opus-4-8` by operator directive 2026-07-29
 (commit `4f8f981`), on the ground that "the researcher requires the most thinking and the
 most advanced capabilities available."
 

@@ -6,8 +6,8 @@ existing default inside src/classify.py because that file is outside the protoco
 allowed-change manifest and the operator's assignment for it is "unchanged".
 
 Operator-confirmed assignments:
-    orchestrator/chairman      -> claude-fable-5
-    heavy-reasoning sub-agents -> claude-fable-5   (research analyst — operator directive
+    orchestrator/chairman      -> claude-opus-5
+    heavy-reasoning sub-agents -> claude-opus-5   (research analyst — operator directive
                                                     2026-07-29: the researcher needs the most
                                                     advanced capabilities available)
     utility sub-agents         -> claude-opus-4-8  (integrity helper, editor, graph classifier)
@@ -23,8 +23,8 @@ from __future__ import annotations
 import datetime
 import os
 
-CHAIRMAN_MODEL = "claude-fable-5"
-HEAVY_MODEL = "claude-fable-5"
+CHAIRMAN_MODEL = "claude-opus-5"
+HEAVY_MODEL = "claude-opus-5"
 UTILITY_MODEL = "claude-opus-4-8"
 
 # Digest classifier: operator assignment is "unchanged". The id lives HERE and is

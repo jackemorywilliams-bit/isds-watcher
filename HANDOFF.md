@@ -26,7 +26,7 @@
   (chairman → analyst+web search → deterministic integrity gate → editor). See `COUNCIL.md`.
   The brief needs the Anthropic provider (web search is an Anthropic server tool); disable
   with `RESEARCH_BRIEF_ENABLED=0`. Model ids come from the single config location
-  `src/models.py` (chairman `claude-fable-5`; heavy/utility `claude-opus-4-8`; digest
+  `src/models.py` (chairman `claude-opus-5`; heavy/utility `claude-opus-4-8`; digest
   classifier unchanged in `src/classify.py`); `RESEARCH_MODEL` remains an explicit
   operator override for every stage, and any requested-vs-actual runtime fallback is
   appended to this file automatically. Issues land in `briefs/<date>.html`; the full council deliberation is
@@ -160,11 +160,11 @@ Map: [[00 - Project Map]]
 
 ## Model runtime assignments (requested)
 
-- chairman: `claude-fable-5` · analyst: `claude-fable-5` (operator directive 2026-07-29:
+- chairman: `claude-opus-5` · analyst: `claude-opus-5` (operator directive 2026-07-29:
   the researcher gets the most advanced model) · one-pager drafting: `claude-opus-4-8` ·
   utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
   classifier: unchanged `claude-haiku-4-5-20251001` (kept in `src/classify.py`, outside
   the change manifest). Any runtime fallback appends a REQUESTED vs ACTUAL line below
   automatically (`src/models.py record_fallback`). This session's one-pager drafting ran
   on Opus 4.8 subagents as assigned; the orchestrating session itself runs on
-  `claude-fable-5` (requested and actual).
+  `claude-opus-5` (requested and actual).

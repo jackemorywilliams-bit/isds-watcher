@@ -64,7 +64,7 @@ periodically research current Obsidian/PKM practice so the vault's organization 
 state-of-the-art."
 
 **Audit slice, 2026-07-30 (this deployment).** Agents vs models. `src/models.py` sets
-`HEAVY_MODEL = "claude-fable-5"` and `HANDOFF.md` records the analyst on `claude-fable-5`
+`HEAVY_MODEL = "claude-opus-5"` and `HANDOFF.md` records the analyst on `claude-opus-5`
 (commit `4f8f981`), but `COUNCIL.md`'s "Model assignments" table still reads
 "Heavy-reasoning sub-agents (research analyst, one-pager drafting) | `claude-opus-4-8`".
 That row is stale relative to the single source of truth. Escalated to Emory rather than

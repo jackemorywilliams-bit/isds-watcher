@@ -11,9 +11,9 @@ closing with reconvene minutes that include a candid per-member accountability r
 
 **Definition.** `.claude/agents/council-chairman.md`
 
-**Model.** `claude-fable-5` — `CHAIRMAN_MODEL` in `src/models.py`; declared `model: fable`
+**Model.** `claude-opus-5` — `CHAIRMAN_MODEL` in `src/models.py`; declared `model: opus`
 in the definition; mirrored in `HANDOFF.md` ("Model runtime assignments (requested)") and
-on the flowchart's `chairman` card ("Model: Claude Fable 5").
+on the flowchart's `chairman` card ("Model: Claude Opus 5").
 
 ## Canonical training (binding, read in order)
 

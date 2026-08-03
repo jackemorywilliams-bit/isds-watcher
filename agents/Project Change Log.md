@@ -9,6 +9,18 @@ Dated entries for material changes to the project's agents, models, sources, wor
 vault. **Every line cites a commit hash.** Anything that cannot be cited is not written
 here. Newest first; dates are commit dates on the `feat/agent-operations` line of history.
 
+## 2026-08-03
+
+- **Chairman and research analyst moved from Claude Fable 5 to Claude Opus 5.** Operator
+  directive: the Fable 5 credit balance is exhausted, so both top seats move to Opus 5.
+  Applied in `src/models.py` (`CHAIRMAN_MODEL` and `HEAVY_MODEL` now `claude-opus-5`), the
+  two agent definitions' `model:` keys (`.claude/agents/council-chairman.md`,
+  `.claude/agents/research-analyst.md`), the six flowchart cards in
+  `views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `HANDOFF.md`, `METHODOLOGY.md`
+  Part VIII, and this vault's registry and per-agent notes. The other seats are unchanged
+  on Opus 4.8. The dated history above is left as written — the July 29 promotion to
+  Fable 5 happened and stays recorded.
+
 ## 2026-07-30
 
 - **Council roster completed — seven expert agent definitions.** Chairman, research

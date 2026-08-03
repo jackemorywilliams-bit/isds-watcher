@@ -264,7 +264,7 @@
         "analytics/daily-research/",
         "prompts/council_roundtable.txt"
       ],
-      "meta": "Model: Claude Fable 5"
+      "meta": "Model: Claude Opus 5"
     },
     {
       "id": "chairman",
@@ -278,7 +278,7 @@
         "src/research_brief.py: _run_chairman",
         "prompts/council_chairman.txt"
       ],
-      "meta": "Model: Claude Fable 5"
+      "meta": "Model: Claude Opus 5"
     },
     {
       "id": "analyst",
@@ -292,7 +292,7 @@
         "src/research_brief.py: _run_analyst",
         "prompts/research_analyst.txt"
       ],
-      "meta": "Model: Claude Fable 5"
+      "meta": "Model: Claude Opus 5"
     },
     {
       "id": "systems-researcher",
@@ -334,7 +334,7 @@
         "src/research_brief.py: _run_reconvene",
         "src/council_log.py"
       ],
-      "meta": "Model: Claude Fable 5"
+      "meta": "Model: Claude Opus 5"
     },
     {
       "id": "next-week",
@@ -453,7 +453,7 @@
       "kind": "role",
       "title": "Systems designer",
       "desc": "Builds the machinery: renderers, validators, pipelines — fail-closed, tested. Trained on this repo's guards.",
-      "meta": "Model: Claude Fable 5",
+      "meta": "Model: Claude Opus 5",
       "target": "agents/systems-designer",
       "evidence": [
         ".claude/agents/systems-designer.md"
@@ -466,7 +466,7 @@
       "kind": "role",
       "title": "Site experience",
       "desc": "Owns the professor-facing website, the emails and the README — every reader-facing surface. Trained on the site's templates.",
-      "meta": "Model: Claude Fable 5",
+      "meta": "Model: Claude Opus 5",
       "target": "agents/site-experience",
       "evidence": [
         ".claude/agents/site-experience.md",

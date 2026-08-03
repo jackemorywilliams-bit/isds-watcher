@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backtest | ISDS Thematic Watcher</title>
-  <meta name="description" content="A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the out-of-sample holdout that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.">
+  <title>ISDS Thematic Watch, 2026-08-03 | ISDS Thematic Watcher</title>
+  <meta name="description" content="Annotated digest of investor–State dispute developments surfaced on 2026-08-03, each with its source, a direct link to the original, a relevance score, and a quoted notable line.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-nav">
     <div class="nav-inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="../index.html">
         <span class="brand-mark">ISDS</span>
         <span class="brand-name">Thematic Watcher</span>
       </a>
@@ -23,11 +23,11 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="primary-nav" aria-label="Primary">
-        <a href="index.html" class="">Home</a>
-        <a href="methodology.html" class="">Methodology</a>
-        <a href="how-it-works.html" class="">How&nbsp;It&nbsp;Works</a>
-        <a href="digests/index.html" class="">Digest Archive</a>
-        <a href="backtest.html" class="active" aria-current="page">Backtest</a>
+        <a href="../index.html" class="">Home</a>
+        <a href="../methodology.html" class="">Methodology</a>
+        <a href="../how-it-works.html" class="">How&nbsp;It&nbsp;Works</a>
+        <a href="../digests/index.html" class="active" aria-current="page">Digest Archive</a>
+        <a href="../backtest.html" class="">Backtest</a>
         <a href="https://github.com/jackemorywilliams-bit/isds-watcher" class="nav-ext" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
       </nav>
     </div>
@@ -38,356 +38,135 @@
   <div class="measure">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li><a href="index.html">Home</a></li>
-        <li aria-current="page">Backtest</li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Digest Archive</a></li>
+        <li aria-current="page">2026-08-03</li>
       </ol>
     </nav>
-    <p class="page-kicker">Scorer evaluation</p>
-    <h1 class="page-title">Historical backtest</h1>
+    <h1 class="page-title">ISDS Thematic Watch</h1>
+    <p class="page-date">2026-08-03</p>
     <p class="page-lede">
-      A small exploratory backtest on known cases &mdash; not a comprehensive validation.
-      It scores familiar investor&ndash;State cases with the same deterministic keyword scorer
-      the pipeline uses, at the same digest threshold (40), and reports the results
-      in <strong>three separate buckets</strong> so the cases that trained the fingerprint never
-      inflate the headline.
+      An annotated digest of investor–State dispute developments at the IP-as-investment /
+      judicial-or-regulatory-measure / jurisdictional-admissibility intersection.
+    </p>
+    <p class="run-counts"><span class="count">13</span> screened
+      <span class="sep">·</span>
+      <span class="count">0</span> matches
+      <span class="sep">·</span>
+      <span class="count">1</span> watch-list leads shown</p>
+    <div class="run-summary">
+      <div class="run-stat"><span class="run-num">13</span><span class="run-label">screened</span></div>
+      <div class="run-stat"><span class="run-num">0</span><span class="run-label">matches</span></div>
+      <div class="run-stat"><span class="run-num">1</span><span class="run-label">watch-list leads</span></div>
+<div class="run-stat"><span class="run-num run-text">Iareporter Headlines</span><span class="run-label">source</span></div>    </div>
+    <p class="run-note">
+      Entries are ordered by thematic relevance. Each carries a two-sentence annotation and a
+      notable line drawn from the source. Items below the gate are surfaced as watch-list leads,
+      not matches.
     </p>
   </div>
 </section>
 
 <section class="band">
   <div class="measure">
-    <h2 class="section-head">Why three buckets</h2>
-    <div class="doc-body">
-      <p>
-        An earlier version of this page folded every case into one blended confusion matrix. That
-        flattered the scorer: the development <em>seed</em> awards are the very cases whose vocabulary
-        <em>defines</em> the fingerprint, so recovering them proves only that the system recognises
-        what generated it &mdash; circular, not predictive. To keep the headline honest, the cases are
-        split into three clearly-labelled buckets, each reported on its own:
-      </p>
-      <ul>
-        <li>
-          <strong>Seed recovery</strong> &mdash; the three development seed awards, scored
-          <em>in-sample</em>. A sanity check that the fingerprint recognises its own source material.
-          Its numbers never enter any headline.
-        </li>
-        <li>
-          <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
-          negatives, none of them used in development. This is the headline generalisation metric:
-          precision, recall, accuracy and F1 are computed on this bucket <em>alone</em>.
-        </li>
-        <li>
-          <strong>Live prospective</strong> &mdash; the live weekly digest archive, the only test
-          that scores cases the system has never seen before the outcome is known. Reported as an
-          honest status, not as numbers from this corpus.
-        </li>
-      </ul>
-      <p>
-        Every case&rsquo;s text comes from material already in the repository &mdash; the seeds from
-        their verbatim seed-tagged phrases in <code>fingerprint.yaml</code>, the holdout items
-        verbatim from <code>holdout_set.json</code>. Nothing here is fabricated, and any case whose
-        text could not be resolved in-repo was excluded rather than invented.
-      </p>
-    </div>
-  </div>
-</section>
+    <h2 class="section-head">Annotated bibliography: 1 entry</h2>
 
-<section class="band band-alt">
-  <div class="measure">
-    <p class="page-kicker">Bucket 1 &mdash; in-sample</p>
-    <h2 class="section-head">Seed recovery</h2>
-    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      The three development seed awards, scored against the lexicon their own text defines. This is a
-      recovery check, <strong>not predictive evidence</strong> &mdash; these numbers are deliberately
-      kept out of every headline.
-    </p>
-    <div class="doc-body">
-      <p>
-        Seeds recovered at the digest threshold (40):
-        <strong>3 of 3</strong>. Because the seeds trained the
-        fingerprint, a perfect recovery here is the expected, uninformative result &mdash; a failure
-        would signal a bug, but a pass says nothing about field performance.
-      </p>
-      <table>
-        <caption class="visually-hidden">
-          In-sample seed recovery: each seed award, the score the deterministic scorer assigned, and
-          the predicted band.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Seed award</th>
-            <th scope="col">Score</th>
-            <th scope="col">Predicted band</th>
-            <th scope="col">Recovered</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Bridgestone v. Panama</th>
-            <td>79</td>
-            <td><span class="badge badge-high">HIGH</span></td>
-            <td>yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Eli Lilly v. Canada</th>
-            <td>77</td>
-            <td><span class="badge badge-high">HIGH</span></td>
-            <td>yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Philip Morris v. Australia</th>
-            <td>66</td>
-            <td><span class="badge badge-med">MEDIUM</span></td>
-            <td>yes</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
 
-<section class="band">
-  <div class="measure">
-    <p class="page-kicker">Bucket 2 &mdash; out-of-sample (the headline)</p>
-    <h2 class="section-head">Out-of-sample holdout</h2>
-    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
-      off-theme negatives &mdash; 12 cases in all, none used in development. The
-      headline metrics below are computed on this bucket <strong>alone</strong>; the seeds are not in it.
-    </p>
-    <div class="doc-body">
-      <table>
-        <caption class="visually-hidden">
-          Confusion matrix of predicted match versus true label across 12
-          out-of-sample cases.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Predicted match (&#8805;&nbsp;40)</th>
-            <th scope="col">Predicted pass (&lt;&nbsp;40)</th>
-            <th scope="col">Row total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
-            <td><strong>TP 3</strong></td>
-            <td>FN 1</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
-            <td>FP 0</td>
-            <td><strong>TN 8</strong></td>
-            <td>8</td>
-          </tr>
-        </tbody>
-      </table>
 
-      <table>
-        <caption class="visually-hidden">
-          Headline generalisation metrics derived from the out-of-sample confusion matrix.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Precision</th>
-            <th scope="col">Recall</th>
-            <th scope="col">Accuracy</th>
-            <th scope="col">F1</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1.00</td>
-            <td>0.75</td>
-            <td>0.92</td>
-            <td>0.86</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        On this out-of-sample set the scorer makes
-        1 miss:
-        1 false negative and
-        0 false positives. The misses are
-        listed in full below &mdash; the point of a backtest is the failures, not the passes.
-      </p>
+    <h3 class="subsection-head">Direct matches <span class="sec-count">&ge;40 &middot; 0</span></h3>
+    <p class="none-note">No direct matches this run — no item reached the relevance threshold.</p>
 
-      <h3>Per-case results</h3>
-      <table>
-        <caption class="visually-hidden">
-          Per-case out-of-sample results: case, group, label, score, predicted band, and miss note.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Case</th>
-            <th scope="col">Group</th>
-            <th scope="col">Label</th>
-            <th scope="col">Score</th>
-            <th scope="col">Predicted band</th>
-            <th scope="col">Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Philip Morris v. Uruguay</th>
-            <td>holdout-positive</td>
-            <td>on-theme</td>
-            <td>73</td>
-            <td>
-              <span class="badge badge-high">HIGH</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mondev v. United States</th>
-            <td>holdout-positive</td>
-            <td>on-theme</td>
-            <td>62</td>
-            <td>
-              <span class="badge badge-med">MEDIUM</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Loewen Group v. United States</th>
-            <td>holdout-positive</td>
-            <td>on-theme</td>
-            <td>56</td>
-            <td>
-              <span class="badge badge-med">MEDIUM</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Apotex Holdings v. United States</th>
-            <td>holdout-positive</td>
-            <td>on-theme</td>
-            <td>8</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-<strong>false negative</strong>            </td>
-          </tr>
-          <tr>
-            <th scope="row">Chevron v. Ecuador — award collection (ITN)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Committees in IIAs (ITN analysis)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Gabriel Resources v. Romania — public hearing (ICSID)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Honduras signs the ICSID Convention</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Investment treaties in Chile’s experience (ITN insight)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">OECD Guidelines climate due-diligence update (ITN)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Rockhopper v. Italy resubmission tribunal (ITN)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-          <tr>
-            <th scope="row">Smurfit v. Venezuela — consent after denunciation (ITN)</th>
-            <td>holdout-negative</td>
-            <td>off-theme</td>
-            <td>0</td>
-            <td>
-              <span class="badge badge-low">LOW</span>
-            </td>
-            <td>
-correct            </td>
-          </tr>
-        </tbody>
-      </table>
+    <h3 class="subsection-head">Watch-list near-matches <span class="sec-count">25&ndash;39 &middot; 1</span></h3>
+    <ol class="entries">      <li class="entry reveal" id="entry-1">
+        <div class="entry-top">
+          <span class="entry-num">01</span>
+          <div class="entry-headline">
+            <h3 class="entry-title">
+              <a href="https://www.iareporter.com/articles/gazprom-affiliate-receives-shares-in-lindes-russian-subsidiary-as-assets-of-german-industrial-giant-are-auctioned-off-in-satisfaction-of-2-billion-eur-russian-judgements/" target="_blank" rel="noopener">Gazprom affiliate receives shares in Linde’s Russian subsidiary, as assets of German industrial giant are auctioned off in satisfaction of 2-billion-EUR Russian judgements</a>
+            </h3>
+            <div class="entry-badges">
+              <span class="badge badge-watch">WATCH · 25</span>
+              <span class="badge badge-none">no ring matched</span>
+            </div>
+          </div>
+        </div>
 
-      <h3>Where it misses, and why</h3>
-      <h4>False negatives</h4>
-      <ul>
-        <li><strong>Apotex Holdings v. United States</strong> (score 8). Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        <div class="source-block">
+          <span class="source-label">Source</span>
+          <span class="source-name">Iareporter Headlines</span>
+          <a class="source-read" href="https://www.iareporter.com/articles/gazprom-affiliate-receives-shares-in-lindes-russian-subsidiary-as-assets-of-german-industrial-giant-are-auctioned-off-in-satisfaction-of-2-billion-eur-russian-judgements/" target="_blank" rel="noopener">Read the original &#8599;</a>
+          <a class="source-url" href="https://www.iareporter.com/articles/gazprom-affiliate-receives-shares-in-lindes-russian-subsidiary-as-assets-of-german-industrial-giant-are-auctioned-off-in-satisfaction-of-2-billion-eur-russian-judgements/" target="_blank" rel="noopener">https://www.iareporter.com/articles/gazprom-affiliate-receives-shares-in-lindes-russian-subsidiary-as-assets-of-german-industrial-giant-are-auctioned-off-in-satisfaction-of-2-billion-eur-russian-judgements/</a>
+<span class="source-date">03 August 2026</span>        </div>
 
-<section class="band band-alt">
-  <div class="measure">
-    <p class="page-kicker">Bucket 3 &mdash; live prospective</p>
-    <h2 class="section-head">Live prospective</h2>
-    <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
-      Status: <strong>Zero direct thematic matches to date.</strong>
-    </p>
-    <div class="doc-body">
-      <p>The live weekly digest archive is the true prospective test — the only one that scores items the system has never seen, in real time, before the outcome is known. To date it has produced no direct thematic hit: across the published weeks not a single live listing has cleared the digest threshold as an on-theme match. What it has shown is the discipline you would want from a watcher running quiet — clean negative filtering of off-theme noise (ICSID procedural notices, ITN headlines, OECD guidance) and watch-list triage of near-misses held below threshold, not a live direct hit. Treat the holdout numbers above as the generalisation estimate and this archive as the honest, still-open prospective record.</p>
-    </div>
-    <p class="archive-foot">
-      See the <a href="digests/index.html">digest archive</a> for the live record, and the
-      <a href="methodology.html">methodology</a> for how the scorer and its threshold are defined.
-    </p>
+        <p class="entry-annotation">A Gazprom affiliate acquires shares in Linde's Russian subsidiary through an asset auction to satisfy Russian court judgments totaling 2 billion EUR. While it involves a judgment and asset enforcement, it does not engage intellectual property as a covered investment, challenge a judicial measure under treaty law, or raise jurisdictional/admissibility doctrines; it is a straightforward enforcement of a domestic judgment with no ISDS thematic intersection.</p>
+
+        <blockquote class="entry-quote">
+          <span class="quote-label">Notable line</span>
+          <p>N/A — source paywalled (headline only); body not accessible.</p>
+        </blockquote>
+
+        <p class="entry-tags"><span class="tag">russian_judgment</span><span class="tag">asset_auction</span><span class="tag">enforcement</span></p>
+      </li>
+</ol>
+
+    <h3 class="subsection-head">Source health <span class="sec-count">9 feeds</span></h3>
+    <p class="run-note" style="margin-bottom:14px;">Which catalogue feeds were readable this run, with the count each yielded. A quiet or suppressed feed is shown, not hidden.</p>
+    <table class="source-health" style="width:100%; border-collapse:collapse; font-family:var(--sans); font-size:14px;">
+      <thead>
+        <tr>
+          <th style="text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1px solid var(--line); padding:6px 8px;">Source</th>
+          <th style="text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1px solid var(--line); padding:6px 8px;">Status</th>
+          <th style="text-align:right; font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1px solid var(--line); padding:6px 8px;">Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Iisd Itn</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Google Alerts</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Gmail Scholar</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Italaw</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Icsid</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">1</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Iareporter Headlines</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-med">HEADLINE-ONLY</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">11</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Unctad Isds</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Pca Press</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">1</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);">Bing News</td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft);"><span class="badge badge-high">RETURNED</span></td>
+          <td style="padding:6px 8px; border-bottom:1px solid var(--line-soft); text-align:right; color:var(--muted);">0</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
   </main>
@@ -404,11 +183,11 @@ correct            </td>
           <div class="footer-col">
             <h2 class="footer-h">Project</h2>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="methodology.html">Methodology</a></li>
-              <li><a href="how-it-works.html">How It Works</a></li>
-              <li><a href="digests/index.html">Digest Archive</a></li>
-              <li><a href="backtest.html">Backtest</a></li>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../methodology.html">Methodology</a></li>
+              <li><a href="../how-it-works.html">How It Works</a></li>
+              <li><a href="../digests/index.html">Digest Archive</a></li>
+              <li><a href="../backtest.html">Backtest</a></li>
             </ul>
           </div>
           <div class="footer-col">

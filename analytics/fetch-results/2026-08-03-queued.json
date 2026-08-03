@@ -1,0 +1,59 @@
+{
+  "request": "2026-08-03-queued.json",
+  "note": "First working batch. (1) A/81/17 watch \u2014 window open since Aug 1; the Commission Sessions page is where A/80/17 was found. (2) China-Switzerland BIT (2009) forum-relationship cell, treaty 978 \u2014 the last piece of the three-way treaty-selection comparison, standing since 2026-07-31. Both were stranded on the operator's desk because the scheduled session cannot fetch.",
+  "fetched_at": "2026-08-03T18:25:23.447878+00:00",
+  "environment": "github-actions-runner (run 30841165880)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/commission",
+      "content_type": "text/html",
+      "bytes": 832338,
+      "sha256": "ca87a113c024605cac3538a1db73ec4559eaa0d8b447a2c1759488d5e1e21706",
+      "excerpt": "Commission Sessions | United Nations Commission on International Trade Law Skip to main content Welcome to the United Nations \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol United Nations Commission on International Trade Law English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol Navigation English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol Search Menu Search Clear Submit Include files and documents Se",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "content_type": "text/html",
+      "bytes": 207411,
+      "sha256": "929d9e70ae1e426f6bedc7214c0091872089007bd1cb27f13cd0ebf88d3c4706",
+      "excerpt": "China - Switzerland BIT (2009) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan &#197;land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://uncitral.un.org/en/about/pressreleases",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/about/pressreleases",
+      "content_type": "text/html",
+      "bytes": 223683,
+      "sha256": "eda3375766eb84910d64bcb4a85a1a2219fb1611e866965cd75a5f3ce6478e24",
+      "excerpt": "Press Releases | United Nations Commission on International Trade Law Skip to main content Welcome to the United Nations \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol United Nations Commission on International Trade Law English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol Navigation English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol Search Menu Search Clear Submit Include files and documents Search ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    }
+  ]
+}

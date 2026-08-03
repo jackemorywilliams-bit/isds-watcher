@@ -76,12 +76,21 @@ _STYLE = f"""
   .foot p {{ margin:4px 0; }}
 """
 
-# Lines the reader must act on, marked so they cannot be skimmed past.
+# Lines the reader must act on, marked so they cannot be skimmed past. This is the
+# single definition of "a line that needs Emory" — callers that want to COUNT such
+# lines must use action_line_count() rather than write their own pattern, or a line
+# can be counted in a subject while rendering as ordinary prose in the body.
 _ACTION_RE = re.compile(
-    r"^\s*(NEEDS? (?:YOUR )?(?:VERIFICATION|DECISION|SIGN-?OFF)|ACTION|AWAITING (?:YOU|EMORY)|"
-    r"FOR (?:YOU|EMORY)|OPERATOR ACTION|TO VERIFY)\b[:\-—]?\s*(.*)$",
+    r"^\s*(NEEDS? (?:YOU\b|(?:YOUR )?(?:VERIFICATION|DECISION|SIGN-?OFF))|ACTION|"
+    r"AWAITING (?:YOU|EMORY)|FOR (?:YOU|EMORY)|OPERATOR ACTION|TO VERIFY)"
+    r"\b[:\-—]?\s*(.*)$",
     re.I,
 )
+
+
+def action_line_count(md: str) -> int:
+    """How many lines in ``md`` will render as operator-action callouts."""
+    return sum(1 for line in md.splitlines() if _ACTION_RE.match(line.strip()))
 
 
 def _inline(text: str) -> str:

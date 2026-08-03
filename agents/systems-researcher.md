@@ -44,11 +44,41 @@ classification pipeline more efficient and more effective.
   title-mining near-veto is the model case.
 - "On a dry day, say so in one line — do not pad."
 
+## First seating — 2026-07-31
+
+This seat had a definition before it had a session. It was first actually convened on
+2026-07-31 (`analytics/daily-research/2026-07-31.md` Part 5; commits `e05f834`, `f03a90e`),
+against a three-item queue set by the 2026-07-30 close-out. All three were discharged:
+
+1. **`scripts/source_analytics.py` same-window defect — diagnosed and patched, sign-off
+   gated.** The report mixes windows: 10 archived runs in the denominator, per-source counts
+   from 5 of them, so `italaw` reads 200%. The patch preserves the lifetime figures the
+   council actually cites rather than naively restricting the window; four tests pass on the
+   patched copy and fail on the current one. **Edits to `scripts/` require Emory's sign-off**
+   — the patch text sits in Part 5 §2 and has not been applied. Conditions attached:
+   regenerate `analytics/source-receptivity.md` in the same commit, and re-read
+   `COUNCIL.md:25`.
+2. **Two corrections applied to `analytics/optimization-log.md`** (`e05f834`) — the
+   2026-07-01 quoted-phrase technique re-sequenced from *substitute* to
+   *fallback-after-attempted-fetch*, and the 2026-06-30 ODS-route entry's access premise
+   corrected as partly falsified (the recommendation stands on its independent
+   symbol-archiving ground).
+3. **One new proposal, dedup-checked** (`f03a90e`) — a `Health` column in the receptivity
+   report carrying each source's status and consecutive-zero streak from
+   `state/source_health.json`, on dbt's source-freshness pattern. Status: *proposed*.
+   Guardrail attached as a condition of adoption, not a nicety: the report is longitudinal
+   and health is point-in-time, so the column must carry an explicit "as of <latest run
+   date>" label. Sequencing: land **after** the same-window patch, never bundled with it.
+
+The seat also recorded a self-training note about a false hypothesis it killed with two
+git-log calls before it could become a false finding.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
 
-- Flowchart box: `systems-researcher` (council column).
+- Flowchart box: `systems-researcher` (council column, row 9). Unchanged by flowchart v3.0
+  (`21f0240`); card model reads "Model: Claude Opus 4.8", matching the definition.
 - Fed by: `daily-researcher` ("daily optimization ideas feed the systems log").
 - Feeds: `minutes` ("improvement queue lands in the close-out") and `packet`
   ("send_human_review.py section 2: workflow-improvement ideas from the optimization log
@@ -62,6 +92,16 @@ so your sourcing stays contemporary."
 
 ## Change log
 
+- **2026-07-31** — First seating recorded (`e05f834`, `f03a90e`): the `source_analytics.py`
+  same-window patch proposed and gated on Emory's sign-off, two optimization-log corrections
+  applied, one new health-column proposal added. Also confirms the `analytics/
+  optimization-log.md` idea bank is now this seat's live working record, not just a dedup
+  target. Model and definition unchanged (`model: opus`). Its one open thread:
+  [[Workflow Threads]].
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`. Roster and history: [[Agent Registry]] ·
   [[Project Change Log]].
+
+<!-- graph:auto start -->
+Map: [[Council]]
+<!-- graph:auto end -->

@@ -25,6 +25,11 @@ CANONICAL TRAINING (binding, read before every session):
    ship at all.
 3. The reporting standard (METHODOLOGY Part VII): descriptive-and-evaluative,
    AALL annotated-bibliography register, access limits stated plainly.
+4. prompts/carrying_span_rule.md — clause 6 is yours in particular: a relational or
+   superlative claim about a source ("strongest", "closest", "most on point") is
+   itself a proposition and needs its own carrying span, or it must be rewritten as
+   your judgement. Editing is where those claims get added; do not add one the memo
+   did not source.
 
 DISCIPLINE:
 - Model: Claude Opus 4.8.

@@ -22,7 +22,23 @@ utility sub-agents.
    output a short bulleted VETTING NOTE naming the required fix for each.
 2. [[council_calibration]] (`prompts/council_calibration.md`) — the checklist it enforces
    in full, on every member.
-3. `src/integrity_gate.py` and `scripts/verify.py` — the deterministic machinery that owns
+3. `prompts/carrying_span_rule.md` — **the Carrying-Span Rule**, adopted by the council
+   2026-08-03 as amended, added to this seat's definition on 2026-08-04. The rule's
+   mechanical tiers (R5) are this seat's to enforce: entry count equals
+   verification-statement count; `P`/`Q`/`D`/`V` present and non-empty; every `Q` carrying
+   a quotation pair **and** a pinpoint; every case carded with an outcome *on the point
+   cited* in `D`. **Amendment 2 is this seat's own contribution and the highest-value check
+   in the set** — every screened term with a nonzero count must be either the source of `Q`
+   or given a referent clause, because a nonzero count otherwise reads as corroboration.
+   `scripts/check_marks.py` carries part of this; **its module docstring is the single
+   statement of what it checks and its coverage is conditional** — read it there rather
+   than trust any restatement, including this one. Whatever the script does not exercise on
+   a given run is this seat's by hand, and as of 2026-08-04 that is most of it, because all
+   33 entries in `lit-review/` are in the legacy form. Two traps from the same session are
+   carried in this seat's own findings as well: **a zero-hit screen is not substantive
+   absence until the synonym is tried**, and **a grep establishes absence from the
+   repository, never from the project.**
+4. `src/integrity_gate.py` and `scripts/verify.py` — the deterministic machinery that owns
    ASSERTION decisions by exact claim-id lookup against Emory's append-only ledger. The
    officer vets what code cannot: judgment-level overreach and inflation.
 
@@ -48,6 +64,15 @@ utility sub-agents.
   binding objection against a correct finding"; only the positive control exposed it as an
   instrument artifact. Source: Observation 5 in
   `analytics/daily-research/2026-07-31.md`, committed in `15c8131`.
+- **The Carrying-Span Rule's mechanical tiers** — adopted 2026-08-03, into this seat's
+  definition 2026-08-04. Stated in full as canonical training item 3 above rather than
+  repeated here. In short: this seat owns R5 tiers 2, 3, 4 and 5; `scripts/check_marks.py`
+  carries part of them and its own docstring is the authority on which part, since coverage
+  depends on whether entries use the four marks. Tier 4 (span-in-source) is always by hand.
+  Amendment 2 — nonzero-referent parity — is this seat's own and the record calls it the
+  highest-value mechanical addition in the session. Source:
+  `analytics/council-sessions/2026-08-03-proposition-rule.md` R5 (`56cbb75`, merged
+  `b76f6c3`).
 - **The user-agent-gating finding** — the substantive result of that control, and the
   session's most consequential instrument finding. `uncitral.un.org` gates on user agent:
   under a default curl UA every path returns a 919-byte CloudFront 403 regardless of
@@ -68,7 +93,7 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**23 entries as of 2026-08-04.** Each cites the record that adopted it.
+**24 entries as of 2026-08-04.** Each cites the record that adopted it.
 
 | # | Entry | Adopted | Source |
 |---|---|---|---|
@@ -96,6 +121,7 @@ taxonomy in a restated sentence.
 | 21 | Constant-length determinism inference | 2026-08-04 | `analytics/daily-research/2026-08-04.md:541`, `51bb7a2` |
 | 22 | Unverified control design | 2026-08-04 | `analytics/daily-research/2026-08-04.md:542`, `51bb7a2` |
 | 23 | Echoed-find / self-confirming query | 2026-08-04 | `analytics/daily-research/2026-08-04.md:543`, `51bb7a2` — named by the analyst, adopted under his formulation |
+| 24 | Amendment-stripping | 2026-08-04 | integrity-officer vetting note, 2026-08-04 implementation session (in-session; not a committed artifact) |
 
 Entries 7–10, in the officer's own 2026-07-31 wording (`15c8131`):
 
@@ -196,10 +222,28 @@ Source of truth: `views/isds-workflow-3d/workflow.json`.
 
 ## Self-training mandate
 
-"Maintain a running taxonomy of fabrication patterns caught in this project (unsourced
-precision, inverted dispositions, snippet-as-fact, title-as-holding, memory-file
-reconstruction) and check every memo against the full taxonomy, extending it whenever a
-new pattern appears."
+Rewritten in the definition on 2026-08-04. It now reads, in substance: *maintain a running
+taxonomy of fabrication patterns caught in this project and check every memo against the
+**full** taxonomy, extending it whenever a new pattern appears. The taxonomy's home is
+`agents/integrity-officer.md` in the vault — read it there; do not work from a list
+enumerated in the definition, because an enumeration there goes stale silently.*
+
+The mandate names its own instance: council R8 found the definition still enumerating five
+patterns while this note's taxonomy stood at ten, and recorded that the same-day sync the
+council had called "the cheapest mechanical win in the session" did not bind within the day,
+in the single file it named.
+
+**What the rewrite costs and what it buys.** The definition no longer carries the patterns,
+so an instantiated prompt no longer contains them; the seat must read this note. That trades
+a list that silently drifts for a read that can be silently skipped. The trade is only worth
+making if this note stays current — which is why the count is in the heading and the change
+log below dates every extension.
+
+*The superseded text, for the record:* "Maintain a running taxonomy of fabrication patterns
+caught in this project (unsourced precision, inverted dispositions, snippet-as-fact,
+title-as-holding, memory-file reconstruction) and check every memo against the full
+taxonomy, extending it whenever a new pattern appears." Five patterns named against a
+taxonomy of ten.
 
 ## Change log
 
@@ -227,6 +271,33 @@ new pattern appears."
 - **2026-07-30** — Note created in the vault's inaugural agent-memory build. Records the
   agent definition committed in `16836d1`. Roster and history: [[Agent Registry]] ·
   [[Project Change Log]].
+
+
+### Entry 24 — added 2026-08-04
+
+- **Amendment-stripping** — a rule lifted out of a session record **in its pre-vetting draft
+  form**, carrying the adoption date and the word *binding*, with every objection that
+  conditioned adoption silently absent. The artifact is authentic, the attribution is
+  correct, and the date is right; what is missing is the amendments that were the price of
+  adoption, so the published rule is weaker than the rule the council actually adopted and
+  nothing on its face says so. Distinct from *superseded-formulation restatement*, which
+  restates an older proposition of the project's own record; here the *governing* text is
+  replaced by a draft of itself. Countermeasure: **lift from the ruling, never from the
+  member's return** — and when a record marks a text "as amended", the carrier names which
+  amendments are folded in and where the superseded draft sits, so a reader can tell the two
+  apart.
+  - **Instance, 2026-08-04.** In the change set that implemented the Carrying-Span Rule, the
+    draft at Part 3 §1 of `analytics/council-sessions/2026-08-03-proposition-rule.md` — the
+    systems designer's return, written before the officer's four amendments — is a
+    near-complete rule text sitting under the heading "THE RULE", 1,150 lines above the
+    ruling that supersedes it. Taking it would have shipped a binding rule missing step 3's
+    same-matter exit, the `V`-mark referent clause and its parity check, the
+    no-rigid-designator label, and item 5's finality condition. **Caught in vetting.** The
+    guard the catch produced is now standing, at `prompts/carrying_span_rule.md:3-7`: *"do
+    not lift the draft at Part 3 §1 of that record, which predates the amendments."*
+    Recorded from the integrity officer's vetting note for the 2026-08-04 implementation
+    session — that note is in-session and is not itself a committed artifact, which is
+    stated here rather than left for a reader to discover.
 
 <!-- graph:auto start -->
 Map: [[Council]]

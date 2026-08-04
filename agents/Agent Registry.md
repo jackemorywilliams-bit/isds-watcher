@@ -28,11 +28,11 @@ rules the council adopted in session, now recorded in the seat notes — and the
 | Agent | Model | Canonical prompts | Definition | Vault note |
 |---|---|---|---|---|
 | Council chairman | `claude-opus-5` (`CHAIRMAN_MODEL`) | `prompts/council_chairman.txt`, `prompts/council_reconvene.txt`, `prompts/council_calibration.md` | `.claude/agents/council-chairman.md` | [[council-chairman]] |
-| Research analyst | `claude-opus-5` (`HEAVY_MODEL`) | `prompts/research_analyst.txt`, `prompts/council_calibration.md` | `.claude/agents/research-analyst.md` | [[research-analyst]] |
-| Integrity officer | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/council_security.txt`, `prompts/council_calibration.md` | `.claude/agents/integrity-officer.md` | [[integrity-officer]] |
+| Research analyst | `claude-opus-5` (`HEAVY_MODEL`) | `prompts/research_analyst.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/research-analyst.md` | [[research-analyst]] |
+| Integrity officer | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/council_security.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/integrity-officer.md` | [[integrity-officer]] |
 | Analytics officer | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/council_roundtable.txt`, `prompts/daily_council_protocol.md` | `.claude/agents/analytics-officer.md` | [[analytics-officer]] |
 | Systems researcher | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/systems_researcher.txt` | `.claude/agents/systems-researcher.md` | [[systems-researcher]] |
-| Research editor | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/research_editor.txt` | `.claude/agents/research-editor.md` | [[research-editor]] |
+| Research editor | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/research_editor.txt`, `prompts/carrying_span_rule.md` | `.claude/agents/research-editor.md` | [[research-editor]] |
 | Obsidian archivist | `claude-opus-4-8` | none — canon is the vault, `scripts/build_graph.py`, `scripts/build_site.py` | `.claude/agents/obsidian-archivist.md` | [[obsidian-archivist]] |
 | Systems designer | none declared — inherits the invoking session | none — canon is the repository's machinery and `src/models.py` | `.claude/agents/systems-designer.md` | [[systems-designer]] |
 | Site & correspondence experience | none declared — inherits the invoking session | none — canon is `scripts/build_site.py`, `site_templates/`, `src/render.py` | `.claude/agents/site-experience.md` | [[site-experience]] |
@@ -60,11 +60,13 @@ dates v2.2 to 2026-08-03: the fetch relay added to the machine lane, and the two
 seats moved from machine rows 7–8 to rows **9–10** to clear the corridor its answer crosses.
 The registry now follows the manifest.
 
+Card models below are re-read from `views/isds-workflow-3d/workflow.json` on 2026-08-04.
+
 | Card (`workflow.json` id) | Column · row | `target` | Card model | Note |
 |---|---|---|---|---|
-| `chairman` | council · 7 | `agents/council-chairman` | Claude Fable 5 | [[council-chairman]] |
-| `minutes` | council · 11 | `agents/council-chairman` | Claude Fable 5 | [[council-chairman]] — the reconvene output of the same seat |
-| `analyst` | council · 8 | `agents/research-analyst` | Claude Fable 5 | [[research-analyst]] |
+| `chairman` | council · 7 | `agents/council-chairman` | Claude Opus 5 | [[council-chairman]] |
+| `minutes` | council · 11 | `agents/council-chairman` | Claude Opus 5 | [[council-chairman]] — the reconvene output of the same seat |
+| `analyst` | council · 8 | `agents/research-analyst` | Claude Opus 5 | [[research-analyst]] |
 | `systems-researcher` | council · 9 | `agents/systems-researcher` | Claude Opus 4.8 | [[systems-researcher]] |
 | `editor` | council · 10 | `agents/research-editor` | Claude Opus 4.8 | [[research-editor]] |
 | `analytics-officer` | council · 12 | `agents/analytics-officer` | Claude Opus 4.8 | [[analytics-officer]] |
@@ -111,11 +113,27 @@ This is an index note. Its outgoing links exceed the four-link cap for spokes in
 WARN naming this file. That is expected for a roster and is recorded here so the warning is
 never mistaken for drift.
 
-As of 2026-07-31 a `build_graph` run prints **two** WARNs from this area — this note (11
-direct links) and [[Workflow Threads]] (9). Both are index notes and both are expected; the
-cap exists to keep ordinary spokes from becoming hubs, which is not what these are. A third
-WARN, `think-tank/multi-agent/_MOC.md`, predates the agent-memory area. Any WARN naming a
-per-agent note *would* be drift, and there are none.
+As of 2026-08-04 a `build_graph --dry-run` prints **four** WARNs. Two are expected: this note
+(11 direct links) and [[Workflow Threads]] (9) are index notes, and the cap exists to keep
+ordinary spokes from becoming hubs, which is not what these are. A third,
+`think-tank/multi-agent/_MOC.md` (8), predates the agent-memory area.
+
+**The fourth is drift, and it is new:** `agents/obsidian-archivist.md` now reports 6 direct
+links against the cap of 4. The rule this note stated on 2026-07-31 — *any WARN naming a
+per-agent note would be drift, and there are none* — no longer holds, and the exception is
+the archivist's own note. The same run reports one broken link from that file, to a
+note named `Project Machinery`, which does not exist in the vault. Both are recorded rather
+than fixed by inventing the missing note; the archivist's note is the next slice due for
+audit.
+
+**Eleven notes are awaiting their managed block.** `build_graph --dry-run` on 2026-08-04
+plans edits to `prompts/carrying_span_rule.md`, `lit-review/BIBLIOGRAPHY_TEMPLATE.md`, both
+`analytics/council-sessions/2026-08-03-*.md` records, `analytics/vault-sessions/README.md`,
+`analytics/vault-sessions/2026-08-04.md`, `analytics/fetch-requests/README.md`, and the four
+`analytics/daily-research/2026-08-0*.md` records — every one of them a file created since the
+last full run. The run was **not** performed this session: it is a whole-vault operation and
+would put nine files unrelated to the rule into a branch scoped to it. The list is recorded
+here so the pending run is not lost.
 
 The notes under `agents/` carry their managed `Map:` blocks as of 2026-07-31, when
 `build_graph` was first run over this area after the `807666f` scan-boundary fix. Those
@@ -137,6 +155,11 @@ statements live in the seat's own note.
 | [[research-analyst]] | Docket page before document hunt — for any ICSID question, fetch the case-detail page first | 2026-07-31 | `f03a90e` |
 | [[integrity-officer]] | Positive control before any HTTP-status objection | 2026-07-31 | `15c8131` |
 | [[integrity-officer]] | Fabrication taxonomy extended from six entries to ten | 2026-07-31 | `15c8131` |
+| [[research-analyst]] | **Carrying-Span Rule** — every source cited for a proposition, its own included; binds returns and daily research records (R7), not `candidate_claims` | 2026-08-03, into the definition 2026-08-04 | `56cbb75` / `prompts/carrying_span_rule.md` |
+| [[research-editor]] | **Carrying-Span Rule clause 6** — relational and superlative claims about a source are propositions and need their own span | 2026-08-03, into the definition 2026-08-04 | `56cbb75` / `prompts/carrying_span_rule.md` |
+| [[integrity-officer]] | **Carrying-Span Rule R5 tiers** — mark parity, nonzero-referent parity (its own Amendment 2), degenerate uniformity; tier 4 by hand | 2026-08-03, into the definition 2026-08-04 | `56cbb75` / `scripts/check_marks.py` |
+| [[integrity-officer]] | Taxonomy entry 24 — *amendment-stripping* | 2026-08-04 | integrity-officer vetting note, 2026-08-04 implementation session (in-session; not a committed artifact) |
+| [[integrity-officer]] | Self-training mandate points at the vault taxonomy instead of enumerating patterns | 2026-08-04 | `.claude/agents/integrity-officer.md` |
 | [[council-chairman]] | Member return-path protocol (SendMessage to launcher; route via "main" on bounce) | 2026-07-30, first applied 07-31 | `de7b0fc` |
 | [[council-chairman]] | Spend checkpoint immediately after the vetting round | 2026-07-30, first applied 07-31 | `de7b0fc` / `15c8131` |
 | [[council-chairman]] | Name the proposition's latest dated refinement when delegating | 2026-07-31 | `f03a90e` |

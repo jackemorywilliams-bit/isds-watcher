@@ -26,6 +26,15 @@ deterministic gate's rulings.
    with explicit unverified framing; an operator-rejected claim does not ship at all.
 3. The reporting standard in `METHODOLOGY.md` Part VII: descriptive-and-evaluative, the
    AALL annotated-bibliography register, access limits stated plainly.
+4. `prompts/carrying_span_rule.md` — **the Carrying-Span Rule**, adopted by the council
+   2026-08-03 as amended, added to this seat's definition on 2026-08-04. Clause 6 is this
+   seat's in particular: a relational or superlative claim about a source — "strongest",
+   "closest", "most on point" — is itself a proposition and needs its own carrying span,
+   or it must be rewritten as the editor's own judgement. Editing is where such claims get
+   added, so the definition's instruction is *do not add one the memo did not source*.
+   Note the limit the council recorded against this clause at R4: item 6 is a labelling
+   rule, not a catch — the writer who prefixes "in my judgement" passes the clause while
+   the claim stays false. It caught none of the five 2026-08-03 uses.
 
 ## Discipline highlights
 

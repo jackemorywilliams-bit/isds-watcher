@@ -188,7 +188,7 @@
       "row": 7,
       "kind": "auto",
       "title": "Ask for a page to be read",
-      "desc": "The daily council session cannot reach the internet at all, so it writes down the address it needs.",
+      "desc": "The daily review session cannot reach the internet at all, so it writes down the address it needs.",
       "target": "METHODOLOGY",
       "evidence": [
         "analytics/fetch-requests/README.md: the request format and its rules",
@@ -258,13 +258,13 @@
       "row": 11,
       "kind": "send",
       "title": "Research brief email",
-      "desc": "The council's plain-English interpretation of the week — sent to Dr. Benavides.",
+      "desc": "The review stages' plain-English interpretation of the week — sent to Dr. Benavides.",
       "target": "moc/Digest Archive",
       "evidence": [
         "src/render.py: render_research_brief",
         "src/main.py: brief email step"
       ],
-      "meta": "Council-written, sent automatically"
+      "meta": "AI-written, sent automatically"
     },
     {
       "id": "packet",
@@ -272,7 +272,7 @@
       "row": 12,
       "kind": "send",
       "title": "Monday review packet",
-      "desc": "Emory's Monday briefing: council minutes and grades, workflow ideas, the state of the answer, and claims needing his check.",
+      "desc": "Emory's Monday briefing: session minutes and grades, workflow ideas, the state of the answer, and claims needing his check.",
       "target": "HUMAN_REVIEW",
       "evidence": [
         "scripts/send_human_review.py",
@@ -286,7 +286,7 @@
       "row": 6,
       "kind": "role",
       "title": "Daily researcher",
-      "desc": "Meets daily: works the open questions, logs every genuinely new sourced insight, plus at most one improvement idea.",
+      "desc": "Runs daily: works the open questions, logs every genuinely new sourced insight, plus at most one improvement idea.",
       "target": "COUNCIL",
       "evidence": [
         "analytics/daily-research/",

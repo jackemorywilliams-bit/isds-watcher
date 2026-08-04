@@ -28,15 +28,22 @@ separately:
   pulled by id from ``scripts/holdout_set.json``. None of these were used in
   development, so this bucket is the headline generalisation metric:
   precision / recall / accuracy / F1 are computed on it *alone*. It keeps the
-  candid Apotex miss.
+  candid Apotex miss. The corpus lists EVERY labelled holdout item, so this
+  bucket and ``scripts/eval_holdout.py`` score the same set and must report the
+  same numbers; ``scripts/check_claims.py`` makes a divergence fail the build.
 
 * **LIVE PROSPECTIVE** — not numbers from this corpus. The honest prospective
   test is the live weekly digest archive, whose current status is reported in
   prose (see ``live_prospective`` below).
 
 Holdout items are referenced by id rather than copied so the holdout stays the
-single source of truth. Any case whose text cannot be resolved in-repo is
-*excluded*, never faked.
+single source of truth. The exclusion branches below are a guard against a
+dangling id, NOT a curation rule: every labelled holdout item is listed in the
+corpus and every one resolves, so nothing is excluded today. Until 2026-08-04
+eight labelled negatives were simply absent from the corpus, and the smaller N
+that produced was explained on the site by an exclusion that had never happened.
+An id that stops resolving must be fixed, not tolerated — the exclusion prints a
+line and the count check in ``scripts/check_claims.py`` fails the build.
 
 Run standalone:   python scripts/backtest.py
 As a library:     from scripts.backtest import run_backtest

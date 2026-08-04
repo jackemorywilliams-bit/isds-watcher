@@ -64,10 +64,13 @@ An annotated, hoverable version lives on the project site:
 ## The weekly digest
 
 Every Monday, an annotated-bibliography digest goes to the configured recipient. Each
-surfaced development appears as a citation, a two-sentence descriptive-and-evaluative
-annotation, a quoted notable line from the source, and the rings it matched. The same
-content is committed to the repository under `digests/YYYY-MM-DD_ISDS-Thematic-Watch/`,
-with one Markdown file per entry, and is published to the website.
+surfaced development appears as a citation, a short descriptive-and-evaluative annotation,
+the rings it matched, and — where the source text was reachable — a quoted notable line from
+it. Entries drawn from a paywalled feed carry no quotation, are marked headline-only, and
+were assessed from the headline alone; 10 of the 14 entries archived so far are in that
+category. The same content is committed to the repository under
+`digests/YYYY-MM-DD_ISDS-Thematic-Watch/`, with one Markdown file per entry, and is
+published to the website.
 
 The digest reports every match at or above the threshold with no upper cap, so a busy week
 shows all of them. To keep a normal week substantive it fills up to a minimum of six items
@@ -93,7 +96,9 @@ Brief findings are now gated on operator verification: only claims the operator 
 verified (`python scripts/verify.py mark`) may be asserted — everything else is presented as
 an unverified lead or routed for library access, never as an established finding.
 Each role is a prompt or pipeline component, and every role's output is archived, so the work
-stays auditable and reproducible while gaining the multi-perspective rigor of a council. The
+stays auditable and reproducible. These roles are not independent researchers: they share
+source material, prompt lineage, model family, and this project's framing assumptions, and can
+therefore share the same errors — agreement between roles is not corroboration. The
 open threads from each issue are persisted and fed back into the next week's agenda, so the
 research compounds rather than restarting cold. The full account of the roles is in
 [COUNCIL.md](COUNCIL.md); brief issues are archived under [briefs/](briefs/).

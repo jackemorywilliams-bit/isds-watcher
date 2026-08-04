@@ -24,6 +24,25 @@
   </div>
 </section>
 
+<section class="status-strip" aria-labelledby="status-strip-h">
+  <div class="measure">
+    <p class="status-strip-label" id="status-strip-h">Status</p>
+    <p class="status-strip-body">
+      <strong>Exploratory research prototype.</strong>
+      {% if status.runs %}
+      {{ status.runs }} archived run{{ '' if status.runs == 1 else 's' }};
+      {{ status.screened }} candidate{{ '' if status.screened == 1 else 's' }} screened;
+      {{ status.matches }} above-threshold match{{ '' if status.matches == 1 else 'es' }}.
+      {% else %}
+      No runs archived yet.
+      {% endif %}
+      Validation is preliminary. Output is machine-assisted and remains provisional
+      unless individually marked human-verified &mdash;
+      <a href="how-it-works.html">what that means</a>.
+    </p>
+  </div>
+</section>
+
 <section class="band">
   <div class="measure">
     <h2 class="section-head">What it watches</h2>
@@ -158,11 +177,11 @@
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step reveal"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step reveal"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are opened so their full text, not just a case name, can be read.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">3</span><div><strong>Read the most promising in full</strong><br>Items are ranked by how closely their wording matches the project&rsquo;s doctrinal vocabulary, and the strongest are fetched so that more than a case name can be read. Where a source is paywalled, only the headline is available and the item is scored from that.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step reveal"><span class="flow-k">4</span><div><strong>Judge relevance to the theme</strong><br>A language model reads each item and rates how strongly it touches the three rings: IP as a protected investment, a judicial or regulatory measure, and a jurisdictional doctrine.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
-      <div class="flow-step reveal"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest, and the strongest are always included so the report is never empty.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">5</span><div><strong>Score and shortlist</strong><br>Each item receives a relevance score, High, Medium, or Low. Those that meet the threshold make the digest. Near-misses at or above the relevance floor of 25 are shown separately as watch-list leads, not as matches; a genuinely quiet week reports zero items and says so.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step flow-end reveal"><span class="flow-k">6</span><div><strong>Write up and deliver</strong><br>The shortlist is written as an annotated bibliography, saved to a dated archive, published to this website, and emailed to the recipients.</div></div>
     </div>
@@ -175,15 +194,17 @@
     <h2 class="section-head">What you receive</h2>
     <p class="lede">
       Every Monday, an <strong>annotated-bibliography digest</strong>: each surfaced development
-      as a citation line, a two-sentence descriptive-and-evaluative annotation, a quoted notable
-      line drawn from the source, and the rings it matched. The same content is committed to the
-      repository under a dated archive folder, browsable and citable.
+      as a citation line, a short descriptive-and-evaluative annotation, the rings it matched,
+      and &mdash; where the source text was reachable &mdash; a quoted notable line drawn from it.
+      Entries that came from a paywalled feed carry no quotation, are marked headline-only, and
+      were assessed from the headline alone. The same content is committed to the repository
+      under a dated archive folder, browsable and citable.
     </p>
     <ul class="receive-list">
       <li><strong>A citation</strong> in Chicago form, with the source named and the URL supplied liberally.</li>
       <li><strong>An annotation</strong> that is both descriptive and evaluative, reflecting on which rings the development implicates and why it matters to the project.</li>
-      <li><strong>A verbatim notable line</strong> from the source, so the reader can proceed directly to backsourcing.</li>
-      <li><strong>A direct link to the original</strong> on every entry, so sources are impossible to miss.</li>
+      <li><strong>A verbatim notable line</strong> where the source text was reachable, so the reader can proceed directly to backsourcing. Headline-only entries carry no quotation and say so.</li>
+      <li><strong>A direct link to the original</strong> on every entry, with the full URL printed alongside it.</li>
     </ul>
     <div class="cta-row">
       <a class="btn btn-primary" href="digests/index.html">Open the latest digest</a>
@@ -199,13 +220,15 @@
       {% if digests %}
       <h2 class="closing-title">The most recent digest is dated {{ digests[0].date }}.</h2>
       <p class="closing-sub">
-        {{ digests[0].screened_str }} screened, {{ digests[0].matches_str }} matches,
-        {{ digests[0].accepted_str }} watch-list leads shown.
-        Each item shown carries its source named, linked, and quoted.
+        {{ digests[0].screened_str }} candidate{{ '' if digests[0].screened == 1 else 's' }} screened,
+        {{ digests[0].matches_str }} match{{ '' if digests[0].matches == 1 else 'es' }},
+        {{ digests[0].accepted_str }} item{{ '' if digests[0].accepted == 1 else 's' }} surfaced.
+        Each item shown carries its source named and linked, and quoted where the source text
+        was reachable.
       </p>
       {% else %}
       <h2 class="closing-title">No digests have been archived yet.</h2>
-      <p class="closing-sub">The archive will populate after the first weekly run.</p>
+      <p class="closing-sub">The archive will populate after the first run.</p>
       {% endif %}
     </div>
     <div class="closing-actions">

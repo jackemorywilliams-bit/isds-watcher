@@ -348,6 +348,65 @@ def test_scorer_matches_fingerprint_examples():
         assert band == ex["expected_band"], f"{ex['title']}: got {s} ({band})"
 
 
+def test_fingerprint_examples_declare_the_score_they_actually_get():
+    """The band alone was the only field ever asserted, and under that cover all seven
+    expected_score values drifted wrong (88/84/58/52/12/8/10 against 73/75/40/56/7/0/7)
+    while every band still passed. A band is a wide target; a score is not. Asserting
+    the score means a lexicon re-weighting has to re-measure this set on purpose."""
+    fp = yaml.safe_load(open("fingerprint.yaml"))
+    for ex in fp["few_shot_examples"]:
+        r = keyword_score(_item(ex["title"], ex["summary"], ex["summary"]))
+        assert r["relevance_score"] == ex["expected_score"], (
+            f"{ex['title']}: scored {r['relevance_score']}, "
+            f"fingerprint.yaml declares {ex['expected_score']}")
+
+
+def test_fingerprint_examples_declare_the_rings_they_actually_get():
+    """matched_rings records what keyword_score RETURNS — every ring with any nonzero
+    hit, sub-floor brushes included — not the rings that are PRESENT for scoring. Four
+    of the seven lists were wrong while unasserted. Comparing lists, not sets, also
+    pins the emission order to fingerprint.yaml's ring order."""
+    fp = yaml.safe_load(open("fingerprint.yaml"))
+    for ex in fp["few_shot_examples"]:
+        r = keyword_score(_item(ex["title"], ex["summary"], ex["summary"]))
+        assert r["matched_rings"] == ex["matched_rings"], (
+            f"{ex['title']}: matched {r['matched_rings']}, "
+            f"fingerprint.yaml declares {ex['matched_rings']}")
+
+
+def test_every_fingerprint_example_carries_all_four_declared_fields():
+    """A field deleted rather than corrected is how the previous drift would come back:
+    the two tests above pass vacuously over an example that declares neither."""
+    fp = yaml.safe_load(open("fingerprint.yaml"))
+    assert fp["few_shot_examples"], "the gold set is empty"
+    for ex in fp["few_shot_examples"]:
+        for field in ("expected_band", "expected_score", "matched_rings", "why"):
+            assert field in ex, f"{ex['title']}: missing {field}"
+
+
+def test_the_scoring_boundaries_the_yaml_documents_are_the_ones_the_code_applies():
+    """fingerprint.yaml's combination_rules are descriptive only — nothing reads them,
+    which is how they came to describe a "subtotal >= 30" bar that exists nowhere in
+    src/classify.py and had never changed a score. These are the three boundaries the
+    rewritten block states, measured against the live scorer."""
+    from src.classify import PRESENT_FLOOR, STRONG_SUBTOTAL
+    assert (PRESENT_FLOOR, STRONG_SUBTOTAL) == (12, 18)
+
+    # one ring exactly at the floor (abuse of right = 12), no second ring -> LOW
+    assert keyword_score(_item("t", "", "abuse of right"))["relevance_score"] == 28
+    # the same ring plus a single 1-point brush elsewhere (copyright = 1) -> a MATCH
+    assert keyword_score(
+        _item("t", "", "abuse of right copyright"))["relevance_score"] == 41
+    # one ring at the strong-single-ring floor (12+3+2+1 = 18), no second ring -> MEDIUM
+    assert keyword_score(_item("t", "", "abuse of right exhaustion of local remedies "
+                                        "denial of benefits substantial business "
+                                        "activities"))["relevance_score"] == 40
+    # the extra-weight ring alone, at the floor (7+5 = 12) -> MEDIUM, not LOW
+    assert keyword_score(
+        _item("t", "", "domestic court arbitrary or discriminatory")
+    )["relevance_score"] == 45
+
+
 def test_scorer_rejects_offtheme():
     r = keyword_score(_item("Ferrer v. Ecuador", "ICSID case registered", ""))
     assert r["relevance_score"] < 40

@@ -305,6 +305,27 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+- **2026-08-04 (council session — fifth deployment, same date)** — Standing seat in the
+  council convened on external reviewer feedback. **The finding is against this seat.** The
+  reviewer's ten contradictions were tested one by one against this note's own remit: three
+  (holdout size, empty-report behaviour, agent architecture) were inside the scope this seat
+  declared for itself in the 2026-08-03 slice item 8 and were missed; two more were adjacent
+  to surfaces it had just audited; five are genuinely outside every clause. Applying R1 of
+  `analytics/council-sessions/2026-08-03-proposition-rule.md`, the first three are a
+  discipline failure and are not repaired by widening a rule. Worse, item 8's own evidence
+  citation is false — it points at a section of `agents/Project Change Log.md` that has never
+  existed, making the deliverable-drift sweep's findings unrecoverable; that is the fourth
+  false claim in the 08-03 entry and the 08-04 currency audit tested only three. **Not
+  corrected in place here**, deliberately: it is escalated so Emory sees it uncorrected.
+  Built `agents/Claim Map.md` — twelve claims, every file that states each, the twin list a
+  fix must change together — as the artifact the registry and change log never provided.
+  Referenced by path rather than wikilink, because this note already carries 6 direct links
+  against a cap of 4 and a seventh would deepen a defect the registry records. Session
+  record: `analytics/vault-sessions/2026-08-04-council.md`.
+  *Audited against `c9050e6`; paths: `.claude/agents/obsidian-archivist.md`, `agents/`,
+  `README.md`, `METHODOLOGY.md`, `HUMAN_REVIEW.md`, `fingerprint.yaml`, `src/classify.py`,
+  `src/main.py`, `src/config.py`, `scripts/site_templates/`, `scripts/build_site.py`,
+  `scripts/holdout_set.json`, `scripts/backtest_corpus.json`, `docs/`, `digests/`.*
 - **2026-08-04** — Fourth deployment, standing every-3-days session. Ran the currency query
   the previous deployment adopted, and it caught that deployment's own unlanded work: three
   false claims in the 08-03 entry below, corrected in place; the canonical fabrication

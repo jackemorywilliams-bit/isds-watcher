@@ -259,6 +259,14 @@ class Entry:
     annotation: str
     notable_line: str
 
+    @property
+    def headline_only(self) -> bool:
+        """True when no source text was reachable and the entry was assessed from
+        its headline alone. The digest writer records that as an ``N/A`` notable
+        line (e.g. "N/A — source paywalled (headline only); body not accessible"),
+        so this one test is the single definition the whole site reads from."""
+        return (self.notable_line or "").strip().startswith("N/A")
+
 
 @dataclass
 class Digest:
@@ -621,8 +629,8 @@ def collect_digests() -> list[Digest]:
 
 # Palette tokens, mirrored from style.css.j2 so the SVG fills match the stylesheet.
 _CHART = {
-    "navy": "#0b3d5c",        # var(--navy)      — screened series
-    "gold_bright": "#b8860b", # var(--gold-bright)— accepted series
+    "navy": "#0b3d5c",        # var(--navy)      — candidates-evaluated series
+    "gold_bright": "#b8860b", # var(--gold-bright)— items-surfaced series
     "line": "#e3ddd1",        # var(--line)      — axes / gridlines
     "muted": "#6a7280",       # var(--muted)     — annotation text
     "ink_soft": "#3a4654",    # var(--ink-soft)  — axis labels
@@ -638,6 +646,21 @@ def _src_label(key: str) -> str:
 def _fmt_num(value: float) -> str:
     """Trim trailing zeros from a coordinate for compact, stable SVG output."""
     return f"{value:.1f}".rstrip("0").rstrip(".")
+
+
+_NUM_WORDS = ("zero", "one", "two", "three", "four", "five",
+              "six", "seven", "eight", "nine", "ten")
+
+
+def _num_word(n: int) -> str:
+    """Spell small counts out in prose; fall back to the numeral above ten."""
+    return _NUM_WORDS[n] if 0 <= n < len(_NUM_WORDS) else str(n)
+
+
+def _count(n: int, singular: str, plural: str) -> str:
+    """'1 item surfaced' / '0 items surfaced' — these strings are read aloud by
+    screen readers, so the agreement has to be right."""
+    return f"{n} {singular if n == 1 else plural}"
 
 
 @dataclass
@@ -657,11 +680,17 @@ class ChartData:
     source_summary: str
     has_source: bool
     source_runs: int                # how many runs contributed per-source data
+    matches_total: int = 0          # items at or above threshold across the whole
+                                    # archive; lets the page state the zero-match
+                                    # position from the record instead of asserting it
 
 
 def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
-    """A weekly trend chart (screened area+line and accepted line) with the
-    matches==0 baseline annotated. Returns ``(svg, worded_summary)``."""
+    """A run-by-run chart across the archived runs: candidates evaluated (area +
+    line) and items surfaced (line). The runs are archived in date order and are
+    not all a week apart, so nothing here is described as weekly. The baseline is
+    annotated as the zero-match line only while every archived run has recorded
+    zero matches. Returns ``(svg, worded_summary)``."""
     W, H = 640, 240
     pad_l, pad_r, pad_t, pad_b = 44, 16, 18, 40
     plot_w = W - pad_l - pad_r
@@ -711,13 +740,19 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
     pts_acc = [(x(i), y(v)) for i, v in enumerate(accepted_vals)]
     line_acc = " ".join(f"{_fmt_num(px)},{_fmt_num(py)}" for px, py in pts_acc)
 
-    # Matches==0 baseline, explicitly annotated (matches has been 0 throughout).
+    # Baseline. Its "matches = 0 throughout" annotation is a claim about the
+    # archive, so it is emitted only while the archive actually supports it —
+    # never hardcoded, or the first matching run would publish a falsehood.
+    matches_total = sum(r.get("matches") or 0 for r in rows)
     zero_y = _fmt_num(y(0))
     zero_line = (
         f'<line class="chart-zero" x1="{pad_l}" y1="{zero_y}" '
-        f'x2="{W - pad_r}" y2="{zero_y}" />'
-        f'<text class="chart-zero-label" x="{W - pad_r}" y="{float(zero_y) - 6:.1f}" '
-        f'text-anchor="end">matches = 0 throughout</text>')
+        f'x2="{W - pad_r}" y2="{zero_y}" />')
+    if matches_total == 0:
+        zero_line += (
+            f'<text class="chart-zero-label" x="{W - pad_r}" '
+            f'y="{float(zero_y) - 6:.1f}" text-anchor="end">'
+            f'matches = 0 throughout</text>')
 
     # Hover/focus targets: one transparent marker group per date (JS reads data-*).
     markers: list[str] = []
@@ -729,8 +764,10 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
             f'data-date="{html.escape(r["date"])}" '
             f'data-screened="{screened_vals[i]}" '
             f'data-accepted="{accepted_vals[i]}" '
-            f'aria-label="{html.escape(r["date"])}: {screened_vals[i]} screened, '
-            f'{accepted_vals[i]} watch-list leads shown, 0 matches">'
+            f'aria-label="{html.escape(r["date"])}: '
+            f'{_count(screened_vals[i], "candidate", "candidates")} evaluated, '
+            f'{_count(accepted_vals[i], "item", "items")} surfaced, '
+            f'{_count(r.get("matches") or 0, "match", "matches")}">'
             f'<rect class="chart-hit" x="{_fmt_num(x(i) - plot_w / (2 * max(n - 1, 1)))}" '
             f'y="{pad_t}" width="{_fmt_num(plot_w / max(n - 1, 1))}" height="{plot_h}" />'
             f'<circle class="chart-dot chart-dot-screened" cx="{_fmt_num(sx)}" '
@@ -743,7 +780,8 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-trend" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="trend-title trend-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="trend-title">Weekly screened and watch-list leads trend</title>'
+        f'<title id="trend-title">Candidates evaluated and items surfaced, '
+        f'by archived run</title>'
         f'<desc id="trend-desc">{html.escape(_trend_summary_text(rows))}</desc>'
         + "".join(grid)
         + f'<path class="chart-area chart-area-screened" d="{area_d}" />'
@@ -758,20 +796,39 @@ def _build_trend_svg(rows: list[dict]) -> tuple[str, str]:
 
 
 def _trend_summary_text(rows: list[dict]) -> str:
+    """Describe the archived series as an observation, and only as an observation.
+
+    Three things this deliberately does NOT say, because the archive cannot
+    support them: that the runs are weekly (11 runs span 55 days and several are
+    a day apart), that the series declines (it is not monotonic — the maximum
+    falls at the fourth run, not the first), and that deduplication caused the
+    change (no meta.json has ever recorded a deduplication quantity, so the
+    causal claim is not falsifiable from the record). Range, recent band, and
+    totals are all that the archive actually establishes.
+    """
     if not rows:
         return "No runs archived yet."
     first, last = rows[0], rows[-1]
-    accepted_total = sum(r["accepted"] or 0 for r in rows)
+    screened_vals = [r["screened"] or 0 for r in rows]
+    surfaced_total = sum(r["accepted"] or 0 for r in rows)
+    matches_total = sum(r.get("matches") or 0 for r in rows)
+    matches_clause = ("matches stayed at zero" if matches_total == 0
+                      else f"matches totalled {matches_total}")
+    recent_clause = ""
+    if len(rows) > 7:
+        recent = screened_vals[-7:]
+        recent_clause = (f", the last {_num_word(len(recent))} between "
+                         f"{min(recent)} and {max(recent)}")
     return (
-        f"Across {len(rows)} weekly runs from {first['date']} to {last['date']}, "
-        f"items screened fell from {first['screened']} to {last['screened']} as "
-        f"deduplication matured, while matches stayed at zero throughout and "
-        f"watch-list leads shown were a steady trickle totalling {accepted_total}.")
+        f"Across {len(rows)} archived runs from {first['date']} to {last['date']}, "
+        f"candidates evaluated ranged from {max(screened_vals)} to "
+        f"{min(screened_vals)} with no steady trend{recent_clause}; "
+        f"{matches_clause} and items surfaced totalled {surfaced_total}.")
 
 
 def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
-    """A horizontal per-source bar chart: screened vs accepted per source, sorted
-    by screened volume. Returns ``(svg, worded_summary)``."""
+    """A horizontal per-source bar chart: candidates evaluated vs items surfaced
+    per source, sorted by volume evaluated. Returns ``(svg, worded_summary)``."""
     W = 640
     pad_l, pad_r, pad_t, pad_b = 150, 40, 14, 28
     row_h, bar_h, gap = 30, 9, 3
@@ -806,8 +863,9 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
             f'<g class="chart-srcrow" tabindex="0" role="listitem" '
             f'data-source="{html.escape(label)}" '
             f'data-screened="{r["screened"]}" data-accepted="{r["accepted"]}" '
-            f'aria-label="{html.escape(label)}: {r["screened"]} screened, '
-            f'{r["accepted"]} watch-list leads shown">'
+            f'aria-label="{html.escape(label)}: '
+            f'{_count(r["screened"], "candidate", "candidates")} evaluated, '
+            f'{_count(r["accepted"], "item", "items")} surfaced">'
             f'<rect class="chart-hit" x="{pad_l}" y="{_fmt_num(top + 2)}" '
             f'width="{_fmt_num(plot_w)}" height="{row_h - 4}" />'
             f'<rect class="chart-bar chart-bar-screened" x="{pad_l}" '
@@ -825,7 +883,8 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-source" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="source-title source-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="source-title">Per-source screened and watch-list leads totals</title>'
+        f'<title id="source-title">Candidates evaluated and items surfaced, '
+        f'by source</title>'
         f'<desc id="source-desc">{html.escape(_source_summary_text(rows))}</desc>'
         + "".join(parts)
         + "</svg>"
@@ -840,12 +899,15 @@ def _source_summary_text(rows: list[dict]) -> str:
     if not active:
         return "No source surfaced fresh candidates in the runs with per-source data."
     top = active[0]
-    accepted_total = sum(r["accepted"] for r in rows)
+    surfaced_total = sum(r["accepted"] for r in rows)
     feeders = ", ".join(f"{_src_label(r['key'])} ({r['screened']})" for r in active)
     return (
         f"Of the catalogue sources, {feeders} contributed fresh candidates; "
-        f"{_src_label(top['key'])} dominated the screened volume, and "
-        f"{accepted_total} item(s) were shown as watch-list leads across all sources.")
+        f"{_src_label(top['key'])} accounted for the largest share of candidates "
+        f"evaluated, and {_count(surfaced_total, 'item was', 'items were')} "
+        f"surfaced across all sources. "
+        f"The source roster changed during the period, so these totals are not a "
+        f"like-for-like comparison across the whole archive.")
 
 
 def build_archive_charts(digests: list[Digest]) -> ChartData:
@@ -903,6 +965,7 @@ def build_archive_charts(digests: list[Digest]) -> ChartData:
         source_summary=source_summary,
         has_source=has_source,
         source_runs=source_runs,
+        matches_total=sum(r["matches"] or 0 for r in trend_rows),
     )
 
 
@@ -923,6 +986,23 @@ def _build_stamp() -> dict:
         commit = ""
     at = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     return {"at": at, "commit": commit}
+
+
+def archive_status(digests: list[Digest]) -> dict:
+    """The homepage status line's numbers, summed from the archived runs.
+
+    Generated rather than written so the line can never drift from the record:
+    ``runs`` is how many runs are archived, ``screened`` how many candidates they
+    evaluated in total, ``matches`` how many of those reached the relevance
+    threshold, and ``surfaced`` how many items were shown in a digest at all
+    (matches plus watch-list near-misses).
+    """
+    return {
+        "runs": len(digests),
+        "screened": sum(d.screened or 0 for d in digests),
+        "matches": sum(d.matches or 0 for d in digests),
+        "surfaced": sum(d.accepted or 0 for d in digests),
+    }
 
 
 def make_env() -> Environment:
@@ -975,6 +1055,7 @@ def build() -> int:
             root="",
             digests=digests,
             ring_labels=RING_LABELS,
+            status=archive_status(digests),
         ),
     )
 

@@ -1,6 +1,6 @@
 {% extends "base.html.j2" %}
 {% block title %}How It Works | ISDS Thematic Watcher{% endblock %}
-{% block description %}The whole instrument on one chart, drawn deterministically from the repository it describes: the nine public sources, the automated pipeline, the AI research council, the researcher's verification column, and every Monday deliverable.{% endblock %}
+{% block description %}The whole instrument on one chart, drawn deterministically from the repository it describes: the nine public sources, the automated pipeline, the multi-stage AI-assisted classification and review workflow, the operator's verification column, and every Monday deliverable.{% endblock %}
 
 {% block content %}
 <section class="page-head">
@@ -29,13 +29,32 @@
         <strong>the machine</strong> &mdash; the automated pipeline that collects,
         de-duplicates, scores, and quality-gates each candidate development;
         <strong>what gets sent</strong> &mdash; the emails and site updates each
-        stage produces; <strong>the AI research council</strong> &mdash; the
-        research agents, each box naming the model it runs on, that interpret the
-        week under binding fact-verification gates; and <strong>Emory's
-        verification column</strong> &mdash; no claim is published as fact without
-        a human check against its original source. The moving dots trace work
-        flowing through the system. On a desktop browser, hovering over any box
-        shows its full description and the exact code behind it.
+        stage produces; <strong>the AI-assisted review workflow</strong> &mdash; a
+        multi-stage classification and review process in which separate model
+        passes, each running under different instructions and each box naming the
+        model it runs on, screen, analyse, challenge, and edit the week&rsquo;s
+        output, and in which a verification pass can block publication; and
+        <strong>Emory&rsquo;s verification column</strong> &mdash; the checks the
+        operator carries out by hand. The moving dots trace work flowing through
+        the system. On a desktop browser, hovering over any box shows its full
+        description and the exact code behind it.
+      </p>
+      <p class="caveat">
+        <strong>These passes are not independent researchers.</strong> They share
+        source material, prompt lineage, model family, and this project&rsquo;s
+        framing assumptions, and can therefore share the same errors. Agreement
+        between passes is not corroboration.
+      </p>
+      <p class="caveat">
+        <strong>Claims here are machine-assisted and remain provisional</strong>
+        unless an item is individually marked human-verified. One operator review
+        cycle has been logged &mdash; 2026-07-18 &mdash; covering three claims from
+        the research record: one verified against a primary source, one partially
+        verified, one not reviewed. No digest entry and no sentence on this website
+        has been checked by a human against its original source; every archived
+        digest entry to date is machine-screened only. The operator has no access
+        to paywalled sources, so claims resting on them cannot be operator-verified
+        at all.
       </p>
     </div>
   </div>
@@ -44,8 +63,9 @@
       {{ workflow_svg | safe }}
     </div>
     <figcaption>
-      Drawn deterministically from the repository's own workflow description; a
-      build-time freshness check keeps it in step with the code it depicts.
+      Drawn deterministically from the repository&rsquo;s own workflow description;
+      a build-time check verifies that the drawing matches that description. The
+      description is maintained by hand and is not itself generated from the code.
     </figcaption>
   </figure>
 </section>

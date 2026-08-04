@@ -57,27 +57,117 @@ utility sub-agents.
   least one of them retrievable. Source: Observation 4, same commit; consequences flagged to
   the chairman as retrospective on the whole record.
 
-### Fabrication taxonomy — extended to ten
+### Fabrication taxonomy — the canonical table
 
-The running taxonomy this seat maintains under its self-training mandate stood at six —
-*unsourced precision, inverted dispositions, snippet-as-fact, title-as-holding, memory-file
-reconstruction, image-embedded primary text*. Four entries were added on 2026-07-31
-(`15c8131`):
+**Read this table; do not recite the taxonomy from memory.** The reason this table exists is
+recorded plainly: on 2026-08-02, 08-03 and 08-04 the in-session recitation of the "running
+taxonomy" listed the ten entries as of 2026-07-31 and omitted every entry this seat had
+adopted since — `analytics/daily-research/2026-08-02.md:196`, `2026-08-03.md:185` and
+`2026-08-04.md:535` each open their extension section from the same stale ten-item list. The
+extensions themselves were correct and were adopted; only the recitation was short. A seat
+whose mandate is to check every memo against the *full* taxonomy cannot carry the full
+taxonomy in a restated sentence.
 
-- **Tool-status-as-source-state** (new) — a fetch layer's or CDN's HTTP status reported as a
+**23 entries as of 2026-08-04.** Each cites the record that adopted it.
+
+| # | Entry | Adopted | Source |
+|---|---|---|---|
+| 1 | Unsourced precision | pre-2026-07-31 | Definition's self-training mandate |
+| 2 | Inverted dispositions | pre-2026-07-31 | Definition's self-training mandate |
+| 3 | Snippet-as-fact | pre-2026-07-31 | Definition's self-training mandate |
+| 4 | Title-as-holding | pre-2026-07-31 | Definition's self-training mandate |
+| 5 | Memory-file reconstruction | pre-2026-07-31 | Definition's self-training mandate |
+| 6 | Image-embedded primary text | pre-2026-07-31 | Recited as standing at `2026-07-31` vetting |
+| 7 | Tool-status-as-source-state | 2026-07-31 | `15c8131` |
+| 8 | Summarizer-render-as-full-access | 2026-07-31 | `15c8131` |
+| 9 | Selective-flag reporting | 2026-07-31 | `15c8131` |
+| 10 | Superseded-formulation restatement | 2026-07-31 | `15c8131` |
+| 11 | Status-as-record-artifact | 2026-08-01 | `analytics/daily-research/2026-08-01.md:410`, `4d5c562` |
+| 12 | Capability-as-corroboration | 2026-08-02 | `analytics/daily-research/2026-08-02.md:198`, `82692a2` |
+| 13 | Absolutized heuristic | 2026-08-02 | `analytics/daily-research/2026-08-02.md:199`, `82692a2` |
+| 14 | Silent class truncation | 2026-08-02 | `analytics/daily-research/2026-08-02.md:200`, `82692a2` |
+| 15 | Control-inside-the-suspect-set | 2026-08-03 | `analytics/daily-research/2026-08-03.md:187`, `e9716c8` |
+| 16 | Second-instrument corroboration fallacy | 2026-08-03 | `analytics/daily-research/2026-08-03.md:188`, `e9716c8` |
+| 17 | Mis-dated internal-authority citation | 2026-08-03 | `analytics/daily-research/2026-08-03.md:189`, `e9716c8` |
+| 17a | — extended to **mis-located** (right date, adjacent line) | 2026-08-04 | `analytics/daily-research/2026-08-04.md:537`, `51bb7a2` |
+| 18 | Selective-quotation supersession | 2026-08-04 | `analytics/daily-research/2026-08-04.md:538`, `51bb7a2` |
+| 19 | Codebook-free label ordering | 2026-08-04 | `analytics/daily-research/2026-08-04.md:539`, `51bb7a2` |
+| 20 | Tier-parity claim | 2026-08-04 | `analytics/daily-research/2026-08-04.md:540`, `51bb7a2` |
+| 21 | Constant-length determinism inference | 2026-08-04 | `analytics/daily-research/2026-08-04.md:541`, `51bb7a2` |
+| 22 | Unverified control design | 2026-08-04 | `analytics/daily-research/2026-08-04.md:542`, `51bb7a2` |
+| 23 | Echoed-find / self-confirming query | 2026-08-04 | `analytics/daily-research/2026-08-04.md:543`, `51bb7a2` — named by the analyst, adopted under his formulation |
+
+Entries 7–10, in the officer's own 2026-07-31 wording (`15c8131`):
+
+- **Tool-status-as-source-state** — a fetch layer's or CDN's HTTP status reported as a
   fact about the resource. Countermeasure: positive control on the same host and path
   family, and vary the user agent, before recording any status finding.
-- **Summarizer-render-as-full-access** (new) — a model-mediated render treated as
+- **Summarizer-render-as-full-access** — a model-mediated render treated as
   `access_status: full` and as the basis for character-exact quotation. Countermeasure:
   quote claims require raw HTML or a PDF text layer; renders support substance, never
   characters.
-- **Selective-flag reporting** (extension of the access-integrity family) — citing a
-  verification record's favorable flags while omitting the adverse flag from the same event;
-  here `quote_ok: true` reported and `scope_ok: false` omitted.
-- **Superseded-formulation restatement** (new) — restating an earlier, looser version of a
+- **Selective-flag reporting** (access-integrity family) — citing a verification record's
+  favorable flags while omitting the adverse flag from the same event; here `quote_ok: true`
+  reported and `scope_ok: false` omitted.
+- **Superseded-formulation restatement** — restating an earlier, looser version of a
   proposition the project's own record has since tightened. Countermeasure: when restating a
   record proposition, search for its **latest dated refinement**, not its first statement.
   This entry became the chairman's delegation rule the same day.
+
+Entries 11–23, countermeasures as adopted:
+
+- **11 · Status-as-record-artifact** — a tool status correctly withheld from the claim text
+  but converted into a *record object* (a gap slug, an escalation counter, an
+  `access_status: "blocked"` field) whose existence asserts the inaccessibility the status
+  cannot establish. Countermeasure: any record artifact predicated on inaccessibility needs
+  the same same-host positive control as a status claim; absent a control the item is "not
+  attempted under a passing UA", never "blocked", and no slug opens.
+- **12 · Capability-as-corroboration** — crediting a past finding with corroboration from a
+  channel that was merely *available* that day. Countermeasure: count channels the record
+  shows were used, never channels that were working.
+- **13 · Absolutized heuristic** — a condition-specific instrument finding restated in a
+  method note as an exceptionless rule. Countermeasure: a self-training rule carries the
+  conditions of the observation that produced it.
+- **14 · Silent class truncation** (sibling of 9) — restating an enumerated class with fewer
+  members than the record holds, and fixing the short count as the standing figure.
+  Countermeasure: re-enumerate any class from the record at URL level before re-queueing it.
+- **15 · Control-inside-the-suspect-set** — a positive control drawn from the same host or
+  instrument class as the item under test, so it cannot separate the suspected artifact from
+  a general instrument failure. Countermeasure: every positive control pairs a suspect-host
+  probe with a neutral-host probe on the same instrument.
+- **16 · Second-instrument corroboration fallacy** — treating a second tool's identical
+  failure as independent corroboration when the second tool was never shown functional.
+  Countermeasure: prove the instrument alive before reading its failures as evidence.
+- **17 · Mis-dated (2026-08-04: and mis-located) internal-authority citation** — citing the
+  project's own record by date, or by line, for a proposition that date or line does not
+  contain. Countermeasure: grep the cited date and the cited line before citing it.
+- **18 · Selective-quotation supersession** — declaring a record formulation superseded by
+  quoting only the part of the governing line that supports the ruling. Countermeasure: when
+  ruling that the record has changed position, quote the **whole** governing line.
+- **19 · Codebook-free label ordering** — ranking a controlled vocabulary's values on a
+  permissive/restrictive scale without the vocabulary's codebook. Countermeasure: a
+  database's labels may be reported and compared for identity, never ordered, absent its
+  codebook.
+- **20 · Tier-parity claim** — asserting a newly retrieved item occupies "the same
+  evidentiary tier" as an operator-verified ledger entry when it has no claim-id, no
+  operator verification and no preserved snapshot. Countermeasure: tier statements name the
+  ledger status explicitly or are not made.
+- **21 · Constant-length determinism inference** — reading equal byte length as proof of
+  unchanged content, and counting near-simultaneous same-run fetches as independent
+  observations. Countermeasure: count time points, not rows.
+- **22 · Unverified control design** (extends 15) — proposing a control whose negativity or
+  branch-bypass is assumed rather than established. Countermeasure: state what makes a
+  control negative, and treat the control block as uninterpreted until the positive control
+  fires.
+- **23 · Echoed-find / self-confirming query** (instrument family) — a `find` string the
+  target page can generate from the request URL, so `find_matched` reports a property of the
+  request. Countermeasure: never choose as `find` a string the target page can generate from
+  your own request.
+
+*Counting note.* `analytics/daily-research/2026-08-04.md:535` introduces its list as "fresh
+instances and five extensions" and then sets out seven bullets — one extension of entry 17
+and six new entries. The table above counts the entries as written, not the header, and says
+so rather than reconciling the header silently.
 
 ## Place in the workflow
 
@@ -113,6 +203,18 @@ new pattern appears."
 
 ## Change log
 
+- **2026-08-04** — The canonical taxonomy table landed here, 23 entries, one citation per
+  entry, replacing the "extended to ten" section that had been current since 2026-07-31.
+  Thirteen entries adopted by this seat on 2026-08-01 (`4d5c562`), 2026-08-02 (`82692a2`),
+  2026-08-03 (`e9716c8`) and 2026-08-04 (`51bb7a2`) had never reached this note. **The
+  2026-08-03 archivist session recorded that it had made exactly this fix — audit slice item
+  4 of [[obsidian-archivist]] — and the change did not reach `main`:** `git log 6a5cd2e..HEAD
+  -- agents/` shows no commit adding 08-0x content to this note. The recitation defect that
+  fix was meant to close therefore recurred on 08-03 and 08-04. Model, definition and prompt
+  bindings unchanged.
+  *Audited against `b76f6c3`; paths: `.claude/agents/integrity-officer.md`,
+  `prompts/council_security.txt`, `prompts/council_calibration.md`,
+  `analytics/daily-research/`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-07-31** — Two drifts fixed. (1) The "no box of its own" statement was stale: this
   seat gained the `integrity-officer` box in flowchart v3.0 (`21f0240`), with two edges
   (`analyst → integrity-officer`, `integrity-officer → packet`). (2) The taxonomy recorded

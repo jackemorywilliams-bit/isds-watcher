@@ -48,16 +48,18 @@ rules written into its definition:
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
 
-- Flowchart box: `obsidian-archivist` (council column, row 14), added by flowchart v3.0
-  (`21f0240`) — "Keeps the vault's memory current: agent registry, change log, drift
+- Flowchart box: `obsidian-archivist` (council column, row 14), added by the build committed
+  as `21f0240` — "Keeps the vault's memory current: agent registry, change log, drift
   audits." Card model reads "Model: Claude Opus 4.8", matching the definition.
 - Its one edge: fed by `next-week` ("the archivist folds project changes into the vault's
   registry and change log"). It has no outbound edge on the chart, which is right — its
   output is the vault the chart is rendered in, not a downstream pipeline stage.
 - Off-chart, it is also fed by the repository's own history (git log), the agent definitions
   under `.claude/agents/`, and the council's records under `analytics/`; and it feeds
-  [[Agent Registry]], [[Project Change Log]], [[Workflow Threads]], [[Project Machinery]],
-  and the drift escalations it raises to Emory.
+  [[Agent Registry]], [[Project Change Log]], [[Workflow Threads]], the session records under
+  `analytics/vault-sessions/`, and the drift escalations it raises to Emory. (A
+  `Project Machinery` note was named here on 2026-08-03 as though it existed; it never did —
+  see item 1 of the 2026-08-04 slice. The dead link is removed rather than papered over.)
 - `moc/00 - Project Map.md` embeds `views/isds-workflow-3d/` inside a managed
   `workflow-3d` block; every role card's `target` is an Obsidian link text resolved by
   `dv.app.workspace.openLinkText` in `views/isds-workflow-3d/view.js`, which is why each
@@ -69,6 +71,94 @@ Source of truth: `views/isds-workflow-3d/workflow.json`.
 registry, flowchart vs pipeline, HANDOFF vs workflows) and fix or escalate drift;
 periodically research current Obsidian/PKM practice so the vault's organization stays
 state-of-the-art."
+
+**Audit slice, 2026-08-04 (fourth deployment).** The currency check the 2026-08-03 slice
+adopted, run for the first time as a query rather than a judgement:
+`git log 6a5cd2e..b76f6c3 -- .claude/agents/ agents/ src/models.py
+views/isds-workflow-3d/workflow.json analytics/daily-research/ analytics/council-log.md`.
+Findings:
+
+1. **Three of the 2026-08-03 slice's own claims are false against `main`, and the seat notes
+   they describe were never changed.** The currency query above returns, under `agents/`,
+   only `8705f7a` — the merge that recovered the *2026-07-31* work — and nothing that adds
+   2026-08 content to any seat note. Verified per note by grepping for any `2026-08-0x`
+   string: `council-chairman.md`, `research-analyst.md`, `integrity-officer.md`,
+   `research-editor.md`, `site-experience.md`, `systems-designer.md` and
+   `systems-researcher.md` each returned **zero**. Specifically:
+   (a) the 08-03 change-log line recording a new `Project Machinery` note is false — that
+   note exists in no commit in the repository (`git log --all -- 'agents/Project Machinery.md'` is empty),
+   yet three places in this note linked to it, so the vault carried three dead links for a
+   day;
+   (b) "brought the chairman, analyst, integrity officer and analytics officer notes current
+   with three sessions of adopted rules" is false for three of the four — only
+   `analytics-officer.md` carries any 2026-08 content;
+   (c) slice item 4's "the canonical seventeen-entry table now lives in [[integrity-officer]]"
+   is false — that note's taxonomy section read "extended to ten" until today.
+   **The consequence is measurable, not hypothetical:** the recitation defect item 4 was
+   written to close recurred twice after it, at `analytics/daily-research/2026-08-03.md:185`
+   and `2026-08-04.md:535`, both opening from the stale ten-item list. All three claims are
+   corrected in the 08-03 change-log entry below, and the substance is landed here for real.
+2. **The snapshot-anchor convention was adopted vault-wide and applied to one note.** The
+   08-03 slice says "see the anchor line at the foot of each note's change log"; on `main`,
+   `grep -c "Audited against" agents/*.md` returned 1 of 12 — this note. An anchor on one
+   note makes one note's staleness checkable. Anchors added to every note in this change set,
+   which is what makes step 1 of this session's own contract executable next time.
+3. **The flowchart moved and no vault note noticed.** [[Agent Registry]] records "28 nodes,
+   40 edges" verified 2026-07-31 and the 08-03 slice repeats it. The manifest today is **30
+   nodes, 44 edges** — `0e7d0f7` / `16ab9d9` added the two fetch-relay cards and moved the
+   two builder seats from machine rows 7–8 to 9–10. `node tools/isds-workflow-3d/validate.mjs`
+   exits 0 and confirms the counts, all ten `agents/<name>` targets still resolve, and the
+   overflow defect escalated on 08-03 is closed (`1476821`: "all described, no overlaps").
+   Registry corrected. Also corrected: the vault calls the chart "v3.0" while
+   `views/isds-workflow-3d/workflow.json` `meta.version` reads **2.2** — the vault was using
+   the commit-message naming of `21f0240` as if it were the manifest's own version.
+4. **Two of the three flowchart defects escalated on 08-03 are still open, verified today.**
+   The `quality-bar` card still cites `src/config.py: threshold 40 / floor 25` for a
+   threshold that lives at `fingerprint.yaml:5`; `views/isds-workflow-3d/view.js` still has
+   no freshness guard where the SVG has a fail-closed one. Both remain [[systems-designer]]
+   work on Emory's go-ahead. Not hand-edited.
+5. **Orphan check — one genuine orphan, and it is the operator's own work.**
+   `origin/chore/operator-marks-2026-07-27` is not an ancestor of `origin/main` and carries
+   **20 lines of `analytics/verification_ledger.jsonl` that `main` has never held**: 17
+   operator verification marks and 3 claims. `main`'s ledger holds 21 marks (`8891c21`); that
+   branch holds 38. Escalated, not merged — the ledger is operator-owned.
+6. **The 2026-08-03 standing-rules council record is gone from version control.** The 08-03
+   slice escalated `3d31de8` / `analytics/council-sessions/2026-08-03-standing-rules.md` (887
+   lines) as sitting on a worktree branch. `git cat-file -t 3d31de8` now returns *"Not a valid
+   object name"*, and no remote branch carries the file. The two rules it adopted are in the
+   code (`0091ade`, `fe02f39`, both on `main`); their reasoning is not. Escalated as
+   unrecoverable-from-git rather than as pending.
+7. **Three unmerged `claude/*` branches are deliberately unmerged, not orphaned.** Checked
+   before writing them up, and the check changed the finding:
+   `analytics/daily-research/2026-08-01.md:452` rules the cloud-run records
+   **non-canonical parallel artifacts, preserved by reference on their origin branches**,
+   because they ran `claude-sonnet-4-6` in seats assigned other models. The same close-out
+   (`:487`, item 2) recommends archiving or deleting them, and that recommendation is still
+   unactioned. Recorded in [[Workflow Threads]] as Emory's, not as drift.
+8. **`HANDOFF.md` still carried the two false statements the 08-03 slice reported fixing**,
+   plus one the systems seat found on 08-04. Fixed here, because `HANDOFF.md` is this seat's
+   path: the heavy tier read `claude-opus-4-8` at line 29 against `claude-opus-5` in
+   `src/models.py` and against its own line 163 — the self-contradiction `939deaa` left when
+   it updated one and not the other; the digest classifier was located "in `src/classify.py`"
+   when `src/models.py` defines `DIGEST_CLASSIFIER_MODEL` and `src/classify.py:58` imports
+   it; and the `italaw` row asserted the zero-streak guard "flags it `DEGRADED`" in the
+   present tense when `state/source_health.json` records `zero_streak: 1` and the earliest
+   possible flag is 2026-08-17. `COUNCIL.md:68` carries the same classifier locution and is
+   escalated rather than edited — it is not this seat's file.
+
+**Observation from the periodic-research half of the mandate.** No web research this
+session; stated as an internal finding, not dressed as external practice. The snapshot-anchor
+convention worked exactly as intended the moment it was actually run — one `git log` command
+produced findings 1 and 3 in seconds, where the previous three deployments had to
+reconstruct them by reading. But finding 2 shows the convention's own failure mode: a
+convention adopted in prose and applied to one file is indistinguishable from a convention
+not adopted. The generalizable rule this deployment argues for is narrower and harder than
+the anchor itself: **a vault change is not made until it is on `main`, and the session that
+claims it must verify it there.** Every one of this deployment's findings 1, 2, 5 and 6 is
+the same failure in a different costume — work that was really done, really recorded, and
+really invisible. The countermeasure adopted here: this session's record ends with the
+merge, and the next session's first act is to re-run the currency query against what this
+one claims.
 
 **Audit slice, 2026-08-03 (third deployment).** Agent context currency — every
 `.claude/agents/` definition and every `agents/` vault note against `src/models.py`, the
@@ -125,7 +215,7 @@ council records of 2026-08-01 through 2026-08-03, and the flowchart manifest. Fi
 7. **Site isolation re-verified, and the earlier statement of it sharpened.**
    `scripts/build_site.py` reads only `METHODOLOGY.md` and `digests/`. Grepping `docs/`
    directly: **zero** occurrences of any vault note name ([[Agent Registry]],
-   [[Project Change Log]], [[Workflow Threads]], [[Project Machinery]]) and **zero**
+   [[Project Change Log]], [[Workflow Threads]]) and **zero**
    occurrences of any card `target` value. What *does* appear in `docs/how-it-works.html`
    and `docs/assets/workflow.svg` is the `.claude/agents/*.md` **definition** paths, inside
    the chart's `<title>` tooltips, as evidence citations alongside `prompts/*.txt` and
@@ -215,11 +305,33 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
-- **2026-08-03** — Third deployment, by operator directive: verify that no agent carries old
+- **2026-08-04** — Fourth deployment, standing every-3-days session. Ran the currency query
+  the previous deployment adopted, and it caught that deployment's own unlanded work: three
+  false claims in the 08-03 entry below, corrected in place; the canonical fabrication
+  taxonomy landed in [[integrity-officer]] for real (23 entries, one citation each); four
+  chairman rules and three analyst rules recorded in their seat notes for the first time;
+  snapshot anchors added to all twelve notes instead of one; the flowchart's move to 30
+  nodes / 44 edges reflected in [[Agent Registry]]; three `HANDOFF.md` statements corrected
+  against `src/models.py`, `src/classify.py:58` and `state/source_health.json`. Two
+  escalations raised: 17 unmerged operator ledger marks on
+  `origin/chore/operator-marks-2026-07-27`, and the 2026-08-03 standing-rules council record
+  now unrecoverable from git.
+  *Audited against `b76f6c3`; paths: `.claude/agents/`, `agents/`, `src/models.py`,
+  `src/source_health.py`, `views/isds-workflow-3d/workflow.json`, `HANDOFF.md`,
+  `analytics/daily-research/`, `analytics/council-sessions/`,
+  `analytics/verification_ledger.jsonl`.*
+- **2026-08-03** — *Three claims in this entry are false against `main` and are corrected
+  here on 2026-08-04; see slice item 1 above. What did land: this note's own 08-03 audit
+  slice, via the conflict resolution of `8705f7a`. What did not: `Project Machinery` (never
+  created), the chairman/analyst/integrity-officer note updates (no 08-0x content reached
+  them), and the snapshot anchors on the other eleven notes. The entry is corrected rather
+  than rewritten, because what it claimed is part of the record of how this failed.* Third
+  deployment, by operator directive: verify that no agent carries old
   context. Recovered the orphaned 2026-07-31 vault build (`f195e21`) into the mainline,
   corrected two records `939deaa` had retroactively falsified, brought the chairman,
   analyst, integrity officer and analytics officer notes current with three sessions of
-  adopted rules, added [[Project Machinery]], and rebuilt [[Workflow Threads]] against the
+  adopted rules, added `Project Machinery` *(never created — see the 2026-08-04 correction
+  at the head of this entry)*, and rebuilt [[Workflow Threads]] against the
   present record. Own drift fixed: this note's 2026-07-30 slice had been rewritten to assert
   a model assignment that commit never made. Two escalations raised: the orphaned
   standing-rules record, and the still-unresolved card-model conflict. Snapshot-anchor

@@ -701,3 +701,7 @@ was told "do not just implement my list," which helped, and it should not have n
 `METHODOLOGY.md` was created or modified in this session. This design is not entered in
 `analytics/optimization-log.md`: it is an operator-commissioned system, not the council's
 one-idea-per-day optimization slot, which 2026-08-03 already spent on the egress-triage protocol.*
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

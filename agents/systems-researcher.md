@@ -92,6 +92,8 @@ so your sourcing stays contemporary."
 
 ## Change log
 
+- **2026-08-04** — Audited, no change to model, definition or prompt bindings; the currency query `git log 6a5cd2e..b76f6c3` returns no commit touching this seat's definition or prompts. Snapshot anchor added, applying the convention adopted 2026-08-03 to this note for the first time.
+  *Audited against `b76f6c3`; paths: `.claude/agents/systems-researcher.md`, `prompts/systems_researcher.txt`, `analytics/optimization-log.md`, `analytics/daily-research/`, `src/models.py`.*
 - **2026-07-31** — First seating recorded (`e05f834`, `f03a90e`): the `source_analytics.py`
   same-window patch proposed and gated on Emory's sign-off, two optimization-log corrections
   applied, one new health-column proposal added. Also confirms the `analytics/

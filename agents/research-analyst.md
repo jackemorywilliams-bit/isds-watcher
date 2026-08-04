@@ -65,6 +65,28 @@ recorded here because they are now part of this seat's working context.
   method note in `analytics/daily-research/2026-07-31.md`, committed in `f03a90e`. In
   practice it collapsed a planned four-attempt blob hunt into two fetches and answered three
   questions at once.
+- **The carrying-span rule** — adopted 2026-08-03 in special session, and it binds this
+  seat's own citations, not only the ones it reviews. Before opening a source, write the one
+  sentence you are citing it for; screen the whole retrieved text for the proposition's
+  operative terms including at least one rigid designator; then quote the **carrying span** —
+  the source's own words that carry the proposition — into the entry, with a pinpoint. The
+  load-bearing element is the carrying span, not the proposition-first step. Full adopted
+  text: `analytics/council-sessions/2026-08-03-proposition-rule.md:1450` (R3, "final form"),
+  committed in `56cbb75`. Recorded status in that same record: **adopted in text and
+  unvalidated** — the session declined to record the rule as working against its own base
+  rate (`:1617`, R8).
+- **Relay method rules** — adopted 2026-08-04, binding on every seat, and this seat is the
+  one that fires the batches. (1) Never choose as `find` a string the target page can
+  generate from your own request URL — otherwise `find_matched` reports a property of the
+  request. (2) Anchor on a neighbouring structural label and read the value out of the
+  window. (3) State what makes a control negative before relying on it. (4) Treat a control
+  block as uninterpreted until the positive control fires. Source:
+  `analytics/daily-research/2026-08-04.md:761` (next steps, item 4), committed in `51bb7a2`.
+  Rule (1) is this seat's own catch and was adopted into the integrity officer's taxonomy
+  under the analyst's formulation as entry 23, *echoed-find / self-confirming query*.
+- **No search-synthesis figures** — restated as a standing rule in the 2026-08-04 agenda: a
+  search result set is evidence about an index, never about whether a document exists.
+  Source: `analytics/daily-research/2026-08-04.md:50` (Task 3), committed in `8756859`.
 - **Standing watch item.** Two consecutive sessions have paired this seat's strongest
   reasoning with the most binding objections, both times ledger-fidelity failures — reporting
   the favorable half of an operator mark (`quote_ok: true`) while omitting the adverse half
@@ -93,6 +115,15 @@ sharpening beyond the seed corpus."
 
 ## Change log
 
+- **2026-08-04** — Three method rules adopted since 2026-07-31 recorded here for the first
+  time: the carrying-span rule (`56cbb75`), the four relay method rules (`51bb7a2`), and
+  no-search-synthesis-figures (`8756859`). Until this entry the note's rules section ended at
+  2026-07-31, so the seat's own note carried none of them. Model is `claude-opus-5`
+  (`HEAVY_MODEL`), moved from `claude-fable-5` by operator directive in `939deaa`; the two
+  dated entries below are left as written, because they were true of their dates.
+  *Audited against `b76f6c3`; paths: `.claude/agents/research-analyst.md`,
+  `prompts/research_analyst.txt`, `prompts/council_calibration.md`,
+  `analytics/daily-research/`, `analytics/council-sessions/`, `src/models.py`.*
 - **2026-07-31** — Adopted method rules recorded: fetch-first (`754ce32`, re-sequenced in
   `e05f834`) and docket-page-before-document-hunt (`f03a90e`), plus the ledger-fidelity
   standing watch item from the same close-out. Model, definition, and prompt contract are

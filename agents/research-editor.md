@@ -59,6 +59,8 @@ instances of the brief outrunning its evidence, measured issue over issue."
 
 ## Change log
 
+- **2026-08-04** — Audited, no change to model, definition or prompt bindings; the currency query `git log 6a5cd2e..b76f6c3` returns no commit touching this seat's definition or prompts. Snapshot anchor added, applying the convention adopted 2026-08-03 to this note for the first time.
+  *Audited against `b76f6c3`; paths: `.claude/agents/research-editor.md`, `prompts/research_editor.txt`, `src/models.py`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-07-31** — Audited, no drift. Model, definition, prompt contract, flowchart box and
   edges all unchanged: no commit touched `.claude/agents/` or `prompts/` between `ede0f32`
   and `e153ce3`, and v3.0 (`21f0240`) left the `editor` node as it stood. One context

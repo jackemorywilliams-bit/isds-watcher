@@ -1,0 +1,10 @@
+{
+  "note": "Daily council 2026-08-04. (1) A/81/17 watch, day 4 of the publication window, at the Commission Sessions posting location, in the standard same-page positive-control form: the target symbol plus a control string known present on that page. (2) First test of the undocs.org symbol route, which the record has noted as untested. (3) Independent second retrieval of the China-Switzerland BIT (2009) treaty-978 forum-relationship cell, to give the 2026-08-03 relay answer a second dated retrieval before any standing gap is closed on it, with a same-page positive control.",
+  "urls": [
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/81/17"},
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/80/17"},
+    {"url": "https://undocs.org/A/81/17", "find": "A/81/17"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "Relationship between forums"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "ISDS forum options"}
+  ]
+}

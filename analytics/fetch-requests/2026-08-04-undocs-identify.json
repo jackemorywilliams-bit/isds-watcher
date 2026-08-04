@@ -1,0 +1,7 @@
+{
+  "note": "Chairman-authorised, 2026-08-04, on the integrity officer's recommendation in Part 3. The 11:37Z control block established that docs.un.org answers 200 at an identical 4,157 bytes for a published symbol, the awaited symbol, and an arbitrary one — so its status carries no existence information. But all three excerpts were empty, so the record knows the byte length and knows the session-title string is absent from rendered text; it does NOT know what those pages are. An empty find returns body[:400] (scripts/fetch_relay.py:136) and identifies the page for free. Instrument/method characterisation only; nothing here is an A/81/17 existence test.",
+  "urls": [
+    {"url": "https://undocs.org/en/A/80/17", "find": ""},
+    {"url": "https://undocs.org/en/A/81/99", "find": ""}
+  ]
+}

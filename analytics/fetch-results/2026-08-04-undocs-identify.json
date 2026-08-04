@@ -1,0 +1,54 @@
+{
+  "request": "2026-08-04-undocs-identify.json",
+  "note": "Chairman-authorised, 2026-08-04, on the integrity officer's recommendation in Part 3. The 11:37Z control block established that docs.un.org answers 200 at an identical 4,157 bytes for a published symbol, the awaited symbol, and an arbitrary one \u2014 so its status carries no existence information. But all three excerpts were empty, so the record knows the byte length and knows the session-title string is absent from rendered text; it does NOT know what those pages are. An empty find returns body[:400] (scripts/fetch_relay.py:136) and identifies the page for free. Instrument/method characterisation only; nothing here is an A/81/17 existence test.",
+  "fetched_at": "2026-08-04T11:52:34.249057+00:00",
+  "environment": "github-actions-runner (run 30906545697)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 2,
+  "completed": 2,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://undocs.org/en/A/80/17",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://docs.un.org:443/en/A/80/17",
+      "content_type": "text/html",
+      "bytes": 4157,
+      "sha256": "6120ed9cf698a83317451ec47c89fd5b7054f0d15ef2dfda20cbe1850c0d9e67",
+      "excerpt": "Document Viewer home United Nations \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://undocs.org/en/A/81/99",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://docs.un.org:443/en/A/81/99",
+      "content_type": "text/html",
+      "bytes": 4157,
+      "sha256": "91c4c786ef8fd8239e07c0f514e4c97f7b7b5e172b86b98cc3e0501a02450ccc",
+      "excerpt": "Document Viewer home United Nations \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 English Fran\u00e7ais \u0420\u0443\u0441\u0441\u043a\u0438\u0439 Espa\u00f1ol",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

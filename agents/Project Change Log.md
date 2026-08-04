@@ -11,6 +11,101 @@ here. Newest first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-04
+
+*Audited against `b76f6c3`; paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `src/source_health.py`, `views/isds-workflow-3d/workflow.json`,
+`HANDOFF.md`, `analytics/`, and every remote branch tip.*
+
+- **The fetch relay — the architecture change the vault had not recorded.** A council session
+  running in the scheduled cloud environment has no network egress of its own. The relay
+  closes that: the session commits a small JSON request under `analytics/fetch-requests/`, the
+  push fires a GitHub Actions runner that *does* have egress
+  (`.github/workflows/fetch-relay.yml`), the runner fetches each URL through the project's own
+  `polite_get` — same user agent, same robots evaluation, same per-domain interval — and
+  commits back a reduction to `analytics/fetch-results/`: status, final URL, content-type,
+  byte length, sha256, timestamp, and a capped excerpt. The document body never travels,
+  because the repository is public and a commit is publication. `fe02f39`
+  ("feat(relay): fetch relay for the network-less council session"), excerpt targeting in
+  `7fbbabf`, on the flowchart as `relay-request` / `relay-answer` in `0e7d0f7`. It answered a
+  standing research gap the day it landed.
+- **Four method rules and six taxonomy entries adopted.** Relay method rules binding on every
+  seat, and the chairman's quote-the-whole-line amendment (`51bb7a2`); fabrication taxonomy
+  entries 18–23 plus entry 17 extended from mis-dated to mis-located (`51bb7a2`). All now in
+  the seat notes; see [[Agent Registry]]'s adopted-rules table.
+- **Vault: the 2026-08-03 archivist change set was found to have landed only in part.** Its
+  own note's audit slice reached `main` through the conflict resolution of `8705f7a`; the
+  `Project Machinery` note it recorded creating exists in no commit; and no 2026-08 content
+  ever reached the chairman, analyst or integrity-officer notes. Consequence, measured rather
+  than asserted: the taxonomy-recitation defect that change set reported closing recurred at
+  `analytics/daily-research/2026-08-03.md:185` and `2026-08-04.md:535`. Corrected and landed
+  2026-08-04; full statement in [[obsidian-archivist]], audit slice 2026-08-04.
+- **`HANDOFF.md` — three false statements corrected.** The heavy tier read `claude-opus-4-8`
+  at line 29 against `HEAVY_MODEL = "claude-opus-5"` in `src/models.py` and against its own
+  line 163, the half of `939deaa` that was never applied; the digest classifier was placed
+  "in `src/classify.py`" when `src/models.py` defines `DIGEST_CLASSIFIER_MODEL` and
+  `src/classify.py:58` imports it; and the `italaw` row asserted in the present tense that the
+  zero-streak guard flags it `DEGRADED`, when `state/source_health.json` records
+  `zero_streak: 1` and `src/source_health.py:121-130` puts the earliest possible flag at
+  2026-08-17.
+
+## 2026-08-03
+
+- **The fetch relay's two standing rules implemented, and their council record lost.** The
+  session that adopted them wrote `analytics/council-sessions/2026-08-03-standing-rules.md`
+  (887 lines) on a worktree branch as `3d31de8`. That commit was never pushed: it is not an
+  ancestor of `origin/main`, no remote branch carries it, and `git cat-file -t 3d31de8` now
+  returns "Not a valid object name". The rules themselves are in the code — `0091ade` ("a
+  refused source can no longer report as healthy") and `fe02f39` — so the machinery is on
+  `main` and its reasoning is not recoverable from git. Escalated 2026-08-03 as orphaned;
+  recorded 2026-08-04 as lost.
+- **Two special council sessions recorded and merged.** The deterministic pre-ledger
+  verification system (`1109993`, `analytics/council-sessions/2026-08-03-verification-system.md`)
+  and the carrying-span rule for the proposition problem (`56cbb75`,
+  `analytics/council-sessions/2026-08-03-proposition-rule.md`). The second records its own
+  rule as **adopted and unvalidated** against the session's base rate, and that qualification
+  is carried into [[research-analyst]] rather than dropped.
+- **Chairman and research analyst moved from Claude Fable 5 to Claude Opus 5.** Operator
+  directive: the Fable 5 credit balance is exhausted, so both top seats move to Opus 5.
+  Applied in `src/models.py` (`CHAIRMAN_MODEL` and `HEAVY_MODEL` now `claude-opus-5`), the
+  two agent definitions' `model:` keys (`.claude/agents/council-chairman.md`,
+  `.claude/agents/research-analyst.md`), the six flowchart cards in
+  `views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `HANDOFF.md`, `METHODOLOGY.md`
+  Part VIII, and this vault's registry and per-agent notes. The other seats are unchanged
+  on Opus 4.8. The dated history below is left as written — the July 29 promotion to
+  Fable 5 happened and stays recorded. **Two qualifications added 2026-08-04:** `939deaa`
+  did *not* reach `HANDOFF.md:29`, which kept the old heavy-tier id for a day (fixed above);
+  and it rewrote the two disputed flowchart cards from "Fable 5" to "Opus 5", which leaves
+  the card-model defect intact while making it read as a legitimate assignment.
+- **First live run of the silent-decay source-health guard.** `state/source_health.json` now
+  exists with per-source streaks; `digests/2026-08-03_ISDS-Thematic-Watch/meta.json` is the
+  first archived run to carry them. `health_warnings` is `[]`, which is a cold-start artefact
+  and not a statement of source health — no source can reach the three-run threshold before
+  2026-08-17. Closes the "not yet exercised" state carried in [[Workflow Threads]] B1 since
+  2026-07-30.
+
+## 2026-08-02
+
+- **Fabrication taxonomy entries 12–14 adopted** — capability-as-corroboration, absolutized
+  heuristic, silent class truncation — each anchored to a filed objection. `82692a2`,
+  `analytics/daily-research/2026-08-02.md:198-200`.
+
+## 2026-08-01
+
+- **The vault's orphaned 07-31 work was caught by the council, not by the archivist.** The
+  close-out's escalation 1 states it plainly: the archivist session's vault work existed only
+  on `feat/methodology-source-council-sync` and "until then the vault's workflow memory is
+  invisible to main" (`4d5c562`, `analytics/daily-research/2026-08-01.md:487`). Recovered
+  2026-08-03 by PR #44 (`cb12a2d`).
+- **Three cloud-run council records ruled non-canonical.** The scheduled runs of 2026-07-30,
+  07-31 and 08-01 sit on `origin/claude/sweet-mccarthy-8mouy6`, `-i95s3k` and `-d5kgmw`. They
+  ran `claude-sonnet-4-6` in seats assigned other models, so the close-out ruled them
+  "preserved verbatim … as a non-canonical parallel artifact" and recommended archiving or
+  deleting the branches so they cannot later be mistaken for canon
+  (`analytics/daily-research/2026-08-01.md:452` and `:487`, `4d5c562`). Still unactioned.
+- **Fabrication taxonomy entry 11 adopted** — status-as-record-artifact. `4d5c562`,
+  `analytics/daily-research/2026-08-01.md:410`.
+
 ## 2026-07-31
 
 - **PR #32 merged to main.** `e153ce3` ("Merge pull request #32 from
@@ -99,18 +194,6 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
   a chairman who directs but never writes any member's contribution, with a security officer
   whose objections bind what the editor may publish. Recorded here as pending, and it is the
   first professor-facing surface to state the council as it actually runs.
-
-## 2026-08-03
-
-- **Chairman and research analyst moved from Claude Fable 5 to Claude Opus 5.** Operator
-  directive: the Fable 5 credit balance is exhausted, so both top seats move to Opus 5.
-  Applied in `src/models.py` (`CHAIRMAN_MODEL` and `HEAVY_MODEL` now `claude-opus-5`), the
-  two agent definitions' `model:` keys (`.claude/agents/council-chairman.md`,
-  `.claude/agents/research-analyst.md`), the six flowchart cards in
-  `views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `HANDOFF.md`, `METHODOLOGY.md`
-  Part VIII, and this vault's registry and per-agent notes. The other seats are unchanged
-  on Opus 4.8. The dated history above is left as written — the July 29 promotion to
-  Fable 5 happened and stays recorded.
 
 ## 2026-07-30
 
@@ -224,7 +307,24 @@ artifacts that only Emory can settle. Threads with a named agent owner live in
   skip markers inside code spans and fences (`_CODE_FENCE` is already compiled in the
   module), or fail loudly on a duplicate start marker instead of silently spanning it. Wants
   a regression test with a note that quotes the marker. Machinery work — [[systems-designer]]
-  on Emory's go-ahead.
+  on Emory's go-ahead. **Re-verified 2026-08-04: still open.**
+- **Seventeen of Emory's own verification marks have never reached `main`.** Raised
+  2026-08-04. `origin/chore/operator-marks-2026-07-27` ("chore(ledger): operator
+  chat-verification sweep — 37/40 verified, Hela Schwarz characterization rejected and
+  corrected", `6f9e1da`, dated 2026-07-27) is not an ancestor of `origin/main`. Its
+  `analytics/verification_ledger.jsonl` holds **38** operator marks and 40 claims; `main`'s
+  holds **21** marks (`8891c21`) and 37 claims. The 17 missing marks include the `--rejected`
+  mark on `7dd2f272f130f859` (the *Hela Schwarz* framing) and the `--verified` mark on
+  `5c25faf36673d6f3` (China–Germany BIT Art. 1(d) against the official treaty text) — both of
+  which `HANDOFF.md:147-152` still lists as "awaiting your CLI mark", true against `main`'s
+  ledger and false against the work Emory actually did. Not merged by this seat: the ledger is
+  operator-owned, and its integrity is the project's foundation. Emory's call.
+- **The chart's `quality-bar` card cites the wrong file for the threshold.** The card's
+  evidence reads `src/config.py: threshold 40 / floor 25`; the value lives at
+  `fingerprint.yaml:5` (`threshold: 40`). Raised 2026-08-03, re-verified 2026-08-04.
+  [[systems-designer]] regenerates from the manifest; not hand-edited.
+- **`views/isds-workflow-3d/view.js` has no freshness guard** where the generated SVG has a
+  fail-closed one. Raised 2026-08-03, re-verified 2026-08-04. [[systems-designer]].
 
 ### Closed
 

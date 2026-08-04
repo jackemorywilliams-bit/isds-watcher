@@ -83,6 +83,13 @@ source's priority — or its existence — should be revisited by Emory."
 
 ## Change log
 
+- **2026-08-04** — Audited, no change to model or definition. One change to a bound prompt,
+  and it is not a contract change: `07ff434` appended a managed `Map:` block to
+  `prompts/daily_council_protocol.md` when `scripts/build_graph.py` was run over the vault —
+  four lines of vault markup, no rule text touched. Recorded so the diff is never mistaken
+  for a protocol amendment. Snapshot anchor added, applying the convention adopted 2026-08-03
+  to this note for the first time.
+  *Audited against `b76f6c3`; paths: `.claude/agents/analytics-officer.md`, `prompts/council_roundtable.txt`, `prompts/daily_council_protocol.md`, `analytics/daily-research/`, `src/models.py`.*
 - **2026-07-31** — Drift fixed: the "no box of its own" statement was stale — this seat
   gained the `analytics-officer` box in flowchart v3.0 (`21f0240`), with two edges
   (`quality-bar → analytics-officer`, `analytics-officer → next-week`). Working context

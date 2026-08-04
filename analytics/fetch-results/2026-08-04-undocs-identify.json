@@ -1,8 +1,8 @@
 {
   "request": "2026-08-04-undocs-identify.json",
   "note": "Chairman-authorised, 2026-08-04, on the integrity officer's recommendation in Part 3. The 11:37Z control block established that docs.un.org answers 200 at an identical 4,157 bytes for a published symbol, the awaited symbol, and an arbitrary one \u2014 so its status carries no existence information. But all three excerpts were empty, so the record knows the byte length and knows the session-title string is absent from rendered text; it does NOT know what those pages are. An empty find returns body[:400] (scripts/fetch_relay.py:136) and identifies the page for free. Instrument/method characterisation only; nothing here is an A/81/17 existence test.",
-  "fetched_at": "2026-08-04T12:01:59.675838+00:00",
-  "environment": "github-actions-runner (run 30907209003)",
+  "fetched_at": "2026-08-04T15:32:56.017393+00:00",
+  "environment": "github-actions-runner (run 30924541948)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

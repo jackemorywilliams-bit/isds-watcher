@@ -26,8 +26,9 @@
   (chairman → analyst+web search → deterministic integrity gate → editor). See `COUNCIL.md`.
   The brief needs the Anthropic provider (web search is an Anthropic server tool); disable
   with `RESEARCH_BRIEF_ENABLED=0`. Model ids come from the single config location
-  `src/models.py` (chairman `claude-opus-5`; heavy/utility `claude-opus-4-8`; digest
-  classifier unchanged in `src/classify.py`); `RESEARCH_MODEL` remains an explicit
+  `src/models.py` (chairman `claude-opus-5`; heavy `claude-opus-5`; utility
+  `claude-opus-4-8`; digest classifier id `claude-haiku-4-5-20251001`, defined in
+  `src/models.py` and imported by `src/classify.py`); `RESEARCH_MODEL` remains an explicit
   operator override for every stage, and any requested-vs-actual runtime fallback is
   appended to this file automatically. Issues land in `briefs/<date>.html`; the full council deliberation is
   preserved at `briefs/<date>-memo.md`. Continuity: each issue's open threads persist in
@@ -108,7 +109,7 @@ sending to both. Edit that list and push to change recipients.
 | Source | Status |
 |--------|--------|
 | `iisd_itn` | RSS, working (substantive descriptions). |
-| `italaw` | HTML homepage "Newly Posted" feed. **BLOCKED since ~2026-07**: Cloudflare managed challenge (403, `Cf-Mitigated: challenge`) on every path for non-browser clients, though robots.txt allows `*`. We never evade anti-bot, so it degrades to `[]`; the zero-streak guard (`state/source_health.json`) flags it `DEGRADED`. Parser kept for if/when the challenge is lifted. |
+| `italaw` | HTML homepage "Newly Posted" feed. **BLOCKED since ~2026-07**: Cloudflare managed challenge (403, `Cf-Mitigated: challenge`) on every path for non-browser clients, though robots.txt allows `*`. We never evade anti-bot, so it degrades to `[]`; the zero-streak guard (`state/source_health.json`) **will** flag it `DEGRADED` once it accumulates three consecutive zero runs. It has not yet: the guard's first live run was 2026-08-03 and `state/source_health.json` records `italaw` at `zero_streak: 1`, so on the weekly cron the earliest possible flag is 2026-08-17. Corrected 2026-08-04 by the archivist against `state/source_health.json` and `src/source_health.py:121-130`, on the systems seat's escalation 5 of `analytics/daily-research/2026-08-04.md` (`51bb7a2`). Parser kept for if/when the challenge is lifted. |
 | `icsid` | Case DB is JS-only; falls back to `/news-events` announcements. |
 | `iareporter_headlines` | Homepage **headlines only** (paywalled — no body fetch). |
 | `unctad_isds` | Worked from the build host; may 403 from some IPs (robots disallows ClaudeBot, not our UA). Degrades to `[]` + log. |
@@ -163,8 +164,10 @@ Map: [[00 - Project Map]]
 - chairman: `claude-opus-5` · analyst: `claude-opus-5` (operator directive 2026-07-29:
   the researcher gets the most advanced model) · one-pager drafting: `claude-opus-4-8` ·
   utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
-  classifier: unchanged `claude-haiku-4-5-20251001` (kept in `src/classify.py`, outside
-  the change manifest). Any runtime fallback appends a REQUESTED vs ACTUAL line below
+  classifier: unchanged `claude-haiku-4-5-20251001` (id defined in `src/models.py` as
+  `DIGEST_CLASSIFIER_MODEL` and imported at `src/classify.py:58`; `src/classify.py` itself
+  is outside the change manifest, which is why the *assignment* is "unchanged", but the id
+  is not a second config location). Any runtime fallback appends a REQUESTED vs ACTUAL line below
   automatically (`src/models.py record_fallback`). This session's one-pager drafting ran
   on Opus 4.8 subagents as assigned; the orchestrating session itself runs on
   `claude-opus-5` (requested and actual).

@@ -24,3 +24,7 @@ Rules the relay enforces, so a session cannot bypass them by accident:
   silently absent, and `no_contact` (we never reached the origin) is never
   recorded as an origin answer.
 - Do not put `[skip ci]` in the request commit message — it suppresses the run.
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

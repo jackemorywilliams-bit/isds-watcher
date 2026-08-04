@@ -16,10 +16,17 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot taken:** 2026-07-31, at `e153ce3` (merge of PR #32) plus the open PR #33
-(`984f5eb`). Sources read for this pass: `state/research_log.json` (seq 36),
-`analytics/daily-research/2026-07-31.md`, `analytics/optimization-log.md`, `alerts.yaml`,
-`digests/2026-07-27_ISDS-Thematic-Watch/meta.json`, `.github/workflows/weekly.yml`.
+**Snapshot taken:** 2026-08-04, at `b76f6c3` (merge of PR #49). Sources read for this pass:
+`analytics/daily-research/2026-08-01.md` through `2026-08-04.md`,
+`analytics/council-sessions/`, `analytics/verification_ledger.jsonl`,
+`state/source_health.json`, `digests/2026-08-03_ISDS-Thematic-Watch/meta.json`,
+`src/source_health.py`, `views/isds-workflow-3d/workflow.json`, and the branch-ancestry check
+described in F1. The previous snapshot was 2026-07-31 at `e153ce3`.
+
+**Refreshed 2026-08-04.** The A- and C-series states below are carried from the 2026-07-31
+pass except where a section says otherwise; the council's own close-outs, not this note, are
+their source of truth. What this pass changed: B1 closes, C9 closes, C7 and C8 are
+re-verified open, and section F is new.
 
 ---
 
@@ -135,11 +142,24 @@ Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
   run (`digests/2026-07-27_ISDS-Thematic-Watch/meta.json`) carries a `source_health` table
   with statuses but no streak data.
 - **Recorded** — `e31e0c6`, merged to main by `8178f1f` (PR #23 — **not** PR #32).
-- **Next** — **First live run 2026-08-03**, the next weekly cron
-  (`.github/workflows/weekly.yml`, `cron: "0 13 * * 1"`). The output to read is the
-  `source_health` block in that run's `meta.json`.
-- **Owner** — Automatic; [[analytics-officer]] reads the result into the council's numbers of
-  record.
+- **CLOSED 2026-08-04 — it ran.** The first live run was 2026-08-03 as predicted.
+  `state/source_health.json` now exists and carries per-source streaks (`italaw`,
+  `iisd_itn`, `google_alerts`, `bing_news`, `gmail_scholar` all at `zero_streak: 1`;
+  `icsid`, `iareporter_headlines`, `unctad_isds`, `pca_press` at 0), and
+  `digests/2026-08-03_ISDS-Thematic-Watch/meta.json` is the first archived run to carry them.
+  `health_warnings` is `[]`, and that is a **cold-start artefact, not a statement of source
+  health** — with `DEGRADED_AFTER = 3` at `src/source_health.py:33` and a weekly cron, no source
+  can be flagged before **2026-08-17**.
+- **Successor** — Two defects in the guard, both found by the systems seat on 2026-08-04 and
+  both dated: `NOT-READ (reason)` is absent from `_EXEMPT_STATUSES`
+  (`src/source_health.py:50`), so on 2026-08-17 the guard will overwrite a refused source's
+  honest status with `DEGRADED` and publish a causal claim about fetchers that the standing
+  blocked-vs-quiet rule forbids; and `bing_news` is absent from `ACTIVE_SOURCES`
+  (`src/source_health.py:39-47`) though `HANDOFF.md:115` documents it as active, so it can
+  never be flagged at all. Escalations 3 and 4 of `analytics/daily-research/2026-08-04.md`
+  (`51bb7a2`), verified against the source by this seat.
+- **Owner** — [[systems-designer]] on Emory's go-ahead; `src/` is outside every agent's
+  unilateral reach.
 
 ### B2 · `source_analytics.py` same-window patch
 
@@ -291,15 +311,79 @@ specifically unblocks it.
   marker. Wants a regression test whose fixture is a note that quotes the marker.
 - **Owner** — **Emory** authorizes; [[systems-designer]] implements. Machinery, not vault.
 
-### C9 · PR #33 — METHODOLOGY Parts III and VIII
+### C9 · PR #33 — METHODOLOGY Parts III and VIII — **CLOSED**
 
-- **State** — Open, one commit, not merged. Part III's live-source list gains the PCA press
-  page and Bing News; Part VIII is rewritten from "predetermined stages" to the real agent
-  council — named models, a chairman who directs but never writes, and a security officer
-  whose objections bind the editor. It is the first professor-facing surface to describe the
-  council as it actually runs.
-- **Recorded** — `984f5eb`, branch `feat/methodology-source-council-sync`.
-- **Next** — Review and merge.
+- **State** — **Closed 2026-08-04.** `984f5eb` is an ancestor of `origin/main`, and no pull
+  request is open on the repository. What the merge did *not* carry was the rest of that
+  branch — the archivist's vault work — which is thread D1's story below.
+- **Recorded** — `984f5eb`; branch tip `f195e21` recovered separately by PR #44 (`cb12a2d`).
+- **Owner** — none; no action.
+
+---
+
+## F · Branch hygiene — what is committed but not landed
+
+### F1 · Seventeen operator ledger marks never merged
+
+- **State** — Found 2026-08-04 by testing every remote branch tip with
+  `git merge-base --is-ancestor <tip> origin/main`.
+  `origin/chore/operator-marks-2026-07-27` (`6f9e1da`, 2026-07-27) fails that test and is the
+  only unmerged branch carrying content the record needs. Its
+  `analytics/verification_ledger.jsonl` holds 38 operator marks and 40 claims against `main`'s
+  21 and 37 — **17 marks and 3 claims that `main` has never held**, all made by Emory in the
+  2026-07-27 chat-verification sweep. Two of them are named as still-pending in
+  `HANDOFF.md:147-152`: `5c25faf36673d6f3` (China–Germany BIT Art. 1(d), `--verified` against
+  the official treaty text) and `7dd2f272f130f859` (*Hela Schwarz*, `--rejected` — the A&O
+  Shearman page says jurisdiction *and merits*, not the failure-to-withdraw framing). The
+  rejected framing does **not** appear in `STATE_OF_THE_ANSWER.md` today, so the living memory
+  is not carrying a rejected claim; what is missing is the ledger's own record that Emory
+  ruled on it.
+- **Next** — Emory's call, and no agent should make it: `git merge origin/chore/operator-marks-2026-07-27`
+  on a branch, or re-run the marks. The ledger is operator-owned and this seat does not write
+  to it.
+- **Owner** — **Emory.**
+
+### F2 · The 2026-08-03 standing-rules council record is lost
+
+- **State** — The 2026-08-03 archivist session escalated `3d31de8` /
+  `analytics/council-sessions/2026-08-03-standing-rules.md` (887 lines) as sitting on a
+  worktree branch and not an ancestor of `main`. On 2026-08-04 the object is gone:
+  `git cat-file -t 3d31de8` returns "Not a valid object name", no remote branch carries the
+  file, and the worktree it lived in belonged to an ephemeral container. The two rules it
+  adopted — third-party retrieval, and blocked-vs-quiet source status — are implemented on
+  `main` (`0091ade`, `fe02f39`) and are cited by later sessions, so the project runs on them;
+  their reasoning and the objections they answer are not recoverable from git.
+- **Next** — Nothing recovers it from the repository. If a transcript or scratchpad copy
+  exists outside git it should be committed; otherwise the two rules should be restated from
+  the sessions that cite them, which is council work, not vault work.
+- **Owner** — **Emory** decides whether to reconstruct; [[council-chairman]] would execute.
+
+### F0 · `fetch-relay` triggers on documentation edits, not just requests
+
+- **State** — Found 2026-08-04 by this seat's own commit firing it.
+  `.github/workflows/fetch-relay.yml:16-18` triggers on
+  `paths: 'analytics/fetch-requests/**'`, which includes that directory's `README.md`. A
+  four-line managed `Map:` block written there by `scripts/build_graph.py` fired a relay
+  runner on PR #51. Harmless this time — no request file was added, so nothing was fetched —
+  but it spends a runner on a documentation edit and puts a relay run in the history with no
+  request behind it.
+- **Next** — Scope the filter to request files, e.g. `analytics/fetch-requests/*.json`.
+- **Owner** — [[systems-designer]] on Emory's go-ahead; `.github/` is outside this seat's
+  paths.
+
+### F3 · Three non-canonical cloud-run branches still on origin
+
+- **State** — `origin/claude/sweet-mccarthy-8mouy6` (07-30), `-i95s3k` (07-31) and `-d5kgmw`
+  (08-01) each carry a complete parallel council record for a date `main` also has a record
+  for. They are **not** orphaned by accident: `analytics/daily-research/2026-08-01.md:452`
+  rules them "preserved verbatim … as a non-canonical parallel artifact", on the ground that
+  they ran `claude-sonnet-4-6` in seats assigned other models. Their one substantive lead was
+  queued through canonical vetting rather than adopted.
+- **Recorded** — `4d5c562`, rulings (a) and (b) and escalation item 2 (`:487`).
+- **Next** — The close-out's own recommendation, unactioned since 2026-08-01: archive or
+  delete the branches so a parallel record cannot later be mistaken for canon. Every check of
+  this kind has to re-derive their status from a ruling buried in one day's close-out, which
+  is the cost of leaving them.
 - **Owner** — **Emory.**
 
 ---
@@ -315,9 +399,15 @@ specifically unblocks it.
   five were wrong after v3.0; the adopted method rules existed only in the daily records.
   Both fixed.
 - **Recorded** — [[obsidian-archivist]], audit slice 2026-07-31.
-- **Next** — Next deployment audits a different slice. Standing rule: when any agent's
-  prompt, model, or contract changes, its note and [[Agent Registry]] change in the same
-  change set.
+- **2026-08-04 update** — The 07-31 work was orphaned off `main` for three days and recovered
+  by PR #44 (`cb12a2d`); the council, not this seat, caught it (`4d5c562`). The 2026-08-03
+  change set then repeated the failure in a subtler form: its own note landed, and three of
+  its claims about other notes did not. Corrected 2026-08-04, with the measured consequence
+  recorded rather than asserted. The countermeasure adopted: a vault change is not made until
+  it is on `main`, and the session claiming it verifies it there.
+- **Next** — Each session begins by re-running the currency query against what the previous
+  session claimed: `git log <anchor>..HEAD -- <paths>`, with the anchor at the foot of each
+  note's change log. All twelve notes now carry one; before 2026-08-04 exactly one did.
 - **Owner** — [[obsidian-archivist]].
 
 ---
@@ -347,6 +437,18 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-04** — Refreshed against `b76f6c3`. B1 closed — the source-health guard ran live
+  on 2026-08-03 and `state/source_health.json` exists — with two dated successor defects
+  recorded from the systems seat's escalations and verified against `src/source_health.py`.
+  C9 closed: `984f5eb` is on `main` and no PR is open. C7 and C8 re-verified open against the
+  manifest and `scripts/build_graph.py`. Section **F** added for branch hygiene, carrying the
+  three findings of this session's orphan check: 17 unmerged operator ledger marks (F1), the
+  lost standing-rules record (F2), and the three ruled-non-canonical cloud branches whose
+  archival was recommended on 2026-08-01 and never done (F3). The A- and C-series are carried
+  from the council's own close-outs and not re-argued here.
+  *Audited against `b76f6c3`; paths: `analytics/`, `state/source_health.json`,
+  `src/source_health.py`, `views/isds-workflow-3d/workflow.json`, `HANDOFF.md`, `alerts.yaml`,
+  and every remote branch tip.*
 - **2026-07-31** — Note created by operator directive: linearize the vault's threads, all
   threads included. Every chain verified against the repository before writing. Two
   corrections to the brief that produced it: the silent-decay guard reached main through

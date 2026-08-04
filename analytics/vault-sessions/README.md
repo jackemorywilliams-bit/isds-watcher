@@ -17,3 +17,7 @@ The cadence lives with the archivist routine, not with the emailer. The emailer
 runs daily and asks only "is anything unsent?", so a session that slips a day is
 still delivered, and a session that never ran sends nothing rather than a false
 all-clear.
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

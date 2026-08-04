@@ -68,6 +68,30 @@ delegated session is convened, and they are part of this seat's working context.
   the countermeasure originates in the integrity officer's *superseded-formulation
   restatement* taxonomy entry from the same session.
 
+Four more, adopted 2026-08-01 through 2026-08-04 and recorded here on 2026-08-04:
+
+- **Standing-conventions block in the delegation template** — adopted 2026-08-01. The
+  delegation brief carries the record's propositions but had carried none of the standing
+  conventions the vetting layer establishes, so a convention adopted in one session did not
+  bind the next. The template now carries a standing-conventions block, updated whenever a
+  vetting round names a new one. Source: the chairman's self-training note,
+  `analytics/daily-research/2026-08-01.md:492`, committed in `4d5c562`.
+- **Probe the instruments before writing the agenda** — adopted 2026-08-03, applied
+  2026-08-04. Agenda scope follows the instruments actually alive, established by probe at
+  session open rather than assumed from the prior session. Source:
+  `analytics/daily-research/2026-08-04.md:13` (which names it as "the delegation rule adopted
+  2026-07-31 and amended 2026-08-03"), committed in `8756859`. On first application it
+  re-scoped the whole session: the probe found the fetch relay merged overnight, turning a
+  search-track-only day into a three-batch retrieval session.
+- **An objection is a claim like any other** — adopted 2026-08-03. Where an objection
+  asserts a fact, it carries the same sourcing burden as the memo it objects to. Source:
+  `analytics/council-sessions/2026-08-03-verification-system.md:420`, committed in `1109993`.
+- **Before a ruling asserts what a record line says, quote the whole line** — adopted
+  2026-08-04, out of the chairman's own B3(a) ruling of the prior session. Source:
+  `analytics/daily-research/2026-08-04.md:762` (next steps, item 5), committed in `51bb7a2`;
+  the countermeasure is the integrity officer's *selective-quotation supersession* entry
+  (taxonomy 18) adopted the same day.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
@@ -90,6 +114,16 @@ meetings and fold in what fits."
 
 ## Change log
 
+- **2026-08-04** — Four session-protocol rules adopted 2026-08-01 through 2026-08-04 recorded
+  here for the first time: the standing-conventions block (`4d5c562`), probe-the-instruments
+  (`8756859`), an-objection-is-a-claim (`1109993`), and quote-the-whole-line (`51bb7a2`).
+  Before this entry the note's protocol section ended at 2026-07-31, so a chairman reading
+  its own seat note carried none of the four. Model unchanged (`claude-opus-5`,
+  `CHAIRMAN_MODEL`); definition unchanged since `939deaa`.
+  *Audited against `b76f6c3`; paths: `.claude/agents/council-chairman.md`,
+  `prompts/council_chairman.txt`, `prompts/council_reconvene.txt`,
+  `prompts/council_calibration.md`, `analytics/daily-research/`,
+  `analytics/council-sessions/`, `src/models.py`.*
 - **2026-07-31** — Adopted session protocol recorded: return-path protocol and spend
   checkpoint (`de7b0fc`, checkpoint commit `15c8131`) and the name-the-latest-refinement
   delegation rule (`f03a90e`). The 2026-07-31 session was the first in which every seat sat

@@ -15,11 +15,13 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
-**Definitions audited 2026-07-31 and unchanged since the registry was created:**
-`git log ede0f32..e153ce3 -- .claude/agents/ prompts/` returns no commits, so every model,
-contract, and prompt binding in the table below still reads as committed. What *did* change
-is each seat's working context — the method rules the council adopted in session — and the
-flowchart, which now carries a card for all nine seats.
+**Definitions audited 2026-08-04.** `git log 6a5cd2e..b76f6c3 -- .claude/agents/ prompts/`
+returns two commits, and neither is a contract change: both are the same four-line managed
+`Map:` block appended to `prompts/daily_council_protocol.md` by `scripts/build_graph.py`
+(`07ff434`, carried through `8705f7a`). No definition file has changed since `939deaa` moved
+the chairman and analyst to Opus 5. Every model, contract and prompt binding in the table
+below still reads as committed. What *did* change is each seat's working context — the method
+rules the council adopted in session, now recorded in the seat notes — and the flowchart.
 
 ## Roster
 
@@ -42,12 +44,21 @@ runtime-fallback rule requires any REQUESTED-vs-ACTUAL discrepancy to be written
 
 ## Flowchart cards → notes (click-through map)
 
-As of flowchart **v3.0** (`21f0240`, "all nine subagents on the chart, cards link to their
-vault training notes"), every one of the nine agents has its own card. Each role card's
+Every one of the nine agents has its own card, since the build committed as `21f0240` ("all
+nine subagents on the chart, cards link to their vault training notes"). Each role card's
 `target` is an Obsidian link text that `views/isds-workflow-3d/view.js` hands to
 `dv.app.workspace.openLinkText`, so `target: "agents/<name>"` must match a note filename
-exactly. **All nine resolve** — verified 2026-07-31 against
-`views/isds-workflow-3d/workflow.json` (28 nodes, 40 edges).
+exactly. **All ten role cards resolve** — verified 2026-08-04 against
+`views/isds-workflow-3d/workflow.json`, which now reads **30 nodes, 44 edges**;
+`node tools/isds-workflow-3d/validate.mjs` exits 0 and reports the same counts against both
+the manifest and the generated SVG.
+
+*Version naming, corrected 2026-08-04.* This registry previously called the chart "v3.0",
+which is the naming in `21f0240`'s commit message, not the manifest's own. The manifest's
+`meta.version` reads **2.2** (`views/isds-workflow-3d/workflow.json`), whose `meta.note`
+dates v2.2 to 2026-08-03: the fetch relay added to the machine lane, and the two builder
+seats moved from machine rows 7–8 to rows **9–10** to clear the corridor its answer crosses.
+The registry now follows the manifest.
 
 | Card (`workflow.json` id) | Column · row | `target` | Card model | Note |
 |---|---|---|---|---|
@@ -59,15 +70,28 @@ exactly. **All nine resolve** — verified 2026-07-31 against
 | `analytics-officer` | council · 12 | `agents/analytics-officer` | Claude Opus 4.8 | [[analytics-officer]] |
 | `obsidian-archivist` | council · 14 | `agents/obsidian-archivist` | Claude Opus 4.8 | [[obsidian-archivist]] |
 | `integrity-officer` | Emory checks · 11 | `agents/integrity-officer` | Claude Opus 4.8 | [[integrity-officer]] |
-| `systems-designer` | machine · 7 | `agents/systems-designer` | Claude Fable 5 ⚠ | [[systems-designer]] |
-| `site-experience` | machine · 8 | `agents/site-experience` | Claude Fable 5 ⚠ | [[site-experience]] |
+| `systems-designer` | machine · **9** | `agents/systems-designer` | Claude Opus 5 ⚠ | [[systems-designer]] |
+| `site-experience` | machine · **10** | `agents/site-experience` | Claude Opus 5 ⚠ | [[site-experience]] |
 
-⚠ **Card asserts a model no configuration file carries.** Neither
-`.claude/agents/systems-designer.md` nor `.claude/agents/site-experience.md` declares a
-`model:` key, and `src/models.py` does not cover repository-side seats — yet both cards read
-"Model: Claude Fable 5". Escalated to Emory; the resolution is either a `model: fable` line
-in each definition or a card that says "inherits the invoking session". The chart is not
-hand-edited to make the discrepancy disappear.
+Rows and card models re-read from the manifest 2026-08-04. The two builder seats moved down
+two rows in v2.2 to make room for the relay; the chairman, analyst, systems-researcher,
+editor, minutes, analytics-officer, obsidian-archivist and integrity-officer cards are at
+the rows shown above, unchanged.
+
+⚠ **Card asserts a model no configuration file carries — unresolved, and now harder to
+see.** Neither `.claude/agents/systems-designer.md` nor `.claude/agents/site-experience.md`
+declares a `model:` key, and `src/models.py` does not cover repository-side seats. Both cards
+read "Model: Claude Fable 5" until `939deaa`, which rewrote them to "Model: Claude Opus 5" as
+part of the Fable→Opus 5 move. The defect is identical — a card stating an assignment nothing
+configures — but it now reads as legitimate, because two other seats genuinely hold Opus 5.
+Escalated to Emory since 2026-07-31; the resolution is either a `model:` line in each
+definition or a card that says "inherits the invoking session". The chart is generated from
+its manifest and is not hand-edited to make the discrepancy disappear.
+
+**Two non-agent cards added in v2.2** — `relay-request` and `relay-answer`, machine rows 7–8,
+the fetch relay the council uses for retrieval. They are code, not seats: evidence cites
+`.github/workflows/fetch-relay.yml` and `scripts/fetch_relay.py` (`fe02f39`, targeted-excerpt
+refinement `7fbbabf`). No agent owns them; [[systems-designer]] built them.
 
 Non-agent cards, unchanged:
 
@@ -116,9 +140,35 @@ statements live in the seat's own note.
 | [[council-chairman]] | Member return-path protocol (SendMessage to launcher; route via "main" on bounce) | 2026-07-30, first applied 07-31 | `de7b0fc` |
 | [[council-chairman]] | Spend checkpoint immediately after the vetting round | 2026-07-30, first applied 07-31 | `de7b0fc` / `15c8131` |
 | [[council-chairman]] | Name the proposition's latest dated refinement when delegating | 2026-07-31 | `f03a90e` |
+| [[integrity-officer]] | Taxonomy entry 11 — status-as-record-artifact | 2026-08-01 | `4d5c562` |
+| [[council-chairman]] | Standing-conventions block in the delegation template | 2026-08-01 | `4d5c562` |
+| [[integrity-officer]] | Taxonomy entries 12–14 — capability-as-corroboration, absolutized heuristic, silent class truncation | 2026-08-02 | `82692a2` |
+| [[integrity-officer]] | Taxonomy entries 15–17 — control-inside-the-suspect-set, second-instrument corroboration fallacy, mis-dated internal-authority citation | 2026-08-03 | `e9716c8` |
+| [[council-chairman]] | Probe the instruments before writing the agenda | 2026-08-03, first applied 08-04 | `8756859` |
+| [[council-chairman]] | An objection is a claim like any other | 2026-08-03 | `1109993` |
+| [[research-analyst]] | The carrying-span rule (adopted in text, recorded **unvalidated**) | 2026-08-03 | `56cbb75` |
+| [[integrity-officer]] | Taxonomy entries 18–23 + entry 17 extended to mis-located | 2026-08-04 | `51bb7a2` |
+| [[research-analyst]] | Four relay method rules (binding on every seat) | 2026-08-04 | `51bb7a2` |
+| [[council-chairman]] | Before a ruling asserts what a record line says, quote the whole line | 2026-08-04 | `51bb7a2` |
+
+The taxonomy's canonical statement is the 23-entry table in [[integrity-officer]], one
+citation per entry. It exists because the in-session recitation of the taxonomy was four to
+thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed to read the
+table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-04** — Registry brought current with the flowchart and with eleven method rules
+  adopted 2026-08-01 through 2026-08-04. Corrections: the chart is **30 nodes / 44 edges**,
+  not the 28/40 recorded here since 2026-07-31 (`0e7d0f7`, `16ab9d9`); the two builder cards
+  sit at machine rows 9 and 10, not 7 and 8; the chart's version is the manifest's **2.2**,
+  not the commit-message "v3.0" this note had been using; the two disputed cards now read
+  "Model: Claude Opus 5" after `939deaa`, which left the underlying defect intact while
+  making it look legitimate; and two new non-agent cards, `relay-request` and `relay-answer`,
+  are recorded. Definitions themselves unchanged — the only commit under `.claude/agents/` or
+  `prompts/` since `6a5cd2e` appends a managed `Map:` block to one prompt file.
+  *Audited against `b76f6c3`; paths: `.claude/agents/`, `prompts/`, `src/models.py`,
+  `views/isds-workflow-3d/workflow.json`, `agents/`.*
 - **2026-07-31** — Registry audited against `.claude/agents/`, `src/models.py`, and
   `views/isds-workflow-3d/workflow.json`. Definitions unchanged (`ede0f32..e153ce3` touches
   neither `.claude/agents/` nor `prompts/`). Two corrections: the flowchart mapping was

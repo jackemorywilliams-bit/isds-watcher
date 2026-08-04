@@ -72,6 +72,8 @@ stands — no mandate is invented here.
 
 ## Change log
 
+- **2026-08-04** — Audited, no change to model, definition or prompt bindings; the currency query `git log 6a5cd2e..b76f6c3` returns no commit touching this seat's definition or prompts. Snapshot anchor added, applying the convention adopted 2026-08-03 to this note for the first time.
+  *Audited against `b76f6c3`; paths: `.claude/agents/systems-designer.md`, `views/isds-workflow-3d/`, `tools/isds-workflow-3d/`, `scripts/build_graph.py`, `src/models.py`.*
 - **2026-07-31** — Two drifts fixed. (1) The "no box" statement was stale: this seat gained
   the `systems-designer` box in flowchart v3.0 (`21f0240`), with the edge
   `systems-designer → site-experience`. (2) The card's "Model: Claude Fable 5" conflicts with

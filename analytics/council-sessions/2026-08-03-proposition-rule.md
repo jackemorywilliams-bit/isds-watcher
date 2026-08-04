@@ -1776,3 +1776,7 @@ was now a different question until Phase 2, and the officer had to work that out
 subagents (`systems-designer`, `integrity-officer`, model override `opus`); no member's voice was
 performed by the chair. This design is not entered in `analytics/optimization-log.md`: it is an
 operator-commissioned rule, not the council's one-idea-per-day optimization slot.*
+
+<!-- graph:auto start -->
+Map: [[Evidence Ledger]]
+<!-- graph:auto end -->

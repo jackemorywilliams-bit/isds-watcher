@@ -62,7 +62,156 @@ Kim's most glaring weak point, in my view, is her selective treatment of case ou
 Three open questions for the project arise from this memo. First, can Kim's proportionality-and-police-powers answer be maintained within the post-2016 judicial landscape governing the EMA transparency regime, and specifically the Court of Justice decisions in the PTC Therapeutics and MSD Animal Health litigation; both of these cases have been decided since the article was written, and therefore the project will have to backsource the findings directly rather than rely on the summary provided by Kim. Second, does Kim's evidentiary-burden argument under the expropriation standard continue to hold up against the fact pattern presented in Vanda Pharmaceuticals v. FDA, which represents the closest post-2016 U.S. analog to Kim's prediction about the type of fact pattern that would fail under the evidentiary-burden approach, but with an added jurisdictional dimension she did not consider. Third, and most importantly for Dr. Benavides, how should the project resolve the differing interpretations offered by Kim and Ferguson as to the same treaty architecture, and in particular whether the research project should take Kim's politically practical interpretation, Ferguson's doctrinal optimism, or a third option in which Ferguson's pathway is taken as a legitimate interpretive path for purposes of legal reasoning while Kim's proportionality backstop remains as the controlling constraint in practice.
 
 ## VII. Backsourced Annotated Bibliography
-*Follows the same template as the Ferguson memo (Bluebook + liberal URLs; ~80–200 word descriptive/evaluative/relevance annotations with a per-entry verification statement). Backsourced entries to add: Apotex v. United States; Philip Morris v. Uruguay; Eli Lilly v. Canada; the EMA disclosure policy and the InterMune, AbbVie, and PTC Therapeutics transparency cases; TRIPS Article 39(3); the Malicorp v. Egypt investment-definition language; and the secondary literature on clinical data exclusivity. Template grounded in: CUNY School of Law, Drafting a Law Office Memorandum; Columbia Law School, Memo Writing Checklist; Eric E. Johnson, Memo to Student Research Assistants re Research Deliverables (2023); Saldana, The Coding Manual for Qualitative Researchers (3d ed.); Linos & Carlson, Qualitative Methods for Law Review Writing, 84 U. Chi. L. Rev. 213 (2017); A Practical Framework for Conducting a Literature Review, The Qualitative Report (Nova Southeastern Univ.).*
+
+**Methodological note.** This bibliography follows the same protocol used in the Ferguson memo. Citations are in Bluebook style per the AALL guidelines, with URLs included liberally beyond Bluebook requirements to facilitate retrieval. Each entry runs approximately 80–200 words and provides descriptive, evaluative, and relevance commentary, consistent with the Qualitative Report framework for analytically engaged bibliographies.
+
+Consistent with the cite-checking and back-sourcing conventions used in law review editing, each entry contains a verification statement indicating (a) whether the source can be independently located, (b) whether the citation format matches the underlying source, and (c) whether the cited paragraphs support the proposition for which they are used. **This verification applies to every citation in this bibliography, whether inherited from Kim or supplied independently.** Where the cited material could not be independently verified, this limitation is stated explicitly rather than omitted.
+
+---
+
+### Apotex Holdings Inc. & Apotex Inc. v. United States
+
+ICSID Case No. ARB(AF)/12/1, Award (Aug. 25, 2014), <https://www.italaw.com/cases/96>.
+
+**Descriptive annotation.** A NAFTA Chapter Eleven award in which a Canadian generic-pharmaceutical manufacturer challenged U.S. FDA import-alert and patent-litigation conduct as breaches of NAFTA Articles 1102, 1103 and 1105. The tribunal dismissed the claim on jurisdictional grounds, holding that Apotex's submission of Abbreviated New Drug Applications and its associated U.S. patent litigation did not, on the facts, amount to an "investment" within the meaning of NAFTA Article 1139, and therefore that the dispute did not fall within Chapter Eleven at all. The tribunal did not reach the substantive expropriation or fair-and-equitable-treatment standards.
+
+**Backsourcing verification.** Award independently retrievable from italaw, and Kim's pin cites for the investment-definition discussion match the corresponding paragraphs. The doctrinal proposition for which Kim cites the case — that the tribunal used the investment threshold as a jurisdictional off-ramp without reaching the substantive expropriation question — is supported by the cited paragraphs, but only as to the specific NAFTA 1139 question. The broader proposition Kim attaches, that this reflects a general tribunal practice of avoiding clinical-data expropriation merits questions, is interpretive rather than directly supported by the Award text.
+
+**Relevance to the Benavides project.** Apotex is the load-bearing case in Kim's investment-threshold argument and therefore the case the project must engage to either side with or push back against her politically realistic reading. The Award's reasoning is more closely tied to the specific way Apotex framed its claim — as a defensive challenge to a U.S. court ruling rather than as a regulatory-disclosure dispute — than her characterization suggests, and the project should be careful not to inherit Apotex as a general proposition about clinical-data investments.
+
+---
+
+### Philip Morris Brands SARL, Philip Morris Products S.A. & Abal Hermanos S.A. v. Oriental Republic of Uruguay
+
+ICSID Case No. ARB/10/7, Award, ¶¶ 200–210, 287–307 (July 8, 2016), <https://www.italaw.com/cases/460>.
+
+**Descriptive annotation.** An ICSID award in which two Philip Morris affiliates challenged Uruguay's tobacco-control measures — the single-presentation requirement and the 80% graphic-warning requirement — as violations of the Switzerland–Uruguay BIT. The tribunal upheld jurisdiction, including on whether the Salini criteria are jurisdictional prerequisites under the BIT (holding they are not), and then proceeded to the merits, rejecting both the indirect expropriation and fair-and-equitable-treatment claims on the basis that Uruguay's measures were a bona fide exercise of police powers in furtherance of public health.
+
+**Backsourcing verification.** Award independently retrievable on italaw. The Salini-criteria pin cite Kim relies on is at ¶ 206, originally flagged for library assistance and since recovered from the publicly available Award PDF. The pin cite supports the narrow proposition Kim takes from it — that the tribunal expressly declines to treat the Salini criteria as jurisdictional requirements — but the broader proposition she builds on top of it, that this declination amounts to a discretionary backstop tribunals can use to dismiss politically sensitive claims without reaching the merits, is not supported by the cited paragraphs: the tribunal in Philip Morris itself proceeded to the merits and decided on substantive police-powers grounds.
+
+**Relevance to the Benavides project.** Philip Morris is the strongest single authority for Kim's substantive proportionality argument in Section IV.D and a much weaker authority for her jurisdictional argument in Section IV.A — the inverse of the way she deploys it. The project should consider repositioning the citation to do the substantive work in the proportionality discussion, since the police-powers reasoning is the closest tribunal-level analog to the EMA-style fact pattern and is where the doctrinal weight of the Award actually sits.
+
+---
+
+### Eli Lilly and Company v. Government of Canada
+
+ICSID Case No. UNCT/14/2, Final Award (Mar. 16, 2017), <https://www.italaw.com/cases/1625>.
+
+**Descriptive annotation.** A UNCITRAL/NAFTA award in which Eli Lilly challenged the Canadian Federal Court's invalidation of two pharmaceutical patents under the Canadian promise doctrine of patent utility. The tribunal rejected the claim on the merits, holding both that the Canadian doctrine did not amount to a dramatic and arbitrary change in the law and that it would in any event be reluctant to second-guess the substantive reasoning of domestic courts on patentability.
+
+**Backsourcing verification.** Final Award independently retrievable on italaw; Kim's citations are accurate. The cited paragraphs support the narrow patentability proposition she uses them for — that tribunals defer to domestic courts on substantive IP standards even where the result disfavours the foreign investor. The extension she makes by analogy from patentability to clinical-data confidentiality is not directly supported by the Award text; the Eli Lilly tribunal did not address confidentiality or disclosure and would have had no occasion to.
+
+**Relevance to the Benavides project.** Useful as the most recent ISDS data point on how tribunals treat domestic IP doctrine, and directly relevant to any prediction about a tribunal asked to override a regulator's disclosure decision. The case cuts in Kim's favour more than Ferguson's: tribunal deference to domestic IP determinations is exactly the disposition she predicts and exactly the one he hopes interpretive work can overcome. It should be treated as evidence on the empirical side of the disagreement rather than as authority on the doctrinal side.
+
+---
+
+### Salini Costruttori S.p.A. & Italstrade S.p.A. v. Kingdom of Morocco
+
+ICSID Case No. ARB/00/4, Decision on Jurisdiction, ¶ 52 (July 23, 2001), <https://www.italaw.com/cases/958>.
+
+**Descriptive annotation.** An ICSID jurisdictional decision arising from a construction-contract dispute over a highway project, best known for its formulation of the four-part Salini test for whether a transaction qualifies as an "investment" under ICSID Article 25(1): a contribution of money or other assets, a certain duration, an element of risk, and a contribution to the host State's economic development.
+
+**Backsourcing verification.** Decision retrievable on italaw; Kim's pin cite to ¶ 52 is accurate and the cited language supports the proposition that the four criteria exist. The application Kim makes of those criteria to clinical data is interpretive and not directly supported by the Salini text: Salini is a construction-contract dispute in which the contribution-to-development question had a relatively concrete answer, which does not obviously translate to an asset whose contribution to host-state development is contested at the level of definition.
+
+**Relevance to the Benavides project.** Salini is the gateway test any clinical-data claimant must clear before substantive treaty standards become available, and therefore the terrain on which most of Kim's predicted tribunal practice would play out. The analytical work she attributes to the criteria in the pharmaceutical setting is the same interpretive bridging Ferguson believes tribunals could do in the investor's favour and she believes they will not — which makes Salini, in a sense, the place where the disagreement has to be litigated.
+
+---
+
+### ICSID Convention art. 25(1)
+
+Convention on the Settlement of Investment Disputes Between States and Nationals of Other States, Mar. 18, 1965, 17 U.S.T. 1270, 575 U.N.T.S. 159, <https://icsid.worldbank.org/sites/default/files/ICSID%20Convention%20English.pdf>.
+
+**Descriptive annotation.** Article 25(1) sets the basic jurisdictional reach of ICSID arbitration, extending it to any legal dispute arising directly out of an investment between a Contracting State and a national of another Contracting State where the parties have consented in writing. The Convention does not define "investment," and what counts as one for Article 25(1) purposes has been the subject of extensive subsequent tribunal and academic interpretation, including the Salini line.
+
+**Backsourcing verification.** Convention text independently retrievable from the ICSID website; Kim's citation is accurate. The cited language supports the bare jurisdictional proposition that ICSID jurisdiction depends on the existence of an investment, but does not on its own support the substantive proposition she builds on top of it: Article 25(1) is famously underdetermined, and the analytical work she attributes to the Article is in fact being done by the tribunals in Apotex, Philip Morris and the Salini line rather than by the Convention itself.
+
+**Relevance to the Benavides project.** Article 25(1) is the textual hook on which the investment-threshold debate hangs, relevant not because it does analytical work of its own but because it is the empty vessel into which both Kim and Ferguson pour their respective tribunal-practice arguments. The project should treat it as the constitutional frame within which the Apotex/Philip Morris/Salini debate takes place, not as load-bearing in its own right.
+
+---
+
+### Agreement on Trade-Related Aspects of Intellectual Property Rights art. 39(3)
+
+Apr. 15, 1994, Marrakesh Agreement Establishing the World Trade Organization, Annex 1C, 1869 U.N.T.S. 299, <https://www.wto.org/english/docs_e/legal_e/27-trips.pdf>.
+
+**Descriptive annotation.** Article 39(3) requires WTO Members, when conditioning marketing approval of pharmaceutical or agricultural chemical products on the submission of undisclosed test data whose origination involves considerable effort, to protect such data against unfair commercial use, and to protect it against disclosure except where necessary to protect the public or unless steps are taken to ensure protection against unfair commercial use. It is the only express international-law obligation directed specifically at pharmaceutical test data.
+
+**Backsourcing verification.** TRIPS text independently retrievable from the WTO; Kim's quotation is verbatim and the citation accurate. The cited language supports the narrow proposition that the Article is structured around unfair commercial use rather than confidentiality as such, which is the proposition Kim builds her FET analysis on. The travaux préparatoires are more contested than Kim acknowledges, and there is a meaningful body of secondary literature reading Article 39(3) more broadly, which the project should note when treating her reading as the only available one.
+
+**Relevance to the Benavides project.** Article 39(3) is the doctrinal hinge of Kim's FET analysis and the textual point at which she and Ferguson most directly disagree: he reads it as part of a bridge by which TRIPS protections can be ported into the BIT framework, she reads it as a textual obstacle to the analogous legitimate-expectations argument. Note the structural feature that bears on both readings — the obligation runs to Members to make protection available through municipal law, so what can be imported is a standard the host State's law must meet rather than an internationally held right.
+
+---
+
+### European Medicines Agency, Policy 0070 on Publication of Clinical Data for Medicinal Products for Human Use
+
+EMA/144064/2019 (originally adopted Oct. 2, 2014, revised effective 2019), <https://www.ema.europa.eu/en/documents/other/european-medicines-agency-policy-publication-clinical-data-medicinal-products-human-use_en.pdf>.
+
+**Descriptive annotation.** The EMA's clinical-data publication policy, providing for proactive publication of clinical study reports and other clinical-trial documents submitted by marketing-authorization applicants. The policy rests on a tiered framework distinguishing commercially confidential information and protected personal data from information the EMA considers releasable in the public interest, and it is the regulatory regime around which Kim builds her central fact pattern.
+
+**Backsourcing verification.** Policy independently retrievable from the EMA website. Kim's descriptions are accurate as of the 2014 version she was working from. The 2019 procedural revisions and the EMA's suspension of new clinical-data publication during its IT-system migration are not addressed by her, for the obvious reason that they post-date the article, but they materially affect how the policy operates in practice and the project should not treat her account as the operative state of the regime today.
+
+**Relevance to the Benavides project.** Policy 0070 is the closest real-world analog to the abstract compelled-disclosure hypothetical Kim works through, and the regime out of which any clinical-data-disclosure ISDS claim against an EU member state would most plausibly arise. The project cannot evaluate her evidentiary-burden argument without first understanding how the policy operates today, and this entry should be paired with the PTC Therapeutics line below as a single composite source on the European fact pattern.
+
+---
+
+### InterMune UK Ltd. v. European Medicines Agency
+
+Case T-73/13 R, Order of the President of the General Court (Apr. 25, 2013), <https://curia.europa.eu/juris/liste.jsf?num=T-73/13>.
+
+**Descriptive annotation.** An interim-measures order in which the President of the EU General Court declined to suspend the EMA's intended release of clinical-trial documents relating to InterMune's pirfenidone authorization in response to a third-party access-to-documents request. The order addressed only the prima facie case and balance-of-interests questions on which interim relief turns, and did not reach the substantive question whether the requested documents fell within the commercial-confidentiality exception.
+
+**Backsourcing verification.** Order independently retrievable on Curia. Kim's citation is accurate as a citation, but the cited paragraphs support only the narrow procedural proposition that interim relief was denied — not the broader substantive proposition that the General Court has held against pharmaceutical claimants on the commercial-confidentiality merits, since that question was never reached. This is one of the entries flagged during first reading, and backsourcing confirms the concern.
+
+**Relevance to the Benavides project.** A useful entry in the running case list as an early indicator of the General Court's posture, but the project should not rely on Kim's characterization as authority for any substantive holding, and should treat InterMune as part of the procedural backdrop against which the later PTC Therapeutics line was decided.
+
+---
+
+### AbbVie Inc. & AbbVie Ltd. v. European Medicines Agency
+
+Case T-44/13, Order of the President of the General Court (Apr. 25, 2013), <https://curia.europa.eu/juris/liste.jsf?num=T-44/13>; case removed from the General Court register following confidential settlement, Order of Sept. 17, 2014.
+
+**Descriptive annotation.** An interim-measures order in which AbbVie sought to prevent the EMA from disclosing clinical-trial data relating to its arthritis biologic in response to third-party access-to-documents requests. As with InterMune, the President addressed only the prima facie case and balance-of-interests questions. The substantive merits proceeding was never decided: AbbVie and the EMA reached a confidential settlement and the case was removed from the register, so there is no merits-level judgment on the AbbVie commercial-confidentiality question.
+
+**Backsourcing verification.** The interim-measures order and the subsequent register-removal order are both independently retrievable on Curia. Kim's citation is accurate as to the interim order, but the cited material does not support the substantive proposition she uses it for: there is no substantive holding to support, and she does not tell the reader the case settled before reaching the merits. This is the case where the omission-of-outcome problem flagged in Section IV.E is most acute.
+
+**Relevance to the Benavides project.** Included not as substantive authority but as a flag: AbbVie is one of three cases Kim presents as if they form a coherent body of unfavourable General Court precedent, and the actual procedural posture undermines that framing. The project should engage her characterization critically and should not rely on her summary without also flagging that the case ended in settlement rather than judgment.
+
+---
+
+### PTC Therapeutics International Ltd. v. European Medicines Agency
+
+Case C-175/18 P, Judgment of the Court (Fourth Chamber) (Jan. 22, 2020), ECLI:EU:C:2020:23, <https://curia.europa.eu/juris/liste.jsf?num=C-175/18>; affirming Case T-718/15, Judgment of the General Court (Feb. 5, 2018), ECLI:EU:T:2018:66.
+
+**Descriptive annotation.** A Court of Justice judgment holding that there is no general presumption of confidentiality covering clinical study reports submitted to the EMA, and that an applicant seeking to prevent disclosure under the commercial-confidentiality exception must demonstrate, on a document-by-document basis, that disclosure would specifically and actually undermine its commercial interests. This is the doctrinal pronouncement Kim anticipated but did not have when writing in 2016.
+
+**Backsourcing verification.** Both the General Court and Court of Justice judgments are independently retrievable on Curia. Kim could not have cited the post-2018 procedural history. The 2020 holding both confirms her proportionality intuition and forecloses the strongest version of the legitimate-expectations argument she analyzes, since the document-by-document specific-and-actual-harm requirement is exactly the evidentiary architecture she predicts will be fatal to investor claims. The post-2016 holdings materially update the landscape she describes and should be treated as controlling on the European side.
+
+**Relevance to the Benavides project.** The single most important post-2016 development for both Kim's analysis and the broader research question: the closest the European appellate courts have come to a definitive pronouncement on the relationship between EMA clinical-data disclosure and the commercial-confidentiality interests of pharmaceutical originators, pointing in the direction Kim predicted rather than the direction Ferguson hoped for. The project should backsource the judgment directly rather than rely on her pre-2018 prediction or any commentary paraphrasing it.
+
+---
+
+### Vanda Pharmaceuticals, Inc. v. Food & Drug Administration
+
+No. 19-cv-301 (JDB), Mem. Op. (D.D.C. May 6, 2021), ECF No. 65 [parallel reporter citation unverified].
+
+> **Entry corrected 2026-08-03.** The prior version of this entry cited 436 F. Supp. 3d 256 (D.D.C. 2020) and described it as concerning the FDA's public release of clinical-trial information and the rejection of Trade Secrets Act challenges. That was wrong. See the verification statement below.
+
+**Descriptive annotation.** On a non-party law firm's motion to intervene and unseal the administrative record, the court applied the common-law right of access and the Hubbard factors, permitting intervention and partially granting unsealing while allowing Vanda to redact or withhold proprietary information to avoid competitive harm. It held that the confidentiality factor weighed strongly in favour of keeping trade secrets and proprietary information under seal and denied unsealing as to the toxicology reports, but required Vanda to identify specific interests document by document, generalised assertions of confidentiality being insufficient. In assessing the property interest at stake the court drew on the D.C. Circuit line recognising that competitors could use information in drug applications to avoid much of the effort otherwise required to bring a competing product to market.
+
+**Backsourcing verification.** Slip opinion read via govinfo and authenticated against the public docket; **the parallel reporter citation is unverified and the case is cited in docket form pending confirmation.** The separate opinion at 436 F. Supp. 3d 256 (D.D.C. 2020), previously cited here, is an Administrative Procedure Act challenge to a partial clinical hold on tradipitant; it contains no occurrence of trade secret, confidential, proprietary or disclosure, and should be cited only for the deference point, not for any disclosure holding.
+
+**Relevance to the Benavides project.** The closest post-2016 U.S. analog to the European fact pattern, and it cuts both ways. It **confirms** Kim in that a court protected clinical data on secrecy grounds and denied unsealing of the toxicology reports. It **complicates** her in that the D.C. Circuit line recognises a cognisable property interest in application contents, so disclosure is not treated as costlessly non-compensable. The transferable observation — an inference from the opinion, not its holding, which contains no reference to investment law or arbitration — concerns where the evidentiary burden falls: Kim locates the claimant's difficulty at valuation, while this court located it one step earlier, at identification. If that pattern carries into the treaty context, the pharmaceutical claimant's first problem is not quantifying loss but particularising the secret, which is the same paradox from the other direction. Note too a disclosure vector neither scholar models: judicial transparency, a third party using court-access doctrine to reach material the regulator was itself barred from releasing.
+
+---
+
+### Christoph Schreuer et al., *The ICSID Convention: A Commentary*; Zachary Douglas, *The International Law of Investment Claims*
+
+Schreuer 117–134 (2d ed., Cambridge University Press 2009); Douglas 161–204 (Cambridge University Press 2009).
+
+**Descriptive annotation.** Two leading treatises. Schreuer is the canonical commentary on the ICSID Convention, and the cited pages address the Article 25(1) investment question, including the development of the Salini criteria and tribunal-level approaches to applying them. Douglas is the leading monograph on the architecture of investment-claim adjudication, and the cited pages contain the most thorough critique in the secondary literature of the discretionary use of the Salini criteria as a jurisdictional filter, arguing that tribunals should not treat Salini as load-bearing in the way subsequent practice has come to do.
+
+**Backsourcing verification.** Both treatises retrievable through the law library catalog. Kim's citation to Schreuer is accurate and the cited pages support the propositions for which she uses them. **Douglas is not cited by Kim at all and is included here as a recommended addition rather than as a verification of Kim.**
+
+**Relevance to the Benavides project.** Together these do most of the secondary-literature work the project needs on the investment-threshold question, and the contrast between them captures the Kim–Ferguson disagreement at treatise level rather than at the level of individual awards. Douglas's framing strengthens Kim's politically realistic point even as it cuts against her doctrinal one: he argues tribunals *should not* use Salini as a discretionary filter and she argues that they *do*, so the two together describe both the "ought" and the "is" of the investment-threshold question.
 
 <!-- graph:auto start -->
 Map: [[Research Question]]

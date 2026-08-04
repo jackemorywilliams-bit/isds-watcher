@@ -11,10 +11,15 @@ with a guard that turns its known failure modes into build failures.
 
 **Definition.** `.claude/agents/systems-designer.md`
 
-**Model.** None declared. The definition's frontmatter carries no `model:` key, so this
-agent inherits the invoking session's model; `src/models.py` assigns models to the
-pipeline's LLM stages and does not cover this repository-side seat. Recorded as-is rather
-than inferred.
+**Model.** `claude-opus-5` — declared `model: opus` in the definition since 2026-08-04,
+on the operator's direct answer ("both are on opus… opus 5 for the version"). Before that
+the frontmatter carried no `model:` key at all while the flowchart card asserted "Claude
+Opus 5": the card was true only while the invoking session happened to match, and would
+have gone silently false the moment it did not. `src/models.py` assigns models to the
+pipeline's LLM stages and still does not cover this repository-side seat; the frontmatter
+selects the Opus *tier*, and the version is the operator's recorded choice rather than
+something the key itself pins. `scripts/check_models.py` now fails if a card asserts a
+model that no definition declares.
 
 > **Unresolved conflict, recorded not papered over.** Flowchart v3.0 (`21f0240`) gave this
 > seat a card whose `meta` field reads "Model: Claude Fable 5"

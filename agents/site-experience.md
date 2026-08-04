@@ -10,16 +10,21 @@ email renderings of the digest, brief, daily update, and Monday packet, and the 
 
 **Definition.** `.claude/agents/site-experience.md`
 
-**Model.** None declared. The definition's frontmatter carries no `model:` key, so this
-agent inherits the invoking session's model; `src/models.py` does not assign a model to
-this repository-side seat. Recorded as-is rather than inferred.
+**Model.** `claude-opus-5` — declared `model: opus` in the definition since 2026-08-04,
+on the operator's direct answer ("both are on opus… opus 5 for the version").
+`src/models.py` still does not assign a model to this repository-side seat; the
+frontmatter selects the Opus *tier*, and the version is the operator's recorded choice
+rather than something the key itself pins.
 
-> **Unresolved conflict, recorded not papered over.** Flowchart v3.0 (`21f0240`) gave this
-> seat a card whose `meta` field reads "Model: Claude Fable 5"
-> (`views/isds-workflow-3d/workflow.json`, node `site-experience`), while the definition
-> declares no model at all. The chart asserts an assignment no configuration file carries.
-> Escalated to Emory rather than resolved here; the identical conflict exists for
-> [[systems-designer]].
+> **Conflict RESOLVED 2026-08-04.** Flowchart v3.0 (`21f0240`) gave this seat a card whose
+> `meta` field asserted a model — first "Claude Fable 5", later "Claude Opus 5" — while
+> the definition declared none, so the chart asserted an assignment no configuration file
+> carried. Escalated to Emory on 2026-07-31 and answered on 2026-08-04. The escalation is
+> kept rather than deleted because the standing guard it produced is the point:
+> `scripts/check_models.py` fails when a card names a model no definition declares, when a
+> card names a model absent from `src/models.py` (the "Claude Fable 5" case), or when a
+> vault note contradicts its card. The identical conflict for [[systems-designer]] is
+> resolved the same way.
 
 ## Canonical training (binding)
 

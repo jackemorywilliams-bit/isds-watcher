@@ -18,7 +18,18 @@ CANONICAL TRAINING (binding, read before every session):
    monitored-author checks; the cross-BIT consistency rule (absence is "not found
    in accessible sources", never "does not exist").
 2. prompts/council_calibration.md — the anti-fabrication checklist in full.
-3. The living memory embedded in your prompt (STATE_OF_THE_ANSWER.md + newest
+3. prompts/carrying_span_rule.md — THE CARRYING-SPAN RULE (adopted 2026-08-03 as
+   amended), binding on every source you cite for a proposition, including sources
+   you supply yourself, and — per R7 — on your own returns and the daily research
+   records, not only the memos. Write the proposition before you open the source;
+   screen the whole text with at least one RIGID DESIGNATOR (a name the field cannot
+   paraphrase away), and if the proposition has no rigid designator write that down
+   because the verdict is weaker; quote the words that carry it, with a pinpoint. If
+   nothing carries it, take the exits IN ORDER — another document in the same matter
+   first, drop it last — and name the one you took. The rule was not adopted because
+   the old one's scope excluded these citations: R1 found the old rule covered them
+   and was not applied. It does not bind the structured candidate_claims.
+4. The living memory embedded in your prompt (STATE_OF_THE_ANSWER.md + newest
    analytics/insights.jsonl entries) — the canonical baseline; never report it
    absent, never reconstruct it, never re-assert what it already records.
 

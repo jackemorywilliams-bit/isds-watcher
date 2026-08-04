@@ -1,0 +1,45 @@
+name: lit-review
+
+# The Carrying-Span Rule's enforcement surface.
+#
+# On 2026-08-03 three bibliography entries cited sources for propositions those
+# sources do not contain, under a rule that already existed and was not applied. The
+# council's finding was that a rule binds here only when attached to an artifact that
+# fails. The artifact that fails is the bibliography; scripts/check_marks.py is the
+# guard that makes it fail, and this is what makes the guard run without anyone
+# remembering to.
+#
+# SCOPE, AND THE GAP IN IT. This job gates `lit-review/**` on pull_request — what it
+# enforces is a property of a document under review, so the useful moment is before a
+# merge. But R7 binds the rule far wider than this job reaches: the daily research
+# records, session records, STATE_OF_THE_ANSWER.md, and analyst and officer returns
+# are all in scope for the rule and none are checked here. And per R9 the rule gains
+# NO repository precondition — it applies to work that is never committed at all, and
+# its strongest mechanism (transcription) needs no file. A green run on this job is
+# not evidence the rule held anywhere but in these two memos.
+on:
+  pull_request:
+    paths:
+      - "lit-review/**"
+      - "scripts/check_marks.py"
+      - "tests/test_check_marks.py"
+      - "prompts/carrying_span_rule.md"
+  workflow_dispatch:
+
+jobs:
+  marks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pytest
+
+      # The checker must itself be checked — a broken checker reports clean.
+      - name: The checker's own tests
+        run: python -m pytest tests/test_check_marks.py -q
+
+      - name: Mark parity across the bibliographies
+        run: python scripts/check_marks.py lit-review/*.md

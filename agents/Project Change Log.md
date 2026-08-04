@@ -6,8 +6,10 @@ hub: Council
 # Project Change Log
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
-vault. **Every line cites a commit hash.** Anything that cannot be cited is not written
-here. Newest first; dates are commit dates on the mainline of history.
+vault. **Every line cites a commit hash** — or, where a change is recorded before it is
+committed, the exact file path *and* the branch it sits on, said in those words rather than
+left to be inferred. Anything that can be cited neither way is not written here. Newest
+first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
@@ -17,6 +19,35 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 `src/models.py`, `src/source_health.py`, `views/isds-workflow-3d/workflow.json`,
 `HANDOFF.md`, `analytics/`, and every remote branch tip.*
 
+- **The Carrying-Span Rule is implemented — a rule that failed in prose now has an artifact
+  that fails.** The chain, in the order the record establishes it: three bibliography entries
+  cited sources for propositions those sources do not contain (*Vanda*, H&H's trade-secret
+  use, Bonnitcha's subject-matter use; corrected entries at `5b51cd9`, merged `42374f8`) →
+  **R1 found the rule that already existed COVERED them and was not applied**, overturning
+  the chairman's own scope-defect framing, so this is a discipline failure and writing the
+  rule again would not fix it → **R5 found rules bind here only when attached to an artifact
+  that fails**, with the officer's correction that the remedy is enforcement *and* a carrier
+  → the rule now has both. `prompts/carrying_span_rule.md` (R3 as amended, not the Part 3 §1
+  draft); `lit-review/BIBLIOGRAPHY_TEMPLATE.md`; `scripts/check_marks.py` with
+  `tests/test_check_marks.py`; `.github/workflows/lit-review.yml`. Three definitions in
+  `.claude/agents/` gained one canonical-training clause each, and the officer's
+  self-training mandate stopped enumerating a stale five patterns and now points at this
+  vault's taxonomy table. **On branch `feat/carrying-span-rule`, PR #52 — not on `main` at
+  the time of writing**, per this log's own rule about recording a change before it lands.
+- **What that enforcement establishes, and what it does not.** `scripts/check_marks.py`
+  implements R5 tiers 2, 3 and 5, but **coverage is conditional and its module docstring is
+  the single authority on what it checks**; the CLI reports what it actually *exercised* on
+  a run, which is not what it implements. All 33 entries are in the legacy form, so the
+  strict tiers currently run on nothing and the tool says so. It establishes entry **shape**
+  only — never that a span exists in its source, and never that a span carries its
+  proposition. Per R8 the rule is **adopted and unvalidated**; it becomes validated when
+  `N changed / M screened` is reported, read the officer's way, where M > 0 with N = 0 is a
+  positive detection of performance rather than evidence of clean work.
+- **Taxonomy entry 24 — *amendment-stripping*.** A rule lifted from a session record in its
+  pre-vetting draft form, carrying the adoption date and the word *binding* with every
+  objection that conditioned adoption silently absent. Caught in vetting on the change set
+  above, which was itself the instance. Standing guard at `prompts/carrying_span_rule.md:3-7`.
+  Full entry in [[integrity-officer]].
 - **The fetch relay — the architecture change the vault had not recorded.** A council session
   running in the scheduled cloud environment has no network egress of its own. The relay
   closes that: the session commits a small JSON request under `analytics/fetch-requests/`, the

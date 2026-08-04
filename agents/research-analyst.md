@@ -27,7 +27,16 @@ most advanced capabilities available."
    consistency rule across the four in-scope China BITs.
 2. [[council_calibration]] (`prompts/council_calibration.md`) — the anti-fabrication
    checklist in full.
-3. The living memory embedded in the prompt — `STATE_OF_THE_ANSWER.md` plus the newest
+3. `prompts/carrying_span_rule.md` — **the Carrying-Span Rule**,
+   adopted by the council 2026-08-03 as amended, added to this seat's definition on
+   2026-08-04. It binds every source this seat cites for a proposition, *including sources
+   it supplies itself*, and — per R7 — its own returns and the daily research records, not
+   only the memos. Write the proposition before opening the source; screen the whole text
+   with at least one **rigid designator**; quote the words that carry it, with a pinpoint;
+   if nothing carries it, take the exits in order (another document in the same matter
+   first, drop last) and name the one taken. It does **not** bind the structured
+   `candidate_claims`, which the pre-ledger verification system governs.
+4. The living memory embedded in the prompt — `STATE_OF_THE_ANSWER.md` plus the newest
    `analytics/insights.jsonl` entries — which is "the canonical baseline; never report it
    absent, never reconstruct it, never re-assert what it already records."
 

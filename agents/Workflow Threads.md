@@ -358,6 +358,19 @@ specifically unblocks it.
   the sessions that cite them, which is council work, not vault work.
 - **Owner** — **Emory** decides whether to reconstruct; [[council-chairman]] would execute.
 
+### F0 · `fetch-relay` triggers on documentation edits, not just requests
+
+- **State** — Found 2026-08-04 by this seat's own commit firing it.
+  `.github/workflows/fetch-relay.yml:16-18` triggers on
+  `paths: 'analytics/fetch-requests/**'`, which includes that directory's `README.md`. A
+  four-line managed `Map:` block written there by `scripts/build_graph.py` fired a relay
+  runner on PR #51. Harmless this time — no request file was added, so nothing was fetched —
+  but it spends a runner on a documentation edit and puts a relay run in the history with no
+  request behind it.
+- **Next** — Scope the filter to request files, e.g. `analytics/fetch-requests/*.json`.
+- **Owner** — [[systems-designer]] on Emory's go-ahead; `.github/` is outside this seat's
+  paths.
+
 ### F3 · Three non-canonical cloud-run branches still on origin
 
 - **State** — `origin/claude/sweet-mccarthy-8mouy6` (07-30), `-i95s3k` (07-31) and `-d5kgmw`

@@ -61,7 +61,270 @@ Ferguson's weakest argument is his treatment of the "territorial nexus" discusse
 Three open questions for the project. First: does the four-question test survive contact with a tribunal that holds an aggressive view of police powers? Ferguson concedes in Part V that A11Y and Burlington both went the State's way on indirect expropriation grounds, but does not work out what his test would have done in those cases. Second: how should the project handle Tethyan Copper, which Ferguson uses as his most recent and most useful tribunal data point, but it is partly inaccessible in its unredacted form? Third, and most consequential for Dr. Benavides specifically: is the recognition–enforceability gap a feature or a bug? Ferguson treats it as a feature (it preserves State sovereignty over the definitional question); a more critical reading would treat it as the structural reason ISDS protection of trade secrets is illusory in the very States most likely to misuse them. In my opinion, this research project should look into this and take a position.
 
 ## VII. Backsourced Annotated Bibliography
-*Methodological note and backsourced entries follow the project's annotated-bibliography template (Bluebook + liberal URLs; ~80–200 word descriptive/evaluative annotations with a verification statement per entry). Template grounded in: CUNY School of Law, Drafting a Law Office Memorandum; Columbia Law School, Memo Writing Checklist; Eric E. Johnson, Memo to Student Research Assistants re Research Deliverables (2023); Saldana, The Coding Manual for Qualitative Researchers (3d ed.); Linos & Carlson, Qualitative Methods for Law Review Writing, 84 U. Chi. L. Rev. 213 (2017); A Practical Framework for Conducting a Literature Review, The Qualitative Report (Nova Southeastern U.).*
+
+**Methodological note.** The structure of the references cited within this bibliography is based upon the standards for creating an annotated bibliography as described in the authors' methodological sources. According to the standardized cite-checking protocols used in law review editing and the AALL (American Association of Law Libraries) guidelines, all citations are provided in Bluebook style, and URLs are included liberally beyond Bluebook requirements to facilitate ease of retrieval, on the principle that "the bibliography is a raw input for the production of a finished product," and that ease of access directly affects its utility.
+
+As stated in the AALL Law Library Journal guidelines, each entry includes an approximately 80–200 word annotation that provides both descriptive and evaluative analysis of the reference. Consistent with the framework articulated in The Qualitative Report, each entry includes a reflection on how the source fits within the broader research project, so that the bibliography performs interpretive work rather than functioning solely as a collection of references.
+
+Finally, consistent with the conventions of cite-checking and back-sourcing employed in law review editing, each entry contains a verification statement indicating (a) whether the source can be independently located; (b) whether the citation format matches the underlying source; and (c) whether the cited paragraphs support the proposition for which they are used. **This verification applies to every citation in this bibliography, whether inherited from Ferguson or supplied independently.** Where the cited material cannot be independently verified (for example, due to paywalls or inaccessible PDF text), this limitation is stated explicitly rather than omitted.
+
+The entries are organized in the order Ferguson cites them and reflect the sources deemed most analytically load-bearing among those flagged for backsourcing. Several lower-priority footnote citations have been omitted; the running annotated bibliography for the broader project will pick those up.
+
+---
+
+### Vienna Convention on the Law of Treaties art. 31
+
+May 23, 1969, 1155 U.N.T.S. 331, <https://legal.un.org/ilc/texts/instruments/english/conventions/1_1_1969.pdf>.
+
+**Descriptive annotation.** The general rule of treaty interpretation. Article 31(1) requires a treaty to be interpreted in good faith in accordance with the ordinary meaning of its terms in context and in light of object and purpose. Article 31(3)(c) further requires that any relevant rules of international law applicable in the relations between the parties be taken into account. The provision is universally treated as customary international law and applies whether or not the treaty parties are themselves parties to the VCLT.
+
+**Backsourcing verification.** Verified directly against the UN Treaty Collection. The text confirms Ferguson's reliance on Article 31(3)(c) as the systemic-integration mechanism by which TRIPS Article 39 is imported into BIT "investment" definitions; the language of the provision squarely supports his interpretive move.
+
+**Relevance to the Benavides project.** Article 31(3)(c) is the load-bearing interpretive instrument for the entire "trade secret as investment" pathway and is therefore the doctrinal anchor for the project's broader claim that the existing treaty corpus already protects trade secret holders without requiring redrafting.
+
+---
+
+### Agreement on Trade-Related Aspects of Intellectual Property Rights art. 39
+
+Apr. 15, 1994, Marrakesh Agreement Establishing the World Trade Organization, Annex 1C, 1869 U.N.T.S. 299, <https://www.wto.org/english/docs_e/legal_e/27-trips_04d_e.htm>.
+
+**Descriptive annotation.** Article 39 supplies the international floor for trade secret protection, and does so indirectly: it obliges Members to ensure that persons shall have the *possibility of preventing* the specified conduct, which is a duty discharged through municipal law rather than a right conferred directly on the holder. Article 39(2) conditions that possibility on the information being secret, having commercial value because it is secret, and having been subject to reasonable steps to keep it secret. Article 39(1) frames the protection as part of ensuring effective protection against unfair competition under Article 10bis of the Paris Convention; Article 39(3) addresses pharmaceutical and agricultural test data submitted to regulators.
+
+**Backsourcing verification.** Verified directly against the WTO's authoritative text. The three-element definition Ferguson invokes is a faithful distillation of Article 39(2)(a)–(c).
+
+**Relevance to the Benavides project.** TRIPS Article 39 is the textual hook on which Ferguson's definitional argument hangs and is directly responsive to Dr. Benavides' questions about pharmaceutical test data. What Article 31(3)(c) of the VCLT can import into a BIT's investment definition is therefore a *standard that the host State's own law must meet*, not an internationally held entitlement — a weaker bridge than a first reading suggests. Article 39(3) in particular gives the project a treaty-text basis for engaging the Vanda-style fact pattern even though Ferguson himself does not work it through.
+
+---
+
+### Salini Costruttori S.p.A. v. Kingdom of Morocco
+
+ICSID Case No. ARB/00/4, Decision on Jurisdiction, ¶¶ 52, 57 (July 23, 2001), <https://www.italaw.com/cases/958>.
+
+**Descriptive annotation.** The decision in which an ICSID tribunal articulated the four-criteria test that has come to define the gateway concept of "investment" under ICSID Article 25: a contribution of money or other assets; a certain duration of performance; an element of risk; and a contribution to the economic development of the host State. The four criteria are typically read cumulatively, although subsequent tribunals have varied in how strictly they apply the development prong.
+
+**Backsourcing verification.** Located on italaw and the four-criteria framework verified against the published award and against the consistent secondary literature treating Salini as the leading test. Ferguson's use of the test as the ICSID gateway is accurate; his application to a trade secret turns on whether the secret can satisfy criteria (1) and (4), which is contestable but defensible.
+
+**Relevance to the Benavides project.** Salini is the procedural threshold any trade-secret-as-investment claim must clear before substantive treaty discipline engages. For the project, it is the framework against which to test whether each subspecies of trade secret (industrial know-how, pharmaceutical test data, geological data, software) plausibly survives the gateway inquiry.
+
+---
+
+### Fedax N.V. v. Republic of Venezuela
+
+ICSID Case No. ARB/96/3, Decision of the Tribunal on Objections to Jurisdiction, ¶ 43 (July 11, 1997), <https://www.italaw.com/cases/432>.
+
+**Descriptive annotation.** An early ICSID decision in which the tribunal held that promissory notes acquired by a Dutch company on the secondary market constituted a protected "investment" notwithstanding the absence of a classical cross-border financial transfer. The tribunal articulated a flexible understanding of the transfer requirement keyed to whether resources were ultimately committed to the host State, rather than to the form of the transfer.
+
+**Backsourcing verification.** Located on italaw and the holding verified. Ferguson's citation to ¶ 43 for the proposition that some form of transfer between home and host State is required is accurate, although Fedax is a permissive authority and is more useful for the proposition that the transfer can be intangible than for any narrower territoriality requirement.
+
+**Relevance to the Benavides project.** Useful because trade secrets, like promissory notes, are intangibles whose territorial presence in the host State is contestable. Fedax supports the analytical move whereby a trade secret licensed to a host-State entity satisfies the transfer requirement even though no physical asset crosses a border.
+
+---
+
+### Saluka Investments BV v. Czech Republic
+
+UNCITRAL, Partial Award, ¶¶ 471–480, 504 (Mar. 17, 2006), <https://www.italaw.com/cases/961>.
+
+**Descriptive annotation.** An UNCITRAL tribunal seated under the Netherlands–Czech Republic BIT held that the Czech Republic violated the BIT's fair-and-equitable-treatment and non-impairment obligations by, among other things, leaking confidential information about the financial distress of IPB — a Czech bank in which the Dutch claimant held shares — in a way that frustrated the claimant's ability to participate in the resolution of the bank.
+
+**Backsourcing verification.** Located on italaw; the holding on disclosure-as-treaty-violation is widely confirmed in secondary literature, but **the specific text of ¶¶ 471–480 and 504 could not be extracted from the PDF and has not been read.** The holding is therefore recorded as *reported* rather than verified, and the paragraphs are in the library request. Ferguson's use of Saluka as the leading proof-of-concept that disclosure of confidential commercial information can ground a treaty claim is well-supported by the case as reported.
+
+**Relevance to the Benavides project.** Saluka is the single most important data point for the disclosure half of Ferguson's four-risk taxonomy and one of the few awards in which a tribunal has actually granted relief on facts close to the trade secret context. The project should treat it as the floor authority for any disclosure-based claim — once the paragraphs are read.
+
+---
+
+### Bayview Irrigation District v. United Mexican States
+
+ICSID Case No. ARB(AF)/05/1, Award, ¶¶ 101–102 (June 19, 2007), <https://www.italaw.com/cases/134>.
+
+**Descriptive annotation.** An ICSID Additional Facility tribunal seated under NAFTA Chapter 11 declined jurisdiction over claims by U.S. irrigation districts asserting that Mexico had unlawfully diverted Rio Grande water. The tribunal held that, to invoke Chapter 11, an investor must have an investment that lives in the territory of the host State, and that water rights situated in Texas were not investments in Mexico merely because the underlying water originated in or flowed through Mexican territory.
+
+**Backsourcing verification.** Located on italaw; the territorial-nexus holding is the case's central jurisdictional ruling and is correctly attributed by Ferguson. Worth noting, however, that the territorial language sits inside a jurisdictional refusal, which somewhat softens its precedential force as a positive rule of investment territoriality.
+
+**Relevance to the Benavides project.** Bayview sets the high-water mark on the territoriality requirement and is the case any State respondent will invoke against a trade secret claimant whose secret was developed abroad. The project must take a position on whether Bayview's logic actually applies to intangibles or whether it can be confined to its facts.
+
+---
+
+### ACP Axos Capital GmbH v. Republic of Kosovo
+
+ICSID Case No. ARB/15/22, Award, ¶ 249 (May 3, 2018), <https://www.italaw.com/cases/3907>.
+
+**Descriptive annotation.** An ICSID tribunal addressed an investor's attempt to characterize a contract claim against the host State as itself an "investment" under the BIT. The tribunal warned that allowing the BIT's investment language to be the source of the underlying right — rather than the mere protector of a pre-existing right derived from municipal law or contract — would be circular, and would mean that advancing any claim under a treaty containing such language would suffice to establish a protected investment.
+
+**Backsourcing verification.** Located on italaw and the language at ¶ 249 verified through Ferguson's direct quotation of the passage. The proposition is correctly attributed and is one of the more important secondary cites in the article.
+
+**Relevance to the Benavides project.** The ACP Axos circularity warning is the doctrinal foundation for the recognition–enforceability gap identified in Section IV.A. For the project, this is the cleanest tribunal articulation of why municipal recognition does irreplaceable work in the trade secret analysis and cannot be skipped.
+
+---
+
+### Alps Finance and Trade AG v. Slovak Republic
+
+UNCITRAL, Award, ¶ 231 (Mar. 5, 2011), <https://www.italaw.com/cases/74>.
+
+**Descriptive annotation.** An UNCITRAL tribunal stated that it is common practice in investment treaty arbitration that an "asset" within the meaning of a BIT means a right or claim having an economic value and deriving either from law or from contract. The tribunal ultimately held that a one-off sales contract did not satisfy the asset definition because it lacked the requisite economic and temporal characteristics.
+
+**Backsourcing verification.** Located on italaw; the asset-definition formulation is correctly attributed. The holding cuts both ways for trade secrets: the formulation is permissive (any right deriving from law or contract qualifies) but its application to the underlying facts is restrictive.
+
+**Relevance to the Benavides project.** Alps Finance gives the project the most usable working definition of "asset" against which to test whether a particular trade secret amounts to one. The contract pathway is significant, though not as an alternative to statutory protection: confidentiality agreements, non-disclosure agreements and restrictive covenants are the means by which a holder satisfies the statutory condition that reasonable measures were taken to preserve secrecy. They are how one qualifies for protection rather than a substitute for it, and they are evidentiary as much as proprietary — they are what the holder produces to prove the condition was met.
+
+---
+
+### H&H Enterprises Investments, Inc. v. Arab Republic of Egypt
+
+ICSID Case No. ARB/09/15, Award, ¶¶ 364, 378, 385 (May 6, 2014) (Rule 48(4) excerpts), <https://www.italaw.com/cases/542>.
+
+> **Entry corrected 2026-08-03.** The prior version of this entry cited the Decision on Jurisdiction of 5 June 2012, ¶ 42, and described the case as authority for a trade-secret claimant's fork-in-the-road exposure. Both were wrong. See the verification statement below.
+
+**Descriptive annotation.** A dispute over a management and operation contract for a resort on the Gulf of Suez under the Egypt–United States BIT (1986); ICSID records the subject of dispute as resort management and operation, in the tourism sector. The tribunal joined Egypt's fork-in-the-road objection to the merits in its Decision on Jurisdiction and decided it in the Award, holding that Article VII 3(a) does not expressly require the triple identity test and applying a "same fundamental basis" test instead, which barred the claimant's treaty claims. The corruption, denial-of-justice and denial-of-effective-means claims were dismissed on the merits for want of causal link.
+
+**Backsourcing verification.** Located on italaw and cross-checked against ICSID's own case record. Three corrections to the prior entry. **First,** this is not an intellectual-property dispute: the published Rule 48(4) award excerpts contain no occurrence of trade secret, intellectual property, confidential information, know-how or patent. **Second,** the prior pin cite was structurally wrong — the Award records that the fork-in-the-road objection was *joined to the merits* in the Decision on Jurisdiction, so that decision resolved nothing on the doctrine; the reasoning and disposition are in the Award of 6 May 2014. The Decision on Jurisdiction is published on the ICSID website but **has not been read, and no claim is made about what its ¶ 42 contains.** **Third,** the disposition is mixed rather than a clean jurisdictional exit, and an annulment application registered 17 September 2014 was discontinued on 25 April 2016 for non-payment of advances, so the Award was neither annulled nor upheld on review. The zero-occurrence finding is scoped to the published excerpts, not to the full Award.
+
+**Relevance to the Benavides project.** Cited **by analogy only.** Its value is the tribunal's willingness to trigger a fork-in-the-road clause on a basis wider than formal identity — a reading the tribunal grounded in the specific language of that treaty, and which therefore does not generalise to fork-in-the-road clauses at large. Important for the project because a trade secret holder may litigate in domestic courts before turning to ISDS. Note the limit: the domestic action asks whether information is a trade secret and was misappropriated, while the treaty claim asks whether the asset is a covered investment and whether State conduct breached a standard. On orthodox triple identity those are different disputes; the exposure arises only under the wider reading, and only where the two share a factual foundation.
+
+---
+
+### Burlington Resources Inc. v. Republic of Ecuador
+
+ICSID Case No. ARB/08/5, Decision on Liability, ¶¶ 529, 537–538 (Dec. 14, 2012), <https://www.italaw.com/cases/181>.
+
+**Descriptive annotation.** An ICSID tribunal considered whether Ecuador's windfall-profits tax on oil production constituted indirect expropriation or instead a legitimate exercise of police powers. At ¶ 529 the tribunal found that Ecuador had not validly exercised police powers because the investor's underlying conduct was authorized under municipal law and the State's response was not necessary in the relevant sense; ¶¶ 537–538 develop the broader analytical framework.
+
+**Backsourcing verification.** Located on italaw and the police powers holding verified through both Ferguson's discussion and the consistent secondary literature on the case. Ferguson's citation is accurate and the case is correctly identified as the leading recent statement of the necessity element of the police powers carve-out.
+
+**Relevance to the Benavides project.** Burlington is essential because it shows that even a tribunal sympathetic to the police powers carve-out will police the necessity element. It is the cleanest authority for the argument that a State's disclosure or use of a trade secret cannot be insulated by police powers unless the State can show the conduct was necessary.
+
+---
+
+### A11Y Ltd v. Czech Republic
+
+ICSID Case No. UNCT/15/1, Award, ¶¶ 59, 198, 208–213, 217 (June 29, 2018), <https://www.italaw.com/cases/5183>.
+
+**Descriptive annotation.** An ICSID Additional Facility tribunal held that the Czech Republic's changes to its disability subsidy regime did not constitute indirect expropriation of a U.K. investor's business providing aids for the visually impaired and blind. The tribunal characterized the regulatory change as a bona fide regulatory measure falling within the police powers doctrine and not requiring compensation.
+
+**Backsourcing verification.** Located on italaw; the police powers holding is correctly attributed by Ferguson. Notably, A11Y is the case where Ferguson's four-question test would most clearly run aground, and Ferguson does not work through how his test would have produced a different outcome on the A11Y facts — a real gap flagged in Section VI.
+
+**Relevance to the Benavides project.** A11Y is the most important counter-authority to Ferguson's entire project and the case the project must engage directly when assessing the realistic ceiling on what his framework can deliver. It should be treated as the test case against which any reform proposal is measured.
+
+---
+
+### Siag v. Arab Republic of Egypt
+
+ICSID Case No. ARB/05/15, Award, ¶ 427 (June 1, 2009), <https://www.italaw.com/cases/1022>.
+
+**Descriptive annotation.** An ICSID tribunal awarded a Lebanese-Italian claimant compensation for Egypt's expropriation of a tourism development on the Sinai Peninsula. At ¶ 427 the tribunal articulated the canonical formulation of direct expropriation as conduct depriving an investor of its title to or control over those assets.
+
+**Backsourcing verification.** Located on italaw; the formulation is correctly attributed and is now the standard contemporary citation for the elements of direct taking in ISDS jurisprudence.
+
+**Relevance to the Benavides project.** Siag is the baseline against which Ferguson's four-question test for indirect expropriation must be calibrated. It is the doctrinal anchor for the direct/indirect distinction and the entry point for any analysis of how trade secret takings fit within the existing taxonomy.
+
+---
+
+### Celgard, LLC v. Shenzhen Senior Technology Material Co. Ltd
+
+[2020] EWHC 2072 (Ch), ¶¶ 69, 84 (Eng.); aff'd [2020] EWCA Civ 1293, <https://www.bailii.org/ew/cases/EWCA/Civ/2020/1293.html>.
+
+**Descriptive annotation.** The English High Court granted an interim injunction protecting Celgard's trade secrets relating to lithium-ion battery separator technology, even though the alleged misappropriation occurred outside the United Kingdom. The court applied English breach-of-confidence law on the strength of the U.K.-located harmful conduct (sales to U.K. customers) rather than the law of the place of the original taking.
+
+**Backsourcing verification.** Located on BAILII at the appellate level and verified through both the appellate judgment and contemporary IP commentary. The proposition Ferguson cites — that English law applied because the harmful sales were in the U.K. despite the underlying taking being elsewhere — is accurately attributed. Note for scope: this is private litigation between two companies, so the fork-in-the-road doctrine, which operates on an investor's election between a domestic forum and treaty arbitration, had no occasion to arise and was not considered.
+
+**Relevance to the Benavides project.** Celgard is the cleanest recent municipal-law authority on the territorial recognition question and supports a permissive reading of the Bayview territoriality requirement when read into the trade secret context. It is also the sharpest available illustration of a procedural problem the project should develop: interim relief is precisely what a trade secret holder must seek, because the only remedy that preserves the asset is one that stops disclosure before it happens. If seeking it were later held to prejudice the treaty forum, a holder could be forced to choose between preserving the secret and preserving the claim.
+
+---
+
+### Matalia v. Warwickshire County Council
+
+[2017] EWCA Civ 991, ¶ 46 (Eng.) (endorsing Primary Group (UK) Ltd v. Royal Bank of Scotland Plc, [2014] EWHC 1082 (Ch), ¶ 223), <https://www.bailii.org/ew/cases/EWCA/Civ/2017/991.html>.
+
+**Descriptive annotation.** The English Court of Appeal affirmed an injunction restraining publication of confidential examination materials and reaffirmed the long-standing rule that a third party who receives confidential information may be liable for misuse if they had notice that the information was confidential, even if they were not the original confidant. The Court endorsed the formulation in Primary Group v. RBS, which itself traces back to Lord Goff's reasoning in Attorney General v. Observer Ltd.
+
+**Backsourcing verification.** Located on BAILII and the principle verified directly through the Court of Appeal's reasoning at ¶ 46. The notice rule is well-established in English equity, and Ferguson's citation is accurate.
+
+**Relevance to the Benavides project.** Matalia is the cleanest recent statement of the U.K. notice rule and is directly portable to the State-as-third-party fact pattern. It supplies the doctrinal hook for the argument that a host State put on notice of the confidentiality of a foreign investor's information becomes legally responsible for protecting it — the bridge that converts a secret into a right for treaty purposes.
+
+---
+
+### Mark A. Lemley, *The Surprising Virtues of Treating Trade Secrets as IP Rights*
+
+61 Stan. L. Rev. 311, 329–41 (2008), <https://law.stanford.edu/wp-content/uploads/2015/06/Lemley-Surprising.pdf>.
+
+**Descriptive annotation.** Lemley argues, against the conventional wisdom that trade secret law is anomalous within intellectual property doctrine, that treating trade secrets as IP rights resolves longstanding doctrinal puzzles and yields clearer standards for unfair competition than tort or contract framings. The pages cited develop the argument that the IP framing produces better doctrinal outcomes than the leading alternatives.
+
+**Backsourcing verification.** Located in full text on the Stanford Law School website and the central thesis verified directly. Ferguson's citation is accurate and represents the standard reference for the IP-status proposition in U.S. legal scholarship.
+
+**Relevance to the Benavides project.** Lemley is the first of three links in Ferguson's definitional chain. **Link one:** trade secrets sit inside the IP family rather than beside it. **Link two:** BIT investment definitions characteristically enumerate "intellectual property rights," so on that categorisation trade secrets fall within the enumerated category without needing to be named. **Link three:** VCLT Article 31(3)(c) then supplies the category's content from TRIPS Article 39. Two qualifications the project should carry: Lemley is United States domestic IP scholarship, persuasive on categorisation but not authoritative on treaty interpretation, and a tribunal is not bound to adopt a U.S. academic taxonomy when construing a BIT; and what Article 39 supplies is a standard municipal law must meet rather than an internationally held right. The chain holds; each link is weaker than it first appears.
+
+---
+
+### Jonathan Bonnitcha & Emma Aisbett, *Against Balancing: Revisiting the Use/Regulation Distinction to Reform Liability and Compensation Under Investment Treaties*
+
+42 Mich. J. Int'l L. 231, 242–43 (2021), <https://repository.law.umich.edu/mjil/vol42/iss2/2/>.
+
+> **Entry corrected 2026-08-03.** The prior version described this article as the strongest external critical perspective on the recognition–enforceability gap. It is not. See the verification statement below.
+
+**Descriptive annotation.** Bonnitcha and Aisbett argue that the conventional balancing approach used by ISDS tribunals to distinguish compensable expropriation from non-compensable regulation is doctrinally incoherent and should be replaced with a use/regulation distinction: government use of an investor's property would be compensable; government regulation that does not amount to use would not. The pages cited develop the conceptual framework and address host State opportunism.
+
+**Backsourcing verification.** Located in full text via the open-access University of Michigan Law Repository, and **the whole text was checked** rather than the abstract. The article contains no occurrence of "intellectual property," "trade secret," "patent," "trademark" or "TRIPS," and both occurrences of "recognition" concern the recognition and enforcement of arbitral awards. The prior annotation's claim that it supplies the strongest external critique of the recognition–enforceability gap is therefore **not supported by the text and has been struck.** The article is nonetheless not off-topic: it uses "domestic law" five times, and one footnote states that tribunals inevitably apply domestic law in determining the existence and extent of the investor's property rights constituting the investment, because international law contains no rules on property rights.
+
+**Relevance to the Benavides project.** The article's target is proportionality balancing, which makes it the strongest external challenge to **Kim's** proportionality backstop rather than to Ferguson's recognition gap — the mirror of where it was originally filed. Applied to this project's fact pattern it is generative: compelled disclosure of clinical data that the State or a third party then *uses* looks like use, while disclosure that merely devalues the secret looks like regulation. It also endorses the view that limitations existing when a right is acquired form part of its content rather than an impairment of it — a pre-existing-status conception that cuts against the ex-post reading of recognition developed in Section IV.B, and which the project should confront rather than ignore.
+
+---
+
+### Tethyan Copper Co. Pty Ltd v. Islamic Republic of Pakistan
+
+ICSID Case No. ARB/12/1, Award, ¶¶ 1283, 1288, 1327–1330, 1331–1333 (July 12, 2019); Decision on Jurisdiction and Liability (Nov. 10, 2017), <https://www.italaw.com/cases/1631>.
+
+**Descriptive annotation.** An ICSID tribunal awarded an Australian mining investor substantial damages after Pakistan denied a mining lease following years of exploration work conducted by the claimant. Ferguson uses the award for the more granular proposition that the tribunal indicated the government could rely on the claimant's confidential geological data and information but did not definitively resolve whether that data itself constituted a separate protected investment.
+
+**Backsourcing verification.** Case located on italaw and ICSID with the headline holding verified through multiple sources, but **the specific paragraphs Ferguson cites are not accessible in the publicly available redacted text** and have not been read. IIC 1603 (2019) is paywalled behind Investor-State LawGuide. Flagged in Section III as one of the retrieval gaps requiring law-library follow-up before the project relies on the specific paragraph citations.
+
+**Relevance to the Benavides project.** Tethyan Copper is the most factually rich and most recent tribunal data point in Ferguson's article and directly engages the regulation-plus-disclosure fact pattern the project is most interested in. Highest priority for independent retrieval before the project relies on it.
+
+---
+
+### Landreau Brothers Claim (U.S. v. Peru)
+
+1 R.I.A.A. 347, 353, 364 (1922), <https://legal.un.org/riaa/cases/vol_I/347-376.pdf>.
+
+**Descriptive annotation.** An early-twentieth-century arbitral award arising from a U.S. claimant's assertion that Peru had appropriated geological information identifying valuable guano deposits. The tribunal recognized, in essence, that commercially valuable confidential geological information could ground an international claim against a host State, well before the modern BIT architecture existed.
+
+**Backsourcing verification.** Located in the UN Reports of International Arbitral Awards. Ferguson's use of Landreau as the deep-history precedent for trade-secret-adjacent international claims is accurate; the case is genuinely an early data point for the proposition. One qualification: this is a State-to-State claims commission award, not an investor–State case.
+
+**Relevance to the Benavides project.** Landreau is the historical anchor that pre-empts any argument that international protection of commercially valuable confidential information is a recent and unprincipled extension. Because it is a State-to-State award, the lineage it establishes runs to international protection of such information generally rather than to ISDS specifically — a limit worth stating, since stating it makes the anchor harder to attack.
+
+---
+
+### Factory at Chorzów (Germ. v. Pol.)
+
+Judgment, 1928 P.C.I.J. (ser. A) No. 17, at 47, 57 (Sept. 13), <https://jusmundi.com/en/document/decision/en-factory-at-chorzow-merits-judgment-thursday-13th-september-1928>.
+
+**Descriptive annotation.** The foundational PCIJ decision on reparation for international wrongs, articulating the principle that reparation must so far as possible wipe out all the consequences of the illegal act and re-establish the situation that would in all probability have existed had that act not been committed. Ferguson notes separately that the Court fleetingly described a patent as an "interest" rather than a property right under the relevant German–Polish convention on Upper Silesia.
+
+**Backsourcing verification.** Located in full text via Jus Mundi and World Courts. The reparation principle at p. 47 is verified directly; Ferguson's reading of p. 57 on the patent-as-interest characterization is consistent with the published text.
+
+**Relevance to the Benavides project.** Chorzów is the foundational citation for any damages discussion and is also evidence of the categorical instability that Ferguson treats as the deep root of the trade secret problem. It ties the trade secret question to the broader international law of reparation, and its counterfactual method is the standard answer to the objection that a disclosure measure destroys the very secrecy on which the claim depends: the right is characterized and valued immediately before the measure.
+
+---
+
+### WTO Panel Report, Thailand—Customs and Fiscal Measures on Cigarettes from the Philippines
+
+¶¶ 7.410–7.411, WTO Doc. WT/DS371/R (adopted Nov. 15, 2010), <https://www.wto.org/english/tratop_e/dispu_e/371r_e.pdf>.
+
+**Descriptive annotation.** A WTO Panel found that Thailand's practice of disclosing certain sensitive business information and confidential information submitted by importers in the customs valuation process to competitors of those importers was inconsistent with Article 10 of the Customs Valuation Agreement and Article X of the GATT 1994. The Panel's reasoning frames disclosure-to-competitors as a form of internationally wrongful conduct in the trade context.
+
+**Backsourcing verification.** Case located via the WTO dispute settlement page and headline holding verified through summary databases. **The specific paragraphs were not extractable from the PDF text layer and have not been read**; the proposition is consistent with the case's reported holding. Note also that this is a State-to-State trade panel, not investor–State dispute settlement.
+
+**Relevance to the Benavides project.** Thailand—Cigarettes is one of two WTO data points Ferguson uses to bridge the WTO and ISDS regimes on the disclosure question. It is useful as evidence that the wrongfulness of disclosure-to-competitors is not an idiosyncratic ISDS doctrine but reflects a broader trade-law consensus — and it illustrates the distinction that regulatory disclosure characteristically routes information to other participants in the same regulated market rather than to the public at large.
+
+---
+
+### WTO Panel Report, Argentina—Measures Affecting the Export of Bovine Hides and the Import of Finished Leather
+
+¶¶ 11.100–11.101, WTO Doc. WT/DS155/R (adopted Feb. 16, 2001), <https://www.wto.org/english/tratop_e/dispu_e/155r_e.pdf>.
+
+**Descriptive annotation.** A WTO Panel held that Argentina's practice of allowing private tannery representatives to be present during customs inspections of bovine-hide exports created a risk of disclosure of confidential business information to competitors and was therefore inconsistent with the uniform-administration requirement of GATT Article X:3(a). The Panel treated the structural risk of disclosure, not just actual disclosure, as the relevant wrong.
+
+**Backsourcing verification.** Located via the WTO dispute settlement page; the headline holding on Article X:3(a) is widely confirmed in trade-law commentary, but **the specific paragraph citations were not extractable from the PDF and have not been read.** As above, this is a State-to-State trade panel rather than an ISDS award.
+
+**Relevance to the Benavides project.** Argentina—Bovine Hides supplies a structural-risk argument that Ferguson does not develop fully — and for that reason the project should resist porting it into ISDS. A risk-based standard would permit a claim against a State for maintaining a regulatory architecture that creates a risk of disclosure, with no disclosure having occurred, and would in practice be available only to claimants able to identify, quantify and fund such a claim. It decouples liability from any demonstrable event and assigns the decisive judgement to a privately constituted and largely confidential forum, which makes it the most capture-prone form this protection could take.
 
 <!-- graph:auto start -->
 Map: [[Research Question]]

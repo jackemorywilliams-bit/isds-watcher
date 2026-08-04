@@ -86,8 +86,7 @@ Append one entry per review. Template:
 
 ---
 
-_No human review has been logged yet. The first monthly checkpoint is due one month after the
-first daily record (2026-06-23). Standing verification debt to clear at that review is listed in
+_Standing verification debt to clear at the next review is listed in
 `STATE_OF_THE_ANSWER.md` (the China NMPA 2026 Measures, the Jason Yu Song award particulars, and
 the Einarsson Article 1121 waiver characterization)._
 

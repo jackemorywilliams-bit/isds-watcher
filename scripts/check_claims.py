@@ -243,13 +243,24 @@ REGISTRY: tuple[Fact, ...] = (
         (Ref("analytics/source-receptivity.md",
              r"Across \*\*(\d+)\*\* archived run"),),
     ),
-    Fact(
-        "completed human-review cycles",
-        Ref("HUMAN_REVIEW.md", r"(?m)^###[^\n]*\bCOMPLETED\b", mode="count"),
-        (Ref("HUMAN_REVIEW.md", r"_No human review has been logged yet", asserts=0,
-             note="the log's own standing statement, which stops being true the "
-                  "moment a cycle is marked COMPLETED"),),
-    ),
+    # RETIRED 2026-08-04 — "completed human-review cycles".
+    #
+    # Its authority was the count of `### … COMPLETED` headings in HUMAN_REVIEW.md;
+    # its one declared restatement was that file's standing line "No human review has
+    # been logged yet", which had been false since 2026-07-18 and sat 83 lines above
+    # the record that falsified it. An external reviewer read the stale line, missed
+    # the record, and concluded the project claimed a safeguard it never had.
+    #
+    # On the operator's instruction the line was deleted rather than reworded. That
+    # left the fact with an authority and nothing restating it — and an authority
+    # nothing restates checks nothing, so the entry is retired rather than kept as a
+    # decorative row. The completed-cycle headings are now the file's only statement
+    # of review status, and there is nothing left that can disagree with them.
+    #
+    # Note what happened when the sentence went: the check FAILED, because a declared
+    # pattern matching nothing is a failure here. It did not quietly pass on an empty
+    # search. That is the fail-closed rule doing its job, and it is why retiring an
+    # entry is a person's decision and not a tidy-up.
 )
 
 

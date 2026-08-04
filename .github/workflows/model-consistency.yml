@@ -1,0 +1,50 @@
+name: model-consistency
+
+# A seat's model is asserted in three places and nothing compared them:
+#   .claude/agents/<seat>.md frontmatter  — the only one with a mechanism
+#   views/isds-workflow-3d/workflow.json  — what a reader sees
+#   agents/<seat>.md                      — the vault note
+#
+# 939deaa moved seats off Fable, updated the roster table and not the card mirror,
+# and five cards read "Claude Fable 5" for days. Separately, two seats carried cards
+# asserting "Claude Opus 5" while declaring no model: key at all — true only while the
+# invoking session happened to match. Both were caught by a person reading carefully.
+# This makes them fail instead.
+#
+# Runs on PRs touching any of the three, and on push to main so a direct edit cannot
+# land the drift unseen.
+on:
+  pull_request:
+    paths:
+      - ".claude/agents/**"
+      - "agents/**"
+      - "src/models.py"
+      - "views/isds-workflow-3d/workflow.json"
+      - "scripts/check_models.py"
+      - "tests/test_check_models.py"
+  push:
+    branches: [main]
+    paths:
+      - ".claude/agents/**"
+      - "agents/**"
+      - "src/models.py"
+      - "views/isds-workflow-3d/workflow.json"
+  workflow_dispatch:
+
+jobs:
+  models:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pytest
+
+      # The checker must itself be checked — a broken checker reports clean.
+      - name: The checker's own tests
+        run: python -m pytest tests/test_check_models.py -q
+
+      - name: Every card agrees with its definition and the code
+        run: python scripts/check_models.py

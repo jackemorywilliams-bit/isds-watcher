@@ -1,8 +1,8 @@
 {
   "request": "2026-08-05-daily.json",
   "note": "Daily council 2026-08-05. (1) A/81/17 watch, day 5 of the publication window, at the Commission Sessions posting location, in the standard same-page positive-control form: target symbol plus a control string known present on that page. The undocs.org route was retired 2026-08-04 as carrying no existence information at the relay's reduction level and is not used. (2) Mapper attribution and mapping vintage for UNCTAD treaty 978 (China - Switzerland BIT (2009)), anchored on the literal label 'Mapped by', to calibrate the 2026-08-04 forum-relationship cell to the confidence level the record holds for the sibling treaties. (3) Same-page positive control for row 2, anchored on 'ISDS forum options', a string retrieved from that page on both 2026-08-03 and 2026-08-04.",
-  "fetched_at": "2026-08-05T11:20:54.533726+00:00",
-  "environment": "github-actions-runner (run 31001060670)",
+  "fetched_at": "2026-08-05T11:41:05.453460+00:00",
+  "environment": "github-actions-runner (run 31002416607)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -58,7 +58,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "c7afb6fd734d7039cc405ae6c2c8c0abed279229ad2ff0a64808bf4e619e95bc",
+      "sha256": "e1402bb4dce83c93084c9a13683e856bb0adb0790617d060e42c7cd13ef96810",
       "excerpt": "ative between UNCTAD and universities worldwide to map the content of IIAs. Individual treaties are mapped by law students from participating universities, under the supervision of their professors and with the overall guidance and coordination of UNCTAD. The mapping results included in the IIA Mapping Project database serve a purely informative purpose. The mapping of treaty provisions is not exh",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -71,7 +71,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "636c65c4033efdd6326578ee317f5f0c0564464d14434e6b162e3b73e36aaca9",
+      "sha256": "ef4317697797af1c4b0baaab34512955f6012f6186566f43539f93d43f81a5a0",
       "excerpt": "or prudential measures No Type of consent to arbitration Provides express or implied consent Forums ISDS forum options Domestic courts of the host State Yes ICSID Yes UNCITRAL Yes Other forums No Relationship between forums Preserving right to arbitration after domestic court proceedings Other specific ISDS features Limitation period for submission of claims No Provisional measures No Consolidatio",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true

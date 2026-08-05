@@ -1,8 +1,8 @@
 {
   "request": "2026-08-05-zz-attribution.json",
   "note": "RENAMED FROM 2026-08-05-attribution.json, and the rename is the point. scripts/fetch_relay.py selects its batch with newest_request() = sorted(glob('*.json'))[-1], which is a LEXICOGRAPHIC sort, not a modification-time sort. 'attribution' sorts before 'daily', so the push of the original filename re-ran the already-completed 2026-08-05-daily batch (run 31002416607, 11:41:05Z) and OVERWROTE its results file in place, while these two rows were never fetched at all. The 'zz-' prefix forces this file to sort last so the batch actually runs. This is a workaround for a real defect, not a fix; the defect is recorded in the day's council record and routed to the systems seat and the operator. Daily council 2026-08-05, second batch. Both rows are named by the research analyst in its memo of today and authorised by the chairman; both are LOW PRIORITY CALIBRATION on the UNCTAD treaty-978 mapper attribution and vintage, and NEITHER CAN CHANGE the forum-relationship cell recorded 2026-08-04. Row A uses an EMPTY find, which returns body[:400] - the page head, assumption-free: its find_matched will be false BY CONSTRUCTION (bool(find) is False) and must never be read as a null, exactly as the neutral control row's false must not. Row B anchors on 'Umbrella clause', a mapped element the record attests for this database and a term the IIA Mapping Project disclaimer paragraph does not contain, so it is not boilerplate-preempted; it is a PROBE, not a targeted retrieval - page-order adjacency between 'Umbrella clause' and the attribution line is expressly NOT established, because the China-France ledger source_snapshot is a curated transcription and not a positional capture of the page. A miss on the attribution still returns treaty 978's umbrella-clause value, which the record does not hold. This batch fires no undocs.org row (route retired 2026-08-04), no party-name anchor (URL-echo risk), and no treaty-text row (the relay cannot deliver a document and no allowlisted locator exists in the record).",
-  "fetched_at": "2026-08-05T11:45:19.595427+00:00",
-  "environment": "github-actions-runner (run 31002699165)",
+  "fetched_at": "2026-08-05T12:10:00.665586+00:00",
+  "environment": "github-actions-runner (run 31004391399)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -32,7 +32,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "e07f2139890c4d07e242fbd6459f52a8e49de56db8afee08536de860778e6b45",
+      "sha256": "541098d6d51f81b2e8b878e181a284b538b96434b4553f045dfba39e814ce772",
       "excerpt": "China - Switzerland BIT (2009) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan &#197;land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": false
@@ -45,7 +45,7 @@
       "final_url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
       "content_type": "text/html",
       "bytes": 207411,
-      "sha256": "1540136ca349de63b3acd5caf3ec77506eab7c92c91b23707c26bfefccf2f24e",
+      "sha256": "b856f95f7639f15378d3e2a8a1e9951b3f8248c0615482540dbb870639d3a807",
       "excerpt": "quirements (PRs) Includes prohibition of PRs No explicit PR clause Type of PR clause Not applicable Umbrella clause Yes Entry and sojourn of personnel (subject to local laws) Yes Senior management (nationality) No Other Clauses Transparency Directed at States (obligation to publish laws and regulations) No Directed at investors No Health and environment (any mentioning in the text, except preamble",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true

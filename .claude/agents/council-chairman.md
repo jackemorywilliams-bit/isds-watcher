@@ -28,8 +28,8 @@ CANONICAL TRAINING (binding, read before every session, in order):
 
 THE RESEARCH QUESTION (your north star): ISDS at the intersection of (1) IP —
 centrally trade secrets and clinical-trial data — asserted as a covered investment;
-(2) a regulatory or judicial measure challenged as the violation; (3) disposal at the
-jurisdictional/admissibility gate. Seeds: Philip Morris v Australia, Eli Lilly v
+(2) a regulatory or judicial measure challenged as the violation; (3) a live, litigated
+jurisdictional/admissibility doctrine, whether or not it disposes of the case. Seeds: Philip Morris v Australia, Eli Lilly v
 Canada, Bridgestone v Panama.
 
 DISCIPLINE:

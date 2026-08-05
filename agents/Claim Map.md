@@ -23,11 +23,14 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
-**Snapshot anchor.** Audited against `c9050e6` (`main`, 2026-08-04, clean tree). Paths
-claimed to be described: `README.md`, `METHODOLOGY.md`, `HUMAN_REVIEW.md`, `HANDOFF.md`,
-`COUNCIL.md`, `fingerprint.yaml`, `docs/`, `scripts/site_templates/`, `scripts/`, `src/`,
-`digests/`. Staleness is a one-command question:
-`git log c9050e6..HEAD -- <those paths>`.
+**Snapshot anchor.** Rows C1–C12 were audited against `c9050e6` (`main`, 2026-08-04, clean
+tree). **Rows C13 and C14 were added 2026-08-05 and are audited against `eac8ed9`** (`main`,
+clean tree), together with the corrections to C7 and C12 noted in their rows. Paths claimed
+to be described: `README.md`, `METHODOLOGY.md`, `HUMAN_REVIEW.md`, `HANDOFF.md`,
+`COUNCIL.md`, `fingerprint.yaml`, `prompts/`, `.claude/agents/`, `moc/`, `working/`,
+`think-tank/`, `docs/`, `scripts/site_templates/`, `scripts/`, `src/`, `templates/`,
+`tests/`, `digests/`. Staleness is a one-command question:
+`git log eac8ed9..HEAD -- <those paths>`.
 
 **Line numbers are as of `c9050e6`** and will drift as files are edited. Where a line moves,
 the quoted text is the durable identifier — search for it rather than trusting the number.
@@ -48,34 +51,42 @@ change that the next build silently reverts, and the gate will reject it. Rows l
 
 ---
 
-## C1 — Holdout size and headline accuracy
+## C1 — Holdout size and headline accuracy — **CLOSED 2026-08-04, re-verified 2026-08-05**
 
-**There is no single authoritative evaluation file. There are two datasets.**
+**This row was written DIVERGENT against `c9050e6` and the divergence was closed the same
+day at `7959777` ("fix(claims): close the reviewer's contradictions, and stop stating one
+fact two ways"). Re-measured against `eac8ed9` on 2026-08-05, every figure below now agrees.**
+The stale version of this row survived one full day in this note, which is the failure mode
+the map's own §2 warns about: *a row whose file list is stale is worse than no row, because
+it licenses a partial fix.* It is corrected in place rather than deleted, so the correction
+is legible.
 
 | Stated in | What it currently says |
 |---|---|
 | `scripts/holdout_set.json` | **20 items**, 4 labelled `label: 1`, 16 unlabelled negatives. Consumed by `scripts/eval_holdout.py`. |
-| `scripts/backtest_corpus.json` | **12 items** — `holdout_positive_ids` 4, `holdout_negative_ids` 8. Consumed by `scripts/backtest.py`. Its own `_note` says "deliberately small (~12-15 known cases)". |
+| `scripts/backtest_corpus.json` | **20 items** — `holdout_positive_ids` **4**, `holdout_negative_ids` **16**, `display_names` **20**. Consumed by `scripts/backtest.py`. Its `_holdout_invariant` now requires the two id lists to name **every** labelled item in `holdout_set.json`. *(Was 4 + 8 and a "~12-15 known cases" note at `c9050e6`.)* |
 | `METHODOLOGY.md:52` | "an exploratory holdout of **twenty** items using eval_holdout.py. Four of the twenty were on-theme positives … compared against **sixteen** other awards … a precision of 1.00, a recall of 0.75, and an **accuracy of 0.95**, for an F1 of 0.86" |
 | `METHODOLOGY.md:67` | "The small exploratory hold-out set in Part VI.B — **twenty items, only four positives**" |
-| `docs/methodology.html:112` / `:126` | The same two sentences, generated. |
+| `docs/methodology.html:118` / `:126` | The same two sentences, generated. *(`:112` at `c9050e6`; the line moved — quoted text is the durable identifier.)* |
 | `scripts/site_templates/backtest.html.j2:114` | "{{ bt.holdout.total }} cases in all, none used in development" |
-| `docs/backtest.html:155` | Renders as "**12 cases** in all, none used in development" |
-| `docs/backtest.html:161` | "Confusion matrix … across **12**" |
-| `docs/backtest.html:175-183` | TP 3, FN 1, FP 0, **TN 8** (against METHODOLOGY's 16 negatives) |
-| `docs/backtest.html:202-205` | precision 1.00, recall 0.75, **accuracy 0.92**, F1 0.86 |
+| `docs/backtest.html:155` | Renders as "**20 cases** in all, none used in development" |
+| `docs/backtest.html:161` | "Confusion matrix … across **20**" |
+| `docs/backtest.html:175-183` | TP 3, FN 1, FP 0, **TN 16** |
+| `docs/backtest.html:202-205` | precision **1.00**, recall **0.75**, accuracy **0.95**, F1 **0.86** |
+| `scripts/check_claims.py:195-238` | Facts 6–12 now hold this agreement mechanically, harness against prose |
+| `tests/test_check_claims.py:53-55` | `assert a["n"] == b["n"] == 20`, `n_pos == 4`, `n_neg == 16` — the two harnesses are asserted equal independently of the registry |
 
-**Status: DIVERGENT, and the divergence is arithmetic, not editorial.** Both pages are
-internally correct for their own dataset — 3/4 + 16/16 = 19/20 = 0.95; 3/4 + 8/8 = 11/12 =
-0.92. The site does not tell a reader that two datasets exist. The four positives are
-identical in both (`loewen_v_us`, `mondev_v_us`, `apotex_v_us`, `pm_v_uruguay`); only the
-negatives differ, 16 vs 8.
+**Status: CONSISTENT. One dataset, twenty items, 0.95 on every surface.** 3/4 + 16/16 =
+19/20 = 0.95. The `0.92` figure now exists only as history — in `check_claims.py:16-19` and
+`.github/workflows/claims-consistency.yml:7-10`, both of which describe it as the drift the
+guard was built to prevent.
 
-**A fix here must also change:** every row above. If the fix is "one authoritative dataset,
-both surfaces generated from it," then `METHODOLOGY.md` stops stating metrics in prose and
-the number moves into the build — which is a `scripts/build_site.py` change, i.e. a second
-seat. **Do not** change 0.95 to 0.92 in `METHODOLOGY.md` alone: that would make the prose
-false about `holdout_set.json`, which still holds 20 items.
+**A fix here must also change:** nothing — there is nothing to fix. **Watch for a new
+divergence:** the agreement is now *mechanical*, so the hazard has inverted. Anything that
+changes the holdout's size, labels, or scores — including the `apotex_v_us` repair in
+**C14** — moves the harness figures and puts `METHODOLOGY.md:52` out of agreement, and
+`check_claims.py` fails the build rather than letting the prose drift. Read **C14** before
+touching `scripts/holdout_set.json`.
 
 ---
 
@@ -235,7 +246,7 @@ from the public repository.
 | `scripts/site_templates/how_it_works.html.j2` / `docs/how-it-works.html:63-64` | "**the AI research council** — the research agents, each box naming the model it runs on" |
 | `docs/how-it-works.html:7` (meta description) | "the AI research council" |
 | `COUNCIL.md` | The seat-by-seat contract; `.claude/agents/*.md` are the definitions; `analytics/daily-research/` are the session records |
-| `views/isds-workflow-3d/workflow.json` | Ten agent cards in a "council column", each naming a model |
+| `views/isds-workflow-3d/workflow.json` | **Twelve** model-bearing cards — the **nine** council seats plus `ai-check`, `daily-researcher` and `minutes`, which are stages rather than seats *(corrected 2026-08-05 against `eac8ed9`; this row said "ten" and no file carried that number)* |
 
 **Status: DIVERGENT — README and METHODOLOGY state opposite things about the same
 architecture.** README says *not standing agents, roles as stages*; METHODOLOGY says
@@ -251,10 +262,13 @@ the two files will still disagree after the fix.
 
 **A fix here must also change:** `README.md:85-87` and `:95`, `METHODOLOGY.md:59`, the how-it-works
 template, a `docs/` rebuild, and — if the word "council" is retired rather than qualified —
-`COUNCIL.md`, the ten flowchart cards in `views/isds-workflow-3d/workflow.json`, the ten
-`.claude/agents/*.md` definitions, the twelve `agents/*.md` vault notes, and this vault's own
-`hub: Council`. **That last list is why a wholesale renaming is a far larger change than it
-looks, and it is the archivist's to absorb.**
+`COUNCIL.md`, the **twelve** model-bearing cards in `views/isds-workflow-3d/workflow.json`,
+the **nine** `.claude/agents/*.md` definitions, the **nine** seat notes among the thirteen
+`agents/*.md` files (the other four — `Agent Registry`, `Claim Map`, `Project Change Log`,
+`Workflow Threads` — are index notes), and this vault's own `hub: Council`. **That last list
+is why a wholesale renaming is a far larger change than it looks, and it is the archivist's
+to absorb.** *(Counts corrected 2026-08-05 against `eac8ed9`; this paragraph previously said
+ten, ten and twelve, and all three were wrong.)*
 
 ---
 
@@ -360,19 +374,190 @@ record). **This row is a placeholder with a known open lane, not a clean bill.**
 | Stated in | What it currently says |
 |---|---|
 | `src/models.py` | `CHAIRMAN_MODEL` and `HEAVY_MODEL` = `claude-opus-5`; utility seats `claude-opus-4-8` |
-| `.claude/agents/*.md` frontmatter | chairman + analyst `opus-5`; four utility seats `opus-4-8`; **`systems-designer` and `site-experience` declare no `model:` key** |
-| `views/isds-workflow-3d/workflow.json` | `systems-designer` and `site-experience` cards read "**Model: Claude Opus 5**" — asserted by no configuration file |
-| `agents/*.md` (twelve notes) | Verified matching `src/models.py` on 2026-08-04 |
+| `.claude/agents/*.md` frontmatter | **All nine seats now declare `model: opus`** — closed at `c25ea64`. The key selects a **tier, not a version** (`scripts/check_models.py:36-38`), so the frontmatter never distinguishes Opus 5 from Opus 4.8; the version lives in `src/models.py` and on the card *(re-measured 2026-08-05 against `eac8ed9`; this row previously recorded two seats with no key)* |
+| `views/isds-workflow-3d/workflow.json` | `systems-designer` and `site-experience` cards read "Model: Claude Opus 5" — **now backed by a declared `model:` key and checked** |
+| `scripts/check_models.py:24-31`, `.github/workflows/model-consistency.yml:50` | The three rules it enforces: a card naming a model must belong to a seat that declares a `model:` key; the named model must normalise to an id present in `src/models.py`; a seat's vault note must name the same model as its card |
+| `agents/*.md` — **nine seat notes**, not twelve | Verified matching `src/models.py` on 2026-08-04; count corrected 2026-08-05 |
 | `HANDOFF.md:29`, `:163` | Corrected 2026-08-04 |
 | `COUNCIL.md`, `METHODOLOGY.md` Part VIII | Carry the assignment in prose |
 
-**Status: one open divergence, on record and escalated.** Two flowchart cards assert a model
-no file carries. Raised 2026-07-31, re-escalated 2026-08-04
-(`analytics/vault-sessions/2026-08-04.md`, both sessions). Emory's call: a `model:` line in
-each definition, or a card reading "inherits the invoking session".
-`.github/workflows/model-consistency.yml` (`c25ea64`) now makes card/definition drift fail —
-**verify whether that guard covers the two undeclared seats or exempts them**; it was added
-after the last archivist session and this map has not tested it.
+**Status: CLOSED — tested this session, which is what this row asked for.** The open
+divergence was "two flowchart cards assert a model no file carries", raised 2026-07-31,
+re-escalated 2026-08-04 (`analytics/vault-sessions/2026-08-04.md`, both sessions). `c25ea64`
+resolved it by Emory's first option: every one of the nine `.claude/agents/*.md` files now
+carries a `model:` key, and `scripts/check_models.py` makes card/definition/vault-note drift
+fail the build. **This row previously asked whether the guard covers the two formerly
+undeclared seats or exempts them; measured 2026-08-05 against `eac8ed9`, it covers them** —
+they declare, so rule 1 has something to check rather than nothing.
+
+**Watch for a new divergence, and it is a real one:** because `model:` is a **tier**, the
+frontmatter cannot disagree with a card about *version*. The guard's version check therefore
+rests entirely on card ↔ `src/models.py` ↔ vault note. **If a seat's vault note stops stating
+a model in the `**Model.** \`…\`` form that `_VAULT_MODEL_RE` (`check_models.py:63`) matches,
+that leg of the check silently has nothing to compare** — the archivist's formatting is
+load-bearing for a CI guard, which is worth knowing before anyone reformats these notes.
+
+---
+
+## C13 — What Ring 3 *is*: a doctrinal dimension, or a disposition
+
+**Added 2026-08-05, before the council ruled, because this is the row that decides whether
+the ruling is cheap or expensive.** Two incompatible tests are in the tree at the same time.
+
+- **Definition A — DIMENSION.** Ring 3 is engaged when jurisdiction/admissibility doctrines
+  are *live and litigated in the case*, whatever the outcome.
+- **Definition B — DISPOSITION.** Ring 3 requires that the tribunal actually *disposed of the
+  case* at the threshold, without reaching the merits.
+
+### Stated as B (disposition)
+
+| Stated in | What it currently says |
+|---|---|
+| `prompts/research_analyst.txt:18-20` | "(3) the tribunal **disposes of the case** at the JURISDICTIONAL / ADMISSIBILITY stage … **without reaching the merits**" |
+| `prompts/research_analyst.txt:113` | "attacked through a measure, and **disposed of at the jurisdictional gate**" |
+| `prompts/council_chairman.txt:8-9` | "(3) **disposal at the jurisdictional/admissibility stage**" |
+| `.claude/agents/council-chairman.md:31-32` | "(3) **disposal at the jurisdictional/admissibility gate**" |
+| `prompts/council_calibration.md:20-23` | "…and **disposal at the jurisdictional/admissibility stage** — not surface keyword matches". Injected into every analyst run at `prompts/research_analyst.txt:7` (`{{CALIBRATION}}`), so it binds every seat |
+| `prompts/systems_researcher.txt:18-19` | "Ring 3 **jurisdictional/admissibility disposal**" |
+| `prompts/research_editor.txt:28` | "or for the **jurisdictional/admissibility gate**" (weak B) |
+| `prompts/classifier.txt:12-14` | "(3) jurisdictional / admissibility doctrines **decide the case**" — contradicts `:60-61` in the same file |
+| `moc/Research Question.md:3-5` | "…and **disposed of at the jurisdictional/admissibility gate?**" — the vault's own statement of the question |
+| `METHODOLOGY.md:10` (Part I) → `docs/methodology.html:96` | "a rule of law applied at the jurisdictional or admissibility level **determines that the case cannot proceed**" |
+| `STATE_OF_THE_ANSWER.md:4` | "…and **disposed of at the jurisdictional or admissibility stage**" — the living-memory header |
+| `scripts/site_templates/index.html.j2:13` → `docs/index.html:45` | "**the case turns on** jurisdiction and admissibility" — the homepage hero (also carried at C9) |
+| `scripts/site_templates/base.html.j2:162` | "the threshold **on which the seed cases were decided**" |
+| `working/02c-framework-rings.original.txt:7` | "**Ring 3 — The case is decided at the threshold, not on the merits.** … each case **died on** jurisdiction and admissibility" |
+| `working/one-pagers/philip-morris-v-australia.md:18`, `:22`, `:30` | "Ring 3 (**jurisdictional disposal**)"; "**is disposed of** at the jurisdictional gate"; "**survives** the jurisdictional gate" — B, and true of *this* seed |
+
+### Stated as A (dimension)
+
+| Stated in | What it currently says |
+|---|---|
+| `think-tank/methodology/ring3-reconciliation.md:48`, `:56`, `:59`, `:115`, `:133`, `:139` | The decided council note (2026-06-29, `8909390`): justifying a dimension by a disposition statistic is "a **category mistake**"; the salience test is "recurring and **live** across the seed corpus — **not whether it was the disposition**"; Bridgestone's Ring 3 was "**live, litigated, and partly dispositive**"; "the instrument **keys on doctrinal engagement, not on a jurisdiction/admissibility disposition**"; and a standing rule at `:139` — "**Never justify a fingerprint dimension by a disposition statistic again**" |
+| `scripts/site_templates/index.html.j2:74-77` → `docs/index.html:100-105` | "the threshold **dimension** anchored by *Philip Morris*, **dispositive there** and a recurring doctrinal **risk** across the broader seed pattern" |
+| `scripts/site_templates/base.html.j2:169` → `docs/index.html:392` | "a **live** jurisdiction-and-admissibility **question**" — **seven lines below the B statement at `:162`, in the same JavaScript object** |
+| `prompts/council_roundtable.txt:19-23` | "a jurisdictional/admissibility rule … that **can** dispose of the case BEFORE the merits. Seed awards: Philip Morris (disposed on Ring 3), Eli Lilly (merits), **Bridgestone v. Panama (Ring 3 present, decided on merits)**" — the only prompt carrying the corrected seed scorecard |
+| `prompts/classifier.txt:26-28`, `:60-61`, `:149`, `:172-186` | Bridgestone is assigned "**Rings 1 + 2 + 3**" although decided on the merits; few-shot Example 2 fires Ring 3 on a *contested, undecided* standing objection and scores HIGH; the negative few-shots frame Ring-3 absence as "no jurisdictional **objection**", never as "reached the merits" |
+| `fingerprint.yaml:81-102`, `:110-115`, `:162-172` | Seventeen doctrinal phrases and **zero outcome terms**; "a ring counts as PRESENT once its keyword subtotal reaches the present floor (12)"; the Bridgestone few-shot scores HIGH on a "jurisdiction **fight**" |
+| `src/classify.py:33-37`, `:155-263` | `VALID_RINGS` and `keyword_score`. **`grep -niE "disposit\|outcome\|dismiss\|merits\|holding" src/classify.py src/config.py` returns nothing.** The deterministic scorer has no representation of a disposition |
+| `README.md:8-9`, `:31-33` | "where threshold questions of jurisdiction and admissibility **may be in play**"; "**A jurisdictional or admissibility doctrine** — abuse of right, treaty shopping, …" |
+| `working/one-pagers/bridgestone-v-panama.md:18`, `:22`, `:24` | "the hardest gatekeeping issue **surviving to the merits**"; "**it cuts against reading jurisdictional dismissals as the primary filter**"; "a jurisdictional dismissal is best read as **only the outermost of several available filters** rather than as the characteristic fate of an IP claim" |
+| `working/one-pagers/eli-lilly-v-canada.md:22`, `:26`, `:34` | "The only gate raised was the time bar, and it failed … **No jurisdictional disposal occurred**"; "the **jurisdictional-exit pattern is not universal**" |
+| `src/config.py:68-72` (`THEME_ONE_LINER`, rendered in every digest footer); `templates/digest.html.j2:104-106` | "…and **jurisdictional/admissibility doctrines**" — doctrine, no disposal (A-leaning) |
+
+### Mixed — one paragraph carrying both
+
+| Stated in | What it currently says |
+|---|---|
+| `METHODOLOGY.md:26` → `docs/methodology.html:105` | Heading: "Threshold Questions … as a Potentially Dispositive **Dimension**" (A). Defining sentence: "This ring observes **the ground on which a case may be denied disposition prior to having its merits addressed**" (B-shaped). Closing: "these preliminary questions **may** act as dispositive issues — and did in Philip Morris — **even though all three seeds were not decided based on these issues**" (A). **The seed facts here are correct.** This is the adopted 2026-06-29 fix, and it is *not* the memo's own recommended wording at `ring3-reconciliation.md:133`, which was cleanly A |
+
+### A third sense, in live use, that neither definition covers
+
+| Stated in | What it currently says |
+|---|---|
+| `analytics/insights.jsonl` (17 lines), `STATE_OF_THE_ANSWER.md:114-124`, `state/research_log.json:111`, `:171`, `:201`, `:211`, `analytics/optimization-log.md:34`, `analytics/council-log.md:50` | A **"Ring 3 taxonomy"** grown by the research layer, now at **five mechanisms**: abuse-of-right/critical-date, administrative-review prerequisite, fork-in-the-road, MFN-forum-access, first-generation-BIT scope limitation. **Not one of the four new mechanisms appears in `fingerprint.yaml:81-102`.** The research layer's Ring 3 and the classifier's Ring 3 have different contents |
+
+**Status: DIVERGENT, and the split runs through single files and single pages.**
+`scripts/site_templates/base.html.j2` states B at `:162` and A at `:169`, seven lines apart,
+in one JavaScript object; `prompts/classifier.txt` states B at `:12-14` and operates on A at
+`:26-28`/`:60-61`/`:149`; `docs/index.html` renders the A card at `:100-105` and the B readout
+at `:383-385`.
+
+**The asymmetry that should decide the cost question.** Nothing in the machine implements B.
+`fingerprint.yaml`'s Ring 3 is seventeen doctrinal phrases with no outcome term;
+`src/classify.py` never sees a disposition; ring presence is a keyword subtotal. If **A** is
+adopted, the edit list is the B table above and no scoring artifact moves — which is the
+position `ring3-reconciliation.md` already took and `METHODOLOGY.md:26` already implements.
+If **B** is adopted, every A statement above becomes false, **and B is still not
+implementable** by the deterministic layer — it could only ever be applied by
+`prompts/classifier.txt` and by prose.
+
+**A fix here must also change** — beyond its own table — **`scripts/site_templates/base.html.j2:162`
+regardless of which definition wins**, because that sentence is false today on the project's
+own verified facts (Eli Lilly and Bridgestone were decided on the merits;
+`ring3-reconciliation.md:16-22`), and because `base.html.j2` is inherited by all six page
+templates, so it renders on **sixteen published pages**: `docs/index.html:385`,
+`docs/methodology.html:260`, `docs/how-it-works.html:350`, `docs/backtest.html:603`,
+`docs/digests/index.html:450`, and all eleven `docs/digests/<date>.html`. **This is the
+largest single surface in the map and no prose sweep finds it** — it is a string inside a JS
+object literal inside a base template.
+
+**Watch for a new divergence:** adopting **B** would leave 26 of Ring 3's 100 weight points
+sourced from Bridgestone — `shell subsidiary` (6), `definition of investor` (5),
+`abusive tactics` (4), `standing of licensor vs licensee` (4), `standing to claim denial of
+justice when not a party` (4), `exhaustion of local remedies` (3), all tagged
+`seed: bridgestone` at `fingerprint.yaml:94-100` — i.e. a quarter of the ring drawn from a
+case that under B does not engage the ring at all. Adopting **A** requires
+`METHODOLOGY.md:26`'s *defining* sentence to move, not only its heading, and requires a
+decision on the Eli Lilly clause: `METHODOLOGY.md:26` says Ring 3 "did not form part of the
+reasoning in Eli Lilly", while `working/one-pagers/eli-lilly-v-canada.md:22` records a time-bar
+objection that was raised and rejected — which under A *is* a live Ring 3 engagement.
+
+---
+
+## C14 — The holdout's composition, and the Apotex item's identity
+
+| Stated in | What it currently says |
+|---|---|
+| `scripts/holdout_set.json` (`apotex_v_us`) | `"label": 1, "prov": "partial"`, text opening **"Apotex Holdings v. United States."** and reciting FDA abbreviated new drug applications plus "**does not qualify as an investor who has made an investment** … disposing of the case on the **definition of investor and jurisdiction**" — the **2013 Apotex Inc.** award's holding under the **2014 Apotex Holdings** caption |
+| `scripts/backtest_corpus.json` | `apotex_v_us` in `holdout_positive_ids`; the miss reason recorded in the same file |
+| `METHODOLOGY.md:52` → `docs/methodology.html:118` | One physical line carrying **all of**: "holdout of **twenty** items", "**Four** of the twenty were on-theme positives", the four names, "compared against **sixteen** other awards", "the item captioned Apotex v. United States **recites the jurisdictional holding of the 2013 Apotex Inc. award rather than that of the 2014 Apotex Holdings award its caption names**", "the Apotex item as **partial**", "precision of **1.00**" (×2), "recall of **0.75**", "accuracy of **0.95**", "F1 of **0.86**" (×2) |
+| `METHODOLOGY.md:67` | "— **twenty items, only four positives** —" |
+| `scripts/check_claims.py:195-238` | Facts 6–12 (`holdout items`, `holdout on-theme positives`, `holdout off-theme negatives`, `precision`, `recall`, `accuracy`, `F1`). Authorities are **live harness runs** of `scripts/eval_holdout.py` and `scripts/backtest.py`; mirrors are regex substrings on `METHODOLOGY.md:52` and `:67`. **Nine of the registry's twenty-nine mirrors point into `METHODOLOGY.md:52` alone** |
+| `tests/test_check_claims.py:53-55` | `assert a["n"] == b["n"] == 20`; `a["n_pos"] == b["n_pos"] == 4`; `a["n_neg"] == b["n_neg"] == 16` — asserted independently of the registry |
+| `agents/systems-researcher.md:28` / `.claude/agents/systems-researcher.md` / `prompts/systems_researcher.txt` | The seat's standing weak-point list names "the deterministic scorer's **'not-a-covered-investment' miss (Apotex)**" |
+| `scripts/backtest_corpus.json:57` (`display_names`) | "**Apotex Holdings v. United States**" — the caption the *published site* renders, and it is a **second, independent** copy of the wrong caption. Fixing `holdout_set.json` alone leaves the site still saying "Holdings" |
+| `scripts/backtest_corpus.json:52` (`miss_reasons`) | "Apotex turns on a **negative jurisdictional finding** — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment…" |
+| `docs/backtest.html:267`, `:270`, `:272`, `:275`, `:459` | The published table row: caption "Apotex Holdings v. United States", score **8**, band **LOW**, "**false negative**", and the miss-reason paragraph — all generated from `backtest_corpus.json` |
+| `lit-review/kim-memo.md:72-80` | **The only citation of the case anywhere in the repo**: "Apotex Holdings Inc. & Apotex Inc. v. United States, **ICSID Case No. ARB(AF)/12/1, Award (Aug. 25, 2014)**", annotated as the FDA **import-alert** dispute — i.e. the 2014 case, correctly cited, and **a different dispute from the ANDA holding in `holdout_set.json`** |
+| `METHODOLOGY.md:21` → `docs/methodology.html:102` | "The **Apotex v. United States** case defines the outer limit of what would be considered an 'investment'" — caption used without a year, so it is true of the 2013 award and reads as though it were the cited 2014 one |
+| `think-tank/methodology/ring3-reconciliation.md:94` | "the holdout's lone false negative, **Apotex Holdings v. United States**, is precisely a case **decided on a Ring-3 disposition**" — **false as written**: it is the 2013 *Apotex Inc.* award that was so decided |
+| `think-tank/methodology/ring3-reconciliation.md:101-108`, `:117`, `:141` | The pasted harness run (20 items, TP=3 FP=0 TN=16 FN=1, 1.00/0.75/0.95/0.86) and the argument built on it |
+| `analytics/fingerprint-gap-report.md:23`, `:104`, `:112`, `:212-215`, `:243` | "the one on-theme item the live holdout misses — `apotex_v_us`"; the E4 "negative-space / *Apotex* / *Hela Schwarz* miss"; the before/after metrics table |
+| `analytics/fingerprint_probes.json:30` (`E4_einarsson_negative_space`) | "The **Apotex / Hela Schwarz negative-space shape**: a decided REJECTION of trade-secret/clinical-data-as-investment against an administrative measure" |
+| `tests/test_fingerprint_probes.py:38-40` | `E4_einarsson_negative_space` is in `KNOWN_FALSE_NEGATIVES`, xfailed "pending operator-approved reweight" |
+| `tests/test_one_pagers.py:74-77` | Asserts **neither** `seeds/Apotex_v_USA.pdf` **nor** `working/one-pagers/apotex-v-usa.md` exists |
+| `working/FINGERPRINT_DRIFT.md:41` | "'not-a-covered-investment' *rejections* (the **Apotex outer limit**; now also the *Hela Schwarz* shape)" |
+| `STATE_OF_THE_ANSWER.md:8` | "Apotex outer limit" in the Kim-memo summary |
+
+**Status: the caption defect is DISCLOSED, not hidden** (`METHODOLOGY.md:52`), which changes
+what a repair is for. **Measured this session against `eac8ed9`:** the item scores **8**,
+matching `ip_as_investment` and `jurisdictional_admissibility` as sub-floor brushes only
+(both below `PRESENT_FLOOR = 12`), so it is the false negative and it registers **no ring at
+all**. Re-scoring the item with the caption changed to *Apotex Inc. v. United States*, with
+and without the 2013 docket and date, returns **8 in every variant** — the caption words
+carry no fingerprint weight.
+
+**Consequence for the repair, stated as a fork:**
+
+1. **Caption-only repair** (fix the caption to the 2013 *Apotex Inc.* award, whose holding the
+   text already recites): **metrics-neutral and guard-neutral.** Score stays 8, the item stays
+   the false negative, precision/recall/accuracy/F1 stay 1.00/0.75/0.95/0.86, Facts 6–12 stay
+   green, `tests/test_check_claims.py:53-55` stays green. The only prose that must move is the
+   candor clause on `METHODOLOGY.md:52` — and moving it means rewriting the one line that
+   nine declared mirrors point into.
+2. **Substitution repair** (replace the text with the real 2014 *Apotex Holdings* award):
+   changes the scored text, therefore possibly `recall`/`accuracy`/`f1`, therefore Facts 10–12,
+   therefore the four figures on `METHODOLOGY.md:52`, therefore `docs/` — and it would
+   **destroy the empirical prop under C13's Definition A**, because
+   `ring3-reconciliation.md` §3.3 relies on this item being the *jurisdiction-disposed* case
+   that the scorer misses. *Apotex Holdings* (ARB(AF)/12/1, 2014) was not disposed that way.
+
+**A fix here must also change:** `METHODOLOGY.md:52` **and** `:67` if any count moves, a
+`docs/` rebuild (`docs/methodology.html:118`), `agents/systems-researcher.md:28` and its two
+twins if the miss is re-characterised, **and `think-tank/methodology/ring3-reconciliation.md`
+§3.3 if the item ceases to be the jurisdiction-disposed miss.** **Watch for a new divergence:**
+`scripts/check_claims.py` is **fail-closed on a pattern that matches nothing**
+(`check_claims.py:356-361` for authorities, `:371-378` for mirrors) — a rewritten
+`METHODOLOGY.md:52` that drops any of the nine declared substrings **fails the build with
+"the claim was rewritten or removed"** rather than passing quietly. The em-dash in
+`[—-] ([a-z]+) items, only` (`check_claims.py:200`) is part of the pattern; replacing that
+dash with a comma breaks the match. **C1 is now consistent and mechanically held**, so this
+repair is the thing most likely to break it: any change to the item's *scored text* moves
+`recall`/`accuracy`/`f1` and puts `METHODOLOGY.md:52` out of agreement with the harness.
+**And `tests/test_one_pagers.py:74-77` forbids two artifacts the repair might reach for** —
+it asserts that neither `seeds/Apotex_v_USA.pdf` nor `working/one-pagers/apotex-v-usa.md`
+exists.
 
 ---
 

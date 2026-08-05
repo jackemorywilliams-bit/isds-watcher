@@ -13,6 +13,66 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-05
+
+*Audited against `eac8ed9` (`main`, clean tree); paths: `prompts/`, `.claude/agents/`,
+`agents/`, `moc/`, `fingerprint.yaml`, `src/`, `scripts/`, `tests/`, `templates/`,
+`scripts/site_templates/`, `docs/`, `think-tank/`, `working/`, `lit-review/`, `analytics/`,
+`state/`, `views/isds-workflow-3d/workflow.json`, `.github/workflows/`.*
+
+- **The claim map gains the two rows the council was about to decide without.** [[Claim Map]]
+  **C13** ("What Ring 3 *is*: a doctrinal dimension, or a disposition") and **C14** ("The
+  holdout's composition, and the Apotex item's identity"), written as a continuity gate
+  *before* the 2026-08-05 council ruled on either. C13 lists 15 files stating Ring 3 as a
+  disposition and 12 stating it as a dimension, with the mixed paragraph at
+  `METHODOLOGY.md:26` that currently states both. C14 lists 21 locations restating the
+  holdout's composition, the Apotex item's two captions, and the guards that hold them.
+  **In the working tree at `eac8ed9`, not committed**, per this log's rule about recording a
+  change before it lands. Reasoning and both blast radii:
+  `analytics/vault-sessions/2026-08-05.md`.
+- **The largest Ring 3 surface in the project was found in a JavaScript string, and it is
+  false under both candidate definitions.** `scripts/site_templates/base.html.j2:162` reads
+  "the threshold on which **the seed cases were decided**" — plural, when only *Philip Morris*
+  was so decided (`think-tank/methodology/ring3-reconciliation.md:16-22`). `base.html.j2` is
+  inherited by all six page templates, so it renders on **sixteen** published pages
+  (`docs/index.html:385`, `docs/methodology.html:260`, `docs/how-it-works.html:350`,
+  `docs/backtest.html:603`, `docs/digests/index.html:450`, and eleven
+  `docs/digests/<date>.html`). It is the exact sentence the 2026-06-29 correction (`8909390`)
+  removed from `METHODOLOGY.md`; it survived because no prose sweep reaches a string inside a
+  JS object literal in a base template. **`docs/` is generated — the fix is the template and a
+  rebuild, and it belongs to [[site-experience]], not this seat.**
+- **Three claim-map rows were stale, and one of them had been stale for a single day.**
+  Corrected in place at `eac8ed9`, so the corrections stay legible:
+  **C1 DIVERGENT → CLOSED** — the 20-vs-12 / 0.95-vs-0.92 split was closed at `7959777` on
+  2026-08-04, the same day the row was written calling it open; `backtest_corpus.json` now
+  carries 4 positives and **16** negatives and `docs/backtest.html` renders 20 cases, TN 16,
+  accuracy 0.95. **C7 counts corrected** — the row said ten flowchart cards, ten definitions
+  and twelve vault notes; measured, it is **twelve** model-bearing cards, **nine**
+  `.claude/agents/*.md` and **nine** seat notes among thirteen `agents/*.md` files, and no
+  file ever carried the number ten. **C12 open → CLOSED** — the row asked whether
+  `scripts/check_models.py` (`c25ea64`) covers the two seats that declared no `model:` key;
+  it does, and the guard was run to prove it.
+- **Workflow thread C7 closes with it.** [[Workflow Threads]] C7 still described the two cards
+  as reading "Model: Claude Fable 5" with no declaring definition. Closed and replaced with
+  the constraint that survives it: `model:` selects a tier, so the version check rests on the
+  vault note's ``**Model.** `…` `` line, which `scripts/check_models.py:63` matches by regex —
+  reformatting those notes would silently remove a leg of a CI guard.
+- **A third sense of "Ring 3" is in daily use and matches neither candidate definition.** The
+  research layer carries a five-mechanism "Ring 3 taxonomy" — abuse-of-right/critical-date,
+  administrative-review prerequisite, fork-in-the-road, MFN-forum-access, first-generation-BIT
+  scope limitation — across 17 lines of `analytics/insights.jsonl`,
+  `STATE_OF_THE_ANSWER.md:114-124`, `state/research_log.json:111`/`:171`/`:201`/`:211`, and
+  `analytics/optimization-log.md:34`. **None of the four newer mechanisms appears in
+  `fingerprint.yaml:81-102`.** Escalated to Emory rather than reconciled by this seat:
+  `analytics/vault-sessions/2026-08-05.md`, Part F.
+- **Recorded for the systems designer, outside this seat's paths.**
+  `scripts/check_claims.py:31` and `:143` say the tool "checks fourteen facts"; the registry
+  holds **13** and the tool prints 13 — a fourteenth was retired in place at `:246-263` and
+  the prose was not updated. And `.github/workflows/claims-consistency.yml` lists
+  `scripts/check_claims.py` and `tests/test_check_claims.py` in its **pull_request** paths
+  (`:30-31`) but not its **push** paths (`:36-47`), so a direct push to `main` editing only
+  the guard does not re-run the guard.
+
 ## 2026-08-04
 
 *Audited against `b76f6c3`; paths: `agents/`, `.claude/agents/`, `prompts/`,

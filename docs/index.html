@@ -41,8 +41,8 @@
     <p class="hero-thesis">
       A zero-cost, weekly monitor for investor–State dispute settlement at one precise
       doctrinal intersection: where intellectual property is asserted as a protected
-      investment, a regulatory or judicial measure is the disputed conduct, and the case
-      turns on jurisdiction and admissibility.
+      investment, a regulatory or judicial measure is the disputed conduct, and a
+      jurisdiction or admissibility doctrine is live and litigated.
     </p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="methodology.html">Read the Methodology</a>
@@ -180,11 +180,13 @@
       </div>
 
       <div class="scoring-note">
-        <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two rings intersect
+        <span class="badge badge-high">HIGH&nbsp;&ge;70</span> two <em>or more</em> rings present — the band does not distinguish two from three
         <span class="sep">·</span>
         <span class="badge badge-med">MEDIUM&nbsp;40–69</span> one strong ring with a weaker tie, or a judicial-measure case alone
         <span class="sep">·</span>
         <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
+        <span class="sep">·</span>
+        <span class="muted">No item has reached the three-ring intersection in 11 runs across 347 candidates.</span>
       </div>
     </div>
   </div>
@@ -296,7 +298,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-08-05 13:45 UTC &middot; f565407</p>      </div>
+<p class="footer-build">Site built 2026-08-05 21:01 UTC &middot; b813248</p>      </div>
     </div>
   </footer>
   <script>
@@ -382,7 +384,9 @@
         eyebrow: 'Ring III — jurisdiction & admissibility',
         body: 'Abuse of right, treaty-shopping, foreseeability of the dispute, restructuring ' +
               'for treaty protection, and the contested definition of an "investor": the ' +
-              'threshold on which the seed cases were decided.',
+              'threshold doctrines a case litigates, whether or not they end it \u2014 ' +
+              'dispositive in Philip Morris v. Australia, contested and resolved at the ' +
+              'threshold in Bridgestone v. Panama, which was then decided on the merits.',
         mod: ''
       },
       'core': {
@@ -500,23 +504,23 @@
       var hasII = rings.indexOf('2') !== -1;
       if (n === 0) {
         return { cls: 'low', label: 'LOW <40',
-          reason: 'No rings selected. A development that touches none of the three doctrines falls below the threshold.' };
+          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: seven of the fourteen items published to date are in this state, carried by the fill rule rather than by a ring.' };
       }
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings — the watched theme itself, the central three-way overlap. Unambiguously HIGH.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 11 runs across 347 candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
-          reason: 'Two rings intersect. Any two of the three doctrines overlapping already reaches the HIGH band.' };
+          reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };
       }
       // Exactly one ring.
       if (hasII) {
         return { cls: 'med', label: 'MEDIUM 40–69',
-          reason: 'The weighted ring alone: a credible challenge to a regulatory or judicial measure reaches MEDIUM on its own.' };
+          reason: 'On the deterministic scorer the weighted ring alone reaches 45–69. Published items asserting this ring scored 25–32 — they were classified by the language model, which never applies the presence floor.' };
       }
       return { cls: 'low', label: 'LOW <40',
-        reason: 'A single unweighted ring with no tie to the others — one weak signal, below the threshold.' };
+        reason: 'A single unweighted ring — 28–39 on the deterministic scorer, below the digest threshold of 40.' };
     }
 
     // Mirror the explorer's current selection onto the Venn rings.

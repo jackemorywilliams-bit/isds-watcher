@@ -19,7 +19,7 @@ enforces all of them before anything is published.
 
 3. INTENT / GOAL ALIGNMENT. Serve the research goal — the intersection of IP (incl. trade
    secrets and clinical-trial data) as a covered investment, a regulatory/judicial measure
-   as the disputed conduct, and disposal at the jurisdictional/admissibility stage — not
+   as the disputed conduct, and a live, litigated jurisdictional/admissibility doctrine — not
    surface keyword matches. Do not pad with tangential ISDS that does not touch the theme.
 
 4. RELEVANCE HONESTY (anti-inflation). This theme is deliberately narrow; a genuinely

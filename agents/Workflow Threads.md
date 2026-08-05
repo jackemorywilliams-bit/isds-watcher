@@ -281,18 +281,26 @@ specifically unblocks it.
 - **Next** — Set the cadence.
 - **Owner** — **Emory.**
 
-### C7 · Two flowchart cards assert a model no config file carries
+### C7 · Two flowchart cards assert a model no config file carries — **CLOSED 2026-08-05**
 
-- **State** — Raised by this seat 2026-07-31. The `systems-designer` and `site-experience`
-  cards in `views/isds-workflow-3d/workflow.json` read "Model: Claude Fable 5", while neither
-  definition declares a `model:` key and `src/models.py` covers only the pipeline's LLM
-  stages. The chart states an assignment nothing configures.
-- **Recorded** — [[systems-designer]], [[site-experience]], [[Agent Registry]], and the Open
-  drift section of [[Project Change Log]].
-- **Next** — Either add `model: fable` to both definitions, or change the cards to read
-  "inherits the invoking session". The chart is regenerated from its manifest, never
-  hand-edited to hide the discrepancy.
-- **Owner** — **Emory** decides; [[systems-designer]] regenerates.
+- **State** — Raised by this seat 2026-07-31: the `systems-designer` and `site-experience`
+  cards in `views/isds-workflow-3d/workflow.json` named a model while neither definition
+  declared a `model:` key, so the chart stated an assignment nothing configured. **Closed at
+  `c25ea64`** by Emory's first option. Verified at `eac8ed9` on 2026-08-05: **all nine**
+  `.claude/agents/*.md` files declare a `model:` key, and `python scripts/check_models.py`
+  reports *"Checked 12 flowchart cards against `.claude/agents/`, `agents/` and
+  `src/models.py` … ok — every card names a configured model, backed by a declared `model:`
+  key, and no vault note contradicts its card."*
+- **Recorded** — [[Claim Map]] C12 (corrected to CLOSED 2026-08-05),
+  `analytics/vault-sessions/2026-08-05.md` Part C.
+- **What replaces it, and it is smaller** — `model:` selects a **tier**, not a version
+  (`scripts/check_models.py:36-38`), so the frontmatter can never disagree with a card about
+  Opus 5 vs Opus 4.8. The version check rests on card ↔ `src/models.py` ↔ vault note, and the
+  vault-note leg is conditional on the note stating a model in the ``**Model.** `…` `` form
+  that `_VAULT_MODEL_RE` (`check_models.py:63`) matches. **Reformatting those notes would
+  silently remove one leg of a CI guard.** No action open; recorded so nobody reformats
+  blind.
+- **Owner** — closed; [[obsidian-archivist]] holds the formatting constraint.
 
 ### C8 · `build_graph` block replacement spans a prose-quoted marker
 

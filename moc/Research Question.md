@@ -2,7 +2,7 @@
 
 When is intellectual property — especially trade secrets and pharmaceutical clinical
 trial data — asserted as a covered investment, challenged through a state or judicial
-measure, and disposed of at the jurisdictional/admissibility gate?
+measure, and litigating a jurisdictional/admissibility doctrine, whether or not that doctrine ends the case?
 
 - [[STATE_OF_THE_ANSWER]] — the cumulative, verification-gated answer.
 - [[ferguson-memo]] and [[kim-memo]] — the two conceptual seeds; their debate is the spine.

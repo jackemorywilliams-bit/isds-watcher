@@ -5,6 +5,8 @@
 **Date:** 2026-06-29
 **Status:** decision note — read-only analysis of existing artifacts; the only change it proposes is a prose fix to METHODOLOGY.md (Part II.C, the "Ring three" paragraph) and a parallel one-line fix to PLAN.md. No scoring artifact changes.
 
+**RATIFIED 2026-08-05** by council session, on the operator's instruction. Ring 3 is a doctrinal **dimension** — live and litigated, whether or not it disposes of the case — and the competing "without reaching the merits" test carried in `prompts/` and on the site is retired. Three grounds, none of them that a seed should score well: the deterministic layer already implements this reading (`fingerprint.yaml` holds seventeen doctrine phrases and no disposition field; `src/classify.py` is a substring presence test), so the prose was the thing out of step; the disposition test is false of the seeds, one of three having been disposed at the gate; and it is unsatisfiable in operation, since a watcher screening live disputes cannot know a disposition that has not happened yet. Recorded against this note's own interest: the analyst's ablation this session found that deleting Ring 3 entirely leaves every holdout metric bit-identical, so the dimension is justified by doctrinal salience and by nothing measured.
+
 ---
 
 ## 1. The discrepancy, stated precisely

@@ -1,7 +1,7 @@
 # State of the Answer
 ## ISDS Research Council — Cumulative Research Record
 
-**Research question:** When and how is intellectual property — especially trade secrets and pharmaceutical clinical trial data — asserted as a covered investment under an investment treaty, challenged through a governmental regulatory or judicial measure, and disposed of at the jurisdictional or admissibility stage (abuse of right, treaty-shopping, the critical-date / reasonably-foreseeable-dispute test)?
+**Research question:** When and how is intellectual property — especially trade secrets and pharmaceutical clinical trial data — asserted as a covered investment under an investment treaty, challenged through a governmental regulatory or judicial measure, and met with a live, litigated jurisdictional or admissibility doctrine (abuse of right, treaty-shopping, the critical-date / reasonably-foreseeable-dispute test), whether or not that doctrine ends the case?
 
 **Seed awards:** Philip Morris v. Australia (PCA 2012-12); Eli Lilly v. Canada (ICSID UNCT/14/2); Bridgestone v. Panama (ICSID ARB/16/34).
 

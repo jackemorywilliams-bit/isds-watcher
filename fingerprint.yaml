@@ -1,7 +1,12 @@
 version: 1
-# Lowered from 60 to 40 to broaden recall (more inclusive matching). The
-# pipeline additionally guarantees a non-empty digest by surfacing the top
-# most-relevant items even when few clear this gate (see src/config.py).
+# The digest threshold. An item at or above it is reported as a MATCH, with no upper
+# cap on how many. Lowered from 60 to 40 to broaden recall (more inclusive matching).
+# There is NO non-empty-digest guarantee. Items BELOW this gate but at or above
+# RELEVANCE_FLOOR (src/config.py) may be surfaced as watch-list LEADS — never as
+# matches — and only until the digest reaches MIN_DIGEST_ITEMS. A week in which
+# nothing reaches the relevance floor produces an empty digest, and the digest says
+# so plainly along with the number of candidates screened. The selection rule itself
+# is src/main.py's select_surfaced(); this line is the value it gates on.
 threshold: 40
 scoring:
   high: 70
@@ -52,7 +57,7 @@ rings:
 
   judicial_or_regulatory_measure:
     weight: 100
-    extra_weight: true        # this ring alone (strong hit) -> >= MEDIUM
+    extra_weight: true        # this ring alone, at the floor of 12 -> >= MEDIUM (45)
     keywords:
       - {phrase: "denial of justice", weight: 14, seed: "eli_lilly,bridgestone"}
       - {phrase: "judicial measure", weight: 8, seed: eli_lilly}
@@ -96,13 +101,25 @@ rings:
       - {phrase: "substantial business activities", weight: 1, seed: theme_extension}
     # sum: 12+9+9+8+8+7+7+6+5+6+4+5+4+4+3+2+1 = 100
 
+# DESCRIPTIVE ONLY — nothing in the codebase reads these strings. src/classify.py is
+# the authority for every boundary stated here (keyword_score, and the constants
+# PRESENT_FLOOR = 12 and STRONG_SUBTOTAL = 18). This block exists so a reader can see
+# the grammar without reading the scorer; scripts/check_claims.py fails the build if
+# the two disagree. Before 2026-08-04 these rules described a "subtotal >= 30" bar
+# that appears nowhere in the code and had never changed a score.
 combination_rules:
-  - "two or more rings with at least one strong (ring keyword-weight subtotal >= 30) keyword hit each -> HIGH (>=70)"
-  - "judicial_or_regulatory_measure ring alone with a strong hit -> MEDIUM (>=40)"
-  - "any case challenging a domestic court judgment or judicial conduct -> at least MEDIUM, even with no other ring (Ring 2 extra_weight)"
-  - "one ring strong (subtotal >= 30) + a weak hit (subtotal < 30) in a second ring -> MEDIUM (40-69)"
-  - "single non-extra-weight ring, weak hit (subtotal < 30) -> LOW (<40)"
-  - "negative_signals present and NO ring rescues (no IP-as-investment and no judicial/regulatory measure) -> force LOW"
+  - "a ring counts as PRESENT once its keyword subtotal reaches the present floor (12); below that it is an incidental brush, not a ring"
+  - "two or more PRESENT rings -> HIGH: 70 + (sum of those rings' subtotals // 12), capped at 95"
+  - "judicial_or_regulatory_measure PRESENT and the only present ring -> MEDIUM (45-69), earned at the floor of 12 and not at any higher bar — this is what extra_weight means"
+  - "one other ring PRESENT and alone -> MEDIUM (40-66) if either its subtotal reaches the strong-single-ring floor (18) OR any second ring has a nonzero hit, however small"
+  - "one other ring PRESENT and alone, below 18 and with no second-ring hit at all -> LOW (28-33)"
+  - "no ring reaches the floor -> LOW, roughly the largest ring subtotal, capped at 39"
+  - "negative_signals present and neither ip_as_investment nor judicial_or_regulatory_measure is PRESENT -> score capped at 35 (LOW); a sub-floor brush does not rescue"
+# Worked boundaries, measured against the live scorer on 2026-08-04:
+#   one ring at 12, no second ring                     -> 28  (LOW)
+#   one ring at 12 + a single 1-point brush elsewhere  -> 41  (MEDIUM — a digest match)
+#   one ring at 18, no second ring                     -> 40  (MEDIUM)
+#   judicial_or_regulatory_measure alone at 12         -> 45  (MEDIUM)
 
 negative_signals:           # push toward LOW unless a ring rescues
   - "mining / oil / gas / mineral concession"
@@ -111,6 +128,24 @@ negative_signals:           # push toward LOW unless a ring rescues
   - "vanilla direct expropriation with no IP and no judicial measure"
   - "tax assessment dispute with no judicial-conduct or IP angle"
 
+# The labelled gold set for the DETERMINISTIC scorer. (The LLM's few-shot examples are
+# separate and live in prompts/classifier.txt; nothing renders these into a prompt.) Its
+# only consumer is tests/test_pipeline.py.
+#
+# expected_score and matched_rings are RECORDS OF WHAT src.classify.keyword_score
+# RETURNS on each summary — measured, not aspired to. Until 2026-08-04 all seven scores
+# were wrong (they read 88/84/58/52/12/8/10 against actual 73/75/40/56/7/0/7) and four
+# ring lists were wrong, because the test asserted only expected_band and nothing ever
+# read the other two fields. They are asserted now, so a lexicon re-weighting must
+# re-measure this set deliberately instead of silently invalidating it.
+#
+# READ matched_rings CAREFULLY. It mirrors keyword_score's matched_rings field, which
+# today lists EVERY ring with any nonzero hit — including a 1-point brush that does NOT
+# make the ring PRESENT (floor 12) for scoring. That is why the mining and solar
+# examples, which engage no ring substantively and score 7, still list rings: the
+# published "Rings matched" predicate is looser than the one the scoring grammar above
+# uses. Recorded here as it stands rather than quietly corrected, because the digest
+# archive was published under this predicate.
 few_shot_examples:
   - title: "Pharma claimant challenges patent invalidation under heightened utility test"
     summary: >
@@ -120,9 +155,9 @@ few_shot_examples:
       covered investment and the court rulings as a judicial measure amounting to
       denial of justice and a breach of the minimum standard of treatment.
     expected_band: HIGH
-    expected_score: 88
+    expected_score: 73
     matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
-    why: "IP-as-investment (patent/utility requirement) intersects a judicial-measure denial-of-justice claim — two strong rings."
+    why: "IP-as-investment (patent/utility requirement) intersects a judicial-measure denial-of-justice claim — two rings, both well above the floor."
 
   - title: "Trademark licensor/licensee restructures into BIT-state shell after adverse Supreme Court ruling"
     summary: >
@@ -132,8 +167,8 @@ few_shot_examples:
       judgment denied justice. Respondent pleads abuse of process, treaty shopping,
       and that the licensor lacks standing to claim denial of justice when not a party.
     expected_band: HIGH
-    expected_score: 84
-    matched_rings: [ip_as_investment, jurisdictional_admissibility, judicial_or_regulatory_measure]
+    expected_score: 75
+    matched_rings: [ip_as_investment, judicial_or_regulatory_measure, jurisdictional_admissibility]
     why: "Trademark/licenses as investment + shell-subsidiary treaty-shopping jurisdiction fight + Supreme Court judgment — three rings."
 
   - title: "Data-exclusivity and GI dispute over generics regulation"
@@ -143,9 +178,9 @@ few_shot_examples:
       protected as a covered investment, tying the regulatory measure loosely to a
       single first-instance court decision it disputes.
     expected_band: MEDIUM
-    expected_score: 58
-    matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
-    why: "Strong IP-as-investment ring (data exclusivity, GI, brand value) with only a weak regulatory/judicial tie."
+    expected_score: 40
+    matched_rings: [ip_as_investment]
+    why: "IP-as-investment alone above the strong-single-ring floor (18). The regulatory/judicial tie is written in prose the lexicon does not carry, so Ring 2 scores nothing at all — this lands on exactly 40, the lowest MEDIUM there is."
 
   - title: "Copyright-levy claimant challenges a Supreme Court ruling as denial of justice"
     summary: >
@@ -155,9 +190,9 @@ few_shot_examples:
       amounting to a gross denial of justice and breach of the minimum standard of
       treatment. No jurisdictional restructuring is alleged.
     expected_band: MEDIUM
-    expected_score: 52
-    matched_rings: [judicial_or_regulatory_measure]
-    why: "Judicial-measure case alone (Supreme Court judgment, denial of justice) -> at least MEDIUM via Ring 2 extra weight."
+    expected_score: 56
+    matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
+    why: "Judicial-measure case alone (Supreme Court judgment, denial of justice) -> MEDIUM via Ring 2 extra weight. Ring 1 is listed on a 1-point brush (\"copyright\") that stays far below the floor and does not make it a two-ring case."
 
   - title: "Investor sues over revoked copper mining concession (direct expropriation)"
     summary: >
@@ -165,9 +200,9 @@ few_shot_examples:
       concession by executive decree, seeking compensation. No intellectual property,
       no domestic court judgment, and no jurisdictional/abuse-of-right issue is involved.
     expected_band: LOW
-    expected_score: 12
-    matched_rings: []
-    why: "Vanilla mining/mineral-concession expropriation; negative signal, no ring rescues."
+    expected_score: 7
+    matched_rings: [ip_as_investment, judicial_or_regulatory_measure]
+    why: "Vanilla mining/mineral-concession expropriation; negative signal, no ring rescues. The two rings listed are sub-floor brushes (\"intellectual property\", \"domestic court\" in the sentence denying both), which is why the score is 7 and not a MEDIUM."
 
   - title: "Bondholder claim over sovereign debt restructuring"
     summary: >
@@ -175,9 +210,9 @@ few_shot_examples:
       restructuring and haircut as an indirect expropriation and unfair treatment.
       Purely financial; no IP and no judicial-conduct measure.
     expected_band: LOW
-    expected_score: 8
+    expected_score: 0
     matched_rings: []
-    why: "Sovereign debt/bond negative signal with no IP and no judicial measure -> forced LOW."
+    why: "Sovereign debt/bond negative signal with no IP and no judicial measure -> forced LOW. Nothing in the lexicon fires at all, so the score is 0."
 
   - title: "Solar investor claims under the Energy Charter Treaty over feed-in tariff cuts"
     summary: >
@@ -185,6 +220,6 @@ few_shot_examples:
       tariffs breached the Energy Charter Treaty's fair-and-equitable-treatment
       standard. No IP-as-investment angle and no domestic court judgment is challenged.
     expected_band: LOW
-    expected_score: 10
-    matched_rings: []
-    why: "Intra-EU energy / ECT solar negative signal; no ring present."
+    expected_score: 7
+    matched_rings: [judicial_or_regulatory_measure]
+    why: "Intra-EU energy / ECT solar negative signal; no ring PRESENT. Ring 2 is listed on a sub-floor brush (\"domestic court\", in the clause saying none is challenged)."

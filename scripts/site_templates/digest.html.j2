@@ -18,22 +18,25 @@
       An annotated digest of investor–State dispute developments at the IP-as-investment /
       judicial-or-regulatory-measure / jurisdictional-admissibility intersection.
     </p>
-    <p class="run-counts"><span class="count">{{ digest.screened_str }}</span> screened
+    <p class="run-counts"><span class="count">{{ digest.screened_str }}</span> candidate{{ '' if digest.screened == 1 else 's' }} screened
       <span class="sep">·</span>
-      <span class="count">{{ digest.matches_str }}</span> matches
+      <span class="count">{{ digest.matches_str }}</span> match{{ '' if digest.matches == 1 else 'es' }}
       <span class="sep">·</span>
-      <span class="count">{{ digest.accepted_str }}</span> watch-list leads shown</p>
+      <span class="count">{{ digest.accepted_str }}</span> item{{ '' if digest.accepted == 1 else 's' }} surfaced</p>
     <div class="run-summary">
-      <div class="run-stat"><span class="run-num">{{ digest.screened_str }}</span><span class="run-label">screened</span></div>
+      <div class="run-stat"><span class="run-num">{{ digest.screened_str }}</span><span class="run-label">candidates screened</span></div>
       <div class="run-stat"><span class="run-num">{{ digest.matches_str }}</span><span class="run-label">matches</span></div>
-      <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">watch-list leads</span></div>
+      <div class="run-stat"><span class="run-num">{{ digest.accepted_str }}</span><span class="run-label">items surfaced</span></div>
       {% if digest.threshold %}<div class="run-stat"><span class="run-num">{{ digest.threshold }}</span><span class="run-label">relevance threshold</span></div>{% endif %}
       {% if digest.sources %}<div class="run-stat"><span class="run-num run-text">{{ digest.sources }}</span><span class="run-label">source{{ 's' if ',' in digest.sources else '' }}</span></div>{% endif %}
     </div>
     <p class="run-note">
-      Entries are ordered by thematic relevance. Each carries a two-sentence annotation and a
-      notable line drawn from the source. Items below the gate are surfaced as watch-list leads,
-      not matches.
+      Entries are ordered by thematic relevance. Each carries a short annotation. A quoted
+      notable line appears only where the source text was reachable; an entry marked
+      <span class="badge badge-headline">HEADLINE ONLY</span> came from a paywalled feed, carries
+      no quotation, and was assessed from its headline alone. Items below the gate are surfaced
+      as watch-list leads, not matches. Nothing on this page has been checked by a human against
+      its original source.
     </p>
   </div>
 </section>
@@ -58,6 +61,9 @@
               {% if not e.ring_labels %}
               <span class="badge badge-none">no ring matched</span>
               {% endif %}
+              {% if e.headline_only %}
+              <span class="badge badge-headline" title="Source paywalled; assessed from the headline alone">headline only</span>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -76,8 +82,8 @@
 
         {% if e.notable_line %}
         <blockquote class="entry-quote">
-          <span class="quote-label">Notable line</span>
-          {% if e.notable_line.startswith("N/A") %}
+          <span class="quote-label">{{ 'No quotation available' if e.headline_only else 'Notable line' }}</span>
+          {% if e.headline_only %}
           <p>{{ e.notable_line }}</p>
           {% else %}
           <p>&ldquo;{{ e.notable_line }}&rdquo;</p>

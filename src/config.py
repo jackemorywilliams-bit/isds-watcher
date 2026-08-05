@@ -71,11 +71,16 @@ THEME_ONE_LINER = (
     "(abuse of right, treaty-shopping, denial of justice)."
 )
 
-_DEFAULT_THRESHOLD = 60
+# Must track fingerprint.yaml, which is the authority. This is only reached when that
+# file cannot be read — and a fallback that differs from the authority does not fail,
+# it silently scores a whole run at a threshold the project abandoned. It read 60,
+# the pre-2026-07 value, long after the operator lowered the live threshold to 40.
+# scripts/check_claims.py now fails if the two drift apart again.
+_DEFAULT_THRESHOLD = 40
 
 
 def _threshold_from_fingerprint(path: str = "fingerprint.yaml") -> int:
-    """Read the threshold from fingerprint.yaml; fall back to 60."""
+    """Read the threshold from fingerprint.yaml; fall back to _DEFAULT_THRESHOLD."""
     try:
         import yaml  # lazy: keep import-time deps minimal
         with open(path, "r", encoding="utf-8") as fh:

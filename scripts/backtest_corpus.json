@@ -1,5 +1,6 @@
 {
- "_note": "Focused labelled corpus for the historical backtest (scripts/backtest.py). It is deliberately small (~12-15 known cases) and assembled ENTIRELY from text already in the repo so nothing is fabricated. The backtest reports THREE separate buckets, never one blended matrix: (1) SEED RECOVERY — the three development SEED cases, whose text here is the verbatim doctrinal vocabulary extracted from each award and tagged to that seed in fingerprint.yaml (the same phrases that define the fingerprint); this is strictly in-sample and its numbers NEVER enter a headline; (2) OUT-OF-SAMPLE HOLDOUT — four holdout positives plus clear off-theme NEGATIVES, all pulled by id from scripts/holdout_set.json; the headline precision/recall/accuracy/F1 are computed on THIS bucket alone; (3) LIVE PROSPECTIVE — prose status of the live weekly digest archive (live_prospective), not corpus numbers. Holdout items are referenced by id rather than copied so the holdout stays the single source of truth.",
+ "_note": "Focused labelled corpus for the historical backtest (scripts/backtest.py), assembled ENTIRELY from text already in the repo so nothing is fabricated. The backtest reports THREE separate buckets, never one blended matrix: (1) SEED RECOVERY — the three development SEED cases, whose text here is the verbatim doctrinal vocabulary extracted from each award and tagged to that seed in fingerprint.yaml (the same phrases that define the fingerprint); this is strictly in-sample and its numbers NEVER enter a headline; (2) OUT-OF-SAMPLE HOLDOUT — the labelled holdout, pulled by id from scripts/holdout_set.json; the headline precision/recall/accuracy/F1 are computed on THIS bucket alone; (3) LIVE PROSPECTIVE — prose status of the live weekly digest archive (live_prospective), not corpus numbers. Holdout items are referenced by id rather than copied so the holdout stays the single source of truth.",
+ "_holdout_invariant": "holdout_positive_ids + holdout_negative_ids MUST list EVERY labelled item in scripts/holdout_set.json, and display_names must name every one of them — the two ids arrays are what scripts/backtest.py actually iterates, so an id omitted here silently shrinks the backtest's N while eval_holdout.py keeps scoring the full set. That is exactly what happened before 2026-08-04: eight labelled negatives were absent, the site reported 12 cases and accuracy 0.92 against the holdout harness's 20 and 0.95, and the page explained the smaller N with an exclusion rule ('any case whose text could not be resolved in-repo was excluded') that was not the operative rule — all eight resolved in-repo and scored 0. Both ids arrays and display_names are kept in scripts/holdout_set.json order so the mirror is checkable by eye; scripts/check_claims.py makes a divergence a build failure.",
  "seed_cases": [
   {
    "id": "eli_lilly_v_canada",
@@ -30,14 +31,22 @@
   "pm_v_uruguay"
  ],
  "holdout_negative_ids": [
+  "iisd_itn:ITN Issue 2, 2026",
+  "iisd_itn:ITN Special Issue – Treaty Dat",
   "iisd_itn:Investment Treaties, Strategy,",
   "iisd_itn:Committees in International In",
+  "iisd_itn:On the Importance of Public Ac",
   "iisd_itn:Chevron to collect over USD 20",
+  "iisd_itn:Spentech Engineering Limited v",
   "iisd_itn:Consent after denunciation—jur",
   "iisd_itn:Updated OECD Guidelines Mandat",
   "iisd_itn:New Tribunal Constituted for R",
   "icsid:Gabriel Resources Ltd. and Gab",
-  "icsid:Honduras Signs the ICSID Conve"
+  "icsid:Angel Samuel Seda and others v",
+  "icsid:International Centre for Settl",
+  "icsid:Kurt Harald Grüninger, Alexand",
+  "icsid:Honduras Signs the ICSID Conve",
+  "icsid:Vacancy: Extended-Term Consult"
  ],
  "miss_reasons": {
   "apotex_v_us": "Apotex turns on a negative jurisdictional finding — the tribunal held the claimant was not an investor and the FDA filings were not a covered investment. The deterministic keyword scorer keys on doctrinal vocabulary asserting a theme; a holding that the theme is ABSENT under-detects, since 'not a covered investment' reads as a near-miss on the IP-as-investment ring rather than a positive hit."
@@ -47,14 +56,22 @@
   "mondev_v_us": "Mondev v. United States",
   "apotex_v_us": "Apotex Holdings v. United States",
   "pm_v_uruguay": "Philip Morris v. Uruguay",
+  "iisd_itn:ITN Issue 2, 2026": "ITN Issue 2, 2026 — issue contents (ITN)",
+  "iisd_itn:ITN Special Issue – Treaty Dat": "ITN special issue on treaty data (ITN)",
   "iisd_itn:Investment Treaties, Strategy,": "Investment treaties in Chile’s experience (ITN insight)",
   "iisd_itn:Committees in International In": "Committees in IIAs (ITN analysis)",
+  "iisd_itn:On the Importance of Public Ac": "Public access to information in ISDS reform (ITN insight)",
   "iisd_itn:Chevron to collect over USD 20": "Chevron v. Ecuador — award collection (ITN)",
+  "iisd_itn:Spentech Engineering Limited v": "Spentech v. United Arab Emirates — Rule 41 (ITN)",
   "iisd_itn:Consent after denunciation—jur": "Smurfit v. Venezuela — consent after denunciation (ITN)",
   "iisd_itn:Updated OECD Guidelines Mandat": "OECD Guidelines climate due-diligence update (ITN)",
   "iisd_itn:New Tribunal Constituted for R": "Rockhopper v. Italy resubmission tribunal (ITN)",
   "icsid:Gabriel Resources Ltd. and Gab": "Gabriel Resources v. Romania — public hearing (ICSID)",
-  "icsid:Honduras Signs the ICSID Conve": "Honduras signs the ICSID Convention"
+  "icsid:Angel Samuel Seda and others v": "Seda and others v. Colombia — public hearing (ICSID)",
+  "icsid:International Centre for Settl": "ICSID to establish an office in Paris",
+  "icsid:Kurt Harald Grüninger, Alexand": "Grüninger and others v. Costa Rica — public hearing (ICSID)",
+  "icsid:Honduras Signs the ICSID Conve": "Honduras signs the ICSID Convention",
+  "icsid:Vacancy: Extended-Term Consult": "ICSID vacancy notice — associate counsel"
  },
  "live_prospective": {
   "status": "Zero direct thematic matches to date.",

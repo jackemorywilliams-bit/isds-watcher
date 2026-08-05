@@ -19,6 +19,24 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 `src/models.py`, `src/source_health.py`, `views/isds-workflow-3d/workflow.json`,
 `HANDOFF.md`, `analytics/`, and every remote branch tip.*
 
+- **A claim map enters the vault, and it exists because eight contradictions were one fact
+  stated twice.** [[Claim Map]] — twelve rows, one per factual claim the project makes about
+  itself, each listing every file that states it, what each currently says at `file:line`,
+  and the twin list a fix must change in the same change set. Written during the council
+  session on external reviewer feedback of 2026-08-04; the session's reasoning and the
+  item-by-item remit analysis are at `analytics/vault-sessions/2026-08-04-council.md`.
+  **Both files are in the working tree at `c9050e6` and not yet committed**, per this log's
+  rule about recording a change before it lands. The map's own anchor is `c9050e6`. Rows
+  C1, C2, C5, C6, C7 and C8 are recorded DIVERGENT against files on `main` today; C3 and
+  C12 restate drift this log already carries under **Open drift**.
+- **A fourth false claim found in the 2026-08-03 entry below, and it is not corrected here.**
+  `agents/obsidian-archivist.md:237-238` cites this note for "Escalated 2026-08-03 by the
+  deliverable-drift sweep". **No such section exists in this file**, and no commit anywhere
+  carries the sweep's findings — `grep -rn "deliverable-drift" agents/ analytics/` returns
+  only the two lines inside `agents/obsidian-archivist.md` itself. The 2026-08-04 currency
+  audit tested three of that entry's claims and stopped short of this one. Escalated rather
+  than tidied: `analytics/vault-sessions/2026-08-04-council.md`, §1.3.
+
 - **The Carrying-Span Rule is implemented — a rule that failed in prose now has an artifact
   that fails.** The chain, in the order the record establishes it: three bibliography entries
   cited sources for propositions those sources do not contain (*Vanda*, H&H's trade-secret

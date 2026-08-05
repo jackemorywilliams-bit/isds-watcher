@@ -1,0 +1,74 @@
+name: claims-consistency
+
+# The numbers this project states about itself are written down more than once by
+# construction: a constant in src/, a line of fingerprint.yaml, a sentence of prose in
+# the methodology memo, a generated analytics file. Nothing compared them.
+#
+# On 2026-08-04 three had drifted. scripts/backtest_corpus.json listed 8 of the 16
+# labelled negatives, so the published backtest page reported the holdout as 12 cases
+# at accuracy 0.92 while scripts/eval_holdout.py scored all 20 at 0.95 — and the page
+# explained the smaller N with an exclusion rule that was not the operative rule.
+# fingerprint.yaml's combination_rules described a "subtotal >= 30" bar that appears
+# nowhere in src/classify.py, whose real constants are 12 and 18. And all seven
+# few-shot expected_score values were wrong under a test that asserted only the band.
+#
+# This is the third guard of the shape check_models.py and check_marks.py already
+# established. It runs on PRs touching any file the registry reads, and on push to
+# main so a direct edit cannot land the drift unseen.
+on:
+  pull_request:
+    paths:
+      - "METHODOLOGY.md"
+      - "HUMAN_REVIEW.md"
+      - "fingerprint.yaml"
+      - "src/classify.py"
+      - "src/config.py"
+      - "scripts/eval_holdout.py"
+      - "scripts/backtest.py"
+      - "scripts/backtest_corpus.json"
+      - "scripts/holdout_set.json"
+      - "scripts/check_claims.py"
+      - "tests/test_check_claims.py"
+      - "analytics/source-receptivity.md"
+      - "digests/**"
+  push:
+    branches: [main]
+    paths:
+      - "METHODOLOGY.md"
+      - "HUMAN_REVIEW.md"
+      - "fingerprint.yaml"
+      - "src/classify.py"
+      - "src/config.py"
+      - "scripts/eval_holdout.py"
+      - "scripts/backtest.py"
+      - "scripts/backtest_corpus.json"
+      - "scripts/holdout_set.json"
+      - "analytics/source-receptivity.md"
+      - "digests/**"
+  workflow_dispatch:
+
+jobs:
+  claims:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pytest pyyaml
+
+      # The checker must itself be checked — a broken checker reports clean.
+      - name: The checker's own tests
+        run: python -m pytest tests/test_check_claims.py -q
+
+      # The two harnesses score the same labelled set, so they must report the same
+      # numbers. Run both: the registry compares their OUTPUT, not their source.
+      - name: The holdout harness
+        run: python scripts/eval_holdout.py
+
+      - name: The backtest
+        run: python scripts/backtest.py
+
+      - name: Every restatement equals its authority
+        run: python scripts/check_claims.py

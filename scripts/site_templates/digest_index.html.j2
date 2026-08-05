@@ -1,6 +1,6 @@
 {% extends "base.html.j2" %}
 {% block title %}Digest Archive | ISDS Thematic Watcher{% endblock %}
-{% block description %}Every weekly run of the ISDS Thematic Watcher, newest first, each with one annotated entry per development and a direct link to the original source.{% endblock %}
+{% block description %}Every archived run of the ISDS Thematic Watcher, newest first, each with one annotated entry per development and a direct link to the original source.{% endblock %}
 
 {% block content %}
 <section class="page-head">
@@ -14,9 +14,11 @@
     <p class="page-kicker">Annotated-bibliography digests</p>
     <h1 class="page-title">Digest Archive</h1>
     <p class="page-lede">
-      Each weekly run is archived below, newest first. Open a date to read the formatted digest:
-      its run summary followed by one annotated entry per surfaced development, with the source
-      named, linked, and its URL shown in full.
+      Each run is archived below, newest first. The schedule is a Monday run, but the archive is
+      what actually happened: some runs fell on adjacent days, so these are dated runs rather than
+      one-per-week observations. Open a date to read the formatted digest: its run summary followed
+      by one annotated entry per surfaced development, with the source named, linked, and its URL
+      shown in full.
     </p>
   </div>
 </section>
@@ -26,11 +28,17 @@
   <div class="measure">
     <h2 class="section-head" id="archive-charts-h">What the runs show</h2>
     <p class="archive-charts-lede">
-      Two views of the archive, built from each run&rsquo;s recorded counts: how screening
-      volume and watch-list leads shown have moved week to week, and which catalogue sources
-      actually surface developments that reach the digest. No item has yet scored a true match
-      (&#8805;&#8202;the threshold), so the match line sits at zero throughout &mdash; the
-      charts track screening discipline and watch-list leads shown, not findings.
+      Two views of the archive, built from each run&rsquo;s recorded counts: how the volume of
+      candidates evaluated and items surfaced has moved from run to run, and which catalogue
+      sources contributed the items that reached a digest.
+      {% if charts.matches_total == 0 %}
+      No item has yet reached the relevance threshold, so the match line sits at zero across
+      every archived run &mdash; these charts track screening volume, not findings.
+      {% else %}
+      {{ charts.matches_total }} item(s) have reached the relevance threshold across the archive.
+      {% endif %}
+      The runs are not evenly spaced and the source roster changed during the period, so the
+      series is a record of what was collected, not a controlled measurement.
     </p>
 
     <figure class="chart-figure" role="group" aria-labelledby="trend-fig-cap">
@@ -39,17 +47,19 @@
         <p class="chart-readout" id="trend-readout" aria-live="polite" data-default="{{ charts.trend_summary }}">{{ charts.trend_summary }}</p>
       </div>
       <figcaption id="trend-fig-cap" class="chart-caption">
-        <span class="chart-caption-title">Weekly trend &mdash; screened, watch-list leads shown, and the zero match line.</span>
+        <span class="chart-caption-title">By archived run &mdash; candidates evaluated, items surfaced, and the match line.</span>
         <span class="chart-legend" aria-hidden="true">
-          <span class="chart-key chart-key-screened">Screened</span>
-          <span class="chart-key chart-key-accepted">Watch-list leads</span>
+          <span class="chart-key chart-key-screened">Candidates evaluated</span>
+          <span class="chart-key chart-key-accepted">Items surfaced</span>
+          {% if charts.matches_total == 0 %}
           <span class="chart-key chart-key-zero">Matches&nbsp;=&nbsp;0</span>
+          {% endif %}
         </span>
       </figcaption>
       <table class="visually-hidden chart-data-table">
-        <caption>Weekly run counts: items screened, matches, and watch-list leads shown, by run date.</caption>
+        <caption>Archived run counts: candidates evaluated, matches, and items surfaced, by run date.</caption>
         <thead>
-          <tr><th scope="col">Run date</th><th scope="col">Screened</th><th scope="col">Matches</th><th scope="col">Watch-list leads shown</th></tr>
+          <tr><th scope="col">Run date</th><th scope="col">Candidates evaluated</th><th scope="col">Matches</th><th scope="col">Items surfaced</th></tr>
         </thead>
         <tbody>
           {% for r in charts.trend_rows %}
@@ -66,20 +76,21 @@
         <p class="chart-readout" id="source-readout" aria-live="polite" data-default="{{ charts.source_summary }}">{{ charts.source_summary }}</p>
       </div>
       <figcaption id="source-fig-cap" class="chart-caption">
-        <span class="chart-caption-title">Source receptivity &mdash; fresh candidates screened versus watch-list leads shown, per source.</span>
+        <span class="chart-caption-title">Source receptivity &mdash; fresh candidates evaluated versus items surfaced, per source.</span>
         <span class="chart-legend" aria-hidden="true">
-          <span class="chart-key chart-key-screened">Screened</span>
-          <span class="chart-key chart-key-accepted">Watch-list leads</span>
+          <span class="chart-key chart-key-screened">Candidates evaluated</span>
+          <span class="chart-key chart-key-accepted">Items surfaced</span>
         </span>
         <span class="chart-caption-note">
           From {{ charts.source_runs }} run{{ 's' if charts.source_runs != 1 else '' }} that
-          recorded per-source counts; earlier runs predate per-source tracking.
+          recorded per-source counts; earlier runs predate per-source tracking. Sources were
+          added and retired during the period, so the totals cover unequal spans.
         </span>
       </figcaption>
       <table class="visually-hidden chart-data-table">
-        <caption>Per-source totals across runs with per-source data: fresh candidates screened and watch-list leads shown.</caption>
+        <caption>Per-source totals across runs with per-source data: fresh candidates evaluated and items surfaced.</caption>
         <thead>
-          <tr><th scope="col">Source</th><th scope="col">Screened</th><th scope="col">Watch-list leads shown</th></tr>
+          <tr><th scope="col">Source</th><th scope="col">Candidates evaluated</th><th scope="col">Items surfaced</th></tr>
         </thead>
         <tbody>
           {% for r in charts.source_rows %}
@@ -104,11 +115,11 @@
           <div class="archive-body">
             <h2 class="archive-h">ISDS Thematic Watch</h2>
             <p class="archive-stats">
-              <span class="count">{{ d.screened_str }}</span> screened
+              <span class="count">{{ d.screened_str }}</span> candidate{{ '' if d.screened == 1 else 's' }} screened
               <span class="sep">·</span>
-              <span class="count">{{ d.matches_str }}</span> matches
+              <span class="count">{{ d.matches_str }}</span> match{{ '' if d.matches == 1 else 'es' }}
               <span class="sep">·</span>
-              <span class="count">{{ d.accepted_str }}</span> watch-list leads shown
+              <span class="count">{{ d.accepted_str }}</span> item{{ '' if d.accepted == 1 else 's' }} surfaced
               {% if d.sources %}<span class="sep">·</span> source{{ 's' if ',' in d.sources else '' }}: {{ d.sources }}{% endif %}
             </p>
           </div>

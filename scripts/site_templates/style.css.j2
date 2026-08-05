@@ -143,6 +143,26 @@ main { display: block; }
 .btn-ghost { background: transparent; color: #f3e7cf; border: 1px solid rgba(243,231,207,.5); }
 .btn-ghost:hover { background: rgba(243,231,207,.1); color: #fff; border-color: #f3e7cf; }
 
+/* -------------------------------------------------------- status strip --- */
+/* The plain statement of what this project currently is, sitting directly under
+   the hero so it is read before any claim the site makes. Deliberately quiet in
+   colour and loud in position: a banner, not a badge. */
+.status-strip {
+  background: var(--cream-alt);
+  border-bottom: 1px solid var(--line);
+  border-top: 3px solid var(--gold);
+  padding: 22px 0;
+}
+.status-strip-label {
+  font-family: var(--sans); text-transform: uppercase; letter-spacing: .18em;
+  font-size: 11.5px; font-weight: 700; color: var(--gold); margin: 0 0 6px;
+}
+.status-strip-body {
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  color: var(--ink-soft); margin: 0;
+}
+.status-strip-body strong { color: var(--ink); }
+
 /* ---------------------------------------------------------------- bands --- */
 .band { padding: 60px 0; border-bottom: 1px solid var(--line-soft); }
 .band-alt { background: var(--cream-alt); }
@@ -558,6 +578,9 @@ main { display: block; }
 .badge-low  { background: #6a7280; }
 .badge-ring { background: var(--navy); }
 .badge-none { background: #9aa3ad; }
+/* Source-access label, NOT a verification level: the entry's body was never
+   reachable, so it was assessed from its headline alone. */
+.badge-headline { background: #7a5c2e; }
 
 /* ---------------------------------------------------------------- flow ---- */
 .flow { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 6px 0 14px; }
@@ -810,6 +833,16 @@ main { display: block; }
 .doc-body table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 0 0 22px; font-family: var(--sans); }
 .doc-body th, .doc-body td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line-soft); }
 .doc-body th { color: var(--navy); font-weight: 700; border-bottom: 2px solid var(--navy); }
+
+/* A caveat paragraph: the qualification a reader must not skim past. Declared
+   after the .doc-body rules so its margins win inside a doc body. */
+.caveat, .doc-body .caveat {
+  background: var(--cream-alt); border: 1px solid var(--line);
+  border-left: 4px solid var(--gold); border-radius: 4px;
+  padding: 14px 18px; margin: 0 0 18px;
+  font-size: 16.5px; line-height: 1.65; color: var(--ink-soft);
+}
+.caveat strong { color: var(--ink); }
 
 /* -------------------------------------------------------------- footer ---- */
 .site-footer { background: var(--navy-deep); color: #c4d0db; padding: 52px 0 36px; border-top: 3px solid var(--gold); }

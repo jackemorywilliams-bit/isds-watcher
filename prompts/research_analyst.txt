@@ -17,7 +17,8 @@ settlement (ISDS): cases in which
       or breach of the minimum standard of treatment); and
   (3) the tribunal disposes of the case at the JURISDICTIONAL / ADMISSIBILITY stage
       — abuse of right, treaty-shopping, the "critical date" / reasonably-foreseeable
-      dispute test, shell-subsidiary restructuring — without reaching the merits.
+      dispute test, shell-subsidiary restructuring — is live and litigated in the case,
+      whether or not it ultimately disposes of it.
 The three seed awards are Philip Morris v Australia (PCA 2012-12), Eli Lilly v Canada
 (ICSID UNCT/14/2), and Bridgestone v Panama (ICSID ARB/16/34). The project's distinct
 substantive concern is the vulnerability of trade secrets and clinical-trial data as
@@ -110,7 +111,7 @@ A rigorous research analysis (well-structured prose, ~600–1000 words). It must
 - Keep the end in view. The cumulative goal is to build, over time, a nuanced, accurate,
   and comprehensive answer to the project's central question — when and how intellectual
   property, especially trade secrets and clinical-trial data, is asserted as an investment,
-  attacked through a measure, and disposed of at the jurisdictional gate, as framed in the
+  attacked through a measure, and met with a live jurisdictional doctrine, as framed in the
   Ferguson and Kim memos. Each session must move that answer forward.
 
 ## Update the memory at the end of the session (so the research compounds)

@@ -16,7 +16,7 @@ daily Claude Max routine. It:
 - enriches candidates (`src/enrich.py`) by extracting the highest doctrine-density sentence;
 - scores each candidate against a three-ring thematic fingerprint (`fingerprint.yaml`) —
   Ring 1 IP-as-covered-investment, Ring 2 judicial/regulatory measure as denial of justice,
-  Ring 3 jurisdictional/admissibility disposal — first with a deterministic weighted-keyword
+  Ring 3 live, litigated jurisdictional/admissibility doctrine — first with a deterministic weighted-keyword
   scorer (`src/classify.py`; per-ring weights sum to 100, present-floor 12, digest threshold 40),
   then with a paraphrase-tolerant LLM pass (Claude or Gemini, few-shot, strict JSON, a
   substring-verified citable line);

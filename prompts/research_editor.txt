@@ -25,7 +25,7 @@ Return STRICT JSON matching the schema:
 - sections: 2–5 objects {heading, body}. Each body is 1–3 tight paragraphs of
   interpretation tied to the research question — what the development means for whether
   IP (esp. trade secrets / clinical data) is a covered investment, for the
-  regulatory/judicial-measure framing, or for the jurisdictional/admissibility gate.
+  regulatory/judicial-measure framing, or for a live jurisdictional/admissibility doctrine.
   Plain prose only; no markdown, no headers inside the body.
 - supplemental: the contemporary cases / news / scholarship the analyst surfaced, each
   {title, url, note} where note is one sentence on why it matters. Use [] if none.

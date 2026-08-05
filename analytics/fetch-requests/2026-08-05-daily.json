@@ -1,0 +1,9 @@
+{
+  "note": "Daily council 2026-08-05. (1) A/81/17 watch, day 5 of the publication window, at the Commission Sessions posting location, in the standard same-page positive-control form: target symbol plus a control string known present on that page. The undocs.org route was retired 2026-08-04 as carrying no existence information at the relay's reduction level and is not used. (2) Mapper attribution and mapping vintage for UNCTAD treaty 978 (China - Switzerland BIT (2009)), anchored on the literal label 'Mapped by', to calibrate the 2026-08-04 forum-relationship cell to the confidence level the record holds for the sibling treaties. (3) Same-page positive control for row 2, anchored on 'ISDS forum options', a string retrieved from that page on both 2026-08-03 and 2026-08-04.",
+  "urls": [
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/81/17"},
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/80/17"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "Mapped by"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "ISDS forum options"}
+  ]
+}

@@ -34,24 +34,14 @@ re-verified open, and section F is new.
 
 ### A1 · A/81/17 publication window
 
-- **State** — **Refreshed 2026-08-06 (was stale at the 2026-07-31 snapshot).** The window
-  **opened 2026-08-01** and is open; A/81/17 is **not published** as at day 6. The check is no
-  longer a web-search query but a **fetch-relay row against the Commission Sessions posting
-  location** (`https://uncitral.un.org/en/commission`), in the same-page positive-control form —
-  target symbol `A/81/17` plus control `A/80/17`, which matches. Days 1–6 all null. The page has
-  been byte-identical (832,338 bytes, `sha256 ca87a113…`) at **five sampled time points** spanning
-  2026-08-03T18:25:23Z → 2026-08-06T11:38:46Z; that is five samples, **not** a continuous interval
-  and **not** N independent confirmations (objection 0806-B3). Two standing qualifications: the
-  null is about **rendered text** only, since the relay strips attributes and a symbol appearing
-  only inside an `href` is invisible to it; and the `undocs.org` / `docs.un.org` symbol route was
-  **RETIRED 2026-08-04** as carrying no existence information at the reduction level. **Four**
-  questions now ride on publication, not three: the adopted Supplementary Provision numbering,
-  the TPF SP10/SP11 inconsistency, whether DP 19's ex officio dismissal power survived, and — 
-  folded in 2026-08-05 — the ASIL SP-subject-matter delta (see A8).
+- **State** — Not indexed as of 2026-07-31; the one-query daily check returned only A/80/17
+  (58th session) and general UNCITRAL pages. The publication window **opens 2026-08-01**. On
+  publication it is the immediate lead, and three questions ride on it: the adopted
+  Supplementary Provision numbering, the TPF SP10/SP11 inconsistency, and whether DP 19's
+  ex officio dismissal power survived.
 - **Recorded** — `analytics/daily-research/2026-07-31.md` Task 3 and Next Step 1 (`f03a90e`);
-  daily records 2026-08-01 through 2026-08-06 Task 1; `state/research_log.json` open thread 3.
-- **Next** — Continue the daily relay row with its same-page control; escalate to lead status on
-  publication. Do not use `undocs.org`.
+  `state/research_log.json` open thread 3.
+- **Next** — Continue the one-query daily check; escalate to lead status on publication.
 - **Owner** — [[research-analyst]].
 
 ### A2 · UA-controlled 403 re-audit
@@ -86,34 +76,14 @@ re-verified open, and section F is new.
 
 ### A4 · China–Switzerland forum relationship
 
-- **State** — **Refreshed 2026-08-06 (was stale at the 2026-07-31 snapshot, which predates two
-  closures).** The original gap `GAP-UNRESOLVED: china-switzerland-forum-relationship` is
-  **CLOSED at mapping level 2026-08-04**: UNCTAD's IIA Mapping records treaty 978's "Relationship
-  between forums" as *"Preserving right to arbitration after domestic court proceedings"*,
-  retrieved twice through the relay with controls, excerpt window byte-identical across runs. The
-  "fork-in-the-road vs. no-U-turn" framing the entry was opened on was a **false dichotomy** and is
-  dissolved rather than answered — the record carries three labels, not two, and they classify
-  drafting structure without predicting tribunal application. **Identification of the retrieved
-  record was DISCHARGED to database-record level 2026-08-06** by a pre-registered false-slug
-  control (`…/978/zzz---zzz-bit-1900-`; reduction held at `a8c5ad9c`), which bears on *which*
-  record was retrieved and **not** on what it says. What remains open is content, not
-  identification: the cell is mapping-level from an expressly student-mapped, "purely informative"
-  database; **not ledger-grade** (no claim id, no operator verification, no preserved
-  `source_snapshot`); **not ranked** against China–Germany or China–France, there being no codebook
-  in the record; and the **mapper attribution and vintage for treaty 978 remain unretrieved**.
-  Live residual: `GAP: china-switzerland-bit-2009-forum-provision-text` — the treaty and Protocol
-  texts are unread, and that gap was ruled **structurally unreachable through the relay** on
-  2026-08-05 and re-routed to the operator as a manual retrieval.
-- **Recorded** — Gap-marker dispositions in the 2026-07-31 close-out (`f03a90e`); the closure in
-  `analytics/daily-research/2026-08-04.md`; the re-routing in the 2026-08-05 close-out; the
-  identification discharge in `analytics/daily-research/2026-08-06.md` Part 2 Task 2 and Part 6;
-  `STATE_OF_THE_ANSWER.md:44` and `:88`.
-- **Next** — Not analyst work. The provision text is with **Emory**, to be executed in one pass
-  with the treaty-978 mapper-attribution and vintage retrieval, capturing a preserved
-  `source_snapshot`. Optional and unscheduled: the converse false-*id* control, which would close
-  the identification residual.
-- **Owner** — Emory (operator) for the provision text and the mapper attribution;
-  [[research-analyst]] retains the cell's wording in `STATE_OF_THE_ANSWER.md`.
+- **State** — Opened 2026-07-31 as an ordinary gap. The fork-in-the-road vs. no-U-turn
+  characterization for the China–Switzerland BIT (2009) is missing, and it is the piece
+  needed to complete the three-way treaty-selection comparison. Marker:
+  `GAP-UNRESOLVED: china-switzerland-forum-relationship`.
+- **Recorded** — Gap-marker dispositions in the 2026-07-31 close-out (`f03a90e`).
+- **Next** — One bounded search-track attempt when budget allows. If inaccessible, it becomes
+  a candidate for the July 23 operator IIA-mapping protocol — **not yet an escalation**.
+- **Owner** — [[research-analyst]]; may route to Emory only if the bounded attempt fails.
 
 ### A5 · Huawei v. Sweden (ICSID ARB/22/2) — award watch
 
@@ -156,35 +126,6 @@ re-verified open, and section F is new.
 - **Recorded** — `state/research_log.json` open thread 2.
 - **Next** — Carried; answered through A6's monthly cycles rather than searched directly.
 - **Owner** — [[research-analyst]].
-
-### A8 · ASIL ILIB reconciliation — split; **entered in this register 2026-08-06**
-
-- **Why this entry exists.** The thread was **re-inherited four times as an un-executable plan**
-  because it lived only in `state/research_log.json` and the archival council-log line, and never
-  in this register — the one file that assigns owners. That is the whole mechanism of the failure,
-  and writing the entry is the fix. Standing rule it produced: *a next action that cannot be
-  executed is worse than an open question, because it reads as a plan and defers the seat that
-  reads it.*
-- **State** — **RULED UN-EXECUTABLE AS FRAMED 2026-08-05, and SPLIT.** The next action it carried
-  named "the officer's saved raw HTML" (`asil_target.html`) — an artefact written to a per-session
-  scratchpad on the operator's **local** machine (`analytics/daily-research/2026-08-01.md:362-363`)
-  and **never committed**; it exists on no branch. Both `asil.org` and `unis.unvienna.org` are
-  absent from the relay's `ALLOWED_HOSTS`, so neither limb is relay-reachable, and direct fetch is
-  dead in the scheduled cloud session class. The thread was un-executable from the moment the
-  2026-08-01 session closed.
-- **Disposition — two limbs, neither with the analyst.**
-  1. **SP-subject-matter delta — FOLDED into A1.** Fully stated in the record already and
-     resolvable only by the adopted Supplementary Provisions text. It needs no ASIL retrieval ever,
-     and rides on A/81/17's publication. **Owner:** [[research-analyst]], via A1.
-  2. **The unisl398 limb — ESCALATED to the operator.** It is not housekeeping: the record's
-     confirmation of UNCITRAL adoption rests on unisl400, **whose body is 403-blocked with only the
-     title confirmed** (`STATE_OF_THE_ANSWER.md:105`), so a third party citing a UNIS release the
-     record does not carry is a question about the record's own foundation. No allowlist change is
-     proposed. **Owner:** Emory (operator).
-- **Recorded** — `state/research_log.json` open thread 7; the ruling and split in the 2026-08-05
-  close-out; this entry per Next Step 5 of that close-out, discharged 2026-08-06.
-- **Next** — Nothing for the analyst. Limb 1 waits on A1; limb 2 waits on Emory.
-- **Owner** — Split as above; **no unassigned action remains.**
 
 ---
 

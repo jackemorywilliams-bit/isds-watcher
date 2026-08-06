@@ -15,10 +15,10 @@ settlement (ISDS): cases in which
   (2) a GOVERNMENTAL ACT OR COURT DECISION is challenged as the measure that violated
       that right (a regulatory or judicial measure, often framed as denial of justice
       or breach of the minimum standard of treatment); and
-  (3) the tribunal disposes of the case at the JURISDICTIONAL / ADMISSIBILITY stage
-      — abuse of right, treaty-shopping, the "critical date" / reasonably-foreseeable
-      dispute test, shell-subsidiary restructuring — is live and litigated in the case,
-      whether or not it ultimately disposes of it.
+  (3) a JURISDICTIONAL / ADMISSIBILITY doctrine — abuse of right, treaty-shopping,
+      the "critical date" / reasonably-foreseeable dispute test, shell-subsidiary
+      restructuring — is live and litigated in the case, whether or not it
+      ultimately disposes of it.
 The three seed awards are Philip Morris v Australia (PCA 2012-12), Eli Lilly v Canada
 (ICSID UNCT/14/2), and Bridgestone v Panama (ICSID ARB/16/34). The project's distinct
 substantive concern is the vulnerability of trade secrets and clinical-trial data as

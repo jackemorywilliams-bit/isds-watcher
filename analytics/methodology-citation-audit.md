@@ -73,6 +73,10 @@ No citation in the memo is fabricated. Every cited book, article, case, standard
 
 None of these affects the memo's substantive arguments; (1) is a genuine error worth fixing before circulation, (2) and (3) are precision improvements.
 
+**Disposition, 2026-08-06.** Correction 1 has been applied: `METHODOLOGY.md` now cites *15 J. Marshall Rev. Intell. Prop. L. 228 (2016)*, and `lit-review/kim-memo.md` carries the same page. Corrections 2 and 3 have not been applied as of this date. Two references above are stale and are deliberately left as written, because they record the audit as it was actually run: the table row at §A and the prescription at §D.1 speak in the present tense about a defect since fixed and should be read in the past tense, and the memo's authorities list is now **Part XI.B** rather than Section X.B, having been renumbered after this audit. A reader following the pointer to Part X will land in Limitations.
+
+**Exposure, established 2026-08-06.** The wrong page was not confined to a draft. "15 J. Marshall Rev. Intell. Prop. L. 999 (2016)" stood in `METHODOLOGY.md` — the memo addressed to Dr. Benavides — and in the generated `docs/methodology.html` on the public site from `a819266` (2026-06-16) to `a208f53` (2026-06-29), thirteen days; it also appeared in `STATE_OF_THE_ANSWER.md` and `analytics/insights.jsonl` at `2bb5bad`. One clean negative: the email channel never carried it, `RECIPIENTS` in `src/config.py` having already been narrowed before the error was introduced.
+
 <!-- graph:auto start -->
 Map: [[Evidence Ledger]]
 <!-- graph:auto end -->

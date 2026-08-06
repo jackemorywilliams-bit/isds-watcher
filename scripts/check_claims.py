@@ -28,8 +28,8 @@ the places that restate it. Every restatement must equal its authority. That is 
 WHAT IT DELIBERATELY IS NOT. It does no NLP, reads no prose it was not pointed at, and
 makes no attempt at completeness. A guard that tried to catch every claim would need
 to understand English, and would become the unreviewable thing it was built to
-prevent. It checks fourteen facts because fourteen were worth the coupling; a
-fifteenth is a decision, not a default.
+prevent. It checks thirteen facts because thirteen were worth the coupling; a
+fourteenth is a decision, not a default.
 
 TWO CONSEQUENCES OF FAILING CLOSED, both intended:
 
@@ -140,7 +140,7 @@ _HARNESS = {
 
 
 # --------------------------------------------------------------------------- #
-# THE REGISTRY — fourteen facts. Each names exactly one authority.
+# THE REGISTRY — thirteen facts. Each names exactly one authority.
 # --------------------------------------------------------------------------- #
 _METHODOLOGY = "METHODOLOGY.md"
 _FINGERPRINT = "fingerprint.yaml"

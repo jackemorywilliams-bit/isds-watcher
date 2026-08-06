@@ -13,6 +13,104 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-06
+
+- **The memos credited Kim with an analysis she expressly declines, in eleven places.** `c02773a`,
+  `9efafb0`, `373cce6` on `fix/ring3-dimension`. Kim *names* the proportionality question at her
+  Part III.B.2 and states the article "does not intend to analyse how the concept of
+  proportionality should be implied in balancing the rights of investors and public interests."
+  Her load-bearing argument is evidentiary — the counterfactual an investor cannot establish.
+  Corrected at `lit-review/kim-memo.md:41` (correction note), `:42`, `:49`, `:52`, `:56`, `:62`,
+  `:92`, `:186`; `lit-review/ferguson-memo.md:267`; `METHODOLOGY.md:21`;
+  `STATE_OF_THE_ANSWER.md:8`. **The remedy is promote-and-demote, never assert-absence** — she
+  does discuss proportionality, and writing that she does not would be the same error mirrored.
+  The correction imports nothing: `kim-memo.md:36` already called the evidentiary argument "the
+  single strongest piece of analysis in her article" twenty lines before `:56` crowned
+  proportionality. Two superlatives, same article. A sweep of `agents/`, `moc/`, `prompts/`,
+  `.claude/agents/`, `views/`, `think-tank/`, `working/` returns **one** proportionality hit and
+  it is correct (`working/10-authorities.original.txt:21`, Kingsbury & Schill), so **no agent
+  prompt, definition, registry entry or flowchart card inherited the ranking** and no vault
+  cascade was needed.
+- **Kim's footnote 23 written in — a fifth reason the project never carried.** A remedy mismatch:
+  the investor wants the disclosure stopped; an investment tribunal's ordinary remedy is
+  compensation. A selection effect, not a merits prediction — it explains why the case is never
+  filed. It predicts the distribution already in the repo: every disclosure case in the Kim memo's
+  bibliography (InterMune T-73/13 R, AbbVie T-44/13, PTC Therapeutics C-175/18 P, Vanda D.D.C.)
+  was brought in a **court** to stop disclosure, not in arbitration to be paid for it. Four for
+  four. Recorded **operator-supplied**: Kim's article is unreachable from this project's tooling
+  (UIC serves the landing page, returns 403/202 on every full-text endpoint), so the council
+  verified nothing about her text and must not be cited as having done so.
+- **The retired Ring 3 formulation survived `ae1f04b` in four places; all four closed at `373cce6`.**
+  `prompts/research_analyst.txt:18` is the one that mattered — the fix had replaced the tail and
+  left the head, so the sentence asserted **both** definitions and did not parse, in the prompt of
+  the seat the project calls its deepest thinker. Also `METHODOLOGY.md:26` (the defining sentence,
+  while its own heading said Dimension), `working/02c-framework-rings.original.txt:7` (retired
+  definition as a heading, plus a claim false of two of three seeds), and
+  `working/one-pagers/philip-morris-v-australia.md:18`, `:22`.
+- **The ruling survived a falsification attempt on the project's own seed case.** In *Philip Morris
+  Asia v. Australia* four threshold questions were separately adjudicated and exactly one disposed:
+  control under Art. 1(e) (¶509), admission (¶523), temporal scope (¶534), abuse of rights (¶588).
+  **Corrections to how this was first stated, both material:** ¶509 went against the **Claimant**,
+  on the Claimant's own argument that continuous control since 2001 "eliminates every objection
+  raised by the Respondent" (¶186) — not against the State; and Australia lost exactly **one**
+  objection outright (¶523), because ratione temporis and abuse of rights are two limbs of a single
+  objection (¶¶9, 184) and ¶534 finds jurisdiction "without prejudice to its later finding on abuse
+  of rights". **The finding that matters most is the fifth question.** Australia's Third Objection —
+  "that neither the shares in PML nor PML's assets constitute investments for the purposes of the
+  Treaty" (¶184) — was raised and **never decided**. That is this project's own central question,
+  put to a tribunal in terms and left unanswered; the phrase occurs exactly once in the award. A
+  disposition-keyed Ring 3 is **blind by construction** to raised-and-never-reached questions,
+  because a question never answered can never dispose of anything. That is stronger vindication of
+  the dimension ruling than any count.
+- **Published counts were wrong on the live site for one day.** `9bd112e` published "seven of the
+  fourteen items" (`base.html.j2`, 16 pages) and "347 candidates" (`index.html.j2`, 19 pages).
+  Measured from the committed archive: 14 article files, **13 distinct URLs**;
+  `https://www.italaw.com/cases/12153` appears in both the 06-09 and 06-10 runs. **Not a dedup
+  bug** — `8e1cc48` ("chore: reset seen-state for final full-digest send") emptied
+  `state/seen.json`, so `is_seen()` had nothing to match; `src/state.py` is correct and untouched.
+  The defect is that the classifier returned **contradictory verdicts on identical input**: 32 with
+  ring `judicial_or_regulatory_measure` on 06-09, 28 with no rings on 06-10, same URL and same
+  source text. The duplicate therefore lands on **both sides** of the ring split and cannot be
+  assigned to either without arbitrarily preferring one verdict. Accurate statement: **thirteen
+  distinct items; twelve carry a single verdict, six with a ring and six with none; the thirteenth
+  was screened twice and classified contradictorily.** "347" is the sum of per-run `screened`
+  across a window containing two manual state resets — 347 **screenings**. Corrected at `9efafb0`.
+  `tests/test_site_claims.py` needed no change: runs/screened/matches/surfaced are counts of runs,
+  screenings and entries, and all four remain correct; the defect was the prose labelling them.
+- **The wrong Kim pincite was published for thirteen days, and this log never recorded it.**
+  "15 J. Marshall Rev. Intell. Prop. L. **999** (2016)" stood in `METHODOLOGY.md` — the memo
+  addressed to Dr. Benavides — and in the generated `docs/methodology.html` on the public site from
+  `a819266` (2026-06-16) to `a208f53` (2026-06-29); also in `STATE_OF_THE_ANSWER.md` and
+  `analytics/insights.jsonl` at `2bb5bad`. **228 is and always was correct** and reads correctly
+  today; nothing is to be "fixed" to 999. One clean negative: the email channel never carried it,
+  `RECIPIENTS` in `src/config.py` having been narrowed before the error was introduced. Recorded
+  because this log's rule is that every material change is dated and commit-cited, and a
+  thirteen-day publication of a wrong citation in the professor's own memo is material.
+- **Three further defects closed at `373cce6`.** `kim-memo.md:102` was a "Backsourcing
+  verification" block attesting that Kim's citations are accurate against the Eli Lilly Final Award
+  of 16 March 2017 — which Kim, writing in 2016, could not have read; it verified pin cites to a
+  document the cited author never saw, under the word "verification".
+  `working/one-pagers/eli-lilly-v-canada.md:18` pinned the phrase *investments at issue in this
+  arbitration* to ¶167; that phrase occurs nowhere in the award and ¶167 is the ratione temporis
+  paragraph. `scripts/check_claims.py:31,143` said "fourteen facts" against a registry of thirteen
+  (`len(REGISTRY) == 13`, verified).
+- **Apotex caption corrected; metrics unmoved.** The holdout text describes ANDAs and the
+  not-an-investor holding, which is *Apotex Inc. v. United States of America*, UNCT/10/2, 14 June
+  2013 — not *Apotex Holdings* (ARB(AF)/12/1, 2014), the FDA import-alert case.
+  `scripts/holdout_set.json`, `scripts/backtest_corpus.json`. Confusion matrix before and after:
+  **TP=3 FP=0 FN=1 TN=16**.
+- **Vault self-audit.** [[Agent Registry]] recorded the systems-designer / site-experience model
+  defect as open for a full day after `c25ea64` closed it, while [[Claim Map]] C12 and
+  [[Workflow Threads]] C7 both recorded it CLOSED — three notes, one fact, and the roster was the
+  wrong one. It also asserted no definition had changed since `939deaa`, when `ae1f04b` rewrote the
+  research question at `.claude/agents/council-chairman.md:31-32` — a contract change this vault's
+  own maintenance rule required to move the registry in the same change set. `moc/Council.md` named
+  six seats while linking "the nine agents". All corrected in place so the corrections stay legible.
+- **Open and escalated, not closed.** `analytics/verification_ledger.jsonl` holds 58 entries and
+  **none** touch Kim, Ferguson, Marshall or proportionality, while `moc/Evidence Ledger.md:3-4`
+  tells a reader that what the project knows lives in that ledger. For the literature layer that
+  describes an empty set.
+
 ## 2026-08-05
 
 *Audited against `eac8ed9` (`main`, clean tree); paths: `prompts/`, `.claude/agents/`,

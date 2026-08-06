@@ -15,7 +15,19 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
-**Definitions audited 2026-08-04.** `git log 6a5cd2e..b76f6c3 -- .claude/agents/ prompts/`
+**Definitions re-audited 2026-08-06 against `373cce6`.** The 2026-08-04 statement below was
+true when written and false by the following day. `git log 939deaa..HEAD -- .claude/agents/
+prompts/` now returns five commits, and one **is** a contract change: `ae1f04b` rewrote the
+research question at `.claude/agents/council-chairman.md:31-32` to "a live, litigated
+jurisdictional/admissibility doctrine, whether or not it disposes of the case," together with
+six prompt files. Under this note's own maintenance rule that change required the registry to
+move in the same change set, and it did not. `373cce6` additionally corrected
+`prompts/research_analyst.txt:18`, which `ae1f04b` had left asserting **both** Ring 3
+definitions in one ungrammatical sentence. Anchor for the next currency query:
+`git log 373cce6..HEAD -- .claude/agents/ prompts/`.
+
+**Superseded, retained so the correction stays legible — audited 2026-08-04.**
+`git log 6a5cd2e..b76f6c3 -- .claude/agents/ prompts/`
 returns two commits, and neither is a contract change: both are the same four-line managed
 `Map:` block appended to `prompts/daily_council_protocol.md` by `scripts/build_graph.py`
 (`07ff434`, carried through `8705f7a`). No definition file has changed since `939deaa` moved
@@ -34,8 +46,8 @@ rules the council adopted in session, now recorded in the seat notes — and the
 | Systems researcher | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/systems_researcher.txt` | `.claude/agents/systems-researcher.md` | [[systems-researcher]] |
 | Research editor | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/research_editor.txt`, `prompts/carrying_span_rule.md` | `.claude/agents/research-editor.md` | [[research-editor]] |
 | Obsidian archivist | `claude-opus-4-8` | none — canon is the vault, `scripts/build_graph.py`, `scripts/build_site.py` | `.claude/agents/obsidian-archivist.md` | [[obsidian-archivist]] |
-| Systems designer | none declared — inherits the invoking session | none — canon is the repository's machinery and `src/models.py` | `.claude/agents/systems-designer.md` | [[systems-designer]] |
-| Site & correspondence experience | none declared — inherits the invoking session | none — canon is `scripts/build_site.py`, `site_templates/`, `src/render.py` | `.claude/agents/site-experience.md` | [[site-experience]] |
+| Systems designer | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `c25ea64` | none — canon is the repository's machinery and `src/models.py` | `.claude/agents/systems-designer.md` | [[systems-designer]] |
+| Site & correspondence experience | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `c25ea64` | none — canon is `scripts/build_site.py`, `site_templates/`, `src/render.py` | `.claude/agents/site-experience.md` | [[site-experience]] |
 
 Not an agent, but bound by the same model config: the digest classifier runs on
 `claude-haiku-4-5-20251001` (`DIGEST_CLASSIFIER_MODEL`, read by `src/classify.py`), and the
@@ -80,15 +92,19 @@ two rows in v2.2 to make room for the relay; the chairman, analyst, systems-rese
 editor, minutes, analytics-officer, obsidian-archivist and integrity-officer cards are at
 the rows shown above, unchanged.
 
-⚠ **Card asserts a model no configuration file carries — unresolved, and now harder to
-see.** Neither `.claude/agents/systems-designer.md` nor `.claude/agents/site-experience.md`
-declares a `model:` key, and `src/models.py` does not cover repository-side seats. Both cards
-read "Model: Claude Fable 5" until `939deaa`, which rewrote them to "Model: Claude Opus 5" as
-part of the Fable→Opus 5 move. The defect is identical — a card stating an assignment nothing
-configures — but it now reads as legitimate, because two other seats genuinely hold Opus 5.
-Escalated to Emory since 2026-07-31; the resolution is either a `model:` line in each
-definition or a card that says "inherits the invoking session". The chart is generated from
-its manifest and is not hand-edited to make the discrepancy disappear.
+✔ **Closed 2026-08-05 at `c25ea64`; corrected here 2026-08-06.** This note carried the defect
+as open — "a card asserts a model no configuration file carries" — for a full day after it was
+closed, while [[Claim Map]] C12 and [[Workflow Threads]] C7 both recorded it CLOSED. Three
+vault notes, one fact, and the roster — the note an agent reads first — was the one that was
+wrong. Verified 2026-08-06: all nine `.claude/agents/*.md` declare `model: opus`, including
+`systems-designer.md` and `site-experience.md`, and `scripts/check_models.py` fails the build
+on card/definition/vault-note drift.
+
+**The constraint that replaces it, because it is a live trap rather than a closed one:**
+`model:` selects a *tier*, not a version, so the version check rests on card ↔ `src/models.py`
+↔ vault note, and the vault-note leg matches only the ``**Model.** `…` `` form at
+`check_models.py:63`. **Reformatting a seat note silently removes a leg of a CI guard.** The
+chart is generated from its manifest and is not hand-edited to make a discrepancy disappear.
 
 **Two non-agent cards added in v2.2** — `relay-request` and `relay-answer`, machine rows 7–8,
 the fetch relay the council uses for retrieval. They are code, not seats: evidence cites

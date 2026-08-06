@@ -1,7 +1,9 @@
 # Council
 
 The research council: chairman, research analyst, integrity officer (deterministic
-gate), editor, analytics officer, systems researcher — plus the Monday roundtable.
+gate), research editor, analytics officer, systems researcher, systems designer,
+site & correspondence experience, and obsidian archivist — nine seats, matching
+[[Agent Registry]] — plus the Monday roundtable.
 
 - [[COUNCIL]] — membership, cadence, and the binding writing standard.
 - [[council_calibration]] — the binding anti-hallucination checklist.

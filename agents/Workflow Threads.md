@@ -251,6 +251,25 @@ re-verified open, and section F is new.
 
 ---
 
+### B4 · The retired Ring 3 formulation survived in four files — **CLOSED 2026-08-06**
+
+- **State** — `ae1f04b` converted twelve of the fifteen Definition-B surfaces [[Claim Map]] C13
+  had listed. Four survived, and the serious one was `prompts/research_analyst.txt:18`: the fix
+  replaced the tail of the sentence and left the head, so the analyst prompt asserted **both**
+  definitions at once and did not parse. Every analyst session read it. Also
+  `METHODOLOGY.md:26` (the defining sentence, while its own heading already said Dimension),
+  `working/02c-framework-rings.original.txt:7` (the retired definition as a heading, plus a
+  claim false of two of the three seeds), and `working/one-pagers/philip-morris-v-australia.md`
+  at `:18`, `:22` and `:30`.
+- **Closed** — `373cce6`, PR #60. All four converted.
+- **Why it is worth keeping in the record** — a partial find-and-replace is more dangerous than
+  no replace at all: it leaves a sentence that reads as corrected and asserts the opposite.
+  The lesson for any future definitional change is to grep for the *retired* phrasing after
+  the sweep, not only for the new one.
+- **Owner** — closed; no action.
+
+---
+
 ## C · Awaiting Emory
 
 These are the operator's, and no agent may execute them. Each is stated with what
@@ -389,6 +408,56 @@ specifically unblocks it.
 ---
 
 ## F · Branch hygiene — what is committed but not landed
+
+### C10 · Published counts on the live site count events, not distinct things — **CLOSED 2026-08-06**
+
+- **State** — `9bd112e` published "seven of the fourteen items published to date"
+  (`base.html.j2`, 16 pages) and "11 runs across 347 candidates" (`index.html.j2`, 19 pages).
+  Measured from the committed archive: 14 article files, **13 distinct URLs**.
+  `https://www.italaw.com/cases/12153` (Telefónica v. Colombia) appears in both the 06-09 and
+  06-10 runs.
+- **Not a dedup bug** — `8e1cc48` ("chore: reset seen-state for final full-digest send")
+  emptied `state/seen.json`, so `is_seen()` had nothing to match. `src/state.py` is correct and
+  was not touched.
+- **The real defect** — the classifier returned **contradictory verdicts on identical input**:
+  relevance 32 with ring `judicial_or_regulatory_measure` on 06-09, relevance 28 with no rings
+  on 06-10, same URL and same source text. The duplicate therefore falls on **both sides** of
+  the ring split and cannot be assigned to either without arbitrarily preferring one of the two
+  verdicts the instrument itself gave it. First recorded as "7 one-ring / 6 zero-ring", which
+  made exactly that arbitrary choice; corrected at `9efafb0` to the honest form — twelve of
+  thirteen carry a single verdict, six with a ring and six with none, and the thirteenth is the
+  duplicate.
+- **Closed** — `9efafb0`, PR #59. "347" now reads as 347 **screenings** across a window
+  containing two manual state resets, which is what it is.
+- **`tests/test_site_claims.py` needed no change** — runs/screened/matches/surfaced are counts
+  of runs, screenings and entries, and all four remain correct. The defect was the prose
+  labelling them.
+- **Owner** — closed; no action.
+
+---
+
+### D2 · The literature layer has never entered the verification ledger
+
+- **State** — `analytics/verification_ledger.jsonl` holds 58 entries and
+  `grep -ciE "kim|ferguson|marshall|proportional"` returns **0**, while
+  `moc/Evidence Ledger.md:3-4` tells a reader that what the project knows lives in that ledger.
+  For the two documents the research question rests on, it describes an empty set.
+- **Why it stayed open for three months** — the articles were not on disk anywhere the tooling
+  looked, so nothing could check them and nothing did. They were on the operator's desktop the
+  whole time, and no seat asked. When they were finally read on 2026-08-06 the audits found
+  nine substantive defects across the two memos, including an inverted disposition
+  (Philip Morris v. Uruguay), a risk category absent from Ferguson entirely, and an unfounded
+  adverse charge against Kim.
+- **Partly addressed** — `scripts/check_sources.py` (`ae42639`, PR #60) now fails closed if a
+  memo's declared source PDF is absent, so the silent-absence state cannot recur. The PDFs live
+  in gitignored `seeds/` because they are copyrighted, which is why the guard is an operator
+  gate rather than a CI check.
+- **Still open** — whether the substantive Kim and Ferguson propositions get ledger entries at
+  all. That is a scope decision about what the deterministic gate is for, and it is not an
+  agent's to make.
+- **Owner** — **Emory.**
+
+---
 
 ### F1 · Seventeen operator ledger marks never merged
 

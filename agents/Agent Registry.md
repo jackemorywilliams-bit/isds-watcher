@@ -190,7 +190,7 @@ statements live in the seat's own note.
 | [[research-analyst]] | Four relay method rules (binding on every seat) | 2026-08-04 | `51bb7a2` |
 | [[council-chairman]] | Before a ruling asserts what a record line says, quote the whole line | 2026-08-04 | `51bb7a2` |
 
-The taxonomy's canonical statement is the 23-entry table in [[integrity-officer]], one
+The taxonomy's canonical statement is the 24-entry table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
 thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed to read the
 table rather than restate the list from memory.

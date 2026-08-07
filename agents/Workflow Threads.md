@@ -261,7 +261,7 @@ re-verified open, and section F is new.
   `working/02c-framework-rings.original.txt:7` (the retired definition as a heading, plus a
   claim false of two of the three seeds), and `working/one-pagers/philip-morris-v-australia.md`
   at `:18`, `:22` and `:30`.
-- **Closed** — `373cce6`, PR #60. All four converted.
+- **Closed** — `373cce6`, PR #59. All four converted.
 - **Why it is worth keeping in the record** — a partial find-and-replace is more dangerous than
   no replace at all: it leaves a sentence that reads as corrected and asserts the opposite.
   The lesson for any future definitional change is to grep for the *retired* phrasing after

@@ -97,7 +97,7 @@ The single honest caveat already lives in the system and should not be papered o
 
 ### Point 5 — How does the backtest empirically test that the fingerprint generalizes independent of the narrative?
 
-There is **no `scripts/backtest.py` or `scripts/site_templates/backtest.html.j2` in the repository** outside agent worktrees; that artifact named in the brief does not yet exist on this branch. The empirical out-of-sample test that *does* exist, and that performs the function the brief describes, is `scripts/eval_holdout.py` over `scripts/holdout_set.json`. I ran it for this note; it reproduces the figures in METHODOLOGY.md Part VI.B exactly:
+**[Corrected 2026-08-06.]** When this note was written there was no `scripts/backtest.py` or `scripts/site_templates/backtest.html.j2` outside agent worktrees. Both exist on `main` today, and the sentence is left in corrected form rather than deleted because the reasoning below was built on their absence. The empirical out-of-sample test that *does* exist, and that performs the function the brief describes, is `scripts/eval_holdout.py` over `scripts/holdout_set.json`. I ran it for this note; it reproduces the figures in METHODOLOGY.md Part VI.B exactly:
 
 ```
 Holdout: 20 items (4 on-theme, 16 off-theme) | threshold = 40

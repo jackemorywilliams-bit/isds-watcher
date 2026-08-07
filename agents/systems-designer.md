@@ -21,14 +21,19 @@ selects the Opus *tier*, and the version is the operator's recorded choice rathe
 something the key itself pins. `scripts/check_models.py` now fails if a card asserts a
 model that no definition declares.
 
-> **Unresolved conflict, recorded not papered over.** Flowchart v3.0 (`21f0240`) gave this
-> seat a card whose `meta` field reads "Model: Claude Fable 5"
-> (`views/isds-workflow-3d/workflow.json`, node `systems-designer`). The definition declares
-> no model at all. The chart therefore asserts an assignment no configuration file carries.
-> Either the definition should declare `model: fable` or the card should say "inherits the
-> invoking session" — but that is an operator decision about a project artifact, and the
-> chart is a generated-alongside artifact this seat does not hand-edit. Escalated to Emory;
-> the same conflict exists for [[site-experience]].
+> **Conflict RESOLVED — closed `c25ea64`, corrected here 2026-08-06.** This block carried the
+> defect as unresolved for two days after it was closed, and both of its factual predicates
+> are now false: `.claude/agents/systems-designer.md` declares `model: opus`, and the card's
+> `meta` in `views/isds-workflow-3d/workflow.json` reads "Model: Claude Opus 5", not
+> "Claude Fable 5". [[site-experience]] closed its identical block on 2026-08-04; this one
+> was missed. [[Claim Map]] C12 already records the claim CLOSED, and
+> `agents/Agent Registry.md` corrected itself on 2026-08-06 while describing it as "three
+> vault notes, one fact" — it was four, and this was the fourth.
+>
+> **Why no guard caught it, which is the part worth keeping.** `scripts/check_models.py`
+> matches only the ``**Model.** `…` `` line, which was correct here throughout. Prose that
+> contradicts that line is invisible to it. Reformatting or paraphrasing a seat note can
+> therefore break a leg of the check without failing it.
 
 ## Canonical training (binding)
 

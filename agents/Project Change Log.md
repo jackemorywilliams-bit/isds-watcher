@@ -83,6 +83,19 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
   `council/threads-2026-08-06-source-audit` and `council/2026-08-07` are all ancestors of
   `origin/main`, which discharges the chairman's 2026-08-06 warning that A8 existed only off
   `main`. No new orphan was created between 2026-08-04 and today.
+- **Post-merge addendum, found by re-running the guard against `main` at `3d474e0`.**
+  `check_currency.py` reports an audit session's own landing commit as staleness. A session anchors
+  its notes to the commit it audited — necessarily the one before its own — and landing the change
+  set then touches those notes' declared paths, so `agents/Project Change Log.md` and
+  `agents/Workflow Threads.md` each read *"1 commit(s) … since `7c08dcf`"*, that commit being
+  `8a40a4a`, the audit itself. The anchors were **not** chased: bumping them reproduces the result
+  on the next commit, and the loop is the finding. Recorded so a future reader does not mistake a
+  self-referential STALE line for drift, and folded into [[Workflow Threads]] B5 as its third gap.
+- **The merged branch `vault/archivist-2026-08-07` could not be deleted from origin.**
+  `git push origin :refs/heads/vault/archivist-2026-08-07` returns *"fatal: the remote end hung up
+  unexpectedly"* on three attempts through this environment's proxy. It is **not** an orphan —
+  `git merge-base --is-ancestor 8a40a4a origin/main` succeeds — but it will show in a branch listing
+  until deleted by hand. Stated rather than left for the next orphan check to re-derive.
 - **Clean, and said plainly.** `scripts/check_models.py` exits 0 over all twelve model-bearing
   cards; `node tools/isds-workflow-3d/validate.mjs` exits 0 at 30 cards / 9 chips / 44 edges with
   zero `Jack` tokens; no live statement anywhere in the repository still names Fable 5 — every

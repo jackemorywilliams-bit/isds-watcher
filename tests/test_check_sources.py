@@ -111,5 +111,25 @@ def test_declared_sources_exist_or_the_guard_would_be_vacuous():
     """Not an assertion that the PDFs are present -- seeds/ is gitignored and
     CI will not have them. It asserts the guard knows about both memos, so a
     memo cannot be quietly dropped from coverage."""
-    assert set(cs.SOURCES) == {
-        "lit-review/kim-memo.md", "lit-review/ferguson-memo.md"}
+    expected = {
+        "lit-review/kim-memo.md",
+        "lit-review/ferguson-memo.md",
+        "working/one-pagers/eli-lilly-v-canada.md",
+        "working/one-pagers/philip-morris-v-australia.md",
+        "working/one-pagers/bridgestone-v-panama.md",
+    }
+    assert set(cs.SOURCES) == expected
+
+
+def test_every_memo_quoting_a_seed_award_is_covered():
+    """The three award PDFs sat in seeds/ since 2026-05-21 with 23 quoted spans that
+    nothing checked. A one-pager that quotes an award and is absent from SOURCES is
+    the acquisition hole reopening under a new name."""
+    import glob, os, re
+    for md in glob.glob(os.path.join(REPO, "working", "one-pagers", "*.md")):
+        rel = os.path.relpath(md, REPO)
+        with open(md, encoding="utf-8") as fh:
+            spans = re.findall(r'"([^"]{25,})"', fh.read())
+        if spans:
+            assert rel in cs.SOURCES, \
+                f"{rel} carries {len(spans)} quoted spans and declares no source"

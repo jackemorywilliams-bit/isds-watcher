@@ -63,6 +63,25 @@ SOURCES: dict[str, tuple[str, str]] = {
         "Ferguson_Trade_Secrets_at_Risk_40_ArbIntl_337_2024.pdf",
         "Ferguson, Trade secrets at risk (40 Arb. Int'l 337, 2024)",
     ),
+    # The three award one-pagers. These PDFs have been in seeds/ since 2026-05-21 and
+    # carried 23 quoted spans that nothing checked — the largest coverage gain available
+    # to this guard, at zero acquisition cost. The eli-lilly one-pager already records a
+    # withdrawn attribution in prose ("that phrase does not occur anywhere in the award"),
+    # found by hand on 2026-08-06: the exact defect class this guard exists to catch.
+    "working/one-pagers/eli-lilly-v-canada.md": (
+        "Eli_Lilly_v_Canada_Final_Award_2017-03-16.pdf",
+        "Eli Lilly & Co. v. Canada, ICSID No. UNCT/14/2, Final Award (16 Mar. 2017)",
+    ),
+    "working/one-pagers/philip-morris-v-australia.md": (
+        "Philip_Morris_v_Australia_Award_2015-12-17.pdf",
+        "Philip Morris Asia Ltd v. Australia, PCA No. 2012-12, Award on Jurisdiction "
+        "and Admissibility (17 Dec. 2015)",
+    ),
+    "working/one-pagers/bridgestone-v-panama.md": (
+        "Bridgestone_v_Panama_Award_2020-08-14.pdf",
+        "Bridgestone Licensing Services v. Panama, ICSID No. ARB/16/34, Award "
+        "(14 Aug. 2020)",
+    ),
 }
 
 # Spans that quote something other than the memo's own source -- a case, a

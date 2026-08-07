@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from datetime import datetime
 
 logger = logging.getLogger("isds.council_log")
@@ -105,13 +106,55 @@ def _write(entry: dict) -> None:
     logger.info("council_log: recorded %s entry for %s", entry.get("type"), entry.get("date"))
 
 
+_SECTION_RE = re.compile(r"^## (\d{4}-\d{2}-\d{2}) — ", re.M)
+
+
+def _handwritten_sections(path: str, generated_dates: set) -> list[str]:
+    """Return `## <date> — …` sections of the existing .md that this run would destroy.
+
+    WHY THIS EXISTS. `_render_md` rewrites the file from `state/council_log.json`,
+    which keeps only `_KEEP` entries and only those the pipeline itself wrote. On
+    2026-08-06 the JSON held 7 sessions and the .md held 16: nine daily sittings had
+    been written by hand, directly into the .md, and the next successful weekly run
+    would have silently deleted all nine. The file is the chairman's accountability
+    record — the one artifact whose whole purpose is that it cannot be quietly
+    rewritten.
+
+    So: any dated section already in the file whose date the generator is not about
+    to emit is human-authored, and is carried through verbatim. Generated sections
+    are refreshed from the JSON as before, because the JSON is authoritative for
+    those.
+    """
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        body = fh.read()
+    marks = list(_SECTION_RE.finditer(body))
+    kept = []
+    for i, m in enumerate(marks):
+        if m.group(1) in generated_dates:
+            continue
+        end = marks[i + 1].start() if i + 1 < len(marks) else len(body)
+        kept.append(body[m.start():end].rstrip())
+    return kept
+
+
 def _render_md(entries: list) -> None:
+    generated_dates = {e.get("date") for e in entries[:60]}
+    carried = _handwritten_sections(_MD, generated_dates)
+    if carried:
+        logger.info("council_log: carrying %d hand-written section(s) through the rewrite",
+                    len(carried))
     lines = [
         "# Council log — accountability ledger",
         "",
         "Each council session is recorded here, newest first: the weekly reconvene "
         "(per-member assessment, next steps, escalations) and daily researcher check-ins. "
         "This is the chairman's written record for holding the council accountable.",
+        "",
+        "Sections whose date appears in `state/council_log.json` are regenerated from it "
+        "on every run. Sections written by hand are preserved verbatim — see "
+        "`_handwritten_sections` in `src/council_log.py`.",
         "",
     ]
     for e in entries[:60]:
@@ -136,6 +179,9 @@ def _render_md(entries: list) -> None:
         else:
             lines.append(f"## {e['date']} — daily check-in")
             lines.append(f"- {e.get('note', '')}")
+        lines.append("")
+    for section in carried:
+        lines.append(section)
         lines.append("")
     os.makedirs(os.path.dirname(_MD), exist_ok=True)
     with open(_MD, "w", encoding="utf-8") as fh:

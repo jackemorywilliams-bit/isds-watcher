@@ -12,17 +12,17 @@ export const COLUMNS = ["machine", "deliverables", "council", "emory"];
 export const COL_TITLE = {
   machine: "THE MACHINE (runs itself)",
   deliverables: "WHAT GETS SENT",
-  council: "MULTI-STAGE AI REVIEW",
+  council: "THE AI RESEARCH COUNCIL",
   emory: "EMORY — RESEARCHER CHECKS",
 };
 export const COL_COLOR = { machine: "#64b5f6", deliverables: "#81c784", council: "#ba9ffb", emory: "#ffd54f" };
 // Arrow colors mean the ACTION, not the lane (operator: editor->brief email must
 // read as a SEND). Legend rendered from this table.
 export const EDGE_STYLE = {
-  flow:    { color: "#64b5f6", label: "the machine moving items — through scoring and into the review stages" },
+  flow:    { color: "#64b5f6", label: "the machine moving items — through scoring and into the council" },
   send:    { color: "#81c784", label: "the machine delivering — the digest email and public site" },
   check:   { color: "#e6b83f", label: "verification and fact-checking (Emory\u2019s column)" },
-  council: { color: "#ba9ffb", label: "review stages producing — hand-offs, the brief, minutes, Emory\u2019s packet" },
+  council: { color: "#ba9ffb", label: "the council producing — hand-offs, the brief, minutes, Emory\u2019s packet" },
 };
 export const GRID = { colWidth: 258, rowPitch: 130, marginX: 14, bannerH: 210, headerH: 40, legendH: 128 };
 export const CARD = { w: 236, h: 104, r: 10, titlePx: 13, descPx: 11, descChars: 42, descLines: 3, metaPx: 9.5 };

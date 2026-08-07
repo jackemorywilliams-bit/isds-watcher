@@ -23,6 +23,17 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
+> ⚠ **KNOWN STALE as of 2026-08-07, and deliberately not re-anchored.** The archivist's session
+> of 2026-08-07 ran `python3 scripts/check_currency.py` and this note reports **27 commits**
+> touching its declared paths since `c9050e6`. Fourteen of the sixteen rows were **not** re-audited
+> that day — a re-audit means re-opening every file in every **Stated in** column, and the session
+> did not have the budget to do it honestly. **The anchor below was left untouched on purpose:**
+> bumping an anchor without re-reading the files is the precise defect `check_currency.py` was
+> written to catch, and a row that reads as fresh while being stale is the thing this note warns
+> about in its own second paragraph. Treat every row as last-verified at its stated anchor and
+> re-check the file before relying on it. Refreshing this note is the next archivist session's
+> first substantive task.
+
 **Snapshot anchor.** Rows C1–C12 were audited against `c9050e6` (`main`, 2026-08-04, clean
 tree). **Rows C13 and C14 were added 2026-08-05 and are audited against `eac8ed9`** (`main`,
 clean tree), together with the corrections to C7 and C12 noted in their rows. Paths claimed

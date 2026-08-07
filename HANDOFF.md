@@ -161,8 +161,11 @@ Map: [[00 - Project Map]]
 
 ## Model runtime assignments (requested)
 
-- chairman: `claude-opus-5` · analyst: `claude-opus-5` (operator directive 2026-07-29:
-  the researcher gets the most advanced model) · one-pager drafting: `claude-opus-4-8` ·
+- chairman: `claude-opus-5` · analyst: `claude-opus-5` (**operator directive 2026-08-03**, the
+  Fable 5 credit balance being exhausted — `939deaa`. The 2026-07-29 directive, "the researcher
+  gets the most advanced model", set `HEAVY_MODEL = "claude-fable-5"` at `4f8f981`; attaching the
+  Opus 5 id to that date is the blanket-replacement error the vault records as a standing trap)
+  · one-pager drafting: `claude-opus-4-8` ·
   utility (integrity helper, editor, graph classifier): `claude-opus-4-8` · digest
   classifier: unchanged `claude-haiku-4-5-20251001` (id defined in `src/models.py` as
   `DIGEST_CLASSIFIER_MODEL` and imported at `src/classify.py:58`; `src/classify.py` itself

@@ -72,6 +72,85 @@ registry, flowchart vs pipeline, HANDOFF vs workflows) and fix or escalate drift
 periodically research current Obsidian/PKM practice so the vault's organization stays
 state-of-the-art."
 
+**Audit slice, 2026-08-07 (sixth deployment).** Agent-context currency, run as the query rather
+than the judgement: `git log b76f6c3..HEAD -- .claude/agents/ agents/ prompts/ src/models.py
+views/isds-workflow-3d/workflow.json`, plus `python3 scripts/check_currency.py`,
+`scripts/check_models.py`, `scripts/build_graph.py --dry-run`, and
+`node tools/isds-workflow-3d/validate.mjs`. Findings:
+
+1. **The convention this seat adopted in prose is now a program, and this seat did not write it.**
+   `scripts/check_currency.py` (`fb1c04e`, 2026-08-06) mechanises the snapshot anchor: it parses
+   `Audited against <sha>`, checks the sha exists and is an ancestor of HEAD, and reports every
+   commit that has touched the note's declared paths since. Its docstring says plainly why it
+   exists, and the reason is this project's recurring one. **Two gaps, both this seat's to raise
+   because it owns what the notes claim.** (a) Its `TRACKED` map holds **five** entries — the four
+   index notes and `STATE_OF_THE_ANSWER.md` — while **thirteen** vault notes carry an anchor. The
+   nine seat notes, the ones an agent actually reads before working, are unguarded, which is
+   precisely where this session found three days of missing rules. (b) **Nothing runs it:**
+   `grep -rn check_currency .github/workflows/` returns nothing, where `check_models.py` and
+   `check_marks.py` are both wired to workflows. A guard that must be remembered is the class of
+   control the systems seat itself ruled fails silently. Escalated, not edited — `scripts/` and
+   `.github/` are outside this seat's paths.
+2. **Not one of the nine seat notes carried a single line from 2026-08-05, 08-06 or 08-07, and
+   the cost is a numbering collision in the council's own taxonomy.** Measured before writing:
+   `grep -c "2026-08-0[567]" agents/*.md` returned **0** for all nine seat notes except
+   `systems-designer.md`. In that window three full council sessions adopted fourteen rules. The
+   consequence is not hypothetical. `agents/integrity-officer.md` is the taxonomy's canonical
+   home and its heading read *"24 entries as of 2026-08-04"*; entries 25, 26 and 27 had been
+   adopted since. On 2026-08-07 the integrity officer opened that table to number a new entry —
+   doing exactly what its mandate directs — and, missing entry 27 (*scope-mixed screen*, adopted
+   in the 08-06 close-out and never written here), numbered *manufactured residual* as 27 too.
+   The chairman adopted it under that number (`2026-08-07.md:975`). **Two council rulings now
+   assign one number to two patterns, and the input to that error was a stale count in a file
+   this seat maintains.** The officer said so in the same note — "the vault table is stale again,
+   in the single file the mandate names" (`2026-08-07.md:713`). All fourteen rules are landed in
+   this change set; the collision is recorded under both numbers and escalated for the chairman
+   and the officer to settle, because renumbering would change what two rulings say.
+3. **A false commit citation in the registry, written by this seat.**
+   [[Agent Registry]]'s 2026-08-06 paragraph credited `373cce6` with correcting
+   `prompts/research_analyst.txt:18`. `git show --stat 373cce6 -- prompts/` is empty; the fix is
+   **`9efafb0`**, whose own message states it. This is taxonomy 17a, *mis-located
+   internal-authority citation*, committed by the seat that maintains the taxonomy's home.
+   Corrected in place.
+4. **Orphan check — four true orphans, and a category the vault has never recorded.** Fetching
+   every remote head (65 refs) and testing `git merge-base --is-ancestor <tip> origin/main`:
+   **4 branches are true orphans** — `chore/operator-marks-2026-07-27` (still 17 operator marks
+   short of `main`, now eleven days unmerged) and the three ruled-non-canonical
+   `claude/sweet-mccarthy-*` records. **17 further branches share no merge-base with `main` at
+   all.** `git merge-base origin/main origin/fix/notable-line-integrity` returns empty; `main`
+   has five root commits, the oldest 2026-07-22, while that branch roots at 2026-06-08. They are
+   pre-history-rewrite artefacts, and ancestry cannot say whether anything in them is lost.
+   Recorded rather than asserted either way. **Everything committed by the council in the audit
+   window did land:** `council/2026-08-06`, `-postscript`, `register-2026-08-06`,
+   `threads-2026-08-06-source-audit` and `council/2026-08-07` are all ancestors of `origin/main`,
+   which discharges the chairman's 2026-08-06 warning that A8 existed only off `main`.
+5. **The graph measurements this note's registry carried were stale in three of four numbers.**
+   Re-run: 117 notes, 231 edges, 0 orphans, **7** WARNs (not 4), **7** files awaiting a managed
+   block (not 11). The `Project Machinery` broken link is gone. And the reason the managed-block
+   run keeps not happening is structural rather than discretionary: `build_graph` has no path
+   filter, and four of the seven pending files sit outside this seat's self-merge authority, so
+   a full run can never land under it. Escalated.
+6. **`HANDOFF.md:164` still attributed the analyst's Opus 5 assignment to the operator directive
+   of 2026-07-29.** That directive (`4f8f981`) set `HEAVY_MODEL = "claude-fable-5"`; Opus 5 came
+   from the 2026-08-03 directive (`939deaa`). This is the exact defect this note's own standing
+   rule was written for — *a model rename is never a blanket replacement over the vault; live
+   statements change, dated records do not* — surviving in a live file for four days. Fixed here,
+   because `HANDOFF.md` is this seat's path. `COUNCIL.md:66` carries the same misattribution and
+   `:68` still locates the digest classifier "in `src/classify.py`" — the identical locution
+   escalated on 2026-08-04 and still open. Escalated again with its age, not edited.
+
+**Observation from the periodic-research half of the mandate.** No web research this session, and
+it is named as an internal finding rather than dressed as external practice. The finding is about
+the anchor convention this seat invented. It now has a program behind it, which is the outcome the
+convention was argued for — and the program would not have caught this session's central defect,
+because the notes it does not track are the notes agents read. The generalizable form: **a currency
+guard must cover the artifacts that are read, not the artifacts that are indexed.** The four index
+notes are the ones a human browses; the nine seat notes are the ones an agent loads before working.
+The guard was pointed at the first set. Second, and narrower: **a count in a heading is an input,
+not a label.** "24 entries as of 2026-08-04" reads like metadata and functioned as an argument to
+the next entry's number. Any note whose contents are numbered sequentially by a downstream reader
+is a load-bearing artifact, and its staleness has a cost that is not merely informational.
+
 **Audit slice, 2026-08-04 (fourth deployment).** The currency check the 2026-08-03 slice
 adopted, run for the first time as a query rather than a judgement:
 `git log 6a5cd2e..b76f6c3 -- .claude/agents/ agents/ src/models.py
@@ -305,6 +384,35 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+- **2026-08-07** — Sixth deployment, standing every-3-days session. Fourteen adopted rules from
+  the 2026-08-05, 08-06 and 08-07 councils landed in the seat notes that will read them —
+  taxonomy 25, 26 and 27 into [[integrity-officer]] (`3ff5498`, `aa48406`), six chairman rules
+  and the entity-blind relay qualification into [[council-chairman]], six relay method rules into
+  [[research-analyst]] (`7adfd68`). The 08-07 taxonomy **numbering collision** recorded under both
+  numbers and escalated rather than silently renumbered. Own drift fixed: a false commit citation
+  in [[Agent Registry]] (`373cce6` credited with `9efafb0`'s fix), the registry's stale graph
+  measurements (4 WARNs → 7, 11 pending blocks → 7), the closed `Project Machinery` broken link,
+  and `HANDOFF.md:164`'s attribution of Opus 5 to the 2026-07-29 directive that produced Fable 5.
+  Four escalations raised: the taxonomy collision, `check_currency.py` tracking 5 of 13 anchored
+  notes and wired into no workflow, `build_graph`'s path-filterless run versus this seat's merge
+  authority, and `COUNCIL.md`'s two stale statements now four days past their first escalation.
+  **Two entries missing from this log are added below, dated to when the work happened.**
+  *Audited against `7c08dcf`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `views/isds-workflow-3d/workflow.json`, `HANDOFF.md`, `COUNCIL.md`,
+  `analytics/daily-research/`, `analytics/vault-sessions/`, `scripts/check_currency.py`,
+  `.github/workflows/`, and every remote branch tip.*
+- **2026-08-06 — recorded retrospectively on 2026-08-07, because this log did not carry it.**
+  Vault corrections landed at `9971b52` ("docs(vault): the vault contradicted the repo on four
+  facts") and `3f6e19d` ("fix: the corrections of 2026-08-06 were themselves partial, in six
+  places"), touching [[Agent Registry]], [[Project Change Log]], [[systems-designer]] and
+  `moc/Council.md`. **This note received none of it**, so the seat that owns the vault's memory
+  was the one seat whose memory of two days' work was blank — the failure this note's 2026-08-04
+  observation names, in its own file. Written from `git log`, not from recall.
+- **2026-08-05 — recorded retrospectively on 2026-08-07.** Session record at
+  `analytics/vault-sessions/2026-08-05.md`: [[Claim Map]] rows C13 and C14 written as a continuity
+  gate before the council ruled on either; three stale claim-map rows corrected; [[Workflow
+  Threads]] C7 closed; the five-mechanism third sense of "Ring 3" escalated to Emory. Full
+  statement in [[Project Change Log]], 2026-08-05.
 - **2026-08-04 (council session — fifth deployment, same date)** — Standing seat in the
   council convened on external reviewer feedback. **The finding is against this seat.** The
   reviewer's ten contradictions were tested one by one against this note's own remit: three

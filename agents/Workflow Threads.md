@@ -268,6 +268,29 @@ re-verified open, and section F is new.
   the sweep, not only for the new one.
 - **Owner** — closed; no action.
 
+### B5 · `check_currency.py` covers 5 of 13 anchored notes, and nothing runs it
+
+- **State** — Opened 2026-08-07. `scripts/check_currency.py` (`fb1c04e`, 2026-08-06) mechanises
+  the snapshot-anchor convention: it parses `Audited against <sha>`, checks the sha exists and is
+  an ancestor of HEAD, and lists every commit that has touched the note's declared paths since.
+  Two gaps. **(a) Coverage.** Its `TRACKED` map at `scripts/check_currency.py:62-71` holds five
+  entries — the four index notes and `STATE_OF_THE_ANSWER.md` — while `grep -l "Audited against"
+  agents/*.md` returns **thirteen**. The nine seat notes, which are the files an agent loads
+  before working, are unguarded. **(b) Nothing runs it.** `grep -rn check_currency
+  .github/workflows/` returns nothing, where `scripts/check_models.py` and
+  `scripts/check_marks.py` are each wired to a workflow. A guard that has to be remembered is the
+  control class the systems seat itself ruled fails silently.
+- **Why it is worth doing** — the defect this session found is precisely in the uncovered set:
+  all nine seat notes were three days and fourteen adopted rules stale, and one of them caused a
+  taxonomy numbering collision (C11). A guard pointed at the indexed notes rather than the read
+  notes cannot see that.
+- **Recorded** — [[obsidian-archivist]], audit slice 2026-08-07, finding 1;
+  [[Project Change Log]] 2026-08-07.
+- **Next** — Add the nine seat notes to `TRACKED` with their declared paths, and wire the script
+  into a workflow beside `model-consistency.yml`.
+- **Owner** — [[systems-designer]] on Emory's go-ahead; `scripts/` and `.github/` are outside the
+  archivist's paths.
+
 ---
 
 ## C · Awaiting Emory
@@ -434,6 +457,42 @@ specifically unblocks it.
   labelling them.
 - **Owner** — closed; no action.
 
+### C11 · Taxonomy entry 27 was adopted twice, for two different patterns
+
+- **State** — Opened 2026-08-07. The chairman adopted **27 · scope-mixed screen** on 2026-08-06
+  (`analytics/daily-research/2026-08-06.md:940`, `aa48406`) and **27 · manufactured residual** on
+  2026-08-07 (`analytics/daily-research/2026-08-07.md:975`, `7adfd68`). Both rulings are on the
+  record; neither is wrong on its own terms.
+- **Cause, and it is the archivist's** — `agents/integrity-officer.md` is the taxonomy's
+  canonical home and the integrity officer's mandate directs it to read that table rather than
+  recite from memory. The table's heading read *"24 entries as of 2026-08-04"* on 2026-08-07,
+  with 25, 26 and 27 adopted and unwritten. The officer opened the table exactly as directed,
+  found the last number it could see, and took the next. It flagged the staleness in the same
+  note: "the vault table is stale again, in the single file the mandate names"
+  (`analytics/daily-research/2026-08-07.md:713`).
+- **What the archivist did and did not do** — all three missing entries plus the colliding fourth
+  are now in the table, each under the number its ruling gives it, with the collision named. The
+  archivist has **not** renumbered: doing so would change what two council rulings say.
+- **Next** — The chairman and the integrity officer settle which pattern keeps 27 and which
+  becomes 28, in a ruling that can be cited. Until then, cite entry 27 by name, never by number.
+- **Owner** — [[council-chairman]] with [[integrity-officer]]; Emory only if they disagree.
+
+### C12 · `build_graph` is whole-vault, and the archivist's merge authority is not
+
+- **State** — Opened 2026-08-07 as a structural fact behind a pending item four sessions old.
+  `build_graph --dry-run` at `7c08dcf` plans managed-block edits to seven files:
+  `BOUNDED_CHANGE_PROTOCOL.md`, `agents/Claim Map.md`, `prompts/carrying_span_rule.md`,
+  `lit-review/BIBLIOGRAPHY_TEMPLATE.md`, `analytics/daily-research/2026-08-06.md`,
+  `analytics/daily-research/2026-08-07.md`, `analytics/vault-sessions/2026-08-04-council.md`.
+  Three are inside the archivist's self-merge set (`analytics/`, `agents/`, `moc/`,
+  `HANDOFF.md`); four are outside it. The script has no path filter.
+- **Consequence** — a full `build_graph` run can never land under archivist authority, which is
+  why the pending list has been carried since 2026-08-04 and has been described as a scope
+  preference rather than what it is.
+- **Next** — Either Emory runs it and merges, or the script gains a `--paths` filter so the
+  archivist can discharge its own share. The second is [[systems-designer]] work.
+- **Owner** — **Emory**, to pick between the two.
+
 ---
 
 ### D2 · The literature layer has never entered the verification ledger
@@ -522,6 +581,24 @@ specifically unblocks it.
   is the cost of leaving them.
 - **Owner** — **Emory.**
 
+### F4 · Seventeen branches share no merge-base with `main`
+
+- **State** — Found 2026-08-07 by running the orphan check over all 65 remote heads instead of
+  the recent ones. Seventeen branches, dated 2026-06-22 through 2026-07-20, are neither ancestors
+  of `origin/main` **nor** connected to it: `git merge-base origin/main
+  origin/fix/notable-line-integrity` returns empty. `origin/main` has five root commits, the
+  oldest 2026-07-22; that branch roots at `0460699` on 2026-06-08. The histories are disjoint.
+- **What this does and does not mean** — ancestry cannot answer whether these branches hold work
+  that never reached `main`, because there is no common point to diff against. Their file-level
+  content may be entirely superseded, or may not be. **This thread asserts neither.** It exists
+  so that a future orphan check does not re-derive the disjointness and mistake it for
+  seventeen new orphans, and so the question is asked once by someone who can answer it.
+- **The four genuine orphans are unchanged** and are F1 (17 operator ledger marks) and F3 (the
+  three non-canonical cloud-run records).
+- **Next** — A decision on whether the pre-rewrite branches are archival or live. If archival,
+  delete or tag them so the orphan check stops returning twenty-one results where four are real.
+- **Owner** — **Emory.**
+
 ---
 
 ## D · Vault threads
@@ -541,10 +618,21 @@ specifically unblocks it.
   its claims about other notes did not. Corrected 2026-08-04, with the measured consequence
   recorded rather than asserted. The countermeasure adopted: a vault change is not made until
   it is on `main`, and the session claiming it verifies it there.
-- **Next** — Each session begins by re-running the currency query against what the previous
-  session claimed: `git log <anchor>..HEAD -- <paths>`, with the anchor at the foot of each
-  note's change log. All twelve notes now carry one; before 2026-08-04 exactly one did.
-- **Owner** — [[obsidian-archivist]].
+- **2026-08-07 update — the failure recurred, in the form the countermeasure does not reach.**
+  Nothing was orphaned this time: every council branch in the window landed, and the archivist's
+  own 08-04 and 08-05 work is on `main`. What failed is the *other* half. Between 2026-08-05 and
+  2026-08-07 the council adopted fourteen rules, and `grep -c "2026-08-0[567]" agents/*.md`
+  returned **0** for all nine seat notes bar `systems-designer.md`. The cost is C11: the integrity
+  officer read a stale count in the taxonomy's canonical home and gave two patterns the same
+  number. **"A vault change is not made until it is on `main`" does not bind a vault change that
+  was never written.** All fourteen rules landed 2026-08-07.
+- **Next** — Two, and the first is now mechanical rather than a habit. (1) B5 — extend
+  `scripts/check_currency.py` to the nine seat notes and wire it into CI, so "the seat notes are
+  current" stops being a claim a session makes about itself. (2) Until then, each session's first
+  act stays the currency query: `git log <anchor>..HEAD -- <paths>`, plus
+  `grep -c "2026-08-0[0-9]" agents/*.md` against the dates of every council session since the
+  last deployment.
+- **Owner** — [[obsidian-archivist]]; B5 is [[systems-designer]]'s.
 
 ---
 
@@ -573,6 +661,19 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-07** — Four threads added and one updated, all from the archivist's every-3-days
+  session. **B5** — `scripts/check_currency.py` tracks 5 of 13 anchored notes and is wired into no
+  workflow. **C11** — taxonomy entry 27 adopted twice for two patterns, caused by a stale count in
+  the vault file the integrity officer is directed to read. **C12** — `build_graph` is whole-vault
+  and four of its seven pending files sit outside the archivist's merge authority, which is why
+  that run has never happened. **F4** — seventeen remote branches share no merge-base with `main`
+  and cannot be assessed by ancestry. **D1** updated: nothing was orphaned in this window, and the
+  failure took the other form — fourteen adopted rules never written into the seat notes.
+  F1 and F3 re-verified open and unchanged; A8 confirmed on `main`, discharging the chairman's
+  2026-08-06 warning that it existed only off it.
+  *Audited against `7c08dcf`; paths: `analytics/`, `agents/`, `.claude/agents/`, `prompts/`,
+  `scripts/check_currency.py`, `scripts/build_graph.py`, `.github/workflows/`, and every remote
+  branch tip.*
 - **2026-08-04** — Refreshed against `b76f6c3`. B1 closed — the source-health guard ran live
   on 2026-08-03 and `state/source_health.json` exists — with two dated successor defects
   recorded from the systems seat's escalations and verified against `src/source_health.py`.

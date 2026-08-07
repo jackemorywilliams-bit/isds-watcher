@@ -92,6 +92,45 @@ Four more, adopted 2026-08-01 through 2026-08-04 and recorded here on 2026-08-04
   the countermeasure is the integrity officer's *selective-quotation supersession* entry
   (taxonomy 18) adopted the same day.
 
+Five more, adopted 2026-08-05 through 2026-08-07 and recorded here on 2026-08-07:
+
+- **Before Part 1 asserts anything about the repository, run the command and paste the
+  output** — adopted 2026-08-05. This is the *fourth iteration* of one lesson at this seat's
+  own desk, and the chairman said so when adopting it: quote-the-whole-line "did not fire
+  today, and the reason is instructive: I was not misquoting a line, I was characterising a
+  file I had never opened. The countermeasure was pitched one level too specific, so the same
+  failure walked around it." Three consecutive days carried a Part 1 premise about the
+  project's own record asserted without the grep (08-03 B3(a), 08-04 B1, 08-05 0805-B1).
+  Source: `analytics/daily-research/2026-08-05.md:1026`, next-steps item 6 at `:1012`;
+  committed in `3ff5498`.
+  **Its own qualification, added 2026-08-07:** a pasted command is not self-authenticating.
+  Part 1 of 2026-08-07 pasted a count that returns a different value at the very commit that
+  publishes it, because the command was run before the session's own relay fired. The paste
+  was true and unreproducible — the same defect class as citing a mutable reduction without a
+  pin. **A pasted command carries the moment it was run.** Source:
+  `analytics/daily-research/2026-08-07.md:1017`, ruling on `0807-O7`; `7adfd68`.
+- **Before acting on any instruction that names a file and a line, open the line** — adopted
+  2026-08-07 as the delegation template's sixth iteration, and **explicitly extended from the
+  chairman to every seat** in the same ruling. Source:
+  `analytics/daily-research/2026-08-07.md:968`, ruling on `0807-B1`; `7adfd68`.
+- **A grep establishes absence from the repository, never from the project** — adopted
+  2026-08-06 as a house rule, out of the integrity officer's scope-mixed-screen entry
+  (taxonomy 27). A working-tree screen under-counts what the project holds whenever the file
+  it reads is mutable. Source: `analytics/daily-research/2026-08-06.md:943`; `aa48406`.
+- **Elapsed intervals are truncated, never rounded** — ruled 2026-08-07 on `0807-B3`, after
+  one interval reached the record as two values and the ledger-bound one was the outlier.
+  Source: `analytics/daily-research/2026-08-07.md:984`; `7adfd68`.
+- **Intermediate council part-commits carry `[skip ci]`; the final commit does not** —
+  adopted 2026-08-05, and adopted *as a stopgap with its defect stated*: it fails silently
+  when forgotten, and the durable fix is Emory's to sign off. Source:
+  `analytics/daily-research/2026-08-05.md:981`, house rule 6; `3ff5498`.
+
+**Standing qualification on every relay null, adopted 2026-08-06.** The relay does not decode
+HTML entities — `&#197;land` survives in that day's own excerpt — so a sought string
+containing an entity produces a false negative. Every relay null from 2026-08-06 forward
+carries that qualification alongside the attribute-stripping one. Source:
+`analytics/daily-research/2026-08-06.md:955`, observation `0806-O6`; `aa48406`.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.
@@ -114,6 +153,22 @@ meetings and fold in what fits."
 
 ## Change log
 
+- **2026-08-07** — Five session-protocol rules and one standing relay qualification, adopted
+  2026-08-05 through 2026-08-07, recorded here for the first time: run-the-command-and-paste
+  with its 08-07 qualification (`3ff5498`, `7adfd68`), open-the-line extended to every seat
+  (`7adfd68`), grep-establishes-absence-from-the-repository-never-the-project (`aa48406`),
+  truncate-never-round for elapsed intervals (`7adfd68`), the `[skip ci]` part-commit stopgap
+  (`3ff5498`), and the entity-blind relay-null qualification (`aa48406`). Before this entry the
+  protocol section ended at 2026-08-04, so a chairman reading its own seat note carried none of
+  the six — including the rule its own accountability paragraph calls the fourth iteration of a
+  lesson it keeps re-learning. Model unchanged (`claude-opus-5`, `CHAIRMAN_MODEL`); the
+  definition changed once in the window, at `ae1f04b`, which rewrote the research question at
+  `.claude/agents/council-chairman.md:31-32` — already recorded in [[Agent Registry]] and
+  reflected in `STATE_OF_THE_ANSWER.md:5`, and re-verified identical in both today.
+  *Audited against `7c08dcf`; paths: `.claude/agents/council-chairman.md`,
+  `prompts/council_chairman.txt`, `prompts/council_reconvene.txt`,
+  `prompts/council_calibration.md`, `analytics/daily-research/`,
+  `views/isds-workflow-3d/workflow.json`.*
 - **2026-08-04** — Four session-protocol rules adopted 2026-08-01 through 2026-08-04 recorded
   here for the first time: the standing-conventions block (`4d5c562`), probe-the-instruments
   (`8756859`), an-objection-is-a-claim (`1109993`), and quote-the-whole-line (`51bb7a2`).

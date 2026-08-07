@@ -93,7 +93,8 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**24 entries as of 2026-08-04.** Each cites the record that adopted it.
+**27 entries as of 2026-08-07, and entry 27 is a collision — see the note under the table.**
+Each cites the record that adopted it.
 
 | # | Entry | Adopted | Source |
 |---|---|---|---|
@@ -122,6 +123,54 @@ taxonomy in a restated sentence.
 | 22 | Unverified control design | 2026-08-04 | `analytics/daily-research/2026-08-04.md:542`, `51bb7a2` |
 | 23 | Echoed-find / self-confirming query | 2026-08-04 | `analytics/daily-research/2026-08-04.md:543`, `51bb7a2` — named by the analyst, adopted under his formulation |
 | 24 | Amendment-stripping | 2026-08-04 | integrity-officer vetting note, 2026-08-04 implementation session (in-session; not a committed artifact) |
+| 25 | Mutable-reduction citation | 2026-08-05 | `analytics/daily-research/2026-08-05.md:616` (adopted at vetting), `:976` (chairman's close-out, house rule 1); `3ff5498` |
+| 26 | Tautological instrument check | 2026-08-06 | `analytics/daily-research/2026-08-06.md:607` (proposed), `:919` (adopted by the chairman); `aa48406` |
+| 27 | Scope-mixed screen | 2026-08-06 | `analytics/daily-research/2026-08-06.md:876`, `:940` ("Taxonomy 27, **SCOPE-MIXED SCREEN**, adopted"); `aa48406` |
+| 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
+
+**The collision, and why it is this note's fault.** Two distinct patterns were adopted as
+entry 27, one day apart, and neither seat did anything wrong given what it could read. On
+2026-08-06 the chairman adopted *scope-mixed screen* as 27 in his close-out and it was never
+written here. On 2026-08-07 this seat opened this table to check its numbering — exactly as
+the mandate directs — found the heading reading "24 entries as of 2026-08-04", knew of 25 and
+26 from the live agenda, and numbered the next free slot 27. The chairman then adopted
+*manufactured residual* under that number. **A stale count in this heading is not a cosmetic
+defect: it is the input to the next entry's number.** The seat said so itself in the same
+note — "the vault table is stale again, in the single file the mandate names"
+(`analytics/daily-research/2026-08-07.md:713`).
+
+Both rows stand as adopted, under the numbers the record actually gives them. **Renumbering
+is not the archivist's to do** — it changes what two council rulings say — and it is escalated
+in [[Workflow Threads]] C11 for the chairman and this seat to settle. Until they do, cite
+entry 27 by name, never by number.
+
+- **25 · Mutable-reduction citation** (instrument family) — a citation to a relay reduction
+  given as a path, when the file at that path can be overwritten in place. Countermeasure:
+  every citation to a reduction carries the commit sha that holds it. A reduction is evidence;
+  a path that can be rewritten is not a citation.
+- **26 · Tautological instrument check** — a verification step whose result is guaranteed by
+  the instrument's construction, reported as though it discriminated. Instance: `excerpt_of`
+  centres its window on the *first* match by construction, so offset arithmetic cannot
+  certify first-occurrence. Countermeasure: before reporting a check as evidence, ask what
+  result the instrument was capable of returning.
+- **27 · Scope-mixed screen** — a referent clause populated at a wider scope than the screen
+  it annotates, so the clause cannot be checked by re-running the command it cites.
+  Countermeasure: state each scope separately. Its standing corollary, adopted as a house
+  rule the same day: **a grep establishes absence from the repository, never from the
+  project** (`analytics/daily-research/2026-08-06.md:943`).
+- **27 ⚠ · Manufactured residual** — reporting a bucket as UNACCOUNTED under an anti-rounding
+  rule when the split in fact reconciles exactly, so a rule written to stop smoothing instead
+  plants a phantom irreducible remainder that later seats inherit and cannot dissolve.
+  Countermeasure: an UNACCOUNTED declaration must be accompanied by the per-file enumeration
+  that failed to close; if the enumeration is not shown, the residual is not established.
+
+**One further standing rule for this seat, adopted 2026-08-07 out of its own near-miss and
+recorded here because it is a screening discipline, not a fabrication pattern:** *a zero-hit
+screen is not absence until the synonym is tried.* The seat's `grep -c EGRESS_BLOCKED` over
+the daily records hit today's file only and would have carried a false objection; the synonym
+screen (`CONNECT tunnel`, `egress`) showed all six sessions. The chairman ruled it a standing
+rule of the council beside the grep-before-asserting rule
+(`analytics/daily-research/2026-08-07.md:1029`).
 
 Entries 7–10, in the officer's own 2026-07-31 wording (`15c8131`):
 
@@ -247,6 +296,21 @@ taxonomy of ten.
 
 ## Change log
 
+- **2026-08-07** — Three sessions of adopted entries reached this note: **25** (mutable-reduction
+  citation, 2026-08-05), **26** (tautological instrument check, 2026-08-06) and **27** (scope-mixed
+  screen, 2026-08-06), plus the 2026-08-07 *manufactured residual* recorded under the colliding
+  number it was actually given. The count in the heading was three days and three entries stale,
+  and the cost is measurable rather than hypothetical: this seat read the stale heading on
+  2026-08-07 while numbering a new entry and the collision is the result. Also recorded: the
+  zero-hit-screen-needs-a-synonym rule (`7adfd68`). The trade this note's own "what the rewrite
+  costs and what it buys" paragraph named — a list that drifts silently, exchanged for a read that
+  can be silently skipped — failed on the *third* term nobody priced: the read happened, and what
+  was read was out of date. Model, definition and prompt bindings unchanged (`git log
+  b76f6c3..HEAD -- .claude/agents/integrity-officer.md prompts/council_security.txt
+  prompts/council_calibration.md` returns only `bfc8ef6`, which predates this note's own anchor).
+  *Audited against `7c08dcf`; paths: `.claude/agents/integrity-officer.md`,
+  `prompts/council_security.txt`, `prompts/council_calibration.md`,
+  `analytics/daily-research/`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-08-04** — The canonical taxonomy table landed here, 23 entries, one citation per
   entry, replacing the "extended to ten" section that had been current since 2026-07-31.
   Thirteen entries adopted by this seat on 2026-08-01 (`4d5c562`), 2026-08-02 (`82692a2`),

@@ -1,8 +1,41 @@
 # Daily council meeting — binding format protocol (operator-mandated, 2026-07-27)
 
 The daily meeting record committed to `analytics/daily-research/<DATE>.md` is emailed
-to the operator verbatim. Two format rules are BINDING; both exist because a real
+to the operator verbatim. The rules below are BINDING; each exists because a real
 defect reached the operator.
+
+## Rule 0 — SIZE. Two convened seats, and one optimization item. (2026-08-07)
+
+The daily meeting is **the researcher, the chairman, and one optimization suggestion.**
+That is the whole meeting.
+
+**Convene exactly two agents:** `research-analyst` and `council-chairman`. Nothing else.
+
+- The **integrity challenge stays**, as a required voice inside the Part V dialogue per
+  Rule 2. It is not a separately convened seat and does not file its own return.
+- The **one optimization item** is written by the chairman in a single short paragraph.
+  Do **not** convene `systems-researcher` for it. Its daily note and
+  `analytics/systems-research/<DATE>.md` are not part of this meeting.
+- Do **not** convene `analytics-officer`. The digest sentence required by Rule 1 is two
+  lines the chairman copies from `meta.json`.
+
+**Banned from the daily record, all of it:** an instrument-probe table; a "Priority
+focus" agenda section; a "Budgets" section; a carrying-span ledger with per-term
+occurrence counts and parity arithmetic; a "Verify / be skeptical" section; a
+"Repository facts" section. Those belong to the weekly council and to the standing
+verification rules. They are not the daily meeting, and reproducing them turns a
+check-in into a document nobody reads.
+
+**Why.** On 2026-08-07 the daily record ran to five convened seats with a probe table, a
+pre-registered decision-rule adjudication, and a four-entry carrying-span ledger showing
+occurrence sums. The operator's correction, verbatim: *"the daily council meetings are
+meant to be the researcher + the chairman + one optimization suggestion or whatever."*
+A daily check-in that costs a weekly council is a daily check-in that stops being read,
+and an unread record verifies nothing.
+
+**Precedence note.** `COUNCIL.md` lists the systems researcher and the analytics officer
+as daily seats. For the **daily meeting** this file overrides that, per Precedence below.
+Their weekly and roundtable roles are unaffected.
 
 ## Rule 1 — digest numbers: fixed terminology, copied, never restated
 

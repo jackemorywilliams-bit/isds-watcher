@@ -1125,7 +1125,8 @@ def build() -> int:
         how_tpl = env.get_template("how_it_works.html.j2")
         write(
             DOCS / "how-it-works.html",
-            how_tpl.render(active="how", root="", workflow_svg=inline_svg),
+            how_tpl.render(active="how", root="", workflow_svg=inline_svg,
+                           **_digest_verification_counts()),
         )
         # Also publish the standalone artifact (the README embeds it from docs/).
         write(DOCS / "assets" / "workflow.svg", raw_svg)
@@ -1157,6 +1158,36 @@ def build() -> int:
 
     print("Done.")
     return 0
+
+
+def _digest_verification_counts() -> dict:
+    """How many published digest entries a human has actually checked.
+
+    Read from the append-only ledger at build time rather than asserted in the
+    template. The site said "no digest entry ... has been checked by a human"
+    for every day this project ran, and the response was always to reword it.
+    A disclosure that cannot change is a confession; one computed from the
+    ledger is a measurement, and it moves when the operator does the work.
+
+    Fails soft to zero: if the ledger or the walker cannot be read, the page
+    renders the original honest sentence rather than a number it cannot back.
+    """
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "verify_digest", str(REPO_ROOT / "scripts" / "verify_digest.py"))
+        vd = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(vd)
+        ok, rejected, total, _pending = vd.status_counts()
+        return {"digest_verified": ok, "digest_rejected": rejected,
+                "digest_total": total}
+    except Exception as exc:  # noqa: BLE001 - the site must build without the ledger
+        # Fail soft, but never silently: a swallowed NameError here would render
+        # a permanent zero and look exactly like an honest zero. That happened
+        # once, on the first wiring of this function.
+        print(f"build_site: digest verification counts unavailable ({exc!r}); "
+              "rendering the unverified disclosure", file=sys.stderr)
+        return {"digest_verified": 0, "digest_rejected": 0, "digest_total": 0}
 
 
 def main() -> int:

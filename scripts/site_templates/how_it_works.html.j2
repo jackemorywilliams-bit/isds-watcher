@@ -50,9 +50,23 @@
         unless an item is individually marked human-verified. One operator review
         cycle has been logged &mdash; 2026-07-18 &mdash; covering three claims from
         the research record: one verified against a primary source, one partially
-        verified, one not reviewed. No digest entry and no sentence on this website
+        verified, one not reviewed.
+        {% if digest_verified == 0 %}
+        No digest entry and no sentence on this website
         has been checked by a human against its original source; every archived
-        digest entry to date is machine-screened only. The operator has no access
+        digest entry to date is machine-screened only.
+        {% else %}
+        Of the {{ digest_total }} distinct entries published across the archived
+        digests, <strong>{{ digest_verified }} {{ 'has' if digest_verified == 1 else 'have' }}
+        been opened by the operator and checked against the original source</strong>{% if digest_rejected %},
+        and {{ digest_rejected }} {{ 'was' if digest_rejected == 1 else 'were' }} rejected as
+        unsupported by {{ 'its' if digest_rejected == 1 else 'their' }} source{% endif %};
+        the remaining {{ digest_total - digest_verified - digest_rejected }} are
+        machine-screened only. Verified entries carry a signed, append-only ledger
+        event; the count above is read from that ledger at build time, not asserted
+        here.
+        {% endif %}
+        The operator has no access
         to paywalled sources, so claims resting on them cannot be operator-verified
         at all.
       </p>

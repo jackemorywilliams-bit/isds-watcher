@@ -13,6 +13,83 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-07
+
+*Audited against `7c08dcf`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+`views/isds-workflow-3d/workflow.json`, `HANDOFF.md`, `COUNCIL.md`, `README.md`,
+`METHODOLOGY.md`, `scripts/site_templates/`, `docs/`, `scripts/check_currency.py`,
+`scripts/check_models.py`, `scripts/build_graph.py`, `.github/workflows/`,
+`analytics/daily-research/`, `analytics/vault-sessions/`, and every remote branch tip.*
+
+- **Fourteen adopted rules reached the seat notes three days late, and the lateness cost the
+  council a taxonomy number.** Between 2026-08-05 and 2026-08-07 the council adopted taxonomy
+  entries 25, 26 and 27, six chairman rules, six analyst relay rules and one standing relay
+  qualification. `grep -c "2026-08-0[567]" agents/*.md` returned **0** for all nine seat notes
+  bar `systems-designer.md`. The measurable consequence: `agents/integrity-officer.md` — the
+  taxonomy's canonical home, which the officer's own mandate directs it to read rather than
+  recite — carried the heading *"24 entries as of 2026-08-04"* while entry **27**
+  (*scope-mixed screen*) had been adopted on 2026-08-06 at `analytics/daily-research/2026-08-06.md:940`
+  and never written down. On 2026-08-07 the officer numbered *manufactured residual* as 27, and
+  the chairman adopted it under that number (`analytics/daily-research/2026-08-07.md:975`,
+  `7adfd68`). **Two council rulings assign one number to two patterns.** All fourteen rules are
+  now in their seat notes; both entry-27 rows stand as adopted, and the renumbering is escalated
+  in [[Workflow Threads]] C11 because it changes what a ruling says. Commits carrying the
+  adoptions: `3ff5498` (08-05), `aa48406` (08-06), `7adfd68` (08-07).
+- **A false commit citation in [[Agent Registry]], written by the archivist on 2026-08-06.** The
+  note credited `373cce6` with correcting `prompts/research_analyst.txt:18`; `git show --stat
+  373cce6 -- prompts/` is empty and the fix is **`9efafb0`**, whose commit message states it.
+  Taxonomy 17a, *mis-located internal-authority citation*, committed by the seat that maintains
+  the taxonomy's home. Corrected in place at the registry's 2026-08-06 paragraph.
+- **`HANDOFF.md:164` attributed the analyst's Opus 5 assignment to the operator directive of
+  2026-07-29.** That directive set `HEAVY_MODEL = "claude-fable-5"` (`4f8f981`, verified by
+  `git show 4f8f981:src/models.py`); Opus 5 came from the 2026-08-03 directive (`939deaa`). It is
+  the blanket-replacement defect this log recorded as a standing rule on 2026-08-03, alive in a
+  live file for four days. Fixed. **`COUNCIL.md:66` carries the identical misattribution**, and
+  `:68` still places the digest classifier "in `src/classify.py`" when `src/models.py:32` defines
+  `DIGEST_CLASSIFIER_MODEL` and `src/classify.py:58` imports it — the same locution escalated on
+  2026-08-04. Not this seat's file; escalated again, now four days open.
+- **The snapshot-anchor convention became a program, and it does not cover the notes agents
+  read.** `scripts/check_currency.py` (`fb1c04e`, 2026-08-06) parses `Audited against <sha>`,
+  verifies the sha is an ancestor of HEAD, and lists every commit touching the note's declared
+  paths since. Its `TRACKED` map holds **five** notes; **thirteen** vault notes carry an anchor.
+  The nine seat notes are unguarded — exactly where this session found three days of missing
+  rules. And `grep -rn check_currency .github/workflows/` returns **nothing**, where
+  `check_models.py` and `check_marks.py` are both wired. Running it today: 8 claims checked,
+  6 failed. [[Workflow Threads]] B5.
+- **Graph measurements re-run rather than restated.** `build_graph --dry-run` at `7c08dcf`:
+  117 notes, 231 edges, 0 orphans, **7 WARNs** and **7 files awaiting a managed block**, against
+  the 4 and 11 [[Agent Registry]] had carried since 2026-08-04. The `Project Machinery` broken
+  link is confirmed closed. Three new WARNs are seat notes crossing the four-link cap as their
+  adopted-rules sections grew, which retires the 2026-07-31 rule that any WARN naming a per-agent
+  note is drift.
+- **Why the managed-block run keeps not happening, stated structurally.** `build_graph` is
+  whole-vault with no path filter, and four of the seven pending files —
+  `BOUNDED_CHANGE_PROTOCOL.md`, `prompts/carrying_span_rule.md`,
+  `lit-review/BIBLIOGRAPHY_TEMPLATE.md` and any future `think-tank/` file — sit outside the
+  archivist's self-merge authority (`analytics/`, `agents/`, `moc/`, `HANDOFF.md`). The run can
+  never land under that authority. Carried across four sessions as a preference; recorded now as
+  a structural fact. [[Workflow Threads]] C12.
+- **Orphan check: four true orphans, and seventeen branches with no merge-base at all.** Across
+  65 remote heads, `git merge-base --is-ancestor <tip> origin/main` fails for four:
+  `chore/operator-marks-2026-07-27` (17 operator ledger marks, eleven days unmerged — F1
+  unchanged) and the three `claude/sweet-mccarthy-*` records ruled non-canonical on 2026-08-01
+  (F3 unchanged). **Seventeen further branches share no common ancestor with `main`** —
+  `git merge-base origin/main origin/fix/notable-line-integrity` is empty, `main` has five root
+  commits with the oldest at 2026-07-22, and those branches root at 2026-06-08. They predate a
+  history rewrite; ancestry cannot say whether they hold anything unrecovered, and this log does
+  not assert either way. New: [[Workflow Threads]] F4.
+- **Everything the council committed in the audit window landed.** `council/2026-08-06`,
+  `council/2026-08-06-postscript`, `council/register-2026-08-06`,
+  `council/threads-2026-08-06-source-audit` and `council/2026-08-07` are all ancestors of
+  `origin/main`, which discharges the chairman's 2026-08-06 warning that A8 existed only off
+  `main`. No new orphan was created between 2026-08-04 and today.
+- **Clean, and said plainly.** `scripts/check_models.py` exits 0 over all twelve model-bearing
+  cards; `node tools/isds-workflow-3d/validate.mjs` exits 0 at 30 cards / 9 chips / 44 edges with
+  zero `Jack` tokens; no live statement anywhere in the repository still names Fable 5 — every
+  remaining occurrence is dated history, which is what the standing rule requires; and the site
+  isolation check holds, with zero occurrences of any vault note name under `docs/` and the two
+  `obsidian-archivist` hits being the chart's `.claude/agents/` evidence tooltips, by design.
+
 ## 2026-08-06
 
 - **The memos credited Kim with an analysis she expressly declines, in eleven places.** `c02773a`,

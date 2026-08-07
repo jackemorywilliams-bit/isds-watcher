@@ -15,16 +15,32 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
-**Definitions re-audited 2026-08-06 against `373cce6`.** The 2026-08-04 statement below was
+**Definitions re-audited 2026-08-07 against `7c08dcf`.** `git log 373cce6..HEAD --
+.claude/agents/ prompts/` returns exactly one commit, `33861fd`, and it is **not** a contract
+change: it appends a live-verification-count block to `prompts/daily_council_protocol.md`. No
+`.claude/agents/*.md` file has changed since `ae1f04b` (2026-08-05, the chairman's research
+question). Every model, contract and prompt binding in the table below reads as committed, and
+`python3 scripts/check_models.py` exits 0 over all twelve model-bearing cards.
+
+**One correction to the 2026-08-06 audit immediately below, and it is this note's own.** That
+paragraph credits `373cce6` with correcting `prompts/research_analyst.txt:18`. It did not:
+`git show --stat 373cce6 -- prompts/` is empty, and the commit that repaired the sentence is
+**`9efafb0`** ("fix(counts): the duplicate cannot be assigned to either side of the ring
+split"), whose own message states the fix. This is the integrity officer's taxonomy 17a,
+*mis-located internal-authority citation*, committed by the seat that maintains the taxonomy's
+home. The paragraph is corrected in place rather than rewritten, so the correction stays
+legible.
+
+**Superseded, retained — audited 2026-08-06 against `373cce6`.** The 2026-08-04 statement below was
 true when written and false by the following day. `git log 939deaa..HEAD -- .claude/agents/
-prompts/` now returns five commits, and one **is** a contract change: `ae1f04b` rewrote the
+prompts/` then returned five commits, and one **is** a contract change: `ae1f04b` rewrote the
 research question at `.claude/agents/council-chairman.md:31-32` to "a live, litigated
 jurisdictional/admissibility doctrine, whether or not it disposes of the case," together with
 six prompt files. Under this note's own maintenance rule that change required the registry to
-move in the same change set, and it did not. `373cce6` additionally corrected
-`prompts/research_analyst.txt:18`, which `ae1f04b` had left asserting **both** Ring 3
-definitions in one ungrammatical sentence. Anchor for the next currency query:
-`git log 373cce6..HEAD -- .claude/agents/ prompts/`.
+move in the same change set, and it did not. ~~`373cce6` additionally corrected
+`prompts/research_analyst.txt:18`~~ — *false; it was `9efafb0`, see the correction above* —
+which `ae1f04b` had left asserting **both** Ring 3
+definitions in one ungrammatical sentence.
 
 **Superseded, retained so the correction stays legible — audited 2026-08-04.**
 `git log 6a5cd2e..b76f6c3 -- .claude/agents/ prompts/`
@@ -87,6 +103,11 @@ Card models below are re-read from `views/isds-workflow-3d/workflow.json` on 202
 | `systems-designer` | machine · **9** | `agents/systems-designer` | Claude Opus 5 ⚠ | [[systems-designer]] |
 | `site-experience` | machine · **10** | `agents/site-experience` | Claude Opus 5 ⚠ | [[site-experience]] |
 
+⚠ **reads "this row was once the defect", not "this row is wrong".** Both cards asserted a model
+no configuration file carried, from `21f0240` until `c25ea64` declared the two missing `model:`
+keys on 2026-08-04. The mark is kept because the history is what makes `scripts/check_models.py`
+legible; the rows themselves are correct and the guard exits 0 over them, re-verified 2026-08-07.
+
 Rows and card models re-read from the manifest 2026-08-04. The two builder seats moved down
 two rows in v2.2 to make room for the relay; the chairman, analyst, systems-researcher,
 editor, minutes, analytics-officer, obsidian-archivist and integrity-officer cards are at
@@ -129,27 +150,49 @@ This is an index note. Its outgoing links exceed the four-link cap for spokes in
 WARN naming this file. That is expected for a roster and is recorded here so the warning is
 never mistaken for drift.
 
-As of 2026-08-04 a `build_graph --dry-run` prints **four** WARNs. Two are expected: this note
-(11 direct links) and [[Workflow Threads]] (9) are index notes, and the cap exists to keep
-ordinary spokes from becoming hubs, which is not what these are. A third,
-`think-tank/multi-agent/_MOC.md` (8), predates the agent-memory area.
+**Re-measured 2026-08-07 at `7c08dcf`.** `python3 scripts/build_graph.py --dry-run` reports
+**117 notes, 231 edges, 0 orphans, 7 files awaiting a managed block, and 7 WARNs.** Three of
+the seven WARNs are new since 2026-08-04, and none of them is drift in the sense the
+2026-07-31 rule meant:
 
-**The fourth is drift, and it is new:** `agents/obsidian-archivist.md` now reports 6 direct
-links against the cap of 4. The rule this note stated on 2026-07-31 — *any WARN naming a
-per-agent note would be drift, and there are none* — no longer holds, and the exception is
-the archivist's own note. The same run reports one broken link from that file, to a
-note named `Project Machinery`, which does not exist in the vault. Both are recorded rather
-than fixed by inventing the missing note; the archivist's note is the next slice due for
-audit.
+| WARN | Direct links / cap 4 | Reading |
+|---|---|---|
+| `agents/Agent Registry.md` | 12 | Expected — index note, and the count rose from 11 as rows were added |
+| `agents/Workflow Threads.md` | 9 | Expected — index note |
+| `agents/Project Change Log.md` | 8 | **New** — index note; it was under the cap on 2026-08-04 and is not now |
+| `agents/obsidian-archivist.md` | 6 | Carried from 2026-08-04 |
+| `agents/integrity-officer.md` | 5 | **New** |
+| `agents/systems-designer.md` | 5 | **New** |
+| `think-tank/multi-agent/_MOC.md` | 8 | Predates the agent-memory area |
 
-**Eleven notes are awaiting their managed block.** `build_graph --dry-run` on 2026-08-04
-plans edits to `prompts/carrying_span_rule.md`, `lit-review/BIBLIOGRAPHY_TEMPLATE.md`, both
-`analytics/council-sessions/2026-08-03-*.md` records, `analytics/vault-sessions/README.md`,
-`analytics/vault-sessions/2026-08-04.md`, `analytics/fetch-requests/README.md`, and the four
-`analytics/daily-research/2026-08-0*.md` records — every one of them a file created since the
-last full run. The run was **not** performed this session: it is a whole-vault operation and
-would put nine files unrelated to the rule into a branch scoped to it. The list is recorded
-here so the pending run is not lost.
+The 2026-07-31 rule — *any WARN naming a per-agent note is drift* — is now false three times
+over and is **retired here** rather than left to be re-discovered. The honest replacement: the
+cap keeps ordinary spokes from becoming hubs, and three seat notes have crossed it because
+their adopted-rules sections grew. That is a cap-versus-purpose question for the graph
+machinery, not a defect in the notes, and it is escalated in [[Workflow Threads]] rather than
+answered by deleting links a reader needs.
+
+✔ **Closed 2026-08-07.** The broken link from `agents/obsidian-archivist.md` to a note named
+`Project Machinery` — recorded here on 2026-08-04 — no longer appears. The dry run's
+"links to nonexistent notes" list names only three files, all under `think-tank/`, and none
+under `agents/`. The dead link was removed in the 2026-08-04 change set; this note carried it
+as live for three days.
+
+**Seven notes are awaiting their managed block, not eleven.** The 2026-08-07 dry run plans
+edits to `BOUNDED_CHANGE_PROTOCOL.md`, `agents/Claim Map.md`, `prompts/carrying_span_rule.md`,
+`lit-review/BIBLIOGRAPHY_TEMPLATE.md`, `analytics/daily-research/2026-08-06.md`,
+`analytics/daily-research/2026-08-07.md`, and `analytics/vault-sessions/2026-08-04-council.md`.
+Four of the eleven files listed on 2026-08-04 have since received their block through other
+change sets; three of today's seven are new files.
+
+**Why the run keeps not happening, stated as a structural fact rather than a preference.**
+Four of the seven files — `BOUNDED_CHANGE_PROTOCOL.md`, `prompts/carrying_span_rule.md`,
+`lit-review/BIBLIOGRAPHY_TEMPLATE.md`, and (on any future run) anything under `think-tank/` —
+sit **outside the archivist's self-merge authority**, which covers `analytics/`, `agents/`,
+`moc/` and `HANDOFF.md`. `build_graph` is a whole-vault operation with no path filter, so the
+archivist can never land a full run under its own authority: every run needs Emory or a seat
+with wider paths. That is why the pending list has been carried forward across four sessions
+instead of being discharged, and it is escalated in [[Workflow Threads]] C12.
 
 The notes under `agents/` carry their managed `Map:` blocks as of 2026-07-31, when
 `build_graph` was first run over this area after the `807666f` scan-boundary fix. Those
@@ -189,14 +232,40 @@ statements live in the seat's own note.
 | [[integrity-officer]] | Taxonomy entries 18–23 + entry 17 extended to mis-located | 2026-08-04 | `51bb7a2` |
 | [[research-analyst]] | Four relay method rules (binding on every seat) | 2026-08-04 | `51bb7a2` |
 | [[council-chairman]] | Before a ruling asserts what a record line says, quote the whole line | 2026-08-04 | `51bb7a2` |
+| [[integrity-officer]] | Taxonomy entry 25 — mutable-reduction citation; every reduction citation carries a commit sha | 2026-08-05 | `3ff5498` / `2026-08-05.md:616`, `:976` |
+| [[research-analyst]] | `find` selects a position, not a proposition (house rule 2) | 2026-08-05 | `3ff5498` / `2026-08-05.md:977` |
+| [[research-analyst]] | A mis-anchored row is not a null; a PDF `find_matched: false` is a gate artefact; a false URL is a control | 2026-08-05 | `3ff5498` / `2026-08-05.md:978-980` |
+| [[council-chairman]] | Before Part 1 asserts anything about the repository, **run the command and paste the output** (fourth iteration) | 2026-08-05 | `3ff5498` / `2026-08-05.md:1012`, `:1026` |
+| [[council-chairman]] | Intermediate council part-commits carry `[skip ci]`; the final commit does not — adopted as a stopgap with its own defect stated | 2026-08-05 | `3ff5498` / `2026-08-05.md:981` |
+| [[integrity-officer]] | Taxonomy entry 26 — tautological instrument check | 2026-08-06 | `aa48406` / `2026-08-06.md:919` |
+| [[integrity-officer]] | Taxonomy entry 27 — scope-mixed screen | 2026-08-06 | `aa48406` / `2026-08-06.md:940` |
+| [[council-chairman]] | A grep establishes absence from the repository, never from the project | 2026-08-06 | `aa48406` / `2026-08-06.md:943` |
+| [[council-chairman]] | Every relay null carries the entity-blind qualification alongside attribute-stripping | 2026-08-06 | `aa48406` / `2026-08-06.md:955` |
+| [[council-chairman]] | Before acting on any instruction that names a file and a line, **open the line** — extended from the chairman to **every seat** | 2026-08-07 | `7adfd68` / `2026-08-07.md:968` |
+| [[integrity-officer]] | Taxonomy entry 27 ⚠ — manufactured residual; **same number as scope-mixed screen** | 2026-08-07 | `7adfd68` / `2026-08-07.md:975` |
+| [[council-chairman]] | Elapsed intervals are truncated, never rounded | 2026-08-07 | `7adfd68` / `2026-08-07.md:984` |
+| [[research-analyst]] | `find_matched` has three states, not two — the third is *asked nothing* | 2026-08-07 | `7adfd68` / `2026-08-07.md:1000` |
+| [[integrity-officer]] | A zero-hit screen is not absence until the synonym is tried | 2026-08-07 | `7adfd68` / `2026-08-07.md:1029` |
 
-The taxonomy's canonical statement is the 24-entry table in [[integrity-officer]], one
+The taxonomy's canonical statement is the table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
 thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed to read the
 table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-07** — Fourteen adopted rules from the 2026-08-05, 08-06 and 08-07 sessions added to
+  the table above, and each landed in the seat note that will actually be read. **The registry's
+  own 2026-08-06 paragraph was found to carry a false commit citation** — `373cce6` credited with
+  a `prompts/research_analyst.txt` fix that was `9efafb0`'s — and is corrected in place.
+  Graph measurements re-run rather than restated: 117 notes / 231 edges / 0 orphans / 7 WARNs /
+  7 pending managed blocks, against the 4 WARNs and 11 pending blocks this note carried since
+  2026-08-04. The `Project Machinery` broken link is confirmed closed. The 2026-07-31 rule that
+  any WARN naming a per-agent note is drift is **retired**, being false three times over.
+  `scripts/check_models.py` exits 0; the ⚠ marks on the two builder-seat card rows are retained
+  as historical markers with the closure they point to stated at the row.
+  *Audited against `7c08dcf`; paths: `.claude/agents/`, `prompts/`, `src/models.py`,
+  `views/isds-workflow-3d/workflow.json`, `agents/`.*
 - **2026-08-04** — Registry brought current with the flowchart and with eleven method rules
   adopted 2026-08-01 through 2026-08-04. Corrections: the chart is **30 nodes / 44 edges**,
   not the 28/40 recorded here since 2026-07-31 (`0e7d0f7`, `16ab9d9`); the two builder cards

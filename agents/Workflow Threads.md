@@ -286,8 +286,22 @@ re-verified open, and section F is new.
   notes cannot see that.
 - **Recorded** — [[obsidian-archivist]], audit slice 2026-08-07, finding 1;
   [[Project Change Log]] 2026-08-07.
-- **Next** — Add the nine seat notes to `TRACKED` with their declared paths, and wire the script
-  into a workflow beside `model-consistency.yml`.
+- **(c) A third gap, found by running the guard against `main` after the audit landed.** An audit
+  session writes `Audited against <sha>` where `<sha>` is the commit it audited — necessarily the
+  commit *before* its own. Landing that change set then touches the declared paths, so the guard
+  immediately reports the two notes the session just refreshed as STALE by exactly one commit:
+  their own. Verified at `3d474e0`, where `agents/Project Change Log.md` and
+  `agents/Workflow Threads.md` each report *"1 commit(s) touched its declared paths since
+  `7c08dcf`"*, and that commit is `8a40a4a`, the audit itself. **The anchors were deliberately not
+  chased**, because bumping them would produce the same result on the next commit — the loop is the
+  finding, not a thing to edit around. Consequence for a reader: a STALE line naming only the
+  session's own landing commit is an artifact, not drift. A guard that cannot distinguish the two
+  will be learned to be ignored, which is how a control dies.
+- **Next** — Three things, (a) and (b) first. (a) Add the nine seat notes to `TRACKED` with their
+  declared paths. (b) Wire the script into a workflow beside `model-consistency.yml`. (c) Decide
+  how a note's own landing commit is treated — the narrow options are to exclude commits that
+  touch *only* the tracked note itself, or to report self-reference as a distinct third status
+  rather than as STALE.
 - **Owner** — [[systems-designer]] on Emory's go-ahead; `scripts/` and `.github/` are outside the
   archivist's paths.
 

@@ -1,0 +1,66 @@
+{
+  "request": "2026-08-07-daily.json",
+  "note": "Daily council 2026-08-07. Named to sort last in this directory (newest_request() is lexicographic, not mtime \u2014 2026-08-05 defect, propose-only, still unfixed at session open) and checked against analytics/fetch-results/ for a name collision before firing (0 matches for 2026-08-07). THREE QUESTIONS. (1+2) A/81/17 watch, day 7 of the publication window, at the Commission Sessions posting location, in the standard same-page positive-control form: the target symbol plus a control string known present on that page (A/80/17). The undocs.org / docs.un.org symbol route stays RETIRED (2026-08-04) as carrying no existence information at the relay's reduction level. Relay nulls are about RENDERED TEXT: fetch_relay.py strips attributes, so a symbol appearing only inside an href is invisible to this channel; and the find is entity-blind, so a symbol rendered with an HTML entity or a non-ASCII solidus would also read as absent. Per 0806-B3 this is a SAMPLE POINT at one timestamp, never a continuous interval. (3) THE CONVERSE FALSE-ID CONTROL, pre-registered here before any result exists \u2014 2026-08-06 Next Step 5, the only outstanding residual on the B7 discharge. Yesterday's control put a false SLUG on the true numeric id 978 and got back the head 'China - Switzerland BIT (2009)', which discharged B7 to database-record level on the reasoning that the title is keyed to the id. That inference has one unexcluded competitor: that the page head is generated from whatever is in the URL and yesterday's row simply had the true id supplying it. This row runs the converse \u2014 the TRUE slug on a false numeric id 999999 \u2014 and the two rows together separate the two accounts. DECISION RULE, FIXED IN ADVANCE \u2014 (a) 404, or a final_url differing from the requested URL: the id is load-bearing, the slug is not, yesterday's discharge SURVIVES and the identification residual CLOSES; (b) HTTP 200 and the excerpt head reads 'China - Switzerland BIT (2009)': the head tracks the slug irrespective of the id, yesterday's discharge was reasoning from an ambiguous datum, and B7 REOPENS at URL-slug level \u2014 the negative branch, and the one that costs us something; (c) HTTP 200 with any other head, or an ambiguous/empty excerpt: inconclusive, residual stays open, no discharge is claimed either way. This row is a control on our own method, not a discovery request; it is authorised as optional-and-unscheduled by yesterday's close-out and is taken today because it is one row and it is the last thing standing between B7 and a clean close. NOT FIRED TODAY: Huawei ARB/22/2 (ICSID) \u2014 adopted 2026-08-06 as a STANDING WEEKLY row with the next firing dated 2026-08-13, and a schedule the council set six days ago is not re-opened because the rows are cheap.",
+  "fetched_at": "2026-08-07T11:23:03.640458+00:00",
+  "environment": "github-actions-runner (run 31173828179)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 2,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/commission",
+      "content_type": "text/html",
+      "bytes": 832338,
+      "sha256": "ca87a113c024605cac3538a1db73ec4559eaa0d8b447a2c1759488d5e1e21706",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/80/17",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/commission",
+      "content_type": "text/html",
+      "bytes": 832338,
+      "sha256": "ca87a113c024605cac3538a1db73ec4559eaa0d8b447a2c1759488d5e1e21706",
+      "excerpt": "ssian Federation (submitted on 10 July 2026) (English only) 58 th session, 7 - 23 July 2025, Vienna A/80/17 - Report of the United Nations Commission on International Trade Law Fifty-eighth session A/CN.9/1192 - Provisional agenda, annotations thereto and scheduling of meetings of the fifty-eighth session A/CN.9/1193 - Report of Working Group II (Dispute Settlement) on the work of its eightieth se",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/999999/china---switzerland-bit-2009-",
+      "find": "",
+      "outcome": "refused",
+      "status": "500",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    }
+  ]
+}

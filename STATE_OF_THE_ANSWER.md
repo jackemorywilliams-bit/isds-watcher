@@ -7,7 +7,12 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the police-powers / public-welfare carve-out, a limb she names and expressly declines to analyse. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-09
+**Last updated:** 2026-08-10 — reviewed, nothing moved. The 2026-08-10 daily council was a null day on
+all three rings: no item touched IP as a covered investment, a regulatory or judicial measure as the
+challenged conduct, or a live jurisdictional/admissibility doctrine, and the digest of record has not
+moved since 2026-08-03. That session's one insight is instrument and method and is logged to
+`analytics/insights.jsonl` under `T-instrument-method-derivation`; **nothing in it bears on any
+proposition below.** A date bump with no content change means the record was read and no ring advanced.
 
 > **Caution — unverified research leads.** Every entry below is a machine-assisted research lead
 > carrying verification debt, not a settled finding. Nothing here is validated until a human review

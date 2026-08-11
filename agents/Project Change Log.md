@@ -13,6 +13,17 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-11
+
+*Audited against `bffe79a`.*
+
+- **Integration to `main`.** The 2026-08-08/09 repair and audit work, until now uncommitted
+  on `fix/restore-council-label`, was merged with the 2026-08-10 council record and pushed
+  as reviewable commits: runtime/tests (`667772c`), documentation/vault (`bffe79a`), the
+  site rebuild (`60f2a5b`), the check_currency maintenance-exclusion fix (`9a6f3e8`), and a
+  currency-anchor pass across the five tracked notes. Desktop packets, seeds, detector
+  receipts and the private reply record were excluded by design.
+
 ## 2026-08-09
 
 *Audited against `2686422`* plus the uncommitted working tree on branch

@@ -1075,6 +1075,12 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-11** — Integration to `main`: audited against `bffe79a`, the commit that carries
+  the formerly uncommitted 2026-08-08/09 work the entry below describes. The drift counted
+  since `2686422` is the council's own 2026-08-08..10 session and ledger commits plus the
+  integration's three reviewable commits; no thread moved outside them. F1's seventeen
+  verification marks reach `main` with this merge; the thread closes on the operator's
+  confirmation, not on the merge itself.
 - **2026-08-09** — Refreshed against `2686422` plus the uncommitted working trees of the
   2026-08-08 repair session and the 2026-08-09 audit-response session, on
   `fix/restore-council-label`. **Two threads closed, one rewritten, two opened, three

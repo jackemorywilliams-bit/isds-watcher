@@ -15,6 +15,13 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
+**Definitions audited against `667772c` — 2026-08-11, at integration.** The only commit
+touching this note's declared paths since `2686422` is the integration's own `667772c`,
+which adds `prompts/classifier_v2.txt` and `prompts/triage.txt` — the prompt files for the
+semantic and triage lanes that ship off by default (`V2_SHADOW_CALLS`, `TRIAGE_ENABLED`).
+No seat's model, contract or prompt binding changed. Anchor for the next currency query:
+`git log 667772c..HEAD -- .claude/agents/ prompts/ src/models.py`.
+
 **Definitions re-audited 2026-08-08 against `2686422` plus the uncommitted working tree of the
 master-prompt repair session, branch `fix/restore-council-label`.** `git log 373cce6..HEAD --
 .claude/agents/ prompts/` returns **no commit**, and `git status --short` shows **no modified

@@ -76,6 +76,66 @@ stands — no mandate is invented here.
 
 ## Change log
 
+- **2026-08-09** — **One queued item landed, one new hazard aimed straight at this seat's
+  surface.** Uncommitted, `fix/restore-council-label`. Model, definition and prompt bindings
+  unchanged.
+  - **The homepage near-miss copy is repaired.** `scripts/site_templates/index.html.j2`, flow
+    step 5, now reads "While the classifier is under validation the near-miss fill is suspended:
+    items below the threshold are not published at all, and a cycle with none at or above it
+    sends a status note reporting the screening count — a note about the instrument's output,
+    not a finding that nothing happened." That closes this seat's row in [[Claim Map]] **C15**.
+  - **And it was stale again within the same day.** The step still opens "Those that meet the
+    threshold make the digest." As of 2026-08-09 `VALIDATION_STATUS_ONLY` holds items **at or
+    above** the threshold too, so **the public homepage now overstates what reaches the
+    professor** — the opposite direction from the error just fixed. New row: [[Claim Map]]
+    **C16**, and this seat owns the template half. **Fix it in the same change set as the
+    `METHODOLOGY.md` and `README.md` lines**, or the contradiction simply moves.
+  - **⚠ `scripts/check_site_sync.py` is not safe to run, and this seat's surface is what it
+    damages.** It **rebuilds `docs/` in place** (`:25` invokes `build_site.py` with no temporary
+    directory; `:31` then diffs the working tree), so the command the vault's own maintenance
+    rule tells every seat to run as proof is in fact a **write**. On 2026-08-09 it reverted
+    `docs/` to HEAD. `docs/` will be rebuilt from source in the integrator's final battery.
+    Tracked as [[Workflow Threads]] **B9**; the fix is [[systems-designer]]'s (`scripts/` is
+    that seat's), but the consequence lands here, which is why it is recorded in this note too.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `scripts/site_templates/`, `scripts/build_site.py`, `scripts/check_site_sync.py`, `docs/`,
+  `src/render.py`, `templates/`, `README.md`.*
+- **2026-08-08** — **Nothing landed on this seat's surfaces from the repair session, and four
+  things are now queued on it.** Recorded so the queue is not lost between sessions. Model,
+  definition and prompt bindings unchanged (`git log 373cce6..HEAD -- .claude/agents/` is
+  empty).
+  1. **The `digest.html.j2:120` site overclaim — routed here open, and CLOSED while this
+     record was being written.** The repair session logged it as outstanding. Re-read at the
+     end of the archivist pass, `scripts/site_templates/digest.html.j2:120` no longer says
+     "No thematically relevant developments this cycle." It now says: "**No candidate reached
+     the match threshold this cycle. This reports the instrument's output on the text
+     available to it, and does not establish that no relevant development exists.**" That is
+     the same correction `src/render.py:59` made on the email side — one claim, two surfaces,
+     now agreeing. **Uncommitted, on `fix/restore-council-label`.** Recorded as closed because
+     the file says so, not because a session report did; the handoff note that still lists it
+     open is the stale copy.
+  2. **The `docs/` rebuild is now load-bearing for four separate claims.** Until this session
+     is committed and `scripts/build_site.py` re-run, the published site still shows: the
+     Apotex **"Holdings"** caption on `docs/backtest.html` (source fixed 2026-08-06 at
+     `373cce6`, two days stale on the page); the **uncorrected Gazprom annotation**; the
+     `METHODOLOGY.md` §VI.B correction and §IX addition, absent; and the eight archive
+     corrections. `scripts/check_site_sync.py` correctly reports the gap — it is expected,
+     not drift, and it becomes drift the moment the session is committed without a rebuild.
+  3. **[[Claim Map]] C15 puts one of this seat's strings in a coordinated fix.**
+     `scripts/site_templates/index.html.j2:186` tells the reader that "Near-misses at or above
+     the relevance floor of 25 are shown separately as watch-list leads" — **false by default
+     as of 2026-08-08**, because the fill is suspended. The second half of the same sentence
+     ("a genuinely quiet week reports zero items and says so") is now *more* true than before.
+     **Do not fix this string alone**: it is one of eight statements of the same rule, listed
+     at C15, and a lone template edit relocates the contradiction rather than closing it.
+  4. **What this seat's earlier work now carries.** Two of the divergences this note's
+     predecessors escalated are closed on the published surfaces and the closure is verified
+     here: the homepage's **"never empty"** promise is gone from the template tree, and the
+     digest index's **"11 weekly runs … fell from 78 to 13 as deduplication matured"** now
+     reads "11 **archived** runs … **no steady trend**" ([[Claim Map]] C5, C8).
+  *Recorded against the working tree of `fix/restore-council-label` (uncommitted); paths:
+  `templates/digest.html.j2`, `scripts/site_templates/`, `docs/`, `scripts/build_site.py`,
+  `scripts/check_site_sync.py`.*
 - **2026-08-04** — Audited, no change to model, definition or prompt bindings; the currency query `git log 6a5cd2e..b76f6c3` returns no commit touching this seat's definition or prompts. Snapshot anchor added, applying the convention adopted 2026-08-03 to this note for the first time.
   *Audited against `b76f6c3`; paths: `.claude/agents/site-experience.md`, `scripts/build_site.py`, `scripts/site_templates/`, `docs/`, `README.md`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-07-31** — Two drifts fixed. (1) The "no council box" statement was stale: this seat

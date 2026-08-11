@@ -18,3 +18,13 @@ Telefónica challenged Colombia's reversion of telecommunications assets under i
 
 ---
 Source: Italaw. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+The same source page (italaw.com/cases/12153, same source date) was published
+again in the following day's digest with a different verdict: this entry scores
+32 with the judicial/regulatory-measure ring; the 2026-06-10 entry scores 28
+with no ring. Same input, contradictory outputs, from the language-model path.
+Counted as distinct developments the archive therefore holds thirteen items,
+not fourteen, and this pair is the instrument's own published evidence on
+classification stability. Which verdict is correct has not been adjudicated;
+neither should be relied on until it is.

@@ -75,6 +75,9 @@ def test_real_repo_block_is_complete():
         block = research_brief._living_memory_block()
     finally:
         os.chdir(cwd)
-    assert "MISSING" not in block
+    # Match the assembler's exact sentinel ("\nMISSING — ..."), not the bare
+    # word: the council's 2026-08-10 insight legitimately contains "MISSING
+    # FILTER" in prose, which made this assertion fail on an intact checkout.
+    assert "\nMISSING — " not in block
     assert "STATE_OF_THE_ANSWER.md" in block
     assert "insights.jsonl" in block

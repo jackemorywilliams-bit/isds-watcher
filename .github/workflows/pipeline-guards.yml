@@ -1,0 +1,180 @@
+name: pipeline-guards
+
+# The guards that protect the RUN RECORD — what the pipeline writes about itself
+# and about the items it retired — plus the two new closed-grammar guards.
+#
+# Every one of these existed as a script and was wired into nothing. A guard that
+# only runs when someone remembers to run it is a guard that reports clean on the
+# day it matters, and this repo has the receipts: italaw 403'd for four straight
+# weeks while every digest called it healthy, because the check that would have
+# noticed was a thing a person did.
+#
+#   check_telemetry_privacy.py  analytics/candidate_telemetry.jsonl must never
+#                               accumulate candidate TEXT. It grows every run and
+#                               nobody reads it, which is exactly the file that
+#                               acquires a "title" field one debugging session.
+#   check_seen_integrity.py     a seen entry is the decision never to look at an
+#                               item again; it must say how the item ended, and
+#                               every abandonment must be ledgered.
+#   check_headline_lane.py      a constrained-lane record must be byte-identical
+#                               to what its own slots render, and must reach no
+#                               conclusion about an item nobody read.
+#   check_lock.py               the locked validation set must still be what it
+#                               was when its hash was written down. Passes while
+#                               the set is deliberately empty.
+#
+# This follows the shape check_models.py, check_claims.py and check_marks.py
+# already established: run the checker's OWN tests first — a broken checker
+# reports clean — and then the checker.
+#
+# PATH FILTERS cover every file that can change the guarded schema or behaviour,
+# not merely the guards themselves: the modules that WRITE the guarded records
+# (src/telemetry.py, src/state.py, src/main.py, src/rings.py, src/headline_lane.py),
+# the guards, and their tests. src/classify_v2.py and src/triage.py are included
+# because both now write telemetry sections of their own.
+#
+# scripts/telemetry_query.py is deliberately NOT here. It is a reporting tool, not
+# a guard: it has no failure mode that should stop a merge, and putting it in a
+# gate would make a query bug look like an integrity violation.
+on:
+  pull_request:
+    paths:
+      - "src/telemetry.py"
+      - "src/state.py"
+      - "src/main.py"
+      - "src/rings.py"
+      - "src/classify.py"
+      - "src/classify_v2.py"
+      - "src/config.py"
+      - "src/triage.py"
+      - "src/headline_lane.py"
+      - "scripts/check_currency.py"
+      - "tests/test_check_currency.py"
+      - "agents/**"
+      - "HANDOFF.md"
+      - "STATE_OF_THE_ANSWER.md"
+      - "scripts/check_telemetry_privacy.py"
+      - "scripts/check_seen_integrity.py"
+      - "scripts/check_headline_lane.py"
+      - "scripts/check_lock.py"
+      - "tests/test_telemetry.py"
+      - "tests/test_pipeline.py"
+      - "tests/test_rings.py"
+      - "tests/test_classify_v2.py"
+      - "tests/test_triage.py"
+      - "tests/test_headline_lane.py"
+      - "tests/test_check_lock.py"
+      - ".claude/agents/**"
+      - "prompts/**"
+      - "src/models.py"
+      - "analytics/**"
+      - "state/**"
+      - "METHODOLOGY.md"
+      - "lit-review/**"
+      - "scripts/site_templates/**"
+      - ".github/workflows/pipeline-guards.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/telemetry.py"
+      - "src/state.py"
+      - "src/main.py"
+      - "src/rings.py"
+      - "src/classify.py"
+      - "src/classify_v2.py"
+      - "src/config.py"
+      - "src/triage.py"
+      - "src/headline_lane.py"
+      - "scripts/check_currency.py"
+      - "tests/test_check_currency.py"
+      - "agents/**"
+      - "HANDOFF.md"
+      - "STATE_OF_THE_ANSWER.md"
+      - "scripts/check_telemetry_privacy.py"
+      - "scripts/check_seen_integrity.py"
+      - "scripts/check_headline_lane.py"
+      - "scripts/check_lock.py"
+      - ".claude/agents/**"
+      - "prompts/**"
+      - "src/models.py"
+      - "analytics/**"
+      - "state/**"
+      - "METHODOLOGY.md"
+      - "lit-review/**"
+      - "scripts/site_templates/**"
+  workflow_dispatch:
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      # The guards themselves are stdlib-only, but the planted-ledger tests in
+      # tests/test_pipeline.py import src.main and with it the app's real
+      # dependency chain (jinja2 via render, feedparser, requests) — pytest
+      # collection alone needs them, so the job installs the requirements.
+      - run: pip install -r requirements.txt pytest pyyaml
+
+      # The checkers must themselves be checked — a broken checker reports clean.
+      # Each of these files contains PLANTED violations: a text field smuggled
+      # into telemetry, a seen entry with a non-terminal outcome, an abandonment
+      # with no ledger line, a constrained-lane record edited away from its
+      # slots, and a locked items.json changed after its hash was recorded.
+      - name: The telemetry guard's own tests (planted text fields)
+        run: python -m pytest tests/test_telemetry.py -q
+
+      - name: The seen-state guard's own tests (planted missing ledger line)
+        run: python -m pytest tests/test_pipeline.py -q -k "abandon or seen_integrity"
+
+      - name: The constrained-lane guard's own tests (planted conclusions)
+        run: python -m pytest tests/test_headline_lane.py -q
+
+      - name: The lock guard's own tests (planted tamper)
+        run: python -m pytest tests/test_check_lock.py -q
+
+      # The ring contract and the two model paths that feed it. The enumeration
+      # in test_rings.py is the closed statement that no state lets a MATCH out
+      # the side; test_classify_v2.py is the closed statement that a lexical
+      # derivation is never reported under a model's identity.
+      - name: The ring contract and the V2/triage paths
+        run: python -m pytest tests/test_rings.py tests/test_classify_v2.py tests/test_triage.py -q
+
+      # Now the guards themselves, against the working tree.
+      - name: Telemetry holds no candidate text
+        run: python scripts/check_telemetry_privacy.py
+
+      - name: Every seen entry accounts for its ending
+        run: python scripts/check_seen_integrity.py
+
+      - name: Every constrained-lane entry is exactly its own slots
+        run: python scripts/check_headline_lane.py
+
+      - name: Nothing locked has changed since it was locked
+        run: python scripts/check_lock.py
+
+  # Separate job, because this one needs history. check_currency.py resolves
+  # commit SHAs, walks merge-bases and asks whether a note's cited commit is an
+  # ancestor of HEAD; on the default shallow checkout every one of those
+  # questions gets the wrong answer, and the guard would fail for a reason that
+  # has nothing to do with the repository's contents.
+  currency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pytest
+
+      - name: The checker's own tests
+        run: python -m pytest tests/test_check_currency.py -q
+
+      - name: A note may not claim to be current when git says it is not
+        run: python scripts/check_currency.py

@@ -97,3 +97,38 @@ def test_check_returns_a_nonzero_claim_count():
     the exact failure mode check_sources.py shipped with."""
     checked, _failed, _msgs = cc.check()
     assert checked > 0, "the guard checked zero claims; it would pass vacuously"
+
+
+# --- the maintenance exclusion, and the deadlock it resolves ----------------
+
+def test_a_note_only_commit_is_maintenance():
+    """Anchors live inside the notes they date, so counted naively the anchor
+    would have to name its own commit and no committed tree could ever pass.
+    A commit changing nothing but tracked notes cannot alter audited substance."""
+    sha = subprocess.run(
+        ["git", "-C", REPO, "log", "--format=%h",
+         "--diff-filter=M", "--", *cc.TRACKED],
+        capture_output=True, text=True).stdout.split()
+    note_only = None
+    for s in sha:
+        changed = subprocess.run(
+            ["git", "-C", REPO, "show", "--name-only", "--format=", s],
+            capture_output=True, text=True).stdout.split("\n")
+        files = {l.strip() for l in changed if l.strip()}
+        if files and files <= set(cc.TRACKED):
+            note_only = s
+            break
+    if note_only is None:
+        return  # history holds no such commit yet; nothing to assert against
+    assert cc._is_maintenance(note_only)
+
+
+def test_a_substantive_commit_is_not_maintenance():
+    """A commit touching any file outside the tracked notes must still count."""
+    head = _head()
+    changed = subprocess.run(
+        ["git", "-C", REPO, "show", "--name-only", "--format=", head],
+        capture_output=True, text=True).stdout.split("\n")
+    files = {l.strip() for l in changed if l.strip()}
+    if files and not (files <= set(cc.TRACKED)):
+        assert not cc._is_maintenance(head)

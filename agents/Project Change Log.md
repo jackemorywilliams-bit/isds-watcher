@@ -13,6 +13,273 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-11
+
+*Audited against `bffe79a`.*
+
+- **Integration to `main`.** The 2026-08-08/09 repair and audit work, until now uncommitted
+  on `fix/restore-council-label`, was merged with the 2026-08-10 council record and pushed
+  as reviewable commits: runtime/tests (`667772c`), documentation/vault (`bffe79a`), the
+  site rebuild (`60f2a5b`), the check_currency maintenance-exclusion fix (`9a6f3e8`), and a
+  currency-anchor pass across the five tracked notes. Desktop packets, seeds, detector
+  receipts and the private reply record were excluded by design.
+
+## 2026-08-09
+
+*Audited against `2686422`* plus the uncommitted working tree on branch
+`fix/restore-council-label`; paths: `src/`, `tests/`, `scripts/`, `prompts/`,
+`.github/workflows/`, `analytics/`, `seeds/`, `working/`, `agents/`, `moc/`,
+`views/isds-workflow-3d/workflow.json`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md`,
+`PLAN.md`, `STATE_OF_THE_ANSWER.md`, `fingerprint.yaml`.
+
+**Everything in this section is UNCOMMITTED, on branch `fix/restore-council-label`**, cited
+by file path and branch under this note's rule for changes recorded before they are committed.
+**Test suite: 564 passed, 5 xfailed** — re-run by this seat at the head of this pass, not
+copied from a report.
+
+- **The independent audit was answered, and one of its answers was a relabelling.** The
+  previous session's "live e2e" verification was re-described as what it actually was, a
+  **fixture-backed simulation**, and `STATE_OF_THE_ANSWER.md` gained the currency anchor it
+  had never carried — `STATE_OF_THE_ANSWER.md:10` now reads "audited against 2686422". The
+  effect is mechanical and this seat re-measured it: `scripts/check_currency.py` now reports
+  **9 currency claims across 5 notes, 0 failed**, exit 0, where on 2026-08-08 it reported one
+  failure and that failure was this file. [[Workflow Threads]] **D3** closes on that run.
+  *(`STATE_OF_THE_ANSWER.md`, `analytics/session-manifest-2026-08-09.md`.)*
+- **A second and stronger publication gate, and it is the one that closes the hole the fill
+  suspension left open.** `VALIDATION_STATUS_ONLY` (`src/config.py:42-74`, **default ON**)
+  holds **all** item-level publication — *including items at or above 40* — and the research
+  brief, until production-path validation authorizes it. The reasoning is in the config
+  comment and is worth repeating because it is the whole point: `prompts/classifier.txt`
+  Example 4 teaches the model to score an off-theme judicial case at **55**, and
+  `select_surfaced` publishes on score alone, "so that item publishes today with the fill
+  suspended… a gate that only holds back the scores it already distrusts is not a validation
+  gate." It is deliberately a separate flag rather than a stronger setting of
+  `FILL_FLOOR_SUSPENDED` (`src/config.py:59-62`), so restoring the fill cannot reopen item
+  publication as a side effect, and the fill flag cannot bypass it. A gated cycle reports the
+  **held count** rather than an absence (`src/main.py:615-618`, `:700-706`, `:809-811`).
+  **This creates a new claim divergence and it has a row: [[Claim Map]] C16.**
+  *(`src/config.py`, `src/main.py`, `src/render.py`.)*
+- **STATE_MODEL_V2 stopped being prose and became code.** `src/rings.py` derives, in shadow on
+  every cycle, per-ring strengths, a deterministic treaty-nexus finding, evidence location and
+  validity, and a lane. The semantic V2 path is built end to end — `src/classify_v2.py` with
+  `prompts/classifier_v2.txt` wired for shadow — but `V2_SHADOW_CALLS` defaults **off**
+  (`src/config.py:154-195`), so **every default-run verdict is labelled `lexical_only`**, and
+  `V2_SHADOW_CALLS=replace` is refused outright (`V2_SHADOW_CALLS_FORBIDDEN`,
+  `src/config.py:156`). Verdicts carry `claims_source` provenance, and `guard_demoted` fires on
+  **every V1 ring claim**, because V1 supplies no spans — a demotion that is the correct
+  reading of V1 rather than a defect in V2. `STATE_MODEL_V2="on"` is refused until
+  `STATE_MODEL_V2_PUBLICATION_READY` (`src/config.py:98`, `:109-111`), which is `False`.
+  *(`src/rings.py`, `src/classify_v2.py`, `prompts/classifier_v2.txt`, `src/config.py`.)*
+- **The 7-vs-4 outcome question was resolved losslessly, and the enumeration grew by the size
+  of the thing that had been missed.** Seven logical states map onto four operational outcome
+  values plus recorded metadata; the exhaustive state space in `tests/test_rings.py` moves from
+  12,288 to **21,504** (64 ring configurations × 4 nexus × 4 evidence locations × 3 validities
+  × 7). `src/rings.py:112` states the arithmetic. **Tail provider failures are now counted** —
+  they were under-counted by exactly the size of the tail. Rationale:
+  `analytics/state-space-resolution-2026-08-09.md`. *(`src/rings.py`, `tests/test_rings.py`.)*
+- **Workstream F shipped, off by default.** `src/triage.py` + `prompts/triage.txt`, a
+  pre-enrichment semantic lane that lets a paraphrase the keyword fingerprint cannot see reach
+  enrichment on model rank. `TRIAGE_ENABLED` defaults **0** (`src/config.py:220`); the sort is
+  deterministic; a provider absence is **recorded, not misreported**. Adversarial tests
+  accompany it. **Design (c), the stratified tail audit, is a config stub only** —
+  `TAIL_AUDIT_N = 0` (`src/config.py:243`), expressly unimplemented, and recorded that way
+  rather than as shipped. *(`src/triage.py`, `prompts/triage.txt`, `src/config.py`,
+  `tests/test_triage.py`.)*
+- **Workstream G shipped, and its grammar has three limitation clauses rather than one.** The
+  headline lane (`src/headline_lane.py`) generates from a closed grammar with no slot for a
+  legal or thematic conclusion. The clause is **keyed on evidence location**
+  (`src/headline_lane.py:81-85`), and the reason is a real error the single-clause design would
+  have produced: a comparator whose body *was* retrieved may not claim its body is paywalled.
+  Hence `LIMITATION_PAYWALLED` / `LIMITATION_UNRETRIEVED` / `LIMITATION_RETRIEVED`, a closed
+  set the guard enforces membership against. `scripts/check_headline_lane.py` holds the output
+  byte-identical. The public-label mapping was corrected so
+  `HEADLINE_ONLY_LIBRARY_LEAD` is not the name given to an accessible-body item.
+  *(`src/headline_lane.py`, `scripts/check_headline_lane.py`, `src/rings.py`.)*
+- **The guards became guards.** `.github/workflows/pipeline-guards.yml` wires
+  telemetry-privacy, seen-integrity, headline-lane, lock and currency — the currency job with
+  **`fetch-depth: 0`**, without which the check cannot see the history it asserts against
+  (`:143`) — plus each guard's own **planted-violation tests** (`:101-111`), so the guards are
+  themselves tested rather than merely run. `scripts/check_lock.py` was written; run today it
+  reports the empty set as **the designed current state, not an error**, and exits 0.
+  [[Workflow Threads]] **B8** closes on the file. *(`.github/workflows/pipeline-guards.yml`,
+  `scripts/check_lock.py`.)*
+- **The comment package's five audit contradictions were closed, and one of them was closed by
+  going and reading the document.** **H&H v. Egypt (ICSID ARB/09/15) is CLOSED BY RETRIEVAL:**
+  the Decision on Jurisdiction of 5 June 2012 (`ita1012.pdf`) and the Award's Rule 48(4)
+  excerpts of 6 May 2014 (`italaw7979.pdf`) are in `seeds/` — this seat confirmed both files on
+  disk — with **21 spans verified**. The retrieval **corrected two claims rather than
+  confirming them**: the "want of causal link" disposition was true of the corruption claim
+  only (¶ 399), denial of justice having failed on "manifestly unjust" (¶ 403); and the
+  economic-sector attribution was **deleted** rather than re-attributed a third time. The dead
+  `italaw.com/cases/542` URL — a 404 — was replaced with the real document URLs. Also:
+  "structural" became **"a deliberate scope boundary"** (Ferguson draws it himself, at 340,
+  in the sentence whose note 37 cites Kim); Item 6's balancing claim was narrowed; the
+  disclosure categorical was qualified; Part 5 items 5, 13 and 15 updated. **The full Award
+  remains unpublished** — every quotation and the zero-occurrence IP screen are scoped to the
+  published excerpts and the Decision on Jurisdiction. That is recorded as a **permanent scope
+  limit, not a gap slug**, which is the correct disposition and the distinction is the point.
+  *(`working/benavides-comment-replies-2026-08-08.md:340`, `:433`, `:446`, `:459`;
+  `seeds/HH_v_Egypt_ARB-09-15_*`; `lit-review/ferguson-memo.md`.)*
+- **Walter Writes round 2: three passages, zero adopted.** One exempt by construction (masked,
+  it is a near-pure sentinel chain with nothing to work on); two run and **rejected at the
+  gate** — the first dropped the passage's final two sentences and converted "the opinions"
+  (the court's) into "the author's opinions"; the second destroyed a sentinel and garbled the
+  triple-identity sentence. Canonical text stands for all three. The fail-closed humanizer rule
+  has now been exercised twice and has adopted an output only where the mechanical gate passed.
+  *(`working/benavides-comment-replies-2026-08-08.md:6`.)*
+- **METHODOLOGY §IX updated** to 21,504, the three off-by-default capabilities, and the CI
+  wiring (`METHODOLOGY.md:69`). Not this seat's file; recorded, not edited.
+- **A designer deviation of record, and it is a live hazard.** `scripts/check_site_sync.py`
+  **rebuilds `docs/` in place** — `scripts/check_site_sync.py:25` runs `build_site.py` with no
+  temporary directory and then diffs the working tree (`:31`). It is therefore **a mutating
+  command wearing the name of a check**, and it reverted `docs/` to HEAD on the belief that it
+  was stamp-only. `docs/` will be rebuilt from source in the integrator's final battery.
+  Logged as an open defect: [[Workflow Threads]] **B9**. *(`scripts/check_site_sync.py`.)*
+- **Recorded, deliberately not fixed.** `STATE_OF_THE_ANSWER.md:28`'s clause "every disclosure
+  case … was **brought in a court** to prevent or restrict disclosure" holds **as scoped** to
+  the four cases it names (InterMune, AbbVie, PTC Therapeutics, Vanda D.D.C.), but the sentence
+  would need rewording if the **Vanda CFC takings matter** were ever added to that list — a
+  Court of Federal Claims takings action is not a suit to prevent disclosure. Recorded as
+  [[Workflow Threads]] **D4**; the file is [[research-analyst]]'s and is not edited here.
+- **Still Emory's, still not edited.** `.claude/agents/systems-designer.md:17` binds that seat
+  to "the zero-cost constraint" that 2026-08-08's code reading falsified. Editing
+  `.claude/agents/` is a contract change. Recorded for the second consecutive session.
+
+## 2026-08-08
+
+*Audited against `2686422`* plus the uncommitted working tree on branch
+`fix/restore-council-label`; paths: `src/`, `scripts/`, `tests/`, `templates/`, `analytics/`,
+`digests/`, `lit-review/`, `working/`, `.claude/agents/`, `prompts/`, `agents/`, `moc/`,
+`views/isds-workflow-3d/`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md`,
+`STATE_OF_THE_ANSWER.md`, `fingerprint.yaml`.
+
+**Everything in this section is UNCOMMITTED, on branch `fix/restore-council-label`**, and is
+cited by file path and branch under this note's own rule for changes recorded before they are
+committed. Test suite green **as that session left it**: **414 passed, 5 xfailed, 32 tests
+new**. *(Dated reading, not a current one — see the 2026-08-09 section above, where the suite
+stands at **564 passed, 5 xfailed**. The 414 is kept as the record of what 08-08 measured.)*
+
+- **The Telefónica double-publication had a mechanism, and it was found.** `research_brief.generate_brief`
+  had **no exception handler and ran BEFORE `save_state`** in `src/main.py`, so a failure in
+  the brief step discarded the run's entire seen-state *after* the digest had already been
+  written. The same italaw case page therefore came back as unseen on the following day and was
+  published twice, with **contradictory verdicts — 32 with a ring on 06-09, 28 with none on
+  06-10, from the same URL and the same source text**. Fixed, with the regression test
+  `test_a_failing_research_brief_cannot_unwrite_the_seen_state`. **This is the entry to reread
+  before the next "harmless ordering" change:** nothing about a brief-generation step looks
+  like it can reach the archive, and it silently governed it. Both archive entries now carry
+  dated cross-references to each other. *(`src/main.py`, `tests/test_pipeline.py`, branch
+  `fix/restore-council-label`.)*
+- **Publication is constrained by default, and eight files did not get the message.**
+  `FILL_FLOOR_SUSPENDED` now defaults ON (`src/config.py:31-39`): items scoring 25–39 are no
+  longer surfaced, and a cycle in which nothing reaches 40 sends a status note whose single
+  authoritative wording lives at `src/render.py:59` and is asserted verbatim by
+  `tests/test_pipeline.py:951`. **The floor was not raised and the numbers did not move**,
+  which is what makes the resulting drift invisible to every numeric guard: `RELEVANCE_FLOOR`
+  is still 25 and `MIN_DIGEST_ITEMS` still 6, so `scripts/check_claims.py` passes while eight
+  statements of the old behaviour stand, one of them the public homepage
+  (`scripts/site_templates/index.html.j2:186`) and one of them `METHODOLOGY.md:49`, **eighteen
+  lines above the addition at `:67` that suspends the rule it describes.** Recorded as a new
+  row, [[Claim Map]] **C15**, and as [[Workflow Threads]] **B5**. *(`src/config.py`,
+  `src/main.py`, `src/render.py`, `templates/digest.html.j2`.)*
+- **The instrument has never been zero-cost, and the README now says so.**
+  `classify_item(item, provider=None)` does **not** force the keyword path; it falls through to
+  `os.environ["MODEL_PROVIDER"]`, so the below-cutoff tail has been model-classified in
+  production throughout (`analytics/instrument-map-2026-08-08.md` §4). `README.md:3-9`
+  corrected: "low-cost, roughly cents per run, not free." **The vault cascade this triggered is
+  the reason it is logged here rather than only in the code notes:**
+  `.claude/agents/systems-designer.md:17` binds that seat to "the zero-cost constraint" and is
+  now falsified. The **vault note** [[systems-designer]] is corrected; the **definition** is
+  not, because editing `.claude/agents/` is a contract change and belongs to Emory. Escalated.
+- **Per-candidate telemetry, and an admission about what cannot be recovered.**
+  `src/telemetry.py` writes one record per candidate per run — hashes and bounded structured
+  values, **never article text**, enforced by `scripts/check_telemetry_privacy.py`, which fails
+  the build on any planted text field. The path a candidate took, including *which classifier
+  actually scored it*, is reconstructible for the first time. For every archived run before
+  this date it is not: per-item classifier identity was computed and discarded, and for **five
+  of the fourteen** published entries it is **unrecoverable**
+  (`analytics/retrospective-audit-2026-08-08.md` §4). Nine of the fourteen are recoverable by
+  arithmetic rather than by record — they score **25**, which the deterministic scorer cannot
+  emit, its reachable set in [20,40] being {28,29,30,31,32,33,40} plus 35 via the
+  negative-signal cap.
+- **Seen-state is now outcome-gated, and abandonment is loud.** Every entry records *why* it is
+  there — classified, keyword-scored by design, bootstrap-indexed, or abandoned after three
+  attempts — and a candidate whose classification fails is no longer marked seen at all. It
+  goes to a retry queue (`state/deferred.json`) with an attempt count, and a third failure
+  writes a durable line to `analytics/abandoned_candidates.jsonl` that
+  `scripts/check_seen_integrity.py` cross-checks, failing the build on a missing record.
+  Legacy state is migrated at read time. *(`src/state.py`, `src/classify.py`, `src/main.py`.)*
+- **Three new guards exist; none of them runs in CI.** `check_telemetry_privacy.py`,
+  `check_seen_integrity.py` and `telemetry_query.py` are **untracked files with no workflow
+  entry**. A fail-closed guard that is not wired is a script. [[Workflow Threads]] **B8**,
+  blocked on Emory (**C11**).
+- **The archive was audited against itself and two council records lost.** `analytics/retrospective-audit-2026-08-08.md`
+  re-derives every figure from `digests/*/articles/*.md` and `digests/*/meta.json` rather than
+  from any council record, "**because two of those records disagree with the files**". Findings:
+  14 article files are **13 distinct URLs and 12 distinct underlying matters**; **four** entries
+  display a ring at score 25, not five — the chairman's 2026-08-08 ruling had included
+  Okuashvili, which sits at 28; **five** annotations state a negative thematic conclusion about
+  their own item and **one** states it cannot assess, so **6 of 14 published entries disclaim
+  themselves**, and all were mailed as watch-list leads. Two of the four ring-at-25 entries are
+  substantively **unsupported** and additionally contradict the classifier contract. **Nine
+  dated corrections were appended to the archive and nothing was rewritten.**
+- **A gap closed on primary sources; two claim classes withdrawn for lack of them.** The two
+  *Vanda Pharmaceuticals Inc. v. United States* opinions, No. 23-629C (Fed. Cl.), slip ops of
+  18 Jan. 2024 and 22 Jan. 2025, were retrieved 2026-08-06 and are held at `seeds/` — which is
+  **gitignored, so they will never appear in a commit**; the retrieval ledger carries the paths
+  for that reason. The gap at `lit-review/kim-memo.md:206` is **CLOSED on slip-op-only
+  citations**, with reporter page pins and appellate status **expressly excluded** and the
+  Federal Circuit docket still QUEUED. Withdrawn and kept withdrawn: the claim that the
+  *Saluka* and *Bovine Hides* passages "have now been extracted and verified", which had **no
+  source anywhere in the repository**. Two readings of Kim corrected against her own text — she
+  raises the institutional question **in her abstract**, and her footnote 23 had **already**
+  qualified provisional relief at `STATE_OF_THE_ANSWER.md` line 28, verified 6 August. *(The
+  project's own record refuted its own later premise.)*
+- **A rewriting pass was run fail-closed and rejected five times out of seven.** All seven
+  substantive replies went through a humanizer with **every quotation, citation and pinpoint
+  sentinel-masked**; two passed and were surgically repaired, **five were rejected outright**
+  for fabricated quotation, flipped negation, hallucinated rule, and two sentinel
+  destructions; two were exempt. Entered as a binding rule for [[integrity-officer]] and
+  [[research-editor]] in [[Agent Registry]].
+- **Methodology disclosure.** `METHODOLOGY.md:54` adds the exact Clopper–Pearson 95% intervals
+  — **[0.19, 0.99]** on three-of-four — and records that the harness evaluates at forty, a
+  boundary **no candidate has crossed in 347 screenings**. `:67` adds Part IX describing the
+  implemented Phase 0/1/H behaviour and says in terms that D/E, F and G are "**development work
+  behind a disabled flag and are not production behaviour as of this date**". The Apotex
+  caption repair of 2026-08-06 is disclosed by **amendment** — `:52` was not rewritten, which
+  is what preserved the nine declared mirrors that point into it.
+- **Vault.** [[Claim Map]] re-pointed against the current tree and gains **C15**; nine rows
+  recorded as closed with their tables retained; the snapshot anchor moves to `2686422` + branch.
+  [[Workflow Threads]] gains B5–B8 and C11–C14 and rewrites D1. [[Agent Registry]] re-audited,
+  no roster change, with the expected-WARN set restated at seven and the managed-block backlog
+  at twelve notes — one of them [[Claim Map]] itself, which has never carried its block.
+  Session record: `analytics/vault-sessions/2026-08-08.md`.
+
+## 2026-08-07
+
+**Recorded 2026-08-08. This section was missing entirely** — four commits landed on 2026-08-07
+and this note's newest entry was 2026-08-06, so a day of committed work had no dated line. It
+is written now from `git log`, with each line carrying its hash.
+
+- **The site's human-review disclosure became a number that can move.** `33861fd` ("feat: make
+  the 'no human has checked this' disclosure a number that can move") replaced the universal
+  safeguard claim on `how_it_works` — "no claim is published as fact without a human check
+  against its original source", which neither the review log nor the ledger supported — with a
+  **counted** disclosure rendered from the ledger. This closes the second leg of [[Claim Map]]
+  **C6**, whose first leg (the intra-file contradiction in `HUMAN_REVIEW.md`) is also gone.
+  `9352b0f` rebuilt `docs/` for it.
+- **The council framing was restored on the flowchart.** `2686422` ("fix(chart): restore 'THE
+  AI RESEARCH COUNCIL' — the seats are real agents"). Recorded here because it moves in the
+  *opposite* direction from the `METHODOLOGY.md` rewrite that retired the phrase "standing
+  council", and the two are compatible only on a distinction worth stating: **the seats are
+  genuine agent invocations, and they are not standing background processes.** [[Claim Map]]
+  C7 now records both.
+- **The third Vanda matter was recorded as a gap rather than summarised.** `25dfdd0`
+  ("docs(kim): record the third Vanda matter as a gap, not a summary") marked it
+  `[PENDING — citation recorded, source not retrieved, no holding asserted here.]`. **That
+  restraint is what made the 2026-08-08 closure clean**: when the slip opinions were read, there
+  was no prior summary to reconcile against, only a gap to close.
+
 ## 2026-08-07
 
 *Audited against `7c08dcf`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
@@ -588,14 +855,22 @@ Nothing here is a to-do list for an agent: these are discrepancies between two r
 artifacts that only Emory can settle. Threads with a named agent owner live in
 [[Workflow Threads]].
 
-- **Two flowchart cards assert a model no configuration file carries.** The
-  `systems-designer` and `site-experience` cards in `views/isds-workflow-3d/workflow.json`
-  read "Model: Claude Fable 5" (`21f0240`), while neither `.claude/agents/systems-designer.md`
-  nor `.claude/agents/site-experience.md` declares a `model:` key, and `src/models.py` covers
-  only the pipeline's LLM stages. Resolution is either a `model: fable` line in each
-  definition or a card reading "inherits the invoking session" — an operator call. Raised
-  2026-07-31; recorded in [[systems-designer]], [[site-experience]] and [[Agent Registry]].
-  The generated chart is not hand-edited to hide it.
+- ✔ **CLOSED at `c25ea64` (2026-08-05); struck here 2026-08-08, three days late.** *Two
+  flowchart cards assert a model no configuration file carries.* All nine `.claude/agents/*.md`
+  declare `model: opus`, both cards read "Model: Claude Opus 5", and `scripts/check_models.py`
+  — re-run 2026-08-08, exit 0 over twelve cards — fails the build on card/definition/vault-note
+  drift. **This is the fourth place that carried this closed defect as open**, after
+  [[Agent Registry]] (corrected 08-06), [[systems-designer]] (corrected 08-06) and
+  [[site-experience]] (corrected 08-04). The entry is struck rather than deleted because *how
+  long one fact took to die in four places* is the record's most useful datum about itself.
+- **NEW 2026-08-08 — a seat definition binds a constraint the repository has disproved.**
+  `.claude/agents/systems-designer.md:17` binds that seat to "the **zero-cost** constraint".
+  A code reading on 2026-08-08 established that the below-cutoff tail is model-classified in
+  production, and `README.md:3-9` was corrected the same day to "low-cost, roughly cents per
+  run, not free". Resolution is Emory's because it is a contract edit: either strike the word
+  from the definition, or replace it with the cost bound the project actually intends. The
+  vault note [[systems-designer]] is corrected and carries the escalation; the definition is
+  untouched.
 - **`build_graph`'s block replacement spans a prose-quoted start marker.**
   `scripts/build_graph.py:195` anchors to the first start marker in the file rather than the
   managed one, so any note quoting that marker is gutted on the second run. Demonstrated and
@@ -616,10 +891,15 @@ artifacts that only Emory can settle. Threads with a named agent owner live in
   which `HANDOFF.md:147-152` still lists as "awaiting your CLI mark", true against `main`'s
   ledger and false against the work Emory actually did. Not merged by this seat: the ledger is
   operator-owned, and its integrity is the project's foundation. Emory's call.
-- **The chart's `quality-bar` card cites the wrong file for the threshold.** The card's
-  evidence reads `src/config.py: threshold 40 / floor 25`; the value lives at
-  `fingerprint.yaml:5` (`threshold: 40`). Raised 2026-08-03, re-verified 2026-08-04.
-  [[systems-designer]] regenerates from the manifest; not hand-edited.
+- **The chart's `quality-bar` card is now wrong twice — about a file, and about the
+  behaviour.** (1) Its evidence reads `src/config.py: threshold 40 / floor 25`; the threshold
+  lives at `fingerprint.yaml:10` (`threshold: 40`). Raised 2026-08-03, re-verified 2026-08-04
+  and **2026-08-08**. (2) **New 2026-08-08:** its `desc` reads "Near-misses (25+) **may fill a
+  quiet week**, always labeled as leads" and its `meta` "Emory's fixed rule — 40 pass, 25
+  floor". The fill is suspended by default as of this date. **Both defects must be fixed in the
+  same manifest edit**, or the second fix will look like the whole fix. The card is one of the
+  eight statements listed at [[Claim Map]] **C15**. [[systems-designer]] regenerates from the
+  manifest; not hand-edited.
 - **`views/isds-workflow-3d/view.js` has no freshness guard** where the generated SVG has a
   fail-closed one. Raised 2026-08-03, re-verified 2026-08-04. [[systems-designer]].
 

@@ -39,7 +39,7 @@ Source: `.github/workflows/weekly.yml` → `cron: "0 13 * * 1"`.
 - The watcher runs **every Monday at 13:00 UTC**. Not Sunday, not 6 PM Eastern.
 
 ## 4. Classification bands and parameters (as implemented)
-Source: `fingerprint.yaml` (`threshold: 40`, `high: 70`, `medium: 40`, `low: 0`); `src/classify.py` (`PRESENT_FLOOR = 12`, `STRONG_SUBTOTAL = 18`, `EXTRA_WEIGHT_RING = "judicial_or_regulatory_measure"`); `src/config.py` (`MIN_DIGEST_ITEMS = 10`, `RELEVANCE_FLOOR = 15`, `ENRICH_TOP_N = 24`).
+Source: `fingerprint.yaml` (`threshold: 40`, `high: 70`, `medium: 40`, `low: 0`); `src/classify.py` (`PRESENT_FLOOR = 12`, `STRONG_SUBTOTAL = 18`, `EXTRA_WEIGHT_RING = "judicial_or_regulatory_measure"`); `src/config.py` (`MIN_DIGEST_ITEMS = 6`, `RELEVANCE_FLOOR = 25`, `ENRICH_TOP_N = 24`). [Corrected 2026-08-08: this line previously stated `MIN_DIGEST_ITEMS = 10` and `RELEVANCE_FLOOR = 15`, which have never been the live values.]
 - Bands: **HIGH (≥ 70)**, **MEDIUM (40–69)**, **LOW (< 40)**. Scores are integers **0–100**.
 - Digest **threshold is 40** (lowered from an initial 60).
 - A ring counts as "present" only at a lexical subtotal of **≥ 12**; a "strong" single-ring subtotal is **≥ 18**.

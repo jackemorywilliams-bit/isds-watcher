@@ -174,13 +174,13 @@
       "row": 6,
       "kind": "gate",
       "title": "Quality bar",
-      "desc": "Items scoring 40+ enter the digest. Near-misses (25+) may fill a quiet week, always labeled as leads.",
+      "desc": "Design: 40+ enters; 25+ may fill as leads. Currently gated: nothing publishes pending validation.",
       "target": "METHODOLOGY",
       "evidence": [
         "src/main.py: select_surfaced()",
-        "src/config.py: threshold 40 / floor 25"
+        "src/config.py: threshold 40 / floor 25 / VALIDATION_STATUS_ONLY"
       ],
-      "meta": "Emory's fixed rule — 40 pass, 25 floor"
+      "meta": "40 pass / 25 floor — publication gated"
     },
     {
       "id": "relay-request",

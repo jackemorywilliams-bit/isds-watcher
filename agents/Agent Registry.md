@@ -15,6 +15,34 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
+**Definitions audited against `667772c` — 2026-08-11, at integration.** The only commit
+touching this note's declared paths since `2686422` is the integration's own `667772c`,
+which adds `prompts/classifier_v2.txt` and `prompts/triage.txt` — the prompt files for the
+semantic and triage lanes that ship off by default (`V2_SHADOW_CALLS`, `TRIAGE_ENABLED`).
+No seat's model, contract or prompt binding changed. Anchor for the next currency query:
+`git log 667772c..HEAD -- .claude/agents/ prompts/ src/models.py`.
+
+**Definitions re-audited 2026-08-08 against `2686422` plus the uncommitted working tree of the
+master-prompt repair session, branch `fix/restore-council-label`.** `git log 373cce6..HEAD --
+.claude/agents/ prompts/` returns **no commit**, and `git status --short` shows **no modified
+file** under either path. **No seat's model, prompt binding or contract changed on 2026-08-07
+or 2026-08-08**, so the roster below stands as committed. `scripts/check_models.py` re-run the
+same day exits 0 over twelve flowchart cards. That is a measurement, not an inheritance from
+the previous pass. Anchor for the next currency query: `git log 2686422..HEAD --
+.claude/agents/ prompts/`.
+
+**One definition-level statement is now falsified by a repo finding, and it is not a drift
+this seat may fix.** `.claude/agents/systems-designer.md:17` binds that seat to "the
+**zero-cost** constraint". On 2026-08-08 a code reading established that
+`classify_item(item, provider=None)` falls through to `os.environ["MODEL_PROVIDER"]` rather
+than forcing the keyword path, so the below-cutoff tail has been **model-classified in
+production all along** (`analytics/instrument-map-2026-08-08.md` §4); `README.md:3-9` was
+corrected the same day to say the instrument is "low-cost, roughly cents per run, not free."
+The definition still says zero-cost. **Editing `.claude/agents/` is a contract change and
+belongs to Emory**, so this is recorded and escalated, not corrected here; the vault note
+[[systems-designer]] carries the same entry. The parallel line in that seat note — its
+canonical-training item 3 — **is** this seat's surface and has been corrected.
+
 **Definitions re-audited 2026-08-07 against `7c08dcf`.** `git log 373cce6..HEAD --
 .claude/agents/ prompts/` returns exactly one commit, `33861fd`, and it is **not** a contract
 change: it appends a live-verification-count block to `prompts/daily_council_protocol.md`. No
@@ -150,6 +178,104 @@ This is an index note. Its outgoing links exceed the four-link cap for spokes in
 WARN naming this file. That is expected for a roster and is recorded here so the warning is
 never mistaken for drift.
 
+**Re-measured 2026-08-09, before and after this session's vault edits.** Before:
+**125 notes, 253 edges, 0 orphans, 9 WARNs, 15 planned edits.** After: **127 notes, 265 edges,
+0 orphans, 11 WARNs, 17 planned edits**, hub degrees `Evidence Ledger=69, Council=27,
+Workflow=11, Research Question=8, Digest Archive=7, 00 - Project Map=3`. Both numbers are given
+because a single post-edit measurement would attribute this seat's own additions to the rest of
+the vault.
+
+**The +2 notes decompose, and only one of them is this seat's.**
+`analytics/vault-sessions/2026-08-09.md` is this pass's own record. The other,
+`working/claude-chat-final-review-prompt-2026-08-09.md`, appeared **mid-pass** — timestamped
+11:47, untracked, not gitignored, written by **another process** while this reconciliation was
+running, and out of bounds for this seat. It is named because the before/after convention only
+tells the truth if concurrent writes are named; read as vault work it would inflate this seat's
+footprint by a note and a planned edit.
+
+**Both new WARNs are this seat's own, and both were predicted.** The 2026-08-08 entry recorded
+eight and said "so that the ninth WARN, whenever it appears, is legible as new." The ninth
+arrived with `analytics/vault-sessions/2026-08-08.md`; the **tenth** is [[Claim Map]], pushed
+over the cap (5 direct links) by the **C16** row added this session; the **eleventh** is this
+session's own record (8 links), for the same reason the 08-08 record crossed it — a session note
+cites the seats it audited. [[systems-designer]] also rose 5 → 6. None is drift: each exceeds
+the cap by pointing at other seats' notes, which is the linkage the vault is for. **A session
+record will cross the cap every time**, which is now stated as a standing expectation rather
+than rediscovered each month.
+
+Expected-WARN set as it now stands — **eleven**, up from eight on 2026-08-08 and four on
+2026-08-04. The three added since are marked:
+
+| WARN | Direct links (2026-08-09 pre → post) | Reading |
+|---|---|---|
+| `agents/Agent Registry.md` | 12 → 12 | Expected — index note (11 on 08-04) |
+| [[Workflow Threads]] | 10 → 10 | Expected — index note |
+| [[Project Change Log]] | 9 → 9 | Expected — index note; crossed the cap by accumulating wiki-link citations, which is the note doing its job |
+| `think-tank/multi-agent/_MOC.md` | 8 → 8 | Expected — predates the agent-memory area |
+| [[obsidian-archivist]] | 8 → 8 | Known, carried since 2026-08-04 |
+| [[integrity-officer]] | 5 → 5 | Carried since 2026-08-08 |
+| [[site-experience]] | 5 → 5 | Carried since 2026-08-08 |
+| [[systems-designer]] | 5 → **6** | Carried since 2026-08-08; rose this session |
+| `analytics/vault-sessions/2026-08-08.md` | 5 → 5 | **The predicted ninth.** A session record citing the seats it audited |
+| [[Claim Map]] | — → **5** | **New this session — the predicted tenth.** Pushed over by the **C16** row |
+| `analytics/vault-sessions/2026-08-09.md` | — → **8** | **New this session — the eleventh.** This pass's own record. Session records cross the cap by construction |
+
+The 2026-07-31 rule — *any WARN naming a per-agent note is drift* — is broken by **four** seat
+notes, unchanged in kind since 2026-08-08. The honest reading is that the rule was written for a
+vault where seat notes were short, and the notes have since become the place where a seat's
+cross-seat history is recorded; each exceeds the cap by pointing at other seats' notes, which is
+the linkage the vault is for. **The cap is not raised here** — that is a
+`scripts/build_graph.py` change and belongs to [[systems-designer]]. The set is kept named so
+that the **eleventh** WARN, whenever it appears, is legible as new; the convention has now
+called its own next two exceptions correctly.
+
+> **A finding this seat produced by walking into the trap it maintains.** A first draft of the
+> row above wrote the doubled-square-bracket link syntax inside a backtick code span, to name
+> the thing being counted. The next `--dry-run` reported a **new broken link** from this note
+> to a note named `…`. `scripts/build_graph.py` scans link syntax **inside inline code spans**;
+> it strips fenced blocks but not backticks. This is a sibling of the open C8 defect
+> ([[Workflow Threads]]), which concerns markers inside prose, and it is worth recording
+> separately: **you cannot quote wiki-link syntax anywhere in this vault without minting a
+> broken link.** The draft was rewritten to say "wiki-link citations" in words. Any future
+> note explaining the link syntax must do the same until the scanner skips inline code.
+
+✔ **The `Project Machinery` broken link is gone.** The 2026-08-04 run reported one broken link
+from `agents/obsidian-archivist.md` to a note of that name, which never existed. The 2026-08-08
+run's broken-link list is `think-tank/README.md`, `think-tank/multi-agent/20 - Options -
+frameworks.md`, and `think-tank/website/interactive-upgrade-spec.md` — none of them in the
+agent-memory area. The reference survives in that note only as prose recording that the note
+was never created, which is the correct disposition.
+
+**Seventeen notes are awaiting their managed block**, against thirteen on 2026-08-08 and eleven
+on 2026-08-04. `build_graph --dry-run` on 2026-08-09 plans edits to:
+`BOUNDED_CHANGE_PROTOCOL.md`, **`agents/Claim Map.md`**,
+`working/benavides-comment-replies-2026-08-08.md`,
+`working/claude-chat-final-review-prompt-2026-08-08.md`,
+`working/claude-chat-final-review-prompt-2026-08-09.md`, `prompts/carrying_span_rule.md`,
+`lit-review/BIBLIOGRAPHY_TEMPLATE.md`, `analytics/instrument-map-2026-08-08.md`,
+`analytics/retrospective-audit-2026-08-08.md`, `analytics/session-manifest-2026-08-09.md`,
+`analytics/state-space-resolution-2026-08-09.md`,
+`analytics/vault-sessions/2026-08-04-council.md`,
+`analytics/vault-sessions/2026-08-08.md`, `analytics/vault-sessions/2026-08-09.md`,
+`analytics/daily-research/2026-08-06.md`, `analytics/locked_set/RETRIEVAL_LEDGER.md`,
+`analytics/locked_set/SCHEMA.md`. **`agents/Claim Map.md` is still the one that should sting** —
+the map has been in the vault since 2026-08-04, has never carried its block, and is therefore
+invisible to the graph while being the note most often cited by the others.
+
+**The write-mode run was NOT performed for the third consecutive session, and the cause is
+structural rather than circumstantial.** Fourteen of the seventeen planned files are out of
+bounds for this pass — `working/`, `prompts/`, `lit-review/`, `analytics/locked_set/` and the
+session's own analytics artifacts — and `build_graph.py` offers **no path filter**: it is
+whole-vault or nothing. **A managed block is never hand-written**, so no partial run is lawful
+either.
+
+**This is now escalated as a defect in `scripts/build_graph.py` rather than carried as a
+backlog.** The reasoning: every archivist session operates under scope boundaries, and a tool
+that can only run when *no* file in the vault is out of bounds is a tool that can never run.
+Three sessions is enough evidence that the backlog will not clear itself. A `--paths` filter (or
+a `--only-missing` mode restricted to an explicit list) would make the run lawful in any session.
+**Owner:** [[systems-designer]], on Emory's go-ahead.
+
 **Re-measured 2026-08-07 at `7c08dcf`.** `python3 scripts/build_graph.py --dry-run` reports
 **117 notes, 231 edges, 0 orphans, 7 files awaiting a managed block, and 7 WARNs.** Three of
 the seven WARNs are new since 2026-08-04, and none of them is drift in the sense the
@@ -232,6 +358,11 @@ statements live in the seat's own note.
 | [[integrity-officer]] | Taxonomy entries 18–23 + entry 17 extended to mis-located | 2026-08-04 | `51bb7a2` |
 | [[research-analyst]] | Four relay method rules (binding on every seat) | 2026-08-04 | `51bb7a2` |
 | [[council-chairman]] | Before a ruling asserts what a record line says, quote the whole line | 2026-08-04 | `51bb7a2` |
+| [[systems-researcher]] · [[analytics-officer]] | **Path-tagging** — every claim about the instrument carries `[keyword-path]`, `[model-path]` or `[mixed]`; "a claim that cannot be path-tagged is not asserted." Adopted because the costliest error of the R1 session was reasoning from one path's arithmetic about the other path's output | 2026-08-08 | `analytics/instrument-map-2026-08-08.md:3-7` (uncommitted, `fix/restore-council-label`) |
+| [[analytics-officer]] | **Re-derive denominators from the files, never from a council record** — two records disagreed with the archive, and the audit reports 14 files / 13 URLs / 12 matters rather than one number | 2026-08-08 | `analytics/retrospective-audit-2026-08-08.md:3-19` (uncommitted) |
+| [[integrity-officer]] · [[research-editor]] | **Humanizer output is fail-closed** — a rewriting pass is run with every quotation, citation and pinpoint sentinel-masked, and its output is rejected outright on fabricated quotation, flipped negation, hallucinated rule, or sentinel destruction. On 2026-08-08: 7 substantive replies run, **2 passed and were repaired, 5 rejected, 2 exempt**. **Round 2, 2026-08-09**, on the parity-repair revisions: 3 passages, **0 adopted** — 1 exempt *by construction* (masked, it is a near-pure sentinel chain with nothing to rewrite), 2 rejected at the gate (one dropped two sentences and turned the court's opinions into "the author's opinions"; one destroyed a sentinel). **Cumulative: 10 run, 2 adopted** | 2026-08-09 | `working/benavides-comment-replies-2026-08-08.md:5-6` (uncommitted) |
+| [[research-analyst]] | **No item enters the locked validation set on a memo's authority** — primary retrieval only, recorded as externally gated; the set is created **empty of items on purpose** | 2026-08-08 | `analytics/locked_set/SCHEMA.md:1-11`, `analytics/locked_set/RETRIEVAL_LEDGER.md` (uncommitted) |
+
 | [[integrity-officer]] | Taxonomy entry 25 — mutable-reduction citation; every reduction citation carries a commit sha | 2026-08-05 | `3ff5498` / `2026-08-05.md:616`, `:976` |
 | [[research-analyst]] | `find` selects a position, not a proposition (house rule 2) | 2026-08-05 | `3ff5498` / `2026-08-05.md:977` |
 | [[research-analyst]] | A mis-anchored row is not a null; a PDF `find_matched: false` is a gate artefact; a false URL is a control | 2026-08-05 | `3ff5498` / `2026-08-05.md:978-980` |
@@ -253,6 +384,61 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-08-09** — Registry re-audited against `2686422` plus the uncommitted working trees of
+  the 2026-08-08 and 2026-08-09 sessions on `fix/restore-council-label`. **No roster change,
+  and for the second consecutive session that is itself the finding:** a day that added
+  `src/rings.py`, `src/classify_v2.py`, `src/triage.py`, `src/headline_lane.py`, two publication
+  gates, a CI workflow and two guard scripts changed **no agent's model, prompt binding or
+  contract**. `.claude/agents/` and `prompts/` are untouched in `git status`. Recorded:
+  (a) the `.claude/agents/systems-designer.md:17` **zero-cost** line remains falsified and
+  remains **Emory's** to edit — second consecutive session escalated;
+  (b) the graph re-measured before and after — **125 → 127 notes, 253 → 265 edges, 9 → 11
+  WARNs**, 0 orphans throughout — with both new WARNs ([[Claim Map]], pushed over by the new
+  **C16** row, and this pass's own session record) **correctly predicted** by the expected set
+  adopted on 08-08;
+  (c) a note appeared **mid-pass from another process**
+  (`working/claude-chat-final-review-prompt-2026-08-09.md`, 11:47) and is named so it is not
+  counted as vault work;
+  (d) the managed-block backlog grew to **seventeen** and write mode was blocked a **third**
+  time — now escalated as a `scripts/build_graph.py` defect (no path filter) rather than
+  re-recorded as a backlog;
+  (e) the humanizer rule row extended with **round 2** (3 passages, 0 adopted; cumulative 10 run
+  / 2 adopted);
+  (f) the click-through map **re-verified clean** — v2.2, 30 nodes, 44 edges, all ten targets
+  resolve, `systems-designer` at machine row 9 agreeing with its seat note for the first time
+  since the 08-08 correction.
+  Seat notes updated in the same change set: [[systems-designer]] (D/E, F, G built and each off
+  by default; the `check_site_sync` deviation of record; the chart gap), [[research-analyst]]
+  (H&H closed by retrieval, and the two claims the retrieval *corrected*), [[integrity-officer]]
+  (Walter round 2), [[site-experience]] (homepage repaired, then stale again within the day),
+  [[obsidian-archivist]] (audit slice). Session record:
+  `analytics/vault-sessions/2026-08-09.md`.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `.claude/agents/`, `prompts/`, `agents/`, `moc/`, `views/isds-workflow-3d/workflow.json`,
+  `src/`, `scripts/`, `.github/workflows/`, `analytics/`, `seeds/`, `working/`, `HANDOFF.md`,
+  `METHODOLOGY.md`, `README.md`, `PLAN.md`, `fingerprint.yaml`, `STATE_OF_THE_ANSWER.md`.*
+- **2026-08-08** — Registry re-audited against `2686422` plus the uncommitted master-prompt
+  repair session on `fix/restore-council-label`. **No roster change**, and that is the
+  finding: `git log 373cce6..HEAD -- .claude/agents/ prompts/` is empty and `git status`
+  shows nothing modified under either path, so a session that added ~1,400 lines of code,
+  three guards and nine archive corrections changed **no agent's contract**. Recorded:
+  (a) the `.claude/agents/systems-designer.md:17` **zero-cost** constraint is falsified by
+  the day's classifier finding and is escalated to Emory as a contract change, while its
+  vault-note twin is corrected; (b) `build_graph --dry-run` now prints **seven** WARNs, not
+  four — three of them per-agent notes, which retires the 2026-07-31 "any per-agent WARN is
+  drift" rule and replaces it with a named expected set; (c) the `Project Machinery` broken
+  link is **gone**; (d) the managed-block backlog is **twelve** notes and now includes
+  [[Claim Map]], with the write-mode run blocked on out-of-bounds files rather than deferred
+  by choice. Seat notes updated in the same change set: [[systems-designer]] (Phase 0/1/H,
+  the root-cause fix, machine row **9** not 7, zero-cost), [[research-analyst]] (Vanda
+  retrieval and the two withdrawn claim classes), [[integrity-officer]] (five fail-closed
+  rejections and the ring-at-25 substantive review), [[council-chairman]] (a 2026-08-08
+  ruling overcounted by one, corrected from the files), [[site-experience]] (the routed site
+  overclaim), [[obsidian-archivist]].
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `.claude/agents/`, `prompts/`, `src/`, `scripts/`, `analytics/`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`, `README.md`, `METHODOLOGY.md`.*
 
 - **2026-08-07** — Fourteen adopted rules from the 2026-08-05, 08-06 and 08-07 sessions added to
   the table above, and each landed in the seat note that will actually be read. **The registry's

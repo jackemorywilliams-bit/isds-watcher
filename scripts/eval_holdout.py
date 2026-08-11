@@ -10,6 +10,15 @@ build instead of silently shipping. The defaults are conservative — set well
 below the current scores (precision 1.00, recall 0.75) so normal variation
 passes but a real regression trips the gate.
 
+SCOPE (recorded 2026-08-08). These are descriptive counts over 20 items with 4
+positives; the exact Clopper-Pearson 95% interval on 3/4 is [0.19, 0.99]. They
+are not instrument-level performance, and this harness does not exercise the
+production path: it scores keyword_score in isolation at 40, while production
+classifies its top-ranked candidates with a language model and publishes at
+RELEVANCE_FLOOR=25 — a boundary no candidate has ever crossed upward (0 matches
+in 347 screenings). The floors below are regression floors, not validation
+targets.
+
 Run:        python scripts/eval_holdout.py
 CI gate:    python scripts/eval_holdout.py --fail-under-precision 0.9 --fail-under-recall 0.6
 """

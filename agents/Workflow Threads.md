@@ -16,7 +16,38 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot taken:** 2026-08-04, at `b76f6c3` (merge of PR #49). Sources read for this pass:
+**Snapshot refreshed:** **2026-08-09**, at `2686422` **plus the uncommitted working tree of
+the 2026-08-08 repair session and the 2026-08-09 audit-response session, on branch
+`fix/restore-council-label`**. Said in those words
+because most of that work is not committed, and a thread whose state rests on an
+uncommitted file is citing a path on a branch, not a hash. Sources read for this pass:
+`git status --short`, `src/config.py`, `src/main.py`, `src/rings.py`, `src/headline_lane.py`,
+`src/triage.py`, `scripts/check_site_sync.py`, `.github/workflows/pipeline-guards.yml`,
+`analytics/state-space-resolution-2026-08-09.md`, `analytics/locked_set/RETRIEVAL_LEDGER.md`,
+`working/benavides-comment-replies-2026-08-08.md`, `seeds/`, `METHODOLOGY.md`, `README.md`,
+`fingerprint.yaml`, `scripts/site_templates/index.html.j2`, `HANDOFF.md`,
+`views/isds-workflow-3d/workflow.json`, and live runs of `pytest` (**564 passed / 5 xfailed**),
+`scripts/check_currency.py` (9 claims, 0 failed), `scripts/check_lock.py` (exit 0),
+`scripts/check_headline_lane.py` (exit 0), `node tools/isds-workflow-3d/validate.mjs` (exit 0)
+and `scripts/build_graph.py --dry-run`.
+
+**What this pass changed.** **B6 is rewritten** — D/E, F and G are **built**, not designed, so
+the thread that existed to stop anyone reading them as shipped now exists to record what
+shipped and which flags hold it off. **B8 closes** on `.github/workflows/pipeline-guards.yml`.
+**B7** gains its written `check_lock.py`. **B5 shrinks from eight statements to three** and
+gains a successor divergence pointing the other way. **D3 closes** on a green
+`check_currency`. **B9** (a check that mutates the repository) and **D4** (a scoped clause that
+breaks if a list grows) are new. Nothing in A was touched.
+
+**One thread did not close that this pass was briefed to close.** **B5** / [[Claim Map]] **C15**
+was reported resolved. Five of its eight statements are repaired; **three are not**, and one of
+the three had *moved* to a different line number, so only re-reading the file found it. The
+rule that governs this note held and was load-bearing today: **no thread is closed on the
+strength of a session report** — every closure below was re-read in the file, and the one that
+could not be verified stayed open.
+
+**Superseded snapshot:** 2026-08-08, at `2686422` plus that day's working tree. Before it,
+2026-08-04, at `b76f6c3` (merge of PR #49). Sources read for that pass:
 `analytics/daily-research/2026-08-01.md` through `2026-08-04.md`,
 `analytics/council-sessions/`, `analytics/verification_ledger.jsonl`,
 `state/source_health.json`, `digests/2026-08-03_ISDS-Thematic-Watch/meta.json`,
@@ -307,6 +338,195 @@ re-verified open, and section F is new.
 
 ---
 
+### B5 · The prose statements the publication gates left behind — **OPENED 2026-08-08; five closed, THREE OPEN, and five NEW ones in the opposite direction (2026-08-09)**
+
+> **Re-read in the files, 2026-08-09. This pass was briefed that the thread was resolved; it is
+> not.** Of the eight statements below, **five are repaired** — `METHODOLOGY.md:49` (by inline
+> amendment, keeping the original sentence as the design record), `README.md:80-86`,
+> `HANDOFF.md:100`, the homepage flow step, and the already-unreachable
+> `templates/digest.html.j2` clause. **Three are untouched:** `fingerprint.yaml:4-6`, the
+> `quality-bar` card at `views/isds-workflow-3d/workflow.json:177`, and the `src/main.py`
+> comment — **which moved from `:497-500` to `:687-690`**, so the line number in the original
+> entry below no longer finds it and only the quoted text did. All three are the ones needing
+> an owner other than the seat doing the repair, which is the predicted survivor set.
+>
+> **And the repair created its mirror image on the same day.** `VALIDATION_STATUS_ONLY`
+> (2026-08-09) holds item publication **including items at or above 40**, so four of the five
+> sentences just repaired — each of which now says items at or above the threshold *are*
+> surfaced — are stale again, pointing the other way. `METHODOLOGY.md:49` and `:69` contradict
+> each other twenty lines apart: the same defect, in the same file, reintroduced by the fix for
+> it. That set is [[Claim Map]] **C16**, and **the two must be fixed as one change set** —
+> `fingerprint.yaml` and `METHODOLOGY.md:49` appear on both lists.
+>
+> **The generalizable rule this thread now argues for:** when a change adds a gate *upstream*
+> of an existing gate, every sentence describing the downstream gate silently becomes a claim
+> about the pair. Prose that names a flag is not enough; prose must name **both flags and which
+> is on**, or it will be wrong again at the next flip.
+
+*The original 2026-08-08 entry follows, corrected in place only where a line number moved.*
+
+
+- **State** — **The sharpest live divergence in the project.** `FILL_FLOOR_SUSPENDED` defaults
+  ON (`src/config.py:31-39`), so sub-40 items no longer surface. **Eight** files still describe
+  the fill as operative or quote the retired quiet-week wording: `METHODOLOGY.md:49`,
+  `README.md:79-86`, `HANDOFF.md:99-101`, `fingerprint.yaml:4-6`,
+  `scripts/site_templates/index.html.j2:186` (**the public homepage**),
+  the `quality-bar` card in `views/isds-workflow-3d/workflow.json`, and
+  `src/main.py:497-500` *(now `:687-690` — the comment moved on 2026-08-09 and its text did
+  not)* (a code comment naming a "never-empty rule" and quoting text the same
+  function no longer emits). **The numbers did not move** — `RELEVANCE_FLOOR` is still 25,
+  `MIN_DIGEST_ITEMS` still 6 — so every numeric guard passes and every behavioural sentence is
+  wrong. `scripts/check_claims.py` carries no fact for the fill. **The worst instance is inside
+  one file:** `METHODOLOGY.md:49` says the digest is filled toward six; `METHODOLOGY.md:67`
+  says that rule is suspended. Eighteen lines apart, in the document that goes to
+  Dr. Benavides.
+- **Recorded** — [[Claim Map]] **C15**, which lists all eight with quoted text; `src/config.py`,
+  `src/main.py`, `src/render.py` on `fix/restore-council-label` (uncommitted).
+- **Next** — **One coordinated change set, or none.** There is no partial version of this fix
+  that is not a relocation of the contradiction. The durable wording names the **flag** rather
+  than describing one of its settings as the behaviour — because if the fill is ever restored
+  by setting `FILL_FLOOR_SUSPENDED=0`, the eight statements become true again and
+  `METHODOLOGY.md:67` becomes the false one.
+- **Owner** — split, which is why it needs coordinating: `METHODOLOGY.md` and `README.md` are
+  **Emory's**; the `quality-bar` card is a manifest edit by [[systems-designer]] on Emory's
+  go-ahead; `scripts/site_templates/` and the `docs/` rebuild are [[site-experience]]'s;
+  `src/main.py:687-690` and `fingerprint.yaml` are [[systems-designer]]'s.
+- **Next, as of 2026-08-09** — one change set covering **C15**'s three survivors **and C16**'s
+  five. `HANDOFF.md` is [[obsidian-archivist]]'s and was corrected in this pass, which is why
+  it no longer appears on either open list.
+
+---
+
+### B6 · D/E ring contract, F semantic triage, G headline lane — **ALL BUILT 2026-08-09; each off by default**
+
+- **State** — **Rewritten 2026-08-09: these are code now, not designs.** The thread's original
+  job was to stop anyone reading the 08-08 session as having shipped them; its job now is the
+  inverse and narrower — **to record that "built" is not "on"**, because four separate flags
+  stand between this machinery and anything a professor sees, and every one of them is off or
+  holding.
+  - **D/E — the ring-evidence contract is real.** `src/rings.py` derives, in shadow on every
+    cycle, per-ring strengths, a deterministic treaty nexus, evidence location and validity,
+    and a lane. A match requires the IP ring **plus** a second doctrinal ring **plus** a
+    supported nexus **plus** valid evidence, so a no-IP judicial case can never be a match
+    whatever it scores. `STATE_MODEL_V2="on"` is **refused** until
+    `STATE_MODEL_V2_PUBLICATION_READY`, which is `False` (`src/config.py:98`, `:109-111`).
+  - **The semantic V2 path is built end to end** — `src/classify_v2.py`,
+    `prompts/classifier_v2.txt` — and **`V2_SHADOW_CALLS` defaults off**
+    (`src/config.py:154-195`), so every default-run verdict is labelled `lexical_only` and
+    `V2_SHADOW_CALLS=replace` is refused outright. Verdicts carry `claims_source` provenance,
+    and **`guard_demoted` fires on every V1 ring claim** — not a defect but the honest reading
+    of V1, which supplies no spans to check.
+  - **F — `src/triage.py` + `prompts/triage.txt`**, `TRIAGE_ENABLED` off by default
+    (`src/config.py:220`), deterministic sort, provider absence **recorded rather than
+    misreported**, adversarial tests.
+  - **G — `src/headline_lane.py`**, a closed grammar with **three location-keyed limitation
+    clauses**, not one (`:81-85`). The reason is a real error a single clause would have
+    produced: a comparator whose body *was* retrieved must not tell the reader it is paywalled.
+    `scripts/check_headline_lane.py` holds the output byte-identical.
+  - **The state space grew because a gap closed.** The 7-vs-4 outcome question resolved
+    losslessly — seven logical states onto four operational outcomes plus metadata — and the
+    enumeration went from 12,288 to **21,504** (`src/rings.py:112`). **Tail provider failures
+    are now counted**; they had been under-counted by exactly the size of the tail.
+- **The one piece that is NOT built, said plainly** — R2.1 **design (c), the stratified tail
+  audit, is a configuration stub**: `TAIL_AUDIT_N = 0` (`src/config.py:229-243`), expressly
+  unimplemented. It is named here so the workstream is never reported complete on the strength
+  of F and G.
+- **Recorded** — `src/rings.py`, `src/classify_v2.py`, `src/triage.py`, `src/headline_lane.py`,
+  `src/config.py`, `prompts/classifier_v2.txt`, `prompts/triage.txt`,
+  `scripts/check_headline_lane.py`, `tests/test_rings.py`, `METHODOLOGY.md:69`,
+  `analytics/state-space-resolution-2026-08-09.md` (all uncommitted,
+  `fix/restore-council-label`).
+- **Next** — (1) the tail-audit stub; (2) **the validation decision** that could ever set
+  `STATE_MODEL_V2_PUBLICATION_READY` — which is gated on the locked set (**B7**) and therefore
+  on retrieval (**C13**), so it is not a build task; (3) primary retrievals; (4) operator
+  labelling. **Nothing here should be turned on to see what happens** — each flag's default is
+  the deliverable.
+- **Owner** — [[systems-designer]] for the stub; Emory for every flag flip; agenda from
+  [[council-chairman]].
+
+---
+
+### B7 · The locked validation set — created empty, on purpose
+
+- **State** — `analytics/locked_set/` holds `SCHEMA.md` and `RETRIEVAL_LEDGER.md` and **zero
+  items, by design**. The 54-item, 9-category production-path set is specified, together with a
+  five-step commit order that makes blindness provable from git history: `items.json` first,
+  then a SHA-256 lock, then `labels.json` in a separate file with **no score field**, then its
+  lock — "only now may any scorer touch the set." ~~A `scripts/check_lock.py` is **proposed, not
+  written**.~~ **Written 2026-08-09** — see below. The reason the directory is empty is stated in it: the candidate matters named in
+  the R2.1 record are *leads*, several dockets and dates unverified, and per the carrying-span
+  rule **no item enters the set on a memo's authority**.
+- **2026-08-09 update — the cheap half is done, and it got the empty case right.**
+  `scripts/check_lock.py` exists and is wired into CI. Run today it exits 0 with
+  "*no LOCK.md and no locked files: the set is deliberately empty
+  (`analytics/locked_set/SCHEMA.md`), which is the **designed current state and not an
+  error**.*" That distinction is the whole value of the guard: a naive implementation would
+  either fail on an empty set (crying wolf until retrieval finishes) or pass silently on a
+  *deleted* one. It also means the guard will start doing real work the moment the first item
+  lands, with no second change needed.
+- **The set is still empty of items, and retrieval has not moved today.**
+  `RETRIEVAL_LEDGER.md` re-read 2026-08-09: **2 RETRIEVED** (both Vanda CFC slip opinions),
+  **3 BLOCKED**, **8 QUEUED** — identical to 2026-08-08. The H&H documents retrieved this
+  session went into `seeds/` for the comment package and **have never had a row in this
+  ledger**, so they neither advance nor appear in these counts. Recorded so the day's genuine
+  retrieval is not mistaken for progress on the locked set.
+- **Recorded** — `analytics/locked_set/SCHEMA.md:1-11` and the file table; `RETRIEVAL_LEDGER.md`;
+  `scripts/check_lock.py`; `.github/workflows/pipeline-guards.yml:130-131` (all uncommitted,
+  `fix/restore-council-label`).
+- **Next** — Nothing may be added until the corresponding primary document is retrieved and its
+  pinpoint verified; retrieval is **C13** below and is Emory's. The guard half is complete.
+- **Owner** — [[research-analyst]] for item drafting **after** retrieval; Emory for retrieval.
+
+---
+
+### B8 · Three guards exist and none of them runs in CI — **OPENED 2026-08-08, CLOSED 2026-08-09**
+
+- **State** — **CLOSED on the file, not on a report.** `.github/workflows/pipeline-guards.yml`
+  exists and was read line by line this pass. It runs the two guards this thread was opened
+  for and three more: telemetry-privacy (`:121-122`), seen-integrity (`:124-125`),
+  headline-lane (`:127-128`), lock (`:130-131`), and currency in **its own job with
+  `fetch-depth: 0`** (`:138-154`) — without that fetch depth the currency check cannot see the
+  history it asserts against, which is the kind of detail that makes the difference between a
+  guard and a green tick.
+- **It closed better than it was written.** The thread asked for wiring. What landed also runs
+  **each guard's own planted-violation tests** (`:101-111`) — the telemetry guard against a
+  planted text field, the seen-integrity guard against a planted missing ledger line, the lane
+  guard against planted conclusions, the lock guard against a planted tamper. **The guards are
+  now themselves guarded**, which answers the failure mode this thread named: a fail-closed
+  check that has silently stopped checking is worse than none, and only a planted violation
+  catches that.
+- **Recorded** — `.github/workflows/pipeline-guards.yml` (untracked, `fix/restore-council-label`).
+- **What remains, and it is not this thread** — the workflow file is **uncommitted**, so
+  nothing fails a pull request yet. Authorizing that is **C11**, Emory's, because it changes
+  what blocks a merge. The build half is done; the decision half is not.
+- **Owner** — closed; residual decision at **C11**.
+
+---
+
+### B9 · `check_site_sync.py` is a mutating command wearing the name of a check — **OPENED 2026-08-09**
+
+- **State** — **Open defect, found by it doing the damage.** `scripts/check_site_sync.py`
+  **rebuilds `docs/` in place**: `:25` invokes `scripts/build_site.py` with no temporary
+  directory, and `:31` then runs `git diff -- docs/` against the working tree. So a command
+  every seat treats as read-only **writes to the repository as its first act**. This session it
+  reverted `docs/` to HEAD, the designer having read it as stamp-only. The output message even
+  says "OK: `docs/` is in sync with source (only the build stamp differs)" — reassuring, and
+  produced by a run that has already overwritten the directory it is reporting on.
+- **Why it matters beyond the one revert** — the vault's standing rule is "`docs/` is never the
+  fix; change the source, rebuild, and let `check_site_sync.py` prove it" ([[Claim Map]]
+  maintenance rule 5). That rule tells every seat to run this script, and the script is not
+  safe to run on a dirty tree. The rule and the tool disagree, and the tool wins silently.
+- **Recorded** — `scripts/check_site_sync.py:25`, `:31`, `:47`; `HANDOFF.md` 2026-08-09
+  checkpoint carries the warning; designer deviation of record for 2026-08-09.
+- **Next** — Build the site into a temporary directory and compare, so the check is genuinely
+  read-only; or, at minimum, refuse to run when `docs/` is dirty. Until then `docs/` is rebuilt
+  from source in the integrator's final battery, and **no seat should run this script to
+  "check" anything.**
+- **Owner** — [[systems-designer]] (`scripts/` is that seat's); [[site-experience]] is the
+  affected surface.
+
+---
+
 ## C · Awaiting Emory
 
 These are the operator's, and no agent may execute them. Each is stated with what
@@ -441,6 +661,87 @@ specifically unblocks it.
   branch — the archivist's vault work — which is thread D1's story below.
 - **Recorded** — `984f5eb`; branch tip `f195e21` recovered separately by PR #44 (`cb12a2d`).
 - **Owner** — none; no action.
+
+---
+
+### C11 · CI wiring of the guards — **OPENED 2026-08-08; BUILT 2026-08-09, decision still Emory's**
+
+- **State** — **The work is done and the decision is not.** `.github/workflows/pipeline-guards.yml`
+  now exists and wires **five** guards plus their planted-violation tests (**B8**, closed). But
+  it is an **untracked file on `fix/restore-council-label`**, so nothing fails a pull request
+  today. Wiring guards into CI changes what blocks a merge, and that remains an operator
+  decision rather than a seat's — the build being finished does not convert it into one.
+- **Recorded** — `.github/workflows/pipeline-guards.yml` (untracked,
+  `fix/restore-council-label`); `HANDOFF.md` 2026-08-09 checkpoint.
+- **Next** — Emory says yes or no, and the yes is now cheaper than it was: the file is written
+  and its own tests pass, so authorization is a merge rather than a project. **What it costs if
+  deferred:** unchanged and now sharper — the telemetry privacy guard is the only thing between
+  the telemetry stream and article text, and until this merges it still runs only when someone
+  remembers to run it.
+- **Owner** — Emory.
+
+### C12 · Merge-or-skip before the Monday 13:00 UTC run — **OPENED 2026-08-08; ~1 DAY REMAINING as of 2026-08-09 (Sunday)**
+
+- **State** — The whole two-session body of work is uncommitted on `fix/restore-council-label`.
+  The weekly workflow fires `cron: '0 13 * * 1'` — **tomorrow**. **This is the only thread in
+  this register with a deadline set by a machine, and it is now inside a day.**
+- **The stakes changed on 2026-08-09 and the change is not small.** The 08-08 statement of this
+  thread weighed "status-only cycle if nothing reaches 40" against "publishes under the old
+  fill rule". `VALIDATION_STATUS_ONLY` replaces the first limb with something stronger: if this
+  merges, Monday sends **no items at all** — not sub-40 leads, and not a match either if one
+  appears — plus **no Research Brief**, and a status note carrying a held count. So:
+  - **Merge** → Dr. Benavides receives, with no prior notice, an email containing zero items
+    and new wording, and the weekly brief she may be expecting does not arrive. The instrument
+    is behaving correctly and the recipient has not been told the behaviour changed.
+  - **Skip** → Monday publishes under the old fill rule: sub-40 items, in the week the project
+    concluded it should stop sending them, with the classifier's off-theme-at-55 hole still
+    open.
+  - **Third option, recorded on 08-08 and now more attractive:** merge, and disable the Monday
+    run for one week, so the first item-less email is sent deliberately rather than by cron —
+    and can be sent with a sentence of explanation.
+- **Recorded** — `.github/workflows/weekly.yml`; `src/config.py:42-74`; `src/main.py:727-737`
+  (the brief is skipped under the gate); `HANDOFF.md` 2026-08-09 checkpoint.
+- **Next** — Emory decides. This seat records the options and does not recommend one; it does
+  record that **all three options now send or withhold something the recipient has not been
+  warned about**, which was not true of the 08-08 framing.
+- **Owner** — Emory.
+
+### C13 · Eleven externally gated retrievals — **OPENED 2026-08-08**
+
+- **State** — `analytics/locked_set/RETRIEVAL_LEDGER.md` carries thirteen rows: **two
+  RETRIEVED** (both *Vanda* Fed. Cl. slip opinions, in hand and verified) and **eleven not** —
+  three BLOCKED (Tethyan Copper ¶¶ 1283/1288/1327–1333, paywalled at IIC 1603 (2019);
+  Thailand—Cigarettes ¶¶ 7.410–7.411, PDF text layer will not extract; Lord Falconer's 2006
+  Manchester speech, absent from the UK Government web archive) and eight QUEUED (the
+  15 J. Marshall bound volume on the 999-vs-228 pagination; *Philip Morris v. Uruguay*
+  Decision on Jurisdiction ¶ 185; the Vanda **Federal Circuit** docket; the Landreau award;
+  the EMA Policy 0070 post-2023 sequence; Lentner, 34 ICSID Rev. 569 (2019); the
+  *OI European Group v. Venezuela* award; and the IBA/ICC/Aceris evidence instruments).
+- **Recorded** — `analytics/locked_set/RETRIEVAL_LEDGER.md` (uncommitted,
+  `fix/restore-council-label`).
+- **Next** — Library access, one pass, capturing a preserved `source_snapshot` for each. **None
+  of these may be converted to verified by inference, and none has been.** The three BLOCKED
+  rows need a decision rather than effort: a paywall and a broken text layer are not solved by
+  trying again.
+- **Owner** — Emory (operator), as the only seat with library access.
+
+### C14 · The 13-item retrospective labelling protocol — **OPENED 2026-08-08**
+
+- **State** — Designed and unrun. Label the 13 distinct published items against
+  `L_theme ∈ {0,1}` **from the source page, not the annotation**, recording the label before
+  reading the annotation, with a one-sentence written reason naming which rings are present and
+  absent. **Blindness cannot be claimed retrospectively and the protocol does not claim it** —
+  the machine scores are already on the page. Ten of the 13 rest on paywalled bodies, so
+  `cannot_assess` is the expected outcome for most; the informative sample may be **3–4 items**,
+  and the protocol says to report it with that limit stated **or not at all**.
+- **Recorded** — `analytics/retrospective-audit-2026-08-08.md` §6 (uncommitted).
+- **Next** — Emory's, 13 codings, recorded through `scripts/verify_digest.py` so each lands in
+  the append-only ledger under the operator's identity. **One defect to route around:** that
+  script's URL-dedupe presents only the 2026-06-10 Telefónica verdict, and the 06-09 verdict
+  must be assessed too. **Why it is worth doing before the 54-item locked set:** it measures the
+  real production distribution at the cost of 13 codings and moves no holdout label, so it
+  cannot disturb [[Claim Map]] C1.
+- **Owner** — Emory (operator).
 
 ---
 
@@ -632,6 +933,34 @@ specifically unblocks it.
   its claims about other notes did not. Corrected 2026-08-04, with the measured consequence
   recorded rather than asserted. The countermeasure adopted: a vault change is not made until
   it is on `main`, and the session claiming it verifies it there.
+- **2026-08-08 update — the countermeasure worked, and it was aimed at the wrong failure.**
+  The currency query did its job: `git log 373cce6..HEAD -- .claude/agents/ prompts/` is
+  **empty**, `git status` shows nothing modified under either path, so **no definition or
+  prompt changed on 08-07 or 08-08** and every seat note's model and binding is current. But
+  three seat notes were still wrong about the repository, and none of the errors was of a kind
+  the query can see:
+  - [[systems-designer]] said its flowchart box sat at **machine row 7**. It has been at row 9
+    since manifest v2.2, dated 2026-08-03; [[Agent Registry]] recorded the move on 2026-08-04
+    and the seat note did not. **The registry and the seat note disagreed about where the seat
+    sits for four days**, and the maintenance rule that is supposed to prevent exactly that
+    ("the table and the corresponding note change in the same commit") only binds when a
+    *definition* changes — the manifest is not a definition.
+  - The same note bound the seat to a **zero-cost constraint** that the seat's own code
+    reading disproved on 2026-08-08.
+  - [[Claim Map]] carried **C13 as an open definitional split for two days after the council
+    ruled**, and carried it under a heading that invited a reader to think the question was
+    still live.
+  **The corrected statement of this thread:** the risk is no longer "seat notes lag the
+  definitions". It is **"vault notes lag the tree"** — the manifest, the code, the archive —
+  and a query scoped to `.claude/agents/ prompts/` cannot detect it by construction.
+- **Next** — Keep the currency query, and add a second query that the 2026-08-08 pass had to
+  improvise: for each seat note, re-read the **non-definition** artifacts it asserts facts
+  about — the manifest row, the guard it claims exists, the constraint it claims to be bound
+  by. Concretely, per session: `views/isds-workflow-3d/workflow.json` rows against every
+  "Place in the workflow" section, and one grep for each operating constraint a note names.
+  All twelve notes carry a snapshot anchor; that remains necessary and is not sufficient.
+- **Owner** — [[obsidian-archivist]].
+
 - **2026-08-07 update — the failure recurred, in the form the countermeasure does not reach.**
   Nothing was orphaned this time: every council branch in the window landed, and the archivist's
   own 08-04 and 08-05 work is on `main`. What failed is the *other* half. Between 2026-08-05 and
@@ -647,6 +976,77 @@ specifically unblocks it.
   `grep -c "2026-08-0[0-9]" agents/*.md` against the dates of every council session since the
   last deployment.
 - **Owner** — [[obsidian-archivist]]; B5 is [[systems-designer]]'s.
+
+---
+
+### D3 · `STATE_OF_THE_ANSWER.md` fails the currency guard, and today made it worse — **OPENED 2026-08-08, CLOSED 2026-08-09**
+
+> **CLOSED on a re-run of the guard, by the seat that owns the file.** Both defects are gone.
+> `STATE_OF_THE_ANSWER.md:10` now reads "**Last updated: 2026-08-09** — audited against
+> `2686422` plus the uncommitted 2026-08-08/09 working-tree changes (manifest:
+> `analytics/session-manifest-2026-08-09.md`)", so the file carries an anchor for the first
+> time *and* its timestamp matches its content. `scripts/check_currency.py`, re-run by this
+> seat, reports **9 currency claims across 5 notes, 0 failed**, exit 0 — down from 1 failure at
+> the close of 08-08 and 5 at that session's start.
+>
+> **Two things worth keeping from how this closed.** First, the fix came from
+> [[research-analyst]], the seat that owns the file, exactly as the thread routed it — the
+> archivist's refusal to silently restamp another seat's living memory was the right call and
+> cost one day. Second, the anchor the analyst wrote **says what an anchor can and cannot
+> prove**: "The anchor records what state this file was checked against; it does not by itself
+> prove the content above it accurate." That sentence is the honest form of the snapshot-anchor
+> convention this vault adopted on 2026-08-03, and it belongs in the convention rather than in
+> one file.
+
+*The original 2026-08-08 entry follows, unaltered.*
+
+
+- **State** — `scripts/check_currency.py` run against the working tree reports **8 currency
+  claims checked, 1 failed**, and the one is `STATE_OF_THE_ANSWER.md`: *no `audited against
+  <sha>` anchor*. Down from three failures at the start of this session — [[Claim Map]] and
+  [[Project Change Log]] were both STALE and are now anchored — and down from the five the
+  day's handoff recorded. **Two distinct defects in this one file, and the second is new
+  today.** (1) It carries no anchor at all, so it claims currency against nothing; this
+  predates today. (2) `STATE_OF_THE_ANSWER.md:10` reads "**Last updated: 2026-08-06**" while
+  `:5` was materially edited on **2026-08-08** — the Kim police-powers correction and the
+  third-stance correction. **A living-memory file whose own timestamp is two days behind its
+  own content is the exact failure this vault exists to prevent**, and it was introduced by an
+  otherwise careful correction pass.
+- **Recorded** — `scripts/check_currency.py` output, 2026-08-08; `STATE_OF_THE_ANSWER.md:5`
+  and `:10` (uncommitted, `fix/restore-council-label`); `git diff STATE_OF_THE_ANSWER.md`.
+- **Next** — Restamp `:10` to 2026-08-08 and add an `Audited against <sha>` anchor with the
+  paths the file claims to describe. **Deliberately not done by this seat:** the file is
+  [[research-analyst]]'s canonical living memory, it was being edited during this session, and
+  an archivist silently restamping another seat's record would assert a currency this seat did
+  not establish. Escalated instead.
+- **Owner** — [[research-analyst]].
+
+---
+
+### D4 · A clause in `STATE_OF_THE_ANSWER.md` that is true only while a list stays short — **OPENED 2026-08-09**
+
+- **State** — **Not a defect today; a scheduled one.** `STATE_OF_THE_ANSWER.md:28` reasons from
+  Kim's footnote-23 remedy mismatch to the distribution the record shows: "every disclosure case
+  in the Kim memo's bibliography (InterMune, T-73/13 R; AbbVie, T-44/13; PTC Therapeutics,
+  C-175/18 P; **Vanda, D.D.C.**) was **brought in a court to prevent or restrict disclosure**,
+  not in arbitration to be compensated for it." **As scoped to those four, it holds.** But the
+  project also holds the **Vanda Court of Federal Claims takings matter** (No. 23-629C, both
+  slip opinions retrieved into `seeds/`), and a CFC takings action is **not** a suit to prevent
+  disclosure — it seeks compensation after the fact, which is the very posture the sentence
+  contrasts against. Add that matter to the list and the sentence becomes false *by the
+  addition*, not by any edit to it.
+- **Why it is recorded rather than fixed** — the clause is correct as written, the file is
+  [[research-analyst]]'s canonical living memory, and an archivist rewording a true sentence in
+  another seat's file to pre-empt a hypothetical is exactly the overreach this register exists
+  to avoid. It is also a genuinely interesting point on the merits: a Vanda CFC row would be
+  *evidence against* the remedy-mismatch explanation's strongest form, so whoever adds it
+  should expect to rewrite the inference, not just the parenthesis.
+- **Recorded** — `STATE_OF_THE_ANSWER.md:28`; the retrieved opinions at
+  `seeds/Vanda_v_US_23-629C_FedCl_2024-01-18_slip_op.pdf` and `…_2025-01-22_slip_op.pdf`;
+  observation raised by [[research-analyst]] during the 2026-08-09 parity round.
+- **Next** — When (and only when) the CFC takings matter is added to that list, reword the
+  clause and re-examine the inference it supports. No action until then.
+- **Owner** — [[research-analyst]].
 
 ---
 
@@ -674,6 +1074,56 @@ council's close-out changes a thread's state — which means the close-out, not 
 the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
+
+- **2026-08-11** — Integration to `main`: audited against `0a67756` — the merge of the
+  integration branch (which carries the formerly uncommitted 2026-08-08/09 work the entry
+  below describes) with the 2026-08-11 council session, plus the fetch-relay results the
+  cron committed onto the integration branch itself mid-flight. The drift counted since `2686422`
+  is the council's own 2026-08-08..11 session and ledger commits plus the integration's
+  reviewable commits; no thread moved outside them. F1's seventeen verification marks
+  reach `main` with this merge; the thread closes on the operator's confirmation, not on
+  the merge itself.
+- **2026-08-09** — Refreshed against `2686422` plus the uncommitted working trees of the
+  2026-08-08 repair session and the 2026-08-09 audit-response session, on
+  `fix/restore-council-label`. **Two threads closed, one rewritten, two opened, three
+  materially restated.** Closed: **B8** (the guards are in
+  `.github/workflows/pipeline-guards.yml`, with planted-violation tests the thread never asked
+  for) and **D3** (`check_currency` green, 9 claims / 0 failed, fixed by the seat that owns the
+  file). Rewritten: **B6**, because D/E, F and G are built rather than designed and the thread's
+  job inverted — it now records that *built is not on*, and names the one piece that genuinely
+  is not built (the tail-audit stub, `TAIL_AUDIT_N = 0`). Opened: **B9**
+  (`check_site_sync.py` rebuilds `docs/` in place — a mutating command named as a check, which
+  is how it reverted `docs/` this session) and **D4** (a true clause in
+  `STATE_OF_THE_ANSWER.md:28` that a future list addition would falsify). Restated: **B5**,
+  **B7**, **C11**, **C12**.
+  **The finding of this pass is a thread that did not close.** B5 / [[Claim Map]] **C15** was
+  briefed as resolved; five of eight statements are repaired and **three are not**, one of them
+  having moved from `src/main.py:497-500` to `:687-690` so that only its quoted text located it.
+  Worse, the same session's second gate (`VALIDATION_STATUS_ONLY`) made four of the five repairs
+  stale in the opposite direction — items at or above 40 are now held, and every repaired
+  sentence says they publish. That successor divergence is the new [[Claim Map]] **C16**, and
+  `METHODOLOGY.md` again contradicts itself twenty lines apart. **A repair pass that is not
+  checked against the same session's other changes reintroduces the defect it closed.**
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `src/`, `scripts/`, `tests/`, `prompts/`, `.github/workflows/`, `analytics/`, `seeds/`,
+  `working/`, `views/isds-workflow-3d/workflow.json`, `fingerprint.yaml`, `HANDOFF.md`,
+  `METHODOLOGY.md`, `README.md`, `PLAN.md`, `STATE_OF_THE_ANSWER.md`, `agents/`, `moc/`.*
+- **2026-08-08** — Refreshed against `2686422` plus the uncommitted working tree of the
+  master-prompt repair session on `fix/restore-council-label`. **Eight threads added, none
+  closed, one rewritten.** Added: **B5** (the eight prose statements the fill suspension left
+  behind — the sharpest live divergence in the project, and the only new *defect* of the day);
+  **B6** (D/E, F, G designed and expressly not production); **B7** (the locked set, empty by
+  design); **B8** (three fail-closed guards, none wired to CI); **C11**–**C14** (Emory's four
+  decisions, one of which — C12 — expires at the Monday 13:00 UTC cron). Rewritten: **D1**,
+  because the drift it tracks turned out not to be the drift it was written for. **Nothing was
+  closed on the strength of a session report**: the one item the day's handoff listed as open
+  and routed — the `digest.html.j2:120` overclaim — was re-read in the file, found already
+  repaired, and recorded closed in [[site-experience]] on the file's authority rather than the
+  report's.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `src/`, `scripts/`, `analytics/`, `templates/`, `views/isds-workflow-3d/workflow.json`,
+  `fingerprint.yaml`, `HANDOFF.md`, `METHODOLOGY.md`, `README.md`, `.claude/agents/`,
+  `prompts/`, `agents/`.*
 
 - **2026-08-07** — Four threads added and one updated, all from the archivist's every-3-days
   session. **B5** — `scripts/check_currency.py` tracks 5 of 13 anchored notes and is wired into no

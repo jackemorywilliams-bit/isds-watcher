@@ -73,8 +73,9 @@
         </li>
         <li>
           <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
-          negatives, none of them used in development. This is the headline generalisation metric:
-          precision, recall, accuracy and F1 are computed on this bucket <em>alone</em>.
+          negatives, none of them used in development. This bucket carries the descriptive
+          out-of-sample record: a confusion matrix over twenty items with four positives. It is
+          too small to support derived performance rates, and none are reported.
         </li>
         <li>
           <strong>Live prospective</strong> &mdash; the live weekly digest archive, the only test
@@ -153,7 +154,8 @@
     <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
       Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
       off-theme negatives &mdash; 20 cases in all, none used in development. The
-      headline metrics below are computed on this bucket <strong>alone</strong>; the seeds are not in it.
+      record below is descriptive and is computed on this bucket <strong>alone</strong>; the seeds
+      are not in it. Four positives cannot support a headline performance figure.
     </p>
     <div class="doc-body">
       <table>
@@ -185,27 +187,15 @@
         </tbody>
       </table>
 
-      <table>
-        <caption class="visually-hidden">
-          Headline generalisation metrics derived from the out-of-sample confusion matrix.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Precision</th>
-            <th scope="col">Recall</th>
-            <th scope="col">Accuracy</th>
-            <th scope="col">F1</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1.00</td>
-            <td>0.75</td>
-            <td>0.95</td>
-            <td>0.86</td>
-          </tr>
-        </tbody>
-      </table>
+      <p>
+        Three of the four labelled positives cleared the deterministic threshold of
+        40 &mdash; exact Clopper&ndash;Pearson 95% confidence interval 0.19 to 0.99.
+        All sixteen negatives scored zero, so this set contains no boundary case and
+        cannot measure precision. Derived rates (precision, recall, accuracy, F1) are
+        not reported here: over twenty items with four positives they are arithmetic,
+        not performance. The production pipeline publishes at a floor of 25, not at
+        this threshold, and no item has reached 40 in 347 screenings.
+      </p>
       <p>
         On this out-of-sample set the scorer makes
         1 miss:
@@ -510,11 +500,11 @@ correct            </td>
         </nav>
       </div>
       <div class="footer-bottom">
-        <p class="footer-about">A research instrument for the Benavides ISDS project: zero-cost, open-source,
+        <p class="footer-about">A research instrument for the Benavides ISDS project: low-cost, open-source,
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-08-10 14:22 UTC &middot; 364a7d4</p>      </div>
+<p class="footer-build">Site built 2026-08-11 14:42 UTC &middot; 3e6c465</p>      </div>
     </div>
   </footer>
   <script>

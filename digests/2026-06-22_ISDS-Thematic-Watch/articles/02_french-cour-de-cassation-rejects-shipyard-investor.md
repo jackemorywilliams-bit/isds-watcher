@@ -18,3 +18,18 @@ A French appellate court (Cour de cassation) rejected an investor's bid to enfor
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+Three defects in the entry above, recorded without altering it. First, the
+"Rings matched" line reports the classifier's unvalidated ring list: this entry
+was scored on the language-model path, where a displayed ring is not checked for
+evidence, and the judicial/regulatory-measure ring is not substantively
+supported — the item is an enforcement action over an ICC commercial award, the
+court's ruling is the forum's own act rather than challenged State conduct, and
+no investor-State proceeding appears in the item. Second, the score of 25
+contradicts the operative classifier contract, which states that a genuinely
+engaged judicial-measure ring is at least MEDIUM (40-69); the ring label and the
+score cannot both be right. Third, the annotation calls the Cour de cassation "a
+French appellate court"; it is France's court of last resort in civil matters.
+The entry was published from the headline alone (source paywalled; body not
+retrieved).

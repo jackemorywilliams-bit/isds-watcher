@@ -1,9 +1,11 @@
 version: 1
 # The digest threshold. An item at or above it is reported as a MATCH, with no upper
 # cap on how many. Lowered from 60 to 40 to broaden recall (more inclusive matching).
-# There is NO non-empty-digest guarantee. Items BELOW this gate but at or above
-# RELEVANCE_FLOOR (src/config.py) may be surfaced as watch-list LEADS — never as
-# matches — and only until the digest reaches MIN_DIGEST_ITEMS. A week in which
+# There is NO non-empty-digest guarantee. By design, items BELOW this gate but at
+# or above RELEVANCE_FLOOR (src/config.py) could be surfaced as watch-list LEADS —
+# never as matches — up to MIN_DIGEST_ITEMS; since 2026-08-08/09 that fill is
+# suspended (FILL_FLOOR_SUSPENDED) and all publication is gated at any score
+# (VALIDATION_STATUS_ONLY) pending validation. A week in which
 # nothing reaches the relevance floor produces an empty digest, and the digest says
 # so plainly along with the number of candidates screened. The selection rule itself
 # is src/main.py's select_surfaced(); this line is the value it gates on.

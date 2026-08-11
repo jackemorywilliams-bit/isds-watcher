@@ -18,3 +18,15 @@ The Swedish Supreme Court upheld a claimant's use of a most-favored-nation (MFN)
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+Two cautions on the entry above, recorded without altering it. The annotation
+says the court "upheld" the claimant's use of an MFN detour; the headline states
+only that the court "finds that claimant … can use" it, and no body was read, so
+the affirmance posture is the annotation's inference rather than the source's
+statement. This entry also reports the same underlying matter as entry 01 of
+this digest (Okuashvili v. Georgia, via italaw) through a different forum and
+URL — the two were published as separate leads with no cross-reference. The
+displayed jurisdictional-admissibility ring is consistent with the classifier
+contract for a LOW item; it is the model's indication, not an established
+finding.

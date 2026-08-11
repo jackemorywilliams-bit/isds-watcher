@@ -99,6 +99,15 @@ sending to both. Edit that list and push to change recipients.
   if real cases are being missed. Digest size is a hybrid (see `src/config.py`): every match
   at/above threshold with no cap, a minimum of six filled from the closest near-misses but
   only down to `RELEVANCE_FLOOR=25`, so a quiet week may carry only 0–3 items.
+  **Two flags currently override that description, and both are ON by default** — read them
+  as a pair, because neither can disable the other (`src/config.py:59-62`):
+  `FILL_FLOOR_SUSPENDED` (since 2026-08-08) stops items scoring 25–39 from surfacing at all;
+  `VALIDATION_STATUS_ONLY` (since 2026-08-09, `src/config.py:73-74`) then holds **every**
+  item-level entry **including items at or above 40**, plus the Research Brief, and sends a
+  single status note carrying the count of what it held. **So the sentence above describes
+  the machinery, not what the instrument publishes today: today it publishes no items at
+  all.** Set `VALIDATION_STATUS_ONLY=0` to publish items again — that is the validation
+  decision, not a runtime convenience. Divergence tracked at `agents/Claim Map.md` **C16**.
 - **Vocabulary / weights**: edit `fingerprint.yaml` rings (within-ring weights should sum to
   100). `tests/test_pipeline.py::test_scorer_matches_fingerprint_examples` guards the bands —
   update the `few_shot_examples` if you change the model and re-run `pytest`.
@@ -174,3 +183,118 @@ Map: [[00 - Project Map]]
   automatically (`src/models.py record_fallback`). This session's one-pager drafting ran
   on Opus 4.8 subagents as assigned; the orchestrating session itself runs on
   `claude-opus-5` (requested and actual).
+
+## Checkpoint — 2026-08-08 master-prompt repair session (uncommitted, branch fix/restore-council-label)
+
+> **Superseded as a statement of current state — read the 2026-08-09 checkpoint below first.**
+> This section is kept as the dated record of what 2026-08-08 completed and measured. Its
+> figures are that day's: **the suite stands at 564 passed / 5 xfailed as of 2026-08-09, not
+> 414**, `check_currency` is now fully green (9 claims, 0 failed) rather than carrying 5 stale
+> anchors, and the comment-reply package described below as "finalized" had five audit
+> contradictions still open, all of which were closed on 2026-08-09. Nothing here is rewritten;
+> the corrections live in the newer section.
+
+Completed and tested: Phase 0 telemetry + Phase 1 seen-state + Workstream H fill-floor
+suspension (414 tests green, 32 new; all guards green except check_currency's 5 known
+stale anchors and check_site_sync, which correctly reports docs/ vs HEAD until this
+session is committed). Telefónica double-publication root cause fixed
+(research-brief exception discarded seen-state; regression test in place). Comment-reply
+package audited and finalized (working/benavides-comment-replies-2026-08-08.md); canonical
+memos parity-verified; Vanda CFC opinions retrieved into seeds/ and the kim-memo gap
+closed on verified spans. Desktop deliverables: revised methodology, reply packet, final
+Claude Chat prompt (hashes verified). Archive corrections: 9 dated appends. METHODOLOGY
+§VI.B correction + §IX addition; README zero-cost corrected.
+
+Vault reconciled the same day — record at `analytics/vault-sessions/2026-08-08.md`; open work
+by thread and owner at `agents/Workflow Threads.md` (B5–B8, C11–C14). **One item this
+checkpoint does not carry, and it is the largest:** suspending the fill changed the behaviour
+in code and left **eight** files stating the old rule, including `METHODOLOGY.md:49` —
+eighteen lines above the §IX addition that suspends it — and the public homepage. The numbers
+did not move, so no existing guard catches it. The full list with owners is
+`agents/Claim Map.md` **C15**, and it wants one coordinated change set rather than six
+separate edits. *(2026-08-09: five of the eight are now repaired and three remain — and the
+same day's second gate made four of the five stale again in the opposite direction. See
+**C16**.)*
+
+*(A mid-day 2026-08-09 line stood here reporting D/E done at 449 tests with F and G still to
+come, and Emory's CI wiring still outstanding. All three have since been overtaken; it is
+replaced by the checkpoint below rather than left to be read as current.)*
+
+## Checkpoint — 2026-08-09 audit-response session (uncommitted, branch fix/restore-council-label)
+
+**Suite: 564 passed, 5 xfailed.** All guards green, re-run this date: `check_currency`
+(9 currency claims across 5 notes, 0 failed — the STATE_OF_THE_ANSWER anchor closed the last
+failure), `check_lock` (reports the empty set as the designed state, exit 0),
+`check_headline_lane` (no lane output on disk yet, exit 0), `check_models`, `check_claims`,
+and `node tools/isds-workflow-3d/validate.mjs` (30 cards / 9 chips / 44 edges).
+**One guard is not safe to run** — see the warning below.
+
+Completed and tested this session:
+
+- **Independent-audit correction round.** The previous session's "live e2e" verification is
+  relabelled as what it was, a **fixture-backed simulation**; `STATE_OF_THE_ANSWER.md` gained
+  the currency anchor it had never carried.
+- **VALIDATION_STATUS_ONLY** (`src/config.py:73-74`, default ON) — the second and stronger
+  publication gate. Holds **all** item publication *including items at or above 40*, and the
+  Research Brief; the status note reports the held count; the fill flag cannot bypass it and
+  neither flag can disable the other.
+- **STATE_MODEL_V2 is real code, not prose** — `src/rings.py` + shadow derivation on every
+  cycle. The semantic V2 path is built end to end (`src/classify_v2.py`,
+  `prompts/classifier_v2.txt`), but `V2_SHADOW_CALLS` defaults **off**, so every default-run
+  verdict is labelled `lexical_only`; `replace` is refused; verdicts carry `claims_source`
+  provenance; `guard_demoted` fires on every V1 ring claim because V1 supplies no spans.
+- **7-vs-4 outcomes resolved losslessly** — seven logical states → four operational outcomes
+  plus metadata; enumeration **21,504**; rationale at
+  `analytics/state-space-resolution-2026-08-09.md`. Tail provider failures are now counted;
+  they were under-counted by the size of the tail.
+- **Workstream F** — `src/triage.py` + `prompts/triage.txt`, `TRIAGE_ENABLED` off by default,
+  deterministic sort, provider-absence recorded rather than misreported, adversarial tests.
+  **Design (c) tail audit is a config stub only** (`TAIL_AUDIT_N = 0`), expressly
+  unimplemented.
+- **Workstream G** — `src/headline_lane.py`, a closed grammar with **three** location-keyed
+  limitation clauses rather than one (a retrieved-body comparator may not claim paywall);
+  `scripts/check_headline_lane.py` enforces byte-identity; the public-label mapping no longer
+  calls an accessible-body item a library lead.
+- **CI** — `.github/workflows/pipeline-guards.yml` wires telemetry-privacy, seen-integrity,
+  headline-lane, lock and currency (currency in its own job with `fetch-depth: 0`), each with
+  its planted-violation tests. `scripts/check_lock.py` written.
+- **Comment-package parity round** — five audit contradictions closed. **H&H v. Egypt closed by
+  retrieval:** Decision on Jurisdiction (`ita1012.pdf`) and Award Rule 48(4) excerpts
+  (`italaw7979.pdf`) now in `seeds/`, 21 spans verified; the retrieval **corrected two claims**
+  (causal-link scope narrowed to the corruption claim; the sector attribution deleted, not
+  re-attributed) and the dead `italaw.com/cases/542` URL was replaced. "Structural" became "a
+  deliberate scope boundary"; Item 6 balancing narrowed; disclosure categorical qualified;
+  Part 5 items 5/13/15 updated. **The full Award is unpublished — Rule 48(4) excerpts only,
+  recorded as a permanent scope limit, not a gap slug.**
+- **Walter round 2** — 3 passages, none adopted: 1 exempt by construction (sentinel chain),
+  2 rejected at the gate (content dropped + meaning flip; sentinel destroyed). Canonical stands.
+- **METHODOLOGY §IX** updated to 21,504, the three off-by-default capabilities, and the CI
+  wiring.
+
+> ⚠ **`scripts/check_site_sync.py` is not safe to run as a read-only check.** It rebuilds
+> `docs/` **in place** — `:25` invokes `build_site.py` with no temporary directory and `:31`
+> then diffs the working tree — so invoking it *mutates* the repository. It reverted `docs/`
+> to HEAD this session on the belief that it was stamp-only. `docs/` will be rebuilt from
+> source in the integrator's final battery. Open defect: `agents/Workflow Threads.md` **B9**.
+
+**Still Emory's, and now urgent:** merge-or-skip before the **Monday 13:00 UTC** run — the
+weekly cron is `0 13 * * 1`, so this expires in about a day
+(`agents/Workflow Threads.md` **C12**). The CI wiring that was outstanding at the start of the
+day is **built** and sitting uncommitted; authorizing it is still Emory's, because it changes
+what fails a PR (**C11**). Externally gated retrievals remain at
+`analytics/locked_set/RETRIEVAL_LEDGER.md`: **2 RETRIEVED, 3 BLOCKED, 8 QUEUED**, unchanged
+today — the H&H documents were retrieved into `seeds/` but that matter has never had a row in
+that ledger.
+
+**What this checkpoint does not carry, stated because the 08-08 one hid the same thing.**
+Repairing five files to describe `FILL_FLOOR_SUSPENDED` and then adding
+`VALIDATION_STATUS_ONLY` in the same session left four of those five files **stale again, in
+the opposite direction** — they now say items at or above 40 are published, and none are.
+`METHODOLOGY.md:49` and `:69` contradict each other twenty lines apart, which is the exact
+defect 08-08 recorded and resolved to stop producing. The full list with owners is
+`agents/Claim Map.md` **C16**, and it must be fixed in one change set together with the
+**three** rows of **C15** that are still open (`fingerprint.yaml`, the `quality-bar` card, and
+`src/main.py:687-690`) — C15 is **not** resolved, whatever the session reports say.
+
+Vault reconciled the same day — record at `analytics/vault-sessions/2026-08-09.md`; open work
+by thread and owner at `agents/Workflow Threads.md`.

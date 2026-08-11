@@ -90,9 +90,26 @@ def _is_ancestor(sha: str) -> bool:
                           capture_output=True).returncode == 0
 
 
+def _is_maintenance(sha: str) -> bool:
+    """A commit whose every changed file is itself a tracked note.
+
+    Anchors live inside the notes they date, so the commit that moves an anchor
+    always touches a tracked note — counted naively, no fully committed tree can
+    ever pass this guard (the anchor would have to name its own commit). The
+    check survived until 2026-08-11 only because anchor edits sat uncommitted,
+    which is exactly the state this guard exists to end. A commit that changes
+    nothing but tracked notes cannot alter the substance those notes audit, so
+    it is excluded from drift. Any commit touching one other file still counts.
+    """
+    changed = _git("show", "--name-only", "--format=", sha)
+    files = {l.strip() for l in changed.split("\n") if l.strip()}
+    return bool(files) and files <= set(TRACKED)
+
+
 def _commits_since(sha: str, paths: list[str]) -> list[str]:
-    out = _git("log", "--oneline", f"{sha}..HEAD", "--", *paths)
-    return [l for l in out.split("\n") if l.strip()]
+    out = _git("log", "--format=%h %s", f"{sha}..HEAD", "--", *paths)
+    lines = [l for l in out.split("\n") if l.strip()]
+    return [l for l in lines if not _is_maintenance(l.split()[0])]
 
 
 def _pr_for(sha: str) -> str | None:

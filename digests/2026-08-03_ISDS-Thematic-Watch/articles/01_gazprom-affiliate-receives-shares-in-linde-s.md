@@ -18,3 +18,12 @@ A Gazprom affiliate acquires shares in Linde's Russian subsidiary through an ass
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+The annotation above concludes that the item has "no ISDS thematic
+intersection," and the entry records two lines below that the body was not
+accessible. A negative thematic conclusion cannot be established from a headline
+the instrument could not read past; the honest status of this item is "not
+assessed — body not retrieved," not a finding either way. This entry was also
+the entire content of its digest, surfaced by the fill-toward-six rule at the
+relevance floor rather than by the match threshold.

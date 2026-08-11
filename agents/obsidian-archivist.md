@@ -72,6 +72,92 @@ registry, flowchart vs pipeline, HANDOFF vs workflows) and fix or escalate drift
 periodically research current Obsidian/PKM practice so the vault's organization stays
 state-of-the-art."
 
+**Audit slice, 2026-08-09 (seventh deployment): the threads a session reports as CLOSED.**
+The 2026-08-08 slice found that this seat's currency query is scoped to `.claude/agents/` and
+`prompts/` and therefore cannot see the drift that actually occurs, and specified a second
+per-session query over the artifacts a note asserts facts about. This deployment ran that
+second query for the first time as a **discipline against its own briefing**, and that is the
+finding.
+
+1. **The remove-stale brief this seat was given was itself partly stale, and the vault would
+   have inherited it.** The briefing listed, among items to remove, "any statement that C15 is
+   unresolved." Applying the standing rule — *no thread is closed on the strength of a session
+   report* — each of C15's eight ⚠ rows was re-read in its file. **Five are repaired. Three are
+   not:** `fingerprint.yaml:5-6`, the `quality-bar` card at
+   `views/isds-workflow-3d/workflow.json:177`, and the `src/main.py` comment, **which had moved
+   from `:497-500` to `:687-690`** — so a line-number check would have reported it gone, and
+   only the row's quoted text located it. Had this seat accepted the brief, the vault would
+   have recorded a divergence as closed while the public-facing manifest card still stated the
+   retired rule. **The rule earned its keep on the first occasion it was tested against an
+   instruction rather than against an absence.** The three survivors are exactly the rows whose
+   owners sit outside the seat doing the repair, which is now a predictor rather than an
+   observation.
+2. **The repair pass created its mirror image inside the same session, and nothing in the
+   vault would have caught it.** `VALIDATION_STATUS_ONLY` (2026-08-09) holds item publication
+   **including items at or above 40**. Four of the five sentences repaired that same day for
+   C15 now say the opposite. `METHODOLOGY.md:49` — repaired today — and `METHODOLOGY.md:69`
+   contradict each other **twenty lines apart in the document that goes to Dr. Benavides**,
+   which is the identical defect the 08-08 pass recorded and resolved to stop producing.
+   Recorded as the new [[Claim Map]] **C16**. The generalizable rule adopted here:
+   **when a change adds a gate upstream of an existing gate, every sentence describing the
+   downstream gate silently becomes a claim about the pair** — so the Claim Map row for the old
+   gate is where the new one must be noticed, and prose must name *both* flags and which is on
+   rather than describing a setting as the behaviour.
+3. **Two threads did close, and both closed on files rather than reports.** **B8** — the three
+   guards with no CI — closes on `.github/workflows/pipeline-guards.yml`, read line by line;
+   it closed *beyond its terms*, wiring five guards plus each guard's **planted-violation
+   tests**, which answers the failure mode the thread named (a fail-closed check that has
+   silently stopped checking). **D3** closes on a re-run of `scripts/check_currency.py`: **9
+   claims across 5 notes, 0 failed**, the `STATE_OF_THE_ANSWER.md` anchor having been added by
+   [[research-analyst]], the seat that owns the file. The 08-08 decision *not* to restamp
+   another seat's living memory cost one day and was correct.
+4. **A check in this repository is a write, and the vault's own maintenance rule points every
+   seat at it.** `scripts/check_site_sync.py:25` runs `build_site.py` with **no temporary
+   directory** and `:31` diffs the working tree, so the command reverts or rewrites `docs/` as
+   its first act; it reverted `docs/` to HEAD this session. [[Claim Map]] maintenance rule 5
+   says "`docs/` is never the fix — change the source, rebuild, and let
+   `scripts/check_site_sync.py` prove it." **The rule instructs every seat to run a script that
+   is unsafe on a dirty tree.** Opened as [[Workflow Threads]] **B9** and flagged in
+   `HANDOFF.md`; the fix is [[systems-designer]]'s.
+5. **The flowchart did not move while four subsystems were built.** Manifest re-read: still
+   **v2.2, 30 nodes, 44 edges**, `node tools/isds-workflow-3d/validate.mjs` exit 0, and
+   `systems-designer` still at machine row 9 — so that seat note's row is **re-verified, not
+   corrected**, which is the first time this check has come back clean since it was adopted.
+   `src/rings.py`, `src/classify_v2.py`, `src/triage.py` and `src/headline_lane.py` appear
+   nowhere on the chart. Recorded in [[systems-designer]] as a gap **deliberately not asserted
+   as urgent**: all four are off or shadow-only, so drawing them as pipeline stages would
+   overstate what runs. The `quality-bar` card, however, is now wrong on a third count and its
+   long-open correction should answer the question in the same edit.
+6. **A real retrieval that advances no ledger, recorded so it is not double-counted.** The H&H
+   v. Egypt Decision on Jurisdiction and Award Rule 48(4) excerpts were retrieved into `seeds/`
+   with 21 spans verified — this seat confirmed both files on disk — but that matter has never
+   had a row in `analytics/locked_set/RETRIEVAL_LEDGER.md`, whose counts are **unchanged today:
+   2 RETRIEVED, 3 BLOCKED, 8 QUEUED**. The day's genuine retrieval is therefore *not* progress
+   on the locked set, and [[Workflow Threads]] **B7** and `moc/Evidence Ledger.md` say so
+   explicitly. The related discipline worth preserving: the unpublished full Award is recorded
+   as a **permanent scope limit, not a gap slug** — a queue entry that no retrieval can ever
+   close is a lie about the queue.
+7. **Write mode was again not run, for the third consecutive session and the same reason.**
+   `build_graph --dry-run` plans edits to **seventeen** notes, of which only four are this
+   seat's; the other thirteen are `working/`, `prompts/`, `lit-review/`,
+   `analytics/locked_set/`, `analytics/daily-research/`, `BOUNDED_CHANGE_PROTOCOL.md` and this
+   session's out-of-bounds analytics artifacts. The script is whole-vault or nothing, **a
+   managed block is never hand-written**, so there is again no lawful partial run. This is no
+   longer a scheduling accident: it is a **structural defect in the tool** that has now blocked
+   three sessions, and it is escalated as such rather than re-noted.
+
+**Observation from the periodic-research half of the mandate.** No web research this session;
+stated as an internal finding rather than dressed as external practice. The convention this
+deployment argues for concerns *inputs*, not notes. Every prior slice guarded against stale
+**files**; this one had to guard against a stale **instruction** — a briefing that stated a
+thread was resolved when three of its eight rows were untouched. The vault's existing rules all
+point outward at the repository, and none of them says what to do when the report you are
+reconciling *from* is wrong. The rule adopted here: **a reconciliation brief is a source like
+any other, and it is checked against the tree before it is written into the vault** — with the
+corollary that when a brief and a file disagree, the disagreement itself is recorded, because
+it tells the next session which reports to distrust. That is why this pass ends with C15 open
+against its own instructions, and why it says so in five places rather than one.
+
 **Audit slice, 2026-08-07 (sixth deployment).** Agent-context currency, run as the query rather
 than the judgement: `git log b76f6c3..HEAD -- .claude/agents/ agents/ prompts/ src/models.py
 views/isds-workflow-3d/workflow.json`, plus `python3 scripts/check_currency.py`,
@@ -383,6 +469,107 @@ therefore not run during that build. *Both findings were fixed the same day by `
 see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
+
+- **2026-08-09 (seventh deployment)** — Final reconciliation of the vault with the completed
+  2026-08-09 audit-response work. Audited against `2686422` plus the uncommitted working tree
+  on `fix/restore-council-label`. **No commit, no push, no branch change**; no edit to `src/`,
+  `tests/`, `scripts/`, `prompts/`, `lit-review/`, `working/`, `METHODOLOGY.md`, `README.md`,
+  `docs/`, `digests/`, `seeds/`, `.github/`, or this session's analytics artifacts. Full
+  record: `analytics/vault-sessions/2026-08-09.md`.
+
+  **Brought current:** the day's eleven-item delta into [[Project Change Log]] (new
+  2026-08-09 section, every line citing a path); the test count from **414 to 564 passed / 5
+  xfailed** in all five places it was stated as current, with each dated occurrence preserved
+  as a dated reading rather than overwritten; [[Workflow Threads]] refreshed to a 2026-08-09
+  snapshot — **B8** and **D3** closed on files, **B6** rewritten from "designed" to "built and
+  switched off", **B7**/**C11**/**C12** restated, **B9** and **D4** opened; [[Claim Map]] C15
+  corrected row by row and **C16** added; `HANDOFF.md` given a 2026-08-09 checkpoint with the
+  08-08 one superseded by pointer rather than rewritten; `moc/Workflow.md`, `moc/Evidence
+  Ledger.md` and `PLAN.md`'s post-build deviations brought current on the two gates; seat notes
+  updated for [[systems-designer]], [[research-analyst]], [[integrity-officer]] and
+  [[site-experience]].
+
+  **Audit slice this deployment: the threads a session reports as CLOSED — and the finding is
+  against the briefing, not the notes.** This pass was instructed to remove any statement that
+  [[Claim Map]] **C15** is unresolved. Re-read in the files, **five of its eight rows are
+  repaired and three are not**, one of them having moved from `src/main.py:497-500` to
+  `:687-690` so that only its quoted text found it. C15 therefore stays open, against the
+  brief, and the disagreement is recorded in five places. **Worse, the same session's second
+  publication gate falsified four of the five repairs** — `METHODOLOGY.md:49` and `:69` now
+  contradict each other twenty lines apart, the exact defect the 08-08 pass resolved to stop
+  producing. That is **C16**, new.
+
+  **Own drift fixed.** `HANDOFF.md:99-101` is this seat's file and was on C16's divergent list;
+  it is corrected here to name **both** flags and which is on, rather than describing one
+  setting as the behaviour. The seat's flowchart-row check came back **clean for the first
+  time** — `systems-designer` verified at machine row 9 against the manifest, matching both the
+  roster and the seat note.
+
+  **Recorded and not fixed, with the reason in each case.** The
+  `.claude/agents/systems-designer.md:17` zero-cost contract line (Emory's, second consecutive
+  session); `STATE_OF_THE_ANSWER.md:28`'s scoped clause, which is *true today* and would be
+  falsified only by a future addition ([[research-analyst]]'s, recorded as **D4** rather than
+  pre-emptively hedged); the `quality-bar` card's now-three defects (a manifest edit,
+  [[systems-designer]] on Emory's go-ahead); `scripts/check_site_sync.py`'s in-place rebuild
+  (**B9**); and the managed-block backlog, now **seventeen** notes — **`build_graph` write mode
+  was again not run**, because thirteen of the seventeen planned files are out of bounds for
+  this session and the script offers no path filter. Third consecutive session blocked the same
+  way; escalated as a tool defect rather than re-noted as a backlog.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `src/`, `scripts/`, `tests/`, `prompts/`, `.github/workflows/`, `analytics/`, `seeds/`,
+  `working/`, `agents/`, `moc/`, `views/isds-workflow-3d/workflow.json`, `fingerprint.yaml`,
+  `HANDOFF.md`, `METHODOLOGY.md`, `README.md`, `PLAN.md`, `STATE_OF_THE_ANSWER.md`.*
+- **2026-08-08 (sixth deployment)** — Reconcile the vault with the master-prompt repair
+  session. Audited against `2686422` plus the uncommitted working tree on
+  `fix/restore-council-label`. No commit, no push, no branch change; no edit to
+  `lit-review/`, `working/`, `METHODOLOGY.md`, `README.md`, `src/`, `scripts/`, `tests/`,
+  `digests/`, `docs/`, or the session's analytics artifacts. Full record:
+  `analytics/vault-sessions/2026-08-08.md`.
+
+  **Audit slice this deployment: seat notes against the *tree*, not against the definitions.**
+  The currency query came back clean — `git log 373cce6..HEAD -- .claude/agents/ prompts/` is
+  empty, no contract changed — and three seat notes were wrong anyway. That is the finding, and
+  it is a finding about this seat's method rather than about the notes: **the query this seat
+  has run at the start of every deployment since 2026-08-03 is scoped to two directories, and
+  none of the three errors lived there.** [[systems-designer]] placed its own flowchart box at
+  machine row 7 when the manifest has said row 9 since v2.2 on 2026-08-03 — and
+  [[Agent Registry]] recorded the move on 2026-08-04, so **the roster and the seat note
+  disagreed about where the seat sits for four days** while every currency check passed. The
+  same note bound the seat to a *zero-cost* constraint the day's code reading disproved. And
+  [[Claim Map]] carried C13 as an open definitional split for two days after the council ruled
+  it. [[Workflow Threads]] D1 is rewritten around the corrected statement of the risk: **vault
+  notes lag the tree, not the definitions**, and a second per-session query is now specified
+  for the artifacts a note asserts facts about.
+
+  **Own drift fixed.** This note's [[Agent Registry]] entry claimed a `build_graph --dry-run`
+  prints four WARNs and one broken link from this file to a nonexistent `Project Machinery`
+  note. Re-measured: **seven** WARNs, and **the broken link is gone** — the reference survives
+  only as prose recording that the note was never created, which is the correct disposition and
+  had never been re-verified. The three new WARNs are all per-agent notes, which retires the
+  rule this seat wrote on 2026-07-31 that any per-agent WARN is drift; it is replaced by a named
+  expected set, so the eighth WARN is legible as new.
+
+  **Recorded and not fixed, with the reason in each case.** The `.claude/agents/systems-designer.md:17`
+  zero-cost constraint (a contract edit, Emory's); the `quality-bar` card's two defects (a
+  manifest edit, [[systems-designer]] on Emory's go-ahead); the eight-file fill-suspension
+  divergence, [[Claim Map]] **C15**, whose owners are split three ways; and the managed-block
+  backlog, now **twelve** notes including [[Claim Map]] itself — **`build_graph` write mode was
+  not run, because four of the twelve planned files are this session's out-of-bounds
+  substantive work and the script offers no path filter.** A managed block is never
+  hand-written, so there was no lawful partial run.
+
+  **One thing closed on the file's authority rather than a report's.** The day's handoff listed
+  the `digest.html.j2:120` site overclaim as open and routed to [[site-experience]]. Re-read at
+  the end of this pass, `scripts/site_templates/digest.html.j2:120` already carries the repaired
+  wording. Recorded closed in that seat note **because the file says so**; the handoff note is
+  the stale copy. The inverse discipline applies throughout this pass: no PENDING or
+  externally-gated item was converted to verified, and the eleven open rows in
+  `analytics/locked_set/RETRIEVAL_LEDGER.md` are recorded as QUEUED or BLOCKED exactly as the
+  ledger states them.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `.claude/agents/`, `prompts/`, `agents/`, `moc/`, `views/isds-workflow-3d/workflow.json`,
+  `src/`, `scripts/`, `analytics/`, `fingerprint.yaml`, `HANDOFF.md`, `METHODOLOGY.md`,
+  `README.md`, `templates/`, `lit-review/kim-memo.md`, `STATE_OF_THE_ANSWER.md`.*
 
 - **2026-08-07** — Sixth deployment, standing every-3-days session. Fourteen adopted rules from
   the 2026-08-05, 08-06 and 08-07 councils landed in the seat notes that will read them —

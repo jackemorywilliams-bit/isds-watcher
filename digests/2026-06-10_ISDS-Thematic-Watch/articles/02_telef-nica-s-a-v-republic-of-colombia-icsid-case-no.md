@@ -18,3 +18,12 @@ A telecommunications investor challenged Colombia's Constitutional Court judgmen
 
 ---
 Source: Italaw. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+The same source page (italaw.com/cases/12153, same source date) was published in
+the previous day's digest with a different verdict: this entry scores 28 with no
+ring; the 2026-06-09 entry scores 32 with the judicial/regulatory-measure ring.
+Same input, contradictory outputs, from the language-model path. Counted as
+distinct developments the archive therefore holds thirteen items, not fourteen.
+Which verdict is correct has not been adjudicated; neither should be relied on
+until it is.

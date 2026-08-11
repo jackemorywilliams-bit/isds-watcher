@@ -18,3 +18,14 @@ This item reports on Suez v. Argentina, where an ICSID tribunal upheld jurisdict
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+Two cautions on the entry above, recorded without altering it. The annotation
+renders the tribunal's treatment of an 18-month local-litigation clause as an
+"MFN-based bypass of exhaustion"; a local-litigation requirement is not
+exhaustion of local remedies, and the paraphrase converts a non-trigger into
+ring vocabulary. The item is also a retrospective ("Looking Back") on a 2006
+jurisdictional decision; the date line reflects the retrieval date, not the
+decision's date, because the source supplies no item date and the pipeline's
+date-inferred flag is not rendered. The displayed ring is the model's
+indication, not an established finding.

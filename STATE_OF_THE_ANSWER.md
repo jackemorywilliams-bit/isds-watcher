@@ -7,12 +7,34 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the police-powers / public-welfare carve-out, a limb she names and expressly declines to analyse. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-10 — reviewed, nothing moved. The 2026-08-10 daily council was a null day on
-all three rings: no item touched IP as a covered investment, a regulatory or judicial measure as the
-challenged conduct, or a live jurisdictional/admissibility doctrine, and the digest of record has not
-moved since 2026-08-03. That session's one insight is instrument and method and is logged to
-`analytics/insights.jsonl` under `T-instrument-method-derivation`; **nothing in it bears on any
-proposition below.** A date bump with no content change means the record was read and no ring advanced.
+**Last updated:** 2026-08-11 — reviewed; **no ring advanced, and the day's one identified case was
+correctly rejected.** The digest of record MOVED for the first time since 2026-08-03 (landed at
+`9f1dda5` after the 2026-08-10 session had closed): `Digest 2026-08-10: 11 candidates evaluated, 3
+items surfaced (0 matches, 3 watch-list leads).` The strongest lead was identified as **Zeph
+Investments Pte Ltd v Commonwealth of Australia, PCA Case No. 2023-40** and ruled **OFF-THEME** —
+**limb (a), IP as a covered investment, is ABSENT** on an iron-ore mining claim, and neither seat
+constructed a nexus. **It enters no ring.** It is retained only as a scoped Ring-3 *comparator*: a
+jurisdictional decline against the same respondent State as *Philip Morris v Australia* in a
+restructuring fact pattern. **The ground of that decline is NOT established** — `GAP-UNRESOLVED:
+zeph-australia-award-2025-jurisdictional-ground` — and the hypothesis that it was **definitional**
+(the claimant never *made* an investment), which would reach an investor who **acquires** rather than
+creates an asset, rests on **one search-engine generated summary observed twice and zero sources**. It
+is a labelled hypothesis and must not be cited as a finding. What the council did establish, from a
+body rather than a search-result title, via the relay against the administering institution's own case
+page (`pca-cpa.org/en/cases/309/`, commit `a3f30dea`): respondent *The Commonwealth of Australia*,
+case number **2023-40**, PCA-administered, status **Concluded**, **investment arbitration**,
+**UNCITRAL Arbitration Rules 2021**. **AANZFTA is title-carried only** and is not confirmed from any
+body. Lead 1 (China pharmaceutical IP overview) is a **Ring-1 near-miss**, no ISDS and no
+covered-investment assertion; its backsource — a Chinese pharmaceutical **regulatory data protection**
+regime reported as launched in 2026 — is consistent with the China NMPA 2026 material already recorded
+below, but its terms are **not** confirmed from any body read and nothing below is amended on it.
+**A CAUTION THAT NOW BINDS EVERY ENTRY BELOW SOURCED TO A DIGEST ANNOTATION:** the 2026-08-11 council
+found that **12 of 17 committed digest article files assert substantive content and doctrinal
+absences about documents the same files state were never read** ("source paywalled (headline only);
+body not accessible"). Ruled in-session: **nothing in a `HEADLINE-ONLY` digest annotation may be cited
+as content by any seat**, retroactively across the corpus. That session's insight is logged to
+`analytics/insights.jsonl` under `T-instrument-digest-annotation`; **nothing in it bears on any
+proposition below**, which rest on retrieved sources rather than on annotations.
 
 > **Caution — unverified research leads.** Every entry below is a machine-assisted research lead
 > carrying verification debt, not a settled finding. Nothing here is validated until a human review

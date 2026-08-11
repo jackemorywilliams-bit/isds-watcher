@@ -113,7 +113,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install pytest pyyaml
+      # The guards themselves are stdlib-only, but the planted-ledger tests in
+      # tests/test_pipeline.py import src.main and with it the app's real
+      # dependency chain (jinja2 via render, feedparser, requests) — pytest
+      # collection alone needs them, so the job installs the requirements.
+      - run: pip install -r requirements.txt pytest pyyaml
 
       # The checkers must themselves be checked — a broken checker reports clean.
       # Each of these files contains PLANTED violations: a text field smuggled

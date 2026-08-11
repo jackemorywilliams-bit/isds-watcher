@@ -1,8 +1,12 @@
 # ISDS Thematic Watcher
 
 A transparent, automated lead-generation and annotated-bibliography tool for one narrow
-investor–State dispute settlement (ISDS) research question. It is a weekly, zero-cost
-instrument — not a validated doctrinal monitor or a comprehensive census of ISDS activity.
+investor–State dispute settlement (ISDS) research question. It is a weekly instrument —
+not a validated doctrinal monitor or a comprehensive census of ISDS activity. (Corrected
+2026-08-08: this line previously said "zero-cost." The classifier makes paid model calls
+on every scheduled run, and a code-reading on 2026-08-08 established that even the
+below-cutoff tail is model-classified in production; the instrument is low-cost, roughly
+cents per run, not free.)
 
 It watches for cases where intellectual property is asserted as a protected investment, where
 the disputed conduct is a regulatory or judicial measure, and where threshold questions of
@@ -73,12 +77,17 @@ category. The same content is committed to the repository under
 published to the website.
 
 The digest reports every match at or above the threshold with no upper cap, so a busy week
-shows all of them. To keep a normal week substantive it fills up to a minimum of six items
-with the closest near-misses, but only those at or above a relevance floor of 25
+shows all of them. By design it fills up to a minimum of six items
+with the closest near-misses, but only those at or above a relevance floor of 25 —
+though as of 2026-08-09 publication is gated entirely while the classifier is under
+validation (`VALIDATION_STATUS_ONLY`, with the fill separately suspended by
+`FILL_FLOOR_SUSPENDED`): no item is published at any score, and every cycle sends a
+status note reporting the screening count and how many items were held internally
+(METHODOLOGY §IX)
 (`MIN_DIGEST_ITEMS=6`, `RELEVANCE_FLOOR=25` in `src/config.py`). Honesty is preferred over
-padding: a genuinely quiet week may carry only 0–3 items, and a week with nothing above 25
-sends a one-sentence note ("no thematically relevant developments this week — N candidates
-screened") rather than weak filler. The very first run indexes all existing items as a
+padding: while the suspension holds, a cycle with nothing at or above the threshold sends a
+status note reporting the screening count — worded as a report of the instrument's output,
+not as a finding that no relevant development exists. The very first run indexes all existing items as a
 baseline and sends only a baseline note, so every subsequent digest contains only genuinely
 new developments.
 

@@ -13,3 +13,11 @@ Open `index.html` for the formatted digest, or browse `articles/` for one file p
 
 ---
 _See [/METHODOLOGY.md](../../METHODOLOGY.md) for the workflow and its scholarly justification._
+## Correction (2026-08-08)
+
+The issue emailed on 2026-06-10 carried ten items. On 2026-06-16 (commit
+228793c) this archive folder was re-curated to the relevance floor: eight
+article files were removed and this folder's meta.json was created by hand in
+that commit rather than emitted by the run. The archive as it stands is
+therefore the re-curated record, not the issue as sent, and no earlier surface
+disclosed that. Corrections are appended from now on; nothing is removed.

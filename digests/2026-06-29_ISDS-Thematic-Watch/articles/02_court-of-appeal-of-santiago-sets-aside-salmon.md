@@ -18,3 +18,14 @@ A Chilean Court of Appeal set aside a salmon venture award on ultra petita groun
 
 ---
 Source: Iareporter Headlines. Methodology: METHODOLOGY.md
+## Correction (2026-08-08)
+
+Two defects in the entry above, recorded without altering it. The annotation
+itself states that the item "triggers the judicial-measure ring by virtue of
+being a court judgment" — that is the wrong test: the ring requires the court
+judgment to be the challenged State conduct, and a set-aside on ultra petita
+grounds is supervisory-court conduct within the forum. The displayed ring is the
+model's unvalidated output. The score of 25 also contradicts the operative
+classifier contract, under which a genuinely engaged judicial-measure ring is at
+least MEDIUM (40-69). The entry was published from the headline alone (source
+paywalled; body not retrieved).

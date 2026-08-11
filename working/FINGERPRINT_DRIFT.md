@@ -64,7 +64,7 @@ themselves; add the missing regulatory-data vocabulary:
 Net effect: trade-secret/clinical-data cluster 23 → **51**; patent cluster 32 → **22**.
 Ring 2 and Ring 3 untouched. Risks: (a) more MEDIUM-band pharma-regulatory news that is
 IP-adjacent but not ISDS — mitigated because Ring 1 alone still cannot cross the digest
-threshold (40) without a second ring; (b) backtest F1 (illustrative 0.86) must be re-run
+threshold (40) without a second ring; (b) the backtest confusion matrix must be re-run (no F1 is quoted as performance; four positives do not support one — see METHODOLOGY.md §VI.B correction of 2026-08-08)
 — seed awards themselves must still score HIGH, which they do on the trademark/patent
 phrases they retain.
 

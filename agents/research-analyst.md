@@ -163,6 +163,88 @@ sharpening beyond the seed corpus."
 
 ## Change log
 
+- **2026-08-09** — **The parity round: five audit contradictions closed, and the largest closed
+  by going and reading the document.** Uncommitted, `fix/restore-council-label`; package
+  `working/benavides-comment-replies-2026-08-08.md`.
+  - **H&H v. Egypt (ICSID ARB/09/15) — CLOSED BY RETRIEVAL, and the retrieval changed the
+    answer.** The Decision on Respondent's Objections to Jurisdiction of 5 June 2012
+    (`ita1012.pdf`) and the Award's Rule 48(4) excerpts of 6 May 2014 (`italaw7979.pdf`) are in
+    `seeds/`, with **21 spans verified**. Until this session the H&H propositions rested on **no
+    primary text in the record at all**. The tribunal's own words now carry the approach
+    (Award ¶¶ 364, 368), the outcome (¶ 385), the posture (Award ¶ 25 / Decision ¶ 80) and
+    Ferguson's ¶ 42 pin. **Two claims were corrected rather than confirmed** — which is the
+    argument for retrieval in one line: (1) the memo said the corruption, denial-of-justice and
+    denial-of-effective-means claims all failed "for want of causal link"; that is the
+    corruption claim only (¶ 399), denial of justice having failed on "manifestly unjust"
+    (¶ 403); (2) the economic-sector attribution was **deleted**, not re-attributed a third
+    time, and replaced with the document's own description of the dispute. The dead
+    `italaw.com/cases/542` URL (404) was replaced with the real document URLs; the case page is
+    `/cases/1460`.
+  - **The scope limit that comes with it, recorded as permanent rather than pending.** The full
+    H&H Award **is unpublished**. Every quotation, and the zero-occurrence screen for
+    intellectual-property vocabulary, is scoped to the published Rule 48(4) excerpts and the
+    Decision on Jurisdiction — **not** to the whole text. That is a **permanent scope limit, not
+    a gap slug**: no future retrieval closes it, so it must not sit in a queue pretending to be
+    actionable. The annulment history still comes from the ICSID case record rather than a
+    retrieved document, and says so.
+  - **Four further contradictions closed.** "Structural" became **"a deliberate scope
+    boundary"** — Ferguson draws the boundary himself at 340, in the very sentence whose note 37
+    reads "See Kim (n 16)", so the corrected wording is not a softening but the accurate cause.
+    Item 6's balancing claim narrowed; the disclosure categorical qualified; Part 5 items 5, 13
+    and 15 updated.
+  - **`STATE_OF_THE_ANSWER.md` gained its currency anchor**, closing [[Workflow Threads]] **D3**
+    — the last failure in `scripts/check_currency.py`, which now reports 9 claims, 0 failed.
+    The anchor's own wording is the model for the convention: it "records what state this file
+    was checked against; it does not by itself prove the content above it accurate."
+  - **One observation raised and deliberately left unedited.** `STATE_OF_THE_ANSWER.md:28`'s
+    clause that every disclosure case in Kim's bibliography "was brought in a court to prevent
+    or restrict disclosure" **holds as scoped** to the four named — but the **Vanda CFC takings
+    matter** this seat itself retrieved is a compensation action, not a suit to prevent
+    disclosure, so adding it to that list would falsify the sentence *by addition*. Recorded as
+    [[Workflow Threads]] **D4** for whoever adds it, because the inference would need rewriting
+    and not just the parenthesis. **Raising it rather than pre-emptively hedging a true sentence
+    is the disposition this seat should keep.**
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `working/benavides-comment-replies-2026-08-08.md`, `lit-review/ferguson-memo.md`,
+  `lit-review/kim-memo.md`, `seeds/`, `STATE_OF_THE_ANSWER.md`,
+  `analytics/locked_set/RETRIEVAL_LEDGER.md`.*
+- **2026-08-08** — **A gap closed on primary sources, and two claim classes withdrawn for
+  having none.** All uncommitted, branch `fix/restore-council-label`; the audited package is
+  `working/benavides-comment-replies-2026-08-08.md` (9 items).
+  - **Vanda, closed.** The two *Vanda Pharmaceuticals Inc. v. United States* opinions,
+    No. 23-629C (Fed. Cl.), slip ops of **18 January 2024** and **22 January 2025**, were
+    retrieved 2026-08-06 into the session workspace and are now held with the seed materials
+    (`seeds/Vanda_v_US_23-629C_FedCl_2024-01-18_slip_op.pdf` and the 2025 twin; `seeds/` is
+    gitignored, so these are **local-only and will not appear in any commit** — that is by
+    design and is the reason the ledger row carries the path). Every span was re-verified and
+    the gap at `lit-review/kim-memo.md:206` is **CLOSED on slip-op-only citations**, with
+    **reporter page pins and appellate status expressly excluded** — 169 Fed. Cl. 196 is named
+    as the reported cite and *not* pinned, and the Federal Circuit docket stays **QUEUED** at
+    `analytics/locked_set/RETRIEVAL_LEDGER.md`. The prior entry, recorded at `25dfdd0` as a
+    PENDING gap rather than a summary, was the right call and is what made the closure clean.
+  - **Withdrawn, and kept withdrawn.** The claim that the *Saluka* ¶¶ 471–480/504 and *Bovine
+    Hides* ¶¶ 11.100–11.101 passages "have now been extracted and verified" had **no source
+    anywhere in the repository**. It stays withdrawn. This is the carrying-span rule doing
+    what it is for: a claim about the project's own evidentiary state is a proposition and
+    needs its own span.
+  - **Two readings of Kim corrected against her text.** She raises the institutional question
+    **herself, in her abstract** — "whether investor-state arbitration is an apt instrument to
+    protect originators' data against disclosure by drug regulatory authorities" — so the
+    project's "third stance" independence claim was wrong and is corrected. And her footnote 23
+    had **already** qualified provisional relief, recorded at `STATE_OF_THE_ANSWER.md` line 28
+    and verified against the article on 6 August: **the project's own record refuted its own
+    later premise**, which is an argument for reading the record before extending it.
+  - **Ferguson note 46** cites H&H for **asset characterisation**, not fork-in-the-road.
+  - Canonical memos edited surgically — `lit-review/kim-memo.md` ~12 lines,
+    `lit-review/ferguson-memo.md` ~10 lines, `STATE_OF_THE_ANSWER.md` line 8.
+  - **New standing constraint, entered in [[Agent Registry]]:** no item enters the 54-item
+    locked validation set on a memo's authority. `analytics/locked_set/` is created **empty of
+    items on purpose**; **eleven** retrievals are externally gated and are Emory's, not this
+    seat's (`analytics/locked_set/RETRIEVAL_LEDGER.md`).
+  *Recorded against the working tree of `fix/restore-council-label` (uncommitted); paths:
+  `working/benavides-comment-replies-2026-08-08.md`, `lit-review/kim-memo.md`,
+  `lit-review/ferguson-memo.md`, `STATE_OF_THE_ANSWER.md`, `analytics/locked_set/`, `seeds/`.*
+
 - **2026-08-07** — Six method rules adopted 2026-08-05 through 2026-08-07 recorded here for the
   first time, five of them governing the relay this seat fires: find-selects-a-position,
   mis-anchored-is-not-a-null, the PDF content-type gate, false-URL-is-a-control, the three

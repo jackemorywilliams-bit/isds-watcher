@@ -153,6 +153,31 @@ meetings and fold in what fits."
 
 ## Change log
 
+- **2026-08-08** — **A ruling from this seat was overcounted by one, and the correction came
+  from re-reading the files.** Uncommitted, branch `fix/restore-council-label`.
+  `analytics/retrospective-audit-2026-08-08.md` §2 records that the chairman's 2026-08-08
+  ruling put the number of published entries **displaying a ring at score 25** at five; the
+  re-derivation from `digests/*/articles/*.md` puts it at **four**, the overcount arising from
+  the inclusion of the Okuashvili entry, which sits at **28**. The same audit **confirms**
+  this seat's other figure exactly — "at least five" annotations disclaiming their own item is
+  right, and the count is **precisely five** (Category A), plus one Category B.
+  - **The protocol this vindicates is already in the section above:** *before a ruling asserts
+    what a record line says, quote the whole line* (adopted 2026-08-04, `51bb7a2`). A ruling
+    that groups entries by score has to read each entry's score, not the group's label. The
+    audit's own opening states the remedy generally — every figure was "recomputed from the
+    files, not carried forward from any council record, **because two of those records
+    disagree with the files**."
+  - **Gate discharged:** the audit was produced under this seat's ledger #18.
+  - **Session continuity.** The 2026-08-08 session closed Workstreams A (instrument map), H
+    (publication safety), I (retrospective audit) and the comment-reply package; it expressly
+    did **not** close D/E, F or G, which are designed and sit behind a disabled flag. Those
+    are the standing items for the next agenda, together with two decisions that are Emory's
+    and not this seat's: the merge-or-skip call before the Monday 13:00 UTC run, and CI wiring
+    of the three new guards. See [[Workflow Threads]] B5–B8 and C11–C14.
+  *Recorded against the working tree of `fix/restore-council-label` (uncommitted); paths:
+  `analytics/retrospective-audit-2026-08-08.md`, `analytics/instrument-map-2026-08-08.md`,
+  `digests/*/articles/*.md`, `HANDOFF.md`.*
+
 - **2026-08-07** — Five session-protocol rules and one standing relay qualification, adopted
   2026-08-05 through 2026-08-07, recorded here for the first time: run-the-command-and-paste
   with its 08-07 qualification (`3ff5498`, `7adfd68`), open-the-line extended to every seat

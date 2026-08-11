@@ -296,6 +296,67 @@ taxonomy of ten.
 
 ## Change log
 
+- **2026-08-09** — **Round two: three passages, zero adopted, and the exemption is the
+  interesting one.** Uncommitted, `fix/restore-council-label`; recorded at
+  `working/benavides-comment-replies-2026-08-08.md:6`. The humanizer was re-run over the three
+  materially revised passages from the parity round.
+  - **One exempt by construction.** The H&H descriptive annotation, once masked, is a **near-pure
+    sentinel chain** — there is essentially nothing left for a rewriting pass to act on. This is
+    worth naming as a category rather than a one-off: **when a passage is almost entirely
+    protected spans, the masking step has already answered the question**, and running the pass
+    would produce a diff consisting of connective tissue. Exemption here is a finding about the
+    passage's density of sourced material, not a waiver.
+  - **Two run and rejected at the gate.** The Ferguson *Vanda* paragraph **dropped the passage's
+    final two sentences and converted "the opinions" — the court's — into "the author's
+    opinions"**, which is a change of who is speaking, not of style. The H&H relevance paragraph
+    **destroyed a sentinel and garbled the triple-identity sentence**. Canonical text stands for
+    all three passages.
+  - **The cumulative record now reads: ten passages run across two rounds, two adopted.** Every
+    rejection in both rounds was for one of the same four failures — fabricated quotation,
+    flipped negation, hallucinated rule, destroyed sentinel — and **none was repairable by
+    splicing**, which is why the fail-closed rule is a rule rather than a preference. A pass
+    that rewrites *who said a thing* (round 2) sits in the same family as one that rewrites
+    *whether a thing was denied* (round 1): both are meaning changes that read as fluent prose.
+  *Audited against `2686422` + working tree on `fix/restore-council-label`; paths:
+  `working/benavides-comment-replies-2026-08-08.md`, `lit-review/ferguson-memo.md`, `seeds/`.*
+- **2026-08-08** — **The gate held five times, and the number is the point.** All
+  uncommitted, branch `fix/restore-council-label`.
+  - **Fail-closed on a rewriting pass.** A humanizer was run over all seven substantive
+    replies in `working/benavides-comment-replies-2026-08-08.md`, with **every quotation,
+    citation and pinpoint sentinel-masked** before it saw the text. **Two** outputs passed the
+    mechanical gate and were surgically repaired (Items 2 and 4.1); **five were rejected
+    outright** — fabricated quotation, flipped negation, hallucinated rule, and two sentinel
+    destructions; **two** were exempt as short mechanical replies. A 5-of-7 rejection rate on
+    a style pass over already-verified text is the strongest available evidence for the rule
+    this seat has been asserting since 2026-08-04: **a rewriting step is a fabrication
+    surface, not a formatting step.** Entered as a binding rule in [[Agent Registry]].
+  - **Substantive review of the ring-at-25 entries.** Four published entries display a ring at
+    score 25 and this seat assessed each against its own annotation
+    (`analytics/retrospective-audit-2026-08-08.md` §2). **Two are unsupported**: the 2026-06-22
+    Cour de cassation entry (ICC-award enforcement, the forum's own act, no investor-State
+    proceeding in the item) and the 2026-06-29 Santiago set-aside (whose annotation applies
+    the wrong test on its face — "by virtue of being a court judgment"). Both additionally
+    **contradict the classifier contract**, under which a judicial ring implies at least
+    MEDIUM. All four now carry dated corrections in the archive.
+  - **Two negative conclusions withdrawn as unsupported by their own evidence.** The Gazprom
+    entry concluded "no ISDS thematic intersection" about a **body the instrument never
+    read**; the correction records the honest status as "not assessed — body not retrieved,"
+    which is neither a positive nor a negative finding. This is taxonomy entry 11
+    (status-as-record-artifact) in a new dress: **an access limit was reported as a
+    substantive result.**
+  - **Nine dated appends, zero rewrites.** Every archive correction was appended under a dated
+    heading with the original text left intact above it.
+  - **What was NOT converted.** Nothing PENDING became verified by inference. The *Saluka* and
+    *Bovine Hides* "extracted and verified" claims had no repo source and **stayed withdrawn**;
+    the eleven externally gated retrievals at `analytics/locked_set/RETRIEVAL_LEDGER.md` remain
+    QUEUED or BLOCKED; reporter page pins and appellate status for Vanda were **expressly
+    excluded** from the closure.
+  *Recorded against the working tree of `fix/restore-council-label` (uncommitted); paths:
+  `working/benavides-comment-replies-2026-08-08.md`,
+  `analytics/retrospective-audit-2026-08-08.md`, `analytics/locked_set/RETRIEVAL_LEDGER.md`,
+  `digests/2026-06-22_…`, `digests/2026-06-29_…`, `digests/2026-07-06_…`,
+  `digests/2026-08-03_…`, `digests/2026-06-09_…`, `digests/2026-06-10_…`.*
+
 - **2026-08-07** — Three sessions of adopted entries reached this note: **25** (mutable-reduction
   citation, 2026-08-05), **26** (tautological instrument check, 2026-08-06) and **27** (scope-mixed
   screen, 2026-08-06), plus the 2026-08-07 *manufactured residual* recorded under the colliding

@@ -23,11 +23,12 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
-**Snapshot anchor — moved 2026-08-11 at integration.** *Audited against `60f2a5b`.* The
-commits since `2686422` that touched this map's declared paths are the integration's own
-three (the vault surfaces, the lit-review memos, the regenerated workflow SVG) and the
-council's 2026-08-08..10 session records. C15 and C16 stand as written; the divergence
-lists are unchanged by the merge.
+**Snapshot anchor — moved 2026-08-11 at integration.** *Audited against `a22f4cb`*, the
+merge of the integration branch with the 2026-08-11 council session. The commits since
+`2686422` that touched this map's declared paths are the integration's own (the vault
+surfaces, the lit-review memos, the regenerated workflow SVG) and the council's
+2026-08-08..11 session records, including the session's STATE_OF_THE_ANSWER update. C15
+and C16 stand as written; the divergence lists are unchanged by the merge.
 
 **Snapshot anchor — moved 2026-08-09.** *Audited against `2686422`* plus the uncommitted
 working tree of the 2026-08-08 repair session **and the 2026-08-09 audit-response session**,

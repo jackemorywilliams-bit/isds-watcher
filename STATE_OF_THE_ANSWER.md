@@ -14,7 +14,7 @@ moved since 2026-08-03. That session's one insight is instrument and method and 
 `analytics/insights.jsonl` under `T-instrument-method-derivation`; **nothing in it bears on any
 proposition below.** A date bump with no content change means the record was read and no ring advanced.
 
-**Audit anchor (2026-08-09):** audited against 2686422 plus the uncommitted 2026-08-08/09 working-tree changes (manifest: analytics/session-manifest-2026-08-09.md). The anchor records what state this file was checked against; it does not by itself prove the content above it accurate.
+**Audit anchor (2026-08-09; moved 2026-08-11 at integration):** audited against `bffe79a`, the integration commit that carries the formerly uncommitted 2026-08-08/09 audit work (manifest: analytics/session-manifest-2026-08-09.md). The anchor records what state this file was checked against; it does not by itself prove the content above it accurate.
 
 > **Caution — unverified research leads.** Every entry below is a machine-assisted research lead
 > carrying verification debt, not a settled finding. Nothing here is validated until a human review

@@ -16,17 +16,88 @@ keyword scorer so the pipeline always produces output.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
 import re
 from dataclasses import dataclass, field, fields
+from enum import Enum
 from pathlib import Path
 from typing import Any, Optional
 
 from .sources.base import CandidateItem
 
 logger = logging.getLogger("isds.classify")
+
+
+# --------------------------------------------------------------------------- #
+# Outcomes
+# --------------------------------------------------------------------------- #
+class ClassifyOutcome(str, Enum):
+    """What actually happened to an item in the classifier.
+
+    WHY THIS EXISTS. ``classify_item`` never raises, which is right — one bad
+    item must not take a run down. But "never raises" was implemented as "always
+    returns something publishable", and those are different promises. A provider
+    outage returned a keyword score with an extra tag nobody reads, the item was
+    marked seen, and the run reported it as classified. The failure left no trace
+    anywhere a person or a guard would look. These four values are the trace.
+
+      OK                     — the model classified it and we parsed the answer.
+      KEYWORD_ONLY_BY_DESIGN — no model was expected. Either the caller asked for
+                               the keyword path, or no provider/key is configured
+                               at all (the offline dry-run case). A keyword score
+                               here is the intended result, not a degraded one,
+                               so it publishes and the item is marked seen.
+      PARSE_FAILED           — the model answered and we could not parse it, even
+                               after the strict retry.
+      PROVIDER_ERROR         — the call itself failed on an item we intended to
+                               model-classify.
+
+    The first two are TERMINAL: the run is finished with the item. The last two
+    are not, and ``src/main.py`` defers them rather than marking them seen — an
+    item we failed to classify has not been processed, and recording it as
+    processed is how a failure becomes permanent silently.
+
+    A str-valued Enum so the value serialises into metadata, telemetry, and
+    ``state/seen.json`` without a conversion step at each boundary.
+    """
+
+    OK = "ok"
+    KEYWORD_ONLY_BY_DESIGN = "keyword_only_by_design"
+    PARSE_FAILED = "parse_failed"
+    PROVIDER_ERROR = "provider_error"
+
+
+# Outcomes after which the run is genuinely done with an item.
+TERMINAL_OUTCOMES = frozenset({
+    ClassifyOutcome.OK,
+    ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN,
+})
+
+# THE authoritative location for an item's outcome: one key, in the metadata of
+# the ClassifiedItem the classifier returns. Not a second return value, because
+# every existing caller unpacks a single item; not a field on ClassifiedItem,
+# because that dataclass is copied field-by-field in several places and a new
+# field would have to be threaded through each of them.
+OUTCOME_KEY = "outcome"
+
+
+def outcome_of(ci) -> ClassifyOutcome:
+    """The outcome recorded on a classified item.
+
+    Defaults to OK for an item that carries none — anything constructed outside
+    ``classify_item`` (tests, backtests, the research brief's own items) predates
+    this and behaved as a success.
+    """
+    meta = getattr(ci, "metadata", None) or {}
+    try:
+        return ClassifyOutcome(meta.get(OUTCOME_KEY, ClassifyOutcome.OK.value))
+    except ValueError:
+        logger.warning("classify: unknown outcome %r on a classified item",
+                       meta.get(OUTCOME_KEY))
+        return ClassifyOutcome.OK
 
 # The three valid ring keys. The LLM (and the keyword scorer) must only ever
 # emit these. Kept here as the single source of truth for validation.
@@ -252,6 +323,13 @@ def keyword_score(item: CandidateItem) -> dict:
         "matched_rings": matched_rings,
         "thematic_tags": matched_tags,
         "digest_summary": digest,
+        # The working detail behind the score, which the score itself discards.
+        # A single number cannot tell you whether a 41 came from two rings barely
+        # clearing the floor or one strong ring plus a brush, and that difference
+        # is the whole question when the lexicon is re-weighted. Additive keys —
+        # every existing caller reads the four above by name.
+        "per_ring_subtotal": dict(per_ring_subtotal),
+        "negative_signal": negative_present,
     }
 
 
@@ -268,6 +346,25 @@ def _load_prompt_template() -> str:
         with open(_PROMPT_PATH, "r", encoding="utf-8") as fh:
             _PROMPT_CACHE = fh.read()
     return _PROMPT_CACHE
+
+
+def prompt_version() -> str:
+    """A short content hash of the classifier prompt.
+
+    Scores are only comparable across runs that asked the same question. The
+    prompt is edited from time to time and nothing has ever recorded which
+    version produced a given score, so a shift in the score distribution has
+    always been indistinguishable from a shift in the prompt. Hashing the file
+    is enough: it changes exactly when the prompt changes, needs no version
+    number anyone has to remember to bump, and costs one read per process.
+    Returns "unknown" if the prompt cannot be read — telemetry must never be the
+    reason a run fails.
+    """
+    try:
+        return hashlib.sha256(
+            _load_prompt_template().encode("utf-8")).hexdigest()[:12]
+    except OSError:
+        return "unknown"
 
 
 def build_prompt(item: CandidateItem) -> str:
@@ -461,17 +558,38 @@ def _quote_in_source(quote: str, item: CandidateItem) -> bool:
 # Main entry point
 # --------------------------------------------------------------------------- #
 def classify_item(
-    item: CandidateItem, provider: Optional[str] = None
+    item: CandidateItem,
+    provider: Optional[str] = None,
+    *,
+    intended_model: bool = True,
 ) -> ClassifiedItem:
     """Classify a single candidate. Never raises.
 
     Falls back to the offline keyword scorer when no provider/key is available
-    or when the LLM path errors out.
+    or when the LLM path errors out. Every return path records its
+    ``ClassifyOutcome`` under ``metadata["outcome"]``; see that enum for why.
+
+    ``intended_model`` says whether the CALLER required a model classification
+    for this item. It changes nothing about which path runs — only what a
+    provider failure means. For the enriched top set the answer is yes, so a
+    provider error is a real failure and the keyword number behind it is NOT
+    published (it is kept as ``metadata["keyword_score_advisory"]`` so telemetry
+    can later cost out an outage without the digest ever having shown it). For
+    the tail, where a keyword score was always the expected result, a provider
+    error just lands where the item was going anyway and publishes normally.
+
+    A note on routing, since the difference has bitten before: passing
+    ``provider=None`` does NOT force the keyword path — it falls through to the
+    ``MODEL_PROVIDER`` environment variable, so with a provider configured, the
+    "tail" is model-classified too. That is existing behaviour and this change
+    deliberately leaves it alone; ``intended_model`` is about how we treat a
+    failure, not about suppressing a call.
     """
     raw_provider = provider if provider is not None else os.environ.get("MODEL_PROVIDER")
     norm = _normalize_provider(raw_provider)
 
-    # No provider configured / unknown -> offline fallback.
+    # No provider configured / unknown -> offline fallback. This is a designed
+    # state, not a degradation: it is how --dry-run works with no API key.
     if norm is None or not _provider_ready(norm):
         logger.info("classify: using keyword fallback (no provider/key)")
         result = keyword_score(item)
@@ -482,14 +600,24 @@ def classify_item(
             result["thematic_tags"],
             result["digest_summary"],
         )
-        ci.metadata = {**(ci.metadata or {}), "model": "keyword"}
+        ci.metadata = {
+            **(ci.metadata or {}),
+            "model": "keyword",
+            "classify_path": "keyword",
+            "classify_attempts": 0,
+            "retried_strict": False,
+            OUTCOME_KEY: ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value,
+        }
         return ci
 
     caller = _call_gemini if norm == "gemini" else _call_anthropic
     model_id = _resolved_model(norm)
+    attempts = 0
+    retried_strict = False
 
     try:
         prompt = build_prompt(item)
+        attempts += 1
         text = caller(prompt)
         parsed = parse_json_response(text)
 
@@ -499,6 +627,8 @@ def classify_item(
                 prompt
                 + "\n\nReturn ONLY the raw JSON object, no prose, no code fences."
             )
+            retried_strict = True
+            attempts += 1
             text = caller(strict_prompt)
             parsed = parse_json_response(text)
 
@@ -514,7 +644,14 @@ def classify_item(
                 ["classification_failed"],
                 "Classification failed after retry.",
             )
-            ci.metadata = {**(ci.metadata or {}), "model": model_id}
+            ci.metadata = {
+                **(ci.metadata or {}),
+                "model": model_id,
+                "classify_path": "llm",
+                "classify_attempts": attempts,
+                "retried_strict": retried_strict,
+                OUTCOME_KEY: ClassifyOutcome.PARSE_FAILED.value,
+            }
             return ci
 
         ci = from_candidate(
@@ -525,7 +662,14 @@ def classify_item(
             parsed["digest_summary"],
         )
         # Record the concrete model ID that produced this classification.
-        ci.metadata = {**(ci.metadata or {}), "model": model_id}
+        ci.metadata = {
+            **(ci.metadata or {}),
+            "model": model_id,
+            "classify_path": "llm",
+            "classify_attempts": attempts,
+            "retried_strict": retried_strict,
+            OUTCOME_KEY: ClassifyOutcome.OK.value,
+        }
         # The model selects the single most citable verbatim line; prefer it
         # over the keyword heuristic when present.
         nq = parsed.get("notable_quote") or ""
@@ -541,13 +685,32 @@ def classify_item(
 
     except Exception as exc:  # noqa: BLE001 - never let the pipeline crash
         logger.warning(
-            "classify: provider error (%s), falling back to keywords: %s",
+            "classify: provider error (%s) for %s: %s",
             norm,
+            getattr(item, "url", "") or getattr(item, "title", ""),
             exc,
         )
         result = keyword_score(item)
         tags = list(result["thematic_tags"])
         tags.append("classification_error_fallback")
+        if intended_model:
+            # We meant to ask the model and could not. The keyword number is a
+            # measurement of a different instrument, and publishing it under the
+            # model's name is what made four weeks of outage look like four weeks
+            # of low-scoring news. Score 0 so it cannot be surfaced even if a
+            # caller forgets to check the outcome; the number is kept as advisory.
+            ci = from_candidate(item, 0, result["matched_rings"], tags,
+                                result["digest_summary"])
+            ci.metadata = {
+                **(ci.metadata or {}),
+                "model": model_id,
+                "classify_path": "llm",
+                "classify_attempts": attempts,
+                "retried_strict": retried_strict,
+                "keyword_score_advisory": int(result["relevance_score"]),
+                OUTCOME_KEY: ClassifyOutcome.PROVIDER_ERROR.value,
+            }
+            return ci
         ci = from_candidate(
             item,
             result["relevance_score"],
@@ -555,7 +718,14 @@ def classify_item(
             tags,
             result["digest_summary"],
         )
-        ci.metadata = {**(ci.metadata or {}), "model": "keyword"}
+        ci.metadata = {
+            **(ci.metadata or {}),
+            "model": "keyword",
+            "classify_path": "keyword",
+            "classify_attempts": attempts,
+            "retried_strict": retried_strict,
+            OUTCOME_KEY: ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value,
+        }
         return ci
 
 

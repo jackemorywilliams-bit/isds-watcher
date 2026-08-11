@@ -56,6 +56,52 @@ def folder_name(date_str: str) -> str:
     return f"{date_str}_{FOLDER_SUFFIX}"
 
 
+def status_only_body(screened: int, threshold: int, held: int = 0) -> str:
+    """The body of a cycle that published no item-level entry.
+
+    THE single authoritative copy of this wording. It replaced "No thematically
+    relevant developments this week", which asserted something we are not in a
+    position to assert: that nothing relevant happened. What we can report is
+    what our instrument returned, which is a different and much narrower claim —
+    and while the classifier is under validation the difference between the two
+    is the whole point. It also says what continues, so a status-only cycle
+    cannot be read as the watch having stopped.
+
+    ``threshold`` is passed in rather than written as "40" so it tracks
+    fingerprint.yaml, which is its authority; check_claims.py fails on drift.
+
+    ``held`` is the number of items the validation gate
+    (``config.VALIDATION_STATUS_ONLY``) kept back this cycle. Two bodies, not
+    one, because the opening clause of the zero-held wording — "assigned none a
+    score at or above N" — is a statement of fact that a held item makes FALSE.
+    An email whose first sentence denies what its second sentence reports is
+    worse than either sentence alone, and the direction of the error is the
+    dangerous one: it would read as reassurance at exactly the moment the
+    instrument had flagged something. So when anything is held, the screening
+    clause states only what it can (the count screened) and the holding is
+    reported as the operational fact it is. The zero-held wording is unchanged,
+    character for character, which is every cycle the watch has ever run.
+    """
+    if held:
+        return (
+            f"The watcher screened {screened} candidates this cycle. "
+            f"{held} item{'' if held == 1 else 's'} "
+            f"{'was' if held == 1 else 'were'} flagged internally at or above the "
+            f"match threshold and {'is' if held == 1 else 'are'} held for operator "
+            "review pending validation. Because the classifier is undergoing "
+            "validation, this reports the instrument's output and does not establish "
+            "that no relevant development exists. Retrieval, scoring, archiving, and "
+            "telemetry continue; shadow runs preserve the time series."
+        )
+    return (
+        f"The watcher screened {screened} candidates this cycle and assigned none "
+        f"a score at or above {threshold}. Because the classifier is undergoing "
+        "validation, this reports the instrument's output and does not establish "
+        "that no relevant development exists. Retrieval, scoring, archiving, and "
+        "telemetry continue; shadow runs preserve the time series."
+    )
+
+
 def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
                   folder_url: str | None = None, lede: str | None = None,
                   cumulative_runs: int | None = None) -> str:
@@ -90,6 +136,9 @@ def render_digest(items, generated_at: datetime, since: datetime, stats: dict,
         folder_url=folder_url,
         lede=lede,
         cumulative_runs=cumulative_runs,
+        status_only_body=status_only_body(
+            stats.get("total_candidates", 0), stats.get("threshold", 40),
+            held=stats.get("held_for_review", 0)),
     )
 
 

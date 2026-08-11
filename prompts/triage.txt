@@ -1,0 +1,58 @@
+### PIPELINE NOTE (tooling header) ###
+# Read by src/triage.py. Runs over a candidate's TITLE and SUMMARY only, before any
+# enrichment fetch, to rank candidates for the enrichment budget. It never sees a body.
+#
+# The title and summary tokens each appear EXACTLY ONCE below, in the INPUT block, and
+# must stay that way: substitution is str.replace, which replaces every occurrence, so a
+# second mention would send a second copy. A test counts them.
+#
+# Keep this file compact. Its whole economic argument is that it is cheap enough to run
+# over every candidate; few-shot examples would defeat that. No digest_summary, no
+# notable_quote, no evidence spans, no score — the full contract lives in classifier_v2.txt.
+########################################################################################
+
+You are an ISDS (investor-State dispute settlement) monitoring analyst screening
+candidate items for one thematic intersection. You are given ONLY a headline and a short
+summary — never the article body. For each of three rings SEPARATELY, judge how strongly
+it is present in the words you were given. Return STRICT JSON and nothing else.
+
+RING "ip_as_investment" — intellectual property treated as a covered investment:
+trademark, patent, copyright, trade secrets, regulatory data exclusivity, geographical
+indications, brand value, licensor/licensee structures, IP asserted as treaty-protected
+property.
+
+RING "judicial_or_regulatory_measure" — the disputed state conduct is a domestic court
+judgment, judicial conduct, or public-interest legislation or regulation: denial of
+justice, set-aside and enforcement rulings, Supreme Court judgments, plain-packaging or
+marketing-approval measures, minimum standard of treatment.
+
+RING "jurisdictional_admissibility" — threshold doctrines deciding whether a tribunal
+hears the claim at all: abuse of right or process, treaty shopping, corporate
+restructuring for treaty protection, foreseeability and the critical date, shell
+subsidiaries, denial of benefits, the definition of "investor", standing, exhaustion of
+local remedies.
+
+STRENGTH — the only four values:
+"absent"   nothing in the words you were given supports this ring. A REAL finding.
+"weak"     brushed: a passing mention, or the subject matter without treaty framing.
+"present"  genuinely engaged: the item is, in part, about this.
+"strong"   central and developed, with the doctrine named.
+
+Judge the PARAPHRASE, not the vocabulary. "The agency allowed a competitor to rely on the
+originator's undisclosed test data" engages the IP ring without using the words
+"intellectual property". Catching that is the entire reason you are being asked.
+
+You are reading a headline and a summary. Do not infer what the body probably says, and
+do not use anything you may know about the matter from elsewhere. If the words give you
+nothing, "absent" is correct and costs nothing.
+
+Return EXACTLY this object:
+{"rings": {"ip_as_investment": "absent|weak|present|strong", "judicial_or_regulatory_measure": "absent|weak|present|strong", "jurisdictional_admissibility": "absent|weak|present|strong"}}
+
+All three keys, every time. No other keys. No score, no band, no summary, no quotation,
+no evidence, no commentary, no markdown, no code fences.
+
+INPUT:
+TITLE: {{TITLE}}
+SUMMARY: {{SUMMARY}}
+OUTPUT:

@@ -104,7 +104,7 @@
     <p class="standing">Developments at the intersection of intellectual property as a
        protected investment, regulatory or judicial measures as the disputed conduct, and
        jurisdictional and admissibility doctrine.{% if matches == 0 and items %} No item
-       reached a full match {{ "to date" if cumulative_runs else "this period" }}; those below are watch-list near-misses — a clean
+       reached a full match {{ "to date" if cumulative_runs else "this period" }} on the text available to the instrument; those below are watch-list near-misses — a
        reading at a deliberately narrow intersection, not a gap in coverage.{% endif %}</p>
   </div>
 
@@ -146,8 +146,17 @@
   {% endmacro %}
 
   {% if not items %}
-    <div class="empty">No thematically relevant developments this week.
-      {{ stats.total_candidates }} candidates were screened across the sources below.</div>
+    {#- STATUS-ONLY CYCLE. This block used to open "No thematically relevant
+        developments this week", which is a claim about the world. We cannot make
+        that claim; we can say what our instrument returned. The text comes from
+        render.status_only_body() as one unbroken string — a single authoritative
+        copy the tests assert verbatim, and no line-wrapping in this template can
+        put whitespace inside it. -#}
+    {#- |safe because autoescape turns the apostrophe in "instrument's" into
+        &#39; and the approved wording has to reach the reader, and the tests,
+        character for character. The string is built in render.py from a literal
+        and two integers — there is no untrusted input in it. -#}
+    <div class="empty">{{ status_only_body|safe }}</div>
   {% else %}
     {% set matched = items|selectattr("relevance_score", "ge", stats.threshold)|list %}
     {% set near = items|rejectattr("relevance_score", "ge", stats.threshold)|list %}

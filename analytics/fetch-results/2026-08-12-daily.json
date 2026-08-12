@@ -1,8 +1,8 @@
 {
   "request": "2026-08-12-daily.json",
   "note": "2026-08-12 daily council. Pre-registered BEFORE any result exists. Object-form finds only, per the 2026-08-11 finding that a bare-string row sets find='' and returns find_matched:false having asked nothing. Purpose: close GAP-UNRESOLVED zeph-australia-award-2025-jurisdictional-ground (next step 1) and confirm the treaty from a body (next step 2).",
-  "fetched_at": "2026-08-12T11:22:53.377701+00:00",
-  "environment": "github-actions-runner (run 31591541263)",
+  "fetched_at": "2026-08-12T12:02:22.836193+00:00",
+  "environment": "github-actions-runner (run 31594524711)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -45,7 +45,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "69f9be2b87da12a661e346b96c09ccbe736331022059714cec7890726118abb7",
+      "sha256": "9ac6973964511e853b4630d8edc16e5aa79555d0cf08b5fba5f5f58bd76a382b",
       "excerpt": "ltilateral treaty OTHER The Agreement Establishing the ASEAN\u2013Australia\u2013New Zealand Free Trade Area (AANZFTA) Language of Proceeding English Seat of Arbitration (by Country) Switzerland Arbitrator(s), Conciliator(s), Other Neutral(s) Professor Gabrielle Kaufmann-Kohler (Presiding Arbitrator) Mr. William Kirtley Professor Donald McRae Mr. Lukas Montoya (Secretary of the Tribunal) Representatives of ",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -58,7 +58,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "06343aa3cd796cafeb0e0ef5f951d084ebea78f66bf8545f99457ccdbb3f9dbf",
+      "sha256": "f81ff47ceccd6d84942c460828fae83b1496c0c51d113b46db62fb6bcde2fac7",
       "excerpt": "s Number of Arbitrators in case 3 Date of commencement of proceeding 29 March 2023 Date of issue of final award 26 September 2025 Length of Proceedings 2-3 years Additional notes - Documents Written submission Claimant's Notice of Arbitration download | 28 March 2023 | English | 548.29KB Annexure 6C to the Notice of Arbitration download | 28 March 2023 | English | 367.79KB Annexure 7C to the Notic",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -71,7 +71,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "24d613de6eb611b1a0a55fc0e9ee72933e03e150351bc5445268ef4944556d01",
+      "sha256": "17211e49db1888321d4d86ed30dbe7f7b58ecf0a6fcd6355e946bad59cd9337b",
       "excerpt": "",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": false
@@ -84,7 +84,7 @@
       "final_url": "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-40-zeph-investments-pte-ltd-v-the-commonwealth-of-australia/",
       "content_type": "text/html",
       "bytes": 48016,
-      "sha256": "5bb500b8ba1b418cecd324aa316afca3c63ade0ed42e71998754bca8d9637212",
+      "sha256": "e2db2bba8df11245564182f95122f04d4349e02178959f331845c87f0fc42718",
       "excerpt": "PCA Press Release \u2013 PCA Case No. 2023-40: Zeph Investments Pte. Ltd. v. The Commonwealth of Australia | PCA-CPA Fran\u00e7ais English Other \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587 Espa\u00f1ol P\u0443\u0441\u0441\u043a\u0438\u0439 Permanent Court of Arbitration Menu Fran\u00e7ais English Home About us Dispute Resolution Services Cases Resources Global Cooperation 03 September 2024 PCA Press Release \u2013 PCA Case No. 2023-40: Zeph Investments Pte. Ltd. v. The Commonwealth o",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": false

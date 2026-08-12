@@ -1,0 +1,30 @@
+{
+  "note": "2026-08-12 daily council. Pre-registered BEFORE any result exists. Object-form finds only, per the 2026-08-11 finding that a bare-string row sets find='' and returns find_matched:false having asked nothing. Purpose: close GAP-UNRESOLVED zeph-australia-award-2025-jurisdictional-ground (next step 1) and confirm the treaty from a body (next step 2).",
+
+  "relay_code_pin": "Verified by blob equality per 0811-O1, NOT by history walk: scripts/fetch_relay.py at HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703, identical to the blob pinned at 7fbbabff and used for the 2026-08-11 runs. If the runner's checkout carries a different blob for that path, EVERY rule below is void.",
+
+  "gates": {
+    "G1_runner": "Rows 1 and 6 are my own example.com brackets, ordered before and after every content row. If either is not ok/200, or the relay's own control row 0 is not ok, the batch is VOID as to every content row and no row founds anything.",
+    "G2_no_cross_host": "No row's outcome may be read as evidence about any host other than its own.",
+    "G3_void_scope": "A void clause names its unit (one row) and its scope (that row's own decision rule only).",
+    "G4_no_duration": "fetched_at is one manifest-level value. It establishes ORDER among rows, never duration."
+  },
+
+  "decision_rules": {
+    "P1": "UNIT: row 2 (find 'AANZFTA'). If ok/200 AND find_matched true, the string 'AANZFTA' occurred in that page's rendered text at that instant, and the returned window is body text from the administering institution's own case page. SCOPE: this confirms the treaty designation is CARRIED BY A BODY only if the window actually shows it in a treaty position; the excerpt is the evidence, not the boolean. If find_matched is false, the recorded fact is 'the string AANZFTA was not found in that page's rendered text at this instant' and NOTHING about the case, the treaty, or the PCA. VOID SCOPE: P1 only.",
+    "P2": "UNIT: row 3 (find 'Final Award'). Same structure as P1. A match establishes the string's occurrence and yields a window; it establishes NO ground of decision unless the returned window itself states one, and a 400-character window is presumed insufficient for a holding.",
+    "P3": "UNIT: row 4 (find 'contribution'). This targets the definitional hypothesis (that the claimant never MADE an investment). A match is NOT confirmation of the hypothesis: the word has many uses. Only the returned window's own text may be read, and only as text on that page.",
+    "P4": "UNIT: row 5 (bare string, no find, on the 2026-08-11 press-release URL). This is the documented TRADE test: yesterday this page returned ok/200 at 47929 bytes and ZERO characters because a find missed. Sent bare, :136 returns the first 400 characters unconditionally. EXPECTATION REGISTERED IN ADVANCE: a non-empty excerpt. If the excerpt is empty, the trade-off account in escalation 2 of the 2026-08-11 record is wrong and must be corrected. SCOPE: P4 is a finding about the INSTRUMENT, not about the PCA."
+  },
+
+  "not_asserted_in_advance": "No row below may found an ordinal, a count, a run-length, a 'first', or a 'never'. No tool-layer status (refused, 403, find_matched:false) may be restated as a fact about any resource. One string per row is deliberate: a find-miss suppresses the excerpt entirely, so bundling strings would make it impossible to learn which one matched.",
+
+  "urls": [
+    {"url": "https://example.com/", "find": "Example Domain"},
+    {"url": "https://pca-cpa.org/en/cases/309/", "find": "AANZFTA"},
+    {"url": "https://pca-cpa.org/en/cases/309/", "find": "Final Award"},
+    {"url": "https://pca-cpa.org/en/cases/309/", "find": "contribution"},
+    "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2023-40-zeph-investments-pte-ltd-v-the-commonwealth-of-australia/",
+    {"url": "https://example.com/", "find": "Example Domain"}
+  ]
+}

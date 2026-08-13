@@ -1,8 +1,8 @@
 {
   "request": "2026-08-13-uncitral-digest-control.json",
   "note": "2026-08-13, SECOND batch, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It exists because the first batch produced an ambiguous observation that this council's own rules forbid me to interpret without a control. Across eleven rows at nine distinct instants from 2026-08-03T18:25Z to 2026-08-11T11:30Z, https://uncitral.un.org/en/commission returned byte length 832338 AND sha256 ca87a113c024605cac35... every time. Today's row 2 returned the SAME byte length 832338 and a DIFFERENT sha256, f9712994f5aec4c9a8c5.... Two rival explanations fit that equally: (A) something of constant length on that page changed between 08-11 and 08-13; (B) this host varies its response per request \u2014 as pca-cpa.org was shown to do on 2026-08-12, three digests at one byte length in a single run \u2014 and the eleven prior digests coincided. Today's batch fetched the URL ONCE and therefore cannot distinguish them. This batch can, and I am firing it rather than choosing the reading I prefer, because on 2026-08-12 the chairman's cardinal failure was over-claiming on exactly this phenomenon.",
-  "fetched_at": "2026-08-13T11:29:10.448192+00:00",
-  "environment": "github-actions-runner (run 31695670971)",
+  "fetched_at": "2026-08-13T11:32:13.456188+00:00",
+  "environment": "github-actions-runner (run 31695899871)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

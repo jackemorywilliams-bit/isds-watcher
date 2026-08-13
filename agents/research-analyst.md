@@ -61,6 +61,29 @@ most advanced capabilities available."
 Rules the council adopted in session. They bind alongside the prompt contract, and they are
 recorded here because they are now part of this seat's working context.
 
+> **Audit finding, 2026-08-13 — this section is binding on a seat that is never told to read
+> it, and that gap has already cost the project once.** This seat's read path is
+> `.claude/agents/research-analyst.md` plus the three `prompts/` files that definition
+> enumerates. It does **not** include this file. Each rule below was grepped against that full
+> read path: only **the carrying-span rule** appears there, and only because the council gave it
+> its own prompt file (`prompts/carrying_span_rule.md`). The other ten are recorded here and
+> nowhere the seat reads.
+>
+> **Where this note would have prevented a recorded failure.** On 2026-08-03 this seat asserted
+> that a case was new to the project when it is one of the four out-of-sample holdout positives
+> validating the fingerprint — `scripts/holdout_set.json` carries twenty rows, four with
+> `label: 1`: `loewen_v_us`, `mondev_v_us`, `apotex_v_us`, `pm_v_uruguay`. Grepping
+> `holdout|hold-out|out-of-sample` across this seat's entire read path returns **nothing**. The
+> holdout set is documented in `METHODOLOGY.md`, in [[Workflow Threads]] and in six analytics
+> files — none of them in this seat's context. The seat did not forget a fact it held; the fact
+> was never in front of it. Had the pointer existed, the four ids are one grep away.
+>
+> [[integrity-officer]] is the only seat whose definition points at its own vault note, and
+> `.claude/agents/integrity-officer.md:56-62` states the reason in its own words: "an
+> enumeration here goes stale silently." That remedy was applied to one seat and never
+> generalised. Recorded as [[Workflow Threads]] **D5**; the fix is a contract edit and
+> therefore **Emory's**, not this seat's and not the archivist's.
+
 - **Fetch-first** — adopted 2026-07-30. Attempt the direct fetch before reconstructing a
   document from search results; fall back to quoted-phrase reconstruction only once a fetch
   has actually failed. A search snippet is never cited in place of a document an unattempted
@@ -163,6 +186,20 @@ sharpening beyond the seed corpus."
 
 ## Change log
 
+- **2026-08-13** — **Read-path audit: this seat's binding adopted rules are not in its
+  context.** Ten of the eleven rules in "Adopted method rules" appear nowhere in
+  `.claude/agents/research-analyst.md`, `prompts/research_analyst.txt`,
+  `prompts/council_calibration.md` or `prompts/carrying_span_rule.md`; only the carrying-span
+  rule does, because it has its own prompt file. `scripts/holdout_set.json`'s four `label: 1`
+  positives are likewise absent from the read path, which is the mechanism behind the
+  2026-08-03 holdout assertion. Recorded as a block at the head of that section and as
+  [[Workflow Threads]] **D5**; escalated to Emory as a contract edit. Nothing in this seat's
+  rules was reworded — the finding is about where they live, not what they say.
+  Separately, three of this seat's own 2026-07-27 operator marks carry `scope_ok: false` and are
+  stranded on an unmerged branch (**F1**), so the adverse half of the seat's standing watch item
+  is not visible to the gate on `main`.
+  *Audited against `8ea2ee1`; paths: `.claude/agents/research-analyst.md`, `prompts/`,
+  `scripts/holdout_set.json`, `analytics/verification_ledger.jsonl`.*
 - **2026-08-09** — **The parity round: five audit contradictions closed, and the largest closed
   by going and reading the document.** Uncommitted, `fix/restore-council-label`; package
   `working/benavides-comment-replies-2026-08-08.md`.

@@ -220,6 +220,37 @@ same day's second gate made four of the five stale again in the opposite directi
 come, and Emory's CI wiring still outstanding. All three have since been overtaken; it is
 replaced by the checkpoint below rather than left to be read as current.)*
 
+## Checkpoint — 2026-08-13 archivist session (`main` @ `8ea2ee1`, clean tree)
+
+**The 2026-08-08/09 work below is no longer uncommitted.** It was integrated to `main` on
+2026-08-11 (`667772c` runtime/tests, `bffe79a` documentation/vault, `60f2a5b` site rebuild,
+`9a6f3e8` currency fix). The two checkpoints below are kept as dated records of what those
+sessions measured; their branch labels are historical, not current.
+
+**Suite, measured in a clean clone: 562 passed, 1 failed, 3 skipped, 5 xfailed.** The failure is
+**environmental, not a regression**: `tests/test_one_pagers.py:73` asserts that every one-pager's
+source PDF exists under `seeds/`, which `.gitignore:2` excludes as private source material.
+`scripts/check_sources.py` fails the same way (5 failures, by design — it fails closed rather
+than skipping). Both pass on Emory's machine, where `seeds/` is populated. **CI never runs the
+full suite** — `.github/workflows/pipeline-guards.yml` invokes named test files only — so every
+"N passed" figure in this repository is a reading from one machine and should be read as one.
+
+Guards re-run this date, all exit 0: `check_models` (12 cards), `check_lock`,
+`check_headline_lane`, `check_claims`, `check_seen_integrity`, `check_telemetry_privacy`, and
+`node tools/isds-workflow-3d/validate.mjs` (30 cards / 9 chips / 44 edges, manifest v2.2, SVG
+fresh). **`check_currency` reports 3 of 9 claims stale**: `STATE_OF_THE_ANSWER.md` (2 commits),
+`agents/Claim Map.md` (3), `agents/Workflow Threads.md` (34 — refreshed by this session).
+`check_site_sync.py` was **not** run; per **B9** it rebuilds in place and is a write.
+
+**NEEDS EMORY — seventeen of your own ledger marks never reached `main`, and the vault said they
+had.** `analytics/verification_ledger.jsonl` on `main` is blob `f3dbbf6`, last written
+2026-07-27 by `8891c21`. `origin/chore/operator-marks-2026-07-27` holds 40 claims / 38 marks
+against `main`'s 37 / **21**. The 2026-08-11 change-log line claiming the merge carried them is
+retracted — `git show --stat 0a67756 -- analytics/verification_ledger.jsonl` is empty. Three
+claims are absent outright and read `unverified` to `src/integrity_gate.py`: *Hela Schwarz v.
+China*, UNCITRAL WG III's 53rd session, and the Svea Court of Appeal annulment in *Okuashvili v.
+Georgia*. The ledger is operator-owned; no agent has touched it. See [[Workflow Threads]] **F1**.
+
 ## Checkpoint — 2026-08-09 audit-response session (uncommitted, branch fix/restore-council-label)
 
 **Suite: 564 passed, 5 xfailed.** All guards green, re-run this date: `check_currency`

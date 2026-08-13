@@ -72,6 +72,63 @@ registry, flowchart vs pipeline, HANDOFF vs workflows) and fix or escalate drift
 periodically research current Obsidian/PKM practice so the vault's organization stays
 state-of-the-art."
 
+**Audit slice, 2026-08-13 (eighth deployment): where a seat's binding rules actually live —
+and one thread this vault reported discharged that was not.**
+
+The 2026-08-09 slice adopted the rule that "a reconciliation brief is a source like any other,
+and it is checked against the tree before it is written into the vault." This deployment applied
+it to the vault's own change log, and the change log failed the check.
+
+1. **[[Workflow Threads]] said F1's marks had landed. They had not, and nothing had moved in
+   seventeen days.** The 2026-08-11 entry read "F1's seventeen verification marks reach `main`
+   with this merge." `git show --stat 0a67756 -- analytics/verification_ledger.jsonl` is empty —
+   the integration never touched the ledger. `main`'s copy is blob `f3dbbf6`, last written by
+   `8891c21` on 2026-07-27, and `origin/chore/operator-marks-2026-07-27` is still not an ancestor
+   of `main`. Counted from the two blobs: 37 claims / **21 marks** on `main`, 40 / **38** on the
+   branch — *the same figures F1 recorded on 2026-08-04.* The line is struck in place; **F1**
+   now carries the counts and the demonstration, and the three stranded claim ids were replayed
+   through `verify.replay` to show them resolving `unverified` against `main`. This is exactly
+   the failure this seat's standing session exists to catch, and it was found in this seat's own
+   file — a vault note that had converted an expectation into a completed fact.
+
+2. **The generalisation of the 2026-08-03 holdout failure is structural, and it is not this
+   seat's to fix.** Every seat note carries a section marked binding; a seat's read path is its
+   `.claude/agents/` definition plus the `prompts/` files that definition enumerates; **eight of
+   the nine definitions never name the seat's own note.** Grepped rule by rule, ten of
+   [[research-analyst]]'s eleven adopted rules are outside its read path, and so are the four
+   `label: 1` rows of `scripts/holdout_set.json`. The analyst that called a holdout positive
+   "new to the project" was not being careless with a fact it held — the fact was never in front
+   of it. [[integrity-officer]] is the one seat where this was fixed, after council R8, and the
+   fix was never generalised. Opened as **D5**, escalated to Emory, recorded in three notes.
+
+3. **What this seat got wrong about its own orphan convention.** The container's clone was
+   **shallow**, and the orphan query ran against a truncated object set before that was noticed.
+   Re-run after `git fetch --unshallow` (584 commits): `--is-ancestor` reports **45** unlanded
+   branches, `git cherry` reports **6**, and the difference is squash merges. Three of the six
+   (`claude/sweet-mccarthy-*`) carry content `main` already holds in longer form — 247, 506 and
+   496 lines against the branches' 164, 166 and 246 — so they are superseded, not stranded. The
+   convention is kept for content questions like F1, where blobs are compared directly; for "did
+   this branch land", `git cherry` is the honest query. **A shallow clone silently weakens every
+   ancestry claim this seat makes, and checking for one is now part of the query.**
+
+4. **Not restamped, deliberately.** [[Claim Map]]'s anchor (`a22f4cb`) is three commits stale on
+   its declared paths, and all three touch `STATE_OF_THE_ANSWER.md` only — `.claude/agents/`,
+   `prompts/`, `METHODOLOGY.md`, `lit-review/` and `scripts/site_templates/` are untouched. This
+   pass did **not** re-read the C-rows against the amended living memory, so the anchor is left
+   stale rather than moved. Moving an anchor is an assertion that the note was re-verified; a
+   restamp this pass had not earned would be the precise defect `check_currency.py` exists to
+   catch. `STATE_OF_THE_ANSWER.md`'s own stale anchor is [[research-analyst]]'s, and the
+   2026-08-08 decision not to restamp another seat's living memory still governs.
+
+**The rule this deployment adopts.**
+
+> **A vault note may record that work is *expected* to land; it may not record that it *did*
+> until the blob is read on the target branch.** The 2026-08-11 entry was written at merge time
+> and stated a consequence of the merge as an accomplished fact. It was wrong the moment it was
+> written, and it then sat unchallenged for two days, on the one thread whose whole subject is
+> work that never landed. Where a note asserts that something reached `main`, the citation is the
+> blob or the `git cherry` line — never the merge that was supposed to carry it.
+
 **Audit slice, 2026-08-09 (seventh deployment): the threads a session reports as CLOSED.**
 The 2026-08-08 slice found that this seat's currency query is scoped to `.claude/agents/` and
 `prompts/` and therefore cannot see the drift that actually occurs, and specified a second

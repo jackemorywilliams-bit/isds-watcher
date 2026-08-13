@@ -16,8 +16,37 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot refreshed:** **2026-08-09**, at `2686422` **plus the uncommitted working tree of
-the 2026-08-08 repair session and the 2026-08-09 audit-response session, on branch
+**Snapshot refreshed:** **2026-08-13**, at `8ea2ee1` on `main`, clean tree, against a
+**complete** history (`git fetch --unshallow`; 584 commits). Sources read for this pass:
+`git cherry origin/main <branch>` over every remote branch, the two
+`analytics/verification_ledger.jsonl` blobs on `main` and
+`origin/chore/operator-marks-2026-07-27` replayed through `scripts/verify.py`,
+`src/integrity_gate.py`, `scripts/holdout_set.json`, all nine `.claude/agents/` definitions
+against all nine `agents/` seat notes, `src/models.py`, `.gitignore`,
+`.github/workflows/pipeline-guards.yml`, `HANDOFF.md`, `views/isds-workflow-3d/workflow.json`,
+and live runs of `pytest` (**562 passed / 1 failed / 3 skipped / 5 xfailed** — see the note on
+the failure below), `scripts/check_currency.py` (**9 claims, 3 failed**),
+`scripts/check_models.py` (exit 0, 12 cards), `scripts/check_lock.py` (exit 0),
+`scripts/check_headline_lane.py` (exit 0), `scripts/check_claims.py` (exit 0),
+`scripts/check_seen_integrity.py` (exit 0), `scripts/check_telemetry_privacy.py` (exit 0),
+`node tools/isds-workflow-3d/validate.mjs` (exit 0, 30 cards / 9 chips / 44 edges) and
+`scripts/build_graph.py --dry-run`.
+
+**Two measurements from this pass correct standing conventions rather than threads.**
+(1) `pytest` and `scripts/check_sources.py` **cannot pass in a clean clone**: both assert the
+presence of files under `seeds/`, which `.gitignore:2` excludes as private source material.
+`tests/test_one_pagers.py:73` fails and `check_sources.py` reports 5 failures here for that
+reason alone, and CI never catches it because
+`.github/workflows/pipeline-guards.yml` runs only named test files, never the whole suite. Every
+"N passed" figure in this vault is therefore a reading from Emory's machine, and should be read
+as one. (2) The orphan convention in this note — `git merge-base --is-ancestor <tip> origin/main`
+— reports **45** unlanded branches at `8ea2ee1`, while `git cherry` (patch equivalence) reports
+**6**. The difference is squash-merged branches, whose tips are correctly not ancestors. The
+ancestor test is kept for *content* questions like F1, where the blob itself is compared; for
+"did this branch land", `git cherry` is the honest query.
+
+**Superseded, retained — snapshot of 2026-08-09**, at `2686422` **plus the uncommitted working
+tree of the 2026-08-08 repair session and the 2026-08-09 audit-response session, on branch
 `fix/restore-council-label`**. Said in those words
 because most of that work is not committed, and a thread whose state rests on an
 uncommitted file is citing a path on a branch, not a hash. Sources read for this pass:
@@ -848,6 +877,36 @@ specifically unblocks it.
   rejected framing does **not** appear in `STATE_OF_THE_ANSWER.md` today, so the living memory
   is not carrying a rejected claim; what is missing is the ledger's own record that Emory
   ruled on it.
+- **Re-measured 2026-08-13, and nothing has moved in seventeen days.** The 2026-08-11 change-log
+  entry said these marks reached `main`; they did not, and that line is struck above. Counted
+  from the two blobs directly, not from any report:
+
+  | | `claim_created` | `verification_changed` (marks) | distinct claim ids |
+  |---|---|---|---|
+  | `origin/main` | 37 | **21** | 37 |
+  | `origin/chore/operator-marks-2026-07-27` | 40 | **38** | 40 |
+
+  These are the **same figures F1 recorded on 2026-08-04**. `main`'s ledger is blob `f3dbbf6`,
+  last written by `8891c21` (2026-07-27); no commit has touched it since.
+
+- **What the gap costs, demonstrated rather than asserted.** `src/integrity_gate.py:150-177`
+  replays the ledger and resolves each candidate by **exact claim-id lookup**
+  (`verify.replay` → `verify.current_status`). Replaying both blobs and querying the three
+  missing ids:
+
+  | claim id (first 12) | subject | against `main` | against the branch |
+  |---|---|---|---|
+  | `7511d41b67ec` | *Hela Schwarz v. China*, final award dismissing all claims | `unverified` | `operator_verified` |
+  | `f4375b9fb9f4` | UNCITRAL WG III 53rd session, provisions 1–9/11/12 as one package | `unverified` | `operator_verified` |
+  | `f40761bdb9b0` | Svea Court of Appeal annulment, *Okuashvili v. Georgia* | `unverified` | `operator_verified` |
+
+  All three carry `actor: Jack Emory Williams`, `quote_ok: true`, **`scope_ok: false`**, marked
+  2026-07-27T21:58Z. Against `main` the gate cannot see that Emory ruled on them at all, so each
+  is assertable only as an unverified lead. The `scope_ok: false` half is the adverse half named
+  as [[research-analyst]]'s standing watch item — it is stranded together with the favourable half.
+- **Not corrected here, deliberately.** The ledger is append-only and operator-owned; this seat
+  does not write to it, and the `actor` field is a dated record, not a live statement, so the
+  house rule against "Jack" in vault artifacts does not reach it.
 - **Next** — Emory's call, and no agent should make it: `git merge origin/chore/operator-marks-2026-07-27`
   on a branch, or re-run the marks. The ledger is operator-owned and this seat does not write
   to it.
@@ -863,6 +922,14 @@ specifically unblocks it.
   adopted — third-party retrieval, and blocked-vs-quiet source status — are implemented on
   `main` (`0091ade`, `fe02f39`) and are cited by later sessions, so the project runs on them;
   their reasoning and the objections they answer are not recoverable from git.
+- **Re-tested 2026-08-13 on a complete history, which the 2026-08-04 test did not have.** The
+  container's clone was shallow (`.git/shallow` present, 577 commits); the earlier "not a valid
+  object" could therefore have been an artefact of a partial object set rather than a real loss.
+  After `git fetch --unshallow` (**584 commits**, back to the `0460699` scaffold of 2026-06-08):
+  `git cat-file -t 3d31de8` still returns "Not a valid object name",
+  `git log --all -- analytics/council-sessions/2026-08-03-standing-rules.md` is **empty**, and
+  `git fetch origin 3d31de8` returns "couldn't find remote ref" — origin does not have it either.
+  The loss is confirmed against the full history, not merely against a truncated one.
 - **Next** — Nothing recovers it from the repository. If a transcript or scratchpad copy
   exists outside git it should be committed; otherwise the two rules should be restated from
   the sessions that cite them, which is council work, not vault work.
@@ -1048,6 +1115,48 @@ specifically unblocks it.
   clause and re-examine the inference it supports. No action until then.
 - **Owner** — [[research-analyst]].
 
+### D5 · Adopted method rules are recorded where the seat that must obey them never reads
+
+- **State** — Opened 2026-08-13. Every seat note carries a section of rules the council adopted
+  in session and marked **binding** — `agents/research-analyst.md:59-142` ("Adopted method
+  rules (session-derived, binding)", eleven rules), `agents/council-chairman.md:46-133`
+  ("Adopted session protocol (session-derived, binding)"),
+  `agents/analytics-officer.md:40-62` ("Standing observations"). A seat's actual read path is
+  its definition in `.claude/agents/` plus the `prompts/` files that definition enumerates.
+  **Eight of the nine definitions never name the seat's own vault note**, so those rules sit
+  outside the context of the agent bound by them.
+- **Measured, not assumed.** Each of the analyst's eleven rules was grepped against its full
+  read path (`.claude/agents/research-analyst.md`, `prompts/research_analyst.txt`,
+  `prompts/council_calibration.md`, `prompts/carrying_span_rule.md`). Only **the carrying-span
+  rule** is present — and it is present because the council gave it its own prompt file. Absent
+  from the read path: *fetch-first*, *docket page before document hunt*, the four *relay method
+  rules*, *no search-synthesis figures*, *a mis-anchored row is not a null*, *`find_matched` has
+  three states*, *a deliberately false URL is a control*, and *every citation to a relay
+  reduction carries its sha*. (Bare-word matches on "docket" in the prompt files are the
+  ordinary noun, not the rule.)
+- **This is the generalisation of a failure already recorded twice.** [[integrity-officer]] is
+  the one seat whose definition does point at its vault note, and
+  `.claude/agents/integrity-officer.md:56-62` says why in its own words: "an enumeration here
+  goes stale silently … council R8 found this definition still naming five patterns while the
+  vault's taxonomy stood at ten." **C11** in this note records the same defect from the other
+  direction — a stale vault table caused two different patterns to be adopted as entry 27. The
+  fix was applied to one seat and never generalised to the other eight.
+- **The 2026-08-03 holdout failure fits the pattern exactly.** The analyst asserted a case was
+  new to the project when it is one of the four out-of-sample holdout positives
+  (`scripts/holdout_set.json`: `loewen_v_us`, `mondev_v_us`, `apotex_v_us`, `pm_v_uruguay`,
+  the four rows with `label: 1` among twenty). Grepping `holdout|hold-out|out-of-sample` across
+  the analyst's entire read path returns **nothing**. The set is documented in `METHODOLOGY.md`,
+  in this note, and in six analytics files — none of them in the analyst's context. The seat was
+  not careless about a fact it held; it never held the fact.
+- **Not fixed here.** Editing `.claude/agents/` is a contract change and is **Emory's** — the
+  same boundary that has held `systems-designer.md:17`'s "zero-cost" line open since 2026-08-08.
+  The one-line remedy per seat is the sentence the integrity officer's definition already
+  carries, pointed at each seat's own note.
+- **Next** — Emory adds that pointer to the eight definitions that lack it, or rules that the
+  adopted-rules sections should live in `prompts/` instead. Either resolves it; leaving both
+  copies unlinked does not.
+- **Owner** — **Emory**, with [[council-chairman]] on whether adopted rules belong in `prompts/`.
+
 ---
 
 ## E · Explicitly zero budget
@@ -1075,14 +1184,34 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-13** — Refreshed against `8ea2ee1` (`main`, clean tree) on a complete history.
+  **One change-log entry retracted, two threads re-measured, one thread opened.** The
+  2026-08-11 claim that F1's marks reached `main` is **struck as false** — `0a67756` did not
+  touch `analytics/verification_ledger.jsonl`, whose blob on `main` is still `f3dbbf6` from
+  `8891c21` (2026-07-27). **F1** gains the counts from both blobs (21 marks on `main` vs 38 on
+  the branch) and a demonstration through `verify.replay` that its three stranded claim ids
+  resolve `unverified` against `main`. **F2** is re-tested after `git fetch --unshallow` and the
+  loss is confirmed against the full 584-commit history rather than a truncated one. **D5** is
+  new: adopted method rules are recorded in seat notes that eight of the nine definitions never
+  tell the seat to read, which is the pattern behind the 2026-08-03 holdout failure. Snapshot
+  block records the clean-clone test caveat and the `--is-ancestor` vs `git cherry` correction.
+  *Audited against `8ea2ee1`; paths: `analytics/verification_ledger.jsonl`, `.claude/agents/`,
+  `agents/`, `prompts/`, `scripts/`, `src/`, `.github/workflows/`,
+  `views/isds-workflow-3d/workflow.json`, `HANDOFF.md`.*
 - **2026-08-11** — Integration to `main`: audited against `0a67756` — the merge of the
   integration branch (which carries the formerly uncommitted 2026-08-08/09 work the entry
   below describes) with the 2026-08-11 council session, plus the fetch-relay results the
   cron committed onto the integration branch itself mid-flight. The drift counted since `2686422`
   is the council's own 2026-08-08..11 session and ledger commits plus the integration's
-  reviewable commits; no thread moved outside them. F1's seventeen verification marks
+  reviewable commits; no thread moved outside them. ~~F1's seventeen verification marks
   reach `main` with this merge; the thread closes on the operator's confirmation, not on
-  the merge itself.
+  the merge itself.~~ — **false, corrected 2026-08-13.** The marks did not reach `main`
+  with that merge or any other. `git show --stat 0a67756 -- analytics/verification_ledger.jsonl`
+  is **empty**: the integration did not touch the ledger. The file on `main` is still
+  blob `f3dbbf6`, last written by `8891c21` on **2026-07-27**, and
+  `git merge-base --is-ancestor origin/chore/operator-marks-2026-07-27 origin/main` still
+  fails. The line is struck rather than deleted so the correction stays legible, per this
+  note's own convention. See F1.
 - **2026-08-09** — Refreshed against `2686422` plus the uncommitted working trees of the
   2026-08-08 repair session and the 2026-08-09 audit-response session, on
   `fix/restore-council-label`. **Two threads closed, one rewritten, two opened, three

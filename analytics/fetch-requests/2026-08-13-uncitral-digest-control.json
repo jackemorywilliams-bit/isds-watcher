@@ -1,0 +1,25 @@
+{
+  "note": "2026-08-13, SECOND batch, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It exists because the first batch produced an ambiguous observation that this council's own rules forbid me to interpret without a control. Across eleven rows at nine distinct instants from 2026-08-03T18:25Z to 2026-08-11T11:30Z, https://uncitral.un.org/en/commission returned byte length 832338 AND sha256 ca87a113c024605cac35... every time. Today's row 2 returned the SAME byte length 832338 and a DIFFERENT sha256, f9712994f5aec4c9a8c5.... Two rival explanations fit that equally: (A) something of constant length on that page changed between 08-11 and 08-13; (B) this host varies its response per request — as pca-cpa.org was shown to do on 2026-08-12, three digests at one byte length in a single run — and the eleven prior digests coincided. Today's batch fetched the URL ONCE and therefore cannot distinguish them. This batch can, and I am firing it rather than choosing the reading I prefer, because on 2026-08-12 the chairman's cardinal failure was over-claiming on exactly this phenomenon.",
+
+  "relay_code_pin": "Verified by blob equality per 0811-O1: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703, identical to the blob pinned in this morning's first batch and used for the 08-11, 08-12 and 08-13 runs. If the runner's checkout carries a different blob for that path, EVERY rule below is void.",
+
+  "gates": {
+    "G1_runner": "Rows 1 and 5 are my own example.com brackets. If either is not ok/200, or the relay's own control row is not ok, the batch is VOID as to every content row.",
+    "G4_no_duration": "fetched_at is one manifest-level value. It establishes ORDER among rows, never duration. Rows 2 and 3 are in the same run; that is what makes them a within-run pair, and nothing here measures the interval between them.",
+    "G5_status_is_not_source_state": "A tool-layer status is never a statement about a resource."
+  },
+
+  "decision_rules": {
+    "D1": "UNIT: rows 2 and 3 jointly (the same URL, bare, twice in one run). IF both return ok/200 with EQUAL bytes AND EQUAL sha256, then this host did NOT vary its response between two requests in this run, explanation (B) is not supported, and the cross-day digest change observed this morning is attributable to something that differed between the 08-11 and 08-13 fetches rather than to per-response variation. IF the two rows return equal bytes and DIFFERENT sha256, explanation (B) is DEMONSTRATED on this host, the cross-day comparison is VOID as evidence that anything changed, and the eleven prior identical digests become the thing that needs explaining rather than the baseline. SCOPE: D1 speaks to this host only, at this run only, and founds nothing about any other host and nothing about the content of the page.",
+    "D2": "UNIT: row 4 (find 'A/80/17'). POSITIVE CONTROL, and it is here because the integrity officer's standing rule requires one before any absence is read as meaningful. 'A/80/17' matched on this page on 08-04, 08-05, 08-06, 08-07 and 08-09. IF it matches again, the page still carries its prior-session content and this morning's find_matched:false on 'A/81/17' is an absence within an intact page. IF it does NOT match, the page's content has moved under the watch and this morning's null on 'A/81/17' cannot be read as an absence at all — it would then be uninterpretable, and the watch itself would need rebuilding.",
+    "D3": "NOT ASSERTED, AND NAMED SO IN ADVANCE: nothing in this batch may found a claim that A/81/17 exists, does not exist, is published, or is imminent. Nothing here may found a claim that the page's DOCUMENT changed — at constant byte length the changed element may be a token, a cache-buster, a rotating identifier, or a constant-width date. D1's affirmative branch establishes only that the difference was not manufactured by per-response variation."
+  },
+
+  "urls": [
+    {"url": "https://example.com/", "find": "Example Domain"},
+    "https://uncitral.un.org/en/commission",
+    "https://uncitral.un.org/en/commission",
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/80/17"},
+    {"url": "https://example.com/", "find": "Example Domain"}
+  ]
+}

@@ -13,6 +13,51 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-13
+
+*Audited against `8ea2ee1` (`main`, clean tree, complete history after `git fetch --unshallow`
+— 584 commits); paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+`src/integrity_gate.py`, `scripts/`, `analytics/verification_ledger.jsonl`,
+`.github/workflows/`, `views/isds-workflow-3d/workflow.json`, `HANDOFF.md`.*
+
+- **A change-log claim is retracted, and it is this note's sister file.** [[Workflow Threads]]'s
+  2026-08-11 entry stated "F1's seventeen verification marks reach `main` with this merge."
+  They did not. `git show --stat 0a67756 -- analytics/verification_ledger.jsonl` is empty;
+  the ledger on `main` is blob `f3dbbf6`, last written by `8891c21` on **2026-07-27**, and
+  `origin/chore/operator-marks-2026-07-27` is still not an ancestor of `main`. The line is
+  struck in place, not deleted. Counted from both blobs: `main` holds 37 claims / **21 marks**,
+  the branch holds 40 / **38** — the same figures F1 recorded on 2026-08-04, seventeen days ago.
+- **The three stranded claims are demonstrably invisible to the integrity gate.**
+  `src/integrity_gate.py:150-177` resolves candidates by exact claim-id lookup through
+  `verify.replay` / `verify.current_status`. Replaying both blobs: `7511d41b67ec`
+  (*Hela Schwarz v. China*), `f4375b9fb9f4` (UNCITRAL WG III 53rd session) and `f40761bdb9b0`
+  (Svea Court of Appeal, *Okuashvili v. Georgia*) each return `unverified` against `main` and
+  `operator_verified` against the branch. All three carry `quote_ok: true` and `scope_ok: false`.
+  Recorded in [[Workflow Threads]] **F1**; the ledger is operator-owned and was not touched.
+- **Adopted method rules are recorded outside the read path of the seats they bind.** Eight of
+  nine `.claude/agents/` definitions never name the seat's own vault note, while those notes
+  carry sections marked binding (`agents/research-analyst.md:59-142`,
+  `agents/council-chairman.md:46-133`, `agents/analytics-officer.md:40-62`). Ten of the
+  analyst's eleven rules, and all four `label: 1` rows of `scripts/holdout_set.json`, are absent
+  from that seat's read path — the mechanism behind the 2026-08-03 holdout assertion. Opened as
+  [[Workflow Threads]] **D5** and recorded in [[research-analyst]] and [[Agent Registry]];
+  **not fixed**, because `.claude/agents/` is a contract surface and Emory's.
+- **No agent, model or prompt change.** `git log 667772c..HEAD -- .claude/agents/ prompts/
+  src/models.py` returns no commit; `scripts/check_models.py` exits 0 over twelve cards.
+- **`scripts/build_graph.py` write mode not run — thirteenth consecutive session, and the
+  arithmetic has shifted.** `--dry-run` at `8ea2ee1` plans managed-block edits to **23** notes.
+  **20 are inside this seat's self-merge set** (`analytics/` ×19, `agents/Claim Map.md`); three
+  are not — `BOUNDED_CHANGE_PROTOCOL.md`, `prompts/carrying_span_rule.md`,
+  `lit-review/BIBLIOGRAPHY_TEMPLATE.md`. The script has no path filter, so a full run still
+  cannot land under archivist authority ([[Workflow Threads]] **C12**), but the out-of-bounds
+  share has fallen from 14-of-17 to 3-of-23.
+- **Two measurement conventions corrected.** `pytest` and `scripts/check_sources.py` cannot pass
+  in a clean clone — both require files under gitignored `seeds/` (`.gitignore:2`), and CI never
+  runs the full suite (`.github/workflows/pipeline-guards.yml` invokes named test files only), so
+  every "N passed" figure in this vault is a reading from Emory's machine. And the orphan test
+  `git merge-base --is-ancestor` reports 45 unlanded branches where `git cherry` reports 6; the
+  difference is squash merges, and `git cherry` is the honest query for "did this branch land".
+
 ## 2026-08-11
 
 *Audited against `bffe79a`.*

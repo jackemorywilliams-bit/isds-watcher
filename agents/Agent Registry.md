@@ -15,6 +15,30 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
+**Definitions re-audited against `8ea2ee1` — 2026-08-13.** `git log 667772c..HEAD --
+.claude/agents/ prompts/ src/models.py` returns **no commit**, and no file under
+`.claude/agents/` has changed since before 2026-08-07. Every model, prompt binding and contract
+in the roster below therefore reads exactly as committed, and `scripts/check_models.py` exits 0
+over twelve cards ("every card names a configured model, backed by a declared `model:` key, and
+no vault note contradicts its card"). `src/models.py` is unchanged: `CHAIRMAN_MODEL` and
+`HEAVY_MODEL` at `claude-opus-5`, `UTILITY_MODEL` and `FALLBACK_MODEL` at `claude-opus-4-8`,
+`DIGEST_CLASSIFIER_MODEL` at `claude-haiku-4-5-20251001`. **No model drift exists.**
+
+**What the model check cannot see, and this pass measured instead.** `check_models.py` verifies
+that each seat's *declared* model matches its card and its note. It does not ask whether the
+rules a seat has adopted are inside that seat's context — and they are mostly not. A seat's read
+path is its `.claude/agents/` definition plus the `prompts/` files that definition enumerates.
+**Eight of the nine definitions never name the seat's own vault note**, while those notes carry
+sections explicitly marked binding: `agents/research-analyst.md:59-142` (eleven adopted method
+rules), `agents/council-chairman.md:46-133` (adopted session protocol),
+`agents/analytics-officer.md:40-62` (standing observations). Ten of the analyst's eleven rules
+are absent from its read path; so are the four `label: 1` rows of `scripts/holdout_set.json`,
+which is the mechanism behind the 2026-08-03 holdout failure. The exception is
+[[integrity-officer]], whose definition points at its note and says why
+(`.claude/agents/integrity-officer.md:56-62`) — a remedy adopted for one seat after council R8
+and never generalised. **Editing `.claude/agents/` is a contract change and is Emory's**, so
+this is escalated, not corrected: [[Workflow Threads]] **D5**.
+
 **Definitions audited against `667772c` — 2026-08-11, at integration.** The only commit
 touching this note's declared paths since `2686422` is the integration's own `667772c`,
 which adds `prompts/classifier_v2.txt` and `prompts/triage.txt` — the prompt files for the
@@ -334,6 +358,15 @@ change in the same commit, and the change is dated and cited in [[Project Change
 Rules the council adopted in session that are now part of a seat's working context. Full
 statements live in the seat's own note.
 
+> **Qualification added 2026-08-13, because the sentence above overstates what is true.** "Part
+> of a seat's working context" describes where these rules are *recorded*, not where the seat
+> *reads*. A seat's read path is its `.claude/agents/` definition plus the `prompts/` files that
+> definition enumerates, and eight of the nine definitions never name the seat's own note. Of the
+> [[research-analyst]] rules below, only the Carrying-Span Rule is inside that seat's read path,
+> and only because it was given its own file in `prompts/`. The [[integrity-officer]] rows are
+> the exception that proves it: that seat's definition points at its note by name. Recorded as
+> [[Workflow Threads]] **D5**; the remedy is a contract edit and therefore Emory's.
+
 | Seat | Rule | Adopted | Commit |
 |---|---|---|---|
 | [[research-analyst]] | Fetch-first — attempt the direct fetch before reconstructing from search results | 2026-07-30 | `754ce32` (re-sequenced `e05f834`) |
@@ -362,7 +395,6 @@ statements live in the seat's own note.
 | [[analytics-officer]] | **Re-derive denominators from the files, never from a council record** — two records disagreed with the archive, and the audit reports 14 files / 13 URLs / 12 matters rather than one number | 2026-08-08 | `analytics/retrospective-audit-2026-08-08.md:3-19` (uncommitted) |
 | [[integrity-officer]] · [[research-editor]] | **Humanizer output is fail-closed** — a rewriting pass is run with every quotation, citation and pinpoint sentinel-masked, and its output is rejected outright on fabricated quotation, flipped negation, hallucinated rule, or sentinel destruction. On 2026-08-08: 7 substantive replies run, **2 passed and were repaired, 5 rejected, 2 exempt**. **Round 2, 2026-08-09**, on the parity-repair revisions: 3 passages, **0 adopted** — 1 exempt *by construction* (masked, it is a near-pure sentinel chain with nothing to rewrite), 2 rejected at the gate (one dropped two sentences and turned the court's opinions into "the author's opinions"; one destroyed a sentinel). **Cumulative: 10 run, 2 adopted** | 2026-08-09 | `working/benavides-comment-replies-2026-08-08.md:5-6` (uncommitted) |
 | [[research-analyst]] | **No item enters the locked validation set on a memo's authority** — primary retrieval only, recorded as externally gated; the set is created **empty of items on purpose** | 2026-08-08 | `analytics/locked_set/SCHEMA.md:1-11`, `analytics/locked_set/RETRIEVAL_LEDGER.md` (uncommitted) |
-
 | [[integrity-officer]] | Taxonomy entry 25 — mutable-reduction citation; every reduction citation carries a commit sha | 2026-08-05 | `3ff5498` / `2026-08-05.md:616`, `:976` |
 | [[research-analyst]] | `find` selects a position, not a proposition (house rule 2) | 2026-08-05 | `3ff5498` / `2026-08-05.md:977` |
 | [[research-analyst]] | A mis-anchored row is not a null; a PDF `find_matched: false` is a gate artefact; a false URL is a control | 2026-08-05 | `3ff5498` / `2026-08-05.md:978-980` |
@@ -385,6 +417,20 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-13** — Registry re-audited against `8ea2ee1` (`main`, clean tree).
+  `git log 667772c..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit**;
+  **no roster change, and no model drift** — `check_models.py` exits 0 over twelve cards and
+  `src/models.py` is unchanged. The finding is not in the roster but beside it: the
+  "Adopted method rules by seat" section says those rules are "part of a seat's working
+  context", which describes where they are recorded and not where the seat reads. Eight of nine
+  definitions never name their seat's note; ten of [[research-analyst]]'s eleven rules and all
+  four `label: 1` rows of `scripts/holdout_set.json` are outside that seat's read path. A
+  qualification block now says so at the head of the section, and the finding is escalated to
+  Emory as [[Workflow Threads]] **D5** because `.claude/agents/` is a contract surface.
+  Also repaired: a stray blank line had split the adopted-rules table into two fragments from
+  the `locked_set` row onward, so the last thirteen rows rendered without headers.
+  *Audited against `8ea2ee1`; paths: `.claude/agents/`, `prompts/`, `src/models.py`,
+  `agents/`, `scripts/holdout_set.json`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-08-09** — Registry re-audited against `2686422` plus the uncommitted working trees of
   the 2026-08-08 and 2026-08-09 sessions on `fix/restore-council-label`. **No roster change,
   and for the second consecutive session that is itself the finding:** a day that added

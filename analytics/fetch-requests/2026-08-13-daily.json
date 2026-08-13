@@ -1,0 +1,30 @@
+{
+  "note": "2026-08-13 daily council. Pre-registered BEFORE any result exists. Object-form finds only. Two questions, both genuinely time-varying and therefore legitimately re-askable, plus two never-asked finds on the treaty mapping. Row 2 is the A/81/17 standing watch, last fired 2026-08-10 and not fired on 08-11 or 08-12; today falls inside the August-September 2026 publication window recorded on 2026-07-27. Rows 3 and 4 target the China-Switzerland BIT (2009) mapping page, which returned ok/200 on six runs 08-03 to 08-09 and refused/403 on 08-10 and 08-11 — so row 3 doubles as an access re-probe whose failure is a fact about the access layer and about nothing else.",
+
+  "relay_code_pin": "Verified by blob equality per 0811-O1, NOT by history walk: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703 — identical to the blob pinned in the 2026-08-12 request and used for the 08-11 and 08-12 runs. If the runner's checkout carries a different blob for that path, EVERY rule below is void.",
+
+  "gates": {
+    "G1_runner": "Rows 1 and 5 are my own example.com brackets, ordered before and after every content row. If either is not ok/200, or the relay's own control row is not ok, the batch is VOID as to every content row and no row founds anything.",
+    "G2_no_cross_host": "No row's outcome may be read as evidence about any host other than its own. uncitral.un.org rows say nothing about UNCTAD and vice versa.",
+    "G3_void_scope": "A void clause names its unit (one row) and its scope (that row's own decision rule only).",
+    "G4_no_duration": "fetched_at is one manifest-level value. It establishes ORDER among rows, never duration.",
+    "G5_status_is_not_source_state": "The cardinal standing rule. refused/403 on any row is a statement about this client's access to that host at that instant. It is NOT a statement that the page is gone, that the treaty lacks a provision, or that a document is unpublished."
+  },
+
+  "decision_rules": {
+    "P1": "UNIT: row 2 (uncitral.un.org/en/commission, find 'A/81/17'). If ok/200 AND find_matched TRUE, the string 'A/81/17' occurred in the rendered text of UNCITRAL's own Commission Sessions page at that instant, and the returned window is the evidence of what it says there — the boolean alone establishes no publication, no date and no content. If find_matched is FALSE, the recorded fact is 'the string A/81/17 was not found in that page's rendered text at this instant' and NOTHING about whether the report exists, is published, or is imminent. That page returned find_matched false on 08-03, 08-04, 08-05, 08-06, 08-07, 08-09 and 08-10; a seventh false is a continuation of a null, not a finding. SCOPE: P1 only.",
+    "P2": "UNIT: row 3 (treaty 978 mapping, find 'intellectual property'). NEVER ASKED BEFORE against this page. This targets limb (a) of the research question — whether IP appears in the UNCTAD mapping of the China-Switzerland BIT's investment definition. A match establishes that the phrase occurs in that page's rendered text and yields a window; ONLY the window's own text may be read, and it must not be reported as the treaty's own words — an UNCTAD mapping is UNCTAD's characterisation, not treaty text. If the row is refused/403, G5 governs: that is a fact about access, and the escalation asking the operator for the treaty text stands unchanged.",
+    "P3": "UNIT: row 4 (treaty 978 mapping, find 'Denial of benefits'). NEVER ASKED BEFORE. This targets limb (c) — a live jurisdictional/admissibility doctrine, and the one most directly bearing on treaty-shopping. Same structure as P2: window-only, mapping-not-text, and a miss establishes only that the string was absent from that rendering at that instant. A 400-character window is presumed insufficient to establish the content of any treaty provision.",
+    "P4": "UNIT: rows 3 and 4 jointly, ACCESS ONLY. If both return ok/200, this client's access to investmentpolicy.unctad.org was working at this instant, after two consecutive refused/403 runs on 08-10 and 08-11. If both return refused/403, the 403 condition persisted into a third observed run. Either way this is a finding about the ACCESS LAYER and is recorded as such; it founds nothing about the treaty, and per the standing rule it may not be restated anywhere as a claim about the resource."
+  },
+
+  "not_asserted_in_advance": "No row below may found an ordinal, a count, a run-length, a 'first', or a 'never'. No tool-layer status may be restated as a fact about any resource. One string per row is deliberate: a find-miss suppresses the excerpt entirely (scripts/fetch_relay.py:132-133), so bundling strings would make it impossible to learn which one matched. No row here re-asks a question already answered on a body: the Zeph 'contribution' question is settled as asked and is NOT re-fired, per next step 1 of the 2026-08-12 close-out.",
+
+  "urls": [
+    {"url": "https://example.com/", "find": "Example Domain"},
+    {"url": "https://uncitral.un.org/en/commission", "find": "A/81/17"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "intellectual property"},
+    {"url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-", "find": "Denial of benefits"},
+    {"url": "https://example.com/", "find": "Example Domain"}
+  ]
+}

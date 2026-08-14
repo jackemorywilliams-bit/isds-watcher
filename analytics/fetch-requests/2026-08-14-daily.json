@@ -1,0 +1,53 @@
+{
+  "note": "2026-08-14, FIRST batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes next steps 1, 5 and 6 of the 2026-08-13 close-out, and adds one instrument row on UNCTAD access. Row order is deliberate: my own example.com brackets open and close the batch. THE FILENAME SORTS LAST IN analytics/fetch-requests/ AS OF THIS WRITING, which is what makes it the batch the relay actually runs; scripts/fetch_relay.py selects with newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort, not a time sort. Per next step 2 of the 2026-08-13 close-out, ANY SECOND BATCH FIRED TODAY MUST BE NAMED 2026-08-14-zz-<slug>.json so it sorts after this one; the same trap cost 2026-08-05 and cost 2026-08-13. The relay also writes to out_dir/request_path.name with no existence check, so a re-run overwrites a reduction in place. Both defects are on the operator's PENDING list; no code change is authorised and none is made.",
+  "relay_code_pin": "Verified by blob equality per 0811-O1, not by history walk: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703 — identical to the blob pinned in all three 2026-08-13 batches and used for the 08-11, 08-12 and 08-13 runs.",
+  "gates": {
+    "G1_runner": "Rows 1 and 8 are my own example.com brackets. If either is not ok/200, or the relay's own control row is not ok, or void is true, the batch is VOID as to every content row.",
+    "G2_no_cross_host": "No row's outcome may be read as evidence about any host other than its own. Three hosts appear here and they are three separate evidentiary universes.",
+    "G4_no_durations": "No duration may be read off fetched_at. Rows are ordered, not timed.",
+    "G5_status_is_not_source_state": "CARDINAL. A refused/403, a 404, or a find_matched:false is a statement about this client's access at that instant, or about a string in one rendering at that instant. NONE may be restated as a fact about a case, an award, a proceeding, a treaty, or a document's existence. In particular: nothing in this batch may found a claim that A/81/17 has or has not been issued, that the Einarsson award has or has not issued, or that the China-Switzerland BIT does or does not contain a denial-of-benefits clause.",
+    "G6_rendered_text_only": "The relay strips every tag AND attribute (scripts/fetch_relay.py:126-128). A string present only in an href or an attribute is INVISIBLE to this channel. Every find_matched:false below carries this limit.",
+    "G7_entity_blind": "Per 0806-O6 (standing): the find is a literal case-insensitive substring test. A symbol rendered with an HTML entity or a non-ASCII solidus reads as absent."
+  },
+  "decision_rules": {
+    "E1": "UNIT: rows 2 and 3 (ICSID UNCT/20/6 docket, finds 'Procedural Orders' and 'Published Decisions'). These are the companion rows next step 1 authorised. The route was ESTABLISHED on 2026-08-13 (ok/200, 'Latest Development' and 'Status of Proceeding' both matched on this exact URL), so no fresh identity row is needed and none is fired — and per 0813-B5 a BARE row on icsid.worldbank.org discriminates nothing anyway, because an empty find returns body[:400] which on this host is global navigation by construction. If a find matches, ONLY the returned 400-character window may be read. A window is not a docket. If a find MISSES, the recorded fact is that the string was absent from that rendering at that instant — most likely the field is not rendered on this case page — and per G5 that is NOT a finding that no procedural orders or published decisions exist in the proceeding.",
+    "E2": "UNIT: rows 4 and 5 (uncitral.un.org/en/commission, finds 'A/81/17' then 'A/80/17'). The standing A/81/17 watch in its same-page positive-control form: one run answers both. Row 5 is the control — if 'A/80/17' does NOT match, the page is not the page we think it is and row 4 is VOID rather than a null. If row 5 matches and row 4 does not, the recorded fact is that the string 'A/81/17' was absent from that page's rendered text at that instant, subject to G6 and G7, and to the two further standing limits restated here: THIS LOCATION ONLY (nothing about ODS, the UN Digital Library, the 59th-session document listing, or the GA Official Records), and the undocs.org/docs.un.org symbol route stays RETIRED and is not used. Per 0813-B9, if this record states a count of prior nulls it must state the population that count is drawn from, INCLUDING the undocs.org request-echo row that carries find_matched:true on a retired route and the digitallibrary.un.org robots_disallowed row that carries no find_matched key at all.",
+    "E3": "UNIT: row 6 (same page, find 'fifty-ninth'). This is next step 6 and it is INSTRUMENT-SCOPED. On 2026-08-13 this URL returned its long-stable byte length (832,338) with a DIFFERENT sha256 than the fifteen prior rows at nine dates. This row asks an anchored question of the 59th-session block. WHAT IT MAY FOUND: what that block's rendered text says at this instant. WHAT IT MAY NOT FOUND: that anything CHANGED. A single anchored window cannot diff a page against a digest, no prior run asked this find on this page except 2026-08-03, and per next step 6 the digest movement is A LEAD, NOT A FINDING, and nothing about it may be reported as a document change.",
+    "E4": "UNIT: row 7 (UNCTAD China-Switzerland BIT 2009 mapping, find 'Denial of benefits'). INSTRUMENT-SCOPED, and fired knowingly against a host that has refused this client on three observed runs (2026-08-10, 08-11, 08-13). It costs one row and it asks a question never yet answered. If refused/403 again, the ONLY thing recorded is a fourth observation of this client's access condition — a fact about our client, not about UNCTAD and not about the treaty — and escalation 6 to the operator (one manual retrieval of the forum provision) stands unchanged and is owed a fourth time. If ok/200, the window is readable as UNCTAD's mapping text and nothing more; UNCTAD's mapping is a secondary characterisation and is NEVER the treaty text.",
+    "E5": "NOT ASSERTED IN ADVANCE: no row in this batch may found an ordinal, a count, a 'first', a 'never', or any superlative. Per 0811-B5, any count appearing in the record must be derived programmatically over the corpus and shown, not read off a printed scan by eye."
+  },
+  "urls": [
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT%2F20%2F6",
+      "find": "Procedural Orders"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT%2F20%2F6",
+      "find": "Published Decisions"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/80/17"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "fifty-ninth"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "find": "Denial of benefits"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

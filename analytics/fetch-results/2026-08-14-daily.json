@@ -1,8 +1,8 @@
 {
   "request": "2026-08-14-daily.json",
   "note": "2026-08-14, FIRST batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes next steps 1, 5 and 6 of the 2026-08-13 close-out, and adds one instrument row on UNCTAD access. Row order is deliberate: my own example.com brackets open and close the batch. THE FILENAME SORTS LAST IN analytics/fetch-requests/ AS OF THIS WRITING, which is what makes it the batch the relay actually runs; scripts/fetch_relay.py selects with newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort, not a time sort. Per next step 2 of the 2026-08-13 close-out, ANY SECOND BATCH FIRED TODAY MUST BE NAMED 2026-08-14-zz-<slug>.json so it sorts after this one; the same trap cost 2026-08-05 and cost 2026-08-13. The relay also writes to out_dir/request_path.name with no existence check, so a re-run overwrites a reduction in place. Both defects are on the operator's PENDING list; no code change is authorised and none is made.",
-  "fetched_at": "2026-08-14T11:43:55.616278+00:00",
-  "environment": "github-actions-runner (run 31797361529)",
+  "fetched_at": "2026-08-14T12:23:55.873612+00:00",
+  "environment": "github-actions-runner (run 31800105171)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

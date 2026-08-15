@@ -1,0 +1,57 @@
+{
+  "note": "2026-08-15, FIRST batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes next steps 1, 3 and 6 of the 2026-08-14 close-out and adds two instrument rows on UNCTAD access. Row order is deliberate: my own example.com brackets open and close the batch. THE FILENAME SORTS LAST IN analytics/fetch-requests/ AS OF THIS WRITING — verified programmatically against sorted(glob('*.json'))[-1], which was 2026-08-14-daily.json, BEFORE this file was pushed rather than after. scripts/fetch_relay.py selects with newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort, not a time sort. ANY SECOND BATCH FIRED TODAY MUST BE NAMED 2026-08-15-zz-<slug>.json so it sorts after this one; the same trap cost 2026-08-05 and cost 2026-08-13. The relay also writes to out_dir/request_path.name with no existence check, so a re-run overwrites a reduction in place. Both defects are on the operator's PENDING list (escalation 6 of the 2026-08-14 record); no code change is authorised and none is made.",
+  "relay_code_pin": "Verified by blob equality per 0811-O1, not by history walk: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703 — identical to the blob pinned in the 2026-08-14 batch and in all three 2026-08-13 batches.",
+  "gates": {
+    "G1_runner": "Rows 1 and 9 are my own example.com brackets. If either is not ok/200, or the relay's own control row is not ok, or void is true, the batch is VOID as to every content row.",
+    "G2_no_cross_host": "No row's outcome may be read as evidence about any host other than its own. Four hosts appear here and they are four separate evidentiary universes. In particular the two investmentpolicy.unctad.org rows are ONE client-access condition observed twice in one run, NOT two independent observations.",
+    "G4_no_durations": "No duration may be read off fetched_at. Rows are ordered, not timed.",
+    "G5_status_is_not_source_state": "CARDINAL. A refused/403, a 404, or a find_matched:false is a statement about this client's access at that instant, or about a string in one rendering at that instant. NONE may be restated as a fact about a case, an award, a proceeding, a treaty, or a document's existence. In particular: nothing in this batch may found a claim that A/81/17 has or has not been issued, that any Einarsson document was or was not filed, that any numbered Zeph proceeding does or does not exist, or that the China-Switzerland BIT does or does not contain a denial-of-benefits clause.",
+    "G6_rendered_text_only": "The relay strips every tag AND attribute (scripts/fetch_relay.py:126-128). A string present only in an href or an attribute is INVISIBLE to this channel. Every find_matched:false below carries this limit.",
+    "G7_entity_blind": "Per 0806-O6 (standing): the find is a literal case-insensitive substring test. A string rendered with an HTML entity, a curly quotation mark where a straight one was asked, or a non-ASCII solidus reads as absent. This bites row 2 specifically and is flagged there."
+  },
+  "decision_rules": {
+    "E1": "UNIT: row 2 (ICSID UNCT/20/6 docket, find 'Expert Report of Nigel Bankes'). This is next step 1 of the 2026-08-14 close-out and it is a WINDOW-SLIDING row, not a new question. Yesterday's 400-character window anchored on 'Published Decisions' ended mid-list at 'Expert Report of “Chip” Gordon'; anchoring on a LATER visible item slides the window forward and reveals what follows. The close-out expressly forbade guessing a third field label, and no field label is guessed here — the anchor is a string THIS INSTRUMENT ALREADY RETURNED from this page. The route was ESTABLISHED on 2026-08-13 and re-established on 2026-08-14 (ok/200 both days), so no fresh identity row is needed and none is fired; per 0813-B5 a BARE row on icsid.worldbank.org discriminates nothing anyway. IF MATCHED: ONLY the returned 400-character window may be read, a window is not a docket, and per 0811-B5 no count, no enumeration and no 'latest' may be drawn from a list that is still truncated at both ends. IF NOT MATCHED: the recorded fact is that this exact literal was absent from that rendering at that instant — and note that yesterday's excerpt renders 'Chip' with CURLY quotation marks, so a near-miss on punctuation is a live G7 explanation and must be offered before any other. A miss is NOT a finding that the expert report does not exist or was withdrawn.",
+    "E2": "UNIT: rows 3 and 4 (https://pca-cpa.org/en/cases/336/, finds 'Zeph' then 'Case Number'). This is next step 3 — the single best relay row the 2026-08-14 close-out identified, triaged there as relay-reachable (pca-cpa.org is on ALLOWED_HOSTS and has returned ok/200 on all six prior relay rows). THE QUESTION IS IDENTITY: which numbered proceeding is at /en/cases/336/, a page no seat of this council has ever retrieved. Row 3's anchor 'Zeph' is a party-name designator that ONLY a genuine Zeph page carries, which is the anti-increment-generable-URL discipline adopted at 2026-08-14 next step 8: an ordinal URL put to the relay must be anchored on a find only a genuine page would carry, so that a wrong page announces itself as a miss rather than returning plausible navigation. Row 4's anchor is a field label and is the companion. IF row 3 MATCHES: the window is readable as the PCA's own rendering of that page at that instant and nothing more. IF row 3 MISSES on an ok/200: the recorded fact is that the string 'Zeph' was absent from that page's rendered text — which would mean the page is NOT a Zeph page and the analyst's title-carried Finding 4 of 2026-08-14 does not survive contact with the body. Either way, per G5, NOTHING here may found a count of Zeph proceedings, an ordinal for the 26 September 2025 award, or a statement about which proceeding the Swiss set-aside attacked. Those remain the open sub-questions of GAP-UNRESOLVED: zeph-australia-award-2025-jurisdictional-ground.",
+    "E3": "UNIT: rows 5 and 6 (uncitral.un.org/en/commission, finds 'A/81/17' then 'A/80/17'). The standing A/81/17 watch in its same-page positive-control form: one run answers both. Row 6 is the control — if 'A/80/17' does NOT match, the page is not the page we think it is and row 5 is VOID rather than a null. If row 6 matches and row 5 does not, the recorded fact is that the string 'A/81/17' was absent from that page's rendered text at that instant, subject to G6 and G7, and to the two further standing limits restated here: THIS LOCATION ONLY (nothing about ODS, the UN Digital Library, the 59th-session document listing, or the GA Official Records), and the undocs.org/docs.un.org symbol route stays RETIRED and is not used. Per 0813-B9, if the record states a count of prior nulls it must state the POPULATION that count is drawn from, INCLUDING the undocs.org request-echo row that carries find_matched:true on a retired route and the digitallibrary.un.org robots_disallowed row that carries no find_matched key at all. The count must be derived programmatically over analytics/fetch-results/*.json and shown, never read off a printed scan.",
+    "E4": "UNIT: rows 7 and 8 (investmentpolicy.unctad.org — the China-Switzerland BIT 2009 mapping page, find 'Denial of benefits'; and the Zeph v. Australia (II) Navigator entry at case id 1301, find 'Zeph'). INSTRUMENT-SCOPED, and fired knowingly against a host that has refused this client on four observed runs (2026-08-10, 08-11, 08-13, 08-14). PER G2 THESE TWO ROWS ARE ONE OBSERVATION OF ONE CLIENT-ACCESS CONDITION IN ONE RUN, NOT TWO: if both refuse, the corpus gains a FIFTH observed run in the refusal condition, not a fifth and a sixth. If refused, the ONLY thing recorded is that access condition — a fact about our client, not about UNCTAD, not about the treaty and not about any Zeph proceeding — and escalation 3 to the operator (one manual retrieval of the China-Switzerland forum provision) stands unchanged and is owed a fifth time. If ok/200, row 7's window is readable as UNCTAD's mapping text and nothing more; UNCTAD's mapping is a SECONDARY CHARACTERISATION and is NEVER the treaty text. Row 8 exists because the analyst's 2026-08-14 Finding 3 identified case id 1301 as the UNCTAD row for the proceeding the open gap is actually about; it is fired at a cost of one row on the chance that access has recovered.",
+    "E5": "NOT ASSERTED IN ADVANCE: no row in this batch may found an ordinal, a count, a 'first', a 'never', or any superlative. Per 0811-B5, any count appearing in the record must be derived programmatically over the corpus and shown, not read off a printed scan by eye. Per 0814-B1 (SELF-HEADLINE OVERREACH), every heading written above a 'what is NOT established' list must be re-read against that list before the record is committed."
+  },
+  "urls": [
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT%2F20%2F6",
+      "find": "Expert Report of Nigel Bankes"
+    },
+    {
+      "url": "https://pca-cpa.org/en/cases/336/",
+      "find": "Zeph"
+    },
+    {
+      "url": "https://pca-cpa.org/en/cases/336/",
+      "find": "Case Number"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/80/17"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bilateral-investment-treaties/978/china---switzerland-bit-2009-",
+      "find": "Denial of benefits"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1301/zeph-v-australia-ii-",
+      "find": "Zeph"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

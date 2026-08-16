@@ -1213,6 +1213,45 @@ specifically unblocks it.
 
 ---
 
+### C17 · `check_currency.py` flags every landed archivist session as drift against itself
+
+- **State** — Opened 2026-08-16, immediately after the 2026-08-16 session merged as `5138312`.
+  The guard went from **1 failed to 3** on that merge, and the two new failures are
+  [[Project Change Log]] and this note, each reported stale *against the very commit that
+  wrote them*. This is a false positive, and it has now happened twice unnoticed.
+- **The guard already anticipated the problem; the fix is narrower than its own rationale.**
+  `scripts/check_currency.py:93-105` (`_is_maintenance`) excludes a commit "whose every changed
+  file is itself a tracked note", and its docstring gives exactly the right reason: "anchors live
+  inside the notes they date, so the commit that moves an anchor always touches a tracked note —
+  counted naively, no fully committed tree can ever pass this guard." But the implementation
+  tests `files <= set(TRACKED)`, and `TRACKED` holds only the four index notes plus
+  `STATE_OF_THE_ANSWER.md`.
+- **A real archivist session commit can never satisfy that.** By design it also writes its
+  session record under `analytics/vault-sessions/`, the per-seat notes it corrected, and
+  `HANDOFF.md` — none of them tracked. Measured on both cycles:
+
+  | Session commit | Files touched | In `TRACKED` | Exemption fires? |
+  |---|---|---|---|
+  | `5138312` (2026-08-16) | 8 | 4 | **no** — `HANDOFF.md`, 2 seat notes, session record |
+  | `67c80f7` (2026-08-13) | 7 | 3 | **no** — `HANDOFF.md`, 2 seat notes, session record |
+
+- **Why it matters more than a cosmetic count.** The 2026-08-13 run of this guard showed
+  `agents/Project Change Log.md ... since 8ea2ee1 / 67c80f7 vault: archivist session 2026-08-13`
+  and that line was read as ordinary staleness and restamped, rather than as the guard misfiring.
+  A guard that cries drift on its own maintenance trains its only reader to skim it — which is
+  the failure this guard was built to prevent, arriving through the front door.
+- **Not fixed here.** `scripts/` is outside this seat's merge authority. The anchors are
+  deliberately **not** restamped to the merge commit: an anchor must name the commit the audit
+  was performed against, and `5138312` did not exist when the audit ran. Restamping to hide a
+  false positive would be the more serious defect.
+- **Next** — [[systems-designer]] widens the exemption to match its own stated rationale: treat a
+  commit as maintenance when every changed file is a vault record surface
+  (`agents/`, `analytics/vault-sessions/`, `moc/`, `HANDOFF.md`), not merely one of the five
+  tracked notes. A commit touching any substantive path still counts, which preserves the guard.
+- **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one.
+
+---
+
 ## E · Explicitly zero budget
 
 Recorded so that "not worked on" is never mistaken for "forgotten". Each was given zero

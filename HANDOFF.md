@@ -179,10 +179,37 @@ Map: [[00 - Project Map]]
   classifier: unchanged `claude-haiku-4-5-20251001` (id defined in `src/models.py` as
   `DIGEST_CLASSIFIER_MODEL` and imported at `src/classify.py:58`; `src/classify.py` itself
   is outside the change manifest, which is why the *assignment* is "unchanged", but the id
-  is not a second config location). Any runtime fallback appends a REQUESTED vs ACTUAL line below
-  automatically (`src/models.py record_fallback`). This session's one-pager drafting ran
-  on Opus 4.8 subagents as assigned; the orchestrating session itself runs on
-  `claude-opus-5` (requested and actual).
+  is not a second config location). ~~Any runtime fallback appends a REQUESTED vs ACTUAL line
+  below automatically (`src/models.py record_fallback`).~~ **Struck 2026-08-16 as false.** It
+  describes a mechanism that exists but has never run on any council path:
+  `record_fallback()`'s only caller is `src/research_brief.py:161`, and no REQUESTED-vs-ACTUAL
+  line has ever been appended here. The sentence read as a guarantee that a discrepancy would
+  surface itself, which is part of why four separate self-reports of one went unrecorded in this
+  file. This session's one-pager drafting ran on Opus 4.8 subagents as assigned; the
+  orchestrating session itself runs on `claude-opus-5` (requested and actual).
+
+### Model runtime fallbacks — recorded by hand, 2026-08-16
+
+Written by the archivist, **not** by `record_fallback()`, and labelled so nobody mistakes it for
+machine output. The heading is the one `src/models.py:18` directs runtime discrepancies to, so
+the facts are filed where the code says to look for them.
+
+| Date | Seat | REQUESTED | ACTUAL | Source |
+|---|---|---|---|---|
+| 2026-08-12 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-12.md:750` |
+| 2026-08-14 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-14.md:576` |
+| 2026-08-15 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-15.md:693` |
+| 2026-08-16 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-16.md:731` |
+| 2026-08-16 | obsidian-archivist | `claude-opus-4-8` | `claude-opus-5` | session runtime: `session_context.model`, `last_served_model` |
+| 2026-08-15 | research-analyst | `claude-opus-5` | `claude-opus-5` | `analytics/daily-research/2026-08-15.md:497` — no discrepancy |
+| 2026-08-16 | research-analyst | `claude-opus-5` | `claude-opus-5` | `analytics/daily-research/2026-08-16.md:456` — no discrepancy |
+
+Every seat reporting a discrepancy is one documented as **Claude Opus 4.8**; every seat
+documented as **Claude Opus 5** reports REQUESTED = ACTUAL. That is consistent with the cause
+being the `model: opus` tier alias resolving to the platform's current Opus, and not with any
+per-seat misconfiguration. Three 4.8-documented seats — `systems-researcher`, `editor`,
+`analytics-officer` — have not been convened in this window and are unobserved. See
+[[Workflow Threads]] **D6**.
 
 ## Checkpoint — 2026-08-08 master-prompt repair session (uncommitted, branch fix/restore-council-label)
 
@@ -219,6 +246,32 @@ same day's second gate made four of the five stale again in the opposite directi
 *(A mid-day 2026-08-09 line stood here reporting D/E done at 449 tests with F and G still to
 come, and Emory's CI wiring still outstanding. All three have since been overtaken; it is
 replaced by the checkpoint below rather than left to be read as current.)*
+
+## Checkpoint — 2026-08-16 archivist session (`main` @ `d997c32`, clean tree)
+
+**Nothing in the runtime changed in this window.** `git log 8ea2ee1..HEAD -- .claude/agents/
+prompts/ src/models.py METHODOLOGY.md README.md scripts/site_templates/
+views/isds-workflow-3d/workflow.json` returns **no commit**. The 44 commits since the last
+checkpoint are the 2026-08-14/15/16 council sessions and fetch-relay chores. Every figure in the
+2026-08-13 checkpoint below therefore still stands as measured; nothing was re-measured here that
+did not need to be.
+
+**Read the "Model runtime fallbacks" section above before trusting any model statement in this
+file.** Five seats are documented as Claude Opus 4.8 and none is pinned to it by any file in the
+repository — `model: opus` selects a tier, not a version. Two seats have now observed
+`claude-opus-5` serving against a 4.8 note. `scripts/check_models.py` exits 0 over twelve cards
+and is correct to: it compares declarations, and cannot see a runtime. **That the guard is green
+is not evidence the models are right.**
+
+**Clone hygiene, because it changed an answer.** The container's clone arrived shallow (201
+commits). On the shallow object set, `git log -- analytics/verification_ledger.jsonl` reported
+the ledger's last-touching commit as `cf7d99b` (2026-08-05); after `git fetch --unshallow` (621
+commits) the true answer is `8891c21` (2026-07-27) — nineteen days earlier. The shallow read made
+the ledger look **more** current than it is. Unshallow before any history or ancestry query.
+
+**Not re-run this session:** the test suite, `scripts/check_site_sync.py` (rebuilds `docs/` in
+place — see **B9**), and `scripts/build_graph.py` in write mode (whole-vault, still 3 of 27
+planned files outside archivist merge authority — see **C12**).
 
 ## Checkpoint — 2026-08-13 archivist session (`main` @ `8ea2ee1`, clean tree)
 

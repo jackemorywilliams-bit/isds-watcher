@@ -13,6 +13,53 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-16
+
+*Audited against `d997c32` (`main`, clean tree, complete history after `git fetch --unshallow`
+— 621 commits); paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+`scripts/check_models.py`, `scripts/check_currency.py`, `scripts/build_graph.py`,
+`analytics/daily-research/`, `analytics/council-log.md`, `analytics/verification_ledger.jsonl`,
+`views/isds-workflow-3d/workflow.json`, `HANDOFF.md`, and every remote branch tip.*
+
+- **No commit touched a contract surface in this window.** `git log 8ea2ee1..HEAD --
+  .claude/agents/ prompts/ src/models.py METHODOLOGY.md README.md scripts/site_templates/
+  views/isds-workflow-3d/workflow.json` returns **no commit**. The 44 commits since `8ea2ee1`
+  are the 2026-08-14, 08-15 and 08-16 council sessions (`dc4ba93`, `3a9d2f1`, `ba6b7ec` and
+  their parts) plus fetch-relay and sent-marker chores. No agent definition, prompt, model
+  constant or flowchart card changed.
+- **The five seats documented as Claude Opus 4.8 are pinned to it by nothing.** All nine
+  definitions declare `model: opus`; that key selects a tier, not a version, as
+  `scripts/check_models.py`'s own docstring states. Recorded as [[Workflow Threads]] **D6**,
+  qualified under the roster in [[Agent Registry]], and at the Model blocks of
+  `agents/obsidian-archivist.md` and `agents/integrity-officer.md`.
+- **The discrepancy is observed, not inferred, from two seats.** [[integrity-officer]]
+  self-reported `REQUESTED claude-opus-4-8 → ACTUAL claude-opus-5` unasked in
+  `analytics/daily-research/2026-08-12.md:750`, `2026-08-14.md:576`, `2026-08-15.md:693` and
+  `2026-08-16.md:731`; `analytics/council-log.md:23` carries it as "second consecutive day".
+  On 2026-08-16 [[obsidian-archivist]] queried its own session runtime and read
+  `claude-opus-5` against a note pinning `claude-opus-4-8`.
+- **`record_fallback()` has never fired on a council path.** `src/models.py:18` requires a
+  runtime substitution be written to `HANDOFF.md` through it; its only caller is
+  `src/research_brief.py:161`, and `HANDOFF.md` has no "Model runtime fallbacks" section.
+  Escalated — `src/` is not this seat's to edit.
+- **A 2026-08-13 vault claim is corrected.** That session wrote "No model drift exists", citing
+  `check_models.py` exit 0. The guard cannot observe a runtime and says so in its docstring, and
+  the integrity officer's first report predated the session by a day in a directory the session
+  read. Corrected in `agents/obsidian-archivist.md`; the original sentence stands in
+  `analytics/vault-sessions/2026-08-13.md` as the dated record it is.
+- **`prompts/council_roundtable.txt:73` instructs an agent to write "Jack".** The line reads
+  "anything needing Jack's decision or sign-off". The house rule is that Emory is the operator
+  in project artifacts; this is a live instruction, not a dated record. `prompts/` is a contract
+  surface — escalated to Emory, not edited.
+- **`.claude/agents/systems-designer.md:17` still says "zero-cost"**, eight days after
+  `README.md:6` was corrected to record that the classifier makes paid model calls. Carried
+  unchanged from 2026-08-13; contract surface, Emory's.
+- **Orphan check: no new stranded work.** `git cherry` against `origin/main` reports six
+  branches with unlanded commits, the same six as 2026-08-13 and with the same dispositions.
+  All three `vault/*` branches — `vault/archivist-2026-08-13`,
+  `vault/archivist-2026-08-07-followup`, `vault/recover-orphaned-work` — are confirmed ancestors
+  of `origin/main`. **F1 is unchanged at day twenty.**
+
 ## 2026-08-13
 
 *Audited against `8ea2ee1` (`main`, clean tree, complete history after `git fetch --unshallow`

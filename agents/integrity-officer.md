@@ -15,6 +15,24 @@ analyst's memo, and its vetting note is binding on the editor.
 `UTILITY_MODEL` in `src/models.py`, whose docstring names the "integrity helper" among the
 utility sub-agents.
 
+⚑ **2026-08-16 — this seat has reported four times that it does not run on that model, and it
+is right.** The seat disclosed `REQUESTED claude-opus-4-8 → ACTUAL claude-opus-5`, unasked, on
+**2026-08-12** (`analytics/daily-research/2026-08-12.md:750`), **2026-08-14** (`:576`),
+**2026-08-15** (`:693`) and **2026-08-16** (`:731`). The 2026-08-14 council recorded the gap as
+escalation-grade and did not close it; `analytics/council-log.md:23` carries it as "second
+consecutive day"; the 08-16 record states it is "owed a third time".
+
+**The vault owes this seat a correction, and this is it.** For four days the note above asserted
+a model the seat was simultaneously reporting it did not have, and nothing in this vault
+registered the contradiction — a stale live statement of exactly the class this seat's own
+taxonomy exists to catch. The archivist confirmed the mechanism independently on 2026-08-16 by
+querying its own runtime: `claude-opus-5` served against a note pinning `claude-opus-4-8`
+(see [[obsidian-archivist]]). The cause is structural, not particular to this seat — `model:
+opus` selects a tier, not a version — and it is qualified for all five affected seats in
+[[Agent Registry]]. The line above is left standing as the operator's directive; this block is
+the observation. Escalated to Emory; `.claude/agents/` and `src/` are not the archivist's to
+edit.
+
 ## Canonical training (binding)
 
 1. `prompts/council_security.txt` — the contract verbatim: flag every instance of

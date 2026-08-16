@@ -1,8 +1,8 @@
 {
   "request": "2026-08-16-daily.json",
   "note": "2026-08-16, FIRST batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes next steps 1, 5 and 6 of the 2026-08-15 close-out and carries one instrument row on UNCTAD access. Row order is deliberate: my own example.com brackets open and close the batch. THE FILENAME SORTS LAST IN analytics/fetch-requests/ AS OF THIS WRITING \u2014 verified programmatically against sorted(glob('*.json'))[-1], which was 2026-08-15-daily.json, BEFORE this file was pushed rather than after. scripts/fetch_relay.py selects with newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort, not a time sort. ANY SECOND BATCH FIRED TODAY MUST BE NAMED 2026-08-16-zz-<slug>.json so it sorts after this one; the same trap cost 2026-08-05 and cost 2026-08-13. The relay also writes to out_dir/request_path.name with no existence check, so a re-run overwrites a reduction in place. Both defects are on the operator's PENDING list (escalation 7 of the 2026-08-15 record); no code change is authorised and none is made.",
-  "fetched_at": "2026-08-16T11:17:18.662227+00:00",
-  "environment": "github-actions-runner (run 31943898169)",
+  "fetched_at": "2026-08-16T12:04:31.487913+00:00",
+  "environment": "github-actions-runner (run 31946039895)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -44,8 +44,8 @@
       "status": 200,
       "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT%2F20%2F6",
       "content_type": "text/html",
-      "bytes": 105669,
-      "sha256": "7c134eee52c7006f9e397711f690eba103f61c785dba39f79346003ce6ce526e",
+      "bytes": 105666,
+      "sha256": "e5a06176f07a3230dfacd2512af4026cec862ce254dbc99802bd636f8d63174b",
       "excerpt": "LP (Public Version) Witness Statement of Harold Paul Einarsson (Public Version) Claimants\u2019 Memorial RER-03 - Expert Opinion of Doug Uffen RER-02, Expert Report of Robert Hobbs RWS-03 - Witness Statement of Carl Makrides RER-04, Expert Report of The Brattle Group RWS-01 - Witness Statement of Bharat Dixit RWS-02 - Witness Statement of Trevor Bennett Counter-Memorial on Jurisdiction, Merits and Dama",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -58,7 +58,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "bc69b108a45f7a2a2f558594f9338192373a6671c492e6240e83f0f1a293858c",
+      "sha256": "88acaab65166ee3b3efd901e79293d17e29648097f85b51ffef9429033592d85",
       "excerpt": "s Written submission Claimant's Notice of Arbitration download | 28 March 2023 | English | 548.29KB Annexure 6C to the Notice of Arbitration download | 28 March 2023 | English | 367.79KB Annexure 7C to the Notice of Arbitration download | 28 March 2023 | English | 310.63KB Annexure 8C to the Notice of Arbitration download | 28 March 2023 | English | 875.79KB Respondent's Statement on Preliminary O",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true

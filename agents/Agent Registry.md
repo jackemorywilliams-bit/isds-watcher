@@ -173,6 +173,40 @@ wrong. Verified 2026-08-06: all nine `.claude/agents/*.md` declare `model: opus`
 `systems-designer.md` and `site-experience.md`, and `scripts/check_models.py` fails the build
 on card/definition/vault-note drift.
 
+⚑ **2026-08-16 — the "Claude Opus 4.8" in the five rows above is a statement of intent, not an
+observation of what runs.** All nine definitions declare `model: opus`. That frontmatter key
+selects a **tier, not a version** — `scripts/check_models.py`'s own docstring says so ("a card
+naming a version is describing a choice the frontmatter does not itself pin"). The runtime
+resolves the alias to the platform's current Opus. So for `systems-researcher`, `editor`,
+`analytics-officer`, `obsidian-archivist` and `integrity-officer` — the five rows reading
+Claude Opus 4.8 — nothing in the repository makes 4.8 the model that actually serves the seat.
+
+This is now observed twice, from two seats, and is no longer an inference:
+
+- [[integrity-officer]] self-reported `REQUESTED claude-opus-4-8 → ACTUAL claude-opus-5` on
+  **2026-08-12** (`analytics/daily-research/2026-08-12.md:750`), **2026-08-14**
+  (`:576`), **2026-08-15** (`:693`) and **2026-08-16** (`:731`), each time unasked. The
+  2026-08-14 council recorded the gap as escalation-grade; `analytics/council-log.md:23`
+  carries it as "second consecutive day"; the 08-16 record calls it "owed a third time".
+- **[[obsidian-archivist]] — this seat — confirmed it first-person on 2026-08-16.** The session
+  runtime reports `session_context.model` = `claude-opus-5` and `last_served_model` =
+  `claude-opus-5`, against `agents/obsidian-archivist.md:14`, which pins `claude-opus-4-8`.
+  **REQUESTED `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Observed, not assumed.
+
+**`scripts/check_models.py` cannot catch this and is not failing.** It exits 0 over twelve cards
+because it compares three *declarations* to each other; it has no view of a runtime. Its docstring
+states the limit honestly ("It cannot tell you a seat is running on the model it *should*"). The
+guard is sound; the coverage gap is real. `src/models.py:18` requires a runtime fallback be
+recorded in `HANDOFF.md` via `record_fallback()`; that function's only caller is
+`src/research_brief.py:161`, a path no council seat enters, and `HANDOFF.md` has no
+"Model runtime fallbacks" section — verified 2026-08-16.
+
+**The rows are left as written, deliberately.** They record the operator's directive, which is
+what the registry is for, and rewriting them to "Claude Opus 5" would silently ratify a
+substitution nobody authorised. What was missing was the qualification, not a different number.
+Escalated to Emory: the five `.claude/agents/` definitions, the five `workflow.json` cards and
+`src/models.py` are all outside this seat's authority.
+
 **The constraint that replaces it, because it is a live trap rather than a closed one:**
 `model:` selects a *tier*, not a version, so the version check rests on card ↔ `src/models.py`
 ↔ vault note, and the vault-note leg matches only the ``**Model.** `…` `` form at
@@ -417,6 +451,21 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-16** — Registry re-audited against `d997c32` (`main`, clean tree, complete history —
+  621 commits after `git fetch --unshallow`; the container's clone arrived shallow again at 201
+  commits, and a shallow clone misreported the verification ledger's last-touching commit as
+  `cf7d99b` when it is `8891c21`). **No roster change and no model drift in the bookkeeping
+  sense:** `git log 8ea2ee1..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no
+  commit**, and `check_models.py` exits 0 over twelve cards. **The finding is that the
+  bookkeeping is not the fact.** All nine definitions declare `model: opus`, a tier alias; the
+  five roster rows reading "Claude Opus 4.8" assert a version nothing in the repository pins.
+  Confirmed by observation from two seats — [[integrity-officer]] four times unasked, and this
+  seat's own runtime reporting `claude-opus-5` on 2026-08-16. A qualification block now stands
+  under the roster table; the rows themselves are unchanged, because they record the operator's
+  directive and rewriting them would ratify a substitution nobody authorised. **D5 unchanged**
+  after three days: eight of nine definitions still never name their seat's note, re-tested this
+  session. *Audited against `d997c32`; paths: `.claude/agents/`, `prompts/`, `src/models.py`,
+  `agents/`, `views/isds-workflow-3d/workflow.json`, `scripts/check_models.py`, `HANDOFF.md`.*
 - **2026-08-13** — Registry re-audited against `8ea2ee1` (`main`, clean tree).
   `git log 667772c..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit**;
   **no roster change, and no model drift** — `check_models.py` exits 0 over twelve cards and

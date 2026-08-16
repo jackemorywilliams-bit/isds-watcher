@@ -23,7 +23,29 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
-**Snapshot anchor — moved 2026-08-11 at integration.** *Audited against `a22f4cb`*, the
+**Snapshot anchor — moved 2026-08-16.** *Audited against `d997c32`* (`main`, clean tree,
+complete 621-commit history). This restamp is narrow and earned, and the reasoning is given so
+the next session can judge it rather than trust it. The 2026-08-13 session deliberately left the
+anchor stale, saying it had not re-read the rows; this pass did the reading, and it was cheap
+because the drift surface turned out to be one file.
+
+- **Of this map's declared paths, exactly one moved.** `git log a22f4cb..HEAD --
+  .claude/agents/ prompts/ METHODOLOGY.md lit-review/ scripts/site_templates/ src/config.py
+  README.md` returns **zero commits**. Every C-row pinned to those paths — which is nearly all
+  of them, including all of **C15** and **C16** — therefore cannot have drifted, and this is a
+  proof rather than a spot check.
+- **All ten stale commits touched `STATE_OF_THE_ANSWER.md` and nothing else**, and this map
+  cites that file in four places. All four were re-read at their quoted text on 2026-08-16.
+  Two were correct as written (`:4` "live, litigated", `:8` "Apotex outer limit"). **Two had
+  drifted and are fixed in place:** the operator-verification quote moved `:58` → **`:66`**,
+  and the Ring 3 taxonomy heading is at **`:122`**, not the range `:114-124`, which now opens
+  inside the Day 11/12 UNCITRAL entries. In both cases the *text* is unchanged and only the
+  position moved — a pinpoint going stale, not a claim going false.
+- **What this restamp does not assert.** It does not assert that C15's three survivors or
+  C16's five are re-argued or closed; they are open and unmoved. It asserts that no declared
+  path changed under them, which is the only thing the anchor is for.
+
+**Superseded — snapshot anchor moved 2026-08-11 at integration.** *Audited against `a22f4cb`*, the
 merge of the integration branch with the 2026-08-11 council session. The commits since
 `2686422` that touched this map's declared paths are the integration's own (the vault
 surfaces, the lit-review memos, the regenerated workflow SVG) and the council's
@@ -307,7 +329,7 @@ paths, four lines apart, that look identical from outside.
 | `HUMAN_REVIEW.md:172` | "### 2026-07-18 — Cycle 1 — COMPLETED (operator review, conducted in-session)" |
 | `HUMAN_REVIEW.md:173-212` | A real operator review: reviewer named, three items, "Final pass rate: 1 verified + 1 partial / 3 assigned", "Sign-off: operator confirmation received in-session, 2026-07-18" |
 | `HUMAN_REVIEW.md:65` | "**Standing rule.** Until a review cycle is logged for the period, the system's outputs for that" period are provisional |
-| `STATE_OF_THE_ANSWER.md:58` | "**Operator-verified 2026-07-18** … (**first completed human-review cycle**, `HUMAN_REVIEW.md`)" *(was `:56`)* |
+| `STATE_OF_THE_ANSWER.md:66` | "**Operator-verified 2026-07-18** … (**first completed human-review cycle**, `HUMAN_REVIEW.md`)" *(was `:56`, then `:58`; **re-pinned to `:66` on 2026-08-16** — the quoted text is unchanged and was re-read at the new line, only its position moved as the council edited the living memory across ten commits)* |
 | `scripts/site_templates/how_it_works.html.j2:50-61` | ✔ **The universal safeguard claim is gone**, replaced at `33861fd` ("make the 'no human has checked this' disclosure a number that can move") by a **counted** disclosure: "One operator review… one verified against a primary source, one partially," and a rendered count of entries "**opened by the operator and checked against the original source**" |
 | `docs/how-it-works.html` | Same, generated |
 | `METHODOLOGY.md:41` | "they do not remove the need for human-in-the-loop review, and the digest annotations **are meant to be verified by a reader** before they are relied upon" |
@@ -632,7 +654,7 @@ the ruling is cheap or expensive.** Two incompatible tests were in the tree at t
 
 | Stated in | What it currently says |
 |---|---|
-| `analytics/insights.jsonl` (17 lines), `STATE_OF_THE_ANSWER.md:114-124`, `state/research_log.json:111`, `:171`, `:201`, `:211`, `analytics/optimization-log.md:34`, `analytics/council-log.md:50` | A **"Ring 3 taxonomy"** grown by the research layer, now at **five mechanisms**: abuse-of-right/critical-date, administrative-review prerequisite, fork-in-the-road, MFN-forum-access, first-generation-BIT scope limitation. **Not one of the four new mechanisms appears in `fingerprint.yaml:81-102`.** The research layer's Ring 3 and the classifier's Ring 3 have different contents |
+| `analytics/insights.jsonl` (17 lines), `STATE_OF_THE_ANSWER.md:122` *(re-pinned 2026-08-16 from `:114-124`, a range that now opens inside the Day 11/12 UNCITRAL entries; the taxonomy heading itself is at `:122`)*, `state/research_log.json:111`, `:171`, `:201`, `:211`, `analytics/optimization-log.md:34`, `analytics/council-log.md:50` | A **"Ring 3 taxonomy"** grown by the research layer, now at **five mechanisms**: abuse-of-right/critical-date, administrative-review prerequisite, fork-in-the-road, MFN-forum-access, first-generation-BIT scope limitation. **Not one of the four new mechanisms appears in `fingerprint.yaml:81-102`.** The research layer's Ring 3 and the classifier's Ring 3 have different contents |
 
 **Status 2026-08-08: CONVERGED on Definition A. Two residuals, neither of them a
 definition conflict.**

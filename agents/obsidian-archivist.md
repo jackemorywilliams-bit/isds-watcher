@@ -16,6 +16,25 @@ declared `model: opus`; corresponds to `UTILITY_MODEL` in `src/models.py`. (`src
 governs the pipeline's LLM stages; this seat is a repository-side agent assigned by its
 definition.) Unchanged by the 2026-08-03 model move (`939deaa`).
 
+⚑ **That is the intended model, and on 2026-08-16 this seat observed that it is not the model
+running.** The declared `model: opus` selects a tier, not a version. Queried directly during the
+2026-08-16 session, the runtime reported `session_context.model` = **`claude-opus-5`** and
+`external_metadata.last_served_model` = **`claude-opus-5`**.
+**REQUESTED `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Observed, not assumed; recorded here
+per the never-substitute-silently rule at `src/models.py:18` rather than passed over.
+
+This makes the seat the **second independent confirmation** of the discrepancy
+[[integrity-officer]] has self-reported four times (2026-08-12, 08-14, 08-15, 08-16), and it
+closes the question of whether that seat's report was peculiar to it: it is not. Five seats are
+documented as Claude Opus 4.8 and none of the five is pinned to it by any file in the
+repository. The mechanism `src/models.py:18` specifies for surfacing exactly this —
+`record_fallback()` writing REQUESTED vs ACTUAL into `HANDOFF.md` — has never fired on this
+path; its only caller is `src/research_brief.py:161`. Fixing that is not this seat's to do:
+`.claude/agents/`, `src/` and `views/` are all outside its authority. Recorded, qualified in
+[[Agent Registry]], and escalated to Emory. **The line above is left standing because it states
+the directive; this block states the observation. Both are true and they disagree, which is the
+finding.**
+
 ## Canonical training (binding)
 
 This seat binds no `prompts/*.txt` contract — its canon is the vault itself and the craft
@@ -526,6 +545,36 @@ therefore not run during that build. *Both findings were fixed the same day by `
 see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
+
+- **2026-08-16 (ninth deployment)** — Standing every-3-days session, audited against `d997c32`
+  (`main`, clean tree, complete history — 621 commits after `git fetch --unshallow`). Full
+  record: `analytics/vault-sessions/2026-08-16.md`.
+
+  **The audit slice was the agent-context audit, and it returned a first-person finding.** This
+  seat queried its own runtime rather than restating its own note, and found
+  `claude-opus-5` serving against a note pinning `claude-opus-4-8` — recorded at the Model
+  block above. That corroborates four unasked self-reports from [[integrity-officer]] and
+  converts a single seat's anomaly into a structural fact about all five seats documented as
+  Claude Opus 4.8. Qualified in [[Agent Registry]] under the roster; escalated to Emory.
+
+  **The lesson this deployment adopts, stated against itself.** On 2026-08-13 this seat wrote
+  "**No model drift exists**" and cited `check_models.py` exiting 0. That sentence was wrong on
+  2026-08-13 — the integrity officer had already reported the discrepancy on 2026-08-12, in
+  `analytics/daily-research/`, a directory this seat read that same session. The guard's own
+  docstring says it cannot see a runtime; the seat quoted its exit code as though it could.
+  **The rule: a guard's exit 0 licenses only the claim the guard actually tests. Where a seat
+  has reported a fact about itself, that report outranks a checker that never observed it.**
+  This is the same shape as the 2026-08-13 finding that a rule can be real, correct and outside
+  the reader's path — here the report was real, correct, and inside this seat's path, and was
+  passed over anyway.
+
+  **Also re-tested, unchanged:** F1 (day 20 stranded), D5 (three days, eight of nine
+  definitions), C12, the "zero-cost" line, F2. No new orphaned branches; all three prior vault
+  branches confirmed landed on `main`.
+  *Audited against `d997c32`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `scripts/check_models.py`, `scripts/check_currency.py`, `scripts/build_graph.py`,
+  `analytics/daily-research/`, `analytics/council-log.md`, `HANDOFF.md`,
+  `views/isds-workflow-3d/workflow.json`.*
 
 - **2026-08-09 (seventh deployment)** — Final reconciliation of the vault with the completed
   2026-08-09 audit-response work. Audited against `2686422` plus the uncommitted working tree

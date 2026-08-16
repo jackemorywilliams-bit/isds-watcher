@@ -910,6 +910,16 @@ specifically unblocks it.
 - **Next** — Emory's call, and no agent should make it: `git merge origin/chore/operator-marks-2026-07-27`
   on a branch, or re-run the marks. The ledger is operator-owned and this seat does not write
   to it.
+- **Re-measured 2026-08-16 against `d997c32`, on a complete 621-commit history. Day twenty, and
+  nothing has moved.** `git merge-base --is-ancestor origin/chore/operator-marks-2026-07-27
+  origin/main` still fails; `git cherry origin/main origin/chore/operator-marks-2026-07-27`
+  reports **2** unlanded commits. Counted again from the two blobs: `main` 37 / **21** / 37 and
+  the branch 40 / **38** / 40 — the same three numbers recorded on 2026-08-04 and 2026-08-13.
+  `main`'s ledger is still blob `f3dbbf6`, still last written by `8891c21` (2026-07-27).
+  **A caution for the next session that runs this query:** on the shallow clone this container
+  started with (201 commits), `git log -- analytics/verification_ledger.jsonl` reported the
+  last-touching commit as `cf7d99b` (2026-08-05) — wrong, and wrong in the direction that makes
+  the ledger look *more* current than it is. Unshallow before reading history, every time.
 - **Owner** — **Emory.**
 
 ### F2 · The 2026-08-03 standing-rules council record is lost
@@ -1156,6 +1166,50 @@ specifically unblocks it.
   adopted-rules sections should live in `prompts/` instead. Either resolves it; leaving both
   copies unlinked does not.
 - **Owner** — **Emory**, with [[council-chairman]] on whether adopted rules belong in `prompts/`.
+- **Re-tested 2026-08-16 against `d997c32` — unchanged, three days on.** `git log 8ea2ee1..HEAD
+  -- .claude/agents/ prompts/ src/models.py` returns **no commit**. Scripted the check this time
+  rather than reading: for each of the nine definitions, does it name its own vault note either
+  as `agents/<seat>.md` or as a `[[<seat>]]` wikilink? **Eight NO, one YES** — the YES remains
+  [[integrity-officer]]. Identical result, now re-runnable.
+
+---
+
+### D6 · The model a seat runs on is not the model any file in the repository names
+
+- **State** — Opened 2026-08-16. All nine definitions declare `model: opus`. That frontmatter key
+  selects a **tier, not a version**, and `scripts/check_models.py`'s own docstring says so: "a
+  card naming a version is describing a choice the frontmatter does not itself pin." The runtime
+  resolves the alias to the platform's current Opus. The five seats documented as **Claude Opus
+  4.8** — `systems-researcher`, `editor`, `analytics-officer`, `obsidian-archivist`,
+  `integrity-officer` — are therefore pinned to 4.8 by **nothing**: not the definition, not
+  `src/models.py`, not the flowchart card.
+- **Observed from two seats, not inferred.** [[integrity-officer]] self-reported `REQUESTED
+  claude-opus-4-8 → ACTUAL claude-opus-5`, unasked, on **2026-08-12**
+  (`analytics/daily-research/2026-08-12.md:750`), **2026-08-14** (`:576`), **2026-08-15**
+  (`:693`) and **2026-08-16** (`:731`). On **2026-08-16** [[obsidian-archivist]] queried its own
+  session runtime and got `session_context.model` = `claude-opus-5`,
+  `last_served_model` = `claude-opus-5`, against a note pinning `claude-opus-4-8`. Two seats,
+  same result: the anomaly is structural, not particular to the officer.
+- **Every mechanism built to surface this is on a path no seat enters.** `src/models.py:18`
+  requires that a runtime substitution be recorded in `HANDOFF.md` via `record_fallback()`.
+  That function's **only** caller is `src/research_brief.py:161`. `grep -n "Model runtime
+  fallbacks" HANDOFF.md` returns nothing — the section has never been written. Meanwhile
+  `scripts/check_models.py` exits **0**, correctly: it compares three declarations to one
+  another and has no view of a runtime, which its docstring states plainly.
+- **The vault's own failure, recorded against itself.** On 2026-08-13 this seat wrote "**No
+  model drift exists**", citing that exit 0. The integrity officer's first report was dated
+  2026-08-12 and sat in `analytics/daily-research/`, a directory the same session read. A guard's
+  exit 0 was allowed to stand in for a fact the guard does not test.
+- **Fixed here** — [[Agent Registry]] carries a qualification block under the roster;
+  [[obsidian-archivist]] and [[integrity-officer]] carry the observation at their Model blocks.
+  The roster rows and Model lines are **left unchanged**: they state the operator's directive,
+  and rewriting them to "Claude Opus 5" would silently ratify a substitution nobody authorised.
+- **Next** — Emory decides which is true, then one of two things happens: the definitions and
+  cards are corrected to Opus 5, or the definitions pin `claude-opus-4-8` explicitly so the
+  directive binds. Separately, `record_fallback()` needs a caller on the council path, or
+  `check_models.py` needs a companion that reads a runtime.
+- **Owner** — **Emory** for the contract decision (`.claude/agents/`, `src/models.py`);
+  [[systems-designer]] for the `record_fallback()` wiring and the `workflow.json` cards.
 
 ---
 
@@ -1184,6 +1238,25 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-16** — Refreshed against `d997c32` (`main`, clean tree) on a complete **621-commit**
+  history; the container's clone arrived shallow at 201 commits and every ancestry result below
+  was derived after `git fetch --unshallow`. **One thread opened, three re-measured, none
+  closed.** **D6** is new and is this session's finding: the five seats documented as Claude
+  Opus 4.8 are pinned to 4.8 by no file in the repository, because `model: opus` selects a tier
+  rather than a version — observed from two seats, [[integrity-officer]] four times unasked
+  (2026-08-12, 08-14, 08-15, 08-16) and [[obsidian-archivist]] first-person on 2026-08-16.
+  **F1** is re-measured at **day twenty** with the same three blob counts, and now carries the
+  warning that the shallow clone misreported the ledger's last-touching commit as `cf7d99b`
+  when it is `8891c21`. **D5** is re-tested three days on and is unchanged — eight of nine
+  definitions, this time by a scripted check rather than by reading. **C12**'s arithmetic
+  re-derived: `build_graph.py --dry-run` now plans **27** notes, of which **3** lie outside the
+  archivist's merge set (`BOUNDED_CHANGE_PROTOCOL.md`, `prompts/carrying_span_rule.md`,
+  `lit-review/BIBLIOGRAPHY_TEMPLATE.md`) — unchanged from 2026-08-13. Orphan check found **no
+  new** stranded work and confirmed all three prior `vault/*` branches are ancestors of `main`.
+  *Audited against `d997c32`; paths: `analytics/verification_ledger.jsonl`,
+  `analytics/daily-research/`, `analytics/council-log.md`, `.claude/agents/`, `agents/`,
+  `prompts/`, `scripts/`, `src/models.py`, `views/isds-workflow-3d/workflow.json`,
+  `HANDOFF.md`, and every remote branch tip.*
 - **2026-08-13** — Refreshed against `8ea2ee1` (`main`, clean tree) on a complete history.
   **One change-log entry retracted, two threads re-measured, one thread opened.** The
   2026-08-11 claim that F1's marks reached `main` is **struck as false** — `0a67756` did not

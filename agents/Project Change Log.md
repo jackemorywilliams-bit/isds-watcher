@@ -54,6 +54,14 @@ Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 - **`.claude/agents/systems-designer.md:17` still says "zero-cost"**, eight days after
   `README.md:6` was corrected to record that the classifier makes paid model calls. Carried
   unchanged from 2026-08-13; contract surface, Emory's.
+- **`scripts/check_currency.py` flags every landed archivist session as drift against itself.**
+  Found on landing: the guard went from 1 failed to 3 the moment `5138312` merged, reporting
+  [[Project Change Log]] and [[Workflow Threads]] stale against the commit that wrote them. Its
+  `_is_maintenance` exemption (`scripts/check_currency.py:93-105`) tests `files <= set(TRACKED)`,
+  and a real session commit always also touches `HANDOFF.md`, seat notes and its own session
+  record — none tracked — so the exemption never fires. The same misfire occurred at `67c80f7`
+  on 2026-08-13 and was restamped as though it were real drift. Opened as **C17**; escalated to
+  [[systems-designer]]. Anchors deliberately **not** restamped to the merge commit.
 - **Orphan check: no new stranded work.** `git cherry` against `origin/main` reports six
   branches with unlanded commits, the same six as 2026-08-13 and with the same dispositions.
   All three `vault/*` branches — `vault/archivist-2026-08-13`,

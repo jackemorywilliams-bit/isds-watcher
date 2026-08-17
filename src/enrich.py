@@ -127,6 +127,15 @@ def enrich(item: CandidateItem, max_chars: int = 5000) -> CandidateItem:
             item.summary or item.title)
         item.metadata["enriched"] = False
         return item
+    if item.metadata.get("body_final"):
+        # The source already holds the authoritative body (e.g. an italaw case
+        # page read from the Internet Archive, whose origin would 403 a
+        # re-fetch). Re-fetching item.url would only replace good text with a
+        # challenge page or waste a rate-limit slot on a certain failure.
+        item.metadata["notable_quote"] = notable_quote(
+            item.raw_text or item.summary or item.title)
+        item.metadata["enriched"] = True
+        return item
     try:
         soup = fetch_html(item.url)
         body = _extract_body(soup)

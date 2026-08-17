@@ -1277,7 +1277,7 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
-- **2026-08-17 (source-outage repair)** — audited against `df3a8ef`; the drift since
+- **2026-08-17 (source-outage repair)** — audited against `0bb321e` (the resend run's own state commit); the drift since
   `d997c32` is sixteen council-session and fetch-relay commits touching analytics and
   agents. New thread: the retired Google Alerts queries need per-alert Talkwalker
   replacements (owner: operator). The italaw access path is NOT-READ (403) pending a

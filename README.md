@@ -53,7 +53,7 @@ run. With no API key the classifier falls back to the deterministic keyword scor
 dry run works entirely offline. The full method, with its scholarly grounding, is in
 [METHODOLOGY.md](METHODOLOGY.md).
 
-The entire system on one chart — the nine sources, the automated pipeline, the AI
+The entire system on one chart — the ten sources, the automated pipeline, the AI
 research council (with each agent's model), the fetch relay the council reads
 through, the researcher's human-verification column, and every Monday
 deliverable, with animated dots showing work flowing

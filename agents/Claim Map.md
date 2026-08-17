@@ -23,6 +23,11 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
+**Snapshot anchor — moved again 2026-08-17 at the fleet rebuild.** *Audited against `44550ca`* —
+the ten-sources commit regenerated the workflow SVG under `scripts/site_templates`, a declared
+path of this map; C12's source-count row is satisfied by that same commit (ten stated once,
+everywhere).
+
 **Snapshot anchor — moved 2026-08-17 at the source-outage repair.** *Audited against `2576896`.* The drift since `d997c32` is the 2026-08-17 council session's own
 commits; no claim moved.
 

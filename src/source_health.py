@@ -44,6 +44,7 @@ ACTIVE_SOURCES = {
     "iareporter_headlines",
     "unctad_isds",
     "pca_press",
+    "gdelt",
 }
 
 # Statuses that already explain a zero and must never be overwritten.
@@ -132,10 +133,23 @@ def _probe_italaw() -> "str | None":
     return f"NOT-READ (HTTP {code})"
 
 
+def _probe_gdelt() -> "str | None":
+    from .sources.base import polite_get
+    resp = polite_get("https://api.gdeltproject.org/api/v2/doc/doc"
+                      "?query=ICSID&mode=artlist&maxrecords=1&format=json")
+    if resp is None:
+        return None
+    body = getattr(resp, "text", "") or ""
+    if body.lstrip().startswith("{"):
+        return "QUIET (API live; combined query returned nothing in window)"
+    return "NOT-READ (rate-limited by the GDELT API)"
+
+
 PROBES = {
     "iisd_itn": _probe_iisd_itn,
     "google_alerts": _probe_google_alerts,
     "italaw": _probe_italaw,
+    "gdelt": _probe_gdelt,
 }
 
 

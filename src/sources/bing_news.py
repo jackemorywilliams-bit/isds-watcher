@@ -29,6 +29,15 @@ QUERIES = [
     'Einarsson Canada arbitration',
     '"Hela Schwarz" China',
     'UNCITRAL ISDS reform',
+    # Added 2026-08-17 — the intent of the three retired Google Alerts queries
+    # (live-but-empty platform-side since mid-July; see alerts.yaml) moves into
+    # this proven-working lane:
+    '"treaty shopping" arbitration -tax',
+    '"covered investment" patent OR trademark OR "trade secret"',
+    '"promise doctrine" OR "promise utility doctrine" Canada',
+    # italaw outage backstop (NOT-READ since 2026-08-17): new awards and
+    # decisions surface in the trade press even while the database is walled.
+    'ISDS tribunal award OR decision "intellectual property"',
 ]
 _REQUEST_GAP_S = 3.0
 

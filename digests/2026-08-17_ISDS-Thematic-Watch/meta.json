@@ -1,0 +1,87 @@
+{
+  "date": "2026-08-17",
+  "screened": 13,
+  "matches": 0,
+  "held_for_review": 0,
+  "validation_status_only": true,
+  "watch_list_leads": 0,
+  "accepted": 0,
+  "per_source": {
+    "iisd_itn": 0,
+    "google_alerts": 0,
+    "gmail_scholar": 0,
+    "italaw": 0,
+    "icsid": 1,
+    "iareporter_headlines": 11,
+    "unctad_isds": 0,
+    "pca_press": 1,
+    "bing_news": 0
+  },
+  "accepted_by_source": {},
+  "source_health": [
+    {
+      "name": "iisd_itn",
+      "status": "QUIET (feed live; newest item 2026-04-21)",
+      "count": 0
+    },
+    {
+      "name": "google_alerts",
+      "status": "QUIET (feeds live; 1 entries, none in the run window)",
+      "count": 0
+    },
+    {
+      "name": "gmail_scholar",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "italaw",
+      "status": "NOT-READ (HTTP 403 bot-challenge at the origin); 3 zero runs",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://www.italaw.com/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "icsid",
+      "status": "RETURNED",
+      "count": 1
+    },
+    {
+      "name": "iareporter_headlines",
+      "status": "HEADLINE-ONLY",
+      "count": 12
+    },
+    {
+      "name": "unctad_isds",
+      "status": "NOT-READ (403)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "pca_press",
+      "status": "RETURNED",
+      "count": 1
+    },
+    {
+      "name": "bing_news",
+      "status": "RETURNED",
+      "count": 0
+    }
+  ],
+  "health_warnings": [
+    "SOURCE ACCESS FAILURE \u2014 probes confirmed these sources cannot currently deliver items: italaw (NOT-READ (HTTP 403 bot-challenge at the origin); 3 zero runs). The access path needs repair or replacement; zero items from them is NOT evidence of a quiet week."
+  ]
+}

@@ -31,6 +31,11 @@
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
       },
+      "https://pulse2.com/vanda-prepares-bysanti-launch-as-patent-protection-extends-to-2044/": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://www.2oceansvibe.com/business/apple-openai-trade-secret-lawsuit-july-2026/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
@@ -677,6 +682,11 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/281": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://www.italaw.com/cases/329": {
         "at": "2026-08-17T23:14:25.434938+00:00",
         "outcome": "ok",
@@ -821,6 +831,11 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1417/allianz-mea-holdings-gmbh-and-verenigde-staten-immobilien-gmbh-v-mexico": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1417/allianz-v-mexico": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -912,6 +927,26 @@
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1467/arg-ello-v-panama": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/23/metalclad-v-mexico": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/292/adm-v-mexico": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/732/anthone-and-others-v-mexico": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/758/blanco-and-others-v-mexico": {
+        "at": "2026-08-17T23:37:18.196967+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
       }
     }
   }

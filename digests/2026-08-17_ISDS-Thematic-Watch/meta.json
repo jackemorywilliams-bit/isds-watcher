@@ -1,6 +1,6 @@
 {
   "date": "2026-08-17",
-  "screened": 17,
+  "screened": 7,
   "matches": 0,
   "held_for_review": 0,
   "validation_status_only": true,
@@ -8,12 +8,12 @@
   "accepted": 0,
   "per_source": {
     "iisd_itn": 0,
-    "google_alerts": 0,
+    "google_alerts": 1,
     "gmail_scholar": 0,
-    "italaw": 17,
+    "italaw": 1,
     "icsid": 0,
     "iareporter_headlines": 0,
-    "unctad_isds": 0,
+    "unctad_isds": 5,
     "pca_press": 0,
     "bing_news": 0,
     "gdelt": 0
@@ -27,8 +27,8 @@
     },
     {
       "name": "google_alerts",
-      "status": "QUIET (feeds live; 1 entries, none in the run window)",
-      "count": 0
+      "status": "RETURNED",
+      "count": 1
     },
     {
       "name": "gmail_scholar",
@@ -38,7 +38,7 @@
     {
       "name": "italaw",
       "status": "RECOVERED (Internet Archive)",
-      "count": 17,
+      "count": 12,
       "refusals": [
         {
           "url": "https://www.italaw.com/",
@@ -60,8 +60,8 @@
     },
     {
       "name": "unctad_isds",
-      "status": "DEGRADED (3 zero runs)",
-      "count": 0,
+      "status": "RECOVERED (Internet Archive)",
+      "count": 5,
       "refusals": [
         {
           "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
@@ -95,7 +95,5 @@
       "refusal_count": 1
     }
   ],
-  "health_warnings": [
-    "SOURCE DEGRADATION WARNING \u2014 documented-active sources with 3+ consecutive zero-item runs: unctad_isds (DEGRADED (3 zero runs)). Their fetchers likely no longer match the live site; zero items from them is NOT evidence of a quiet week."
-  ]
+  "health_warnings": []
 }

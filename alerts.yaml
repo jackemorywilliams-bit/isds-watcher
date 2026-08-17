@@ -32,9 +32,18 @@ feeds:
   # alert that has not collected yet, NOT a dead feed. Contrast the Google feeds
   # below, which have returned zero entries since mid-July 2026.
   - https://alerts.talkwalker.com/alerts/rss/DHKP4WJKEUOKWTM4VCYKBHJPLN7WTEOTIB3UBC22AXF37QNJVDFBBYLWE7VQ2UEEWQUGBV4U4U27K83
-  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658210   # "treaty shopping" (ICSID/ISDS/BIT) -tax
-  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946659308   # IP/patent/trademark "covered investment"
-  - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658263   # "promise utility doctrine" / promise doctrine Canada
+  # RETIRED 2026-08-17 — the three Google Alerts feeds below have served HTTP
+  # 200 with zero entries since mid-July 2026 (probed again 2026-08-17: all
+  # three live-but-empty). Google appears to have stopped populating RSS
+  # delivery for these alerts. Polling husks made google_alerts read as a
+  # degraded fetcher when the fetcher was fine. OPERATOR ACTION: recreate the
+  # three queries as individual Talkwalker alerts (RSS delivery) and add each
+  # per-alert feed URL above — the existing Talkwalker feed is a single
+  # aggregate covering only 4 alerts and began returning entries on
+  # 2026-08-17.
+  #   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658210   # "treaty shopping" (ICSID/ISDS/BIT) -tax
+  #   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946659308   # IP/patent/trademark "covered investment"
+  #   - https://www.google.com/alerts/feeds/04626935624313668979/4546405726946658263   # "promise utility doctrine" / promise doctrine Canada
   - https://www.google.com/alerts/feeds/04626935624313668979/15863678449722547299  # "abuse of right" investment arbitration/ISDS/ICSID
   - https://www.google.com/alerts/feeds/04626935624313668979/15774576077890170916  # "denial of justice" (ICSID/ISDS/UNCITRAL/BIT)
   - https://www.google.com/alerts/feeds/04626935624313668979/15774576077890173922  # "Bridgestone" Panama (ICSID/ISDS) -tires -stock

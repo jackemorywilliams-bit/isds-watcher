@@ -228,7 +228,13 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     screened = stats.get("total_candidates", 0)
     matches = stats.get("above_threshold", 0)
     accepted = len(items)
-    watch_list_leads = accepted - matches
+    # Items the validation gate held out of the folder are matches that are
+    # deliberately not on disk. Shown matches = matches - held; leads are the
+    # sub-threshold remainder of the SHOWN set. Without the held term, a gated
+    # run with one real match computed leads = 0 - 1 = -1, and the archive
+    # validator (correctly) refused the folder — the 2026-08-17 failure.
+    held_for_review = stats.get("held_for_review", 0)
+    watch_list_leads = accepted - (matches - held_for_review)
     threshold = stats.get("threshold")
     # Per-source counts feed the analytics member's source-receptivity analysis:
     #   per_source        = fresh candidates fetched per source this run (the
@@ -251,6 +257,8 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         "date": date_str,
         "screened": screened,
         "matches": matches,
+        "held_for_review": held_for_review,
+        "validation_status_only": bool(stats.get("validation_status_only", False)),
         "watch_list_leads": watch_list_leads,
         "accepted": accepted,
         "per_source": dict(stats.get("per_source", {})),

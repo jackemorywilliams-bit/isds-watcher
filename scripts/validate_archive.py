@@ -83,10 +83,17 @@ def validate_archive(root: str = "digests") -> list[str]:
                     problems.append(
                         f"{name}: meta accepted={meta.get('accepted')} but "
                         f"{accepted} article file(s) on disk")
-                if meta.get("matches") != matches:
+                # Matches the validation gate held for operator review are
+                # counted in meta but deliberately absent from disk. meta must
+                # still reconcile: disk matches + held = screened matches.
+                # Folders written before the gate carry no held field (0), so
+                # the check stays exactly as strict for them.
+                held = int(meta.get("held_for_review", 0) or 0)
+                if meta.get("matches") != matches + held:
                     problems.append(
                         f"{name}: meta matches={meta.get('matches')} but "
-                        f"{matches} item(s) >= {THRESHOLD}")
+                        f"{matches} item(s) >= {THRESHOLD} on disk"
+                        + (f" plus {held} held for review" if held else ""))
                 if meta.get("watch_list_leads") != leads:
                     problems.append(
                         f"{name}: meta watch_list_leads="

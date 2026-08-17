@@ -80,6 +80,8 @@ def test_unknown_source_is_noop():
 
 def test_cdx_unavailable_is_empty_never_raises(monkeypatch):
     monkeypatch.setattr(sr, "polite_get", lambda url, **kw: None)
+    monkeypatch.setattr(sr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(sr, "_CDX_RETRY_BACKOFF_S", ())
     assert sr.recover("italaw", SINCE) == []
 
 
@@ -103,3 +105,36 @@ def test_enrich_keeps_body_final_without_refetch(monkeypatch):
     out = enrich(it)
     assert out.raw_text == "Respondent Argentina. Trade secret."
     assert out.metadata["enriched"] is True
+
+
+def test_cdx_retries_then_succeeds_on_transient_refusal(monkeypatch):
+    """archive.org refuses the CDX after a snapshot burst; a backoff retry
+    clears it. The retry must NOT sleep in the test."""
+    calls = {"n": 0}
+    def flaky(url, **kw):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return None                       # first CDX attempt refused
+        if "cdx/search" in url:
+            return types.SimpleNamespace(text=ITALAW_CDX)
+        if "/cases/9990" in url:
+            return _snap("Newco v. Ruritania, ICSID Case No. ARB/26/1 | italaw")
+        if "/cases/documents/528" in url:
+            return _snap("Oldco v. State, UNCITRAL | italaw")
+        return None
+    monkeypatch.setattr(sr, "polite_get", flaky)
+    monkeypatch.setattr(sr.time, "sleep", lambda s: None)     # no real wait
+    # one retry is enough; keep the schedule short and sleepless
+    monkeypatch.setattr(sr, "_CDX_RETRY_BACKOFF_S", (0,))
+    items = sr.recover("italaw", SINCE)
+    assert calls["n"] >= 2                     # retried after the refusal
+    assert [it.url for it in items] == [
+        "https://www.italaw.com/cases/9990",
+        "https://www.italaw.com/cases/documents/528"]
+
+
+def test_cdx_gives_up_after_retries_never_raises(monkeypatch):
+    monkeypatch.setattr(sr, "polite_get", lambda url, **kw: None)
+    monkeypatch.setattr(sr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(sr, "_CDX_RETRY_BACKOFF_S", (0, 0))
+    assert sr.recover("italaw", SINCE) == []

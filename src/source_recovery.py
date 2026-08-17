@@ -34,12 +34,24 @@ import html as _html
 import json
 import logging
 import re
+import time
 from dataclasses import dataclass
 from datetime import timedelta
 
 from .sources.base import CandidateItem, polite_get, utcnow
 
 logger = logging.getLogger("isds.source_recovery")
+
+# web.archive.org rate-limits a single IP hard: a CI runner that has just pulled
+# a burst of snapshots (recovering one source) gets its next request refused
+# (connection reset / "connection refused") for up to a minute. That is exactly
+# what stranded the SECOND recovered source on 2026-08-17 — italaw's 17 snapshots
+# exhausted the runner's archive.org goodwill and unctad's CDX call was refused.
+# So: the CDX call (the critical one — without it a source recovers nothing)
+# retries with backoff, giving archive.org time to un-block; and each source's
+# per-run snapshot cap is small enough that two sources fit under the limit,
+# with the remainder deferred to a later run (seen-state carries it).
+_CDX_RETRY_BACKOFF_S = (20, 40)   # waits before retry 2 and retry 3
 
 _CDX_URL = (
     "http://web.archive.org/cdx/search/cdx"
@@ -72,7 +84,7 @@ class RecoverySpec:
     path_regex: "re.Pattern[str]"
     title_suffix: "re.Pattern[str]"
     lookback_days: int = 45
-    max_items: int = 25
+    max_items: int = 12
 
 
 SPECS: dict[str, RecoverySpec] = {
@@ -92,6 +104,28 @@ SPECS: dict[str, RecoverySpec] = {
 
 def is_recoverable(name: str) -> bool:
     return name in SPECS
+
+
+def _cdx_get(url: str, name: str, backoff=None):
+    """Fetch the CDX index, retrying on a refusal (polite_get -> None).
+
+    archive.org's per-IP block after a snapshot burst is transient; a short
+    wait clears it. Returns the response or None after the last attempt.
+    ``backoff`` is the wait (seconds) before each retry; resolved from the
+    module constant at CALL time (not bound as a def-time default) so a test —
+    or a future config — can shorten it. Tests pass () for none.
+    """
+    if backoff is None:
+        backoff = _CDX_RETRY_BACKOFF_S
+    resp = polite_get(url)
+    for i, wait in enumerate(backoff, start=2):
+        if resp is not None:
+            return resp
+        logger.info("%s: CDX refused (archive.org rate limit?); retry %d in %ds",
+                    name, i, wait)
+        time.sleep(wait)
+        resp = polite_get(url)
+    return resp
 
 
 def _canonical(url: str) -> str:
@@ -163,9 +197,10 @@ def recover(name: str, since=None) -> list[CandidateItem]:
     if spec is None:
         return []
     frm = (utcnow() - timedelta(days=spec.lookback_days)).strftime("%Y%m%d")
-    resp = polite_get(_CDX_URL.format(prefix=spec.cdx_prefix, frm=frm))
+    resp = _cdx_get(_CDX_URL.format(prefix=spec.cdx_prefix, frm=frm), name)
     if resp is None:
-        logger.warning("%s: CDX index unavailable, no recovery this run", name)
+        logger.warning("%s: CDX index unavailable after retries, no recovery "
+                       "this run", name)
         return []
     try:
         rows = json.loads(getattr(resp, "text", "") or "[]")

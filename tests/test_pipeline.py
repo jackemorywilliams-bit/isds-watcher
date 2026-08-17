@@ -1604,3 +1604,57 @@ def test_the_new_telemetry_sections_pass_the_privacy_guard(tmp_path, monkeypatch
     assert "patent invalidated by the domestic courts" not in blob, \
         "a V2 evidence span reached telemetry as text"
     assert ON_THEME[:60] not in blob
+
+
+def test_recovery_guard_heals_a_not_read_source(tmp_path, monkeypatch):
+    """A documented-active source whose origin refused us (NOT-READ, 0 items)
+    and which the recovery registry knows is read from the Internet Archive,
+    inside the run — so its status becomes RECOVERED and no SOURCE ACCESS
+    FAILURE line is produced. This is the autonomous guard end to end."""
+    import glob
+    import json
+    import shutil
+    import src.main as main_mod
+    import src.state as state
+    from src.sources.base import CandidateItem
+    now = datetime.datetime.now(UTC)
+
+    class WalledItalaw:
+        name = "italaw"
+        priority = "primary"
+        def fetch(self, since):
+            return []                      # origin 403 -> honest dark
+
+    # The fetch loop reads base.get_fetch_log() to distinguish a refusal from a
+    # quiet week; force a refusal so status becomes NOT-READ.
+    monkeypatch.setattr(main_mod.all_sources.__self__ if False else main_mod,
+                        "all_sources", lambda cfg=None: [WalledItalaw()])
+    monkeypatch.setattr(main_mod.base, "get_fetch_log",
+                        lambda: [{"url": "https://www.italaw.com/",
+                                  "outcome": "refused", "detail": "403"}])
+    monkeypatch.setattr(main_mod.base, "reset_fetch_log", lambda: None)
+    # The Archive returns one real case page.
+    recovered = [CandidateItem("italaw", "https://www.italaw.com/cases/9990",
+                               "https://www.italaw.com/cases/9990",
+                               "Newco v. Ruritania", None, "s", "trade secret",
+                               {"retrieved_via": "internet-archive", "body_final": True})]
+    monkeypatch.setattr(main_mod.source_recovery, "recover",
+                        lambda name, since=None: list(recovered))
+    monkeypatch.setattr(main_mod, "enrich", lambda it: it)
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+    monkeypatch.setattr(main_mod, "send_digest", lambda *a, **k: True)
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+    state.save_state({"sources": {"italaw": {"_seed": "t"}}}, "state/seen.json")
+
+    rc = main_mod.main(["--since", "30d"])
+    assert rc == 0
+    folder = glob.glob("digests/*_ISDS-Thematic-Watch")[0]
+    meta = json.loads(open(os.path.join(folder, "meta.json")).read())
+    italaw = next(s for s in meta["source_health"] if s["name"] == "italaw")
+    assert italaw["status"] == "RECOVERED (Internet Archive)"
+    assert italaw["count"] == 1
+    # The healed source produced no degradation / access-failure warning.
+    assert not any("ACCESS FAILURE" in w or "DEGRADATION" in w
+                   for w in meta.get("health_warnings", []))

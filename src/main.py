@@ -16,7 +16,8 @@ import sys
 from datetime import datetime, timedelta, timezone
 
 from . import (classify_v2, config, council_log, render, research_brief,
-               research_state, rings, source_health, state, telemetry, triage)
+               research_state, rings, source_health, source_recovery, state,
+               telemetry, triage)
 from .classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                        keyword_score, outcome_of, prompt_version)
 from .email_send import send_digest
@@ -260,6 +261,39 @@ def main(argv=None) -> int:
             entry["refusal_count"] = len(refusals)
         stats["source_health"].append(entry)
         new_candidates.extend(fresh)
+
+    # 1a0. Autonomous access-failure recovery. A documented-active source whose
+    #      origin refused us (a confirmed NOT-READ, count 0) and which the
+    #      recovery registry knows how to reach through the Internet Archive is
+    #      recovered here rather than left dark: the guard reads the same content
+    #      pages from the Archive, keyed to the real origin URL, and the source's
+    #      status becomes RECOVERED. Because it now carries items, the zero-streak
+    #      guard below no longer flags it and no SOURCE ACCESS FAILURE line
+    #      reaches the email — the outage self-heals. Gated on NOT-READ (not a
+    #      plain zero) so a genuinely quiet source is never fed stale archives,
+    #      and skipped for --limit-sources runs. Never raises.
+    if not only:
+        for entry in stats["source_health"]:
+            if (entry["count"] == 0
+                    and str(entry.get("status", "")).startswith("NOT-READ")
+                    and source_recovery.is_recoverable(entry["name"])):
+                try:
+                    recovered = source_recovery.recover(entry["name"], since)
+                except Exception as exc:  # noqa: BLE001 - recovery never kills a run
+                    logger.error("source_recovery: %s failed (%s)", entry["name"], exc)
+                    recovered = []
+                fresh_rec = [it for it in recovered
+                             if not state.is_seen(st, entry["name"], it.source_id)]
+                if recovered:
+                    entry["count"] = len(recovered)
+                    entry["status"] = "RECOVERED (Internet Archive)"
+                    stats["per_source"][entry["name"]] = len(fresh_rec)
+                    if entry["name"] in stats["dropped_sources"]:
+                        stats["dropped_sources"].remove(entry["name"])
+                    new_candidates.extend(fresh_rec)
+                    logger.info("source_recovery: %s recovered %d page(s) "
+                                "(%d new) via the Internet Archive",
+                                entry["name"], len(recovered), len(fresh_rec))
 
     # 1a. Re-intake before new intake. Items a previous run could not classify
     #     were deferred rather than marked seen, so they are still "unseen" and a

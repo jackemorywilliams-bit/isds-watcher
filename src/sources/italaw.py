@@ -13,23 +13,19 @@ real content, not just the case name.
 
 ACCESS PATH (2026-08-17). The italaw origin serves a Cloudflare managed
 challenge (HTTP 403) to every non-browser client on every path, and we never
-evade anti-bot. The live path above therefore returns nothing. Rather than sit
-dark, ``fetch`` falls back to the Internet Archive, which captures italaw case
-pages within days (verified 2026-08-17: /cases/1002 captured 2026-08-14). The
-fallback queries the public CDX index for recently-captured case pages, fetches
-those 200-serving snapshots, and emits candidates keyed to the REAL italaw URL
-so the operator's link is canonical. Seen-state dedups the re-crawls; only
-previously-unseen cases surface. This lags live italaw by the Archive's capture
-latency (days), which is disclosed here and logged, and it auto-reverts to the
-live path the moment the origin stops challenging us.
+evade anti-bot, so the live path returns nothing. This source stays honest —
+it returns [] on the 403 — and the pipeline's autonomous archive-recovery guard
+(``src/source_recovery.py``) reads the same case pages from the Internet
+Archive, which captures them within days. That guard fires for any confirmed
+NOT-READ source in its registry, italaw included, and reverts to this live path
+the moment the origin stops challenging us.
 """
 
 from __future__ import annotations
 
-import json
 import logging
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 from urllib.parse import urljoin
 
 from .base import (
@@ -38,7 +34,6 @@ from .base import (
     day_floor,
     fetch_html,
     parse_date,
-    polite_get,
     utcnow,
 )
 
@@ -46,28 +41,8 @@ logger = logging.getLogger("isds.sources.italaw")
 
 BASE_URL = "https://www.italaw.com/"
 
-# --- Internet Archive fallback ------------------------------------------------
-# CDX index: recently-captured italaw case pages, HTML, status 200. Query is
-# collapsed by urlkey so each case appears once (its most recent capture).
-_CDX_URL = (
-    "http://web.archive.org/cdx/search/cdx"
-    "?url=italaw.com/cases&matchType=prefix"
-    "&filter=statuscode:200&filter=mimetype:text/html"
-    "&collapse=urlkey&output=json&from={frm}&limit=200"
-)
-# Wayback snapshot of a specific capture (the rendered page carries a real
-# <title>; the id_ raw variant is gzip and needs no toolbar-stripping but is
-# heavier to handle — the rendered page + toolbar strip is simpler and proven).
-_WB_SNAPSHOT = "http://web.archive.org/web/{ts}/{url}"
-# How far back on CAPTURE date to look. The Archive lags case publication, so a
-# generous window ensures new cases are seen once the Archive reaches them;
-# seen-state prevents re-surfacing. 45 days balances backlog vs run cost.
-_CDX_LOOKBACK_DAYS = 45
-# Politeness / bound: at most this many snapshot fetches per run. Anything
-# dropped is logged, never silently cut.
-_WB_MAX_ITEMS = 25
-_WB_TOOLBAR_END = "<!-- End Wayback Rewrite JS Include -->"
-_ONLY_CASE_PATH = re.compile(r"/cases/(?:documents/)?[0-9]+$")
+# When the origin 403s, the pipeline's archive-recovery guard reads these case
+# pages from the Internet Archive (src/source_recovery.py, spec "italaw").
 
 # Strict case-profile path: /cases/<digits> only.
 CASE_RE = re.compile(r"^/cases/[0-9]+$")
@@ -107,8 +82,10 @@ class ItalawSource(Source):
             # them 200 and captures them within days. When the origin stops
             # challenging us, this branch is never taken and the live path resumes
             # automatically.
-            logger.warning("italaw: origin challenged (403); falling back to the Internet Archive")
-            return self._fetch_via_wayback(since)
+            logger.warning("italaw: origin challenged (403); returning [] "
+                           "(the pipeline's archive-recovery guard reads these "
+                           "case pages from the Internet Archive)")
+            return []
 
         items = self._parse_primary(soup)
         if not items:
@@ -129,112 +106,6 @@ class ItalawSource(Source):
 
         logger.info("italaw: %d items (since %s)", len(filtered), since)
         return filtered
-
-    # --- Internet Archive fallback -------------------------------------------
-
-    def _fetch_via_wayback(self, since: datetime) -> list[CandidateItem]:
-        """Read recently-captured italaw case pages from the Internet Archive.
-
-        Never raises: any failure at CDX or snapshot level logs and yields
-        whatever was gathered so far (possibly []). Emits candidates keyed to
-        the real italaw URL; seen-state dedups the Archive's re-crawls.
-        """
-        frm = (utcnow() - timedelta(days=_CDX_LOOKBACK_DAYS)).strftime("%Y%m%d")
-        resp = polite_get(_CDX_URL.format(frm=frm))
-        if resp is None:
-            logger.warning("italaw/wayback: CDX index unavailable, returning []")
-            return []
-        try:
-            rows = json.loads(getattr(resp, "text", "") or "[]")
-        except ValueError:
-            logger.warning("italaw/wayback: CDX returned non-JSON, returning []")
-            return []
-        rows = rows[1:] if rows and rows[0] and rows[0][0] == "urlkey" else rows
-
-        # One (timestamp, original) per case page, newest capture first.
-        captures: dict[str, tuple[str, str]] = {}
-        for r in rows:
-            try:
-                ts, original = r[1], r[2]
-            except (IndexError, TypeError):
-                continue
-            if not _ONLY_CASE_PATH.search(original):
-                continue  # skip index/browse/document-list pages; want case pages
-            key = original.rstrip("/")
-            if key not in captures or ts > captures[key][0]:
-                captures[key] = (ts, original)
-
-        ordered = sorted(captures.values(), key=lambda t: t[0], reverse=True)
-        if len(ordered) > _WB_MAX_ITEMS:
-            logger.info("italaw/wayback: %d captured case pages, fetching the "
-                        "%d most recently archived (the rest wait for a later run)",
-                        len(ordered), _WB_MAX_ITEMS)
-            ordered = ordered[:_WB_MAX_ITEMS]
-
-        items: list[CandidateItem] = []
-        for ts, original in ordered:
-            item = self._wayback_item(ts, original)
-            if item is not None:
-                items.append(item)
-        logger.info("italaw/wayback: %d case page(s) read from the Internet "
-                    "Archive (capture lag applies; not a live read)", len(items))
-        return items
-
-    def _wayback_item(self, ts: str, original: str) -> "CandidateItem | None":
-        canonical = re.sub(r"^http://", "https://", original)
-        if canonical.startswith("https://italaw.com"):
-            canonical = canonical.replace("https://italaw.com", "https://www.italaw.com", 1)
-        resp = polite_get(_WB_SNAPSHOT.format(ts=ts, url=original))
-        if resp is None:
-            return None
-        html_text = getattr(resp, "text", "") or ""
-        title = self._wayback_title(html_text)
-        if not title:
-            return None
-        body = self._wayback_body(html_text)
-        return CandidateItem(
-            source=self.name,
-            source_id=canonical,
-            url=canonical,
-            title=title,
-            published=None,                       # capture date != decision date
-            summary=body[:300],
-            raw_text=(title + "\n\n" + body)[:4000],
-            metadata={
-                "date_inferred": True,            # unknown; rely on seen-state
-                "retrieved_via": "internet-archive",
-                "wayback_capture": ts,
-                # The origin will 403 a re-fetch; the snapshot body IS the body,
-                # so tell enrich to keep it rather than throw it away on a 403.
-                "body_final": True,
-            },
-        )
-
-    @staticmethod
-    def _wayback_title(html_text: str) -> str:
-        m = re.search(r"<title[^>]*>(.*?)</title>", html_text, re.S | re.I)
-        if not m:
-            return ""
-        raw = re.sub(r"\s+", " ", m.group(1)).strip()
-        # italaw titles read "Case name ... | italaw"; the Wayback toolbar may
-        # prefix a capture note. Keep the case name only.
-        raw = re.sub(r"\s*\|\s*italaw\s*$", "", raw, flags=re.I)
-        return "" if _is_generic(raw) else raw
-
-    @staticmethod
-    def _wayback_body(html_text: str) -> str:
-        end = html_text.find(_WB_TOOLBAR_END)
-        if end > 0:
-            html_text = html_text[end + len(_WB_TOOLBAR_END):]
-        html_text = re.sub(r"<script.*?</script>", " ", html_text, flags=re.S | re.I)
-        html_text = re.sub(r"<style.*?</style>", " ", html_text, flags=re.S | re.I)
-        text = re.sub(r"<[^>]+>", " ", html_text)
-        try:
-            import html as _html
-            text = _html.unescape(text)
-        except Exception:  # noqa: BLE001
-            pass
-        return re.sub(r"\s+", " ", text).strip()
 
     def _find_nearby_date(self, anchor) -> "datetime | None":
         """Look at the anchor's ancestors / preceding siblings for a date heading."""

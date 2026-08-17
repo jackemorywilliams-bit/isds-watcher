@@ -614,8 +614,11 @@ def main(argv=None) -> int:
     published_ids = {id(c) for c in surfaced}
     held = [c for c in counterfactual if id(c) not in published_ids]
     # Read by render.status_only_body via the stats dict, so the status message
-    # states the count rather than implying zero.
+    # states the count rather than implying zero. The gate flag rides along so
+    # meta.json records WHY matches may exceed the items on disk — the archive
+    # validator reconciles disk + held against screened matches.
     stats["held_for_review"] = len(held)
+    stats["validation_status_only"] = bool(config.VALIDATION_STATUS_ONLY)
 
     # 4a. Record, per candidate, why it did or did not appear. "Not surfaced" has
     #     several different meanings — below the floor, above the floor but not
@@ -719,6 +722,12 @@ def main(argv=None) -> int:
             subject = (f"ISDS Thematic Watch — {date_str} "
                        f"({len(surfaced)} item{'' if len(surfaced)==1 else 's'}, "
                        f"{stats['above_threshold']} at threshold)")
+        # A run whose own health guard says its eyes are compromised must say
+        # so in the subject line, before any count. On 2026-08-17 the subject
+        # read as a routine status cycle while three primary sources sat at
+        # 3+ zero runs — the outage was in the body, where a skim missed it.
+        if stats.get("health_warnings"):
+            subject = "[SOURCE ALERT] " + subject
         email_status = "sent" if send_digest(html, subject, cfg) else "failed"
 
     # 6b. Convene the research council and send the interpretive Research Brief — a

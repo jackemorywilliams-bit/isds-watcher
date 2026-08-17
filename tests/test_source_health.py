@@ -17,6 +17,17 @@ def _sh(name, count, status="RETURNED"):
 
 
 # --- streak persistence ------------------------------------------------------
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _no_network_probes(monkeypatch):
+    """Unit tests must stay hermetic: the zero-streak refinement probes reach
+    the live feeds by design, so the default here is no probes at all. Tests
+    of the refinement logic install fake probes explicitly."""
+    monkeypatch.setattr(source_health, "PROBES", {})
+
+
 def test_streak_increments_and_resets():
     h = source_health.load("/nonexistent/health.json")
     source_health.update_streaks(h, {"italaw": 0, "icsid": 5}, "2026-07-13")
@@ -238,3 +249,41 @@ def test_no_warning_lines_when_healthy(tmp_path, monkeypatch):
                                         out_root=str(tmp_path / "digests"))
     readme = open(os.path.join(folder, "README.md")).read()
     assert "DEGRADATION" not in readme and "ANOMALY" not in readme
+
+
+# --- zero-streak refinement probes (2026-08-17) ------------------------------
+def test_quiet_probe_declassifies_a_live_but_quiet_feed(monkeypatch):
+    monkeypatch.setattr(source_health, "PROBES",
+                        {"iisd_itn": lambda: "QUIET (feed live; newest item 2026-04-21)"})
+    h = {"sources": {"iisd_itn": {"zero_streak": 3}}}
+    run = [_sh("iisd_itn", 0)]
+    degraded = source_health.apply_to_source_health(run, h)
+    assert degraded == []
+    assert run[0]["status"].startswith("QUIET")
+    assert source_health.build_warnings(run, degraded) == []
+
+
+def test_confirmed_cause_probe_relabels_and_still_alarms(monkeypatch):
+    monkeypatch.setattr(source_health, "PROBES",
+                        {"italaw": lambda: "NOT-READ (HTTP 403 bot-challenge at the origin)"})
+    h = {"sources": {"italaw": {"zero_streak": 4}}}
+    run = [_sh("italaw", 0), _sh("icsid", 2)]
+    degraded = source_health.apply_to_source_health(run, h)
+    assert degraded == ["italaw"]
+    assert run[0]["status"] == "NOT-READ (HTTP 403 bot-challenge at the origin); 4 zero runs"
+    warnings = source_health.build_warnings(run, degraded)
+    assert any("SOURCE ACCESS FAILURE" in w for w in warnings)
+    assert not any("no longer match the live site" in w for w in warnings)
+
+
+def test_probe_crash_falls_back_to_generic_degraded(monkeypatch):
+    def boom():
+        raise RuntimeError("probe network trouble")
+    monkeypatch.setattr(source_health, "PROBES", {"italaw": boom})
+    h = {"sources": {"italaw": {"zero_streak": 3}}}
+    run = [_sh("italaw", 0)]
+    degraded = source_health.apply_to_source_health(run, h)
+    assert degraded == ["italaw"]
+    assert run[0]["status"] == "DEGRADED (3 zero runs)"
+    warnings = source_health.build_warnings(run, degraded)
+    assert any("SOURCE DEGRADATION WARNING" in w for w in warnings)

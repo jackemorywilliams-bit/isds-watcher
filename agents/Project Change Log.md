@@ -13,6 +13,22 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-17 (second entry — source outage repair)
+
+*Audited against `d669688`.*
+
+- **The weekly run emailed a status cycle, then crashed its own commit-back, and its
+  degradation diagnosis was wrong three ways.** The archive validator refused the first
+  gate-held match in the project's history (meta matches=1, disk 0 — the arithmetic sent
+  watch_list_leads to -1), so the run died after sending and the digest folder, telemetry
+  and seen-state never reached main; the held item is recovered by the re-run. The three
+  DEGRADED labels: iisd_itn was a live quarterly feed in a quiet quarter, google_alerts
+  was three platform-dead Google feeds polled as husks, italaw is a hard 403 bot-challenge.
+  Fixes: gate-aware meta and validator (held_for_review reconciles), zero-streak refinement
+  probes (QUIET / PLATFORM-EMPTY / NOT-READ vs generic DEGRADED), [SOURCE ALERT] subject
+  prefix whenever health warnings exist, dead Google feeds retired in alerts.yaml.
+  OPERATOR: per-alert Talkwalker feeds are still needed to replace the retired queries.
+
 ## 2026-08-16
 
 *Audited against `d997c32` (`main`, clean tree, complete history after `git fetch --unshallow`

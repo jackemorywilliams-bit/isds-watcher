@@ -1277,6 +1277,11 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-17 (source-outage repair)** — audited against `df3a8ef`; the drift since
+  `d997c32` is sixteen council-session and fetch-relay commits touching analytics and
+  agents. New thread: the retired Google Alerts queries need per-alert Talkwalker
+  replacements (owner: operator). The italaw access path is NOT-READ (403) pending a
+  relay decision (owner: council/systems-designer).
 - **2026-08-16** — Refreshed against `d997c32` (`main`, clean tree) on a complete **621-commit**
   history; the container's clone arrived shallow at 201 commits and every ancestry result below
   was derived after `git fetch --unshallow`. **One thread opened, three re-measured, none

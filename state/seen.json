@@ -631,9 +631,24 @@
       }
     },
     "italaw": {
+      "https://www.italaw.com/cases/1002": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/1026": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://www.italaw.com/cases/10666": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/118": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
       },
       "https://www.italaw.com/cases/11988": {
         "at": "2026-06-16T21:59:27.957730+00:00",
@@ -643,13 +658,83 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://www.italaw.com/cases/1472": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://www.italaw.com/cases/1962": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
       },
+      "https://www.italaw.com/cases/2272": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/238": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/329": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/3338": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/356": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/375": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
       "https://www.italaw.com/cases/3996": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/5709": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/610": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/6976": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/732": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/857": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/927": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/942": {
+        "at": "2026-08-17T23:14:25.434938+00:00",
+        "outcome": "ok",
+        "run": "2026-08-17"
       },
       "https://www.italaw.com/cases/9748": {
         "at": "2026-06-16T21:59:27.957730+00:00",

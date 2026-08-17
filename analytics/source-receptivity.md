@@ -7,14 +7,15 @@ _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist
 | Source | Fresh candidates | Surfaced | Receptivity | Note |
 |--------|------------------|----------|-------------|------|
 | bing_news | 1 | 1 | 100% |  |
+| gdelt | 0 | 0 | n/a |  |
 | gmail_scholar | 0 | 0 | n/a |  |
 | google_alerts | 12 | 0 | 0% | operator RSS alerts; quiet but live. |
 | google_news_rss | 0 | 0 | n/a |  |
-| iareporter_headlines | 84 | 12 | 14% | headline-only (paywalled body) — capped at watch-list leads. |
-| icsid | 5 | 0 | 0% |  |
+| iareporter_headlines | 73 | 12 | 16% | headline-only (paywalled body) — capped at watch-list leads. |
+| icsid | 4 | 0 | 0% |  |
 | iisd_itn | 0 | 0 | n/a | only fetch-time full-text feed; intermittently empty. |
-| italaw | 2 | 4 | 200% |  |
-| pca_press | 5 | 0 | 0% |  |
+| italaw | 19 | 4 | 21% |  |
+| pca_press | 4 | 0 | 0% |  |
 | unctad_isds | 0 | 0 | n/a |  |
 
 ## Reading this

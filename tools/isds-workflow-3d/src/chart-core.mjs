@@ -107,7 +107,7 @@ export function buildChart(manifest, config, factory, opts = {}) {
                      opacity: 0.06 }, "bannerTint"), svg);
   el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: GRID.bannerH - 34, rx: 12,
                      fill: "none", "stroke-opacity": 0.35 }, null, "bannerTint"), svg);
-  text(svg, width / 2, 34, "WHERE WE LOOK — THE 9 SOURCES, CHECKED EVERY RUN", 13, "bannerTitle", { weight: 700 });
+  text(svg, width / 2, 34, "WHERE WE LOOK — THE 10 SOURCES, CHECKED EVERY RUN", 13, "bannerTitle", { weight: 700 });
   const chipRows = Math.ceil(m.chips.length / CHIP.cols);
   m.chips.forEach((c, i) => {
     const cx = bannerX + 16 + (i % CHIP.cols) * (CHIP.w + CHIP.gapX);

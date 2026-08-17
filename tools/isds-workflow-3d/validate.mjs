@@ -2,7 +2,7 @@
 // Fail-closed validator for the v2 plain-language workflow manifest + render
 // config. Encodes every operator complaint from 2026-07-28 as a rule:
 // overlap impossible (unique grid cells), no upward arrows (feedback arcs
-// banned), plain-language descriptions required, all 9 sources present,
+// banned), plain-language descriptions required, all 10 sources present,
 // purpose-colored edge kinds only, legend/config sanity.
 // Since 2026-07-30 it ALSO guards the committed site/README SVG
 // (scripts/site_templates/assets/workflow.svg): freshness via the embedded
@@ -46,8 +46,8 @@ for (const e of m.edges) { banToken(e.source, "edge source"); banToken(e.target,
 if (m.meta?.columns && JSON.stringify(m.meta.columns) !== JSON.stringify(rc.COLUMNS))
   errors.push(`meta.columns [${m.meta.columns}] out of sync with render-config COLUMNS [${rc.COLUMNS}]`);
 
-// -- chips: all nine sources, individually visualized --
-if (m.chips.length !== 9) errors.push(`expected 9 source chips, got ${m.chips.length}`);
+// -- chips: all ten sources, individually visualized --
+if (m.chips.length !== 10) errors.push(`expected 10 source chips, got ${m.chips.length}`);
 for (const c of m.chips) {
   if (!c.name || !c.tag) errors.push(`chip ${c.id}: missing name/tag`);
   if (!Array.isArray(c.evidence) || !c.evidence.length) errors.push(`chip ${c.id}: no evidence`);
@@ -261,7 +261,7 @@ if (errors.length) {
   for (const e of errors) console.error("  - " + e);
   process.exit(1);
 }
-console.log(`OK: 9 source chips, ${m.nodes.length} cards (all described, no overlaps), ` +
+console.log(`OK: ${m.chips.length} source chips, ${m.nodes.length} cards (all described, no overlaps), ` +
             `${m.edges.length} edges (no upward arrows), width ${totalW}px, animated dots on all ${EDGE_KINDS.size} edge kinds.`);
 console.log(`OK: ${svgRel} fresh (inputs-sha256 match), well-formed, ` +
-            `${m.nodes.length} cards / 9 chips / ${m.edges.length} edge paths / legend present, zero 'Jack', zero 'jack' class/id tokens.`);
+            `${m.nodes.length} cards / ${m.chips.length} chips / ${m.edges.length} edge paths / legend present, zero 'Jack', zero 'jack' class/id tokens.`);

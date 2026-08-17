@@ -20,6 +20,7 @@ from .iareporter_headlines import IAReporterHeadlinesSource
 from .unctad_isds import UNCTADISDSSource
 from .pca_press import PCAPressSource
 from .bing_news import BingNewsSource
+from .gdelt import GDELTSource
 
 logger = logging.getLogger("isds.sources")
 
@@ -37,6 +38,7 @@ __all__ = [
     "UNCTADISDSSource",
     "PCAPressSource",
     "BingNewsSource",
+    "GDELTSource",
 ]
 
 
@@ -58,4 +60,5 @@ def all_sources(config=None) -> list[Source]:
         UNCTADISDSSource(),
         PCAPressSource(),
         BingNewsSource(),
+        GDELTSource(),
     ]

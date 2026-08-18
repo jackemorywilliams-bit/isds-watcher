@@ -83,7 +83,14 @@ export function buildChart(manifest, config, factory, opts = {}) {
 
   const width = GRID.marginX * 2 + COLUMNS.length * GRID.colWidth;
   const maxRow = Math.max(...m.nodes.map((n) => n.row));
-  const gridTop = GRID.bannerH + GRID.headerH;
+  // The chips lay out in ceil(chips/cols) rows; the fixed GRID.bannerH was
+  // sized for 3 rows (9 chips). A 10th chip adds a 4th row that would overflow
+  // the banner and collide with the columns band below. Grow the banner to the
+  // actual chip-row height when that exceeds the fixed floor; Math.max keeps
+  // <=3-row layouts byte-identical to before.
+  const chipRows = Math.ceil(m.chips.length / CHIP.cols);
+  const bannerH = Math.max(GRID.bannerH, 46 + chipRows * (CHIP.h + CHIP.gapY) + 24);
+  const gridTop = bannerH + GRID.headerH;
   const gridH = (maxRow + 1) * GRID.rowPitch;
   const height = gridTop + gridH + GRID.legendH + 24;
 
@@ -100,15 +107,14 @@ export function buildChart(manifest, config, factory, opts = {}) {
     el("path", paint({ d: "M 0 0 L 10 5 L 0 10 z" }, `edge-${kind}`), mk);
   }
 
-  // ---- Sources banner: all 9 fetchers as individual chips ----
+  // ---- Sources banner: all fetchers as individual chips (rows grow the banner) ----
   const bannerW = CHIP.cols * CHIP.w + (CHIP.cols - 1) * CHIP.gapX + 32;
   const bannerX = (width - bannerW) / 2;
-  el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: GRID.bannerH - 34, rx: 12,
+  el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: bannerH - 34, rx: 12,
                      opacity: 0.06 }, "bannerTint"), svg);
-  el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: GRID.bannerH - 34, rx: 12,
+  el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: bannerH - 34, rx: 12,
                      fill: "none", "stroke-opacity": 0.35 }, null, "bannerTint"), svg);
   text(svg, width / 2, 34, "WHERE WE LOOK — THE 10 SOURCES, CHECKED EVERY RUN", 13, "bannerTitle", { weight: 700 });
-  const chipRows = Math.ceil(m.chips.length / CHIP.cols);
   m.chips.forEach((c, i) => {
     const cx = bannerX + 16 + (i % CHIP.cols) * (CHIP.w + CHIP.gapX);
     const cy = 46 + Math.floor(i / CHIP.cols) * (CHIP.h + CHIP.gapY);
@@ -130,7 +136,7 @@ export function buildChart(manifest, config, factory, opts = {}) {
     const x = colX(col);
     el("rect", paint({ x: x + 2, y: gridTop - 6, width: GRID.colWidth - 12, height: gridH + 12, rx: 12,
                        opacity: 0.05 }, `col-${col}`), svg);
-    text(svg, x + (GRID.colWidth - 12) / 2 + 2, GRID.bannerH + 22, COL_TITLE[col], 12.5,
+    text(svg, x + (GRID.colWidth - 12) / 2 + 2, bannerH + 22, COL_TITLE[col], 12.5,
          `col-${col}`, { weight: 700 });
   }
 

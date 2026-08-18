@@ -1277,6 +1277,7 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-08-18 (chart-overlap fix)** — audited against `38a294f`; the drift since `95f2f66` is the intervening council/cron commits, none touching a thread's substance. The workflow chart's banner now grows with the source-chip row count (GDELT made a 4th row that overflowed the fixed banner into the columns band); fix in tools/isds-workflow-3d/src/chart-core.mjs, SVG/docs regenerated.
 - **2026-08-17 (source-outage repair)** — audited against `95f2f66` (the weekly-watch state commit that carries italaw's first archive recovery); the drift since
   `d997c32` is sixteen council-session and fetch-relay commits touching analytics and
   agents. New thread: the retired Google Alerts queries need per-alert Talkwalker

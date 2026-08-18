@@ -1,8 +1,8 @@
 {
   "request": "2026-08-18-daily.json",
   "note": "2026-08-18, FIRST batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes next steps 1, 2(a)-(d) and 3 of the 2026-08-17 close-out. Row order is deliberate: my own example.com brackets open and close the batch. THE FILENAME SORTS LAST IN analytics/fetch-requests/ AS OF THIS WRITING \u2014 verified programmatically against sorted(glob('analytics/fetch-requests/*.json'))[-1], which returned 2026-08-17-daily.json, BEFORE this file was pushed rather than after. scripts/fetch_relay.py selects with newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort despite the function's name (scripts/fetch_relay.py:233-235), and run() writes to out_dir/request_path.name with no existence check, so a re-run overwrites a reduction in place. ANY SECOND BATCH FIRED TODAY MUST BE NAMED 2026-08-18-zz-<slug>.json so it sorts after this one; the same trap cost 2026-08-05 and cost 2026-08-13. Both defects are on the operator's PENDING list (escalation 3 of the 2026-08-17 record); no code change is authorised and none is made. A workaround executed correctly by one seat is not a fix.",
-  "fetched_at": "2026-08-18T11:18:32.280507+00:00",
-  "environment": "github-actions-runner (run 32131031857)",
+  "fetched_at": "2026-08-18T12:11:21.647706+00:00",
+  "environment": "github-actions-runner (run 32135459996)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

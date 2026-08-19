@@ -1,0 +1,50 @@
+{
+  "note": "2026-08-19, SECOND batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS. It executes TWO things the analyst's return proposed AFTER the first batch had already run, and both are tests of propositions this record already carries rather than new questions. FILENAME: 2026-08-19-zz-render-and-cells.json, chosen so it sorts AFTER 2026-08-19-daily.json under newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort despite the function's name (scripts/fetch_relay.py:233-235) - verified programmatically against sorted(glob('analytics/fetch-requests/*.json'))[-1] with this filename appended BEFORE the push. run() writes to out_dir/request_path.name with no existence check, so this batch's reduction lands at analytics/fetch-results/2026-08-19-zz-render-and-cells.json and CANNOT overwrite the morning batch's file. Both relay defects remain on the operator's PENDING list; no code change is authorised and none is made.",
+  "relay_code_pin": "Verified by blob equality per 0811-O1: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703, identical to the blob pinned in the morning batch and in every batch since 2026-08-13. ALLOWED_HOSTS re-read (scripts/fetch_relay.py:48-69); every host below is on it. MAX_URLS is 12 (scripts/fetch_relay.py:76) and this batch holds SEVEN requested rows, so no truncation is possible.",
+  "row_numbering_convention": "Row numbers are 1-indexed positions in THIS FILE'S `urls` array, which holds SEVEN entries. The brackets are urls[1] and urls[7]. scripts/fetch_relay.py:199 prepends its OWN control row before the requested rows, so the result file will carry EIGHT records and this file's urls[N] is that file's records[N].",
+  "why_this_batch_exists": "0819-R9 AND 0819-R5, BOTH FILED BY THE ANALYST AGAINST WORK THAT WAS NOT HIS. I am firing them the same session rather than carrying them to tomorrow, because both are decisive tests of claims THIS RECORD ALREADY MAKES, and leaving a claim standing overnight that one row could void is the failure mode 0818-B13 was sustained for. Neither row invents a URL: every URL below is already in the corpus.",
+  "gates": {
+    "G1_runner": "urls[1] and urls[7] are my own example.com brackets, and the relay's own prepended control is a third check. If EITHER bracket is not ok/200, or the relay's own control row is not ok, or void is true, the batch is VOID as to every content row.",
+    "G2_no_cross_host": "TWO research hosts appear - icsid.worldbank.org and www.italaw.com - and they are TWO separate evidentiary universes. Neither answers for the other.",
+    "G3_pdf_finds_void_by_construction": "urls[4] and urls[5] are PDFs and BOTH carry an EMPTY find. scripts/fetch_relay.py:124-125 returns an empty excerpt for any content-type containing neither 'html' nor 'text', and :181-182 computes find_matched as bool(find) AND bool(excerpt_of(...)). ON A PDF A FIND CAN NEVER MATCH, whatever the document contains. The finds are left empty so no seat can later mistake a structural false for a searched-for absence. WHAT urls[4] AND urls[5] ASK IS STATUS ONLY: outcome, status, content_type, bytes, sha256. urls[6] also carries an empty find for the same reason - its content type is unknown in advance and a find on it would be uninterpretable. ONE DISCRIMINATION IS PRE-REGISTERED: if a PDF row returns content_type text/html with a 200, we did NOT receive the PDF - we received a page about it.",
+    "G4_no_durations": "No duration may be read off fetched_at. Rows are ordered, not timed.",
+    "G5_status_is_not_source_state": "CARDINAL. A refused/403, a 404, a no_contact, or a find_matched:false is a statement about THIS CLIENT'S ACCESS at that instant. NONE may be restated as a fact about a case, an award, a proceeding, a treaty, a person, or a document's existence. Nothing here may found a claim that the Hela Schwarz award does or does not exist, or that italaw does or does not have a policy.",
+    "G6_rendered_text_only": "The relay strips every tag AND attribute (scripts/fetch_relay.py:126-128). A string present only in an href or an attribute is INVISIBLE to this channel. This gate is the WHOLE POINT of urls[2].",
+    "G7_entity_blind": "The find at urls[2] is 'ARB/' - four pure-ASCII characters, no entity risk, no curly-quote risk, no accent risk. The find at urls[3] is the same page-title string that matched this morning.",
+    "G8_the_ARB_test_and_what_each_outcome_licenses": "PRE-REGISTERED BEFORE THE RESULT, THIS IS THE BATCH'S PRINCIPAL PURPOSE. This morning's rows records[2] (find 'Bridgestone') and records[3] (find 'Philip Morris') returned find_matched:false on this URL, with a control matching. BOTH THE CHAIRMAN (Part II.3) AND THE ANALYST (0819-R9) INDEPENDENTLY FOUND THAT CONTROL INSUFFICIENT: it matched inside the page's <title> and navigation chrome at offset 0, so it establishes PAGE IDENTITY and says NOTHING about whether the decisions table's rows are present in the tag-stripped text this channel reads. urls[2] tests exactly that. An ICSID decisions table listing arbitration proceedings carries the literal 'ARB/' in case numbers; the string occurs throughout this repository. IF urls[2] MATCHES: the table's rows ARE in the tag-stripped text, and this morning's two nulls become genuine whole-page nulls that include the table - still subject to G11 of the morning batch, which bars reading them as a statement about the table's SUBJECT-MATTER composition, because a party-name table carries party names and not subjects. IF urls[2] DOES NOT MATCH: this morning's two nulls are VOID AS TO THE TABLE and MUST NOT be banked as searched-for absences; the record must say so and the first batch's grading is corrected in place. urls[3] re-fires the page-identity control in the SAME run so that a negative on urls[2] cannot be confused with having received a different page.",
+    "G9_paired_positive_control": "THE ENUMERATION IS THE GATE, per 0818-B13 as rewritten this morning. Content rows capable of returning a null: urls[2] ONLY. It is paired with urls[3], a same-URL positive control in the same run and the same file. urls[4], urls[5] and urls[6] carry empty finds and are STATUS-ONLY rows incapable of returning a find-null, so the pairing requirement does not reach them - and I state that here rather than leaving it to be inferred, because on 2026-08-18 the gate's universal was written and then not checked against the batch's own rows. Count: one content row, one pairing.",
+    "G10_the_three_cell_test_and_its_limits": "PRE-REGISTERED. urls[4], urls[5] and urls[6] are the analyst's 0819-R5 proposal, adopted whole. Three URLs already in the corpus, fired in ONE run so client and instant are held constant: urls[4] the Hela Schwarz PDF whose 403 the 2026-06-30 and 2026-07-01 records report through an instrument that no longer exists; urls[5] a /sites/ .pdf this relay served ok/200 on 2026-08-18; urls[6] a /cases/ path this relay was refused 403 on 2026-08-18. WHAT THIS DOES NOT DO, STATED FIRST: it does NOT separate the /sites/ prefix hypothesis from the .pdf extension hypothesis. 0819-R2 shows that is impossible from this corpus - the two are PERFECTLY CONFOUNDED across all 73 italaw URLs the project has ever held, with zero members in each of the two cells that would separate them - and 0819-R3 shows the static-file hypothesis is not separable even in principle by this instrument. I adopt both findings. WHAT IT DOES: it tests whether path shape was ever the right variable. IF urls[4] RETURNS 200: the July 403 was a client-or-date effect, not a path effect, and path shape survives as a candidate. IF urls[4] RETURNS 403 WHILE urls[5] RETURNS 200: two members of the SAME cell diverge inside ONE run with client and instant held constant, and path shape is REFUTED as sufficient. IF BOTH urls[4] AND urls[5] RETURN 403: the 2026-08-18 finding is not reproducible a day later and the whole path frame is a time effect. Every one of those readings is bounded by G5 and none is a statement about italaw's policy.",
+    "G11_the_july_403s_are_record_carried_not_artefact_carried": "CARRIED FROM 0819-E4 AND BINDING ON HOW urls[4] IS READ. The 2026-06-30 and 2026-07-01 observations have NO preserved reduction row - they predate the relay, were made by a different client on different dates, and one of them is phrased as a summary ('consistent with prior access attempts') rather than an observation. The analyst rated the proposition MEDIUM for that reason and said he would not object to a lower rating. THEREFORE: a 200 at urls[4] does NOT establish that the July observation was wrong, and a 403 does NOT establish that it was right. What urls[4] establishes is only what THIS client received at THIS instant. Any comparison to July is record-mediated on both ends.",
+    "G12_no_ordinals_no_counts": "No row here may found an ordinal, a count, a 'first', a 'never', or any superlative. Any count entering the record must be derived programmatically and shown (0811-B5)."
+  },
+  "urls": [
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "ARB/"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Manifest Lack of Legal Merit"
+    },
+    {
+      "url": "https://www.italaw.com/sites/default/files/case-documents/italaw180871%20-%20Hela%20Schwarz%20v.%20China,%20Award%20of%20the%20Tribunal,%20Dec%2010,%202025.pdf",
+      "find": ""
+    },
+    {
+      "url": "https://www.italaw.com/sites/default/files/case-documents/italaw171339.pdf",
+      "find": ""
+    },
+    {
+      "url": "https://www.italaw.com/cases/8154",
+      "find": ""
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

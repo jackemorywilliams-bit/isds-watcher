@@ -1,8 +1,8 @@
 {
   "request": "2026-08-20-zz-column-and-middle.json",
   "note": "2026-08-20, SECOND batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS and pushed before it. It executes THREE literals the analyst proposed in his return AFTER the morning batch had already run - 0820-R6, 0820-R7 and 0820-R13 - and every one is a test of a proposition THIS RECORD ALREADY MAKES rather than a new question. No URL here is invented; all three are already in the corpus. FILENAME 2026-08-20-zz-column-and-middle.json, chosen so it sorts AFTER 2026-08-20-daily.json under newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort despite the function's name (scripts/fetch_relay.py:233-235) - verified programmatically with this filename appended BEFORE the push. run() writes to out_dir/request_path.name with no existence check; no file of this name exists in analytics/fetch-results/, so the morning batch's reduction CANNOT be overwritten. Both relay defects stay on the operator's PENDING list and no code change is made.",
-  "fetched_at": "2026-08-20T11:38:46.502747+00:00",
-  "environment": "github-actions-runner (run 32364771447)",
+  "fetched_at": "2026-08-20T12:14:20.974687+00:00",
+  "environment": "github-actions-runner (run 32367757503)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

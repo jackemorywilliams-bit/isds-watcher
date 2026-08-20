@@ -1,0 +1,56 @@
+{
+  "note": "2026-08-20, the day's only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY RESULT EXISTS and before the analyst was convened, so that commit order proves the pre-registration independently of anything this record later says. It executes next steps 1, 4 and 8 of the 2026-08-19 close-out. FILENAME 2026-08-20-daily.json sorts LAST under newest_request() = sorted(glob('*.json'))[-1] - a LEXICOGRAPHIC sort despite the function's name (scripts/fetch_relay.py:233-235) - verified programmatically against the request directory with this filename appended BEFORE the push. run() writes to out_dir/request_path.name with no existence check; no file of this name exists in analytics/fetch-results/, so nothing can be overwritten. Both relay defects stay on the operator's PENDING list and no code change is made.",
+  "relay_code_pin": "Verified by blob equality per 0811-O1: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703, identical to the blob pinned in every batch since 2026-08-13. ALLOWED_HOSTS re-read (scripts/fetch_relay.py:48-69); every host below is on it. MAX_URLS is 12 (:76) and this batch holds EIGHT requested rows, so truncation is impossible.",
+  "row_numbering_convention": "Row numbers are 1-indexed positions in THIS FILE'S `urls` array, which holds EIGHT entries. The brackets are urls[1] and urls[8]. scripts/fetch_relay.py:199 prepends its OWN control row before the requested rows, so the result file will carry NINE records and this file's urls[N] is that file's records[N].",
+  "gates": {
+    "G1_runner": "urls[1] and urls[8] are my own example.com brackets and the relay's prepended control is a third check. If EITHER bracket is not ok/200, or the relay's own control row is not ok, or void is true, the batch is VOID as to every content row.",
+    "G2_no_cross_host": "TWO research hosts appear - icsid.worldbank.org and uncitral.un.org - and they are TWO separate evidentiary universes. Neither answers for the other, and neither answers for italaw, which is not in this batch at all.",
+    "G3_status_is_not_source_state": "CARDINAL. A refused/403, a 404, a no_contact, or a find_matched:false is a statement about THIS CLIENT'S ACCESS at that instant. NONE may be restated as a fact about a case, an award, a proceeding, a treaty, a person, a session of UNCITRAL, or a document's existence.",
+    "G4_no_durations": "No duration may be read off fetched_at. Rows are ordered, not timed.",
+    "G5_rendered_text_only": "The relay strips every tag AND attribute (scripts/fetch_relay.py:126-128). A string present only in an href, a filename or an attribute value is INVISIBLE to this channel. Per 0819-R19, adopted at 0819-B11, this is why no reading here may rest on any URL or filename appearing on a page.",
+    "G6_entity_and_zero_width_blindness": "CARRIED FROM ESCALATION N4 AND BINDING ON EVERY NULL BELOW. scripts/fetch_relay.py contains no html.unescape, and _WS_RE = re.compile(r'\\s+') (:80) does not match U+200B, which is Unicode category Cf and not whitespace. The ICSID window taken on 2026-08-19 carried one undecoded &nbsp; and six U+200B zero-width spaces in 400 characters. A zero-width space inside a designator or a party name returns a clean find_matched:false INDISTINGUISHABLE FROM A REAL ABSENCE. Every find below is pure ASCII, which removes the entity and accent risks and does NOT remove this one. Every null taken today is bounded by this gate.",
+    "G7_insert_only_asymmetry": "Method rule (r), adopted 2026-08-19 at 0819-B1. _ANY_TAG_RE substitutes a SPACE (:126-127), so excerpt_of can manufacture a space and can never remove one. An ABSENT space in an excerpt is reliable evidence about the source; a PRESENT one is not. No reading below may treat a spaced form as a source fact.",
+    "G8_where_the_match_must_sit": "THE STANDING FORM ADOPTED AT 0819-B4, AND THIS BATCH IS ITS FIRST APPLICATION AT DESIGN TIME RATHER THAN BESIDE IT. No gate in this file licenses a substantive reading from a find_matched boolean. The licence attaches to the RETURNED WINDOW, and where the match sat must be stated when the result is read. The mechanism that makes this checkable: excerpt_of computes start = max(0, idx - EXCERPT_CHARS // 4) (:134), the QUARTER point, so a match at document offset >= 100 returns a window whose first 100 characters are LEFT CONTEXT, and a window that opens on the page title or the navigation menu is a match at or near offset 0. That is how 2026-08-19 discovered that its morning control proved only page identity.",
+    "G9_the_ICSID_Case_No_row_and_its_own_screen": "urls[2], next step 1 of the 2026-08-19 close-out, sourced from the analyst's 0819-R20. Find `ICSID Case No.` - pure ASCII, corpus-sourced, and CLASS-UNIVERSAL across ARB/, ARB(AF)/, CONC/, ADM/ and UNCT/, which is precisely what the ARB/ literal fired on 2026-08-19 was NOT: ARB/ was structurally guaranteed to miss the ARB(AF)/ proceedings a Rule 41 / AF Rule 51(1) surface exists to list, and it matched only by luck. ITS OWN SCREEN, per the corollary at 0819-R20 - what does this string fail to match that it must match? NOTHING in the proceeding-designator class; that is the point of choosing it. WHAT IT STILL CANNOT DO, STATED BEFORE THE RESULT: a class-universal literal matches at the FIRST proceeding row, which is the table's HEAD. A match here therefore does NOT settle 0819-B2 and does NOT establish that the table renders along its LENGTH. It establishes only what its window shows.",
+    "G10_the_length_probe_and_its_asymmetric_licence": "urls[3], find `ARB/24/`. THIS IS THE ONLY ROW IN THE BATCH THAT COULD SETTLE 0819-B2, AND IT CAN ONLY DO SO IN ONE DIRECTION. ICSID case numbers embed the registration year, so `ARB/24/` cannot occur in a page title, a navigation menu or a footer; it can only occur in a proceeding row for a case registered in 2024. IF IT MATCHES: the returned window is late-table text, the table is established BEYOND ITS HEAD, and 0819-B2's bound is lifted to whatever the window shows. IF IT DOES NOT MATCH: THE ROW LICENSES NOTHING AND MUST NOT BE BANKED. A null is jointly consistent with (a) the table rendering only at its head, (b) the table rendering in full but listing no decision in any 2024-registered case, and (c) G6's zero-width hazard. Those three are NOT separable by this row and I pre-register that I will not try to separate them afterwards. A null here is a null about this literal on this client at this instant and nothing else.",
+    "G11_paired_positive_control_the_enumeration_is_the_gate": "Per 0818-B13 as rewritten on 2026-08-19, the pairing is written INTO the gate and the rows capable of returning a null are ENUMERATED here rather than left to be inferred. Content rows on icsid.worldbank.org capable of a find-null: urls[2], urls[3] and urls[5] - THREE. Their controls: urls[4] is a same-URL, same-run, same-file positive control for urls[2] and urls[3]; urls[5] is its OWN control, because the anchor it fires on is a string this council already holds from 2026-08-19 and a null on it would indict the channel rather than the page. Content rows on uncitral.un.org capable of a find-null: urls[6] - ONE, paired with urls[7], a same-URL same-run positive control. Count: four content rows, four pairings, and no row is left unpaired.",
+    "G12_the_control_literals_own_screens": "urls[4] find `Manifest Lack of Legal Merit`. WHAT IT FAILS TO MATCH THAT IT MUST MATCH: nothing - and that is its weakness, not its strength. On 2026-08-19 this exact literal matched at offset 0, inside the page's <title> and navigation chrome, and therefore established PAGE IDENTITY ONLY. I fire it again for exactly that job and for one more: its sha256 and byte length, compared against 2026-08-19's rows on this URL, are the ONLY thing that would let today's result speak to yesterday's nulls at all. That cross-day identity is the step the integrity officer had to find for the chairman on 2026-08-19 (0819-O1); I state it in advance this time. urls[7] find `A/80/17`: it must match the 58th-session entry that has been on the commission page throughout this watch; a null on it voids urls[6] rather than informing it.",
+    "G13_the_einarsson_anchor_is_bounded_on_both_sides": "urls[5], find `CWS-10, Witness Statement of Allan Feir`, next step 8. Per the EDGE-FRAGMENT AS DESIGNATOR bar in gate G8 of the 2026-08-19 batch, an anchor may not be a fragment that sat at either edge of a prior window. `CWS-11, Witne` was the RIGHT-edge fragment of the 2026-08-19 window and is BARRED. `CWS-10, Witness Statement of Allan Feir` was carried COMPLETE and bounded on both sides in that window and is lawful. Firing on it places the match at the quarter point, so roughly 300 characters to its right - the region beginning at CWS-11 - are new text this corpus does not hold. WHAT THIS ROW CANNOT DO: per 0815-B9, nothing about this case's IP, pharmaceutical or trade-secret nexus follows from any docket designator, and per 0818-B2 a docket entry does not establish document identity. NO PERSON IS IDENTIFIED BY A NAME APPEARING IN A DOCKET LINE.",
+    "G14_the_A_81_17_watch_and_what_it_is_missing": "urls[6], next step 4. This is day fifteen of the watch on the governing figure of find-scoped rows carrying an A/81/17 find, and THE DEFINITION TRAVELS WITH THE FIGURE, never restated as 'by URL'. The 2026-08-19 record's proposal to convert this watch into a sha256 CHANGE DETECTOR on the commission page is a PROPOSAL TO THE OPERATOR AND IS NOT APPLIED HERE; today's row fires the find as before, and the sha256 is recorded because the reduction carries it anyway. The calibration this watch still lacks is a LAG BASELINE - nobody has established how long after the 58th session closed (23 July 2025) the string A/80/17 first appeared on this page - so NO number of nulls at day fifteen is either anomalous or reassuring, and this record will not treat it as either.",
+    "G15_no_ordinals_no_counts": "No row here may found an ordinal, a count, a 'first', a 'never', or any superlative. Any count entering the record must be derived programmatically and shown (0811-B5), and per method rule (o) any count over git history must carry the commit it was taken at and state its exclusions."
+  },
+  "urls": [
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "ICSID Case No."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "ARB/24/"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Manifest Lack of Legal Merit"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT%2F20%2F6",
+      "find": "CWS-10, Witness Statement of Allan Feir"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/80/17"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

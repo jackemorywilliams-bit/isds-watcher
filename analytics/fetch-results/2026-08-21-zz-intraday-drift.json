@@ -1,8 +1,8 @@
 {
   "request": "2026-08-21-zz-intraday-drift.json",
   "note": "2026-08-21, SECOND batch of the day, chairman-authorised, PRE-REGISTERED BEFORE ANY RESULT EXISTS and pushed before it. It is an EXPERIMENT, not a retrieval: it re-fetches ONE already-fetched URL to test a proposition this record makes in Part II \u00a72. FILENAME 2026-08-21-zz-intraday-drift.json, chosen so it sorts AFTER 2026-08-21-daily.json under newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort despite the function's name (scripts/fetch_relay.py:233-235) - verified programmatically with this filename in place BEFORE the push. run() writes to out_dir/request_path.name with no existence check (:227-229); no file of this name exists in analytics/fetch-results/, so the morning batch's reduction CANNOT be overwritten. Both relay defects stay on the operator's PENDING list (escalation N6) and no code change is made.",
-  "fetched_at": "2026-08-21T11:31:02.323068+00:00",
-  "environment": "github-actions-runner (run 32477524851)",
+  "fetched_at": "2026-08-21T12:13:39.275236+00:00",
+  "environment": "github-actions-runner (run 32480819198)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

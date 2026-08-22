@@ -23,6 +23,14 @@ running.** The declared `model: opus` selects a tier, not a version. Queried dir
 **REQUESTED `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Observed, not assumed; recorded here
 per the never-substitute-silently rule at `src/models.py:18` rather than passed over.
 
+⚑ **Re-observed from this seat 2026-08-22, six days later, unchanged.** The runtime again reports
+`session_context.model` = **`claude-opus-5`** and `external_metadata.last_served_model` =
+**`claude-opus-5`**. Two observations from this seat, ten consecutive days of them from
+[[integrity-officer]] (2026-08-12 through 2026-08-22), and no commit on `.claude/agents/` or
+`src/models.py` in between. The Model line above is **left as written**: it states the operator's
+directive of 2026-08-03, and editing it to `claude-opus-5` would ratify a substitution nobody
+authorised. [[Workflow Threads]] **D6**.
+
 This makes the seat the **second independent confirmation** of the discrepancy
 [[integrity-officer]] has self-reported four times (2026-08-12, 08-14, 08-15, 08-16), and it
 closes the question of whether that seat's report was peculiar to it: it is not. Five seats are
@@ -546,6 +554,19 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+- **2026-08-22 (tenth deployment)** — Standing every-3-days session, audited against `c4f6825`
+  (`main`, clean tree, complete history — 748 commits after `git fetch --unshallow`). **Six days
+  since the previous session, not three: the 2026-08-19 session did not run**, and no
+  2026-08-19 vault record exists on any branch. Headline: the professor-facing site says "nine
+  public sources" forty lines above a chart saying ten, live since `44550ca` (2026-08-17) —
+  escalated to [[site-experience]]. **The finding against this seat:** [[Claim Map]]'s
+  2026-08-17 anchor block closed the source-count row by quoting `44550ca`'s commit message
+  instead of re-reading the files it names, and got the row id wrong as well (C11, not C12).
+  Rule adopted: **a commit message is a claim about a change, never a reading of the files after
+  it — a claim-map row is closed only by re-reading every cell it names.** Also fixed: a
+  `[[Workflow Threads]]` wikilink in this note broken across a line wrap at `:706`, which
+  `build_graph.py --dry-run` had been listing as a link to a nonexistent note. Full record:
+  `analytics/vault-sessions/2026-08-22.md`.
 - **2026-08-16 (ninth deployment)** — Standing every-3-days session, audited against `d997c32`
   (`main`, clean tree, complete history — 621 commits after `git fetch --unshallow`). Full
   record: `analytics/vault-sessions/2026-08-16.md`.
@@ -703,8 +724,8 @@ see item 2 of the 2026-08-03 slice.)*
   observation names, in its own file. Written from `git log`, not from recall.
 - **2026-08-05 — recorded retrospectively on 2026-08-07.** Session record at
   `analytics/vault-sessions/2026-08-05.md`: [[Claim Map]] rows C13 and C14 written as a continuity
-  gate before the council ruled on either; three stale claim-map rows corrected; [[Workflow
-  Threads]] C7 closed; the five-mechanism third sense of "Ring 3" escalated to Emory. Full
+  gate before the council ruled on either; three stale claim-map rows corrected;
+  [[Workflow Threads]] C7 closed; the five-mechanism third sense of "Ring 3" escalated to Emory. Full
   statement in [[Project Change Log]], 2026-08-05.
 - **2026-08-04 (council session — fifth deployment, same date)** — Standing seat in the
   council convened on external reviewer feedback. **The finding is against this seat.** The

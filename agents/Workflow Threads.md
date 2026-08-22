@@ -16,6 +16,35 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
+**Snapshot refreshed — 2026-08-22, at `c4f6825` on `main`, clean tree, on a complete 748-commit
+history (`git fetch --unshallow`).** *Audited against `c4f6825`; paths: `analytics/`, `state/`,
+`agents/`.* Read for this pass: `git merge-base --is-ancestor <tip> origin/main` over all 89
+remote branches, the two `analytics/verification_ledger.jsonl` blobs replayed for event counts,
+all nine `.claude/agents/` definitions against all nine `agents/` seat notes, `src/models.py`,
+`src/sources/__init__.py`, `src/sources/bing_news.py`, `HANDOFF.md`, `METHODOLOGY.md:33`,
+`views/isds-workflow-3d/workflow.json`, and live runs of `scripts/check_currency.py`
+(**9 claims, 4 failed**), `scripts/check_models.py` (exit 0, 12 cards), `check_lock.py`,
+`check_headline_lane.py`, `check_claims.py`, `check_seen_integrity.py`,
+`check_telemetry_privacy.py` (all exit 0), `node tools/isds-workflow-3d/validate.mjs`
+(exit 0, 30 cards / **10** chips / 44 edges) and `scripts/build_graph.py --dry-run`
+(143 notes, 300 edges, 0 orphans, **34** would-update).
+
+**Two counts in the 2026-08-13 block below are superseded by measurement, not by opinion.**
+The validator now reports **10** source chips, not 9 — GDELT joined the fleet at `44550ca`
+(2026-08-17) and `src/sources.all_sources()` returns 10 instances. `build_graph.py --dry-run`
+now plans **34** managed-block updates, not 27; the growth is the vault's own session records.
+The 2026-08-13 figures are left standing as the dated reading they were.
+
+**A caution about `scripts/check_currency.py` that costs a session if it is not known.** This
+container's clone arrived **shallow** (196 commits). Run against it, the guard reported **7**
+failures including three hard `FAIL`s — `373cce6`, `9efafb0`, `ae42639` "is not a commit". All
+three exist; the shallow clone simply could not see them. After `git fetch --unshallow` the same
+guard reports **4**, all genuinely stale, and **zero** `FAIL`s. CI is unaffected —
+`.github/workflows/pipeline-guards.yml:172` sets `fetch-depth: 0` for exactly this job — so the
+hazard is agent-session-only. **Unshallow before running any guard that resolves a sha**, or the
+guard will report a fabricated defect and hide the real count. This extends the 2026-08-16
+caution, which covered `git log` and not the guards.
+
 **Snapshot refreshed:** **2026-08-13**, at `8ea2ee1` on `main`, clean tree, against a
 **complete** history (`git fetch --unshallow`; 584 commits). Sources read for this pass:
 `git cherry origin/main <branch>` over every remote branch, the two
@@ -889,6 +918,15 @@ specifically unblocks it.
   These are the **same figures F1 recorded on 2026-08-04**. `main`'s ledger is blob `f3dbbf6`,
   last written by `8891c21` (2026-07-27); no commit has touched it since.
 
+- **Re-measured 2026-08-22 — day twenty-six, same three counts a fourth time.** Replayed from
+  both blobs by `event` key, not from any prior report: `origin/main` 37 `claim_created` / **21**
+  `verification_changed` / 37 distinct ids; `origin/chore/operator-marks-2026-07-27` 40 / **38** /
+  40. `git log -1 origin/main -- analytics/verification_ledger.jsonl` is still `8891c21`
+  (2026-07-27) — **twenty-six days with no commit touching the ledger on `main`**. The branch
+  still fails `git merge-base --is-ancestor origin/chore/operator-marks-2026-07-27 origin/main`.
+  Recorded on 2026-08-04, 2026-08-13, 2026-08-16 and now here with identical figures; the ledger
+  is append-only and operator-owned, so this cannot be closed from this seat.
+
 - **What the gap costs, demonstrated rather than asserted.** `src/integrity_gate.py:150-177`
   replays the ledger and resolves each candidate by **exact claim-id lookup**
   (`verify.replay` → `verify.current_status`). Replaying both blobs and querying the three
@@ -1208,8 +1246,72 @@ specifically unblocks it.
   cards are corrected to Opus 5, or the definitions pin `claude-opus-4-8` explicitly so the
   directive binds. Separately, `record_fallback()` needs a caller on the council path, or
   `check_models.py` needs a companion that reads a runtime.
+- **Re-measured 2026-08-22 — day ten, and the count is now the finding.** The integrity officer
+  has reported the gap against itself on **ten consecutive days**, unbroken since 2026-08-12. The
+  six reports after the last archivist session: **2026-08-17**
+  (`analytics/daily-research/2026-08-17.md:719`, "DISCREPANCY"), **2026-08-18**, **2026-08-19**
+  (`:1148`, "SEVENTH consecutive day"), **2026-08-20** (`:1113`, eighth — also raised as
+  escalation `N2`), **2026-08-21** (`:1024`, ninth) and **2026-08-22** (`:1080`, tenth). Each
+  states the same three facts: `.claude/agents/integrity-officer.md` line 3 and line 40 declare
+  Claude Opus 4.8, line 4 declares `model: opus` which pins nothing, and the seat's runtime
+  reports `claude-opus-5`. The officer's own 2026-08-19 wording is the right reading of it — a
+  seventh identical observation "carries no information about the cause; it is information about
+  how long a two-line fix has gone unmade." At day ten that is now six days past this seat's
+  escalation of 2026-08-16 and ten past the officer's first.
+- **Nothing on the contract surfaces moved.** `git log d997c32..HEAD -- .claude/agents/
+  src/models.py` returns **no commit**. `scripts/check_models.py` still exits 0 over twelve
+  cards, which — per the rule this seat adopted on 2026-08-16 — licenses only the claim that
+  three declarations agree with one another, not that any of them is what runs.
 - **Owner** — **Emory** for the contract decision (`.claude/agents/`, `src/models.py`);
   [[systems-designer]] for the `record_fallback()` wiring and the `workflow.json` cards.
+
+---
+
+### D7 · The methodology memo's source paragraph describes a nine-source fleet that is now ten
+
+- **State** — Opened 2026-08-22. `METHODOLOGY.md:33` enumerates the collection channels one by
+  one: "the ICSID docket; UNCTAD's Investment Dispute Settlement Navigator and World Investment
+  Report; italaw's primary-document archive; IISD's Investment Treaty News; IAReporter, limited
+  to headline level; the Permanent Court of Arbitration's press page; and Bing News search
+  feeds", plus the operator's Google Alerts and Google Scholar channels. That is **nine**.
+  `src/sources.all_sources()` returns **ten** — the paragraph does not mention **GDELT**, added
+  at `44550ca` (2026-08-17) as `src/sources/gdelt.py`.
+- **A second number in the same sentence is also falsified.** The paragraph says Bing News is
+  "polled through **eight** fixed, fingerprint-derived queries". `src/sources/bing_news.py:23`
+  defines `QUERIES` with **12** entries; `44550ca` moved the intent of three retired Google
+  Alerts queries and an italaw-outage backstop into that lane. Both counts read from the code at
+  `c4f6825`, not from the commit message.
+- **Every other surface was moved in the same change set; this one was not.** `README.md:56`
+  says "ten sources"; `views/isds-workflow-3d/workflow.json` and both
+  `assets/workflow.svg` copies carry 10 chips and pass `validate.mjs`;
+  `docs/how-it-works.html` names GDELT; `analytics/source-receptivity.md` tracks it. The
+  methodology memo is the one place a reader is told what the instrument collects that still
+  says nine.
+- **Why this matters more than a count.** `METHODOLOGY.md:33` is the paragraph that grounds the
+  memo's central methodological claim — triangulation across independent collections, and the
+  "lead-generation floor" framing. An undisclosed tenth channel is a described method that does
+  not match the executed method, in the document a reviewer reads to judge the method.
+- **Owner** — **Emory**. `METHODOLOGY.md` is his own document and prose; this seat does not edit
+  it. Escalated with the two exact numbers and their code locations so the correction is a
+  two-number edit, not a re-derivation.
+
+---
+
+### D8 · "Zero-cost" survives on a second seat's definition, eight days after it was falsified once
+
+- **State** — Opened 2026-08-22. The 2026-08-16 session recorded that
+  `.claude/agents/systems-designer.md:17` still binds that seat to "the **zero-cost**
+  constraint" after `README.md:6` was corrected on 2026-08-08 to state that the classifier makes
+  paid model calls. Re-tested at `c4f6825`: that line is unchanged, **and a second occurrence
+  was missed both times** — `.claude/agents/site-experience.md:20` reads "Zero-cost, no new
+  services." A `grep -rn "zero-cost\|zero cost" .claude/agents/ README.md` returns exactly three
+  hits: the two definitions, and the README line recording that the claim was false.
+- **Consequence** — two seats are told a cost constraint the project has already established it
+  does not meet, in the file each reads first. The correction landed on the public surface and
+  never reached the contracts.
+- **Owner** — **Emory**. `.claude/agents/` is a contract surface; editing it is a contract
+  change and is not this seat's. Carried, not fixed. Supersedes the single-line version of this
+  item carried in the 2026-08-16 record.
 
 ---
 

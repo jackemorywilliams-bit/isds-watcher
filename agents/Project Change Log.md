@@ -13,6 +13,67 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-22 (archivist session — tenth deployment)
+
+*Audited against `c4f6825` (`main`, clean tree, complete history after `git fetch --unshallow`
+— 748 commits); paths: `agents/`, `prompts/`, `.claude/agents/`, `src/models.py`,
+`src/sources/`, `HANDOFF.md`, `METHODOLOGY.md`, `README.md`, `scripts/site_templates/`,
+`docs/`, `views/isds-workflow-3d/workflow.json`.*
+
+- **The public site tells the professor there are nine sources, directly above a chart that
+  says ten.** `docs/how-it-works.html:58` reads "the first band is the nine public sources
+  checked"; the SVG inlined at `:96` of the same page renders "WHERE WE LOOK — THE 10 SOURCES,
+  CHECKED EVERY RUN" with ten chips. `:7`'s meta description also says nine. The source strings
+  are `scripts/site_templates/how_it_works.html.j2:3` and `:27`. Live since `44550ca`
+  (2026-08-17). `check_site_sync.py` cannot see it — template and built page agree, and both are
+  wrong. Owner **[[site-experience]]**; escalated, not edited. [[Claim Map]] **C11**.
+- **`METHODOLOGY.md:33` describes a nine-source fleet and an eight-query Bing lane.**
+  `src/sources.all_sources()` returns **10** (GDELT absent from the memo's enumeration);
+  `src/sources/bing_news.py:23` defines `QUERIES` with **12** entries. Both read from the code,
+  not from `44550ca`'s message. Emory's own document — escalated as [[Workflow Threads]] **D7**.
+- **[[Claim Map]] C11 corrected, and the correction is against this seat.** The 2026-08-17
+  snapshot-anchor block wrote that the source-count row was "satisfied by that same commit (ten
+  stated once, everywhere)". Two errors: the source-count row is **C11**, not C12 (C12 is Model
+  assignments); and the row was **not** satisfied. That sentence was taken from `44550ca`'s
+  commit message instead of from a reading of the files. Struck in place with the original
+  wording quoted, and C11 re-read cell by cell at `c4f6825`. **The rule this deployment adopts:
+  a commit message is a claim about a change, never a reading of the files after it — a claim-map
+  row is closed only by re-reading every cell it names.** This is the 2026-08-16 rule
+  ("a guard's exit 0 licenses only the claim the guard actually tests") in a second form.
+- **`HANDOFF.md` sources table did not carry GDELT** five days after the module landed, under a
+  heading reading "current reality". Added the `gdelt` row (`src/sources/gdelt.py`, `44550ca`),
+  corrected the `bing_news` row to record **12** queries, and added a measured count line naming
+  all ten instances returned by `all_sources()` and stating which two the table's inherited
+  build-time-scout scope omits. Mine, fixed here.
+- **D6 re-measured at day ten.** [[integrity-officer]] has self-reported `REQUESTED
+  claude-opus-4-8 → ACTUAL claude-opus-5` on ten consecutive days — six of them since the last
+  archivist pass (`analytics/daily-research/2026-08-17.md:719`, `2026-08-18.md`,
+  `2026-08-19.md:1148`, `2026-08-20.md:1113`, `2026-08-21.md:1024`, `2026-08-22.md:1080`).
+  `git log d997c32..HEAD -- .claude/agents/ src/models.py` returns **no commit**. Emory's.
+- **F1 re-measured at day twenty-six**, identical counts a fourth time: `origin/main` 37
+  `claim_created` / 21 `verification_changed` / 37 ids; `origin/chore/operator-marks-2026-07-27`
+  40 / 38 / 40. `main`'s ledger last written by `8891c21` (2026-07-27). Emory's.
+- **D8 opened** — `.claude/agents/site-experience.md:20` carries a second "Zero-cost" binding
+  beside the known `systems-designer.md:17`, both falsified by `README.md:6` on 2026-08-08.
+  Contract surface; escalated.
+- **A broken wikilink in this seat's own note, fixed.** `agents/obsidian-archivist.md:706` wrapped
+  `[[Workflow Threads]]` across a line break, so Obsidian resolved nothing and
+  `build_graph.py --dry-run` listed it under "links to nonexistent notes". Rewrapped; the dry run
+  no longer lists this note.
+- **A guard hazard recorded for the next session.** This container's clone arrived **shallow**
+  (196 commits). Against it `check_currency.py` reported **7** failures including three hard
+  `FAIL`s — `373cce6`, `9efafb0`, `ae42639` "is not a commit". All three exist. After
+  `git fetch --unshallow` the same guard reports the true count with zero `FAIL`s. CI is
+  unaffected (`.github/workflows/pipeline-guards.yml:172` sets `fetch-depth: 0`). Written into
+  [[Workflow Threads]]' snapshot block.
+- **Currency: 4 failed → 2.** [[Agent Registry]], [[Claim Map]], [[Workflow Threads]] and this
+  note restamped to `c4f6825`. `STATE_OF_THE_ANSWER.md` left stale by decision — it is
+  [[research-analyst]]'s living memory and the 2026-08-08 rule against restamping another seat's
+  file governs.
+- **The 2026-08-19 session of this standing every-3-days series did not run.** Last record before
+  this one is `analytics/vault-sessions/2026-08-16.md` (`5138312`); `git log --all` finds no
+  2026-08-19 vault session on any branch. Six days, not three.
+
 ## 2026-08-17 (second entry — source outage repair)
 
 *Audited against `d669688`.*

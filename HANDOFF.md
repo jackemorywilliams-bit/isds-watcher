@@ -115,6 +115,16 @@ sending to both. Edit that list and push to change recipients.
   pipeline substitutes `{{TITLE}} {{SOURCE}} {{URL}} {{TEXT}}`.
 
 ## Sources — current reality (from the build-time scout)
+
+**Count, measured 2026-08-22 at `c4f6825`:** `src/sources.all_sources()` returns **10**
+instances — `iisd_itn`, `google_alerts`, `gmail_scholar`, `italaw`, `icsid`,
+`iareporter_headlines`, `unctad_isds`, `pca_press`, `bing_news`, `gdelt`. The table below
+inherits the original build-time scout's scope and so covers eight of them; `google_alerts`
+(operator's own subscribed feeds, polled as RSS) and `gmail_scholar` (credential-gated Scholar
+alerts to a designated mailbox) are documented at `METHODOLOGY.md:33` rather than here. Said
+plainly because the heading claims "current reality" and a reader should not have to infer
+which ten the ten are.
+
 | Source | Status |
 |--------|--------|
 | `iisd_itn` | RSS, working (substantive descriptions). |
@@ -122,8 +132,9 @@ sending to both. Edit that list and push to change recipients.
 | `icsid` | Case DB is JS-only; falls back to `/news-events` announcements. |
 | `iareporter_headlines` | Homepage **headlines only** (paywalled — no body fetch). |
 | `unctad_isds` | Worked from the build host; may 403 from some IPs (robots disallows ClaudeBot, not our UA). Returns `[]` + log on a block, and the pipeline's **archive-recovery guard** (`src/source_recovery.py`, spec `unctad_isds`) then reads the same case pages from the Internet Archive — so a 403 self-heals instead of going dark. Reverts to live automatically when the origin is reachable. |
-| `bing_news` | Keyword news search via Bing RSS (robots-permitted, live-verified 2026-07-29). Replaced the retired `google_news_rss`. |
+| `bing_news` | Keyword news search via Bing RSS (robots-permitted, live-verified 2026-07-29). Replaced the retired `google_news_rss`. **As of `44550ca` (2026-08-17) it carries 12 queries, not 8** — the intent of the three retired Google Alerts queries (treaty shopping; IP as covered investment; promise doctrine) plus an italaw-outage backstop query moved into this lane. Counted from `src/sources/bing_news.py:23` (`len(QUERIES) == 12`), not from the commit message. |
 | `pca_press` | Low priority; degrades to `[]` if unreachable. |
+| `gdelt` | **Added `44550ca` (2026-08-17)**, `src/sources/gdelt.py`. GDELT DOC 2.0 — free and keyless, one combined OR query per run because the API rate-limits shared IPs. Title-level items, enriched downstream like the ICSID/PCA listings; health-tracked with its own probe (JSON = live, rate-limit text = NOT-READ). Four hermetic tests in `tests/test_gdelt.py`. |
 
 ## Design guarantees
 - `state/seen.json` bootstraps to `{"sources": {}}` if missing; corrupt state is treated as empty.

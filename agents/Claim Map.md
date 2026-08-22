@@ -23,10 +23,27 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
+**Snapshot anchor — moved 2026-08-22 at the archivist session.** *Audited against `c4f6825`;
+paths: `METHODOLOGY.md`, `STATE_OF_THE_ANSWER.md`, `lit-review`, `prompts`, `.claude/agents`,
+`scripts/site_templates`.* **C11 re-read cell by cell and found DIVERGENT** — see the row. The
+public site's prose still says nine sources while the chart on the same page says ten.
+
+**CORRECTION, applied here 2026-08-22 to the block below.** The 2026-08-17 anchor block asserted:
+*"C12's source-count row is satisfied by that same commit (ten stated once, everywhere)."* That
+sentence is wrong twice, and both errors are this seat's.
+**(1) Wrong row.** The source-count row is **C11**; **C12** is Model assignments.
+**(2) Wrong fact.** The row was **not** satisfied. `44550ca` moved `README.md`, `workflow.json`
+and both SVGs to ten and left `scripts/site_templates/how_it_works.html.j2:3` and `:27` — and
+therefore `docs/how-it-works.html:7` and `:58` — saying nine. "Ten stated once, everywhere" was
+taken from `44550ca`'s commit message rather than from a reading of the files, which is the exact
+substitution this map exists to prevent. The original wording is quoted above and the erroneous
+sentence is struck below rather than deleted.
+
 **Snapshot anchor — moved again 2026-08-17 at the fleet rebuild.** *Audited against `44550ca`* —
 the ten-sources commit regenerated the workflow SVG under `scripts/site_templates`, a declared
-path of this map; C12's source-count row is satisfied by that same commit (ten stated once,
-everywhere).
+path of this map; ~~C12's source-count row is satisfied by that same commit (ten stated once,
+everywhere)~~ — **struck 2026-08-22: the row is C11, and it was not satisfied. See the correction
+above.**
 
 **Snapshot anchor — moved 2026-08-17 at the source-outage repair.** *Audited against `2576896`.* The drift since `d997c32` is the 2026-08-17 council session's own
 commits; no claim moved.
@@ -531,23 +548,64 @@ All six are **C15**, and C10 should not be closed until C15 is.
 
 | Stated in | What it currently says |
 |---|---|
+**Row re-read cell by cell 2026-08-22 at `c4f6825`. It has DIVERGED, and the site is the half
+that is wrong.** Every cell below is quoted from the file as it stands today, not carried
+forward.
+
+| Stated in | What it currently says |
+|---|---|
+| `README.md:56` | "the **ten** sources" — **moved to ten** at `44550ca` (2026-08-17) |
+| `views/isds-workflow-3d/workflow.json` | **10** source chips; `node tools/isds-workflow-3d/validate.mjs` exits 0 reporting "10 source chips, 30 cards, 44 edges" |
+| `docs/assets/workflow.svg` / `scripts/site_templates/assets/workflow.svg` | Banner text renders **"WHERE WE LOOK — THE 10 SOURCES, CHECKED EVERY RUN"**; GDELT chip present |
+| `src/sources/` | **Ten** source modules; `src/sources.all_sources()` returns **10** instances — `iisd_itn`, `google_alerts`, `gmail_scholar`, `italaw`, `icsid`, `iareporter_headlines`, `unctad_isds`, `pca_press`, `bing_news`, `gdelt` |
+| `scripts/site_templates/how_it_works.html.j2:27` / `docs/how-it-works.html:58` | **STILL "the first band is the nine public sources checked"** — not moved |
+| `scripts/site_templates/how_it_works.html.j2:3` / `docs/how-it-works.html:7` | **STILL** meta description "the **nine** public sources" — not moved |
+| `METHODOLOGY.md:33` | Enumerates **nine** channels and omits GDELT; also says Bing News is polled through "**eight** fixed, fingerprint-derived queries" where `src/sources/bing_news.py:23` defines **12**. Emory's document — [[Workflow Threads]] **D7** |
+| `alerts.yaml:29-42` | **Corrected 2026-08-08.** The `feeds:` list is no longer Google-only; two Talkwalker RSS entries present at this reading |
+
+**Status: DIVERGENT as of 2026-08-22 — and the divergence is visible to Dr. Benavides on a
+single screen.** On `docs/how-it-works.html`, line **58** tells the reader "the first band is the
+nine public sources checked"; the chart inlined at line **96** of the same page renders the
+banner "**THE 10 SOURCES**" with ten chips. The prose and the picture it introduces contradict
+each other, roughly forty lines apart, and have done since `44550ca` landed on **2026-08-17** —
+five days. `check_site_sync.py` cannot catch it: the template and the built page agree with each
+other perfectly, and both are wrong.
+
+**Why this row failed to catch it, recorded against this seat.** `44550ca`'s commit message
+states "Every nine-sources surface moves to ten in the same change ... README, rebuilt
+view.js/SVG/site." Two surfaces did not move — the two hand-written strings in the Jinja
+template — and this map's own snapshot-anchor block accepted that sentence, writing that the
+source-count row was "satisfied by that same commit (ten stated once, everywhere)". **It was
+not satisfied, and this row was never re-read to check.** A commit message is a claim about a
+change, not a reading of the files after it; this map exists precisely to be the reading. The
+anchor block is corrected in place above, with its original wording quoted.
+
+**Owner of the fix: [[site-experience]]**, which owns `scripts/site_templates/` and `docs/`.
+Both strings are hand-written English in the template, so this is a two-string edit plus a site
+rebuild — not a regeneration problem. Escalated, not edited: this seat does not write to
+`scripts/site_templates/` or `docs/`.
+
+**What remains unverified, and must not be read as verified:** that the ten *modules* correspond
+one-to-one with the ten *sources* the site names, and that all ten are currently returning.
+`analytics/instrument-map-2026-08-08.md` §1 records that **10 of the 14 published entries came
+from a single one of them** (`iareporter_headlines`) — a concentration the flat count conceals
+on every surface that states it, at nine or at ten.
+
+<details><summary>Superseded reading — 2026-08-08, kept as the dated record it was</summary>
+
+| Stated in | What it said then |
+|---|---|
 | `README.md:56` | "the **nine** sources" *(was `:52`)* |
 | `scripts/site_templates/how_it_works.html.j2:27` / `docs/how-it-works.html:58` | "the first band is the **nine public sources** checked" |
 | `docs/how-it-works.html:7` | meta description: "the **nine** public sources" |
 | `views/isds-workflow-3d/workflow.json` | The source band on the flowchart |
-| `alerts.yaml:29-42` | **Corrected 2026-08-08.** The `feeds:` list is **no longer Google-only**: it now carries at least one Talkwalker RSS URL (`:34`). The row's previous statement — "zero Talkwalker entries" — is false as of this reading |
 | `src/sources/` | Nine source modules; `analytics/instrument-map-2026-08-08.md` §1 confirms "**Nine sources under `src/sources/`**" from a direct reading of the tree |
 
-**Status: partially verified 2026-08-08, and the row is no longer a bare placeholder.** The
-count of **nine** is now corroborated from a second, independent direction — a path-tagged
-reading of `src/sources/` — rather than being asserted three times from one flowchart band.
-The Talkwalker lane has moved: at least one Talkwalker feed is live in `alerts.yaml`.
+Status then: partially verified 2026-08-08 — the count of nine corroborated from a second,
+independent direction (a path-tagged reading of `src/sources/`) rather than asserted three times
+from one flowchart band.
 
-**What is still not verified, and must not be read as verified:** that the nine *modules*
-correspond one-to-one with the nine *sources* the site names, and that all nine are currently
-returning. `analytics/instrument-map-2026-08-08.md` §1 records that **10 of the 14 published
-entries came from a single one of them** (`iareporter_headlines`), which is a fact about
-concentration that the flat count of nine conceals on every surface that states it.
+</details>
 
 ---
 

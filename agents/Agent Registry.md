@@ -451,6 +451,24 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-22** — Registry re-audited against `c4f6825` (`main`, clean tree, complete
+  748-commit history after `git fetch --unshallow`; the container's clone arrived shallow again,
+  at 196 commits). **No roster change:** `git log d997c32..HEAD -- .claude/agents/ prompts/
+  src/models.py` returns **no commit**, `src/models.py` is unchanged, and `check_models.py`
+  exits 0 over twelve cards — which, per the rule adopted 2026-08-16, licenses only the claim
+  that three declarations agree with one another. **D6 is at day ten and is now the finding.**
+  [[integrity-officer]] has self-reported `REQUESTED claude-opus-4-8 → ACTUAL claude-opus-5` on
+  ten consecutive days, six of them since the last registry pass:
+  `analytics/daily-research/2026-08-17.md:719`, `2026-08-18.md`, `2026-08-19.md:1148`,
+  `2026-08-20.md:1113`, `2026-08-21.md:1024`, `2026-08-22.md:1080`. The qualification block
+  under the roster stands and the rows are again left unchanged, for the reason given on
+  2026-08-16. **D5 unchanged after nine days** — re-tested this session, eight of nine
+  definitions still never name their seat's note; [[integrity-officer]] remains the one that
+  does. **D8 opened**: `.claude/agents/site-experience.md:20` carries a second, previously
+  unrecorded "Zero-cost" binding alongside `systems-designer.md:17`. All three are Emory's;
+  escalated, not edited. *Audited against `c4f6825`; paths: `.claude/agents/`, `prompts/`,
+  `src/models.py`, `agents/`, `views/isds-workflow-3d/workflow.json`,
+  `scripts/check_models.py`, `HANDOFF.md`.*
 - **2026-08-16** — Registry re-audited against `d997c32` (`main`, clean tree, complete history —
   621 commits after `git fetch --unshallow`; the container's clone arrived shallow again at 201
   commits, and a shallow clone misreported the verification ledger's last-touching commit as

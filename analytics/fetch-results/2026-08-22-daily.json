@@ -1,8 +1,8 @@
 {
   "request": "2026-08-22-daily.json",
   "note": "2026-08-22, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY RESULT EXISTS and before the research analyst was convened, so commit order proves the pre-registration independently of anything the record later says. It executes next steps 2 (the two never-fetched ICSID HTML routes, 0821-B17 / analyst's second-turn \u00a75) and 3 (the `Partial` probe literal, 0821-E8) of the 2026-08-21 close-out, the standing A/81/17 watch (next step 9), and one instrument test posed by the 2026-08-21 POSTSCRIPT's named candidate-for-today. Every literal below was fixed in yesterday's record or its postscript before this session opened; NOTHING here is invented today.",
-  "fetched_at": "2026-08-22T11:15:07.909679+00:00",
-  "environment": "github-actions-runner (run 32569747298)",
+  "fetched_at": "2026-08-22T12:09:19.166214+00:00",
+  "environment": "github-actions-runner (run 32572178589)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -110,7 +110,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "46e1f1188e83108e0ddea70dd0dcd29b372321e2f5aee1dfc64b0f7a76f1c6a7",
+      "sha256": "6595687800f446e808e13587fd887ba60b8ae7cb93a4fafd2869331cec610b44",
       "excerpt": "s Number of Arbitrators in case 3 Date of commencement of proceeding 29 March 2023 Date of issue of final award 26 September 2025 Length of Proceedings 2-3 years Additional notes - Documents Written submission Claimant's Notice of Arbitration download | 28 March 2023 | English | 548.29KB Annexure 6C to the Notice of Arbitration download | 28 March 2023 | English | 367.79KB Annexure 7C to the Notic",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true
@@ -123,7 +123,7 @@
       "final_url": "https://pca-cpa.org/en/cases/309/",
       "content_type": "text/html",
       "bytes": 106011,
-      "sha256": "13a50c5b3f104f438dcb313c64016d181ba31b2bc3e181457be08a2cae260231",
+      "sha256": "d497262c0129b941a8ca459a45382052b135c7eea2a7cfe17093b3a99c60930b",
       "excerpt": "s Number of Arbitrators in case 3 Date of commencement of proceeding 29 March 2023 Date of issue of final award 26 September 2025 Length of Proceedings 2-3 years Additional notes - Documents Written submission Claimant's Notice of Arbitration download | 28 March 2023 | English | 548.29KB Annexure 6C to the Notice of Arbitration download | 28 March 2023 | English | 367.79KB Annexure 7C to the Notic",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": true

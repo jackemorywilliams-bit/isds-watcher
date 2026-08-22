@@ -1350,7 +1350,56 @@ specifically unblocks it.
   commit as maintenance when every changed file is a vault record surface
   (`agents/`, `analytics/vault-sessions/`, `moc/`, `HANDOFF.md`), not merely one of the five
   tracked notes. A commit touching any substantive path still counts, which preserves the guard.
-- **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one.
+- **ESCALATED 2026-08-22 — the predicted consequence has arrived, and it is measurable.** This
+  thread warned that "a guard that cries drift on its own maintenance trains its only reader to
+  skim it." That has now happened to every seat, and the evidence is in the seats' own words.
+
+  **`pipeline-guards` has failed on `main` on nine consecutive push-triggered runs.** Last green:
+  `a9c86b81`, **2026-08-17T23:36Z** (PR #89). Every run since has failed, and the failing job is
+  `currency` each time:
+
+  | Date | Commit | Run |
+  |---|---|---|
+  | 2026-08-18 | `b34f01e` | council 2026-08-18 (#90) |
+  | 2026-08-18 | `af61db4` | chart-banner-overlap (#91) |
+  | 2026-08-19 | `ccb03e3` | council 2026-08-19 (#92) |
+  | 2026-08-20 | `b9d10fb` | council 2026-08-20 (#93) |
+  | 2026-08-21 | `a6cbc8d` | council 2026-08-21 (#94) |
+  | 2026-08-21 | `55df8cd` | council 2026-08-21 postscript (#95) |
+  | 2026-08-21 | `44c67af` | council 2026-08-21 postscript cont. (#96) |
+  | 2026-08-22 | `587df22` | council 2026-08-22 (#97) |
+  | 2026-08-22 | `b1d1f12` | vault archivist 2026-08-22 (#98) |
+
+  **Three seats have merged past it, each correctly diagnosing it and each writing the diagnosis
+  into a commit message instead of into a thread.** Quoted from the merge commits:
+  - `dc4ba93` (2026-08-14): "currency check red for three `agents/` anchors that are outside this
+    session's merge scope and already failing on main; diagnosed and explained in the PR thread
+    and escalated as escalation 10."
+  - `3a9d2f1` (2026-08-15): "The currency check is red for 3 `agents/` anchors that are red on the
+    base commit too and are outside this session's merge scope."
+  - `ccb03e3` (2026-08-19): "currency: fails on three `agents/` items only, which fail identically
+    on `origin/main` ... `agents/` is outside the daily council's approved merge scope."
+
+  Each is right on its own terms. The aggregate is a guard that no longer gates anything: it is
+  red on every merge, every seat has a correct standing reason to merge anyway, and the reason is
+  recorded where no currency query will ever find it. **The three red `agents/` anchors those
+  seats deferred to this seat were this seat's**, and the 2026-08-19 session that would have
+  cleared them did not run.
+- **Third and fourth occurrences of the false positive itself, 2026-08-22.** The `b1d1f12` run
+  reported 3 failures. One is `STATE_OF_THE_ANSWER.md`, genuine and deliberately left. **Two are
+  [[Project Change Log]] and this note, each reported stale against `c1ef8b8` — the session commit
+  that wrote them.** The local tree that produced that commit had 1 failure, not 3. So the pattern
+  is not "twice unnoticed"; it is **every archivist session, by construction**, and this entry
+  will produce it a fifth time.
+- **No action available to this seat turns it green, and that is stated rather than worked
+  around.** The two options are both barred: `scripts/check_currency.py` is outside this seat's
+  merge authority, and restamping the anchors to the merge commit would assert an audit against a
+  commit that did not exist when the audit ran — the more serious defect, per this thread's own
+  ruling. **This seat is therefore not able to return `main` to green and is not going to
+  pretend otherwise.**
+- **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one. **This
+  is now the longest-standing red on `main` in the project's history and it is blocking nothing,
+  which is worse than blocking something.**
 
 ---
 

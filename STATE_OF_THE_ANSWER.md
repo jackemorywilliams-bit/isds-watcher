@@ -27,7 +27,94 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality test and balance of interests, a limb she names at her Part III.B.2 and whose comprehensive analysis she expressly declines while still sketching the public-interest side and applying necessity to her own facts. **Corrected 2026-08-08:** this line previously described that limb as "the police-powers / public-welfare carve-out." That is the project's vocabulary, not Kim's — a full-text search of her article returns no occurrence of "police," "carve-out," "carve out," "public welfare" or "welfare" — and it contradicted the corrected position now recorded in `lit-review/kim-memo.md`. Note also that the institutional question the project treats as its own third stance is one Kim raises herself, in her abstract ("The question is whether investor-state arbitration is an apt instrument to protect originators' data against disclosure by drug regulatory authorities") and again in her conclusion at 1027. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-22.
+**Last updated:** 2026-08-23.
+
+> **COUNCIL UPDATE — 2026-08-23 (daily council; full record at `analytics/daily-research/2026-08-23.md`).**
+> **THIS FILE HAS BEEN ASSERTING THE ANSWER TO THE QUESTION THE COUNCIL'S OWN RECORDS DECLARE OPEN, AND IT
+> HAS DONE SO SINCE 2026-07-22. That is the correction this block exists to make, and it is the most
+> serious defect this council has found in its own deliverable.** Found by the **integrity officer**
+> (`0823-B8`) while vetting a session in which **both other seats worked directly on this question and
+> neither saw it.** Nothing below is deleted; the dated rows are superseded in place, per the standing rule
+> that a dated record is corrected beside itself and not rewritten.
+>
+> **What the contradiction is.** The 2026-08-23 record states three times that
+> `GAP-UNRESOLVED: hela-schwarz-art9-jurisdiction-or-admissibility` **stands open**, that no accessible
+> source contains a carrying span for the **tribunal's** characterisation of the China–Germany BIT Protocol
+> Article 9 conditions, and that the strongest carrier this project holds — an IAReporter article title
+> reading *"gives effect to"* — **takes no position between jurisdiction and admissibility.** This file says
+> otherwise, unhedged, in four places. **Each is corrected here and none is deleted:**
+>
+> - **The row below beginning *"China-Germany BIT (2003) fork-in-the-road"*** asserts the tribunal
+>   *"dismissed all EUR 90+ million claims on both jurisdiction and merits."* **That characterisation is
+>   search-engine prose and is NOT banked.** It has now been independently replicated three times by the
+>   same class of instrument, which is **taxonomy 16 — replication is not corroboration** — and one of those
+>   renditions carries an impossible date. **Nobody on this council has read the Award.**
+> - **The Article 9(c) row** asserts the tribunal *"upheld the Article 9(c) defense and dismissed on
+>   jurisdiction"* **in the same sentence that concedes "the tribunal's actual reasoning is unconfirmed
+>   (Award PDF inaccessible)."** A disposition may not be asserted on a body the asserting sentence calls
+>   inaccessible. **Withdrawn to: the Article 9 grounds were PLEADED as objections to jurisdiction on
+>   title-and-snippet carriers; how the TRIBUNAL characterised the conditions is UNKNOWN.**
+> - **The Article 9(a) row's** *"disposition … now confirmed at MEDIUM-HIGH confidence"* (2026-07-22) rests
+>   on **the same *"gives effect to"* title** the record says takes no position. **The confidence label is
+>   withdrawn as to the tribunal's characterisation.** *(The related repair of 2026-08-22 — the phrase
+>   "applied and sustained", struck after thirty-one days — was the first limb of this same defect. This
+>   block is the second and larger limb.)*
+> - **The numbered summary entry** asserting *"dismissed on jurisdiction … establishes a third Ring 3
+>   mechanism"* inherits the same unbanked characterisation. **The mechanism's EXISTENCE in the BIT is not
+>   in question; the tribunal's treatment of it is.**
+>
+> **`published January 15, 2026` IS WITHDRAWN AND ITS PROVENANCE STATED.** That parenthetical is the engine
+> construction this council **refused** as escalation `N5` — *"a final award dated December 10, 2025
+> (published on January 15, **2025**)"*, an impossibility — **repaired by a year somewhere between refusal
+> and publication, and promoted to unhedged fact in this file**, while the note near the head of this file
+> still carries the original as an open tension. **No publication date is asserted by this project.**
+>
+> **WHAT IS NEWLY BODY-CARRIED TODAY, AND IT IS THE FIRST OF ITS KIND.** ICSID's own case-detail page for
+> `ARB/17/19` was retrieved by the committed fetch-relay (reduction at commit `d341cae`, blob
+> `c440bca1…`, `records[4]`, `ok/200`, 94,976 bytes, `sha256 6c66b441ffc51968`, `final_url` byte-identical
+> to the request) and carries, character-exact: **`Status of Proceeding: Concluded`** and **`Outcome of
+> Proceeding: December 10, 2025 - The Tribunal renders its award.`** **Until today every carrier for that
+> date in this project was a title or a search-engine summary.** It is now ICSID's own docket. **It dates
+> the RENDERING and nothing else: it states no ground, no disposition and no characterisation, and the
+> docket carries NO PUBLICATION DATE AT ALL.** Procedural Orders Nos. 1–6 are body-carried for this matter
+> for the first time, and **that list is ended by the reduction's 400-character cap, not by the docket** —
+> no count and no "latest" may be drawn from it. A `Decision on Jurisdiction` probe on the same page in the
+> same run returned `find_matched: false`; **that null bears on question (3) in NEITHER direction** and may
+> not be read as "the objections were joined to the merits."
+>
+> **The countermeasure adopted today, binding on every future session:** before declaring a
+> `GAP-UNRESOLVED` slug open, **grep THIS FILE for the proposition, not only the corpus.** The officer's
+> taxonomy name for the defect is **CUMULATIVE-FILE CONTRADICTION**: a gap declared open in the session
+> record while the published answer asserts it closed, so the day's search budget is aimed at a question
+> the deliverable says is answered — invisible to both documents at once.
+>
+> **Two further body-carried corrections from today's batch, both on ICSID's own pages.**
+> **(1)** The `Decisions on Manifest Lack of Legal Merit` register's finding-column value **`Partial`
+> belongs to *Trans-Global Petroleum, Inc. v. Hashemite Kingdom of Jordan* (ICSID Case No. ARB/07/25)**, on
+> a decision the register designates `Decision on the Respondent's Objection Pursuant to Rule 41(5) of the
+> ICSID Arbitration Rules`, dated `May 12, 2008` — **case name, designation, date and value contiguous in a
+> single window on a single page state** (`records[8]`, offsets `Trans-Global` 100 · `May 12, 2008` 294 ·
+> `Partial` 308 · next case name 317). This **retires** the cross-page-state window-slide join the record
+> previously relied on. **`Partial` IS NOT DECODED, `_` REMAINS UNDEFINED, `No` MAY NOT BE READ AS
+> "objection dismissed", and NOBODY HAS READ ANY OF THESE DECISIONS.**
+> **(2)** The `ARB/24/46` / `ARB/24/26` designator discrepancy is **closed from a body, in the direction
+> this file already carried**: ICSID's dockets for the two differ in every observed field, and `ARB/24/26`
+> resolves to a Panama-connected, English-and-Spanish proceeding suspended under Arbitration Rule 54(1).
+> **The limitation travels: neither window carries a party name** — both carry a representative-and-location
+> block — so the identification rests on the two being distinct resources, not on parties. `ARB/24/46`
+> carries a **live** jurisdictional-objection question dated **29 July 2026**; its **Ring 1 is UNKNOWN**, so
+> it does **not** reach this project's theme.
+>
+> **Audit anchor moved (2026-08-23):** audited against the commit in which this session wrote this block
+> and its paired ledger entries. **Stated plainly and not certified: this does NOT leave
+> `scripts/check_currency.py` green** — the anchor cannot name a commit later than itself, and the ledger
+> commit that follows necessarily touches the declared paths again, so a session writing both this file and
+> the ledgers cannot satisfy the guard by construction (escalation 7 of 2026-08-17, unfixed). **And a new
+> caveat, escalation `N14`:** this container's clone arrived **shallow** (189 commits against 758), on which
+> `check_currency.py` reported **three hard `FAIL`s that do not exist** — `373cce6`, `9efafb0` and `ae42639`
+> **are** ancestors. After `git fetch --unshallow` the guard reports **3 STALE, zero FAIL**, identical on
+> `origin/main`. **Any prior record asserting those three FAILs was reporting an artefact of its own
+> container**, and the next session will start shallow again.
 
 **[Council update 2026-08-22 — header date repaired, and what today added.** The date on this line read **2026-08-19** while the file's last commit was 2026-08-21, so `scripts/check_currency.py` returned a hard `FAIL` on it. The 2026-08-21 session edited this file (the pointer correction at `e3ac94d`) without moving the date; that is the same `FAIL` the 2026-08-19 seat fixed here, regressed one generation later, and it is repaired rather than explained away. **Nothing dated below is rewritten** — a dated entry is superseded, never edited, so the 2026-08-19 text follows intact and today's additions are stated here. **Today (relay run `32569747298`, reduction at commit `682e762`):** ICSID's two explanatory pages on Rule 41(5) — `…/procedures/arbitration/convention/manifest-lack-of-legal-merit/2022` and `…/resources/publications/focus-objections-claim-manifestly-lacks-legal-merit-icsid-convention` — **rendered to the relay for the first time (`ok/200`, both matched)**, so ICSID's explanatory material is readable by this channel; **no codebook was found and the register's finding-column values `No`, `Partial` and `_` remain UNDECODED**, with `_` undefined. A returned window places **`Partial` in the finding column** — a placement, not a decode; *(**`0822-B2`, SUSTAINED.** This clause read **"The register's rendered row structure was observed for the first time and places `Partial` in the finding column"**. **The "first time" is false**, and the daily record of the same date falsifies it: `2026-08-20-zz-column-and-middle.json` `records[3]`, fired two days earlier on a different find, already returned the row structure with **all three** finding-column values in slot, and the 2026-08-20 record states the general form at its own line 594. The officer sustained this against me because **the retraction had landed only in the daily record, which is read once, and not here, which is read every session** — "a correction that lands only in the retracted file's neighbour is not a correction." What today's window actually adds: `Partial` observed **as the anchor of its own window**, on a different row and a different page state, which is corroboration across states rather than a first sighting.)* `0821-R4`'s obstacle stands and **`No` may not be read as "objection dismissed."** The `A/81/17` watch returned another null with its `A/80/17` control matching; per the 2026-08-20 counter rule the honest figure is a **pair — 10 `A/81/17`-scoped rows against 1 distinct page state** (`f9712994f5ae`, byte-constant at 832,338, ten consecutive observation dates 2026-08-13 → 2026-08-22), which supersedes the "fourteen controlled nulls (population 16)" figure in the 2026-08-19 text below as a *counting convention*, not as a correction of that day's arithmetic. **The digest of record has NOT moved** — still `Digest 2026-08-17: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads)`, pinned at blob `e1d1ef76`, commit `feb1b94`; next collection Monday 2026-08-24. **The `[403-blocked]` amendment is still NOT applied and stays on the operator's pending list**, as does every other pending item; nothing was built or applied today.**]**
 

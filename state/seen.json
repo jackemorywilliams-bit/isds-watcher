@@ -6,6 +6,13 @@
         "outcome": "legacy"
       }
     },
+    "gdelt": {
+      "https://www.rappler.com/philippines/philippines-china-provisional-arrangement-ayungin-shoal-west-sea/": {
+        "at": "2026-08-24T13:46:39.776503+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-08-24"
+      }
+    },
     "google_alerts": {
       "https://bitcoinfoundation.org/news/people-in-crypto-news/apple-vs-openai/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
@@ -686,6 +693,11 @@
         "at": "2026-08-17T23:37:18.196967+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/2848": {
+        "at": "2026-08-24T13:46:39.776503+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-08-24"
       },
       "https://www.italaw.com/cases/329": {
         "at": "2026-08-17T23:14:25.434938+00:00",

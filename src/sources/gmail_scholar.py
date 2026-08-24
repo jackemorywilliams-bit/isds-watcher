@@ -165,16 +165,33 @@ class GmailScholarSource(Source):
             conn = imaplib.IMAP4_SSL(host)
             conn.login(user, password)
 
-            # Gmail exposes labels as IMAP mailboxes; select the label by name.
-            status, _ = conn.select(f'"{label}"', readonly=True)
-            if status != "OK":
-                logger.warning("gmail_scholar: could not select label %r (%s)", label, status)
-                return []
-
-            uids = self._search_uids(conn, since)
+            # Find the Scholar alerts wherever they live. Gmail exposes labels as
+            # IMAP mailboxes, but the operator's alerts are not guaranteed to carry
+            # the dedicated label — that requires a Gmail filter the operator may
+            # never have set up, so the label mailbox reads empty even while the
+            # alerts are arriving. "[Gmail]/All Mail" contains every message, so a
+            # sender-scoped search there catches the alerts whether or not they are
+            # labeled; the configured label and INBOX are tried as fallbacks in case
+            # All Mail is not selectable (e.g. a localized mailbox name). The search
+            # is always scoped to the Scholar sender, so no unrelated mail is read.
+            uids: list[bytes] = []
+            used_mailbox = None
+            for mailbox in ('"[Gmail]/All Mail"', f'"{label}"', "INBOX"):
+                status, _ = conn.select(mailbox, readonly=True)
+                if status != "OK":
+                    continue
+                found = self._search_uids(conn, since)
+                if found:
+                    uids = found
+                    used_mailbox = mailbox
+                    break
             if not uids:
-                logger.info("gmail_scholar: no matching messages in label %r", label)
+                logger.info(
+                    "gmail_scholar: no matching Scholar messages (searched All Mail, label %r, INBOX)",
+                    label,
+                )
                 return []
+            logger.info("gmail_scholar: %d message(s) via %s", len(uids), used_mailbox)
 
             items: list[CandidateItem] = []
             seen: set[str] = set()

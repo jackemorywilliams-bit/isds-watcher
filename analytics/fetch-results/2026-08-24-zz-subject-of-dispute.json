@@ -1,8 +1,8 @@
 {
   "request": "2026-08-24-zz-subject-of-dispute.json",
   "note": "2026-08-24, SECOND pre-registered batch of the day, chairman-authorised on the analyst's recommendation at 0824-R18, WRITTEN AND PUSHED BEFORE ANY RESULT EXISTS and before the analyst's second turn was requested, so commit order proves the pre-registration. Precedent for a same-day second batch: 2026-08-20-zz-column-and-middle.json and 2026-08-21-zz-intraday-drift.json. It executes the analyst's rows 1-8 and rows 9-10 at 0824-R17, ADOPTED WITH LICENCES VERBATIM, plus TWO ROWS THE CHAIRMAN ADDED AND DISCLOSES AS HIS. Every licence below was fixed by the analyst in his filed return before this file existed; the two added rows carry licences written here, before any result exists.",
-  "fetched_at": "2026-08-24T11:56:42.580025+00:00",
-  "environment": "github-actions-runner (run 32724372736)",
+  "fetched_at": "2026-08-24T12:51:47.711402+00:00",
+  "environment": "github-actions-runner (run 32729305805)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

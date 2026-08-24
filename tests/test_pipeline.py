@@ -339,6 +339,59 @@ def test_parse_scholar_email(monkeypatch):
     assert GmailScholarSource().fetch(datetime.datetime.now(UTC)) == []
 
 
+def test_gmail_scholar_finds_unlabeled_alerts_in_all_mail(monkeypatch):
+    """The alerts arrive but are not filed under the dedicated label (no Gmail
+    filter). The label mailbox reads empty; the source must still find them by
+    searching [Gmail]/All Mail, scoped to the Scholar sender."""
+    import src.sources.gmail_scholar as gs
+
+    html = (
+        '<h3><a href="https://scholar.google.com/scholar_url?url=https://example.org/p1&hl=en">'
+        "Paper One</a></h3><div>A. Author - Journal, 2026</div>"
+    )
+    raw = (
+        b"From: scholaralerts-noreply@google.com\r\n"
+        b"Date: Mon, 24 Aug 2026 13:00:00 +0000\r\n"
+        b'Content-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\n\r\n'
+        + html.encode("utf-8")
+    )
+
+    class _FakeIMAP:
+        def __init__(self, *a, **k):
+            self.selected = None
+
+        def login(self, u, p):
+            return ("OK", [b""])
+
+        def select(self, mailbox, readonly=False):
+            self.selected = mailbox
+            return ("OK", [b"1"])
+
+        def search(self, charset, *criteria):
+            if self.selected == '"[Gmail]/All Mail"':
+                return ("OK", [b"101"])
+            return ("OK", [b""])
+
+        def fetch(self, uid, spec):
+            return ("OK", [(b"101 (RFC822 {%d}" % len(raw), raw)])
+
+        def close(self):
+            pass
+
+        def logout(self):
+            pass
+
+    monkeypatch.setattr(gs.imaplib, "IMAP4_SSL", _FakeIMAP)
+    monkeypatch.setenv("GMAIL_ALERT_USER", "wemory531@gmail.com")
+    monkeypatch.setenv("GMAIL_ALERT_PASS", "app-password")
+    since = datetime.datetime(2026, 8, 20, tzinfo=UTC)
+    items = gs.GmailScholarSource().fetch(since)
+    assert len(items) == 1
+    assert items[0].url == "https://example.org/p1"
+    assert items[0].title == "Paper One"
+    assert items[0].source == "gmail_scholar"
+
+
 def test_parse_date_to_utc():
     d = parse_date("Tue, 21 Apr 2026 17:02:05 +0000")
     assert d is not None and d.tzinfo is not None

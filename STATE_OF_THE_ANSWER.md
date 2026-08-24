@@ -27,7 +27,43 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality test and balance of interests, a limb she names at her Part III.B.2 and whose comprehensive analysis she expressly declines while still sketching the public-interest side and applying necessity to her own facts. **Corrected 2026-08-08:** this line previously described that limb as "the police-powers / public-welfare carve-out." That is the project's vocabulary, not Kim's — a full-text search of her article returns no occurrence of "police," "carve-out," "carve out," "public welfare" or "welfare" — and it contradicted the corrected position now recorded in `lit-review/kim-memo.md`. Note also that the institutional question the project treats as its own third stance is one Kim raises herself, in her abstract ("The question is whether investor-state arbitration is an apt instrument to protect originators' data against disclosure by drug regulatory authorities") and again in her conclusion at 1027. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-23.
+**Last updated:** 2026-08-24.
+
+> **COUNCIL UPDATE — 2026-08-24 (daily council; full record at `analytics/daily-research/2026-08-24.md`).**
+> **Two corrections and one new instrument, and the instrument bounds itself in the same entry.**
+>
+> **1. THE `0823-B8` REPAIR REACHED FOUR OF ITS FIVE INSTANCES.** The fifth — the Article 9(c)
+> concurrent-proceedings row — asserted the tribunal's disposition unhedged **and built a doctrinal inference
+> on it**. It is withdrawn in place above, and local markers are now on all four previously-corrected rows.
+> Found by the integrity officer (`0824-B1`) after the chairman had certified the repair complete by counting
+> bullets against grep hits. **Nobody on this council has read the Award.**
+>
+> **2. ICSID'S OWN DOCKETS NOW CARRY A SUBJECT-OF-DISPUTE FIELD FOR SIX PROCEEDINGS, AND IT CANNOT DO EITHER
+> THING RING 1 NEEDS.** Body-carried at commits `64fc96f` and `7c07916` (relay runs `32721541037`,
+> `32724372736`): `ARB/17/19` ***Hela Schwarz GmbH (German)*, `Subject of Dispute: Spice products company`,
+> `Instrument(s) Invoked: (i) BIT China - Germany 2003`** — the first carrier for this matter that is neither a
+> party, a paywall, nor a search engine, and the first ICSID-carried confirmation of the treaty. `ARB/24/26`
+> is ***Franco-Nevada Corporation v. Republic of Panama*, `Mining concession`**, which **refutes from a body**
+> the TDM Journal pairing of that designator with *ENCORE v. Türkiye*; `ARB/24/46` carries
+> ***ENCORE Investment Group Limited (Maltese)*, `BIT Malta - Türkiye 2003`, `Acquisition of shares`**.
+> `ARB/24/18` `Insurance company`; `ARB/22/30` `Banking enterprise`; `ARB/23/3`
+> `Banking and financial services`.
+>
+> **THE TWO LIMITS ARE BINDING ON EVERY FUTURE USE OF THIS FIELD.** *(a)* **It cannot EXCLUDE an IP asset.**
+> It is ICSID's classification, not the claimant's pleading, and it sometimes names the **claimant's line of
+> business** rather than the disputed asset — demonstrated on `ARB/17/19`, where ICSID says *Spice products
+> company* while the row headed *"Sector clarification (July 12, 2026)"* below records the investment at issue
+> as **land use rights in Shandong Province**. A spice company can hold trade secrets; a bank can hold
+> algorithms. *(b)* **It cannot DISCOVER one.** The vocabulary cannot be enumerated by any instrument this
+> council can reach, so the route is **confirmatory, never discovery**. **Accordingly no statement of the form
+> "there are no ICSID cases asserting IP as an investment" is ever available to this project; the honest form
+> is permanently "not found in accessible sources."**
+>
+> **NOTHING MOVES.** All four register-carried proceedings remain **UNEXAMINED, NOT EXCLUDED**; `ARB/24/26` is
+> *assessed negative on ICSID's own subject characterisation, pleaded investment unexamined* — never
+> *"involves no IP."* **`N4` question (3) — jurisdiction or admissibility on Protocol Article 9 — is
+> UNANSWERED**, and today's docket names the **BIT** while remaining silent on the **Protocol**, so it does not
+> touch the question in either direction.
 
 > **COUNCIL UPDATE — 2026-08-23 (daily council; full record at `analytics/daily-research/2026-08-23.md`).**
 > **THIS FILE HAS BEEN ASSERTING THE ANSWER TO THE QUESTION THE COUNCIL'S OWN RECORDS DECLARE OPEN, AND IT

@@ -1,6 +1,6 @@
 {
   "date": "2026-08-24",
-  "screened": 26,
+  "screened": 30,
   "matches": 0,
   "held_for_review": 0,
   "validation_status_only": true,
@@ -9,14 +9,14 @@
   "per_source": {
     "iisd_itn": 0,
     "google_alerts": 1,
-    "gmail_scholar": 0,
-    "italaw": 1,
+    "gmail_scholar": 3,
+    "italaw": 0,
     "icsid": 2,
     "iareporter_headlines": 11,
     "unctad_isds": 0,
-    "pca_press": 0,
+    "pca_press": 1,
     "bing_news": 0,
-    "gdelt": 11
+    "gdelt": 12
   },
   "accepted_by_source": {},
   "source_health": [
@@ -33,7 +33,7 @@
     {
       "name": "gmail_scholar",
       "status": "RETURNED",
-      "count": 0
+      "count": 3
     },
     {
       "name": "italaw",
@@ -74,7 +74,7 @@
     {
       "name": "pca_press",
       "status": "RETURNED",
-      "count": 0
+      "count": 1
     },
     {
       "name": "bing_news",
@@ -84,7 +84,7 @@
     {
       "name": "gdelt",
       "status": "RETURNED",
-      "count": 11
+      "count": 13
     }
   ],
   "health_warnings": []

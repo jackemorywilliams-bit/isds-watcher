@@ -1,16 +1,7 @@
 {
   "gdelt": {
-    "https://natlawreview.com/article/ninth-circuit-precedent-rejects-forum-non-conveniens-international-arbitration": {
-      "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-21T00:15:00+00:00",
-      "summary": "In the matter of Devas Multimedia Private Ltd. v. Antrix Corp. Ltd. , the Ninth Circuit enforced a $1.3 billion arbitral award, holding that the doctrine of forum non conveniens \u2014the argument that a suit is more properly heard in a different venue\u2014does not apply when a party is enforcing a foreign i",
-      "title": "The Bottom Line of Devas Multimedia Private Ltd . v . Antrix Corp",
-      "url": "https://natlawreview.com/article/ninth-circuit-precedent-rejects-forum-non-conveniens-international-arbitration"
-    },
     "https://natlawreview.com/article/secs-long-awaited-crypto-proposal": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-21T22:45:00+00:00",
@@ -18,17 +9,26 @@
       "title": "SEC Proposes Regulation Crypto Assets for Token Offerings",
       "url": "https://natlawreview.com/article/secs-long-awaited-crypto-proposal"
     },
-    "https://timesofindia.indiatimes.com/business/india-business/government-to-amend-investment-treaty-to-woo-global-players/articleshow/133389908.cms": {
+    "https://www.barandbench.com/news/litigation/court-fees-should-be-refunded-to-litigants-whose-cases-cant-be-heard-madras-high-court": {
       "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-21T00:30:00+00:00",
-      "summary": "Determine the monthly installment amount for a loan\nEstimate the returns on investments made through SIPs\nFind out maturity amount and interest earned on PPF\nCheck maturity amount and interest earned on an FD\nEstimate the pension amount and corpus accumulated under NPS\nA Mutual Fund Calculator helps",
-      "title": "Government to amend investment treaty to woo global players",
-      "url": "https://timesofindia.indiatimes.com/business/india-business/government-to-amend-investment-treaty-to-woo-global-players/articleshow/133389908.cms"
+      "published": "2026-08-24T15:45:00+00:00",
+      "summary": "The Madras High Court recently observed that litigants are \u201cconsumers of justice\u201d and they are entitled to a refund of court fees paid if their case cannot be heard because of maintainability [Murugavel Vs Pichai]\nA Bench of Justices GR Swaminathan and KK Ramakrishnan said that a litigant who mistak",
+      "title": "Court fees should be refunded to litigants whose cases cant be heard : Madras High Court",
+      "url": "https://www.barandbench.com/news/litigation/court-fees-should-be-refunded-to-litigants-whose-cases-cant-be-heard-madras-high-court"
+    },
+    "https://www.equitybulls.com/category.php?id=374414": {
+      "attempts": 1,
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-08-24T14:45:00+00:00",
+      "summary": "",
+      "title": "Afcons Infrastructure Wins \u20b9335 . 50 Crore Arbitral Award Against UPEIDA",
+      "url": "https://www.equitybulls.com/category.php?id=374414"
     },
     "https://www.fdiintelligence.com/content/a2e20734-3ef1-46ad-b86b-8cbf12a2bf85": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-21T10:00:00+00:00",
@@ -36,26 +36,8 @@
       "title": "fDi Intelligence \u2013 Your source for foreign direct investment information",
       "url": "https://www.fdiintelligence.com/content/a2e20734-3ef1-46ad-b86b-8cbf12a2bf85"
     },
-    "https://www.finanznachrichten.de/nachrichten-2026-08/69345127-grant-eisenhofer-family-of-disabled-quadriplegic-greek-woman-pleads-with-government-of-cyprus-to-release-icsid-award-needed-for-her-care-004.htm": {
-      "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-18T18:45:00+00:00",
-      "summary": "Investment dispute between Greece and Cyprus arose out of countries' financial crises; Cyprus denied exemption for family to historic bail-in for Cypriot banks, and continues to balk at ICSID judgment in family's favor\nThe family of a severely disabled, quadriplegic Greek woman is pleading with the ",
-      "title": "Grant & Eisenhofer : Family of Disabled Quadriplegic Greek Woman Pleads with Government of Cyprus to Release ICSID Award Needed for Her Care",
-      "url": "https://www.finanznachrichten.de/nachrichten-2026-08/69345127-grant-eisenhofer-family-of-disabled-quadriplegic-greek-woman-pleads-with-government-of-cyprus-to-release-icsid-award-needed-for-her-care-004.htm"
-    },
-    "https://www.legalbusinessonline.com:443/appointments/seladore-grows-nascent-sg-office-hire-clifford-chance-perth": {
-      "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-18T18:15:00+00:00",
-      "summary": "",
-      "title": "Seladore grows nascent SG office with hire from Clifford Chance Perth",
-      "url": "https://www.legalbusinessonline.com:443/appointments/seladore-grows-nascent-sg-office-hire-clifford-chance-perth"
-    },
     "https://www.mondaq.com:443/unitedstates/arbitration-dispute-resolution/1833616/preserving-jurisdiction-over-arbitration-the-supreme-courts-decision-in-jules-v-andre-balazs-properties": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-24T13:00:00+00:00",
@@ -63,26 +45,8 @@
       "title": "Preserving Jurisdiction Over Arbitration : The Supreme Court Decision In Jules v . Andre Balazs Properties - Arbitration & Dispute Resolution",
       "url": "https://www.mondaq.com:443/unitedstates/arbitration-dispute-resolution/1833616/preserving-jurisdiction-over-arbitration-the-supreme-courts-decision-in-jules-v-andre-balazs-properties"
     },
-    "https://www.mondaq.com:443/unitedstates/financial-services/1833380/secs-regulation-crypto-assets-is-a-major-step-toward-clarity": {
-      "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-20T14:30:00+00:00",
-      "summary": "The traits that fueled Skadden\u2019s rise from a New York startup to a global powerhouse \u2014 innovative, collaborative, client-centric \u2014 continue to define our firm culture. We remain focused on developing extraordinary attorneys who work together as a team to deliver the highest quality advice and best o",
-      "title": "SEC Regulation Crypto Assets Is A Major Step Toward Clarity - Financial Services",
-      "url": "https://www.mondaq.com:443/unitedstates/financial-services/1833380/secs-regulation-crypto-assets-is-a-major-step-toward-clarity"
-    },
-    "https://www.mondaq.com:443/unitedstates/financial-services/1833424/absent-clarity-the-sec-charts-its-own-path-for-now": {
-      "attempts": 1,
-      "first_deferred": "2026-08-24T13:46:39.776503+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-20T12:30:00+00:00",
-      "summary": "While the crypto asset market has continued to expand and converge with traditional finance, existing SEC rules, largely adopted before crypto assets emerged, have in many cases presented a poor fit for crypto assets and raised difficult interpretive questions regarding their application. As the SEC",
-      "title": "Absent CLARITY , The SEC Charts Its Own Path ( For Now )",
-      "url": "https://www.mondaq.com:443/unitedstates/financial-services/1833424/absent-clarity-the-sec-charts-its-own-path-for-now"
-    },
     "https://www.mondaq.com:443/unitedstates/financial-services/1834094/the-sec-proposes-a-rule-based-exit-from-investment-contract-treatment": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-24T11:15:00+00:00",
@@ -91,9 +55,38 @@
       "url": "https://www.mondaq.com:443/unitedstates/financial-services/1834094/the-sec-proposes-a-rule-based-exit-from-investment-contract-treatment"
     }
   },
+  "gmail_scholar": {
+    "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8": {
+      "attempts": 1,
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-08-22T08:15:33+00:00",
+      "summary": "M Singh, T Kaushal\u00a0- J. Intell. Prot. Stud., 2026 \u2026 reinforced by India's accession to the TRIPS Agreement in 1995. TRIPS , under Article 39 , requires the protection of undisclosed information . The \u2026 Article 39 protects undisclosed information only against unfair acquisition, use, or disclosure.Many\u00a0\u2026",
+      "title": "The Price of Secrecy : A Doctrinal and Policy Analysis of Compulsory Licensing of Trade Secrets in India",
+      "url": "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8"
+    },
+    "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf": {
+      "attempts": 1,
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-08-19T19:15:21+00:00",
+      "summary": "T Birengel\u00a0- International Investment Arbitration , 2027 \u2026 the risk of treaty shopping .Indeed, strategic changes in corporate structure may become an abuse of corporate form, since this may ease the transfer of shares and incorporation of companies in different territories for abusive treaty shopping \u2026",
+      "title": "Shareholder Protection Under International Investment Arbitration",
+      "url": "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf"
+    },
+    "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf": {
+      "attempts": 1,
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-08-23T13:59:09+00:00",
+      "summary": "V Dubey \u2026 the international legal framework shaped by Article 39 of the TRIPS Agreement and compares it with the United States Defend Trade \u2026 of trade secret protection is Article 39 of the TRIPS Agreement, which forms part of the section on the protection\u00a0\u2026",
+      "title": "European Union Law Working Papers",
+      "url": "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf"
+    }
+  },
   "google_alerts": {
     "https://www.lelezard.com/en/news-22341193.html": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-23T00:47:41+00:00",
@@ -104,100 +97,100 @@
   },
   "iareporter_headlines": {
     "https://www.iareporter.com/articles/analysis-uncitral-tribunal-in-liberty-v-venezuela-2-sees-no-requirement-for-active-contribution-and-finds-that-venezuelas-currency-control-regime-breached-free-transfer-obligations-towar/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298172+00:00",
+      "published": "2026-08-24T16:12:52.100535+00:00",
       "summary": "",
       "title": "Analysis: UNCITRAL tribunal in Liberty v. Venezuela (2) sees no requirement for active contribution, and finds that Venezuela\u2019s currency-control regime breached free transfer obligations towards insurance investor",
       "url": "https://www.iareporter.com/articles/analysis-uncitral-tribunal-in-liberty-v-venezuela-2-sees-no-requirement-for-active-contribution-and-finds-that-venezuelas-currency-control-regime-breached-free-transfer-obligations-towar/"
     },
     "https://www.iareporter.com/articles/arbitration-dispute-between-qatars-sovereign-wealth-fund-and-former-indian-ed-tech-guru-sees-new-developments/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298281+00:00",
+      "published": "2026-08-24T16:12:52.100687+00:00",
       "summary": "",
       "title": "[Updated with Set-Aside Judgment] Arbitration dispute between Qatar\u2019s sovereign wealth fund and former Indian ed-tech guru sees new developments",
       "url": "https://www.iareporter.com/articles/arbitration-dispute-between-qatars-sovereign-wealth-fund-and-former-indian-ed-tech-guru-sees-new-developments/"
     },
     "https://www.iareporter.com/articles/ck-hutchison-makes-good-on-its-threat-to-lodge-1-5-billion-usd-arbitration-against-panama-over-canal-ports-dispute/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298221+00:00",
+      "published": "2026-08-24T16:12:52.100606+00:00",
       "summary": "",
       "title": "CK Hutchison makes good on earlier threat to lodge 1.5-billion-USD treaty arbitration against Panama over canal ports dispute",
       "url": "https://www.iareporter.com/articles/ck-hutchison-makes-good-on-its-threat-to-lodge-1-5-billion-usd-arbitration-against-panama-over-canal-ports-dispute/"
     },
     "https://www.iareporter.com/articles/france-adopts-decree-reforming-arbitration-procedure/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298295+00:00",
+      "published": "2026-08-24T16:12:52.100707+00:00",
       "summary": "",
       "title": "France adopts decree reforming arbitration procedure",
       "url": "https://www.iareporter.com/articles/france-adopts-decree-reforming-arbitration-procedure/"
     },
     "https://www.iareporter.com/articles/icsid-tribunal-dismisses-georgias-preliminary-objections-relating-to-individual-claimants-nationality-and-joint-marital-property/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298189+00:00",
+      "published": "2026-08-24T16:12:52.100560+00:00",
       "summary": "",
       "title": "ICSID tribunal dismisses Georgia\u2019s preliminary objections relating to individual claimant\u2019s nationality and joint marital property",
       "url": "https://www.iareporter.com/articles/icsid-tribunal-dismisses-georgias-preliminary-objections-relating-to-individual-claimants-nationality-and-joint-marital-property/"
     },
     "https://www.iareporter.com/articles/peru-satisfies-ic-power-and-kenon-holdings-200-million-usd-icsid-award/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298249+00:00",
+      "published": "2026-08-24T16:12:52.100647+00:00",
       "summary": "",
       "title": "[Updated] Peru pays 200-million-USD ICSID award",
       "url": "https://www.iareporter.com/articles/peru-satisfies-ic-power-and-kenon-holdings-200-million-usd-icsid-award/"
     },
     "https://www.iareporter.com/articles/petroperu-discloses-unfavourable-arbitral-award-concerning-fuel-terminal-dispute/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298205+00:00",
+      "published": "2026-08-24T16:12:52.100583+00:00",
       "summary": "",
       "title": "Petroper\u00fa discloses unfavourable arbitral award concerning fuel terminal dispute",
       "url": "https://www.iareporter.com/articles/petroperu-discloses-unfavourable-arbitral-award-concerning-fuel-terminal-dispute/"
     },
     "https://www.iareporter.com/articles/revealed-icc-tribunal-majority-awards-damages-to-foreign-owned-consortium-in-second-arbitration-stemming-from-construction-of-high-altitude-airport-in-peru-dissenter-would-have-dismissed-all-claims/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298314+00:00",
+      "published": "2026-08-24T16:12:52.100733+00:00",
       "summary": "",
       "title": "Revealed: ICC tribunal majority awards damages to foreign-owned consortium in second arbitration stemming from construction of high-altitude airport in Peru; dissenter would have dismissed all claims",
       "url": "https://www.iareporter.com/articles/revealed-icc-tribunal-majority-awards-damages-to-foreign-owned-consortium-in-second-arbitration-stemming-from-construction-of-high-altitude-airport-in-peru-dissenter-would-have-dismissed-all-claims/"
     },
     "https://www.iareporter.com/articles/state-controlled-egyptian-fertilizer-producer-settles-disputes-with-french-trading-partner-and-three-other-companies/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298144+00:00",
+      "published": "2026-08-24T16:12:52.100500+00:00",
       "summary": "",
       "title": "State-controlled Egyptian fertilizer producer settles disputes with French trading partner and three other companies",
       "url": "https://www.iareporter.com/articles/state-controlled-egyptian-fertilizer-producer-settles-disputes-with-french-trading-partner-and-three-other-companies/"
     },
     "https://www.iareporter.com/articles/state-owned-libyan-bank-makes-good-on-earlier-threat-to-lodge-arbitration-against-burkina-faso/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298267+00:00",
+      "published": "2026-08-24T16:12:52.100667+00:00",
       "summary": "",
       "title": "State-owned Libyan bank makes good on earlier threat to lodge arbitration against Burkina Faso",
       "url": "https://www.iareporter.com/articles/state-owned-libyan-bank-makes-good-on-earlier-threat-to-lodge-arbitration-against-burkina-faso/"
     },
     "https://www.iareporter.com/articles/uruguay-reportedly-at-risk-of-arbitration-against-german-company-over-id-verification-system-dispute/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-24T13:47:07.298235+00:00",
+      "published": "2026-08-24T16:12:52.100627+00:00",
       "summary": "",
       "title": "Uruguay reportedly faces arbitration threat by German company over ID verification system dispute",
       "url": "https://www.iareporter.com/articles/uruguay-reportedly-at-risk-of-arbitration-against-german-company-over-id-verification-system-dispute/"
@@ -205,7 +198,7 @@
   },
   "icsid": {
     "https://icsid.worldbank.org/news-and-events/comunicados/electricas-de-medellin-ingenieria-y-servicios-sas-v-republic-honduras-0": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-20T00:00:00+00:00",
@@ -214,13 +207,24 @@
       "url": "https://icsid.worldbank.org/news-and-events/comunicados/electricas-de-medellin-ingenieria-y-servicios-sas-v-republic-honduras-0"
     },
     "https://icsid.worldbank.org/news-and-events/news-releases/icsid-and-kcab-sign-cooperation-agreement-strengthen-international": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-08-24T13:46:39.776503+00:00",
       "last_outcome": "provider_error",
       "published": "2026-08-19T00:00:00+00:00",
       "summary": "August 19, 2026. The International Centre for Settlement of Investment Disputes (ICSID) and the Korean Commercial Arbitration Board (KCAB) entered into a cooperation agreement today to advance the use of arbitration, conciliation, mediation, and other alternative mechanisms for the resolution of int",
       "title": "ICSID and KCAB Sign Cooperation Agreement to Strengthen International Dispute Resolution",
       "url": "https://icsid.worldbank.org/news-and-events/news-releases/icsid-and-kcab-sign-cooperation-agreement-strengthen-international"
+    }
+  },
+  "pca_press": {
+    "https://pca-cpa.org/en/news/pca-will-act-as-registry-and-appointing-authority-under-the-new-un-administrative-instruction-for-consultants-and-individual-contractors/": {
+      "attempts": 1,
+      "first_deferred": "2026-08-24T16:12:21.523975+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-08-24T00:00:00+00:00",
+      "summary": "On 1 August 2026, the revised Administrative Instruction of the United Nations for consultants and individual contractors was promulgated . Annexed to the Administrative Instruction are the General Conditions of Contract for the Services of Consultants and Individual Contractors .\nThe General Condit",
+      "title": "The PCA will act as Registry and Appointing Authority under the new UN Administrative Instruction for Consultants and Individual Contractors",
+      "url": "https://pca-cpa.org/en/news/pca-will-act-as-registry-and-appointing-authority-under-the-new-un-administrative-instruction-for-consultants-and-individual-contractors/"
     }
   }
 }

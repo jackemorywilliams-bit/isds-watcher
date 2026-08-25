@@ -13,6 +13,47 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-08-25 (archivist session — eleventh deployment)
+
+*Audited against `ad66a96` (`main`, clean tree, complete history after `git fetch --unshallow`
+— 804 commits; the container's clone arrived shallow at 188 again); paths: `agents/`,
+`prompts/`, `.claude/agents/`, `src/models.py`, `src/sources/`, `HANDOFF.md`, `METHODOLOGY.md`,
+`README.md`, `scripts/`, `docs/`, `views/isds-workflow-3d/workflow.json`.*
+
+- **No contract surface moved.** `git log c4f6825..HEAD -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across 56 commits. Every model, prompt binding and seat
+  contract is as it was on 2026-08-22.
+- **An ORPHANED-COMMIT CITATION on this seat's own surface.** `agents/Project Change Log.md:1021`
+  cited `80ad250` as the commit that froze the vault graph on 2026-07-21. `git cat-file -e
+  80ad250^{commit}` fails and no commit on any branch carries that message; the only commits
+  dated 2026-07-21 in the whole history are a daily council meeting and a sent marker. The entry
+  is annotated in place, not rewritten — see below. Found by applying the taxonomy entry the
+  council routed to this seat the same morning (`analytics/daily-research/2026-08-25.md:1375`).
+- **`scripts/check_currency.py`'s docstring promises a check its code does not implement.**
+  Lines 30-32 describe check **3, COMMITS**: "Any `` `<sha>` `` cited as closing or landing
+  something must exist and be an ancestor of HEAD." The implementation at `:184` iterates only
+  `PR_CITE_RE`, which is `` `<sha>`, PR #N `` — a **bare** sha citation is never checked. That is
+  the guard-level reason the 2026-08-25 orphaned citation and this seat's `80ad250` both went
+  uncaught. [[Workflow Threads]] **D9**.
+- **`scripts/build_graph.py`'s block-replacement defect is wider than C8 recorded.** C8 says the
+  pattern anchors to the *first* start marker. `:198` is `pat.sub(block, text)` with **no count
+  argument**, so it replaces **every** start→end span in the file, and `:195-196` compiles the
+  span non-greedy under `re.DOTALL`. A note that quotes the delimiters in prose loses everything
+  from the quoted marker to the next end marker — each time. C8 refined, citation added.
+- **A stale live sentence in D6, corrected.** The thread asserted that `grep -n "Model runtime
+  fallbacks" HANDOFF.md` "returns nothing — the section has never been written." It now returns
+  `HANDOFF.md:202`, written by hand by this seat on 2026-08-16 — in the same session that opened
+  D6. The original finding is preserved as the dated observation it was; the live claim is
+  corrected. The half that is still true — `record_fallback()`'s only caller is
+  `src/research_brief.py:161` — is stated separately.
+- **Anchors restamped to `ad66a96`** on [[Agent Registry]], [[Claim Map]], [[Project Change Log]]
+  and [[Workflow Threads]].
+- **Carried, unchanged, with dates:** **D6** model gap at day thirteen; **D5** at day twelve
+  (eight of nine definitions still never name their own vault note); **D7** METHODOLOGY counts;
+  **D8** second "Zero-cost" binding; **C11** the site's nine-vs-ten, now nine days live;
+  **F1** the operator-marks branch at day twenty-nine; **C17** the currency false positive,
+  with `pipeline-guards` red on `main` for eight days across thirteen consecutive runs.
+
 ## 2026-08-22 (archivist session — tenth deployment)
 
 *Audited against `c4f6825` (`main`, clean tree, complete history after `git fetch --unshallow`
@@ -1020,6 +1061,15 @@ is written now from `git log`, with each line carrying its hash.
 - **Vault graph frozen.** Dual-view topology applied, aliases and numbered hubs settled.
   `80ad250` ("feat(graph): final pass — apply dual-view topology, aliases, numbered hubs,
   freeze").
+  > **ORPHANED-COMMIT CITATION, annotated 2026-08-25 — the entry stands, the citation does
+  > not.** `git cat-file -e 80ad250^{commit}` fails; `git log --all` finds no commit carrying
+  > that message; the only commits dated 2026-07-21 in the complete 804-commit history are
+  > `7723f98` (daily council meeting) and `433f0a5` (sent marker). `80ad250` was never pushed.
+  > **The work itself did land** — `moc/` and `scripts/build_graph.py` are present and the
+  > 2026-07-18 entry's `b87c838` resolves — so what is unrecoverable is which commit performed
+  > the freeze, not whether it happened. The original wording is left exactly as written,
+  > per the vault's supersede-never-overwrite convention. Taxonomy entry routed from
+  > `analytics/daily-research/2026-08-25.md:1375`.
 
 ## 2026-07-18
 

@@ -31,6 +31,16 @@ per the never-substitute-silently rule at `src/models.py:18` rather than passed 
 directive of 2026-08-03, and editing it to `claude-opus-5` would ratify a substitution nobody
 authorised. [[Workflow Threads]] **D6**.
 
+⚑ **Re-observed a third time 2026-08-25, thirteen days after the officer's first report.**
+Runtime again: `session_context.model` = **`claude-opus-5`**,
+`external_metadata.last_served_model` = **`claude-opus-5`**, against a Model line stating
+Claude Opus 4.8. `git log c4f6825..HEAD -- .claude/agents/ src/models.py` returns **no commit**
+across 56 commits. The Model line stays as written, for the third time and the same reason.
+**What has changed is only the count, and the count is now the whole finding:** three
+observations from this seat, and the officer still disclosing it unasked at
+`analytics/daily-research/2026-08-23.md:723` and `2026-08-25.md:791`. Recorded in
+`HANDOFF.md`'s fallback table, which this seat maintains by hand because nothing else does.
+
 This makes the seat the **second independent confirmation** of the discrepancy
 [[integrity-officer]] has self-reported four times (2026-08-12, 08-14, 08-15, 08-16), and it
 closes the question of whether that seat's report was peculiar to it: it is not. Five seats are
@@ -70,6 +80,31 @@ rules written into its definition:
   verify, don't assume)."
 - "Emory is the operator (never 'Jack' in vault artifacts); professor-facing surfaces stay
   clean of internal jargon."
+
+### Adopted method rules — read the artefact, not the description of the artefact
+
+Three rules this seat adopted from three separate failures. They are one rule in three costumes,
+and each was learned only after the previous one failed to generalise:
+
+1. **2026-08-16** — *A guard's exit 0 licenses only the claim the guard actually tests.* Learned
+   when this seat wrote "no model drift exists" on the strength of `check_models.py` exiting 0,
+   while the integrity officer's contrary report sat in a directory the same session read.
+2. **2026-08-22** — *A commit message is a claim about a change, never a reading of the files
+   after it; a claim-map row is closed only by re-reading every cell it names.* Learned when
+   [[Claim Map]] C11 was recorded as fixed from `44550ca`'s message, and the public site went on
+   saying "nine sources" for five more days.
+3. **2026-08-25** — *A guard's documented check is not a performed check. Before citing a guard
+   as cover for a class of defect, read the code that implements it.* Learned when
+   `scripts/check_currency.py`'s docstring was found to promise a bare-sha citation check
+   (`:30-32`) that the implementation (`:184`) does not perform — and an unresolvable citation
+   sat inside a **tracked** note for a month, on a surface that read as guarded.
+
+**Supersede, never overwrite.** A correction sits beside the original with the original wording
+preserved and dated; dated records are not rewritten to match a later fact. Live statements are
+corrected in place with the correction dated. This convention is also the remedy for
+ORPHANED-COMMIT CITATION (the taxonomy entry routed here 2026-08-25): when a cited commit no
+longer resolves, name the live sha, name the superseded one, and say which is which — do not
+delete the citation and do not silently swap it.
 
 ## Place in the workflow
 
@@ -554,6 +589,30 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+- **2026-08-25 (eleventh deployment)** — Standing every-3-days session, audited against
+  `ad66a96` (`main`, clean tree, complete history — 804 commits after `git fetch --unshallow`;
+  the clone arrived shallow at 188 for the third consecutive session). **Cadence recovered:
+  three days, not six.** Headline: an **ORPHANED-COMMIT CITATION on this seat's own surface** —
+  `agents/Project Change Log.md:1021` has cited `80ad250` as the commit that froze the vault
+  graph on 2026-07-21 since the entry was written; the commit resolves nowhere and no commit on
+  any branch carries its message. Found by applying, to this vault, the taxonomy entry the
+  council adopted and routed to this seat the same morning
+  (`analytics/daily-research/2026-08-25.md:1375`). Annotated in place, never rewritten.
+  **The guard-level cause, opened as D9:** `scripts/check_currency.py:30-32` documents a check
+  on bare `` `<sha>` `` citations that the code at `:184` does not implement — it resolves a sha
+  only when `, PR #N` follows it — so `agents/Project Change Log.md`, a *tracked* note, passed
+  the guard with an unresolvable citation for a month. **Rule adopted: a guard's documented
+  check is not a performed check; before citing a guard as cover for a class of defect, read the
+  code that implements it.** This is the third form of the same rule — 2026-08-16's "a guard's
+  exit 0 licenses only the claim the guard actually tests" and 2026-08-22's "a commit message is
+  a claim about a change, never a reading of the files after it" — and all three reduce to:
+  *read the artefact, not the description of the artefact.* Also: **C8 refined at the code**
+  (`apply_block` calls `pat.sub` with no count, so it replaces **every** marker span, not the
+  first — the blast radius is per-occurrence); a stale live sentence in **D6** corrected (the
+  `HANDOFF.md` fallbacks section it says "has never been written" was written by this seat on
+  2026-08-16 and sits at `:202`); and a false broken-link report traced to `build_graph.py`
+  reading wikilinks inside inline code spans as live links. Full record:
+  `analytics/vault-sessions/2026-08-25.md`.
 - **2026-08-22 (tenth deployment)** — Standing every-3-days session, audited against `c4f6825`
   (`main`, clean tree, complete history — 748 commits after `git fetch --unshallow`). **Six days
   since the previous session, not three: the 2026-08-19 session did not run**, and no

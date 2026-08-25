@@ -23,7 +23,32 @@ Before editing any file in a **Stated in** column, read that claim's row. After 
 update the row in the same change set. A row whose file list is stale is worse than no row,
 because it licenses a partial fix.
 
-**Snapshot anchor — moved 2026-08-22 at the archivist session.** *Audited against `c4f6825`;
+**Snapshot anchor — moved 2026-08-25 at the archivist session.** *Audited against `ad66a96`;
+paths: `METHODOLOGY.md`, `STATE_OF_THE_ANSWER.md`, `lit-review`, `prompts`, `.claude/agents`,
+`scripts/site_templates`.*
+
+**C11 re-read cell by cell again, and it is still DIVERGENT — nine days live now.** Every cell
+opened at `ad66a96`, not inferred from the previous reading and not from any commit message:
+
+| Cell | Reads | State |
+|---|---|---|
+| `scripts/site_templates/how_it_works.html.j2:3` | "the **nine** public sources" | still nine |
+| `scripts/site_templates/how_it_works.html.j2:27` | "the first band is the **nine** public sources checked" | still nine |
+| `docs/how-it-works.html:7` (meta description) | "the **nine** public sources" | still nine |
+| `docs/how-it-works.html:58` | "the first band is the **nine** public sources checked" | still nine |
+| `docs/how-it-works.html:96` (inlined SVG banner) | "THE **10** SOURCES, CHECKED EVERY RUN", ten chips | ten |
+| `README.md:56` | "the **ten** sources" | ten |
+| `views/isds-workflow-3d/workflow.json` | `chips` = **10** | ten |
+| `src/sources.all_sources()` | returns **10** instances | ten |
+
+**One fact worth more than the repetition: `docs/` was rebuilt twice in this window and carried
+the error through both.** `git log c4f6825..HEAD -- docs/how-it-works.html` returns `dc7b207`
+and `719a9fc`, both "chore: weekly digest + state update". The build is faithful and the
+template is the defect, exactly as recorded on 2026-08-22 — so this will survive every future
+rebuild until two sentences in the `.j2` change. Owner remains **[[site-experience]]**;
+escalated, not edited, for the third session.
+
+**Previous snapshot anchor — moved 2026-08-22 at the archivist session.** *Audited against `c4f6825`;
 paths: `METHODOLOGY.md`, `STATE_OF_THE_ANSWER.md`, `lit-review`, `prompts`, `.claude/agents`,
 `scripts/site_templates`.* **C11 re-read cell by cell and found DIVERGENT** — see the row. The
 public site's prose still says nine sources while the chart on the same page says ten.

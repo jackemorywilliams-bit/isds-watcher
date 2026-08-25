@@ -451,6 +451,29 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-08-25** — Registry re-audited against `ad66a96` (`main`, clean tree, complete
+  804-commit history after `git fetch --unshallow`; the container's clone arrived shallow a
+  third consecutive time, at 188 commits). **No roster change and no contract change:**
+  `git log c4f6825..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit** across
+  56 commits; `src/models.py` is unchanged (`CHAIRMAN_MODEL`/`HEAVY_MODEL` `claude-opus-5`,
+  `UTILITY_MODEL`/`FALLBACK_MODEL` `claude-opus-4-8`, `DIGEST_CLASSIFIER_MODEL`
+  `claude-haiku-4-5-20251001`); `check_models.py` exits 0 over twelve cards, which licenses only
+  the claim that three declarations agree with one another. **D6 is at day thirteen**, and this
+  seat's own runtime was queried for the third time: `session_context.model` and
+  `last_served_model` both `claude-opus-5`, against `.claude/agents/obsidian-archivist.md:24`,
+  which states Claude Opus 4.8. The officer continued to report it unasked at
+  `analytics/daily-research/2026-08-23.md:723` and `2026-08-25.md:791`. The qualification block
+  under the roster stands and **the roster rows and Model lines are again left unchanged**, for
+  the reason given on 2026-08-16: rewriting them would ratify a substitution nobody authorised.
+  **D5 unchanged after twelve days** — re-tested by script, eight of nine definitions still
+  never name their seat's own vault note; [[integrity-officer]] remains the one that does.
+  **D8 unchanged** — both "Zero-cost" bindings live. **D9 opened**:
+  `scripts/check_currency.py:30-32` documents a bare-sha commit-citation check that
+  `:184` does not implement, which is why an unresolvable citation on this seat's own
+  `agents/Project Change Log.md:1021` passed the guard for a month. All contract items are
+  Emory's; escalated, not edited. *Audited against `ad66a96`; paths: `.claude/agents/`,
+  `prompts/`, `src/models.py`, `agents/`, `views/isds-workflow-3d/workflow.json`,
+  `scripts/check_models.py`, `scripts/check_currency.py`, `HANDOFF.md`.*
 - **2026-08-22** — Registry re-audited against `c4f6825` (`main`, clean tree, complete
   748-commit history after `git fetch --unshallow`; the container's clone arrived shallow again,
   at 196 commits). **No roster change:** `git log d997c32..HEAD -- .claude/agents/ prompts/

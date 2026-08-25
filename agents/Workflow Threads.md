@@ -16,9 +16,33 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot refreshed — 2026-08-22, at `c4f6825` on `main`, clean tree, on a complete 748-commit
-history (`git fetch --unshallow`).** *Audited against `c4f6825`; paths: `analytics/`, `state/`,
-`agents/`.* Read for this pass: `git merge-base --is-ancestor <tip> origin/main` over all 89
+**Snapshot refreshed — 2026-08-25, at `ad66a96` on `main`, clean tree, on a complete 804-commit
+history (`git fetch --unshallow`).** *Audited against `ad66a96`; paths: `analytics/`, `state/`,
+`agents/`.* Read for this pass: `git merge-base --is-ancestor <tip> origin/main` over all **95**
+remote branches (six orphans, the same six as 2026-08-13, 08-16 and 08-22, no new ones); all
+nine `.claude/agents/` definitions against all nine `agents/` seat notes; `src/models.py`;
+`src/sources/__init__.py` (`all_sources()` returns **10**); `src/sources/bing_news.py`
+(`len(QUERIES) == 12`); `HANDOFF.md`; `METHODOLOGY.md:33`; `README.md:56`;
+`scripts/site_templates/how_it_works.html.j2:3,:27`; `scripts/check_currency.py` and
+`scripts/build_graph.py` read at the code; `views/isds-workflow-3d/workflow.json` (10 chips /
+30 nodes / 44 edges); the 2026-08-23/24/25 daily-research records; and live runs of
+`scripts/check_currency.py` (**9 claims, 4 failed**), `scripts/check_models.py` (exit 0,
+12 cards), `check_lock.py`, `check_headline_lane.py`, `check_claims.py`,
+`check_seen_integrity.py`, `check_telemetry_privacy.py` (all exit 0),
+`node tools/isds-workflow-3d/validate.mjs` (exit 0, 30 cards / 10 chips / 44 edges) and
+`scripts/build_graph.py --dry-run` (**147** notes, **312** edges, 0 orphans, **38**
+would-update).
+
+**The shallow-clone hazard recurred a third time and is now the expected state, not an
+anomaly.** This container's clone arrived at **188** commits; after `git fetch --unshallow`,
+**804**. The caution below is not historical — apply it every session, before any guard that
+resolves a sha.
+
+**Superseded by measurement in this pass, dated figures left standing:** `build_graph --dry-run`
+now plans **38** managed-block updates (34 on 2026-08-22, 27 on 2026-08-13) over **147** notes;
+the growth is the vault's own session records. The remote-branch count is **95**, up from 89.
+
+**Previous snapshot — 2026-08-22, at `c4f6825`, 748-commit history.** Read for that pass: `git merge-base --is-ancestor <tip> origin/main` over all 89
 remote branches, the two `analytics/verification_ledger.jsonl` blobs replayed for event counts,
 all nine `.claude/agents/` definitions against all nine `agents/` seat notes, `src/models.py`,
 `src/sources/__init__.py`, `src/sources/bing_news.py`, `HANDOFF.md`, `METHODOLOGY.md:33`,
@@ -707,9 +731,25 @@ specifically unblocks it.
   note quotes the marker.
 - **Recorded** — [[obsidian-archivist]] audit slice item 6, and the Open drift section of
   [[Project Change Log]].
-- **Next** — Anchor to the last start marker, or skip markers inside code spans and fences
-  (`_CODE_FENCE` is already compiled in the module), or fail loudly on a duplicate start
-  marker. Wants a regression test whose fixture is a note that quotes the marker.
+- **Re-read at the code 2026-08-25 against `ad66a96` — the defect is wider than "the first
+  marker", and still unfixed.** `apply_block` at `:192-200`:
+  `pat = re.compile(re.escape(BLOCK_START) + r".*?" + re.escape(BLOCK_END) + r"\n?", re.DOTALL)`
+  then `return pat.sub(block, text)`. Two separate multipliers, neither previously recorded
+  here. **(i)** `re.DOTALL` with a non-greedy `.*?` means one span runs from a start marker
+  across any number of newlines to the *next* end marker — which is how 92 lines went. **(ii)**
+  `pat.sub` is called with **no count argument**, so it substitutes **every** such span in the
+  file, not just the first. A note quoting the delimiters twice loses two regions in one run.
+  The blast radius is per-occurrence, not per-file.
+- **Same root class as the false broken-link this seat hit today.** The dry run reports
+  `agents/Workflow Threads.md: ['<seat>']` under "links to nonexistent notes" because the link
+  extractor also does not respect inline code spans — a wikilink written inside backticks, as
+  documentation of the syntax, is read as a live link. `_CODE_FENCE` is compiled in the module
+  and used for neither path. **One fix serves both: strip code spans and fences before either
+  scanning for links or matching managed blocks.**
+- **Next** — Skip markers and links inside code spans and fences (`_CODE_FENCE` is already
+  compiled in the module); failing that, anchor to the last start marker and pass `count=1`.
+  Wants a regression test whose fixture is a note that quotes the marker twice — one occurrence
+  would pass under a `count=1` fix that is still wrong.
 - **Owner** — **Emory** authorizes; [[systems-designer]] implements. Machinery, not vault.
 
 ### C9 · PR #33 — METHODOLOGY Parts III and VIII — **CLOSED**
@@ -926,6 +966,16 @@ specifically unblocks it.
   still fails `git merge-base --is-ancestor origin/chore/operator-marks-2026-07-27 origin/main`.
   Recorded on 2026-08-04, 2026-08-13, 2026-08-16 and now here with identical figures; the ledger
   is append-only and operator-owned, so this cannot be closed from this seat.
+
+- **Re-measured 2026-08-25 at `ad66a96` — day twenty-nine, same three counts a fifth time.**
+  Replayed from both blobs again by `event` key rather than carried forward: `origin/main`
+  **37** `claim_created` / **21** `verification_changed` / **37** distinct ids;
+  `origin/chore/operator-marks-2026-07-27` **40** / **38** / **40**. `git log -1 origin/main --
+  analytics/verification_ledger.jsonl` is still `8891c21` (2026-07-27) — **twenty-nine days with
+  no commit touching the ledger on `main`**, and the branch still fails
+  `git merge-base --is-ancestor`. Five identical readings across three weeks is no longer
+  evidence about the ledger; it is a measure of how long seventeen marks Emory made himself have
+  sat outside the record that consumes them.
 
 - **What the gap costs, demonstrated rather than asserted.** `src/integrity_gate.py:150-177`
   replays the ledger and resolves each candidate by **exact claim-id lookup**
@@ -1207,8 +1257,19 @@ specifically unblocks it.
 - **Re-tested 2026-08-16 against `d997c32` — unchanged, three days on.** `git log 8ea2ee1..HEAD
   -- .claude/agents/ prompts/ src/models.py` returns **no commit**. Scripted the check this time
   rather than reading: for each of the nine definitions, does it name its own vault note either
-  as `agents/<seat>.md` or as a `[[<seat>]]` wikilink? **Eight NO, one YES** — the YES remains
+  as `agents/<seat>.md` or as a wikilink naming the seat? **Eight NO, one YES** — the YES remains
   [[integrity-officer]]. Identical result, now re-runnable.
+  > **Reworded 2026-08-25 for a tool defect, not for meaning.** This line previously wrote the
+  > wikilink form as a bracketed `<seat>` placeholder inside backticks. `scripts/build_graph.py`
+  > extracts wikilinks without respecting inline code spans, so it read the placeholder as a
+  > real link and reported this note under "links to nonexistent notes" on every dry run. Same
+  > root class as **C8**: the tool cannot distinguish prose *about* the syntax from the syntax.
+  > The check described is unchanged.
+- **Re-tested 2026-08-25 against `ad66a96` — unchanged, twelve days on.** `git log
+  c4f6825..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit** across 56
+  commits. The scripted check reproduces: **eight NO, one YES**, [[integrity-officer]] still the
+  only definition that names its own note. The adopted method rules each seat is bound by have
+  now sat where that seat does not read for twelve days.
 
 ---
 
@@ -1232,6 +1293,15 @@ specifically unblocks it.
   requires that a runtime substitution be recorded in `HANDOFF.md` via `record_fallback()`.
   That function's **only** caller is `src/research_brief.py:161`. `grep -n "Model runtime
   fallbacks" HANDOFF.md` returns nothing — the section has never been written. Meanwhile
+  > **Corrected 2026-08-25 — the second clause of that sentence stopped being true later the
+  > same day it was written, and read as live for nine days.** `grep -n "Model runtime
+  > fallbacks" HANDOFF.md` now returns **`HANDOFF.md:202`**: this seat wrote the section by
+  > hand on 2026-08-16, in the session that opened this thread, and the "Fixed here" bullet
+  > below says so. The original wording is preserved as the dated finding that motivated D6.
+  > **The first clause is still true and is the live defect:** `record_fallback()`'s only
+  > caller remains `src/research_brief.py:161`, which no council seat enters, so the section
+  > at `:202` is hand-maintained and will silently stop growing the day this seat stops
+  > writing it.
   `scripts/check_models.py` exits **0**, correctly: it compares three declarations to one
   another and has no view of a runtime, which its docstring states plainly.
 - **The vault's own failure, recorded against itself.** On 2026-08-13 this seat wrote "**No
@@ -1262,8 +1332,59 @@ specifically unblocks it.
   src/models.py` returns **no commit**. `scripts/check_models.py` still exits 0 over twelve
   cards, which — per the rule this seat adopted on 2026-08-16 — licenses only the claim that
   three declarations agree with one another, not that any of them is what runs.
+- **Re-measured 2026-08-25 against `ad66a96` — day thirteen, and the third runtime observation
+  from this seat.** `session_context.model` = `claude-opus-5`, `last_served_model` =
+  `claude-opus-5`, against `.claude/agents/obsidian-archivist.md:24`, which states Claude Opus
+  4.8. The integrity officer has continued to report it unasked in the three intervening
+  records: **2026-08-23** (`analytics/daily-research/2026-08-23.md:723`, "REQUESTED
+  `claude-opus-4-8` → ACTUAL `claude-opus-5`. Owed for the ninth time"), **2026-08-24**
+  (`:195`, the analyst's seat reporting REQUESTED = ACTUAL, which is the control), and
+  **2026-08-25** (`:791`, "the gap is the standing one … disclosed unasked, five sessions
+  running"). `git log c4f6825..HEAD -- .claude/agents/ src/models.py` returns **no commit**
+  across 56 commits; `scripts/check_models.py` still exits 0 over twelve cards. **Thirteen days,
+  two seats, one two-line edit.** Nothing here is new except the count, and the count is the
+  finding.
 - **Owner** — **Emory** for the contract decision (`.claude/agents/`, `src/models.py`);
   [[systems-designer]] for the `record_fallback()` wiring and the `workflow.json` cards.
+
+---
+
+### D9 · `check_currency.py` documents a commit-citation check it does not implement
+
+- **State** — Opened 2026-08-25 against `ad66a96`. The module docstring at
+  `scripts/check_currency.py:30-32` lists four checks, the third being: *"COMMITS. Any
+  `` `<sha>` `` cited as closing or landing something must exist and be an ancestor of HEAD.
+  Catches a thread citing a commit from an unmerged branch."* **The code implements no such
+  check.** The only sha-resolution loop, at `:184`, iterates `PR_CITE_RE.findall(body)`, and
+  `PR_CITE_RE` at `:75` is `` `([0-9a-f]{7,40})`,\s*PR #(\d+) ``. A sha is inspected **only**
+  when the literal text `, PR #N` follows it. A bare `` `<sha>` `` — the ordinary way every note
+  in this vault cites a commit — is never resolved. The section comment at `:183` reads "3 & 4",
+  which is how one check came to stand in for two.
+- **This is not hypothetical; it fired twice in one day.** The council's 2026-08-25 record cited
+  `78bc9da` as its own part-1 commit; a stop-hook re-authored the record commits and the live
+  one is `bd90550`, content-identical (`analytics/daily-research/2026-08-25.md:974`). Separately,
+  this seat's own `agents/Project Change Log.md:1021` has cited the unresolvable `80ad250` since
+  2026-07-21. **`agents/Project Change Log.md` is a TRACKED note and the guard passed it every
+  run for a month** — because the citation is bare.
+- **Measured.** Running the promised check by hand over 188 markdown files: 1,350 candidate
+  bare-sha citations after filtering out GitHub Actions run ids and lines that frame the token
+  as a blob, digest or page state; **41 unresolvable in 20 files**, of which **10 sit on this
+  seat's own surfaces**. Nine of those ten are *correct records of a known orphan* — five cite
+  `3d31de8`, which the 2026-08-03 session escalated precisely because it was never pushed, and
+  three pair `1c885b2` with the live `a852b80` in the form "identical content committed earlier
+  as". **The vault's existing convention is already the remedy: name the live sha, name the
+  superseded one, say which is which.** Exactly one citation lacked it — `80ad250` — and it is
+  annotated as of today.
+- **Why it matters more than the count.** The guard's docstring is read as its specification;
+  three sessions have cited check 3 as a reason to trust bare citations. A guard that documents
+  a check it does not run is worse than one that documents nothing, because it converts an
+  unchecked surface into one that reads as checked.
+- **Next** — either implement check 3 (resolve every backticked 7-40 hex token that is not
+  framed as a blob/digest/run id, and fail on unresolvable or non-ancestor), or delete the
+  promise from the docstring. **Implementing it is cheap and the false-positive filters are
+  specified above, measured against this repository.** Do not leave the docstring as-is.
+- **Owner** — [[systems-designer]] (`scripts/` is outside this seat's merge authority), with
+  Emory to confirm the guard should fail rather than warn on an unresolvable citation.
 
 ---
 
@@ -1397,6 +1518,37 @@ specifically unblocks it.
   commit that did not exist when the audit ran — the more serious defect, per this thread's own
   ruling. **This seat is therefore not able to return `main` to green and is not going to
   pretend otherwise.**
+- **Re-measured 2026-08-25 at `ad66a96` — eight days red, thirteen consecutive failed runs.**
+  Last green on `main`: **`a9c86b81`, 2026-08-17T23:36Z** (run #33, PR #89). Every push-triggered
+  run since has failed, and in all thirteen the failing job is **`currency`** while **`guards`
+  passes**. Verified on the newest run (`32847701691`, `e3d2f47`, 2026-08-25T12:27Z): job
+  `currency` fails at step 6, "A note may not claim to be current when git says it is not";
+  job `guards` succeeds on all thirteen steps.
+- **The four failures at `ad66a96`, classified rather than counted.** `STATE_OF_THE_ANSWER.md`
+  (4 commits since `e170ba5`) — genuine, and [[research-analyst]]'s, deliberately left per the
+  2026-08-08 decision. `agents/Claim Map.md` (1 commit, `2e0c19b`, which touched
+  `STATE_OF_THE_ANSWER.md`, a declared path) — genuine and this seat's, **fixed today by
+  restamping to `ad66a96`, the commit actually audited**. `agents/Project Change Log.md`
+  (2 commits, `463f502` and `c1ef8b8` — both this seat's own vault commits) and
+  `agents/Workflow Threads.md` (46 commits of `analytics/` council churn) — genuine staleness
+  today, and after today's restamp they become the **structural false positive** again the
+  moment this session's own commit lands.
+- **Why this session still cannot return `main` to green, stated precisely enough to act on.**
+  `_is_maintenance` at `:93-106` tests `files <= set(TRACKED)` — the five tracked notes only. A
+  real session also writes `agents/obsidian-archivist.md`, `analytics/vault-sessions/<date>.md`
+  and `HANDOFF.md`, none of them tracked, so the session commit is never maintenance and the two
+  notes declaring `agents/` go stale against it immediately. **Restamping to a commit that did
+  not exist when the audit ran remains barred by this thread's own ruling, and today's restamp
+  to `ad66a96` is not that — `ad66a96` is what was read.** Expect three failures after this
+  merge, of which two are this defect: the sixth occurrence.
+- **C17's specified fix verified sound before recommending it a third time.** Widening
+  `_is_maintenance` to "every changed file is a vault record surface" —
+  `agents/`, `analytics/vault-sessions/`, `moc/`, `HANDOFF.md` — clears both false positives.
+  **The narrowness matters and was checked:** the set names `analytics/vault-sessions/`, *not*
+  `analytics/`, so a daily-council commit touching `analytics/daily-research/` and
+  `analytics/council-log.md` still counts as drift and this note still goes properly stale from
+  council activity. Widening to all of `analytics/` would blind the `analytics` path entirely
+  and must not be done.
 - **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one. **This
   is now the longest-standing red on `main` in the project's history and it is blocking nothing,
   which is worse than blocking something.**

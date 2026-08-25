@@ -214,6 +214,11 @@ the facts are filed where the code says to look for them.
 | 2026-08-16 | obsidian-archivist | `claude-opus-4-8` | `claude-opus-5` | session runtime: `session_context.model`, `last_served_model` |
 | 2026-08-15 | research-analyst | `claude-opus-5` | `claude-opus-5` | `analytics/daily-research/2026-08-15.md:497` — no discrepancy |
 | 2026-08-16 | research-analyst | `claude-opus-5` | `claude-opus-5` | `analytics/daily-research/2026-08-16.md:456` — no discrepancy |
+| 2026-08-22 | obsidian-archivist | `claude-opus-4-8` | `claude-opus-5` | session runtime: `session_context.model`, `last_served_model` |
+| 2026-08-23 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-23.md:723` |
+| 2026-08-24 | research-analyst | `claude-opus-5` | `claude-opus-5` | `analytics/daily-research/2026-08-24.md:195` — no discrepancy |
+| 2026-08-25 | integrity-officer | `claude-opus-4-8` | `claude-opus-5` | `analytics/daily-research/2026-08-25.md:791` |
+| 2026-08-25 | obsidian-archivist | `claude-opus-4-8` | `claude-opus-5` | session runtime: `session_context.model`, `last_served_model` |
 
 Every seat reporting a discrepancy is one documented as **Claude Opus 4.8**; every seat
 documented as **Claude Opus 5** reports REQUESTED = ACTUAL. That is consistent with the cause
@@ -221,6 +226,14 @@ being the `model: opus` tier alias resolving to the platform's current Opus, and
 per-seat misconfiguration. Three 4.8-documented seats — `systems-researcher`, `editor`,
 `analytics-officer` — have not been convened in this window and are unobserved. See
 [[Workflow Threads]] **D6**.
+
+**Extended 2026-08-25, and the pattern has not broken in thirteen days.** Eleven observations
+now, across three seats. Every 4.8-documented seat that has been convened reports the gap;
+every 5-documented seat reports agreement; not one counter-example. **This table is maintained
+by hand and will stop growing the day this seat stops writing it** — `record_fallback()`, the
+function `src/models.py:18` directs runtime substitutions to, still has exactly one caller
+(`src/research_brief.py:161`), which no council seat enters. The table is evidence, not
+instrumentation, and should not be read as the latter.
 
 ## Checkpoint — 2026-08-08 master-prompt repair session (uncommitted, branch fix/restore-council-label)
 

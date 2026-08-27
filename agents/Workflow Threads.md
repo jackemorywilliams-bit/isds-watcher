@@ -5,6 +5,8 @@ hub: Council
 ---
 # Workflow Threads
 
+**Currency anchor.** *Audited against `057185a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
 a thread is not here, either it is closed or it could not be sourced — and an entry that

@@ -5,6 +5,8 @@ hub: Council
 ---
 # Agent Registry
 
+**Currency anchor.** *Audited against `93a69f7`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
 established on or before 2026-07-30 (`a852b80`, `16836d1`).

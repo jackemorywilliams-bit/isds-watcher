@@ -5,6 +5,8 @@ hub: Council
 ---
 # Project Change Log
 
+**Currency anchor.** *Audited against `93a69f7`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
 committed, the exact file path *and* the branch it sits on, said in those words rather than

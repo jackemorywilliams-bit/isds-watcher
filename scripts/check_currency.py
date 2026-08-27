@@ -90,20 +90,33 @@ def _is_ancestor(sha: str) -> bool:
                           capture_output=True).returncode == 0
 
 
-def _is_maintenance(sha: str) -> bool:
-    """A commit whose every changed file is itself a tracked note.
+# Paths a commit can touch without altering any substance a note audits: the
+# per-day "sent" markers `daily-update.yml` commits to main several times a day.
+# They fall under `analytics/`, a declared path for Workflow Threads, but record
+# only that an email went out.
+_MARKER_PREFIXES = ("analytics/daily-research/.sent/",)
 
-    Anchors live inside the notes they date, so the commit that moves an anchor
-    always touches a tracked note — counted naively, no fully committed tree can
-    ever pass this guard (the anchor would have to name its own commit). The
-    check survived until 2026-08-11 only because anchor edits sat uncommitted,
-    which is exactly the state this guard exists to end. A commit that changes
-    nothing but tracked notes cannot alter the substance those notes audit, so
-    it is excluded from drift. Any commit touching one other file still counts.
+
+def _is_maintenance(sha: str) -> bool:
+    """A commit whose every changed file changes no substance a note audits.
+
+    Two kinds qualify. (1) Tracked notes: anchors live inside the notes they
+    date, so the commit that moves an anchor always touches a tracked note —
+    counted naively, no fully committed tree can ever pass this guard (the anchor
+    would have to name its own commit). The check survived until 2026-08-11 only
+    because anchor edits sat uncommitted, which is exactly the state this guard
+    exists to end. (2) The per-day sent markers under
+    `analytics/daily-research/.sent/`: a marker-only commit records that a digest
+    email was sent and touches nothing a note reasons about, but it falls under a
+    declared path and would otherwise stale an anchor on any PR opened between a
+    marker commit and the next council close-out. A commit touching even one file
+    of real substance still counts.
     """
     changed = _git("show", "--name-only", "--format=", sha)
     files = {l.strip() for l in changed.split("\n") if l.strip()}
-    return bool(files) and files <= set(TRACKED)
+    if not files:
+        return False
+    return all(f in TRACKED or f.startswith(_MARKER_PREFIXES) for f in files)
 
 
 def _commits_since(sha: str, paths: list[str]) -> list[str]:

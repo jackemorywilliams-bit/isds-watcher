@@ -92,6 +92,50 @@ def test_declared_paths_exist():
                 f"{note} declares audit path {p!r}, which does not exist"
 
 
+# --- maintenance / bookkeeping commits do not count as drift ----------------
+
+def _with_fake_show(monkeypatch, files: str):
+    """Make _is_maintenance see `files` as the commit's changed-file list."""
+    monkeypatch.setattr(cc, "_git", lambda *a: files)
+
+
+def test_a_notes_only_commit_is_maintenance(monkeypatch):
+    """The close-out re-anchor commit touches only tracked notes; excluded."""
+    _with_fake_show(monkeypatch, "STATE_OF_THE_ANSWER.md\nagents/Claim Map.md")
+    assert cc._is_maintenance("x") is True
+
+
+def test_a_sent_marker_only_commit_is_maintenance(monkeypatch):
+    """daily-update.yml commits .sent/ markers to main several times a day; a
+    marker-only commit records that an email went out and stales nothing."""
+    _with_fake_show(monkeypatch, "analytics/daily-research/.sent/2026-08-27")
+    assert cc._is_maintenance("x") is True
+
+
+def test_markers_mixed_with_notes_is_still_maintenance(monkeypatch):
+    _with_fake_show(monkeypatch,
+                    "STATE_OF_THE_ANSWER.md\nanalytics/daily-research/.sent/2026-08-27")
+    assert cc._is_maintenance("x") is True
+
+
+def test_one_real_file_among_markers_still_counts(monkeypatch):
+    """A commit touching even one file of substance is not maintenance."""
+    _with_fake_show(monkeypatch,
+                    "analytics/daily-research/.sent/2026-08-27\nsrc/main.py")
+    assert cc._is_maintenance("x") is False
+
+
+def test_an_empty_commit_is_not_maintenance(monkeypatch):
+    _with_fake_show(monkeypatch, "")
+    assert cc._is_maintenance("x") is False
+
+
+def test_a_substantive_analytics_commit_is_not_maintenance(monkeypatch):
+    """A real analytics record (not a .sent/ marker) must still count as drift."""
+    _with_fake_show(monkeypatch, "analytics/daily-research/2026-08-27-record.json")
+    assert cc._is_maintenance("x") is False
+
+
 def test_check_returns_a_nonzero_claim_count():
     """If the guard checked nothing it would report 0 failures and mean nothing —
     the exact failure mode check_sources.py shipped with."""

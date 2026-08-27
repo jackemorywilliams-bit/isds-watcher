@@ -1,8 +1,8 @@
 {
   "request": "2026-08-27-daily.json",
   "note": "2026-08-27, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY SEAT WAS CONVENED and before any result exists, so commit order proves the pre-registration independently of anything the record later says. It executes the research analyst's SIX rows at 0826-R15 rows A-F, ADOPTED WITH LICENCES VERBATIM, plus the standing A/81/17 UNCITRAL watch fired as a pair with its A/80/17 control, carried by the chairman and disclosed as low-value, plus the G18 tail bracket. Rows G and H of 0826-R15 are CUT TOGETHER on the 2026-08-26 close-out decision 1, on the analyst's own terms ('Proposing G with a dead control would be worse than proposing it uncontrolled, because it would look controlled') and on 0826-O4. NINE targets, three under the cap of 12. The two slots freed by cutting G and H STAY UNUSED, per close-out decision 2: this council's recurring failure is the row fired because a slot existed.",
-  "fetched_at": "2026-08-27T11:26:05.022624+00:00",
-  "environment": "github-actions-runner (run 33067296770)",
+  "fetched_at": "2026-08-27T12:23:49.542519+00:00",
+  "environment": "github-actions-runner (run 33071604491)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,
@@ -109,8 +109,8 @@
       "status": 200,
       "final_url": "https://uncitral.un.org/en/commission",
       "content_type": "text/html",
-      "bytes": 832338,
-      "sha256": "f9712994f5aec4c9a8c55bcfcf0b5b9ff8fa1ef0a0e53d5836889e06492dfe1b",
+      "bytes": 7309,
+      "sha256": "2a1d5ebcc735ffca91248d62dc6e7a620a408eeb204e8c80527bac70b6d97ac6",
       "excerpt": "",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
       "find_matched": false
@@ -122,11 +122,11 @@
       "status": 200,
       "final_url": "https://uncitral.un.org/en/commission",
       "content_type": "text/html",
-      "bytes": 832338,
-      "sha256": "f9712994f5aec4c9a8c55bcfcf0b5b9ff8fa1ef0a0e53d5836889e06492dfe1b",
-      "excerpt": "ssian Federation (submitted on 10 July 2026) (English only) 58 th session, 7 - 23 July 2025, Vienna A/80/17 - Report of the United Nations Commission on International Trade Law Fifty-eighth session A/CN.9/1192 - Provisional agenda, annotations thereto and scheduling of meetings of the fifty-eighth session A/CN.9/1193 - Report of Working Group II (Dispute Settlement) on the work of its eightieth se",
+      "bytes": 7309,
+      "sha256": "2a1d5ebcc735ffca91248d62dc6e7a620a408eeb204e8c80527bac70b6d97ac6",
+      "excerpt": "",
       "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
-      "find_matched": true
+      "find_matched": false
     },
     {
       "url": "https://example.com/",

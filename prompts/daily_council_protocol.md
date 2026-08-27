@@ -69,6 +69,27 @@ forward." Minimum standard for Part V:
 - Quiet days are stated plainly, but the dialogue still happens — "nothing new"
   is a finding the council discusses, not a reason to skip the discussion.
 
+## Close-out: re-anchor the currency notes before merging
+
+Before the meeting branch merges to `main`, run the currency re-anchor as the
+LAST commit, so the day's substantive commits do not land with a stale anchor and
+a red `scripts/check_currency.py`:
+
+    python3 scripts/reanchor.py
+    git add STATE_OF_THE_ANSWER.md "agents/Agent Registry.md" \
+            "agents/Workflow Threads.md" "agents/Claim Map.md" \
+            "agents/Project Change Log.md"
+    git commit -m "chore(currency): re-anchor tracked notes [skip ci]"
+
+This is a SCRIPT call, not an instruction to hand-write anchors — moving anchors
+by memory is the exact failure it replaces (escalation 7, retired 2026-08-27). It
+touches nothing but the tracked notes, so `check_currency.py` counts it as a
+maintenance commit and reads zero drift. The same re-anchor also runs as
+machinery on every PR to `main` (`.github/workflows/reanchor.yml`); this close-out
+step is the belt for the one path that machinery cannot reach — the session's own
+squash-merge, which does not wait for checks. Run both; do not skip this because
+the workflow exists.
+
 ## Precedence
 
 These rules bind the daily routine regardless of any other prompt wording. If the

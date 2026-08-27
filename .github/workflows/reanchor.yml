@@ -1,0 +1,78 @@
+name: reanchor
+
+# Move the tracked notes' currency anchors to the PR's own tip, so a merge does
+# not land on main with stale anchors and a red `currency` guard. This is
+# machinery that runs on every PR to main, not a step a model must remember —
+# which is the whole point, because for two years the anchor was moved by a seat
+# that was TOLD to move it and got it wrong every generation.
+#
+# Honest limit, stated so nobody trusts more than it delivers: the daily council
+# squash-merges its OWN pull request via `gh`, and does not wait for checks. This
+# workflow commits the re-anchor to the PR head, but if the session merges before
+# it lands, the merge is still stale. Two things cover that path and neither is
+# this workflow: (1) the daily-council close-out runs `scripts/reanchor.py`
+# itself, as a deterministic SCRIPT call (not hand-written anchors) — see
+# prompts/daily_council_protocol.md; (2) the operator can make the `currency`
+# check REQUIRED on main, which blocks a squash-merge until this workflow's
+# commit has landed and turned it green. Recommended in the PR that adds this.
+# For operator PRs — reviewed and awaited — this workflow is the primary mover.
+#
+# The commit is NOTES-ONLY by construction: scripts/reanchor.py writes to nothing
+# but the tracked notes, and scripts/check_currency.py excludes a notes-only
+# commit from drift as maintenance. It carries [skip ci] and is pushed with
+# GITHUB_TOKEN, whose pushes do not trigger further workflow runs, so it cannot
+# loop.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reanchor-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  reanchor:
+    # Same-repo only: a fork PR gets a read-only token and cannot push back.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: The mover's own tests (a broken mover moves nothing, or the wrong thing)
+        run: |
+          pip install pytest
+          python -m pytest tests/test_reanchor.py -q
+      - name: Move each tracked note's anchor to HEAD
+        run: python scripts/reanchor.py
+      - name: Commit the notes-only re-anchor, if anything moved
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Anchors already current at HEAD; nothing to commit."
+            exit 0
+          fi
+          git add -A
+          git commit -m "chore(currency): re-anchor tracked notes to HEAD [skip ci]"
+          for attempt in 1 2 3; do
+            git push origin "HEAD:${BRANCH}" && exit 0
+            echo "push attempt ${attempt} failed; rebasing and retrying"
+            git pull --rebase origin "${BRANCH}" && sleep 2
+          done
+          echo "could not push the re-anchor after 3 attempts"; exit 1

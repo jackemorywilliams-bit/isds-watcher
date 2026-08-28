@@ -1,0 +1,100 @@
+{
+  "note": "2026-08-28, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY SEAT WAS CONVENED AND BEFORE ANY RESULT EXISTS, so commit order proves the pre-registration independently of anything the record later says. It executes NEXT STEP 1 of the 2026-08-27 close-out verbatim: the analyst's 0827-R1 through 0827-R5 with his licences as amended at vetting, plus the standing A/81/17 watch pair and the G18 tail. EIGHT TARGETS, FOUR UNDER THE CAP, AND THE FOUR FREED SLOTS STAY UNUSED per that close-out. 0827-R6 (ogel.org) IS CUT and appears nowhere in this file: it is uncontrolled, off the primary route, and the docket-page-before-document-hunt rule puts R1 and R2 ahead of it. Every literal below was fixed in yesterday's record before this session opened; NOTHING here is invented today.",
+
+  "prior_art_check_run_before_this_file_was_written": "METHOD RULE (u) — PROCEDURE, NOT RESEARCH. Run programmatically at branch point origin/main = 6950040 over analytics/fetch-results/*.json: 37 files, 278 records. Route+find counts: ARB/12/1 `Discontinued` 0; ARB/12/1 `WALLGREN-LINDHOLM` 0; ARB/12/1 `Status of Proceeding` 2; ARB/23/3 `Published` 1; ARB/23/3 `Status of Proceeding` 5; commission `A/81/17` 22; commission `A/80/17` 21. Find-literal-anywhere: `Discontinued` 0, `WALLGREN-LINDHOLM` 0, `Published` 1, `A/81/17` 24, `A/80/17` 22. These reproduce the analyst's anchor-58cb26c figures once 2026-08-27's own results are included, which is the difference between the two anchors and is stated rather than left to be inferred. NO ROW HERE IS A RE-FIRE OF AN ESTABLISHED NEGATIVE: the two zero-count rows are first firings, and the four repeat rows are declared controls or the standing watch. The undocs.org / docs.un.org route was MARKED SPENT by the 2026-08-27 close-out (decision 4) and appears NOWHERE in this file.",
+
+  "egress_state_of_the_session_firing_this": "THIS SESSION HAS NO NETWORK, RE-PROBED AT SESSION OPEN RATHER THAN ASSUMED FROM THE PRIOR RECORD. curl to the neutral host https://example.com returned `CONNECT tunnel failed, response 403` at the proxy gateway, and so did https://www.iana.org. The fetch service returned EGRESS_BLOCKED for the same neutral control example.com. NO STATE CHANGE from 2026-08-02 onward. All probes are of the CLIENT, not of any resource — the standing tool-status-as-source-state rule. The relay runner is a DIFFERENT client on a different network and its rows are the only retrieval this council has today.",
+
+  "relay_code_pin": "Verified by blob equality per 0811-O1: scripts/fetch_relay.py at this branch's HEAD is blob 7204847f908d7958584842e523da8ae0ecd08703 — identical to the blob pinned in every batch since 2026-08-13. ALLOWED_HOSTS re-read: icsid.worldbank.org, uncitral.un.org and example.com are all on it. MAX_URLS is 12 and this batch holds EIGHT requested rows, so truncation is impossible and `truncated` must return false.",
+
+  "overwrite_and_selection_check": "FILENAME 2026-08-28-daily.json sorts LAST under newest_request() = sorted(glob('*.json'))[-1], a LEXICOGRAPHIC sort despite the function's name — verified programmatically against the full request directory with this filename in place BEFORE the push. run() writes to out_dir/request_path.name with no existence check; no file of this name exists in analytics/fetch-results/, so no prior reduction can be overwritten ON THIS RUN. ESCALATIONS N6-AS-UPGRADED AND N12 REMAIN LIVE AND UNFIXED: every unskipped push to this branch, the PR merge included, re-fires the workflow, re-selects THIS SAME FILE by the same lexicographic sort, and overwrites its reduction in place. ACCORDINGLY, PRE-REGISTERED HERE: today's record must cite this reduction BY COMMIT SHA, never by path. No code change is made by this session; both defects remain on the operator's PENDING list.",
+
+  "row_numbering_convention": "Row numbers are 1-indexed positions in THIS FILE'S `urls` array, which holds EIGHT entries; urls[8] is the G18 tail bracket. scripts/fetch_relay.py prepends its OWN control row, so the result file will carry NINE records and this file's urls[N] is that file's records[N].",
+
+  "gates_pre_registered_before_any_result_exists": {
+    "G3": "CARDINAL. A refusal, a 404, a timeout, a no_contact or a find_matched:false is a statement about THIS RUNNER'S ACCESS at that instant and may NEVER be restated as a fact about a case, an award, a proceeding, an ICSID publication, a UNCITRAL session, or a document's existence.",
+
+    "G5": "Anything living in an HTML attribute or an href is invisible to this instrument, because the reducer strips tags AND attributes before searching. A null under G5 licenses nothing.",
+
+    "G6": "CORRECTED FORM, per 2026-08-27 close-out decision 1 on 0827-B7 sustained. An undecoded HTML entity, or a U+200B or other zero-width character inside a literal, returns a clean find_matched:false INDISTINGUISHABLE from real absence. The hazard is proven live on this host and is not theoretical. PROVENANCE, CORRECTED: 0824-O13's observation was CLASS-level — it records this insertion in the same CLASS of table/list region on this host, on a DIFFERENT PAGE AND A DIFFERENT PAGE STATE. The prior form of this gate asserted region identity with rows A, B and D of that batch; that false precision is struck and the residue stays live.",
+
+    "G7": "CORRECTED FORM, per 2026-08-26 close-out decision 3 on 0826-R7 sustained. The residual weakness of a space-containing literal is a SPAN-LENGTH effect, not a space effect: the longer the contiguous span a literal must match, the more markup positions can break it. It says SHORTEN THE LITERAL, not de-space it. Rows 1 and 4 are the corrected rule applied: single tokens, minimum span.",
+
+    "G9": "FINAL-URL GATE. If final_url differs from url in any respect, the row is UNINTERPRETABLE as to the case designator: a redirect to a generic or different docket means the window describes some other page. Check final_url before reading any excerpt.",
+
+    "G10": "A DOCUMENT DESIGNATION IS NOT THE TRIBUNAL'S CHARACTERISATION. A row that surfaces the title of a decision establishes that the title exists on that page and establishes nothing about what the decision held.",
+
+    "G13": "A confirmation from a SINGLE page state is a confirmation from a single page state. Case name, designation, date and value contiguous in ONE window is the strong form; anything assembled ACROSS windows or page states is not.",
+
+    "G16": "NO ROW IN THIS BATCH MAY FOUND AN ORDINAL, A COUNT, A DISPOSITION OR A HOLDING. Binding with special force on rows 1 and 2: whatever returns from the ARB/12/1 annulment section is A DOCKET STATEMENT AND A DATE, never a disposition and never a holding. Any git-history count stated anywhere today must carry its anchor commit and its exclusions.",
+
+    "G17": "WINDOW-EDGE GATE, RESCOPED per 2026-08-26 close-out decision 4. The excerpt is a 400-character window whose left edge is placed at match_index - 100. `find_matched` is REDUCED-BODY-SCOPED — wider than window-scoped, narrower than page-scoped — because the reduction that strips tags is LOSSY, which is exactly why G5 and G6 survive as residues. No row may assert a PAGE-scoped absence from a REDUCED-BODY-scoped null.",
+
+    "G18": "TAIL BRACKET. The relay prepends its own control at records[0]; urls[8] is the TAIL control on the same neutral host. If head and tail agree on bytes and sha256, every content row sits inside a verified bracket and control_ok is not head-anchored. If they disagree, the run is bracketed-inconsistent and every row between them is read with that stated.",
+
+    "G20": "BYTE-LENGTH EQUALITY IS NOT PAGE-STATE IDENTITY. Three ARB/23/3 page states observed at 94393 bytes. Any reasoning of the form `same byte count, therefore same page` is unsound on this host and on this docket specifically.",
+
+    "G21": "ADOPTED 2026-08-27, BINDING ON THIS BATCH. GRADE THE MATCH, PRE-REGISTER THE NULL. On this instrument `find_matched` is a boolean over the whole tag-stripped body while the excerpt is centred on the FIRST occurrence, so A MATCH ESTABLISHES OCCURRENCE AND NEVER LOCATION. (a) A conclusion that depends ONLY on occurrence — a positive control, a digest pair, the G18 bracket — MAY be pre-registered on a match. (b) A conclusion that depends on WHERE the literal landed MAY NOT be pre-registered on a match; it is graded at read time under the 0819 rule. Any earlier occurrence, in navigation chrome or in the body, masks every later one, so a match-branch of this kind is one-sided by construction. (c) A null branch MAY be pre-registered, because added text cannot remove an occurrence and chrome therefore cannot produce a false null. A NULL IS CHROME-SAFE, NOT SAFE. (d) Where a presence-branch is graded at read time, the licence states in advance what this project's chrome holdings for that host do and do not cover, so the exposure is on the record before the result is.",
+
+    "G21_null_residue_list_is_FOUR_sources_not_two": "Per 2026-08-27 close-out decision 2, and binding on every null below. A clean find_matched:false is jointly consistent with: (i) G5, attribute-only rendering; (ii) G6, a zero-width character or undecoded entity inside the literal; (iii) <script>/<style> BLOCK DELETION — _TAG_RE strips those blocks CONTENTS INCLUDED before general tag-stripping; and (iv) NON-TEXTUAL CONTENT TYPE — excerpt_of returns empty and find_matched is false regardless of the literal. Sources (iii) and (iv) were absent from this council's residue statements for twenty-six days and were found by reading the instrument's own source. NOTHING ALREADY RECORDED IS FALSIFIED: every row this council has banked a null on is text/html. Any null row below must state all four.",
+
+    "G22": "ADOPTED 2026-08-27. PAGE-STATE INEQUALITY DOES NOT LOCALISE CHANGE. A change in sha256 or bytes DOES NOT LOCALISE THE CHANGE AND IS NOT BY ITSELF EVIDENCE THAT ANY PARTICULAR SCOPED REGION CHANGED. Corollary: a digest series is not a change-detection series for a scoped region unless the window itself is compared. This is the converse of G20 and does not weaken it.",
+
+    "G23_case_insensitivity": "Carried from 2026-08-27 close-out decision 3 and stated as a gate because it cuts BOTH ways. The search is case-insensitive: body.lower().find(find.lower()). A NULL therefore establishes that no case variant of the literal occurs in the reduced body — stronger than the record has been claiming. A MATCH correspondingly fires on ANY case variant ANYWHERE, and no row may read a match as carrying the literal's own casing."
+  },
+
+  "row_licences_fixed_here_before_any_result_exists": {
+    "row_1_ARB_12_1_Discontinued": "0827-R1 as amended at vetting. PROVENANCE, per 0827-B11 sustained and carried into this cell as next step 1 requires: THIS LITERAL IS SEEDED BY AN UNRETRIEVED THIRD-PARTY LISTING TITLE (2026-08-27 Part V search 2, ogel.org / transnational-dispute-management.com) AND BY NOTHING IN THIS REPOSITORY. PRE-REGISTERED: a match corroborates the ICSID docket's own text and corroborates NOTHING about that title, about which proceeding it names, or about its date. Rationale: single token, minimum span, G7 corrected form applied. It targets the (b) annulment block's Status of Proceeding VALUE rather than its label, because the label mis-anchors — `Status of Proceeding` and `Outcome of Proceeding` both occur first in the (a) block, so neither can reach (b). `Discontinued` is chosen because it cannot occur in the (a) block, whose value is `Concluded`. LICENCE: G10 and G16 bind absolutely; whatever returns is a docket statement and a date, never a disposition. BRANCH, GRADED UNDER G21(b) AND NOT PRE-REGISTERED ON THE MATCH: (i) match landing in the (b) annulment block -> the docket carries a status value for the annulment proceeding and the window reports it; (ii) match landing in site chrome -> ROW IS UNINFORMATIVE and is reported as uninformative, no branch conclusion follows; (iii) NULL, PRE-REGISTERED UNDER G21(c) -> the token is absent from the reduced body in every case variant per G23, with all FOUR G21 residues stated. EXPOSURE DECLARED IN ADVANCE per G21(d): this project's ICSID chrome holdings are ONE capture (2026-08-27 records[1]) and 400 characters of chrome is not a chrome census, so branch (ii) is live and its probability CANNOT be bounded.",
+
+    "row_2_ARB_12_1_WALLGREN_LINDHOLM": "0827-R2. THE WINDOW SLIDE. Offset of this literal in 2026-08-27 records[5].excerpt is 328, so the left edge moves right by 228 characters in that coordinate frame, yielding roughly 228 characters of unseen material past `Party Representatives Claimant(s): Debevoise` — where the (b) status/outcome lines should sit on the (a) block's own layout. A RIGID DESIGNATOR: a personal name the field cannot paraphrase away, chosen over `Debevoise` (offset 391 but plausibly also in the (a) block) and over `Composition of ad hoc Committee` (no slide gain). LICENCE: G16 — docket statements and dates only. MIS-ANCHORING RISK STATED BEFORE THE RESULT per the 2026-08-05 rule: if this name occurs earlier on the page, for instance in the original tribunal's composition, the row MIS-ANCHORS and is A PROBE, NOT A NULL. I have no basis to exclude that and do not pretend to. NULL -> the name is absent from the reduced body, which would CONTRADICT 2026-08-27 records[5] and would be an INSTRUMENT ALARM, not a docket finding.",
+
+    "row_3_ARB_12_1_Status_of_Proceeding": "0827-R3, MANDATORY CONTROL. Same-URL, same-run control and digest pair for rows 1 and 2, per 0821-E8. Third observation in this docket's series. Its window is known byte-identical across two page states, so it is also the WINDOW-CONSTANCY CHECK for G22. NO BRANCH PRE-REGISTERED: a digest difference here is expected and licence-free, and under G22 it does not localise anything.",
+
+    "row_4_ARB_23_3_Published": "0827-R4. REPLICATION OF THE SINGLE MOST LOAD-BEARING NULL THIS PROJECT HOLDS, ON A FRESH PAGE STATE. The entire 2026-08-27 ARB/23/3 reading rests on ONE observation of ONE token on ONE state (ac081002159b9110), and next step 4 requires replication before anything is built on it. LICENCE: never a docket fact; G17 rescoped — a null is reduced-body-scoped, never page-scoped. BRANCH, PRE-REGISTERED UNDER G21(c) BECAUSE IT IS A NULL BRANCH: null again on a DIFFERENT state -> the absence is state-independent across two states and the residue narrows, with all four G21 sources still stated and G23's case-insensitivity carried. MATCH -> the 2026-08-27 reading is WITHDRAWN SAME-DAY and the change is the finding; no location claim is pre-registered on it, per G21(b).",
+
+    "row_5_ARB_23_3_Status_of_Proceeding": "0827-R5, MANDATORY CONTROL. Control and digest pair for row 4, and the sixth point in the only window-constancy series this project holds. ROWS 4 AND 5 TRAVEL TOGETHER OR NOT AT ALL, per next step 4 and the analyst's own cut rule: a replication without its digest pair would be compared against an unknown state, which 0825-R10 forbids, and would look controlled while not being controlled.",
+
+    "rows_6_and_7_the_standing_A_81_17_watch": "The standing daily watch in its established form, fired EXACTLY ONCE TODAY, and this is the only batch of the day. urls[6] find `A/81/17` paired with urls[7] find `A/80/17`, same URL, same run, same file. THE UNIT IS PAGE STATES, NOT ROWS. The corrected population per 2026-08-27 next step 3 is 24 rows / 22 commission-page nulls INCLUDING 2026-08-27, 23 / 21 at the anchor, and the definition travels with whichever figure is quoted. G3 IS BINDING AND IS RESTATED BECAUSE THIS ROW INVITES THE BREACH: the string's absence is a fact about this page state and this runner, and is NOT a statement that the 59th session's report does not exist, is late, or has not been issued.",
+
+    "row_8_the_G18_tail": "Neutral-host tail bracket. Occurrence-only, so it is pre-registerable on a match under G21(a)."
+  },
+
+  "what_is_cut_and_why": "0827-R6 (https://www.ogel.org/... find `discontinuance`) IS CUT, per 2026-08-27 next step 1. It is UNCONTROLLED — ogel.org has never been fired by this project on any path in 278 records, so no baseline exists and a null would be uninterpretable — it is off the primary route, and the docket-page-before-document-hunt rule puts rows 1 and 2 ahead of it. THE FOUR FREED SLOTS STAY UNUSED. Nothing is substituted into them.",
+
+  "what_this_batch_is_not": "It is not a discovery channel. It does not ask what any decision held. NO ROW MAY FOUND A STATEMENT ABOUT THE OUTCOME OF THE ARB/12/1 ANNULMENT, which is the open gap these rows serve and which remains UNOBSERVED until a window shows it. The Tethyan award paragraphs (¶¶ 1283, 1288, 1327–1330, 1331–1333) are MISSING FROM THE PUBLICLY ACCESSIBLE REDACTED VERSION per this project's own auditor's note — that is a REDACTION, NOT AN ACCESS FAILURE, and NO RELAY ROW, TODAY OR EVER, CAN ANSWER WHAT THEY HOLD. That question is N15-class library retrieval on Ferguson's five-item list and is not asked here.",
+
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/1",
+      "find": "Discontinued"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/1",
+      "find": "WALLGREN-LINDHOLM"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/1",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/3",
+      "find": "Published"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/3",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/81/17"
+    },
+    {
+      "url": "https://uncitral.un.org/en/commission",
+      "find": "A/80/17"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

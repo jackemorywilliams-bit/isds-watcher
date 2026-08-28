@@ -1,8 +1,8 @@
 {
   "request": "2026-08-28-daily.json",
   "note": "2026-08-28, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY SEAT WAS CONVENED AND BEFORE ANY RESULT EXISTS, so commit order proves the pre-registration independently of anything the record later says. It executes NEXT STEP 1 of the 2026-08-27 close-out verbatim: the analyst's 0827-R1 through 0827-R5 with his licences as amended at vetting, plus the standing A/81/17 watch pair and the G18 tail. EIGHT TARGETS, FOUR UNDER THE CAP, AND THE FOUR FREED SLOTS STAY UNUSED per that close-out. 0827-R6 (ogel.org) IS CUT and appears nowhere in this file: it is uncontrolled, off the primary route, and the docket-page-before-document-hunt rule puts R1 and R2 ahead of it. Every literal below was fixed in yesterday's record before this session opened; NOTHING here is invented today.",
-  "fetched_at": "2026-08-28T11:23:59.287046+00:00",
-  "environment": "github-actions-runner (run 33166965836)",
+  "fetched_at": "2026-08-28T12:14:19.773661+00:00",
+  "environment": "github-actions-runner (run 33170223625)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

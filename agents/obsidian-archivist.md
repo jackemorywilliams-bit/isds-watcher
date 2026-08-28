@@ -589,6 +589,38 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+- **2026-08-28 (twelfth deployment)** — Standing every-3-days session, audited against
+  `b7d973d` (`main`, clean tree, complete history — 846 commits after `git fetch --unshallow`;
+  the clone arrived shallow at 186 for the **fourth** consecutive session, which is now the
+  expected state and not an anomaly). Cadence held at three days. **The currency guard is green
+  on `main` for the first time since 2026-08-17**, ending a seventeen-run red streak — fixed by
+  `scripts/reanchor.py` (`a8bccbb`) and its CI wiring (`93a69f7`), not by this seat, and not by
+  C17's actual remedy: `_is_maintenance("cb762ed")` still returns `False`, so the false positive
+  is masked rather than removed. **New finding, [[Workflow Threads]] D10** — the fail-closed
+  humanizer rule, recorded as binding on two seats, cites
+  `working/benavides-comment-replies-2026-08-08.md:5-6`, a path absent from the working tree and
+  from every object reachable from every ref. Marked at the registry row; rule left standing,
+  citation flagged. **Twelve stale "(uncommitted)" citations corrected** across
+  `agents/Agent Registry.md:430,431,433` and `agents/Workflow Threads.md` B6, B7, C13 and C14 —
+  all twelve paths landed at `667772c` (2026-08-11), with
+  `.github/workflows/pipeline-guards.yml` at `e8931ac`; each was resolved individually precisely
+  because the thirteenth is the D10 file, and a blanket replacement would have asserted that a
+  file which has never existed had landed. **Three ambiguous thread IDs** (`B5`, `C11`, `C12` each
+  head two threads; [[Claim Map]] runs a third `C11`) disambiguated with a table rather than
+  renumbered, since the IDs are cited across the record. **D9 sharpened**: all 35 unresolvable
+  bare-sha tokens in the tracked notes are *correctly written* — blobs, run ids, ledger claims, or
+  orphans the notes declare as orphans — so the fix must key on citation modality, not on every
+  hex token. **A claim written this session was withdrawn before merge**: that `93a69f7` was a
+  counter-example to D5. Opening `.claude/agents/council-chairman.md` falsified it — the chairman's
+  definition does not enumerate `prompts/daily_council_protocol.md`, and only
+  `.claude/agents/analytics-officer.md:15` does — making that commit a fresh **instance** of D5.
+  The error and its correction are both recorded in D5, because the shortcut that produced it
+  (asserting a read path without opening the file) is the behaviour D5 exists to catch.
+  Orphan check: 7 of 100 branches, one new (`origin/council/2026-08-26`), carrying a `.sent/`
+  marker only — **no substantive work stranded**. No external PKM research this session; the
+  budget went to the agent-context audit and the citation sweep, and that is recorded rather than
+  dressed up as outside practice.
+
 - **2026-08-25 (eleventh deployment)** — Standing every-3-days session, audited against
   `ad66a96` (`main`, clean tree, complete history — 804 commits after `git fetch --unshallow`;
   the clone arrived shallow at 188 for the third consecutive session). **Cadence recovered:

@@ -5,7 +5,7 @@ hub: Evidence Ledger
 ---
 # Claim Map
 
-**Currency anchor.** *Audited against `a4e9997`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `4135fd8`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 **What this is.** One row per factual claim the project makes *about itself*, listing
 **every file that states it** and **what each file currently says**. It exists because the
@@ -29,7 +29,27 @@ because it licenses a partial fix.
 paths: `METHODOLOGY.md`, `STATE_OF_THE_ANSWER.md`, `lit-review`, `prompts`, `.claude/agents`,
 `scripts/site_templates`.*
 
-**C11 re-read cell by cell again, and it is still DIVERGENT — nine days live now.** Every cell
+**Snapshot read — 2026-08-28 at the archivist session.** *Audited against `b7d973d`; paths:
+`METHODOLOGY.md`, `STATE_OF_THE_ANSWER.md`, `lit-review`, `prompts`, `.claude/agents`,
+`scripts/site_templates`.*
+
+**C11 re-read cell by cell a fourth time, and it is still DIVERGENT — ELEVEN days live.** Every
+cell reopened at `b7d973d`; nothing below is carried from the 2026-08-25 reading. All four "nine"
+cells read exactly as they did then — `scripts/site_templates/how_it_works.html.j2:3` and `:27`,
+and the built `docs/how-it-works.html:7` and `:58` — while `src/sources.all_sources()` returns
+**10**, `views/isds-workflow-3d/workflow.json` carries **10** chips, `README.md:56` says "ten",
+and `node tools/isds-workflow-3d/validate.mjs` passes at **10 source chips / 30 cards / 44
+edges**. `git log ad66a96..HEAD -- scripts/site_templates/` returns **no commit**: the template
+has not been touched since `2026-08-07`, ten days before GDELT joined the fleet at `44550ca`
+(2026-08-17).
+
+**This is the professor-facing surface, and that is the reason it is named first every session.**
+The divergence is not internal bookkeeping — `docs/how-it-works.html` is the page Dr. Benavides
+reads, and on that one page the prose says nine while the chart directly below it says ten. It is
+a two-sentence edit in one `.j2` file. Owner remains **[[site-experience]]**; escalated, not
+edited, for the **fourth** consecutive session.
+
+**Previous reading — 2026-08-25.** *C11 re-read cell by cell again, and it is still DIVERGENT — nine days live now.* Every cell
 opened at `ad66a96`, not inferred from the previous reading and not from any commit message:
 
 | Cell | Reads | State |

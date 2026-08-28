@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `a4e9997`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `4135fd8`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,83 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-08-28 (archivist session — twelfth deployment)
+
+*Audited against `b7d973d` (`main`, clean tree, complete history after `git fetch --unshallow` —
+846 commits; the container's clone arrived shallow at 186, the fourth consecutive time); paths:
+`agents/`, `prompts/`, `.claude/agents/`, `src/models.py`, `src/sources/`, `HANDOFF.md`,
+`METHODOLOGY.md`, `README.md`, `scripts/`, `docs/`, `views/isds-workflow-3d/workflow.json`.*
+
+- **The currency guard is GREEN on `main` for the first time since 2026-08-17.** The red streak
+  was **seventeen** consecutive failed push-triggered `pipeline-guards` runs, run #34 (`b34f01e`,
+  2026-08-18) through run #59 (`05cde8f`, 2026-08-27T12:23Z); it ended at run #61 (`6950040`,
+  2026-08-27T19:20Z, PR #108) and held at run #62 (`26fafd2`, 2026-08-28T12:13Z). Locally
+  `check_currency.py` reports **9 claims, 1 failed**, down from 4 on 2026-08-25. The fix was
+  `scripts/reanchor.py` (`a8bccbb`) plus CI wiring (`93a69f7`, `.github/workflows/reanchor.yml`);
+  escalation 7 retired at `2e87700`.
+- **But C17's root cause is untouched, and the distinction is recorded rather than glossed.**
+  `_is_maintenance` was widened only to `analytics/daily-research/.sent/`. Verified by direct call
+  at `b7d973d`: `check_currency._is_maintenance("cb762ed")` — the 2026-08-25 session commit —
+  still returns **False**. The false positive is now *masked* by machinery that moves anchors
+  forward, not removed. C17 refined, not closed.
+- **A binding rule cites a file that has never existed — NEW, [[Workflow Threads]] D10.**
+  `agents/Agent Registry.md` records the fail-closed-humanizer rule as binding on
+  [[integrity-officer]] and [[research-editor]], citing only
+  `working/benavides-comment-replies-2026-08-08.md:5-6`. That path is absent from the working
+  tree, from `git log --all`, from `git rev-list --all --objects`, and from
+  `origin/fix/restore-council-label` — the branch its neighbours name. Marked at the registry row;
+  the rule left standing, the citation flagged unresolvable.
+- **Thirteen "(uncommitted)" citations audited; twelve were stale by seventeen days and are
+  corrected.** Every path cited "(uncommitted, `fix/restore-council-label`)" across
+  [[Agent Registry]] and [[Workflow Threads]] landed on `main` at `667772c` (2026-08-11) — the
+  locked-set files, `instrument-map`, `retrospective-audit`, `state-space-resolution`,
+  `check_lock.py`, `src/config.py`, the v2/triage prompts — with
+  `.github/workflows/pipeline-guards.yml` last touched at `e8931ac` (2026-08-17). Corrected in
+  place with the landing hash; the dated observations that were true when written are preserved
+  as history. The thirteenth is the D10 file above, so a blanket correction would have introduced
+  a fresh error — which is why each was resolved individually.
+- **Three thread IDs are ambiguous, and one citation had already gone astray.** `B5`, `C11` and
+  `C12` each head two unrelated threads in [[Workflow Threads]]; [[Claim Map]] runs a third
+  `C11`. `agents/Project Change Log.md:55` carries the bare pointer "**C11** the site's
+  nine-vs-ten", which resolves to neither Workflow Threads thread — the correct target is
+  [[Claim Map]] **C11**, as `:72` states. A disambiguation table now heads the threads note;
+  deliberately **not** renumbered, since the IDs are cited across the record. `C15` and `C16`
+  have never existed.
+- **D5 gained a fresh instance from the very commit that fixed the currency guard.** `93a69f7`
+  wrote a merge-time close-out rule into `prompts/daily_council_protocol.md`. The council
+  chairman's definition — the seat that runs the meeting and performs the merge — does not
+  enumerate that file; `.claude/agents/analytics-officer.md:15` is the only definition of nine
+  that names it. Day fifteen: still eight NO, one YES.
+- **C11 (the public site) is DIVERGENT for the eleventh day, and it is the professor-facing
+  page.** `scripts/site_templates/how_it_works.html.j2:3,:27` and the built
+  `docs/how-it-works.html:7,:58` still say "the **nine** public sources" while
+  `all_sources()` returns **10**, `workflow.json` carries **10** chips, `README.md:56` says
+  "ten", and the chart inlined on that same page renders ten. `git log ad66a96..HEAD --
+  scripts/site_templates/` returns **no commit**. Owner [[site-experience]]; fourth consecutive
+  escalation.
+- **Orphan check: 7 of 100 remote branches, one new since 2026-08-25, and it is benign.**
+  `origin/council/2026-08-26` joins the six known orphans. Its only unlanded commit is `a0d2600`,
+  touching solely `analytics/daily-research/.sent/2026-08-26` — and that marker is present on
+  `main`. Same shape as `origin/council/2026-08-13`. **No substantive work is stranded**, which is
+  this session's central negative finding and is stated as a measurement, not a reassurance.
+- **Carried, unchanged, with dates:** **D7** METHODOLOGY still nine channels and still "eight"
+  Bing queries against `len(QUERIES) == 12`, day six; **D8** both zero-cost bindings intact, day
+  six, twenty days after `README.md:6` was corrected; **D6** model gap, `record_fallback()`'s only
+  caller still `src/research_brief.py:161`; **D9** docstring check 3 still unimplemented, now with
+  an exact specification (see below); **F1** the operator-marks branch at day thirty-two.
+- **D9 sharpened by measurement rather than repetition.** Resolving every backticked 7–40 hex
+  token across the five tracked notes and `HANDOFF.md` returns **35 unresolvable**, and reading
+  each in context shows **all 35 are correctly written** — framed as a blob, a ledger-claim id, an
+  Actions run id, or an orphan the note itself declares an orphan. **Zero unannotated orphan
+  citations remain.** A naive bare-sha check would therefore fire 35 false positives on a clean
+  tree; the docstring's own wording ("cited **as closing or landing** something") is the correct
+  specification. Recorded so the fix is scoped to citation modality.
+- **Guards run today at `b7d973d`:** `check_models.py` exit 0 over 12 cards; `check_lock`,
+  `check_headline_lane`, `check_claims`, `check_seen_integrity`, `check_telemetry_privacy` all
+  exit 0; `node tools/isds-workflow-3d/validate.mjs` exit 0 (30 cards / 10 chips / 44 edges, SVG
+  fresh); `build_graph.py --dry-run` 151 notes, 326 edges, 0 orphans, 42 would-update, 3 broken
+  wikilinks all under `think-tank/`.
 
 ## 2026-08-25 (archivist session — eleventh deployment)
 

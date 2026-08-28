@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `a4e9997`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `4135fd8`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -17,6 +17,29 @@ research log, and the optimization log already hold, laid out end to end so the 
 work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
+
+**READ THIS BEFORE CITING A THREAD BY ID — three IDs in this note are ambiguous, found
+2026-08-28.** `grep -oE "^### (C|D|F|B)[0-9]+ " | sort | uniq -c` returns a count of two for
+**B5**, **C11** and **C12**: each label heads two unrelated threads, opened on different dates by
+different sessions.
+
+| ID | First thread | Second thread |
+|---|---|---|
+| **B5** | `check_currency.py` covers 5 of 13 anchored notes | The prose statements the publication gates left behind (2026-08-08) |
+| **C11** | CI wiring of the guards (2026-08-08) | Taxonomy entry 27 was adopted twice |
+| **C12** | Merge-or-skip before the Monday run (2026-08-08) | `build_graph` is whole-vault vs. this seat's merge authority |
+
+**This is not cosmetic — it has already misdirected a citation.** [[Claim Map]] also runs a **C11**
+(the public site's nine-vs-ten source count), and `agents/Project Change Log.md:55` carries the
+pointer "**C11** the site's nine-vs-ten" with no note named, which resolves to *neither* thread
+above. `:72` states it correctly as [[Claim Map]] **C11**. **Cite an ID together with the note
+that holds it** — "[[Claim Map]] C11", "[[Workflow Threads]] D9" — never the bare label.
+
+**Deliberately not renumbered.** These IDs are cited across the change log, the daily-research
+records and the seat notes; renumbering would silently break every inbound citation and gain
+nothing a disambiguation table does not. Note also that **C15 and C16 have never existed** — the
+sequence runs C14 → C17 — so a search that returns nothing for them is correct, not a gap in the
+record.
 
 **Snapshot refreshed — 2026-08-25, at `ad66a96` on `main`, clean tree, on a complete 804-commit
 history (`git fetch --unshallow`).** *Audited against `ad66a96`; paths: `analytics/`, `state/`,
@@ -518,8 +541,9 @@ re-verified open, and section F is new.
 - **Recorded** — `src/rings.py`, `src/classify_v2.py`, `src/triage.py`, `src/headline_lane.py`,
   `src/config.py`, `prompts/classifier_v2.txt`, `prompts/triage.txt`,
   `scripts/check_headline_lane.py`, `tests/test_rings.py`, `METHODOLOGY.md:69`,
-  `analytics/state-space-resolution-2026-08-09.md` (all uncommitted,
-  `fix/restore-council-label`).
+  `analytics/state-space-resolution-2026-08-09.md` — *all seven landed on `main` at `667772c`
+  (2026-08-11); the "all uncommitted, `fix/restore-council-label`" note was true on 2026-08-09
+  and false from 2026-08-11, corrected 2026-08-28.*
 - **Next** — (1) the tail-audit stub; (2) **the validation decision** that could ever set
   `STATE_MODEL_V2_PUBLICATION_READY` — which is gated on the locked set (**B7**) and therefore
   on retrieval (**C13**), so it is not a build task; (3) primary retrievals; (4) operator
@@ -555,8 +579,10 @@ re-verified open, and section F is new.
   ledger**, so they neither advance nor appear in these counts. Recorded so the day's genuine
   retrieval is not mistaken for progress on the locked set.
 - **Recorded** — `analytics/locked_set/SCHEMA.md:1-11` and the file table; `RETRIEVAL_LEDGER.md`;
-  `scripts/check_lock.py`; `.github/workflows/pipeline-guards.yml:130-131` (all uncommitted,
-  `fix/restore-council-label`).
+  `scripts/check_lock.py`; `.github/workflows/pipeline-guards.yml:130-131` — *all landed on
+  `main`: the locked-set files and `check_lock.py` at `667772c` (2026-08-11), the workflow last
+  touched at `e8931ac` (2026-08-17). The "all uncommitted" note was true on 2026-08-09 and false
+  from 2026-08-11; corrected 2026-08-28.*
 - **Next** — Nothing may be added until the corresponding primary document is retrieved and its
   pinpoint verified; retrieval is **C13** below and is Emory's. The guard half is complete.
 - **Owner** — [[research-analyst]] for item drafting **after** retrieval; Emory for retrieval.
@@ -817,8 +843,11 @@ specifically unblocks it.
   Decision on Jurisdiction ¶ 185; the Vanda **Federal Circuit** docket; the Landreau award;
   the EMA Policy 0070 post-2023 sequence; Lentner, 34 ICSID Rev. 569 (2019); the
   *OI European Group v. Venezuela* award; and the IBA/ICC/Aceris evidence instruments).
-- **Recorded** — `analytics/locked_set/RETRIEVAL_LEDGER.md` (uncommitted,
-  `fix/restore-council-label`).
+- **Recorded** — `analytics/locked_set/RETRIEVAL_LEDGER.md`, landed on `main` at `667772c`
+  (2026-08-11). *The "uncommitted, `fix/restore-council-label`" note was true when this thread
+  was opened on 2026-08-08 and false from 2026-08-11; corrected 2026-08-28.* Re-read at
+  `b7d973d`: thirteen data rows, **2 RETRIEVED** (both *Vanda* Fed. Cl. slip opinions),
+  **3 BLOCKED**, **8 QUEUED** — the counts in **State** above still hold.
 - **Next** — Library access, one pass, capturing a preserved `source_snapshot` for each. **None
   of these may be converted to verified by inference, and none has been.** The three BLOCKED
   rows need a decision rather than effort: a paywall and a broken text layer are not solved by
@@ -834,7 +863,8 @@ specifically unblocks it.
   the machine scores are already on the page. Ten of the 13 rest on paywalled bodies, so
   `cannot_assess` is the expected outcome for most; the informative sample may be **3–4 items**,
   and the protocol says to report it with that limit stated **or not at all**.
-- **Recorded** — `analytics/retrospective-audit-2026-08-08.md` §6 (uncommitted).
+- **Recorded** — `analytics/retrospective-audit-2026-08-08.md` §6, landed on `main` at
+  `667772c` (2026-08-11); "uncommitted" corrected 2026-08-28.
 - **Next** — Emory's, 13 codings, recorded through `scripts/verify_digest.py` so each lands in
   the append-only ledger under the operator's identity. **One defect to route around:** that
   script's URL-dedupe presents only the 2026-06-10 Telefónica verdict, and the 06-09 verdict
@@ -1272,6 +1302,37 @@ specifically unblocks it.
   commits. The scripted check reproduces: **eight NO, one YES**, [[integrity-officer]] still the
   only definition that names its own note. The adopted method rules each seat is bound by have
   now sat where that seat does not read for twelve days.
+- **Re-tested 2026-08-28 at `b7d973d` — day fifteen, and one read path DID move.** The scripted
+  check reproduces unchanged: **eight NO, one YES**, [[integrity-officer]] still the only
+  definition naming its own note. But `git log ad66a96..HEAD -- .claude/agents/ prompts/
+  src/models.py` no longer returns nothing — it returns **`93a69f7`** (2026-08-27), which added a
+  "Close-out: re-anchor the currency notes before merging" section to
+  `prompts/daily_council_protocol.md`. No `.claude/agents/` definition and no model changed;
+  `scripts/check_models.py` still exits 0 over twelve cards.
+- **And that commit is a FRESH INSTANCE of this exact defect, not an exception to it.** The
+  close-out rule `93a69f7` added is addressed to whoever merges the daily meeting branch: *"Before
+  the meeting branch merges to `main`, run the currency re-anchor as the LAST commit."* It was
+  written into `prompts/daily_council_protocol.md`. **The council chairman's definition does not
+  enumerate that file.** `.claude/agents/council-chairman.md` lists its canonical training
+  explicitly and exhaustively — `prompts/council_chairman.txt`, `prompts/council_calibration.md`,
+  `prompts/council_reconvene.txt`, and the live state it stewards — and
+  `daily_council_protocol.md` is in none of them; `grep -rn "daily_council_protocol"
+  .claude/agents/council-chairman.md agents/council-chairman.md` returns **nothing**.
+- **Exactly one of the nine definitions names that file, and it is not the seat the new rule
+  binds.** `grep -rln "daily_council_protocol" .claude/agents/` returns a single path:
+  `.claude/agents/analytics-officer.md`, which names it at `:15` to claim Rule 1 (digest
+  terminology) as that seat's to enforce. So a merge-time procedural rule now sits in a file read
+  by the analytics officer and not by the chairman who runs the meeting and performs the merge.
+- **The prediction this yields is testable at the next daily meeting.** If the close-out is
+  performed, it will be because the session was told to elsewhere — not because the seat read it
+  here. The remedy is one line in `.claude/agents/council-chairman.md` adding
+  `prompts/daily_council_protocol.md` to its canonical-training list. That is a contract edit and
+  therefore Emory's, which is why it is escalated rather than made.
+  *(This bullet replaces a claim written earlier in this same session and withdrawn before merge:
+  that `93a69f7` was a counter-example proving the remedy had been applied a second time. It was
+  asserted without opening `.claude/agents/council-chairman.md`. Opening it falsified the claim —
+  recorded here because this thread is about rules living where the bound seat cannot read them,
+  and the same shortcut produced the error.)*
 
 ---
 
@@ -1385,8 +1446,51 @@ specifically unblocks it.
   framed as a blob/digest/run id, and fail on unresolvable or non-ancestor), or delete the
   promise from the docstring. **Implementing it is cheap and the false-positive filters are
   specified above, measured against this repository.** Do not leave the docstring as-is.
+- **Re-measured 2026-08-28 at `b7d973d`, and the specification is now exact.** The docstring is
+  unchanged and the code is unchanged: the only sha-resolution loop is still `PR_CITE_RE` (now at
+  `scripts/check_currency.py:197`, moved by `a8bccbb`), so check 3 is still never run. Resolving
+  every backticked 7–40 hex token across the five tracked notes plus `HANDOFF.md` returns **35
+  unresolvable tokens**, and reading every one in context shows **the vault is already correct**:
+  every single one is either framed as a blob ("blob `f3dbbf6`"), a ledger claim id, a GitHub
+  Actions run id, or an orphan the note itself declares an orphan ("`3d31de8` … was never
+  pushed"; "`6f9e1da` … is not an ancestor of `origin/main`"). **Zero unannotated orphan
+  citations remain** — `80ad250`, the one exception, was annotated on 2026-08-25. This sharpens
+  the fix rather than enlarging it: a naive bare-sha check would fire 35 false positives on a
+  clean tree and be switched off within a week. The docstring's own wording — a sha "cited **as
+  closing or landing** something" — is the correct spec, and the vault's lexical conventions
+  above are what distinguish citation modality. Implement it against modality, not against every
+  hex token.
 - **Owner** — [[systems-designer]] (`scripts/` is outside this seat's merge authority), with
   Emory to confirm the guard should fail rather than warn on an unresolvable citation.
+
+---
+
+### D10 · A rule binding on two seats cites a file that has never existed — **OPENED 2026-08-28**
+
+- **State** — `agents/Agent Registry.md` records, as adopted and binding on [[integrity-officer]]
+  and [[research-editor]], the rule that **humanizer output is fail-closed** — a rewriting pass
+  run with every quotation, citation and pinpoint sentinel-masked, rejected outright on
+  fabricated quotation, flipped negation, hallucinated rule or sentinel destruction. Its **only**
+  citation is `working/benavides-comment-replies-2026-08-08.md:5-6`, annotated "(uncommitted)".
+- **Verified absent, not merely unlanded.** The file is not in the working tree; `git log --all`
+  returns no commit touching that path; `git rev-list --all --objects` returns no object with
+  that name; and `origin/fix/restore-council-label` — the branch every neighbouring citation of
+  that vintage names, and which still exists on the remote — does not carry it. Every one of the
+  twelve other paths cited "(uncommitted)" alongside it landed at `667772c` on 2026-08-11. This
+  one did not land with them and is reachable from nothing.
+- **Why it matters, and why the rule is not being deleted.** The rule itself is corroborated
+  independently — the fail-closed humanizer behaviour is live in the pipeline — so this is a
+  sourcing defect, not a false rule. But this note's standing discipline is that **an entry that
+  cannot be sourced is not written**, and this entry has been unsourceable for the whole time it
+  has been read as binding. It is the same class as **F2** (the lost 2026-08-03 standing-rules
+  record): a rule surviving its own evidence. Marked in place at the registry row rather than
+  removed, so the next session inherits the question rather than a silent gap.
+- **Next** — Either recover the artifact (it may exist only in a session transcript outside the
+  repository) or re-source the rule to a surviving record and restate the citation. If neither is
+  possible, the honest resolution is to re-adopt the rule explicitly on a dated line that cites
+  itself, rather than leave a citation that resolves to nothing.
+- **Owner** — Emory, with [[integrity-officer]] to confirm the rule's current operative wording.
+  This seat can record the finding but cannot manufacture the missing source.
 
 ---
 
@@ -1414,6 +1518,11 @@ specifically unblocks it.
   memo's central methodological claim — triangulation across independent collections, and the
   "lead-generation floor" framing. An undisclosed tenth channel is a described method that does
   not match the executed method, in the document a reviewer reads to judge the method.
+- **Re-measured 2026-08-28 at `b7d973d` — day six, both numbers unchanged.** `git log
+  ad66a96..HEAD -- METHODOLOGY.md` returns **no commit**. `METHODOLOGY.md:33` still enumerates
+  **nine** channels and still omits GDELT; `len(QUERIES)` in `src/sources/bing_news.py` is still
+  **12**, not the "eight" the same sentence claims; `all_sources()` still returns **10**. The
+  correction remains a two-number edit.
 - **Owner** — **Emory**. `METHODOLOGY.md` is his own document and prose; this seat does not edit
   it. Escalated with the two exact numbers and their code locations so the correction is a
   two-number edit, not a re-derivation.
@@ -1432,6 +1541,12 @@ specifically unblocks it.
 - **Consequence** — two seats are told a cost constraint the project has already established it
   does not meet, in the file each reads first. The correction landed on the public surface and
   never reached the contracts.
+- **Re-tested 2026-08-28 at `b7d973d` — day six, unchanged.** `grep -rni "zero-cost\|zero cost"
+  .claude/agents/ README.md` still returns exactly three hits, the same three:
+  `.claude/agents/site-experience.md:20` ("Zero-cost, no new services."),
+  `.claude/agents/systems-designer.md:17` ("the zero-cost constraint"), and `README.md:6`
+  recording that the claim was false. Twenty days after the public surface was corrected, both
+  contracts still carry it.
 - **Owner** — **Emory**. `.claude/agents/` is a contract surface; editing it is a contract
   change and is not this seat's. Carried, not fixed. Supersedes the single-line version of this
   item carried in the 2026-08-16 record.
@@ -1551,7 +1666,71 @@ specifically unblocks it.
   `analytics/council-log.md` still counts as drift and this note still goes properly stale from
   council activity. Widening to all of `analytics/` would blind the `analytics` path entirely
   and must not be done.
-- **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one. **This
+- **SYMPTOM RESOLVED 2026-08-27; ROOT CAUSE UNTOUCHED — measured 2026-08-28.** `pipeline-guards`
+  is **green on `main`** for the first time since 2026-08-17. The red streak was **seventeen
+  consecutive failed push-triggered runs**, run #34 (`b34f01e`, 2026-08-18T12:10Z) through run #59
+  (`05cde8f`, 2026-08-27T12:23Z); the last green before it was run #33 (`a9c86b81`,
+  2026-08-17T23:36Z). It ended at run #61 (`6950040`, 2026-08-27T19:20Z, PR #108) and stayed green
+  at run #62 (`26fafd2`, 2026-08-28T12:13Z). Locally at `b7d973d`, `check_currency.py` reports
+  **9 claims, 1 failed** — down from 4.
+- **What actually fixed it was not this thread's remedy, and the distinction matters.** The green
+  came from **`scripts/reanchor.py`** (`a8bccbb`) plus its CI wiring (`93a69f7`,
+  `.github/workflows/reanchor.yml`) and the council close-out step added to
+  `prompts/daily_council_protocol.md` — machinery that *moves the anchors forward* after a
+  session. It did **not** widen `_is_maintenance`. Verified by direct call at `b7d973d`:
+  `check_currency._is_maintenance("cb762ed")` — the 2026-08-25 archivist session commit — still
+  returns **False**, because that commit touches `HANDOFF.md`, `agents/obsidian-archivist.md` and
+  `analytics/vault-sessions/2026-08-25.md`, none of them in `TRACKED` and none under
+  `_MARKER_PREFIXES` (which `a8bccbb` extended only to `analytics/daily-research/.sent/`).
+- **So the false positive is now masked, not removed, and this is the honest reading.** Every
+  archivist session still makes the two `agents/` notes stale against its own commit; the anchors
+  are simply moved forward again by machinery before anyone sees red. That is a real improvement —
+  it ends the "red on every merge, every seat has a standing reason to merge anyway" failure this
+  thread escalated — but a session that runs without the close-out, or a PR opened between a
+  session commit and the next re-anchor, still reproduces it. The widening at **Next** above
+  remains the actual fix and is still unapplied.
+- **One further exemption is now evidenced.** The single remaining failure today is this note,
+  reported stale by exactly one commit: `b7d973d chore: fetch-relay results`, whose only changed
+  file is `analytics/fetch-results/2026-08-28-daily.json` — a machine-written retrieval artifact
+  that no note reasons about, the same class as the `.sent/` markers `a8bccbb` already exempted.
+  Adding `analytics/fetch-results/` to `_MARKER_PREFIXES` would clear it. Named here with its
+  evidence so the fix is a one-line change, not a re-derivation.
+- **The prescribed close-out pushes this seat outside its own merge scope — found by running it,
+  2026-08-28.** `scripts/reanchor.py` moves the anchor on **all five** tracked notes, and one of
+  them is `STATE_OF_THE_ANSWER.md`, which is **not** in this seat's authorized record set
+  (`analytics/`, `agents/`, `moc/`, `HANDOFF.md`). Run as written, the close-out therefore adds an
+  out-of-scope path to an archivist PR that is otherwise self-merge-eligible, and the session must
+  either drop the file or stop being able to land its own record. This session restored
+  `STATE_OF_THE_ANSWER.md` and committed only the four `agents/` anchors; `check_currency.py` then
+  reported **9 claims, 0 failed**, so the answer file's anchor did not need moving in the first
+  place — it was already current, and only [[Workflow Threads]] was stale. **A `--only` or
+  scope-limiting flag on `reanchor.py`** would remove the conflict; until then this seat runs it
+  and reverts the answer file by hand, which is a manual step in a script whose whole purpose was
+  ending manual anchor moves. Owner [[systems-designer]].
+- **And the CI half of the same machinery pushes the out-of-scope file back, unasked — observed on
+  this session's own PR.** `.github/workflows/reanchor.yml` runs `reanchor.py` on every PR to
+  `main` and commits the result to the PR branch. On PR #110 it pushed `5f74cde`,
+  *"chore(currency): re-anchor tracked notes to HEAD [skip ci]"*, authored by
+  `github-actions[bot]` — and its five changed files include **`STATE_OF_THE_ANSWER.md`**. So an
+  archivist PR that was inside the record-path merge scope when it was opened is moved **outside**
+  it by machinery, silently, before the seat re-checks scope. A session that runs
+  `git diff --name-only origin/main...HEAD` only once, before the workflow fires, would either
+  self-merge a file it is not authorized to merge or find its own PR unmergeable for a reason it
+  did not create. **Re-check scope after the workflow has run, not only before pushing** — adopted
+  as this seat's rule today. The durable fix is the same `--only` flag, applied in the workflow as
+  well as the script.
+- **A third edge, and the sharpest, because it is silent locally.** The close-out commit earns the
+  maintenance exemption **only if it touches nothing but tracked notes**. This session's first
+  attempt bundled a single session-record edit into it; `_is_maintenance` returned `False` and CI
+  returned `9 currency claims checked, 2 failed` — [[Project Change Log]] and this note, each
+  stale against the close-out commit itself. Running `check_currency.py` *before* making that
+  commit reports **0 failed**, so the local check cannot see the failure the next commit will
+  cause. The branch was rebuilt as two commits — everything substantive, then a re-anchor touching
+  only the four `agents/` notes — and `_is_maintenance` then returned `True`. Recorded because
+  three separate sessions have now been surprised by this guard in three different ways.
+- **Owner** — [[systems-designer]]; **Emory** to confirm the widened set is the right one.
+  *The "longest-standing red on `main`" sentence below was written 2026-08-25 and was true then;
+  as of 2026-08-27 the red is cleared. Preserved as the dated finding it was.* **This
   is now the longest-standing red on `main` in the project's history and it is blocking nothing,
   which is worse than blocking something.**
 

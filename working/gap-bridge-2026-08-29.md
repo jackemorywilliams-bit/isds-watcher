@@ -170,17 +170,30 @@ with observed values **No / Partial / _** (undecoded).
 Sources: <https://icsid.worldbank.org/procedures/arbitration/convention/manifest-lack-of-legal-merit/2022>
 · UNCITRAL secretariat note on the MLLM procedure · Kluwer/Lexology commentary.
 
-## icsid-subject-of-dispute-vocabulary-enumeration — PARTIAL
+## icsid-subject-of-dispute-vocabulary-enumeration — CLOSED (pulled verbatim)
 
-- **OPEN/partial.** ICSID's case database uses controlled vocabularies for **Economic Sector** and
-  subject matter, enumerated in "The ICSID Caseload — Statistics" (e.g. Oil, Gas & Mining; Electric
-  Power & Other Energy; Construction; Transportation; Information & Communication; Finance; Water,
-  Sanitation & Flood Protection; Agriculture, Fishing & Forestry; Services & Trade; Tourism; etc.).
-  The **full, exact enumeration** is sourceable from that report but I did not pull the complete list
-  this pass. Operator can lift it verbatim from the current statistics PDF; I flag it rather than
-  paraphrase a partial list as complete.
+- **OBSERVED (Caseload Statistics PDF read).** ICSID classifies cases by **Economic Sector**, a
+  controlled vocabulary based on the World Bank's sector codes and enumerated in "The ICSID Caseload —
+  Statistics," Issue 2026-1, Charts 15 (CY2025 registrations) and 16 (all cases registered). The
+  **complete set of category labels, verbatim as ICSID writes them** (ampersands and capitalisation
+  are ICSID's own):
+  1. Oil, Gas & Mining
+  2. Electric Power & Other Energy
+  3. Construction
+  4. Transportation
+  5. Finance
+  6. Information & Communication
+  7. Water, Sanitation & Flood Protection
+  8. Agriculture, Fishing & Forestry
+  9. Services & Trade
+  10. Tourism
+  11. Other Industry
+- The classification is "based on the World Bank's sector codes" (Chart footnote 2). This is the
+  case-**categorisation** vocabulary; the free-text "subject of the dispute" summary shown on an
+  individual case-detail page is a separate, uncontrolled field and is not enumerated by ICSID.
 
-Source to pull: ICSID, "The ICSID Caseload — Statistics" (current issue), icsid.worldbank.org.
+Source: ICSID, "The ICSID Caseload — Statistics," Issue 2026-1, Charts 15 & 16 —
+<https://icsid.worldbank.org/sites/default/files/publications/2026-1_ENG_TheICSIDCaseloadStatistics.pdf>
 
 ---
 
@@ -196,7 +209,7 @@ Source to pull: ICSID, "The ICSID Caseload — Statistics" (current issue), icsi
 | philip-morris covered investment | CLOSED — trademarks/IP + Abal shares pleaded and recognised as covered; claims dismissed |
 | hela-schwarz art 9 (N4) | MOVED — Art. 9 objections joined to merits (PO No.3, 2018); 2025 Award reached merits; dispositif still to read |
 | mllm finding-column codebook | CLOSED — No=objection rejected; Partial=partly upheld; _=no recorded finding |
-| subject-of-dispute vocabulary | PARTIAL — sourceable from ICSID Caseload Statistics; full list not pulled |
+| subject-of-dispute vocabulary | CLOSED — 11 Economic Sector categories pulled verbatim from Caseload Statistics 2026-1 |
 
 None of the above is entered in the ledger or in `STATE_OF_THE_ANSWER.md` by this file — that is the
 operator's to do, under §4.

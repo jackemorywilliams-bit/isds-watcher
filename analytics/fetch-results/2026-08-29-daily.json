@@ -1,8 +1,8 @@
 {
   "request": "2026-08-29-daily.json",
   "note": "2026-08-29, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY SEAT WAS CONVENED AND BEFORE ANY RESULT EXISTS, so commit order proves the pre-registration independently of anything the record later says. It executes NEXT STEP 1 of the 2026-08-28 close-out verbatim: 0828-R1 in the analyst's REWRITTEN form with 0828-R1C as its MANDATORY COMPANION, plus 0828-R2, 0828-R3, 0828-R4, the standing A/81/17 watch pair and the G18 tail. EIGHT REQUESTED ROWS PLUS THE RELAY'S OWN PREPENDED HEAD CONTROL = NINE TARGETS, THREE UNDER THE CAP OF 12, and the three freed slots stay unused as a decision rather than an oversight. R1 DOES NOT FIRE WITHOUT R1C; R3 AND R4 TRAVEL TOGETHER OR NOT AT ALL. Every literal below was fixed in the 2026-08-28 record before this session opened; NOTHING here is invented today.",
-  "fetched_at": "2026-08-29T11:15:29.416354+00:00",
-  "environment": "github-actions-runner (run 33249674533)",
+  "fetched_at": "2026-08-29T12:28:31.964998+00:00",
+  "environment": "github-actions-runner (run 33252566436)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

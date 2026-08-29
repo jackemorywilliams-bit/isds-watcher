@@ -27,11 +27,62 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality test and balance of interests, a limb she names at her Part III.B.2 and whose comprehensive analysis she expressly declines while still sketching the public-interest side and applying necessity to her own facts. **Corrected 2026-08-08:** this line previously described that limb as "the police-powers / public-welfare carve-out." That is the project's vocabulary, not Kim's — a full-text search of her article returns no occurrence of "police," "carve-out," "carve out," "public welfare" or "welfare" — and it contradicted the corrected position now recorded in `lit-review/kim-memo.md`. Note also that the institutional question the project treats as its own third stance is one Kim raises herself, in her abstract ("The question is whether investor-state arbitration is an apt instrument to protect originators' data against disclosure by drug regulatory authorities") and again in her conclusion at 1027. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-28.
+**Last updated:** 2026-08-29.
 
 **Currency anchor.** *Audited against `a4e9997`.* This line is the note's machine-owned currency anchor: `scripts/reanchor.py` moves the sha above to the session's last substantive commit, in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated anchor narrative far below is preserved unedited as history.
 
 **Currency machinery — 2026-08-27 (escalation 7 retired).** Escalation 7 of the 2026-08-17 record — that a session writing both this file and its ledgers "cannot satisfy `scripts/check_currency.py` by construction" — is **fixed, and the by-construction framing was wrong.** The guard already excludes a commit that touches nothing but tracked notes; what was missing was never a smarter guard but a **final, notes-only re-anchor commit written by machine** rather than by a seat told to remember. `scripts/reanchor.py` now moves the anchor line above to the last substantive commit and is committed on its own, touching only the tracked notes, so the guard reads zero drift — the mechanism that was carried as impossible. The same change closes the sent-marker hole: `analytics/daily-research/.sent/` marker commits count as maintenance too, so a PR opened between a marker commit and the next close-out no longer goes red on markers alone. It is wired as machinery in `.github/workflows/reanchor.yml` (re-anchors every PR to `main`), **not** as a protocol step a model must remember; the daily-council close-out carries it only as belt-and-suspenders. The three sibling notes — `agents/Claim Map.md`, `agents/Workflow Threads.md`, `agents/Project Change Log.md` — are re-anchored by the same machinery in this change, so the 2026-08-19 anchor note's "knowingly left STALE, because `agents/` is outside the daily session's approved merge scope" is superseded: the scope rule now admits the mechanical, anchor-only re-anchor commit, substance still out of scope. The dated 2026-08-19 anchor note and the superseded anchor notes below are left unedited as history; **this block is the current statement of record, and the machine-owned anchor above — not the `e170ba5` inside the 2026-08-19 narrative — is what the guard now reads.**
+
+> **COUNCIL UPDATE — 2026-08-29 (daily council; full record at `analytics/daily-research/2026-08-29.md`).**
+> **THIS BLOCK SUPERSEDES ONE SENTENCE OF THE 2026-08-28 BLOCK BELOW.** That block reads "THE ANNULMENT
+> OUTCOME REMAINS UNOBSERVED". **It is superseded, not deleted** — dated entries in this file are preserved
+> unedited as history — and the current statement of record is the paragraph that follows.
+>
+> **The ARB/12/1 (*Tethyan Copper*) post-award gap MOVED FURTHER THAN ON ANY PRIOR DAY, AND IS NOT CLOSED.**
+> One pre-registered relay batch — eight requested rows plus the relay's head control, nine targets, fired at
+> commit `750c81f` **before any seat was convened** and provable by commit order; reduction at `8d57f48`,
+> blob `645f54512a0dc6e458a511443ae248055aa1aba5`, **cited by SHA and never by path**. A single 400-character
+> window on ICSID page state `23983ed066ed2407` carries, contiguously: a proceeding block that is **NOT** the
+> (a) Original Proceeding, whose `Status of Proceeding` reads **`Concluded`** and whose `Outcome of
+> Proceeding` reads **`January 6, 2023 - The Committee issues a procedural order taking note of the
+> discontinuance of the proceeding pursuant to ICSID Arbitration Rule 43(1).`**, terminated by a block headed
+> **`(c) Revis`**. **The block's identification AS the annulment proceeding is graded BELOW G13's strong
+> form** — a same-page-state vocabulary link plus a lettering assumption the analyst flagged himself — and
+> the chairman's own opening paragraph asserted it above that grade and was **corrected under a sustained
+> blocking objection before merge**. **G16 binds: this is a docket statement and a date, never a disposition,
+> never a holding.** What ICSID Arbitration Rule 43(1) *provides* is NOT established here; a page citing a
+> rule is not that rule's text.
+>
+> **The strong form of this finding is now provably UNREACHABLE at the instrument's current settings.** The
+> span from the block header to the end of the outcome sentence measures **at least 587 characters** against
+> `EXCERPT_CHARS` of **400**, so no single window at any anchor can carry both. That converts an open research
+> question into a one-constant code change, which is on the operator's pending list and was **not** made.
+>
+> **A refused lead was corroborated by a primary source without ever having been relied on.** The 2026-08-27
+> record banked, under G10 and as a title only, an **unretrieved** third-party listing headed *"…Procedural
+> Order Taking Note of the discontinuance of the Proceeding - 6 January 2023"*, and the hosts carrying it were
+> later cut as uncontrolled. ICSID's own docket has now independently reached the same date, instrument type
+> and case number. **The order — refusal first, corroboration second — is the point.**
+>
+> **The 2026-08-28 `Discontinued` null is EXPLAINED, not falsified.** ICSID's docket vocabulary for this event
+> is the noun **`discontinuance`**, of which `discontinued` is not a substring under any casing, so a match was
+> never available for that literal. The observation stands exactly as recorded; only the surprise is gone.
+>
+> **A third lettered proceeding block was found that nobody knew existed.** `(c) Revis…` is truncated by the
+> window and is **not completed here**. It corrects a premise written into this council's own pre-registration
+> ("ARB/12/1 has two proceeding blocks"), and until it is known the discontinuance is **not** established as
+> the end of this docket's post-award history.
+>
+> **Nothing else moved.** `ARB/23/3`'s `Published` null replicated on a **third** distinct page state — the
+> residue does **not** narrow and the honest form stays *"not found in this surface."* The standing `A/81/17`
+> watch nulled again, but on a page state **already observed**, so the evidential figure **does not move** and
+> stays at **three controlled page states plus one observation that is not evidence of anything**; that null
+> is a fact about a page state and a runner and is **not** a statement that the 59th session's report does not
+> exist, is late, or has not been issued. Both window-constancy series extended and both remain byte-identical
+> across every state — `G22` again, on two dockets in one run. **Two gap slugs opened, none closed, none
+> proposed for closure. No proceeding moved and the research question did not move.** Digest of record
+> unchanged since 2026-08-24; `validation_status_only` still `true`; the weekly interpretive brief still empty.
+> **Every item on the operator's pending list stays pending: nothing built, nothing applied.**
 
 > **COUNCIL UPDATE — 2026-08-28 (daily council; full record at `analytics/daily-research/2026-08-28.md`).**
 > **The day's largest finding is about this repository, not about any proceeding, and it bears directly on how every dated entry in this file should be read.** An escalation this council has been *describing* since 2026-08-05 was **observed firing**: `scripts/fetch_relay.py` re-selects the same request file on every unskipped push and overwrites its reduction in place with no existence check. `analytics/fetch-results/2026-08-27-daily.json` carries **two** commits — at `7e755e2` (11:26:05Z) the `A/80/17` row **matched** on an 832,338-byte page state; at `057185a` (12:23:49Z) it **nulled** on a 7,309-byte state. **The 2026-08-27 council read the first; the path now holds the second.** Nothing in that record is falsified — its two blob-cited rows hold — but **one of its derived figures no longer reproduces**: *"those nulls sit on two distinct digests, so as evidence twenty-two observations are worth two"* now derives as **three** on the same 22 rows. **The lesson for a reader of this file: a relay figure cited by path is not re-derivable, and a figure derived over the results corpus must carry the tree state it was derived at.** Overwrites have fired **at least twelve times**; two changed record-level content among the files now tracked at these paths. **A fully specified ~8-line fix has been on the operator's pending list since 2026-08-05 and nothing was built or applied today.**

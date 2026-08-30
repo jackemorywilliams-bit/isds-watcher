@@ -27,11 +27,105 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality test and balance of interests, a limb she names at her Part III.B.2 and whose comprehensive analysis she expressly declines while still sketching the public-interest side and applying necessity to her own facts. **Corrected 2026-08-08:** this line previously described that limb as "the police-powers / public-welfare carve-out." That is the project's vocabulary, not Kim's — a full-text search of her article returns no occurrence of "police," "carve-out," "carve out," "public welfare" or "welfare" — and it contradicted the corrected position now recorded in `lit-review/kim-memo.md`. Note also that the institutional question the project treats as its own third stance is one Kim raises herself, in her abstract ("The question is whether investor-state arbitration is an apt instrument to protect originators' data against disclosure by drug regulatory authorities") and again in her conclusion at 1027. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-29.
+**Last updated:** 2026-08-30.
 
 **Currency anchor.** *Audited against `7718491`.* This line is the note's machine-owned currency anchor: `scripts/reanchor.py` moves the sha above to the session's last substantive commit, in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated anchor narrative far below is preserved unedited as history.
 
 **Currency machinery — 2026-08-27 (escalation 7 retired).** Escalation 7 of the 2026-08-17 record — that a session writing both this file and its ledgers "cannot satisfy `scripts/check_currency.py` by construction" — is **fixed, and the by-construction framing was wrong.** The guard already excludes a commit that touches nothing but tracked notes; what was missing was never a smarter guard but a **final, notes-only re-anchor commit written by machine** rather than by a seat told to remember. `scripts/reanchor.py` now moves the anchor line above to the last substantive commit and is committed on its own, touching only the tracked notes, so the guard reads zero drift — the mechanism that was carried as impossible. The same change closes the sent-marker hole: `analytics/daily-research/.sent/` marker commits count as maintenance too, so a PR opened between a marker commit and the next close-out no longer goes red on markers alone. It is wired as machinery in `.github/workflows/reanchor.yml` (re-anchors every PR to `main`), **not** as a protocol step a model must remember; the daily-council close-out carries it only as belt-and-suspenders. The three sibling notes — `agents/Claim Map.md`, `agents/Workflow Threads.md`, `agents/Project Change Log.md` — are re-anchored by the same machinery in this change, so the 2026-08-19 anchor note's "knowingly left STALE, because `agents/` is outside the daily session's approved merge scope" is superseded: the scope rule now admits the mechanical, anchor-only re-anchor commit, substance still out of scope. The dated 2026-08-19 anchor note and the superseded anchor notes below are left unedited as history; **this block is the current statement of record, and the machine-owned anchor above — not the `e170ba5` inside the 2026-08-19 narrative — is what the guard now reads.**
+
+> **COUNCIL UPDATE — 2026-08-30 (daily council; full record at `analytics/daily-research/2026-08-30.md`).**
+> **THIS BLOCK SUPERSEDES THE 2026-08-29 BLOCK'S GRADING OF THE ARB/12/1 `(c)` BLOCK.** That block records the
+> post-award region as terminated by a block headed **`(c) Revis`**, identification unresolved. **It is
+> superseded, not deleted** — dated entries in this file are preserved unedited as history — and the current
+> statement of record is what follows.
+>
+> **THE `(c)` BLOCK IS IDENTIFIED, FROM THE PRIMARY DOCKET, AND IT IS A REVISION PROCEEDING.**
+> One pre-registered relay batch — six requested rows plus the relay's head control, seven targets — fired at
+> commit `ddf13d1` **11:16:09Z, before any seat was convened** and provable by commit order, verified against
+> git by a seat other than the one that fired it; reduction at `39446eb`, blob
+> `068527887c3fc5485f8ba0f45943de5749da6dbc`, **cited by SHA and never by path.** `control_ok` true, 6 of 6
+> returned, `G18` bracket closed identical at both ends, `G9` held on all seven records. A single 400-character
+> window on ICSID page state `d71f0bfa1b8b9294` (176,047 bytes — a byte length new to this docket) carries,
+> contiguously: the tail of an outcome sentence reading `order taking note of the discontinuance of the
+> proceeding pursuant to ICSID Arbitration Rule 43(1).`, immediately followed by a block headed **`(c) Revision
+> Proceeding`**, whose `Applicant(s)/Requesting Party(ies)` reads `(i) Respondent(s)`, whose `Date Registered`
+> reads **`March 16, 2021 (Respondent(s))`**, whose `Date of Constitution of Tribunal` reads **`April 5,
+> 2021`**, and whose `Composition of Tribunal` names **`President: Klaus SACHS (German) - Appointed by the
+> Parties`** and `Arbitrators: Stanimir A. ALEXANDROV (Bulgar` — the last token truncated at the cap.
+> **`GAP-UNRESOLVED: icsid-arb-12-1-block-c-header` is CLOSED at the header question on this council's own
+> primary evidence.**
+>
+> **SCOPE, STATED BEFORE THE READER DRAWS MORE THAN THE WINDOW CARRIES.** The proposition *about the block* is
+> at G13's strong form **at page-state scope**. **The case designator `ARB/12/1` is not in the window**, so
+> case-level attribution rests on the requested route plus `G9` and is **below G13's strong form** — a limit
+> named today for the first time rather than assumed. It is **not** structurally unavailable: 2026-08-26
+> `records[3]` (page state `bf5a70b2`) opens with `RB/12/1)` — the designator cut by the 400-character cap's
+> left edge — and carries `(i) Tethyan Copper Company Pty Limited (Aust` at offset 360, so an in-window
+> case-name tie has been body-carried once, on a different page state. **G16 binds absolutely: these are
+> docket-summary fields and dates, never a disposition and never a holding.** Nothing here establishes who
+> applied for revision, on what grounds, of what, or whether the application was ever decided. **The `(c)`
+> block's own `Status of Proceeding` and `Outcome of Proceeding` are UNOBSERVED**, 400 characters past the
+> window's right edge, and until they are read **this file must not state that the March 2022 settlement and
+> the January 2023 discontinuance ended this docket's post-award history.** Nothing about the ICSID Convention's
+> revision provision is in evidence; a docket block headed "Revision Proceeding" is not a legal rule.
+>
+> **THE ANNULMENT OUTCOME MOVED TO *REPORTED*, OPERATOR-SIDE, AND IS NOT CLOSED BY THIS COUNCIL.**
+> `working/gap-bridge-2026-08-29.md` (merged as PR #112 and #113) records the operator's own live-web session:
+> Pakistan applied for annulment 8 November 2019; the proceeding was suspended 18 April 2022; in December 2022
+> the parties jointly requested discontinuance with Pakistan **withdrawing** its application following the March
+> 2022 Reko Diq settlement; the Committee issued the Order on Discontinuance 6 January 2023 — so the annulment
+> was **abandoned by discontinuance, not decided on the merits**. **That entry is tagged REPORTED — secondary
+> source only, by the operator's own discipline, and nothing in that file is ledger-verified.** One of its three
+> sources is the TDM/OGEL listing this council refused as a body on 2026-08-27 and whose host it cut as
+> uncontrolled on 2026-08-28. **This council has still observed no disposition, no grounds and no reasoning**,
+> and `tethyan-copper-arb-12-1-annulment-outcome` stands open on its own evidence. Whether the REPORTED tag
+> warrants ledger closure is the operator's decision under §4 of the Bounded Change Protocol.
+>
+> **THE PRIMARY DOCKET AND THE ACCESSIBLE SECONDARY LITERATURE DISAGREE ABOUT THIS DOCKET'S STRUCTURE, AND
+> THAT DISAGREEMENT IS THE DAY'S REAL FINDING.** The `(c)` block was registered **16 March 2021** — roughly
+> sixteen months after the annulment's reported registration and roughly a year **before** the earliest event
+> in the settlement narrative — so it predates the entire sequence the operator's account describes, and that
+> account omits it from beginning to end. The operator's own pass marked the `(c)` question **OPEN**, recording
+> that *"no third lettered proceeding beginning 'Revis' appears in any public secondary source I reached"* and
+> routing it back to this council's row. Two council web searches (15 items) returned **zero titles** carrying
+> a revision designation for this case; both engines' summarising prose was refused in full. **On this
+> project's accessible sources, the primary docket is the only witness to that block's existence** — stated as
+> *not found in accessible sources*, never *does not exist*.
+>
+> **INSTRUMENT.** Every geometric forecast in the pre-registration landed exactly across a page-state change —
+> 291-character left-edge shift, 291 newly exposed characters, 109-character byte-identical overlap — and the
+> `Joongi` row's overlaps landed at **exactly 9 and 43**. The `Joongi` anchor's `0829-C1` exposure was
+> **discharged by observation on `d71f0bfa` and only there**, the first time this council has retired an anchor
+> exposure by evidence rather than argument. Two windows now join on-state into one contiguous **791-character**
+> run carrying **588 characters from the `(b) Annulment Proceeding` header**. **The block is NOT closed on one
+> page state:** the assembly moved from four windows across three page states to four across two, an interval
+> remaining unobserved on `d71f0bfa` whose length — **248 characters** — is derived over the cross-state stitch
+> and is unmeasured on any single page state. The `Status of Proceeding` window-constancy series stands at
+> **5 rows / 5 distinct page states / 1 distinct window**, G22 demonstrated a fifth time. **`EXCERPT_CHARS` of
+> 400 remains the binding constraint** on the header-to-outcome span of at least 587 characters; nothing was
+> built and nothing applied. **G6's residue provenance is upgraded from CLASS-LEVEL to ROUTE-LEVEL**: the
+> undecoded entity `&amp;` is observed at offset 177 of 2026-08-26 `records[3]`, on this docket's own page.
+>
+> **THE `A/81/17` WATCH DID NOT MOVE.** `A/81/17` null with its same-run `A/80/17` control matching on the
+> identical page state `bd63b2d4f9f59bb3`, first observed 2026-08-28. Population **re-derived at HEAD and never
+> incremented**: 25 commission-page rows, all null, on four page states, of which **three are controlled and
+> one is not evidence of anything**; control status is keyed on RUN, not on date. **G3 binds: this is a fact
+> about a page state and a runner, and is NOT a statement that the 59th session's report does not exist, is
+> late, or has not been issued.**
+>
+> **VERIFICATION.** Ten integrity objections and three chairman corrections — **thirteen filed, thirteen
+> sustained, none overruled, four blocking.** Nine were conceded by the analyst without contest; **two were
+> sustained by the chairman against himself**, including one that credited a first firing with a firing
+> history. The two most consequential — an absence screened over captures read as absence over the project, and
+> a field-scoped absence stated as a block-scoped exclusion — are the same defect from opposite directions, and
+> both were found by enumerating what the observations actually cover. **The corrected texts in the record's
+> Part V supersede the filed texts they replace and are what binds downstream.**
+>
+> **The research question did not move today, and no proceeding moved.** *Tethyan Copper v Pakistan* is a
+> mineral-exploration dispute with **no IP-as-investment nexus**; the ARB/12/1 line is instrument and method
+> work and is not a finding on the research question. The one on-theme movement in today's inputs is
+> operator-side and REPORTED: *Philip Morris v Uruguay* (ICSID ARB/10/7), where trademarks and brand assets were
+> pleaded and recognised as covered investments while all claims were dismissed.
 
 > **COUNCIL UPDATE — 2026-08-29 (daily council; full record at `analytics/daily-research/2026-08-29.md`).**
 > **THIS BLOCK SUPERSEDES ONE SENTENCE OF THE 2026-08-28 BLOCK BELOW.** That block reads "THE ANNULMENT

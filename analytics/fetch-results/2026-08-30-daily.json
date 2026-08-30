@@ -1,8 +1,8 @@
 {
   "request": "2026-08-30-daily.json",
   "note": "2026-08-30, the day's first and only pre-registered batch, chairman-authorised, WRITTEN AND PUSHED BEFORE ANY SEAT WAS CONVENED AND BEFORE ANY RESULT EXISTS, so commit order proves the pre-registration independently of anything the record later says. It executes NEXT STEP 1 of the 2026-08-29 close-out verbatim: 0829-R1, 0829-R2 (mandatory control, declared not cuttable) and 0829-R3 in its CORRECTED form carrying the 0829-C1 anchor-exposure cell, plus the standing A/81/17 watch pair and the G18 tail. SIX REQUESTED ROWS PLUS THE RELAY'S OWN PREPENDED HEAD CONTROL = SEVEN TARGETS, FIVE UNDER THE CAP OF 12, and the five freed slots stay unused as a decision rather than an oversight. R1 AND R3 BOTH REQUIRE R2; R2 CANNOT BE CUT WITHOUT DECONTROLLING THEM; R3 DOES NOT FIRE WITHOUT ITS ANCHOR-EXPOSURE CELL BELOW. Every literal below was fixed in the 2026-08-29 record before this session opened; NOTHING here is invented today.",
-  "fetched_at": "2026-08-30T11:16:43.085226+00:00",
-  "environment": "github-actions-runner (run 33308500289)",
+  "fetched_at": "2026-08-30T12:16:02.118271+00:00",
+  "environment": "github-actions-runner (run 33311000148)",
   "control_url": "https://example.com/",
   "control_ok": true,
   "void": false,

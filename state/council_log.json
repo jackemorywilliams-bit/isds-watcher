@@ -10,11 +10,11 @@
       "security": "clean",
       "editor": "4 sections, 6 threads"
     },
-    "status": "A quiet week, and a legitimately quiet one: no new candidate cleared the theme's threshold. The council delivered what the agenda asked for \u2014 a clean negative confirmation that Wingtech/Nexperia is framed as a shares/control and FET dispute, not IP-as-investment, and remains unfiled at ICSID as of Day 103 \u2014 plus a useful doctrinal distinction between codified manifest-lack-of-merit gates and abuse-of-right admissibility. The one operational blemish is the absence of the living-memory files in the analyst's environment, which forced a reconstruction from carried notes and leaves the record's continuity unverified.",
+    "status": "A quiet week, and a legitimately quiet one: no new candidate cleared the theme's threshold. The council delivered what the agenda asked for — a clean negative confirmation that Wingtech/Nexperia is framed as a shares/control and FET dispute, not IP-as-investment, and remains unfiled at ICSID as of Day 103 — plus a useful doctrinal distinction between codified manifest-lack-of-merit gates and abuse-of-right admissibility. The one operational blemish is the absence of the living-memory files in the analyst's environment, which forced a reconstruction from carried notes and leaves the record's continuity unverified.",
     "accountability": [
       {
         "member": "chairman",
-        "assessment": "Agenda was correctly prioritized and time-boxed with a clear downgrade trigger, but it did not anticipate the memory-file provisioning failure and gave no fallback instruction \u2014 an environment check belongs in the opening agenda."
+        "assessment": "Agenda was correctly prioritized and time-boxed with a clear downgrade trigger, but it did not anticipate the memory-file provisioning failure and gave no fallback instruction — an environment check belongs in the opening agenda."
       },
       {
         "member": "analyst",
@@ -32,14 +32,14 @@
     "next_steps": [
       "Execute the Wingtech downgrade/close per the thread's own terms following the July 28 (Day 104) determination; record the disposition in the living memory.",
       "Route the ICSID pending-cases docket verification (blocked/paywalled) through library access as security recommended, so the no-registration finding rests on the primary docket rather than absence-of-evidence via search.",
-      "Formally escalate the A/CN.9/1246 Day-17 threshold breach to the principal and stop polling both null channels; A/81/17 (expected Aug\u2013Sep 2026) is the confirming instrument.",
-      "Re-issue the China\u2013France BIT (2007) Protocol operator request; no further autonomous search attempts.",
+      "Formally escalate the A/CN.9/1246 Day-17 threshold breach to the principal and stop polling both null channels; A/81/17 (expected Aug–Sep 2026) is the confirming instrument.",
+      "Re-issue the China–France BIT (2007) Protocol operator request; no further autonomous search attempts.",
       "Reconcile the reconstructed memory files against the canonical living memory and confirm with the operator where the canonical copy lives, so next week does not start from a reconstruction."
     ],
     "escalations": [
-      "A/CN.9/1246: Day-17 threshold breached with both channels (IISD ITN, EJIL:Talk) null \u2014 formal escalation per the thread's terms; polling has stopped, and A/81/17 (Aug\u2013Sep 2026) is the next confirming instrument.",
-      "China\u2013France BIT (2007) Protocol: operator action remains outstanding for a second week; the request is re-issued and the thread is blocked until the principal or operator supplies the text.",
-      "Coverage gap: the ICSID pending-cases database is blocked/paywalled, so the Wingtech no-registration finding is a search-absence inference \u2014 library access is needed to convert it to a primary-source confirmation before the thread is closed.",
+      "A/CN.9/1246: Day-17 threshold breached with both channels (IISD ITN, EJIL:Talk) null — formal escalation per the thread's terms; polling has stopped, and A/81/17 (Aug–Sep 2026) is the next confirming instrument.",
+      "China–France BIT (2007) Protocol: operator action remains outstanding for a second week; the request is re-issued and the thread is blocked until the principal or operator supplies the text.",
+      "Coverage gap: the ICSID pending-cases database is blocked/paywalled, so the Wingtech no-registration finding is a search-absence inference — library access is needed to convert it to a primary-source confirmation before the thread is closed.",
       "Continuity risk: the living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were missing from the analyst's session environment; the analyst reconstructed and re-exported them, but the principal should confirm the canonical copies and the provisioning failure's cause."
     ],
     "minutes_missing": false
@@ -71,36 +71,36 @@
       "security": "flagged (7 issues)",
       "editor": "4 sections, 6 threads"
     },
-    "status": "A legitimately quiet week \u2014 a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.",
+    "status": "A legitimately quiet week — a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.",
     "accountability": [
       {
         "member": "chairman",
-        "assessment": "Set a correctly scoped agenda for a quiet week \u2014 dropped B-Mex, pointed effort at the time-sensitive UNCITRAL window, and named specific verification duties; sound direction."
+        "assessment": "Set a correctly scoped agenda for a quiet week — dropped B-Mex, pointed effort at the time-sensitive UNCITRAL window, and named specific verification duties; sound direction."
       },
       {
         "member": "analyst",
-        "assessment": "Honest on the quiet result and correctly dropped B-Mex, but overreached by presenting budget-limited snippet searches as 'verified' facts (document IDs, titles, dates) and asserted the Okuashvili date/holding without a neutral source \u2014 the memory-file reconstruction adds fragility."
+        "assessment": "Honest on the quiet result and correctly dropped B-Mex, but overreached by presenting budget-limited snippet searches as 'verified' facts (document IDs, titles, dates) and asserted the Okuashvili date/holding without a neutral source — the memory-file reconstruction adds fragility."
       },
       {
         "member": "security",
-        "assessment": "Did its job well \u2014 sharply and specifically flagged the fabrication/overreach risks on the UNCITRAL document IDs, the unfetched PDF titles, the Okuashvili holding, and the 'host still open' inference; the strongest performance this week."
+        "assessment": "Did its job well — sharply and specifically flagged the fabrication/overreach risks on the UNCITRAL document IDs, the unfetched PDF titles, the Okuashvili holding, and the 'host still open' inference; the strongest performance this week."
       },
       {
         "member": "editor",
-        "assessment": "Faithfully carried the security hedges into the brief \u2014 headline and dek accurately frame it as architecture 'verified' but disposition pending, and the open threads correctly foreground the confirmation gaps rather than overstating findings."
+        "assessment": "Faithfully carried the security hedges into the brief — headline and dek accurately frame it as architecture 'verified' but disposition pending, and the open threads correctly foreground the confirmation gaps rather than overstating findings."
       }
     ],
     "next_steps": [
-      "Recheck IISD ITN and EJIL:Talk across the July 14\u201322 window for the actual disposition of A/CN.9/1246 (adoption, referral, or continued negotiation), the MIC/MIIR track, and the Advisory Centre host outcome \u2014 with named authoritative sources.",
+      "Recheck IISD ITN and EJIL:Talk across the July 14–22 window for the actual disposition of A/CN.9/1246 (adoption, referral, or continued negotiation), the MIC/MIIR track, and the Advisory Centre host outcome — with named authoritative sources.",
       "Downgrade every UNCITRAL document identifier, title, and date (A/CN.9/1246, 1265, 1266, 1268, 1270) to unverified/snippet-level until each is backed by a retrieved primary source; strip the '15 April 2026' and 'host still open' inferences pending confirmation.",
       "Obtain a neutral source (Vinge, Baker Botts, or GBS) on the Okuashvili Svea CoA remand before recording the 26 June 2026 date or the MFN-forum-access holding as anything but claimant's-counsel account.",
-      "Re-attempt the three standing 403-blocked PDFs (AJIL/Okuashvili, ICSID Review 2021, Hela Schwarz Award) via ResearchGate/SSRN mirrors \u2014 this was not done this session.",
+      "Re-attempt the three standing 403-blocked PDFs (AJIL/Okuashvili, ICSID Review 2021, Hela Schwarz Award) via ResearchGate/SSRN mirrors — this was not done this session.",
       "Hold Wingtech for the ~July 28 day-104 downgrade checkpoint and continue the Okuashvili alert window through ~July 24."
     ],
     "escalations": [
       "Canonical memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were absent from the environment; the analyst reconstructed them from the prompt. Confirm the canonical files exist and reconcile before any reconstructed [carried] claim is cited as independently verified.",
-      "Verification infrastructure gap: no direct network path in the sandbox and a web-search budget too tight to fetch primary PDFs \u2014 this is what forced snippet-level 'verification.' Decide whether to provision reliable retrieval before the July 22 UNCITRAL window closes.",
-      "The Okuashvili 26 June 2026 Supreme Court remand / MFN-forum-access holding is potentially the closest Ring-3-adjacent doctrine but currently rests only on claimant's-counsel account \u2014 flag as unverified and prioritize neutral corroboration before it informs any finding."
+      "Verification infrastructure gap: no direct network path in the sandbox and a web-search budget too tight to fetch primary PDFs — this is what forced snippet-level 'verification.' Decide whether to provision reliable retrieval before the July 22 UNCITRAL window closes.",
+      "The Okuashvili 26 June 2026 Supreme Court remand / MFN-forum-access holding is potentially the closest Ring-3-adjacent doctrine but currently rests only on claimant's-counsel account — flag as unverified and prioritize neutral corroboration before it informs any finding."
     ]
   },
   {
@@ -114,11 +114,11 @@
       "security": "flagged (8 issues)",
       "editor": "4 sections, 6 threads"
     },
-    "status": "A legitimately quiet week on the core theme, honestly reported. The one substantive advance \u2014 the Okuashvili MFN finding \u2014 rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.",
+    "status": "A legitimately quiet week on the core theme, honestly reported. The one substantive advance — the Okuashvili MFN finding — rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.",
     "accountability": [
       {
         "member": "chairman",
-        "assessment": "chairman: agenda was correctly calibrated \u2014 called the quiet week, killed the Suez item, and set skepticism gates that the week's findings vindicated."
+        "assessment": "chairman: agenda was correctly calibrated — called the quiet week, killed the Suez item, and set skepticism gates that the week's findings vindicated."
       },
       {
         "member": "analyst",
@@ -126,7 +126,7 @@
       },
       {
         "member": "security",
-        "assessment": "security: strong week \u2014 correctly flagged the headline-only sourcing on Okuashvili, Suez, and GAR, and the overreach in elevating a two-headline proposition to 'affirmatively-supported.'"
+        "assessment": "security: strong week — correctly flagged the headline-only sourcing on Okuashvili, Suez, and GAR, and the overreach in elevating a two-headline proposition to 'affirmatively-supported.'"
       },
       {
         "member": "editor",
@@ -135,16 +135,16 @@
     ],
     "next_steps": [
       "Obtain the full Okuashvili v. Georgia Supreme Court judgment (and eventual NJA citation) to confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or a Svea remand remains open; do not rely on the IAReporter/GAR headlines.",
-      "Continue the Wingtech/Nexperia ICSID docket watch \u2014 upgrade from 'announced' to 'pending' only on an ICSID case number or registration page; monitor the parallel Dutch-court control litigation as a potential Ring 2 denial-of-justice anchor.",
+      "Continue the Wingtech/Nexperia ICSID docket watch — upgrade from 'announced' to 'pending' only on an ICSID case number or registration page; monitor the parallel Dutch-court control litigation as a potential Ring 2 denial-of-justice anchor.",
       "Re-check for the UNCITRAL 59th-session A/CN.9/1246 report (IISD ITN / EJIL:Talk) after the 10 July close for adoption/referral/noting and the scope-of-application and opt-in treatment of pre-existing China BITs.",
       "Harvest practitioner analysis (Vinge, Baker Botts, GBS Disputes) on Okuashvili to verify disposition beyond headline level.",
       "Keep the 'MFN-forum-bypass is live where treaty text permits' proposition at TENTATIVE, and the China-BIT-closure claim at MEDIUM/treaty-text-contingent, until full-text verification."
     ],
     "escalations": [
-      "The week's only advance (Okuashvili MFN holding) is headline-only and unverified from primary text \u2014 treat as a lead, not a finding, pending the full judgment.",
+      "The week's only advance (Okuashvili MFN holding) is headline-only and unverified from primary text — treat as a lead, not a finding, pending the full judgment.",
       "Wingtech/Nexperia remains 'filed-not-confirmed' ~12 weeks past cooling-off with no ICSID docket; decision needed on how long to hold it as top priority absent registration.",
       "The carried 'MFN-forum-bypass closed for China BITs' claim should be re-labelled as treaty-text-contingent (still MEDIUM), not doctrinally settled.",
-      "Recurring environment gap: living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were not present and had to be reconstructed, and the web-search budget was exhausted after three passes \u2014 both limit verification depth and warrant attention."
+      "Recurring environment gap: living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were not present and had to be reconstructed, and the web-search budget was exhausted after three passes — both limit verification depth and warrant attention."
     ]
   },
   {
@@ -158,7 +158,7 @@
       "security": "flagged (9 issues)",
       "editor": "4 sections, 6 threads"
     },
-    "status": "A genuinely quiet, honest week: zero candidates cleared the relevance floor, and the one live development (UNCITRAL 59th session, T05) is system-level procedural reform that touches the project only prospectively at Ring 3. The analyst answered both agenda questions against the verified core \u2014 A/CN.9/1246 is submitted, not adopted (the session opens on the week-ending date, so no adoption report can yet exist), and the dual-nationality/natural-person gap appears off-package. The week is marred, however, by several fabrication risks the security officer caught: companion document numbers and pinpoint/IISD cites asserted as verified without retrieval in the search log.",
+    "status": "A genuinely quiet, honest week: zero candidates cleared the relevance floor, and the one live development (UNCITRAL 59th session, T05) is system-level procedural reform that touches the project only prospectively at Ring 3. The analyst answered both agenda questions against the verified core — A/CN.9/1246 is submitted, not adopted (the session opens on the week-ending date, so no adoption report can yet exist), and the dual-nationality/natural-person gap appears off-package. The week is marred, however, by several fabrication risks the security officer caught: companion document numbers and pinpoint/IISD cites asserted as verified without retrieval in the search log.",
     "accountability": [
       {
         "member": "chairman",
@@ -170,7 +170,7 @@
       },
       {
         "member": "security",
-        "assessment": "Did its job well \u2014 correctly flagged the A/CN.9/1269 and A/CN.9/1235 numbers, the paras 34-51 pinpoints, and the IISD/Transparency-Rules claims as unverified, and rightly pushed to hedge the off-package and non-retroactivity overreach."
+        "assessment": "Did its job well — correctly flagged the A/CN.9/1269 and A/CN.9/1235 numbers, the paras 34-51 pinpoints, and the IISD/Transparency-Rules claims as unverified, and rightly pushed to hedge the off-package and non-retroactivity overreach."
       },
       {
         "member": "editor",
@@ -178,16 +178,16 @@
       }
     ],
     "next_steps": [
-      "After the 59th session concludes on 10 July 2026, retrieve the A/CN.9-series session report and record the actual disposition of A/CN.9/1246 \u2014 adopted, referred back, or noted \u2014 rejecting any secondary 'adoption' claim until the official report corroborates it.",
+      "After the 59th session concludes on 10 July 2026, retrieve the A/CN.9-series session report and record the actual disposition of A/CN.9/1246 — adopted, referred back, or noted — rejecting any secondary 'adoption' claim until the official report corroborates it.",
       "Confirm or drop the unverified document numbers (A/CN.9/1269 comments-compilation, A/CN.9/1235 provisional agenda) and the 'paras 34-51' pinpoint cites against actually retrieved sources before they enter living memory as fact.",
       "Downgrade the opt-in / non-retroactivity point from a logged insight (conf. 0.8) to context/near-miss, and confirm it against the body of A/CN.9/1246 itself rather than the Transparency Convention analogy.",
       "Re-attempt a primary source for the Hela Schwarz data-exclusivity award and an accessible Swedish source for Okuashvili; both remain blocked and should not be inferred from paywalled-only material.",
       "Adopt the posture-reconciliation classifier's decision-date/instance reconciliation rule, which still stands unadopted."
     ],
     "escalations": [
-      "The analyst's memo asserted A/CN.9/1269 and A/CN.9/1235 (and pinpoint paragraph cites) as verified without retrieval evidence \u2014 these are fabrication risks that must be confirmed or struck before they harden into living-memory fact.",
+      "The analyst's memo asserted A/CN.9/1269 and A/CN.9/1235 (and pinpoint paragraph cites) as verified without retrieval evidence — these are fabrication risks that must be confirmed or struck before they harden into living-memory fact.",
       "The durable Ring 3 finding stands on verified ground: even if A/CN.9/1246 is adopted, its opt-in / non-retroactive design means the early-dismissal gate would not reach the legacy BITs generating IP-as-investment claims; worth the principal's attention, but should be carried as inference pending confirmation against the document body.",
-      "Coverage gap: Hela Schwarz, Einarsson, and Okuashvili all remain blocked behind paywalls or unindexed sources \u2014 a decision is needed on whether to invest in paid/primary-source access or hold these threads open indefinitely."
+      "Coverage gap: Hela Schwarz, Einarsson, and Okuashvili all remain blocked behind paywalls or unindexed sources — a decision is needed on whether to invest in paid/primary-source access or hold these threads open indefinitely."
     ]
   },
   {
@@ -201,11 +201,11 @@
       "security": "flagged issues",
       "editor": "4 sections, 6 threads"
     },
-    "status": "A genuinely quiet week on the theme, as anticipated \u2014 no screened item reaches the IP/trade-secret intersection, so this is a legitimate null result on the core question. The week's real output is a methodological catch (the screening layer inverted the Okuashvili procedural posture) and an honest non-result on T05, where the post-session UNCITRAL outcome could not be verified before the search budget ran out. Net value is modest but real; the council reported it without padding.",
+    "status": "A genuinely quiet week on the theme, as anticipated — no screened item reaches the IP/trade-secret intersection, so this is a legitimate null result on the core question. The week's real output is a methodological catch (the screening layer inverted the Okuashvili procedural posture) and an honest non-result on T05, where the post-session UNCITRAL outcome could not be verified before the search budget ran out. Net value is modest but real; the council reported it without padding.",
     "accountability": [
       {
         "member": "chairman",
-        "assessment": "Set an accurate, well-scoped agenda \u2014 correctly called the quiet week, flagged the paywalled-headline reconciliation risk, and prioritised the datable T05 event; the analyst's findings vindicate that framing."
+        "assessment": "Set an accurate, well-scoped agenda — correctly called the quiet week, flagged the paywalled-headline reconciliation risk, and prioritised the datable T05 event; the analyst's findings vindicate that framing."
       },
       {
         "member": "analyst",
@@ -213,7 +213,7 @@
       },
       {
         "member": "security",
-        "assessment": "Did its job well \u2014 caught every unsourced precision claim, the backsourced (c)-layer inference leaking into \u00a73 as fact, and the inflated doctrine-bank relevance; the vetting note is the strongest work product this week."
+        "assessment": "Did its job well — caught every unsourced precision claim, the backsourced (c)-layer inference leaking into §3 as fact, and the inflated doctrine-bank relevance; the vetting note is the strongest work product this week."
       },
       {
         "member": "editor",
@@ -222,15 +222,15 @@
     ],
     "next_steps": [
       "Make T05 the top priority next session: pull a primary UN document and/or IISD ITN / EJIL:Talk post-session coverage to confirm whether the Procedural Protocol (A/CN.9/1246) was actually adopted and whether the dual-nationality / natural-person gap stayed off-package.",
-      "Pin the Okuashvili Supreme Court posture to a dated, accessible source before any holding is logged; until then keep the three-layer chain (SCC award \u2192 Svea annulment \u2192 Supreme Court appeal) marked as unconfirmed inference and strip the asserted docket number and day-level dates.",
+      "Pin the Okuashvili Supreme Court posture to a dated, accessible source before any holding is logged; until then keep the three-layer chain (SCC award → Svea annulment → Supreme Court appeal) marked as unconfirmed inference and strip the asserted docket number and day-level dates.",
       "Verify or strip the unsourced precision flagged by security: Svea Case T 11278-22, the 31 Aug 2022 award date, the A/CN.9/1246 15 April 2026 date, the agenda URL, the Knieper attribution, and the 10 July session-close date.",
       "Implement the proposed classifier posture-reconciliation check (by decision-date and instance) for any multi-forum case, and re-screen item 3 once a dated source exists.",
       "Re-confirm T01 (Einarsson award watch) and T04 (Hela Schwarz) next session, since both were carried as unchanged but not affirmatively re-verified this week."
     ],
     "escalations": [
-      "T05 outcome unresolved: whether the UNCITRAL 59th-session Procedural Protocol (A/CN.9/1246) was actually adopted remains unverified and is the most time-sensitive carried thread \u2014 decide whether to allocate priority search budget next session.",
-      "The screening layer inverted a procedural posture (Okuashvili item 3 vs item 1) by ingesting an undated paywalled headline alongside an earlier-instance document \u2014 recommend approving the classifier posture-reconciliation check for multi-forum cases.",
-      "Coverage gap: paywalled IAReporter/IISD sources are blocking confirmation of both the Okuashvili Supreme Court judgment and post-session UNCITRAL reporting \u2014 consider whether to secure access or an alternative primary-source route."
+      "T05 outcome unresolved: whether the UNCITRAL 59th-session Procedural Protocol (A/CN.9/1246) was actually adopted remains unverified and is the most time-sensitive carried thread — decide whether to allocate priority search budget next session.",
+      "The screening layer inverted a procedural posture (Okuashvili item 3 vs item 1) by ingesting an undated paywalled headline alongside an earlier-instance document — recommend approving the classifier posture-reconciliation check for multi-forum cases.",
+      "Coverage gap: paywalled IAReporter/IISD sources are blocking confirmation of both the Okuashvili Supreme Court judgment and post-session UNCITRAL reporting — consider whether to secure access or an alternative primary-source route."
     ]
   },
   {
@@ -384,5 +384,19 @@
     "escalations": [
       "VALIDATION_STATUS_ONLY suppresses the weekly brief and the weekly-council ledger write; one environment variable in weekly.yml. 2026-08-03 and 2026-08-10 predate the gate and are undiagnosed. _latest_weekly_council uses next() in FILE ORDER, not by date. N1 unfixed, ninth instance, third caught. N6/N12 overwrite demonstrated for the first time and found substantively idempotent. N14 shallow clone recurred."
     ]
+  },
+  {
+    "ts": "2026-08-30T12:00:00+00:00",
+    "date": "2026-08-30",
+    "type": "daily-council",
+    "members": {
+      "chairman": "Agenda, three-probe egress re-probe, one pre-registered relay batch (7 targets) written and pushed at ddf13d1 11:16:09Z BEFORE any seat existed and verified against git by another seat. Caught the shallow clone (178 -> 868) before any history figure; caught and diffed the 2026-08-29 overwrite record-by-record. Re-derived 0830-B1 and 0830-B4 himself before admitting them. FILED THREE CORRECTIONS NEITHER SEAT FILED - 0830-C1 (a field-scoped absence stated as a block-scoped exclusion, on the row whose whole value is geometric; conceded in full and called by the analyst the worst defect in its return), 0830-C2 (an offset in the analyst's own corrective answer that does not reproduce), 0830-C3 (a row yield advertised conditional on an anchor its own cell calls improbable). Ruled G6's residue provenance up from class-level to ROUTE-LEVEL on observed evidence. TWO OBJECTIONS SUSTAINED AGAINST HIM: 0830-B4 (four distinct find literals on four days described as one row with a firing history, contradicting his own pre-registration) and 0830-B7 (an underived timestamp inside a proof-of-ordering claim). Thirteen filed, thirteen sustained, none overruled.",
+      "analyst": "Real subagent, Claude Opus 5, two turns. Graded the pre-registration in the order it fixed; all five geometric forecasts verified exact; discharged the 0829-C1 Joongi anchor exposure BY OBSERVATION (a first for this council); opened its return with four self-filed failures including the design defect in its own prior-day row; refused both engine summaries in full and returned one of three search slots unspent with a real reason; re-derived the A/81/17 population at HEAD rather than incrementing. NINE OBJECTIONS AGAINST IT (three blocking) PLUS THE CHAIRMAN'S CORRECTION - ALL CONCEDED, NONE CONTESTED, with corrected replacement text supplied for every defective field. Named its own mechanism: screens run at the wrong scope, always in the direction that flatters the return. Second consecutive substitution of the standing monitored-author check, self-disclosed and routed to the weekly seat.",
+      "integrity_officer": "Real subagent. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported unasked, eighth-plus consecutive session. Re-derived every figure in a 516-line record rather than accepting one; verified commit ordering against git rather than against the record's assertion; checked the shallow-clone hazard unprompted; ran check_marks.py and read its docstring to state what it did NOT cover; filed a coverage statement. TEN OBJECTIONS, FOUR BLOCKING, ALL SUSTAINED - including one against the chairman's Part I and one against his timestamp. Nine near-misses formed and killed with reasons. Counted the Rule 0 departure (exactly one) so the chairman need not self-certify, killing two further candidates on express precedent. Two taxonomy entries proposed by name. Eighth consecutive session returning every search slot unspent with the reason re-derived at each. ONE MISS: did not file 0830-C1, C2 or C3, and C1 is in a row cell it was asked to test.",
+      "analytics_officer": "NOT CONVENED, per Rule 0. Digest sentence copied from meta.json by the chairman: Digest 2026-08-24: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). Unmoved; validation_status_only still true.",
+      "systems_researcher": "NOT CONVENED, per Rule 0, and separately its queue is gated behind pending operator approvals."
+    },
+    "outcome": "THE (c) BLOCK ON ARB/12/1 IS IDENTIFIED FROM THE PRIMARY DOCKET AS A REVISION PROCEEDING REGISTERED 16 MARCH 2021 - a whole post-award proceeding absent from every accessible secondary source reached by this council or by the operator's overnight live-web pass, which had marked the question OPEN and routed it back to this council's row. Strong form at page-state scope, below it at case scope. Gap icsid-arb-12-1-block-c-header CLOSED at its header question; successor opened. The annulment outcome moved to REPORTED operator-side and was NOT closed by this council. Thirteen objections and corrections filed, thirteen sustained, none overruled, two of them against the chairman. One Rule 0 departure. Two of six searches spent, zero fetches. EXCERPT_CHARS 400 remains the binding constraint; nothing built, nothing applied. The research question did not move and no proceeding moved.",
+    "record": "analytics/daily-research/2026-08-30.md"
   }
 ]

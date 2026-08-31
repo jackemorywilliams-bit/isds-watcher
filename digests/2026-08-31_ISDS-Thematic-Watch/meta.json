@@ -1,0 +1,91 @@
+{
+  "date": "2026-08-31",
+  "screened": 67,
+  "matches": 0,
+  "held_for_review": 0,
+  "validation_status_only": true,
+  "watch_list_leads": 0,
+  "accepted": 0,
+  "per_source": {
+    "iisd_itn": 0,
+    "google_alerts": 0,
+    "gmail_scholar": 3,
+    "italaw": 3,
+    "icsid": 1,
+    "iareporter_headlines": 10,
+    "unctad_isds": 0,
+    "pca_press": 2,
+    "bing_news": 0,
+    "gdelt": 25
+  },
+  "accepted_by_source": {},
+  "source_health": [
+    {
+      "name": "iisd_itn",
+      "status": "QUIET (feed live; newest item 2026-04-21)",
+      "count": 0
+    },
+    {
+      "name": "google_alerts",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "gmail_scholar",
+      "status": "RETURNED",
+      "count": 3
+    },
+    {
+      "name": "italaw",
+      "status": "RECOVERED (Internet Archive)",
+      "count": 3,
+      "refusals": [
+        {
+          "url": "https://www.italaw.com/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "icsid",
+      "status": "RETURNED",
+      "count": 1
+    },
+    {
+      "name": "iareporter_headlines",
+      "status": "HEADLINE-ONLY",
+      "count": 10
+    },
+    {
+      "name": "unctad_isds",
+      "status": "NOT-READ (403)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "pca_press",
+      "status": "RETURNED",
+      "count": 2
+    },
+    {
+      "name": "bing_news",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "gdelt",
+      "status": "RETURNED",
+      "count": 25
+    }
+  ],
+  "health_warnings": []
+}

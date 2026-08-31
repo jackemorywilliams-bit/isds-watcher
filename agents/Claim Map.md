@@ -5,7 +5,7 @@ hub: Evidence Ledger
 ---
 # Claim Map
 
-**Currency anchor.** *Audited against `806d1f5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `7ac387b`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 **What this is.** One row per factual claim the project makes *about itself*, listing
 **every file that states it** and **what each file currently says**. It exists because the

@@ -1,447 +1,447 @@
 [
- {
-  "ts": "2026-07-27T15:39:11.994974+00:00",
-  "date": "2026-07-27",
-  "type": "weekly-council",
-  "issue": 33,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 14821 chars",
-   "security": "clean",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-07-27T15:39:11.994974+00:00",
+    "date": "2026-07-27",
+    "type": "weekly-council",
+    "issue": 33,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 14821 chars",
+      "security": "clean",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A quiet week, and a legitimately quiet one: no new candidate cleared the theme's threshold. The council delivered what the agenda asked for — a clean negative confirmation that Wingtech/Nexperia is framed as a shares/control and FET dispute, not IP-as-investment, and remains unfiled at ICSID as of Day 103 — plus a useful doctrinal distinction between codified manifest-lack-of-merit gates and abuse-of-right admissibility. The one operational blemish is the absence of the living-memory files in the analyst's environment, which forced a reconstruction from carried notes and leaves the record's continuity unverified.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Agenda was correctly prioritized and time-boxed with a clear downgrade trigger, but it did not anticipate the memory-file provisioning failure and gave no fallback instruction — an environment check belongs in the opening agenda."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Worked the priority to a definitive answer within the search budget, correctly resisted the IP-freeze near-miss as a false hit, and pivoted to non-retroactivity as instructed; the weak point is that the pivotal ICSID no-registration finding rests on search absence rather than direct docket access, and the memory reconstruction was self-certified rather than flagged for operator reconciliation up front."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job cleanly: zero over-assertions, all seven claims correctly held at unverified-lead status, and the blocked ICSID docket claim properly routed for library access rather than waved through."
+      },
+      {
+        "member": "editor",
+        "assessment": "Accurate headline and dek that honestly labels the negative confirmation and the quiet week; open threads are concrete and forward-looking, though the issue could have surfaced the memory-file gap as an editorial caveat rather than leaving it buried in the memo."
+      }
+    ],
+    "next_steps": [
+      "Execute the Wingtech downgrade/close per the thread's own terms following the July 28 (Day 104) determination; record the disposition in the living memory.",
+      "Route the ICSID pending-cases docket verification (blocked/paywalled) through library access as security recommended, so the no-registration finding rests on the primary docket rather than absence-of-evidence via search.",
+      "Formally escalate the A/CN.9/1246 Day-17 threshold breach to the principal and stop polling both null channels; A/81/17 (expected Aug–Sep 2026) is the confirming instrument.",
+      "Re-issue the China–France BIT (2007) Protocol operator request; no further autonomous search attempts.",
+      "Reconcile the reconstructed memory files against the canonical living memory and confirm with the operator where the canonical copy lives, so next week does not start from a reconstruction."
+    ],
+    "escalations": [
+      "A/CN.9/1246: Day-17 threshold breached with both channels (IISD ITN, EJIL:Talk) null — formal escalation per the thread's terms; polling has stopped, and A/81/17 (Aug–Sep 2026) is the next confirming instrument.",
+      "China–France BIT (2007) Protocol: operator action remains outstanding for a second week; the request is re-issued and the thread is blocked until the principal or operator supplies the text.",
+      "Coverage gap: the ICSID pending-cases database is blocked/paywalled, so the Wingtech no-registration finding is a search-absence inference — library access is needed to convert it to a primary-source confirmation before the thread is closed.",
+      "Continuity risk: the living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were missing from the analyst's session environment; the analyst reconstructed and re-exported them, but the principal should confirm the canonical copies and the provisioning failure's cause."
+    ],
+    "minutes_missing": false
   },
-  "status": "A quiet week, and a legitimately quiet one: no new candidate cleared the theme's threshold. The council delivered what the agenda asked for — a clean negative confirmation that Wingtech/Nexperia is framed as a shares/control and FET dispute, not IP-as-investment, and remains unfiled at ICSID as of Day 103 — plus a useful doctrinal distinction between codified manifest-lack-of-merit gates and abuse-of-right admissibility. The one operational blemish is the absence of the living-memory files in the analyst's environment, which forced a reconstruction from carried notes and leaves the record's continuity unverified.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "Agenda was correctly prioritized and time-boxed with a clear downgrade trigger, but it did not anticipate the memory-file provisioning failure and gave no fallback instruction — an environment check belongs in the opening agenda."
-   },
-   {
-    "member": "analyst",
-    "assessment": "Worked the priority to a definitive answer within the search budget, correctly resisted the IP-freeze near-miss as a false hit, and pivoted to non-retroactivity as instructed; the weak point is that the pivotal ICSID no-registration finding rests on search absence rather than direct docket access, and the memory reconstruction was self-certified rather than flagged for operator reconciliation up front."
-   },
-   {
-    "member": "security",
-    "assessment": "Did its job cleanly: zero over-assertions, all seven claims correctly held at unverified-lead status, and the blocked ICSID docket claim properly routed for library access rather than waved through."
-   },
-   {
-    "member": "editor",
-    "assessment": "Accurate headline and dek that honestly labels the negative confirmation and the quiet week; open threads are concrete and forward-looking, though the issue could have surfaced the memory-file gap as an editorial caveat rather than leaving it buried in the memo."
-   }
-  ],
-  "next_steps": [
-   "Execute the Wingtech downgrade/close per the thread's own terms following the July 28 (Day 104) determination; record the disposition in the living memory.",
-   "Route the ICSID pending-cases docket verification (blocked/paywalled) through library access as security recommended, so the no-registration finding rests on the primary docket rather than absence-of-evidence via search.",
-   "Formally escalate the A/CN.9/1246 Day-17 threshold breach to the principal and stop polling both null channels; A/81/17 (expected Aug–Sep 2026) is the confirming instrument.",
-   "Re-issue the China–France BIT (2007) Protocol operator request; no further autonomous search attempts.",
-   "Reconcile the reconstructed memory files against the canonical living memory and confirm with the operator where the canonical copy lives, so next week does not start from a reconstruction."
-  ],
-  "escalations": [
-   "A/CN.9/1246: Day-17 threshold breached with both channels (IISD ITN, EJIL:Talk) null — formal escalation per the thread's terms; polling has stopped, and A/81/17 (Aug–Sep 2026) is the next confirming instrument.",
-   "China–France BIT (2007) Protocol: operator action remains outstanding for a second week; the request is re-issued and the thread is blocked until the principal or operator supplies the text.",
-   "Coverage gap: the ICSID pending-cases database is blocked/paywalled, so the Wingtech no-registration finding is a search-absence inference — library access is needed to convert it to a primary-source confirmation before the thread is closed.",
-   "Continuity risk: the living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were missing from the analyst's session environment; the analyst reconstructed and re-exported them, but the principal should confirm the canonical copies and the provisioning failure's cause."
-  ],
-  "minutes_missing": false
- },
- {
-  "ts": "2026-07-20T15:07:41.474925+00:00",
-  "date": "2026-07-20",
-  "type": "weekly-council",
-  "issue": 25,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 17437 chars",
-   "security": "clean",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-07-20T15:07:41.474925+00:00",
+    "date": "2026-07-20",
+    "type": "weekly-council",
+    "issue": 25,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 17437 chars",
+      "security": "clean",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "",
+    "accountability": [],
+    "next_steps": [],
+    "escalations": []
   },
-  "status": "",
-  "accountability": [],
-  "next_steps": [],
-  "escalations": []
- },
- {
-  "ts": "2026-07-13T15:44:09.443682+00:00",
-  "date": "2026-07-13",
-  "type": "weekly-council",
-  "issue": 17,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 8647 chars",
-   "security": "flagged (7 issues)",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-07-13T15:44:09.443682+00:00",
+    "date": "2026-07-13",
+    "type": "weekly-council",
+    "issue": 17,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 8647 chars",
+      "security": "flagged (7 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A legitimately quiet week — a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set a correctly scoped agenda for a quiet week — dropped B-Mex, pointed effort at the time-sensitive UNCITRAL window, and named specific verification duties; sound direction."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Honest on the quiet result and correctly dropped B-Mex, but overreached by presenting budget-limited snippet searches as 'verified' facts (document IDs, titles, dates) and asserted the Okuashvili date/holding without a neutral source — the memory-file reconstruction adds fragility."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — sharply and specifically flagged the fabrication/overreach risks on the UNCITRAL document IDs, the unfetched PDF titles, the Okuashvili holding, and the 'host still open' inference; the strongest performance this week."
+      },
+      {
+        "member": "editor",
+        "assessment": "Faithfully carried the security hedges into the brief — headline and dek accurately frame it as architecture 'verified' but disposition pending, and the open threads correctly foreground the confirmation gaps rather than overstating findings."
+      }
+    ],
+    "next_steps": [
+      "Recheck IISD ITN and EJIL:Talk across the July 14–22 window for the actual disposition of A/CN.9/1246 (adoption, referral, or continued negotiation), the MIC/MIIR track, and the Advisory Centre host outcome — with named authoritative sources.",
+      "Downgrade every UNCITRAL document identifier, title, and date (A/CN.9/1246, 1265, 1266, 1268, 1270) to unverified/snippet-level until each is backed by a retrieved primary source; strip the '15 April 2026' and 'host still open' inferences pending confirmation.",
+      "Obtain a neutral source (Vinge, Baker Botts, or GBS) on the Okuashvili Svea CoA remand before recording the 26 June 2026 date or the MFN-forum-access holding as anything but claimant's-counsel account.",
+      "Re-attempt the three standing 403-blocked PDFs (AJIL/Okuashvili, ICSID Review 2021, Hela Schwarz Award) via ResearchGate/SSRN mirrors — this was not done this session.",
+      "Hold Wingtech for the ~July 28 day-104 downgrade checkpoint and continue the Okuashvili alert window through ~July 24."
+    ],
+    "escalations": [
+      "Canonical memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were absent from the environment; the analyst reconstructed them from the prompt. Confirm the canonical files exist and reconcile before any reconstructed [carried] claim is cited as independently verified.",
+      "Verification infrastructure gap: no direct network path in the sandbox and a web-search budget too tight to fetch primary PDFs — this is what forced snippet-level 'verification.' Decide whether to provision reliable retrieval before the July 22 UNCITRAL window closes.",
+      "The Okuashvili 26 June 2026 Supreme Court remand / MFN-forum-access holding is potentially the closest Ring-3-adjacent doctrine but currently rests only on claimant's-counsel account — flag as unverified and prioritize neutral corroboration before it informs any finding."
+    ]
   },
-  "status": "A legitimately quiet week — a third consecutive one with no contact on the core IP-as-investment theme. The single advance was verification (not discovery) of the UNCITRAL Working Group III document architecture, and even that is compromised: the security officer correctly flagged that the analyst's asserted document IDs, dates, and titles rest on budget-limited snippet searches rather than fetched sources. The UNCITRAL disposition, the Okuashvili holding, and the Advisory Centre host all remain unresolved and must be re-verified before any of it enters the record as fact.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "Set a correctly scoped agenda for a quiet week — dropped B-Mex, pointed effort at the time-sensitive UNCITRAL window, and named specific verification duties; sound direction."
-   },
-   {
-    "member": "analyst",
-    "assessment": "Honest on the quiet result and correctly dropped B-Mex, but overreached by presenting budget-limited snippet searches as 'verified' facts (document IDs, titles, dates) and asserted the Okuashvili date/holding without a neutral source — the memory-file reconstruction adds fragility."
-   },
-   {
-    "member": "security",
-    "assessment": "Did its job well — sharply and specifically flagged the fabrication/overreach risks on the UNCITRAL document IDs, the unfetched PDF titles, the Okuashvili holding, and the 'host still open' inference; the strongest performance this week."
-   },
-   {
-    "member": "editor",
-    "assessment": "Faithfully carried the security hedges into the brief — headline and dek accurately frame it as architecture 'verified' but disposition pending, and the open threads correctly foreground the confirmation gaps rather than overstating findings."
-   }
-  ],
-  "next_steps": [
-   "Recheck IISD ITN and EJIL:Talk across the July 14–22 window for the actual disposition of A/CN.9/1246 (adoption, referral, or continued negotiation), the MIC/MIIR track, and the Advisory Centre host outcome — with named authoritative sources.",
-   "Downgrade every UNCITRAL document identifier, title, and date (A/CN.9/1246, 1265, 1266, 1268, 1270) to unverified/snippet-level until each is backed by a retrieved primary source; strip the '15 April 2026' and 'host still open' inferences pending confirmation.",
-   "Obtain a neutral source (Vinge, Baker Botts, or GBS) on the Okuashvili Svea CoA remand before recording the 26 June 2026 date or the MFN-forum-access holding as anything but claimant's-counsel account.",
-   "Re-attempt the three standing 403-blocked PDFs (AJIL/Okuashvili, ICSID Review 2021, Hela Schwarz Award) via ResearchGate/SSRN mirrors — this was not done this session.",
-   "Hold Wingtech for the ~July 28 day-104 downgrade checkpoint and continue the Okuashvili alert window through ~July 24."
-  ],
-  "escalations": [
-   "Canonical memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were absent from the environment; the analyst reconstructed them from the prompt. Confirm the canonical files exist and reconcile before any reconstructed [carried] claim is cited as independently verified.",
-   "Verification infrastructure gap: no direct network path in the sandbox and a web-search budget too tight to fetch primary PDFs — this is what forced snippet-level 'verification.' Decide whether to provision reliable retrieval before the July 22 UNCITRAL window closes.",
-   "The Okuashvili 26 June 2026 Supreme Court remand / MFN-forum-access holding is potentially the closest Ring-3-adjacent doctrine but currently rests only on claimant's-counsel account — flag as unverified and prioritize neutral corroboration before it informs any finding."
-  ]
- },
- {
-  "ts": "2026-07-06T16:16:43.184529+00:00",
-  "date": "2026-07-06",
-  "type": "weekly-council",
-  "issue": 9,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 12356 chars",
-   "security": "flagged (8 issues)",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-07-06T16:16:43.184529+00:00",
+    "date": "2026-07-06",
+    "type": "weekly-council",
+    "issue": 9,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 12356 chars",
+      "security": "flagged (8 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A legitimately quiet week on the core theme, honestly reported. The one substantive advance — the Okuashvili MFN finding — rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "chairman: agenda was correctly calibrated — called the quiet week, killed the Suez item, and set skepticism gates that the week's findings vindicated."
+      },
+      {
+        "member": "analyst",
+        "assessment": "analyst: disciplined on drops and on the Wingtech 'unconfirmed' call, but overreached by presenting the Okuashvili and Suez holdings as established when only headlines were read, and re-inflated the dropped Suez item into a 'contrary data point.'"
+      },
+      {
+        "member": "security",
+        "assessment": "security: strong week — correctly flagged the headline-only sourcing on Okuashvili, Suez, and GAR, and the overreach in elevating a two-headline proposition to 'affirmatively-supported.'"
+      },
+      {
+        "member": "editor",
+        "assessment": "editor: appropriately hedged the headline ('Where the Treaty Text Permits It'), framed the quiet week honestly, and surfaced the verification gaps as open threads."
+      }
+    ],
+    "next_steps": [
+      "Obtain the full Okuashvili v. Georgia Supreme Court judgment (and eventual NJA citation) to confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or a Svea remand remains open; do not rely on the IAReporter/GAR headlines.",
+      "Continue the Wingtech/Nexperia ICSID docket watch — upgrade from 'announced' to 'pending' only on an ICSID case number or registration page; monitor the parallel Dutch-court control litigation as a potential Ring 2 denial-of-justice anchor.",
+      "Re-check for the UNCITRAL 59th-session A/CN.9/1246 report (IISD ITN / EJIL:Talk) after the 10 July close for adoption/referral/noting and the scope-of-application and opt-in treatment of pre-existing China BITs.",
+      "Harvest practitioner analysis (Vinge, Baker Botts, GBS Disputes) on Okuashvili to verify disposition beyond headline level.",
+      "Keep the 'MFN-forum-bypass is live where treaty text permits' proposition at TENTATIVE, and the China-BIT-closure claim at MEDIUM/treaty-text-contingent, until full-text verification."
+    ],
+    "escalations": [
+      "The week's only advance (Okuashvili MFN holding) is headline-only and unverified from primary text — treat as a lead, not a finding, pending the full judgment.",
+      "Wingtech/Nexperia remains 'filed-not-confirmed' ~12 weeks past cooling-off with no ICSID docket; decision needed on how long to hold it as top priority absent registration.",
+      "The carried 'MFN-forum-bypass closed for China BITs' claim should be re-labelled as treaty-text-contingent (still MEDIUM), not doctrinally settled.",
+      "Recurring environment gap: living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were not present and had to be reconstructed, and the web-search budget was exhausted after three passes — both limit verification depth and warrant attention."
+    ]
   },
-  "status": "A legitimately quiet week on the core theme, honestly reported. The one substantive advance — the Okuashvili MFN finding — rests entirely on headlines, so it is a promising lead rather than a confirmed result; the security officer correctly caught the analyst dressing headline-level facts as holdings. Wingtech registration is still unconfirmed and UNCITRAL produced no indexed report, so the standing agenda is intact but did not move.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "chairman: agenda was correctly calibrated — called the quiet week, killed the Suez item, and set skepticism gates that the week's findings vindicated."
-   },
-   {
-    "member": "analyst",
-    "assessment": "analyst: disciplined on drops and on the Wingtech 'unconfirmed' call, but overreached by presenting the Okuashvili and Suez holdings as established when only headlines were read, and re-inflated the dropped Suez item into a 'contrary data point.'"
-   },
-   {
-    "member": "security",
-    "assessment": "security: strong week — correctly flagged the headline-only sourcing on Okuashvili, Suez, and GAR, and the overreach in elevating a two-headline proposition to 'affirmatively-supported.'"
-   },
-   {
-    "member": "editor",
-    "assessment": "editor: appropriately hedged the headline ('Where the Treaty Text Permits It'), framed the quiet week honestly, and surfaced the verification gaps as open threads."
-   }
-  ],
-  "next_steps": [
-   "Obtain the full Okuashvili v. Georgia Supreme Court judgment (and eventual NJA citation) to confirm both the MFN-detour holding and whether SCC jurisdiction is fully restored or a Svea remand remains open; do not rely on the IAReporter/GAR headlines.",
-   "Continue the Wingtech/Nexperia ICSID docket watch — upgrade from 'announced' to 'pending' only on an ICSID case number or registration page; monitor the parallel Dutch-court control litigation as a potential Ring 2 denial-of-justice anchor.",
-   "Re-check for the UNCITRAL 59th-session A/CN.9/1246 report (IISD ITN / EJIL:Talk) after the 10 July close for adoption/referral/noting and the scope-of-application and opt-in treatment of pre-existing China BITs.",
-   "Harvest practitioner analysis (Vinge, Baker Botts, GBS Disputes) on Okuashvili to verify disposition beyond headline level.",
-   "Keep the 'MFN-forum-bypass is live where treaty text permits' proposition at TENTATIVE, and the China-BIT-closure claim at MEDIUM/treaty-text-contingent, until full-text verification."
-  ],
-  "escalations": [
-   "The week's only advance (Okuashvili MFN holding) is headline-only and unverified from primary text — treat as a lead, not a finding, pending the full judgment.",
-   "Wingtech/Nexperia remains 'filed-not-confirmed' ~12 weeks past cooling-off with no ICSID docket; decision needed on how long to hold it as top priority absent registration.",
-   "The carried 'MFN-forum-bypass closed for China BITs' claim should be re-labelled as treaty-text-contingent (still MEDIUM), not doctrinally settled.",
-   "Recurring environment gap: living-memory files (STATE_OF_THE_ANSWER.md, insights.jsonl) were not present and had to be reconstructed, and the web-search budget was exhausted after three passes — both limit verification depth and warrant attention."
-  ]
- },
- {
-  "ts": "2026-06-29T19:07:07.366728+00:00",
-  "date": "2026-06-29",
-  "type": "weekly-council",
-  "issue": 2,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 12048 chars",
-   "security": "flagged (9 issues)",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-06-29T19:07:07.366728+00:00",
+    "date": "2026-06-29",
+    "type": "weekly-council",
+    "issue": 2,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 12048 chars",
+      "security": "flagged (9 issues)",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A genuinely quiet, honest week: zero candidates cleared the relevance floor, and the one live development (UNCITRAL 59th session, T05) is system-level procedural reform that touches the project only prospectively at Ring 3. The analyst answered both agenda questions against the verified core — A/CN.9/1246 is submitted, not adopted (the session opens on the week-ending date, so no adoption report can yet exist), and the dual-nationality/natural-person gap appears off-package. The week is marred, however, by several fabrication risks the security officer caught: companion document numbers and pinpoint/IISD cites asserted as verified without retrieval in the search log.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set a tight, verifiable agenda with the right skeptical guardrails; the 'do not log as adopted unless retrieved' instruction proved load-bearing and caught a real risk."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Answered both priority questions against verified primary material and was candid about a quiet week, but undermined the work by presenting unretrieved document numbers, pinpoint cites, and IISD session details as verified, and by inflating a prospective off-theme procedural point into a logged insight."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — correctly flagged the A/CN.9/1269 and A/CN.9/1235 numbers, the paras 34-51 pinpoints, and the IISD/Transparency-Rules claims as unverified, and rightly pushed to hedge the off-package and non-retroactivity overreach."
+      },
+      {
+        "member": "editor",
+        "assessment": "Issued an honest, anti-inflation brief that foregrounds the quiet week and faithfully carries the unverified-source caveats into the open threads rather than papering over them."
+      }
+    ],
+    "next_steps": [
+      "After the 59th session concludes on 10 July 2026, retrieve the A/CN.9-series session report and record the actual disposition of A/CN.9/1246 — adopted, referred back, or noted — rejecting any secondary 'adoption' claim until the official report corroborates it.",
+      "Confirm or drop the unverified document numbers (A/CN.9/1269 comments-compilation, A/CN.9/1235 provisional agenda) and the 'paras 34-51' pinpoint cites against actually retrieved sources before they enter living memory as fact.",
+      "Downgrade the opt-in / non-retroactivity point from a logged insight (conf. 0.8) to context/near-miss, and confirm it against the body of A/CN.9/1246 itself rather than the Transparency Convention analogy.",
+      "Re-attempt a primary source for the Hela Schwarz data-exclusivity award and an accessible Swedish source for Okuashvili; both remain blocked and should not be inferred from paywalled-only material.",
+      "Adopt the posture-reconciliation classifier's decision-date/instance reconciliation rule, which still stands unadopted."
+    ],
+    "escalations": [
+      "The analyst's memo asserted A/CN.9/1269 and A/CN.9/1235 (and pinpoint paragraph cites) as verified without retrieval evidence — these are fabrication risks that must be confirmed or struck before they harden into living-memory fact.",
+      "The durable Ring 3 finding stands on verified ground: even if A/CN.9/1246 is adopted, its opt-in / non-retroactive design means the early-dismissal gate would not reach the legacy BITs generating IP-as-investment claims; worth the principal's attention, but should be carried as inference pending confirmation against the document body.",
+      "Coverage gap: Hela Schwarz, Einarsson, and Okuashvili all remain blocked behind paywalls or unindexed sources — a decision is needed on whether to invest in paid/primary-source access or hold these threads open indefinitely."
+    ]
   },
-  "status": "A genuinely quiet, honest week: zero candidates cleared the relevance floor, and the one live development (UNCITRAL 59th session, T05) is system-level procedural reform that touches the project only prospectively at Ring 3. The analyst answered both agenda questions against the verified core — A/CN.9/1246 is submitted, not adopted (the session opens on the week-ending date, so no adoption report can yet exist), and the dual-nationality/natural-person gap appears off-package. The week is marred, however, by several fabrication risks the security officer caught: companion document numbers and pinpoint/IISD cites asserted as verified without retrieval in the search log.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "Set a tight, verifiable agenda with the right skeptical guardrails; the 'do not log as adopted unless retrieved' instruction proved load-bearing and caught a real risk."
-   },
-   {
-    "member": "analyst",
-    "assessment": "Answered both priority questions against verified primary material and was candid about a quiet week, but undermined the work by presenting unretrieved document numbers, pinpoint cites, and IISD session details as verified, and by inflating a prospective off-theme procedural point into a logged insight."
-   },
-   {
-    "member": "security",
-    "assessment": "Did its job well — correctly flagged the A/CN.9/1269 and A/CN.9/1235 numbers, the paras 34-51 pinpoints, and the IISD/Transparency-Rules claims as unverified, and rightly pushed to hedge the off-package and non-retroactivity overreach."
-   },
-   {
-    "member": "editor",
-    "assessment": "Issued an honest, anti-inflation brief that foregrounds the quiet week and faithfully carries the unverified-source caveats into the open threads rather than papering over them."
-   }
-  ],
-  "next_steps": [
-   "After the 59th session concludes on 10 July 2026, retrieve the A/CN.9-series session report and record the actual disposition of A/CN.9/1246 — adopted, referred back, or noted — rejecting any secondary 'adoption' claim until the official report corroborates it.",
-   "Confirm or drop the unverified document numbers (A/CN.9/1269 comments-compilation, A/CN.9/1235 provisional agenda) and the 'paras 34-51' pinpoint cites against actually retrieved sources before they enter living memory as fact.",
-   "Downgrade the opt-in / non-retroactivity point from a logged insight (conf. 0.8) to context/near-miss, and confirm it against the body of A/CN.9/1246 itself rather than the Transparency Convention analogy.",
-   "Re-attempt a primary source for the Hela Schwarz data-exclusivity award and an accessible Swedish source for Okuashvili; both remain blocked and should not be inferred from paywalled-only material.",
-   "Adopt the posture-reconciliation classifier's decision-date/instance reconciliation rule, which still stands unadopted."
-  ],
-  "escalations": [
-   "The analyst's memo asserted A/CN.9/1269 and A/CN.9/1235 (and pinpoint paragraph cites) as verified without retrieval evidence — these are fabrication risks that must be confirmed or struck before they harden into living-memory fact.",
-   "The durable Ring 3 finding stands on verified ground: even if A/CN.9/1246 is adopted, its opt-in / non-retroactive design means the early-dismissal gate would not reach the legacy BITs generating IP-as-investment claims; worth the principal's attention, but should be carried as inference pending confirmation against the document body.",
-   "Coverage gap: Hela Schwarz, Einarsson, and Okuashvili all remain blocked behind paywalls or unindexed sources — a decision is needed on whether to invest in paid/primary-source access or hold these threads open indefinitely."
-  ]
- },
- {
-  "ts": "2026-06-29T16:37:09.074379+00:00",
-  "date": "2026-06-29",
-  "type": "weekly-council",
-  "issue": 1,
-  "members": {
-   "chairman": "agenda set",
-   "analyst": "memo 9724 chars",
-   "security": "flagged issues",
-   "editor": "4 sections, 6 threads"
+  {
+    "ts": "2026-06-29T16:37:09.074379+00:00",
+    "date": "2026-06-29",
+    "type": "weekly-council",
+    "issue": 1,
+    "members": {
+      "chairman": "agenda set",
+      "analyst": "memo 9724 chars",
+      "security": "flagged issues",
+      "editor": "4 sections, 6 threads"
+    },
+    "status": "A genuinely quiet week on the theme, as anticipated — no screened item reaches the IP/trade-secret intersection, so this is a legitimate null result on the core question. The week's real output is a methodological catch (the screening layer inverted the Okuashvili procedural posture) and an honest non-result on T05, where the post-session UNCITRAL outcome could not be verified before the search budget ran out. Net value is modest but real; the council reported it without padding.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "Set an accurate, well-scoped agenda — correctly called the quiet week, flagged the paywalled-headline reconciliation risk, and prioritised the datable T05 event; the analyst's findings vindicate that framing."
+      },
+      {
+        "member": "analyst",
+        "assessment": "Strong on candor and on catching the inverted Okuashvili posture, but injected unsourced precision (docket number, exact dates, doc date, dissenter name) that it could not have verified, and over-promoted a Ring-3-only artefact to 'directly transferable' to T04."
+      },
+      {
+        "member": "security",
+        "assessment": "Did its job well — caught every unsourced precision claim, the backsourced (c)-layer inference leaking into §3 as fact, and the inflated doctrine-bank relevance; the vetting note is the strongest work product this week."
+      },
+      {
+        "member": "editor",
+        "assessment": "Issue is honest and correctly headlines the quiet week and the unverified UNCITRAL outcome; framed the open threads as questions that absorb the security flags, though it could have stated more explicitly that the unsourced dates were to be stripped, not merely confirmed."
+      }
+    ],
+    "next_steps": [
+      "Make T05 the top priority next session: pull a primary UN document and/or IISD ITN / EJIL:Talk post-session coverage to confirm whether the Procedural Protocol (A/CN.9/1246) was actually adopted and whether the dual-nationality / natural-person gap stayed off-package.",
+      "Pin the Okuashvili Supreme Court posture to a dated, accessible source before any holding is logged; until then keep the three-layer chain (SCC award → Svea annulment → Supreme Court appeal) marked as unconfirmed inference and strip the asserted docket number and day-level dates.",
+      "Verify or strip the unsourced precision flagged by security: Svea Case T 11278-22, the 31 Aug 2022 award date, the A/CN.9/1246 15 April 2026 date, the agenda URL, the Knieper attribution, and the 10 July session-close date.",
+      "Implement the proposed classifier posture-reconciliation check (by decision-date and instance) for any multi-forum case, and re-screen item 3 once a dated source exists.",
+      "Re-confirm T01 (Einarsson award watch) and T04 (Hela Schwarz) next session, since both were carried as unchanged but not affirmatively re-verified this week."
+    ],
+    "escalations": [
+      "T05 outcome unresolved: whether the UNCITRAL 59th-session Procedural Protocol (A/CN.9/1246) was actually adopted remains unverified and is the most time-sensitive carried thread — decide whether to allocate priority search budget next session.",
+      "The screening layer inverted a procedural posture (Okuashvili item 3 vs item 1) by ingesting an undated paywalled headline alongside an earlier-instance document — recommend approving the classifier posture-reconciliation check for multi-forum cases.",
+      "Coverage gap: paywalled IAReporter/IISD sources are blocking confirmation of both the Okuashvili Supreme Court judgment and post-session UNCITRAL reporting — consider whether to secure access or an alternative primary-source route."
+    ]
   },
-  "status": "A genuinely quiet week on the theme, as anticipated — no screened item reaches the IP/trade-secret intersection, so this is a legitimate null result on the core question. The week's real output is a methodological catch (the screening layer inverted the Okuashvili procedural posture) and an honest non-result on T05, where the post-session UNCITRAL outcome could not be verified before the search budget ran out. Net value is modest but real; the council reported it without padding.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "Set an accurate, well-scoped agenda — correctly called the quiet week, flagged the paywalled-headline reconciliation risk, and prioritised the datable T05 event; the analyst's findings vindicate that framing."
-   },
-   {
-    "member": "analyst",
-    "assessment": "Strong on candor and on catching the inverted Okuashvili posture, but injected unsourced precision (docket number, exact dates, doc date, dissenter name) that it could not have verified, and over-promoted a Ring-3-only artefact to 'directly transferable' to T04."
-   },
-   {
-    "member": "security",
-    "assessment": "Did its job well — caught every unsourced precision claim, the backsourced (c)-layer inference leaking into §3 as fact, and the inflated doctrine-bank relevance; the vetting note is the strongest work product this week."
-   },
-   {
-    "member": "editor",
-    "assessment": "Issue is honest and correctly headlines the quiet week and the unverified UNCITRAL outcome; framed the open threads as questions that absorb the security flags, though it could have stated more explicitly that the unsourced dates were to be stripped, not merely confirmed."
-   }
-  ],
-  "next_steps": [
-   "Make T05 the top priority next session: pull a primary UN document and/or IISD ITN / EJIL:Talk post-session coverage to confirm whether the Procedural Protocol (A/CN.9/1246) was actually adopted and whether the dual-nationality / natural-person gap stayed off-package.",
-   "Pin the Okuashvili Supreme Court posture to a dated, accessible source before any holding is logged; until then keep the three-layer chain (SCC award → Svea annulment → Supreme Court appeal) marked as unconfirmed inference and strip the asserted docket number and day-level dates.",
-   "Verify or strip the unsourced precision flagged by security: Svea Case T 11278-22, the 31 Aug 2022 award date, the A/CN.9/1246 15 April 2026 date, the agenda URL, the Knieper attribution, and the 10 July session-close date.",
-   "Implement the proposed classifier posture-reconciliation check (by decision-date and instance) for any multi-forum case, and re-screen item 3 once a dated source exists.",
-   "Re-confirm T01 (Einarsson award watch) and T04 (Hela Schwarz) next session, since both were carried as unchanged but not affirmatively re-verified this week."
-  ],
-  "escalations": [
-   "T05 outcome unresolved: whether the UNCITRAL 59th-session Procedural Protocol (A/CN.9/1246) was actually adopted remains unverified and is the most time-sensitive carried thread — decide whether to allocate priority search budget next session.",
-   "The screening layer inverted a procedural posture (Okuashvili item 3 vs item 1) by ingesting an undated paywalled headline alongside an earlier-instance document — recommend approving the classifier posture-reconciliation check for multi-forum cases.",
-   "Coverage gap: paywalled IAReporter/IISD sources are blocking confirmation of both the Okuashvili Supreme Court judgment and post-session UNCITRAL reporting — consider whether to secure access or an alternative primary-source route."
-  ]
- },
- {
-  "ts": "2026-08-06T12:00:00+00:00",
-  "date": "2026-08-06",
-  "type": "daily-council",
-  "members": {
-   "chairman": "agenda + one relay batch (pre-registered decision rule) + 8 rulings + close-out in-session, 4 record amendments, register hygiene discharged",
-   "analyst": "memo on 4 tasks, 1 of 2 authorised searches spent, 6 candidate claims, 3 self-narrowed propositions, 8 binding objections against it all sustained",
-   "security": "FLAGGED (8 binding + 10 observations), all sustained, 2 new taxonomy entries (26, 27), 1 objection filed against its own prior seating",
-   "analytics": "Rule 1 sentence on an unchanged digest, 5 standing findings resolved, 2026-08-17 chain re-derived from code, 1 dating error (chairman-corrected)",
-   "systems": "seated on one ungated measurement question; delivery verdict from runner logs, stopgap decomposed into load-bearing and not, 1 new hard constraint (~22:15Z cliff) acted on in-session"
+  {
+    "ts": "2026-08-06T12:00:00+00:00",
+    "date": "2026-08-06",
+    "type": "daily-council",
+    "members": {
+      "chairman": "agenda + one relay batch (pre-registered decision rule) + 8 rulings + close-out in-session, 4 record amendments, register hygiene discharged",
+      "analyst": "memo on 4 tasks, 1 of 2 authorised searches spent, 6 candidate claims, 3 self-narrowed propositions, 8 binding objections against it all sustained",
+      "security": "FLAGGED (8 binding + 10 observations), all sustained, 2 new taxonomy entries (26, 27), 1 objection filed against its own prior seating",
+      "analytics": "Rule 1 sentence on an unchanged digest, 5 standing findings resolved, 2026-08-17 chain re-derived from code, 1 dating error (chairman-corrected)",
+      "systems": "seated on one ungated measurement question; delivery verdict from runner logs, stopgap decomposed into load-bearing and not, 1 new hard constraint (~22:15Z cliff) acted on in-session"
+    },
+    "status": "A narrow, high-discipline day in which the council's own apparatus came out ahead. Three retrievals, all with passing controls, one relay batch, no re-fire. THE DAY'S RESULT: a PRE-REGISTERED false-slug control DISCHARGED the 2026-08-04 B7 identification objection - the first negative control in this project's history to clear a question rather than raise one. The same numeric UNCTAD id 978 under a deliberately false slug (zzz---zzz-bit-1900-) returned HTTP 200, final_url character-identical (no redirect), and a 400-char head BYTE-IDENTICAL to the true-slug heads of 08-03 and 08-05, beginning 'China - Switzerland BIT (2009)'. Admissible only because the decision rule INCLUDING BOTH NEGATIVE BRANCHES was committed at cc123fb 42 seconds before the runner fired - ordering verified from git by the officer, which is the hinge of the day. Identification rises from URL-slug to UNCTAD-database-record level; STATE_OF_THE_ANSWER.md:44 and :88 amended. Three limits bind and the cell's CONTENT is expressly NOT upgraded (still mapping-level, not ledger-grade, unranked, treaty text unread and with the operator); the converse false-id control remains unrun and is recorded as an open residual. DELIVERY, SETTLED BY MEASUREMENT: the operator DID receive the complete 2026-08-05 record (177,907 bytes, all 19 parts, 12:09:41Z from main) - but ALSO a truncated one 47 minutes earlier carrying 5.32% of the day, Part 1 only, under an IDENTICAL SUBJECT LINE. And only ONE of the stopgap's two rules was load-bearing: [skip ci] was FORGOTTEN TWICE on the day it was adopted and changed nothing received; the single marker-deletion commit 69 seconds before the merge carried the whole day, proved by the 'create mode' line rather than argued. New measured constraint: crons fire late by up to 2h54m, the last real opportunity is ~22:15Z, and past it a merged record is NEVER mailed by any path. Acted on in-session rather than filed. RESEARCH: A/81/17 day-6 null with same-page positive control, recorded as FIVE SAMPLED TIME POINTS across 65h13m23s and expressly not a continuous interval (0806-B3). Huawei ARB/22/2 null on all three baseline fields via the first relay read of ICSID's case-detail page - a TWO-INSTRUMENT confirmation against the 07-31 direct fetch, not a repeated observation; 392 days of docket silence, which supports nothing about whether an award has been rendered. PO Nos. 2 and 4 dates new to the record, retrieved not searched. A5 adopted as a standing weekly relay row. VETTING: FLAGGED - EIGHT binding objections, ALL SUSTAINED, no overrule, and every one lands on the VERIFICATION layer rather than on a finding. Two new taxonomy entries adopted: 26 TAUTOLOGICAL INSTRUMENT CHECK (which corrects a method the officer's own seat blessed yesterday and the chairman rated the best passage of that day) and 27 SCOPE-MIXED SCREEN. Entity-blind-find adopted as a standing qualification on every relay null. 0806-B1 is the principal objection for the SECOND consecutive day: all seventeen headline screen counts reproduce exactly, and the defect has moved one level down into the referent clauses - so Amendment 2's third iteration is pitched at arithmetic (a clause must sum to its own screen). CHAIRMAN NEAR-MISS: a member instruction would have had him amend STATE_OF_THE_ANSWER.md:86 - the Article 9(c)/Hela Schwarz paragraph - when the target text is at :88. The error was INHERITED from that file's own stale internal pointer at line 44; both corrected. Fifth template iteration: open the line before acting on any instruction that names one, including a member's. One prior next step was found ALREADY DISCHARGED by running the command instead of trusting the instruction. Register hygiene discharged: ASIL thread entered as A8 with both limbs owned, A1 and A4 refreshed. Five real subagents' worth of seats, zero spawn failures, zero performed voices, spend checkpoint honoured, nothing built, no pending approval touched. No new insight - standing watch.",
+    "accountability": [
+      {
+        "member": "chairman",
+        "assessment": "The instrument probe, the pasted-fact discipline, and pre-registering the decision rule IN THE COMMITTED REQUEST FILE all worked, and the last is what made the day's discharge admissible at all. Against that: 0806-B1 is a SECOND consecutive failure of a countermeasure he wrote - the repo-scope rule was pitched at the counts and the defect moved to the clauses, exactly as last week's rule was pitched at quoting lines and the defect moved to characterising files. The pattern is now his rather than the analyst's. Also came one instruction away from editing the Article 9(c) paragraph of the project's cumulative answer, and was saved by the officer rather than by his own check. Zero spawn failures, zero performed voices, checkpoint honoured, nothing built."
+      },
+      {
+        "member": "analyst",
+        "assessment": "The strongest research day this seat has had this week, and eight sustained objections do not contradict that - every one is about bookkeeping, none about a finding. The Einarsson referent clause is the best single piece of work in the session and vindicates the whole Amendment-2 apparatus: thirteen of twenty occurrences of 'Procedural Order No. 9' in the repository concern a DIFFERENT CASE, so a future seat grepping the string would have read corroboration for a Huawei PO 9 that does not exist. Narrowed three of its own propositions before anyone challenged them, each correctly. Spent one search of two and said plainly why the second was not invented into a use. Volunteered a correction to an objection made against it yesterday, which the officer then verified and endorsed without reservation. Weakness now legible as a pattern: retrieval and reasoning discipline excellent, bookkeeping discipline lagging one layer behind wherever the countermeasure was last pitched."
+      },
+      {
+        "member": "security",
+        "assessment": "Third consecutive exemplary seating and the best of the three. Re-ran all seventeen screens with per-file occurrence breakdowns rather than accepting totals; verified the pre-registration ordering FROM GIT, the single check on which the day's discharge rests; re-derived the offset arithmetic from source and found that a method it had itself blessed yesterday was tautological - an objection against its own prior seating. Caught an instruction that would have had the chairman edit the wrong paragraph of the cumulative answer. Rule-4 notes exemplary: reported two objections formed and dropped on checking, one indexing error of its own that had produced a false result, and the direction in which its principal objection weakened."
+      },
+      {
+        "member": "analytics",
+        "assessment": "Sixth consecutive exemplary seating and correctly short on an unchanged-digest day. Rule 1 numbers copied from file; unchanged digest confirmed from git log rather than the chairman's word; five standing findings resolved in one line each; the 2026-08-17 chain re-derived from code and state rather than from yesterday's record. Added the narrowing the operator's list needed: the published site's health table never reads meta's source_health array, so it would show italaw RETURNED while the email says DEGRADED - which bounds the false statement's blast radius and simultaneously means the site is silently wrong about health on every run. One dating error, corrected by the chairman in Part 6 rather than edited into the seat's verbatim text: the template it discusses last changed 2026-08-04, not today. Substance unaffected."
+      },
+      {
+        "member": "systems researcher",
+        "assessment": "Second consecutive contribution that changed what the session did, and the only seat whose work reached beyond the record into how the day was run. Answered the question and then refused the comfortable version of the answer: the stopgap worked, but only one of its two rules was load-bearing and it was not the rule the council had spent its attention on. Proved it from the 'create mode' log line rather than arguing it. Then measured the cron schedule and found the paper backstops off by up to 2h54m with a hard cliff at ~22:15Z - acted on in-session. Drew the boundary of its own evidence unprompted: the logs prove SMTP accepted a 212KB message, not inbox delivery, and it declined to infer the difference. Both headline measurements independently re-verified by the chairman and both reproduce exactly."
+      }
+    ],
+    "next_steps": [
+      "A/81/17 day-7 relay row with same-page control; report as a SAMPLE POINT, never a continuous interval (0806-B3); not undocs.org.",
+      "Carry four corrections into tomorrow's memo, not retrospectively: referent-clause parity at occurrence scope incl. state/council_log.json; the 0804- prefix in prose AND candidate_claims; the entity-blind-find qualification on every relay null; N = 2 (+1 adjacent) / M = 5 on the rule's own statistic.",
+      "Amendment 2, third iteration, pitched at the mechanism: a referent clause must SUM to its own screen's occurrence count, and any bucket that cannot be made to sum is reported as unaccounted rather than rounded.",
+      "Huawei ARB/22/2 becomes a STANDING WEEKLY relay row (three rows, one page, two same-page controls); next row 2026-08-13; search track reserved for what the docket cannot answer.",
+      "Optional, unscheduled: the converse false-id control (/999999/china---switzerland-bit-2009-), the only thing that would close the identification residual. NOT a condition of the discharge.",
+      "Chairman's template, fifth iteration: before acting on any instruction that names a file and a line - INCLUDING one from a member seat - open the line."
+    ],
+    "escalations": [
+      "UPDATE, good news on yesterday's lead item: you DID receive the complete 2026-08-05 record (177,907 bytes, all 19 parts, 12:09:41Z). But you also received a TRUNCATED one 47 minutes earlier carrying 5.32% of the day, Part 1 only, under an IDENTICAL subject line, with nothing in either to tell you which was which. Both are in your inbox; the complete one ends with Part 6's escalations.",
+      "STILL NEEDS SIGN-OFF - daily-update.yml needs branches: [main] under on.push. Yesterday supplied its first live datum: the [skip ci] half of the stopgap was FORGOTTEN TWICE on the day it was written and changed nothing you received; the day was carried entirely by one manual marker-deletion commit made 69 seconds before the merge, with no machine check behind it.",
+      "NEW, operational, bounds every future session: the scheduled crons fire LATE by up to 2h54m; the first backstop after a merge is ~14:25Z and the LAST opportunity of the day is ~22:15Z, not 21:00. Past it a merged record is never mailed by any path, because date_str is the CURRENT UTC date. Not a change request - a constraint whose shape you should know.",
+      "CARRIED, DATED, unchanged - the source-health guard will publish a false statement on 2026-08-17, now ELEVEN days out. Chain re-verified from code and state this session; nothing under src/ or state/ has moved. Earliest-possible and expected, not guaranteed. Narrowing: the published SITE would not carry it, because its health table never reads the source_health array - which also means the site is silently wrong about source health on every run.",
+      "CARRIED, still the only research item - the China-Switzerland BIT (2009) forum provision text, in one pass with the treaty-978 mapper attribution and vintage, capturing a preserved source_snapshot. Today's discharge makes this MORE worth doing: we now know exactly which UNCTAD record we hold.",
+      "CARRIED, small - the unisl398 limb of the ASIL thread, now recorded as A8 in agents/Workflow Threads.md with you as named owner, so it can no longer be re-inherited as an ownerless plan. unis.unvienna.org stays off-allowlist; no change proposed.",
+      "STANDING, unchanged, not re-argued: both relay fixes (lexicographic selection; overwrite-in-place - do NOT accept an mtime fix, actions/checkout destroys mtimes); bing_news parity test; STALE signal; unctad_isds keep-or-retire; empty-run suppression at src/main.py:277-282; da33a30be92ab234 ledger snapshot amendment; source_analytics.py sign-off; health column; polite_get diagnostic CLI; IAReporter feed swap; Kluwer source; category signal; build_graph fix; emailer CONSISTENCY WARNING question. ALL APPROVALS REMAIN PENDING. Nothing built or applied today. One new proposal joins the queue at the back, words only: the relay's match_offset / body_chars field."
+    ]
   },
-  "status": "A narrow, high-discipline day in which the council's own apparatus came out ahead. Three retrievals, all with passing controls, one relay batch, no re-fire. THE DAY'S RESULT: a PRE-REGISTERED false-slug control DISCHARGED the 2026-08-04 B7 identification objection - the first negative control in this project's history to clear a question rather than raise one. The same numeric UNCTAD id 978 under a deliberately false slug (zzz---zzz-bit-1900-) returned HTTP 200, final_url character-identical (no redirect), and a 400-char head BYTE-IDENTICAL to the true-slug heads of 08-03 and 08-05, beginning 'China - Switzerland BIT (2009)'. Admissible only because the decision rule INCLUDING BOTH NEGATIVE BRANCHES was committed at cc123fb 42 seconds before the runner fired - ordering verified from git by the officer, which is the hinge of the day. Identification rises from URL-slug to UNCTAD-database-record level; STATE_OF_THE_ANSWER.md:44 and :88 amended. Three limits bind and the cell's CONTENT is expressly NOT upgraded (still mapping-level, not ledger-grade, unranked, treaty text unread and with the operator); the converse false-id control remains unrun and is recorded as an open residual. DELIVERY, SETTLED BY MEASUREMENT: the operator DID receive the complete 2026-08-05 record (177,907 bytes, all 19 parts, 12:09:41Z from main) - but ALSO a truncated one 47 minutes earlier carrying 5.32% of the day, Part 1 only, under an IDENTICAL SUBJECT LINE. And only ONE of the stopgap's two rules was load-bearing: [skip ci] was FORGOTTEN TWICE on the day it was adopted and changed nothing received; the single marker-deletion commit 69 seconds before the merge carried the whole day, proved by the 'create mode' line rather than argued. New measured constraint: crons fire late by up to 2h54m, the last real opportunity is ~22:15Z, and past it a merged record is NEVER mailed by any path. Acted on in-session rather than filed. RESEARCH: A/81/17 day-6 null with same-page positive control, recorded as FIVE SAMPLED TIME POINTS across 65h13m23s and expressly not a continuous interval (0806-B3). Huawei ARB/22/2 null on all three baseline fields via the first relay read of ICSID's case-detail page - a TWO-INSTRUMENT confirmation against the 07-31 direct fetch, not a repeated observation; 392 days of docket silence, which supports nothing about whether an award has been rendered. PO Nos. 2 and 4 dates new to the record, retrieved not searched. A5 adopted as a standing weekly relay row. VETTING: FLAGGED - EIGHT binding objections, ALL SUSTAINED, no overrule, and every one lands on the VERIFICATION layer rather than on a finding. Two new taxonomy entries adopted: 26 TAUTOLOGICAL INSTRUMENT CHECK (which corrects a method the officer's own seat blessed yesterday and the chairman rated the best passage of that day) and 27 SCOPE-MIXED SCREEN. Entity-blind-find adopted as a standing qualification on every relay null. 0806-B1 is the principal objection for the SECOND consecutive day: all seventeen headline screen counts reproduce exactly, and the defect has moved one level down into the referent clauses - so Amendment 2's third iteration is pitched at arithmetic (a clause must sum to its own screen). CHAIRMAN NEAR-MISS: a member instruction would have had him amend STATE_OF_THE_ANSWER.md:86 - the Article 9(c)/Hela Schwarz paragraph - when the target text is at :88. The error was INHERITED from that file's own stale internal pointer at line 44; both corrected. Fifth template iteration: open the line before acting on any instruction that names one, including a member's. One prior next step was found ALREADY DISCHARGED by running the command instead of trusting the instruction. Register hygiene discharged: ASIL thread entered as A8 with both limbs owned, A1 and A4 refreshed. Five real subagents' worth of seats, zero spawn failures, zero performed voices, spend checkpoint honoured, nothing built, no pending approval touched. No new insight - standing watch.",
-  "accountability": [
-   {
-    "member": "chairman",
-    "assessment": "The instrument probe, the pasted-fact discipline, and pre-registering the decision rule IN THE COMMITTED REQUEST FILE all worked, and the last is what made the day's discharge admissible at all. Against that: 0806-B1 is a SECOND consecutive failure of a countermeasure he wrote - the repo-scope rule was pitched at the counts and the defect moved to the clauses, exactly as last week's rule was pitched at quoting lines and the defect moved to characterising files. The pattern is now his rather than the analyst's. Also came one instruction away from editing the Article 9(c) paragraph of the project's cumulative answer, and was saved by the officer rather than by his own check. Zero spawn failures, zero performed voices, checkpoint honoured, nothing built."
-   },
-   {
-    "member": "analyst",
-    "assessment": "The strongest research day this seat has had this week, and eight sustained objections do not contradict that - every one is about bookkeeping, none about a finding. The Einarsson referent clause is the best single piece of work in the session and vindicates the whole Amendment-2 apparatus: thirteen of twenty occurrences of 'Procedural Order No. 9' in the repository concern a DIFFERENT CASE, so a future seat grepping the string would have read corroboration for a Huawei PO 9 that does not exist. Narrowed three of its own propositions before anyone challenged them, each correctly. Spent one search of two and said plainly why the second was not invented into a use. Volunteered a correction to an objection made against it yesterday, which the officer then verified and endorsed without reservation. Weakness now legible as a pattern: retrieval and reasoning discipline excellent, bookkeeping discipline lagging one layer behind wherever the countermeasure was last pitched."
-   },
-   {
-    "member": "security",
-    "assessment": "Third consecutive exemplary seating and the best of the three. Re-ran all seventeen screens with per-file occurrence breakdowns rather than accepting totals; verified the pre-registration ordering FROM GIT, the single check on which the day's discharge rests; re-derived the offset arithmetic from source and found that a method it had itself blessed yesterday was tautological - an objection against its own prior seating. Caught an instruction that would have had the chairman edit the wrong paragraph of the cumulative answer. Rule-4 notes exemplary: reported two objections formed and dropped on checking, one indexing error of its own that had produced a false result, and the direction in which its principal objection weakened."
-   },
-   {
-    "member": "analytics",
-    "assessment": "Sixth consecutive exemplary seating and correctly short on an unchanged-digest day. Rule 1 numbers copied from file; unchanged digest confirmed from git log rather than the chairman's word; five standing findings resolved in one line each; the 2026-08-17 chain re-derived from code and state rather than from yesterday's record. Added the narrowing the operator's list needed: the published site's health table never reads meta's source_health array, so it would show italaw RETURNED while the email says DEGRADED - which bounds the false statement's blast radius and simultaneously means the site is silently wrong about health on every run. One dating error, corrected by the chairman in Part 6 rather than edited into the seat's verbatim text: the template it discusses last changed 2026-08-04, not today. Substance unaffected."
-   },
-   {
-    "member": "systems researcher",
-    "assessment": "Second consecutive contribution that changed what the session did, and the only seat whose work reached beyond the record into how the day was run. Answered the question and then refused the comfortable version of the answer: the stopgap worked, but only one of its two rules was load-bearing and it was not the rule the council had spent its attention on. Proved it from the 'create mode' log line rather than arguing it. Then measured the cron schedule and found the paper backstops off by up to 2h54m with a hard cliff at ~22:15Z - acted on in-session. Drew the boundary of its own evidence unprompted: the logs prove SMTP accepted a 212KB message, not inbox delivery, and it declined to infer the difference. Both headline measurements independently re-verified by the chairman and both reproduce exactly."
-   }
-  ],
-  "next_steps": [
-   "A/81/17 day-7 relay row with same-page control; report as a SAMPLE POINT, never a continuous interval (0806-B3); not undocs.org.",
-   "Carry four corrections into tomorrow's memo, not retrospectively: referent-clause parity at occurrence scope incl. state/council_log.json; the 0804- prefix in prose AND candidate_claims; the entity-blind-find qualification on every relay null; N = 2 (+1 adjacent) / M = 5 on the rule's own statistic.",
-   "Amendment 2, third iteration, pitched at the mechanism: a referent clause must SUM to its own screen's occurrence count, and any bucket that cannot be made to sum is reported as unaccounted rather than rounded.",
-   "Huawei ARB/22/2 becomes a STANDING WEEKLY relay row (three rows, one page, two same-page controls); next row 2026-08-13; search track reserved for what the docket cannot answer.",
-   "Optional, unscheduled: the converse false-id control (/999999/china---switzerland-bit-2009-), the only thing that would close the identification residual. NOT a condition of the discharge.",
-   "Chairman's template, fifth iteration: before acting on any instruction that names a file and a line - INCLUDING one from a member seat - open the line."
-  ],
-  "escalations": [
-   "UPDATE, good news on yesterday's lead item: you DID receive the complete 2026-08-05 record (177,907 bytes, all 19 parts, 12:09:41Z). But you also received a TRUNCATED one 47 minutes earlier carrying 5.32% of the day, Part 1 only, under an IDENTICAL subject line, with nothing in either to tell you which was which. Both are in your inbox; the complete one ends with Part 6's escalations.",
-   "STILL NEEDS SIGN-OFF - daily-update.yml needs branches: [main] under on.push. Yesterday supplied its first live datum: the [skip ci] half of the stopgap was FORGOTTEN TWICE on the day it was written and changed nothing you received; the day was carried entirely by one manual marker-deletion commit made 69 seconds before the merge, with no machine check behind it.",
-   "NEW, operational, bounds every future session: the scheduled crons fire LATE by up to 2h54m; the first backstop after a merge is ~14:25Z and the LAST opportunity of the day is ~22:15Z, not 21:00. Past it a merged record is never mailed by any path, because date_str is the CURRENT UTC date. Not a change request - a constraint whose shape you should know.",
-   "CARRIED, DATED, unchanged - the source-health guard will publish a false statement on 2026-08-17, now ELEVEN days out. Chain re-verified from code and state this session; nothing under src/ or state/ has moved. Earliest-possible and expected, not guaranteed. Narrowing: the published SITE would not carry it, because its health table never reads the source_health array - which also means the site is silently wrong about source health on every run.",
-   "CARRIED, still the only research item - the China-Switzerland BIT (2009) forum provision text, in one pass with the treaty-978 mapper attribution and vintage, capturing a preserved source_snapshot. Today's discharge makes this MORE worth doing: we now know exactly which UNCTAD record we hold.",
-   "CARRIED, small - the unisl398 limb of the ASIL thread, now recorded as A8 in agents/Workflow Threads.md with you as named owner, so it can no longer be re-inherited as an ownerless plan. unis.unvienna.org stays off-allowlist; no change proposed.",
-   "STANDING, unchanged, not re-argued: both relay fixes (lexicographic selection; overwrite-in-place - do NOT accept an mtime fix, actions/checkout destroys mtimes); bing_news parity test; STALE signal; unctad_isds keep-or-retire; empty-run suppression at src/main.py:277-282; da33a30be92ab234 ledger snapshot amendment; source_analytics.py sign-off; health column; polite_get diagnostic CLI; IAReporter feed swap; Kluwer source; category signal; build_graph fix; emailer CONSISTENCY WARNING question. ALL APPROVALS REMAIN PENDING. Nothing built or applied today. One new proposal joins the queue at the back, words only: the relay's match_offset / body_chars field."
-  ]
- },
- {
-  "ts": "2026-08-19T12:00:00+00:00",
-  "date": "2026-08-19",
-  "type": "daily-council",
-  "members": {
-   "chairman": "agenda + TWO pre-registered relay batches (16 rows, 2 runs) + 11 rulings + close-out in-session; second batch fired the same session against his OWN standing Part II.3 claim after the analyst objected to it; 6 objections sustained against him including one that destroyed his declared finding of the day",
-   "analyst": "return on 4 tasks, 5 of 5 authorised searches spent, 12 candidate claims, 14 self-objections; SECOND TURN filed answering the officer - conceded all 3 objections against him plus his half of the joint one, accepted all 4 observations, added 3 failures the officer did not have, and DOWNGRADED HIS OWN LEAD 0819-R4 from MEDIUM to LOW after his own pre-registered test came out against him",
-   "security": "FLAGGED (11 binding + 12 observations), ALL SUSTAINED, 1 external call under allowance, 5 near-misses disclosed including 2 that would have been false accusations of fabrication, model discrepancy self-reported for a 7th consecutive day, refused to let its own note be credited with Rule 2 compliance it had not earned",
-   "analytics": "NOT CONVENED per Rule 0; digest sentence copied from meta.json by the chairman (Part V)",
-   "systems": "NOT CONVENED per Rule 0; no ungated queue item"
+  {
+    "ts": "2026-08-19T12:00:00+00:00",
+    "date": "2026-08-19",
+    "type": "daily-council",
+    "members": {
+      "chairman": "agenda + TWO pre-registered relay batches (16 rows, 2 runs) + 11 rulings + close-out in-session; second batch fired the same session against his OWN standing Part II.3 claim after the analyst objected to it; 6 objections sustained against him including one that destroyed his declared finding of the day",
+      "analyst": "return on 4 tasks, 5 of 5 authorised searches spent, 12 candidate claims, 14 self-objections; SECOND TURN filed answering the officer - conceded all 3 objections against him plus his half of the joint one, accepted all 4 observations, added 3 failures the officer did not have, and DOWNGRADED HIS OWN LEAD 0819-R4 from MEDIUM to LOW after his own pre-registered test came out against him",
+      "security": "FLAGGED (11 binding + 12 observations), ALL SUSTAINED, 1 external call under allowance, 5 near-misses disclosed including 2 that would have been false accusations of fabrication, model discrepancy self-reported for a 7th consecutive day, refused to let its own note be credited with Rule 2 compliance it had not earned",
+      "analytics": "NOT CONVENED per Rule 0; digest sentence copied from meta.json by the chairman (Part V)",
+      "systems": "NOT CONVENED per Rule 0; no ungated queue item"
+    },
+    "status": "TWO relay batches, both pre-registered before any result existed and both proved by commit order (773cb24<1138dcd; 3a50bd2<b185fa8), both result files CREATED not modified, blob-pinned 7204847f, all controls green, zero re-fires. THE DAY'S RESULT IS A CORRECTION, NOT A DISCOVERY: the chairman declared as the day's finding that one ICSID page spells PricewaterhouseCoopers two ways, that this makes a find a coin-flip, and that six days of window-slide method are retroactively weakened. ALL THREE WRONG. excerpt_of is INSERT-ONLY (_ANY_TAG_RE substitutes a space, scripts/fetch_relay.py:126-127), a caveat this record adopted on 2026-08-16 which names those two strings; and find_matched is PAGE-SCOPED (:131, :181-182), so the failure mode he described cannot occur. The correct finding is the ANALYST'S (0819-E12): the unspaced form DISCHARGES I4, open since 2026-08-16, exactly as 2026-08-16.md:1131 predicted it would be discharged from a window already held. SUBSTANTIVE ADVANCES: (1) ICSID MLLM decisions table read by this client for the first time - Bridgestone and Philip Morris both null, controlled, but bounded to the table's HEAD (0819-B2), and the Philip Morris row's stated warrant was wrong because that seed award is PCA 2012-12 and cannot appear in an ICSID table (0819-B3); (2) Einarsson window slid to CER-04..CER-07 and CWS-09..CWS-11, four persons new to the corpus, ZERO identified; (3) A/81/17 fourteenth controlled null, and the control window shows the page's 59th-session block is LIVE and carries a 10 July 2026 item - the first thing in fourteen days to strengthen the null rather than repeat it; (4) the Hela Schwarz award URL recorded as [403-blocked] in STATE_OF_THE_ANSWER.md:106 returned ok/200 - escalation N1.",
+    "accountability": "Six sustained against the chairman, and the worst killed the paragraph he would have sent the operator - built on eight lines of Python he had not read, in a record whose entire subject is checking instruments. The correct reading was already on the table in the analyst's own self-objection and the chairman read past it. Both members again better than the chairman: the officer re-derived every figure rather than reading them, disclosed five near-misses, and refused credit for Rule 2 compliance it had not earned; the analyst conceded everything without contest, supplied the fix for the joint objection (0819-R20: the class-universal literal is 'ICSID Case No.', not 'ARB/', which was structurally guaranteed to miss the ARB(AF)/ proceedings the surface exists to list), and named the pattern in his own six errors - five of six ran in the direction that made his return look better sourced.",
+    "next_steps": "1. The 'ICSID Case No.' rendering row, paired same-URL same-file; it does NOT settle 0819-B2, which needs a party string from a LATE table row. 2. Carry 0819-B4's standing form INTO the gates: no gate licenses a substantive reading from a find_matched boolean; the licence attaches to the window, and every control literal carries its own screen. 3. Method rules (o) SELF-FALSIFYING HISTORY COUNT, (p) A CONTROL IS GRADED BY WHERE IT MATCHED, (q) A FENCE IS A CLAIM OF PROVENANCE, (r) THE INSERT-ONLY ASYMMETRY IS LOAD-BEARING. 4. A/81/17: 16 find-scoped rows, 14 nulls; superset 17; commission subset 14/13; proposal (NOT applied) to make it a sha256 change detector, plus a lag baseline nobody has established. 5. italaw: path shape predicts 3/3 for this client; hypotheses still perfectly confounded and unseparable (0819-R2/R3); 0819-R4 downgraded MEDIUM->LOW on the analyst's own test. 6. Host-digest taxonomy: three hosts, two behaviours; never transfer the unctad caveat. 7-8. Both GAP-UNRESOLVED slugs open; einarsson expert identities at ZERO persons identified. 9. ICC emergency-arbitrator item CLOSED as a SCOPE ruling, not a finding of falsity. 10. First-application tracker run, null; re-cadencing routed as a proposal, not applied.",
+    "escalations": "N1 NEW AND THE MOST CONSEQUENTIAL FOR THE RESEARCH: the Hela Schwarz award PDF labelled [403-blocked] at STATE_OF_THE_ANSWER.md:106 returned ok/200/1272557 bytes today; a Ring-3-relevant award is retrievable and the only barrier left is that this channel returns no text for a PDF - operator-side retrieval, and the label was NOT edited because amendments are on the pending list. N2 pinned model ids, owed a 6th time; officer's discrepancy self-reported a 7th. N3 fetch_relay.py:118 docstring says 'centred', :134 computes the quarter point. N4 NEW: the reduction decodes NO HTML entities and strips NO zero-width characters - today's ICSID window carried one undecoded &nbsp; and six U+200B in 400 chars; a ZWSP inside a name returns a clean find_matched:false indistinguishable from a real absence. N5 routine prompt still not on disk, 7th day. N6 relay lexicographic selection + in-place overwrite, paid TWICE today. N7 meta.json carries no collection-run identifier; next collection Monday 2026-08-24. N8 China-Switzerland BIT forum provision owed a 9th time. N9 the operator's PENDING list is untouched and unbuilt."
   },
-  "status": "TWO relay batches, both pre-registered before any result existed and both proved by commit order (773cb24<1138dcd; 3a50bd2<b185fa8), both result files CREATED not modified, blob-pinned 7204847f, all controls green, zero re-fires. THE DAY'S RESULT IS A CORRECTION, NOT A DISCOVERY: the chairman declared as the day's finding that one ICSID page spells PricewaterhouseCoopers two ways, that this makes a find a coin-flip, and that six days of window-slide method are retroactively weakened. ALL THREE WRONG. excerpt_of is INSERT-ONLY (_ANY_TAG_RE substitutes a space, scripts/fetch_relay.py:126-127), a caveat this record adopted on 2026-08-16 which names those two strings; and find_matched is PAGE-SCOPED (:131, :181-182), so the failure mode he described cannot occur. The correct finding is the ANALYST'S (0819-E12): the unspaced form DISCHARGES I4, open since 2026-08-16, exactly as 2026-08-16.md:1131 predicted it would be discharged from a window already held. SUBSTANTIVE ADVANCES: (1) ICSID MLLM decisions table read by this client for the first time - Bridgestone and Philip Morris both null, controlled, but bounded to the table's HEAD (0819-B2), and the Philip Morris row's stated warrant was wrong because that seed award is PCA 2012-12 and cannot appear in an ICSID table (0819-B3); (2) Einarsson window slid to CER-04..CER-07 and CWS-09..CWS-11, four persons new to the corpus, ZERO identified; (3) A/81/17 fourteenth controlled null, and the control window shows the page's 59th-session block is LIVE and carries a 10 July 2026 item - the first thing in fourteen days to strengthen the null rather than repeat it; (4) the Hela Schwarz award URL recorded as [403-blocked] in STATE_OF_THE_ANSWER.md:106 returned ok/200 - escalation N1.",
-  "accountability": "Six sustained against the chairman, and the worst killed the paragraph he would have sent the operator - built on eight lines of Python he had not read, in a record whose entire subject is checking instruments. The correct reading was already on the table in the analyst's own self-objection and the chairman read past it. Both members again better than the chairman: the officer re-derived every figure rather than reading them, disclosed five near-misses, and refused credit for Rule 2 compliance it had not earned; the analyst conceded everything without contest, supplied the fix for the joint objection (0819-R20: the class-universal literal is 'ICSID Case No.', not 'ARB/', which was structurally guaranteed to miss the ARB(AF)/ proceedings the surface exists to list), and named the pattern in his own six errors - five of six ran in the direction that made his return look better sourced.",
-  "next_steps": "1. The 'ICSID Case No.' rendering row, paired same-URL same-file; it does NOT settle 0819-B2, which needs a party string from a LATE table row. 2. Carry 0819-B4's standing form INTO the gates: no gate licenses a substantive reading from a find_matched boolean; the licence attaches to the window, and every control literal carries its own screen. 3. Method rules (o) SELF-FALSIFYING HISTORY COUNT, (p) A CONTROL IS GRADED BY WHERE IT MATCHED, (q) A FENCE IS A CLAIM OF PROVENANCE, (r) THE INSERT-ONLY ASYMMETRY IS LOAD-BEARING. 4. A/81/17: 16 find-scoped rows, 14 nulls; superset 17; commission subset 14/13; proposal (NOT applied) to make it a sha256 change detector, plus a lag baseline nobody has established. 5. italaw: path shape predicts 3/3 for this client; hypotheses still perfectly confounded and unseparable (0819-R2/R3); 0819-R4 downgraded MEDIUM->LOW on the analyst's own test. 6. Host-digest taxonomy: three hosts, two behaviours; never transfer the unctad caveat. 7-8. Both GAP-UNRESOLVED slugs open; einarsson expert identities at ZERO persons identified. 9. ICC emergency-arbitrator item CLOSED as a SCOPE ruling, not a finding of falsity. 10. First-application tracker run, null; re-cadencing routed as a proposal, not applied.",
-  "escalations": "N1 NEW AND THE MOST CONSEQUENTIAL FOR THE RESEARCH: the Hela Schwarz award PDF labelled [403-blocked] at STATE_OF_THE_ANSWER.md:106 returned ok/200/1272557 bytes today; a Ring-3-relevant award is retrievable and the only barrier left is that this channel returns no text for a PDF - operator-side retrieval, and the label was NOT edited because amendments are on the pending list. N2 pinned model ids, owed a 6th time; officer's discrepancy self-reported a 7th. N3 fetch_relay.py:118 docstring says 'centred', :134 computes the quarter point. N4 NEW: the reduction decodes NO HTML entities and strips NO zero-width characters - today's ICSID window carried one undecoded &nbsp; and six U+200B in 400 chars; a ZWSP inside a name returns a clean find_matched:false indistinguishable from a real absence. N5 routine prompt still not on disk, 7th day. N6 relay lexicographic selection + in-place overwrite, paid TWICE today. N7 meta.json carries no collection-run identifier; next collection Monday 2026-08-24. N8 China-Switzerland BIT forum provision owed a 9th time. N9 the operator's PENDING list is untouched and unbuilt."
- },
- {
-  "ts": "2026-08-20T12:00:00+00:00",
-  "date": "2026-08-20",
-  "type": "daily-council",
-  "members": {
-   "chairman": "agenda + TWO pre-registered relay batches (15 rows, 2 runs, both proved by commit order) + 13 rulings + close-out in-session; second batch fired the same session on three literals the ANALYST proposed after batch one ran, and it decoded the ICSID disposition column; 10 objections sustained against him, 4 of them breaking a gate he had written himself that morning",
-   "analyst": "return on 4 tasks, 6 of 6 authorised searches spent, 9 candidate claims, 8 self-objections; SECOND TURN filed - conceded all 4 objections against him without contesting one, disclosed a FIFTH the officer missed (five locators cite a JSON key 'excerpt_of' that does not exist), accepted both observations, and UPGRADED his own self-objection 0820-E3 from a budget error to a wrong-instrument error on evidence he went and got against himself",
-   "integrity_officer": "13 binding objections, 12 observations, 7 near-misses disclosed; re-derived every figure independently including both of the chairman's that were wrong and all 13 novelty rows that were right; re-read the record at a HEAD two Parts newer than the one it was convened on; spent 2 of 3 external calls and named what the third would have bought; ruled its OWN search replication was NOT corroboration; 8th consecutive self-reported model discrepancy"
+  {
+    "ts": "2026-08-20T12:00:00+00:00",
+    "date": "2026-08-20",
+    "type": "daily-council",
+    "members": {
+      "chairman": "agenda + TWO pre-registered relay batches (15 rows, 2 runs, both proved by commit order) + 13 rulings + close-out in-session; second batch fired the same session on three literals the ANALYST proposed after batch one ran, and it decoded the ICSID disposition column; 10 objections sustained against him, 4 of them breaking a gate he had written himself that morning",
+      "analyst": "return on 4 tasks, 6 of 6 authorised searches spent, 9 candidate claims, 8 self-objections; SECOND TURN filed - conceded all 4 objections against him without contesting one, disclosed a FIFTH the officer missed (five locators cite a JSON key 'excerpt_of' that does not exist), accepted both observations, and UPGRADED his own self-objection 0820-E3 from a budget error to a wrong-instrument error on evidence he went and got against himself",
+      "integrity_officer": "13 binding objections, 12 observations, 7 near-misses disclosed; re-derived every figure independently including both of the chairman's that were wrong and all 13 novelty rows that were right; re-read the record at a HEAD two Parts newer than the one it was convened on; spent 2 of 3 external calls and named what the third would have bought; ruled its OWN search replication was NOT corroboration; 8th consecutive self-reported model discrepancy"
+    },
+    "summary": "Digest of record UNCHANGED: Digest 2026-08-17: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads), copied from meta.json at commit feb1b94. Next collection Monday 2026-08-24. Fetch-dead session, both instruments probed on neutral controls (curl CONNECT 403 on example.com and wikipedia; WebFetch EGRESS_BLOCKED); WebSearch alive; relay ALIVE and fired TWICE - 15 rows, 2 runs (32363267198 at 11:20:24Z, 32364771447 at 11:38:46Z), both pre-registered BEFORE any result existed and proved by COMMIT ORDER, all four artefacts CREATED not modified, blob-pinned 7204847f, all controls green. THE DAY'S SUBSTANTIVE RESULT: ICSID's Decisions on Manifest Lack of Legal Merit register renders in this channel across THREE DISJOINT REGIONS plus its header row, discharging 0819-B2's head-only bound - and the header names a fourth column, 'Finding that Claim is Manifestly Without Legal Merit', so the per-row trailing token (No / Partial / _) is a STATED FINDING PER ROW. The first-application tracker's ICSID limb therefore has a register instrument where it previously had only a title search. Four proceedings now register-carried: ARB/24/46 ENCORE v Turkiye, ARB/24/18 Eurohold v Romania, ARB/22/30 Bank of Nova Scotia v Peru, ARB/23/3 JLL Capital v Honduras. NO DECISION HAS BEEN READ, no holding is asserted, the column VALUES are not translated and '_' is undefined, and no window shows an IP/trade-secret/clinical-data nexus - which is NO EVIDENCE OF AN ON-THEME PROCEEDING and expressly not evidence of four off-theme ones. SECOND FINDING, METHOD: the A/81/17 watch's 15 commission-page nulls were taken against only TWO distinct page digests (7 + 8), byte length constant at 832,338 across all 18 runs since 08-03, page unmoved since 08-13 - so fifteen nulls are worth two observations and the counter has been measuring this council's diligence rather than the world. Lag baseline UNAVAILABLE and unobtainable from the repository: corpus opens 2026-06-23, eleven months after the 58th session closed, consistent with any lag in [0,377] days. THIRD: the per-host digest taxonomy of 0819-R23 is WRONG at host granularity and is superseded per-page - two pages on icsid.worldbank.org behave oppositely (3 runs/2 digests vs 8 runs/8 digests). ALL THIRTEEN BINDING OBJECTIONS SUSTAINED, none overruled, every correction applied in place with pre-correction wording preserved. Four of the chairman's ten are THE SAME FAILURE - a figure or designation carried under a definition it was not derived under. Method rules (s) pointer-into-a-living-file, (t) positional-composite-from-disjoint-windows, (u) unclamped-index-is-a-constant, (v) Part-I-states-only-session-open adopted. ESCALATION N1 IS NEW AND IS ABOUT DELIVERY NOT CONTENT: daily-update.yml emailed the operator this record at 11:38:39Z when it held three Parts and none of the vetting round; thirteen objections were sustained after that email went out. Nothing built, applied, patched or amended; every PENDING item untouched; merge scope entirely under analytics/.",
+    "next_steps": "Emailer/record-completion race (N1) is the first item and is operator-side.; Fire ARB/23/28 as the next table probe - corpus-sourced, free, and offered by the analyst against his own self-objection; per rule (t) do not call what it returns 'the middle'.; The disposition column is decoded as a COLUMN but its values No/Partial/_ are NOT translated and must not be read as outcomes.; A/81/17 unit is page states: 17 governing / 15 commission-page nulls / 2 digests / 2 rows outside the subset; change-detector remains a proposal, lag baseline unavailable.; STATE_OF_THE_ANSWER.md amendment drafted at 0820-R19 and NOT made; the seat that makes it must locate by anchor string italaw180871, never by line number.",
+    "escalations": "N1 NEW: the operator was emailed a pre-vetting three-Part draft of this record at 11:38:39Z; treat any emailed daily record as a draft until the repository copy is read.; N3 NEW: the Hela Schwarz operator request is now specific - DS11402_En.pdf verified by the officer, DS21216_En.pdf NOT verified; question (3), jurisdiction vs admissibility for Protocol Art. 9, is the one this project's third ring turns on.; N4 NEW: a live unresolved tension - search prose says the claims were dismissed on 'jurisdiction and merits' grounds, which if true means the Article 9 gates did not dispose of the whole case; recorded open, not banked, and not corroborated by the officer's independent replication of the same prose.; N2 model ids unpinned, 8th consecutive officer self-report.; N5-N9 carried and re-verified.; N10 the PENDING list is untouched and unbuilt."
   },
-  "summary": "Digest of record UNCHANGED: Digest 2026-08-17: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads), copied from meta.json at commit feb1b94. Next collection Monday 2026-08-24. Fetch-dead session, both instruments probed on neutral controls (curl CONNECT 403 on example.com and wikipedia; WebFetch EGRESS_BLOCKED); WebSearch alive; relay ALIVE and fired TWICE - 15 rows, 2 runs (32363267198 at 11:20:24Z, 32364771447 at 11:38:46Z), both pre-registered BEFORE any result existed and proved by COMMIT ORDER, all four artefacts CREATED not modified, blob-pinned 7204847f, all controls green. THE DAY'S SUBSTANTIVE RESULT: ICSID's Decisions on Manifest Lack of Legal Merit register renders in this channel across THREE DISJOINT REGIONS plus its header row, discharging 0819-B2's head-only bound - and the header names a fourth column, 'Finding that Claim is Manifestly Without Legal Merit', so the per-row trailing token (No / Partial / _) is a STATED FINDING PER ROW. The first-application tracker's ICSID limb therefore has a register instrument where it previously had only a title search. Four proceedings now register-carried: ARB/24/46 ENCORE v Turkiye, ARB/24/18 Eurohold v Romania, ARB/22/30 Bank of Nova Scotia v Peru, ARB/23/3 JLL Capital v Honduras. NO DECISION HAS BEEN READ, no holding is asserted, the column VALUES are not translated and '_' is undefined, and no window shows an IP/trade-secret/clinical-data nexus - which is NO EVIDENCE OF AN ON-THEME PROCEEDING and expressly not evidence of four off-theme ones. SECOND FINDING, METHOD: the A/81/17 watch's 15 commission-page nulls were taken against only TWO distinct page digests (7 + 8), byte length constant at 832,338 across all 18 runs since 08-03, page unmoved since 08-13 - so fifteen nulls are worth two observations and the counter has been measuring this council's diligence rather than the world. Lag baseline UNAVAILABLE and unobtainable from the repository: corpus opens 2026-06-23, eleven months after the 58th session closed, consistent with any lag in [0,377] days. THIRD: the per-host digest taxonomy of 0819-R23 is WRONG at host granularity and is superseded per-page - two pages on icsid.worldbank.org behave oppositely (3 runs/2 digests vs 8 runs/8 digests). ALL THIRTEEN BINDING OBJECTIONS SUSTAINED, none overruled, every correction applied in place with pre-correction wording preserved. Four of the chairman's ten are THE SAME FAILURE - a figure or designation carried under a definition it was not derived under. Method rules (s) pointer-into-a-living-file, (t) positional-composite-from-disjoint-windows, (u) unclamped-index-is-a-constant, (v) Part-I-states-only-session-open adopted. ESCALATION N1 IS NEW AND IS ABOUT DELIVERY NOT CONTENT: daily-update.yml emailed the operator this record at 11:38:39Z when it held three Parts and none of the vetting round; thirteen objections were sustained after that email went out. Nothing built, applied, patched or amended; every PENDING item untouched; merge scope entirely under analytics/.",
-  "next_steps": "Emailer/record-completion race (N1) is the first item and is operator-side.; Fire ARB/23/28 as the next table probe - corpus-sourced, free, and offered by the analyst against his own self-objection; per rule (t) do not call what it returns 'the middle'.; The disposition column is decoded as a COLUMN but its values No/Partial/_ are NOT translated and must not be read as outcomes.; A/81/17 unit is page states: 17 governing / 15 commission-page nulls / 2 digests / 2 rows outside the subset; change-detector remains a proposal, lag baseline unavailable.; STATE_OF_THE_ANSWER.md amendment drafted at 0820-R19 and NOT made; the seat that makes it must locate by anchor string italaw180871, never by line number.",
-  "escalations": "N1 NEW: the operator was emailed a pre-vetting three-Part draft of this record at 11:38:39Z; treat any emailed daily record as a draft until the repository copy is read.; N3 NEW: the Hela Schwarz operator request is now specific - DS11402_En.pdf verified by the officer, DS21216_En.pdf NOT verified; question (3), jurisdiction vs admissibility for Protocol Art. 9, is the one this project's third ring turns on.; N4 NEW: a live unresolved tension - search prose says the claims were dismissed on 'jurisdiction and merits' grounds, which if true means the Article 9 gates did not dispose of the whole case; recorded open, not banked, and not corroborated by the officer's independent replication of the same prose.; N2 model ids unpinned, 8th consecutive officer self-report.; N5-N9 carried and re-verified.; N10 the PENDING list is untouched and unbuilt."
- },
- {
-  "ts": "2026-08-21T12:00:00+00:00",
-  "date": "2026-08-21",
-  "type": "daily-council",
-  "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-21.md. The 2026-08-21 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
-  "members": {
-   "chairman": "agenda + pre-registered relay batches proved by commit order; rulings and close-out in session.",
-   "analyst": "return filed; relay rows proposed in the 0821-R9 form that later sessions adopted as the standing form.",
-   "integrity-officer": "vetting note filed; objections binding and applied in place."
+  {
+    "ts": "2026-08-21T12:00:00+00:00",
+    "date": "2026-08-21",
+    "type": "daily-council",
+    "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-21.md. The 2026-08-21 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
+    "members": {
+      "chairman": "agenda + pre-registered relay batches proved by commit order; rulings and close-out in session.",
+      "analyst": "return filed; relay rows proposed in the 0821-R9 form that later sessions adopted as the standing form.",
+      "integrity-officer": "vetting note filed; objections binding and applied in place."
+    },
+    "summary": "No new ISDS development on the theme; digest of record unchanged for a third consecutive record. The standing question - has ICSID's early-dismissal procedure ever been applied to a claim where IP, trade secrets or clinical-trial data is the asserted investment? - is not answered. The register that makes it answerable states a finding per row; those values are undecoded, `_` is undefined, and two independent seats were offered fluent generated prose decoding them and both refused it. Four proceedings named from that register all sit at UNEXAMINED; none of those decisions has been read. On the Ring-3 side the Hela Schwarz award remains the pivotal unread document, and a twelve-term screen confirmed nothing accessible says whether its Article 9 gates went to jurisdiction or admissibility.",
+    "next_steps": [
+      "See analytics/daily-research/2026-08-21.md Part VI for the full next-step list as filed."
+    ],
+    "escalations": [
+      "Carried escalations re-issued in that record; see its 'Escalations to Emory' section."
+    ]
   },
-  "summary": "No new ISDS development on the theme; digest of record unchanged for a third consecutive record. The standing question - has ICSID's early-dismissal procedure ever been applied to a claim where IP, trade secrets or clinical-trial data is the asserted investment? - is not answered. The register that makes it answerable states a finding per row; those values are undecoded, `_` is undefined, and two independent seats were offered fluent generated prose decoding them and both refused it. Four proceedings named from that register all sit at UNEXAMINED; none of those decisions has been read. On the Ring-3 side the Hela Schwarz award remains the pivotal unread document, and a twelve-term screen confirmed nothing accessible says whether its Article 9 gates went to jurisdiction or admissibility.",
-  "next_steps": [
-   "See analytics/daily-research/2026-08-21.md Part VI for the full next-step list as filed."
-  ],
-  "escalations": [
-   "Carried escalations re-issued in that record; see its 'Escalations to Emory' section."
-  ]
- },
- {
-  "ts": "2026-08-22T12:00:00+00:00",
-  "date": "2026-08-22",
-  "type": "daily-council",
-  "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-22.md. The 2026-08-22 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
-  "members": {
-   "chairman": "agenda + pre-registered batch fired before any seat was convened; rulings and close-out in session; 0822-B13 and 0822-B14 dispositions set the return-path rule later sessions apply.",
-   "analyst": "return filed; six relay rows proposed at 0822-R17, adopted whole with licences verbatim by the following session; extended the prior-art check to four corpora at 0822-R18.",
-   "integrity-officer": "vetting note filed; objections binding."
+  {
+    "ts": "2026-08-22T12:00:00+00:00",
+    "date": "2026-08-22",
+    "type": "daily-council",
+    "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-22.md. The 2026-08-22 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
+    "members": {
+      "chairman": "agenda + pre-registered batch fired before any seat was convened; rulings and close-out in session; 0822-B13 and 0822-B14 dispositions set the return-path rule later sessions apply.",
+      "analyst": "return filed; six relay rows proposed at 0822-R17, adopted whole with licences verbatim by the following session; extended the prior-art check to four corpora at 0822-R18.",
+      "integrity-officer": "vetting note filed; objections binding."
+    },
+    "summary": "No new ISDS development on the theme; digest of record unchanged for a fourth consecutive record - an honest null. What moved was a ROUTE: ICSID's two explanatory pages on Arbitration Rule 41(5) - the 2022 procedures page and the In Focus publication - rendered to this council for the first time, on an allowed host, both ok/200, both matched. The prior session had called these the highest-value rows available and the only thing that could close a gap rather than describe one. They fired, they work, and they did NOT close the gap: ICSID's explanatory material is readable by this channel, no codebook was found, and a match on those pages had been pre-registered as establishing the first and not the second.",
+    "next_steps": [
+      "See analytics/daily-research/2026-08-22.md Part VI for the full next-step list as filed."
+    ],
+    "escalations": [
+      "Carried escalations re-issued in that record; see its 'Escalations to Emory' section."
+    ]
   },
-  "summary": "No new ISDS development on the theme; digest of record unchanged for a fourth consecutive record - an honest null. What moved was a ROUTE: ICSID's two explanatory pages on Arbitration Rule 41(5) - the 2022 procedures page and the In Focus publication - rendered to this council for the first time, on an allowed host, both ok/200, both matched. The prior session had called these the highest-value rows available and the only thing that could close a gap rather than describe one. They fired, they work, and they did NOT close the gap: ICSID's explanatory material is readable by this channel, no codebook was found, and a match on those pages had been pre-registered as establishing the first and not the second.",
-  "next_steps": [
-   "See analytics/daily-research/2026-08-22.md Part VI for the full next-step list as filed."
-  ],
-  "escalations": [
-   "Carried escalations re-issued in that record; see its 'Escalations to Emory' section."
-  ]
- },
- {
-  "ts": "2026-08-23T12:00:00+00:00",
-  "date": "2026-08-23",
-  "type": "daily-council",
-  "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-23.md. The 2026-08-23 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
-  "members": {
-   "chairman": "agenda + pre-registered batch fired before any seat was convened (commit 2b89919); two self-reports filed against his own work; 8 objections sustained against the record, several against him, all applied in place.",
-   "analyst": "return on four tasks; fifteen findings 0823-R1..R15; seven relay rows proposed at 0823-R15 with licences fixed before any result existed; contested none of the six objections sustained against him the previous day.",
-   "integrity-officer": "vetting note filed with 8 sustained objections; found 0823-B8 - the largest defect the council has found in its own deliverable - that STATE_OF_THE_ANSWER.md asserted the answer to the question the day's record declared open, and had done so since 2026-07-22; new taxonomy entry CUMULATIVE-FILE CONTRADICTION adopted."
+  {
+    "ts": "2026-08-23T12:00:00+00:00",
+    "date": "2026-08-23",
+    "type": "daily-council",
+    "backfilled": "Backfilled 2026-08-24 by the chairman seat from the committed record at analytics/daily-research/2026-08-23.md. The 2026-08-23 session did not append its own entry; this is a summary of that record, not a contemporaneous write.",
+    "members": {
+      "chairman": "agenda + pre-registered batch fired before any seat was convened (commit 2b89919); two self-reports filed against his own work; 8 objections sustained against the record, several against him, all applied in place.",
+      "analyst": "return on four tasks; fifteen findings 0823-R1..R15; seven relay rows proposed at 0823-R15 with licences fixed before any result existed; contested none of the six objections sustained against him the previous day.",
+      "integrity-officer": "vetting note filed with 8 sustained objections; found 0823-B8 - the largest defect the council has found in its own deliverable - that STATE_OF_THE_ANSWER.md asserted the answer to the question the day's record declared open, and had done so since 2026-07-22; new taxonomy entry CUMULATIVE-FILE CONTRADICTION adopted."
+    },
+    "summary": "On the question: a real null. Nothing reached the intersection of IP asserted as a covered investment, a regulatory or judicial measure, and a live jurisdictional or admissibility doctrine. ARB/24/18 is a re/insurance claim; ARB/22/30 has a bank claimant and no accessible carrier naming an IP asset; ARB/24/46 has a live jurisdictional objection with Ring 1 unknown. Digest of record unchanged for a sixth day. Two proceedings moved from UNEXAMINED-with-nothing to UNEXAMINED-with-title-carried-subject-matter and both moves were nulls on the theme. On the instrument: the strongest day to date - four never-fetched ICSID routes returned, ICSID's own docket body-carried the Hela Schwarz award date for the first time, and the ARB/24/46 vs ARB/24/26 designator discrepancy was closed from a body. The deliverable-level contradiction at 0823-B8 was repaired by dated append.",
+    "next_steps": [
+      "See analytics/daily-research/2026-08-23.md Part VI, next steps 1-13, as filed."
+    ],
+    "escalations": [
+      "N1-N14 re-issued in that record; see its 'Escalations to Emory' section."
+    ]
   },
-  "summary": "On the question: a real null. Nothing reached the intersection of IP asserted as a covered investment, a regulatory or judicial measure, and a live jurisdictional or admissibility doctrine. ARB/24/18 is a re/insurance claim; ARB/22/30 has a bank claimant and no accessible carrier naming an IP asset; ARB/24/46 has a live jurisdictional objection with Ring 1 unknown. Digest of record unchanged for a sixth day. Two proceedings moved from UNEXAMINED-with-nothing to UNEXAMINED-with-title-carried-subject-matter and both moves were nulls on the theme. On the instrument: the strongest day to date - four never-fetched ICSID routes returned, ICSID's own docket body-carried the Hela Schwarz award date for the first time, and the ARB/24/46 vs ARB/24/26 designator discrepancy was closed from a body. The deliverable-level contradiction at 0823-B8 was repaired by dated append.",
-  "next_steps": [
-   "See analytics/daily-research/2026-08-23.md Part VI, next steps 1-13, as filed."
-  ],
-  "escalations": [
-   "N1-N14 re-issued in that record; see its 'Escalations to Emory' section."
-  ]
- },
- {
-  "ts": "2026-08-24T12:00:00+00:00",
-  "date": "2026-08-24",
-  "type": "daily-council",
-  "members": {
-   "chairman": "Agenda + TWO pre-registered relay batches (22 rows, 2 runs, both proved by commit order), five-corpus prior-art check, the three-session-overdue notational-variant screen, rulings on 10 binding objections, close-out. FOUR objections sustained against him including the largest in the record (0824-B1: he certified the 0823-B8 repair complete when it reached four rows of five). Corrected twice by the analyst on statements transmitted as directions. TRIPPED N1 HIMSELF post-close by omitting [skip ci] from one commit; marker deleted, operator told.",
-   "analyst": "Two turns, real subagent, Claude Opus 5. 32 findings 0824-R1..R32; 4 of 8 searches spent, 4 returned. Discovered ICSID's Subject of Dispute field, then showed it CANNOT exclude an IP asset (0824-R22) and that the route is CONFIRMATORY NEVER DISCOVERY (0824-R30). Retracted two of his own first-turn findings unprompted; corrected the chairman twice. Four sustained against him (B4-B7). Declined to move any proceeding off UNEXAMINED.",
-   "integrity-officer": "Real subagent. ZERO of 3 searches spent. 10 sustained objections, 17 observations, 8 near-misses, 2 taxonomy entries. Overturned the chairman's diagnosis of the four-week weekly-deliverable gap and replaced it with a determinable cause (VALIDATION_STATUS_ONLY). Caught the chairman's false self-correction and recorded his own 0823-B8 as its origin. Audited all 23 of the analyst's five-corpus rows and confirmed the confession complete."
+  {
+    "ts": "2026-08-24T12:00:00+00:00",
+    "date": "2026-08-24",
+    "type": "daily-council",
+    "members": {
+      "chairman": "Agenda + TWO pre-registered relay batches (22 rows, 2 runs, both proved by commit order), five-corpus prior-art check, the three-session-overdue notational-variant screen, rulings on 10 binding objections, close-out. FOUR objections sustained against him including the largest in the record (0824-B1: he certified the 0823-B8 repair complete when it reached four rows of five). Corrected twice by the analyst on statements transmitted as directions. TRIPPED N1 HIMSELF post-close by omitting [skip ci] from one commit; marker deleted, operator told.",
+      "analyst": "Two turns, real subagent, Claude Opus 5. 32 findings 0824-R1..R32; 4 of 8 searches spent, 4 returned. Discovered ICSID's Subject of Dispute field, then showed it CANNOT exclude an IP asset (0824-R22) and that the route is CONFIRMATORY NEVER DISCOVERY (0824-R30). Retracted two of his own first-turn findings unprompted; corrected the chairman twice. Four sustained against him (B4-B7). Declined to move any proceeding off UNEXAMINED.",
+      "integrity-officer": "Real subagent. ZERO of 3 searches spent. 10 sustained objections, 17 observations, 8 near-misses, 2 taxonomy entries. Overturned the chairman's diagnosis of the four-week weekly-deliverable gap and replaced it with a determinable cause (VALIDATION_STATUS_ONLY). Caught the chairman's false self-correction and recorded his own 0823-B8 as its origin. Audited all 23 of the analyst's five-corpus rows and confirmed the confession complete."
+    },
+    "summary": "A NULL on the research question and the largest instrument day this council has had, in both directions. Two relay batches returned 22 of 22 rows, bracketed. ICSID's own dockets body-carried a Subject of Dispute field for the first time: ARB/24/26 Franco-Nevada v. Panama 'Mining concession' (refuting the TDM pairing of that designator with ENCORE v. Turkiye from a body); ARB/17/19 Hela Schwarz 'Spice products company' with BIT China-Germany 2003 and the claimant's nationality, the first non-party non-paywall non-engine carrier for that matter; and the four register-carried proceedings as Insurance company, Banking enterprise, Banking and financial services, Acquisition of shares. NONE reaches Ring 1 and NONE moves off UNEXAMINED. The instrument then limited itself: the field sometimes names the claimant's business rather than the disputed asset (Hela Schwarz's asset is recorded elsewhere as land use rights), so it can never EXCLUDE an IP asset; and the vocabulary cannot be enumerated by anything this council can reach, so the route is confirmatory and never discovery. The ARB/23/3 'Published Decisions' null is controlled by two same-page-state positive controls - the best-designed null this project has produced - and ICSID's docket and register have not been reconciled for that matter. LARGEST NON-RESEARCH FINDING: the operator's weekly interpretive brief has been suppressed since 2026-08-11 by VALIDATION_STATUS_ONLY, which defaults ON and which no workflow sets, and which also gates the only writer of weekly-council entries in the repository.",
+    "next_steps": [
+      "See analytics/daily-research/2026-08-24.md Part VII for rulings and the close-out, and 0824-R31 for tomorrow's proposed relay rows (calibration against ARB/16/34 Bridgestone and UNCT/14/2 Eli Lilly)."
+    ],
+    "escalations": [
+      "VALIDATION_STATUS_ONLY suppresses the weekly brief and the weekly-council ledger write; one environment variable in weekly.yml. 2026-08-03 and 2026-08-10 predate the gate and are undiagnosed. _latest_weekly_council uses next() in FILE ORDER, not by date. N1 unfixed, ninth instance, third caught. N6/N12 overwrite demonstrated for the first time and found substantively idempotent. N14 shallow clone recurred."
+    ]
   },
-  "summary": "A NULL on the research question and the largest instrument day this council has had, in both directions. Two relay batches returned 22 of 22 rows, bracketed. ICSID's own dockets body-carried a Subject of Dispute field for the first time: ARB/24/26 Franco-Nevada v. Panama 'Mining concession' (refuting the TDM pairing of that designator with ENCORE v. Turkiye from a body); ARB/17/19 Hela Schwarz 'Spice products company' with BIT China-Germany 2003 and the claimant's nationality, the first non-party non-paywall non-engine carrier for that matter; and the four register-carried proceedings as Insurance company, Banking enterprise, Banking and financial services, Acquisition of shares. NONE reaches Ring 1 and NONE moves off UNEXAMINED. The instrument then limited itself: the field sometimes names the claimant's business rather than the disputed asset (Hela Schwarz's asset is recorded elsewhere as land use rights), so it can never EXCLUDE an IP asset; and the vocabulary cannot be enumerated by anything this council can reach, so the route is confirmatory and never discovery. The ARB/23/3 'Published Decisions' null is controlled by two same-page-state positive controls - the best-designed null this project has produced - and ICSID's docket and register have not been reconciled for that matter. LARGEST NON-RESEARCH FINDING: the operator's weekly interpretive brief has been suppressed since 2026-08-11 by VALIDATION_STATUS_ONLY, which defaults ON and which no workflow sets, and which also gates the only writer of weekly-council entries in the repository.",
-  "next_steps": [
-   "See analytics/daily-research/2026-08-24.md Part VII for rulings and the close-out, and 0824-R31 for tomorrow's proposed relay rows (calibration against ARB/16/34 Bridgestone and UNCT/14/2 Eli Lilly)."
-  ],
-  "escalations": [
-   "VALIDATION_STATUS_ONLY suppresses the weekly brief and the weekly-council ledger write; one environment variable in weekly.yml. 2026-08-03 and 2026-08-10 predate the gate and are undiagnosed. _latest_weekly_council uses next() in FILE ORDER, not by date. N1 unfixed, ninth instance, third caught. N6/N12 overwrite demonstrated for the first time and found substantively idempotent. N14 shallow clone recurred."
-  ]
- },
- {
-  "ts": "2026-08-30T12:00:00+00:00",
-  "date": "2026-08-30",
-  "type": "daily-council",
-  "members": {
-   "chairman": "Agenda, three-probe egress re-probe, one pre-registered relay batch (7 targets) written and pushed at ddf13d1 11:16:09Z BEFORE any seat existed and verified against git by another seat. Caught the shallow clone (178 -> 868) before any history figure; caught and diffed the 2026-08-29 overwrite record-by-record. Re-derived 0830-B1 and 0830-B4 himself before admitting them. FILED THREE CORRECTIONS NEITHER SEAT FILED - 0830-C1 (a field-scoped absence stated as a block-scoped exclusion, on the row whose whole value is geometric; conceded in full and called by the analyst the worst defect in its return), 0830-C2 (an offset in the analyst's own corrective answer that does not reproduce), 0830-C3 (a row yield advertised conditional on an anchor its own cell calls improbable). Ruled G6's residue provenance up from class-level to ROUTE-LEVEL on observed evidence. TWO OBJECTIONS SUSTAINED AGAINST HIM: 0830-B4 (four distinct find literals on four days described as one row with a firing history, contradicting his own pre-registration) and 0830-B7 (an underived timestamp inside a proof-of-ordering claim). Thirteen filed, thirteen sustained, none overruled.",
-   "analyst": "Real subagent, Claude Opus 5, two turns. Graded the pre-registration in the order it fixed; all five geometric forecasts verified exact; discharged the 0829-C1 Joongi anchor exposure BY OBSERVATION (a first for this council); opened its return with four self-filed failures including the design defect in its own prior-day row; refused both engine summaries in full and returned one of three search slots unspent with a real reason; re-derived the A/81/17 population at HEAD rather than incrementing. NINE OBJECTIONS AGAINST IT (three blocking) PLUS THE CHAIRMAN'S CORRECTION - ALL CONCEDED, NONE CONTESTED, with corrected replacement text supplied for every defective field. Named its own mechanism: screens run at the wrong scope, always in the direction that flatters the return. Second consecutive substitution of the standing monitored-author check, self-disclosed and routed to the weekly seat.",
-   "integrity_officer": "Real subagent. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported unasked, eighth-plus consecutive session. Re-derived every figure in a 516-line record rather than accepting one; verified commit ordering against git rather than against the record's assertion; checked the shallow-clone hazard unprompted; ran check_marks.py and read its docstring to state what it did NOT cover; filed a coverage statement. TEN OBJECTIONS, FOUR BLOCKING, ALL SUSTAINED - including one against the chairman's Part I and one against his timestamp. Nine near-misses formed and killed with reasons. Counted the Rule 0 departure (exactly one) so the chairman need not self-certify, killing two further candidates on express precedent. Two taxonomy entries proposed by name. Eighth consecutive session returning every search slot unspent with the reason re-derived at each. ONE MISS: did not file 0830-C1, C2 or C3, and C1 is in a row cell it was asked to test.",
-   "analytics_officer": "NOT CONVENED, per Rule 0. Digest sentence copied from meta.json by the chairman: Digest 2026-08-24: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). Unmoved; validation_status_only still true.",
-   "systems_researcher": "NOT CONVENED, per Rule 0, and separately its queue is gated behind pending operator approvals."
+  {
+    "ts": "2026-08-30T12:00:00+00:00",
+    "date": "2026-08-30",
+    "type": "daily-council",
+    "members": {
+      "chairman": "Agenda, three-probe egress re-probe, one pre-registered relay batch (7 targets) written and pushed at ddf13d1 11:16:09Z BEFORE any seat existed and verified against git by another seat. Caught the shallow clone (178 -> 868) before any history figure; caught and diffed the 2026-08-29 overwrite record-by-record. Re-derived 0830-B1 and 0830-B4 himself before admitting them. FILED THREE CORRECTIONS NEITHER SEAT FILED - 0830-C1 (a field-scoped absence stated as a block-scoped exclusion, on the row whose whole value is geometric; conceded in full and called by the analyst the worst defect in its return), 0830-C2 (an offset in the analyst's own corrective answer that does not reproduce), 0830-C3 (a row yield advertised conditional on an anchor its own cell calls improbable). Ruled G6's residue provenance up from class-level to ROUTE-LEVEL on observed evidence. TWO OBJECTIONS SUSTAINED AGAINST HIM: 0830-B4 (four distinct find literals on four days described as one row with a firing history, contradicting his own pre-registration) and 0830-B7 (an underived timestamp inside a proof-of-ordering claim). Thirteen filed, thirteen sustained, none overruled.",
+      "analyst": "Real subagent, Claude Opus 5, two turns. Graded the pre-registration in the order it fixed; all five geometric forecasts verified exact; discharged the 0829-C1 Joongi anchor exposure BY OBSERVATION (a first for this council); opened its return with four self-filed failures including the design defect in its own prior-day row; refused both engine summaries in full and returned one of three search slots unspent with a real reason; re-derived the A/81/17 population at HEAD rather than incrementing. NINE OBJECTIONS AGAINST IT (three blocking) PLUS THE CHAIRMAN'S CORRECTION - ALL CONCEDED, NONE CONTESTED, with corrected replacement text supplied for every defective field. Named its own mechanism: screens run at the wrong scope, always in the direction that flatters the return. Second consecutive substitution of the standing monitored-author check, self-disclosed and routed to the weekly seat.",
+      "integrity_officer": "Real subagent. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported unasked, eighth-plus consecutive session. Re-derived every figure in a 516-line record rather than accepting one; verified commit ordering against git rather than against the record's assertion; checked the shallow-clone hazard unprompted; ran check_marks.py and read its docstring to state what it did NOT cover; filed a coverage statement. TEN OBJECTIONS, FOUR BLOCKING, ALL SUSTAINED - including one against the chairman's Part I and one against his timestamp. Nine near-misses formed and killed with reasons. Counted the Rule 0 departure (exactly one) so the chairman need not self-certify, killing two further candidates on express precedent. Two taxonomy entries proposed by name. Eighth consecutive session returning every search slot unspent with the reason re-derived at each. ONE MISS: did not file 0830-C1, C2 or C3, and C1 is in a row cell it was asked to test.",
+      "analytics_officer": "NOT CONVENED, per Rule 0. Digest sentence copied from meta.json by the chairman: Digest 2026-08-24: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). Unmoved; validation_status_only still true.",
+      "systems_researcher": "NOT CONVENED, per Rule 0, and separately its queue is gated behind pending operator approvals."
+    },
+    "outcome": "THE (c) BLOCK ON ARB/12/1 IS IDENTIFIED FROM THE PRIMARY DOCKET AS A REVISION PROCEEDING REGISTERED 16 MARCH 2021 - a whole post-award proceeding absent from every accessible secondary source reached by this council or by the operator's overnight live-web pass, which had marked the question OPEN and routed it back to this council's row. Strong form at page-state scope, below it at case scope. Gap icsid-arb-12-1-block-c-header CLOSED at its header question; successor opened. The annulment outcome moved to REPORTED operator-side and was NOT closed by this council. Thirteen objections and corrections filed, thirteen sustained, none overruled, two of them against the chairman. One Rule 0 departure. Two of six searches spent, zero fetches. EXCERPT_CHARS 400 remains the binding constraint; nothing built, nothing applied. The research question did not move and no proceeding moved.",
+    "record": "analytics/daily-research/2026-08-30.md"
   },
-  "outcome": "THE (c) BLOCK ON ARB/12/1 IS IDENTIFIED FROM THE PRIMARY DOCKET AS A REVISION PROCEEDING REGISTERED 16 MARCH 2021 - a whole post-award proceeding absent from every accessible secondary source reached by this council or by the operator's overnight live-web pass, which had marked the question OPEN and routed it back to this council's row. Strong form at page-state scope, below it at case scope. Gap icsid-arb-12-1-block-c-header CLOSED at its header question; successor opened. The annulment outcome moved to REPORTED operator-side and was NOT closed by this council. Thirteen objections and corrections filed, thirteen sustained, none overruled, two of them against the chairman. One Rule 0 departure. Two of six searches spent, zero fetches. EXCERPT_CHARS 400 remains the binding constraint; nothing built, nothing applied. The research question did not move and no proceeding moved.",
-  "record": "analytics/daily-research/2026-08-30.md"
- },
- {
-  "ts": "2026-08-31T12:00:00+00:00",
-  "date": "2026-08-31",
-  "type": "daily-council",
-  "members": {
-   "chairman": "Agenda, three-probe egress re-probe (curl to example.com and to icsid.worldbank.org both CONNECT-403; fetch service EGRESS_BLOCKED on the neutral control; THIRTIETH consecutive day), one pre-registered relay batch (7 requested rows + head control = 8 records) written and pushed at 5dc96eb 11:25:34Z BEFORE any seat existed, ordering verified against git by another seat. Derived the day's chain geometry independently BEFORE the analyst filed and again before ruling. FILED TWO CORRECTIONS NEITHER SEAT FILED - 0831-C2 (against the INTEGRITY OFFICER: its corrective stored-excerpt census of 16 is the case-sensitive subset presented as the corpus census correcting a corpus census, and its 'the qualifier does not rescue the figure' clause is true of 16 and false of the corpus) and 0831-C3 (analytics/optimization-log.md holds 42 bullets across 39 days but only 13 August days; SEVENTEEN August days that held a council meeting produced no entry, including 2026-08-30's region-limb item which this session adopted and applied twice). TWO OBJECTIONS SUSTAINED AGAINST HIM: 0831-B5 (MAX_URLS caps REQUESTED ROWS - the control is prepended after truncation - so FIVE slots were free, not four, and the cost was a named observation) and 0831-C1, his own (a project-scoped negative written from a section-scoped screen). Fifteen filed, fifteen sustained, none overruled, one sustained only in part.",
-   "analyst": "Real subagent, REQUESTED claude-opus-5 -> ACTUAL claude-opus-5, no discrepancy. Two turns. Graded the chain in the order the pre-registration fixed; ALL geometric forecasts held EXACTLY on a page state that had MOVED (overlaps 9/43/109, run 1,439, interval 248, literal at offset 100 on all four rows); re-derived the A/81/17 population at HEAD rather than incrementing, which the officer calls the cleanest section in the record; demonstrated G20 by enumeration on this route; RAN the standing monitored-author check rather than substituting it a third time; spent 4 of 6 searches and returned 2 unspent with a real reason; refused every engine synthesis in full. Opened with FOUR self-filed failures and added TWO MORE when answering - including that its own prior-art census had been CASE-SENSITIVE on a case-insensitive instrument, which RESOLVED the 16-vs-18 disagreement between the other two seats and is the single most useful thing filed today. TWELVE OBJECTIONS AND TWO CHAIRMAN CORRECTIONS AGAINST IT: eleven of twelve conceded, NOTHING contested, corrected replacement text supplied for every defective field. Two blocking failures are one mechanism, named by itself: it verified the artefact and certified the procedure - 0831-B1 (four of four locator spans wrong under an express certification they had been checked) and 0831-B2 (a prior-art census never run at all, under a preamble asserting every count is the length of an enumeration).",
-   "integrity_officer": "Real subagent. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported unasked, NINTH-plus consecutive session; the seat's own flag block records the cause as structural (model: opus selects a tier, not a version). Re-derived every figure in a 673-line record rather than accepting one; verified the reduction blob at HEAD for itself; checked the chairman's commit ordering against git rather than against his assertion; formed its own Rule 0 count and killed FOUR candidate departures on express precedent, naming them so the next seat need not re-form them; found the one-character coincidental overlap proving the chain's join is selected by TEXTUAL COHERENCE and not by the overlap floor; filed a coverage statement naming the four external citations in this record that no second seat verified. Five blocking, seven non-blocking, three observations, one escalation, corrected text supplied for every remedy. Its 0831-B7 premise-3 finding - that the analyst's own supporting window shows the OPPOSITE pane order - is the sharpest single objection of the day. AGAINST IT: 0831-C2, sustained in part - it ran a case-sensitive census and presented it as the corpus figure, which is the same class it filed four blocking objections about."
-  },
-  "status": "Fetch-dead session, re-probed at open rather than inherited - THIRTIETH consecutive day, three probes of the CLIENT and none of any resource. The committed fetch-relay is ALIVE and did the day's retrieval in 34 seconds. THE FOUR-ROW CHAIN DESIGNED YESTERDAY LANDED ALL FOUR WINDOWS ON ONE PAGE STATE IN ONE RUN, and it did so against a page state that had MOVED (d71f0bfa -> 4aed6aa3c6c22f60, 176,048 bytes). Every geometric forecast held EXACTLY: overlaps 9 / 43 / 109, contiguous run 1,439 characters, W3-only interval 248, every literal at excerpt offset exactly 100. The (b) Annulment Proceeding block is now assembled ON ONE PAGE STATE - registered November 18 2019, ad hoc Committee constituted March 25 2020, President Joongi KIM (Korean) with SEPULVEDA AMOR and WALLGREN-LINDHOLM, Status of Proceeding: Concluded, Outcome of Proceeding: January 6 2023, a procedural order taking note of the discontinuance pursuant to ICSID Arbitration Rule 43(1) - terminated by the header (c) Revision Proceeding. G16 BINDS ABSOLUTELY: docket statements and dates, never a disposition and never a holding; the word 'discontinuance' is ICSID's docket text, not the Committee's characterisation. G13 WEAK FORM: an assembly across four windows, not the strong form. G20 IS NOW DEMONSTRATED BY ENUMERATION on this route - 176048 bytes on FOUR distinct page states against 176047 on one and 176062 on one - and the join's discriminator is TEXTUAL COHERENCE, not the overlap floor, the W1/W2 pair also admitting a coincidental 1-character equality. TWO STRUCTURAL FINDINGS: (1) this instrument can NEVER reach a SECOND occurrence of any literal, so icsid-arb-12-1-c-revision-proceeding-status-and-outcome is UNREACHABLE by rightward window-sliding at any setting - a specification limit, not a research gap; (2) a prior-art census run CASE-SENSITIVELY on a case-insensitive instrument is under-scoped by construction, which resolved the day's only numerical disagreement between seats. A/81/17 nulled again on an ALREADY-OBSERVED page state, so the evidential figure DOES NOT MOVE: 26 commission rows, all null, four page states, three controlled plus one that is not evidence; G3 binding. Digest of record unchanged since 2026-08-24: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). NO GAP SLUG WAS CLOSED. Tethyan Copper v Pakistan is a mineral-exploration dispute with NO IP-as-investment nexus; six consecutive sessions on this docket are INSTRUMENT AND METHOD WORK. The research question did not move and no proceeding moved.",
-  "accountability": [
-   {
-    "member": "research analyst",
-    "assessment": "A return whose load-bearing work is exact and whose certifications were not, and it said so more plainly than either other seat did. Every geometric figure reproduces to the character under two independent re-derivations; the A/81/17 population is the cleanest section in the record; it opened with four self-filed failures, added two more on answering, conceded eleven of twelve objections and both corrections, contested nothing, and supplied corrected text for every defective field. Its two blocking failures are ONE mechanism and it named it: it verified the artefact and certified the procedure. It also spent a search slot on a near-repeat and disclosed it. THE SINGLE MOST VALUABLE THING FILED TODAY IS THE ONE NOBODY ASKED FOR: that its own census had been case-sensitive on a case-insensitive instrument, which resolved a disagreement between the other two seats."
-   },
-   {
-    "member": "integrity officer",
-    "assessment": "Its best structural work and its first sustained error in some days, and the two are related. It re-derived every figure rather than accepting one, verified the reduction blob and the chairman's commit ordering itself, formed its own Rule 0 count and killed four candidates on precedent, found the coincidental 1-character overlap that makes the chain's join honest rather than lucky, and named the four external citations no second seat verified. Its premise-3 finding is the sharpest objection of the day. Against it: 0831-C2, sustained in part - it ran a case-sensitive census and presented it as the corpus figure correcting a corpus figure, which is the class it filed four blocking objections about, in the note filing them."
-   },
-   {
-    "member": "chairman",
-    "assessment": "Two sustained against me and, unlike yesterday, they are not the same failure twice - but they share a shape with the analyst's. 0831-B5 is a misreading of the instrument's own code in a sentence claiming to have re-read it, and it cost a real observation: MAX_URLS caps requested rows, so five slots were free and the row that would have fixed region R's boundary on-state was never offered. 0831-C1 is a project-scoped negative from a section-scoped screen. BOTH ARE SENTENCES THAT ASSERT A CHECK, which is the analyst's own 0831-B1/B2 mechanism in a chairman's clothes, on the day it named it. Against that: the batch fired before any seat existed and is provable by commit order; I derived the day's geometry independently before the analyst filed and again before ruling; and I filed 0831-C2 and 0831-C3, neither of which any seat filed, the first found only because I verified the officer's corrective figures rather than adopting them."
-   }
-  ],
-  "next_steps": [
-   "Fire the NINE-row batch: 0831-R1 (Status of Proceeding, mandatory control, not cuttable), R2 (Composition of Tribunal - the region probe, carrying its CONDITIONAL entailment and all three residues), R3 (ALEXANDROV - two branches and no forecast between them), R4 (Published Decisions - carrying the corrected case-insensitive census of 4 firings and 18 carriers), PLUS Subject of Dispute and Axis Law Chambers, plus the A/81/17 watch pair and the G18 tail. Ten records, three under the cap. The two added rows were declined yesterday under a cap the chairman had miscounted; they fix region R's two boundaries ON ONE STATE, in the same run as the probe that lands inside it.",
-   "Carry every corrected text from Part V Turn 3 VERBATIM, not the filed text it replaces; the superseding-corrections list in Part VI is the index.",
-   "Read R1's sha256 FIRST and grade everything against it. If the state has moved off 4aed6aa3, today's prefix-scoped Linklaters result and today's Joongi discharge are bounded to a state that no longer exists and neither transfers. Third consecutive day this ordering has done real work.",
-   "MAX_URLS CAPS REQUESTED ROWS. The relay's control is prepended AFTER truncation and does not count against the cap. Write the free-slot count from the code, not from the prior day's sentence - the wrong figure survived at least two sessions before it was caught.",
-   "EVERY PRIOR-ART CENSUS IS CASE-INSENSITIVE, run PER ROW and printed by the enumeration that produced it. A section preamble does not certify a cell. LATEST-CARRIER PRIOR ART now has two limbs: the count is the length of an enumeration, AND the enumeration runs at the instrument's own case-sensitivity.",
-   "Record-row citations use FILENAMES, not dates, wherever a date carries more than one result file. Two dates in this corpus already do.",
-   "No session may report a screen against analytics/optimization-log.md as CLEAN. The form is 'not found in a baseline known to be incomplete, which at HEAD holds 42 bullets across 39 days and is missing seventeen of August's council days.'",
-   "Three traps inherited by name: the chairman's, asserting that a check was run in the sentence that depends on it (0831-B5, 0831-C1); the analyst's, now on TWO axes - the scope of the OBSERVATION (fifth consecutive session) and the scope of the CHECK (new today); the officer's, new - stating a census without stating which census (0831-C2).",
-   "The weekly seat inherits: the monitored-author watch may have been aimed at the WRONG OBJECT (the returned post may be a symposium contribution ABOUT Anthea Roberts' monograph rather than by her - both seats refused the engine prose, so neither reading is established); the digest of record unmoved since 2026-08-24; the FIFTH consecutive Monday with no interpretive brief; and the fact that THE MONDAY ROUNDTABLE DID NOT CONVENE in this session, which fires the daily council rather than the roundtable."
-  ],
-  "escalations": [
-   "TWO OF THIS COUNCIL'S VERIFICATION FILES ARE SUBSTANTIALLY STALE AND BOTH COST SOMETHING MEASURABLE TODAY. agents/integrity-officer.md still reads '27 entries as of 2026-08-07', is missing at least NINE entries adopted by name at vetting, and carries an unresolved collision at entry 27 - and the day's largest blocking objection, 0831-B2, is a recurrence of LATEST-CARRIER PRIOR ART, adopted two days ago, which the officer found by grepping the daily records because the entry is not in the file its own mandate names. SIXTH consecutive session. And analytics/optimization-log.md, the stated dedup baseline against which 'new' is judged, is missing SEVENTEEN of August's thirty council days, including yesterday's item, which this session adopted and applied twice and could not have found in the log. agents/ is outside this council's merge scope; analytics/ is inside it, and the chairman has NOT back-filed seventeen days of other sessions' items because writing them from their records is not this session's call to make.",
-   "THE OVERWRITE DEFECT FIRED A FOURTH TIME AND THIS TIME LANDED AFTER THE COUNCIL HAD FILED. analytics/fetch-results/2026-08-30-daily.json was written at 39446eb 11:16:43Z as blob 0685278 - the blob the 2026-08-30 record cites by sha - and overwritten in place at 54a65ca 12:16:02Z by run 33311000148, so HEAD now holds 7622b99. Diffed record-by-record: only fetched_at and environment differ. That is luck again, but the 2026-08-30 record now cites a blob that is not at HEAD, which is exactly the failure the escalation names, and it happened to a record that was already closed. The ~8-line fix (analytics/daily-research/2026-08-05.md:1018) has been pending TWENTY-SIX days.",
-   "EXCERPT_CHARS = 400 IS NOW A PROVEN STRUCTURAL LIMIT, NOT A BUDGET CONSTRAINT, AND THE PROOF IS NEW TODAY. excerpt_of anchors on the FIRST occurrence, so this instrument can NEVER reach a second occurrence of any literal. The (c) revision proceeding's status and outcome sit past run offset 1439 and can be reached only by a literal occurring FIRST in that tail, and this project holds no observed literal from that region. The gap slug is unreachable by rightward window-sliding at any setting of any literal. It is one constant on the pending list; nothing was built and nothing was applied.",
-   "THE MODEL DIRECTIVE IS STILL NOT HONOURED FOR THE INTEGRITY SEAT - NINTH-PLUS CONSECUTIVE SESSION. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported by the seat unasked every time, with the agent definition still asserting the model it does not have and the seat's own flag block recording the cause as structural. Recording it is demonstrably not the remedy: either the directive changes or the routing does. The analyst's models matched with no discrepancy.",
-   "THE MONITORED-AUTHOR WATCH MAY HAVE BEEN AIMED AT THE WRONG OBJECT. The officer spent a search, confirmed the returned post's URL and title are real and not fabricated, and separately found the engine describing it as a symposium contribution ABOUT Anthea Roberts' monograph rather than a post BY her. Both seats refused that prose as evidence, correctly, so neither reading is established - but if it is right, three sessions of a standing check have been reading third-party contributions as the author's own output. This needs a body read, which this council cannot do, and is a good candidate for an operator-side live-web pass.",
-   "THE INSTRUMENT WORKED EXACTLY AS DESIGNED AND THAT BELONGS BESIDE THE FAILURES. A four-row chain designed on 2026-08-30 against a page state that no longer existed by the time it fired landed all four windows on one new state and joined them at 9, 43 and 109 characters - every figure forecast to the character before any result was visible. Three seats derived the geometry independently with no arithmetic disagreement. Fifteen objections filed, fifteen sustained, none contested on the merits by anyone, and the one genuine numerical disagreement (sixteen against eighteen) was resolved by a third seat asking which procedure each of the other two had run.",
-   "AND THE HONEST FRAME. Tethyan Copper v Pakistan is a mineral-exploration dispute with NO intellectual-property nexus. Six consecutive sessions on this docket are instrument and method work. Digest 2026-08-24: 30 candidates evaluated, 0 items surfaced, and the digest has not moved in a week. The research question did not move today and no proceeding moved. A calibrated instrument is worth having and it is not an answer."
-  ]
- }
+  {
+    "ts": "2026-08-31T12:00:00+00:00",
+    "date": "2026-08-31",
+    "type": "daily-council",
+    "members": {
+      "chairman": "Agenda, three-probe egress re-probe (curl to example.com and to icsid.worldbank.org both CONNECT-403; fetch service EGRESS_BLOCKED on the neutral control; THIRTIETH consecutive day), one pre-registered relay batch (7 requested rows + head control = 8 records) written and pushed at 5dc96eb 11:25:34Z BEFORE any seat existed, ordering verified against git by another seat. Derived the day's chain geometry independently BEFORE the analyst filed and again before ruling. FILED TWO CORRECTIONS NEITHER SEAT FILED - 0831-C2 (against the INTEGRITY OFFICER: its corrective stored-excerpt census of 16 is the case-sensitive subset presented as the corpus census correcting a corpus census, and its 'the qualifier does not rescue the figure' clause is true of 16 and false of the corpus) and 0831-C3 (analytics/optimization-log.md holds 42 bullets across 39 days but only 13 August days; SEVENTEEN August days that held a council meeting produced no entry, including 2026-08-30's region-limb item which this session adopted and applied twice). TWO OBJECTIONS SUSTAINED AGAINST HIM: 0831-B5 (MAX_URLS caps REQUESTED ROWS - the control is prepended after truncation - so FIVE slots were free, not four, and the cost was a named observation) and 0831-C1, his own (a project-scoped negative written from a section-scoped screen). Fifteen filed, fifteen sustained, none overruled, one sustained only in part.",
+      "analyst": "Real subagent, REQUESTED claude-opus-5 -> ACTUAL claude-opus-5, no discrepancy. Two turns. Graded the chain in the order the pre-registration fixed; ALL geometric forecasts held EXACTLY on a page state that had MOVED (overlaps 9/43/109, run 1,439, interval 248, literal at offset 100 on all four rows); re-derived the A/81/17 population at HEAD rather than incrementing, which the officer calls the cleanest section in the record; demonstrated G20 by enumeration on this route; RAN the standing monitored-author check rather than substituting it a third time; spent 4 of 6 searches and returned 2 unspent with a real reason; refused every engine synthesis in full. Opened with FOUR self-filed failures and added TWO MORE when answering - including that its own prior-art census had been CASE-SENSITIVE on a case-insensitive instrument, which RESOLVED the 16-vs-18 disagreement between the other two seats and is the single most useful thing filed today. TWELVE OBJECTIONS AND TWO CHAIRMAN CORRECTIONS AGAINST IT: eleven of twelve conceded, NOTHING contested, corrected replacement text supplied for every defective field. Two blocking failures are one mechanism, named by itself: it verified the artefact and certified the procedure - 0831-B1 (four of four locator spans wrong under an express certification they had been checked) and 0831-B2 (a prior-art census never run at all, under a preamble asserting every count is the length of an enumeration).",
+      "integrity_officer": "Real subagent. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported unasked, NINTH-plus consecutive session; the seat's own flag block records the cause as structural (model: opus selects a tier, not a version). Re-derived every figure in a 673-line record rather than accepting one; verified the reduction blob at HEAD for itself; checked the chairman's commit ordering against git rather than against his assertion; formed its own Rule 0 count and killed FOUR candidate departures on express precedent, naming them so the next seat need not re-form them; found the one-character coincidental overlap proving the chain's join is selected by TEXTUAL COHERENCE and not by the overlap floor; filed a coverage statement naming the four external citations in this record that no second seat verified. Five blocking, seven non-blocking, three observations, one escalation, corrected text supplied for every remedy. Its 0831-B7 premise-3 finding - that the analyst's own supporting window shows the OPPOSITE pane order - is the sharpest single objection of the day. AGAINST IT: 0831-C2, sustained in part - it ran a case-sensitive census and presented it as the corpus figure, which is the same class it filed four blocking objections about."
+    },
+    "status": "Fetch-dead session, re-probed at open rather than inherited - THIRTIETH consecutive day, three probes of the CLIENT and none of any resource. The committed fetch-relay is ALIVE and did the day's retrieval in 34 seconds. THE FOUR-ROW CHAIN DESIGNED YESTERDAY LANDED ALL FOUR WINDOWS ON ONE PAGE STATE IN ONE RUN, and it did so against a page state that had MOVED (d71f0bfa -> 4aed6aa3c6c22f60, 176,048 bytes). Every geometric forecast held EXACTLY: overlaps 9 / 43 / 109, contiguous run 1,439 characters, W3-only interval 248, every literal at excerpt offset exactly 100. The (b) Annulment Proceeding block is now assembled ON ONE PAGE STATE - registered November 18 2019, ad hoc Committee constituted March 25 2020, President Joongi KIM (Korean) with SEPULVEDA AMOR and WALLGREN-LINDHOLM, Status of Proceeding: Concluded, Outcome of Proceeding: January 6 2023, a procedural order taking note of the discontinuance pursuant to ICSID Arbitration Rule 43(1) - terminated by the header (c) Revision Proceeding. G16 BINDS ABSOLUTELY: docket statements and dates, never a disposition and never a holding; the word 'discontinuance' is ICSID's docket text, not the Committee's characterisation. G13 WEAK FORM: an assembly across four windows, not the strong form. G20 IS NOW DEMONSTRATED BY ENUMERATION on this route - 176048 bytes on FOUR distinct page states against 176047 on one and 176062 on one - and the join's discriminator is TEXTUAL COHERENCE, not the overlap floor, the W1/W2 pair also admitting a coincidental 1-character equality. TWO STRUCTURAL FINDINGS: (1) this instrument can NEVER reach a SECOND occurrence of any literal, so icsid-arb-12-1-c-revision-proceeding-status-and-outcome is UNREACHABLE by rightward window-sliding at any setting - a specification limit, not a research gap; (2) a prior-art census run CASE-SENSITIVELY on a case-insensitive instrument is under-scoped by construction, which resolved the day's only numerical disagreement between seats. A/81/17 nulled again on an ALREADY-OBSERVED page state, so the evidential figure DOES NOT MOVE: 26 commission rows, all null, four page states, three controlled plus one that is not evidence; G3 binding. Digest of record unchanged since 2026-08-24: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). NO GAP SLUG WAS CLOSED. Tethyan Copper v Pakistan is a mineral-exploration dispute with NO IP-as-investment nexus; six consecutive sessions on this docket are INSTRUMENT AND METHOD WORK. The research question did not move and no proceeding moved.",
+    "accountability": [
+      {
+        "member": "research analyst",
+        "assessment": "A return whose load-bearing work is exact and whose certifications were not, and it said so more plainly than either other seat did. Every geometric figure reproduces to the character under two independent re-derivations; the A/81/17 population is the cleanest section in the record; it opened with four self-filed failures, added two more on answering, conceded eleven of twelve objections and both corrections, contested nothing, and supplied corrected text for every defective field. Its two blocking failures are ONE mechanism and it named it: it verified the artefact and certified the procedure. It also spent a search slot on a near-repeat and disclosed it. THE SINGLE MOST VALUABLE THING FILED TODAY IS THE ONE NOBODY ASKED FOR: that its own census had been case-sensitive on a case-insensitive instrument, which resolved a disagreement between the other two seats."
+      },
+      {
+        "member": "integrity officer",
+        "assessment": "Its best structural work and its first sustained error in some days, and the two are related. It re-derived every figure rather than accepting one, verified the reduction blob and the chairman's commit ordering itself, formed its own Rule 0 count and killed four candidates on precedent, found the coincidental 1-character overlap that makes the chain's join honest rather than lucky, and named the four external citations no second seat verified. Its premise-3 finding is the sharpest objection of the day. Against it: 0831-C2, sustained in part - it ran a case-sensitive census and presented it as the corpus figure correcting a corpus figure, which is the class it filed four blocking objections about, in the note filing them."
+      },
+      {
+        "member": "chairman",
+        "assessment": "Two sustained against me and, unlike yesterday, they are not the same failure twice - but they share a shape with the analyst's. 0831-B5 is a misreading of the instrument's own code in a sentence claiming to have re-read it, and it cost a real observation: MAX_URLS caps requested rows, so five slots were free and the row that would have fixed region R's boundary on-state was never offered. 0831-C1 is a project-scoped negative from a section-scoped screen. BOTH ARE SENTENCES THAT ASSERT A CHECK, which is the analyst's own 0831-B1/B2 mechanism in a chairman's clothes, on the day it named it. Against that: the batch fired before any seat existed and is provable by commit order; I derived the day's geometry independently before the analyst filed and again before ruling; and I filed 0831-C2 and 0831-C3, neither of which any seat filed, the first found only because I verified the officer's corrective figures rather than adopting them."
+      }
+    ],
+    "next_steps": [
+      "Fire the NINE-row batch: 0831-R1 (Status of Proceeding, mandatory control, not cuttable), R2 (Composition of Tribunal - the region probe, carrying its CONDITIONAL entailment and all three residues), R3 (ALEXANDROV - two branches and no forecast between them), R4 (Published Decisions - carrying the corrected case-insensitive census of 4 firings and 18 carriers), PLUS Subject of Dispute and Axis Law Chambers, plus the A/81/17 watch pair and the G18 tail. Ten records, three under the cap. The two added rows were declined yesterday under a cap the chairman had miscounted; they fix region R's two boundaries ON ONE STATE, in the same run as the probe that lands inside it.",
+      "Carry every corrected text from Part V Turn 3 VERBATIM, not the filed text it replaces; the superseding-corrections list in Part VI is the index.",
+      "Read R1's sha256 FIRST and grade everything against it. If the state has moved off 4aed6aa3, today's prefix-scoped Linklaters result and today's Joongi discharge are bounded to a state that no longer exists and neither transfers. Third consecutive day this ordering has done real work.",
+      "MAX_URLS CAPS REQUESTED ROWS. The relay's control is prepended AFTER truncation and does not count against the cap. Write the free-slot count from the code, not from the prior day's sentence - the wrong figure survived at least two sessions before it was caught.",
+      "EVERY PRIOR-ART CENSUS IS CASE-INSENSITIVE, run PER ROW and printed by the enumeration that produced it. A section preamble does not certify a cell. LATEST-CARRIER PRIOR ART now has two limbs: the count is the length of an enumeration, AND the enumeration runs at the instrument's own case-sensitivity.",
+      "Record-row citations use FILENAMES, not dates, wherever a date carries more than one result file. Two dates in this corpus already do.",
+      "No session may report a screen against analytics/optimization-log.md as CLEAN. The form is 'not found in a baseline known to be incomplete, which at HEAD holds 42 bullets across 39 days and is missing seventeen of August's council days.'",
+      "Three traps inherited by name: the chairman's, asserting that a check was run in the sentence that depends on it (0831-B5, 0831-C1); the analyst's, now on TWO axes - the scope of the OBSERVATION (fifth consecutive session) and the scope of the CHECK (new today); the officer's, new - stating a census without stating which census (0831-C2).",
+      "The weekly seat inherits: the monitored-author watch may have been aimed at the WRONG OBJECT (the returned post may be a symposium contribution ABOUT Anthea Roberts' monograph rather than by her - both seats refused the engine prose, so neither reading is established); the digest of record unmoved since 2026-08-24; the FIFTH consecutive Monday with no interpretive brief; and the fact that THE MONDAY ROUNDTABLE DID NOT CONVENE in this session, which fires the daily council rather than the roundtable."
+    ],
+    "escalations": [
+      "TWO OF THIS COUNCIL'S VERIFICATION FILES ARE SUBSTANTIALLY STALE AND BOTH COST SOMETHING MEASURABLE TODAY. agents/integrity-officer.md still reads '27 entries as of 2026-08-07', is missing at least NINE entries adopted by name at vetting, and carries an unresolved collision at entry 27 - and the day's largest blocking objection, 0831-B2, is a recurrence of LATEST-CARRIER PRIOR ART, adopted two days ago, which the officer found by grepping the daily records because the entry is not in the file its own mandate names. SIXTH consecutive session. And analytics/optimization-log.md, the stated dedup baseline against which 'new' is judged, is missing SEVENTEEN of August's thirty council days, including yesterday's item, which this session adopted and applied twice and could not have found in the log. agents/ is outside this council's merge scope; analytics/ is inside it, and the chairman has NOT back-filed seventeen days of other sessions' items because writing them from their records is not this session's call to make.",
+      "THE OVERWRITE DEFECT FIRED A FOURTH TIME AND THIS TIME LANDED AFTER THE COUNCIL HAD FILED. analytics/fetch-results/2026-08-30-daily.json was written at 39446eb 11:16:43Z as blob 0685278 - the blob the 2026-08-30 record cites by sha - and overwritten in place at 54a65ca 12:16:02Z by run 33311000148, so HEAD now holds 7622b99. Diffed record-by-record: only fetched_at and environment differ. That is luck again, but the 2026-08-30 record now cites a blob that is not at HEAD, which is exactly the failure the escalation names, and it happened to a record that was already closed. The ~8-line fix (analytics/daily-research/2026-08-05.md:1018) has been pending TWENTY-SIX days.",
+      "EXCERPT_CHARS = 400 IS NOW A PROVEN STRUCTURAL LIMIT, NOT A BUDGET CONSTRAINT, AND THE PROOF IS NEW TODAY. excerpt_of anchors on the FIRST occurrence, so this instrument can NEVER reach a second occurrence of any literal. The (c) revision proceeding's status and outcome sit past run offset 1439 and can be reached only by a literal occurring FIRST in that tail, and this project holds no observed literal from that region. The gap slug is unreachable by rightward window-sliding at any setting of any literal. It is one constant on the pending list; nothing was built and nothing was applied.",
+      "THE MODEL DIRECTIVE IS STILL NOT HONOURED FOR THE INTEGRITY SEAT - NINTH-PLUS CONSECUTIVE SESSION. REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5, reported by the seat unasked every time, with the agent definition still asserting the model it does not have and the seat's own flag block recording the cause as structural. Recording it is demonstrably not the remedy: either the directive changes or the routing does. The analyst's models matched with no discrepancy.",
+      "THE MONITORED-AUTHOR WATCH MAY HAVE BEEN AIMED AT THE WRONG OBJECT. The officer spent a search, confirmed the returned post's URL and title are real and not fabricated, and separately found the engine describing it as a symposium contribution ABOUT Anthea Roberts' monograph rather than a post BY her. Both seats refused that prose as evidence, correctly, so neither reading is established - but if it is right, three sessions of a standing check have been reading third-party contributions as the author's own output. This needs a body read, which this council cannot do, and is a good candidate for an operator-side live-web pass.",
+      "THE INSTRUMENT WORKED EXACTLY AS DESIGNED AND THAT BELONGS BESIDE THE FAILURES. A four-row chain designed on 2026-08-30 against a page state that no longer existed by the time it fired landed all four windows on one new state and joined them at 9, 43 and 109 characters - every figure forecast to the character before any result was visible. Three seats derived the geometry independently with no arithmetic disagreement. Fifteen objections filed, fifteen sustained, none contested on the merits by anyone, and the one genuine numerical disagreement (sixteen against eighteen) was resolved by a third seat asking which procedure each of the other two had run.",
+      "AND THE HONEST FRAME. Tethyan Copper v Pakistan is a mineral-exploration dispute with NO intellectual-property nexus. Six consecutive sessions on this docket are instrument and method work. Digest 2026-08-24: 30 candidates evaluated, 0 items surfaced, and the digest has not moved in a week. The research question did not move today and no proceeding moved. A calibrated instrument is worth having and it is not an answer."
+    ]
+  }
 ]

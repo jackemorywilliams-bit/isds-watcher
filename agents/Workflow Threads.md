@@ -18,7 +18,50 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot refreshed — 2026-08-25, at `ad66a96` on `main`, clean tree, on a complete 804-commit
+**Snapshot refreshed — 2026-09-01, at `7bc5fc0` on `main`, on a complete 922-commit history
+(`git fetch --unshallow`; the clone arrived shallow at **156**, the fourth recurrence — apply
+the caution below every session).** *Audited against `7bc5fc0`; true window `ad66a96..7bc5fc0`
+= 118 commits, not the machine anchor's window (**D10**); paths: `agents/`, `.claude/agents/`,
+`prompts/`, `src/models.py`, `src/sources/`, `README.md`, `METHODOLOGY.md`, `HANDOFF.md`,
+`COUNCIL.md`, `docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`,
+`scripts/`, and every remote branch tip.* Read for this pass: `git merge-base --is-ancestor
+<tip> origin/main` over all **115** remote branches (**15** orphans, up from six); all nine
+definitions against all nine seat notes; `src/models.py`; `src/sources.all_sources()` (**10**);
+`len(bing_news.QUERIES)` (**12**); `docs/how-it-works.html`; `scripts/site_templates/`;
+`METHODOLOGY.md` §III; `scripts/reanchor.py` and `.github/workflows/reanchor.yml` read at the
+code; and live runs of `scripts/check_currency.py` (**9 claims, 3 failed**),
+`scripts/check_models.py` (exit 0, 12 cards), `node tools/isds-workflow-3d/validate.mjs`
+(exit 0, 30 cards / 10 chips / 44 edges), `scripts/build_graph.py --dry-run` (**156** notes,
+**330** edges, 0 orphans, **47** would-update) and a **full** `build_graph.py` run in a scratch
+copy (47 files, 170 insertions, 6 deletions, **no note lost net content**).
+
+### D10 — the currency anchor no longer means "audited" *(new 2026-09-01; owner: systems-designer / Emory)*
+
+Since `2e87700` (2026-08-27) the anchor is machine-owned. `.github/workflows/reanchor.yml`
+fires on every PR to `main` and the daily-council close-out calls `scripts/reanchor.py`
+directly, so the sha advances on merges by seats that never read the note. It moved **nine**
+times between 08-27 and 08-31 (`56b0b7b` → `8c3034f`) with **no archivist session in that
+window**. The convention's whole point — staleness as a query — is defeated: from the machine
+anchor `621aa6e` the contract-path query returns **0 commits**; from the true last-audit commit
+`ad66a96` it spans **118**. Measured this pass and **it concealed nothing this time** (contract
+paths moved once, `93a69f7`; README/METHODOLOGY/COUNCIL/`workflow.json` moved zero times) — the
+defect is that it *would*, silently. Warning block added at the head of [[Agent Registry]].
+Wanted: a distinction in the note between a machine re-anchor and a seat's audit.
+
+### D11 — every archivist PR is unmergeable by the archivist *(new 2026-09-01; owner: Emory / systems-designer)*
+
+`reanchor.yml` runs on every PR to `main` and pushes a commit touching
+`STATE_OF_THE_ANSWER.md`, which is outside this seat's self-merge path set (`analytics/`,
+`agents/`, `moc/`, `HANDOFF.md`). The path test then forbids the self-merge — correctly, since
+the value of a path test is that the bound seat does not decide which violations are small.
+The 2026-08-28 seat hit this, refused, recorded why in `4135fd8`, and predicted *"every
+archivist PR from now on will hit this."* PR **#110** has been open since, and the session's
+350-line record was invisible on `main` for four days. Any one of three fixes ends it: Emory
+merges #110; Emory rules anchor-only `STATE_OF_THE_ANSWER.md` changes in scope; or the systems
+designer adds a scope flag to `reanchor.py` **and** `reanchor.yml`. Until then this recurs
+every session, and a stranded record is the 2026-07-31 defect by another route.
+
+**Previous snapshot — 2026-08-25, at `ad66a96` on `main`, clean tree, on a complete 804-commit
 history (`git fetch --unshallow`).** *Audited against `ad66a96`; paths: `analytics/`, `state/`,
 `agents/`.* Read for this pass: `git merge-base --is-ancestor <tip> origin/main` over all **95**
 remote branches (six orphans, the same six as 2026-08-13, 08-16 and 08-22, no new ones); all

@@ -17,6 +17,35 @@ recorded as "none declared" rather than inferred.
 
 Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Change Log]].
 
+> [!warning] READ THIS BEFORE RUNNING THE CURRENCY QUERY — 2026-09-01
+> **The sha in the currency-anchor line above no longer means "a seat audited this note at
+> that commit". It means "the last time `scripts/reanchor.py` ran".** Since `2e87700`
+> (2026-08-27) the anchor is machine-owned: `.github/workflows/reanchor.yml` fires on **every**
+> PR to `main`, and the daily-council close-out calls the script directly, so the sha marches
+> forward on merges by seats that never read this note. It moved at least **nine** times
+> between 2026-08-27 and 2026-08-31 (`56b0b7b`, `91b72b6`, `d287a32`, `e8b0f71`, `08380af`,
+> `e104a72`, `a200b10`, `5decc23`, `c12901e`, `8c3034f`) — a window in which **no archivist
+> session ran at all**.
+>
+> **Consequence for the convention, stated exactly.** `git log <anchor>..HEAD -- <paths>` was
+> adopted so staleness is a query rather than a judgement call. Run against the machine anchor
+> `621aa6e` on 2026-09-01 it returns **0 commits** on `.claude/agents/`, `prompts/` and
+> `src/models.py` — "nothing changed". Run against `ad66a96`, the commit this note was **last
+> actually audited against** (2026-08-25, `cb762ed`), the window is **118 commits**. The query
+> does not report staleness any more; it reports the bot's last run. A note can be a week stale
+> and read green.
+>
+> **This pass measured the difference rather than assuming it, and it hid nothing this time:**
+> across the true 118-commit window the contract paths moved exactly once (`93a69f7`, the
+> re-anchor CI change itself), and `README.md`, `METHODOLOGY.md`, `COUNCIL.md` and
+> `views/isds-workflow-3d/workflow.json` moved **zero** times. No real drift was concealed. The
+> defect is that the mechanism *would* conceal it and no seat would be told.
+>
+> **So: until this is fixed, do not trust the anchor line. Take the last dated snapshot block
+> below as the real anchor and query from there.** Owner: **systems-designer** (a
+> `--audited-by` distinction between a machine re-anchor and a seat's audit) / **Emory**.
+> [[Workflow Threads]] **D10**.
+
 **Definitions re-audited against `8ea2ee1` — 2026-08-13.** `git log 667772c..HEAD --
 .claude/agents/ prompts/ src/models.py` returns **no commit**, and no file under
 `.claude/agents/` has changed since before 2026-08-07. Every model, prompt binding and contract

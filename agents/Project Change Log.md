@@ -15,6 +15,85 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-09-01 (archivist session — twelfth landed deployment)
+
+*Audited against `7bc5fc0` (`main`, complete history after `git fetch --unshallow` — **922**
+commits; the container's clone arrived shallow at **156**, the fourth recurrence). The true
+audit window is `ad66a96..7bc5fc0` — **118 commits** — not the machine anchor's window; see
+D10. Paths: `agents/`, `.claude/agents/`, `prompts/`, `src/models.py`, `src/sources/`,
+`README.md`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `docs/`,
+`scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, `scripts/`, and every
+remote branch tip.*
+
+- **THE 2026-08-28 ARCHIVIST SESSION NEVER LANDED, AND THIS IS THE FAILURE THIS SEAT EXISTS TO
+  CATCH.** Branch `origin/vault/archivist-2026-08-28`, tip `de73f9f`, PR **#110** open since
+  2026-08-28 and the **only** open PR in the repository. `git merge-base --is-ancestor de73f9f
+  origin/main` is false. It carries **676 insertions** across seven files, including a 350-line
+  record `analytics/vault-sessions/2026-08-28.md` that **did not exist on `main`**. This is
+  2026-07-31 repeating: a real, correct, invisible note.
+- **The stranding is a structural deadlock, not a seat's mistake, and the 08-28 seat called it
+  in advance.** `.github/workflows/reanchor.yml` runs on every PR to `main` and pushes a commit
+  whose changed file is `STATE_OF_THE_ANSWER.md` — outside the archivist's self-merge path set
+  (`analytics/`, `agents/`, `moc/`, `HANDOFF.md`). On PR #110 that commit was `d8667fe`. The
+  08-28 seat refused to self-merge on the path test, said so on the record in `4135fd8`, and
+  wrote: *"every archivist PR from now on will hit this."* It was right, including for this
+  session. Nothing was done for four days. New thread **D11**.
+- **No 2026-08-31 session ran at all** — no branch, no record, no commit. With 08-28 stranded,
+  the vault's *landed* memory ran seven days stale (`cb762ed`, 2026-08-25) against a three-day
+  cadence.
+- **`analytics/vault-sessions/2026-08-28.md` recovered onto `main` in this change set**,
+  verbatim from `de73f9f`, because the path is in scope and `.github/workflows/vault-log.yml`
+  emails any record with no marker in `.sent/` — so recovering the file also delivers the email
+  Emory never received. Its **live** edits to the four core notes were deliberately **not**
+  cherry-picked: those are four-day-old statements about a moving repository, and this pass
+  re-derived today's state instead. PR #110 remains open and remains Emory's.
+- **The currency anchor stopped meaning "audited" on `2e87700` (2026-08-27), and the staleness
+  query is now structurally suppressed.** Measured, not asserted: the anchor moved nine times
+  between 08-27 and 08-31 with no archivist session in that window; `git log 621aa6e..HEAD --
+  .claude/agents/ prompts/ src/models.py` returns **0 commits**, the same query from the true
+  last-audit commit `ad66a96` spans **118**. Warning block added at the head of [[Agent
+  Registry]]. New thread **D10**.
+- **`scripts/check_currency.py` is red on `main`:** 9 claims checked, **3 failed** —
+  `STATE_OF_THE_ANSWER.md` (anchor `7a2d696`, 1 commit), [[Claim Map]] (1 commit),
+  [[Workflow Threads]] (**14** commits). The machine anchors do not keep it green, because
+  council merges touch declared paths after the re-anchor lands — the limit `reanchor.yml`
+  documents at its own lines 9-18.
+- **No model drift, measured three ways.** `scripts/check_models.py` exits 0 over **12**
+  flowchart cards; all nine `.claude/agents/` definitions declare `model: opus`; each
+  definition's "Runs on" prose matches its vault note seat by seat. `src/models.py` unchanged:
+  `CHAIRMAN_MODEL`/`HEAVY_MODEL` `claude-opus-5`, `UTILITY_MODEL`/`FALLBACK_MODEL`
+  `claude-opus-4-8`, `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001`.
+- **C11 sharpened: the professor-facing page now contradicts itself inside one document.**
+  `docs/how-it-works.html:7` and `:58` read "nine public sources"; the SVG embedded in that
+  same page reads "10 SOURCES" at `:96` and "10 sources" at `:109`. Source of the prose:
+  `scripts/site_templates/how_it_works.html.j2:3,:27`. `README.md:56` already says "ten" and
+  `src/sources.all_sources()` returns **10**. [[site-experience]].
+- **D7 re-measured against code, both halves wrong.** `METHODOLOGY.md` §III describes Bing News
+  as polled through *"eight fixed, fingerprint-derived queries"*; `len(bing_news.QUERIES)` is
+  **12**. It names nine channels and mentions **GDELT zero times**, though GDELT is the tenth
+  registered source (`44550ca`). `README.md` also mentions GDELT zero times. METHODOLOGY is
+  Emory's document — escalated, not edited.
+- **C8 refined downward, honestly.** `scripts/build_graph.py:198` is still `pat.sub(block,
+  text)` with no count argument, so the hazard is real in the code. But a **full build run in a
+  scratch copy of `7bc5fc0` changed 47 files with 170 insertions and 6 deletions and no note
+  lost net content.** The defect is latent today, not firing.
+  `analytics/daily-research/2026-08-05.md` carries two well-formed managed blocks (lines
+  807-809 and 1030-1032) — a cosmetic duplicate, not the 92-line loss of the original incident.
+- **Graph state:** 156 notes, 330 edges, **0 orphans**, 47 blocks would update. One broken
+  wikilink, to `analytics/locked_set/RETRIEVAL_LEDGER.md`.
+- **Orphan check: 15 of 115 remote branches unmerged.** Beyond `vault/archivist-2026-08-28`:
+  `chore/operator-marks-2026-07-27` (`6f9e1da`, **F1**, day thirty-six); six
+  `council-2026-08-31-*` re-anchor branches whose content is superseded by the merged `c12901e`
+  and `8c3034f`; `council/2026-08-26` — which carries **only** `.sent/2026-08-26`, and
+  `analytics/daily-research/2026-08-26.md` *is* on `main`, so nothing substantive is stranded
+  there; three 2026-07-30/08-01 `claude/sweet-mccarthy-*` cloud branches (**F3**); and
+  `feat/research-council` (`af00584`, 2026-06-22).
+- **`agents/Project Machinery.md` does not exist.** Named conditionally in this seat's standing
+  prompt; recorded here so the next session does not hunt for it.
+- **Carried unchanged, with dates:** **D5** — eight of nine definitions still never name their
+  own vault note; only `.claude/agents/integrity-officer.md:56-62` does. **D6**, **D8**,
+  **C17**, **F1**, **F3** carried; none re-argued here.
+
 ## 2026-08-25 (archivist session — eleventh deployment)
 
 *Audited against `ad66a96` (`main`, clean tree, complete history after `git fetch --unshallow`

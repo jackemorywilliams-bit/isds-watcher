@@ -27,11 +27,76 @@
 
 **Conceptual seeds (Ring 1 / research-question foundation):** the Ferguson and Kim memos, archived verbatim at `lit-review/` and summarised in METHODOLOGY.md Part II.B. Ferguson's interpretive optimism — trade secrets protectable as covered investments through TRIPS Article 39 incorporated via VCLT Article 31(3)(c), three forms of State conduct (disclosure/use/regulation) resolving into four mitigable risks, a four-question indirect-expropriation test, and the recognition/enforceability gap — set against Kim's structural skepticism on pharmaceutical clinical data — the threshold "investment" problem (Apotex outer limit; Philip Morris v. Uruguay, where the contribution-to-development objection failed and the Salini criteria were held not to be jurisdictional requirements), the near-impossible counterfactual evidentiary burden under the expropriation standard, the vagueness of FET "legitimate expectations," and the proportionality test and balance of interests, a limb she names at her Part III.B.2 and whose comprehensive analysis she expressly declines while still sketching the public-interest side and applying necessity to her own facts. **Corrected 2026-08-08:** this line previously described that limb as "the police-powers / public-welfare carve-out." That is the project's vocabulary, not Kim's — a full-text search of her article returns no occurrence of "police," "carve-out," "carve out," "public welfare" or "welfare" — and it contradicted the corrected position now recorded in `lit-review/kim-memo.md`. Note also that the institutional question the project treats as its own third stance is one Kim raises herself, in her abstract ("The question is whether investor-state arbitration is an apt instrument to protect originators' data against disclosure by drug regulatory authorities") and again in her conclusion at 1027. Their debate is the spine of the research question; future entries should reason from these memos, not around them.
 
-**Last updated:** 2026-08-31.
+**Last updated:** 2026-09-01.
 
-**Currency anchor.** *Audited against `621aa6e`.* This line is the note's machine-owned currency anchor: `scripts/reanchor.py` moves the sha above to the session's last substantive commit, in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated anchor narrative far below is preserved unedited as history.
+**Currency anchor.** *Audited against `7a2d696`.* This line is the note's machine-owned currency anchor: `scripts/reanchor.py` moves the sha above to the session's last substantive commit, in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated anchor narrative far below is preserved unedited as history.
 
 **Currency machinery — 2026-08-27 (escalation 7 retired).** Escalation 7 of the 2026-08-17 record — that a session writing both this file and its ledgers "cannot satisfy `scripts/check_currency.py` by construction" — is **fixed, and the by-construction framing was wrong.** The guard already excludes a commit that touches nothing but tracked notes; what was missing was never a smarter guard but a **final, notes-only re-anchor commit written by machine** rather than by a seat told to remember. `scripts/reanchor.py` now moves the anchor line above to the last substantive commit and is committed on its own, touching only the tracked notes, so the guard reads zero drift — the mechanism that was carried as impossible. The same change closes the sent-marker hole: `analytics/daily-research/.sent/` marker commits count as maintenance too, so a PR opened between a marker commit and the next close-out no longer goes red on markers alone. It is wired as machinery in `.github/workflows/reanchor.yml` (re-anchors every PR to `main`), **not** as a protocol step a model must remember; the daily-council close-out carries it only as belt-and-suspenders. The three sibling notes — `agents/Claim Map.md`, `agents/Workflow Threads.md`, `agents/Project Change Log.md` — are re-anchored by the same machinery in this change, so the 2026-08-19 anchor note's "knowingly left STALE, because `agents/` is outside the daily session's approved merge scope" is superseded: the scope rule now admits the mechanical, anchor-only re-anchor commit, substance still out of scope. The dated 2026-08-19 anchor note and the superseded anchor notes below are left unedited as history; **this block is the current statement of record, and the machine-owned anchor above — not the `e170ba5` inside the 2026-08-19 narrative — is what the guard now reads.**
+
+> **COUNCIL UPDATE — 2026-09-01 (daily council; full record at `analytics/daily-research/2026-09-01.md`).**
+> **Region R — the stretch of the ARB/12/1 docket page this project had never observed on any page state — returned
+> 508 characters of text at a position this instrument CANNOT ESTABLISH, and the conditional is the finding.**
+> One pre-registered relay batch, **nine requested rows plus the relay's prepended control = ten records**, run
+> `33502766107`, fired at `5ee8e7e` **11:29:40Z before any seat was convened** and answered at `a92c928` 11:30:22Z,
+> reduction at blob **`4248c5af0f65027c8c0e462cdef25f5edd042a7e`**, cited by SHA and never by path. All ten rows
+> `ok`/200/`text/html`, every `final_url` equal to its `url`, `G18` bracket closed identical at both ends, and all
+> six ARB/12/1 rows on ONE page state. **The page moved again: `4aed6aa3` → `146c66dd`, at an identical 176,048
+> bytes.** Two windows joined at a byte-identical **292**-character overlap into **RUN A, 508 characters**, carrying
+> `Date Registered: January 12, 2012`, `Date of Constitution of Tribunal: July 12, 2012`, a `Composition of
+> Tribunal` field naming President **Klaus SACHS** with arbitrators **Stanimir A. ALEXANDROV** and **Leonard
+> HOFFMANN**, an `Initial Composition of Tribunal` naming **John BEECHEY**, and `Reconstituted: September 10,
+> 2012:`. Two further windows joined at **302** into **RUN B, 498 characters**. **All three figures were derived
+> independently by three seats and agree to the character.**
+> **BUT RUN A SHARES NO JOIN WITH EITHER OF REGION R'S BOUNDARY WINDOWS, SO ITS POSITION IN THE REDUCED BODY IS
+> NOT ESTABLISHED, AND THE SENTENCE "RUN A LIES INSIDE R" IS AN INFERENCE FROM THE DOCKET TEMPLATE AND IS NOT
+> OBSERVED.** The record's first heading said "R PARTIALLY OPENED"; that was sustained as objection `0901-B2`,
+> BLOCKING, and the binding form is **"R MAY HAVE PARTIALLY OPENED, and the conditional IS the finding."** What is
+> held is text *of the kind* R was defined to contain, at an unestablished position, flanked by two gaps of
+> **unmeasured** length. **G16 BINDS ABSOLUTELY: docket-summary fields and dates, NEVER a disposition and NEVER a
+> holding, and nothing here establishes any appointment as a matter of fact. G13 weak form.** Two region-scoped
+> negatives were earned by first-occurrence anchoring rather than by coverage — no case variant of `Status of
+> Proceeding` or `Axis Law Chambers` occurs in R — **on one unobserved premise, that R's left boundary precedes its
+> right in the reduced body, which no join establishes; they are true-or-vacuous, never false** (`0901-B4`).
+>
+> **THE DAY'S PRINCIPAL METHOD FINDING IS AGAINST THIS COUNCIL'S OWN INSTRUMENT.** The 2026-08-31 record
+> pre-registered a 118-character prefix as the discriminator for a `(c)`-block mis-anchor. **Today's return matches
+> that prefix character-for-character — verified independently by all three seats, twice from the record itself
+> rather than from any seat's rendering — while its own left context carries 2012 dates and not the 2021 dates that
+> record ascribed to the `(c)` block.** The council was protected only because a different rule, the READ_ORDER
+> clause, voided the discriminator when the page state moved. **State-boundedness was the risk every seat named;
+> NON-UNIQUENESS was the defect no seat named. Had the state not moved, the discriminator would have graded the
+> day's best return a mis-anchor and thrown it away.** From today a discriminator is screened for uniqueness before
+> it is registered as a test.
+>
+> **A FALSE NEGATIVE WAS CAUGHT BEFORE IT REACHED THE LEDGER, AND IT WAS A HYPHEN.** The analyst's one search
+> "yield" — that this repository had never carried an ordinal for the WG III intersessional meeting — was wrong:
+> **the repository has carried `Tenth Inter-sessional Meeting`, its attachment to the 7–9 September Ninh Binh
+> meeting, and its WG III attribution since 2026-06-27, at three files INCLUDING THIS ONE at `:560`.** The
+> unhyphenated screen returned zero because the record uses the hyphen. `0901-B1`, SUSTAINED, BLOCKING; the
+> corrected form is that the search bought **a spelling variant and a URL slug, and zero propositions**. **Whether
+> that meeting is the September one still rests on two search-derived statements and no primary read by anyone.**
+>
+> **THE DIGEST OF RECORD MOVED FOR THE FIRST TIME IN A WEEK, AND THE MOVEMENT STRENGTHENS THE NULL.**
+> `Digest 2026-08-31: 67 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads).` The prior digest
+> of record evaluated 30 and surfaced 0. **A screen that more than doubled its intake returned the same nothing.**
+> `validation_status_only` remains `true`. Yesterday was the **fifth consecutive Monday on which no weekly
+> interpretive brief was produced** (`briefs/`, last issue 2026-07-27) — **a separate fact from the digest figures,
+> two of those five Mondays having surfaced watch-list leads.**
+>
+> **A DELIVERY-PATH FAILURE REACHED THE OPERATOR AND IT IS ESCALATION 1.** A push carrying Part I alone, without
+> `[skip ci]`, triggered the `daily-update` workflow, which **emailed a one-sixth record** and then wrote a dedup
+> marker suppressing every later send. The marker is deleted in this session's final commit per precedent
+> `44be3f6`; **the structural defect — the workflow has no notion of a record being complete — is unfixed and on
+> the operator's pending list.**
+>
+> **Twenty objections and corrections filed, nineteen sustained, one overruled in part, five blocking; three
+> sustained against the chairman and three against the integrity officer.** No gap slug was closed and one was
+> opened: `GAP-UNRESOLVED: icsid-arb-12-1-a-block-claimant-representatives`.
+> **Nothing moves on the research question and no proceeding moved.** *Tethyan Copper v Pakistan* is a
+> **mineral-exploration dispute with no intellectual-property nexus** — and today the docket said so in its own
+> words, `Subject of Dispute: Mineral exploration operations`. **Seven consecutive sessions on this docket are
+> instrument and method work.** Every item on the operator's pending list stays pending; nothing was built and
+> nothing was applied.
 
 > **COUNCIL UPDATE — 2026-08-31 (daily council; full record at `analytics/daily-research/2026-08-31.md`).**
 > **The four-row chain designed on 2026-08-30 fired against a page state that had already moved, and every one

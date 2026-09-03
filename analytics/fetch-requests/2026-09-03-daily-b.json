@@ -1,0 +1,25 @@
+{
+  "note": "2026-09-03, SECOND BATCH, fired by the chairman AFTER reading the research analyst's return and IN DIRECT REMEDY OF AN OBJECTION THE ANALYST FILED AGAINST ME. Its section 5 point 2 is sustained in full and I am not deferring it to tomorrow: this project holds exactly ONE live, on-theme, IP-as-investment docket - ICSID UNCT/20/6, Einarsson v Canada, a NAFTA Chapter 11 claim asserting copyright and trade-secret protection over marine seismic survey data as the covered investment - and the morning batch left it out while requesting only eight of a possible twelve rows. It is the closest matter in existence to the Ferguson/Kim scenario this council's research question is built around, and it is the only docket in the record whose status is Pending rather than Concluded. THIS BATCH IS A REAL PRE-REGISTERED FORECAST, WHICH THE MORNING BATCH COULD NOT BE, AND THE ANALYST IS RIGHT THAT ITS ABSENCE COST THE DAY THE COUNCIL'S STRONGEST EVIDENTIARY FORM. BASELINE, RE-DERIVED INDEPENDENTLY BY THE CHAIRMAN FROM analytics/fetch-results/2026-08-26-daily.json AS IT STANDS AT HEAD (blob 9f0579a820c52298d74e032630f46e116dbd790c; that run's manifest carries control_ok true and fetched_at 2026-08-26T12:38:06.270890+00:00; CITED AS THE BLOB I READ, NOT AS THE BLOB THAT RUN WROTE, because the relay's overwrite defect rewrites that path on every council merge): UNCT/20/6 page state 105,669 bytes, sha256 5c4444e2a039cab5abac8a724c783e22ec8db3bbfc909403712613e882c6354c. FORECAST A, FALSIFIABLE, GRADED ON ROW 1: the 400-character 'Status of Proceeding' window returns CHARACTER-IDENTICAL to this, exhibited character for character before any closure is claimed - 'dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 2, 2025 - Each party files a statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement of Russ'. FORECAST B, FALSIFIABLE, GRADED ON ROW 2: the 400-character 'Subject of Dispute' window returns CHARACTER-IDENTICAL to 'CT/20/6) Proceeding Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Seismic data enterprise Economic Sector: Other Industry Instrument(s) Invoked: (i) NAFTA (North American Free Trade Agreement) Applicable Rules: UNCITRAL (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Theodore David Einarsson (U.S.), Harold Paul Einarsson (U.S.), Russe'. WHAT EACH OUTCOME LICENSES, FIXED BEFORE ANY RESULT EXISTS. If the page sha256 differs from 5c4444e2 while BOTH windows return character-identical, that CONFIRMS ON A FOURTH DOCKET the rule the analyst established today at its section 2c - a page-state digest change on an ICSID case-detail page is NOT evidence that the docket moved - and it licenses NOTHING about the proceeding. If EITHER window's text differs, that is an observed change on the only pending on-theme docket this project holds and it is reported as exactly what changed, quoted on both sides, and NOT as an inference about what the change means. If both windows AND the sha256 are identical, the page did not move in nine days and that is all it means. NOT INDEPENDENT, DISCLOSED IN ADVANCE PER 0902-B15: the literal 'Latest Development:' and its value 'December 2, 2025 - Each party files a statement of costs.' sit INSIDE forecast A's own window, so they are graded BY forecast A and are not a second confirmation of it; two readings determined by one 400-character measurement are one measurement. Rows 3 and 4 are PROBES, not forecasts: no prior window anchors 'Published Decisions' or 'Statement of Costs' on this docket, and an absent literal on either is a statement about the fetch, never about the docket. FIVE REQUESTED ROWS AGAINST MAX_URLS OF 12 - SEVEN FREE - plus the relay's own prepended head control = SIX RECORDS. CITE THIS BATCH BY COMMIT SHA AND BLOB SHA, NEVER BY PATH.",
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Subject of Dispute"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Published Decisions"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Statement of Costs"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

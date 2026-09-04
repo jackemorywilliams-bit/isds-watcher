@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `0b38cb5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `9141e75`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -45,6 +45,17 @@ Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Ch
 > below as the real anchor and query from there.** Owner: **systems-designer** (a
 > `--audited-by` distinction between a machine re-anchor and a seat's audit) / **Emory**.
 > [[Workflow Threads]] **D10**.
+>
+> **ADDENDUM 2026-09-04 — the warning above still stands, but today the anchor happens to be
+> honest, and the difference matters.** The sha on this note now names `9141e75`, the 2026-09-04
+> archivist session's own substantive commit, moved by `scripts/reanchor.py` *after* the audit
+> rather than by a bot on someone else's PR. Between 2026-09-02 and 2026-09-04 the daily council
+> re-anchored **only** `STATE_OF_THE_ANSWER.md`, committing it as *"the one tracked note inside
+> this council's merge scope"* (`87b828d`, `070258d`, `0116caf`) — so it stopped stamping notes it
+> does not read. **That is one seat's restraint, not a fix.** `scripts/reanchor.py` is unchanged
+> since `93a69f7` and still has no scope filter, and `reanchor.yml` still moves all five notes on
+> every PR to `main`. **Keep reading the anchor sceptically**, and keep taking the last dated
+> snapshot block as the real one: the mechanism that can silently stamp an unread note is intact.
 
 **Definitions re-audited against `8ea2ee1` — 2026-08-13.** `git log 667772c..HEAD --
 .claude/agents/ prompts/ src/models.py` returns **no commit**, and no file under

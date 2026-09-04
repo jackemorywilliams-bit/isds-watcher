@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `0b38cb5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `b8fddd5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -18,7 +18,61 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
-**Snapshot refreshed — 2026-09-01, at `7bc5fc0` on `main`, on a complete 922-commit history
+**Snapshot refreshed — 2026-09-04, at `c2558d9` on `main`, on a complete 983-commit history
+(`git fetch --unshallow`; the clone arrived shallow at **173**, the fifth consecutive
+recurrence).** *Audited against `c2558d9`; true window `7bc5fc0..c2558d9` = **61** commits;
+paths: `agents/`, `.claude/agents/`, `prompts/`, `src/models.py`, `src/sources/`, `README.md`,
+`METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `docs/`, `scripts/site_templates/`,
+`views/isds-workflow-3d/workflow.json`, `scripts/`, `analytics/optimization-log.md`,
+`state/council_log.json`, and every remote branch tip.* Read for this pass: `git merge-base
+--is-ancestor <tip> origin/main` over all **124** remote branches (**17** flagged, **4**
+substantive — see D12); all nine definitions against all nine seat notes; `src/models.py`;
+`src/sources.all_sources()` (**10**); `len(bing_news.QUERIES)` (**12**);
+`docs/how-it-works.html`; `scripts/site_templates/how_it_works.html.j2`; `METHODOLOGY.md` §III;
+`.github/workflows/reanchor.yml` and `scripts/reanchor.py` read at the code including
+`_anchor_target()` and `check_currency._is_maintenance()`; and live runs of
+`scripts/check_currency.py` (**9 claims, 2 failed** — down from 3),
+`scripts/check_models.py` (exit 0, 12 cards), `node tools/isds-workflow-3d/validate.mjs`
+(exit 0, 30 cards / 10 chips / 44 edges) and `scripts/build_graph.py --dry-run` (**161**
+notes, **341** edges, **0** orphans, **51** would-update, **16** WARNs, 1 broken link).
+
+**The window's substance, stated up front because it is unusual: the contract paths did not
+move at all.** `git log 7bc5fc0..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no
+commit** across 61 commits, and so does the same query over `README.md`, `METHODOLOGY.md`,
+`COUNCIL.md`, `HANDOFF.md`, `docs/`, `scripts/site_templates/` and
+`views/isds-workflow-3d/workflow.json`. Every one of those 61 commits is council record-keeping
+plus relay and marker chores. **The drift this session found is therefore not in the repository's
+machinery but in the vault's coverage of what the council decided** — one adopted rule, routed to
+this seat by name, that had not reached any note. See D13.
+
+> [!warning] **THIS NOTE'S OWN THREAD IDS COLLIDE — read a thread by its title, never by its
+> number. Found and recorded 2026-09-04.**
+> Two threads are numbered **C11**: *"CI wiring of the guards"* and *"Taxonomy entry 27 was
+> adopted twice"*. Two are numbered **C12**: *"Merge-or-skip before the Monday 13:00 UTC run"* and
+> *"`build_graph` is whole-vault, and the archivist's merge authority is not"*. Both pairs were
+> opened 2026-08-07/08-08 and have coexisted since.
+>
+> **This is not cosmetic, and it has already produced one wrong citation — in a record this seat
+> wrote.** The 2026-09-01 session's escalation table lists *"**C11** — `docs/how-it-works.html`
+> says nine and ten on one page"* (`analytics/vault-sessions/2026-09-01.md:210`). That is a
+> **third** referent for C11: no thread of that number covers the site page, which has no thread of
+> its own at all and is nearest to **D7**. Meanwhile the integrity officer, citing correctly, used
+> C11 for the taxonomy collision on 2026-09-04. One label, three meanings, in two records four days
+> apart.
+>
+> **The irony is exact and worth stating rather than smoothing over.** The C11 taxonomy thread
+> exists because a stale count in a heading became the input to the next entry's number. This note
+> then reproduced the identical defect one level up: a stale ID space became the input to the next
+> thread's number. **The archivist wrote both.**
+>
+> **Not renumbered here, deliberately.** Thread IDs are cited from outside this note — by the
+> officer, by session records, by [[Claim Map]] — and silently renumbering would break those
+> citations the way renumbering taxonomy entry 27 would change what two council rulings say. The
+> same disposition applies for the same reason. **Wanted:** one ruling that assigns each pair a
+> distinct id, after which every citation is updated in a single change set. **Owner: archivist,
+> on Emory's go-ahead**, since it rewrites references other seats hold.
+
+**Superseded snapshot, retained — 2026-09-01, at `7bc5fc0` on `main`, on a complete 922-commit history
 (`git fetch --unshallow`; the clone arrived shallow at **156**, the fourth recurrence — apply
 the caution below every session).** *Audited against `7bc5fc0`; true window `ad66a96..7bc5fc0`
 = 118 commits, not the machine anchor's window (**D10**); paths: `agents/`, `.claude/agents/`,
@@ -48,6 +102,25 @@ paths moved once, `93a69f7`; README/METHODOLOGY/COUNCIL/`workflow.json` moved ze
 defect is that it *would*, silently. Warning block added at the head of [[Agent Registry]].
 Wanted: a distinction in the note between a machine re-anchor and a seat's audit.
 
+**Re-measured 2026-09-04, and the picture has improved for a reason nobody engineered.** Three
+of the five tracked notes — [[Agent Registry]], [[Workflow Threads]], [[Project Change Log]] —
+read `0b38cb5`, which **is** this seat's own 2026-09-01 session merge. For those three the anchor
+currently *does* mean "a seat audited this note", and the true window (`7bc5fc0..HEAD`, 61
+commits) differs from the machine window (`0b38cb5..HEAD`, 59) by two commits rather than by 118.
+**The cause is a practice change, not a fix.** Since 2026-09-02 the daily council's close-out has
+re-anchored only `STATE_OF_THE_ANSWER.md`, committing it as *"re-anchor the one tracked note
+inside this council's merge scope"* (`87b828d`, `070258d`, `0116caf`) — so the council stopped
+stamping notes it does not audit. `scripts/reanchor.py` is **unchanged** since `93a69f7`
+(2026-08-27) and still carries no scope flag; `.github/workflows/reanchor.yml` still moves all
+five. **So D10 stays open exactly as written:** the mechanism that can silently stamp an unread
+note is still in place, and the improvement rests on one seat's voluntary restraint. The remedy
+wanted is unchanged — the note distinguishes a machine re-anchor from a seat's audit.
+
+**One note is the counter-example and it is the one that stayed stale.** `agents/Claim Map.md`
+still reads `621aa6e` (2026-08-31) and `check_currency.py` reports it 4 commits stale. That is
+not the council's restraint working; it is D12 — the 2026-09-01 session's own anchor fix for it
+never landed.
+
 ### D11 — every archivist PR is unmergeable by the archivist *(new 2026-09-01; owner: Emory / systems-designer)*
 
 `reanchor.yml` runs on every PR to `main` and pushes a commit touching
@@ -60,6 +133,73 @@ archivist PR from now on will hit this."* PR **#110** has been open since, and t
 merges #110; Emory rules anchor-only `STATE_OF_THE_ANSWER.md` changes in scope; or the systems
 designer adds a scope flag to `reanchor.py` **and** `reanchor.yml`. Until then this recurs
 every session, and a stranded record is the 2026-07-31 defect by another route.
+
+**2026-09-04 — read at the code, and the trap is now understood precisely enough to be fixed in
+one line.** `reanchor.yml:60-77` checks out the PR head, runs `scripts/reanchor.py` over the
+whole of `check_currency.TRACKED`, and pushes `chore(currency): re-anchor tracked notes to HEAD
+[skip ci]` **if anything moved**. `TRACKED` (`scripts/check_currency.py:62-71`) holds five notes,
+four under `agents/` and **`STATE_OF_THE_ANSWER.md`**, which is the one outside this seat's path
+set. An archivist PR always moves it, because `_anchor_target()`
+(`scripts/reanchor.py:55-70`) returns the newest **non-maintenance** commit reachable from HEAD,
+and a session's substantive commit touches `analytics/vault-sessions/` and seat notes — neither
+in `TRACKED` — so it is never maintenance. **The seat cannot pre-empt it either:** running
+`reanchor.py` itself puts the same `STATE_OF_THE_ANSWER.md` edit in the seat's own commit. Both
+roads lead to the same violation, which is why "just remember to re-anchor first" is not a
+remedy.
+
+**The narrowest fix, stated so it can be implemented without re-deriving it:** give
+`scripts/reanchor.py` a `--only <path>...` filter and pass the four `agents/` notes from
+`reanchor.yml` when the PR head branch matches `vault/*`. That leaves the workflow's behaviour
+identical for every other PR. Alternatively — and this is the one-line version — Emory rules that
+an **anchor-only** change to `STATE_OF_THE_ANSWER.md` counts inside the archivist's self-merge
+scope, since the line it touches is machine-owned by construction. **Owner: Emory to choose;
+[[systems-designer]] to build if the flag is chosen.** PR **#110** remains open — **day seven**,
+still the only open PR in the repository before this session's own.
+
+### D12 — the 2026-09-01 session's anchor fix stranded on an unopened branch, and it is why `check_currency` is still red *(new 2026-09-04; owner: archivist — fixed in part here; Emory for the remainder)*
+
+- **State** — `origin/vault/archivist-2026-09-01-anchors`, tip **`358ece9`**, pushed 2026-09-01,
+  **never opened as a PR** and never merged. `git merge-base --is-ancestor 358ece9 origin/main`
+  is false. Its entire content is two anchor lines: `agents/Claim Map.md` (`621aa6e` → `0b38cb5`)
+  and `STATE_OF_THE_ANSWER.md` (`7a2d696` → `0b38cb5`).
+- **The consequence is live and measurable.** `scripts/check_currency.py` on `main` today reports
+  **9 claims, 2 failed**, and one of the two is `agents/Claim Map.md`, stale by 4 commits against
+  `621aa6e`. That failure exists *only* because this branch never landed. The 2026-09-01 session's
+  companion re-anchor PR **#126** (`79a6b71`) carried three notes — Agent Registry, Project Change
+  Log, Workflow Threads — and left these two behind.
+- **Why the orphan check did not catch it on 2026-09-01** — the session ran its branch sweep
+  before pushing this branch, so it could not have. The check is sound; the timing defeated it.
+  **Adopted here as method: the orphan sweep runs after the session's own pushes, not before.**
+- **What this session did** — `agents/Claim Map.md` is inside this seat's path set, so its anchor
+  is moved in this change set by `scripts/reanchor.py` rather than by hand.
+  `STATE_OF_THE_ANSWER.md` is not, and is **not** touched here; it is currently green against the
+  guard because the daily council re-anchors it, so nothing is lost by leaving it.
+- **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
+  **Emory** may delete it.
+
+### D13 — a rule the council adopted and routed to this seat by name had reached no note *(new 2026-09-04; owner: archivist — CLOSED in this change set)*
+
+- **State** — On 2026-09-04 the council adopted **fabrication taxonomy entry 28, unscreened
+  first-ness claim**, and its own optimization log closed the entry with: *"routed to the
+  archivist for the vault table because `agents/` is outside this session's merge scope"*
+  (`analytics/optimization-log.md:65`, `1fcc1ab`). A whitespace-normalised grep for `first-ness`
+  across `agents/` returned **zero** hits before this change set.
+- **Why it matters more than a missing row.** The rule was adopted *because* seven live instances
+  fired in one document — four the chairman's, **the fourth committed inside the correction of the
+  third**, and three self-reported by the analyst. The optimization log is explicit that **none is
+  a fabrication**: *"each is true about the world and false about the record."* A seat asserting
+  something is new to the project when the project's record already holds it is **the 2026-08-03
+  failure shape**, which is the failure this archivist seat exists because of. It recurred at a
+  different altitude thirty-two days later.
+- **Where it now lives** — [[integrity-officer]] fabrication taxonomy, entry 28 (canonical
+  statement); [[Agent Registry]] adopted-method-rules table, two rows; [[research-analyst]], as a
+  dated block appended to the existing 2026-08-03 holdout finding it repeats.
+- **The limit, named by the council rather than by this seat** — it is a writing discipline and
+  does not touch the structural cause: **452** tracked files and **36,683** non-blank daily-record
+  lines growing roughly **750 lines a day** against a session-length context. That needs an index
+  or a retrieval gate. **A build, and Emory's.**
+- **Owner** — archivist; **CLOSED 2026-09-04**. The structural remainder is **Emory's** and is
+  tracked here rather than marked done.
 
 **Previous snapshot — 2026-08-25, at `ad66a96` on `main`, clean tree, on a complete 804-commit
 history (`git fetch --unshallow`).** *Audited against `ad66a96`; paths: `analytics/`, `state/`,
@@ -1260,6 +1400,17 @@ specifically unblocks it.
 
 ### D5 · Adopted method rules are recorded where the seat that must obey them never reads
 
+- **RE-TESTED 2026-09-04 — day twenty-two, unchanged, and today it acquired its best single
+  illustration.** The script test was re-run over all nine definitions: **eight of nine still
+  never name the seat's own vault note**; [[integrity-officer]] remains the only one that does.
+  What makes today different is that the exception proved itself. The officer's definition points
+  at its note, so the officer **opened** `agents/integrity-officer.md` to number its taxonomy
+  extension and reported what it found there verbatim
+  (`analytics/daily-research/2026-09-04.md:968`, `51a2bae`). No other seat can do that, and the
+  gap is not hypothetical for the analyst: the rule the council adopted the same day is a rule
+  about not asserting novelty against a record the seat cannot see. **The remedy remains a
+  contract edit and therefore Emory's** — one line per definition, pointing the seat at its note,
+  in the form `.claude/agents/integrity-officer.md:56-62` already uses.
 - **State** — Opened 2026-08-13. Every seat note carries a section of rules the council adopted
   in session and marked **binding** — `agents/research-analyst.md:59-142` ("Adopted method
   rules (session-derived, binding)", eleven rules), `agents/council-chairman.md:46-133`
@@ -1320,6 +1471,19 @@ specifically unblocks it.
 
 ### D6 · The model a seat runs on is not the model any file in the repository names
 
+- **RE-OBSERVED FIRST-PERSON 2026-09-04 — day nineteen, third direct runtime query by this seat.**
+  The session runtime reports `configured_model` = `claude-opus-5`, `session_context.model` =
+  `claude-opus-5`, `last_served_model` = `claude-opus-5`. Against
+  `.claude/agents/obsidian-archivist.md:3` and `:24` ("Runs on Claude Opus 4.8") and
+  `agents/obsidian-archivist.md`'s ``**Model.** `claude-opus-4-8` ``. **REQUESTED
+  `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Measured, not inferred, and consistent with
+  2026-08-16 and 2026-08-25. `scripts/check_models.py` still exits 0 over twelve cards, which is
+  correct and beside the point — it compares three declarations to each other and has no view of a
+  runtime, as its own docstring says. `src/models.py:18` still requires a fallback be recorded in
+  `HANDOFF.md` via `record_fallback()`, whose only caller remains `src/research_brief.py:161`, a
+  path no council seat enters. **The rows stay as written**, for the reason given on 2026-08-16:
+  they record the operator's directive, and rewriting them would ratify a substitution nobody
+  authorised. **Emory's.**
 - **State** — Opened 2026-08-16. All nine definitions declare `model: opus`. That frontmatter key
   selects a **tier, not a version**, and `scripts/check_models.py`'s own docstring says so: "a
   card naming a version is describing a choice the frontmatter does not itself pin." The runtime

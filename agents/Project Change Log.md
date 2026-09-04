@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `0b38cb5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `b8fddd5`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,77 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-04 (archivist session — thirteenth deployment)
+
+*Audited against `c2558d9` (`main`, complete history after `git fetch --unshallow` — **983**
+commits; the container's clone arrived shallow at **173**, the fifth consecutive recurrence).
+True window `7bc5fc0..c2558d9` = **61 commits**. Paths: `agents/`, `.claude/agents/`,
+`prompts/`, `src/models.py`, `src/sources/`, `README.md`, `METHODOLOGY.md`, `HANDOFF.md`,
+`COUNCIL.md`, `docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`,
+`scripts/`, `analytics/optimization-log.md`, `state/council_log.json`, and every remote branch
+tip.*
+
+- **A RULE THE COUNCIL ADOPTED AND ROUTED TO THIS SEAT BY NAME HAD REACHED NO NOTE, AND IT IS
+  THE 2026-08-03 FAILURE IN A NEW COAT.** On 2026-09-04 the council adopted **fabrication
+  taxonomy entry 28 — unscreened first-ness claim** (proposed by the integrity officer at
+  `analytics/daily-research/2026-09-04.md:968`, `51a2bae`; adopted by the chairman at `:1148`,
+  `687cfde`; landed at `e3d0255`), and its optimization log closed the entry with *"routed to the
+  archivist for the vault table because `agents/` is outside this session's merge scope"*
+  (`analytics/optimization-log.md:65`, `1fcc1ab`). A grep for `first-ness` across `agents/`
+  returned **zero** hits before this change set. Written now to [[integrity-officer]] (canonical
+  table, entry 28), [[Agent Registry]] (two adopted-rule rows) and [[research-analyst]] (a dated
+  block on the existing holdout finding). [[Workflow Threads]] **D13**, closed.
+- **Why it is the same failure.** The rule was adopted because **seven** live instances fired in
+  one day's record — four the chairman's, **the fourth committed inside the correction of the
+  third** and self-filed (`0904-C1`), three self-reported by the analyst, the worst against
+  `STATE_OF_THE_ANSWER.md:17` on an author the previous analyst had recorded learning this exact
+  rule on, the previous day. The chairman's accountability line reads *"four unscreened
+  first-ness claims in one document, the fourth committed while correcting the third"*
+  (`state/council_log.json:475`). **None is a fabrication** — the log is explicit that *"each is
+  true about the world and false about the record."* A seat asserting something is new to the
+  project when the project's record already holds it **is** the 2026-08-03 holdout assertion,
+  thirty-two days later at a different altitude.
+- **The integrity officer's table heading was moved in the same change set as the row it
+  numbers, and that is the point of the fix rather than housekeeping.** The heading read "27
+  entries as of 2026-08-07"; the note under the table states the mechanism itself — *"A stale
+  count in this heading is not a cosmetic defect: it is the input to the next entry's number"* —
+  and that is exactly how the entry-27 collision was made. On 2026-09-04 the officer opened the
+  table as its mandate directs, recorded *"Vault table currently stands at 27 entries with a live
+  collision at 27 … I read the table rather than reciting it"*, and took 28, which happened to be
+  free. **The staleness cost nothing this time and would have cost the next extension.** Heading
+  now reads 28 as of 2026-09-04.
+- **This note's sibling [[Workflow Threads]] was found to have colliding thread IDs, and the
+  archivist wrote both sides.** Two threads numbered **C11** and two numbered **C12**, coexisting
+  since 2026-08-07/08-08. It has already produced a wrong citation in a record this seat wrote:
+  the 2026-09-01 session's escalation table uses C11 for the `docs/how-it-works.html` count
+  discrepancy (`analytics/vault-sessions/2026-09-01.md:210`), which no C11 thread covers.
+  Recorded with a warning block at the head of that note; **not renumbered**, because thread IDs
+  are cited from outside it, for the same reason the taxonomy's colliding 27 is not renumbered.
+- **D12 opened — the 2026-09-01 session's own anchor fix never landed.**
+  `origin/vault/archivist-2026-09-01-anchors`, tip `358ece9`, pushed 2026-09-01 and **never
+  opened as a PR**; its whole content is two anchor lines, `agents/Claim Map.md` and
+  `STATE_OF_THE_ANSWER.md`. That is why `scripts/check_currency.py` on `main` still reports
+  `agents/Claim Map.md` stale against `621aa6e`. The Claim Map half is repaired in this change
+  set by `scripts/reanchor.py`. **Method adopted from it: the orphan sweep runs after the
+  session's own pushes, not before** — the 2026-09-01 sweep ran before that branch existed and
+  could not have caught it.
+- **D6 re-observed first-person, third time.** This session's runtime reports `configured_model`,
+  `session_context.model` and `last_served_model` all `claude-opus-5`, against
+  `.claude/agents/obsidian-archivist.md:3`, `:24` and this vault's ``**Model.**
+  `claude-opus-4-8` ``. **REQUESTED `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Rows left
+  unchanged, for the reason given 2026-08-16. **D5 unchanged at day twenty-two.** **D11 read at
+  the code** and the trap is now specified precisely enough to fix in one line — see
+  [[Workflow Threads]]. **PR #110 is at day seven.**
+- **No repository drift found.** Across 61 commits the contract paths, the professor-facing
+  surfaces and the flowchart manifest moved **zero** times; `check_models.py` exits 0 over twelve
+  cards, `validate.mjs` exits 0 at 30 cards / 10 chips / 44 edges, `build_graph.py --dry-run`
+  reports **161** notes, **341** edges, **0** orphans. **C11 (`docs/how-it-works.html`: "nine
+  public sources" at `:7` and `:58` against "10 SOURCES" at `:96` and `:109`) and D7
+  (`METHODOLOGY.md:33`: eight queries against `len(bing_news.QUERIES)` = **12**; GDELT unmentioned
+  in both `METHODOLOGY.md` and `README.md`) are unchanged and remain escalated to
+  [[site-experience]] and Emory respectively.** Session record:
+  `analytics/vault-sessions/2026-09-04.md`.
 
 ## 2026-09-01 (archivist session — twelfth landed deployment)
 
@@ -51,8 +122,13 @@ remote branch tip.*
   query is now structurally suppressed.** Measured, not asserted: the anchor moved nine times
   between 08-27 and 08-31 with no archivist session in that window; `git log 621aa6e..HEAD --
   .claude/agents/ prompts/ src/models.py` returns **0 commits**, the same query from the true
-  last-audit commit `ad66a96` spans **118**. Warning block added at the head of [[Agent
-  Registry]]. New thread **D10**.
+  last-audit commit `ad66a96` spans **118**. Warning block added at the head of
+  [[Agent Registry]]. New thread **D10**.
+  *(Reflowed 2026-09-04, not rewritten: this link was wrapped across a line break, and
+  `scripts/build_graph.py` does not match a link containing a newline — so it counted as a link
+  to a nonexistent note named "Agent\n  Registry" and the edge to the registry was silently
+  missing from the graph. Sibling of the known backtick hazard recorded in [[Agent Registry]];
+  the wording is untouched.)*
 - **`scripts/check_currency.py` is red on `main`:** 9 claims checked, **3 failed** —
   `STATE_OF_THE_ANSWER.md` (anchor `7a2d696`, 1 commit), [[Claim Map]] (1 commit),
   [[Workflow Threads]] (**14** commits). The machine anchors do not keep it green, because

@@ -589,6 +589,60 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
+> **This log skips 2026-08-28 and 2026-09-01, and the gap is itself the record. Noted
+> 2026-09-04.** The 2026-08-28 session's entry for this note exists — it is 32 of the 676
+> insertions still sitting on `origin/vault/archivist-2026-08-28` (`de73f9f`), PR **#110**, open
+> since 2026-08-28 and now at **day seven**. The 2026-09-01 session declined to cherry-pick those
+> edits, correctly: they are live statements about a repository that had moved 118 commits, and
+> re-deriving beats importing. But it also did not write its own entry here. So this seat's own
+> memory of its last two deployments lives in `analytics/vault-sessions/2026-08-28.md` and
+> `2026-09-01.md` — both on `main`, both readable — and **not in the note a future archivist
+> reads first**. That is a small instance of exactly the defect this seat exists to catch, and it
+> is named rather than quietly backfilled: the two session records are the source of truth for
+> those dates, and the entry below resumes the log.
+
+- **2026-09-04 (thirteenth deployment)** — Standing every-3-days session, audited against
+  `c2558d9` (`main`, clean tree, complete history — **983** commits after `git fetch
+  --unshallow`; the clone arrived shallow at **173**, the **fifth consecutive** session). Cadence
+  held: three days. **Headline, and it is the same shape as the 2026-08-25 headline, which is why
+  it should be read as a pattern rather than an incident — a rule the council adopted and
+  *routed to this seat by name* had reached no note.** Fabrication taxonomy **entry 28,
+  unscreened first-ness claim**, adopted 2026-09-04 (`51a2bae`, `687cfde`, landed `e3d0255`),
+  with `analytics/optimization-log.md:65` (`1fcc1ab`) closing on *"routed to the archivist for the
+  vault table because `agents/` is outside this session's merge scope."* A grep for `first-ness`
+  across `agents/` returned **zero** before this change set. **This is the second consecutive
+  session in which the council's own routing was the finding**, the first being 2026-08-25's
+  orphaned-commit citation. The lesson to carry forward, stated as method: **read
+  `analytics/optimization-log.md` and the day's council record for the phrase "routed to the
+  archivist" every session, before anything else** — the council is already telling this seat what
+  it owes, in writing, and twice now it went uncollected for days.
+  **What the rule is about is also what this seat is about.** Entry 28 catches a seat asserting
+  something is new to the project when the project's own record already holds it — the 2026-08-03
+  holdout assertion, thirty-two days later, seven times in one document, the fourth instance
+  committed *inside the correction of the third*. None of the seven is a fabrication; each is
+  "true about the world and false about the record". The record is this vault.
+  **Found in this seat's own surfaces, and both are the archivist's own defect:** (a)
+  [[Workflow Threads]] carries **two threads numbered C11 and two numbered C12**, which has
+  already produced a miscitation in the 2026-09-01 session record (`:210` uses C11 for the
+  `docs/how-it-works.html` count, which no C11 covers) — recorded with a warning block, **not
+  renumbered**, because outside seats cite those ids; (b) the 2026-09-01 session's own anchor fix
+  stranded on `origin/vault/archivist-2026-09-01-anchors` (`358ece9`), never opened as a PR, which
+  is why `check_currency.py` still reported `agents/Claim Map.md` stale — the Claim Map half
+  repaired here via `scripts/reanchor.py`, and **the orphan sweep is henceforth run after the
+  session's own pushes, not before**, since the 2026-09-01 sweep ran before that branch existed.
+  **D6 re-observed first-person for the third time** (`claude-opus-5` against a note pinning
+  `claude-opus-4-8`); **D5 unchanged at day twenty-two**; **D11 read at the code** and now
+  specified precisely enough for a one-line fix. **No repository drift:** across 61 commits the
+  contract paths, professor-facing surfaces and flowchart manifest moved zero times;
+  `check_models.py` 0/12 cards, `validate.mjs` 0 at 30/10/44, `build_graph.py --dry-run` 161
+  notes / 341 edges / **0 orphans**. **No external Obsidian/PKM research this session** — the
+  time went to the routed rule and the two own-surface defects, and saying so beats dressing an
+  internal finding as outside reading. *Audited against `c2558d9`; paths: `.claude/agents/`,
+  `prompts/`, `src/models.py`, `agents/`, `analytics/`, `scripts/`, `.github/workflows/`,
+  `views/isds-workflow-3d/workflow.json`, `README.md`, `METHODOLOGY.md`, `COUNCIL.md`,
+  `HANDOFF.md`, `docs/`, `scripts/site_templates/`, `state/council_log.json`, and every remote
+  branch tip.*
+
 - **2026-08-25 (eleventh deployment)** — Standing every-3-days session, audited against
   `ad66a96` (`main`, clean tree, complete history — 804 commits after `git fetch --unshallow`;
   the clone arrived shallow at 188 for the third consecutive session). **Cadence recovered:

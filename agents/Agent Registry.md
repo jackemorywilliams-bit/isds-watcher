@@ -327,6 +327,17 @@ called its own next two exceptions correctly.
 > separately: **you cannot quote wiki-link syntax anywhere in this vault without minting a
 > broken link.** The draft was rewritten to say "wiki-link citations" in words. Any future
 > note explaining the link syntax must do the same until the scanner skips inline code.
+>
+> **The sibling hazard, found 2026-09-04 and stated so the rule is two-sided: a wiki-link must
+> also sit entirely on ONE LINE.** `agents/Project Change Log.md:125-126`, written by the
+> 2026-09-01 session of this seat, wrapped a link to this note across a line break. The scanner
+> does not match a link containing a newline, so it was counted as a link to a note literally
+> named `Agent` + newline + `Registry`, and the edge from the change log to this registry was
+> **silently absent from the graph** — no error, no WARN, just a missing edge in the note that
+> indexes the roster. Reflowed 2026-09-04 without changing a word of the prose. **Both hazards
+> are properties of `scripts/build_graph.py`, not of Obsidian**, which resolves a wrapped link
+> correctly when a human opens the note — which is exactly why neither is visible to the person
+> writing it. Until the scanner is fixed: **one line, never inside a code span.**
 
 ✔ **The `Project Machinery` broken link is gone.** The 2026-08-04 run reported one broken link
 from `agents/obsidian-archivist.md` to a note of that name, which never existed. The 2026-08-08
@@ -474,6 +485,8 @@ statements live in the seat's own note.
 | [[council-chairman]] | Elapsed intervals are truncated, never rounded | 2026-08-07 | `7adfd68` / `2026-08-07.md:984` |
 | [[research-analyst]] | `find_matched` has three states, not two — the third is *asked nothing* | 2026-08-07 | `7adfd68` / `2026-08-07.md:1000` |
 | [[integrity-officer]] | A zero-hit screen is not absence until the synonym is tried | 2026-08-07 | `7adfd68` / `2026-08-07.md:1029` |
+| [[integrity-officer]] | **Taxonomy entry 28 — unscreened first-ness claim.** A novelty assertion is an absence claim about the project's own record and carries the same burden as any other. Adopted with a mechanical carrier: the claim states the literals tried, the synonyms tried, the file count, the scope and the commit, in the sentence that makes it | 2026-09-04 | `51a2bae` / `2026-09-04.md:968` (proposed); `687cfde` / `:1148` (adopted); landed `e3d0255` |
+| [[council-chairman]] · [[research-analyst]] · **every seat** | **Screen before you assert novelty** — the same rule stated as a writing discipline binding beyond the officer's taxonomy. Triggered by seven live instances in one document, four the chairman's and three the analyst's. The instrument already exists: `wsgrep_at.py` at a base commit, validated against a known positive before its zero is trusted | 2026-09-04 | `1fcc1ab` / `analytics/optimization-log.md:65`; `687cfde` / `2026-09-04.md:1148` |
 
 The taxonomy's canonical statement is the table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
@@ -482,6 +495,40 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-09-04** — Registry re-audited against `c2558d9` (`main`, clean tree, complete
+  **983**-commit history after `git fetch --unshallow`; the container's clone arrived shallow at
+  **173**, the fifth consecutive recurrence). **No roster change and no contract change, and this
+  time that is a strong statement rather than a weak one:** across the true 61-commit window
+  `git log 7bc5fc0..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit**, and so
+  does the same query over `README.md`, `METHODOLOGY.md`, `COUNCIL.md`, `HANDOFF.md`, `docs/`,
+  `scripts/site_templates/` and `views/isds-workflow-3d/workflow.json`. `src/models.py` is
+  unchanged (`CHAIRMAN_MODEL`/`HEAVY_MODEL` `claude-opus-5`, `UTILITY_MODEL`/`FALLBACK_MODEL`
+  `claude-opus-4-8`, `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001`);
+  `scripts/check_models.py` exits 0 over twelve cards, which licenses only the claim that three
+  declarations agree with one another; `node tools/isds-workflow-3d/validate.mjs` exits 0 at 30
+  cards / 10 chips / 44 edges. **The drift was in this vault's coverage of what the council
+  decided, not in the machinery.** Two adopted-rule rows added above for **fabrication taxonomy
+  entry 28, unscreened first-ness claim** — proposed `analytics/daily-research/2026-09-04.md:968`
+  (`51a2bae`), adopted `:1148` (`687cfde`), landed `e3d0255` — which the council **routed to this
+  seat by name** (`analytics/optimization-log.md:65`, `1fcc1ab`) and which had reached **zero**
+  notes under `agents/` before this change set; [[Workflow Threads]] **D13**. The canonical
+  statement is in [[integrity-officer]], whose table heading is moved from "27 entries as of
+  2026-08-07" to "28 entries as of 2026-09-04" **in the same change set as the row**, because a
+  stale count in that heading is what produced the entry-27 collision and the note says so itself.
+  **D6 re-observed first-person for the third time** — this seat's runtime reports
+  `claude-opus-5` against a note pinning `claude-opus-4-8`; rows again left unchanged.
+  **D5 unchanged at day twenty-two** — eight of nine definitions still never name their seat's
+  note. **D12 opened**: the 2026-09-01 session's own anchor fix for `agents/Claim Map.md` and
+  `STATE_OF_THE_ANSWER.md` stranded on `origin/vault/archivist-2026-09-01-anchors` (`358ece9`),
+  never opened as a PR, which is why `check_currency.py` still reports Claim Map stale; the Claim
+  Map half is repaired here by `scripts/reanchor.py`. **This note's own thread IDs were found to
+  collide** — two C11s and two C12s — and the 2026-09-01 session record miscited C11 as a result;
+  recorded, not renumbered. All contract items are Emory's; escalated, not edited.
+  *Audited against `c2558d9`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `analytics/optimization-log.md`, `state/council_log.json`,
+  `views/isds-workflow-3d/workflow.json`, `scripts/check_models.py`,
+  `scripts/check_currency.py`, `scripts/reanchor.py`, `.github/workflows/reanchor.yml`,
+  `HANDOFF.md`.*
 - **2026-08-25** — Registry re-audited against `ad66a96` (`main`, clean tree, complete
   804-commit history after `git fetch --unshallow`; the container's clone arrived shallow a
   third consecutive time, at 188 commits). **No roster change and no contract change:**

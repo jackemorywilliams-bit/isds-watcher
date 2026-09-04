@@ -111,8 +111,20 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**27 entries as of 2026-08-07, and entry 27 is a collision — see the note under the table.**
+**28 entries as of 2026-09-04, and entry 27 is a collision — see the note under the table.**
 Each cites the record that adopted it.
+
+> **This count was updated on 2026-09-04 because leaving it stale is how the collision at 27 was
+> made, and this seat said so on the day it happened.** The note under this table states the
+> mechanism exactly: *"A stale count in this heading is not a cosmetic defect: it is the input to
+> the next entry's number."* On **2026-09-04** the officer opened this table to number its
+> extension — as the mandate directs — and recorded what it found: *"Vault table currently stands
+> at 27 entries with a live collision at 27 … I read the table rather than reciting it, per the
+> mandate, and did not renumber"* (`analytics/daily-research/2026-09-04.md:968`, `51a2bae`). It
+> took **28**, which was free, so the heading's staleness cost nothing this time. It would have
+> cost the next extension. The heading now moves in the same change set as the row, which is the
+> maintenance rule this note has always carried and which was not applied between 2026-08-07 and
+> today. Archivist, 2026-09-04.
 
 | # | Entry | Adopted | Source |
 |---|---|---|---|
@@ -145,6 +157,7 @@ Each cites the record that adopted it.
 | 26 | Tautological instrument check | 2026-08-06 | `analytics/daily-research/2026-08-06.md:607` (proposed), `:919` (adopted by the chairman); `aa48406` |
 | 27 | Scope-mixed screen | 2026-08-06 | `analytics/daily-research/2026-08-06.md:876`, `:940` ("Taxonomy 27, **SCOPE-MIXED SCREEN**, adopted"); `aa48406` |
 | 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
+| 28 | **Unscreened first-ness claim** — a novelty assertion ("first", "never", "no seat has ever", "this council had never", "new to this corpus") is an **absence claim about the project's own record** and carries the same burden as any other absence claim: a whitespace-normalised, case-insensitive, emphasis-stripped screen at a named commit, run **before** the claim rather than after the challenge. Distinguished from entry 14 (silent class truncation), which shortens an enumerated class, and from entry 10 (superseded-formulation restatement), which restates an older version of a live proposition. **Mechanical carrier, adopted with it:** no memo may carry such a phrase without an adjacent line stating the literals tried, the synonyms tried, the file count, the scope and the commit | 2026-09-04 | `analytics/daily-research/2026-09-04.md:968` (proposed by this seat, `51a2bae`), `:1040` (mechanical carrier), `:1111`, `:1148` (adopted by the chairman, `687cfde`); landed on `main` at `e3d0255` |
 
 **The collision, and why it is this note's fault.** Two distinct patterns were adopted as
 entry 27, one day apart, and neither seat did anything wrong given what it could read. On
@@ -161,6 +174,31 @@ Both rows stand as adopted, under the numbers the record actually gives them. **
 is not the archivist's to do** — it changes what two council rulings say — and it is escalated
 in [[Workflow Threads]] C11 for the chairman and this seat to settle. Until they do, cite
 entry 27 by name, never by number.
+
+> **Still unsettled at 2026-09-04 — day twenty-eight, and this seat re-raised it unasked.** In
+> its own accountability section the officer recorded the collision as *"escalated at
+> `Workflow Threads` C11 since 2026-08-07 — 28 days open"* and stated that it *"cited entry 27 by
+> name, never by number, as the vault directs"* (`analytics/daily-research/2026-09-04.md`,
+> "Reported against myself", item 3, `51a2bae`). The convention is holding. The ruling that would
+> retire it has not come. **Owner: [[council-chairman]] with this seat.**
+
+**Entry 28 came to this table by a routing, and the routing is why it is here today.** The
+2026-09-04 optimization log closes its entry with: *"routed to the archivist for the vault table
+because `agents/` is outside this session's merge scope"* (`analytics/optimization-log.md:65`,
+`1fcc1ab`). The council could adopt the rule and could not record it where this seat reads it.
+That gap between adoption and recording is the whole of the archivist's job, and on this occasion
+the council named the seat that had to close it. It is closed in this change set.
+
+**What entry 28 caught, and why this seat should read the next paragraph rather than the
+countermeasure alone.** Seven live instances in one day's record, four of them the chairman's,
+**the fourth committed inside the correction of the third** (`0904-C1`, self-filed), and three
+self-reported by the analyst. The chairman's accountability line reads: *"four unscreened
+first-ness claims in one document, the fourth committed while correcting the third"*
+(`state/council_log.json:475`). **None of the seven is a fabrication** — the optimization log is
+explicit: *"each is true about the world and false about the record."* That is the distinguishing
+mark of this entry against the rest of the table, and it is what makes it hard to see: the seat
+making the claim is not being careless about the world, it is being careless about the project's
+memory of itself. Which is this vault's subject matter, and this seat's.
 
 - **25 · Mutable-reduction citation** (instrument family) — a citation to a relay reduction
   given as a path, when the file at that path can be overwritten in place. Countermeasure:

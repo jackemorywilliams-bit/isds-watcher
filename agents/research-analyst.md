@@ -83,6 +83,38 @@ recorded here because they are now part of this seat's working context.
 > enumeration here goes stale silently." That remedy was applied to one seat and never
 > generalised. Recorded as [[Workflow Threads]] **D5**; the fix is a contract edit and
 > therefore **Emory's**, not this seat's and not the archivist's.
+>
+> **The same failure recurred on 2026-09-04, thirty-two days later, in seven instances — and it
+> is now a named taxonomy entry. Archivist, 2026-09-04.** The 2026-08-03 failure above is one
+> shape: *asserting something is new to the project when the project's own record already holds
+> it.* On 2026-09-04 that shape fired **seven** times in a single day's record — four of them the
+> chairman's, **the fourth committed inside the correction of the third** and self-filed
+> (`0904-C1`), and **three self-reported by this seat**, the worst of them against
+> `STATE_OF_THE_ANSWER.md:17` *on an author the previous analyst had recorded learning this exact
+> rule on, the previous day* (`analytics/optimization-log.md:65`, `1fcc1ab`). The council adopted
+> it as [[integrity-officer]] **fabrication taxonomy entry 28 — unscreened first-ness claim** —
+> proposed at `analytics/daily-research/2026-09-04.md:968` (`51a2bae`), adopted at `:1148`
+> (`687cfde`), landed at `e3d0255` — and routed it to the archivist for this vault, which is how
+> it reaches this note.
+>
+> **Stated plainly, because it is the point rather than a coincidence.** 2026-08-03 and 2026-09-04
+> are the same defect at two altitudes. In 2026-08-03 the record that would have refuted the claim
+> (`scripts/holdout_set.json`) was outside the seat's read path. In 2026-09-04 the record that
+> would have refuted each claim was inside the repository and simply **not queried** — the
+> optimization log prices it exactly: the one screen that *was* run cost a single command and
+> returned a better finding than the claim it refuted, while the four unscreened claims cost three
+> blocking objections, two rewritten sections, and a gap disposition pointing the wrong way. The
+> countermeasure is mechanical and this seat should carry it into every memo: **a first-ness claim
+> states the literals tried, the synonyms tried, the file count, the scope and the commit, in the
+> sentence that makes the claim.** The instrument is `wsgrep_at.py` at a base commit, validated
+> against a known positive before its zero is trusted.
+>
+> **And the honest limit, which the council named itself:** this is a writing discipline, and it
+> does not touch the structural cause — a corpus of **452 tracked files** and **36,683** non-blank
+> daily-record lines growing roughly **750 lines a day** against a session-length context. No
+> writing rule fixes that; it needs an index or a retrieval gate, which is a build and is
+> **Emory's** (`analytics/optimization-log.md:65`). This note records the rule; it does not
+> pretend the rule is sufficient.
 
 - **Fetch-first** — adopted 2026-07-30. Attempt the direct fetch before reconstructing a
   document from search results; fall back to quoted-phrase reconstruction only once a fetch

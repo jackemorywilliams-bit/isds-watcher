@@ -189,6 +189,33 @@ still the only open PR in the repository before this session's own.
   this seat continues to treat that file as out of scope — the conservative reading, and the one
   all three sessions used.
 
+### D14 — `check_currency.py` answers differently on a branch head and on a PR merge ref *(new 2026-09-04; owner: systems-designer)*
+
+- **State** — Commit `aa7c572` passed `scripts/check_currency.py` **locally on the branch** (9
+  claims, 0 failed, exit 0) and **failed the same check in CI** on the `pull_request` event
+  (pipeline-guards run **95**, job 101074733991: `agents/Project Change Log.md` and
+  `agents/Workflow Threads.md` reported stale against `9141e75`, the single offending commit being
+  `aa7c572` itself — the re-anchor commit, which touches only tracked notes and should therefore be
+  excluded by `_is_maintenance()`). Same sha, same script, opposite answers.
+- **Likely mechanism, NOT established.** `actions/checkout@v4` on a `pull_request` event checks out
+  the synthetic merge ref `refs/pull/N/merge` rather than the branch head, so `HEAD` in CI is a
+  merge of the branch into `main` and the commit set `_is_maintenance()` is asked about differs from
+  the local one. The `currency` job already uses `fetch-depth: 0`
+  (`.github/workflows/pipeline-guards.yml:167-172`), so a shallow checkout is **ruled out**. This
+  seat names the two disagreeing log lines and leaves the cause open rather than asserting a
+  diagnosis it did not test.
+- **Why it matters beyond one run.** **Verifying this guard locally does not predict what CI will
+  say on a pull request.** Every archivist session since 2026-08-16 has fought this guard's anchors,
+  and the 2026-08-28 and 2026-09-01 sessions each burned a follow-up branch on it. If a seat cannot
+  trust its own pre-push check, the guard trains the reader to ignore it — which is **C17**'s
+  warning arriving by a second route.
+- **What is NOT in doubt.** The guard is **green on `main`** now, CI-confirmed: runs 93 (`e3d0255`)
+  and 94 (`c2558d9`) failed on pushes to `main` before this session; runs 98 (`93b2598`) and 100
+  (`2eb2da1`) succeeded after it. Run 94's log reports the same two failures this session measured
+  at its start.
+- **Owner** — [[systems-designer]] to diagnose; `scripts/` and `.github/` are outside this seat's
+  authority.
+
 ### D12 — the 2026-09-01 session's anchor fix stranded on an unopened branch, and it is why `check_currency` is still red *(new 2026-09-04; owner: archivist — fixed in part here; Emory for the remainder)*
 
 - **State** — `origin/vault/archivist-2026-09-01-anchors`, tip **`358ece9`**, pushed 2026-09-01,

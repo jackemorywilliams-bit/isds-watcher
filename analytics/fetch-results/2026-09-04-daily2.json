@@ -1,0 +1,113 @@
+{
+  "request": "2026-09-04-daily2.json",
+  "note": "2026-09-04 SECOND BATCH, fired by the chairman AFTER reading the research analyst's return and IN DIRECT REMEDY OF A BLOCKING CORRECTION IT FILED AGAINST ME. Its Task 3 return is sustained in full and I verified scripts/fetch_relay.py myself before acting rather than taking the seat's word for it: ALLOWED_HOSTS at :48-69 contains 'www.iisd.org' and 'iisd.org' and does NOT contain aria.law.columbia.edu, papers.ssrn.com, law.stanford.edu or jusmundi.com, and :111-112 returns 'host_not_allowed' for a host outside the set. THE 2026-09-03 CLOSE-OUT'S STATEMENT THAT BOTH GAP SLUGS ARE RELAY-REACHABLE IS THEREFORE FALSE FOR ONE OF THE TWO, my morning task instruction repeated that falsehood, and the analyst caught it. The Upreti/ARIA slug is NOT fired today: it is stranded for lack of host permission, not for lack of a URL, and widening the relay's perimeter is a change to machinery that belongs to the operator and must not be smuggled in as a side effect of a batch. I adopt the analyst's recommendation (a). WHAT THIS BATCH IS: the first fire this relay has ever made at iisd.org - a PROMPT-NAMED PREFERRED SOURCE with zero carriers across analytics/fetch-results/ and analytics/fetch-requests/ as of commit 03e3831 - against the single IISD Investment Treaty News article most squarely on this council's Ring 1: Grosse Ruse-Khan, 'Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation' (18 November 2014), gap slug grosse-ruse-khan-itn-ip-isds-plain-packaging-to-patent-revocation. NO SEAT HAS READ THIS BODY AND NOTHING IN THE RECORD MAY BE ASSERTED FROM ITS TITLE. Every row is a probe. ONE FALSIFIABLE PRE-REGISTERED PREDICTION, GRADED ON ROW 1, and it is a prediction about the FETCH and the PAGE, not about the article's argument: row 1 returns outcome 'ok' with status 200 and 'find_matched': true on the literal 'From Plain Packaging to Patent Revocation'. GROUNDS, stated so the prediction can be scored honestly: the analyst derived the literal as a contiguous substring of the search-result title for this exact URL, and an article page ordinarily renders its own title. IF IT RETURNS FALSE that is a fact about the fetch or about how the page renders its title - NEVER a fact about whether the article exists. IF THE ROW RETURNS A NON-200, that is information about this URL, never about the article or about IISD. Rows 2-6 carry NO prediction. They anchor different windows so that one 400-character reduction is not the council's whole picture of the piece, and they are chosen to test whether the article touches this project's Ring 1 in terms - 'trade secret' and 'clinical trial' in particular are literals whose ABSENCE from the returned body would itself be informative about how far the field's leading ITN treatment reaches toward this project's specific question. A null on rows 2-6 is a statement about excerpt_of on the returned body and about nothing else. Row 7 is a TAIL CONTROL. Seven requested rows against MAX_URLS of 12: five slots deliberately unspent, because this batch has one job and padding it with rows nobody will read is how a reduction stops being read at all. EXCERPT DISCIPLINE: this is a copyrighted article rather than a docket page. The relay writes 400-character reductions and nothing more (EXCERPT_CHARS at :42), no body is stored, and six short windows is the proportionate spend for establishing reach and coverage. No seat may reconstruct the article from them or quote beyond what a returned window literally contains.",
+  "fetched_at": "2026-09-04T11:50:42.225194+00:00",
+  "environment": "github-actions-runner (run 33869803882)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 7,
+  "completed": 1,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "From Plain Packaging to Patent Revocation",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Grosse Ruse-Khan",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Eli Lilly",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Philip Morris",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "trade secret",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "clinical trial",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

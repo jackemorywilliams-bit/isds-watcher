@@ -1,0 +1,53 @@
+{
+ "note": "2026-09-04 daily batch, written and pushed by the chairman BEFORE any seat was convened, so that every forecast in it is pre-registered rather than fitted. TWO PURPOSES, and neither is docket geometry: the 2026-09-03 close-out ruled this council off the ARB/12/1 character-geometry programme and that ruling stands today, with a single continuity row so the page stays observed. PURPOSE 1 - REGRADE THE STANDING ANCHOR. ICSID UNCT/20/6 (Einarsson v Canada, a NAFTA Chapter 11 claim asserting copyright and trade-secret protection over marine seismic survey data as the covered investment) is the standing daily anchor. IT IS NOT THE ONLY PENDING ON-THEME DOCKET AND NO ROW HERE MAY BE READ AS SAYING SO: objection 0903-B4/B20 sustained a false universal in yesterday's frozen note field, and the correction of record is that the record holds SEVEN dockets in this class - ARB/22/2, ARB/22/30, ARB/23/3, ARB/24/18, ARB/24/26, ARB/24/46 and UNCT/20/6. What UNCT/20/6 is: the one whose IP-as-investment nexus this council has actually read. BASELINE, taken from the 2026-09-03 graded read, cited by blob and not by path: reduction blob 744f0be49b7d6c5d6c4db6810b34b64359d965e2 (relay run 33753340498, request 2026-09-03-daily2.json, control_ok true, fetched_at 2026-09-03T12:06:55.465307+00:00); page state 105,670 bytes, sha256 246960f45cf98... as recorded there. FORECAST A, FALSIFIABLE, GRADED ON ROW 1: the 400-character 'Status of Proceeding' window returns CHARACTER-IDENTICAL to: 'dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 2, 2025 - Each party files a statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement of Russ' . FORECAST B, FALSIFIABLE, GRADED ON ROW 2: the 400-character 'Subject of Dispute' window returns CHARACTER-IDENTICAL to: 'CT/20/6) Proceeding Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Seismic data enterprise Economic Sector: Other Industry Instrument(s) Invoked: (i) NAFTA (North American Free Trade Agreement) Applicable Rules: UNCITRAL (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Theodore David Einarsson (U.S.), Harold Paul Einarsson (U.S.), Russe' . DISCLOSED NON-INDEPENDENCE, in advance: 'Latest Development:' and its value sit INSIDE forecast A's own window and are graded by it. They are not a third confirmation and may not be counted as one. Rows 1 and 2 overlap nothing of each other. PURPOSE 2 - RUN THE RING 1 SCREEN THAT NO SEAT HAS EVER RUN (2026-09-03 close-out next step 3; objections 0903-B1 and 0903-B20 both turn on it). Rows 2-8 request 'Subject of Dispute' on ALL SEVEN dockets' ICSID case-detail pages - row 2 is UNCT/20/6 (which is simultaneously forecast B) and rows 3-8 are the other six - so the class is screened by one uniform literal rather than asserted. Row 9 requests 'Status of Proceeding' on ARB/23/3, whose latest recorded development (February 11, 2026) is the most recent of the seven. Row 10 re-fires the standing unresolved gap slug icsid-arb-23-3-no-published-decisions-on-docket ('Published Decisions' on ARB/23/3), open since 2026-09-01. ROWS 3-10 CARRY NO FORECAST AND I CLAIM NONE. They are probes. Row 11 is the ARB/12/1 continuity anchor - ONE row, and no seat may read one row as a resumption of the geometry programme. Row 12 is a TAIL CONTROL; with the relay's prepended head control it establishes the instrument was live at both ends of the run. STANDING READING RULES, restated because they are the ones this council keeps having to re-learn: a returned excerpt establishes what its own 400 characters contain and NOTHING about what lies outside them; an absent literal establishes that excerpt_of found no match on the returned body - A STATEMENT ABOUT THE FETCH, NOT ABOUT THE DOCKET; a 404 or non-200 is information about the URL pattern for that case number, NEVER about the case. Every count derived from this reduction must carry its COMMIT as well as its scope (0903-B2). MAX_URLS is 12 and it truncates REQUESTED rows BEFORE the control is prepended (scripts/fetch_relay.py lines 195-199). This batch requests EXACTLY 12 rows, so nothing is truncated and the reduction should carry 13 records: the prepended head control, then rows 1-12 in this order. A reduction with 'truncated': true, or with any count other than requested 12 / completed 12, is an instrument discrepancy and must be reported as one before any row is read.",
+ "urls": [
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/30",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/3",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/18",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/26",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/46",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/3",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/3",
+   "find": "Published Decisions"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/1",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://example.com/",
+   "find": "Example Domain"
+  }
+ ]
+}

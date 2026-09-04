@@ -156,6 +156,39 @@ scope, since the line it touches is machine-owned by construction. **Owner: Emor
 [[systems-designer]] to build if the flag is chosen.** PR **#110** remains open — **day seven**,
 still the only open PR in the repository before this session's own.
 
+- **CONFIRMED FIRING, 2026-09-04, with the bot's shas.** PR **#133** opened at `aa7c572` with eight
+  paths, all in scope. `github-actions[bot]` then pushed **`b43a137`** — five tracked notes, the
+  fifth `STATE_OF_THE_ANSWER.md` — taking the head out of scope. It fired **again** on the next
+  push (**`d6b9d2e`**) and a **third** time after the merge (**`f429c8d`**). Every push to an
+  archivist PR triggers another run that re-adds the same out-of-scope file. The session landed by
+  rebuilding its branch from its own clean tip so that `STATE_OF_THE_ANSWER.md` was **never
+  touched** rather than touched and reverted — a distinction the currency guard cares about, since
+  that note's declared path is itself, so leaving it alone keeps its anchor honest while a revert
+  commit counts as drift against it. **This is a workaround a seat has to know, not a fix.**
+
+- **FOUND AFTER MERGING — the first fix above may already be the rule, written eight days ago, in
+  the very file the dispute is about.** `STATE_OF_THE_ANSWER.md:64`, in the block headed *"Currency
+  machinery — 2026-08-27 (escalation 7 retired)"*, says of the three sibling `agents/` notes that
+  they *"are re-anchored by the same machinery in this change, so the 2026-08-19 anchor note's
+  'knowingly left STALE, because `agents/` is outside the daily session's approved merge scope' is
+  superseded:* **the scope rule now admits the mechanical, anchor-only re-anchor commit, substance
+  still out of scope.**"
+
+  That sentence is written about the **daily council's** scope, admitting `agents/` into it for
+  anchor-only commits. **The symmetric reading — that it admits `STATE_OF_THE_ANSWER.md` into the
+  archivist's scope for anchor-only commits — is an inference, not a statement, and this seat does
+  not act on it.** It is recorded because if Emory reads it that way, **D11 is already closed and
+  three archivist sessions have been blocked by a rule that no longer applies**: 2026-08-28 refused
+  and stranded seven days; 2026-09-01 landed only by excluding the file and leaked two follow-up
+  branches doing so, one never opened (**D12**); 2026-09-04 landed by rebuilding over two bot
+  commits.
+
+  **FOR EMORY — this is a one-sentence ruling, not a build.** Either the 2026-08-27 scope rule
+  already covers an anchor-only `STATE_OF_THE_ANSWER.md` commit by an archivist session, or it does
+  not. Say which, and D11 either closes today or takes the `--only` flag above. Until you rule,
+  this seat continues to treat that file as out of scope — the conservative reading, and the one
+  all three sessions used.
+
 ### D12 — the 2026-09-01 session's anchor fix stranded on an unopened branch, and it is why `check_currency` is still red *(new 2026-09-04; owner: archivist — fixed in part here; Emory for the remainder)*
 
 - **State** — `origin/vault/archivist-2026-09-01-anchors`, tip **`358ece9`**, pushed 2026-09-01,

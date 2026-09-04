@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `9141e75`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `aa7c572`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -47,9 +47,12 @@ Open work by thread and owner: [[Workflow Threads]]. Dated history: [[Project Ch
 > [[Workflow Threads]] **D10**.
 >
 > **ADDENDUM 2026-09-04 — the warning above still stands, but today the anchor happens to be
-> honest, and the difference matters.** The sha on this note now names `9141e75`, the 2026-09-04
-> archivist session's own substantive commit, moved by `scripts/reanchor.py` *after* the audit
-> rather than by a bot on someone else's PR. Between 2026-09-02 and 2026-09-04 the daily council
+> honest, and the difference matters.** The sha on this note names a commit from the 2026-09-04
+> archivist session's own branch: this seat ran `scripts/reanchor.py` *after* the audit and set
+> `9141e75`, its substantive commit; `reanchor.yml` then fired on the pull request and advanced it
+> to `aa7c572`, the same session's re-anchor commit (bot commit `b43a137`). Either way it names
+> this session, not a bot run on someone else's PR — which is the property the warning above says
+> the anchor had lost. Between 2026-09-02 and 2026-09-04 the daily council
 > re-anchored **only** `STATE_OF_THE_ANSWER.md`, committing it as *"the one tracked note inside
 > this council's merge scope"* (`87b828d`, `070258d`, `0116caf`) — so it stopped stamping notes it
 > does not read. **That is one seat's restraint, not a fix.** `scripts/reanchor.py` is unchanged

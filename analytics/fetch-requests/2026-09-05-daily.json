@@ -1,0 +1,53 @@
+{
+ "note": "2026-09-05 daily batch, written and pushed by the chairman BEFORE any seat was convened, so that every forecast in it is pre-registered rather than fitted; commit order proves the ordering and nothing else. THREE PURPOSES. PURPOSE 1 - DISCRIMINATE THE www.iisd.org 403 (2026-09-04 close-out next step 2). Yesterday the relay's first-ever fire at this host returned 403 on all six rows, twice, 58 minutes apart, with good neutral controls; no same-host control existed in either run, so path-specific, host-wide and User-Agent-gated refusal remained equally consistent with everything observed. THIS PROJECT ALREADY HOLDS THE ANSWER'S SHAPE IN ITS OWN SOURCE TREE AND NO SEAT HAS CONNECTED IT: src/sources/iisd_itn.py line 3 carries the comment 'Feed: https://www.iisd.org/itn/feed/  (use this, NOT /itn/en/feed/ which 403s)'. Screen supporting the novelty half of that sentence, per taxonomy entry 28, run whitespace-normalised and case-insensitive with grep -rI -F over analytics/, agents/, STATE_OF_THE_ANSWER.md and docs/ at commit 42b5689: literal 'itn/feed' 0 files, 'itn/en/feed' 0 files, 'NOT /itn/en/feed' 0 files; known-positive check on the same instrument and scope, 'same-host' 16 files and 'path-specific' 8 files, so the sweep finds what is there. The asymmetry itself is NOT new - it is this project's own long-standing committed knowledge - and only its absence from the record and its non-connection to the relay refusal are. Yesterday's refused article sits under the SAME /itn/en/ prefix the comment names as the refusing one. Rows 4, 5 and 6 fire all three points. FORECAST C, FALSIFIABLE, GRADED ON ROW 4: https://www.iisd.org/itn/feed/ returns outcome 'ok' with status 200. FORECAST D, FALSIFIABLE, GRADED ON ROW 5: https://www.iisd.org/itn/en/feed/ returns a NON-200. FORECAST E, FALSIFIABLE, GRADED ON ROW 6: the Grosse Ruse-Khan article URL, under the same /itn/en/ prefix, returns a NON-200, which would be a third observation of the same refusal. THE DECISION RULE IS PRE-REGISTERED IN analytics/daily-research/2026-09-05.md Part I section 5 AS A FIVE-BRANCH TABLE, WRITTEN BEFORE THE ANSWER EXISTED, AND IT BINDS EVERY SEAT TODAY: 200/non-200/non-200 licenses 'path-prefix-specific at this host under this runner and UA' and nothing about why; all three non-200 falsifies C and licenses 'host-wide for this runner today', with UA-gating still untested because this relay sends one UA; 200/200/non-200 falsifies D and isolates the refusal to the article URL; all three 200 falsifies D and E and makes yesterday's 403 transient; row 4 non-200 with rows 5 and 6 at 200 is an INSTRUMENT DISCREPANCY and no branch may be entered. NO BRANCH SAYS ANYTHING ABOUT THE ARTICLE. Its gap slug grosse-ruse-khan-itn-ip-isds-plain-packaging-to-patent-revocation stays open, no seat has read that body, and NOTHING IN THE RECORD MAY BE ASSERTED FROM ITS TITLE OR FROM A STATUS CODE. PURPOSE 2 - REGRADE THE STANDING ANCHOR. ICSID UNCT/20/6 (Einarsson v Canada, a NAFTA Chapter 11 claim asserting copyright and trade-secret protection over marine seismic survey data as the covered investment) is the standing daily anchor. IT IS NOT THE ONLY PENDING ON-THEME DOCKET AND NO ROW HERE MAY BE READ AS SAYING SO: the record holds SEVEN dockets in the pending class - ARB/22/2, ARB/22/30, ARB/23/3, ARB/24/18, ARB/24/26, ARB/24/46 and UNCT/20/6 - and the 2026-09-04 Ring 1 screen found exactly one of the seven surfacing on ICSID's own Subject of Dispute field as an IP-as-investment matter. What UNCT/20/6 is: the one whose IP-as-investment nexus this council has actually read. BASELINE for forecasts A and B, cited by blob and not by path: reduction blob 9d5a8ba5 (request 2026-09-04-daily.json); page state 105,703 bytes, sha256 c946fe61f1e79866bdc0c61b97323341a2c8b11e3d98a1f1bedde2207f7a04bb. FORECAST A, FALSIFIABLE, GRADED ON ROW 1: the 400-character 'Status of Proceeding' window returns CHARACTER-IDENTICAL to 'dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 2, 2025 - Each party files a statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement of Russ' . FORECAST B, FALSIFIABLE, GRADED ON ROW 2: the 400-character 'Subject of Dispute' window returns CHARACTER-IDENTICAL to 'CT/20/6) Proceeding Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Seismic data enterprise Economic Sector: Other Industry Instrument(s) Invoked: (i) NAFTA (North American Free Trade Agreement) Applicable Rules: UNCITRAL (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Theodore David Einarsson (U.S.), Harold Paul Einarsson (U.S.), Russe' . DISCLOSED NON-INDEPENDENCE, in advance: 'Latest Development:' and its value sit INSIDE forecast A's own window and are graded by it. They are not a third confirmation and may not be counted as one. Row 3 anchors a THIRD window on the same page and CARRIES NO FORECAST. It samples a region rows 1 and 2 do not cover. ONE ROW CANNOT LOCATE THE +33 BYTES between the 2026-09-03 and 2026-09-04 reads and no seat may write that it did. PURPOSE 3 - VERIFY THE FIVE INHERITED 'PENDING' ATTRIBUTES (next step 4). Rows 7 to 11 request 'Status of Proceeding' on ARB/22/2, ARB/22/30, ARB/24/18, ARB/24/26 and ARB/24/46 - the five of the seven whose pending status is currently inherited from the record rather than read. THEY CARRY NO FORECAST AND I CLAIM NONE. They are probes. ARB/23/3 is deliberately NOT re-fired: its 'No References Available.' resolution may not be revived without first addressing the ICSID register's Decision on Preliminary Objections of 21 December 2023 (next step 5), and a status row today would invite exactly that. ARB/12/1 is deliberately NOT fired: the 2026-09-03 close-out ruled this council off the character-geometry programme and that ruling stands, so today spends not even a continuity row on it. Row 12 is a TAIL CONTROL; with the relay's prepended head control it establishes the instrument was live at both ends of the run. STANDING READING RULES, restated because they are the ones this council keeps having to re-learn: a returned excerpt establishes what its own 400 characters contain and NOTHING about what lies outside them; an absent literal establishes that excerpt_of found no match on the returned body - A STATEMENT ABOUT THE FETCH, NOT ABOUT THE DOCKET; a 404 or non-200 is information about the URL pattern, NEVER about the case. Every count derived from this reduction must carry its COMMIT as well as its scope (0903-B2). MAX_URLS is 12 and it truncates REQUESTED rows BEFORE the control is prepended (scripts/fetch_relay.py lines 195-199). THIS BATCH REQUESTS EXACTLY 12 ROWS, so nothing is truncated and the reduction should carry 13 records: the prepended head control, then rows 1-12 in the order listed. A reduction with 'truncated': true, or with any count other than requested 12 / completed 12, is an instrument discrepancy and must be reported as one before any row is read. This note was proof-read against the row list below as a step before pushing, because run() copies it into the manifest VERBATIM and a false sentence here is frozen into the evidence and cannot be edited out.",
+ "urls": [
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "find": "Subject of Dispute"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "find": "Date Registered"
+  },
+  {
+   "url": "https://www.iisd.org/itn/feed/",
+   "find": "Investment Treaty News"
+  },
+  {
+   "url": "https://www.iisd.org/itn/en/feed/",
+   "find": "Investment Treaty News"
+  },
+  {
+   "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+   "find": "Grosse Ruse-Khan"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/30",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/18",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/26",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/46",
+   "find": "Status of Proceeding"
+  },
+  {
+   "url": "https://example.com/",
+   "find": "Example Domain"
+  }
+ ]
+}

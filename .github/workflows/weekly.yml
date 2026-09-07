@@ -69,7 +69,11 @@ jobs:
         run: python scripts/eval_holdout.py --fail-under-precision 0.9 --fail-under-recall 0.6
 
       - name: Run watcher
-        run: python -m src.main --since "${{ github.event.inputs.since || '7d' }}"
+        # tee keeps the run summary for the provider gate below; pipefail keeps
+        # the watcher's own exit code as the step's.
+        run: |
+          set -o pipefail
+          python -m src.main --since "${{ github.event.inputs.since || '7d' }}" | tee watcher.log
 
       - name: Analytics — source receptivity
         run: python scripts/source_analytics.py
@@ -99,6 +103,18 @@ jobs:
               echo "push attempt $attempt failed; retrying"
               sleep 3
             done
+          fi
+
+      - name: Provider gate — a run that could make no model call is a failed run
+        # Deliberately AFTER the commit, so the uncharged deferred queue and the
+        # DEGRADED digest are persisted first; then the run goes red and the
+        # failure alert below fires. 2026-09-07: four green runs hid a classifier
+        # that had not made a single successful call since 08-24.
+        run: |
+          if grep -q '!! PROVIDER DOWN' watcher.log; then
+            grep '!! PROVIDER DOWN' watcher.log
+            echo "::error::The model provider was down for the whole run (see the PROVIDER DOWN line). State was committed and no candidate was charged an attempt."
+            exit 1
           fi
 
       - name: Notify on failure

@@ -641,6 +641,7 @@ def _sandbox(tmp_path, monkeypatch, items, responder, *, status_only=False):
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setattr(classify_mod, "_call_anthropic", responder)
+    monkeypatch.setattr(classify_mod, "CANARY_BACKOFF_S", (0, 0))   # no sleeps in tests
     # Pre-seed so this is not a bootstrap run. A bare string on purpose: it is
     # the legacy shape, so every run here also exercises the read-time migration.
     state.save_state({"sources": {"iisd_itn": {"_seed": "2026-01-01T00:00:00+00:00"}}},
@@ -699,10 +700,15 @@ def test_provider_outage_marks_zero_enriched_items_seen_and_reports_degradation(
     dq = state.load_deferred("state/deferred.json")
     assert len(dq["iisd_itn"]) == 3
     assert {e["last_outcome"] for e in dq["iisd_itn"].values()} == {"provider_error"}
+    # 2026-09-07: a dead provider is the instrument's failure, not the item's —
+    # the canary caught it before the first item and no attempt was charged.
+    assert {e["attempts"] for e in dq["iisd_itn"].values()} == {0}
+    assert {e["uncharged_runs"] for e in dq["iisd_itn"].values()} == {1}
 
     out = capsys.readouterr().out
     assert "DEGRADED" in out
     assert "provider_error=3" in out
+    assert "!! PROVIDER DOWN" in out
     assert "deferred for retry (NOT marked seen): 3" in out
     # ...and the keyword scores behind the outage were NOT published as results.
     assert "classified:       0" in out
@@ -944,10 +950,12 @@ def test_a_failing_research_brief_cannot_unwrite_the_seen_state(
 
 def test_a_seen_item_is_not_reclassified_or_republished_on_the_next_run(
         tmp_path, monkeypatch):
+    import src.classify as classify_mod
     calls = {"n": 0}
 
     def counting(prompt):
-        calls["n"] += 1
+        if prompt != classify_mod.CANARY_PROMPT:   # the one-call provider canary is not a classification
+            calls["n"] += 1
         return GOOD_JSON
 
     run = _sandbox(tmp_path, monkeypatch, [_cand("cand-1")], counting)
@@ -1484,8 +1492,12 @@ def test_a_default_run_makes_no_triage_and_no_v2_call_and_says_lexical_only(
     assert config_mod.V2_SHADOW_CALLS_MODE == config_mod.V2_SHADOW_CALLS_OFF
     assert run() == 0
 
-    # Two candidates, two classification calls. Nothing else was bought.
-    assert len(log) == 2
+    # Two candidates, two classification calls. Nothing else was bought —
+    # except the provider canary, exactly once per run (2026-09-07), which is
+    # named here so it can never hide a second silent purchase.
+    import src.classify as classify_mod
+    assert log.count(classify_mod.CANARY_PROMPT) == 1
+    assert len([p for p in log if p != classify_mod.CANARY_PROMPT]) == 2
     recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
     assert len(recs) == 2
     for rec in recs:
@@ -1711,3 +1723,92 @@ def test_recovery_guard_heals_a_not_read_source(tmp_path, monkeypatch):
     # The healed source produced no degradation / access-failure warning.
     assert not any("ACCESS FAILURE" in w or "DEGRADATION" in w
                    for w in meta.get("health_warnings", []))
+
+
+# =============================================================================
+# The provider canary (2026-09-07)
+#
+# The Anthropic classifier had been unable to make a single call for four
+# weekly runs (anthropic 1.x removed `temperature`; every call raised TypeError)
+# and every run still reported success, charged each enriched item an attempt,
+# and abandoned eight of them. The canary runs once before any fetch; when it
+# fails, nothing is charged and the run prints a marker the workflow fails on.
+# =============================================================================
+def test_a_dead_provider_never_charges_an_attempt_so_nothing_is_abandoned(
+        tmp_path, monkeypatch, capsys):
+    def outage(prompt):
+        raise RuntimeError("529 overloaded_error")
+
+    run = _sandbox(tmp_path, monkeypatch, [_cand("cand-1")], outage)
+    for _ in range(state.MAX_CLASSIFY_ATTEMPTS + 1):     # one more than would abandon
+        assert run() == 0, "state must still be saved and committed"
+        assert "!! PROVIDER DOWN" in capsys.readouterr().out
+
+    st = state.load_state("state/seen.json")
+    assert not state.is_seen(st, "iisd_itn", "cand-1"), "abandoned by our own outage"
+    e = state.load_deferred("state/deferred.json")["iisd_itn"]["cand-1"]
+    assert e["attempts"] == 0
+    assert e["uncharged_runs"] == state.MAX_CLASSIFY_ATTEMPTS + 1
+    assert not os.path.exists(state.ABANDONED_PATH)
+
+
+def test_an_sdk_contract_error_fails_the_canary_at_once_without_retry(
+        tmp_path, monkeypatch, capsys):
+    calls = []
+
+    def contract_bug(prompt):
+        calls.append(prompt)
+        raise TypeError("Messages.create() got an unexpected keyword argument 'temperature'")
+
+    run = _sandbox(tmp_path, monkeypatch, [_cand("cand-1"), _cand("cand-2")], contract_bug)
+    assert run() == 0
+    out = capsys.readouterr().out
+    assert "!! PROVIDER DOWN" in out and "contract error" in out and "temperature" in out
+    # One canary call, none per item: the run did not hammer a broken SDK.
+    assert len(calls) == 1
+    dq = state.load_deferred("state/deferred.json")["iisd_itn"]
+    assert len(dq) == 2 and all(e["attempts"] == 0 for e in dq.values())
+
+
+def test_a_transient_outage_passes_the_canary_on_retry_and_the_run_classifies(
+        tmp_path, monkeypatch, capsys):
+    import src.classify as classify_mod
+    failures = {"left": 2}
+
+    def flaky(prompt):
+        if failures["left"] and prompt == classify_mod.CANARY_PROMPT:
+            failures["left"] -= 1
+            raise RuntimeError("529 overloaded_error")
+        return GOOD_JSON
+
+    run = _sandbox(tmp_path, monkeypatch, [_cand("cand-1")], flaky)
+    assert run() == 0
+    out = capsys.readouterr().out
+    assert "PROVIDER DOWN" not in out
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iisd_itn", "cand-1") == "ok"
+    assert "classified:       1" in out
+
+
+def test_the_canary_is_skipped_by_design_without_a_provider(monkeypatch):
+    """No provider/key is the designed keyword-fallback state, not an outage."""
+    import src.classify as classify_mod
+    for var in ("MODEL_PROVIDER", "ANTHROPIC_API_KEY", "GEMINI_API_KEY"):
+        monkeypatch.delenv(var, raising=False)
+    monkeypatch.setattr(classify_mod, "_call_anthropic",
+                        lambda p: (_ for _ in ()).throw(AssertionError("no call expected")))
+    ok, note = classify_mod.provider_canary(None)
+    assert ok and "keyword fallback" in note
+
+
+def test_the_workflow_provider_gate_greps_the_marker_main_prints():
+    """The literal in weekly.yml and PROVIDER_DOWN_MARKER must never drift apart."""
+    import src.main as main_mod
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    with open(os.path.join(repo, ".github", "workflows", "weekly.yml"), encoding="utf-8") as fh:
+        wf = fh.read()
+    assert main_mod.PROVIDER_DOWN_MARKER == "!! PROVIDER DOWN"
+    assert "grep -q '!! PROVIDER DOWN' watcher.log" in wf
+    assert "| tee watcher.log" in wf and "set -o pipefail" in wf
+    # The gate runs AFTER the state commit and BEFORE the failure alert.
+    assert wf.index("Commit state + digests") < wf.index("Provider gate") < wf.index("Notify on failure")

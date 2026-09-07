@@ -59,6 +59,21 @@ Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_
 is a supported alternate). The available Gemini key had no free-tier quota, which is why
 Claude (~$1/mo) runs live.
 
+**Incident 2026-09-07 — the classifier was dead for four weekly runs (08-24 → 09-07).**
+The anthropic 1.x SDK removed `temperature` from `Messages.create()`; `requirements.txt`
+had no ceiling, the runner installed 1.4.0, and every classify call raised `TypeError`
+while every run still reported success ("DEGRADED: 24 of N could not be classified" sat
+in each summary, unread). Eight candidates were abandoned after three attempts that were
+all the instrument's own failure. Fixed by: a signature-aware kwarg builder in
+`src/classify.py`, tested against the *installed* SDK in pipeline-guards;
+`anthropic>=0.40,<2`; a one-call **provider canary** before any fetch (retried for API
+errors, never for contract errors) — when it fails, no model call is made, no item is
+charged an attempt (`state/deferred.json` records `uncharged_runs`), and the weekly
+workflow's **provider gate** fails the run *after* state is committed so the failure
+alert fires; and `scripts/requeue_abandoned.py`, which returned the eight to the queue.
+`analytics/requeued_candidates.jsonl` is the record of that; `abandoned_candidates.jsonl`
+is append-only and keeps its lines.
+
 ```bash
 gh secret set SMTP_HOST --body "smtp.gmail.com"
 gh secret set SMTP_PORT --body "465"

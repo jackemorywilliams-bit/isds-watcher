@@ -214,14 +214,26 @@ def deferral_attempts(deferred: dict, source: str, source_id: str) -> int:
     return int(entry.get("attempts", 0)) if isinstance(entry, dict) else 0
 
 
-def record_deferral(deferred: dict, item, outcome: str, when=None) -> int:
-    """Queue an item for retry (or bump its attempt count); return the count."""
+def record_deferral(deferred: dict, item, outcome: str, when=None,
+                    charge: bool = True) -> int:
+    """Queue an item for retry (or bump its attempt count); return the count.
+
+    ``charge=False`` queues the item WITHOUT counting an attempt against it: for
+    a run whose provider canary failed, the failure is the instrument's, not the
+    item's. 2026-09-07: eight candidates were abandoned after three runs of a
+    classifier that could not make a single call. The entry keeps
+    ``uncharged_runs`` so the queue still says how long the item has waited.
+    """
     at = _iso(when)
     bucket = deferred.setdefault(getattr(item, "source", ""), {})
     entry = bucket.get(getattr(item, "source_id", ""))
     if not isinstance(entry, dict):
         entry = {"first_deferred": at, "attempts": 0}
-    entry["attempts"] = int(entry.get("attempts", 0)) + 1
+    if charge:
+        entry["attempts"] = int(entry.get("attempts", 0)) + 1
+    else:
+        entry["attempts"] = int(entry.get("attempts", 0))
+        entry["uncharged_runs"] = int(entry.get("uncharged_runs", 0)) + 1
     entry["last_outcome"] = outcome
     entry["url"] = getattr(item, "url", "") or ""
     entry["title"] = getattr(item, "title", "") or ""

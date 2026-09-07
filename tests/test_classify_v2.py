@@ -414,3 +414,52 @@ def test_the_telemetry_section_of_a_failed_call_is_not_a_semantic_basis():
     assert section["called"] is True
     assert not classify_v2.basis_names_a_model(section["basis"])
     assert section["model"] == "test-model-id"      # operational fact, not basis
+
+
+# --- Anthropic SDK compatibility (2026-09-07 regression) ----------------------
+# anthropic 1.x removed `temperature` from Messages.create(); an open-ended pin
+# put 1.4.0 on the runner and every classify call failed. The builder must fit
+# whatever SDK is installed, and CI must check it against the real one.
+import inspect as _inspect
+
+
+def _create_0x(*, model, max_tokens, messages, temperature=None, system=None):
+    return {"model": model, "temperature": temperature}
+
+
+def _create_1x(*, model, max_tokens, messages, system=None, thinking=None):
+    return {"model": model}
+
+
+def test_anthropic_kwargs_include_temperature_when_the_sdk_accepts_it():
+    from src import classify as classify_mod
+    kw = classify_mod._anthropic_create_kwargs(_create_0x, "m", "prompt")
+    assert kw["temperature"] == 0 and kw["model"] == "m" and kw["max_tokens"] == 1024
+    assert kw["messages"] == [{"role": "user", "content": "prompt"}]
+    _create_0x(**kw)
+
+
+def test_anthropic_kwargs_omit_temperature_when_the_sdk_removed_it():
+    from src import classify as classify_mod
+    kw = classify_mod._anthropic_create_kwargs(_create_1x, "m", "prompt")
+    assert "temperature" not in kw
+    _create_1x(**kw)  # exactly these kwargs must be callable on a 1.x signature
+
+
+def test_anthropic_kwargs_survive_an_uninspectable_callable():
+    from src import classify as classify_mod
+    kw = classify_mod._anthropic_create_kwargs(len, "m", "p")  # builtin: no signature
+    assert "temperature" not in kw and kw["model"] == "m"
+
+
+def test_anthropic_kwargs_are_accepted_by_the_installed_sdk():
+    """Runs in pipeline-guards against whatever `pip install -r requirements.txt`
+    produced. With the old hard-coded temperature this fails on anthropic>=1."""
+    anthropic = pytest.importorskip("anthropic")
+    from anthropic.resources.messages import Messages
+    from src import classify as classify_mod
+    kw = classify_mod._anthropic_create_kwargs(Messages.create, "m", "p")
+    params = _inspect.signature(Messages.create).parameters
+    unknown = [k for k in kw if k not in params]
+    assert not unknown, (
+        f"src/classify.py passes kwargs anthropic {anthropic.__version__} rejects: {unknown}")

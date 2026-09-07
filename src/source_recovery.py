@@ -11,14 +11,17 @@ Adding archive resilience to a new source is one ``SPEC`` entry — no bespoke
 fetcher, no new code path. Verified live 2026-08-17: italaw (18 case pages) and
 unctad_isds (recent cases with real slugs) both recover this way.
 
-WHEN A SOURCE BELONGS IN ``SPECS``. Only when a live zero *reliably* means
-BLOCKED, never quiet: a content database behind a hard wall. italaw and
-unctad_isds 403 unconditionally and always have content, so a live zero from
-them is always a block. A genuinely quiet feed (iisd_itn — a quarterly
-publication) must NOT be listed: recovering it would surface stale archived
-pages on a legitimately empty week. The pipeline guard's trigger is doubly
-safe — it fires only when the fetch loop already recorded a NOT-READ refusal,
-not on a plain zero.
+WHEN A SOURCE BELONGS IN ``SPECS``. When a confirmed refusal reliably means
+BLOCKED: a content database behind a hard wall. italaw and unctad_isds 403
+unconditionally and always have content. iisd_itn was deliberately EXCLUDED
+until 2026-08-29 because its zeros used to mean "quarterly journal, quiet
+quarter" and recovering it would have surfaced stale archived pages on a
+legitimately empty week. That premise expired: its feed and article pages now
+sit behind a Cloudflare bot-challenge, so a refusal from it is a real block.
+It is safe to list because the trigger is doubly gated — the fetcher tries
+the (still-served) homepage listing first, and this recovery fires only when
+the fetch loop recorded a NOT-READ refusal on every route, never on a plain
+zero. A quiet quarter therefore still never reaches the Archive.
 
 Guarantees: never raises (any CDX/snapshot failure logs and yields whatever was
 gathered, possibly []); polite (all requests go through ``polite_get`` — robots
@@ -98,6 +101,16 @@ SPECS: dict[str, RecoverySpec] = {
         path_regex=re.compile(r"/cases/[0-9]+/[^/?#]+$"),
         title_suffix=re.compile(
             r"\s*\|\s*Investment Dispute Settlement Navigator.*$", re.I),
+    ),
+    # Added 2026-08-29. ITN's feed AND its article pages now answer with a
+    # Cloudflare bot-challenge (HTTP 403); only the homepage listing serves.
+    # The fetcher reads that listing first (headline-level), so this entry is
+    # reached only when BOTH routes are refused — a confirmed NOT-READ, never a
+    # quiet quarter — and it is the only route to the article BODIES.
+    "iisd_itn": RecoverySpec(
+        cdx_prefix="iisd.org/itn/",
+        path_regex=re.compile(r"/itn/(?:en/)?[0-9]{4}/[0-9]{2}/[0-9]{2}/[^/?#]+/?$"),
+        title_suffix=re.compile(r"\s*(?:\u2013|\u2014|-|\|)\s*Investment Treaty News.*$", re.I),
     ),
 }
 

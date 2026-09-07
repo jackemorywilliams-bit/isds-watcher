@@ -1,0 +1,101 @@
+{
+  "date": "2026-09-07",
+  "screened": 110,
+  "matches": 0,
+  "held_for_review": 0,
+  "validation_status_only": true,
+  "watch_list_leads": 0,
+  "accepted": 0,
+  "per_source": {
+    "iisd_itn": 0,
+    "google_alerts": 0,
+    "gmail_scholar": 0,
+    "italaw": 9,
+    "icsid": 0,
+    "iareporter_headlines": 10,
+    "unctad_isds": 5,
+    "pca_press": 2,
+    "bing_news": 1,
+    "gdelt": 75
+  },
+  "accepted_by_source": {},
+  "source_health": [
+    {
+      "name": "iisd_itn",
+      "status": "DEGRADED (9 zero runs)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://www.iisd.org/itn/feed/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "google_alerts",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "gmail_scholar",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "italaw",
+      "status": "RECOVERED (Internet Archive)",
+      "count": 12,
+      "refusals": [
+        {
+          "url": "https://www.italaw.com/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "icsid",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "iareporter_headlines",
+      "status": "HEADLINE-ONLY",
+      "count": 10
+    },
+    {
+      "name": "unctad_isds",
+      "status": "RECOVERED (Internet Archive)",
+      "count": 5,
+      "refusals": [
+        {
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "pca_press",
+      "status": "RETURNED",
+      "count": 3
+    },
+    {
+      "name": "bing_news",
+      "status": "RETURNED",
+      "count": 1
+    },
+    {
+      "name": "gdelt",
+      "status": "RETURNED",
+      "count": 75
+    }
+  ],
+  "health_warnings": [
+    "SOURCE DEGRADATION WARNING \u2014 documented-active sources with 3+ consecutive zero-item runs: iisd_itn (DEGRADED (9 zero runs)). Their fetchers likely no longer match the live site; zero items from them is NOT evidence of a quiet week."
+  ]
+}

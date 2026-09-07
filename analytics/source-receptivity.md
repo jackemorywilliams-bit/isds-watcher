@@ -1,22 +1,22 @@
 # Source receptivity — analytics
 
-Across **15** archived run(s); per-source candidate counts available for **10** of them (older runs predate per-source recording).
+Across **16** archived run(s); per-source candidate counts available for **11** of them (older runs predate per-source recording).
 
 _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist._
 
 | Source | Fresh candidates | Surfaced | Receptivity | Note |
 |--------|------------------|----------|-------------|------|
-| bing_news | 1 | 1 | 100% |  |
-| gdelt | 37 | 0 | 0% |  |
+| bing_news | 2 | 1 | 50% |  |
+| gdelt | 112 | 0 | 0% |  |
 | gmail_scholar | 6 | 0 | 0% |  |
 | google_alerts | 14 | 0 | 0% | operator RSS alerts; quiet but live. |
 | google_news_rss | 0 | 0 | n/a |  |
-| iareporter_headlines | 94 | 12 | 13% | headline-only (paywalled body) — capped at watch-list leads. |
+| iareporter_headlines | 104 | 12 | 12% | headline-only (paywalled body) — capped at watch-list leads. |
 | icsid | 7 | 0 | 0% |  |
 | iisd_itn | 0 | 0 | n/a | only fetch-time full-text feed; intermittently empty. |
-| italaw | 6 | 4 | 67% |  |
-| pca_press | 7 | 0 | 0% |  |
-| unctad_isds | 5 | 0 | 0% |  |
+| italaw | 15 | 4 | 27% |  |
+| pca_press | 9 | 0 | 0% |  |
+| unctad_isds | 10 | 0 | 0% |  |
 
 ## Reading this
 - **Surfaced** counts items that reached the digest — the clearest signal of a source's on-theme yield to date.

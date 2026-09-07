@@ -7,25 +7,235 @@
       }
     },
     "gdelt": {
+      "http://www.africaleader.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.australiannews.net/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.calcuttanews.net/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.caribbeanherald.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.floridastatesman.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.gazettextra.com/news/nation_world/norway-seizes-russian-vessel-to-enforce-4-22b-ukrainian-arbitration-claim/article_30eaaa85-6e1f-5852-8d94-d4f4b3747144.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.indiagazette.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.irishsun.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.jamaicantimes.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "http://www.laosnews.net/news/279277046/delhi-hc-orders-forensic-audit-into-dissipation-of-fortis-shares-in-rs-5300-crore-daiichi-award-case": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "http://www.mainemirror.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.newyorkstatesman.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.newyorktelegraph.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.newzealandstar.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.northkoreatimes.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.ohiostandard.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.oklahomacitysun.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.oklahomastar.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.parisguardian.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.russiaherald.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.sierraleonetimes.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "http://www.singaporestar.com/news/279277046/delhi-hc-orders-forensic-audit-into-dissipation-of-fortis-shares-in-rs-5300-crore-daiichi-award-case": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "http://www.thegazette.com/news/world/norway-seizes-russian-vessel-to-enforce-4-22b-ukrainian-arbitration-claim/article_db961ac5-6f6c-5331-a087-8fc19fdb163e.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.torontotelegraph.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "http://www.trinidadtimes.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://allafrica.com/stories/202608280217.html": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "https://aninews.in/news/business/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings20260902095116/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://asianews.network/think-tank-slams-chinese-tabloids-claim-to-philippines-batanes/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://economictimes.indiatimes.com/markets/stocks/news/afcons-infrastructure-shares-rally-4-after-receiving-rs-335-5-crore-arbitration-award/articleshow/133492282.cms": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://economictimes.indiatimes.com/news/india/nirmala-sitharaman-pushes-trade-investment-ties-in-g20-meetings-with-key-partners/articleshow/133699105.cms": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://economictimes.indiatimes.com/tech/newsletters/morning-dispatch/restaurants-step-up-food-safety-upgrad-seals-unacademy-deal/articleshow/133695195.cms": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://gcaptain.com/russian-expedition-ship-seized-in-norway-over-4-22-billion-naftogaz-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/111124900/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/129367678/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/138422583/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/156358372/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/160749333/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/160883478/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/191096313/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/44325463/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/70775712/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/75783225/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/83897536/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://isp.netscape.com:443/news/world/story/0001/20260903/19fe5d3ed43bf6d892be450e357d9e35": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://japantoday.com/category/world/norway-seizes-russian-vessel-to-enforce-4.22b-ukrainian-arbitration-claim": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://mymotherlode.com/news/world/11112128/norway-seizes-russian-vessel-to-enforce-4-22b-ukrainian-arbitration-claim.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://natlawreview.com/article/ninth-circuit-precedent-rejects-forum-non-conveniens-international-arbitration": {
         "at": "2026-08-24T16:12:21.523975+00:00",
@@ -52,6 +262,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "https://thechronicle.com.gh/norway-seizes-russian-ship-in-arctic-over-crimea-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://theindianawaaz.com/aug-25-sensex-nifty-rebound-as-falling-oil-and-bargain-buying-lift-sentiment/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -62,10 +277,25 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-24"
       },
+      "https://timesofoman.com/article/176354-indian-fm-sitharaman-pushes-deeper-global-economic-ties-at-g20-meetings": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://voiceofvienna.org/uae-debt-market-reaches-320-billion-as-dollar-issuance-jumps/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.aljazeera.com/news/2026/9/3/norway-seizes-russian-ship-in-arctic-over-crimea-compensation-claim": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.barandbench.com/news/litigation/court-fees-should-be-refunded-to-litigants-whose-cases-cant-be-heard-madras-high-court": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
       },
       "https://www.business-standard.com/markets/capital-market-news/indices-pare-losses-nifty-above-24-150-mark-126082500528_1.html": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -77,6 +307,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "https://www.businesstoday.in/markets/stocks/story/tata-power-gets-price-target-rating-upgrade-bull-case-bear-case-scenarios-553021-2026-09-03": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://www.businesstoday.in/markets/stocks/story/tata-power-shares-in-focus-490-million-arbitration-challenge-lost-in-singapore-551640-2026-08-27": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -87,6 +322,26 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "https://www.centralwesterndaily.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.dailymail.com/news/article-16104721/Norway-Russia-ship-Kremlin.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.edenmagnet.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.equitybulls.com/category.php?id=374414": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
       "https://www.fdiintelligence.com/content/a2e20734-3ef1-46ad-b86b-8cbf12a2bf85": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "abandoned",
@@ -96,6 +351,46 @@
         "at": "2026-08-24T16:12:21.523975+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-24"
+      },
+      "https://www.freemalaysiatoday.com/category/nation/2026/09/02/macc-opens-7-probe-papers-into-felda-subsidiary": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.illawarramercury.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.independent.co.uk/news/world/europe/norway-russia-ship-svalbard-naftogaz-b3043940.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.independent.co.uk/news/world/europe/ukraine-russia-war-live-putin-zelensky-uk-europe-threat-b3043881.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.jpost.com/international/article-907407": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.lahainanews.com/wire/?category=5041&ID=398517": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.lbc.co.uk/article/norway-seizes-russian-ship-ukraine-5HjdgtM_2/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.legalbusinessonline.com:443/appointments/malaysia%E2%80%99s-azmi-adds-veteran-disputes-partner": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.legalbusinessonline.com:443/appointments/seladore-grows-nascent-sg-office-hire-clifford-chance-perth": {
         "at": "2026-08-24T16:12:21.523975+00:00",
@@ -121,6 +416,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.manilatimes.net/2026/09/07/news/research-think-tank-slams-china-for-claiming-batanes/2419442": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.miragenews.com/australia-philippines-us-show-unity-in-maritime-1733268/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -157,10 +457,25 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
       },
+      "https://www.naroomanewsonline.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.northerndailyleader.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://www.pr-inside.com/sarama-resources-grant-of-equity-incentives-r5217864.htm": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.radiotamazuj.org/en/news/article/opinion-highlights-of-various-official-positions-on-the-kordofan-bahr-el-ghazal-borderline": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.rappler.com/philippines/brp-diego-silang-radio-challenge-china-escoda-shoal-august-2026/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -171,6 +486,36 @@
         "at": "2026-08-24T13:46:39.776503+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-24"
+      },
+      "https://www.riotimesonline.com/mauritius-financial-hub-2026/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.standard.net.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.stcatharinesstandard.ca/business/norway-seizes-russian-vessel-to-enforce-4-22b-ukrainian-arbitration-claim/article_f3a0f454-a541-5001-b30f-d2417892bd93.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.taipeitimes.com/News/world/archives/2026/09/04/2003863678": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.thebarentsobserver.com/news/norway-seizes-russias-svalbard-liner/457215": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.thebarentsobserver.com/news/norways-ambassador-summoned-to-moscow-foreign-ministry-as-wave-of-propaganda-hits-the-headlines/457322": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.thehindubusinessline.com/companies/tata-power-loses-490-million-arbitration-challenge-in-singapore/article71394855.ece": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -186,6 +531,48 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.tribuneindia.com/news/business/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.upi.com/Top_News/World-News/2026/09/03/norway-russian-ship-seized-svalbard/7501788471447/": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.vietnam-briefing.com/news/contract-mistakes-vietnam.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.yahoo.com/news/world/articles/norway-seizes-russian-ship-svalbard-214755486.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.yahoo.com/news/world/articles/norway-seizes-russian-vessel-enforce-072959699.html": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      }
+    },
+    "gmail_scholar": {
+      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
+      "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
+      "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
       }
     },
     "google_alerts": {
@@ -975,6 +1362,21 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/1479": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.italaw.com/cases/1588": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.italaw.com/cases/1654": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://www.italaw.com/cases/181": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -1024,9 +1426,24 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/380": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://www.italaw.com/cases/3996": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/460": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.italaw.com/cases/508": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.italaw.com/cases/5709": {
         "at": "2026-08-17T23:14:25.434938+00:00",
@@ -1037,6 +1454,11 @@
         "at": "2026-08-17T23:14:25.434938+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/6209": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.italaw.com/cases/6976": {
         "at": "2026-08-17T23:14:25.434938+00:00",
@@ -1052,6 +1474,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.italaw.com/cases/851": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://www.italaw.com/cases/857": {
         "at": "2026-08-17T23:14:25.434938+00:00",
@@ -1084,6 +1511,11 @@
       "https://www.italaw.com/cases/9965": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/documents/959": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       }
     },
     "pca_press": {
@@ -1160,6 +1592,11 @@
       }
     },
     "unctad_isds": {
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/124/eureko-v-poland": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1414/asesores-financieros-v-uruguay": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1241,6 +1678,11 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/146/eastern-sugar-v-czech-republic": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1460/aria-capital-and-publio-administration-v-mexico": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1265,15 +1707,30 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/197/mittal-v-czech-republic": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/23/metalclad-v-mexico": {
         "at": "2026-08-17T23:37:18.196967+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/241/oostergetel-v-slovakia": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/292/adm-v-mexico": {
         "at": "2026-08-17T23:37:18.196967+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/519/achmea-v-slovakia-ii-": {
+        "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
       },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/732/anthone-and-others-v-mexico": {
         "at": "2026-08-17T23:37:18.196967+00:00",

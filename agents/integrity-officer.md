@@ -111,7 +111,7 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**28 entries as of 2026-09-04, and entry 27 is a collision — see the note under the table.**
+**29 entries as of 2026-09-07, and entry 27 is a collision — see the note under the table.**
 Each cites the record that adopted it.
 
 > **This count was updated on 2026-09-04 because leaving it stale is how the collision at 27 was
@@ -158,6 +158,29 @@ Each cites the record that adopted it.
 | 27 | Scope-mixed screen | 2026-08-06 | `analytics/daily-research/2026-08-06.md:876`, `:940` ("Taxonomy 27, **SCOPE-MIXED SCREEN**, adopted"); `aa48406` |
 | 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
 | 28 | **Unscreened first-ness claim** — a novelty assertion ("first", "never", "no seat has ever", "this council had never", "new to this corpus") is an **absence claim about the project's own record** and carries the same burden as any other absence claim: a whitespace-normalised, case-insensitive, emphasis-stripped screen at a named commit, run **before** the claim rather than after the challenge. Distinguished from entry 14 (silent class truncation), which shortens an enumerated class, and from entry 10 (superseded-formulation restatement), which restates an older version of a live proposition. **Mechanical carrier, adopted with it:** no memo may carry such a phrase without an adjacent line stating the literals tried, the synonyms tried, the file count, the scope and the commit | 2026-09-04 | `analytics/daily-research/2026-09-04.md:968` (proposed by this seat, `51a2bae`), `:1040` (mechanical carrier), `:1111`, `:1148` (adopted by the chairman, `687cfde`); landed on `main` at `e3d0255` |
+| 29 | **Off-read-path carrier** — an absence, uniqueness or "only carrier" claim screened over the scope a seat *habitually reads* (the prose record) and then stated over the scope where the fact actually lives. The blind spot is systematic, not incidental: the machine-readable and configuration trees (`specs/`, `state/`, `tests/fixtures/`, `.github/`) sit outside every seat's default screen roots **and** outside the sweeps that measure "uncarried knowledge", so a fact stored there is invisible in both directions at once and reads as absent twice over. **Distinguished from entry 27 (scope-mixed screen)**, where the *referent clause* is populated more widely than the screen annotating it: here the *claim* is stated more widely than the screen, and the omitted roots are the same two or three every time. **Countermeasure, mechanical and deliberately tool-free:** any screen supporting an unqualified claim about "the tree" or "the repository" enumerates candidate files with `git ls-tree -r <commit>` and **no path argument**, whatever instrument reads them; a narrower root set is named in the sentence and the claim narrowed to match. **The tool-free wording was adopted on challenge** — the officer's first draft keyed the countermeasure to `scripts/wsgrep_at.py`, the chairman objected that a countermeasure keyed to a non-existent file inherits the exact defect entry 28 was adopted on, and the officer rewrote it: `git ls-tree` is git, not a project script, so it cannot go missing. **Four instances, three seats, one day**, all 2026-09-05 and all verified: `0905-B1` (chairman, `specs/` and `tests/fixtures/`), `0905-B2` (chairman, `state/council_log.json:460`), `0905-B9` (analyst, `JS-rendered` → 6 hits in 6 files, not "0 anywhere"), `0905-B12` (analyst, the `Ecuador` and `Upreti` "full tree" clauses, `state/`) | 2026-09-05 | `analytics/daily-research/2026-09-05.md:1321` (adopted with the officer's own amendment), `:1421` (binding form, both `d969ca4`); `analytics/optimization-log.md:71` (`7fa1ef4`, on `main`) |
+
+> **Filed 2026-09-07 by the archivist, two days late, and the delay had already been paid for.**
+> Entry 29 was adopted 2026-09-05 and routed to this seat because `agents/` is outside the daily
+> council's merge scope (`analytics/optimization-log.md:71`, `7fa1ef4`). It reached no note for two
+> days. On **2026-09-06** the officer numbered its next proposal **30** off this table's stale
+> "28" heading, and the chairman declined to adopt by number for exactly that reason — the cost is
+> recorded, by a seat that is not the archivist, at `analytics/daily-research/2026-09-07.md:750`
+> (`34b3970`): *"`agents/integrity-officer.md` — the single file my mandate names — still reads
+> '28 entries as of 2026-09-04' … Today's Part I trap 2 and the frozen pre-registration both cite
+> 'entry 29' correctly against the council's ruling and **uncheckably against the file the mandate
+> names**."*
+>
+> **This is the second consecutive occurrence of one failure mode, and it is the one this seat's
+> own table already describes.** Entry 28 was routed here on 2026-09-04 and filed the same day only
+> because that session went looking for it; entry 29 was routed on 2026-09-05 and sat. **A rule the
+> council adopts and routes to `agents/` is invisible to the seat bound by it until an archivist
+> session lands — and those run every three days.** That latency is the defect, not the individual
+> miss. Escalated in [[Workflow Threads]] as **D15**.
+>
+> **Companion recommendation, adopted with entry 29 and NOT executed here because it is a contract
+> change:** add `specs/` and `state/` to the record-screening scope in the analyst and officer
+> definitions under `.claude/agents/`. That is one line per definition and it is the operator's.
 
 **The collision, and why it is this note's fault.** Two distinct patterns were adopted as
 entry 27, one day apart, and neither seat did anything wrong given what it could read. On

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `94865c8`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `4eb3fc9`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,68 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-07 (archivist session — fourteenth deployment)
+
+*Audited against `4bbe5cb` (`main`, complete history after `git fetch --unshallow` — **1,048**
+commits; the container's clone arrived shallow at **170**, the **sixth** consecutive recurrence).
+True window `c2558d9..4bbe5cb` = **65 commits**. Paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `src/sources/`, `README.md`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`,
+`docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, `scripts/`,
+`.github/workflows/`, `analytics/optimization-log.md`, `analytics/council-log.md`, and every
+remote branch tip.*
+
+- **TAXONOMY ENTRY 29 WAS ROUTED TO THIS SEAT ON 2026-09-05 AND HAD REACHED NO NOTE IN TWO DAYS —
+  THE SECOND CONSECUTIVE OCCURRENCE OF THE FAILURE D13 CLOSED.** Entry **29, off-read-path
+  carrier**, adopted 2026-09-05 with the officer's own amendment
+  (`analytics/daily-research/2026-09-05.md:1321`, `:1421`, `d969ca4`), recorded and routed at
+  `analytics/optimization-log.md:71` (`7fa1ef4`). A case-insensitive grep for `off-read-path`
+  across `agents/` returned **zero** hits before this change set. Filed now to
+  [[integrity-officer]] (canonical table, entry 29, with the four verified instances and the
+  tool-free countermeasure) and [[Agent Registry]] (adopted-method-rules row).
+- **The delay was already paid for, and the receipt was written by another seat.** On 2026-09-06
+  the officer numbered its next proposal **30** off this table's stale "28 entries as of
+  2026-09-04" heading, and the chairman declined to adopt by number for exactly that reason.
+  Recorded unasked at `analytics/daily-research/2026-09-07.md:750` (`34b3970`): the council's
+  citations of entry 29 are correct against its own ruling and *"uncheckably against the file the
+  mandate names."* Heading moved to **29 as of 2026-09-07**, in the same change set as the row it
+  numbers. New thread **D15**.
+- **`reanchor.yml` HAS LANDED 2 OF 16 COMMITS AND LOSES A RACE WITH THE SQUASH-MERGE BY SECONDS.**
+  Of every `chore(currency): re-anchor tracked notes to HEAD [skip ci]` commit
+  `github-actions[bot]` has authored, **14 never reached `main`**; the two that did are both
+  2026-08-29 (`08380af`, `e8b0f71`). Measured four consecutive cases by timestamp: the bot pushed
+  **+11 s** after the merge on `council/2026-09-07` (`6a8a126` vs `767cccd`), **+8 s** on
+  `council/2026-09-07-addendum` (`4bbe5cb` vs `bb694b5`), **+8 s** on `council/2026-09-06-addendum`
+  (`101a479` vs `cd59bce`), **+16 s** on `vault/archivist-2026-09-04-ci` (`4983ffd` vs `4f8c376`).
+  The workflow's own header predicted it (`.github/workflows/reanchor.yml:9-17`) and named the fix
+  — make `currency` a required check on `main` — recording that it was *"Recommended in the PR that
+  adds this."* It was never applied. New thread **D16**; owner Emory (one setting).
+- **Consequence, and it closes a question three sessions have circled.** The council's close-out
+  `reanchor.py` call commits only `STATE_OF_THE_ANSWER.md` (`2c3c44c`, `70a97da`, `7a298a1`),
+  `agents/` being outside its merge scope. With the bot losing the race, the four `agents/`
+  anchors have **no automatic mover at all** — every commit that has ever moved them on `main` is
+  an archivist commit (`516f89c`, `ed68d4e`, `cdeff0f`, `aa7c572`), and this seat runs every three
+  days. That is the full explanation of the chronically red `currency` guard, and it supersedes
+  the "voluntary restraint" reading recorded under **D10** on 2026-09-04.
+- **The council's N14 finding is independently confirmed from a complete clone.** On 2026-09-07
+  the council reported `check_currency.py` returning *"FAIL … cites `373cce6`, which is not a
+  commit"* for three commits, and diagnosed the shallow clone (`34b3970`, Part VII). On this
+  session's unshallowed 1,048-commit history all three resolve: `373cce6` (2026-08-06, *fix: close
+  every open thread from the 2026-08-05/06 council*), `9efafb0` (2026-08-06), `ae42639`
+  (2026-08-06, *feat(guard): check_sources.py*). The guard here reports **0** such failures. The
+  council's binding rule — a `FAIL … is not a commit` in a shallow clone is a statement about the
+  clone — is recorded in [[Agent Registry]]'s adopted-method-rules table.
+- **Agent contracts: no drift.** Across 65 commits, `git log c2558d9..HEAD -- .claude/agents/
+  prompts/ src/models.py agents/` returns **8** commits, **all** of them the 2026-09-04 archivist
+  session's own. `scripts/check_models.py` exits 0 over 12 flowchart cards; all nine definitions
+  declare `model: opus`; `node tools/isds-workflow-3d/validate.mjs` exits 0 (30 cards, 10 chips,
+  44 edges, SVG fresh, zero "Jack" tokens).
+- **Deliverable surfaces did not move.** `git log c2558d9..HEAD` over `README.md`, `docs/`,
+  `scripts/site_templates/`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `prompts/` and
+  `views/isds-workflow-3d/workflow.json` returns **0 commits**. The two open drift items are
+  unchanged and remain outside this seat: the nine/ten source contradiction inside
+  `docs/how-it-works.html` (site-experience) and `METHODOLOGY.md`'s eight-vs-12 Bing queries with
+  GDELT unmentioned (Emory).
 
 ## 2026-09-04 (archivist session — thirteenth deployment)
 

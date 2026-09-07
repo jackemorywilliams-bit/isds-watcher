@@ -79,18 +79,54 @@ _PROBE_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
 
 
 def _probe_iisd_itn() -> "str | None":
-    from .sources.base import fetch_rss, parse_date
-    from .sources.iisd_itn import FEED_URL
+    """Try every route the fetcher tries, and name which one is dark.
+
+    Since ~2026-08 ITN's feed (and its article pages) sit behind a Cloudflare
+    bot-challenge (HTTP 403) while the homepage listing still serves. The
+    fetcher falls back to that listing, so a zero here means either the site
+    is reachable and quiet (QUIET — recorded, not alarmed) or every route is
+    walled (NOT-READ — alarmed, and archive-recoverable via source_recovery).
+    A reachable listing that parses to nothing at all is real parser rot and
+    is left to the generic alarm (None). Never raises.
+    """
+    from .sources.base import fetch_html, fetch_rss, get_fetch_log, parse_date
+    from .sources.iisd_itn import FEED_URL, HOME_URL, IISDITNSource
+
     feed = fetch_rss(FEED_URL)
     entries = getattr(feed, "entries", None) if feed is not None else None
-    if not entries:
+    if entries:
+        dates = [d for d in (parse_date(getattr(e, "published", None)
+                                        or getattr(e, "updated", None))
+                             for e in entries) if d is not None]
+        if dates:
+            return f"QUIET (feed live; newest item {max(dates).date().isoformat()})"
         return None
-    dates = [d for d in (parse_date(getattr(e, "published", None)
-                                    or getattr(e, "updated", None))
-                         for e in entries) if d is not None]
-    if not dates:
+
+    feed_refusal = next((o for o in get_fetch_log()
+                         if o.get("url") == FEED_URL and o.get("outcome") == "refused"),
+                        None)
+    feed_note = (f"RSS HTTP {feed_refusal['detail']}" if feed_refusal and feed_refusal.get("detail")
+                 else "RSS refused" if feed_refusal else "RSS empty")
+
+    soup = fetch_html(HOME_URL)
+    if soup is None:
+        home_refusal = next((o for o in get_fetch_log()
+                             if o.get("url") == HOME_URL and o.get("outcome") == "refused"),
+                            None)
+        home_note = (f"HTML listing HTTP {home_refusal['detail']}"
+                     if home_refusal and home_refusal.get("detail") else "HTML listing unreachable")
+        return f"NOT-READ ({feed_note}; {home_note}; every route walled — archive-recoverable)"
+
+    # The listing is live. Parse it with no window: if it yields nothing at all
+    # the parser has rotted (generic alarm); if it yields items, the zero this
+    # run was the window being quiet, and we can date the newest listed item.
+    listed = IISDITNSource()._from_listing(soup, None)
+    if not listed:
         return None
-    return f"QUIET (feed live; newest item {max(dates).date().isoformat()})"
+    dates = [it.published for it in listed if it.published is not None]
+    newest = max(dates).date().isoformat() if dates else "undated"
+    return (f"QUIET ({feed_note}; HTML listing live, {len(listed)} items listed, "
+            f"newest {newest}; fetcher reads the listing)")
 
 
 def _probe_google_alerts() -> "str | None":

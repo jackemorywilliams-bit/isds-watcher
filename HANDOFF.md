@@ -127,7 +127,7 @@ which ten the ten are.
 
 | Source | Status |
 |--------|--------|
-| `iisd_itn` | RSS, working (substantive descriptions). |
+| `iisd_itn` | RSS walled by a Cloudflare bot-challenge (HTTP 403, observed 2026-08-29, after 9 zero runs); the fetcher now falls back to the `/itn/` homepage listing (200, headline-level) and is archive-recoverable on a full wall. A zero is now either QUIET or NOT-READ, never a silent fetcher mismatch. |
 | `italaw` | HTML homepage "Newly Posted" feed. The origin has served a Cloudflare managed challenge (403, `Cf-Mitigated: challenge`) on every path for non-browser clients since ~2026-07; we never evade anti-bot. **As of 2026-08-17 a 403 no longer goes dark: the pipeline's archive-recovery guard** (`src/source_recovery.py`, spec `italaw`), which captures italaw case pages within days. The guard reads recently-captured case snapshots via the public CDX index (verified live: 18 case pages in one run), keys each candidate to the real italaw URL, and lets seen-state dedup re-crawls; `body_final` metadata tells `enrich` to keep the snapshot body rather than 403 on a re-fetch. This lags live italaw by the Archive's capture latency and is disclosed as such; it auto-reverts to the live parser the moment the origin stops challenging us. Because the source now returns items, the zero-streak guard no longer flags it and no `SOURCE ACCESS FAILURE` line reaches the email. |
 | `icsid` | Case DB is JS-only; falls back to `/news-events` announcements. |
 | `iareporter_headlines` | Homepage **headlines only** (paywalled — no body fetch). |

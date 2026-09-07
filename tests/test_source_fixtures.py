@@ -129,10 +129,74 @@ def test_iisd_itn_since_filter(monkeypatch):
     assert mod.IISDITNSource().fetch(since) == []
 
 
-def test_iisd_itn_degrades_to_empty(monkeypatch):
+def test_iisd_itn_degrades_to_empty_only_when_every_route_is_dark(monkeypatch):
+    """Both the feed AND the homepage listing refused -> []. (The listing is
+    tried unconditionally now, so a dark feed alone is no longer a zero.)"""
     import src.sources.iisd_itn as mod
     monkeypatch.setattr(mod, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(mod, "fetch_html", lambda url, **kw: None)
     assert mod.IISDITNSource().fetch(LONG_AGO) == []
+
+
+# --- iisd_itn: self-healing HTML-listing fallback (feed walled 2026-08) --------
+def test_iisd_itn_falls_back_to_html_listing_when_feed_is_walled(monkeypatch):
+    """The 9-zero-run DEGRADED of 2026-08: /itn/feed/ answers a Cloudflare 403
+    while /itn/ still serves. The fetcher must read the listing, not go dark."""
+    import src.sources.iisd_itn as mod
+    monkeypatch.setattr(mod, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(mod, "fetch_html", lambda url, **kw: _soup("iisd_itn_home.html"))
+    items = mod.IISDITNSource().fetch(LONG_AGO)
+    assert len(items) == 5                                  # 3 cards + 2 entry-headers
+    urls = {it.url for it in items}
+    assert len(urls) == 5                                   # deduped by canonical URL
+    assert all(mod.ARTICLE_PATH_RE.search(u) for u in urls)
+    assert all(it.published.date() == datetime.date(2026, 4, 21) for it in items)
+    assert all(it.metadata["route"] == "html-listing" for it in items)
+    assert all(it.metadata["listing_only"] is True for it in items)
+    assert all(it.title and it.raw_text == it.title for it in items)  # headline-level, honest
+    assert any("Rockhopper" in it.title for it in items)
+
+
+def test_iisd_itn_listing_skips_category_and_language_links(monkeypatch):
+    import src.sources.iisd_itn as mod
+    monkeypatch.setattr(mod, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(mod, "fetch_html", lambda url, **kw: _soup("iisd_itn_home.html"))
+    for it in mod.IISDITNSource().fetch(LONG_AGO):
+        assert "/itn/analysis/" not in it.url and "/itn/fr/" not in it.url
+
+
+def test_iisd_itn_listing_since_filter_uses_day_floor(monkeypatch):
+    """Listing dates are date-only (midnight UTC). A run at 13:00 on the
+    publication day must still see that day's items (the window-boundary
+    fix), and the next day must not."""
+    import src.sources.iisd_itn as mod
+    monkeypatch.setattr(mod, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(mod, "fetch_html", lambda url, **kw: _soup("iisd_itn_home.html"))
+    src_ = mod.IISDITNSource()
+    same_day = datetime.datetime(2026, 4, 21, 13, 0, tzinfo=UTC)
+    assert len(src_.fetch(same_day)) == 5
+    next_day = datetime.datetime(2026, 4, 22, tzinfo=UTC)
+    assert src_.fetch(next_day) == []
+
+
+def test_iisd_itn_rss_still_preferred_when_served(monkeypatch):
+    """When the feed IS served, the RSS route wins and the listing is not read."""
+    import src.sources.iisd_itn as mod
+    monkeypatch.setattr(mod, "fetch_rss", lambda url, **kw: _feed("iisd_itn_feed.xml"))
+    monkeypatch.setattr(mod, "fetch_html",
+                        lambda url, **kw: (_ for _ in ()).throw(AssertionError("listing read")))
+    items = mod.IISDITNSource().fetch(LONG_AGO)
+    assert len(items) == 2 and all(it.metadata["route"] == "rss" for it in items)
+
+
+def test_iisd_itn_listing_date_falls_back_to_url_path():
+    import re
+    import src.sources.iisd_itn as mod
+    m = mod.ARTICLE_PATH_RE.search("https://www.iisd.org/itn/2026/01/19/some-slug/")
+    d = mod.IISDITNSource._listing_date("", m)
+    assert d.date() == datetime.date(2026, 1, 19)
+    d2 = mod.IISDITNSource._listing_date("News | April 21, 2026", m)
+    assert d2.date() == datetime.date(2026, 4, 21)   # footer wins over the path
 
 
 # --- google_alerts -----------------------------------------------------------

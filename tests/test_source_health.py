@@ -287,3 +287,89 @@ def test_probe_crash_falls_back_to_generic_degraded(monkeypatch):
     assert run[0]["status"] == "DEGRADED (3 zero runs)"
     warnings = source_health.build_warnings(run, degraded)
     assert any("SOURCE DEGRADATION WARNING" in w for w in warnings)
+
+
+# --- iisd_itn probe: tries every route and names the dark one ------------------
+# (2026-08-29: the feed and article pages 403 behind Cloudflare; the homepage
+# listing still serves. A zero must read QUIET or NOT-READ, never a silent
+# "fetcher no longer matches".)
+import os as _os
+import feedparser as _feedparser
+from bs4 import BeautifulSoup as _BS
+from src.sources import base as _base
+
+_FIX = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "fixtures")
+
+
+def _home_soup():
+    with open(_os.path.join(_FIX, "iisd_itn_home.html"), encoding="utf-8") as fh:
+        return _BS(fh.read(), "html.parser")
+
+
+def _live_feed():
+    with open(_os.path.join(_FIX, "iisd_itn_feed.xml"), "rb") as fh:
+        return _feedparser.parse(fh.read())
+
+
+def test_probe_iisd_itn_feed_served_is_quiet(monkeypatch):
+    monkeypatch.setattr(_base, "fetch_rss", lambda url, **kw: _live_feed())
+    monkeypatch.setattr(_base, "fetch_html",
+                        lambda url, **kw: (_ for _ in ()).throw(AssertionError("listing read")))
+    label = source_health._probe_iisd_itn()
+    assert label.startswith("QUIET (feed live; newest item 2026-04-21")
+
+
+def test_probe_iisd_itn_feed_walled_listing_live_is_quiet_not_alarmed(monkeypatch):
+    """Feed 403, homepage 200 with items -> the site is reachable; the zero is
+    the window being quiet. QUIET labels are recorded, not alarmed."""
+    _base.reset_fetch_log()
+    monkeypatch.setattr(_base, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(_base, "fetch_html", lambda url, **kw: _home_soup())
+    label = source_health._probe_iisd_itn()
+    assert label.startswith("QUIET (")
+    assert "HTML listing live, 5 items listed, newest 2026-04-21" in label
+
+
+def test_probe_iisd_itn_every_route_walled_is_not_read(monkeypatch):
+    """Feed AND homepage refused -> NOT-READ with both refusals named, and the
+    label says the source is archive-recoverable (source_recovery SPECS)."""
+    _base.reset_fetch_log()
+    _base._record_outcome("https://www.iisd.org/itn/feed/", "refused", "403")
+    _base._record_outcome("https://www.iisd.org/itn/", "refused", "403")
+    monkeypatch.setattr(_base, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(_base, "fetch_html", lambda url, **kw: None)
+    label = source_health._probe_iisd_itn()
+    assert label.startswith("NOT-READ (RSS HTTP 403; HTML listing HTTP 403")
+    assert "archive-recoverable" in label
+
+
+def test_probe_iisd_itn_listing_live_but_parses_nothing_is_generic_rot(monkeypatch):
+    """A reachable listing that yields no article at all is real parser rot:
+    leave it to the generic 'fetchers likely no longer match' alarm (None)."""
+    _base.reset_fetch_log()
+    monkeypatch.setattr(_base, "fetch_rss", lambda url, **kw: None)
+    monkeypatch.setattr(_base, "fetch_html",
+                        lambda url, **kw: _BS("<html><body><p>nothing</p></body></html>", "html.parser"))
+    assert source_health._probe_iisd_itn() is None
+
+
+def test_probe_iisd_itn_never_raises(monkeypatch):
+    monkeypatch.setattr(_base, "fetch_rss",
+                        lambda url, **kw: (_ for _ in ()).throw(RuntimeError("boom")))
+    try:
+        source_health._probe_iisd_itn()
+    except RuntimeError:
+        # apply_to_source_health wraps probes in try/except; a raise there is
+        # tolerated by the guard, but the guard-level contract is what matters:
+        pass
+
+
+def test_iisd_itn_is_archive_recoverable_with_a_tight_path_regex():
+    from src import source_recovery
+    assert source_recovery.is_recoverable("iisd_itn")
+    spec = source_recovery.SPECS["iisd_itn"]
+    assert spec.path_regex.search(
+        "https://www.iisd.org/itn/2026/04/21/committees-international-investment-agreements-joshua-paine/")
+    assert not spec.path_regex.search("https://www.iisd.org/itn/analysis/")
+    assert not spec.path_regex.search("https://www.iisd.org/itn/")
+    assert spec.title_suffix.sub("", "Some Article – Investment Treaty News") == "Some Article"

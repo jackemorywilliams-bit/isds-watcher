@@ -1,6 +1,6 @@
 {
   "date": "2026-09-07",
-  "screened": 110,
+  "screened": 28,
   "matches": 0,
   "held_for_review": 0,
   "validation_status_only": true,
@@ -8,21 +8,21 @@
   "accepted": 0,
   "per_source": {
     "iisd_itn": 0,
-    "google_alerts": 0,
+    "google_alerts": 1,
     "gmail_scholar": 0,
-    "italaw": 9,
+    "italaw": 0,
     "icsid": 0,
     "iareporter_headlines": 10,
-    "unctad_isds": 5,
+    "unctad_isds": 7,
     "pca_press": 2,
     "bing_news": 1,
-    "gdelt": 75
+    "gdelt": 0
   },
   "accepted_by_source": {},
   "source_health": [
     {
       "name": "iisd_itn",
-      "status": "DEGRADED (9 zero runs)",
+      "status": "QUIET (RSS HTTP 403; HTML listing live, 19 items listed, newest 2026-04-21; fetcher reads the listing)",
       "count": 0,
       "refusals": [
         {
@@ -36,7 +36,7 @@
     {
       "name": "google_alerts",
       "status": "RETURNED",
-      "count": 0
+      "count": 1
     },
     {
       "name": "gmail_scholar",
@@ -46,7 +46,7 @@
     {
       "name": "italaw",
       "status": "RECOVERED (Internet Archive)",
-      "count": 12,
+      "count": 5,
       "refusals": [
         {
           "url": "https://www.italaw.com/",
@@ -69,7 +69,7 @@
     {
       "name": "unctad_isds",
       "status": "RECOVERED (Internet Archive)",
-      "count": 5,
+      "count": 12,
       "refusals": [
         {
           "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
@@ -91,11 +91,17 @@
     },
     {
       "name": "gdelt",
-      "status": "RETURNED",
-      "count": 75
+      "status": "NOT-READ (429)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22investor-state%20arbitration%22%20OR%20%22investment%20treaty%20arbitration%22%20OR%20%22ICSID%20tribunal%22%20OR%20%22arbitral%20award%22%20OR%20%22treaty%20shopping%22%20OR%20%22covered%20investment%22%20OR%20%22promise%20doctrine%22%29%20sourcelang%3Aenglish&mode=artlist&maxrecords=75&timespan=8d&sort=datedesc&format=json",
+          "outcome": "refused",
+          "detail": "429"
+        }
+      ],
+      "refusal_count": 1
     }
   ],
-  "health_warnings": [
-    "SOURCE DEGRADATION WARNING \u2014 documented-active sources with 3+ consecutive zero-item runs: iisd_itn (DEGRADED (9 zero runs)). Their fetchers likely no longer match the live site; zero items from them is NOT evidence of a quiet week."
-  ]
+  "health_warnings": []
 }

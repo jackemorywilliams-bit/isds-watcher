@@ -1,18 +1,27 @@
 {
   "bing_news": {
     "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9efc8b4a474ecb8df16399430c1561&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-03T01:29:00+00:00",
       "summary": "Further analysis of ADAS-Cog data from the Company\u2019s randomized, sham-controlled clinical trial \u2014 previously published in the Journal of ...",
       "title": "Nexalin Technology Announces New Secondary Analysis of Previously Published Clinical Trial Data Reveals Previously Unreported Improvements in Memory, Comprehension and Language ...",
       "url": "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9efc8b4a474ecb8df16399430c1561&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us"
+    },
+    "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9f24c56daf44bfaa3db60a906b86dd&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us": {
+      "attempts": 1,
+      "first_deferred": "2026-09-07T20:54:56.593394+00:00",
+      "last_outcome": "provider_error",
+      "published": "2026-09-03T01:29:00+00:00",
+      "summary": "Further analysis of ADAS-Cog data from the Company\u2019s randomized, sham-controlled clinical trial \u2014 previously published in the Journal of ...",
+      "title": "Nexalin Technology Announces New Secondary Analysis of Previously Published Clinical Trial Data Reveals Previously Unreported Improvements in Memory, Comprehension and Language ...",
+      "url": "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9f24c56daf44bfaa3db60a906b86dd&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us"
     }
   },
   "gdelt": {
     "https://www.livelaw.in/law-exams/important-mcqs-based-on-latest-supreme-court-judgments-for-law-examinations-548780": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-06T14:15:00+00:00",
@@ -21,7 +30,7 @@
       "url": "https://www.livelaw.in/law-exams/important-mcqs-based-on-latest-supreme-court-judgments-for-law-examinations-548780"
     },
     "https://www.manilatimes.net/2026/09/07/tmt-newswire/globenewswire/pharma-equity-group-as-challenge-to-arbitral-award/2419978": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-07T16:00:00+00:00",
@@ -30,7 +39,7 @@
       "url": "https://www.manilatimes.net/2026/09/07/tmt-newswire/globenewswire/pharma-equity-group-as-challenge-to-arbitral-award/2419978"
     },
     "https://www.naftemporiki.gr/english/2158206/theocharis-sees-strong-japanese-investment-interest-in-greece/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-07T10:15:00+00:00",
@@ -39,122 +48,104 @@
       "url": "https://www.naftemporiki.gr/english/2158206/theocharis-sees-strong-japanese-investment-interest-in-greece/"
     }
   },
-  "gmail_scholar": {
-    "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/ukrjil2026&section=7": {
-      "attempts": 2,
-      "first_deferred": "2026-08-31T19:21:30.989947+00:00",
+  "google_alerts": {
+    "https://www.mondaq.com/uk/healthcare/1839440/the-eu-pharma-package-upcoming-reform-of-regulatory-data-exclusivity-and-market-protection-for-approved-medicines-for-human-use": {
+      "attempts": 1,
+      "first_deferred": "2026-09-07T20:54:56.593394+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-08-30T01:36:11+00:00",
-      "summary": "S Voitovich\u00a0- Ukr. J. Int'l L., 2026 \u2026 court was conclusive for the Tribunal in the absence of a denial of justice claim. The Respondent strongly relied on a well-known NAFTA \u2026 \"Azinian argument/issue\", while the Tribunal called it a \"threshold issue\" meaning a threshold for denial of \u2026",
-      "title": "Case Study: Fork in the Road and Domestic Litigation in the ICSID Case of Ukrainian Investors versus North Macedonia",
-      "url": "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/ukrjil2026&section=7"
-    },
-    "https://journals.neewaj.com/index.php/njmri/article/download/24/24": {
-      "attempts": 2,
-      "first_deferred": "2026-08-31T19:21:30.989947+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-30T01:36:11+00:00",
-      "summary": "AO Steve\u00a0- Neewaj Journal of Multidisciplinary Research &\u00a0\u2026, 2026 \u2026 At the international level, Article 39 of the TRIPS Agreement obliges all WTO member states, including Nigeria, to protect undisclosed information against disclosure, acquisition, or use contrary to honest commercial practices.Numerous\u00a0\u2026",
-      "title": "TRADE SECRETS UNDER NIGERIAN LAW: AN APPRAISAL OF COMMON LAW PRINCIPLES IN THE ABSENCE OF DEDICATED LEGISLATION",
-      "url": "https://journals.neewaj.com/index.php/njmri/article/download/24/24"
-    },
-    "https://tradelab.org/wp-content/uploads/2026/08/NUS-IEL-Clinic_Investment-Treaty-Portfolio-Review-Eswatini-FINAL.pdf": {
-      "attempts": 2,
-      "first_deferred": "2026-08-31T19:21:30.989947+00:00",
-      "last_outcome": "provider_error",
-      "published": "2026-08-25T04:17:51+00:00",
-      "summary": "A Sharma, P Peeva, S Tiong, VSY Devarakonda\u2026 \u2026 Intellectual property rights \u2026 An asset-based approach defines a covered investment in terms of a non-exhaustive \u2026 contrast, an enterprise-based approach defines a covered investment in terms of an enterprise (which \u2026",
-      "title": "INVESTMENT PROTECTION TREATY PORTFOLIO REVIEW",
-      "url": "https://tradelab.org/wp-content/uploads/2026/08/NUS-IEL-Clinic_Investment-Treaty-Portfolio-Review-Eswatini-FINAL.pdf"
+      "published": "2026-09-07T15:34:27+00:00",
+      "summary": "... regulatory data exclusivity and market protection framework for newly approved medicines. While the baseline eight-year data protection period\u00a0...",
+      "title": "The EU Pharma Package: Upcoming Reform Of Regulatory Data Exclusivity And Market ... - Mondaq",
+      "url": "https://www.mondaq.com/uk/healthcare/1839440/the-eu-pharma-package-upcoming-reform-of-regulatory-data-exclusivity-and-market-protection-for-approved-medicines-for-human-use"
     }
   },
   "iareporter_headlines": {
     "https://www.iareporter.com/articles/analysis-german-federal-tribunal-finds-that-military-equipment-purchase-contract-entails-acts-de-iure-gestionis-denying-libya-immunity-from-jurisdiction-and-enforcing-icc-award/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808640+00:00",
+      "published": "2026-09-07T20:55:28.629995+00:00",
       "summary": "",
       "title": "Analysis: German Federal Tribunal finds that military equipment purchase contract entails acts de iure gestionis, denying Libya immunity from jurisdiction and enforcing ICC award",
       "url": "https://www.iareporter.com/articles/analysis-german-federal-tribunal-finds-that-military-equipment-purchase-contract-entails-acts-de-iure-gestionis-denying-libya-immunity-from-jurisdiction-and-enforcing-icc-award/"
     },
     "https://www.iareporter.com/articles/british-airport-services-company-reportedly-takes-ivory-coast-to-icc-arbitration/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808707+00:00",
+      "published": "2026-09-07T20:55:28.630059+00:00",
       "summary": "",
       "title": "British airport services company reportedly takes Ivory Coast to ICC arbitration",
       "url": "https://www.iareporter.com/articles/british-airport-services-company-reportedly-takes-ivory-coast-to-icc-arbitration/"
     },
     "https://www.iareporter.com/articles/dominican-republic-claims-victory-in-waste-management-arbitration/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808686+00:00",
+      "published": "2026-09-07T20:55:28.630038+00:00",
       "summary": "",
       "title": "Dominican Republic claims victory in waste management arbitration",
       "url": "https://www.iareporter.com/articles/dominican-republic-claims-victory-in-waste-management-arbitration/"
     },
     "https://www.iareporter.com/articles/estonia-is-reportedly-involved-in-arbitration-stemming-from-contract-aimed-at-purchasing-ammunition-for-ukraine/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808790+00:00",
+      "published": "2026-09-07T20:55:28.630140+00:00",
       "summary": "",
       "title": "Estonia is reportedly involved in arbitration stemming from contract aimed at purchasing ammunition for Ukraine",
       "url": "https://www.iareporter.com/articles/estonia-is-reportedly-involved-in-arbitration-stemming-from-contract-aimed-at-purchasing-ammunition-for-ukraine/"
     },
     "https://www.iareporter.com/articles/kinnear-chaired-tribunal-hearing-australian-paper-investors-claim-against-the-philippines-bifurcates-treaty-interpretation-objection-but-joins-nine-other-objections-to-merits/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808663+00:00",
+      "published": "2026-09-07T20:55:28.630017+00:00",
       "summary": "",
       "title": "Kinnear-chaired tribunal hearing Australian paper investors\u2019 claim against the Philippines bifurcates treaty-interpretation objection, but joins nine other objections to merits",
       "url": "https://www.iareporter.com/articles/kinnear-chaired-tribunal-hearing-australian-paper-investors-claim-against-the-philippines-bifurcates-treaty-interpretation-objection-but-joins-nine-other-objections-to-merits/"
     },
     "https://www.iareporter.com/articles/korean-shipbuilder-discloses-1-billion-usd-siac-claim-by-sanctioned-russian-lng-project-company/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808728+00:00",
+      "published": "2026-09-07T20:55:28.630079+00:00",
       "summary": "",
       "title": "Korean shipbuilder discloses 1-billion-USD SIAC claim by sanctioned Russian LNG project company",
       "url": "https://www.iareporter.com/articles/korean-shipbuilder-discloses-1-billion-usd-siac-claim-by-sanctioned-russian-lng-project-company/"
     },
     "https://www.iareporter.com/articles/norwegian-authorities-seize-expeditions-vessel-owned-by-russia-in-execution-of-naftogaz-award/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808748+00:00",
+      "published": "2026-09-07T20:55:28.630099+00:00",
       "summary": "",
       "title": "Norwegian authorities seize expeditions vessel owned by Russia in execution of Naftogaz award",
       "url": "https://www.iareporter.com/articles/norwegian-authorities-seize-expeditions-vessel-owned-by-russia-in-execution-of-naftogaz-award/"
     },
     "https://www.iareporter.com/articles/russian-cassation-court-confirms-that-250-million-eur-lcia-awards-that-favored-germany-controlled-owh-are-unenforceable/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808571+00:00",
+      "published": "2026-09-07T20:55:28.629928+00:00",
       "summary": "",
       "title": "Russian cassation court confirms that 250-million-EUR LCIA awards that favored Germany-controlled OWH are unenforceable",
       "url": "https://www.iareporter.com/articles/russian-cassation-court-confirms-that-250-million-eur-lcia-awards-that-favored-germany-controlled-owh-are-unenforceable/"
     },
     "https://www.iareporter.com/articles/us-court-postpones-ruling-on-whether-libyas-national-oil-corporation-is-an-alter-ego-of-the-state/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808609+00:00",
+      "published": "2026-09-07T20:55:28.629964+00:00",
       "summary": "",
       "title": "US court postpones ruling on whether Libya\u2019s National Oil Corporation is an alter ego of the state",
       "url": "https://www.iareporter.com/articles/us-court-postpones-ruling-on-whether-libyas-national-oil-corporation-is-an-alter-ego-of-the-state/"
     },
     "https://www.iareporter.com/articles/venezuela-and-pdvsa-reportedly-at-risk-of-arbitration-claims-stemming-from-alleged-transfer-of-oil-field-operations-to-us-company/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
-      "published": "2026-09-07T18:03:50.808768+00:00",
+      "published": "2026-09-07T20:55:28.630119+00:00",
       "summary": "",
       "title": "Venezuela and PdVSA reportedly at risk of arbitration claims stemming from alleged transfer of oil field operations to US company",
       "url": "https://www.iareporter.com/articles/venezuela-and-pdvsa-reportedly-at-risk-of-arbitration-claims-stemming-from-alleged-transfer-of-oil-field-operations-to-us-company/"
@@ -162,7 +153,7 @@
   },
   "pca_press": {
     "https://pca-cpa.org/en/news/28827/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-03T00:00:00+00:00",
@@ -171,13 +162,42 @@
       "url": "https://pca-cpa.org/en/news/28827/"
     },
     "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-kingdom-of-thailand/": {
-      "attempts": 1,
+      "attempts": 2,
       "first_deferred": "2026-09-07T18:03:18.924162+00:00",
       "last_outcome": "provider_error",
       "published": "2026-09-02T00:00:00+00:00",
       "summary": "Please see the attached press release issued today (in English and in French ) by the Permanent Court of Arbitration regarding the signing of a Host Country Agreement between the Permanent Court of Arbitration and the Kingdom of Thailand.",
       "title": "PCA Press Release \u2013 Permanent Court of Arbitration enters into Host Country Agreement with the Kingdom of Thailand",
       "url": "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-kingdom-of-thailand/"
+    }
+  },
+  "unctad_isds": {
+    "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/227/rompetrol-v-romania": {
+      "attempts": 1,
+      "first_deferred": "2026-09-07T20:54:56.593394+00:00",
+      "last_outcome": "provider_error",
+      "published": "",
+      "summary": "Rompetrol v. Romania | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan \u00c5land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda Argentina",
+      "title": "Rompetrol v. Romania",
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/227/rompetrol-v-romania"
+    },
+    "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/318/hicee-v-slovakia": {
+      "attempts": 1,
+      "first_deferred": "2026-09-07T20:54:56.593394+00:00",
+      "last_outcome": "provider_error",
+      "published": "",
+      "summary": "HICEE v. Slovakia | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan \u00c5land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda Argentina Ar",
+      "title": "HICEE v. Slovakia",
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/318/hicee-v-slovakia"
+    },
+    "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/621/b3-croatian-courier-v-croatia": {
+      "attempts": 1,
+      "first_deferred": "2026-09-07T20:54:56.593394+00:00",
+      "last_outcome": "provider_error",
+      "published": "",
+      "summary": "B3 Croatian Courier v. Croatia | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub Welcome to UN Trade and Development (UNCTAD) Investment Policy Hub Home Country Navigator Search for a country Afghanistan \u00c5land Islands Albania Algeria Andorra Angola Anguilla Antigua and Barbuda",
+      "title": "B3 Croatian Courier v. Croatia",
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/621/b3-croatian-courier-v-croatia"
     }
   }
 }

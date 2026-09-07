@@ -7,16 +7,16 @@ _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist
 | Source | Fresh candidates | Surfaced | Receptivity | Note |
 |--------|------------------|----------|-------------|------|
 | bing_news | 2 | 1 | 50% |  |
-| gdelt | 112 | 0 | 0% |  |
+| gdelt | 37 | 0 | 0% |  |
 | gmail_scholar | 6 | 0 | 0% |  |
-| google_alerts | 14 | 0 | 0% | operator RSS alerts; quiet but live. |
+| google_alerts | 15 | 0 | 0% | operator RSS alerts; quiet but live. |
 | google_news_rss | 0 | 0 | n/a |  |
 | iareporter_headlines | 104 | 12 | 12% | headline-only (paywalled body) — capped at watch-list leads. |
 | icsid | 7 | 0 | 0% |  |
 | iisd_itn | 0 | 0 | n/a | only fetch-time full-text feed; intermittently empty. |
-| italaw | 15 | 4 | 27% |  |
+| italaw | 6 | 4 | 67% |  |
 | pca_press | 9 | 0 | 0% |  |
-| unctad_isds | 10 | 0 | 0% |  |
+| unctad_isds | 12 | 0 | 0% |  |
 
 ## Reading this
 - **Surfaced** counts items that reached the digest — the clearest signal of a source's on-theme yield to date.

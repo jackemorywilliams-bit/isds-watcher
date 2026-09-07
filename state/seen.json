@@ -564,13 +564,28 @@
         "outcome": "abandoned",
         "run": "2026-09-07"
       },
+      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/ukrjil2026&section=7": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
       "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf": {
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "abandoned",
         "run": "2026-09-07"
       },
+      "https://journals.neewaj.com/index.php/njmri/article/download/24/24": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
       "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf": {
         "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "abandoned",
+        "run": "2026-09-07"
+      },
+      "https://tradelab.org/wp-content/uploads/2026/08/NUS-IEL-Clinic_Investment-Treaty-Portfolio-Review-Eswatini-FINAL.pdf": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
         "outcome": "abandoned",
         "run": "2026-09-07"
       }
@@ -1727,8 +1742,28 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/323/achmea-v-slovakia-i-": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/498/emmis-v-hungary": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/512/u-s-steel-v-slovakia": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/519/achmea-v-slovakia-ii-": {
         "at": "2026-09-07T18:03:18.924162+00:00",
+        "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/555/natland-and-others-v-czech-republic": {
+        "at": "2026-09-07T20:54:56.593394+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },

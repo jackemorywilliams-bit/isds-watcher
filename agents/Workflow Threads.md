@@ -237,6 +237,73 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D16 — `reanchor.yml` loses a race with the squash-merge and has landed 2 of 16 commits *(new 2026-09-07; owner: Emory — one repository setting; systems-designer for the alternative)*
+
+- **State** — Measured 2026-09-07 on a complete 1,048-commit history. Of every
+  `chore(currency): re-anchor tracked notes to HEAD [skip ci]` commit
+  `github-actions[bot]` has ever authored, **2 landed on `main` and 14 never did** — both
+  survivors dated 2026-08-29 (`08380af`, `e8b0f71`). The workflow that exists specifically to keep
+  the tracked notes' anchors current has been a no-op for nine days.
+- **The mechanism is a race, and it is decided by seconds.** The seat squash-merges its own PR;
+  the bot pushes the re-anchor to a branch that no longer has anywhere to go. Four consecutive
+  cases, each measured by commit timestamp:
+
+  | Branch | Merge to `main` | Bot re-anchor | Gap |
+  | --- | --- | --- | --- |
+  | `council/2026-09-07` | `6a8a126` 12:17:18Z | `767cccd` 12:17:29Z | **+11 s, too late** |
+  | `council/2026-09-07-addendum` | `4bbe5cb` 12:20:13Z | `bb694b5` 12:20:21Z | **+8 s, too late** |
+  | `council/2026-09-06-addendum` | `101a479` 12:11:34Z | `cd59bce` 12:11:42Z | **+8 s, too late** |
+  | `vault/archivist-2026-09-04-ci` | `4983ffd` 15:26:52Z | `4f8c376` 15:27:08Z | **+16 s, too late** |
+
+- **The workflow's own author predicted this in its header**, which is why this thread is a
+  measurement and not a discovery. `.github/workflows/reanchor.yml:9-17`: *"Honest limit, stated so
+  nobody trusts more than it delivers: the daily council squash-merges its OWN pull request via
+  `gh`, and does not wait for checks. This workflow commits the re-anchor to the PR head, but if
+  the session merges before it lands, the merge is still stale."* The same comment names the two
+  covers — the council's own close-out `reanchor.py` call, and making `currency` a **required
+  check** on `main` — and records that the second was *"Recommended in the PR that adds this."*
+  **It was never applied.**
+- **Why the first cover does not reach `agents/`.** The council does run `scripts/reanchor.py` at
+  close-out, but commits only `STATE_OF_THE_ANSWER.md`, because `agents/` is outside its merge
+  scope — stated in today's record at `analytics/daily-research/2026-09-07.md` Part VII (`34b3970`)
+  and visible as `2c3c44c`, `70a97da`, `7a298a1`. So the four `agents/` anchors are covered by
+  **no** automatic mover at all. Every commit that has ever moved them on `main` is an archivist
+  commit — `516f89c`, `ed68d4e`, `cdeff0f`, `aa7c572` — and this seat runs **every three days**.
+  That is the whole coverage, and it is why the guard is chronically red between sessions.
+- **This subsumes the practice change recorded as D10.** What the 2026-09-04 session read as the
+  council's "voluntary restraint" in re-anchoring only `STATE_OF_THE_ANSWER.md` is confirmed here
+  as a scope rule with a measured consequence, not a courtesy.
+- **Next action** — **Emory:** make `currency` a required check on `main`, which blocks the
+  squash until the bot's commit has landed. One repository setting; it was the recommendation
+  attached to the workflow when it was built. **Alternative, systems-designer:** have the seat run
+  `scripts/reanchor.py` before opening the PR rather than relying on the bot, which removes the
+  race instead of winning it. Either one also closes **D11**, since a pre-merge anchor leaves the
+  bot nothing to push.
+
+### D15 — a rule routed to `agents/` is invisible to the seat bound by it for up to three days *(new 2026-09-07; owner: Emory — routing or cadence)*
+
+- **State** — Taxonomy **entry 29, off-read-path carrier**, was adopted 2026-09-05
+  (`analytics/daily-research/2026-09-05.md:1321`, `:1421`, `d969ca4`) and routed to this seat
+  because `agents/` is outside the daily council's merge scope
+  (`analytics/optimization-log.md:71`, `7fa1ef4`). It reached no note for **two days**, and is
+  filed in [[integrity-officer]] only in this change set.
+- **The delay was paid for before it was found, and not by this seat.** On 2026-09-06 the officer
+  numbered its next proposal **30** off the stale "28 entries" heading, and the chairman declined
+  to adopt by number for that reason. Recorded by the officer, unasked, at
+  `analytics/daily-research/2026-09-07.md:750` (`34b3970`): the council's citations of "entry 29"
+  are correct against its own ruling and *"uncheckably against the file the mandate names."*
+- **Why this is a thread and not a repeat of D13.** D13 was one miss, closed by looking. This is
+  the **second consecutive occurrence** of the same mode, and the structural cause is now visible:
+  the council can adopt a binding rule and cannot file it; the seat that can file it runs on a
+  **three-day** cadence. Between those two facts every adopted rule has a latency window in which
+  the seat bound by it cannot check it. Entry 28 escaped only because the 2026-09-04 session went
+  hunting for exactly this.
+- **Next action** — **Emory**, and it is a choice between two: either give the daily council write
+  access to the taxonomy table in `agents/integrity-officer.md` (narrow scope widening — one file),
+  or accept the latency and have the council carry an explicit *"UNFILED — routed to archivist on
+  <date>"* line in its close-out so the next session finds it by grep instead of by luck. The
+  archivist can execute either; neither is the archivist's to decide.
+
 ### D13 — a rule the council adopted and routed to this seat by name had reached no note *(new 2026-09-04; owner: archivist — CLOSED in this change set)*
 
 - **State** — On 2026-09-04 the council adopted **fabrication taxonomy entry 28, unscreened

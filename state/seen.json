@@ -4,6 +4,21 @@
       "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a79ddbe88664a6189d4b6b8258867d6&url=https%3a%2f%2fwww.managingip.com%2farticle%2f2gqbuus9g3tw0qdiljlds%2fa-panoramic-overview-of-chinas-pharmaceutical-ip-protection-system&c=3158294399262701483&mkt=en-us": {
         "at": "2026-08-10T14:17:45.964749+00:00",
         "outcome": "legacy"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9efc8b4a474ecb8df16399430c1561&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9f24c56daf44bfaa3db60a906b86dd&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6a9f4829a595450cb0990fc863707691&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fnexalin-technology-announces-new-secondary-analysis-of-previously-published-clinical-trial-data-reveals-previously-unreported-improvements-in-memory-comprehension-and-language-function-in-1036519314&c=11426858659896980281&mkt=en-us": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       }
     },
     "gdelt": {
@@ -292,6 +307,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },
+      "https://www.barandbench.com/news/litigation/court-fees-should-be-refunded-to-litigants-whose-cases-cant-be-heard-madras-high-court": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.business-standard.com/markets/capital-market-news/indices-pare-losses-nifty-above-24-150-mark-126082500528_1.html": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -330,6 +350,11 @@
       "https://www.edenmagnet.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.equitybulls.com/category.php?id=374414": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
         "run": "2026-09-07"
       },
       "https://www.fdiintelligence.com/content/a2e20734-3ef1-46ad-b86b-8cbf12a2bf85": {
@@ -387,6 +412,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-08-24"
       },
+      "https://www.livelaw.in/law-exams/important-mcqs-based-on-latest-supreme-court-judgments-for-law-examinations-548780": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.livemint.com/companies/news/spicejet-seeks-more-time-to-pay-50-crore-to-maran-11788157455274.html": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -410,6 +440,11 @@
       "https://www.manilatimes.net/2026/09/07/news/research-think-tank-slams-china-for-claiming-batanes/2419442": {
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://www.manilatimes.net/2026/09/07/tmt-newswire/globenewswire/pharma-equity-group-as-challenge-to-arbitral-award/2419978": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
         "run": "2026-09-07"
       },
       "https://www.miragenews.com/australia-philippines-us-show-unity-in-maritime-1733268/": {
@@ -446,6 +481,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.naftemporiki.gr/english/2158206/theocharis-sees-strong-japanese-investment-interest-in-greece/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.naroomanewsonline.com.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
         "at": "2026-09-07T18:03:18.924162+00:00",
@@ -548,7 +588,38 @@
         "run": "2026-09-07"
       }
     },
-    "gmail_scholar": {},
+    "gmail_scholar": {
+      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/ukrjil2026&section=7": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://journals.neewaj.com/index.php/njmri/article/download/24/24": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://tradelab.org/wp-content/uploads/2026/08/NUS-IEL-Clinic_Investment-Treaty-Portfolio-Review-Eswatini-FINAL.pdf": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      }
+    },
     "google_alerts": {
       "https://bitcoinfoundation.org/news/people-in-crypto-news/apple-vs-openai/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
@@ -600,6 +671,11 @@
         "outcome": "abandoned",
         "run": "2026-08-31"
       },
+      "https://www.mondaq.com/uk/healthcare/1839440/the-eu-pharma-package-upcoming-reform-of-regulatory-data-exclusivity-and-market-protection-for-approved-medicines-for-human-use": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.youtube.com/shorts/-ZRoLCHqivM": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
@@ -627,6 +703,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.iareporter.com/articles/analysis-german-federal-tribunal-finds-that-military-equipment-purchase-contract-entails-acts-de-iure-gestionis-denying-libya-immunity-from-jurisdiction-and-enforcing-icc-award/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.iareporter.com/articles/analysis-icsid-ad-hoc-committee-declines-to-partially-annul-tribunals-award-in-rand-v-serbia-seeing-no-excess-of-powers-in-jurisdictional-finding-and-no-flaws-in-arbitrators-damag/": {
         "at": "2026-06-29T16:37:09.074379+00:00",
@@ -674,6 +755,11 @@
       "https://www.iareporter.com/articles/bolivian-state-owned-entity-reportedly-prevails-in-under-the-radar-arbitration-lodged-against-panamanian-software-company/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/british-airport-services-company-reportedly-takes-ivory-coast-to-icc-arbitration/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.iareporter.com/articles/burford-announces-issuance-of-award-in-icc-arbitration-against-cameroon/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
@@ -729,6 +815,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/dominican-republic-claims-victory-in-waste-management-arbitration/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.iareporter.com/articles/dual-russian-belarus-national-serves-armenia-with-notice-of-treaty-dispute-as-another-arbitration-dispute-reportedly-brews/": {
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
@@ -741,6 +832,11 @@
       "https://www.iareporter.com/articles/electricity-distribution-investor-claims-victory-in-icsid-annulment-proceedings/": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/estonia-is-reportedly-involved-in-arbitration-stemming-from-contract-aimed-at-purchasing-ammunition-for-ukraine/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.iareporter.com/articles/eu-commission-launches-state-aid-investigation-into-renewable-energy-award-against-romania/": {
         "at": "2026-08-03T15:40:23.447046+00:00",
@@ -891,6 +987,16 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/kinnear-chaired-tribunal-hearing-australian-paper-investors-claim-against-the-philippines-bifurcates-treaty-interpretation-objection-but-joins-nine-other-objections-to-merits/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
+      "https://www.iareporter.com/articles/korean-shipbuilder-discloses-1-billion-usd-siac-claim-by-sanctioned-russian-lng-project-company/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.iareporter.com/articles/latvian-ministry-is-reportedly-involved-in-arbitration-with-spanish-engineering-consortium-over-high-speed-railway-project/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
@@ -916,6 +1022,11 @@
       "https://www.iareporter.com/articles/looking-back-tribunals-in-parallel-suez-v-argentina-arbitrations-first-recognised-arbitrators-power-to-admit-amicus-curiae-submissions-in-the-context-of-icsid-proceedings/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/norwegian-authorities-seize-expeditions-vessel-owned-by-russia-in-execution-of-naftogaz-award/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.iareporter.com/articles/offshore-gas-investors-make-good-on-earlier-threat-to-initiate-treaty-arbitration-against-mozambique/": {
         "at": "2026-06-29T16:37:09.074379+00:00",
@@ -977,6 +1088,11 @@
       "https://www.iareporter.com/articles/russia-reportedly-fails-to-set-aside-crimea-award/": {
         "at": "2026-06-22T17:28:18.632973+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/russian-cassation-court-confirms-that-250-million-eur-lcia-awards-that-favored-germany-controlled-owh-are-unenforceable/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://www.iareporter.com/articles/russian-court-restrains-germany-owned-energy-trader-from-pursuing-icc-arbitration-against-gazprom-export-under-threat-of-600-million-eur-penalty/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
@@ -1130,6 +1246,11 @@
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/us-court-postpones-ruling-on-whether-libyas-national-oil-corporation-is-an-alter-ego-of-the-state/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://www.iareporter.com/articles/us-power-plant-investors-lodge-icsid-arbitration-against-colombia/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
@@ -1141,6 +1262,11 @@
       "https://www.iareporter.com/articles/usa-declines-to-renew-usmca-triggering-annual-review-until-termination-scheduled-for-2036/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/venezuela-and-pdvsa-reportedly-at-risk-of-arbitration-claims-stemming-from-alleged-transfer-of-oil-field-operations-to-us-company/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       }
     },
     "icsid": {
@@ -1497,6 +1623,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://pca-cpa.org/en/news/28827/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://pca-cpa.org/en/news/pca-press-release-entry-into-force-of-the-host-country-agreement-between-the-permanent-court-of-arbitration-and-the-kingdom-of-bahrain/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1546,6 +1677,11 @@
       "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-kingdom-of-spain/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
+      },
+      "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-kingdom-of-thailand/": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://pca-cpa.org/en/news/pca-press-release-publication-of-the-award-in-the-dispute-concerning-coastal-state-rights-in-the-black-sea-sea-of-azov-and-kerch-strait-ukraine-v-the-russian-federation/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
@@ -1686,6 +1822,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/227/rompetrol-v-romania": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
+      },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/23/metalclad-v-mexico": {
         "at": "2026-08-17T23:37:18.196967+00:00",
         "outcome": "ok",
@@ -1700,6 +1841,11 @@
         "at": "2026-08-17T23:37:18.196967+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/318/hicee-v-slovakia": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
+        "run": "2026-09-07"
       },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/323/achmea-v-slovakia-i-": {
         "at": "2026-09-07T20:54:56.593394+00:00",
@@ -1724,6 +1870,11 @@
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/555/natland-and-others-v-czech-republic": {
         "at": "2026-09-07T20:54:56.593394+00:00",
         "outcome": "keyword_only_by_design",
+        "run": "2026-09-07"
+      },
+      "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/621/b3-croatian-courier-v-croatia": {
+        "at": "2026-09-07T23:25:56.267336+00:00",
+        "outcome": "ok",
         "run": "2026-09-07"
       },
       "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/732/anthone-and-others-v-mexico": {

@@ -16,7 +16,7 @@ _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist
 | iisd_itn | 0 | 0 | n/a | only fetch-time full-text feed; intermittently empty. |
 | italaw | 6 | 4 | 67% |  |
 | pca_press | 9 | 0 | 0% |  |
-| unctad_isds | 12 | 0 | 0% |  |
+| unctad_isds | 5 | 0 | 0% |  |
 
 ## Reading this
 - **Surfaced** counts items that reached the digest — the clearest signal of a source's on-theme yield to date.

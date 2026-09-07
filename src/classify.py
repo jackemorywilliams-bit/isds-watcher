@@ -19,7 +19,9 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import inspect
 import os
+import time
 import re
 from dataclasses import dataclass, field, fields
 from enum import Enum
@@ -485,15 +487,41 @@ def _call_anthropic(prompt: str) -> str:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     model_name = os.environ.get("ANTHROPIC_MODEL", DEFAULT_ANTHROPIC_MODEL)
     resp = client.messages.create(
-        model=model_name,
-        max_tokens=1024,
-        temperature=0,
-        messages=[{"role": "user", "content": prompt}],
-    )
+        **_anthropic_create_kwargs(client.messages.create, model_name, prompt))
     # resp.content is a list of content blocks; the first is the text block.
     if resp.content and getattr(resp.content[0], "text", None) is not None:
         return resp.content[0].text or ""
     return ""
+
+
+def _anthropic_create_kwargs(create, model_name: str, prompt: str) -> dict:
+    """Build the ``Messages.create()`` kwargs the INSTALLED SDK actually accepts.
+
+    2026-09-07 incident. The anthropic 1.x SDK removed ``temperature`` (and
+    ``top_p``/``top_k``) from ``Messages.create()``. requirements.txt pinned
+    ``anthropic>=0.40`` with no ceiling, the runner installed 1.4.0, and every
+    classify call died with "got an unexpected keyword argument 'temperature'"
+    — 24 of 110 candidates at the 18:02 UTC run, 28 of 28 at 20:54 — while the
+    local SDK (0.107.x) still accepted the kwarg, so nothing failed locally.
+    Sixteen deferred items sat one failure from abandonment.
+
+    ``temperature=0`` was a nicety: the classifier's real guarantees are the
+    JSON contract and the fail-closed parse. So it is passed only when the
+    signature has it, and the test suite checks this builder against the real
+    installed SDK in CI, where the break would have been caught before a run.
+    """
+    kwargs = {
+        "model": model_name,
+        "max_tokens": 1024,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    try:
+        params = inspect.signature(create).parameters
+    except (TypeError, ValueError):  # builtins / C-implemented callables
+        params = {}
+    if "temperature" in params:
+        kwargs["temperature"] = 0
+    return kwargs
 
 
 def _normalize_provider(provider: Optional[str]) -> Optional[str]:
@@ -557,6 +585,56 @@ def _quote_in_source(quote: str, item: CandidateItem) -> bool:
 # --------------------------------------------------------------------------- #
 # Main entry point
 # --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
+# Provider canary (2026-09-07)
+# --------------------------------------------------------------------------- #
+# Set by main() for the duration of one run when the canary fails. While it is
+# set, classify_item makes NO model call and returns the same PROVIDER_ERROR
+# outcome a live failure would, with attempts=0 — so a dead provider costs the
+# run nothing per item and, in main, charges no item an attempt.
+PROVIDER_DOWN: Optional[str] = None
+CANARY_PROMPT = "Reply with the single word OK."
+# Back-off between canary attempts for API-side errors (overload, rate limit,
+# network). Tests set this to (0, 0).
+CANARY_BACKOFF_S = (2.0, 5.0)
+
+
+def provider_canary(provider: Optional[str]) -> tuple[bool, str]:
+    """One trivial model call before the run fetches or charges anything.
+
+    Returns ``(True, note)`` when a model answered — or when no provider is
+    configured, which is the designed keyword-fallback state and not an outage.
+    Returns ``(False, detail)`` when no call can succeed this run:
+
+    * a ``TypeError``/``AttributeError`` is a CONTRACT error — our code and the
+      installed SDK disagree (the 2026-09-07 case: anthropic 1.x dropped
+      ``temperature``). Retrying cannot help, so it fails at once and says so.
+    * any other exception is treated as an API-side outage and retried
+      ``len(CANARY_BACKOFF_S)`` more times with back-off before giving up.
+
+    Never raises.
+    """
+    norm = _normalize_provider(provider if provider is not None
+                               else os.environ.get("MODEL_PROVIDER"))
+    if norm is None or not _provider_ready(norm):
+        return True, "no provider/key configured; keyword fallback by design"
+    caller = _call_gemini if norm == "gemini" else _call_anthropic
+    last: Optional[BaseException] = None
+    tries = 1 + len(CANARY_BACKOFF_S)
+    for i in range(tries):
+        try:
+            caller(CANARY_PROMPT)
+            return True, f"{norm} answered the canary (attempt {i + 1})"
+        except (TypeError, AttributeError) as exc:
+            return False, (f"contract error between src/classify.py and the installed "
+                           f"{norm} SDK — not retried: {exc}")
+        except Exception as exc:  # noqa: BLE001 - the canary never raises
+            last = exc
+            if i < len(CANARY_BACKOFF_S):
+                time.sleep(CANARY_BACKOFF_S[i])
+    return False, f"{norm} failed the canary {tries} times: {last!r}"
+
+
 def classify_item(
     item: CandidateItem,
     provider: Optional[str] = None,
@@ -616,6 +694,11 @@ def classify_item(
     retried_strict = False
 
     try:
+        if PROVIDER_DOWN:
+            # The run's canary already proved no model call can succeed. Do not
+            # make one per item: the except-branch below turns this into the
+            # same PROVIDER_ERROR outcome a live failure would, attempts=0.
+            raise RuntimeError(f"skipped, provider down this run: {PROVIDER_DOWN}")
         prompt = build_prompt(item)
         attempts += 1
         text = caller(prompt)

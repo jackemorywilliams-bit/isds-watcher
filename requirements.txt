@@ -5,5 +5,9 @@ python-dateutil>=2.8
 pyyaml>=6.0
 jinja2>=3.1
 google-generativeai>=0.8
-anthropic>=0.40
+# Ceiling added 2026-09-07: 1.x removed temperature/top_p from Messages.create()
+# and an open-ended pin let the runner jump majors overnight; src/classify.py
+# is now signature-aware for 0.x and 1.x, and tests/test_classify_v2.py checks
+# the builder against the installed SDK in CI. Raise the ceiling deliberately.
+anthropic>=0.40,<2
 pytest>=8.0

@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, timezone
 from . import (classify_v2, config, council_log, render, research_brief,
                research_state, rings, source_health, source_recovery, state,
                telemetry, triage)
+from . import classify as classify_mod
 from .classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                        keyword_score, outcome_of, prompt_version)
 from .email_send import send_digest
@@ -37,6 +38,13 @@ ROBOTS_BLOCKED_SOURCES = set()
 # because ClassifyOutcome members hash by identity, not by their value, so a
 # plain `"ok" in TERMINAL_OUTCOMES` would silently be False.
 TERMINAL_VALUES = frozenset(o.value for o in TERMINAL_OUTCOMES)
+
+
+# Printed in the run summary when the provider canary failed. The weekly
+# workflow's provider gate greps this exact literal from the watcher's stdout
+# (after the state commit) and fails the run so the failure alert fires;
+# tests/test_pipeline.py keeps the two in sync.
+PROVIDER_DOWN_MARKER = "!! PROVIDER DOWN"
 
 
 def deferred_candidates(deferred: dict, already: set[tuple[str, str]]) -> list:
@@ -190,6 +198,27 @@ def main(argv=None) -> int:
     run_tel = telemetry.RunTelemetry(date_str)
     provider = args.provider or cfg.model_provider
 
+    # 0. Provider canary. One trivial model call before anything is fetched or
+    #    charged. 2026-09-07: the classifier had been dead for four straight
+    #    weekly runs (anthropic 1.x dropped `temperature`; every call raised
+    #    TypeError) and each run still reported success, deferred every enriched
+    #    item, and after three such runs abandoned eight of them — the
+    #    instrument's own bug counted against the items. A dead provider is now
+    #    known before the first item, no attempt is charged for it, and the
+    #    workflow's provider gate fails the run (after state is committed) so
+    #    the failure alert fires the same day.
+    classify_mod.PROVIDER_DOWN = None
+    provider_down = ""
+    canary_ok, canary_detail = classify_mod.provider_canary(provider)
+    if canary_ok:
+        logger.info("main: provider canary: %s", canary_detail)
+    else:
+        provider_down = canary_detail
+        classify_mod.PROVIDER_DOWN = canary_detail
+        logger.critical("main: PROVIDER DOWN (%s): %s — no model call will be made "
+                        "this run and no candidate will be charged an attempt",
+                        provider, canary_detail)
+
     only = set(s.strip() for s in args.limit_sources.split(",")) if args.limit_sources else None
 
     stats = {
@@ -200,6 +229,8 @@ def main(argv=None) -> int:
         # Cost-bearing optional passes. Reported as counts so a run says what it
         # spent instead of leaving it to be reconstructed from the bill.
         "triage_ran": 0, "triage_skipped": 0, "v2_shadow_calls": 0,
+        # Non-empty when the provider canary failed: the detail, verbatim.
+        "provider_down": provider_down,
     }
 
     # 1. Fetch + dedupe (per-source failure is non-fatal). Alongside the counts,
@@ -558,7 +589,8 @@ def main(argv=None) -> int:
             run_tel.note_dedup(cid, seen_before=False, marked_seen=True,
                                deferred=False, abandoned=False)
         else:
-            attempts = state.record_deferral(dq, it, outcome_value, generated_at)
+            attempts = state.record_deferral(dq, it, outcome_value, generated_at,
+                                             charge=not provider_down)
             if attempts >= state.MAX_CLASSIFY_ATTEMPTS:
                 entry = (dq.get(it.source) or {}).get(it.source_id) or {}
                 state.append_abandoned(
@@ -849,6 +881,11 @@ def main(argv=None) -> int:
               f"{len(abandoned_now)} — see {state.ABANDONED_PATH}")
         for it, oc, n in abandoned_now:
             print(f"     - {it.source} / {it.source_id} ({oc}, {n} attempts)")
+    if provider_down:
+        print(f"  {PROVIDER_DOWN_MARKER} ({provider}): {provider_down} — no model "
+              f"call was made; {len(deferred_now)} item(s) queued WITHOUT an "
+              f"attempt charged; the workflow's provider gate fails this run "
+              f"after state is committed so the failure alert fires")
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")
     print(f"surfaced in digest: {len(surfaced)}")
     if config.VALIDATION_STATUS_ONLY:

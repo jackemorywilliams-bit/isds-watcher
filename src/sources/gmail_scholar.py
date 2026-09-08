@@ -20,7 +20,7 @@ import email
 import imaplib
 import logging
 import os
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from email.header import decode_header, make_header
 from urllib.parse import urlparse, parse_qs
 
@@ -285,3 +285,64 @@ class GmailScholarSource(Source):
                 )
             )
         return items
+
+
+def scholar_mailbox_status(days: int = 30) -> tuple[str, list[dict]]:
+    """What the Scholar mailbox actually holds, header-only, for the last ``days``.
+
+    Returns ``(status, alerts)``:
+      * ``"inactive"``    — no GMAIL_ALERT_USER/PASS in the environment (local runs);
+      * ``"unreachable"`` — login, mailbox select or search failed;
+      * ``"ok"``          — ``alerts`` is ``[{uid, date, subject}]``, newest first,
+        read with ``BODY.PEEK[HEADER.FIELDS (DATE SUBJECT)]`` — no bodies.
+
+    Added 2026-09-08. The weekly run said "no matching Scholar messages" three
+    times while the operator was receiving alerts; the honest answer to "is
+    this source alive" is the date of the newest alert in the account, which
+    only a header read can give. Used by the source-health probe and by
+    scripts/scholar_intake.py's daily report. Never raises.
+    """
+    user = os.environ.get("GMAIL_ALERT_USER", "").strip()
+    password = os.environ.get("GMAIL_ALERT_PASS", "").strip()
+    if not user or not password:
+        return "inactive", []
+    label = os.environ.get("GMAIL_ALERT_LABEL", "scholar-alerts").strip() or "scholar-alerts"
+    host = os.environ.get("GMAIL_IMAP_HOST", "imap.gmail.com").strip() or "imap.gmail.com"
+    since = datetime.now(timezone.utc) - timedelta(days=days)
+    conn = None
+    try:
+        conn = imaplib.IMAP4_SSL(host)
+        conn.login(user, password)
+        searcher = GmailScholarSource()
+        ids: list[bytes] = []
+        for mailbox in ('"[Gmail]/All Mail"', f'"{label}"', "INBOX"):
+            status, _ = conn.select(mailbox, readonly=True)
+            if status != "OK":
+                continue
+            ids = searcher._search_uids(conn, since)
+            if ids:
+                break
+        alerts: list[dict] = []
+        for mid in ids:
+            status, data = conn.fetch(mid, "(BODY.PEEK[HEADER.FIELDS (DATE SUBJECT)])")
+            if status != "OK" or not data or not isinstance(data[0], tuple):
+                continue
+            msg = email.message_from_bytes(data[0][1] or b"")
+            d = parse_date(_decode_header(msg.get("Date")))
+            alerts.append({
+                "uid": mid.decode(errors="replace"),
+                "date": d.isoformat() if d is not None else "",
+                "subject": _decode_header(msg.get("Subject"))[:160],
+            })
+        alerts.sort(key=lambda a: a["date"], reverse=True)
+        return "ok", alerts
+    except Exception as exc:  # noqa: BLE001 - a status helper never raises
+        logger.warning("gmail_scholar: mailbox status failed (%s)", exc)
+        return "unreachable", []
+    finally:
+        if conn is not None:
+            for op in (conn.close, conn.logout):
+                try:
+                    op()
+                except Exception:  # noqa: BLE001
+                    pass

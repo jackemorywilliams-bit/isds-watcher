@@ -211,12 +211,35 @@ def _probe_icsid() -> "str | None":
     return None
 
 
+def _probe_gmail_scholar() -> "str | None":
+    """Say when the newest Scholar alert arrived instead of "nothing in 7 days".
+
+    2026-09-08: three zero runs put this source one run from a generic
+    "fetchers likely no longer match" warning while the operator was holding a
+    fresh alert email. A header-only read of the account answers the real
+    question. No credentials here (a local run) -> None, no refinement.
+    """
+    from .sources.gmail_scholar import scholar_mailbox_status
+    status, alerts = scholar_mailbox_status(30)
+    if status == "inactive":
+        return None
+    if status == "unreachable":
+        return "NOT-READ (IMAP login, mailbox select or search failed)"
+    if not alerts:
+        return ("QUIET (IMAP reachable; no Scholar alert mail in 30 days — check the "
+                "Scholar alert subscriptions in that account)")
+    newest = (alerts[0].get("date") or "")[:10] or "undated"
+    return (f"QUIET (IMAP reachable; {len(alerts)} Scholar alert(s) in 30d, newest "
+            f"{newest}; none in the run window)")
+
+
 PROBES = {
     "iisd_itn": _probe_iisd_itn,
     "google_alerts": _probe_google_alerts,
     "italaw": _probe_italaw,
     "gdelt": _probe_gdelt,
     "icsid": _probe_icsid,
+    "gmail_scholar": _probe_gmail_scholar,
 }
 
 

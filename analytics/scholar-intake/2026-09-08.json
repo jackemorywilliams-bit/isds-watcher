@@ -1,19 +1,28 @@
 {
   "schema": 1,
   "date": "2026-09-08",
-  "at": "2026-09-08T16:53:42.567271+00:00",
+  "at": "2026-09-08T17:00:31.052226+00:00",
   "window_days": 3,
   "mailbox": {
     "status": "ok",
     "alerts_30d": 9,
     "newest_alert_date": "2026-09-08T05:16:48+00:00",
-    "newest_alert_subject": "(\"trade secret\" OR \"trade secrets\") (\"investment ... - new results"
+    "newest_alert_subject": "(\"trade secret\" OR \"trade secrets\") (\"investment ... - new results",
+    "alert_dates": [
+      "2026-09-08",
+      "2026-08-30",
+      "2026-08-30",
+      "2026-08-25",
+      "2026-08-25",
+      "2026-08-23",
+      "2026-08-22",
+      "2026-08-19",
+      "2026-08-11"
+    ]
   },
   "papers_in_window": 1,
-  "queued_new": 1,
+  "queued_new": 0,
   "already_seen": 0,
-  "already_queued": 0,
-  "queued_urls": [
-    "https://www.degruyterbrill.com/document/doi/10.1515/ael-2022-0055/html"
-  ]
+  "already_queued": 1,
+  "queued_urls": []
 }

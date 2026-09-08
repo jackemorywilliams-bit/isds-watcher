@@ -101,6 +101,9 @@ def main(argv=None) -> int:
             "alerts_30d": len(alerts),
             "newest_alert_date": (newest or {}).get("date", ""),
             "newest_alert_subject": (newest or {}).get("subject", ""),
+            # Every alert's arrival day, newest first: the direct answer to
+            # "did anything arrive between the weekly runs" (2026-09-08).
+            "alert_dates": [a["date"][:10] for a in alerts if a.get("date")],
         },
         "papers_in_window": len(items),
         "queued_new": len(queued),
@@ -114,6 +117,9 @@ def main(argv=None) -> int:
              f"{report['mailbox']['newest_alert_subject']!r}" if newest else "")
           + f"; {len(items)} paper(s) in the last {args.days}d -> "
           f"{len(queued)} queued, {already_seen} already seen, {already_queued} already queued")
+    if alerts:
+        print("  alert days (30d, newest first): "
+              + ", ".join(report["mailbox"]["alert_dates"]))
     for u in queued:
         print(f"  queued  {u}")
     if args.dry_run:

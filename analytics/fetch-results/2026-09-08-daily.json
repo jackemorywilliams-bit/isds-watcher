@@ -1,0 +1,93 @@
+{
+  "request": "2026-09-08-daily.json",
+  "note": "2026-09-08 daily batch. Written and pushed by the chairman BEFORE any seat was convened, so every forecast below is pre-registered rather than fitted; commit order proves the ordering and nothing else. EGRESS PROBES AT SESSION OPEN, three probes on two channels, all dead and all on NEUTRAL CONTROLS: curl https://example.com/ and curl https://www.iana.org/ both returned 'CONNECT tunnel failed, response 403' (exit 56), and the fetch service returned EGRESS_BLOCKED on the neutral control https://example.com/. No state change from the constraint established 2026-08-02 and 2026-08-03. Web search is alive. THIS RELAY IS THEREFORE THE ONLY RETRIEVAL CHANNEL THIS SESSION HAS, and every row below is a fact about the relay's fetch and about nothing else; no fetch-layer status in today's record is a claim about any resource. SCOPE DECLARATION, MADE RATHER THAN HIDDEN: yesterday's next step 3 directs 'two relay rows and no more' and names the two URLs below. The same next step also directs that a false find be pre-registered for what it licenses and that the literal be one excerpt_of can actually see, and it names yesterday's rows 7-10 as 'the worked example of it done right' - and rows 7-10 were TWO URLs at TWO ROWS EACH, a positive control plus a substantive literal. I read 'two relay rows' as TWO URLS worked in that pattern, because one row per URL cannot separate 'this literal is absent from this body' from 'excerpt_of found nothing on this body at all', and that exact inability is the defect 0906-B6 was sustained on. Four requested research rows, one tail control, five requested rows in total. INSTRUMENT SEMANTICS, RE-READ FROM scripts/fetch_relay.py TODAY RATHER THAN CARRIED FROM MEMORY: excerpt_of deletes script and style blocks, then every remaining tag, then normalises whitespace, and searches the WHOLE resulting body case-insensitively; find_matched is true if and only if that search returns a non-empty window. A literal living only inside a script block, a style block or an HTML attribute is therefore UNREACHABLE BY CONSTRUCTION and its absence proves nothing about the page. PURPOSE 1 - CLOSE THE ONE GAP OPENED THIS WEEK THAT HAS A REACHABLE CLOSURE CONDITION. Rows 1 and 2 fire https://uncitral.un.org/en/tenth-intersessional-meeting, an allowlisted host, against the gap slug uncitral-wgiii-tenth-intersessional-body-unread. No seat has read this body. FORECAST A, FALSIFIABLE, GRADED ON ROW 1 AND GRADED FIRST: row 1 returns outcome 'ok' with status 200 and find_matched true for 'UNCITRAL'. This is the POSITIVE CONTROL ON THE LITERAL CHANNEL for this URL. If it is falsified, ROW 2 IS UNINTERPRETABLE and no seat may read row 2's find_matched as a fact about the page's contents. FORECAST B, FALSIFIABLE, GRADED ON ROW 2 AND ONLY IF FORECAST A IS CONFIRMED: row 2 returns find_matched FALSE for 'intellectual property'. WHAT CONFIRMATION LICENSES, EXACTLY AND NO MORE: that excerpt_of found no occurrence of that literal in the tag-stripped text of the body this relay received from this URL at this time. It licenses NOTHING about UNCITRAL Working Group III, nothing about what was discussed at the tenth intersessional meeting, nothing about any document linked from the page, and nothing about whether the multilateral ISDS reform track engages intellectual property - a landing page is mostly logistics and its silence is weak evidence about a work programme. I PRE-REGISTER THAT WEAKNESS NOW so that no seat may inflate a null into a finding about the reform track this afternoon. FALSIFICATION - the literal IS present - is the higher-value outcome: it would put a 400-character window centred on the phrase into the record and would be a genuine lead worth one search, though still only a lead. EITHER WAY THE GAP SLUG IS CLOSED ONLY AS TO 'body unread' AND ONLY TO THE EXTENT OF THE 400 CHARACTERS RETURNED; a returned excerpt establishes what its own 400 characters contain and NOTHING about what lies outside them, and the slug's disposition must say which. PURPOSE 2 - THE PATH specs/icsid.yaml ACTUALLY MAKES ITS CLAIM ABOUT, WHICH IS THE WHOLE OF WHAT IS LEFT OF THE INTAKE QUESTION. Rows 3 and 4 fire https://icsid.worldbank.org/cases/case-database. Yesterday's batch spent four rows on that path's SIBLINGS (/cases/recent and /cases/pending) and left the spec's own path untested; 0906-C3 sustained that as a defect and yesterday's addendum section 5 raised the row's value rather than lowered it, because the sibling result has now REPLICATED on an independent run while the spec's own path remains unexamined. FORECAST C, FALSIFIABLE, GRADED ON ROW 3 AND GRADED FIRST: row 3 returns outcome 'ok' with status 200 and find_matched true for 'ICSID'. Positive control on the literal channel for this URL, the same literal that returned CONFIRMED on both sibling pages yesterday, so the instrument is continuous with the run this row is compared against. If it is falsified, ROW 4 IS UNINTERPRETABLE. FORECAST D, FALSIFIABLE, GRADED ON ROW 4 AND ONLY IF FORECAST C IS CONFIRMED: row 4 returns find_matched TRUE for 'ARB/'. I PREDICT PRESENCE HERE, WHICH IS THE OPPOSITE OF YESTERDAY'S FORECAST D ON THE SIBLINGS, AND I STATE THE REASON BEFORE THE RESULT: yesterday's rows 8 and 10 falsified in a SPLIT - 'ARB/' was present in the tag-stripped body of /cases/recent and absent from /cases/pending, each observed twice - so this council's own evidence is that the presence of case identifiers varies BY PATH on this host, and /cases/case-database is the path the spec names as the case-number intake surface. CONFIRMED licenses exactly this and no more: this URL, fetched by this relay at this time, carries the literal 'ARB/' in the text excerpt_of can see. It licenses NOTHING about whether specs/icsid.yaml's selector or extraction logic is correct, NOTHING about any internal JSON API, NOTHING about what a browser renders, and NOTHING about any case. FALSIFICATION - 'ARB/' absent from the spec's own named path while present on a sibling - is the higher-value outcome and it is a fact about the CHANNEL and about the accuracy of specs/; it goes to Emory as a PROPOSAL and this council builds nothing today. BINDING READING RULE ON ROWS 1-4, AND IT IS THE ONE THIS COUNCIL MOST OFTEN BREAKS: these are CHANNEL DIAGNOSTICS, not discovery. METHODOLOGY Part VIII makes the relay a retrieval channel for what the sources or the record already identified. NO case number, case name, party, claimant, tribunal or matter appearing in ANY excerpt returned by rows 1, 2, 3 or 4 may be entered into this record as a discovered matter, screened, graded on any ring, or carried as a lead today. PENDING LIST UNTOUCHED: no row here bears on the source_analytics.py patch, the health column, the polite_get diagnostic CLI, the IAReporter feed swap, the Kluwer source, the category signal, the build_graph fix or any ledger amendment; all are pending, not granted, and stay zero-budget. THE www.iisd.org FEED IS DELIBERATELY NOT FIRED TODAY. Six observations stand and a seventh buys nothing: the amended Monday prediction is graded this morning on digests/2026-09-07_ISDS-Thematic-Watch/meta.json, which has landed, and that artefact is where the question lives now. A RELAY ROW IS NOT A COLLECTION RUN AND NO SEAT MAY CITE ONE AS IF IT WERE. The Grosse Ruse-Khan article is not re-fired; ten refusals out of ten is enough, its gap slug grosse-ruse-khan-itn-ip-isds-plain-packaging-to-patent-revocation stays open, no seat has read that body, and nothing may be asserted from its title or from a status code. ARB/23/3 and ARB/12/1 are deliberately not fired, for the reasons given in the 2026-09-06 batch, which stand unchanged. STANDING READING RULES, restated because they are the ones this council keeps having to re-learn: a returned excerpt establishes what its own 400 characters contain and NOTHING about what lies outside them; an absent literal establishes that excerpt_of found no match on the returned body - A STATEMENT ABOUT THE FETCH, NOT ABOUT THE RESOURCE; a 404 or non-200 is information about the URL pattern, NEVER about the underlying matter; every count derived from this reduction carries its COMMIT as well as its scope (0903-B2); an unqualified claim about 'the tree' is enumerated with git ls-tree -r <commit> and no path argument (entry 29); a denominator over a mutable register is enumerated or is stated as 'files present in the tree at <commit>' and never as 'committed' (0906-B10, binding practice without a number); and every byte count and sha256 held for a page is a statement about ONE RESPONSE, not about the page, and citations must say which. SHALLOW-CLONE WARNING, BINDING TODAY: git rev-parse --is-shallow-repository returns TRUE in this session, so NO whole-history denominator may be stated from this clone without unshallowing and re-verifying the flag false, or else stated in the windowed form 'over the N commits this clone holds from <TIP>' and never as 'committed' or 'ever' (yesterday's next step 4, which supersedes 0906-B10 on its instrument and not on its principle). MAX_URLS is 12 and truncates REQUESTED rows BEFORE the control is prepended (scripts/fetch_relay.py lines 195-197). THIS BATCH REQUESTS EXACTLY 5 ROWS, well under the cap, so nothing is truncated and the reduction should carry 6 records: the prepended head control, then rows 1-5 in the order listed. A reduction with 'truncated': true, or with any 'requested' count other than 5, or with fewer than 6 records, is an instrument discrepancy and must be reported as one BEFORE any row is read. Note that 'completed' counts only outcome=='ok' rows. Row 5 is a TAIL CONTROL; with the relay's prepended head control it establishes the instrument was live at BOTH ends of the run, which a single head control cannot do. This note was proof-read against the row list below before pushing, because run() copies it into the manifest VERBATIM and a false sentence here is frozen into the evidence and cannot be edited out.",
+  "fetched_at": "2026-09-08T11:18:29.879374+00:00",
+  "environment": "github-actions-runner (run 34219957945)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://uncitral.un.org/en/tenth-intersessional-meeting",
+      "find": "UNCITRAL",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/tenth-intersessional-meeting",
+      "content_type": "text/html",
+      "bytes": 63029,
+      "sha256": "a9468944775f8a024faf398470b6ad5af53ef52ed5af1be3b7612d43ee5c9671",
+      "excerpt": "ional Meeting Tenth Intersessional Meeting 7 to 9 September 2026 The 10th intersessional meeting of UNCITRAL Working Group III will be held in Ninh Binh, Viet Nam . The intersessional meeting will focus on the topics of the standing mechanisms - the permanent tribunal and the permanent appellate tribunal - and the assessment of damages and compensation . Venue: Pullman Ninh Binh Hotel , 128 Le Tha",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://uncitral.un.org/en/tenth-intersessional-meeting",
+      "find": "intellectual property",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://uncitral.un.org/en/tenth-intersessional-meeting",
+      "content_type": "text/html",
+      "bytes": 63029,
+      "sha256": "a9468944775f8a024faf398470b6ad5af53ef52ed5af1be3b7612d43ee5c9671",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database",
+      "content_type": "text/html",
+      "bytes": 75622,
+      "sha256": "134c20048a4257ad84148bf8d662393430d1dea25b8ce1b0bc87db7863255989",
+      "excerpt": "Search Cases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Pr",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database",
+      "find": "ARB/",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database",
+      "content_type": "text/html",
+      "bytes": 75622,
+      "sha256": "134c20048a4257ad84148bf8d662393430d1dea25b8ce1b0bc87db7863255989",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

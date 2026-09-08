@@ -68,12 +68,14 @@ def test_intake_queues_only_the_new_paper_and_records_the_mailbox(mailbox, capsy
     assert rec["mailbox"]["alerts_30d"] == 2
     assert rec["mailbox"]["newest_alert_date"].startswith("2026-09-08")
     assert "trade secret" in rec["mailbox"]["newest_alert_subject"]
+    assert rec["mailbox"]["alert_dates"] == ["2026-09-08", "2026-08-31"]
     assert rec["papers_in_window"] == 3 and rec["queued_new"] == 1
     assert rec["already_seen"] == 1 and rec["already_queued"] == 1
     assert rec["queued_urls"] == ["https://x/new"]
     assert "title" not in json.dumps(rec["queued_urls"])   # no paper text in the record
     out = capsys.readouterr().out
     assert "newest 2026-09-08" in out and "1 queued" in out
+    assert "alert days (30d, newest first): 2026-09-08, 2026-08-31" in out
 
 
 def test_intake_is_idempotent(mailbox):

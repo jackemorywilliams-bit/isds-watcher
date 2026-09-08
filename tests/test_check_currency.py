@@ -174,5 +174,9 @@ def test_a_substantive_commit_is_not_maintenance():
         ["git", "-C", REPO, "show", "--name-only", "--format=", head],
         capture_output=True, text=True).stdout.split("\n")
     files = {l.strip() for l in changed if l.strip()}
-    if files and not (files <= set(cc.TRACKED)):
+    # Marker-only commits (the daily-update `.sent/` files) ARE maintenance
+    # since the 2026-08 currency fix (`_MARKER_PREFIXES`); this test used to
+    # fail whenever HEAD happened to be one of those cron commits.
+    substantive = {f for f in files if not f.startswith(cc._MARKER_PREFIXES)}
+    if substantive and not (substantive <= set(cc.TRACKED)):
         assert not cc._is_maintenance(head)

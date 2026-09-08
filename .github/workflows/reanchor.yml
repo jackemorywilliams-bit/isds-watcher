@@ -27,6 +27,14 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: [main]
+  # Added 2026-09-08. A PR opened by a workflow with the repo token (the cron's
+  # `council: daily meeting` PRs, #149 that day) never fires pull_request
+  # workflows, so it merged un-re-anchored and main's currency job went red at
+  # the next guarded push until a human PR's re-anchor happened to land. Every
+  # push to main now re-anchors main itself. Loop-safe: the re-anchor commit is
+  # `[skip ci]`, and reanchor.py targets the newest NON-maintenance commit.
+  push:
+    branches: [main]
   workflow_dispatch: {}
 
 permissions:
@@ -40,7 +48,7 @@ jobs:
   reanchor:
     # Same-repo only: a fork PR gets a read-only token and cannot push back.
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      github.event_name != 'pull_request' ||
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:

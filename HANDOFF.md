@@ -250,6 +250,9 @@ function `src/models.py:18` directs runtime substitutions to, still has exactly 
 (`src/research_brief.py:161`), which no council seat enters. The table is evidence, not
 instrumentation, and should not be read as the latter.
 
+## Currency anchors (guardrail)
+**Re-anchoring (2026-09-08).** `.github/workflows/reanchor.yml` moves each tracked note's `Audited against` sha in a notes-only `[skip ci]` commit. It runs on every same-repo PR and, since 2026-09-08, on every push to `main` — a PR opened by the cron with the repo token (the daily council PRs) never fires pull_request workflows, so its merge used to leave main's currency job red until the next human PR happened to re-anchor it.
+
 ## Checkpoint — 2026-08-08 master-prompt repair session (uncommitted, branch fix/restore-council-label)
 
 > **Superseded as a statement of current state — read the 2026-08-09 checkpoint below first.**

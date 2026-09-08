@@ -92,3 +92,27 @@ def test_anchor_target_skips_maintenance_commits(monkeypatch):
     monkeypatch.setattr(ra._cc, "_is_maintenance",
                         lambda sha: sha in ("ccccccc", "bbbbbbb"))
     assert ra._anchor_target() == "aaaaaaa"
+
+
+# --- the workflow re-anchors main itself after every merge (2026-09-08) --------
+def test_reanchor_workflow_runs_on_push_to_main_and_on_same_repo_prs():
+    """A bot-opened PR (repo token) never fires pull_request workflows, so its
+    merge left main stale (#149, 2026-09-08). The push trigger closes that.
+    Plain-text assertions on purpose: reanchor.yml's own job installs only
+    pytest, so this test must not import PyYAML."""
+    import os
+    import re
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    with open(os.path.join(repo, ".github", "workflows", "reanchor.yml"), encoding="utf-8") as fh:
+        text = fh.read()
+    on_block = text.split("\njobs:")[0]
+    assert re.search(r"^  push:\s*\n\s+branches:\s*\[main\]", on_block, re.M), \
+        "reanchor.yml must run on push to main"
+    assert re.search(r"^  pull_request:\s*\n(?:.*\n)*?\s+branches:\s*\[main\]", on_block, re.M)
+    assert re.search(r"^  workflow_dispatch:", on_block, re.M)
+    # Any non-PR event (push, dispatch) is admitted; PRs must be same-repo.
+    assert "github.event_name != 'pull_request'" in text
+    # The checkout/push ref falls back to the pushed branch, so a push run
+    # re-anchors main in place, and the commit it makes cannot re-trigger it.
+    assert "github.event.pull_request.head.ref || github.ref_name" in text
+    assert "[skip ci]" in text

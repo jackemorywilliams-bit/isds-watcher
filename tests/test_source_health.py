@@ -430,3 +430,35 @@ def test_quiet_icsid_is_recorded_not_alarmed(monkeypatch):
     assert degraded == []
     assert sh[0]["status"].startswith("QUIET (page live;")
     assert source_health.build_warnings(sh, degraded) == []
+
+
+# --- gmail_scholar probe: date the newest alert instead of "nothing" ------------
+def test_probe_gmail_scholar_without_credentials_gives_no_refinement(monkeypatch):
+    from src.sources import gmail_scholar
+    monkeypatch.setattr(gmail_scholar, "scholar_mailbox_status", lambda days=30: ("inactive", []))
+    assert source_health._probe_gmail_scholar() is None
+
+
+def test_probe_gmail_scholar_unreachable_is_not_read(monkeypatch):
+    from src.sources import gmail_scholar
+    monkeypatch.setattr(gmail_scholar, "scholar_mailbox_status", lambda days=30: ("unreachable", []))
+    assert source_health._probe_gmail_scholar().startswith("NOT-READ (IMAP")
+
+
+def test_probe_gmail_scholar_empty_mailbox_says_check_the_subscriptions(monkeypatch):
+    from src.sources import gmail_scholar
+    monkeypatch.setattr(gmail_scholar, "scholar_mailbox_status", lambda days=30: ("ok", []))
+    label = source_health._probe_gmail_scholar()
+    assert label.startswith("QUIET (IMAP reachable; no Scholar alert mail in 30 days")
+
+
+def test_probe_gmail_scholar_names_the_newest_alert(monkeypatch):
+    from src.sources import gmail_scholar
+    monkeypatch.setattr(gmail_scholar, "scholar_mailbox_status", lambda days=30: ("ok", [
+        {"uid": "9", "date": "2026-09-08T05:16:00+00:00", "subject": "x - new results"},
+        {"uid": "8", "date": "2026-08-31T05:10:00+00:00", "subject": "y - new results"}]))
+    label = source_health._probe_gmail_scholar()
+    assert label.startswith("QUIET (IMAP reachable; 2 Scholar alert(s) in 30d, newest 2026-09-08")
+    # Registered in PROBES (the autouse fixture empties the live dict, so read the source).
+    src = open(source_health.__file__, encoding="utf-8").read()
+    assert '"gmail_scholar": _probe_gmail_scholar,' in src

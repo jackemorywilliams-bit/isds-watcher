@@ -9,6 +9,7 @@
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
 ## What runs, when
+- **scholar-intake** — daily 06:30 UTC (`.github/workflows/scholar-intake.yml`): reads the Scholar alert mailbox, queues new papers for Monday's classification, commits `state/deferred.json` + `analytics/scholar-intake/<date>.json` `[skip ci]`. Added 2026-09-08 because only the weekly run read that mailbox and a Tuesday alert waited six days.
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),
   plus manual `workflow_dispatch`. Concurrency group `isds-watcher` prevents overlap.
 - `.github/workflows/human-review.yml` (the operator's Monday review packet) fires at
@@ -136,7 +137,7 @@ instances — `iisd_itn`, `google_alerts`, `gmail_scholar`, `italaw`, `icsid`,
 `iareporter_headlines`, `unctad_isds`, `pca_press`, `bing_news`, `gdelt`. The table below
 inherits the original build-time scout's scope and so covers eight of them; `google_alerts`
 (operator's own subscribed feeds, polled as RSS) and `gmail_scholar` (credential-gated Scholar
-alerts to a designated mailbox) are documented at `METHODOLOGY.md:33` rather than here. Said
+alerts to a designated mailbox) are documented at `METHODOLOGY. Since 2026-09-08 `gmail_scholar` is also read every morning by the `scholar-intake` workflow, which queues new papers for the weekly run and records the newest alert's date; a zero-item weekly run is probed and says when the last alert arrived.md:33` rather than here. Said
 plainly because the heading claims "current reality" and a reader should not have to infer
 which ten the ten are.
 

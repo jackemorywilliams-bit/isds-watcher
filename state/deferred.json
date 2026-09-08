@@ -1,1 +1,18 @@
-{}
+{
+  "gmail_scholar": {
+    "https://www.degruyterbrill.com/document/doi/10.1515/ael-2022-0055/html": {
+      "attempts": 0,
+      "first_deferred": "2026-09-08T16:53:42.567271+00:00",
+      "intake": {
+        "at": "2026-09-08T16:53:42.567271+00:00",
+        "by": "scholar-intake",
+        "window_days": 3
+      },
+      "last_outcome": "intake",
+      "published": "2026-09-08T05:16:48+00:00",
+      "summary": "N Al-Otaibi, A Farah\u00a0- Accounting, Economics, and Law: A Convivium, 2026 \u2026 investment arbitration and distinguish it from other concepts; identify the UNCITRAL rules on transparency on which it is based; and demonstrate the positive impact transparency has on investment arbitration \u2026 \u2019 need to protect their trade \u2026",
+      "title": "Reassessing Confidentiality Versus Transparency in International Investment Arbitration : A Comparative Critical Review",
+      "url": "https://www.degruyterbrill.com/document/doi/10.1515/ael-2022-0055/html"
+    }
+  }
+}

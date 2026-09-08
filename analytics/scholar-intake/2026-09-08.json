@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "date": "2026-09-08",
+  "at": "2026-09-08T16:53:42.567271+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 9,
+    "newest_alert_date": "2026-09-08T05:16:48+00:00",
+    "newest_alert_subject": "(\"trade secret\" OR \"trade secrets\") (\"investment ... - new results"
+  },
+  "papers_in_window": 1,
+  "queued_new": 1,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://www.degruyterbrill.com/document/doi/10.1515/ael-2022-0055/html"
+  ]
+}

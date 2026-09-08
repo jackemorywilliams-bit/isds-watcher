@@ -181,11 +181,42 @@ def _probe_gdelt() -> "str | None":
     return "NOT-READ (rate-limited by the GDELT API)"
 
 
+def _probe_icsid() -> "str | None":
+    """ICSID posts a handful of releases a month, so three zero windows in a row
+    is ordinary. 2026-09-07's DEGRADED streak was three same-day runs, two of
+    them manual dispatches, with the newest release dated 08-26 — a false alarm
+    the generic "fetchers likely no longer match" text asserted as likely rot.
+    Parse the live page with the fetcher's own code and no window: releases
+    listed -> QUIET naming the newest date; page refused -> NOT-READ; live but
+    nothing parses -> None (real rot, left to the generic alarm). Never raises.
+    """
+    from datetime import datetime, timezone
+    from .sources.base import get_fetch_log
+    from .sources.icsid import BASE_URL, ICSIDSource
+    try:
+        items = ICSIDSource().fetch(datetime(2000, 1, 1, tzinfo=timezone.utc))
+    except Exception:  # noqa: BLE001 - no refinement rather than a crash
+        return None
+    if items:
+        dates = [it.published for it in items if it.published is not None]
+        newest = max(dates).date().isoformat() if dates else "undated"
+        return (f"QUIET (page live; {len(items)} releases listed, newest {newest}; "
+                f"none in the run window)")
+    refusal = next((o for o in get_fetch_log()
+                    if o.get("url") == BASE_URL
+                    and o.get("outcome") in ("refused", "no_contact", "robots_disallowed")),
+                   None)
+    if refusal:
+        return f"NOT-READ (HTTP {refusal.get('detail') or refusal['outcome']} at the origin)"
+    return None
+
+
 PROBES = {
     "iisd_itn": _probe_iisd_itn,
     "google_alerts": _probe_google_alerts,
     "italaw": _probe_italaw,
     "gdelt": _probe_gdelt,
+    "icsid": _probe_icsid,
 }
 
 

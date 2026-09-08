@@ -373,3 +373,60 @@ def test_iisd_itn_is_archive_recoverable_with_a_tight_path_regex():
     assert not spec.path_regex.search("https://www.iisd.org/itn/analysis/")
     assert not spec.path_regex.search("https://www.iisd.org/itn/")
     assert spec.title_suffix.sub("", "Some Article – Investment Treaty News") == "Some Article"
+
+
+# --- icsid probe: a quiet month is not rot --------------------------------------
+# 2026-09-07: icsid hit "DEGRADED (3 zero runs)" on three same-day runs (two of
+# them manual dispatches) while its newest release was dated 08-26 and the live
+# page parsed 20 items. The probe names the quiet instead of asserting rot.
+def _icsid_soup():
+    with open(_os.path.join(_FIX, "icsid_news_events.html"), encoding="utf-8") as fh:
+        return _BS(fh.read(), "html.parser")
+
+
+def test_probe_icsid_page_live_with_releases_is_quiet(monkeypatch):
+    import src.sources.icsid as icsid_mod
+    monkeypatch.setattr(icsid_mod, "fetch_html", lambda url, **kw: _icsid_soup())
+    label = source_health._probe_icsid()
+    assert label.startswith("QUIET (page live; 3 releases listed, newest 2026-07-17")
+
+
+def test_probe_icsid_page_refused_is_not_read(monkeypatch):
+    import src.sources.icsid as icsid_mod
+    _base.reset_fetch_log()
+    _base._record_outcome(icsid_mod.BASE_URL, "refused", "403")
+    monkeypatch.setattr(icsid_mod, "fetch_html", lambda url, **kw: None)
+    assert source_health._probe_icsid().startswith("NOT-READ (HTTP 403")
+
+
+def test_probe_icsid_page_live_but_unparseable_is_generic_rot(monkeypatch):
+    import src.sources.icsid as icsid_mod
+    _base.reset_fetch_log()
+    monkeypatch.setattr(icsid_mod, "fetch_html",
+                        lambda url, **kw: _BS("<html><body><p>nothing</p></body></html>", "html.parser"))
+    assert source_health._probe_icsid() is None
+
+
+def test_probe_icsid_never_raises(monkeypatch):
+    import src.sources.icsid as icsid_mod
+    _base.reset_fetch_log()
+    monkeypatch.setattr(icsid_mod, "fetch_html",
+                        lambda url, **kw: (_ for _ in ()).throw(RuntimeError("boom")))
+    assert source_health._probe_icsid() is None
+
+
+def test_quiet_icsid_is_recorded_not_alarmed(monkeypatch):
+    """End to end through apply_to_source_health: a probed QUIET is not DEGRADED."""
+    import src.sources.icsid as icsid_mod
+    monkeypatch.setattr(icsid_mod, "fetch_html", lambda url, **kw: _icsid_soup())
+    monkeypatch.setattr(source_health, "PROBES", {"icsid": source_health._probe_icsid})
+    assert "icsid" in source_health.ACTIVE_SOURCES
+    sh = [{"name": "icsid", "status": "RETURNED", "count": 0}]
+    # The run's own zero is already in the streak when the guard runs (see
+    # test_degraded_status_at_three_zero_runs): this is the 2026-09-07 state.
+    health = {"sources": {"icsid": {"zero_streak": 3, "last_nonzero": "2026-08-31",
+                                    "last_run": "2026-09-07"}}}
+    degraded = source_health.apply_to_source_health(sh, health)
+    assert degraded == []
+    assert sh[0]["status"].startswith("QUIET (page live;")
+    assert source_health.build_warnings(sh, degraded) == []

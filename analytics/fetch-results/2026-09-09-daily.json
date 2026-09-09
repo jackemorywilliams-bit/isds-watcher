@@ -1,0 +1,93 @@
+{
+  "request": "2026-09-09-daily.json",
+  "note": "2026-09-09 daily batch. Written and pushed by the chairman BEFORE any seat was convened, so every forecast below is pre-registered rather than fitted; commit order proves the ordering and nothing else. EGRESS PROBES AT SESSION OPEN, three probes on two channels, all dead and all on NEUTRAL CONTROLS: curl https://example.com/ and curl https://example.org/ both returned 'CONNECT tunnel failed, response 403' (exit 56), and the fetch service returned EGRESS_BLOCKED on the neutral control https://example.com/. No state change from the constraint established 2026-08-02 and 2026-08-03. Web search is alive. THIS RELAY IS THEREFORE THE ONLY RETRIEVAL CHANNEL THIS SESSION HAS, and every row below is a fact about the relay's fetch and about nothing else; no fetch-layer status in today's record is a claim about any resource. SCOPE: yesterday's next step 2 directs four relay rows 'serving open_threads[5] and nothing else' and names the two URLs and the two literals below. This batch is that instruction executed unchanged - four research rows plus one tail control, five requested rows in total. I have widened nothing and I have substituted nothing. THE CORPUS SCREEN, RUN BEFORE THIS NOTE WAS WRITTEN, AND ITS RESULT STATED HERE RATHER THAN CERTIFIED: yesterday's C-1 was sustained against a chairman who froze the word 'untested' into a note about a URL this council had already fired. The adopted remedy is an exact-URL and exact-literal screen of analytics/fetch-results/*.json, and it is the chairman's to run. I ran it over EVERY record in EVERY reduction at session tip ec4ca67 - 412 rows across 51 reductions, counted by the enumeration and not read off a display - and the result is: https://icsid.worldbank.org/cases/recent HAS been fired, twice, on 2026-09-07 (records 7 and 8: find 'ICSID' matched, find 'ARB/' matched, both 362084 bytes, sha256 4af84337...); https://icsid.worldbank.org/cases/pending HAS been fired, twice, on 2026-09-07 (records 9 and 10: find 'ICSID' matched, find 'ARB/' UNMATCHED, both 74431 bytes, sha256 ecbd32d6...); and the literal 'Netherlands' has NEVER been fired at ANY url in the corpus - zero rows of 412. THEREFORE THE ONLY UNTESTED THING IN THIS BATCH IS THE SUBSTANTIVE LITERAL. Neither URL is new, and both 'ICSID' rows below are DELIBERATE RE-FIRES serving as positive controls, not as discovery. No seat may read this batch as an examination of unexamined paths, and no sentence in today's record may say these paths were untested. PURPOSE - open_threads[5], THE WINGTECH STANDING WATCH, AND ONLY THAT. open_threads[5] reads 'Monthly standing watch: does the ICSID pending-cases docket register a Wingtech v. Netherlands proceeding?' Yesterday's analyst found the check six weeks overdue, ran it as a domain-restricted web search, and returned a null; GAP-UNRESOLVED: wingtech-netherlands-icsid-registration-not-found was opened on that null with the closure condition 'an ICSID case number, or one relay row on an allowlisted ICSID path returning it'. These four rows are the second limb of that closure condition attempted through the retrieval channel rather than the search channel. FORECAST A, FALSIFIABLE, GRADED ON ROW 1 AND GRADED FIRST: row 1 returns outcome 'ok' with status 200 and find_matched true for 'ICSID' on https://icsid.worldbank.org/cases/recent. POSITIVE CONTROL ON THE LITERAL CHANNEL for this URL. If it is falsified, ROW 2 IS UNINTERPRETABLE and no seat may read row 2's find_matched as a fact about the page's contents. FORECAST B, FALSIFIABLE, GRADED ON ROW 2 AND ONLY IF FORECAST A IS CONFIRMED: row 2 returns find_matched FALSE for 'Netherlands' on that URL. I PREDICT ABSENCE, and I state the reason before the result: /cases/recent returned 362084 bytes on 2026-09-07 with 'ARB/' PRESENT in the tag-stripped body, so the page does serve case identifiers to a plain GET and a respondent State name is the kind of literal it could carry; but the thread's own question has returned null on every channel tried for 147 days, and the base rate for this thread is null. FALSIFICATION - 'Netherlands' PRESENT - is the higher-value outcome and would return a 400-character window that is A LEAD AND NOT A DOCKET. WHAT CONFIRMATION LICENSES, EXACTLY AND NO MORE: that excerpt_of found no occurrence of the literal 'Netherlands' in the tag-stripped text of the body this relay received from this URL at this time. IT LICENSES NOTHING WHATEVER ABOUT WHETHER ANY WINGTECH PROCEEDING IS REGISTERED, nothing about whether the Netherlands is a respondent in any ICSID matter, and nothing about the contents of any docket. A recent-cases listing is a WINDOW ONTO A REGISTER, not the register. I PRE-REGISTER THAT WEAKNESS NOW so that no seat may convert a null row into a finding about the docket this afternoon. FORECAST C, FALSIFIABLE, GRADED ON ROW 3 AND GRADED FIRST FOR ITS PAIR: row 3 returns outcome 'ok' with status 200 and find_matched true for 'ICSID' on https://icsid.worldbank.org/cases/pending. POSITIVE CONTROL. If it is falsified, ROW 4 IS UNINTERPRETABLE. FORECAST D, FALSIFIABLE, GRADED ON ROW 4 AND ONLY IF FORECAST C IS CONFIRMED: row 4 returns find_matched FALSE for 'Netherlands' on https://icsid.worldbank.org/cases/pending. I PREDICT ABSENCE AND I PRE-REGISTER THAT THIS ROW IS THE WEAKER OF THE TWO, WHICH IS THE OPPOSITE OF WHAT ITS URL NAME SUGGESTS: /cases/pending is the path whose NAME matches the thread's question, but this council's own evidence from 2026-09-07 is that 'ARB/' was UNMATCHED on that body at 74431 bytes while it MATCHED on /cases/recent at 362084 bytes. The natural reading is that /cases/pending does not serve per-case rows into the text excerpt_of can see - and if case identifiers are not reachable there, A RESPONDENT NAME PROBABLY IS NOT EITHER, and a false find on row 4 is close to UNINFORMATIVE ABOUT THE DOCKET. That is 0906-B6's defect - a literal unreachable by construction - and I am naming it in advance rather than discovering it in the vetting round. Row 4 is fired anyway because next step 2 directs it and because a FALSIFICATION there would be genuinely surprising and genuinely valuable; but its CONFIRMATION carries almost no weight and no seat may spend it as though it did. INSTRUMENT SEMANTICS, RE-READ FROM scripts/fetch_relay.py TODAY RATHER THAN CARRIED FROM MEMORY: excerpt_of deletes script and style blocks, then every remaining tag, then normalises whitespace, and searches the WHOLE resulting body case-insensitively; find_matched is true if and only if that search returns a non-empty window. A literal living only inside a script block, a style block or an HTML attribute is UNREACHABLE BY CONSTRUCTION and its absence proves nothing about the page. NOTE ALSO that the search is CASE-INSENSITIVE, so row 2 and row 4 will match 'netherlands' and 'NETHERLANDS' as well as 'Netherlands', and a confirmation is therefore a stronger null than a case-sensitive one would be. BINDING READING RULE ON ROWS 1-4: these are CHANNEL DIAGNOSTICS SERVING ONE NAMED THREAD, not discovery. METHODOLOGY Part VIII makes the relay a retrieval channel for what the sources or the record already identified. NO case number, case name, party, claimant, tribunal or matter appearing in ANY excerpt returned by rows 1, 2, 3 or 4 may be entered into this record as a discovered matter, screened, graded on any ring, or carried as a lead today - INCLUDING any matter that appears in a window returned by a falsified forecast B or D. If 'Netherlands' matches, the window will very likely name a matter; that matter is a LEAD for a future session's docket check and is not screened today. PENDING LIST UNTOUCHED: no row here bears on the source_analytics.py patch, the health column, the polite_get diagnostic CLI, the IAReporter feed swap, the Kluwer source, the category signal, the build_graph fix or any ledger amendment; all are pending, not granted, and stay zero-budget. THE www.iisd.org FEED IS DELIBERATELY NOT FIRED TODAY: six observations stand, the Grosse Ruse-Khan gap slug stays open, no seat has read that body, and nothing may be asserted from its title or from a status code. A RELAY ROW IS NOT A COLLECTION RUN AND NO SEAT MAY CITE ONE AS IF IT WERE. ARB/23/3 and ARB/12/1 are deliberately not fired, for the reasons given in the 2026-09-06 batch, which stand unchanged. STANDING READING RULES, restated because they are the ones this council keeps having to re-learn: a returned excerpt establishes what its own 400 characters contain and NOTHING about what lies outside them; an absent literal establishes that excerpt_of found no match on the returned body - A STATEMENT ABOUT THE FETCH, NOT ABOUT THE RESOURCE; a 404 or non-200 is information about the URL pattern, NEVER about the underlying matter; every count derived from this reduction carries its COMMIT as well as its scope (0903-B2); a denominator over a mutable register is enumerated or is stated as 'files present in the tree at <commit>' and never as 'committed' (0906-B10); and every byte count and sha256 held for a page is a statement about ONE RESPONSE, not about the page, and citations must say which - which is why the 2026-09-07 byte counts above are attributed to those two responses and not to those two pages. SHALLOW-CLONE WARNING, BINDING TODAY: git rev-parse --is-shallow-repository returns TRUE in this session, so NO whole-history denominator may be stated from this clone without unshallowing and re-verifying the flag false, or else stated in the windowed form 'over the N commits this clone holds from <TIP>' and never as 'committed' or 'ever'. MAX_URLS is 12 and truncates REQUESTED rows BEFORE the control is prepended (scripts/fetch_relay.py lines 195-197). THIS BATCH REQUESTS EXACTLY 5 ROWS, well under the cap, so nothing is truncated and the reduction should carry 6 records: the prepended head control, then rows 1-5 in the order listed. A reduction with 'truncated': true, or with any 'requested' count other than 5, or with fewer than 6 records, is an instrument discrepancy and must be reported as one BEFORE any row is read. Note that 'completed' counts only outcome=='ok' rows. Row 5 is a TAIL CONTROL; with the relay's prepended head control it establishes the instrument was live at BOTH ends of the run, which a single head control cannot do. This note was proof-read against the row list below before pushing, because run() copies it into the manifest VERBATIM and a false sentence here is frozen into the evidence and cannot be edited out.",
+  "fetched_at": "2026-09-09T11:19:55.176614+00:00",
+  "environment": "github-actions-runner (run 34344935760)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362084,
+      "sha256": "f309eb63dded9667bac6e59deafacc33d303bf9e6d0b424aff56d7b329c30261",
+      "excerpt": "Recent Cases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Pr",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "Netherlands",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362084,
+      "sha256": "f309eb63dded9667bac6e59deafacc33d303bf9e6d0b424aff56d7b329c30261",
+      "excerpt": "thers v. Swiss Confederation (ICSID Case No. ARB/26/4) January 15, 2026 Shell PLC v. Kingdom of the Netherlands (ICSID Case No. ARB/26/2) January 7, 2026 Hiroshi Osumi v. Swiss Confederation (ICSID Case No. ARB/26/1) January 6, 2026 Ntega Holding Burundi S.A. v. Republic of Burundi (ICSID Case No. ARB(AF)/26/1) December 22, 2025 Nimba Investment LLC and others v. Republic of Guinea (ICSID Case No.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/pending",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/pending",
+      "content_type": "text/html",
+      "bytes": 74430,
+      "sha256": "712196eac55f92d270525dce8ef162ac66ebc57cea6852578e8786c0073171ba",
+      "excerpt": "Pending Cases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation P",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/pending",
+      "find": "Netherlands",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/pending",
+      "content_type": "text/html",
+      "bytes": 74430,
+      "sha256": "712196eac55f92d270525dce8ef162ac66ebc57cea6852578e8786c0073171ba",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

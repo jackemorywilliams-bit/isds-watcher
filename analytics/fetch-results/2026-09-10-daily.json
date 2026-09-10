@@ -1,0 +1,67 @@
+{
+  "request": "2026-09-10-daily.json",
+  "note": "2026-09-10 daily batch. Written and pushed by the chairman BEFORE any seat was convened, so every forecast below is pre-registered rather than fitted; commit order proves the ordering and nothing else. EGRESS PROBES AT SESSION OPEN, three probes on two channels, ALL DEAD and ALL ON NEUTRAL CONTROLS: curl https://example.com -> 'CONNECT tunnel failed, response 403' (exit 56); curl https://www.iana.org/help/example-domains -> same; the fetch service returned EGRESS_BLOCKED on the neutral control https://example.com. The proxy's own status endpoint names both hosts at 2026-09-10T11:12:52Z/11:12:53Z with kind 'connect_rejected' and detail 'gateway answered 403 to CONNECT', so the refusal is the gateway's and not any site's. No state change from the constraint established 2026-08-02 and 2026-08-03. THIS RELAY IS THEREFORE THE ONLY RETRIEVAL CHANNEL THIS SESSION HAS, and every row below is a fact about the relay's fetch and about nothing else; NO fetch-layer status in today's record is a claim about any resource. SCOPE: yesterday's next step 2 directs two relay rows and names this URL and these two literals. This batch is that instruction executed unchanged - two research rows plus one tail control. Nothing widened, nothing substituted. THE EXTENDED CORPUS SCREEN, RUN BEFORE THIS NOTE WAS WRITTEN AND ITS RESULT STATED HERE RATHER THAN CERTIFIED: yesterday's C-3 was sustained against a chairman who screened a batch's LITERALS and not the RIGID DESIGNATOR of the thread the batch claimed to serve, and so certified a batch that could not have closed its thread. The adopted remedy is screened here over EVERY record in EVERY reduction present in the tree at 6df6114 (analytics/fetch-results subtree 6f0f56a4) - 52 reductions, 418 records, counted by enumeration and not read off a display. Results: literal 'ICSID' 6 rows, most recently /cases/recent on 2026-09-09 (matched, sha256 f309eb63) and /cases/pending on 2026-09-09 (matched, sha256 712196ea); literal 'Wingtech' 0 rows of 418; the RIGID DESIGNATOR 'Wingtech' in ANY field of ANY record 0 rows, and 'Nexperia' 0 rows; the URL https://icsid.worldbank.org/cases/recent 4 rows across 2 reductions (2026-09-07 sha256 4af84337, 2026-09-09 sha256 f309eb63). THEREFORE: the URL is NOT new and row 1 is a DELIBERATE RE-FIRE serving as a positive control, not discovery; the only untested thing in this batch is the substantive literal; and the substantive literal IS the rigid designator of the thread this batch serves, which is what yesterday's batch failed to be. BINDING READING RULE, pre-registered and deliberately narrower than the question it serves: a null on row 2 licenses ONLY that excerpt_of found no occurrence of the literal 'Wingtech' in the tag-stripped, whitespace-collapsed rendering of the body this relay received from this URL at this time. It does NOT close open_threads[5], does NOT establish that no such proceeding is registered anywhere, and does NOT narrow the gap; the closure condition is unchanged and unwidened. A match licenses only that at least one occurrence is present in that rendering. NO case number, party, tribunal or matter appearing in ANY excerpt may be entered as a discovered matter, screened, graded on any ring, or carried as a lead - INCLUDING in the candidate-claims block, which yesterday's officer established the reading rule had been silent on. FORECASTS, pre-registered: F1 - row 1 matches, find_matched true, HTTP 200; high confidence, it has matched at this URL twice. F2 - row 2 returns find_matched false; high confidence, and I state plainly that F2 being RIGHT buys nothing - the informative outcome is F2 falsified. F3 - the reduction carries 4 records, requested 3, and completed 3 NOT 4, because run() builds records as [fetch_one(CONTROL_URL)] plus one append per requested url (scripts/fetch_relay.py:198-207) and computes completed as sum(1 for r in records[1:] if r['outcome']=='ok') at :221, EXCLUDING the prepended head control; I drafted this forecast as '2, not 3' and corrected it before pushing by reading the lines rather than the note, having applied the exclusion twice. F4 - THIS REDUCTION WILL BE OVERWRITTEN IN PLACE BY TODAY'S OWN MERGE: fetch-relay.yml triggers on push to analytics/fetch-requests/** with NO branches: filter, and run() writes to out_dir/request_path.name with no existence check, so merging this request file to main re-fires this batch and writes over this reduction; the post-merge blob will carry a different environment run id and a later fetched_at while the substantive sha256 stays equal. This is the first time this council has PRE-REGISTERED that overwrite instead of discovering it afterwards. ROW 3 IS A TAIL CONTROL AND IS NAMED CORRECTLY: the MANDATORY control is prepended automatically by run() at :198 and is not something a request file supplies; row 3 is a SECOND control at the END of the run, testing that egress held for the run's whole duration rather than only at its start, and it is redundant against the head control by construction.",
+  "fetched_at": "2026-09-10T11:17:37.181145+00:00",
+  "environment": "github-actions-runner (run 34470490415)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362310,
+      "sha256": "470b88788b480bd032d7f5d8b117d67dadf3e4fe6df66fb6bd8041721f54e3ed",
+      "excerpt": "Recent Cases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Pr",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "Wingtech",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362310,
+      "sha256": "470b88788b480bd032d7f5d8b117d67dadf3e4fe6df66fb6bd8041721f54e3ed",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

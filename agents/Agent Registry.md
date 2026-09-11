@@ -519,6 +519,31 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-09-11** — Registry read at `948947b` (`origin/main`) for the **row L close-out of the
+  operator-mandated special session of 2026-09-10**
+  (`analytics/daily-research/2026-09-10-special-session.md`). **No roster change and no contract
+  change**, and the session did not propose one: nothing under `.claude/agents/`, `prompts/` or
+  `src/models.py` was touched by any of the six PRs opened out of the assignment table
+  (**#160**–**#165**, all open and unmerged at the time of writing), and this seat did not edit
+  them either. What changed here is the **adopted-method-rules** table: one row for **fabrication
+  taxonomy entry 30, untested counterfactual**, adopted in session 2026-09-10 and filed at the
+  next free number because the number it was adopted under — **27** — has been issued twice
+  before; one row **reserving 31 and 32 for two proposals that are NOT adopted**, so the next
+  entry cannot take a number a proposal is already using; and two rows restating rules the session
+  made binding on the *escalation wording* rather than only on findings — **a grep establishes
+  absence from the repository, never from the project**, and **agreement between seats is not
+  corroboration**. **Four real subagents deliberated** — [[research-analyst]],
+  [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]] (Claude Opus
+  4.8) — a declared departure from the daily meeting's two-seat Rule 0, with the operator's
+  convening instruction as the precedence (`…special-session.md:18-34`); [[analytics-officer]] did
+  not sit and holds row **K** regardless. Dated detail, the six PRs and the seven operator-gated
+  items are in [[Project Change Log]]; the threads opened are **S1–S9** in [[Workflow Threads]].
+  **One correction this seat owes the record:** the deployment brief for this close-out described
+  the taxonomy heading in [[integrity-officer]] as reading *"24 entries as of 2026-08-04"*. It does
+  not, and has not since 2026-08-07 — it read *"29 entries as of 2026-09-07"* at `4eb3fc9`, three
+  days before the session, and the only occurrence of the "24 entries" string in that file is
+  inside the 2026-08-07 collision narrative, quoting what *that* session found. The heading was
+  not the cause of this collision.
 - **2026-09-04** — Registry re-audited against `c2558d9` (`main`, clean tree, complete
   **983**-commit history after `git fetch --unshallow`; the container's clone arrived shallow at
   **173**, the fifth consecutive recurrence). **No roster change and no contract change, and this

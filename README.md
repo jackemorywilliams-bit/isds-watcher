@@ -82,7 +82,7 @@ Every Monday, an annotated-bibliography digest goes to the configured recipient.
 surfaced development appears as a citation, a short descriptive-and-evaluative annotation,
 the rings it matched, and — where the source text was reachable — a quoted notable line from
 it. Entries drawn from a paywalled feed carry no quotation, are marked headline-only, and
-were assessed from the headline alone; 10 of the 14 entries archived so far are in that
+were assessed from the headline alone; 12 of the 17 entries archived so far are in that
 category. The same content is committed to the repository under
 `digests/YYYY-MM-DD_ISDS-Thematic-Watch/`, with one Markdown file per entry, and is
 published to the website.
@@ -220,18 +220,28 @@ the six map-of-content hubs link every note; regenerate the map on demand with
 
 ### Source scope: what is read in full, in headline, or not at all
 
-Sources fall into three tiers of access depth, and this is stated openly rather than implied:
+Sources fall into tiers of access depth, and this is stated openly rather than implied.
+All ten appear below; the tiers are kept in step with the code by
+[analytics/source-inventory.md](analytics/source-inventory.md), which is generated from
+`src/sources/__init__.py::all_sources()`:
 
-- **Read in FULL** — the ICSID docket, UNCTAD (ISDS Navigator and World Investment Report),
-  the italaw archive, IISD Investment Treaty News, and the operator's own Google Alerts and
-  Google Scholar feeds. The instrument fetches and reads the linked pages in full where the
-  publisher allows.
-- **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled, so only the title and lead
-  are scored. Genuinely on-theme IAReporter items can under-score when the dispositive detail
+- **Read in FULL at intake** — IISD Investment Treaty News, whose feed carries the article
+  body itself, so the item is scored on its text.
+- **Read as a LISTING, then in full when ranked** — the ICSID docket, the italaw archive,
+  UNCTAD (ISDS Navigator and World Investment Report), PCA press releases, Bing News, GDELT,
+  and the operator's own Google Alerts and Google Scholar feeds. Each yields a title or a
+  short summary; the linked page is fetched and read in full when the item ranks high enough
+  (`src/enrich.py`), where the publisher allows.
+- **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled and is never fetched
+  (`HEADLINE_ONLY_SOURCES`, `NO_BODY_FETCH`), so only the title and lead are scored.
+  Genuinely on-theme IAReporter items can under-score when the dispositive detail
   sits in the body the instrument cannot read; those surface as watch-list leads, not matches.
 - **RETIRED** — Google News RSS, permanently disallowed by its `robots.txt` and therefore
   inactive (honored, not circumvented), along with any individual page denied by robots or
-  login.
+  login. It is not in the roster and is not one of the ten.
+
+Two of the ten — Google Alerts and Google Scholar — are feeds inside the operator's own
+Google account and cannot be re-run or audited by anyone else, as above.
 
 Access is also reported per run, never assumed. Every fetch records its outcome, so a source
 that attempted HTTP, read nothing and yielded nothing is reported as `NOT-READ (reason)` in

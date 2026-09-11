@@ -989,19 +989,59 @@ def _build_stamp() -> dict:
 
 
 def archive_status(digests: list[Digest]) -> dict:
-    """The homepage status line's numbers, summed from the archived runs.
+    """Every number the site states about the archive, summed from the archive.
 
-    Generated rather than written so the line can never drift from the record:
-    ``runs`` is how many runs are archived, ``screened`` how many candidates they
-    evaluated in total, ``matches`` how many of those reached the relevance
-    threshold, and ``surfaced`` how many items were shown in a digest at all
-    (matches plus watch-list near-misses).
+    Generated rather than written so no sentence can drift from the record. Four
+    RUN counts: ``runs`` is how many runs are archived, ``screened`` how many
+    candidates they evaluated in total, ``matches`` how many of those reached the
+    relevance threshold, and ``surfaced`` how many entries were shown in a digest
+    at all (matches plus watch-list near-misses) — one per published article file.
+
+    And five ITEM counts, keyed on the entry's ``Link`` so a page published in two
+    runs is one development, read from the ``- **Rings matched:**`` field of
+    ``digests/*/articles/*.md`` exactly as ``parse_article`` reads it:
+    ``distinct`` is how many developments those entries describe;
+    ``rings_zero`` / ``rings_one`` / ``rings_many`` how many of them carry no
+    ring, one ring, two or more; and ``contradictory`` how many were published
+    more than once with DIFFERENT ring lists. A contradictory development is
+    counted in that bucket ALONE and in none of the ring buckets — there is no
+    honest ring count for an item the instrument classified two ways, and
+    averaging or preferring one reading would publish a verdict nobody reached.
+    The five partition ``distinct`` exactly.
+
+    ``screened`` is the sum of screening events across the archived runs, which
+    is the only total the archive supports: same-day re-runs overwrite a run's
+    ``meta.json`` in place, so the archive retains the last run of a date rather
+    than every run of it, and no cross-run de-duplicated candidate total exists.
     """
+    by_url: dict[str, set[tuple[str, ...]]] = {}
+    for d in digests:
+        for e in d.entries:
+            by_url.setdefault(e.url.strip(), set()).add(tuple(sorted(e.rings)))
+
+    rings_zero = rings_one = rings_many = contradictory = 0
+    for readings in by_url.values():
+        if len(readings) > 1:
+            contradictory += 1
+            continue
+        n_rings = len(next(iter(readings)))
+        if n_rings == 0:
+            rings_zero += 1
+        elif n_rings == 1:
+            rings_one += 1
+        else:
+            rings_many += 1
+
     return {
         "runs": len(digests),
         "screened": sum(d.screened or 0 for d in digests),
         "matches": sum(d.matches or 0 for d in digests),
         "surfaced": sum(d.accepted or 0 for d in digests),
+        "distinct": len(by_url),
+        "rings_zero": rings_zero,
+        "rings_one": rings_one,
+        "rings_many": rings_many,
+        "contradictory": contradictory,
     }
 
 
@@ -1042,6 +1082,15 @@ def build() -> int:
     digests = collect_digests()
     print(f"  parsed {len(digests)} digest(s)")
 
+    # Every page may state an archive number, and every page must state the same
+    # one. `status` is therefore a GLOBAL, like repo_url in make_env(): passing it
+    # as a per-render keyword reached the landing page only, which is how
+    # index.html.j2 came to render 16/492 live at the top of the page and a
+    # hand-written "11 runs across 347 screenings" further down the same page.
+    env.globals["status"] = archive_status(digests)
+    print("  archive status: " + ", ".join(
+        f"{k}={v}" for k, v in env.globals["status"].items()))
+
     memo = parse_methodology(METHODOLOGY_MD)
 
     DOCS.mkdir(parents=True, exist_ok=True)
@@ -1055,7 +1104,6 @@ def build() -> int:
             root="",
             digests=digests,
             ring_labels=RING_LABELS,
-            status=archive_status(digests),
         ),
     )
 

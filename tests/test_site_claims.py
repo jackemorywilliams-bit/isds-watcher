@@ -28,8 +28,10 @@ def bs():
     return importlib.import_module("build_site")
 
 
-# The eleven archived runs as of 2026-08-03, in date order. Kept literal so the
-# expected sentence below can be read against real numbers rather than fixtures.
+# A FROZEN fixture: the eleven archived runs as of 2026-08-03, in date order. Kept
+# literal so the expected readout sentences below can be asserted verbatim. It is
+# NOT the live archive — that is read by collect_digests(), and any test about what
+# the site currently states must use the live archive, never this list.
 ARCHIVE = [
     {"date": "2026-06-09", "screened": 78, "accepted": 2, "matches": 0},
     {"date": "2026-06-10", "screened": 79, "accepted": 2, "matches": 0},
@@ -120,20 +122,169 @@ def test_chart_titles_do_not_say_weekly(bs):
 
 
 # --------------------------------------------------------------------------- #
-# The homepage status line
+# The archive counters
+#
+# Every number the site states about the archive comes from archive_status(), and
+# every one of them was, until 2026-09-10, ALSO written by hand somewhere else.
+# The hand-written copies said eleven runs and 347 screenings: true through
+# 2026-08-03, wrong from 2026-08-10, and published on the same page as the live
+# 16/492 for five weeks. These tests hold the two halves together — the function
+# must measure the committed archive, and no template may state the answer itself.
 # --------------------------------------------------------------------------- #
-def test_archive_status_is_summed_from_the_record(bs):
-    class D:
-        def __init__(self, s, m, a):
-            self.screened, self.matches, self.accepted = s, m, a
+def _entry(bs, url, rings):
+    return bs.Entry(
+        number=1, title="t", source="s", read_original_url=url, date="",
+        url=url, relevance=25, band="WATCH", rings=list(rings), ring_labels=[],
+        tags=[], citation="", annotation="", notable_line="")
 
-    digests = [D(r["screened"], r["matches"], r["accepted"]) for r in ARCHIVE]
-    assert bs.archive_status(digests) == {
-        "runs": 11, "screened": 347, "matches": 0, "surfaced": 14}
-    assert bs.archive_status([]) == {
-        "runs": 0, "screened": 0, "matches": 0, "surfaced": 0}
+
+def _digest(bs, date, screened, matches, accepted, entries=()):
+    return bs.Digest(
+        date=date, slug=f"{date}_ISDS-Thematic-Watch", title="", summary_html="",
+        entries=list(entries), surfaced=len(entries), accepted=accepted,
+        matches=matches, screened=screened)
+
+
+# Measured from the archive as committed, 2026-09-10 — sixteen meta.json files and
+# seventeen article files. Written out so a reader can check the numbers against
+# the repository rather than against the function that computes them.
+COMMITTED = {"runs": 16, "screened": 492, "matches": 0, "surfaced": 17,
+             "distinct": 16, "rings_zero": 7, "rings_one": 8, "contradictory": 1}
+
+
+def test_archive_status_measures_the_committed_archive(bs):
+    """The eight numbers, on the real archive. The council's Rule 1 figures are
+    16 runs / 492 screened / 0 matches / 17 surfaced; the ring split is 7 with no
+    ring, 8 with one, and one development published twice with different rings
+    (italaw.com/cases/12153, 2026-06-09 and 2026-06-10)."""
+    status = bs.archive_status(bs.collect_digests())
+    assert {k: status[k] for k in COMMITTED} == COMMITTED
+    # The five item buckets partition the distinct developments exactly: nothing
+    # is double-counted and nothing falls out.
+    assert (status["rings_zero"] + status["rings_one"] + status["rings_many"]
+            + status["contradictory"]) == status["distinct"]
+    # 'surfaced' counts published ENTRIES (meta.json), 'distinct' counts the
+    # developments they describe. The gap is the duplicate, and it is exactly one.
+    assert status["surfaced"] - status["distinct"] == 1
+
+
+def test_archive_status_sums_the_run_counts(bs):
+    digests = [_digest(bs, r["date"], r["screened"], r["matches"], r["accepted"])
+               for r in ARCHIVE]
+    status = bs.archive_status(digests)
+    assert (status["runs"], status["screened"], status["matches"],
+            status["surfaced"]) == (11, 347, 0, 14)
+    empty = bs.archive_status([])
+    assert all(v == 0 for v in empty.values())
     # A run whose counts were never recorded must not crash the status line.
-    assert bs.archive_status([D(None, None, None)])["screened"] == 0
+    assert bs.archive_status([_digest(bs, "2026-01-01", None, None, None)])["screened"] == 0
+
+
+def test_a_page_published_twice_with_different_rings_is_contradictory_not_counted_twice(bs):
+    """The instrument's own published evidence on classification stability. It
+    must not be resolved by preferring a reading, and it must not be counted in
+    both ring buckets — which is what 'six with a ring and six with none' out of
+    thirteen did before this function existed."""
+    url = "https://example.test/case/1"
+    a = _digest(bs, "2026-01-01", 10, 0, 1, [_entry(bs, url, ["judicial_or_regulatory_measure"])])
+    b = _digest(bs, "2026-01-02", 10, 0, 1, [_entry(bs, url, [])])
+    status = bs.archive_status([a, b])
+    assert status["distinct"] == 1
+    assert status["contradictory"] == 1
+    assert status["rings_zero"] == status["rings_one"] == status["rings_many"] == 0
+    # The same page twice with the SAME reading is one settled development.
+    c = _digest(bs, "2026-01-02", 10, 0, 1,
+                [_entry(bs, url, ["judicial_or_regulatory_measure"])])
+    agreed = bs.archive_status([a, c])
+    assert (agreed["distinct"], agreed["contradictory"], agreed["rings_one"]) == (1, 0, 1)
+
+
+def test_two_rings_do_not_land_in_the_one_ring_bucket(bs):
+    status = bs.archive_status([_digest(bs, "2026-01-01", 5, 0, 1, [
+        _entry(bs, "https://example.test/a", ["ip_as_investment",
+                                              "judicial_or_regulatory_measure"])])])
+    assert (status["rings_many"], status["rings_one"], status["rings_zero"]) == (1, 0, 0)
+
+
+# The counter literals that were live on 2026-09-10, with the run they stopped
+# being true on. A template may not contain any of them again, in any page: they
+# are answers, and the template's job is to ask.
+STALE_COUNTERS = [
+    ("347", "screenings through 2026-08-03; 492 by 2026-09-07"),
+    ("11 runs", "runs archived through 2026-08-03; 16 by 2026-09-07"),
+    ("eleven", "the run count in words"),
+    ("thirteen", "distinct developments through 2026-08-03; 16 by 2026-09-07"),
+    ("fourteen", "published entries through 2026-08-03; 17 by 2026-09-07"),
+]
+
+
+@pytest.mark.parametrize("literal,why", STALE_COUNTERS)
+def test_no_template_writes_an_archive_count_by_hand(literal, why):
+    hits = []
+    for path in sorted(TEMPLATES.glob("*.j2")):
+        for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if literal in line.lower():
+                hits.append(f"{path.relative_to(REPO)}:{i}: {line.strip()[:120]}")
+    assert not hits, (
+        f"a template states an archive count by hand ({literal} — {why}); render it "
+        f"from `status` so it cannot drift:\n" + "\n".join(hits))
+
+
+# --------------------------------------------------------------------------- #
+# The binding itself: every archive count on the site must MOVE when the archive
+# moves. A literal that happens to be right today passes every other test in this
+# file; only a render against a different archive tells the two apart.
+# --------------------------------------------------------------------------- #
+def _render_with_status(bs, template_name, status, **ctx):
+    env = bs.make_env()
+    env.globals["status"] = status
+    return env.get_template(template_name).render(**ctx)
+
+
+FICTION = {"runs": 7654, "screened": 8765, "matches": 9876, "surfaced": 6543,
+           "distinct": 5432, "rings_zero": 4321, "rings_one": 3219,
+           "rings_many": 2198, "contradictory": 1987}
+
+
+def test_index_counts_follow_the_archive_and_are_not_written_in(bs):
+    real = bs.archive_status(bs.collect_digests())
+    page = _render_with_status(bs, "index.html.j2", FICTION,
+                               active="home", root="", digests=[],
+                               ring_labels=bs.RING_LABELS)
+    # Every fabricated number must reach the page …
+    for key in ("runs", "screened", "matches"):
+        assert str(FICTION[key]) in page, f"index.html.j2 does not render status.{key}"
+    # … and no real archive number may survive a render that was never given it.
+    assert f"{real['runs']} runs across {real['screened']}" not in page
+    assert f"{real['screened']} screenings" not in page
+
+
+def test_the_shared_score_legend_follows_the_archive(bs):
+    """base.html.j2 carries the band explainer inlined into EVERY page — the
+    audit missed it twice because it is inside a <script> block."""
+    page = _render_with_status(bs, "index.html.j2", FICTION,
+                               active="home", root="", digests=[],
+                               ring_labels=bs.RING_LABELS)
+    assert f"of the {FICTION['distinct']} distinct developments" in page
+    assert f"{FICTION['rings_zero']} are in this state" in page
+    assert f"{FICTION['rings_one']} others carry one ring" in page
+    assert f"three rings in {FICTION['runs']} runs across {FICTION['screened']}" in page
+
+
+def test_backtest_screening_count_follows_the_archive(bs):
+    real = bs.archive_status(bs.collect_digests())
+    page = _render_with_status(bs, "backtest.html.j2", FICTION,
+                               active="backtest", root="", bt=bs.run_backtest())
+    assert f"no item has reached 40 in {FICTION['screened']} screenings" in page
+    assert f"{real['screened']} screenings" not in page
+
+
+def test_one_run_reads_as_one_run(bs):
+    """'1 runs' is read aloud verbatim by a screen reader."""
+    one = dict(FICTION, runs=1)
+    page = _render_with_status(bs, "index.html.j2", one, active="home", root="",
+                               digests=[], ring_labels=bs.RING_LABELS)
+    assert "in 1 run across" in page and "in 1 runs across" not in page
 
 
 # --------------------------------------------------------------------------- #

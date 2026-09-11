@@ -279,12 +279,12 @@
       var hasII = rings.indexOf('2') !== -1;
       if (n === 0) {
         return { cls: 'low', label: 'LOW <40',
-          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the thirteen distinct developments published to date, six are in this state, carried by the fill rule rather than by a ring. (Six others carry one ring; a thirteenth was screened twice and classified contradictorily.)' };
+          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the {{ status.distinct }} distinct developments published to date, {{ status.rings_zero }} are in this state, carried by the fill rule rather than by a ring. ({{ status.rings_one }} others carry one ring; {{ status.contradictory }} further development{{ '' if status.contradictory == 1 else 's' }} {{ 'was' if status.contradictory == 1 else 'were' }} screened twice and classified contradictorily.)' };
       }
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 11 runs across 347 candidates.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in {{ status.runs }} run{{ '' if status.runs == 1 else 's' }} across {{ status.screened }} candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
           reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };

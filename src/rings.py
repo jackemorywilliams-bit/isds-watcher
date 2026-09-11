@@ -214,17 +214,31 @@ def classification_state(*, outcome: str, attempts: int = 0,
          `ClassifyOutcome` values already, so this step is a rename, not a
          judgment.
 
-      3. A FAILED CALL ON A TAIL ITEM IS STILL A PROVIDER FAILURE. This is the
-         one genuinely contestable step. `classify_item(intended_model=False)`
-         records a provider error as KEYWORD_ONLY_BY_DESIGN, because for the
-         tail a keyword score is where the item was going anyway. That is right
-         about the CONSEQUENCE and wrong about the EVENT: a call was made and it
-         failed, and an outage that is only counted on the enriched top set is an
-         outage under-counted by however large the tail is. `attempts > 0` on the
-         keyword path happens on no other route — the no-provider path never
-         calls anything and records 0 — so the two are separable, and they are
-         separated here. Consequence is not lost: it is `intended_model`, and it
-         is what `TERMINAL_OUTCOMES` already encodes.
+      3. A FAILED CALL ON A TAIL ITEM IS STILL A PROVIDER FAILURE, and there are
+         now TWO ways to say so. Since 2026-09-10
+         `classify_item(intended_model=False)` records the failure directly, as
+         KEYWORD_AFTER_PROVIDER_ERROR, so the first clause is a straight read of
+         the outcome and nothing is inferred.
+
+         The second clause is the HISTORICAL one and it stays. Before that date
+         the same event was written as KEYWORD_ONLY_BY_DESIGN — right about the
+         CONSEQUENCE (for the tail a keyword score is where the item was going
+         anyway) and wrong about the EVENT (a call was made and it failed). 141
+         such records are in `analytics/candidate_telemetry.jsonl`, across
+         2026-08-24, 08-31 and 09-07, every one of them at `attempts == 1`. They
+         are NOT back-filled — the run record is append-only and the discrepancy
+         is disclosed, not erased — so `attempts > 0` on `keyword_only_by_design`
+         remains the rule that keeps them countable. It reads no new record: the
+         live classifier can no longer produce that combination, and
+         `tests/test_pipeline.py` fails the build if it ever does again.
+
+         Why the outcome had to carry this rather than the counter: the
+         PROVIDER_DOWN canary raises before the first attempt is counted, so a
+         canary-skipped tail item would have recorded `attempts == 0` and been
+         indistinguishable from a genuine offline run. Consequence is not lost in
+         either clause: it is `intended_model`, and it is what `TERMINAL_OUTCOMES`
+         already encodes — KEYWORD_AFTER_PROVIDER_ERROR is terminal, and is still
+         not a CLASSIFIED_STATE, exactly as the old spelling was.
 
       4. A DEMOTION OUTRANKS A CLEAN PASS. GUARD_DEMOTED and OK_AFTER_RETRY can
          both be true of one item. The demotion wins the single state slot
@@ -238,7 +252,14 @@ def classification_state(*, outcome: str, attempts: int = 0,
         return ClassifyState.MALFORMED_OUTPUT
     if outcome == ClassifyOutcome.PROVIDER_ERROR.value:
         return ClassifyState.PROVIDER_FAILURE
+    if outcome == ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value:
+        # Said outright by the record. No attempt count is consulted, which is
+        # the point: the canary route reaches this outcome at `attempts == 0`.
+        return ClassifyState.PROVIDER_FAILURE
     if outcome == ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value:
+        # The historical clause — see step 3. The live classifier cannot produce
+        # `attempts > 0` here any more; the 141 records that do are read, not
+        # rewritten.
         return (ClassifyState.PROVIDER_FAILURE if int(attempts) > 0
                 else ClassifyState.KEYWORD_ONLY)
     if outcome == ClassifyOutcome.OK.value:

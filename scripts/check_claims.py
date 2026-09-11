@@ -36,8 +36,10 @@ memo were both publishing "eleven archived runs / 347 screenings" — true throu
 2026-08-03, wrong from 2026-08-10, and never caught, because the run count named one
 restatement (the one that was right) and the screening count named none at all. An
 authority with no mirror over the place that drifts checks nothing. Both are now
-mirrored onto METHODOLOGY.md and onto the GENERATED pages under docs/, which is where
-a reader meets the number.
+mirrored onto the GENERATED pages under docs/, which is where a reader meets the
+number — not onto the templates, which after that date carry no digit to read, and
+not onto METHODOLOGY.md, whose count sentences were re-dated to the run they were
+true for and are history rather than restatement.
 
 TWO CONSEQUENCES OF FAILING CLOSED, both intended:
 
@@ -275,13 +277,14 @@ REGISTRY: tuple[Fact, ...] = (
              note="the published pages are built from digests/*/meta.json while this "
                   "authority counts digests/*.html; a folder rendered without a page, "
                   "or a page with no folder, shows up here and nowhere else"),
-         # Both patterns stop at the number's own noun phrase. The memo's two
-         # status sentences take a date stamp ("Over sixteen archived runs
-         # through 2026-09-07 it has screened…"), and a pattern that spanned the
-         # stamp would match nothing and fail as a re-point rather than read the
-         # number that is plainly there.
-         Ref(_METHODOLOGY, r"Over ([a-z]+) archived runs"),
-         Ref(_METHODOLOGY, r"Across ([a-z]+) archived runs"),
+         # NOT METHODOLOGY.md. Its two count sentences were re-dated on
+         # 2026-09-10 into statements about the run of 2026-08-03 — "as of the
+         # run of 2026-08-03 … eleven archived runs … 347 screenings" — and a
+         # dated historical statement is not a restatement of a present-tense
+         # fact. Registering it would read eleven, disagree with sixteen, and be
+         # right to. The memo now states no current count anywhere, and adding
+         # one is a new sentence in the operator's first-person document, which
+         # is not this registry's to write.
          # The generated site, not the template: after 2026-09-10 the templates
          # render this number from archive_status() and carry no digit to read,
          # so the restatement that can still be WRONG in front of a reader is the
@@ -295,8 +298,8 @@ REGISTRY: tuple[Fact, ...] = (
     Fact(
         "candidates screened across the archived runs",
         Ref("scripts/build_site.py", "screened", mode="harness"),
-        (Ref(_METHODOLOGY, r"it has screened (\d+) candidates"),
-         Ref(_METHODOLOGY, r"has performed (\d+) screenings"),
+        (# Same exclusion as above: METHODOLOGY.md's "347 screenings" is now
+         # dated to the run of 2026-08-03 and is history, not drift.
          # Semicolon-anchored: the status strip's cumulative total, not the
          # per-run "30 candidates screened," in the latest-run card below it.
          Ref(_SITE_INDEX, r"(\d+) candidates screened;"),

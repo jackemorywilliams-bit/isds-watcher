@@ -27,16 +27,6 @@ from scripts.check_claims import Fact, Ref
 KNOWN = {
     "digest threshold",                 # src/config.py _DEFAULT_THRESHOLD = 60 vs 40
     "completed human-review cycles",    # HUMAN_REVIEW.md contradicts its own log
-    # Registered 2026-09-10 by the site workstream; the restatements that still
-    # disagree are METHODOLOGY.md:49 and :73 ("eleven archived runs", "347
-    # screenings"/"347 candidates"), which the methodology workstream owns and
-    # date-stamps in its own PR. The guard names them with file:line, and the
-    # moment that PR lands both drop out of this set without an edit here. They
-    # are listed rather than fixed because METHODOLOGY.md is the operator's
-    # first-person document and is not the site's to rewrite — and NOT listed as
-    # a clean run, because the drift is real until it is fixed.
-    "archived runs",
-    "candidates screened across the archived runs",
 }
 
 

@@ -306,3 +306,105 @@ def test_source_yield_query_counts_the_funnel(tmp_path, capsys):
     assert "italaw" in out
     # 3 candidates, 2 enriched, 3 classified, 1 surfaced.
     assert "3" in out and "2" in out and "1" in out
+
+
+def test_source_yield_still_counts_a_tail_item_an_outage_fell_back_on(tmp_path, capsys):
+    """The "classified" column is every TERMINAL outcome, derived, not listed.
+
+    It used to be the hand-written pair ("ok", "keyword_only_by_design"). Adding
+    `keyword_after_provider_error` on 2026-09-10 without touching this query
+    would have made an outage read as a COLLAPSE IN YIELD — the tail still
+    published, and the funnel would have reported it as never classified. That is
+    a worse misreading than the one the new outcome fixes, so the set is derived
+    from `classify.TERMINAL_OUTCOMES` and this test proves the derivation bites.
+    """
+    query = importlib.import_module("telemetry_query")
+    from src.classify import TERMINAL_OUTCOMES
+
+    assert query.CLASSIFIED_OUTCOMES == {o.value for o in TERMINAL_OUTCOMES}
+    assert "keyword_after_provider_error" in query.CLASSIFIED_OUTCOMES
+
+    path = tmp_path / "outage.jsonl"
+    tel = telemetry.RunTelemetry("2026-09-10")
+    for i in range(2):
+        cid = tel.observe(_item(source="italaw", sid=f"tail{i}"))
+        tel.note_enrichment(cid, False)
+        tel.note_classification(
+            cid, ran=True, path="keyword", model="keyword", prompt_version="p",
+            outcome="keyword_after_provider_error", attempts=1,
+            retried_strict=False, model_score_advisory=None)
+    tel.flush(str(path))
+    assert query.main(["telemetry_query", "--path", str(path), "--source-yield"]) == 0
+    row = [ln for ln in capsys.readouterr().out.splitlines()
+           if ln.startswith("italaw")][0]
+    # source, candidates, enriched, classified, surfaced
+    assert row.split() == ["italaw", "2", "0", "2", "0"]
+
+
+# --- the enumerated outcome vocabulary ---------------------------------------
+def test_the_outcome_vocabulary_is_derived_from_the_classifier(tmp_path):
+    """The module docstring promises "enumerated outcomes". This is the enumeration.
+
+    Derived rather than restated: a hand-written second copy of the outcome list
+    is how `keyword_only_by_design` came to mean two different events in the
+    first place. The only value that is not a `ClassifyOutcome` is `main.py`'s
+    `pipeline_error` sentinel, which the classifier cannot produce because
+    `classify_item` never raises.
+    """
+    from src.classify import ClassifyOutcome
+
+    assert telemetry.CLASSIFICATION_OUTCOME_VALUES == (
+        {o.value for o in ClassifyOutcome} | {telemetry.PIPELINE_ERROR_OUTCOME})
+    assert "keyword_after_provider_error" in telemetry.CLASSIFICATION_OUTCOME_VALUES
+    # "" is the untouched default and is deliberately NOT in the set: an absent
+    # fact is not an unrecognised one, and it must not warn.
+    assert "" not in telemetry.CLASSIFICATION_OUTCOME_VALUES
+
+
+def test_every_committed_telemetry_record_carries_a_recognised_outcome():
+    """The build failure behind the vocabulary. Run over the real file.
+
+    An outcome value that reaches this file without being in the enumeration is
+    either a typo or a code path nobody declared, and both are the kind of thing
+    that is discovered a month later while counting a bad week. Includes the 141
+    records that spell a failed tail call `keyword_only_by_design`: they stay in
+    the vocabulary precisely because they are not back-filled.
+    """
+    path = os.path.join(REPO, telemetry.TELEMETRY_PATH)
+    if not os.path.exists(path):
+        return                              # no data is not a violation
+    unknown: dict[str, int] = {}
+    checked = 0
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            checked += 1
+            outcome = (json.loads(line).get("classification") or {}).get("outcome", "")
+            if outcome and outcome not in telemetry.CLASSIFICATION_OUTCOME_VALUES:
+                unknown[outcome] = unknown.get(outcome, 0) + 1
+    assert not unknown, (
+        f"{checked} records checked; unenumerated classification outcomes: "
+        f"{sorted(unknown.items())}")
+
+
+def test_an_unenumerated_outcome_is_warned_and_still_recorded_verbatim(tmp_path, caplog):
+    """Telemetry never edits what the run says happened.
+
+    Normalising or dropping an unrecognised outcome would destroy the one record
+    saying the vocabulary drifted — and telemetry must never take a run down, so
+    it warns rather than raising. The build failure is the test above.
+    """
+    tel = telemetry.RunTelemetry("2026-09-10")
+    cid = tel.observe(_item())
+    with caplog.at_level("WARNING", logger="isds.telemetry"):
+        tel.note_classification(cid, ran=True, path="llm", model="m",
+                                prompt_version="p", outcome="invented_outcome",
+                                attempts=1, retried_strict=False,
+                                model_score_advisory=None)
+    assert any("invented_outcome" in r.getMessage() for r in caplog.records)
+    path = tmp_path / "t.jsonl"
+    tel.flush(str(path))
+    rec = json.loads(open(path, encoding="utf-8").read().strip())
+    assert rec["classification"]["outcome"] == "invented_outcome"

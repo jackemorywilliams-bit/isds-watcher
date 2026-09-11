@@ -52,8 +52,26 @@ MAX_CLASSIFY_ATTEMPTS = 3
 # Outcomes after which an item is legitimately finished with. "bootstrap" is the
 # first-run indexing path: never classified, deliberately, and never to be.
 # "legacy" is the pre-migration shape and is exempt rather than terminal.
+#
+# "keyword_after_provider_error" (2026-09-10) is the tail item whose model call
+# failed. It is terminal for the same reason "keyword_only_by_design" is — the
+# item got the result it was always going to get, so deferring it would re-score
+# it every run forever to reach the same number — and it is a SEPARATE value
+# because the two record different events, not different endings.
+#
+# Adding it here is not bookkeeping. ``src/main.py`` marks an item seen with
+# whatever ``ClassifyOutcome`` value it terminated on, and
+# ``scripts/check_seen_integrity.py`` reads THIS set, so an outcome added to
+# ``classify.TERMINAL_OUTCOMES`` and not to this one turns the first tail item of
+# the next outage into a red build. ``tests/test_pipeline.py`` pins the two sets
+# to each other so the pair cannot drift apart again.
+#
+# Stated as literal strings rather than imported from ``src.classify`` on
+# purpose: this module reads a file written by past versions of the pipeline and
+# must still recognise an outcome whose enum member has since been renamed.
 TERMINAL_SEEN_OUTCOMES = frozenset({
-    "ok", "keyword_only_by_design", "abandoned", "bootstrap",
+    "ok", "keyword_only_by_design", "keyword_after_provider_error",
+    "abandoned", "bootstrap",
 })
 LEGACY_OUTCOME = "legacy"
 

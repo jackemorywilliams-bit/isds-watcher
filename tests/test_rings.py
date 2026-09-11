@@ -117,20 +117,28 @@ def test_the_classification_axis_is_the_seven_r21_states_not_the_four_outcomes()
     """The deviation this file used to encode, stated as an assertion.
 
     R2.1 enumerates over SEVEN classification states. The implementation
-    imported the four `ClassifyOutcome` values and enumerated 12,288 tuples
-    instead of 21,504, and nothing said so. The resolution
+    imported the four `ClassifyOutcome` values of the day and enumerated 12,288
+    tuples instead of 21,504, and nothing said so. The resolution
     (`analytics/state-space-resolution-2026-08-09.md`) is that the seven are the
-    logical space and the four are the operational record they are derived from
-    — so the enumeration axis is the seven, and the four have to remain
-    RECOVERABLE rather than merely renamed.
+    logical space and the operational outcomes are the record they are derived
+    from — so the enumeration axis is the seven, and the operational values have
+    to remain RECOVERABLE rather than merely renamed.
+
+    AND THAT IS WHY THIS TEST DID NOT MOVE WHEN A FIFTH OUTCOME WAS ADDED on
+    2026-09-10. `KEYWORD_AFTER_PROVIDER_ERROR` splits an operational value in
+    two; it does not add a logical state, because both halves already derived to
+    states that exist. The axis is still 7 and the advertised 21,504 is still
+    21,504. If adding an outcome had changed that number, the projection would
+    not be a projection.
     """
     assert len(ALL_STATES) == 7
     assert {s.value for s in ALL_STATES} == {
         "ok_first_pass", "ok_after_retry", "malformed_output", "provider_failure",
         "keyword_only", "retry_abandoned", "guard_demoted"}
-    # Four operational outcomes; the ratio is exactly why the tuple count moved.
-    assert len(rings.ALL_OUTCOME_VALUES) == 4
+    # Five operational outcomes since 2026-09-10, and the enumeration is unmoved.
+    assert len(rings.ALL_OUTCOME_VALUES) == 5
     assert 64 * 4 * 4 * 3 * 7 == 21_504
+    # The historical arithmetic, kept as history: four outcomes on the wrong axis.
     assert 64 * 4 * 4 * 3 * 4 == 12_288
 
 
@@ -245,17 +253,60 @@ def test_malformed_output_is_never_confused_with_a_provider_failure():
 def test_a_failed_call_on_a_tail_item_still_counts_as_a_provider_failure():
     """The contestable step of the mapping, pinned so it cannot drift silently.
 
-    `classify_item(intended_model=False)` records a provider error as
-    KEYWORD_ONLY_BY_DESIGN because for the tail a keyword score is where the item
-    was going anyway. `attempts > 0` is what separates "a call failed" from "no
-    call was made", and an outage counted only on the enriched top set is an
-    outage under-counted by the size of the tail.
+    Two clauses, and both have to hold. Since 2026-09-10 the classifier says it
+    outright (KEYWORD_AFTER_PROVIDER_ERROR); before that the same event was
+    written as KEYWORD_ONLY_BY_DESIGN and is recoverable only from `attempts > 0`.
+    141 records in `analytics/candidate_telemetry.jsonl` are in the old spelling
+    and are not back-filled, so dropping the historical clause would make an
+    archived outage read as a design decision.
     """
     cs = rings.classification_state
+    # The live spelling. No attempt count is consulted — and it must not be, or
+    # the PROVIDER_DOWN canary route (which reaches the fallback at attempts == 0)
+    # would land back in KEYWORD_ONLY.
+    assert cs(outcome="keyword_after_provider_error", attempts=1) \
+        is ClassifyState.PROVIDER_FAILURE
+    assert cs(outcome="keyword_after_provider_error", attempts=0) \
+        is ClassifyState.PROVIDER_FAILURE
+    # The historical spelling, still read exactly as it was.
     assert cs(outcome="keyword_only_by_design", attempts=0) \
         is ClassifyState.KEYWORD_ONLY
     assert cs(outcome="keyword_only_by_design", attempts=1) \
         is ClassifyState.PROVIDER_FAILURE
+
+
+def test_the_new_tail_outcome_is_terminal_and_still_not_a_classified_state():
+    """Terminal for the run, and entitled to no reading. Both, at once.
+
+    The pair is the whole design and it is easy to get half of it. TERMINAL means
+    `src/main.py` marks the item seen instead of deferring it forever — the item
+    got the number it was always going to get. NOT a CLASSIFIED_STATE means the
+    V2 lane may not conclude anything from its findings, because no classifier
+    ever read it. KEYWORD_ONLY_BY_DESIGN with `attempts > 0` already had both
+    properties; renaming the event must not have moved either.
+    """
+    from src.classify import TERMINAL_OUTCOMES, ClassifyOutcome
+
+    assert ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR in TERMINAL_OUTCOMES
+    assert ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value \
+        in rings.TERMINAL_OUTCOME_VALUES
+    assert ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value \
+        in rings.ALL_OUTCOME_VALUES
+    st = rings.classification_state(outcome="keyword_after_provider_error",
+                                    attempts=1)
+    assert st not in rings.CLASSIFIED_STATES
+
+    # And the lane says so, on the most favourable inputs there are: three
+    # PRESENT rings, an established nexus, a verified accessible body. Even
+    # there the item may conclude nothing, because no classifier read it.
+    lane, reason = rings.derive_lane(
+        strengths={r: rings.Strength.PRESENT for r in rings.RINGS},
+        nexus=rings.Nexus.ESTABLISHED,
+        location=rings.EvidenceLocation.ACCESSIBLE_BODY,
+        validity=rings.EvidenceValidity.VERIFIED,
+        classification_state=st,
+    )
+    assert (lane, reason) == (rings.Lane.RETRY, rings.REASON_NOT_TERMINAL)
 
 
 def test_abandoned_is_not_retrying_and_can_conclude_nothing():

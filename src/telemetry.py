@@ -47,6 +47,8 @@ from datetime import datetime
 from typing import Any, Iterable, Optional
 from urllib.parse import urlparse
 
+from .classify import ClassifyOutcome
+
 logger = logging.getLogger("isds.telemetry")
 
 # 2 adds the `verdict_v2` section (the STATE_MODEL_V2 shadow derivation). Bumped
@@ -79,6 +81,41 @@ LONG_STRING_ALLOWLIST = frozenset({
     "run_id", "candidate_id", "source_id_hash", "url_hash",
     "title_sha256", "body_sha256",
 })
+
+# The pipeline-level sentinel `src/main.py` writes when the enrichment/quote
+# merge around `classify_item` raises. It is not a ClassifyOutcome because the
+# classifier did not produce it — the classifier never raises — and it must still
+# be a value a reader of this file can recognise rather than a surprise.
+PIPELINE_ERROR_OUTCOME = "pipeline_error"
+
+# The closed vocabulary of `classification.outcome`. The module docstring above
+# promises "enumerated outcomes"; this is the enumeration, and until 2026-09-10
+# it existed only as that sentence.
+#
+# DERIVED, never restated. `src.classify.ClassifyOutcome` is the authority — a
+# second hand-written copy is a second thing to keep in step, which is the exact
+# way `keyword_only_by_design` came to mean two different events. The import runs
+# one way only (telemetry -> classify) and classify imports nothing from here; it
+# also costs nothing at import time, because `src/classify.py` and everything it
+# reaches are stdlib-only at module scope (its `yaml` is lazy), which matters
+# because `scripts/check_telemetry_privacy.py` imports this module in CI.
+#
+# "" is legitimate and deliberately absent from the set: a blank outcome is the
+# untouched default on a record whose candidate never reached classification, and
+# an absent fact is not an unrecognised one.
+#
+# A VOCABULARY BOUNDARY ANYONE COUNTING THIS FILE HAS TO KNOW ABOUT, and the
+# reason it is written here rather than in a commit message. `SCHEMA` is NOT
+# bumped for this: no field is added, renamed or reshaped, and a bump would tell
+# a reader to look for a structure that has not changed. What changed is what one
+# existing string field can say. Records written before 2026-09-10 spell a failed
+# tail call `keyword_only_by_design`; records written after spell it
+# `keyword_after_provider_error`. 141 of the former are in this file, across
+# 2026-08-24, 08-31 and 09-07, and they are NOT rewritten — the file is
+# append-only. A query that counts either value alone across the whole file
+# counts half of one event.
+CLASSIFICATION_OUTCOME_VALUES = frozenset(
+    {o.value for o in ClassifyOutcome} | {PIPELINE_ERROR_OUTCOME})
 
 
 def sha256_hex(text: str) -> str:
@@ -362,10 +399,22 @@ class RunTelemetry:
         ``model_score_advisory`` is the score the run declined to publish — the
         keyword number behind a provider error. Recording it is how we can later
         ask what an outage actually cost without ever having published it.
+
+        An outcome outside ``CLASSIFICATION_OUTCOME_VALUES`` is WARNED and then
+        written as given. Telemetry never takes a run down and never edits what
+        the run says happened — silently dropping or normalising an unrecognised
+        outcome would lose the one record that says the vocabulary has drifted.
+        The build failure lives in ``tests/test_telemetry.py``, which reads both
+        the enum and the committed file.
         """
         cls = self._section(cid, "classification")
         if cls is None:
             return
+        if outcome and outcome not in CLASSIFICATION_OUTCOME_VALUES:
+            logger.warning(
+                "telemetry: classification outcome %r is outside the enumerated "
+                "vocabulary %s — recording it as given", outcome,
+                sorted(CLASSIFICATION_OUTCOME_VALUES))
         cls.update({
             "ran": bool(ran),
             "path": path,

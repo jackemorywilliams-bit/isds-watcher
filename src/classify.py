@@ -44,23 +44,63 @@ class ClassifyOutcome(str, Enum):
     returns something publishable", and those are different promises. A provider
     outage returned a keyword score with an extra tag nobody reads, the item was
     marked seen, and the run reported it as classified. The failure left no trace
-    anywhere a person or a guard would look. These four values are the trace.
+    anywhere a person or a guard would look. These five values are the trace.
 
       OK                     — the model classified it and we parsed the answer.
-      KEYWORD_ONLY_BY_DESIGN — no model was expected. Either the caller asked for
-                               the keyword path, or no provider/key is configured
-                               at all (the offline dry-run case). A keyword score
-                               here is the intended result, not a degraded one,
-                               so it publishes and the item is marked seen.
+      KEYWORD_ONLY_BY_DESIGN — no model was expected and NONE WAS CALLED. Either
+                               the caller asked for the keyword path, or no
+                               provider/key is configured at all (the offline
+                               dry-run case). A keyword score here is the
+                               intended result, not a degraded one, so it
+                               publishes and the item is marked seen. It carries
+                               ``classify_attempts == 0``, always: nothing on
+                               this route can make a call.
+      KEYWORD_AFTER_PROVIDER_ERROR
+                             — a model call WAS made for this item and it failed,
+                               and the caller did not require a model answer, so
+                               the keyword score it fell back to is where the
+                               item was going anyway. TERMINAL for exactly the
+                               reason KEYWORD_ONLY_BY_DESIGN is, and a separate
+                               value because the EVENT is different: the
+                               consequence is "publishes as a keyword score" and
+                               the event is "an outage hit this item". Carries
+                               ``classify_attempts >= 1`` on a live failure and
+                               0 on the PROVIDER_DOWN canary route, where the run
+                               had already proved no call could succeed.
       PARSE_FAILED           — the model answered and we could not parse it, even
                                after the strict retry.
       PROVIDER_ERROR         — the call itself failed on an item we intended to
                                model-classify.
 
-    The first two are TERMINAL: the run is finished with the item. The last two
+    The first three are TERMINAL: the run is finished with the item. The last two
     are not, and ``src/main.py`` defers them rather than marking them seen — an
     item we failed to classify has not been processed, and recording it as
     processed is how a failure becomes permanent silently.
+
+    WHY THE FIFTH VALUE EXISTS (added 2026-09-10, council special session row C).
+    Across 2026-08-24, 08-31 and 09-07 the run record accumulated 141 tail items
+    labelled KEYWORD_ONLY_BY_DESIGN, and every one of them carries
+    ``classify_attempts == 1``: a call was made, it failed, and the record called
+    it by design. NOT ONE record in the whole file carries ``attempts == 0``, so
+    not one of them was ever in the genuine by-design state. The label was right
+    about the consequence and wrong about the event, and it is the event that
+    tells a reader an outage happened.
+
+    THE 141 ARE NOT BACK-FILLED. The run record is append-only; the discrepancy
+    is disclosed, not erased. ``src/rings.py::classification_state`` therefore
+    keeps its existing rule that ``keyword_only_by_design`` with ``attempts > 0``
+    is a PROVIDER_FAILURE, which is what keeps those 141 countable, and gains a
+    second, direct rule for the new value. Nothing about the SCORE on this path
+    changes: whether a tail item's keyword number should be published during an
+    outage is policy, and policy is the operator's.
+
+    AND THE COUNTER CANNOT CARRY THIS ON ITS OWN, which is the argument for a
+    value rather than a convention. The PROVIDER_DOWN canary (added 2026-09-07)
+    short-circuits before the first attempt is counted, so a tail item skipped by
+    the canary would record ``keyword_only_by_design`` with ``attempts == 0`` —
+    byte-identical to a genuine offline dry-run and invisible to the
+    ``attempts > 0`` rule. No run has yet been archived on that route, so no
+    historical record is affected; the hole was there to be fallen into.
 
     A str-valued Enum so the value serialises into metadata, telemetry, and
     ``state/seen.json`` without a conversion step at each boundary.
@@ -68,14 +108,24 @@ class ClassifyOutcome(str, Enum):
 
     OK = "ok"
     KEYWORD_ONLY_BY_DESIGN = "keyword_only_by_design"
+    KEYWORD_AFTER_PROVIDER_ERROR = "keyword_after_provider_error"
     PARSE_FAILED = "parse_failed"
     PROVIDER_ERROR = "provider_error"
 
 
 # Outcomes after which the run is genuinely done with an item.
+#
+# KEYWORD_AFTER_PROVIDER_ERROR is here for the same reason KEYWORD_ONLY_BY_DESIGN
+# is and for no other: the item got the result it was always going to get, so
+# deferring it would re-fetch and re-score it every run forever to reach the same
+# number. Naming the failure does not make the item unfinished. Whatever is added
+# here must also be added to ``src.state.TERMINAL_SEEN_OUTCOMES`` or
+# ``scripts/check_seen_integrity.py`` will (correctly) fail the build on the first
+# item marked seen with it.
 TERMINAL_OUTCOMES = frozenset({
     ClassifyOutcome.OK,
     ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN,
+    ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR,
 })
 
 # THE authoritative location for an item's outcome: one key, in the metadata of
@@ -807,7 +857,22 @@ def classify_item(
             "classify_path": "keyword",
             "classify_attempts": attempts,
             "retried_strict": retried_strict,
-            OUTCOME_KEY: ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value,
+            # NOT KEYWORD_ONLY_BY_DESIGN. We are in the except branch: the run
+            # tried to model-classify this item and could not. The keyword score
+            # still publishes and the item is still terminal — that is the
+            # CONSEQUENCE, and it is unchanged — but the record now names the
+            # EVENT instead of calling an outage a design.
+            #
+            # `attempts` is 1 or 2 on a live provider failure and 0 on the
+            # PROVIDER_DOWN canary short-circuit above, which raises before the
+            # first increment because the run already proved no call can succeed.
+            # That zero is the reason this value has to exist rather than being
+            # inferred: `rings.classification_state` recovers an outage from
+            # `keyword_only_by_design` + `attempts > 0`, and on the canary route
+            # there is no attempt to count, so the old label was
+            # indistinguishable from a genuine offline run. The outcome says it
+            # now; nothing has to be inferred from a counter.
+            OUTCOME_KEY: ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value,
         }
         return ci
 

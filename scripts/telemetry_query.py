@@ -8,7 +8,10 @@ council believed for four weeks without a number behind it. These are the
 questions, each with one definition, printed the same way every time.
 
     --source-yield   per source: candidates, how many reached enrichment, how
-                     many classified cleanly, how many surfaced. The funnel.
+                     many the run finished with, how many surfaced. The funnel.
+                     "classified" counts every TERMINAL outcome, which includes a
+                     keyword score the run fell back to when a call failed — it
+                     is "the run is done with this item", not "a model read it".
     --deferred       candidates this file says were deferred rather than marked
                      seen — the items a failed classification is holding.
     --abandoned      candidates that exhausted their attempts. Each one is a
@@ -31,7 +34,16 @@ REPO = Path(__file__).resolve().parent.parent
 
 sys.path.insert(0, str(REPO))
 
+from src.classify import TERMINAL_OUTCOMES  # noqa: E402
 from src.telemetry import TELEMETRY_PATH, load_records  # noqa: E402
+
+# What `--source-yield`'s "classified" column counts: the outcomes after which
+# the run was genuinely finished with the item. DERIVED from the classifier's own
+# terminal set rather than listed here, because this column was a hand-written
+# pair ("ok", "keyword_only_by_design") that would have silently stopped counting
+# the tail the moment `keyword_after_provider_error` was added on 2026-09-10 — an
+# outage would have read as a drop in yield instead of as an outage.
+CLASSIFIED_OUTCOMES = frozenset(o.value for o in TERMINAL_OUTCOMES)
 
 
 def _filtered(records: list[dict], run: str | None) -> list[dict]:
@@ -48,7 +60,7 @@ def source_yield(records: list[dict]) -> None:
         row["candidates"] += 1
         if r.get("entered_enrichment"):
             row["enriched"] += 1
-        if (r.get("classification") or {}).get("outcome") in ("ok", "keyword_only_by_design"):
+        if (r.get("classification") or {}).get("outcome") in CLASSIFIED_OUTCOMES:
             row["classified_ok"] += 1
         if (r.get("surfacing") or {}).get("surfaced"):
             row["surfaced"] += 1

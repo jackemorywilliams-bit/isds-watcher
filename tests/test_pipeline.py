@@ -802,10 +802,11 @@ def test_classification_failure_states_never_collapse(monkeypatch):
     from src.classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                               outcome_of)
 
-    # Four states, four values, and only two of them mean "done with it".
-    assert len({o.value for o in ClassifyOutcome}) == 4
+    # Five states, five values, and only three of them mean "done with it".
+    assert len({o.value for o in ClassifyOutcome}) == 5
     assert TERMINAL_OUTCOMES == {ClassifyOutcome.OK,
-                                 ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN}
+                                 ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN,
+                                 ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR}
     assert ClassifyOutcome.PARSE_FAILED not in TERMINAL_OUTCOMES
     assert ClassifyOutcome.PROVIDER_ERROR not in TERMINAL_OUTCOMES
 
@@ -825,9 +826,10 @@ def test_classification_failure_states_never_collapse(monkeypatch):
     assert err.metadata["keyword_score_advisory"] > 0
 
     # The same failure on an item we never intended to model-classify is the
-    # result it was always going to get, and publishes.
+    # result it was always going to get, and publishes — but it is NOT "by
+    # design", because a call was made and it failed.
     tail = classify_item(it, provider="claude", intended_model=False)
-    assert outcome_of(tail) is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN
+    assert outcome_of(tail) is ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR
     assert tail.relevance_score == err.metadata["keyword_score_advisory"]
 
     # A parse failure is neither of those.
@@ -853,6 +855,160 @@ def test_classification_failure_states_never_collapse(monkeypatch):
     assert good.relevance_score == 80
 
 
+def test_keyword_fallback_after_failed_call_is_not_by_design(monkeypatch):
+    """The acceptance test for SD-2. The two keyword routes are different events.
+
+    THE DEFECT. Until 2026-09-10 the tail's keyword fallback recorded
+    KEYWORD_ONLY_BY_DESIGN whether or not a call had been made, so an outage on
+    the tail was written down as a design decision. All 141 such records in
+    `analytics/candidate_telemetry.jsonl` carry `attempts == 1`; not one carries
+    `attempts == 0`, so not one was in the state the label names.
+
+    What is NOT asserted here, deliberately: the score. Whether a tail item's
+    keyword number should publish during an outage is policy, and policy is the
+    operator's. The number is identical on both routes and this test pins it that
+    way, so a later change of the label cannot smuggle a change of the score.
+    """
+    import src.classify as classify_mod
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+
+    it = _item("Patent denial of justice", ON_THEME, ON_THEME)
+
+    def outage(prompt):
+        raise RuntimeError("529 overloaded_error")
+
+    # (1) Provider configured, the caller raises: a call was made and it failed.
+    monkeypatch.setenv("MODEL_PROVIDER", "claude")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+    monkeypatch.setattr(classify_mod, "_call_anthropic", outage)
+    failed = classify_item(it, provider="claude", intended_model=False)
+    assert outcome_of(failed) is ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR
+    assert failed.metadata["classify_attempts"] >= 1
+    assert failed.metadata["classify_path"] == "keyword"
+
+    # (2) No provider at all: nothing was called, and this really is by design.
+    monkeypatch.delenv("MODEL_PROVIDER")
+    monkeypatch.delenv("ANTHROPIC_API_KEY")
+    offline = classify_item(it, provider=None, intended_model=False)
+    assert outcome_of(offline) is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN
+    assert offline.metadata["classify_attempts"] == 0
+
+    # The SCORE is untouched on both routes — the label moved, the number did not.
+    assert failed.relevance_score == offline.relevance_score > 0
+
+
+def test_no_keyword_only_by_design_record_can_carry_an_attempt(monkeypatch):
+    """The guard. `keyword_only_by_design` + `attempts > 0` must be unreachable.
+
+    Scoped to what the CODE can now produce, not to the committed file. The 141
+    historical records carry exactly that combination and are NOT back-filled —
+    the run record is append-only and the discrepancy is disclosed, not erased —
+    so a guard over the file would be a demand to rewrite it. The companion
+    assertion that the historical count can never GROW is
+    `test_the_historical_mislabel_is_closed_and_cannot_grow`.
+    """
+    import src.classify as classify_mod
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+
+    it = _item("Patent denial of justice", ON_THEME, ON_THEME)
+
+    def outage(prompt):
+        raise RuntimeError("529 overloaded_error")
+
+    monkeypatch.setattr(classify_mod, "_call_anthropic", outage)
+    monkeypatch.setattr(classify_mod, "_call_gemini", outage)
+
+    produced = []
+    for provider, key_env, key, intended in (
+            ("claude", "ANTHROPIC_API_KEY", "test-key", True),
+            ("claude", "ANTHROPIC_API_KEY", "test-key", False),
+            ("gemini", "GEMINI_API_KEY", "test-key", True),
+            ("gemini", "GEMINI_API_KEY", "test-key", False),
+            ("claude", "ANTHROPIC_API_KEY", None, True),
+            ("claude", "ANTHROPIC_API_KEY", None, False)):
+        monkeypatch.setenv("MODEL_PROVIDER", provider)
+        if key is None:
+            monkeypatch.delenv(key_env, raising=False)
+        else:
+            monkeypatch.setenv(key_env, key)
+        ci = classify_item(it, provider=provider, intended_model=intended)
+        produced.append((outcome_of(ci),
+                         int(ci.metadata["classify_attempts"])))
+
+    # Also the PROVIDER_DOWN canary route, which is the reason this needed an
+    # outcome rather than a counter: it short-circuits BEFORE the first attempt
+    # is counted, so it reaches the fallback at `attempts == 0` and would have
+    # been indistinguishable from a genuine offline run under the old label.
+    monkeypatch.setenv("MODEL_PROVIDER", "claude")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+    monkeypatch.setattr(classify_mod, "PROVIDER_DOWN", "canary: contract error")
+    canary_tail = classify_item(it, provider="claude", intended_model=False)
+    assert outcome_of(canary_tail) is ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR
+    assert canary_tail.metadata["classify_attempts"] == 0
+    produced.append((outcome_of(canary_tail),
+                     int(canary_tail.metadata["classify_attempts"])))
+
+    offenders = [(o.value, a) for o, a in produced
+                 if o is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN and a > 0]
+    assert not offenders, (
+        f"a live code path still records a failed call as by-design: {offenders}")
+    # And the value is genuinely reachable — a guard that holds because nothing
+    # ever takes the path is not a guard.
+    assert any(o is ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR
+               for o, _ in produced)
+    assert any(o is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN and a == 0
+               for o, a in produced)
+
+
+def test_the_historical_mislabel_is_closed_and_cannot_grow():
+    """141 records say by-design about a failed call. That set may never widen.
+
+    Asserted as a ceiling rather than an equality on purpose. The committed
+    telemetry is append-only and grows every run, so an equality would be a
+    tripwire on unrelated additions; a ceiling fails exactly when the defect
+    comes back and at no other time. The count is disclosed here so that a reader
+    who wonders why the number is not zero finds the answer next to the number.
+    """
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "analytics", "candidate_telemetry.jsonl")
+    if not os.path.exists(path):          # the file is data, not a fixture
+        pytest.skip("no committed telemetry to check")
+    mislabelled = 0
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            cls = (json.loads(line).get("classification") or {})
+            if cls.get("outcome") == "keyword_only_by_design" \
+                    and int(cls.get("attempts") or 0) > 0:
+                mislabelled += 1
+    assert mislabelled <= 141, (
+        f"{mislabelled} records call a failed call by-design, up from the 141 "
+        "written across 2026-08-24/08-31/09-07. The classifier can no longer "
+        "produce this; a new one means the defect is back.")
+
+
+def test_the_two_terminal_sets_cannot_drift_apart():
+    """`classify.TERMINAL_OUTCOMES` and `state.TERMINAL_SEEN_OUTCOMES` are one fact.
+
+    `main.py` marks an item seen with whatever outcome it terminated on, and
+    `scripts/check_seen_integrity.py` reads the state module's set. An outcome
+    added to one and not the other turns the first item that reaches it into a
+    red build, in production, on a Monday.
+    """
+    from src.classify import TERMINAL_OUTCOMES
+
+    classifier_terminal = {o.value for o in TERMINAL_OUTCOMES}
+    assert classifier_terminal <= state.TERMINAL_SEEN_OUTCOMES, (
+        "an outcome the classifier calls terminal is not accepted by the "
+        "seen-state guard: "
+        f"{sorted(classifier_terminal - state.TERMINAL_SEEN_OUTCOMES)}")
+    # The seen-state set legitimately holds two values no classifier produces.
+    assert state.TERMINAL_SEEN_OUTCOMES - classifier_terminal == {
+        "abandoned", "bootstrap"}
+
+
 # --- (6) the keyword tail is still terminal ----------------------------------
 def test_tail_keyword_items_are_still_marked_seen_during_an_outage(
         tmp_path, monkeypatch):
@@ -870,7 +1026,10 @@ def test_tail_keyword_items_are_still_marked_seen_during_an_outage(
     st = state.load_state("state/seen.json")
     seen = state.seen_ids(st, "iisd_itn")
     assert {"off-0", "off-1"} <= seen, "the keyword tail was not finished with"
-    assert all(state.seen_outcome(st, "iisd_itn", s) == "keyword_only_by_design"
+    # Terminal, and named for the outage that produced it. The whole point of
+    # this test is that the tail is FINISHED WITH during an outage; the whole
+    # point of the outcome is that the run record still says an outage happened.
+    assert all(state.seen_outcome(st, "iisd_itn", s) == "keyword_after_provider_error"
                for s in ("off-0", "off-1"))
     assert not any(f"on-{i}" in seen for i in range(config.ENRICH_TOP_N))
     assert len(state.load_deferred("state/deferred.json")["iisd_itn"]) == \

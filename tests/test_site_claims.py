@@ -418,6 +418,43 @@ def _public_sources() -> list[Path]:
     return sorted(TEMPLATES.glob("*.j2")) + [REPO / "scripts" / "build_site.py"]
 
 
+# --------------------------------------------------------------------------- #
+# The backtest page's vocabulary
+#
+# "Out-of-sample" describes a sampling relationship the holdout does not have: the
+# twenty items were chosen by hand from cases the author already knew, not drawn
+# from the population the instrument screens. "Held-out" is the claim that is
+# actually supported — these were kept out of development. And "on-theme" /
+# "off-theme" named the LABEL as though it were a property of the case, when it is
+# a judgement someone recorded in scripts/holdout_set.json.
+# --------------------------------------------------------------------------- #
+RETIRED_BACKTEST_WORDS = ["out-of-sample", "on-theme", "off-theme"]
+
+
+@pytest.mark.parametrize("word", RETIRED_BACKTEST_WORDS)
+def test_the_backtest_page_does_not_reclaim_a_sampling_property(word):
+    text = (TEMPLATES / "backtest.html.j2").read_text(encoding="utf-8")
+    hits = [f"{i}: {ln.strip()[:110]}"
+            for i, ln in enumerate(text.splitlines(), 1) if word in ln.lower()]
+    assert not hits, f"backtest.html.j2 says '{word}':\n" + "\n".join(hits)
+
+
+def test_the_backtest_page_still_binds_every_measured_value(bs):
+    """The wording change must not have touched a single number. Every bt.*
+    binding the page had before is still there, and the page still renders."""
+    text = (TEMPLATES / "backtest.html.j2").read_text(encoding="utf-8")
+    for binding in ("bt.threshold", "bt.holdout.total", "bt.holdout.tp",
+                    "bt.holdout.fp", "bt.holdout.tn", "bt.holdout.fn",
+                    "bt.holdout.n_pos", "bt.holdout.n_neg", "bt.holdout.cases",
+                    "c.label", "c.score", "c.band", "c.miss_kind"):
+        assert binding in text, f"backtest.html.j2 lost the {binding} binding"
+    page = _render_with_status(bs, "backtest.html.j2",
+                               bs.archive_status(bs.collect_digests()),
+                               active="backtest", root="", bt=bs.run_backtest())
+    assert "Labelled positive" in page and "Labelled negative" in page
+    assert "exploratory" in page
+
+
 @pytest.mark.parametrize("phrase,why", BANNED)
 def test_retired_claims_stay_retired(phrase, why):
     hits = []

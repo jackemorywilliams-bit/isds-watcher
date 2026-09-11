@@ -17,6 +17,17 @@ name: reanchor
 # commit has landed and turned it green. Recommended in the PR that adds this.
 # For operator PRs — reviewed and awaited — this workflow is the primary mover.
 #
+# SECOND JOB, added 2026-09-10: the `currency` guard itself, moved here out of
+# pipeline-guards.yml. It had been another workflow's job with no ordering
+# relation to this one, so both started from the same push and the guard read the
+# anchors while this workflow was still computing the commit that fixes them.
+# Every council merge went red on `currency` and green again seconds later, and a
+# red that is routinely false is a red nobody reads — one session "fixed" it by
+# hand-writing an anchor, which is the failure mode this workflow exists to end.
+# `needs: reanchor` makes the ordering a fact rather than a timing accident. The
+# guard itself is unchanged: same scripts/check_currency.py, same four
+# predicates, same check-run name `currency`.
+#
 # The commit is NOTES-ONLY by construction: scripts/reanchor.py writes to nothing
 # but the tracked notes, and scripts/check_currency.py excludes a notes-only
 # commit from drift as maintenance. It carries [skip ci] and is pushed with
@@ -84,3 +95,63 @@ jobs:
             git pull --rebase origin "${BRANCH}" && sleep 2
           done
           echo "could not push the re-anchor after 3 attempts"; exit 1
+
+  # The guard, behind the mover. Two halves of the `if` are load-bearing.
+  #
+  # `always()` is what lets this job run at all when the job above was SKIPPED — a
+  # fork PR gets a read-only token, so `reanchor` steps aside rather than fail on a
+  # push it cannot make. A fork PR's notes go stale exactly like anyone else's, so
+  # the guard must still fire there; without `always()`, a skipped dependency skips
+  # this job too and the guard would quietly vanish on the one path where nothing
+  # else is watching.
+  #
+  # The result test is what keeps `always()` from ALSO running this job when
+  # `reanchor` failed. There the anchors are in an unknown state, the PR is already
+  # red for a reason a human has to read, and a currency verdict computed on top of
+  # a failed re-anchor is noise dressed as a finding. Failure and cancellation are
+  # the only other reachable results and both are excluded deliberately.
+  currency:
+    needs: reanchor
+    if: >-
+      always() &&
+      (needs.reanchor.result == 'success' || needs.reanchor.result == 'skipped')
+    runs-on: ubuntu-latest
+    # Read-only. This job checks; it moves nothing. The workflow-level
+    # `contents: write` exists for the push in the job above and is not wanted here.
+    permissions:
+      contents: read
+    steps:
+      # Two reasons this is not the default checkout.
+      #
+      # (1) HISTORY. check_currency.py resolves commit shas, walks merge-bases and
+      #     asks whether a note's cited commit is an ancestor of HEAD. On the
+      #     default shallow checkout every one of those questions gets the wrong
+      #     answer, and the guard would fail for a reason that has nothing to do
+      #     with the repository's contents.
+      #
+      # (2) THE RE-ANCHOR COMMIT. For a pull_request event the default checkout is
+      #     the merge ref GitHub computed when the event fired, which does NOT
+      #     contain the `[skip ci]` commit the job above just pushed. Ordering the
+      #     jobs would fix nothing if this one then read the pre-re-anchor tree. So
+      #     it checks out the head BRANCH BY NAME — the same ref the job above
+      #     pushed to, resolved by the same expression — and fetches it fresh.
+      #
+      #     When `reanchor` was SKIPPED that branch lives in a fork and does not
+      #     exist in this repository, so naming it would fail the checkout itself;
+      #     and there is no re-anchor commit to wait for either. The ref falls back
+      #     to '' there, which is actions/checkout's own default — the merge ref.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ needs.reanchor.result == 'success' && (github.event.pull_request.head.ref || github.ref_name) || '' }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pytest
+
+      - name: The checker's own tests
+        run: python -m pytest tests/test_check_currency.py -q
+
+      - name: A note may not claim to be current when git says it is not
+        run: python scripts/check_currency.py

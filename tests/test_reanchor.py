@@ -116,3 +116,59 @@ def test_reanchor_workflow_runs_on_push_to_main_and_on_same_repo_prs():
     # re-anchors main in place, and the commit it makes cannot re-trigger it.
     assert "github.event.pull_request.head.ref || github.ref_name" in text
     assert "[skip ci]" in text
+
+
+# --- the currency guard runs BEHIND the re-anchor, not beside it (2026-09-10) ---
+def test_currency_guard_is_a_job_of_this_workflow_ordered_behind_reanchor():
+    """The guard used to be a job of pipeline-guards.yml with no ordering relation
+    to the mover. Both workflows started from the same push, so the guard read the
+    anchors while the mover was still computing the commit that fixes them, and
+    every council merge went red and green again seconds later. This test pins the
+    four things that make the ordering real, because three of them are one-line
+    expressions that a future edit could "tidy" without noticing what they carry.
+
+    Plain-text assertions on purpose, like the test above: reanchor.yml's own jobs
+    install only pytest, so this file must not import PyYAML."""
+    import os
+    import re
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    wf = os.path.join(repo, ".github", "workflows")
+    with open(os.path.join(wf, "reanchor.yml"), encoding="utf-8") as fh:
+        text = fh.read()
+
+    # 1 — the job exists here, and `needs` is the first thing it declares.
+    parts = text.split("\n  currency:\n", 1)
+    assert len(parts) == 2, "reanchor.yml must define a `currency` job"
+    job = parts[1]
+    assert job.startswith("    needs: reanchor\n"), \
+        "the currency job must declare `needs: reanchor` before anything else"
+
+    # 2 — it still runs when the mover was SKIPPED (a fork PR, whose token cannot
+    #     push), and never when the mover FAILED. `always()` alone would do both.
+    flat = re.sub(r"\s+", " ", job)
+    assert ("always() && (needs.reanchor.result == 'success' "
+            "|| needs.reanchor.result == 'skipped')") in flat, \
+        "the fork-PR path (reanchor skipped) must still be guarded"
+
+    # 3 — it checks out the head BRANCH BY NAME with full history. The default
+    #     pull_request checkout is the merge ref computed when the event fired,
+    #     which does not contain the re-anchor commit the mover just pushed —
+    #     ordering the jobs would fix nothing if this one read the old tree.
+    assert "fetch-depth: 0" in job
+    assert "github.event.pull_request.head.ref || github.ref_name" in flat, \
+        "the currency job must resolve the same head ref the mover pushed to"
+
+    # 4 — the guard itself, unrelaxed: its own tests first, then the guard, and
+    #     nothing that lets a failure through.
+    assert "python -m pytest tests/test_check_currency.py -q" in job
+    assert "python scripts/check_currency.py" in job
+    assert "continue-on-error" not in job
+
+    # And it is gone from where it used to be, path filters included — two entries
+    # that existed only to trigger a job that no longer lives in that file.
+    with open(os.path.join(wf, "pipeline-guards.yml"), encoding="utf-8") as fh:
+        guards = fh.read()
+    assert not re.search(r"^  currency:", guards, re.M), \
+        "the currency job must not be defined in two workflows"
+    assert '- "scripts/check_currency.py"' not in guards
+    assert '- "tests/test_check_currency.py"' not in guards

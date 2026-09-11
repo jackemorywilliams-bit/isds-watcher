@@ -23,6 +23,14 @@ name: pipeline-guards
 #                               was when its hash was written down. Passes while
 #                               the set is deliberately empty.
 #
+# NOT HERE ANY MORE. The `currency` guard was a second job in this file until
+# 2026-09-10. It moved to .github/workflows/reanchor.yml, where it runs behind
+# `needs: reanchor`, because the two workflows started from the same push with no
+# ordering between them: this file's job read the anchors while reanchor.yml was
+# still computing the commit that fixes them, so every council merge went red and
+# green again seconds later. Its two path-filter entries went with it. The
+# check-run is still named `currency`; the workflow reporting it is now `reanchor`.
+#
 # This follows the shape check_models.py, check_claims.py and check_marks.py
 # already established: run the checker's OWN tests first — a broken checker
 # reports clean — and then the checker.
@@ -49,8 +57,6 @@ on:
       - "src/config.py"
       - "src/triage.py"
       - "src/headline_lane.py"
-      - "scripts/check_currency.py"
-      - "tests/test_check_currency.py"
       - "agents/**"
       - "HANDOFF.md"
       - "STATE_OF_THE_ANSWER.md"
@@ -88,8 +94,6 @@ on:
       - "src/config.py"
       - "src/triage.py"
       - "src/headline_lane.py"
-      - "scripts/check_currency.py"
-      - "tests/test_check_currency.py"
       - "agents/**"
       - "HANDOFF.md"
       - "STATE_OF_THE_ANSWER.md"
@@ -158,26 +162,3 @@ jobs:
 
       - name: Nothing locked has changed since it was locked
         run: python scripts/check_lock.py
-
-  # Separate job, because this one needs history. check_currency.py resolves
-  # commit SHAs, walks merge-bases and asks whether a note's cited commit is an
-  # ancestor of HEAD; on the default shallow checkout every one of those
-  # questions gets the wrong answer, and the guard would fail for a reason that
-  # has nothing to do with the repository's contents.
-  currency:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install pytest
-
-      - name: The checker's own tests
-        run: python -m pytest tests/test_check_currency.py -q
-
-      - name: A note may not claim to be current when git says it is not
-        run: python scripts/check_currency.py

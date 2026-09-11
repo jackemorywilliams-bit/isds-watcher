@@ -30,6 +30,15 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # (dir already on sys.path) or as ``python -m scripts.build_site`` (it is not).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from backtest import run_backtest  # noqa: E402
+# The source roster the site describes comes from the roster the pipeline runs —
+# src/sources/__init__.py::all_sources(), by way of the inventory builder. No page
+# may enumerate or count sources any other way.
+from build_source_inventory import (  # noqa: E402
+    catalogue as source_catalogue,
+    open_repository as open_repository_sources,
+    operator_account as operator_account_sources,
+    prose_list as source_prose_list,
+)
 
 # --------------------------------------------------------------------------- #
 # Paths
@@ -637,9 +646,21 @@ _CHART = {
 }
 
 
+_CANONICAL_LABELS = {r["name"]: r["label"] for r in source_catalogue()}
+
+
 def _src_label(key: str) -> str:
-    """Human label for a per-source key, consistent with the rest of the site
-    (the digest 'sources' line and the .source-name capitalize rule)."""
+    """Human label for a per-source key, from the catalogue.
+
+    Capitalising the pipeline key is the fallback, not the rule: it published
+    "Iareporter headlines" and "Gmail scholar" on a professor-facing chart. It
+    still runs for keys the catalogue no longer holds — retired sources survive
+    in the per-source counts of old runs (``google_news_rss``), and a chart that
+    dropped them would silently under-report what those runs actually read.
+    """
+    canonical = _CANONICAL_LABELS.get(key)
+    if canonical:
+        return canonical
     return key.replace("_", " ").strip().capitalize()
 
 
@@ -1069,6 +1090,16 @@ def make_env() -> Environment:
     )
     env.globals["repo_url"] = REPO_URL
     env.globals["build_stamp"] = _build_stamp()
+    # The roster, from all_sources(). `sources` is the full catalogue in priority
+    # order; the two partitions are provided pre-split because the distinction
+    # they carry — which inputs a third party could re-run — is the one a page is
+    # most likely to lose when it is left to prose.
+    _sources = source_catalogue()
+    env.globals["sources"] = _sources
+    env.globals["sources_open"] = open_repository_sources(_sources)
+    env.globals["sources_operator"] = operator_account_sources(_sources)
+    env.filters["source_names"] = source_prose_list
+    env.filters["num_word"] = _num_word
 
     def band_class(band: str) -> str:
         b = (band or "").upper()
@@ -1164,9 +1195,13 @@ def build() -> int:
     #     animate but not hover), with zero extra requests. The SVG artifact is
     #     built and freshness-guarded by tools/isds-workflow-3d (validate.mjs
     #     fails the chart build if it goes stale against the manifest).
-    workflow_svg_path = REPO_ROOT / "scripts" / "site_templates" / "assets" / "workflow.svg"
+    # The artifact is a Jinja template (assets/workflow.svg.j2) whose only
+    # templated value is the source count, so the chart's headline is rendered
+    # from all_sources() rather than from digits typed into the generator.
+    workflow_svg_path = (REPO_ROOT / "scripts" / "site_templates" / "assets"
+                         / "workflow.svg.j2")
     if workflow_svg_path.exists():
-        raw_svg = workflow_svg_path.read_text(encoding="utf-8")
+        raw_svg = env.get_template("assets/workflow.svg.j2").render()
         # Inline copy starts at <svg>: the XML prolog is not valid inside an
         # HTML body (parsers treat it as a bogus comment), and the file-level
         # provenance comments belong to the standalone artifact.
@@ -1184,7 +1219,7 @@ def build() -> int:
             flags=re.S,
         )
         if n_dark != 1:
-            print("    ! workflow.svg dark-mode block not found — inlined as-is")
+            print("    ! workflow.svg.j2 dark-mode block not found — inlined as-is")
         how_tpl = env.get_template("how_it_works.html.j2")
         write(
             DOCS / "how-it-works.html",
@@ -1194,7 +1229,7 @@ def build() -> int:
         # Also publish the standalone artifact (the README embeds it from docs/).
         write(DOCS / "assets" / "workflow.svg", raw_svg)
     else:
-        print("    ! workflow.svg missing — how-it-works page skipped")
+        print("    ! workflow.svg.j2 missing — how-it-works page skipped")
 
     # 5. Backtest page (root => same depth as home; deterministic, no I/O on
     #    docs/). run_backtest() scores a focused in-repo labelled set with the

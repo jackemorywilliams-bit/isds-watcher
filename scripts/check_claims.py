@@ -28,8 +28,9 @@ the places that restate it. Every restatement must equal its authority. That is 
 WHAT IT DELIBERATELY IS NOT. It does no NLP, reads no prose it was not pointed at, and
 makes no attempt at completeness. A guard that tried to catch every claim would need
 to understand English, and would become the unreviewable thing it was built to
-prevent. It checks fourteen facts because fourteen were worth the coupling; a
-fifteenth is a decision, not a default.
+prevent. It checks fifteen facts because fifteen were worth the coupling; a
+sixteenth is a decision, not a default — and fifteen is the ceiling
+tests/test_check_claims.py holds it to.
 
 A registered fact can still go unguarded. On 2026-09-10 the site and the methodology
 memo were both publishing "eleven archived runs / 347 screenings" — true through
@@ -143,6 +144,22 @@ def _backtest_metrics() -> dict[str, float]:
             "accuracy": h.accuracy, "f1": h.f1}
 
 
+def _catalogue_metrics() -> dict[str, float]:
+    """The size and shape of the source roster, from the roster.
+
+    ``src/sources/__init__.py::all_sources()`` is the only authority on what this
+    instrument reads. Every prose statement of it — the site, the README, the
+    digest email, the workflow chart's banner — is generated from here, and this
+    entry is what fails when one of them is written by hand again.
+    """
+    from scripts.build_source_inventory import (
+        catalogue, open_repository, operator_account)
+    rows = catalogue()
+    return {"sources": float(len(rows)),
+            "open": float(len(open_repository(rows))),
+            "operator": float(len(operator_account(rows)))}
+
+
 def _archive_metrics() -> dict[str, float]:
     """What the archive itself says, summed the way the site sums it.
 
@@ -159,15 +176,18 @@ _HARNESS = {
     "scripts/eval_holdout.py": _holdout_metrics,
     "scripts/backtest.py": _backtest_metrics,
     "scripts/build_site.py": _archive_metrics,
+    "src/sources/__init__.py": _catalogue_metrics,
 }
 
 
 # --------------------------------------------------------------------------- #
-# THE REGISTRY — fourteen facts. Each names exactly one authority.
+# THE REGISTRY — fifteen facts. Each names exactly one authority.
 # --------------------------------------------------------------------------- #
 _METHODOLOGY = "METHODOLOGY.md"
+_SOURCES = "src/sources/__init__.py"
 _SITE_INDEX = "docs/index.html"
 _SITE_BACKTEST = "docs/backtest.html"
+_SITE_HOW = "docs/how-it-works.html"
 _FINGERPRINT = "fingerprint.yaml"
 _CLASSIFY = "src/classify.py"
 _CONFIG = "src/config.py"
@@ -260,6 +280,21 @@ REGISTRY: tuple[Fact, ...] = (
         Ref(_EVAL, "f1", mode="harness"),
         (Ref(_BACKTEST, "f1", mode="harness"),
          Ref(_METHODOLOGY, r"F1 of ([0-9.]+)")),
+    ),
+    # --- the roster -------------------------------------------------------- #
+    # Four surfaces described this instrument's inputs and none of them agreed
+    # with the code: the how-it-works page said "the nine public sources" twice,
+    # the digest email said "nine open sources" and then listed seven, and the
+    # README tiered seven of the ten. all_sources() returned ten the whole time.
+    # Each of those sentences is generated now, and this entry is the guard that
+    # fails if one is written by hand again.
+    Fact(
+        "catalogue sources",
+        Ref(_SOURCES, "sources", mode="harness"),
+        (Ref("analytics/source-inventory.md", r"\*\*(\d+) sources\*\* are checked"),
+         Ref(_SITE_HOW, r"first band is the (\d+) sources"),
+         Ref(_SITE_INDEX, r"scholarship from (\d+) sources"),
+         Ref("docs/assets/workflow.svg", r"WHERE WE LOOK — THE (\d+) SOURCES")),
     ),
     # --- the record of what has actually been run and reviewed --------------- #
     # Under-mirrored until 2026-09-10: the authority was declared and exactly one

@@ -113,7 +113,7 @@
       "row": 1,
       "kind": "process",
       "title": "Collect everything new",
-      "desc": "Pulls this week's listings from all 10 sources above into one pile.",
+      "desc": "Pulls this week's listings from all {sourceCount} sources above into one pile.",
       "target": "moc/Workflow",
       "evidence": [
         "src/sources/__init__.py: all_sources()",

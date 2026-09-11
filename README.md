@@ -62,6 +62,17 @@ that implements it):
 
 ![ISDS Thematic Watcher workflow](docs/assets/workflow.svg)
 
+Eight of the ten are open repositories. The other two — Google Alerts and Scholar
+Alerts — are feeds inside the operator's own Google account: Google generates them
+for him, so a third party cannot re-run them and cannot audit what they did or did
+not deliver. That is a limit on what can be independently checked, not a detail of
+plumbing, and it is why no surface here describes the whole roster as public — three
+of them did until 2026-09-10, over a count that was one short. The full catalogue —
+every source, its channel, and how much of an item it makes readable — is generated
+from `src/sources/__init__.py::all_sources()` into
+[analytics/source-inventory.md](analytics/source-inventory.md) by
+`python scripts/build_source_inventory.py`.
+
 An annotated, hoverable version lives on the project site:
 [How It Works](https://jackemorywilliams-bit.github.io/isds-watcher/how-it-works.html).
 

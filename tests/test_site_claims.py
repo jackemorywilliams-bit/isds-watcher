@@ -444,7 +444,7 @@ def test_retired_claims_stay_retired(phrase, why):
            "When that is done, delete this marker — strict=True makes the test "
            "fail loudly once it starts passing.")
 def test_workflow_chart_agrees_with_the_page_it_sits_on():
-    svg = (TEMPLATES / "assets" / "workflow.svg").read_text(encoding="utf-8")
+    svg = (TEMPLATES / "assets" / "workflow.svg.j2").read_text(encoding="utf-8")
     assert "council" not in svg.lower()
     assert "officer" not in svg.lower()
 

@@ -2048,3 +2048,7 @@ the source of truth, and a disagreement between them is a defect in this note.
 <!-- graph:auto start -->
 Map: [[Council]]
 <!-- graph:auto end -->
+
+
+<!-- CI PROBE 2026-09-11 (throwaway, never to merge): row D live acceptance test 2 — a deliberately wrong PR cite must turn the currency check red. -->
+Probe line: `d88f325`, PR #147 (deliberately wrong — that sha merged via PR #148).

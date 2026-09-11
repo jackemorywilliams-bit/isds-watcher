@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-11",
-    "type": "daily-council",
-    "ts": "2026-09-11T12:00:00Z",
-    "status": "INSTRUMENT STATE CHANGE: web search ALIVE again after one day dead (two seats, identical neutral control, nine links each). Fetch dead and unchanged. Relay alive as machinery; no batch commissioned. Digest of record unchanged.",
-    "members": [
-      "chairman: five session-open probes on four neutral controls; deepened a shallow clone before any history count; discharged yesterday's next steps 1, 2, 3 and 4; set a three-task agenda; measured escalation 2 and found a NEW ledger loss; ruled on all twenty objections, FOUR of them against himself, all sustained, none overruled; sustained all three of the analyst's challenges against him.",
-      "research analyst: found the day's finding in the premise audit rather than the eight budgeted keyword queries - the classifier holdout scores an ICSID Rule 41 matter off-theme/correct on a body-free text field, and all 20 holdout items are body-free; supplied open_threads[6] its FIRST closure condition with a third bucket; REFUSED an IP-nexus synthesis that arrived twice and would have been the project's first IP-as-investment manifest-lack-of-merit disposition; returned 2 of 12 queries unspent with an argument. Against it: three sustained blocking PROVENANCE defects (a date moved between artefacts, a quotation truncated past its qualifier, one occasion counted twice), all conceded without defence, all clustered where it was arguing rather than reporting.",
-      "integrity officer: nine blocking objections, four against the chair, two of which the chair could not have found because he made them; EXECUTED _render_md against a scratch copy rather than reasoning about it, which is the standard it then proposed as taxonomy 31; verified eleven of eleven line anchors as exact; ran a third non-leading Spentech pass that returned a materially different account, demonstrating the analyst's quarantine was right rather than merely prudent; disclosed a near-miss against itself (nearly filed a fabricated-quotation objection against a correct quote hidden from grep by a line wrap). Against it: two mis-anchored code citations inside its own blocking objections."
-    ],
-    "decisions": [
-      "open_threads[6] closure condition ADOPTED - the first it has ever had - with a binding THIRD BUCKET (gate fired / IP asserted / non-IP ground) and an unreachability limb counting commissioned-and-failed batches only.",
-      "ADOPTED STANDING: the search tool's synthesis layer is refused regardless of whether the response head is a result. Only returned titles and URLs are data.",
-      "ADOPTED STANDING: when a synthesis supplies the only material for a lead, one query is spent designed to CONTRADICT it before the lead is banked, even as a lead.",
-      "Taxonomy entries 30 (re-implementation drift) and 31 (assumed-remedy claim) ADOPTED, both instanced on the chairman; routed to agents/ which is outside merge scope.",
-      "Spentech investment composition QUARANTINED in full - three synthesis passes, two incompatible accounts, none entering the record."
-    ],
-    "digest_of_record": "Digest 2026-09-07: 30 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). validation_status_only true. health_warnings carries one entry: icsid DEGRADED (3 zero runs), whose full text includes 'zero items from them is NOT evidence of a quiet week'.",
-    "research_question_moved": true,
-    "next_steps": [
-      "Probe all three channels at session open and inherit nothing from this record, in either direction; refuse the synthesis layer regardless of the head.",
-      "Commission a relay batch against open_threads[6] on the FOUR allowlisted hosts today's agenda wrongly said did not exist (iisd.org ITN Spentech analysis, italaw /cases/11573, UNCTAD Navigator case 1356, the ICSID manifest-lack-of-legal-merit decisions table), forecasts pre-registered before the runner fires.",
-      "Price the holdout trade-off: state in the record what the published precision/recall figures do and do not measure. Nothing built or applied - scripts/ and docs/ are outside merge scope.",
-      "Adopt the open_threads[6] closure condition into agents/Workflow Threads.md (A7), whose Recorded line also wrongly points at open thread 2 instead of 6.",
-      "A claim about what code does, or would do, carries that code's EXECUTED output or is marked UNTESTED in the sentence that makes it.",
-      "Periodic counters stated with enumerated members: Rule 0 departures eleven (09-03..09-11 carried, 09-01/09-02 inferred); weekly brief six (08-03, 08-10, 08-17, 08-24, 08-31, 09-07), next possible member 09-14."
-    ],
-    "escalations": [
-      "Yesterday's escalation 1 (web search dead) DISCHARGED - transient, re-probed by two seats on the identical neutral control.",
-      "ESCALATION 2 CORRECTED AND WORSENED, against the chair: _render_md's daily branch (src/council_log.py:180-181) renders only a 'note' field that NO daily entry has, so a render substitutes 32-character stubs for nine hand-written sections (82,257 chars rstripped) and emits stubs for six JSON-only dates that falsely assert a sitting was logged; it also drops the vault footer and destroys newest-first ordering. 2026-09-10's published 75,103 is corrected to 75,112. Fix is now two lines of work, not one. src/ outside merge scope.",
-      "NEW: the accountability ledger has lost two sittings outright. 2026-08-17 (137,124 bytes) and 2026-09-02 (186,698 bytes) have full daily records and appear in NEITHER analytics/council-log.md NOR state/council_log.json; six further dates (08-19, 08-20, 09-03, 09-04, 09-05, 09-08) are in the JSON half only and per escalation 2 no render can recover them.",
-      "Seats are still selected by TIER not VERSION - day thirty-one. All three .claude/agents definitions carry 'model: opus' at :4 while their description prose asserts a specific version; the files contradict themselves and neither half is enforced. The officer again disclosed REQUESTED claude-opus-4-8 -> ACTUAL claude-opus-5 unasked.",
-      "Perimeter, narrowed to one concrete ask: iccwbo.org is off the relay allowlist and the 2026 ICC Rules Art. 30 text has never been read in this project (STATE_OF_THE_ANSWER.md:833 says so against itself), so one of open_threads[6]'s two named gates is structurally untestable by this instrument.",
-      "Rule 0 departed from for the ELEVENTH consecutive session, declared not hidden - two subagents where Rule 0 permits one, because the cardinal rule against performed seats is not traded.",
-      "Weekly brief six Mondays empty (08-03, 08-10, 08-17, 08-24, 08-31, 09-07); weekly run has not succeeded since 2026-07-27, 46 days. Fixing it is what arms escalation 2.",
-      "A decision requested, not a defect: docs/backtest.html publishes precision/recall/accuracy/F1 computed entirely on a 20-item holdout in which NO item carries a body, by design per scripts/backtest_corpus.json _note. Should the published page say so?"
-    ],
-    "accountability": "analyst STRONG (day's finding; the refusal of record; three sustained provenance defects, all conceded). officer EXCELLENT (nine blocking, four against the chair; ran code rather than reasoning about it; disclosed a near-miss against itself). chairman POOR - four sustained blocking objections plus three sustained challenges from the analyst; two of them are the same failure twice (a figure published as the output of a function never run; a remedy asserted without running it), now taxonomy 30 and 31, both instanced on him; and he designed the day as first contact with a thread on its fourth pass."
-  },
-  {
     "ts": "2026-09-10T12:00:00+00:00",
     "date": "2026-09-10",
     "type": "daily-council",

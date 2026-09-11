@@ -2094,3 +2094,45 @@ def test_the_workflow_provider_gate_greps_the_marker_main_prints():
     assert "| tee watcher.log" in wf and "set -o pipefail" in wf
     # The gate runs AFTER the state commit and BEFORE the failure alert.
     assert wf.index("Commit state + digests") < wf.index("Provider gate") < wf.index("Notify on failure")
+
+
+# =============================================================================
+# A rebuilt item with no text is read, not retired unread (2026-09-11)
+# =============================================================================
+def test_a_textless_rebuilt_item_is_enriched_on_top_of_the_cut(tmp_path, monkeypatch):
+    """The requeue of abandoned items keeps only identity + URL. Such an item
+    scores 0 lexically and sits below ENRICH_TOP_N; it must still be read."""
+    import src.main as main_mod
+    top = [_cand(f"on-{i}") for i in range(config.ENRICH_TOP_N)]
+    run = _sandbox(tmp_path, monkeypatch, top, lambda p: GOOD_JSON)
+    state.save_deferred({"iisd_itn": {"http://x/rebuilt": {
+        "first_deferred": "2026-09-07T00:00:00+00:00", "attempts": 0, "last_outcome": "intake",
+        "url": "http://x/rebuilt", "title": "", "published": "", "summary": ""}}}, "state/deferred.json")
+    read = []
+    def fake_enrich(it):
+        read.append(it.url)
+        if not it.title:
+            it.title = "Title recovered from the page"; it.raw_text = ON_THEME
+            it.metadata["enriched"] = True
+        return it
+    monkeypatch.setattr(main_mod, "enrich", fake_enrich)
+    assert run() == 0
+    assert "http://x/rebuilt" in read, "the textless rebuilt item was never read"
+    assert len(read) == config.ENRICH_TOP_N + 1
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iisd_itn", "http://x/rebuilt") == "ok"
+
+
+def test_enrich_takes_the_page_title_when_the_item_has_none(monkeypatch):
+    from bs4 import BeautifulSoup
+    from src import enrich as enrich_mod
+    from src.sources.base import CandidateItem
+    soup = BeautifulSoup("<html><head><title>Recovered Title</title></head><body><p>"
+                         + ("body text " * 40) + "</p></body></html>", "html.parser")
+    monkeypatch.setattr(enrich_mod, "fetch_html", lambda url, **kw: soup)
+    it = CandidateItem("gdelt", "http://x/p", "http://x/p", "", None, "", "", {})
+    enrich_mod.enrich(it)
+    assert it.title == "Recovered Title" and it.metadata.get("title_from_page") is True
+    it2 = CandidateItem("gdelt", "http://x/q", "http://x/q", "Given", None, "", "", {})
+    enrich_mod.enrich(it2)
+    assert it2.title == "Given" and "title_from_page" not in it2.metadata

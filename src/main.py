@@ -469,12 +469,25 @@ def main(argv=None) -> int:
         )
 
     enrich_set = set(id(it) for it in ranked[:config.ENRICH_TOP_N])
+    # 2026-09-11. An item rebuilt from the deferred queue with no text at all
+    # (the requeue of abandoned items keeps only identity and URL) scores 0
+    # lexically, never reaches the enrichment cut, is classified on an empty
+    # haystack, scores 0, and is marked seen — retired without ever having been
+    # read, which is the exact outcome the requeue exists to reverse. Such items
+    # cannot be ranked, so they are read unconditionally, on top of the cut.
+    unread_rebuilt = [it for it in ranked[config.ENRICH_TOP_N:]
+                      if (it.metadata or {}).get("from_deferred")
+                      and not (it.title or it.summary or it.raw_text)]
+    enrich_set |= {id(it) for it in unread_rebuilt}
+    if unread_rebuilt:
+        logger.info("enrich: %d rebuilt item(s) with no text read on top of the "
+                    "top-%d cut", len(unread_rebuilt), config.ENRICH_TOP_N)
     # Kept per item rather than only handed to telemetry: the V2 shadow derivation
     # needs to know whether a body was refused or simply never asked for, and
     # "not_attempted" and "refused" are the difference between an unreadable item
     # and an item we chose not to read.
     fetch_outcomes = {}
-    for it in ranked[:config.ENRICH_TOP_N]:
+    for it in ranked[:config.ENRICH_TOP_N] + unread_rebuilt:
         cid = lex[id(it)][0]
         run_tel.note_enrichment(cid, True)
         # Read the polite fetcher's own log rather than inferring the outcome
@@ -492,6 +505,8 @@ def main(argv=None) -> int:
             fetch_outcome=fetch_outcome,
         )
     for it in ranked[config.ENRICH_TOP_N:]:
+        if id(it) in enrich_set:
+            continue  # read above, on top of the cut
         cid = lex[id(it)][0]
         run_tel.note_access(
             cid, it,

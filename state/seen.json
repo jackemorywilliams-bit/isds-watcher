@@ -347,11 +347,6 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },
-      "https://www.equitybulls.com/category.php?id=374414": {
-        "at": "2026-09-07T23:25:56.267336+00:00",
-        "outcome": "ok",
-        "run": "2026-09-07"
-      },
       "https://www.finanznachrichten.de/nachrichten-2026-08/69345127-grant-eisenhofer-family-of-disabled-quadriplegic-greek-woman-pleads-with-government-of-cyprus-to-release-icsid-award-needed-for-her-care-004.htm": {
         "at": "2026-08-24T16:12:21.523975+00:00",
         "outcome": "keyword_only_by_design",
@@ -569,26 +564,6 @@
       }
     },
     "gmail_scholar": {
-      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8": {
-        "at": "2026-09-07T23:25:56.267336+00:00",
-        "outcome": "ok",
-        "run": "2026-09-07"
-      },
-      "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/ukrjil2026&section=7": {
-        "at": "2026-09-07T23:25:56.267336+00:00",
-        "outcome": "ok",
-        "run": "2026-09-07"
-      },
-      "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.4324/9781003485285-4&type=chapterpdf": {
-        "at": "2026-09-07T23:25:56.267336+00:00",
-        "outcome": "ok",
-        "run": "2026-09-07"
-      },
-      "https://journals.neewaj.com/index.php/njmri/article/download/24/24": {
-        "at": "2026-09-07T23:25:56.267336+00:00",
-        "outcome": "ok",
-        "run": "2026-09-07"
-      },
       "https://law.stanford.edu/wp-content/uploads/2026/08/EU-Law-WP-141-Dubey.pdf": {
         "at": "2026-09-07T23:25:56.267336+00:00",
         "outcome": "ok",

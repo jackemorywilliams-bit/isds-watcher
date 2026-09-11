@@ -13,6 +13,10 @@ module makes that decay visible:
   the digest header.
 - When all-but-one of the active sources return zero raw items in a single
   run, a ``COLLECTION ANOMALY`` warning is raised as well.
+- Every name ``src.sources.all_sources()`` returns is either in
+  ``ACTIVE_SOURCES`` or carries a written reason in ``EXEMPT_SOURCES``, and a
+  test asserts that equality — so a source cannot join the roster and quietly
+  escape the guard, which is how ``bing_news`` went six runs untracked.
 
 Nothing here ever raises: a missing or corrupt health file is treated as empty,
 exactly like state/seen.json.
@@ -33,9 +37,19 @@ HEALTH_PATH = "state/source_health.json"
 DEGRADED_AFTER = 3
 
 # Sources documented as active collectors (HANDOFF.md): a zero-streak from one
-# of these is a real degradation signal. Excluded by design:
-#   - google_news_rss: robots-blocked, reported DISABLED — always zero.
-#   - gmail_scholar:   credential-gated; inactive without GMAIL_ALERT_* env.
+# of these is a real degradation signal.
+#
+# This set and EXEMPT_SOURCES below must between them account for EVERY name
+# src.sources.all_sources() returns — test_every_source_is_tracked_or_exempted
+# asserts the equality, so a source added to the roster cannot slip past the
+# zero-streak guard unnoticed again. It did once: b7d0925 (2026-07-29) retired
+# one lane from the roster and added bing_news, and touched neither this set nor
+# the note that used to sit above it. That note went on justifying the exclusion
+# of a source all_sources() no longer returns while saying nothing about the one
+# the roster had just gained, and bing_news went untracked for six archived runs
+# (2026-08-03 through 2026-09-07). Added here 2026-09-10; the retired source's
+# rationale is gone with the source it described, and a test keeps its name out
+# of this file so the same stale justification cannot come back.
 ACTIVE_SOURCES = {
     "iisd_itn",
     "google_alerts",
@@ -45,6 +59,20 @@ ACTIVE_SOURCES = {
     "unctad_isds",
     "pca_press",
     "gdelt",
+    "bing_news",
+}
+
+# Roster sources deliberately NOT zero-streak-tracked, each with the reason.
+# The asymmetry is real and is kept, not flattened: this is a register, not a
+# comment, so the test can read the reason and an exemption cannot be taken
+# silently. gmail_scholar reads Emory's own mailbox over IMAP and is inactive
+# without GMAIL_ALERT_* credentials, so a zero from a run that has no
+# credentials says nothing about the source — streak-tracking it would alarm on
+# the pipeline's own configuration. It still carries a probe (added 2026-09-08)
+# that dates the newest Scholar alert when credentials DO exist; the exemption
+# is from the streak alarm, not from diagnosis.
+EXEMPT_SOURCES = {
+    "gmail_scholar": "credential-gated; inactive without GMAIL_ALERT_* env",
 }
 
 # Statuses that already explain a zero and must never be overwritten.
@@ -233,6 +261,49 @@ def _probe_gmail_scholar() -> "str | None":
             f"{newest}; none in the run window)")
 
 
+def _probe_bing_news() -> "str | None":
+    """A zero from a keyword search is ordinary — say which kind of zero it is.
+
+    bing_news joins ACTIVE_SOURCES with this probe rather than without one,
+    because zero is its ORDINARY state: across the six archived runs it has been
+    in the roster it returned zero on four (2026-08-03, 08-17, 08-24, 08-31) and
+    one item on the other two (08-10, 09-07). The 08-17/08-24/08-31 stretch is
+    exactly a DEGRADED_AFTER streak, so tracking it with no probe would have
+    asserted on 2026-08-31 that "its fetcher likely no longer matches the live
+    site" about a lane that returned an item a week later — the same false
+    diagnosis the 2026-08-17 probes were written to stop. 44550ca added gdelt to
+    ACTIVE_SOURCES and its probe in one commit; this follows that precedent.
+
+    Re-run the fetcher's own code with no window, as _probe_icsid does: results
+    listed -> QUIET naming the newest; every query refused -> NOT-READ; feeds
+    served but nothing parses at all -> None (real rot, generic alarm). That is
+    one extra pass of the 12 polite queries (~35s with the source's own 3s
+    gaps), paid at most once per run and only at the streak threshold. Never
+    raises.
+    """
+    from .sources.base import get_fetch_log
+    from .sources.bing_news import QUERIES, BingNewsSource
+    try:
+        items = BingNewsSource().fetch(datetime(2000, 1, 1, tzinfo=timezone.utc))
+    except Exception:  # noqa: BLE001 - no refinement rather than a crash
+        return None
+    if items:
+        dates = [it.published for it in items if it.published is not None]
+        newest = max(dates).date().isoformat() if dates else "undated"
+        return (f"QUIET (Bing News live; {len(items)} result(s) across "
+                f"{len(QUERIES)} queries with no window, newest {newest}; "
+                "none in the run window)")
+    refused = [o for o in get_fetch_log()
+               if "bing.com/news/search" in str(o.get("url", ""))
+               and o.get("outcome") in ("refused", "no_contact",
+                                        "robots_disallowed")]
+    if refused:
+        detail = refused[0].get("detail") or refused[0]["outcome"]
+        return (f"NOT-READ (HTTP {detail} from Bing News on {len(refused)} of "
+                f"{len(QUERIES)} queries)")
+    return None
+
+
 PROBES = {
     "iisd_itn": _probe_iisd_itn,
     "google_alerts": _probe_google_alerts,
@@ -240,6 +311,7 @@ PROBES = {
     "gdelt": _probe_gdelt,
     "icsid": _probe_icsid,
     "gmail_scholar": _probe_gmail_scholar,
+    "bing_news": _probe_bing_news,
 }
 
 

@@ -29,6 +29,11 @@ and the per-domain rate limit apply, and web.archive.org is a distinct domain
 from the walled origin); honest (candidates are keyed to the REAL origin URL so
 the operator's link is canonical, the capture lag is disclosed and logged, and
 any per-run cap logs its overflow rather than silently cutting).
+
+``recover_with_report`` returns that disclosure as data rather than only as a
+log line — see ``RecoveryReport`` — so a run's meta.json can carry how much of
+the Archive's offer the cap left behind and how old the snapshots were.
+``recover`` is the same read without the report.
 """
 
 from __future__ import annotations
@@ -37,9 +42,10 @@ import html as _html
 import json
 import logging
 import re
+import statistics
 import time
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 
 from .sources.base import CandidateItem, polite_get, utcnow
 
@@ -117,6 +123,76 @@ SPECS: dict[str, RecoverySpec] = {
 
 def is_recoverable(name: str) -> bool:
     return name in SPECS
+
+
+@dataclass(frozen=True)
+class RecoveryReport:
+    """What one archive recovery did, and how stale the pages it read are.
+
+    A RECOVERED source used to report a single number — the item count — which
+    says nothing about the two things a reader of a recovered digest needs to
+    know: how much of the Archive's offer the per-run cap left behind, and how
+    old the snapshots actually are. Both are already computed inside
+    ``recover_with_report``; this carries them out instead of dropping them.
+
+    ``eligible``          distinct content-page URLs the CDX window offered that
+                          matched the spec's ``path_regex`` — everything this
+                          run could have read, before the per-run cap.
+    ``fetched``           candidates actually produced. A snapshot that was
+                          refused, or whose title was generic boilerplate, is
+                          attempted and dropped, so ``fetched`` can be lower
+                          than ``eligible - omitted_by_cap``; that difference is
+                          the drop count and needs no field of its own.
+    ``omitted_by_cap``    ``eligible`` minus ``spec.max_items``, or 0. These are
+                          deferred to a later run (seen-state carries them), not
+                          lost — the cap is politeness, not a filter.
+    ``oldest_capture``    CDX timestamps (``YYYYMMDDhhmmss``) spanning the
+    ``newest_capture``    ELIGIBLE set — the window the Archive offered.
+    ``capture_age_days_max``     whole days between ``utcnow()`` and the capture
+    ``capture_age_days_median``  timestamp, over the FETCHED items only.
+
+    **The two halves have different bases, deliberately.** The timestamps
+    describe what the Archive had; the ages describe what this run read and put
+    in front of the operator. So when the cap bites, ``capture_age_days_max`` is
+    NOT the age of ``oldest_capture`` — the oldest eligible capture was never
+    fetched. ``test_oldest_capture_is_eligible_basis_while_ages_are_fetched``
+    pins that divergence so it cannot be silently "fixed" into agreement.
+
+    Ages are the floor of elapsed days; the median of an even-sized set is the
+    mean of the two central values truncated to whole days. A capture dated in
+    the future (clock skew, or a malformed CDX row) yields a negative age rather
+    than a clamped zero: a number that cannot be true is more useful than one
+    that can. All seven fields default to the empty-run state, so a source with
+    no spec, an unavailable CDX index, or a non-JSON CDX response reports
+    ``RecoveryReport()`` rather than nothing.
+    """
+    eligible: int = 0
+    fetched: int = 0
+    omitted_by_cap: int = 0
+    oldest_capture: "str | None" = None
+    newest_capture: "str | None" = None
+    capture_age_days_max: "int | None" = None
+    capture_age_days_median: "int | None" = None
+
+
+_CDX_TS = re.compile(r"^[0-9]{14}")
+
+
+def _capture_age_days(ts: str, now: datetime) -> "int | None":
+    """Whole days from a CDX ``YYYYMMDDhhmmss`` capture stamp to ``now``.
+
+    Returns None for a stamp that is missing, short, or not a real date, so one
+    malformed CDX row cannot poison the run's age statistics.
+    """
+    m = _CDX_TS.match(ts or "")
+    if m is None:
+        return None
+    try:
+        captured = datetime.strptime(m.group(0), "%Y%m%d%H%M%S").replace(
+            tzinfo=timezone.utc)
+    except ValueError:                     # e.g. month 13 in the index
+        return None
+    return (now - captured).days
 
 
 def _cdx_get(url: str, name: str, backoff=None):
@@ -199,27 +275,35 @@ def _snapshot_item(name: str, spec: RecoverySpec, ts: str, original: str
     )
 
 
-def recover(name: str, since=None) -> list[CandidateItem]:
+def recover_with_report(name: str, since=None
+                        ) -> "tuple[list[CandidateItem], RecoveryReport]":
     """Read a blocked source's content pages from the Internet Archive.
 
-    Returns candidates keyed to the real origin URL. Never raises. ``since`` is
-    accepted for signature symmetry with ``Source.fetch`` and is not used to
-    filter (capture date is not decision date); seen-state dedups downstream.
+    Returns the candidates (keyed to the real origin URL) and a
+    ``RecoveryReport`` describing what the run saw and how stale it is. Never
+    raises. ``since`` is accepted for signature symmetry with ``Source.fetch``
+    and is not used to filter (capture date is not decision date); seen-state
+    dedups downstream.
+
+    ``utcnow()`` is read ONCE here and used for both the CDX lookback floor and
+    every capture age, so a run's telemetry is internally consistent and a test
+    can freeze the clock at a single monkeypatch point.
     """
     spec = SPECS.get(name)
     if spec is None:
-        return []
-    frm = (utcnow() - timedelta(days=spec.lookback_days)).strftime("%Y%m%d")
+        return [], RecoveryReport()
+    now = utcnow()
+    frm = (now - timedelta(days=spec.lookback_days)).strftime("%Y%m%d")
     resp = _cdx_get(_CDX_URL.format(prefix=spec.cdx_prefix, frm=frm), name)
     if resp is None:
         logger.warning("%s: CDX index unavailable after retries, no recovery "
                        "this run", name)
-        return []
+        return [], RecoveryReport()
     try:
         rows = json.loads(getattr(resp, "text", "") or "[]")
     except ValueError:
         logger.warning("%s: CDX returned non-JSON, no recovery this run", name)
-        return []
+        return [], RecoveryReport()
     if rows and rows[0] and rows[0][0] == "urlkey":
         rows = rows[1:]
 
@@ -235,18 +319,50 @@ def recover(name: str, since=None) -> list[CandidateItem]:
         if key not in captures or ts > captures[key][0]:
             captures[key] = (ts, original)
 
+    # `ordered` stays the full ELIGIBLE set (newest capture first) for the
+    # report's span; `to_fetch` is what the per-run politeness cap allows.
     ordered = sorted(captures.values(), key=lambda t: t[0], reverse=True)
-    if len(ordered) > spec.max_items:
+    eligible = len(ordered)
+    omitted_by_cap = max(0, eligible - spec.max_items)
+    to_fetch = ordered[:spec.max_items] if omitted_by_cap else ordered
+    if omitted_by_cap:
         logger.info("%s: %d captured content pages; fetching the %d most "
                     "recently archived (the rest wait for a later run)",
-                    name, len(ordered), spec.max_items)
-        ordered = ordered[:spec.max_items]
+                    name, eligible, spec.max_items)
 
     items: list[CandidateItem] = []
-    for ts, original in ordered:
+    ages: list[int] = []
+    for ts, original in to_fetch:
         item = _snapshot_item(name, spec, ts, original)
-        if item is not None:
-            items.append(item)
+        if item is None:
+            continue
+        items.append(item)
+        age = _capture_age_days(ts, now)
+        if age is not None:
+            ages.append(age)
+
+    report = RecoveryReport(
+        eligible=eligible,
+        fetched=len(items),
+        omitted_by_cap=omitted_by_cap,
+        oldest_capture=ordered[-1][0] if ordered else None,
+        newest_capture=ordered[0][0] if ordered else None,
+        capture_age_days_max=max(ages) if ages else None,
+        capture_age_days_median=int(statistics.median(ages)) if ages else None,
+    )
     logger.info("%s: recovered %d content page(s) from the Internet Archive "
-                "(capture lag applies; not a live read)", name, len(items))
-    return items
+                "(capture lag applies; not a live read); %d eligible, %d "
+                "omitted by the per-run cap, capture age max %s / median %s "
+                "day(s)", name, report.fetched, report.eligible,
+                report.omitted_by_cap, report.capture_age_days_max,
+                report.capture_age_days_median)
+    return items, report
+
+
+def recover(name: str, since=None) -> list[CandidateItem]:
+    """``recover_with_report`` without the telemetry — the original contract.
+
+    Kept byte-for-byte compatible in signature and return type for every caller
+    that does not want the report.
+    """
+    return recover_with_report(name, since)[0]

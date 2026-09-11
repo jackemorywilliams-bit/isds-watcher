@@ -462,3 +462,179 @@ def test_probe_gmail_scholar_names_the_newest_alert(monkeypatch):
     # Registered in PROBES (the autouse fixture empties the live dict, so read the source).
     src = open(source_health.__file__, encoding="utf-8").read()
     assert '"gmail_scholar": _probe_gmail_scholar,' in src
+
+
+# =============================================================================
+# The roster-completeness contract (row M, council special session 2026-09-10).
+#
+# ACTIVE_SOURCES held 8 keys against a 10-source roster. Half of that gap was a
+# documented decision — gmail_scholar is credential-gated and the comment said
+# so — and the integrity officer ruled that calling it a defect was inflated
+# relevance. What survived: bing_news was absent with NO recorded reason, while
+# the same comment justified google_news_rss, which all_sources() no longer
+# returns. The comment documented a source not in the roster while failing to
+# document one that is.
+#
+# The repair is not "make the set equal". It is to make the asymmetry a register
+# the tests can read: ACTIVE_SOURCES | EXEMPT_SOURCES must account for the whole
+# roster, and an exemption must carry a reason.
+# =============================================================================
+
+def _roster():
+    from src.sources import all_sources
+    return {s.name for s in all_sources()}
+
+
+def test_every_source_is_tracked_or_exempted():
+    """Every name all_sources() returns is either zero-streak-tracked or carries
+    a written exemption. This is the guard that would have caught bing_news on
+    the day it joined the roster instead of six archived runs later."""
+    roster = _roster()
+    assert roster == source_health.ACTIVE_SOURCES | set(source_health.EXEMPT_SOURCES), (
+        "untracked: " + str(sorted(roster - source_health.ACTIVE_SOURCES
+                                   - set(source_health.EXEMPT_SOURCES)))
+        + "; tracked but not in the roster: "
+        + str(sorted((source_health.ACTIVE_SOURCES
+                      | set(source_health.EXEMPT_SOURCES)) - roster)))
+    assert len(roster) == 10
+
+
+def test_an_exemption_carries_a_reason_not_a_bare_name():
+    """EXEMPT_SOURCES is a register, not a set: the reason is machine-readable
+    so an exclusion cannot be taken silently the way bing_news's absence was."""
+    assert source_health.EXEMPT_SOURCES
+    for name, reason in source_health.EXEMPT_SOURCES.items():
+        assert isinstance(reason, str) and len(reason.strip()) >= 20, \
+            f"{name} is exempted without a usable reason"
+        assert name not in source_health.ACTIVE_SOURCES, \
+            f"{name} cannot be both tracked and exempt"
+
+
+def test_gmail_scholar_is_exempt_by_decision_and_keeps_its_probe():
+    """The asymmetry is documented, not deleted. gmail_scholar reads Emory's own
+    mailbox and is inactive without credentials, so the streak alarm would fire
+    on the pipeline's own configuration — but the probe added 2026-09-08 still
+    dates the newest alert when credentials exist. Exempt from the alarm, not
+    from diagnosis."""
+    reason = source_health.EXEMPT_SOURCES["gmail_scholar"]
+    assert "credential-gated" in reason and "GMAIL_ALERT_" in reason
+    src = open(source_health.__file__, encoding="utf-8").read()
+    assert '"gmail_scholar": _probe_gmail_scholar,' in src
+
+
+def test_the_retired_google_news_rationale_is_gone():
+    """The exclusion note justified google_news_rss, retired from the roster at
+    b7d0925 on 2026-07-29. A rationale for a source that no longer exists is a
+    claim the code cannot support; it is removed with the source it described."""
+    assert "google_news_rss" not in _roster()
+    src = open(source_health.__file__, encoding="utf-8").read()
+    assert "google_news_rss" not in src
+    assert "google_news_rss" not in source_health.EXEMPT_SOURCES
+    # It is still handled at runtime if it ever reappears in a run's entries:
+    # a DISABLED status is exempt by STATUS, which needs no name in any set.
+    assert "DISABLED" in source_health._EXEMPT_STATUSES
+
+
+# --- bing_news: tracked, and probed so a quiet week is not called rot -----------
+# bing_news returned zero on four of the six archived runs it has been in the
+# roster for, including 2026-08-17/08-24/08-31 — exactly a DEGRADED_AFTER
+# streak — and then one item on 2026-09-07. Tracking it without a probe would
+# have asserted fetcher rot about a working lane. 44550ca added gdelt to
+# ACTIVE_SOURCES and its probe in one commit; this follows that precedent.
+def _bing_feed():
+    import feedparser
+    with open(_os.path.join(_FIX, "bing_news_feed.xml"), "rb") as fh:
+        return feedparser.parse(fh.read())
+
+
+def _no_sleep(monkeypatch):
+    from unittest import mock
+    monkeypatch.setattr("src.sources.bing_news.time", mock.Mock(sleep=lambda s: None))
+
+
+def test_bing_news_is_tracked_and_carries_a_probe():
+    assert "bing_news" in source_health.ACTIVE_SOURCES
+    src = open(source_health.__file__, encoding="utf-8").read()
+    assert '"bing_news": _probe_bing_news,' in src
+
+
+def test_probe_bing_news_results_served_is_quiet(monkeypatch):
+    """Queries return results with no window -> the lane works and the run
+    window was simply empty. QUIET is recorded, never alarmed."""
+    _no_sleep(monkeypatch)
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss", lambda url: _bing_feed())
+    label = source_health._probe_bing_news()
+    assert label.startswith("QUIET (Bing News live; 3 result(s) across 12 queries")
+    assert "newest 2026-07-21" in label
+
+
+def test_probe_bing_news_refused_is_not_read(monkeypatch):
+    """Every query refused at the origin -> a confirmed access failure, named."""
+    _no_sleep(monkeypatch)
+    _base.reset_fetch_log()
+    _base._record_outcome(
+        "https://www.bing.com/news/search?q=ICSID&format=rss", "refused", "403")
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss", lambda url: None)
+    label = source_health._probe_bing_news()
+    assert label.startswith("NOT-READ (HTTP 403 from Bing News on 1 of 12 queries)")
+
+
+def test_probe_bing_news_served_but_empty_is_generic_rot(monkeypatch):
+    """Feeds served, zero entries across every query, nothing refused: that is
+    real breakage, left to the generic alarm (None) rather than excused."""
+    import feedparser
+    _no_sleep(monkeypatch)
+    _base.reset_fetch_log()
+    empty = feedparser.parse(
+        b"<rss version='2.0'><channel><title>x</title></channel></rss>")
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss", lambda url: empty)
+    assert source_health._probe_bing_news() is None
+
+
+def test_probe_bing_news_never_raises(monkeypatch):
+    _no_sleep(monkeypatch)
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss",
+                        lambda url: (_ for _ in ()).throw(RuntimeError("boom")))
+    assert source_health._probe_bing_news() is None
+
+
+def test_a_quiet_bing_news_streak_is_recorded_not_alarmed(monkeypatch):
+    """End to end through apply_to_source_health: the 2026-08-31 shape — three
+    zero runs on a lane that was in fact live — must NOT produce a degradation
+    alarm now that bing_news is tracked."""
+    _no_sleep(monkeypatch)
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss", lambda url: _bing_feed())
+    monkeypatch.setattr(source_health, "PROBES",
+                        {"bing_news": source_health._probe_bing_news})
+    sh = [{"name": "bing_news", "status": "RETURNED", "count": 0},
+          {"name": "icsid", "status": "RETURNED", "count": 4},
+          {"name": "pca_press", "status": "RETURNED", "count": 2}]
+    health = {"sources": {"bing_news": {"zero_streak": 3,
+                                        "last_nonzero": "2026-08-10",
+                                        "last_run": "2026-08-31"}}}
+    degraded = source_health.apply_to_source_health(sh, health)
+    assert degraded == []
+    assert sh[0]["status"].startswith("QUIET (Bing News live;")
+    assert source_health.build_warnings(sh, degraded) == []
+
+
+def test_a_walled_bing_news_streak_is_alarmed(monkeypatch):
+    """The other half of the contract: a confirmed refusal at three zero runs
+    DOES alarm, with repair-or-replace language. Tracking it is not decorative."""
+    _no_sleep(monkeypatch)
+    _base.reset_fetch_log()
+    _base._record_outcome(
+        "https://www.bing.com/news/search?q=ICSID&format=rss", "refused", "403")
+    monkeypatch.setattr("src.sources.bing_news.fetch_rss", lambda url: None)
+    monkeypatch.setattr(source_health, "PROBES",
+                        {"bing_news": source_health._probe_bing_news})
+    sh = [{"name": "bing_news", "status": "RETURNED", "count": 0},
+          {"name": "icsid", "status": "RETURNED", "count": 4},
+          {"name": "pca_press", "status": "RETURNED", "count": 2}]
+    health = {"sources": {"bing_news": {"zero_streak": 3}}}
+    degraded = source_health.apply_to_source_health(sh, health)
+    assert degraded == ["bing_news"]
+    assert sh[0]["status"].startswith("NOT-READ (HTTP 403 from Bing News")
+    assert sh[0]["status"].endswith("; 3 zero runs")
+    assert any("SOURCE ACCESS FAILURE" in w
+               for w in source_health.build_warnings(sh, degraded))

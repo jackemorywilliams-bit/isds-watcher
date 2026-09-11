@@ -13,6 +13,7 @@ import argparse
 import logging
 import re
 import sys
+from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 
 from . import (classify_v2, config, council_log, render, research_brief,
@@ -309,15 +310,23 @@ def main(argv=None) -> int:
                     and str(entry.get("status", "")).startswith("NOT-READ")
                     and source_recovery.is_recoverable(entry["name"])):
                 try:
-                    recovered = source_recovery.recover(entry["name"], since)
+                    recovered, report = source_recovery.recover_with_report(
+                        entry["name"], since)
                 except Exception as exc:  # noqa: BLE001 - recovery never kills a run
                     logger.error("source_recovery: %s failed (%s)", entry["name"], exc)
-                    recovered = []
+                    recovered, report = [], source_recovery.RecoveryReport()
                 fresh_rec = [it for it in recovered
                              if not state.is_seen(st, entry["name"], it.source_id)]
                 if recovered:
                     entry["count"] = len(recovered)
                     entry["status"] = "RECOVERED (Internet Archive)"
+                    # RECOVERED used to publish one number. The recovery's own
+                    # telemetry — how much of the Archive's offer the per-run
+                    # cap deferred, and how stale the snapshots read here are —
+                    # rides under one nested key so meta.json readers that do
+                    # not know about it are unaffected. Whether any of it is
+                    # DISPLAYED is the site's call, not the pipeline's.
+                    entry["recovery"] = asdict(report)
                     stats["per_source"][entry["name"]] = len(fresh_rec)
                     if entry["name"] in stats["dropped_sources"]:
                         stats["dropped_sources"].remove(entry["name"])

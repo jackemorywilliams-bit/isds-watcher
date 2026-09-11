@@ -1972,8 +1972,14 @@ def test_recovery_guard_heals_a_not_read_source(tmp_path, monkeypatch):
                                "https://www.italaw.com/cases/9990",
                                "Newco v. Ruritania", None, "s", "trade secret",
                                {"retrieved_via": "internet-archive", "body_final": True})]
-    monkeypatch.setattr(main_mod.source_recovery, "recover",
-                        lambda name, since=None: list(recovered))
+    # The pipeline reads the reporting call so the run can publish the recovery's
+    # telemetry (SD-4, 2026-09-10); `recover()` survives as its wrapper.
+    report = main_mod.source_recovery.RecoveryReport(
+        eligible=20, fetched=1, omitted_by_cap=8,
+        oldest_capture="20260813000000", newest_capture="20260901000000",
+        capture_age_days_max=20, capture_age_days_median=15)
+    monkeypatch.setattr(main_mod.source_recovery, "recover_with_report",
+                        lambda name, since=None: (list(recovered), report))
     monkeypatch.setattr(main_mod, "enrich", lambda it: it)
     monkeypatch.delenv("MODEL_PROVIDER", raising=False)
     monkeypatch.setattr(main_mod, "send_digest", lambda *a, **k: True)
@@ -1989,6 +1995,13 @@ def test_recovery_guard_heals_a_not_read_source(tmp_path, monkeypatch):
     italaw = next(s for s in meta["source_health"] if s["name"] == "italaw")
     assert italaw["status"] == "RECOVERED (Internet Archive)"
     assert italaw["count"] == 1
+    # ...and the recovery's own telemetry reaches meta.json under one nested
+    # key, so "RECOVERED, 1 item" is no longer the whole disclosure: the run
+    # records what the per-run cap deferred and how old the snapshot was.
+    assert italaw["recovery"] == {
+        "eligible": 20, "fetched": 1, "omitted_by_cap": 8,
+        "oldest_capture": "20260813000000", "newest_capture": "20260901000000",
+        "capture_age_days_max": 20, "capture_age_days_median": 15}
     # The healed source produced no degradation / access-failure warning.
     assert not any("ACCESS FAILURE" in w or "DEGRADATION" in w
                    for w in meta.get("health_warnings", []))

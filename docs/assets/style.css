@@ -162,6 +162,17 @@ main { display: block; }
   color: var(--ink-soft); margin: 0;
 }
 .status-strip-body strong { color: var(--ink); }
+/* The denominator note. Smaller and quieter than the status line it explains,
+   but on the same banner rather than a page away: a total whose definition is
+   elsewhere is a total a reader will define for themselves. */
+.status-strip-note {
+  font-family: var(--sans); font-size: 13px; line-height: 1.65;
+  color: var(--muted); margin: 10px 0 0; max-width: 68ch;
+}
+.status-strip-note strong { color: var(--ink-soft); font-weight: 600; }
+.status-strip-note code {
+  font-size: 12px; background: rgba(11, 61, 92, .05); padding: 1px 4px; border-radius: 3px;
+}
 
 /* ---------------------------------------------------------------- bands --- */
 .band { padding: 60px 0; border-bottom: 1px solid var(--line-soft); }
@@ -414,7 +425,7 @@ main { display: block; }
 }
 
 /* Source chart bars: screened (navy) and accepted (gold). */
-.chart-bar-screened { fill: var(--navy); }
+.chart-bar-screened, .chart-bar-fresh { fill: var(--navy); }
 .chart-bar-accepted { fill: var(--gold-bright); }
 .chart-bar-value {
   font-family: var(--sans); font-size: 11px; font-weight: 700;
@@ -463,7 +474,7 @@ main { display: block; }
   content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
   width: 14px; height: 3px; border-radius: 2px;
 }
-.chart-key-screened::before { background: var(--navy); }
+.chart-key-screened::before, .chart-key-fresh::before { background: var(--navy); }
 .chart-key-accepted::before { background: var(--gold-bright); }
 .chart-key-zero::before { background: var(--muted); height: 0; border-top: 2px dashed var(--muted); }
 

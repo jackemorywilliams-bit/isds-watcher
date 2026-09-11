@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import logging
 
-from .base import CandidateItem, Source, parse_date
+from .base import CHANNELS, READ_DEPTHS, CandidateItem, Source, parse_date
 from .iisd_itn import IISDITNSource
 from .google_alerts import GoogleAlertsSource
 from .gmail_scholar import GmailScholarSource
@@ -42,6 +42,54 @@ __all__ = [
 ]
 
 
+# --------------------------------------------------------------------------- #
+# THE CATALOGUE — the roster, and everything every public surface says about it.
+#
+# One list. Before 2026-09-10 there were four: this constructor list, a sentence
+# on the how-it-works page, a paragraph in the README, and the digest email's
+# lede — and three of the four said "nine" over a roster of ten. A count written
+# in prose beside a list it is not derived from will drift, and it did.
+#
+# (class, label, channel, read_depth). Order is priority order and is the order
+# every surface prints. Nothing else may enumerate sources.
+# --------------------------------------------------------------------------- #
+_CATALOGUE: tuple[tuple[type, str, str, str], ...] = (
+    # NOT full-text since ~August 2026. Every feed variant and the article pages
+    # themselves answer a Cloudflare bot challenge (HTTP 403 "Just a moment…"),
+    # so route 2 reads the homepage listing and sets raw_text=title with
+    # metadata["listing_only"]=True — see the module docstring, and the
+    # 2026-09-07 run's source_health, which records QUIET (RSS HTTP 403; HTML
+    # listing live). Nine consecutive zero-item runs were flagged DEGRADED before
+    # this was understood. If the wall comes down this returns to "full-text".
+    (IISDITNSource,            "IISD ITN",        "open-repository",  "headline-only-walled"),
+    # Emory's own Google account. A third party cannot re-run either of these and
+    # cannot audit what they did or did not deliver; that is why they are not
+    # described as public sources anywhere on this project's surfaces.
+    (GoogleAlertsSource,       "Google Alerts",   "operator-mailbox", "listing-then-body"),
+    (GmailScholarSource,       "Scholar Alerts",  "operator-mailbox", "listing-then-body"),
+    (ItalawSource,             "italaw",          "open-repository",  "listing-then-body"),
+    (ICSIDSource,              "ICSID",           "open-repository",  "listing-then-body"),
+    # Paywalled body, never fetched: config.HEADLINE_ONLY_SOURCES and
+    # enrich.NO_BODY_FETCH. tests/test_source_catalogue.py asserts all three agree.
+    (IAReporterHeadlinesSource, "IAReporter",     "open-repository",  "headline-only-paywalled"),
+    (UNCTADISDSSource,         "UNCTAD",          "open-repository",  "listing-then-body"),
+    (PCAPressSource,           "PCA",             "open-repository",  "listing-then-body"),
+    (BingNewsSource,           "Bing News",       "open-repository",  "listing-then-body"),
+    (GDELTSource,              "GDELT",           "open-repository",  "listing-then-body"),
+)
+
+# Fail closed at import: a typo in the vocabulary above must break the run, not
+# reach a reader as an unrecognised word in a sentence about access.
+for _cls, _label, _channel, _depth in _CATALOGUE:
+    if not _label:
+        raise ValueError(f"{_cls.__name__}: catalogue label must not be empty")
+    if _channel not in CHANNELS:
+        raise ValueError(f"{_cls.__name__}: channel {_channel!r} not in {CHANNELS}")
+    if _depth not in READ_DEPTHS:
+        raise ValueError(f"{_cls.__name__}: read_depth {_depth!r} not in {READ_DEPTHS}")
+del _cls, _label, _channel, _depth
+
+
 def all_sources(config=None) -> list[Source]:
     """Return one fresh instance of every usable source, in priority order.
 
@@ -49,16 +97,17 @@ def all_sources(config=None) -> list[Source]:
     icsid, iareporter_headlines), then the best-effort / likely-blocked
     sources (unctad_isds, pca_press). ``config`` is accepted for forward
     compatibility and currently unused.
+
+    Each instance carries its catalogue fields (``label``, ``channel``,
+    ``read_depth``) from ``_CATALOGUE`` above. This function is the ONLY
+    authority on what the roster is: the site, the README, the digest email and
+    the workflow chart's source count are all generated from it.
     """
-    return [
-        IISDITNSource(),
-        GoogleAlertsSource(),
-        GmailScholarSource(),
-        ItalawSource(),
-        ICSIDSource(),
-        IAReporterHeadlinesSource(),
-        UNCTADISDSSource(),
-        PCAPressSource(),
-        BingNewsSource(),
-        GDELTSource(),
-    ]
+    sources: list[Source] = []
+    for cls, label, channel, read_depth in _CATALOGUE:
+        src = cls()
+        src.label = label
+        src.channel = channel
+        src.read_depth = read_depth
+        sources.append(src)
+    return sources

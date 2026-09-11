@@ -28,8 +28,19 @@ the places that restate it. Every restatement must equal its authority. That is 
 WHAT IT DELIBERATELY IS NOT. It does no NLP, reads no prose it was not pointed at, and
 makes no attempt at completeness. A guard that tried to catch every claim would need
 to understand English, and would become the unreviewable thing it was built to
-prevent. It checks thirteen facts because thirteen were worth the coupling; a
-fourteenth is a decision, not a default.
+prevent. It checks fifteen facts because fifteen were worth the coupling; a
+sixteenth is a decision, not a default — and fifteen is the ceiling
+tests/test_check_claims.py holds it to.
+
+A registered fact can still go unguarded. On 2026-09-10 the site and the methodology
+memo were both publishing "eleven archived runs / 347 screenings" — true through
+2026-08-03, wrong from 2026-08-10, and never caught, because the run count named one
+restatement (the one that was right) and the screening count named none at all. An
+authority with no mirror over the place that drifts checks nothing. Both are now
+mirrored onto the GENERATED pages under docs/, which is where a reader meets the
+number — not onto the templates, which after that date carry no digit to read, and
+not onto METHODOLOGY.md, whose count sentences were re-dated to the run they were
+true for and are history rather than restatement.
 
 TWO CONSEQUENCES OF FAILING CLOSED, both intended:
 
@@ -133,16 +144,50 @@ def _backtest_metrics() -> dict[str, float]:
             "accuracy": h.accuracy, "f1": h.f1}
 
 
+def _catalogue_metrics() -> dict[str, float]:
+    """The size and shape of the source roster, from the roster.
+
+    ``src/sources/__init__.py::all_sources()`` is the only authority on what this
+    instrument reads. Every prose statement of it — the site, the README, the
+    digest email, the workflow chart's banner — is generated from here, and this
+    entry is what fails when one of them is written by hand again.
+    """
+    from scripts.build_source_inventory import (
+        catalogue, open_repository, operator_account)
+    rows = catalogue()
+    return {"sources": float(len(rows)),
+            "open": float(len(open_repository(rows))),
+            "operator": float(len(operator_account(rows)))}
+
+
+def _archive_metrics() -> dict[str, float]:
+    """What the archive itself says, summed the way the site sums it.
+
+    ``scripts/build_site.py::archive_status`` reads every ``digests/*/meta.json``
+    and every article file and returns the numbers the pages render. Registering
+    the FUNCTION rather than a literal means the registry measures the archive
+    instead of comparing two sentences someone typed.
+    """
+    from scripts.build_site import archive_status, collect_digests
+    return {k: float(v) for k, v in archive_status(collect_digests()).items()}
+
+
 _HARNESS = {
     "scripts/eval_holdout.py": _holdout_metrics,
     "scripts/backtest.py": _backtest_metrics,
+    "scripts/build_site.py": _archive_metrics,
+    "src/sources/__init__.py": _catalogue_metrics,
 }
 
 
 # --------------------------------------------------------------------------- #
-# THE REGISTRY — thirteen facts. Each names exactly one authority.
+# THE REGISTRY — fifteen facts. Each names exactly one authority.
 # --------------------------------------------------------------------------- #
 _METHODOLOGY = "METHODOLOGY.md"
+_SOURCES = "src/sources/__init__.py"
+_SITE_INDEX = "docs/index.html"
+_SITE_BACKTEST = "docs/backtest.html"
+_SITE_HOW = "docs/how-it-works.html"
 _FINGERPRINT = "fingerprint.yaml"
 _CLASSIFY = "src/classify.py"
 _CONFIG = "src/config.py"
@@ -236,12 +281,65 @@ REGISTRY: tuple[Fact, ...] = (
         (Ref(_BACKTEST, "f1", mode="harness"),
          Ref(_METHODOLOGY, r"F1 of ([0-9.]+)")),
     ),
+    # --- the roster -------------------------------------------------------- #
+    # Four surfaces described this instrument's inputs and none of them agreed
+    # with the code: the how-it-works page said "the nine public sources" twice,
+    # the digest email said "nine open sources" and then listed seven, and the
+    # README tiered seven of the ten. all_sources() returned ten the whole time.
+    # Each of those sentences is generated now, and this entry is the guard that
+    # fails if one is written by hand again.
+    Fact(
+        "catalogue sources",
+        Ref(_SOURCES, "sources", mode="harness"),
+        (Ref("analytics/source-inventory.md", r"\*\*(\d+) sources\*\* are checked"),
+         Ref(_SITE_HOW, r"first band is the (\d+) sources"),
+         Ref(_SITE_INDEX, r"scholarship from (\d+) sources"),
+         Ref("docs/assets/workflow.svg", r"WHERE WE LOOK — THE (\d+) SOURCES")),
+    ),
     # --- the record of what has actually been run and reviewed --------------- #
+    # Under-mirrored until 2026-09-10: the authority was declared and exactly one
+    # restatement with it — analytics/source-receptivity.md, which was right. The
+    # two places that had actually drifted were pointed at by nothing, and both
+    # were still publishing "eleven runs / 347 screenings", true through
+    # 2026-08-03 and wrong since 2026-08-10. The registry did not fail, because
+    # the registry had never been asked. Pointing it at them is the whole repair.
     Fact(
         "archived runs",
         Ref("digests/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].html", mode="files"),
         (Ref("analytics/source-receptivity.md",
-             r"Across \*\*(\d+)\*\* archived run"),),
+             r"Across \*\*(\d+)\*\* archived run"),
+         Ref("scripts/build_site.py", "runs", mode="harness",
+             note="the published pages are built from digests/*/meta.json while this "
+                  "authority counts digests/*.html; a folder rendered without a page, "
+                  "or a page with no folder, shows up here and nowhere else"),
+         # NOT METHODOLOGY.md. Its two count sentences were re-dated on
+         # 2026-09-10 into statements about the run of 2026-08-03 — "as of the
+         # run of 2026-08-03 … eleven archived runs … 347 screenings" — and a
+         # dated historical statement is not a restatement of a present-tense
+         # fact. Registering it would read eleven, disagree with sixteen, and be
+         # right to. The memo now states no current count anywhere, and adding
+         # one is a new sentence in the operator's first-person document, which
+         # is not this registry's to write.
+         # The generated site, not the template: after 2026-09-10 the templates
+         # render this number from archive_status() and carry no digit to read,
+         # so the restatement that can still be WRONG in front of a reader is the
+         # built page. A stale docs/ therefore fails here as well as in
+         # check_site_sync.py, which is the point — the reader sees docs/.
+         Ref(_SITE_INDEX, r"(\d+) archived runs?;"),
+         Ref(_SITE_INDEX, r"in (\d+) runs? across")),
+    ),
+    # The screening count was genuinely unregistered — no authority, no mirror —
+    # which is why 347 survived five runs of drift in two files at once.
+    Fact(
+        "candidates screened across the archived runs",
+        Ref("scripts/build_site.py", "screened", mode="harness"),
+        (# Same exclusion as above: METHODOLOGY.md's "347 screenings" is now
+         # dated to the run of 2026-08-03 and is history, not drift.
+         # Semicolon-anchored: the status strip's cumulative total, not the
+         # per-run "30 candidates screened," in the latest-run card below it.
+         Ref(_SITE_INDEX, r"(\d+) candidates screened;"),
+         Ref(_SITE_INDEX, r"runs across (\d+) (?:screenings|candidates)"),
+         Ref(_SITE_BACKTEST, r"reached 40 in (\d+) screenings")),
     ),
     # RETIRED 2026-08-04 — "completed human-review cycles".
     #

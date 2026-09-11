@@ -1,6 +1,6 @@
 {% extends "base.html.j2" %}
 {% block title %}Backtest | ISDS Thematic Watcher{% endblock %}
-{% block description %}A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the out-of-sample holdout that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.{% endblock %}
+{% block description %}A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the held-out set that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.{% endblock %}
 
 {% block content %}
 <section class="page-head">
@@ -41,9 +41,9 @@
           Its numbers never enter any headline.
         </li>
         <li>
-          <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
+          <strong>Held-out set</strong> &mdash; four held-out positives and clear labelled
           negatives, none of them used in development. This bucket carries the descriptive
-          out-of-sample record: a confusion matrix over twenty items with four positives. It is
+          held-out record: a confusion matrix over twenty items with four positives. It is
           too small to support derived performance rates, and none are reported.
         </li>
         <li>
@@ -108,11 +108,11 @@
 
 <section class="band">
   <div class="measure">
-    <p class="page-kicker">Bucket 2 &mdash; out-of-sample (the headline)</p>
-    <h2 class="section-head">Out-of-sample holdout</h2>
+    <p class="page-kicker">Bucket 2 &mdash; the exploratory held-out set (the headline)</p>
+    <h2 class="section-head">Held-out set</h2>
     <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
       Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
-      off-theme negatives &mdash; {{ bt.holdout.total }} cases in all, none used in development. The
+      labelled negatives &mdash; {{ bt.holdout.total }} cases in all, none used in development. The
       record below is descriptive and is computed on this bucket <strong>alone</strong>; the seeds
       are not in it. Four positives cannot support a headline performance figure.
     </p>
@@ -120,7 +120,7 @@
       <table>
         <caption class="visually-hidden">
           Confusion matrix of predicted match versus true label across {{ bt.holdout.total }}
-          out-of-sample cases.
+          held-out cases.
         </caption>
         <thead>
           <tr>
@@ -132,13 +132,13 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
+            <th scope="row">Labelled positive (label&nbsp;=&nbsp;1)</th>
             <td><strong>TP {{ bt.holdout.tp }}</strong></td>
             <td>FN {{ bt.holdout.fn }}</td>
             <td>{{ bt.holdout.n_pos }}</td>
           </tr>
           <tr>
-            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
+            <th scope="row">Labelled negative (label&nbsp;=&nbsp;0)</th>
             <td>FP {{ bt.holdout.fp }}</td>
             <td><strong>TN {{ bt.holdout.tn }}</strong></td>
             <td>{{ bt.holdout.n_neg }}</td>
@@ -153,10 +153,10 @@
         cannot measure precision. Derived rates (precision, recall, accuracy, F1) are
         not reported here: over twenty items with four positives they are arithmetic,
         not performance. The production pipeline publishes at a floor of 25, not at
-        this threshold, and no item has reached 40 in 347 screenings.
+        this threshold, and no item has reached 40 in {{ status.screened }} screenings.
       </p>
       <p>
-        On this out-of-sample set the scorer makes
+        On this held-out set the scorer makes
         {{ bt.holdout.fp + bt.holdout.fn }} miss{{ 'es' if (bt.holdout.fp + bt.holdout.fn) != 1 else '' }}:
         {{ bt.holdout.fn }} false negative{{ 's' if bt.holdout.fn != 1 else '' }} and
         {{ bt.holdout.fp }} false positive{{ 's' if bt.holdout.fp != 1 else '' }}. The misses are
@@ -166,7 +166,7 @@
       <h3>Per-case results</h3>
       <table>
         <caption class="visually-hidden">
-          Per-case out-of-sample results: case, group, label, score, predicted band, and miss note.
+          Per-case held-out results: case, group, label, score, predicted band, and miss note.
         </caption>
         <thead>
           <tr>
@@ -183,7 +183,7 @@
           <tr>
             <th scope="row">{{ c.name }}</th>
             <td>{{ c.group }}</td>
-            <td>{{ 'on-theme' if c.label == 1 else 'off-theme' }}</td>
+            <td>{{ 'labelled positive' if c.label == 1 else 'labelled negative' }}</td>
             <td>{{ c.score }}</td>
             <td>
               <span class="badge badge-{{ c.band | band_class }}">{{ c.band }}</span>

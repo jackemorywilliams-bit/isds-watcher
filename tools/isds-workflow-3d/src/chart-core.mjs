@@ -46,6 +46,35 @@ export function wrap(str, maxChars, maxLines) {
   return lines;
 }
 
+// The source count is DERIVED from the manifest's own chip list, never written
+// into a string: "THE 10 SOURCES" was typed in this file and "all 10 sources"
+// was typed in the manifest, and neither was connected to the roster the
+// pipeline actually runs. `{sourceCount}` is the placeholder a manifest writes.
+export const SOURCE_COUNT_TOKEN = "{sourceCount}";
+
+// Wrap `measureStr`, but PAINT the words of `paintStr`.
+//
+// The static renderer paints a Jinja expression where the digits go, so the site
+// build can substitute the count from src/sources/__init__.py::all_sources().
+// The expression is longer than the number it renders to, so wrapping on it
+// would break lines in the wrong places; wrapping on the real number and
+// painting the expression's words keeps the geometry identical to a chart drawn
+// with the digits. Word counts are equal by construction — the placeholder is
+// one word in both strings — and if they ever are not, the real number is
+// painted rather than a mis-wrapped line.
+export function wrapPainted(measureStr, paintStr, maxChars, maxLines) {
+  const lines = wrap(measureStr, maxChars, maxLines);
+  if (measureStr === paintStr) return lines;
+  const paintWords = String(paintStr).split(" ");
+  const counts = lines.map((l) => (l ? l.split(" ").length : 0));
+  const total = counts.reduce((a, b) => a + b, 0);
+  if (total !== paintWords.length) return lines;
+  const out = [];
+  let i = 0;
+  for (const n of counts) { out.push(paintWords.slice(i, i + n).join(" ")); i += n; }
+  return out;
+}
+
 export function buildChart(manifest, config, factory, opts = {}) {
   const { COLUMNS, COL_TITLE, EDGE_STYLE, GRID, CARD, CHIP, FLOW, EDGES, THEMES } = config;
   const m = manifest;
@@ -56,6 +85,17 @@ export function buildChart(manifest, config, factory, opts = {}) {
   const tokens = flattenTheme(theme);
   const FONT = opts.font || "-apple-system, sans-serif";
   const hooks = opts.hooks || {};
+
+  // How many sources the chart draws, and what to PAINT where that number goes.
+  // `sourceCount` is the manifest's own chip count — one chip per source, so the
+  // banner headline can never disagree with the chips beneath it. `opts.
+  // sourceCountToken` lets the static renderer paint a template expression there
+  // instead, so the published SVG takes its count from all_sources() at site
+  // build time. Left unset (the vault view), the digits are painted.
+  const sourceCount = String(m.chips.length);
+  const sourceCountPaint = opts.sourceCountToken || sourceCount;
+  const measured = (s) => String(s).split(SOURCE_COUNT_TOKEN).join(sourceCount);
+  const painted = (s) => String(s).split(SOURCE_COUNT_TOKEN).join(sourceCountPaint);
 
   // Fail closed on palette gaps — a missing token is a build error, not a
   // silently-black shape.
@@ -114,7 +154,11 @@ export function buildChart(manifest, config, factory, opts = {}) {
                      opacity: 0.06 }, "bannerTint"), svg);
   el("rect", paint({ x: bannerX, y: 12, width: bannerW, height: bannerH - 34, rx: 12,
                      fill: "none", "stroke-opacity": 0.35 }, null, "bannerTint"), svg);
-  text(svg, width / 2, 34, "WHERE WE LOOK — THE 10 SOURCES, CHECKED EVERY RUN", 13, "bannerTitle", { weight: 700 });
+  // One unwrapped, centred line: painting the expression here cannot disturb any
+  // layout, because the anchor is the midpoint and the rendered string is the
+  // same digits the chips are counted from.
+  text(svg, width / 2, 34, `WHERE WE LOOK — THE ${sourceCountPaint} SOURCES, CHECKED EVERY RUN`,
+       13, "bannerTitle", { weight: 700 });
   m.chips.forEach((c, i) => {
     const cx = bannerX + 16 + (i % CHIP.cols) * (CHIP.w + CHIP.gapX);
     const cy = 46 + Math.floor(i / CHIP.cols) * (CHIP.h + CHIP.gapY);
@@ -224,16 +268,17 @@ export function buildChart(manifest, config, factory, opts = {}) {
     if (badge) text(g, x + CARD.w / 2 - 9, top + 13, badge, 8, colTok,
                     { anchor: "end", weight: 700, opacity: 0.9 });
     text(g, x + 2, top + 31, n.title, CARD.titlePx, "cardTitle", { weight: 650 });
-    wrap(n.desc, CARD.descChars, CARD.descLines).forEach((line, i) => {
-      text(g, x + 2, top + 47 + i * 13, line, CARD.descPx, "cardDesc");
-    });
+    wrapPainted(measured(n.desc), painted(n.desc), CARD.descChars, CARD.descLines)
+      .forEach((line, i) => {
+        text(g, x + 2, top + 47 + i * 13, line, CARD.descPx, "cardDesc");
+      });
     if (n.meta) {
       const metaLines = wrap(n.meta, 52, 1);
       text(g, x + 2, top + CARD.h - 9, metaLines[0], CARD.metaPx, colTok,
            { opacity: 0.85, italic: true });
     }
     const tip = el("title", {}, g);
-    setText(tip, `${n.title} — ${n.desc}\n\nevidence:\n` +
+    setText(tip, `${n.title} — ${painted(n.desc)}\n\nevidence:\n` +
       (n.evidence || []).map((e2) => "• " + e2).join("\n"));
     if (hooks.card) hooks.card(g, n);   // interactivity is the consumer's business
   }

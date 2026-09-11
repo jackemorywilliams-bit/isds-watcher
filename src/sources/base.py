@@ -52,15 +52,79 @@ class CandidateItem:
 # ---------------------------------------------------------------------------
 # Source abstract base class
 # ---------------------------------------------------------------------------
+# --------------------------------------------------------------------------- #
+# Catalogue vocabulary
+#
+# Three fields on Source that the PIPELINE never reads and every public surface
+# does. They exist because the site, the README and the digest email each kept
+# their own prose roster, and by 2026-09-10 three of them said "nine open
+# sources" over a roster of ten — two of which are not open at all.
+# --------------------------------------------------------------------------- #
+
+#: How a third party would have to obtain what this source returns.
+#:
+#:   ``open-repository``  a public web endpoint. Anyone can point the same
+#:                        fetcher at it and get the same listing.
+#:   ``operator-mailbox`` a feed or inbox that exists only inside the operator's
+#:                        own Google account. Nobody else can re-run it, and no
+#:                        reader can audit what it did or did not deliver.
+#:
+#: The distinction is a VALIDITY disclosure, not a word choice: a reader
+#: evaluating this instrument needs to know which of its inputs are reproducible.
+CHANNELS = ("open-repository", "operator-mailbox")
+
+#: How much of an item this source makes readable, as the pipeline actually
+#: treats it.
+#:
+#:   ``full-text``         the feed itself carries the article body.
+#:   ``listing-then-body`` the source yields a title/summary, and the linked page
+#:                         is fetched by src/enrich.py when the item ranks high
+#:                         enough to be read in full.
+#:
+#: Two sources are read at headline level, for reasons that are not the same and
+#: must not be collapsed — one is a publisher's commercial choice, the other is a
+#: bot wall this project ran into and could run back out of:
+#:
+#:   ``headline-only-paywalled``
+#:                         the body exists and is behind a paywall, so it is
+#:                         NEVER fetched, by policy. Mirrors
+#:                         ``src/config.py::HEADLINE_ONLY_SOURCES`` and
+#:                         ``src/enrich.py::NO_BODY_FETCH``, and a test asserts
+#:                         the three name the same source.
+#:   ``headline-only-walled``
+#:                         the feed AND the article pages answer a bot challenge,
+#:                         so only the listing's title and date can be read. The
+#:                         pipeline still ATTEMPTS the body and is refused, which
+#:                         is why this is not the paywalled value and not
+#:                         ``listing-then-body`` either. A confirmed refusal (not
+#:                         a plain zero) hands the source to
+#:                         ``src/source_recovery.py`` and the Internet Archive.
+READ_DEPTHS = ("full-text", "listing-then-body",
+               "headline-only-paywalled", "headline-only-walled")
+
+
 class Source(ABC):
     """Abstract base for every source.
 
     Subclasses set ``name`` and ``priority`` and implement ``fetch``.
     ``fetch`` MUST NEVER raise: on total failure it returns [] and logs.
+
+    ``label``, ``channel`` and ``read_depth`` describe the source to a READER.
+    Their values are assigned in ``src/sources/__init__.py::all_sources()``,
+    which is the single roster this project publishes from: a class instantiated
+    outside it carries the placeholder defaults below and must not be described
+    on a public surface.
     """
 
     name: str = "base"
     priority: str = "secondary"
+
+    #: Human-readable name, as the site, the README, the digest email and the
+    #: workflow chart all print it. Never derived by capitalising ``name`` —
+    #: that produced "Iareporter headlines" and "Gmail scholar" on the site.
+    label: str = ""
+    channel: str = "open-repository"
+    read_depth: str = "listing-then-body"
 
     @abstractmethod
     def fetch(self, since: datetime) -> list[CandidateItem]:

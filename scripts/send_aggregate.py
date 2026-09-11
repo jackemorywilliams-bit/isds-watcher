@@ -18,6 +18,14 @@ from dateutil import parser as dateparser  # noqa: E402
 from src import config, render  # noqa: E402
 from src.classify import ClassifiedItem  # noqa: E402
 from src.email_send import send_digest  # noqa: E402
+# The source roster this email describes is the roster the pipeline runs.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_source_inventory import (  # noqa: E402
+    catalogue as source_catalogue,
+    open_repository,
+    operator_account,
+    prose_list,
+)
 
 UTC = datetime.timezone.utc
 FLOOR = config.RELEVANCE_FLOOR  # only genuinely-relevant findings
@@ -125,14 +133,23 @@ def main():
         stats["per_source"][a["source"]] = stats["per_source"].get(a["source"], 0) + 1
 
     n = len(items)
+    # The roster comes from the roster. This sentence used to state a count one
+    # short of the catalogue, then list seven of its ten members, two of which are
+    # not open at all — an email surface nobody had opened while the same drift was
+    # being repaired on the website. It is generated now, from the same
+    # all_sources() the run itself fetches from.
+    rows = source_catalogue()
+    open_rows, operator_rows = open_repository(rows), operator_account(rows)
     lede = (
         "This is the first collected digest from the ISDS Thematic Watcher, an automated "
         "monitor I built to scan investor-State dispute settlement (ISDS) for one narrow "
         "doctrinal theme: intellectual property asserted as a protected investment, a "
         "regulatory or judicial measure as the disputed conduct, and a live, litigated "
-        "jurisdiction or admissibility doctrine. It draws on nine open sources, "
-        "namely the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter "
-        "repositories together with Google Alerts and Google Scholar, and it scores every new "
+        f"jurisdiction or admissibility doctrine. It draws on {len(rows)} sources: "
+        f"{len(open_rows)} open repositories ({prose_list(open_rows)}) and "
+        f"{len(operator_rows)} feeds inside my own Google account "
+        f"({prose_list(operator_rows)}), which Google generates for me and which nobody "
+        "else can re-run or audit. It scores every new "
         "item against the project's three-ring fingerprint. Across the "
         f"{runs} runs that brought the system online it screened {screened_total} candidate "
         f"items; the {n} entr{'y' if n == 1 else 'ies'} below {'is' if n == 1 else 'are'} "

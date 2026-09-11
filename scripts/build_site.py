@@ -30,6 +30,15 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # (dir already on sys.path) or as ``python -m scripts.build_site`` (it is not).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from backtest import run_backtest  # noqa: E402
+# The source roster the site describes comes from the roster the pipeline runs —
+# src/sources/__init__.py::all_sources(), by way of the inventory builder. No page
+# may enumerate or count sources any other way.
+from build_source_inventory import (  # noqa: E402
+    catalogue as source_catalogue,
+    open_repository as open_repository_sources,
+    operator_account as operator_account_sources,
+    prose_list as source_prose_list,
+)
 
 # --------------------------------------------------------------------------- #
 # Paths
@@ -637,9 +646,21 @@ _CHART = {
 }
 
 
+_CANONICAL_LABELS = {r["name"]: r["label"] for r in source_catalogue()}
+
+
 def _src_label(key: str) -> str:
-    """Human label for a per-source key, consistent with the rest of the site
-    (the digest 'sources' line and the .source-name capitalize rule)."""
+    """Human label for a per-source key, from the catalogue.
+
+    Capitalising the pipeline key is the fallback, not the rule: it published
+    "Iareporter headlines" and "Gmail scholar" on a professor-facing chart. It
+    still runs for keys the catalogue no longer holds — retired sources survive
+    in the per-source counts of old runs (``google_news_rss``), and a chart that
+    dropped them would silently under-report what those runs actually read.
+    """
+    canonical = _CANONICAL_LABELS.get(key)
+    if canonical:
+        return canonical
     return key.replace("_", " ").strip().capitalize()
 
 
@@ -827,15 +848,20 @@ def _trend_summary_text(rows: list[dict]) -> str:
 
 
 def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
-    """A horizontal per-source bar chart: candidates evaluated vs items surfaced
-    per source, sorted by volume evaluated. Returns ``(svg, worded_summary)``."""
+    """A horizontal per-source bar chart: FRESH candidates vs items surfaced per
+    source, sorted by fresh volume. Returns ``(svg, worded_summary)``.
+
+    Every figure here is ``per_source``-derived, which counts first sightings and
+    not screening events, so nothing on this chart may be called "candidates
+    evaluated" or "screened" — those name ``meta.json``'s ``screened``, which the
+    run-by-run trend chart above reports and which is the larger number."""
     W = 640
     pad_l, pad_r, pad_t, pad_b = 150, 40, 14, 28
     row_h, bar_h, gap = 30, 9, 3
     n = len(rows)
     H = pad_t + pad_b + n * row_h
     plot_w = W - pad_l - pad_r
-    x_max = max([r["screened"] for r in rows] + [1])
+    x_max = max([r["fresh"] for r in rows] + [1])
 
     def bar_w(v: int) -> float:
         return plot_w * v / x_max if x_max else 0
@@ -855,27 +881,27 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
             f'<text class="chart-axis-label chart-src-label" x="{pad_l - 10}" '
             f'y="{_fmt_num(cy)}" text-anchor="end" dominant-baseline="middle">'
             f'{html.escape(label)}</text>')
-        sw = bar_w(r["screened"])
+        sw = bar_w(r["fresh"])
         aw = bar_w(r["accepted"])
         y_scr = top + (row_h - (2 * bar_h + gap)) / 2
         y_acc = y_scr + bar_h + gap
         group = (
             f'<g class="chart-srcrow" tabindex="0" role="listitem" '
             f'data-source="{html.escape(label)}" '
-            f'data-screened="{r["screened"]}" data-accepted="{r["accepted"]}" '
+            f'data-fresh="{r["fresh"]}" data-accepted="{r["accepted"]}" '
             f'aria-label="{html.escape(label)}: '
-            f'{_count(r["screened"], "candidate", "candidates")} evaluated, '
+            f'{_count(r["fresh"], "fresh candidate", "fresh candidates")}, '
             f'{_count(r["accepted"], "item", "items")} surfaced">'
             f'<rect class="chart-hit" x="{pad_l}" y="{_fmt_num(top + 2)}" '
             f'width="{_fmt_num(plot_w)}" height="{row_h - 4}" />'
-            f'<rect class="chart-bar chart-bar-screened" x="{pad_l}" '
+            f'<rect class="chart-bar chart-bar-fresh" x="{pad_l}" '
             f'y="{_fmt_num(y_scr)}" width="{_fmt_num(sw)}" height="{bar_h}" rx="1.5" />'
             f'<rect class="chart-bar chart-bar-accepted" x="{pad_l}" '
             f'y="{_fmt_num(y_acc)}" width="{_fmt_num(max(aw, 1) if r["accepted"] else 0)}" '
             f'height="{bar_h}" rx="1.5" />'
             f'<text class="chart-bar-value" x="{_fmt_num(pad_l + max(sw, aw) + 6)}" '
             f'y="{_fmt_num(cy)}" dominant-baseline="middle">'
-            f'{r["screened"]}/{r["accepted"]}</text>'
+            f'{r["fresh"]}/{r["accepted"]}</text>'
             f'</g>')
         parts.append(group)
 
@@ -883,7 +909,7 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-source" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="source-title source-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="source-title">Candidates evaluated and items surfaced, '
+        f'<title id="source-title">Fresh candidates and items surfaced, '
         f'by source</title>'
         f'<desc id="source-desc">{html.escape(_source_summary_text(rows))}</desc>'
         + "".join(parts)
@@ -895,16 +921,16 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
 def _source_summary_text(rows: list[dict]) -> str:
     if not rows:
         return "No per-source data is available yet."
-    active = [r for r in rows if r["screened"] > 0]
+    active = [r for r in rows if r["fresh"] > 0]
     if not active:
         return "No source surfaced fresh candidates in the runs with per-source data."
     top = active[0]
     surfaced_total = sum(r["accepted"] for r in rows)
-    feeders = ", ".join(f"{_src_label(r['key'])} ({r['screened']})" for r in active)
+    feeders = ", ".join(f"{_src_label(r['key'])} ({r['fresh']})" for r in active)
     return (
         f"Of the catalogue sources, {feeders} contributed fresh candidates; "
-        f"{_src_label(top['key'])} accounted for the largest share of candidates "
-        f"evaluated, and {_count(surfaced_total, 'item was', 'items were')} "
+        f"{_src_label(top['key'])} accounted for the largest share of the fresh "
+        f"candidates, and {_count(surfaced_total, 'item was', 'items were')} "
         f"surfaced across all sources. "
         f"The source roster changed during the period, so these totals are not a "
         f"like-for-like comparison across the whole archive.")
@@ -925,7 +951,17 @@ def build_archive_charts(digests: list[Digest]) -> ChartData:
                                 else ("", _trend_summary_text(trend_rows)))
 
     # Per-source aggregation across every run that carries per-source data.
-    screened_by: dict[str, int] = {}
+    #
+    # THE KEY IS `fresh`, NOT `screened`, AND THE DIFFERENCE IS NOT COSMETIC.
+    # meta.json's `screened` is every candidate the run evaluated. `per_source`
+    # counts only the candidates the seen-state had NEVER SEEN BEFORE
+    # (src/main.py: `per_source = len(fresh)`), so an item re-encountered in a
+    # later run is screened again and fresh never again. Over the eleven runs
+    # that carry per-source data these two sum to 191 and 230 — and until
+    # 2026-09-10 this site printed both under the single heading "Candidates
+    # evaluated", on the same page, forty apart. The field name carries the
+    # distinction now so a template cannot lose it again.
+    fresh_by: dict[str, int] = {}
     accepted_by: dict[str, int] = {}
     source_runs = 0
     for d in digests:
@@ -933,24 +969,24 @@ def build_archive_charts(digests: list[Digest]) -> ChartData:
             continue  # older runs predate per-source counting — guarded.
         source_runs += 1
         for k, v in d.per_source.items():
-            screened_by[k] = screened_by.get(k, 0) + v
+            fresh_by[k] = fresh_by.get(k, 0) + v
         for k, v in d.accepted_by_source.items():
             accepted_by[k] = accepted_by.get(k, 0) + v
 
     keys = sorted(
-        set(screened_by) | set(accepted_by),
-        key=lambda k: (-screened_by.get(k, 0), -accepted_by.get(k, 0), k),
+        set(fresh_by) | set(accepted_by),
+        key=lambda k: (-fresh_by.get(k, 0), -accepted_by.get(k, 0), k),
     )
     source_rows = [
         {"key": k, "label": _src_label(k),
-         "screened": screened_by.get(k, 0), "accepted": accepted_by.get(k, 0)}
+         "fresh": fresh_by.get(k, 0), "accepted": accepted_by.get(k, 0)}
         for k in keys
     ]
     has_source = bool(source_rows)
     # The chart shows only sources that surfaced fresh candidates (the ones that
     # "earn their place"); the visually-hidden table below keeps every source,
     # including the dead/quiet ones at zero, as the authoritative record.
-    chart_rows = [r for r in source_rows if r["screened"] > 0] or source_rows
+    chart_rows = [r for r in source_rows if r["fresh"] > 0] or source_rows
     if has_source:
         source_svg, source_summary = _build_source_svg(chart_rows)
     else:
@@ -989,19 +1025,59 @@ def _build_stamp() -> dict:
 
 
 def archive_status(digests: list[Digest]) -> dict:
-    """The homepage status line's numbers, summed from the archived runs.
+    """Every number the site states about the archive, summed from the archive.
 
-    Generated rather than written so the line can never drift from the record:
-    ``runs`` is how many runs are archived, ``screened`` how many candidates they
-    evaluated in total, ``matches`` how many of those reached the relevance
-    threshold, and ``surfaced`` how many items were shown in a digest at all
-    (matches plus watch-list near-misses).
+    Generated rather than written so no sentence can drift from the record. Four
+    RUN counts: ``runs`` is how many runs are archived, ``screened`` how many
+    candidates they evaluated in total, ``matches`` how many of those reached the
+    relevance threshold, and ``surfaced`` how many entries were shown in a digest
+    at all (matches plus watch-list near-misses) — one per published article file.
+
+    And five ITEM counts, keyed on the entry's ``Link`` so a page published in two
+    runs is one development, read from the ``- **Rings matched:**`` field of
+    ``digests/*/articles/*.md`` exactly as ``parse_article`` reads it:
+    ``distinct`` is how many developments those entries describe;
+    ``rings_zero`` / ``rings_one`` / ``rings_many`` how many of them carry no
+    ring, one ring, two or more; and ``contradictory`` how many were published
+    more than once with DIFFERENT ring lists. A contradictory development is
+    counted in that bucket ALONE and in none of the ring buckets — there is no
+    honest ring count for an item the instrument classified two ways, and
+    averaging or preferring one reading would publish a verdict nobody reached.
+    The five partition ``distinct`` exactly.
+
+    ``screened`` is the sum of screening events across the archived runs, which
+    is the only total the archive supports: same-day re-runs overwrite a run's
+    ``meta.json`` in place, so the archive retains the last run of a date rather
+    than every run of it, and no cross-run de-duplicated candidate total exists.
     """
+    by_url: dict[str, set[tuple[str, ...]]] = {}
+    for d in digests:
+        for e in d.entries:
+            by_url.setdefault(e.url.strip(), set()).add(tuple(sorted(e.rings)))
+
+    rings_zero = rings_one = rings_many = contradictory = 0
+    for readings in by_url.values():
+        if len(readings) > 1:
+            contradictory += 1
+            continue
+        n_rings = len(next(iter(readings)))
+        if n_rings == 0:
+            rings_zero += 1
+        elif n_rings == 1:
+            rings_one += 1
+        else:
+            rings_many += 1
+
     return {
         "runs": len(digests),
         "screened": sum(d.screened or 0 for d in digests),
         "matches": sum(d.matches or 0 for d in digests),
         "surfaced": sum(d.accepted or 0 for d in digests),
+        "distinct": len(by_url),
+        "rings_zero": rings_zero,
+        "rings_one": rings_one,
+        "rings_many": rings_many,
+        "contradictory": contradictory,
     }
 
 
@@ -1014,6 +1090,16 @@ def make_env() -> Environment:
     )
     env.globals["repo_url"] = REPO_URL
     env.globals["build_stamp"] = _build_stamp()
+    # The roster, from all_sources(). `sources` is the full catalogue in priority
+    # order; the two partitions are provided pre-split because the distinction
+    # they carry — which inputs a third party could re-run — is the one a page is
+    # most likely to lose when it is left to prose.
+    _sources = source_catalogue()
+    env.globals["sources"] = _sources
+    env.globals["sources_open"] = open_repository_sources(_sources)
+    env.globals["sources_operator"] = operator_account_sources(_sources)
+    env.filters["source_names"] = source_prose_list
+    env.filters["num_word"] = _num_word
 
     def band_class(band: str) -> str:
         b = (band or "").upper()
@@ -1042,6 +1128,15 @@ def build() -> int:
     digests = collect_digests()
     print(f"  parsed {len(digests)} digest(s)")
 
+    # Every page may state an archive number, and every page must state the same
+    # one. `status` is therefore a GLOBAL, like repo_url in make_env(): passing it
+    # as a per-render keyword reached the landing page only, which is how
+    # index.html.j2 came to render 16/492 live at the top of the page and a
+    # hand-written "11 runs across 347 screenings" further down the same page.
+    env.globals["status"] = archive_status(digests)
+    print("  archive status: " + ", ".join(
+        f"{k}={v}" for k, v in env.globals["status"].items()))
+
     memo = parse_methodology(METHODOLOGY_MD)
 
     DOCS.mkdir(parents=True, exist_ok=True)
@@ -1055,7 +1150,6 @@ def build() -> int:
             root="",
             digests=digests,
             ring_labels=RING_LABELS,
-            status=archive_status(digests),
         ),
     )
 
@@ -1101,9 +1195,13 @@ def build() -> int:
     #     animate but not hover), with zero extra requests. The SVG artifact is
     #     built and freshness-guarded by tools/isds-workflow-3d (validate.mjs
     #     fails the chart build if it goes stale against the manifest).
-    workflow_svg_path = REPO_ROOT / "scripts" / "site_templates" / "assets" / "workflow.svg"
+    # The artifact is a Jinja template (assets/workflow.svg.j2) whose only
+    # templated value is the source count, so the chart's headline is rendered
+    # from all_sources() rather than from digits typed into the generator.
+    workflow_svg_path = (REPO_ROOT / "scripts" / "site_templates" / "assets"
+                         / "workflow.svg.j2")
     if workflow_svg_path.exists():
-        raw_svg = workflow_svg_path.read_text(encoding="utf-8")
+        raw_svg = env.get_template("assets/workflow.svg.j2").render()
         # Inline copy starts at <svg>: the XML prolog is not valid inside an
         # HTML body (parsers treat it as a bogus comment), and the file-level
         # provenance comments belong to the standalone artifact.
@@ -1121,7 +1219,7 @@ def build() -> int:
             flags=re.S,
         )
         if n_dark != 1:
-            print("    ! workflow.svg dark-mode block not found — inlined as-is")
+            print("    ! workflow.svg.j2 dark-mode block not found — inlined as-is")
         how_tpl = env.get_template("how_it_works.html.j2")
         write(
             DOCS / "how-it-works.html",
@@ -1131,7 +1229,7 @@ def build() -> int:
         # Also publish the standalone artifact (the README embeds it from docs/).
         write(DOCS / "assets" / "workflow.svg", raw_svg)
     else:
-        print("    ! workflow.svg missing — how-it-works page skipped")
+        print("    ! workflow.svg.j2 missing — how-it-works page skipped")
 
     # 5. Backtest page (root => same depth as home; deterministic, no I/O on
     #    docs/). run_backtest() scores a focused in-repo labelled set with the

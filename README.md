@@ -62,16 +62,33 @@ that implements it):
 
 ![ISDS Thematic Watcher workflow](docs/assets/workflow.svg)
 
+Eight of the ten are open repositories. The other two — Google Alerts and Scholar
+Alerts — are feeds inside the operator's own Google account: Google generates them
+for him, so a third party cannot re-run them and cannot audit what they did or did
+not deliver. That is a limit on what can be independently checked, not a detail of
+plumbing, and it is why no surface here describes the whole roster as public — three
+of them did until 2026-09-10, over a count that was one short. The full catalogue —
+every source, its channel, and how much of an item it makes readable — is generated
+from `src/sources/__init__.py::all_sources()` into
+[analytics/source-inventory.md](analytics/source-inventory.md) by
+`python scripts/build_source_inventory.py`.
+
 An annotated, hoverable version lives on the project site:
 [How It Works](https://jackemorywilliams-bit.github.io/isds-watcher/how-it-works.html).
 
 ## The weekly digest
 
-Every Monday, an annotated-bibliography digest goes to the configured recipient. Each
+Every Monday, an annotated-bibliography digest is produced. **While the status-only
+validation gate holds, it is delivered to the operator alone.** The recipient list in
+`src/config.py` was narrowed by hand to a single address, and delivery to the researcher
+this instrument is built for is paused until the classifier has been validated. That is a
+deliberate hold rather than a fault or an oversight, and it is stated here because a
+reader who found the archive without it would reasonably assume the digests had been
+going out to their intended reader all along. Each
 surfaced development appears as a citation, a short descriptive-and-evaluative annotation,
 the rings it matched, and — where the source text was reachable — a quoted notable line from
 it. Entries drawn from a paywalled feed carry no quotation, are marked headline-only, and
-were assessed from the headline alone; 10 of the 14 entries archived so far are in that
+were assessed from the headline alone; 12 of the 17 entries archived so far are in that
 category. The same content is committed to the repository under
 `digests/YYYY-MM-DD_ISDS-Thematic-Watch/`, with one Markdown file per entry, and is
 published to the website.
@@ -209,18 +226,35 @@ the six map-of-content hubs link every note; regenerate the map on demand with
 
 ### Source scope: what is read in full, in headline, or not at all
 
-Sources fall into three tiers of access depth, and this is stated openly rather than implied:
+Sources fall into tiers of access depth, and this is stated openly rather than implied.
+All ten appear below; the tiers are kept in step with the code by
+[analytics/source-inventory.md](analytics/source-inventory.md), which is generated from
+`src/sources/__init__.py::all_sources()`:
 
-- **Read in FULL** — the ICSID docket, UNCTAD (ISDS Navigator and World Investment Report),
-  the italaw archive, IISD Investment Treaty News, and the operator's own Google Alerts and
-  Google Scholar feeds. The instrument fetches and reads the linked pages in full where the
-  publisher allows.
-- **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled, so only the title and lead
-  are scored. Genuinely on-theme IAReporter items can under-score when the dispositive detail
-  sits in the body the instrument cannot read; those surface as watch-list leads, not matches.
+- **Read as a LISTING, then in full when ranked** — the ICSID docket, the italaw archive,
+  UNCTAD (ISDS Navigator and World Investment Report), PCA press releases, Bing News, GDELT,
+  and the operator's own Google Alerts and Google Scholar feeds. Each yields a title or a
+  short summary; the linked page is fetched and read in full when the item ranks high enough
+  (`src/enrich.py`), where the publisher allows.
+- **Read HEADLINE-ONLY, paywalled** — IAReporter, whose body is behind a paywall and is
+  never fetched by policy (`HEADLINE_ONLY_SOURCES`, `NO_BODY_FETCH`), so only the title and
+  lead are scored. Genuinely relevant IAReporter items can under-score when the dispositive
+  detail sits in the body the instrument cannot read; those surface as watch-list leads, not
+  matches.
+- **Read HEADLINE-ONLY, walled** — IISD Investment Treaty News. Its RSS feed carried article
+  bodies until about August 2026; since then every feed variant *and* the article pages
+  answer a bot challenge (HTTP 403), so the fetcher falls back to the ITN homepage listing
+  and reads titles and dates only. The pipeline still attempts the body and is refused —
+  which is not a paywall, and is reversible if the wall comes down. A confirmed refusal
+  hands the source to the Internet Archive guard (`src/source_recovery.py`); a plain zero
+  does not. 9 consecutive zero-item runs were flagged DEGRADED before this was
+  understood, and no source currently delivers full text at intake.
 - **RETIRED** — Google News RSS, permanently disallowed by its `robots.txt` and therefore
   inactive (honored, not circumvented), along with any individual page denied by robots or
-  login.
+  login. It is not in the roster and is not one of the ten.
+
+Two of the ten — Google Alerts and Google Scholar — are feeds inside the operator's own
+Google account and cannot be re-run or audited by anyone else, as above.
 
 Access is also reported per run, never assumed. Every fetch records its outcome, so a source
 that attempted HTTP, read nothing and yielded nothing is reported as `NOT-READ (reason)` in

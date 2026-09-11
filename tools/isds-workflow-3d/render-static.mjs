@@ -2,7 +2,15 @@
 // Standalone SVG renderer for the professor-facing site + GitHub README.
 // Feeds the SAME manifest through chart-core.buildChart with a string-based
 // element factory — no DOM, no browser — and writes ONE self-contained file:
-//   scripts/site_templates/assets/workflow.svg
+//   scripts/site_templates/assets/workflow.svg.j2
+//
+// It is a TEMPLATE, not a finished SVG, and the only templated thing in it is
+// the source count. scripts/build_site.py renders it with `sources` from
+// src/sources/__init__.py::all_sources() and writes docs/assets/workflow.svg.
+// Before 2026-09-10 the banner said "THE 10 SOURCES" because those digits were
+// typed into chart-core.mjs, and the collect card said "all 10 sources" because
+// they were typed into workflow.json. Two hand-written numbers about a roster
+// neither file could see.
 //
 // Design decisions (deliberate):
 // - ONE file, light-first: light colors ride as presentation attributes (they
@@ -27,7 +35,7 @@ import { buildChart, flattenTheme } from "./src/chart-core.mjs";
 const here = dirname(fileURLToPath(import.meta.url));
 const MANIFEST = resolve(here, "../../views/isds-workflow-3d/workflow.json");
 const CONFIG = resolve(here, "src/render-config.mjs");
-const OUT = resolve(here, "../../scripts/site_templates/assets/workflow.svg");
+const OUT = resolve(here, "../../scripts/site_templates/assets/workflow.svg.j2");
 
 // ---- string element factory (chart-core's only view of the world) ----
 const makeNode = (name, attrs) => ({ name, attrs: { ...(attrs || {}) }, children: [], text: null });
@@ -56,6 +64,16 @@ const manifest = JSON.parse(manifestBytes.toString("utf8"));
 
 const { svg, width, height } = buildChart(manifest, config, factory, {
   theme: "light",
+  // Painted where the source count goes. Jinja renders it to the same digits the
+  // chips are counted from, so the published SVG is byte-identical to one drawn
+  // with the number — until the roster changes, when it follows on its own.
+  //
+  // NO SPACES INSIDE THE BRACES. The card description is word-wrapped, and
+  // chart-core pairs the measured words with the painted ones one for one; a
+  // token that splits into several words cannot be paired, and the renderer
+  // would fall back to painting the digits. Jinja reads "{{sources|length}}" and
+  // "{{ sources | length }}" identically.
+  sourceCountToken: "{{sources|length}}",
   // System stack close to the site's Libre Franklin; webfonts cannot load
   // inside <img> embeds, so we never reference one.
   font: "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif",
@@ -87,4 +105,4 @@ const out =
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, out);
-console.log(`wrote scripts/site_templates/assets/workflow.svg (${out.length} bytes, ${width}x${height}, inputs-sha256 ${inputsSha.slice(0, 12)}…)`);
+console.log(`wrote scripts/site_templates/assets/workflow.svg.j2 (${out.length} bytes, ${width}x${height}, inputs-sha256 ${inputsSha.slice(0, 12)}…)`);

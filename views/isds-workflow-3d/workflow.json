@@ -113,7 +113,7 @@
       "row": 1,
       "kind": "process",
       "title": "Collect everything new",
-      "desc": "Pulls this week's listings from all 10 sources above into one pile.",
+      "desc": "Pulls this week's listings from all {sourceCount} sources above into one pile.",
       "target": "moc/Workflow",
       "evidence": [
         "src/sources/__init__.py: all_sources()",
@@ -238,7 +238,7 @@
       "row": 9,
       "kind": "send",
       "title": "Weekly digest email",
-      "desc": "The annotated reading list of this week's finds — sent to Dr. Benavides.",
+      "desc": "This week's annotated reading list. While validation runs it goes to Emory only, not to the professor.",
       "target": "moc/Digest Archive",
       "evidence": [
         "src/email_send.py: send_digest",
@@ -266,7 +266,7 @@
       "row": 11,
       "kind": "send",
       "title": "Research brief email",
-      "desc": "The council's plain-English interpretation of the week — sent to Dr. Benavides.",
+      "desc": "The council's plain-English read of the week. Also held to Emory only while validation runs.",
       "target": "moc/Digest Archive",
       "evidence": [
         "src/render.py: render_research_brief",

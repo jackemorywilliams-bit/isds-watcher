@@ -5,9 +5,13 @@
 // banned), plain-language descriptions required, all 10 sources present,
 // purpose-colored edge kinds only, legend/config sanity.
 // Since 2026-07-30 it ALSO guards the committed site/README SVG
-// (scripts/site_templates/assets/workflow.svg): freshness via the embedded
+// (scripts/site_templates/assets/workflow.svg.j2): freshness via the embedded
 // inputs-sha256, well-formed XML, and structural counts — a stale or broken
 // static render is a BUILD failure, not a screenshot Emory has to send.
+// Since 2026-09-10 that artifact is a Jinja TEMPLATE whose only templated value
+// is the source count; scripts/build_site.py renders it to
+// docs/assets/workflow.svg. The XML scanner is unaffected: "{{ sources | length
+// }}" is ordinary text content, with no markup characters in it.
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { resolve, dirname } from "node:path";
@@ -47,7 +51,11 @@ if (m.meta?.columns && JSON.stringify(m.meta.columns) !== JSON.stringify(rc.COLU
   errors.push(`meta.columns [${m.meta.columns}] out of sync with render-config COLUMNS [${rc.COLUMNS}]`);
 
 // -- chips: all ten sources, individually visualized --
-if (m.chips.length !== 10) errors.push(`expected 10 source chips, got ${m.chips.length}`);
+// The chip count is no longer a literal here either: it is asserted against the
+// roster the pipeline runs, by tests/test_source_catalogue.py, which is the only
+// place that can compare a JavaScript manifest to a Python roster. What stays
+// here is the floor that keeps a truncated manifest from rendering as a chart.
+if (m.chips.length < 1) errors.push(`no source chips in the manifest`);
 for (const c of m.chips) {
   if (!c.name || !c.tag) errors.push(`chip ${c.id}: missing name/tag`);
   if (!Array.isArray(c.evidence) || !c.evidence.length) errors.push(`chip ${c.id}: no evidence`);
@@ -66,15 +74,21 @@ for (const n of m.nodes) {
   if (!NODE_KINDS.has(n.kind)) errors.push(`${n.id}: bad kind ${n.kind}`);
   if (!n.title) errors.push(`${n.id}: missing title`);
   if (!n.desc) errors.push(`${n.id}: missing plain-language description`);
-  else if (n.desc.length > rc.CARD.descChars * 3)
+  else if (String(n.desc).split(cc.SOURCE_COUNT_TOKEN).join(String(m.chips.length)).length
+           > rc.CARD.descChars * 3)
     errors.push(`${n.id}: desc too long for the card (${n.desc.length} > ${rc.CARD.descChars * 3})`);
   // LINE-ENFORCED, not just total-length-enforced: chart-core's greedy wrap
   // stops breaking once it has descLines lines and dumps EVERY remaining word
   // onto the last one, so a desc under the total cap can still paint a line
   // that runs off the card (claim-gate + site-experience did exactly that
   // until 2026-08-03). Re-run the real wrap and bound each painted line.
+  // Measured with the placeholder expanded to the real count, because that is
+  // what a reader sees: chart-core wraps on the digits and paints the template
+  // expression's words into the same line breaks.
+  const descMeasured = String(n.desc || "")
+    .split(cc.SOURCE_COUNT_TOKEN).join(String(m.chips.length));
   if (n.desc)
-    for (const line of cc.wrap(n.desc, rc.CARD.descChars, rc.CARD.descLines))
+    for (const line of cc.wrap(descMeasured, rc.CARD.descChars, rc.CARD.descLines))
       if (line.length > rc.CARD.descChars)
         errors.push(`${n.id}: desc line runs off the card (${line.length} > ${rc.CARD.descChars} chars): '${line}'`);
   if (/\b(dedup|lexical|prescore|frontmatter|jsonl|SMIL|regex)\b/i.test(n.title))
@@ -131,7 +145,7 @@ for (const col of rc.COLUMNS)
 // -- committed site/README SVG: freshness + well-formedness + structure --
 // The static render is a DELIVERABLE; if it drifts from the manifest or the
 // render config, the build fails here — never silently on the site.
-const svgRel = "scripts/site_templates/assets/workflow.svg";
+const svgRel = "scripts/site_templates/assets/workflow.svg.j2";
 let svgText = null;
 try { svgText = readFileSync(resolve(here, "../../" + svgRel), "utf8"); }
 catch { errors.push(`${svgRel} missing — run 'npm run render-static'`); }

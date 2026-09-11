@@ -40,6 +40,18 @@
       unless individually marked human-verified &mdash;
       <a href="how-it-works.html">what that means</a>.
     </p>
+    {% if status.runs %}
+    <p class="status-strip-note">
+      What that middle number counts: {{ status.screened }} is the number of
+      <strong>candidates evaluated</strong> summed over the {{ status.runs }} archived
+      runs &mdash; the sum of <code>screened</code> across the {{ status.runs }}
+      <code>digests/*/meta.json</code> files &mdash; so it counts screening events in
+      the surviving archive. It is not a count of pipeline runs, of evaluation events
+      recorded in telemetry, or of distinct candidates. A same-day re-run overwrites
+      that day&rsquo;s <code>meta.json</code> in place, so the archive keeps the last
+      run of a date rather than every run of it.
+    </p>
+    {% endif %}
   </div>
 </section>
 
@@ -158,7 +170,7 @@
         <span class="sep">·</span>
         <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
         <span class="sep">·</span>
-        <span class="muted">No item has reached the three-ring intersection in 11 runs across 347 screenings.</span>
+        <span class="muted">No item has reached the three-ring intersection in {{ status.runs }} run{{ '' if status.runs == 1 else 's' }} across {{ status.screened }} screenings.</span>
       </div>
     </div>
   </div>
@@ -175,7 +187,7 @@
 
     <div class="flow" role="img"
          aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
-      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from {{ sources | length }} sources. {{ sources_open | length | num_word | capitalize }} are open ISDS repositories &mdash; {{ sources_open | source_names }} &mdash; and {{ sources_operator | length | num_word }} are feeds inside Emory&rsquo;s own Google account, {{ sources_operator | source_names }}, which Google generates for him and which nobody else can re-run.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step reveal"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>

@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+"""One inventory of the source roster, generated from the roster itself.
+
+WHY THIS EXISTS. On 2026-09-10 this project described its own inputs in four
+places and agreed with itself in none of them. `src/sources/__init__.py`
+returned ten sources. `scripts/site_templates/how_it_works.html.j2` said "the
+nine public sources", twice. `scripts/send_aggregate.py` said "nine open
+sources" and then listed seven. `README.md` tiered seven of the ten and left
+PCA, Bing News and GDELT in no tier at all. Nothing was wrong with the code; four
+sentences had been written beside it and never re-derived.
+
+Two of the ten are not public at all. `google_alerts` and `gmail_scholar` read
+feeds that exist inside the operator's own Google account: a third party cannot
+re-run them and cannot audit what they did or did not deliver. Calling them
+"public sources" is not loose wording, it is a validity claim that is false, and
+a reader deciding whether to rely on this instrument needs the distinction.
+
+WHAT IT PRODUCES.
+
+  analytics/source-inventory.md   the human-readable catalogue, committed
+  catalogue()                     the same rows, for scripts/build_site.py to
+                                  render as `sources` in every template
+
+WHAT IT DELIBERATELY IS NOT. It does not fetch anything, does not describe a
+source's health, and does not count what a source has yielded — that is
+`scripts/source_analytics.py`, which reports per-run receptivity. This file
+answers one question only: what is the roster, and what can be read from each
+member of it.
+
+Run:  python scripts/build_source_inventory.py
+Exit 0 on success. Deterministic: a second run is byte-identical.
+"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from src.sources import all_sources  # noqa: E402
+from src.sources.base import CHANNELS, READ_DEPTHS  # noqa: E402
+
+OUT = REPO / "analytics" / "source-inventory.md"
+
+#: How each vocabulary term is put to a reader who has not read the code.
+CHANNEL_PROSE = {
+    "open-repository": "open repository",
+    "operator-mailbox": "operator's own account",
+}
+CHANNEL_NOTE = {
+    "open-repository":
+        "A public endpoint. A third party can point the same fetcher at it and "
+        "get the same listing.",
+    "operator-mailbox":
+        "A feed inside the operator's own Google account. A third party cannot "
+        "re-run it and cannot audit what it delivered.",
+}
+DEPTH_PROSE = {
+    "full-text": "full text",
+    "listing-then-body": "listing, then body when ranked",
+    "headline-only-paywalled": "headline only (paywalled)",
+    "headline-only-walled": "headline only (walled)",
+}
+DEPTH_NOTE = {
+    "full-text":
+        "The feed carries the article body, so the item is scored on its text.",
+    "listing-then-body":
+        "The source yields a title or summary; the linked page is fetched and "
+        "read in full when the item ranks high enough (src/enrich.py).",
+    "headline-only-paywalled":
+        "The body is paywalled and is never fetched, by policy. The item is scored "
+        "from its title alone, so a genuinely relevant item can under-score when "
+        "the dispositive detail sits in the body.",
+    "headline-only-walled":
+        "The feed and the article pages both answer a bot challenge, so only the "
+        "listing's title and date can be read. The pipeline still attempts the "
+        "body and is refused — a different thing from a publisher's paywall, and "
+        "reversible if the wall comes down.",
+}
+
+
+def catalogue() -> list[dict]:
+    """The roster as plain dicts, in priority order — the only enumeration.
+
+    Keys: ``name`` (the pipeline's key), ``label`` (how a reader sees it),
+    ``channel``, ``read_depth``, ``priority``, ``module``, and the two
+    pre-worded forms the templates print.
+    """
+    rows = []
+    for src in all_sources():
+        rows.append({
+            "name": src.name,
+            "label": src.label,
+            "channel": src.channel,
+            "channel_prose": CHANNEL_PROSE[src.channel],
+            "read_depth": src.read_depth,
+            "read_depth_prose": DEPTH_PROSE[src.read_depth],
+            "priority": src.priority,
+            "module": f"src/sources/{src.name}.py",
+        })
+    return rows
+
+
+def open_repository(rows: list[dict] | None = None) -> list[dict]:
+    rows = catalogue() if rows is None else rows
+    return [r for r in rows if r["channel"] == "open-repository"]
+
+
+def operator_account(rows: list[dict] | None = None) -> list[dict]:
+    rows = catalogue() if rows is None else rows
+    return [r for r in rows if r["channel"] == "operator-mailbox"]
+
+
+def prose_list(rows: list[dict], conjunction: str = "and") -> str:
+    """"a, b and c" — the roster as a sentence, from the roster."""
+    labels = [r["label"] for r in rows]
+    if not labels:
+        return ""
+    if len(labels) == 1:
+        return labels[0]
+    return f"{', '.join(labels[:-1])} {conjunction} {labels[-1]}"
+
+
+def render() -> str:
+    rows = catalogue()
+    openr = open_repository(rows)
+    operator = operator_account(rows)
+
+    lines = [
+        "# Source inventory — the catalogue",
+        "",
+        "<!-- GENERATED by scripts/build_source_inventory.py from",
+        "     src/sources/__init__.py::all_sources(). Do not hand-edit: add or",
+        "     remove a source in the catalogue there and re-run. -->",
+        "",
+        f"**{len(rows)} sources** are checked on every run: **{len(openr)}** are open "
+        f"repositories, and **{len(operator)}** are feeds inside the operator's own "
+        "Google account.",
+        "",
+        "The second number is a validity disclosure, not a detail. "
+        f"{prose_list(operator)} "
+        f"{'is' if len(operator) == 1 else 'are'} generated for the operator by "
+        "Google and cannot be re-run by anyone else, so no third party can "
+        "reproduce or audit what they contributed to a run.",
+        "",
+        "| # | Source | Key | Channel | Read depth | Priority | Implemented in |",
+        "|---|--------|-----|---------|------------|----------|----------------|",
+    ]
+    for i, r in enumerate(rows, 1):
+        lines.append(
+            f"| {i} | {r['label']} | `{r['name']}` | {r['channel_prose']} | "
+            f"{r['read_depth_prose']} | {r['priority']} | `{r['module']}` |")
+
+    lines += ["", "## What the channels mean", ""]
+    for channel in CHANNELS:
+        members = [r for r in rows if r["channel"] == channel]
+        named = prose_list(members) if members else "_none_"
+        lines.append(f"- **{CHANNEL_PROSE[channel]}** (`{channel}`) — "
+                     f"{CHANNEL_NOTE[channel]} {named}.")
+
+    lines += ["", "## What the read depths mean", ""]
+    for depth in READ_DEPTHS:
+        members = [r for r in rows if r["read_depth"] == depth]
+        named = prose_list(members) if members else "_none_"
+        lines.append(f"- **{DEPTH_PROSE[depth]}** (`{depth}`) — "
+                     f"{DEPTH_NOTE[depth]} {named}.")
+
+    lines += [
+        "",
+        "## What this file is not",
+        "",
+        "- It is not a health report. Whether a source answered on a given run is "
+        "recorded per run in that run's `meta.json` under `source_health`.",
+        "- It is not a yield report. Fresh candidates and items surfaced per source "
+        "are in `analytics/source-receptivity.md`.",
+        "- It is not a claim that these ten are sufficient coverage. Coverage is a "
+        "floor: paywalls and robots.txt withhold content, so the instrument shows "
+        "the least that can exist, never a census.",
+        "",
+        "_Generated by `scripts/build_source_inventory.py` from "
+        "`src/sources/__init__.py::all_sources()`; deterministic, no network, no "
+        "model calls._",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(render(), encoding="utf-8")
+    rows = catalogue()
+    print(f"wrote {OUT.relative_to(REPO)} ({len(rows)} sources, "
+          f"{len(operator_account(rows))} operator-account)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

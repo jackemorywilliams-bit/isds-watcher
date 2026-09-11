@@ -57,8 +57,8 @@ hold other regions of `HANDOFF.md`, so this seat stayed off them by instruction.
     being true; two gaps opened` (`council/analyst-gaps-and-methodology`) — **to be merged after
     the site PR**, per the coordinator's sequencing.
 - **Two further PRs were in flight and not yet opened when this was written, and are recorded as
-  pending rather than as landed.** The site-coherence PR (rows **G** + **H** + **I**, eight
-  commits) and the requeue PR — sixteen 2026-08-31 abandonments requeued, the
+  pending rather than as landed.** The site-coherence PR (opened later the same day as #169, carrying #165's three commits; rows **G** + **H** + **I**, eight
+  commits) and the requeue PR (#168) — sixteen 2026-08-31 abandonments requeued, the
   textless-rebuilt-item defect fixed, and **five of the eight 2026-09-07 requeues reopened as
   consumed unread**. Neither appears in `gh pr list --state all` at the time of writing; when
   they open, their numbers belong in this entry and in [[Workflow Threads]].

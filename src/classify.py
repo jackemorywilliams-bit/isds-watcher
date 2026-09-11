@@ -282,6 +282,33 @@ def keyword_score(item: CandidateItem) -> dict:
     thematic_tags (list), digest_summary (str). Tags always include the
     ``keyword_fallback`` marker so downstream code can tell this came from the
     offline path.
+
+    MATCHED IS NOT TOUCHED, and until 2026-09-10 it was (SD-3, council special
+    session row E). ``matched_rings`` used to hold every ring with ANY nonzero
+    hit — including a single 1-point brush on a phrase appearing in the clause
+    that DENIES the ring — while the scoring grammar right below it counted a
+    ring only from ``PRESENT_FLOOR``. So the published predicate "Rings matched"
+    was looser than the predicate that produced the score beside it, and the
+    mining example, which engages no ring substantively and scores 7, listed two
+    rings. The fingerprint's own note called this out on 2026-08-04 and left it,
+    on the stated ground that the digest archive had been published under the
+    looser predicate. That ground has since expired: all sixteen archived runs
+    ran ``classifier: claude``, so every published ring label came from the LLM
+    path, and the string "Keyword-matched rings:" appears in zero published
+    files. Nothing was published under it, so nothing is restated by fixing it.
+
+      matched_rings  — rings at or above PRESENT_FLOOR. The PREDICATE. This is
+                       what the score is computed from and it is now what the
+                       label says. A strict subset of:
+      touched_rings  — rings with any nonzero subtotal at all. The WORKING
+                       DETAIL, kept because "no ring was anywhere near this" and
+                       "one ring brushed it and fell short" are different facts
+                       about a negative, and the second one is what a lexicon
+                       re-weighting needs to see.
+
+    The SCORE is not touched by this. ``present_rings`` was already the only
+    thing the combination rules read; the change is that the reported set is now
+    the same set, not a wider one.
     """
     fp = load_fingerprint()
     rings: dict = fp.get("rings", {}) or {}
@@ -304,7 +331,10 @@ def keyword_score(item: CandidateItem) -> dict:
         if subtotal > 0:
             per_ring_subtotal[ring_key] = min(subtotal, 100)
 
-    matched_rings = list(per_ring_subtotal.keys())
+    # Every ring the text brushed at all, in fingerprint order. NOT the reported
+    # predicate — see the docstring. `matched_rings` is derived from
+    # `present_rings` below, once the floor has been applied.
+    touched_rings = list(per_ring_subtotal.keys())
 
     # Negative-signal detection.
     negative_present = False
@@ -324,6 +354,13 @@ def keyword_score(item: CandidateItem) -> dict:
     # out incidental single-keyword hits so negative cases (mining, solar) that
     # merely brush one keyword don't get promoted into a ring intersection.
     present_rings = [r for r, s in per_ring_subtotal.items() if s >= PRESENT_FLOOR]
+
+    # THE REPORTED PREDICATE IS THE SCORED PREDICATE. One assignment, and it is
+    # the whole of SD-3: what we say we matched is what the score was computed
+    # from. A separate list (rather than an alias) because `present_rings` is
+    # read below and a caller holding the returned list must not be able to
+    # mutate what the scorer is still using.
+    matched_rings = list(present_rings)
 
     # --- Apply combination_rules in code ---------------------------------- #
     score = 0
@@ -365,6 +402,11 @@ def keyword_score(item: CandidateItem) -> dict:
     matched_tags.append("keyword_fallback")
 
     title = getattr(item, "title", "") or "(untitled)"
+    # The prose label reads off the PREDICATE, not the brushes. Before SD-3 this
+    # sentence could say "Keyword-matched rings: ip_as_investment,
+    # judicial_or_regulatory_measure" about the mining example — a score of 7,
+    # both rings sub-floor, and one of them lit by a phrase in the clause that
+    # denies it. "none" is now a thing this sentence can truthfully say.
     ring_label = ", ".join(matched_rings) if matched_rings else "none"
     digest = (
         f"{title}. Keyword-matched rings: {ring_label}."
@@ -382,6 +424,14 @@ def keyword_score(item: CandidateItem) -> dict:
         # every existing caller reads the four above by name.
         "per_ring_subtotal": dict(per_ring_subtotal),
         "negative_signal": negative_present,
+        # The broader set `matched_rings` used to be. Kept rather than dropped
+        # because narrowing the predicate must not destroy the evidence for
+        # widening it again: `matched_rings ⊆ touched_rings` always, and the
+        # difference is exactly the sub-floor brushes. Derivable from
+        # `per_ring_subtotal`, and named anyway, because a caller that has to
+        # re-apply the floor to find out what the floor excluded is a caller that
+        # will re-apply it slightly differently.
+        "touched_rings": touched_rings,
     }
 
 

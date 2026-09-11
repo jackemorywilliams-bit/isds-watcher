@@ -81,6 +81,22 @@ on:
       - "lit-review/**"
       - "scripts/site_templates/**"
       - ".github/workflows/pipeline-guards.yml"
+      # Added 2026-09-10 for the `suite` job, which is not a per-guard check and
+      # therefore cannot be filtered per-guard. The narrow entries above are kept
+      # deliberately: they are the documented statement of which files can change
+      # which guarded SCHEMA, and deleting them because these subsume them would
+      # delete that reasoning. These are a trigger, not a rationale.
+      # `prompts/**` is already listed above and is not repeated.
+      - "src/**"
+      - "scripts/**"
+      - "tests/**"
+      - "templates/**"
+      - "requirements.txt"
+      - "fingerprint.yaml"
+      # And the workflows themselves, because tests/test_ci_wiring.py makes
+      # assertions about reanchor.yml's shape. Without this, a PR editing only
+      # reanchor.yml would run neither the suite nor any other check of it.
+      - ".github/workflows/**"
   push:
     branches: [main]
     paths:
@@ -162,3 +178,51 @@ jobs:
 
       - name: Nothing locked has changed since it was locked
         run: python scripts/check_lock.py
+
+  # THE WHOLE SUITE. Nothing in this repository ran it until 2026-09-10: every
+  # pytest invocation in every workflow named specific files, and the job above
+  # runs tests/test_pipeline.py under -k "abandon or seen_integrity". What that
+  # cost was measured rather than guessed, and it is worse than "some tests are
+  # slow to notice":
+  #
+  #   - src/source_recovery.py and tests/test_source_recovery.py have been in
+  #     this file's path filters since they were written, and NO step runs that
+  #     test file. The filter says the file matters and then nothing checks it.
+  #   - src/source_health.py and tests/test_source_health.py are in neither the
+  #     filters nor any step, in any workflow.
+  #
+  # So a test added to this repository was documentation unless someone thought
+  # to wire it by name, and the wiring drifted from the filters without a sound.
+  # This job is the backstop: it does not need to know which tests exist.
+  #
+  # Deliberately INDEPENDENT of `guards` — no `needs`. The named steps above
+  # exist to say WHICH guard broke, in that guard's own words; a suite failure
+  # must not queue behind them or be hidden by them. They run in parallel and
+  # report separately.
+  #
+  # tests/test_one_pagers.py is excluded and must STAY excluded. It reads the
+  # primary-source PDFs in seeds/, which is gitignored because third-party text
+  # never enters this public repository (council standing rule, 2026-08-03).
+  # Those files do not exist on a runner, so the exclusion is a fact about the
+  # repository's publication rules, not a tolerated failure.
+  suite:
+    runs-on: ubuntu-latest
+    steps:
+      # Full history, and not for the reason the currency guard needs it. Three
+      # tests in tests/test_check_currency.py reach for real history
+      # (`HEAD~5`, a scan for a notes-only commit) and are written to RETURN
+      # QUIETLY when they cannot find it. On a shallow checkout they would pass
+      # without asserting anything, which is the vacuous-pass failure mode that
+      # file's own test_the_guard_checks_something exists to forbid. The pack is
+      # under 10 MiB over 1,135 commits, so depth 0 costs about a second.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest pyyaml
+
+      - name: The whole suite, not a named subset
+        run: python -m pytest tests -q --ignore=tests/test_one_pagers.py

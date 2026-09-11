@@ -12,9 +12,21 @@ name: reanchor
 # it lands, the merge is still stale. Two things cover that path and neither is
 # this workflow: (1) the daily-council close-out runs `scripts/reanchor.py`
 # itself, as a deterministic SCRIPT call (not hand-written anchors) — see
-# prompts/daily_council_protocol.md; (2) the operator can make the `currency`
-# check REQUIRED on main, which blocks a squash-merge until this workflow's
-# commit has landed and turned it green. Recommended in the PR that adds this.
+# prompts/daily_council_protocol.md; (2) the operator can make these checks
+# REQUIRED on main, which blocks a squash-merge until this workflow's commit has
+# landed and turned `currency` green. Recommended in the PR that adds this.
+#
+#   CORRECTED 2026-09-10, and the original form of this recommendation was
+#   unsafe: `reanchor` MUST be made required ALONGSIDE `currency`, never
+#   `currency` on its own. GitHub reports a job skipped by its own `if:` as
+#   SUCCESS, and the `currency` job below is skipped BY DESIGN whenever
+#   `reanchor` does not succeed. So `currency` required alone is fail-OPEN on
+#   precisely the path where the anchors are least trustworthy — a failed
+#   re-anchor would leave a green `currency` and an unblocked merge. Required
+#   together, the failed `reanchor` blocks it. Found by the integrity officer
+#   reviewing the change that created the dependency; nothing is pinned on main
+#   today, so nothing is currently armed either way.
+#
 # For operator PRs — reviewed and awaited — this workflow is the primary mover.
 #
 # SECOND JOB, added 2026-09-10: the `currency` guard itself, moved here out of
@@ -34,6 +46,14 @@ name: reanchor
 # GITHUB_TOKEN, whose pushes do not trigger further workflow runs, so it cannot
 # loop.
 
+# INVARIANT, load-bearing since 2026-09-10: this workflow has NO `paths:` filter
+# and must not acquire one. When the `currency` job moved here, its two
+# path-filter entries in pipeline-guards.yml — scripts/check_currency.py and
+# tests/test_check_currency.py — were deleted rather than carried over, and that
+# was safe ONLY because an unfiltered workflow already runs on every PR. Add a
+# `paths:` filter here and the checker's own tests silently stop running on
+# changes to the checker, which is the one change most able to break it.
+# tests/test_ci_wiring.py asserts the absence, so this comment cannot rot alone.
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -152,6 +172,16 @@ jobs:
 
       - name: The checker's own tests
         run: python -m pytest tests/test_check_currency.py -q
+
+      # The wiring's own tests — that this job exists here, ordered behind the
+      # mover, with the expression and the checkout that make the ordering mean
+      # something, and that this workflow still has no `paths:` filter. They run
+      # in pipeline-guards' `suite` job as well; two independent homes on purpose,
+      # because each of the two workflows can be skipped on a path the other
+      # still covers. They are NOT in tests/test_reanchor.py: that file gates the
+      # job above, and a failure there would skip this job — reported as Success.
+      - name: The CI wiring's own tests
+        run: python -m pytest tests/test_ci_wiring.py -q
 
       - name: A note may not claim to be current when git says it is not
         run: python scripts/check_currency.py

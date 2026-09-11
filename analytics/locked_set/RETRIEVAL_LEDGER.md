@@ -23,7 +23,7 @@ This file is append-only; entries are dated.
 | OI European Group v. Venezuela award | QUEUED | Bibliography entry must be drafted from the award itself |
 | IBA Rules on the Taking of Evidence (2020); ICC Note to Parties; Aceris commentary | QUEUED | Entries drafted only from the instruments |
 
-## Locked-set retrieval queue (54 items)
+## Locked-set retrieval queue — 0 rows; 54 is a design target, not a queue
 
 None retrieved as of 2026-08-08. The candidate matters named in the R2.1
 record are leads; each row added here must carry: category, caption as printed

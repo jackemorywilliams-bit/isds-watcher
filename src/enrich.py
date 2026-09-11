@@ -144,6 +144,17 @@ def enrich(item: CandidateItem, max_chars: int = 5000) -> CandidateItem:
         body = ""
     if body:
         item.raw_text = body[:max_chars]
+        if not item.title:
+            # An item rebuilt from the deferred queue may carry no text at all
+            # (the requeue of abandoned items keeps only identity and URL);
+            # the page title is the only title it will ever get.
+            try:
+                page_title = soup.title.get_text(" ", strip=True) if soup is not None and soup.title else ""
+            except Exception:  # noqa: BLE001
+                page_title = ""
+            if page_title:
+                item.title = page_title[:200]
+                item.metadata["title_from_page"] = True
         if not item.summary:
             item.summary = body[:300]
         item.metadata["enriched"] = True

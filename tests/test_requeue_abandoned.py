@@ -98,3 +98,61 @@ def test_requeued_state_passes_the_seen_integrity_guard(tmp_path):
     guard = importlib.import_module("check_seen_integrity")
     checked, legacy, problems = guard.check(tmp_path / "seen.json", tmp_path / "abandoned.jsonl")
     assert problems == []
+
+
+# --- 2026-09-11: a requeue must not be consumed unread -------------------------
+def test_reopen_unread_uses_telemetry_not_memory(tmp_path):
+    """Seen 'ok' + telemetry says no title and no body were seen -> reopened."""
+    import hashlib
+    state.save_state({"sources": {"gmail_scholar": {
+        "https://x/u1": {"at": "2026-09-07T23:30:00+00:00", "outcome": "ok", "run": "2026-09-07"},
+        "https://x/u2": {"at": "2026-09-07T23:30:00+00:00", "outcome": "ok", "run": "2026-09-07"},
+    }}}, str(tmp_path / "seen.json"))
+    state.save_deferred({}, str(tmp_path / "deferred.json"))
+    (tmp_path / "requeued.jsonl").write_text("".join(json.dumps(r) + "\n" for r in [
+        {"schema": 1, "source": "gmail_scholar", "source_id": "https://x/u1", "url": "https://x/u1",
+         "abandoned_run": "2026-09-07"},
+        {"schema": 1, "source": "gmail_scholar", "source_id": "https://x/u2", "url": "https://x/u2",
+         "abandoned_run": "2026-09-07"},
+    ]), encoding="utf-8")
+    def tel(sid, run_id, marked_seen, title_len, body_len, outcome="ok", abandoned=False):
+        return {"run_id": run_id, "run_date": "2026-09-07", "source": "gmail_scholar",
+                "source_id_hash": hashlib.sha256(sid.encode()).hexdigest(),
+                "entered_enrichment": True,
+                "dedup": {"marked_seen": marked_seen, "deferred": not marked_seen, "abandoned": abandoned},
+                "classification": {"outcome": outcome},
+                "access": {"text_len_title": title_len, "text_len_body": body_len}}
+    # A date is not a run: 2026-09-07 carries three run_ids. u1 was DEFERRED with a
+    # 5000-char body on an earlier same-date run and RETIRED on the later run with
+    # nothing to read: unread. u2 is the inverse — 0/0 on the earlier run that only
+    # deferred it, a body on the run that retired it: NOT unread.
+    # The live shape: the same date also holds the ABANDONMENT row (marked_seen,
+    # abandoned, provider_error, title still present) — it must be ignored.
+    (tmp_path / "telemetry.jsonl").write_text("".join(json.dumps(t) + "\n" for t in [
+        tel("https://x/u1", "2026-09-07-a", True, 111, 5000, outcome="provider_error", abandoned=True),
+        tel("https://x/u1", "2026-09-07-b", True, 0, 0),
+        tel("https://x/u2", "2026-09-07-a", True, 0, 0, outcome="provider_error", abandoned=True),
+        tel("https://x/u2", "2026-09-07-b", True, 0, 5000),
+    ]), encoding="utf-8")
+    mod = importlib.import_module("requeue_abandoned")
+    args = ["--reopen-unread", "--because", "consumed unread", "--fix", "PR",
+            "--state", str(tmp_path / "seen.json"), "--deferred", str(tmp_path / "deferred.json"),
+            "--requeued", str(tmp_path / "requeued.jsonl"), "--telemetry", str(tmp_path / "telemetry.jsonl")]
+    assert mod.main(args) == 0
+    st = state.load_state(str(tmp_path / "seen.json"))
+    assert not state.is_seen(st, "gmail_scholar", "https://x/u1")      # reopened
+    assert state.seen_outcome(st, "gmail_scholar", "https://x/u2") == "ok"  # was read; untouched
+    dq = state.load_deferred(str(tmp_path / "deferred.json"))["gmail_scholar"]
+    assert set(dq) == {"https://x/u1"} and dq["https://x/u1"]["attempts"] == 0
+    assert dq["https://x/u1"]["reopened_unread"]["consumed_run"] == "2026-09-07"
+    lines = [json.loads(l) for l in (tmp_path / "requeued.jsonl").read_text().splitlines()]
+    assert sum(1 for l in lines if l.get("reopened")) == 1
+    assert mod.main(args) == 0                                           # idempotent
+    assert sum(1 for l in [json.loads(l) for l in (tmp_path / "requeued.jsonl").read_text().splitlines()] if l.get("reopened")) == 1
+
+
+def test_requeue_mode_still_requires_run_and_outcome(tmp_path):
+    mod = importlib.import_module("requeue_abandoned")
+    with pytest.raises(SystemExit):
+        mod.main(["--because", "x", "--state", str(tmp_path / "s.json"),
+                  "--deferred", str(tmp_path / "d.json"), "--ledger", str(tmp_path / "l.jsonl")])

@@ -10,12 +10,12 @@ The second number is a validity disclosure, not a detail. Google Alerts and Scho
 
 | # | Source | Key | Channel | Read depth | Priority | Implemented in |
 |---|--------|-----|---------|------------|----------|----------------|
-| 1 | IISD ITN | `iisd_itn` | open repository | full text | primary | `src/sources/iisd_itn.py` |
+| 1 | IISD ITN | `iisd_itn` | open repository | headline only (walled) | primary | `src/sources/iisd_itn.py` |
 | 2 | Google Alerts | `google_alerts` | operator's own account | listing, then body when ranked | primary | `src/sources/google_alerts.py` |
 | 3 | Scholar Alerts | `gmail_scholar` | operator's own account | listing, then body when ranked | primary | `src/sources/gmail_scholar.py` |
 | 4 | italaw | `italaw` | open repository | listing, then body when ranked | primary | `src/sources/italaw.py` |
 | 5 | ICSID | `icsid` | open repository | listing, then body when ranked | secondary | `src/sources/icsid.py` |
-| 6 | IAReporter | `iareporter_headlines` | open repository | headline only | primary | `src/sources/iareporter_headlines.py` |
+| 6 | IAReporter | `iareporter_headlines` | open repository | headline only (paywalled) | primary | `src/sources/iareporter_headlines.py` |
 | 7 | UNCTAD | `unctad_isds` | open repository | listing, then body when ranked | secondary | `src/sources/unctad_isds.py` |
 | 8 | PCA | `pca_press` | open repository | listing, then body when ranked | low | `src/sources/pca_press.py` |
 | 9 | Bing News | `bing_news` | open repository | listing, then body when ranked | secondary | `src/sources/bing_news.py` |
@@ -28,9 +28,10 @@ The second number is a validity disclosure, not a detail. Google Alerts and Scho
 
 ## What the read depths mean
 
-- **full text** (`full-text`) — The feed carries the article body, so the item is scored on its text. IISD ITN.
+- **full text** (`full-text`) — The feed carries the article body, so the item is scored on its text. _none_.
 - **listing, then body when ranked** (`listing-then-body`) — The source yields a title or summary; the linked page is fetched and read in full when the item ranks high enough (src/enrich.py). Google Alerts, Scholar Alerts, italaw, ICSID, UNCTAD, PCA, Bing News and GDELT.
-- **headline only** (`headline-only`) — The body is paywalled and is never fetched. The item is scored from its title alone, so a genuinely on-theme item can under-score when the dispositive detail sits in the body. IAReporter.
+- **headline only (paywalled)** (`headline-only-paywalled`) — The body is paywalled and is never fetched, by policy. The item is scored from its title alone, so a genuinely relevant item can under-score when the dispositive detail sits in the body. IAReporter.
+- **headline only (walled)** (`headline-only-walled`) — The feed and the article pages both answer a bot challenge, so only the listing's title and date can be read. The pipeline still attempts the body and is refused — a different thing from a publisher's paywall, and reversible if the wall comes down. IISD ITN.
 
 ## What this file is not
 

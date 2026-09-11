@@ -68,29 +68,57 @@ def test_every_catalogue_field_is_filled_and_from_the_declared_vocabulary(inv):
     assert len(names) == len(set(names))
 
 
-def test_an_unknown_channel_is_an_import_error_not_a_word_on_a_page():
+def test_an_unknown_channel_is_an_import_error_not_a_word_on_a_page(inv):
     """Fail closed: the vocabulary is validated where the roster is declared, so
     a typo breaks the run rather than reaching a reader inside a sentence about
     what can and cannot be independently checked."""
     from src.sources.base import CHANNELS, READ_DEPTHS
-    assert "operator-mailbox" in CHANNELS and "open-repository" in CHANNELS
-    assert "headline-only" in READ_DEPTHS
-    # The declaration-site guard, exercised directly.
-    import src.sources as pkg
-    bad = tuple(list(pkg._CATALOGUE[:1]) + [(object, "X", "not-a-channel", "full-text")])
-    for cls, label, channel, depth in bad[1:]:
-        assert channel not in CHANNELS  # what the import-time loop raises on
+    assert set(CHANNELS) == {"open-repository", "operator-mailbox"}
+    assert set(READ_DEPTHS) == {"full-text", "listing-then-body",
+                                "headline-only-paywalled", "headline-only-walled"}
+    # Every term a surface can print is a term the inventory can word.
+    assert set(inv.CHANNEL_PROSE) == set(CHANNELS)
+    assert set(inv.CHANNEL_NOTE) == set(CHANNELS)
+    assert set(inv.DEPTH_PROSE) == set(READ_DEPTHS)
+    assert set(inv.DEPTH_NOTE) == set(READ_DEPTHS)
+    # And the guard that makes a typo fail at import rather than on a page.
+    decl = (REPO / "src" / "sources" / "__init__.py").read_text(encoding="utf-8")
+    assert decl.count("raise ValueError") == 3, (
+        "the import-time catalogue guard must still reject an empty label, an "
+        "unknown channel and an unknown read depth")
 
 
 def test_read_depth_agrees_with_the_pipeline_flags_it_describes(inv):
-    """`headline-only` is not a description, it is a claim about two sets in
-    `src/`. If the catalogue and the pipeline ever disagree, the site would be
-    telling a reader that a body was read when the fetcher refuses to fetch it."""
+    """`headline-only-paywalled` is not a description, it is a claim about two
+    sets in `src/`. If the catalogue and the pipeline ever disagree, the site
+    would be telling a reader a body was read when the fetcher refuses to."""
     from src import config
     from src.enrich import NO_BODY_FETCH
-    catalogued = {r["name"] for r in inv.catalogue() if r["read_depth"] == "headline-only"}
-    assert catalogued == set(config.HEADLINE_ONLY_SOURCES)
-    assert catalogued == set(NO_BODY_FETCH)
+    rows = inv.catalogue()
+    paywalled = {r["name"] for r in rows
+                 if r["read_depth"] == "headline-only-paywalled"}
+    assert paywalled == set(config.HEADLINE_ONLY_SOURCES)
+    assert paywalled == set(NO_BODY_FETCH)
+    # The walled source is the opposite case and must NOT be in those sets: the
+    # pipeline still attempts its body and is refused, which is why the archive
+    # recovery guard covers it and the paywalled one it does not.
+    walled = {r["name"] for r in rows if r["read_depth"] == "headline-only-walled"}
+    assert walled == {"iisd_itn"}
+    assert not (walled & set(NO_BODY_FETCH))
+    from src.source_recovery import SPECS
+    assert walled <= set(SPECS), (
+        "a walled source is recoverable from the Internet Archive on a confirmed "
+        "refusal; if it has no SPEC the catalogue is overstating what can be read")
+
+
+def test_no_source_is_described_as_full_text_while_its_feed_is_walled(inv):
+    """IISD ITN was catalogued `full-text` on the strength of a feed that has
+    answered a bot challenge since about August 2026. The claim is now made
+    against the module that implements it rather than against its history."""
+    doc = (REPO / "src" / "sources" / "iisd_itn.py").read_text(encoding="utf-8")
+    assert "headline-level items" in doc and "403" in doc
+    depths = {r["name"]: r["read_depth"] for r in inv.catalogue()}
+    assert depths["iisd_itn"] != "full-text"
 
 
 def test_all_sources_carries_the_catalogue_onto_every_instance():

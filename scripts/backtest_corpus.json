@@ -75,6 +75,6 @@
  },
  "live_prospective": {
   "status": "Zero direct thematic matches to date.",
-  "detail": "The live weekly digest archive is the true prospective test — the only one that scores items the system has never seen, in real time, before the outcome is known. To date it has produced no direct thematic hit: across the published weeks not a single live listing has cleared the digest threshold as an on-theme match. What it has shown is the discipline you would want from a watcher running quiet — clean negative filtering of off-theme noise (ICSID procedural notices, ITN headlines, OECD guidance) and watch-list triage of near-misses held below threshold, not a live direct hit. Treat the holdout numbers above as the generalisation estimate and this archive as the honest, still-open prospective record."
+  "detail": "The live weekly digest archive is the true prospective test — the only one that scores items the system has never seen, in real time, before the outcome is known. To date it has produced no direct thematic hit: across the published weeks not a single live listing has cleared the digest threshold as a match. What it has shown is the discipline you would want from a watcher running quiet — clean negative filtering of noise the project would label negative (ICSID procedural notices, ITN headlines, OECD guidance) and watch-list triage of near-misses held below threshold, not a live direct hit. Treat the holdout numbers above as the generalisation estimate and this archive as the honest, still-open prospective record."
  }
 }

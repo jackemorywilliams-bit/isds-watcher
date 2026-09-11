@@ -54,8 +54,14 @@ __all__ = [
 # every surface prints. Nothing else may enumerate sources.
 # --------------------------------------------------------------------------- #
 _CATALOGUE: tuple[tuple[type, str, str, str], ...] = (
-    # The one feed that carries article bodies at intake.
-    (IISDITNSource,            "IISD ITN",        "open-repository",  "full-text"),
+    # NOT full-text since ~August 2026. Every feed variant and the article pages
+    # themselves answer a Cloudflare bot challenge (HTTP 403 "Just a moment…"),
+    # so route 2 reads the homepage listing and sets raw_text=title with
+    # metadata["listing_only"]=True — see the module docstring, and the
+    # 2026-09-07 run's source_health, which records QUIET (RSS HTTP 403; HTML
+    # listing live). Nine consecutive zero-item runs were flagged DEGRADED before
+    # this was understood. If the wall comes down this returns to "full-text".
+    (IISDITNSource,            "IISD ITN",        "open-repository",  "headline-only-walled"),
     # Emory's own Google account. A third party cannot re-run either of these and
     # cannot audit what they did or did not deliver; that is why they are not
     # described as public sources anywhere on this project's surfaces.
@@ -65,7 +71,7 @@ _CATALOGUE: tuple[tuple[type, str, str, str], ...] = (
     (ICSIDSource,              "ICSID",           "open-repository",  "listing-then-body"),
     # Paywalled body, never fetched: config.HEADLINE_ONLY_SOURCES and
     # enrich.NO_BODY_FETCH. tests/test_source_catalogue.py asserts all three agree.
-    (IAReporterHeadlinesSource, "IAReporter",     "open-repository",  "headline-only"),
+    (IAReporterHeadlinesSource, "IAReporter",     "open-repository",  "headline-only-paywalled"),
     (UNCTADISDSSource,         "UNCTAD",          "open-repository",  "listing-then-body"),
     (PCAPressSource,           "PCA",             "open-repository",  "listing-then-body"),
     (BingNewsSource,           "Bing News",       "open-repository",  "listing-then-body"),

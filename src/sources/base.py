@@ -80,12 +80,27 @@ CHANNELS = ("open-repository", "operator-mailbox")
 #:   ``listing-then-body`` the source yields a title/summary, and the linked page
 #:                         is fetched by src/enrich.py when the item ranks high
 #:                         enough to be read in full.
-#:   ``headline-only``     the body is paywalled and is NEVER fetched; the item
-#:                         is scored from its title alone. Mirrors
+#:
+#: Two sources are read at headline level, for reasons that are not the same and
+#: must not be collapsed — one is a publisher's commercial choice, the other is a
+#: bot wall this project ran into and could run back out of:
+#:
+#:   ``headline-only-paywalled``
+#:                         the body exists and is behind a paywall, so it is
+#:                         NEVER fetched, by policy. Mirrors
 #:                         ``src/config.py::HEADLINE_ONLY_SOURCES`` and
 #:                         ``src/enrich.py::NO_BODY_FETCH``, and a test asserts
-#:                         the three agree.
-READ_DEPTHS = ("full-text", "listing-then-body", "headline-only")
+#:                         the three name the same source.
+#:   ``headline-only-walled``
+#:                         the feed AND the article pages answer a bot challenge,
+#:                         so only the listing's title and date can be read. The
+#:                         pipeline still ATTEMPTS the body and is refused, which
+#:                         is why this is not the paywalled value and not
+#:                         ``listing-then-body`` either. A confirmed refusal (not
+#:                         a plain zero) hands the source to
+#:                         ``src/source_recovery.py`` and the Internet Archive.
+READ_DEPTHS = ("full-text", "listing-then-body",
+               "headline-only-paywalled", "headline-only-walled")
 
 
 class Source(ABC):

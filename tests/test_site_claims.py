@@ -511,18 +511,40 @@ def test_the_delivery_pause_is_disclosed_and_matches_the_configuration():
         assert "deliberate" in text, path.name
 
 
-def test_the_delivery_disclosure_names_nobody():
-    """The recipient is a private individual. The disclosure says that delivery is
-    paused, never to whom — and no public surface carries an address."""
-    for path in (TEMPLATES / "how_it_works.html.j2", REPO / "README.md",
-                 TEMPLATES / "index.html.j2"):
+def test_no_public_surface_says_a_deliverable_goes_to_a_named_person():
+    """The recipient is a private individual, and until 2026-09-10 the workflow
+    chart said two of the weekly emails were "sent to Dr. Benavides" — inlined
+    into the how-it-works page, four times, directly above a column headed WHAT
+    GETS SENT, while nothing was in fact being sent to her.
+
+    The surname may still appear as the name of the PROJECT this instrument was
+    built for, which is not a delivery claim and is already public. It may not
+    appear any other way. Checked on the templates, the README and the BUILT
+    pages, because the chart reaches a reader only through the build."""
+    # docs/methodology.html is excluded, and only it: it is a rendering of
+    # METHODOLOGY.md, a memo the operator wrote and addressed to its reader by
+    # name, on purpose. A memo's own TO: line is not a claim that an automated
+    # email is arriving, and that file is the operator's, not this workstream's.
+    surfaces = [TEMPLATES / "how_it_works.html.j2", TEMPLATES / "index.html.j2",
+                REPO / "README.md", TEMPLATES / "assets" / "workflow.svg.j2"]
+    surfaces += [p for p in sorted((REPO / "docs").rglob("*.html"))
+                 if p.name != "methodology.html"]
+    surfaces += [REPO / "docs" / "assets" / "workflow.svg"]
+    for path in surfaces:
+        if not path.is_file():
+            continue
         text = path.read_text(encoding="utf-8")
         assert "ximena" not in text.lower(), f"{path.name} names the recipient"
+        for m in re.finditer(r"Benavides", text):
+            tail = text[m.end():m.end() + 13]
+            assert tail.startswith(" ISDS project"), (
+                f"{path.relative_to(REPO)} names the recipient outside the phrase "
+                f"'the Benavides ISDS project': …{text[m.start()-60:m.end()+30]}…")
         # No email address of any shape. (README names `smtp.gmail.com` as a
         # server host, which is configuration and not a person; an address needs
         # the @.)
         addresses = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", text)
-        assert not addresses, f"{path.name} carries an address: {addresses}"
+        assert not addresses, f"{path.relative_to(REPO)} carries an address: {addresses}"
 
 
 def test_how_it_works_carries_the_shared_error_caveat():

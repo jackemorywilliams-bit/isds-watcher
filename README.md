@@ -231,17 +231,24 @@ All ten appear below; the tiers are kept in step with the code by
 [analytics/source-inventory.md](analytics/source-inventory.md), which is generated from
 `src/sources/__init__.py::all_sources()`:
 
-- **Read in FULL at intake** — IISD Investment Treaty News, whose feed carries the article
-  body itself, so the item is scored on its text.
 - **Read as a LISTING, then in full when ranked** — the ICSID docket, the italaw archive,
   UNCTAD (ISDS Navigator and World Investment Report), PCA press releases, Bing News, GDELT,
   and the operator's own Google Alerts and Google Scholar feeds. Each yields a title or a
   short summary; the linked page is fetched and read in full when the item ranks high enough
   (`src/enrich.py`), where the publisher allows.
-- **Read HEADLINE-ONLY** — IAReporter, whose body is paywalled and is never fetched
-  (`HEADLINE_ONLY_SOURCES`, `NO_BODY_FETCH`), so only the title and lead are scored.
-  Genuinely on-theme IAReporter items can under-score when the dispositive detail
-  sits in the body the instrument cannot read; those surface as watch-list leads, not matches.
+- **Read HEADLINE-ONLY, paywalled** — IAReporter, whose body is behind a paywall and is
+  never fetched by policy (`HEADLINE_ONLY_SOURCES`, `NO_BODY_FETCH`), so only the title and
+  lead are scored. Genuinely relevant IAReporter items can under-score when the dispositive
+  detail sits in the body the instrument cannot read; those surface as watch-list leads, not
+  matches.
+- **Read HEADLINE-ONLY, walled** — IISD Investment Treaty News. Its RSS feed carried article
+  bodies until about August 2026; since then every feed variant *and* the article pages
+  answer a bot challenge (HTTP 403), so the fetcher falls back to the ITN homepage listing
+  and reads titles and dates only. The pipeline still attempts the body and is refused —
+  which is not a paywall, and is reversible if the wall comes down. A confirmed refusal
+  hands the source to the Internet Archive guard (`src/source_recovery.py`); a plain zero
+  does not. 9 consecutive zero-item runs were flagged DEGRADED before this was
+  understood, and no source currently delivers full text at intake.
 - **RETIRED** — Google News RSS, permanently disallowed by its `robots.txt` and therefore
   inactive (honored, not circumvented), along with any individual page denied by robots or
   login. It is not in the roster and is not one of the ten.

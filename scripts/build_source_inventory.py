@@ -61,7 +61,8 @@ CHANNEL_NOTE = {
 DEPTH_PROSE = {
     "full-text": "full text",
     "listing-then-body": "listing, then body when ranked",
-    "headline-only": "headline only",
+    "headline-only-paywalled": "headline only (paywalled)",
+    "headline-only-walled": "headline only (walled)",
 }
 DEPTH_NOTE = {
     "full-text":
@@ -69,10 +70,15 @@ DEPTH_NOTE = {
     "listing-then-body":
         "The source yields a title or summary; the linked page is fetched and "
         "read in full when the item ranks high enough (src/enrich.py).",
-    "headline-only":
-        "The body is paywalled and is never fetched. The item is scored from its "
-        "title alone, so a genuinely on-theme item can under-score when the "
-        "dispositive detail sits in the body.",
+    "headline-only-paywalled":
+        "The body is paywalled and is never fetched, by policy. The item is scored "
+        "from its title alone, so a genuinely relevant item can under-score when "
+        "the dispositive detail sits in the body.",
+    "headline-only-walled":
+        "The feed and the article pages both answer a bot challenge, so only the "
+        "listing's title and date can be read. The pipeline still attempts the "
+        "body and is refused — a different thing from a publisher's paywall, and "
+        "reversible if the wall comes down.",
 }
 
 

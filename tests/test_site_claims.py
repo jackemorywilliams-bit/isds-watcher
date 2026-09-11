@@ -486,6 +486,45 @@ def test_workflow_chart_agrees_with_the_page_it_sits_on():
     assert "officer" not in svg.lower()
 
 
+# --------------------------------------------------------------------------- #
+# The delivery disclosure
+# --------------------------------------------------------------------------- #
+def test_the_delivery_pause_is_disclosed_and_matches_the_configuration():
+    """A page describing weekly deliverables implies they arrive somewhere. They
+    do not: the recipient list was narrowed by hand to the operator while the
+    status-only gate holds. The disclosure is prose, so this test pins it to the
+    configuration it describes — restore the second recipient, or turn the gate
+    off, and the sentence has to be rewritten before the tree goes green."""
+    from src import config
+    assert len(config.RECIPIENTS) == 1, (
+        "the recipient list has changed; the delivery disclosure on the "
+        "how-it-works page and in README.md now describes a state that has passed")
+    assert config.VALIDATION_STATUS_ONLY, (
+        "item-level publication has resumed; the delivery disclosure must be "
+        "rewritten rather than left standing")
+    for path in (TEMPLATES / "how_it_works.html.j2", REPO / "README.md"):
+        # Both files hard-wrap their prose, so the sentence is matched with
+        # whitespace collapsed rather than line by line.
+        text = re.sub(r"\s+", " ", path.read_text(encoding="utf-8"))
+        assert "delivered to the operator alone" in text, path.name
+        assert "paused until the classifier has been validated" in text, path.name
+        assert "deliberate" in text, path.name
+
+
+def test_the_delivery_disclosure_names_nobody():
+    """The recipient is a private individual. The disclosure says that delivery is
+    paused, never to whom — and no public surface carries an address."""
+    for path in (TEMPLATES / "how_it_works.html.j2", REPO / "README.md",
+                 TEMPLATES / "index.html.j2"):
+        text = path.read_text(encoding="utf-8")
+        assert "ximena" not in text.lower(), f"{path.name} names the recipient"
+        # No email address of any shape. (README names `smtp.gmail.com` as a
+        # server host, which is configuration and not a person; an address needs
+        # the @.)
+        addresses = re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", text)
+        assert not addresses, f"{path.name} carries an address: {addresses}"
+
+
 def test_how_it_works_carries_the_shared_error_caveat():
     """The sentence that makes the rest of the AI-workflow description honest.
     It is required to be present, and required not to be hidden in a footnote."""

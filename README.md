@@ -78,7 +78,13 @@ An annotated, hoverable version lives on the project site:
 
 ## The weekly digest
 
-Every Monday, an annotated-bibliography digest goes to the configured recipient. Each
+Every Monday, an annotated-bibliography digest is produced. **While the status-only
+validation gate holds, it is delivered to the operator alone.** The recipient list in
+`src/config.py` was narrowed by hand to a single address, and delivery to the researcher
+this instrument is built for is paused until the classifier has been validated. That is a
+deliberate hold rather than a fault or an oversight, and it is stated here because a
+reader who found the archive without it would reasonably assume the digests had been
+going out to their intended reader all along. Each
 surfaced development appears as a citation, a short descriptive-and-evaluative annotation,
 the rings it matched, and — where the source text was reachable — a quoted notable line from
 it. Entries drawn from a paywalled feed carry no quotation, are marked headline-only, and

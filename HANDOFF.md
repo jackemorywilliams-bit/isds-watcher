@@ -60,7 +60,7 @@ Secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `ANTHROPIC_API_
 is a supported alternate). The available Gemini key had no free-tier quota, which is why
 Claude (~$1/mo) runs live.
 
-**Incident 2026-09-07 — the classifier was dead for four weekly runs (08-24 → 09-07).**
+**Incident 2026-09-07 — the classifier was dead for five weekly executions across three weekly dates (2026-08-24 ×2, 08-31, 09-07 ×2), before the 09-07 23:25 UTC execution that carried the fix — see `analytics/incidents/2026-08-classifier-outage.md` (08-24 → 09-07).**
 The anthropic 1.x SDK removed `temperature` from `Messages.create()`; `requirements.txt`
 had no ceiling, the runner installed 1.4.0, and every classify call raised `TypeError`
 while every run still reported success ("DEGRADED: 24 of N could not be classified" sat
@@ -137,7 +137,7 @@ instances — `iisd_itn`, `google_alerts`, `gmail_scholar`, `italaw`, `icsid`,
 `iareporter_headlines`, `unctad_isds`, `pca_press`, `bing_news`, `gdelt`. The table below
 inherits the original build-time scout's scope and so covers eight of them; `google_alerts`
 (operator's own subscribed feeds, polled as RSS) and `gmail_scholar` (credential-gated Scholar
-alerts to a designated mailbox) are documented at `METHODOLOGY. Since 2026-09-08 `gmail_scholar` is also read every morning by the `scholar-intake` workflow, which queues new papers for the weekly run and records the newest alert's date; a zero-item weekly run is probed and says when the last alert arrived.md:33` rather than here. Said
+alerts to a designated mailbox) are documented at `METHODOLOGY.md:33` rather than here. Since 2026-09-08 `gmail_scholar` is also read every morning by the `scholar-intake` workflow, which queues new papers for the weekly run and records the newest alert's date; a zero-item weekly run is probed and says when the last alert arrived. Said
 plainly because the heading claims "current reality" and a reader should not have to infer
 which ten the ten are.
 

@@ -361,13 +361,18 @@
         function show(node) {
           targets.forEach(function (t) { t.classList.remove('is-active'); });
           node.classList.add('is-active');
+          // Two different quantities, two different attributes, two different
+          // words: a trend marker carries data-screened (candidates evaluated in
+          // that run) and a source row carries data-fresh (first sightings).
           var scr = node.getAttribute('data-screened');
+          var fresh = node.getAttribute('data-fresh');
           var acc = node.getAttribute('data-accepted');
           var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
           var zero = node.hasAttribute('data-date')
             ? ', <span class="read-zero">0 matches</span>' : '';
           readout.innerHTML = '<strong>' + label + '</strong> — ' +
-            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-screened">' +
+              (scr !== null ? scr + ' screened' : fresh + ' fresh') + '</span>, ' +
             '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
         }
         function clear() {

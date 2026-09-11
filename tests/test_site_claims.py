@@ -106,11 +106,15 @@ def test_chart_aria_labels_name_the_quantity_and_agree_in_number(bs):
         # "1 items surfaced" is read aloud verbatim; \b keeps 11/21 out of it.
         assert not re.search(r"\b1 (items|candidates|matches)\b", label), label
 
+    # The per-source chart counts FRESH candidates, not screening events, and its
+    # aria-labels say so: "63 candidates evaluated" here would report the wrong
+    # quantity to the one reader who cannot see the legend.
     src, _ = bs._build_source_svg(
-        [{"key": "iareporter_headlines", "screened": 63, "accepted": 1},
-         {"key": "icsid", "screened": 4, "accepted": 0}])
-    assert "63 candidates evaluated, 1 item surfaced" in src
-    assert "4 candidates evaluated, 0 items surfaced" in src
+        [{"key": "iareporter_headlines", "fresh": 63, "accepted": 1},
+         {"key": "icsid", "fresh": 4, "accepted": 0}])
+    assert "63 fresh candidates, 1 item surfaced" in src
+    assert "4 fresh candidates, 0 items surfaced" in src
+    assert "evaluated" not in src
 
 
 def test_chart_titles_do_not_say_weekly(bs):
@@ -277,6 +281,91 @@ def test_backtest_screening_count_follows_the_archive(bs):
                                active="backtest", root="", bt=bs.run_backtest())
     assert f"no item has reached 40 in {FICTION['screened']} screenings" in page
     assert f"{real['screened']} screenings" not in page
+
+
+# --------------------------------------------------------------------------- #
+# Two denominators, two names
+#
+# meta.json's `screened` counts every candidate a run evaluated. `per_source`
+# counts only the ones the seen-state had never seen (src/main.py:
+# `per_source = len(fresh)`). Over the eleven runs that carry per-source data they
+# are 191 and 230 — and the archive page printed both under one heading,
+# "Candidates evaluated", on the same page. That is the protocol's fixed term for
+# meta["screened"], so the per-source figure is the one that had to be renamed.
+# --------------------------------------------------------------------------- #
+PER_SOURCE_LABELS_BANNED = ["candidates evaluated", "candidate evaluated",
+                            "screened", "evaluated"]
+
+
+def test_the_two_denominators_really_do_differ(bs):
+    """Stated as a measurement so the rename cannot quietly become cosmetic: if
+    these ever coincide, the distinction still exists and the labels still must."""
+    digests = bs.collect_digests()
+    with_per_source = [d for d in digests if d.per_source]
+    assert len(with_per_source) == 11
+    assert sum(sum(d.per_source.values()) for d in with_per_source) == 191
+    assert sum(d.screened or 0 for d in with_per_source) == 230
+    assert sum(d.screened or 0 for d in digests) == 492
+
+
+def test_per_source_rows_are_keyed_fresh_so_a_template_cannot_call_them_screened(bs):
+    rows = bs.build_archive_charts(bs.collect_digests()).source_rows
+    assert rows, "the archive carries per-source data; this test is not vacuous"
+    for row in rows:
+        assert "fresh" in row
+        assert "screened" not in row, (
+            "a per_source figure must not be reachable in a template as .screened — "
+            "that name belongs to meta.json's run total")
+
+
+def test_the_per_source_chart_is_never_labelled_candidates_evaluated(bs):
+    """The chart, its accessible name, its per-row aria-labels and its worded
+    readout are all per_source-derived, and none of them may borrow the run
+    total's vocabulary."""
+    rows = bs.build_archive_charts(bs.collect_digests()).source_rows
+    svg, summary = bs._build_source_svg(rows)
+    for blob, what in ((svg, "the per-source SVG"), (summary, "the worded readout")):
+        low = blob.lower()
+        for banned in PER_SOURCE_LABELS_BANNED:
+            assert banned not in low, f"{what} calls a per_source figure '{banned}'"
+    assert "fresh candidate" in svg.lower()
+
+
+def test_the_archive_pages_source_block_says_fresh(bs):
+    """The template half. The source figure is rendered in three places on the
+    archive page — legend, caption, and the screen-reader data table — and the
+    trend block directly above it legitimately says 'Candidates evaluated', so
+    the scan is scoped to the source block rather than the file."""
+    text = (TEMPLATES / "digest_index.html.j2").read_text(encoding="utf-8")
+    start = text.index("{% if charts.has_source %}")
+    block = text[start:text.index("{% endif %}", start)]
+    # Only the LABELS — the legend key, the caption title and the data-table
+    # column heads. Prose that contrasts the two quantities has to be able to
+    # name the other one.
+    labels = [ln.strip() for ln in block.splitlines()
+              if "chart-key " in ln or "chart-caption-title" in ln
+              or '<th scope="col">' in ln]
+    assert labels, "the per-source block has no labels to check — the scan broke"
+    for line in labels:
+        assert "candidates evaluated" not in line.lower(), (
+            f"a per-source label reads {line!r}; 'candidates evaluated' names "
+            "meta.json's run total, which is a different and larger number")
+    assert "r.screened" not in block, "a per_source figure is bound as .screened"
+    assert "Fresh candidates" in block
+    assert "r.fresh" in block
+    # And the page must SAY they are different, not merely use two words.
+    assert "never seen before" in block
+
+
+def test_the_homepage_defines_its_own_denominator(bs):
+    page = _render_with_status(bs, "index.html.j2", FICTION, active="home", root="",
+                               digests=[], ring_labels=bs.RING_LABELS)
+    for fragment in ("candidates evaluated</strong> summed over",
+                     "digests/*/meta.json",
+                     "not a count of pipeline runs",
+                     "distinct candidates"):
+        assert fragment in page, f"the status strip no longer defines 492: {fragment!r}"
+    assert f"{FICTION['screened']} is the number of" in page
 
 
 def test_one_run_reads_as_one_run(bs):

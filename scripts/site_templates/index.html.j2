@@ -40,6 +40,18 @@
       unless individually marked human-verified &mdash;
       <a href="how-it-works.html">what that means</a>.
     </p>
+    {% if status.runs %}
+    <p class="status-strip-note">
+      What that middle number counts: {{ status.screened }} is the number of
+      <strong>candidates evaluated</strong> summed over the {{ status.runs }} archived
+      runs &mdash; the sum of <code>screened</code> across the {{ status.runs }}
+      <code>digests/*/meta.json</code> files &mdash; so it counts screening events in
+      the surviving archive. It is not a count of pipeline runs, of evaluation events
+      recorded in telemetry, or of distinct candidates. A same-day re-run overwrites
+      that day&rsquo;s <code>meta.json</code> in place, so the archive keeps the last
+      run of a date rather than every run of it.
+    </p>
+    {% endif %}
   </div>
 </section>
 

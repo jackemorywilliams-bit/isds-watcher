@@ -827,15 +827,20 @@ def _trend_summary_text(rows: list[dict]) -> str:
 
 
 def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
-    """A horizontal per-source bar chart: candidates evaluated vs items surfaced
-    per source, sorted by volume evaluated. Returns ``(svg, worded_summary)``."""
+    """A horizontal per-source bar chart: FRESH candidates vs items surfaced per
+    source, sorted by fresh volume. Returns ``(svg, worded_summary)``.
+
+    Every figure here is ``per_source``-derived, which counts first sightings and
+    not screening events, so nothing on this chart may be called "candidates
+    evaluated" or "screened" — those name ``meta.json``'s ``screened``, which the
+    run-by-run trend chart above reports and which is the larger number."""
     W = 640
     pad_l, pad_r, pad_t, pad_b = 150, 40, 14, 28
     row_h, bar_h, gap = 30, 9, 3
     n = len(rows)
     H = pad_t + pad_b + n * row_h
     plot_w = W - pad_l - pad_r
-    x_max = max([r["screened"] for r in rows] + [1])
+    x_max = max([r["fresh"] for r in rows] + [1])
 
     def bar_w(v: int) -> float:
         return plot_w * v / x_max if x_max else 0
@@ -855,27 +860,27 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
             f'<text class="chart-axis-label chart-src-label" x="{pad_l - 10}" '
             f'y="{_fmt_num(cy)}" text-anchor="end" dominant-baseline="middle">'
             f'{html.escape(label)}</text>')
-        sw = bar_w(r["screened"])
+        sw = bar_w(r["fresh"])
         aw = bar_w(r["accepted"])
         y_scr = top + (row_h - (2 * bar_h + gap)) / 2
         y_acc = y_scr + bar_h + gap
         group = (
             f'<g class="chart-srcrow" tabindex="0" role="listitem" '
             f'data-source="{html.escape(label)}" '
-            f'data-screened="{r["screened"]}" data-accepted="{r["accepted"]}" '
+            f'data-fresh="{r["fresh"]}" data-accepted="{r["accepted"]}" '
             f'aria-label="{html.escape(label)}: '
-            f'{_count(r["screened"], "candidate", "candidates")} evaluated, '
+            f'{_count(r["fresh"], "fresh candidate", "fresh candidates")}, '
             f'{_count(r["accepted"], "item", "items")} surfaced">'
             f'<rect class="chart-hit" x="{pad_l}" y="{_fmt_num(top + 2)}" '
             f'width="{_fmt_num(plot_w)}" height="{row_h - 4}" />'
-            f'<rect class="chart-bar chart-bar-screened" x="{pad_l}" '
+            f'<rect class="chart-bar chart-bar-fresh" x="{pad_l}" '
             f'y="{_fmt_num(y_scr)}" width="{_fmt_num(sw)}" height="{bar_h}" rx="1.5" />'
             f'<rect class="chart-bar chart-bar-accepted" x="{pad_l}" '
             f'y="{_fmt_num(y_acc)}" width="{_fmt_num(max(aw, 1) if r["accepted"] else 0)}" '
             f'height="{bar_h}" rx="1.5" />'
             f'<text class="chart-bar-value" x="{_fmt_num(pad_l + max(sw, aw) + 6)}" '
             f'y="{_fmt_num(cy)}" dominant-baseline="middle">'
-            f'{r["screened"]}/{r["accepted"]}</text>'
+            f'{r["fresh"]}/{r["accepted"]}</text>'
             f'</g>')
         parts.append(group)
 
@@ -883,7 +888,7 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
         f'<svg class="chart chart-source" viewBox="0 0 {W} {H}" '
         f'role="img" aria-labelledby="source-title source-desc" '
         f'preserveAspectRatio="xMidYMid meet">'
-        f'<title id="source-title">Candidates evaluated and items surfaced, '
+        f'<title id="source-title">Fresh candidates and items surfaced, '
         f'by source</title>'
         f'<desc id="source-desc">{html.escape(_source_summary_text(rows))}</desc>'
         + "".join(parts)
@@ -895,16 +900,16 @@ def _build_source_svg(rows: list[dict]) -> tuple[str, str]:
 def _source_summary_text(rows: list[dict]) -> str:
     if not rows:
         return "No per-source data is available yet."
-    active = [r for r in rows if r["screened"] > 0]
+    active = [r for r in rows if r["fresh"] > 0]
     if not active:
         return "No source surfaced fresh candidates in the runs with per-source data."
     top = active[0]
     surfaced_total = sum(r["accepted"] for r in rows)
-    feeders = ", ".join(f"{_src_label(r['key'])} ({r['screened']})" for r in active)
+    feeders = ", ".join(f"{_src_label(r['key'])} ({r['fresh']})" for r in active)
     return (
         f"Of the catalogue sources, {feeders} contributed fresh candidates; "
-        f"{_src_label(top['key'])} accounted for the largest share of candidates "
-        f"evaluated, and {_count(surfaced_total, 'item was', 'items were')} "
+        f"{_src_label(top['key'])} accounted for the largest share of the fresh "
+        f"candidates, and {_count(surfaced_total, 'item was', 'items were')} "
         f"surfaced across all sources. "
         f"The source roster changed during the period, so these totals are not a "
         f"like-for-like comparison across the whole archive.")
@@ -925,7 +930,17 @@ def build_archive_charts(digests: list[Digest]) -> ChartData:
                                 else ("", _trend_summary_text(trend_rows)))
 
     # Per-source aggregation across every run that carries per-source data.
-    screened_by: dict[str, int] = {}
+    #
+    # THE KEY IS `fresh`, NOT `screened`, AND THE DIFFERENCE IS NOT COSMETIC.
+    # meta.json's `screened` is every candidate the run evaluated. `per_source`
+    # counts only the candidates the seen-state had NEVER SEEN BEFORE
+    # (src/main.py: `per_source = len(fresh)`), so an item re-encountered in a
+    # later run is screened again and fresh never again. Over the eleven runs
+    # that carry per-source data these two sum to 191 and 230 — and until
+    # 2026-09-10 this site printed both under the single heading "Candidates
+    # evaluated", on the same page, forty apart. The field name carries the
+    # distinction now so a template cannot lose it again.
+    fresh_by: dict[str, int] = {}
     accepted_by: dict[str, int] = {}
     source_runs = 0
     for d in digests:
@@ -933,24 +948,24 @@ def build_archive_charts(digests: list[Digest]) -> ChartData:
             continue  # older runs predate per-source counting — guarded.
         source_runs += 1
         for k, v in d.per_source.items():
-            screened_by[k] = screened_by.get(k, 0) + v
+            fresh_by[k] = fresh_by.get(k, 0) + v
         for k, v in d.accepted_by_source.items():
             accepted_by[k] = accepted_by.get(k, 0) + v
 
     keys = sorted(
-        set(screened_by) | set(accepted_by),
-        key=lambda k: (-screened_by.get(k, 0), -accepted_by.get(k, 0), k),
+        set(fresh_by) | set(accepted_by),
+        key=lambda k: (-fresh_by.get(k, 0), -accepted_by.get(k, 0), k),
     )
     source_rows = [
         {"key": k, "label": _src_label(k),
-         "screened": screened_by.get(k, 0), "accepted": accepted_by.get(k, 0)}
+         "fresh": fresh_by.get(k, 0), "accepted": accepted_by.get(k, 0)}
         for k in keys
     ]
     has_source = bool(source_rows)
     # The chart shows only sources that surfaced fresh candidates (the ones that
     # "earn their place"); the visually-hidden table below keeps every source,
     # including the dead/quiet ones at zero, as the authoritative record.
-    chart_rows = [r for r in source_rows if r["screened"] > 0] or source_rows
+    chart_rows = [r for r in source_rows if r["fresh"] > 0] or source_rows
     if has_source:
         source_svg, source_summary = _build_source_svg(chart_rows)
     else:

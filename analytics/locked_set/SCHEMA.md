@@ -19,8 +19,9 @@ the only clean validation instrument this project will get.
 | 4 | `LOCK.md` (append) | SHA-256 of `labels.json` + its commit SHA. |
 | 5 | — | Only now may any scorer touch the set. Git history is the evidence that labels preceded scores. |
 
-A proposed `scripts/check_lock.py` recomputes both hashes and fails closed if
-either file changed after its lock entry.
+`scripts/check_lock.py`, built and wired at
+`.github/workflows/pipeline-guards.yml:140,160`, recomputes both hashes and
+fails closed if either file changed after its lock entry.
 
 ## `items.json` — one object per item
 
@@ -84,9 +85,13 @@ disclosed; no inter-rater statistic is computed, reported, or proposed.
 
 Candidate matters per category are listed in the R2.1 record; each is a lead
 until its primary document is retrieved with a pinpoint and logged in
-`RETRIEVAL_LEDGER.md`. Disjointness is at the level of the **matter**, not the
-document: no case in the development set (the retired 20-item holdout, the 14
-frozen probes, the 13 published items) may appear here in any form.
+`RETRIEVAL_LEDGER.md`. Disjointness is at the level of the **matter**, not
+the document: no case in the development set (the retired 20-item holdout,
+the 14 frozen probes, the 15 published matters — 17 article files, of which
+one is a duplicate of another, Telefónica v. Colombia at
+`italaw.com/cases/12153` published 06-09 and 06-10, and two report the same
+matter, Okuashvili v. Georgia, through different forums) may appear here in
+any form.
 
 ## Evaluation (once locked): production path, not `keyword_score`
 

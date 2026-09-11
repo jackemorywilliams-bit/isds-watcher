@@ -100,7 +100,7 @@ The coincidence of "four" is the trap. Use §5's list.
 independently recounted from `analytics/candidate_telemetry.jsonl` by `dedup.deferred` and
 `dedup.abandoned`. The two sources agree on every row.
 
-| GH run id | `meta["screened"]` | Enriched | Tail | `!! DEGRADED` line | Deferred | Abandoned | Retried from the deferred queue |
+| GH run id | `meta["screened"]` | Enriched (telemetry `entered_enrichment`) | Tail (telemetry, not `entered_enrichment`) | `!! DEGRADED` line | Deferred | Abandoned | Retried from the deferred queue |
 |---|---|---|---|---|---|---|---|
 | `32734655573` | 26 | 24 | 2 | `24 of 26 … (provider_error=24)` | 24 | 0 | 0 |
 | `32749425086` | 30 | 24 | 6 | `24 of 30 … (provider_error=24)` | 24 | 0 | 24 |
@@ -122,10 +122,10 @@ checkable and neither is an inference:
   at `keyword_only_by_design`; 120 + 141 = 261. The 141 are the tail, and they carry
   `attempts: 1`, which is why they are mislabelled as by-design. (This is the defect row C
   repairs. It is recorded here only as the outage's fingerprint, not re-argued.)
-- **The enriched set is capped at 24 on every one of the six runs**, so `provider_error=24`
+- **The enriched set is capped at 24 on every one of the six runs** (`src/config.py:200`, `ENRICH_TOP_N = 24`), so `provider_error=24`
   is a property of the enrichment cap, not a measure of the outage's size.
 
-### 1.6 The abandonment ledger: 24 abandoned, 8 requeued, 16 still abandoned
+### 1.6 The abandonment ledger: 24 abandoned, 8 requeued, 16 still abandoned (as of `61152d5`)
 
 - `analytics/abandoned_candidates.jsonl` holds **24** rows. All 24 carry
   `last_outcome: provider_error` and `attempts: 3`. By the `run` field: **16 stamped
@@ -204,7 +204,7 @@ why this file exists and why §5 gives the site a marker to render.
 > **`per_source[src]` counts the items from that source this run that the seen-state had
 > never seen before (the receptivity denominator); `source_health[].count` counts every
 > item the fetch returned from that source, seen or not (the readability signal) — so
-> `source_health[].count` ≥ `per_source[src]` always, and neither one sums to
+> `source_health[].count` ≥ `per_source[src]` wherever both fields are present (`digests/2026-06-29_ISDS-Thematic-Watch/meta.json` carries `per_source` but no `source_health`), and neither one sums to
 > `meta["screened"]`.**
 
 ### 3.2 The code, with locators
@@ -225,7 +225,7 @@ Archive recovery writes both fields again, keeping the same distinction:
 - `:321` `stats["per_source"][entry["name"]] = len(fresh_rec)` — the unseen ones.
 
 Both are persisted verbatim into `meta.json` by `src/render.py:264` and `:266`. The
-`per_source` meaning was already documented at `src/render.py:240-242` —
+`per_source` meaning was already documented at `src/render.py:240-241` —
 *"per_source = fresh candidates fetched per source this run (the denominator for
 receptivity over time)"*. What had never been written down is that it is a **different
 denominator** from `source_health[].count`, and that neither is CANDIDATES EVALUATED.
@@ -256,8 +256,8 @@ queue**: 30 − 14 = 16 on 2026-09-07. The run's own log corroborates it —
 `30 new candidates across sources (29 retried from the deferred queue)`, where 29 is
 `len(returning) + carried` (`:342`), i.e. 16 rebuilt from the queue plus 13 that the source
 still listed and that carried an attempt count forward. The identity holds on the other
-runs too: 08-31, 67 − 44 = 23 rebuilt with 24 retried (23 + 1 carried); 08-24, 30 − 30 = 0
-rebuilt with 0 retried.
+runs too: 08-31, 67 − 44 = 23 rebuilt with 24 retried (23 + 1 carried); 08-24 (`dc7b207` / run `32749425086`), 30 − 30 = 0
+rebuilt with 24 retried (0 rebuilt + 24 carried — the same date's other execution, `719a9fc` / run `32734655573`, had 0 retried).
 
 ### 3.4 What this releases, and the one thing it does not
 
@@ -331,8 +331,9 @@ surviving `meta.json` came from the repaired run.
   "record": "analytics/incidents/2026-08-classifier-outage.md",
   "cause": "anthropic 1.x SDK removed temperature from Messages.create(); anthropic>=0.40 pinned with no ceiling",
   "fixed_by": "d88f325",
-  "outage_runs": ["2026-08-24", "2026-08-31", "2026-09-07"],
+  "outage_dates": ["2026-08-24", "2026-08-31", "2026-09-07"],
   "failed_executions": 5,
+  "evidence_note": "the six executions on the three dates, oldest first; the sixth is the repaired 09-07 23:25 UTC run, so failed_executions counts the first five",
   "evidence": [
     "32734655573",
     "32749425086",
@@ -371,6 +372,7 @@ surviving `meta.json` came from the repaired run.
     "abandoned": 24,
     "requeued": 8,
     "still_abandoned": 16,
+    "as_of_commit": "61152d5",
     "still_abandoned_all_from_run": "2026-08-31",
     "locator": "analytics/abandoned_candidates.jsonl, analytics/requeued_candidates.jsonl, state/seen.json outcome=abandoned"
   },

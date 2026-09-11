@@ -384,7 +384,7 @@ Completed and tested this session:
   calls an accessible-body item a library lead.
 - **CI** — `.github/workflows/pipeline-guards.yml` wires telemetry-privacy, seen-integrity,
   headline-lane, lock and currency (currency in its own job with `fetch-depth: 0`), each with
-  its planted-violation tests. `scripts/check_lock.py` written.
+  its planted-violation tests. `scripts/check_lock.py` written. **[2026-09-11: the `currency` job moved to `.github/workflows/reanchor.yml` behind `needs: reanchor`, PR #160]**
 - **Comment-package parity round** — five audit contradictions closed. **H&H v. Egypt closed by
   retrieval:** Decision on Jurisdiction (`ita1012.pdf`) and Award Rule 48(4) excerpts
   (`italaw7979.pdf`) now in `seeds/`, 21 spans verified; the retrieval **corrected two claims**

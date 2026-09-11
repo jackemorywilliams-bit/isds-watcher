@@ -111,7 +111,9 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**29 entries as of 2026-09-07, and entry 27 is a collision — see the note under the table.**
+**30 entries as of 2026-09-11, and entry 27 is a collision — see the note under the table.
+Numbers 31 and 32 are RESERVED and NOT adopted; the 2026-09-11 note under the table says by
+whom they were proposed and what is still wanted.**
 Each cites the record that adopted it.
 
 > **This count was updated on 2026-09-04 because leaving it stale is how the collision at 27 was
@@ -159,6 +161,9 @@ Each cites the record that adopted it.
 | 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
 | 28 | **Unscreened first-ness claim** — a novelty assertion ("first", "never", "no seat has ever", "this council had never", "new to this corpus") is an **absence claim about the project's own record** and carries the same burden as any other absence claim: a whitespace-normalised, case-insensitive, emphasis-stripped screen at a named commit, run **before** the claim rather than after the challenge. Distinguished from entry 14 (silent class truncation), which shortens an enumerated class, and from entry 10 (superseded-formulation restatement), which restates an older version of a live proposition. **Mechanical carrier, adopted with it:** no memo may carry such a phrase without an adjacent line stating the literals tried, the synonyms tried, the file count, the scope and the commit | 2026-09-04 | `analytics/daily-research/2026-09-04.md:968` (proposed by this seat, `51a2bae`), `:1040` (mechanical carrier), `:1111`, `:1148` (adopted by the chairman, `687cfde`); landed on `main` at `e3d0255` |
 | 29 | **Off-read-path carrier** — an absence, uniqueness or "only carrier" claim screened over the scope a seat *habitually reads* (the prose record) and then stated over the scope where the fact actually lives. The blind spot is systematic, not incidental: the machine-readable and configuration trees (`specs/`, `state/`, `tests/fixtures/`, `.github/`) sit outside every seat's default screen roots **and** outside the sweeps that measure "uncarried knowledge", so a fact stored there is invisible in both directions at once and reads as absent twice over. **Distinguished from entry 27 (scope-mixed screen)**, where the *referent clause* is populated more widely than the screen annotating it: here the *claim* is stated more widely than the screen, and the omitted roots are the same two or three every time. **Countermeasure, mechanical and deliberately tool-free:** any screen supporting an unqualified claim about "the tree" or "the repository" enumerates candidate files with `git ls-tree -r <commit>` and **no path argument**, whatever instrument reads them; a narrower root set is named in the sentence and the claim narrowed to match. **The tool-free wording was adopted on challenge** — the officer's first draft keyed the countermeasure to `scripts/wsgrep_at.py`, the chairman objected that a countermeasure keyed to a non-existent file inherits the exact defect entry 28 was adopted on, and the officer rewrote it: `git ls-tree` is git, not a project script, so it cannot go missing. **Four instances, three seats, one day**, all 2026-09-05 and all verified: `0905-B1` (chairman, `specs/` and `tests/fixtures/`), `0905-B2` (chairman, `state/council_log.json:460`), `0905-B9` (analyst, `JS-rendered` → 6 hits in 6 files, not "0 anywhere"), `0905-B12` (analyst, the `Ecuador` and `Upreti` "full tree" clauses, `state/`) | 2026-09-05 | `analytics/daily-research/2026-09-05.md:1321` (adopted with the officer's own amendment), `:1421` (binding form, both `d969ca4`); `analytics/optimization-log.md:71` (`7fa1ef4`, on `main`) |
+| 30 | **Untested counterfactual** — asserting what an alternative code path would produce without executing it. Adopted after the officer ran the analyst's headline counterfactual instead of arguing with it: with `EXTRA_WEIGHT_RING` neutralised, Loewen scores **48** and Mondev **54** and both still clear the threshold of 40 through the `sub >= STRONG_SUBTOTAL or second` branch at `src/classify.py:293-295`, so holdout recall is **unchanged at 3/4**, not 1/4 as the analyst asserted. The claim was struck from the record. **Countermeasure:** *"a counterfactual over code is executed or it is not filed."* **Adopted in session under the number 27**, which this table had already issued twice; filed here at the next free number and **no existing row renumbered** — see the 2026-09-11 note below | 2026-09-10 | `analytics/daily-research/2026-09-10-special-session.md:544-556` (Part II §7, the officer against the analyst) |
+| 31 — RESERVED, NOT ADOPTED | **Unqueried configuration assertion** (proposed) — stating the state or semantics of an external system as fact when an authenticated query to that system was available in the same session. **Countermeasure as proposed:** *"if the platform can be asked, ask it before you write the sentence."* Found by the officer reviewing **row D**: a branch-protection re-pinning instruction written without querying `gh api …/branches/main/protection`, which shows nothing pinned | proposed 2026-09-11, **not adopted** | Reported to this seat by the council coordinator at the row L close-out of 2026-09-11, arising on PR **#160** (row D). **No committed council artifact carries the adoption**, and this seat wrote no entry it could not source — hence RESERVED rather than filed |
+| 32 — RESERVED, NOT ADOPTED | **Same-date execution conflation** (proposed) — a figure copied correctly from one execution and attached to a **different execution of the same date**, inside a document whose own subject is that dates are not executions. **Countermeasure as proposed:** *"when a date carries more than one execution, every figure names the execution, not the date."* Found in the **row K** review, where the outage is marked as three weekly dates carrying five failed run executions with 2026-09-07 partial | proposed 2026-09-11, **not adopted** | Reported to this seat by the council coordinator at the row L close-out of 2026-09-11, arising on PR **#163** (row K). **No committed council artifact carries the adoption** — RESERVED rather than filed |
 
 > **Filed 2026-09-07 by the archivist, two days late, and the delay had already been paid for.**
 > Entry 29 was adopted 2026-09-05 and routed to this seat because `agents/` is outside the daily
@@ -204,6 +209,35 @@ entry 27 by name, never by number.
 > name, never by number, as the vault directs"* (`analytics/daily-research/2026-09-04.md`,
 > "Reported against myself", item 3, `51a2bae`). The convention is holding. The ruling that would
 > retire it has not come. **Owner: [[council-chairman]] with this seat.**
+
+> **A third entry was adopted under the number 27, and this time the heading was not stale —
+> 2026-09-11, at the special session's close-out.** At the operator-mandated special session of
+> 2026-09-10 the officer opened *untested counterfactual* and numbered it **27**
+> (`analytics/daily-research/2026-09-10-special-session.md:552`). The previous entry in this
+> note's collision narrative blames a stale heading for the 2026-08-07 collision, and the fix
+> that followed was to move the heading in the same change set as the row. **That fix held and
+> was not the failure here.** The heading read *"29 entries as of 2026-09-07"* at `4eb3fc9`,
+> committed three days before the session, and the only occurrence of the string
+> "24 entries as of 2026-08-04" anywhere in this file is inside the 2026-08-07 narrative
+> immediately above — a quotation of what that session found, not a live heading. The number
+> issued in session therefore came from a count this file does not carry.
+>
+> **Filed at the next free number; nothing renumbered.** *Untested counterfactual* is filed as
+> **30**, because adopting at an occupied number does not vacate the row already there, and
+> because the disposition this note has held since 2026-08-07 is that **renumbering is not the
+> archivist's to do** — it changes what a council ruling says. So the record now holds a
+> number-as-adopted (27) and a number-as-filed (30) for one entry, which is a defect of the
+> same family as the collision it sits under. **Wanted:** one chairman's ruling settling both,
+> alongside the C11 ruling that has been open since 2026-08-07. Until it comes, the standing
+> convention applies to this entry too — **cite it by name, never by number**.
+>
+> **Two further patterns were proposed on 2026-09-11 and are NOT adopted.** They are reserved
+> at **31** and **32** above with their provenance stated on the row, so that the next entry
+> does not take a number a proposal is already using. They were reported to this seat at the
+> row L close-out, arising on PR #160 (row D) and PR #163 (row K); no committed council
+> artifact records an adoption for either, and this seat does not write an entry it cannot
+> source. **Owner: [[council-chairman]]** — adopt, amend, or decline, at which point the rows
+> are filled in or the numbers released. Archivist, 2026-09-11.
 
 **Entry 28 came to this table by a routing, and the routing is why it is here today.** The
 2026-09-04 optimization log closes its entry with: *"routed to the archivist for the vault table

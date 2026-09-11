@@ -5,7 +5,7 @@ hub: Evidence Ledger
 ---
 # Claim Map
 
-**Currency anchor.** *Audited against `bde825f`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `fa3c4f0`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 **What this is.** One row per factual claim the project makes *about itself*, listing
 **every file that states it** and **what each file currently says**. It exists because the
@@ -486,6 +486,46 @@ developments**." The professor-facing methodology is already correct on this poi
 site is the only surface carrying the bare 14.** *(One caution on reading across the two: the
 audit's "12 distinct underlying matters" is an **Okuashvili/Swedish-Supreme-Court merge**;
 `METHODOLOGY.md:49`'s "twelve of the thirteen" is a **ring count**. Two different twelves.)*
+
+**2026-09-10 — this row's numbers are five runs out of date, and the drift is now the subject of
+a council workstream.** The table above says **11 archived run folders**, which was true through
+2026-08-03 and has been wrong since 2026-08-10. Read directly from the sixteen `meta.json` files
+at the special session of 2026-09-10 and re-derived independently by the integrity officer from
+the same sixteen files: **16 archived runs, 492 candidates evaluated, 0 matches, 17 watch-list
+leads** (`analytics/daily-research/2026-09-10-special-session.md:57-72`, per-run figures listed
+there in date order). The 17 surfaced files are **16 distinct published matters** — one
+Telefónica v. Colombia duplicate at `italaw.com/cases/12153`, published 2026-06-09 **and**
+2026-06-10 — which is the same event-versus-distinct-thing qualifier this row has carried since
+2026-08-08, at a larger denominator.
+
+**Where the claim is still divergent, and who is fixing it.** `scripts/site_templates/index.html.j2:161`
+and `METHODOLOGY.md:73` both still say eleven runs and 347 screenings; `index.html.j2` renders the
+live 16/492/0 at `:32-35` and hardcodes 11/347 at `:161`, *"so the same page contradicts itself"*
+— **BLOCKING 4** of that session, which forbids rebuilding the site until the drift is fixed,
+because a rebuild republishes the contradiction. The site-coherence PR (rows **G**+**H**+**I**)
+and the methodology PR (**#165**, rows A2+J) carry the repair; the site PR was **in flight and not
+yet opened** when this was written. The guard fix is **not** a fourteenth `Fact(` for the run
+count: the thirteenth Fact is already `"archived runs"` at `scripts/check_claims.py:238-244`, so
+the deliverable is **restatement `Ref`s on the existing Fact** for `METHODOLOGY.md` and
+`index.html.j2`, **plus one new Fact for the screening count**, which is genuinely unregistered
+(`…special-session.md:510-522`).
+
+**Two cautions on quoting the 492, both binding (BLOCKING 1).** It is the sum of screening
+**events** across the 16 archived runs; **no cross-run distinct total has been computed** and the
+denominator is not yet defined — that is row **K**'s deliverable (**PR #163**). **Nothing above
+492 may be published**, no de-duplicated figure may be published, and the 110-candidate run of
+2026-09-07 may not be characterised as lost, failed or suppressed: same-day re-runs overwrite
+`meta.json` in place, so the archive retains the **last** run of a date rather than every run of
+it, and four dates carry multiple runs. **And nothing at all may be published from `per_source`**
+until `GAP-UNRESOLVED: per-source-count-semantics` is resolved — see [[Workflow Threads]] **S7**.
+
+**A fix here must also change:** everything already listed above, plus
+`scripts/site_templates/index.html.j2:161`, `scripts/site_templates/base.html.j2:282,287`,
+`scripts/site_templates/backtest.html.j2:156`, `README.md:74` and `METHODOLOGY.md:73` — seven live
+stale-count sites, not the two the external audit counted. **`METHODOLOGY.md:54` is not one of
+them and must not be touched**: it sits inside a `> **Correction, 2026-08-08.**` block, and
+editing a number inside a dated correction falsifies the record of what was corrected on that
+date.
 
 ---
 

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `bde825f`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `fa3c4f0`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -503,6 +503,10 @@ statements live in the seat's own note.
 | [[council-chairman]] · [[research-analyst]] · **every seat** | **Screen before you assert novelty** — the same rule stated as a writing discipline binding beyond the officer's taxonomy. Triggered by seven live instances in one document, four the chairman's and three the analyst's. The instrument already exists: `wsgrep_at.py` at a base commit, validated against a known positive before its zero is trusted | 2026-09-04 | `1fcc1ab` / `analytics/optimization-log.md:65`; `687cfde` / `2026-09-04.md:1148` |
 | [[integrity-officer]] | **Taxonomy entry 29 — off-read-path carrier.** An absence or "only carrier" claim screened over the scope a seat habitually reads (the prose record), then stated over the scope where the fact actually lives. `specs/`, `state/`, `tests/fixtures/` and `.github/` sit outside every seat's default screen roots *and* outside the sweeps measuring uncarried knowledge, so a fact stored there reads as absent twice over. **Countermeasure, deliberately tool-free:** enumerate with `git ls-tree -r <commit>` and no path argument, or name the narrower root set in the sentence and narrow the claim to match | 2026-09-05 | `d969ca4` / `2026-09-05.md:1321`, `:1421` (adopted, officer's amendment); `7fa1ef4` / `analytics/optimization-log.md:71` |
 | [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] | **A `check_currency.py` "FAIL … is not a commit" is a statement about the clone, not about the note** — binding from 2026-09-07. No seat may cite that guard's output as a defect in the note it names without first running `git rev-parse --is-shallow-repository`. Adopted after the guard reported three failures against commits that all exist (`373cce6`, `9efafb0`, `ae42639`), on a shallow clone; independently confirmed the same day by the archivist on a complete 1,048-commit history | 2026-09-07 | `34b3970` / `2026-09-07.md` Part VII; archivist confirmation `analytics/vault-sessions/2026-09-07.md` |
+| [[integrity-officer]] | **Taxonomy entry 30 — untested counterfactual.** Asserting what an alternative code path would produce without executing it. Adopted after the officer ran the analyst's headline counterfactual rather than arguing with it: with `EXTRA_WEIGHT_RING` neutralised, Loewen scores 48 and Mondev 54 and both still clear the threshold of 40 through the `sub >= STRONG_SUBTOTAL or second` branch at `src/classify.py:293-295`, so holdout recall is **unchanged at 3/4**, not 1/4 as asserted; the claim was struck from the record. **Countermeasure:** *"a counterfactual over code is executed or it is not filed."* **Numbered 27 in session** and filed at the next free number with no existing row renumbered — see the 2026-09-11 note in [[integrity-officer]] | 2026-09-10 | `analytics/daily-research/2026-09-10-special-session.md:544-556` (Part II §7) |
+| [[integrity-officer]] | **Reserved, NOT adopted: 31 unqueried configuration assertion · 32 same-date execution conflation.** Proposed 2026-09-11 out of the row D and row K reviews (PRs **#160** and **#163**); numbers reserved in [[integrity-officer]] so the next entry cannot take one a proposal is already using. **No committed council artifact records an adoption**, so neither is binding on any seat. **Owner: [[council-chairman]]** — adopt, amend, or release the numbers | proposed 2026-09-11 | Reported at the row L close-out of 2026-09-11; reserved rows in [[integrity-officer]] under the fabrication-taxonomy table |
+| **every seat** | **A grep establishes absence from the REPOSITORY, never from the project** — restated as **binding** on the special session's escalation wording, and no seat may restate the R2.1 finding as "the R2.1 record does not exist." The rule already stood from 2026-08-06; the session's contribution is that it now governs how an *escalation to the operator* is worded, not only how a finding is | 2026-09-10 | `analytics/daily-research/2026-09-10-special-session.md:558-565` (BLOCKING 2, `:1071-1075`) |
+| **every seat** | **Agreement between seats is not corroboration** — reproduced as standing rule 8 of the special session's assignment table, with the day's own demonstration: two Opus 5 seats read one code comment and called it two witnesses, and the officer went to telemetry instead and refuted the audit's point (11) from the archive's own data | 2026-09-10 | `analytics/daily-research/2026-09-10-special-session.md:871-873`, `:580-585` |
 
 The taxonomy's canonical statement is the table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
@@ -511,6 +515,31 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-09-11** — Registry read at `948947b` (`origin/main`) for the **row L close-out of the
+  operator-mandated special session of 2026-09-10**
+  (`analytics/daily-research/2026-09-10-special-session.md`). **No roster change and no contract
+  change**, and the session did not propose one: nothing under `.claude/agents/`, `prompts/` or
+  `src/models.py` was touched by any of the six PRs opened out of the assignment table
+  (**#160**–**#165**, all open and unmerged at the time of writing), and this seat did not edit
+  them either. What changed here is the **adopted-method-rules** table: one row for **fabrication
+  taxonomy entry 30, untested counterfactual**, adopted in session 2026-09-10 and filed at the
+  next free number because the number it was adopted under — **27** — has been issued twice
+  before; one row **reserving 31 and 32 for two proposals that are NOT adopted**, so the next
+  entry cannot take a number a proposal is already using; and two rows restating rules the session
+  made binding on the *escalation wording* rather than only on findings — **a grep establishes
+  absence from the repository, never from the project**, and **agreement between seats is not
+  corroboration**. **Four real subagents deliberated** — [[research-analyst]],
+  [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]] (Claude Opus
+  4.8) — a declared departure from the daily meeting's two-seat Rule 0, with the operator's
+  convening instruction as the precedence (`…special-session.md:18-34`); [[analytics-officer]] did
+  not sit and holds row **K** regardless. Dated detail, the six PRs and the seven operator-gated
+  items are in [[Project Change Log]]; the threads opened are **S1–S9** in [[Workflow Threads]].
+  **One correction this seat owes the record:** the deployment brief for this close-out described
+  the taxonomy heading in [[integrity-officer]] as reading *"24 entries as of 2026-08-04"*. It does
+  not, and has not since 2026-08-07 — it read *"29 entries as of 2026-09-07"* at `4eb3fc9`, three
+  days before the session, and the only occurrence of the "24 entries" string in that file is
+  inside the 2026-08-07 collision narrative, quoting what *that* session found. The heading was
+  not the cause of this collision.
 - **2026-09-04** — Registry re-audited against `c2558d9` (`main`, clean tree, complete
   **983**-commit history after `git fetch --unshallow`; the container's clone arrived shallow at
   **173**, the fifth consecutive recurrence). **No roster change and no contract change, and this

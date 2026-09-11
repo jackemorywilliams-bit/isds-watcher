@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `bde825f`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `fa3c4f0`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -88,6 +88,163 @@ code; and live runs of `scripts/check_currency.py` (**9 claims, 3 failed**),
 (exit 0, 30 cards / 10 chips / 44 edges), `scripts/build_graph.py --dry-run` (**156** notes,
 **330** edges, 0 orphans, **47** would-update) and a **full** `build_graph.py` run in a scratch
 copy (47 files, 170 insertions, 6 deletions, **no note lost net content**).
+
+## S · The special session of 2026-09-10 — threads opened and closed
+
+**Opened at the operator-mandated special session of 2026-09-10, filed here 2026-09-11 at the
+row L close-out.** The session's own record is `analytics/daily-research/2026-09-10-special-session.md`;
+the binding assignment table is at `:892-911` and the chairman's close-out at `:970-1267`. **These
+threads are given `S` ids deliberately**, because this note's `C` and `D` id spaces already carry
+two live collisions (see the warning at the head of this note) and a special session is exactly
+the occasion on which a new number would be issued off a stale reading. As everywhere else here:
+**read a thread by its title, not by its number.**
+
+### S1 · The R2.1 record is not a file in this repository — **OPERATOR-GATED, and it blocks the whole of the audit's priority (i)**
+
+- **State** — A case-insensitive screen for the literal `R2.1` at `948947b` returns **56
+  occurrences across 17 tracked files** (this seat's own count at the close-out; the minutes say
+  55 at `:894`, the chairman's hand count, and the analyst measured 56). It is the sole named
+  source of the **54 candidate matters**, the **V1–V6** acceptance criteria, the **S1–S4**
+  stop-publication rules and the **20×10** stability thresholds — and it has **never been a file
+  on any branch of this repository**: no deleted artefact, and a content search returns only the
+  commits that cite it (`…special-session.md:147-150`), re-run independently by the officer over
+  all thirteen branches and the empty stash (`:558-565`). Four production files fail closed
+  against a document nobody can read.
+- **Scope, and it is binding** — *"a grep establishes absence FROM THE REPOSITORY, never from the
+  project"* (`:558-565`). **No seat may restate this as "the R2.1 record does not exist."** Beyond
+  the repository the coordinator also searched the local working tree, every session transcript of
+  this project, the cloud routines, and the document contents of Desktop, Documents and Downloads
+  — absent in all of them. **Probable home: the operator's claude.ai chat history from the
+  2026-08-08/09 master-prompt session**, whose outputs `HANDOFF.md`'s 2026-08-08 checkpoint records
+  as Desktop deliverables and a Claude Chat prompt.
+- **Recorded** — gap slug `GAP-UNRESOLVED: r2-1-record-not-in-repository`, opened in
+  `state/research_log.json` by row **A2** = **PR #165** (open, unmerged at the time of writing).
+- **Next** — commit the document, **or** give written authority to re-derive the candidate list
+  under a new committed record. Rows **A3**, **A4** and **B** wait on it. **Owner: Emory**
+  (Escalation 1).
+
+### S2 · Sixteen outage abandonments were never requeued
+
+- **State** — `analytics/abandoned_candidates.jsonl` holds **24** lines, every one
+  `provider_error` at `attempts: 3` — **16** stamped 2026-08-31 and **8** stamped 2026-09-07.
+  Only the eight were requeued, so `state/seen.json` carries `abandoned: 16`, and every one is an
+  instrument failure rather than a judgement about the item (`…special-session.md:337-342`).
+- **Recorded** — gap slug `GAP-UNRESOLVED: sixteen-unreversed-outage-abandonments`, opened in
+  `state/research_log.json` by row **A2** = **PR #165**.
+- **Next** — the requeue PR was **in flight and not yet opened** when this was written: sixteen
+  2026-08-31 abandonments requeued, the textless-rebuilt-item defect fixed, and **five of the
+  eight 2026-09-07 requeues reopened as consumed unread**. Its number belongs here when it opens.
+  **Owner: [[systems-designer]]** to land; **Emory** to merge.
+
+### S3 · The locked set's excerpt rule cannot be satisfied by any channel — **O3 and O4, both the operator's**
+
+- **State** — `analytics/locked_set/SCHEMA.md:48-49` defines a tier-P item's text via
+  `src/enrich.py::_extract_body`, which parses HTML `<p>` elements and **cannot read a PDF at
+  all** — the format of most tier-P primaries — and specifies an *"after the caption block"* step
+  that **does not exist in that function and never has** (`…special-session.md:188-217`). The only
+  live retrieval channel, the relay, has two modes and both are non-conformant: position mode
+  returns navigation chrome, and `find` mode is **content selection**, which `SCHEMA.md:47-50`
+  expressly forbids. A PDF returns **zero** characters on that channel, measured five times in the
+  committed record (`analytics/fetch-requests/2026-08-17-daily.json`, `…2026-08-19-daily.json`).
+  Three of the seven tier-P source families — **Curia, BAILII, WTO** — are not in `ALLOWED_HOSTS`.
+- **Next** — two rulings only the operator can give: **O3**, define or strike the caption-block
+  step; **O4**, rule whether a 600-character verbatim excerpt of a public primary may be committed
+  to a public repository at all, against the dated council standing rule of 2026-08-03 at
+  `scripts/fetch_relay.py:10-13`. Row **A4** drafts an amendment as a **proposal, not committed**;
+  row **O** (the relay `schema_excerpt` mode) is designed and **deliberately not built**. Both
+  seats recommend routing retrieval to Emory as a library task instead. **Owner: Emory**
+  (Escalation 2).
+
+### S4 · Six category-8 tier-S labels — the only number on the board that can move, and the council may not touch it
+
+- **State** — Category 8, tier S: headline-only candidates, where `SCHEMA.md:51-52` makes the
+  headline itself the text — *"fidelity, not degradation"*, because `raw_text=title` is what
+  production sees. No excerpt, no copyright question, no relay change, no schema defect in the way
+  (`…special-session.md:898`). The council can build the librarian's half once **S1** clears.
+- **The line, restated because it is permanent** — **single coder, the operator.** No seat may
+  author, propose, pre-fill or *"draft for review"* a label, and **"no second coder" includes "a
+  second model reviews it."** A seat that crosses it ends the set's validity permanently. The
+  commit order is evidence, not paperwork: `items.json` → `LOCK.md` hash → `labels.json` →
+  `LOCK.md` hash, and **no scorer runs before step 4 is committed**.
+- **Next** — **Owner: Emory** (Escalation 2, **O2**). Six labels is not validation and the
+  chairman has said on the record it will not be reported as validation.
+
+### S5 · Two recurring cost switches and one publication policy — **O5 rides with them**
+
+- **State** — `TRIAGE_ENABLED` is off by default, roughly $0.02 on a median run and $0.11 on the
+  largest observed; `src/config.py:216-219` says in terms that it is *"Small, recurring, and
+  Emory's to authorise."* `V2_SHADOW_CALLS` is off, which is why **not one of 328 V2 telemetry
+  records was produced by a model** — `v2_basis` is `lexical_only` on all 328, and `v2_call` is
+  `{"called": false, …}` on all 328 (`…special-session.md:500-508`).
+- **The policy question that rides with them (O5)** — whether the tail's keyword score should be
+  published **at all** during a provider outage, given that the `intended_model=True` path zeroes
+  it and the tail path does not. Row **C** was expressly forbidden to change the score on that
+  path for this reason.
+- **Next** — **Owner: Emory** (Escalation 3).
+
+### S6 · Human verification stopped 45 days ago, and is thinner than the number suggests
+
+- **State** — `analytics/verification_ledger.jsonl`: 58 rows over 37 `claim_id`s; **21 of 37**
+  claims verified, **all 21 on 2026-07-27**, the last at `21:38:22Z`. The officer added three
+  narrowings the chairman had omitted: all 21 carry `scope_ok: false` alongside `quote_ok: true`
+  (nothing consumes `scope_ok` and it defaults `False`, so it may mean *"not asserted"*); **17 of
+  the 21** notes read *"Marked by assistant per operator standing instruction"* and all 21 landed
+  inside 60 seconds — a batch execution of prior chat verifications, legitimate under this
+  project's recorded protocol but **not 21 discrete human acts at that timestamp**; and
+  `HUMAN_REVIEW.md` holds a second cycle entry, `2026-06-29 Cycle 1 — DRAFT (pending operator
+  ratification)`, never ratified (`…special-session.md:477-486`).
+- **Next** — `HUMAN_REVIEW.md:20` sets the cadence at **monthly**; it has run once, on 2026-07-18.
+  August was missed; **September is due 18 September**. Related and smaller: `src/config.py:16-20`
+  narrows delivery to one recipient with a comment saying Dr. Benavides's address must be
+  restored — the council will not touch that file. **Owner: Emory** (Escalation 4). See also
+  **D2** and **F1** below, which this thread does not replace.
+
+### S7 · `per_source` and `source_health[].count` disagree inside one `meta.json` — nothing may be published from `per_source`
+
+- **State** — In `digests/2026-09-07_ISDS-Thematic-Watch/meta.json`, `italaw` is **0 vs 12**,
+  `unctad_isds` **0 vs 5**, `pca_press` **2 vs 3**; `per_source` sums to **14**, `source_health`
+  to **32**, and `screened` is **30**. Found by the officer inside the file the chairman had been
+  quoting all session (`…special-session.md:488-498`).
+- **Recorded** — `GAP-UNRESOLVED: per-source-count-semantics`, routed to row **K** = **PR #163**.
+  **BLOCKING 1** of the session's four binding objections: **nothing may be published from
+  `per_source` until someone states which field means what.**
+- **Owner: [[analytics-officer]]**, on row K.
+
+### S8 · Two council findings that are themselves unverified, and are recorded as such
+
+- **`44550ca`** — [[site-experience]] traced the whole ten-vs-nine source divergence to one
+  commit titled *"ten sources, one truth"*. The officer **did not verify it and neither did the
+  chairman**: it is **GAP-UNRESOLVED** and **must not be restated as established**
+  (`…special-session.md:587-596`).
+- **The enrichment gate's cost is unmeasured, and the chairman's own inference was overturned** —
+  the gate withholds the **body**, not the classification; its size is measurable and its cost is
+  not. On the only healthy run with a tail, the tail went to the **model**, 6/6 `llm ok`
+  (`…special-session.md:393-404`, `:567-578`). Row **N**, the stratified tail audit, stays
+  **deferred** — but on revised grounds: its per-call cost is unpriced, and its premise is
+  unestablished.
+
+### S9 · Threads this session touched without closing
+
+- **D10 / D14 / D16** (currency anchor, merge-ref disagreement, the `reanchor.yml` squash race) —
+  row **D** = **PR #160** moves the `currency` job out of `.github/workflows/pipeline-guards.yml`
+  into `.github/workflows/reanchor.yml` behind `needs: reanchor`. **Live acceptance test 1 passed
+  on the PR:** `reanchor` ran 14:33:31–14:33:47Z, `currency` started **14:33:50Z** and reported
+  **9 claims, 0 failed**; acceptance test 2 is running as **#166**, `[CI PROBE — do not merge]`.
+  **None of the three threads closes here** — the PR is open and unmerged at the time of writing,
+  and until it lands the session's standing rule holds: a red `pipeline-guards / currency`
+  immediately after a merge is **the known false alarm** and is not grounds for any seat to touch
+  an anchor by hand.
+- **C11 (the taxonomy collision at entry 27)** — a **third** entry was adopted under that number
+  on 2026-09-10, *untested counterfactual*. It is filed in [[integrity-officer]] at the next free
+  number, **30**, with no existing row renumbered, and the number-as-adopted / number-as-filed
+  split is escalated to [[council-chairman]] with the collision it sits under. Two further
+  patterns are **reserved at 31 and 32 and not adopted**.
+- **B7 (the locked validation set)** — its premise moved: see the dated note appended to that
+  thread below.
+- **C13 / C14 (externally gated retrievals; the retrospective labelling protocol)** — untouched by
+  this session and still Emory's.
+
+---
 
 ### D10 — the currency anchor no longer means "audited" *(new 2026-09-01; owner: systems-designer / Emory)*
 
@@ -204,6 +361,8 @@ still the only open PR in the repository before this session's own.
   (`.github/workflows/pipeline-guards.yml:167-172`), so a shallow checkout is **ruled out**. This
   seat names the two disagreeing log lines and leaves the cause open rather than asserting a
   diagnosis it did not test.
+
+  **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 - **Why it matters beyond one run.** **Verifying this guard locally does not predict what CI will
   say on a pull request.** Every archivist session since 2026-08-16 has fought this guard's anchors,
   and the 2026-08-28 and 2026-09-01 sessions each burned a follow-up branch on it. If a seat cannot
@@ -380,6 +539,8 @@ guard reports **4**, all genuinely stale, and **zero** `FAIL`s. CI is unaffected
 hazard is agent-session-only. **Unshallow before running any guard that resolves a sha**, or the
 guard will report a fabricated defect and hide the real count. This extends the 2026-08-16
 caution, which covered `git log` and not the guards.
+
+**[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 
 **Snapshot refreshed:** **2026-08-13**, at `8ea2ee1` on `main`, clean tree, against a
 **complete** history (`git fetch --unshallow`; 584 commits). Sources read for this pass:
@@ -870,6 +1031,21 @@ re-verified open, and section F is new.
 - **Next** — Nothing may be added until the corresponding primary document is retrieved and its
   pinpoint verified; retrieval is **C13** below and is Emory's. The guard half is complete.
 - **Owner** — [[research-analyst]] for item drafting **after** retrieval; Emory for retrieval.
+- **2026-09-10 — the premise under this thread moved, and the thread's own words are why it
+  matters.** This thread has said since 2026-08-08 that *"the 54 … are leads"* and cited **the
+  R2.1 record** for them. The special session of 2026-09-10 established that the R2.1 record is
+  **not a file in this repository and never has been on any branch**, so the 54 are not
+  unretrieved — they are **unnamed**: the nine category headings exist in exactly one place,
+  `analytics/locked_set/SCHEMA.md:75-83`, and no file in the repository assigns a single named
+  matter to any of them (`analytics/daily-research/2026-09-10-special-session.md:128-174`). The
+  set is therefore **less than a design**, and **BLOCKING 2** of that session applies to every
+  seat: no seat may author, propose, pre-fill or reconstruct any part of it, and *"any proposal to
+  rebuild that list from this corpus, from memory, or from a seat's reading is fabrication of the
+  only clean validation instrument the project will get."* The `RETRIEVAL_LEDGER.md:26` header
+  *"Locked-set retrieval queue (54 items)"* is followed by *"None retrieved as of 2026-08-08"* and
+  **no rows**; the 13 rows that do exist are the project's pre-existing open-source list, not
+  locked-set items. **Zero of the 54 exist as ledger rows.** Row **A2** (**PR #165**) corrects the
+  header and the schema's exclusion set; **S1** above carries the blocker and its scoping rule.
 
 ---
 

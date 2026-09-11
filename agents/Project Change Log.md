@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `bde825f`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `fa3c4f0`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,132 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-11 (archivist session — fifteenth deployment; row L of the operator-mandated special session of 2026-09-10)
+
+*Audited against `948947b` (`origin/main`, clean tree). This session is **row L** of the binding
+assignment table at `analytics/daily-research/2026-09-10-special-session.md:892-911` and is
+recording work done by other seats, not auditing the repository end to end. Paths written:
+`analytics/daily-research/`, `agents/`, `moc/`, and **one line** of `HANDOFF.md`. Two open PRs
+hold other regions of `HANDOFF.md`, so this seat stayed off them by instruction.*
+
+- **The special session's record is now in the repository.** The chairman's minutes are filed
+  unchanged at `analytics/daily-research/2026-09-10-special-session.md` — body byte-identical to
+  the coordinator's file, with one archivist filing note added at `:3` recording that it is the
+  operator-mandated **special** session, that it is **separate from and does not amend**
+  `analytics/daily-research/2026-09-10.md` (that date's daily record), and that Rule 0's
+  two-convened-seat rule was departed from deliberately with the operator's convening
+  instruction as the precedence (`:18-34`). **Two records exist for 2026-09-10 because two
+  meetings happened**, and the file says so on its face rather than leaving it to be inferred.
+- **Seats convened, and on what.** Four real subagents deliberated — [[research-analyst]],
+  [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]]
+  (Claude Opus 4.8) — each briefed read-only against a detached worktree at `origin/main`
+  (`…special-session.md:120-126`, `:52-55`). [[analytics-officer]] did not sit in the
+  deliberation and **holds row K** regardless (`:36-43`). No roster change and no contract
+  change: nothing in `.claude/agents/`, `prompts/` or `src/models.py` moved, and this seat did
+  not edit them.
+- **Six PRs opened 2026-09-11 out of the assignment table**, all open and unmerged at the time
+  of writing (`gh pr list --state all`, 2026-09-11):
+  - **#160** — row **D**, `fix(ci): the currency guard runs behind the re-anchor, and the whole
+    suite runs on PRs` (`council/sd-currency-after-reanchor`). **Live acceptance test 1 passed on
+    the PR:** `reanchor` ran 14:33:31–14:33:47Z, `currency` started 14:33:50Z — after, not
+    beside — and reported **9 claims, 0 failed**. Acceptance test 2 (a deliberately wrong PR
+    cite must go red) is running as **#166**, `[CI PROBE — do not merge]`.
+  - **#161** — rows **C** + **E**, `fix(classify): a failed call on the tail is an outage, not a
+    design; rings reported are rings scored` (`council/sd-outcome-and-rings`).
+  - **#162** — rows **F** + **M**, `feat(recovery): recovery telemetry (capture age, cap
+    omissions); source roster and zero-streak guard must agree` (`council/sd-recovery-telemetry`).
+  - **#163** — row **K**, `docs(analytics): the classifier outage marked from artefacts — six
+    executions, three dates, one repaired` (`council/analytics-outage-record`).
+  - **#164** — the HANDOFF corrections, `docs(handoff): un-splice the Scholar sentence; count the
+    outage from artefacts` (`council/handoff-corrections`).
+  - **#165** — rows **A2** + **J**, `docs(methodology, locked-set): six sentences that stopped
+    being true; two gaps opened` (`council/analyst-gaps-and-methodology`) — **to be merged after
+    the site PR**, per the coordinator's sequencing.
+- **Two further PRs were in flight and not yet opened when this was written, and are recorded as
+  pending rather than as landed.** The site-coherence PR (opened later the same day as #169, carrying #165's three commits; rows **G** + **H** + **I**, eight
+  commits) and the requeue PR (#168) — sixteen 2026-08-31 abandonments requeued, the
+  textless-rebuilt-item defect fixed, and **five of the eight 2026-09-07 requeues reopened as
+  consumed unread**. Neither appears in `gh pr list --state all` at the time of writing; when
+  they open, their numbers belong in this entry and in [[Workflow Threads]].
+- **Two new gap slugs.** `GAP-UNRESOLVED: r2-1-record-not-in-repository`
+  (`…special-session.md:152`, `:1021`) and `GAP-UNRESOLVED: sixteen-unreversed-outage-abandonments`
+  (`:342`, `:1040`). Both are opened in `state/research_log.json` by row A2, which is **PR #165**
+  — so the slugs are council rulings today and repository state only when that PR merges.
+- **The R2.1 record, counted here rather than restated.** A case-insensitive screen for the
+  literal `R2.1` at `948947b` over tracked files returns **56 occurrences across 17 files** —
+  `src/rings.py` 16, `analytics/state-space-resolution-2026-08-09.md` 5,
+  `analytics/instrument-map-2026-08-08.md` 5, `src/config.py` 4,
+  `analytics/locked_set/SCHEMA.md` 4, `tests/test_rings.py` 4, `src/main.py` 3, `src/triage.py` 3,
+  `analytics/retrospective-audit-2026-08-08.md` 3, `agents/Workflow Threads.md` 2, and one each in
+  `PLAN.md`, `moc/Workflow.md`, `scripts/check_lock.py`, `src/classify_v2.py`,
+  `src/headline_lane.py`, `analytics/locked_set/RETRIEVAL_LEDGER.md` and `tests/test_pipeline.py`.
+  **The minutes say 55** (`…special-session.md:894`, the chairman's own hand count); the analyst
+  measured 56; this seat re-ran the screen and gets **56**, so the analyst's figure is the one
+  this vault carries. The narrower literal `R2.1 record` returns 7 occurrences in 4 files at the
+  same commit — the two numbers count different strings, which is the whole of the discrepancy.
+- **What the R2.1 record is, and where it is not.** It is the sole named source of the 54
+  candidate matters, the V1–V6 acceptance criteria, the S1–S4 stop-publication rules and the
+  20×10 stability thresholds (`…special-session.md:894`), and **it has never been a file on any
+  branch of this repository** — a deleted-artefact search returns nothing and a content search
+  returns only the citing commits (`:147-150`), a negative the officer re-ran independently
+  across all thirteen branches and the empty stash (`:558-565`). Beyond the repository, the
+  coordinator also searched the local working tree, every session transcript of this project, the
+  cloud routines, and the document contents of Desktop, Documents and Downloads: absent in all of
+  them. **Its probable home is the operator's claude.ai chat history from the 2026-08-08/09
+  master-prompt session** — `HANDOFF.md`'s 2026-08-08 checkpoint records that session's outputs
+  as Desktop deliverables and a Claude Chat prompt. **The scoping is binding and is the officer's
+  ruling** (`…special-session.md:558-565`): a screen establishes absence **from the repository**,
+  never from the project, and **no seat may restate this as "the R2.1 record does not exist."**
+- **Seven items are gated on the operator** (`…special-session.md:1065-1106`; four of them are
+  escalations). Carried in full in [[Workflow Threads]]; in short: (1) produce the R2.1 record or
+  authorise re-deriving it under a new committed record — row **A1**, which blocks A3, A4, B and
+  the whole of the audit's priority (i); (2) the **six category-8 labels**, Emory's alone, where
+  "no second coder" includes "a second model reviews it" — **O2**; (3) define or strike
+  `SCHEMA.md:48`'s "after the caption block", which does not exist in
+  `src/enrich.py::_extract_body` — **O3**; (4) rule whether a 600-character verbatim excerpt of a
+  public primary may be committed to a public repository at all, against the dated council
+  standing rule of 2026-08-03 at `scripts/fetch_relay.py:10-13` — **O4**; (5) `TRIAGE_ENABLED`;
+  (6) `V2_SHADOW_CALLS`, off, which is why not one of 328 V2 telemetry records was produced by a
+  model; (7) the human-verification cadence — nothing verified in 45 days, the monthly checkpoint
+  one cycle overdue, the next due 18 September. Riding with (5)/(6): whether the tail's keyword
+  score should be published at all during a provider outage (**O5**); riding with (7): restoring
+  the delivery recipient at `src/config.py:16-20`, which the council will not touch.
+- **Fabrication taxonomy — one entry filed, two numbers reserved.** *Untested counterfactual* is
+  filed in [[integrity-officer]] as **entry 30** (adopted 2026-09-10,
+  `…special-session.md:544-556`): the officer ran the analyst's headline counterfactual instead
+  of arguing with it and found recall unchanged at 3/4, and the claim was struck. **It was
+  numbered 27 in session**, a number this taxonomy has already issued twice — and this time the
+  vault heading was **not** stale: it read "29 entries as of 2026-09-07" at `4eb3fc9`, three days
+  before the session. Filed at the next free number with **no existing row renumbered**, because
+  renumbering changes what a council ruling says; the number-as-adopted / number-as-filed split
+  is escalated to [[council-chairman]] alongside the C11 collision. Two further patterns —
+  *unqueried configuration assertion* (from the row D review, PR #160) and *same-date execution
+  conflation* (from the row K review, PR #163) — are **reserved at 31 and 32 and NOT adopted**:
+  no committed council artifact records an adoption, and this seat does not write an entry it
+  cannot source.
+- **A dated derivation table is superseded on one point, and is not edited.**
+  `analytics/state-space-resolution-2026-08-09.md:52-53` derives `provider_failure` from
+  `outcome == provider_error` **or** `keyword_only_by_design` with `attempts > 0`, and
+  `keyword_only` from `keyword_only_by_design` with `attempts == 0`. Row C adds
+  `ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR` (**PR #161**), so row 3 of that table needs a
+  **third disjunct** for the new outcome. The file is a dated record of 2026-08-09 and is left
+  byte-unchanged; it is **superseded on that point by PR #161** and nothing else in it is
+  disturbed.
+- **Six historical references to the currency job's old location were annotated, not rewritten.**
+  Row D moves the job out of `.github/workflows/pipeline-guards.yml` into
+  `.github/workflows/reanchor.yml` behind `needs: reanchor` (**PR #160**). A bracketed dated note
+  was appended at each of [[Workflow Threads]] `:204` and `:379`, this note's own `:327` and
+  `:535-537`, [[systems-designer]] `:156-158`, and `HANDOFF.md:387` (inside
+  `## Checkpoint — 2026-08-09`, one line, nothing else touched). Each cited line stays exactly as
+  written: it is accurate for its date, and a dated record that is edited stops being one.
+- **Vault surfaces corrected against the session's Rule 1 numbers.** [[Claim Map]] **C8** carried
+  eleven archived runs; [[Evidence Ledger]] carried "347 screenings" and described the locked set
+  as merely empty of items. Both are updated to the sixteen-run archive and to what the session
+  actually found about the locked set, with every figure copied from the record that copied it
+  from `meta.json`, never restated. `moc/` never reaches the published site — verified, not
+  assumed: a screen for `moc/` across `scripts/build_site.py` and `scripts/site_templates/`
+  returns nothing at `948947b`.
 
 ## 2026-09-07 (archivist session — fourteenth deployment)
 
@@ -326,6 +452,8 @@ remote branch tip.*
   `git fetch --unshallow` the same guard reports the true count with zero `FAIL`s. CI is
   unaffected (`.github/workflows/pipeline-guards.yml:172` sets `fetch-depth: 0`). Written into
   [[Workflow Threads]]' snapshot block.
+
+  **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 - **Currency: 4 failed → 2.** [[Agent Registry]], [[Claim Map]], [[Workflow Threads]] and this
   note restamped to `c4f6825`. `STATE_OF_THE_ANSWER.md` left stale by decision — it is
   [[research-analyst]]'s living memory and the 2026-08-08 rule against restamping another seat's
@@ -540,6 +668,8 @@ copied from a report.
   reports the empty set as **the designed current state, not an error**, and exits 0.
   [[Workflow Threads]] **B8** closes on the file. *(`.github/workflows/pipeline-guards.yml`,
   `scripts/check_lock.py`.)*
+
+  **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 - **The comment package's five audit contradictions were closed, and one of them was closed by
   going and reading the document.** **H&H v. Egypt (ICSID ARB/09/15) is CLOSED BY RETRIEVAL:**
   the Decision on Jurisdiction of 5 June 2012 (`ita1012.pdf`) and the Award's Rule 48(4)

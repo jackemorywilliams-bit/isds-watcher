@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How It Works | ISDS Thematic Watcher</title>
-  <meta name="description" content="The whole instrument on one chart, drawn deterministically from the repository it describes: the nine public sources, the automated pipeline, the multi-stage AI-assisted classification and review workflow, the operator's verification column, and every Monday deliverable.">
+  <meta name="description" content="The whole instrument on one chart, drawn deterministically from the repository it describes: the 10 sources it reads &mdash; 8 open repositories and 2 feeds inside the operator's own Google account, which nobody else can re-run &mdash; the automated pipeline, the multi-stage AI-assisted classification and review workflow, the operator's verification column, and every Monday deliverable.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -55,8 +55,17 @@
   <div class="measure">
     <div class="doc-body">
       <p>
-        Read it top to bottom. The first band is the nine public sources checked
-        on every run. Beneath it the work divides into four columns:
+        Read it top to bottom. The first band is the 10 sources
+        checked on every run. Eight of them
+        are open repositories &mdash; IISD ITN, italaw, ICSID, IAReporter, UNCTAD, PCA, Bing News and GDELT &mdash; and
+        two are feeds inside Emory&rsquo;s own
+        Google account: Google Alerts and Scholar Alerts. That second group is a
+        limit on what can be independently checked, not a detail of plumbing: Google
+        generates those feeds for him, so a third party cannot re-run them and cannot
+        audit what they did or did not deliver. The full catalogue, with what can be read
+        from each source, is generated from the code at
+        <a href="https://github.com/jackemorywilliams-bit/isds-watcher/blob/main/analytics/source-inventory.md">analytics/source-inventory.md</a>.
+        Beneath the band the work divides into four columns:
         <strong>the machine</strong> &mdash; the automated pipeline that collects,
         de-duplicates, scores, and quality-gates each candidate development;
         <strong>what gets sent</strong> &mdash; the emails and site updates each
@@ -69,6 +78,18 @@
         operator carries out by hand. The moving dots trace work flowing through
         the system. On a desktop browser, hovering over any box shows its full
         description and the exact code behind it.
+      </p>
+      <p class="caveat">
+        <strong>Nothing produced here is currently being sent to a reader.</strong>
+        While the instrument is under status-only validation, the weekly digest is
+        delivered to the operator alone: the recipient list was narrowed by hand to a
+        single address, and delivery to the researcher this instrument is built for is
+        paused until the classifier has been validated. The archive on this site is
+        still written every week and is still public. The pause is deliberate &mdash;
+        publishing leads to a reader while the instrument that produced them is
+        unvalidated is the thing the gate exists to prevent &mdash; and it is stated
+        here because a page describing weekly deliverables would otherwise imply they
+        are arriving somewhere.
       </p>
       <p class="caveat">
         <strong>These passes are not independent researchers.</strong> They share
@@ -219,7 +240,6 @@ evidence:
 evidence:
 • .claude/agents/site-experience.md
 • scripts/build_site.py</title></g></g><g class="wf-legend"><rect x="14" y="2302" width="1032" height="116" rx="10" opacity="0.03" fill="#1c2530" class="wf-f-legendBg"/><text x="28" y="2322" font-size="12" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700" fill="#0b3d5c" class="wf-f-legendTitle">KEY</text><line x1="28" y1="2340" x2="62" y2="2340" stroke-width="3" marker-end="url(#arrow-flow)" stroke="#2a6496" class="wf-s-edge-flow"/><text x="72" y="2344" font-size="11" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">the machine moving items — through scoring and into the council</text><line x1="28" y1="2362" x2="62" y2="2362" stroke-width="3" marker-end="url(#arrow-send)" stroke="#1a6b3a" class="wf-s-edge-send"/><text x="72" y="2366" font-size="11" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">the machine delivering — the digest email and public site</text><line x1="518" y1="2340" x2="552" y2="2340" stroke-width="3" marker-end="url(#arrow-check)" stroke="#9a7b2e" class="wf-s-edge-check"/><text x="562" y="2344" font-size="11" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">verification and fact-checking (Emory’s column)</text><line x1="518" y1="2362" x2="552" y2="2362" stroke-width="3" marker-end="url(#arrow-council)" stroke="#6b4fa1" class="wf-s-edge-council"/><text x="562" y="2366" font-size="11" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">the council producing — hand-offs, the brief, minutes, Emory’s packet</text><text x="28" y="2398" font-size="11" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">moving dots = work flowing right now · box colors = who does it: </text><circle cx="34" cy="2414" r="5" fill="#2a6496" class="wf-f-col-machine"/><text x="44" y="2418" font-size="10.5" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">the machine</text><circle cx="146.4" cy="2414" r="5" fill="#1a6b3a" class="wf-f-col-deliverables"/><text x="156.4" y="2418" font-size="10.5" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">what gets sent</text><circle cx="278" cy="2414" r="5" fill="#6b4fa1" class="wf-f-col-council"/><text x="288" y="2418" font-size="10.5" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">the ai research council</text><circle cx="467.20000000000005" cy="2414" r="5" fill="#9a7b2e" class="wf-f-col-emory"/><text x="477.20000000000005" y="2418" font-size="10.5" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" text-anchor="start" fill="#3a4654" class="wf-f-legendText">emory — researcher checks</text></g></svg>
-
     </div>
     <figcaption>
       Drawn deterministically from the repository&rsquo;s own workflow description;
@@ -264,7 +284,7 @@ evidence:
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-09-07 23:32 UTC &middot; 7b5866e</p>      </div>
+<p class="footer-build">Site built 2026-09-11 14:23 UTC &middot; d8876cd</p>      </div>
     </div>
   </footer>
   <script>
@@ -470,12 +490,12 @@ evidence:
       var hasII = rings.indexOf('2') !== -1;
       if (n === 0) {
         return { cls: 'low', label: 'LOW <40',
-          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the thirteen distinct developments published to date, six are in this state, carried by the fill rule rather than by a ring. (Six others carry one ring; a thirteenth was screened twice and classified contradictorily.)' };
+          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the 16 distinct developments published to date, 7 are in this state, carried by the fill rule rather than by a ring. (8 others carry one ring; 1 further development was screened twice and classified contradictorily.)' };
       }
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 11 runs across 347 candidates.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 16 runs across 492 candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
           reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };
@@ -552,13 +572,18 @@ evidence:
         function show(node) {
           targets.forEach(function (t) { t.classList.remove('is-active'); });
           node.classList.add('is-active');
+          // Two different quantities, two different attributes, two different
+          // words: a trend marker carries data-screened (candidates evaluated in
+          // that run) and a source row carries data-fresh (first sightings).
           var scr = node.getAttribute('data-screened');
+          var fresh = node.getAttribute('data-fresh');
           var acc = node.getAttribute('data-accepted');
           var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
           var zero = node.hasAttribute('data-date')
             ? ', <span class="read-zero">0 matches</span>' : '';
           readout.innerHTML = '<strong>' + label + '</strong> — ' +
-            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-screened">' +
+              (scr !== null ? scr + ' screened' : fresh + ' fresh') + '</span>, ' +
             '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
         }
         function clear() {

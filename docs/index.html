@@ -68,6 +68,16 @@
       unless individually marked human-verified &mdash;
       <a href="how-it-works.html">what that means</a>.
     </p>
+    <p class="status-strip-note">
+      What that middle number counts: 492 is the number of
+      <strong>candidates evaluated</strong> summed over the 16 archived
+      runs &mdash; the sum of <code>screened</code> across the 16
+      <code>digests/*/meta.json</code> files &mdash; so it counts screening events in
+      the surviving archive. It is not a count of pipeline runs, of evaluation events
+      recorded in telemetry, or of distinct candidates. A same-day re-run overwrites
+      that day&rsquo;s <code>meta.json</code> in place, so the archive keeps the last
+      run of a date rather than every run of it.
+    </p>
   </div>
 </section>
 
@@ -186,7 +196,7 @@
         <span class="sep">·</span>
         <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
         <span class="sep">·</span>
-        <span class="muted">No item has reached the three-ring intersection in 11 runs across 347 screenings.</span>
+        <span class="muted">No item has reached the three-ring intersection in 16 runs across 492 screenings.</span>
       </div>
     </div>
   </div>
@@ -203,7 +213,7 @@
 
     <div class="flow" role="img"
          aria-label="Six-step weekly workflow. One: gather new items from open ISDS sources. Two: skip anything already covered in an earlier week. Three: read the most promising items in full. Four: a language model rates each item against the three rings. Five: score each item and shortlist those that meet the threshold. Six: write the shortlist as an annotated digest and send it.">
-      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from open ISDS sources: the ICSID, UNCTAD, italaw, IISD Investment Treaty News, and IAReporter repositories, plus the project's own Google Alerts and Google Scholar feeds.</div></div>
+      <div class="flow-step reveal"><span class="flow-k">1</span><div><strong>Gather new items</strong><br>Each week the watcher pulls the latest awards, filings, news, and scholarship from 10 sources. Eight are open ISDS repositories &mdash; IISD ITN, italaw, ICSID, IAReporter, UNCTAD, PCA, Bing News and GDELT &mdash; and two are feeds inside Emory&rsquo;s own Google account, Google Alerts and Scholar Alerts, which Google generates for him and which nobody else can re-run.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
       <div class="flow-step reveal"><span class="flow-k">2</span><div><strong>Set aside what we have already seen</strong><br>It fetches each item courteously, following every site&rsquo;s access rules, and discards anything that appeared in an earlier week so nothing is reported twice.</div></div>
       <div class="flow-arrow" aria-hidden="true">&#8595;</div>
@@ -298,7 +308,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-09-07 23:32 UTC &middot; 7b5866e</p>      </div>
+<p class="footer-build">Site built 2026-09-11 14:23 UTC &middot; d8876cd</p>      </div>
     </div>
   </footer>
   <script>
@@ -504,12 +514,12 @@
       var hasII = rings.indexOf('2') !== -1;
       if (n === 0) {
         return { cls: 'low', label: 'LOW <40',
-          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the thirteen distinct developments published to date, six are in this state, carried by the fill rule rather than by a ring. (Six others carry one ring; a thirteenth was screened twice and classified contradictorily.)' };
+          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the 16 distinct developments published to date, 7 are in this state, carried by the fill rule rather than by a ring. (8 others carry one ring; 1 further development was screened twice and classified contradictorily.)' };
       }
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 11 runs across 347 candidates.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 16 runs across 492 candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
           reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };
@@ -586,13 +596,18 @@
         function show(node) {
           targets.forEach(function (t) { t.classList.remove('is-active'); });
           node.classList.add('is-active');
+          // Two different quantities, two different attributes, two different
+          // words: a trend marker carries data-screened (candidates evaluated in
+          // that run) and a source row carries data-fresh (first sightings).
           var scr = node.getAttribute('data-screened');
+          var fresh = node.getAttribute('data-fresh');
           var acc = node.getAttribute('data-accepted');
           var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
           var zero = node.hasAttribute('data-date')
             ? ', <span class="read-zero">0 matches</span>' : '';
           readout.innerHTML = '<strong>' + label + '</strong> — ' +
-            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-screened">' +
+              (scr !== null ? scr + ' screened' : fresh + ' fresh') + '</span>, ' +
             '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
         }
         function clear() {

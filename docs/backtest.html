@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Backtest | ISDS Thematic Watcher</title>
-  <meta name="description" content="A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the out-of-sample holdout that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.">
+  <meta name="description" content="A small exploratory backtest of the deterministic scorer, reported in three separate buckets &mdash; in-sample seed recovery, the held-out set that carries the headline metric, and the live prospective digest archive &mdash; so the seeds never inflate the headline.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,9 +72,9 @@
           Its numbers never enter any headline.
         </li>
         <li>
-          <strong>Out-of-sample holdout</strong> &mdash; four held-out positives and clear off-theme
+          <strong>Held-out set</strong> &mdash; four held-out positives and clear labelled
           negatives, none of them used in development. This bucket carries the descriptive
-          out-of-sample record: a confusion matrix over twenty items with four positives. It is
+          held-out record: a confusion matrix over twenty items with four positives. It is
           too small to support derived performance rates, and none are reported.
         </li>
         <li>
@@ -149,11 +149,11 @@
 
 <section class="band">
   <div class="measure">
-    <p class="page-kicker">Bucket 2 &mdash; out-of-sample (the headline)</p>
-    <h2 class="section-head">Out-of-sample holdout</h2>
+    <p class="page-kicker">Bucket 2 &mdash; the exploratory held-out set (the headline)</p>
+    <h2 class="section-head">Held-out set</h2>
     <p class="page-lede" style="font-size:16.5px; margin:0 0 22px;">
       Four held-out positives (Loewen, Mondev, Apotex, Philip&nbsp;Morris v.&nbsp;Uruguay) and clear
-      off-theme negatives &mdash; 20 cases in all, none used in development. The
+      labelled negatives &mdash; 20 cases in all, none used in development. The
       record below is descriptive and is computed on this bucket <strong>alone</strong>; the seeds
       are not in it. Four positives cannot support a headline performance figure.
     </p>
@@ -161,7 +161,7 @@
       <table>
         <caption class="visually-hidden">
           Confusion matrix of predicted match versus true label across 20
-          out-of-sample cases.
+          held-out cases.
         </caption>
         <thead>
           <tr>
@@ -173,13 +173,13 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">On-theme (label&nbsp;=&nbsp;1)</th>
+            <th scope="row">Labelled positive (label&nbsp;=&nbsp;1)</th>
             <td><strong>TP 3</strong></td>
             <td>FN 1</td>
             <td>4</td>
           </tr>
           <tr>
-            <th scope="row">Off-theme (label&nbsp;=&nbsp;0)</th>
+            <th scope="row">Labelled negative (label&nbsp;=&nbsp;0)</th>
             <td>FP 0</td>
             <td><strong>TN 16</strong></td>
             <td>16</td>
@@ -194,10 +194,10 @@
         cannot measure precision. Derived rates (precision, recall, accuracy, F1) are
         not reported here: over twenty items with four positives they are arithmetic,
         not performance. The production pipeline publishes at a floor of 25, not at
-        this threshold, and no item has reached 40 in 347 screenings.
+        this threshold, and no item has reached 40 in 492 screenings.
       </p>
       <p>
-        On this out-of-sample set the scorer makes
+        On this held-out set the scorer makes
         1 miss:
         1 false negative and
         0 false positives. The misses are
@@ -207,7 +207,7 @@
       <h3>Per-case results</h3>
       <table>
         <caption class="visually-hidden">
-          Per-case out-of-sample results: case, group, label, score, predicted band, and miss note.
+          Per-case held-out results: case, group, label, score, predicted band, and miss note.
         </caption>
         <thead>
           <tr>
@@ -223,7 +223,7 @@
           <tr>
             <th scope="row">Philip Morris v. Uruguay</th>
             <td>holdout-positive</td>
-            <td>on-theme</td>
+            <td>labelled positive</td>
             <td>73</td>
             <td>
               <span class="badge badge-high">HIGH</span>
@@ -234,7 +234,7 @@ correct            </td>
           <tr>
             <th scope="row">Mondev v. United States</th>
             <td>holdout-positive</td>
-            <td>on-theme</td>
+            <td>labelled positive</td>
             <td>62</td>
             <td>
               <span class="badge badge-med">MEDIUM</span>
@@ -245,7 +245,7 @@ correct            </td>
           <tr>
             <th scope="row">Loewen Group v. United States</th>
             <td>holdout-positive</td>
-            <td>on-theme</td>
+            <td>labelled positive</td>
             <td>56</td>
             <td>
               <span class="badge badge-med">MEDIUM</span>
@@ -256,7 +256,7 @@ correct            </td>
           <tr>
             <th scope="row">Apotex Inc. v. United States of America (UNCT/10/2, 2013)</th>
             <td>holdout-positive</td>
-            <td>on-theme</td>
+            <td>labelled positive</td>
             <td>8</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -267,7 +267,7 @@ correct            </td>
           <tr>
             <th scope="row">Chevron v. Ecuador — award collection (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -278,7 +278,7 @@ correct            </td>
           <tr>
             <th scope="row">Committees in IIAs (ITN analysis)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -289,7 +289,7 @@ correct            </td>
           <tr>
             <th scope="row">Gabriel Resources v. Romania — public hearing (ICSID)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -300,7 +300,7 @@ correct            </td>
           <tr>
             <th scope="row">Grüninger and others v. Costa Rica — public hearing (ICSID)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -311,7 +311,7 @@ correct            </td>
           <tr>
             <th scope="row">Honduras signs the ICSID Convention</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -322,7 +322,7 @@ correct            </td>
           <tr>
             <th scope="row">ICSID to establish an office in Paris</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -333,7 +333,7 @@ correct            </td>
           <tr>
             <th scope="row">ICSID vacancy notice — associate counsel</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -344,7 +344,7 @@ correct            </td>
           <tr>
             <th scope="row">ITN Issue 2, 2026 — issue contents (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -355,7 +355,7 @@ correct            </td>
           <tr>
             <th scope="row">ITN special issue on treaty data (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -366,7 +366,7 @@ correct            </td>
           <tr>
             <th scope="row">Investment treaties in Chile’s experience (ITN insight)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -377,7 +377,7 @@ correct            </td>
           <tr>
             <th scope="row">OECD Guidelines climate due-diligence update (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -388,7 +388,7 @@ correct            </td>
           <tr>
             <th scope="row">Public access to information in ISDS reform (ITN insight)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -399,7 +399,7 @@ correct            </td>
           <tr>
             <th scope="row">Rockhopper v. Italy resubmission tribunal (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -410,7 +410,7 @@ correct            </td>
           <tr>
             <th scope="row">Seda and others v. Colombia — public hearing (ICSID)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -421,7 +421,7 @@ correct            </td>
           <tr>
             <th scope="row">Smurfit v. Venezuela — consent after denunciation (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -432,7 +432,7 @@ correct            </td>
           <tr>
             <th scope="row">Spentech v. United Arab Emirates — Rule 41 (ITN)</th>
             <td>holdout-negative</td>
-            <td>off-theme</td>
+            <td>labelled negative</td>
             <td>0</td>
             <td>
               <span class="badge badge-low">LOW</span>
@@ -504,7 +504,7 @@ correct            </td>
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-09-07 23:32 UTC &middot; 7b5866e</p>      </div>
+<p class="footer-build">Site built 2026-09-11 14:23 UTC &middot; d8876cd</p>      </div>
     </div>
   </footer>
   <script>
@@ -710,12 +710,12 @@ correct            </td>
       var hasII = rings.indexOf('2') !== -1;
       if (n === 0) {
         return { cls: 'low', label: 'LOW <40',
-          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the thirteen distinct developments published to date, six are in this state, carried by the fill rule rather than by a ring. (Six others carry one ring; a thirteenth was screened twice and classified contradictorily.)' };
+          reason: 'No ring reaches the presence floor. That does NOT keep an item off the page: of the 16 distinct developments published to date, 7 are in this state, carried by the fill rule rather than by a ring. (8 others carry one ring; 1 further development was screened twice and classified contradictorily.)' };
       }
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 11 runs across 347 candidates.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 16 runs across 492 candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
           reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };
@@ -792,13 +792,18 @@ correct            </td>
         function show(node) {
           targets.forEach(function (t) { t.classList.remove('is-active'); });
           node.classList.add('is-active');
+          // Two different quantities, two different attributes, two different
+          // words: a trend marker carries data-screened (candidates evaluated in
+          // that run) and a source row carries data-fresh (first sightings).
           var scr = node.getAttribute('data-screened');
+          var fresh = node.getAttribute('data-fresh');
           var acc = node.getAttribute('data-accepted');
           var label = node.getAttribute('data-date') || node.getAttribute('data-source') || '';
           var zero = node.hasAttribute('data-date')
             ? ', <span class="read-zero">0 matches</span>' : '';
           readout.innerHTML = '<strong>' + label + '</strong> — ' +
-            '<span class="read-screened">' + scr + ' screened</span>, ' +
+            '<span class="read-screened">' +
+              (scr !== null ? scr + ' screened' : fresh + ' fresh') + '</span>, ' +
             '<span class="read-accepted">' + acc + ' accepted</span>' + zero + '.';
         }
         function clear() {

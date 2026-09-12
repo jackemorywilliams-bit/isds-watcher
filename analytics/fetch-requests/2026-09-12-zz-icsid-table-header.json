@@ -1,0 +1,53 @@
+{
+  "note": "2026-09-12 FOLLOW-UP batch, and I declare its status honestly rather than dress it as pre-registration of the same kind as the daily batch. The daily batch (analytics/fetch-requests/2026-09-12-daily.json, request blob in commit 40c5848, reduction blob 77dc9816) was written before any seat was convened. THIS batch is written AFTER reading that reduction, in response to a specific ambiguity it exposed, and BEFORE any seat is convened. Its forecasts are therefore pre-registered against the SEATS but not against the daily reduction, and nothing below may be graded as if it had been frozen at session open. WHAT THE DAILY BATCH RETURNED AND WHY THIS FOLLOW-UP EXISTS: row 11 of that reduction fetched https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit at HTTP 200, 96161 bytes, sha256 64eb3f52bfc496cf..., find 'Spentech' matched, and the 400-character window it returned ends with a bare token 'Yes' immediately after a case name, a case number, a document type and a date. THE COLUMN THAT TOKEN BELONGS TO IS NOT IN THE WINDOW. A reader cannot tell from the reduction whether 'Yes' means the objection was upheld, that a decision issued, that the document is public, or something else entirely, and the difference is the whole substance of the thread this batch serves. Guessing the header would be exactly the fabrication this council exists to refuse, so this batch goes and reads it. SCOPE: one URL, already fetched today, re-read through different find windows to recover the table's own column vocabulary, plus ONE reachability probe and a tail control. No new research host is introduced and no new matter is pursued. THE REACHABILITY PROBE, AND WHAT IT IS NOT: row 11 requests https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11906/DS20976_En.pdf. This URL entered the record on 2026-09-11 as a URL a Spentech-targeted web search returned, whose returned title was only 'INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES'. THAT SESSION EXPLICITLY DECLINED TO ASSERT THAT THIS PDF IS THE SPENTECH AWARD AND SO DO I. This row is a REACHABILITY PROBE OF THE HOST icsidfiles.worldbank.org AND NOTHING ELSE: excerpt_of returns the empty string for any content-type that is neither html nor text (scripts/fetch_relay.py:124-125), so a PDF cannot produce an excerpt and this row CANNOT identify the document, its case, or its contents. What it can establish is whether the one host that could ever carry a primary award body answers this relay at all, which is the precondition for any future session closing this thread. Any attempt to read this row as evidence about Spentech is a violation of this note. BINDING READING RULE, unchanged from the daily batch and restated because it is now load-bearing rather than precautionary: the daily reduction's row-11 window contains THREE other case names, case numbers, document types and dates besides the one this batch serves. NONE of them may be entered as a discovered matter, screened, graded on any ring, or carried as a lead, INCLUDING in the candidate-claims block. They are incidental neighbours in a 400-character window of a table this project fetched for one reason, and this instrument is not a discovery channel (METHODOLOGY Part VIII). A find null licenses ONLY that excerpt_of found no occurrence of that literal in the tag-stripped, whitespace-collapsed rendering this relay received from that URL at that time; the header-candidate literals below are guesses at another party's vocabulary and a null across all of them establishes NOTHING about what the column means. FORECASTS: G1 - at least one of rows 2-9 matches and returns a window containing the table's header row; MODERATE confidence only, because I am guessing an institution's own wording and the header may use a phrase none of these literals contains. G2 - row 1 ('ARB/24/16') matches and returns a second, differently-centred window on the same row as yesterday's 'Spentech' match, which is a within-reduction consistency check on the window itself rather than new information; HIGH confidence. G3 - row 10 ('Intellectual') returns find_matched FALSE; HIGH confidence, and I state plainly that G3 being RIGHT buys nothing at all - a table of decisions lists cases and documents, not grounds, so its silence on intellectual property is expected and is NOT evidence about any disposition's ground. G4 - row 11 (icsidfiles PDF) returns HTTP 200 with a content_type of application/pdf and an EMPTY excerpt; MODERATE confidence on the status, HIGH confidence on the empty excerpt, which follows from scripts/fetch_relay.py:124-125 and is stated as a code forecast from the lines, not as an observation. G5 - the reduction carries 13 records, requested 12, completed counts only records[1:], truncated false; this is the same structural forecast graded HIT on the daily batch and it is restated so that a change in it would be visible. G6 - THIS REDUCTION WILL BE OVERWRITTEN IN PLACE BY THIS SESSION'S OWN MERGE, for the reason pre-registered as F11 on the daily batch. CITE THE BLOB, NEVER THE PATH. Row 12 is a tail control and is redundant against the head control run() prepends automatically, by construction.",
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "ARB/24/16"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Upheld"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Favor"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Granted"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Outcome"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Sustained"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Dismissed"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Rejected"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Objection"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Intellectual"
+    },
+    {
+      "url": "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11906/DS20976_En.pdf",
+      "find": "Spentech"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

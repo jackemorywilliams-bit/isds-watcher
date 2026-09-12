@@ -1,0 +1,53 @@
+{
+  "note": "2026-09-12 daily batch. Written and pushed by the chairman BEFORE any seat was convened, so every forecast below is pre-registered rather than fitted; commit order proves the ordering and nothing else. CHANNEL PROBES AT SESSION OPEN, four probes, three on neutral controls, NOTHING INHERITED FROM YESTERDAY'S RECORD per its next step 1: (1) curl https://example.com -> 'CONNECT tunnel failed, response 403' (exit 56); (2) curl https://en.wikipedia.org/wiki/Main_Page -> same; (3) the fetch service returned EGRESS_BLOCKED on the neutral control https://example.com; (4) WEB SEARCH ALIVE - the neutral control query 'example domain', unrestricted, returned nine result links headed by https://example.com/ and https://www.iana.org/help/example-domains. The proxy's own status endpoint attributes both curl refusals to the gateway and not to either site: recentRelayFailures names example.com:443 at 2026-09-12T11:10:00.432Z and en.wikipedia.org:443 at 2026-09-12T11:10:00.710Z, each kind 'connect_rejected', detail 'gateway answered 403 to CONNECT (policy denial or upstream failure)'. FETCH DEAD, SEARCH ALIVE, RELAY ALIVE (fetch-relay run 101, id 34474228028, head_sha aea5227, conclusion success, completed 2026-09-10T12:00:11Z) - no state change from 2026-09-11. NO fetch-layer status in today's record is a claim about any resource; the standing tool-status-as-source-state rule binds in both directions. SCOPE: yesterday's close-out next step 2 directs a relay batch against the codified manifest-lack-of-merit gates thread and names four allowlisted URLs; this batch is that instruction executed, with the rows fanned across finds rather than widened to new hosts. Nothing outside those four hosts is requested. THREAD ADDRESSING, AND A DEFECT FOUND BEFORE THIS FILE WAS WRITTEN: yesterday's record addresses this thread as open_threads[6]. At the tree this batch is pushed from it is open_threads[7]; open_threads[6] is now the Wingtech monthly standing watch, a different thread. Commit ae80675 ('docs(locked-set): two gaps opened...'), which is not a council commit, PREPENDED one thread at index 0 and appended two, shifting every pre-existing thread by +1. Yesterday's record was correct when written and is wrong as read today. This batch therefore serves the thread named by its RIGID DESIGNATOR - 'Will the spread of codified manifest-lack-of-merit gates (2026 ICC Art. 30; ICSID AF Rule 51(1)) produce any disposition touching IP-as-investment, as distinct from abuse-of-right admissibility?' - and no positional index in this note or in today's record is load-bearing. THE QUESTION THIS BATCH MUST ANSWER, stated before any row is fetched: was the ground of the Spentech Engineering Limited v. United Arab Emirates (ICSID Case No. ARB/24/16) Rule 41 disposition IP-as-covered-investment, abuse of right, or the THIRD BUCKET adopted yesterday - a non-IP ground over an investment in which intellectual property was one asserted component? WHAT THIS BATCH CANNOT DO, pre-registered so that no good excerpt is over-read: the IISD ITN rows are SECONDARY commentary, and the closure condition adopted yesterday closes only on the body of a PRIMARY document (a tribunal decision or award, or an ICSID/PCA docket entry naming it). NO excerpt from iisd.org can close this thread in either direction. The most a strong ITN excerpt licenses is a better-specified LEAD and a narrower next question. The ICSID decisions table (row 11-12) is primary as to what ICSID itself publishes as a manifest-lack-of-merit decision, and nothing more. BINDING READING RULE: a find null licenses ONLY that excerpt_of found no occurrence of that literal in the tag-stripped, whitespace-collapsed rendering this relay received from that URL at that time. The literal set below is NOT exhaustive of intellectual-property vocabulary - 'patent', 'copyright', 'IP', 'intangible' and 'trade secret' are NOT requested - so a null across rows 2 and 3 does NOT establish that any body is silent on intellectual property, does NOT settle which of the three buckets this disposition falls in, and does NOT narrow the gap. A match licenses only that at least one occurrence is present in that rendering, plus whatever the 400-character window actually says; read the excerpt, never past it. NO case number, party, tribunal or matter appearing in ANY excerpt may be entered as a discovered matter, screened, graded on any ring, or carried as a lead, INCLUDING in the candidate-claims block. FORECASTS, pre-registered, with the informative outcome named for each: F1 - row 1 (ITN, 'Rule 41') returns HTTP 200 with find_matched true; HIGH confidence, because the 2026-09-07 digest's own source_health records iisd_itn as 'QUIET (RSS HTTP 403; HTML listing live...)', so HTML on this host answers this runner, and the literal sits in the article title, which survives tag-stripping. F1 is a POSITIVE CONTROL: if it fails, no other iisd.org row in this batch may be read as information about the article. F2 - row 2 (ITN, 'intellectual property'): I register this as GENUINELY UNCERTAIN, near 50/50, and I decline to dress a guess as a forecast. THIS IS THE BATCH'S INFORMATIVE ROW. A match plus a substantive window is the first non-synthesis material this project has ever held on the IP dimension of this case; a null is weak and is bounded by the reading rule above. F3 - row 3 (ITN, 'trademark') matches at LOWER probability than F2; a match here with a null at F2 would be surprising and should be read as evidence the article names a specific right rather than the category. F4 - row 4 (ITN, 'territorial'): uncertain; this is the THIRD-BUCKET probe, and a match here alongside a null at F2 is the single outcome that most cleanly indicates the third bucket. F5 - row 5 (ITN, 'covered investment') matches at MODERATE confidence if the article discusses jurisdiction ratione materiae at all. F6 - rows 6 and 7 (italaw.com/cases/11573) return HTTP 403 and NOT 200; HIGH confidence, because the 2026-09-07 digest records https://www.italaw.com/ refused with detail '403' and carries that source as 'RECOVERED (Internet Archive)' rather than live. If italaw answers 200, F6 is FALSIFIED and that is a state change worth recording in its own right. F7 - rows 8 and 9 (investmentpolicy.unctad.org case 1356) return HTTP 403 and NOT 200; HIGH confidence, same basis: the same digest records https://investmentpolicy.unctad.org/investment-dispute-settlement refused with detail '403', source 'RECOVERED (Internet Archive)'. F8 - rows 11 and 12 (ICSID decisions table) return HTTP 200, and row 12 ('Manifest') has find_matched true; HIGH confidence. I state explicitly that the digest's health_warnings entry 'icsid at DEGRADED (3 zero runs)' is a statement the guard makes about its own consecutive-zero counter and is NOT a forecast that this host will refuse - conflating the two would be the exact tool-status-as-source-state error this council forbids. F9 - row 11 (ICSID decisions table, 'Spentech'): UNCERTAIN and consequential. This table is the standing observation named in yesterday's closure condition. A match establishes that ICSID itself publishes a manifest-lack-of-merit decision in this case; a null licenses only that the literal is absent from the rendering this relay received, which may reflect pagination, JavaScript rendering, or a table that lists Convention Rule 41 decisions under a different heading - it does NOT establish that no such decision exists. F10 - STRUCTURE: the reduction carries 13 records (one head control prepended by run() at scripts/fetch_relay.py:199, plus one per requested url), 'requested' is 12, 'completed' counts only records[1:] per :221 and so EXCLUDES the head control, and 'truncated' is false because MAX_URLS is 12 and the test at :195 is strictly greater-than. F11 - THIS REDUCTION WILL BE OVERWRITTEN IN PLACE BY TODAY'S OWN MERGE, as pre-registered on 2026-09-10 and confirmed 2026-09-11: fetch-relay.yml triggers on push to analytics/fetch-requests/** with no branches filter, and run() writes to out_dir/request_path.name with no existence check, so merging this request file to main re-fires the batch over this reduction. The post-merge blob will carry a different environment run id and a later fetched_at; substantive sha256 values should stay equal where the upstream page did not change. CITE THE BLOB, NEVER THE PATH. ROW 13 IS A TAIL CONTROL and is named correctly: the MANDATORY control is prepended automatically by run() and is not something a request file supplies; row 13 is a SECOND control at the END of the run, testing that egress held for the run's whole duration rather than only at its start, and it is redundant against the head control by construction.",
+  "urls": [
+    {
+      "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+      "find": "Rule 41"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+      "find": "intellectual property"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+      "find": "trademark"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+      "find": "territorial"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+      "find": "covered investment"
+    },
+    {
+      "url": "https://www.italaw.com/cases/11573",
+      "find": "Spentech"
+    },
+    {
+      "url": "https://www.italaw.com/cases/11573",
+      "find": "Rule 41"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1356/spentech-engineering-v-united-arab-emirates",
+      "find": "Spentech"
+    },
+    {
+      "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1356/spentech-engineering-v-united-arab-emirates",
+      "find": "intellectual property"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Spentech"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Manifest"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

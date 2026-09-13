@@ -757,6 +757,10 @@ def _sandbox(tmp_path, monkeypatch, items, responder, *, status_only=False):
     # have exported. The tests that are ABOUT these passes turn them on
     # explicitly, one line each, and the shipped defaults have their own tests.
     monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", False)
+    monkeypatch.setattr(config_mod, "V2_SHADOW_CALLS_MODE",
+                        config_mod.V2_SHADOW_CALLS_OFF)
+    monkeypatch.setattr(config_mod, "V2_SHADOW_CALLS_SPEC",
+                        config_mod.V2_SHADOW_CALLS_OFF)
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setattr(classify_mod, "_call_anthropic", responder)

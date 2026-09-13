@@ -141,17 +141,38 @@ STATE_MODEL_V2 = _state_model_v2_mode()
 #                 shadow experiment does not get to stop the instrument's
 #                 primary measurement.
 #
-# WHY THE DEFAULT IS "off" AND NOT "sample:3". Two reasons, and the first is the
-# operator's rule rather than my preference. (1) The project runs under a
-# standing zero-cost constraint; a recurring per-run charge, however small, is
-# Emory's decision to make and not a side effect of a session that was asked to
-# build the capability. (2) `analytics/locked_set/` is deliberately empty, so
-# there is no validated instrument against which V2 strengths could be read yet
-# — semantic shadow data collected now would be uncalibrated data, and the
-# argument for collecting it is weaker than the argument for being able to.
-# The route is built, wired and tested end to end; enabling it is one
-# environment variable and no code change.
+# THE DEFAULT IS "sample:3" SINCE 2026-09-13, by RULING OF THE COUNCIL (rulings
+# session of 2026-09-13, Ruling 4(b)), under the operator's delegation of the
+# same date. It was "off" for two stated reasons, and the ruling handles them
+# differently rather than sweeping both aside.
+#
+#   (1) The standing zero-cost constraint — LIFTED by the delegation. Three
+#       calls a run is a rounding error against the triage pass enabled beside
+#       it.
+#   (2) `analytics/locked_set/` is empty, so shadow strengths would be
+#       uncalibrated — STILL TRUE, AND NOT OVERRULED. It is the reason for the
+#       quarantine below, which is the operative half of this setting.
+#
+# THE GROUND THE RULING ACTUALLY TURNS ON, which reason (2) does not reach: all
+# 328 V2 telemetry records say `lexical_only`. The V2 ring contract's model call
+# has never fired once. That is an UNEXECUTED PATH ASSERTING A CONTRACT — the
+# project's own failure taxonomy, entry 31. Three calls a run establish that the
+# path executes at all, which is a fact ABOUT THE CODE and not a measurement of
+# the world, and reason (2) governs measurements of the world.
+#
+# THE QUARANTINE, WHICH IS THE WHOLE POINT. No V2 shadow figure may be
+# published, cited or compared in any digest, memo, brief or site surface until
+# the locked set produces a calibration. The lane is INSTRUMENTED, NOT CONSULTED.
+# That bound is not left to this comment: `V2_SHADOW_KEYS` in
+# `src/classify_v2.py` names the fields and `tests/test_publication_quarantine.py`
+# fails the build if any file outside a short, explicit allowlist reads one — so
+# a NEW publication surface that starts consulting the shadow fails closed
+# instead of shipping a number to a professor.
+#
+# The environment variable still overrides in both directions:
+# V2_SHADOW_CALLS=off (or empty) turns the calls off; "sample:N" sets the bound.
 V2_SHADOW_CALLS_OFF = "off"
+V2_SHADOW_CALLS_DEFAULT = "sample:3"
 V2_SHADOW_SAMPLE_PREFIX = "sample:"
 V2_SHADOW_CALLS_FORBIDDEN = ("replace",)
 
@@ -159,7 +180,8 @@ V2_SHADOW_CALLS_FORBIDDEN = ("replace",)
 def _v2_shadow_calls(raw: str | None = None) -> tuple[str, int]:
     """Resolve V2_SHADOW_CALLS to ``(mode, sample_n)``. Fails closed to off."""
     value = (raw if raw is not None
-             else os.getenv("V2_SHADOW_CALLS", V2_SHADOW_CALLS_OFF)).strip().lower()
+             else os.getenv("V2_SHADOW_CALLS",
+                            V2_SHADOW_CALLS_DEFAULT)).strip().lower()
     if value in ("", V2_SHADOW_CALLS_OFF):
         return V2_SHADOW_CALLS_OFF, 0
     if value in V2_SHADOW_CALLS_FORBIDDEN:

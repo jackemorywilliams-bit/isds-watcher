@@ -48,7 +48,9 @@ THE FOUR RULES THAT DO THE WORK
      recorded and is read by nothing in `derive_lane`. A 95 with no IP ring is
      still not a MATCH; a 55 for Example 4 is still not a MATCH.
 
-THE LANE PARTITION (R2.1), as one ordered, total, single-valued procedure:
+THE LANE PARTITION of the validation record
+(analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+"R2.1 record", 2026-09-13), as one ordered, total, single-valued procedure:
 
     RETRY                       the classification did not terminate
     HEADLINE_ONLY_LIBRARY_LEAD  nothing can be concluded from what we hold
@@ -58,8 +60,9 @@ THE LANE PARTITION (R2.1), as one ordered, total, single-valued procedure:
     ADJACENT_LEAD               near the theme but missing a MATCH predicate
 
 A note on the name HEADLINE_ONLY_LIBRARY_LEAD: it is one of the five lane values
-R2.1 fixes, and it is the library lane — the destination for everything recorded
-without an assertion attached, whether that is a headline we could not read past,
+the validation record fixes, and it is the library lane — the destination for
+everything recorded without an assertion attached, whether that is a headline
+we could not read past,
 a domestic comparator with no treaty nexus, or a single non-IP ring. Its name
 comes from the case that motivated it, not from the whole of its meaning, so
 every verdict also carries `lane_reason`, which is precise.
@@ -103,13 +106,15 @@ ALL_OUTCOME_VALUES = frozenset(o.value for o in ClassifyOutcome)
 
 
 # --------------------------------------------------------------------------- #
-# The classification state space (R2.1's seven, resolved against the four)
+# The classification state space (the seven, resolved against the four)
 # --------------------------------------------------------------------------- #
 class ClassifyState(str, Enum):
-    """The SEVEN classification states R2.1 enumerates over.
+    """The SEVEN classification states this contract enumerates over
+    (`analytics/state-space-resolution-2026-08-09.md`).
 
-    WHY THIS EXISTS, AND WHAT IT IS NOT. R2.1 names seven classification
-    outcomes and enumerates 64 x 4 x 4 x 3 x 7 = 21,504 tuples. The
+    WHY THIS EXISTS, AND WHAT IT IS NOT. The state-space resolution, which
+    carries both figures verbatim, names seven classification outcomes and
+    enumerates 64 x 4 x 4 x 3 x 7 = 21,504 tuples. The
     implementation imported four (`ClassifyOutcome`) and enumerated 12,288.
     That was an undisclosed deviation, and the fix is NOT to change the
     advertised number: it is to say which space is the real one and prove the
@@ -118,8 +123,9 @@ class ClassifyState(str, Enum):
     The resolution, in full in `analytics/state-space-resolution-2026-08-09.md`:
     the four `ClassifyOutcome` values are the OPERATIONAL record — what
     `classify_item` did, written at the moment it did it. These seven are the
-    LOGICAL states R2.1's rules are stated in terms of, and every one of them is
-    a total function of the operational record plus metadata the pipeline
+    LOGICAL states this contract's rules are stated in terms of, and every one
+    of them is a total function of the operational record plus metadata the
+    pipeline
     already keeps (`classify_attempts`, `retried_strict`, the deferred-queue
     abandonment flag, and — for the last one — this module's own evidence rules).
     `classification_state` below is that function. It is a projection, not a
@@ -138,7 +144,7 @@ class ClassifyState(str, Enum):
                         unknowable, which is why it is not in CLASSIFIED_STATES.
       GUARD_DEMOTED     the classification parsed, and this module's evidence
                         rules cut at least one ring below what was claimed for
-                        it. R2.1 lists it among the seven because a demotion is
+                        it. The seven include it because a demotion is
                         a different event from a clean pass and has to be
                         countable; it is the only one of the seven that no
                         classifier could report, because the classifier is the
@@ -199,7 +205,8 @@ CLASSIFIED_STATE_VALUES = frozenset(s.value for s in CLASSIFIED_STATES)
 def classification_state(*, outcome: str, attempts: int = 0,
                          retried_strict: bool = False, abandoned: bool = False,
                          guard_demoted: bool = False) -> ClassifyState:
-    """The R2.1 logical state, from the operational record. Total; ordered.
+    """The validation record's logical state, from the operational record.
+    Total; ordered.
 
     Every input reaches exactly one branch. The order IS the resolution and each
     step is a decision that is argued rather than assumed:
@@ -208,8 +215,9 @@ def classification_state(*, outcome: str, attempts: int = 0,
          outage) is still in ``outcome`` and still in telemetry; that we gave up
          is the fact that changes what may be concluded, so it is the state.
 
-      2. MALFORMED IS NOT A PROVIDER FAILURE. R2.1 relies on the distinction and
-         so does any reading of a bad week: a provider outage is somebody else's
+      2. MALFORMED IS NOT A PROVIDER FAILURE. The validation record relies on
+         the distinction and so does any reading of a bad week: a provider
+         outage is somebody else's
          infrastructure, an unparseable answer is our prompt. They are separate
          `ClassifyOutcome` values already, so this step is a rename, not a
          judgment.
@@ -360,7 +368,8 @@ class EvidenceValidity(str, Enum):
 
 
 class Lane(str, Enum):
-    """The five R2.1 dispositions. Publication authority attaches to MATCH only."""
+    """The five dispositions of the validation record. Publication authority
+    attaches to MATCH only."""
 
     MATCH = "MATCH"
     ADJACENT_LEAD = "ADJACENT_LEAD"
@@ -682,9 +691,10 @@ class RingFinding:
     def guard_demoted(self) -> bool:
         """Whether the evidence rules cut this ring below what was claimed.
 
-        The R2.1 `guard_demoted` state, at the level of the one ring it happened
-        to. True in exactly two situations, both of them span verification doing
-        its job: the model claimed a ring and its span did not verify at all, or
+        The validation record's `guard_demoted` state, at the level of the one
+        ring it happened to. True in exactly two situations, both of them span
+        verification doing its job: the model claimed a ring and its span did
+        not verify at all, or
         the span verified only in the TITLE and the title cap bit. Note that this
         is about the SEMANTIC credit and not about the final strength — a ring
         whose model claim was thrown out but which stands at `present` on its own
@@ -749,8 +759,9 @@ def merged_finding(ring: str, *, lexical_subtotal: int = 0,
                    headline_only: bool = False) -> RingFinding:
     """One ring's finding with both paths merged.
 
-    THE MERGE RULE (R2.1): per-ring max of the lexical strength and the VERIFIED
-    semantic strength. An unverified semantic claim contributes nothing at all —
+    THE MERGE RULE (the validation record): per-ring max of the lexical
+    strength and the VERIFIED semantic strength. An unverified semantic claim
+    contributes nothing at all —
     it is recorded, as ``Basis.SEMANTIC_UNVERIFIED``, so that the claim and its
     failure to verify are both in the record, and then it is ignored. A model
     that asserts a ring it cannot point to has told us about itself, not about
@@ -833,8 +844,9 @@ ALL_REASON_CODES = frozenset({
 # --------------------------------------------------------------------------- #
 # What a lane is CALLED in public, which is not the same as what it IS
 # --------------------------------------------------------------------------- #
-# HEADLINE_ONLY_LIBRARY_LEAD is one of the five lane values R2.1 fixes and its
-# name comes from the case that motivated it, not from the whole of its meaning
+# HEADLINE_ONLY_LIBRARY_LEAD is one of the five lane values the validation
+# record fixes and its name comes from the case that motivated it, not from the
+# whole of its meaning
 # (see the module docstring). That was tolerable while the name stayed inside
 # telemetry. It is not tolerable on any surface a reader sees, because the lane
 # is also where a fully-read domestic comparator lands — an item whose body we
@@ -887,9 +899,10 @@ def public_lane_label(lane: Lane, location: EvidenceLocation) -> str:
 def nexus_supports_match(nexus: Nexus, validity: EvidenceValidity) -> bool:
     """Whether the nexus is good enough to carry a MATCH.
 
-    ESTABLISHED always; ASSERTED only on verified evidence. The R2.1 record left
-    this as a choice and the choice is recorded here: a proceeding lexeme is text
-    an article wrote, and treating "investor-State" appearing somewhere in a page
+    ESTABLISHED always; ASSERTED only on verified evidence. The validation
+    record leaves this as a choice and the choice is recorded here: a
+    proceeding lexeme is text an article wrote, and treating "investor-State"
+    appearing somewhere in a page
     as equivalent to an ICSID case number would make the nexus test satisfiable
     by any commentary that mentions the field. Requiring verification of the
     evidence base is the cheapest thing that distinguishes the two.
@@ -903,7 +916,8 @@ def nexus_supports_match(nexus: Nexus, validity: EvidenceValidity) -> bool:
 def derive_lane(*, strengths: Mapping[str, Strength], nexus: Nexus,
                 location: EvidenceLocation, validity: EvidenceValidity,
                 classification_state: ClassifyState) -> tuple[Lane, str]:
-    """The R2.1 partition, as one ordered procedure. Total and single-valued.
+    """The validation record's partition, as one ordered procedure. Total and
+    single-valued.
 
     Ordered if/elif with a terminal else: every input reaches exactly one branch,
     the first matching one, and there is no input for which two lanes are
@@ -969,8 +983,9 @@ def derive_lane(*, strengths: Mapping[str, Strength], nexus: Nexus,
         return Lane.MATCH, REASON_MATCH
 
     # 6. IP present. Adjacent either way — with a second ring it failed a
-    #    non-ring predicate (validity), without one it is IP alone, and the R2.1
-    #    partition puts both at ADJACENT_LEAD and neither at MATCH.
+    #    non-ring predicate (validity), without one it is IP alone, and the
+    #    validation record's partition puts both at ADJACENT_LEAD and neither
+    #    at MATCH.
     if ip_present:
         return (Lane.ADJACENT_LEAD,
                 REASON_IP_BLOCKED_PREDICATE if second_ring

@@ -1892,7 +1892,10 @@ def test_a_triage_outage_is_recorded_and_the_run_still_completes(
 
 def test_an_abandoned_item_is_recorded_as_abandoned_not_as_still_retrying(
         tmp_path, monkeypatch):
-    """R2.1's retry_abandoned, end to end, including the lane it must not reach."""
+    """The retry_abandoned state of the validation record
+    (analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+    "R2.1 record", 2026-09-13), end to end, including the lane it must not
+    reach."""
     from src import state as state_mod, telemetry
 
     run = _sandbox(tmp_path, monkeypatch, [_cand("cand-1")],

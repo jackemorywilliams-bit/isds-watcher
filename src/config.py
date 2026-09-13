@@ -73,9 +73,12 @@ FILL_FLOOR_SUSPENDED = os.getenv("FILL_FLOOR_SUSPENDED", "1").strip().lower() no
 VALIDATION_STATUS_ONLY = os.getenv(
     "VALIDATION_STATUS_ONLY", "1").strip().lower() not in ("0", "false", "no", "off")
 
-# The R2.1 ring contract (src/rings.py): three named rings, per-ring evidence with
-# a recorded location and verification status, an ISDS-nexus finding, and a lane
-# derived from those predicates rather than from a score.
+# The ring contract of the validation record
+# (analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+# "R2.1 record", 2026-09-13), implemented in src/rings.py: three named rings,
+# per-ring evidence with a recorded location and verification status, an
+# ISDS-nexus finding, and a lane derived from those predicates rather than
+# from a score.
 #
 #   "off"    — not derived at all.
 #   "shadow" — derived every run and written to telemetry as `verdict_v2`.
@@ -213,20 +216,23 @@ ENRICH_TOP_N = 24
 #
 # OFF BY DEFAULT, and that is a cost decision rather than a doubt about the
 # design. Triage calls the model once per CANDIDATE, not once per enriched item:
-# on the observed run sizes (median 14, max 80) at the R2.1 table's ~$0.0014 per
-# call that is roughly $0.02 on a median run and $0.11 on the largest observed
-# one. Small, recurring, and Emory's to authorise. Enabling it is one
-# environment variable; nothing else changes.
+# on the observed run sizes (median 14, max 80) at TRIAGE_COST_PER_CALL_USD
+# below (~$0.0014 a call) that is roughly $0.02 on a median run and $0.11 on
+# the largest observed one. Small, recurring, and Emory's to authorise.
+# Enabling it is one environment variable; nothing else changes.
 TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "0").strip().lower() not in (
     "0", "false", "no", "off", "")
 
-# Expected cost per triage call, from the R2.1 costing table (~600 input tokens,
-# ~150 output). Recorded as a constant so the run can report what a triage pass
-# cost instead of leaving it to be re-derived from memory.
+# Expected cost per triage call (~600 input tokens, ~150 output). The costing
+# table this figure was taken from was never committed — see the supersession
+# note at the head of this file — so this constant is now the number's only
+# home in the repository: carried, not re-derived. Recorded as a constant so
+# the run can report what a triage pass cost instead of leaving it to be
+# re-derived from memory.
 TRIAGE_COST_PER_CALL_USD = 0.0014
 
 # --------------------------------------------------------------------------- #
-# TAIL_AUDIT_N — R2.1 design (c), stratified tail audit. STUB.
+# TAIL_AUDIT_N — the stratified tail audit of the validation record. STUB.
 # --------------------------------------------------------------------------- #
 # The full design samples N items from the un-enriched tail per run, classifies
 # them, and reports what the enrichment cut is throwing away — the only way to

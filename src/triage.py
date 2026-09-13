@@ -29,8 +29,9 @@ by a prompt that has to show its evidence.
 
 OFF BY DEFAULT (`config.TRIAGE_ENABLED`). It calls the model once per CANDIDATE
 rather than once per enriched item, so it is the most cost-sensitive component
-in the pipeline: ~$0.0014 a call on the R2.1 table, ~$0.02 on a median run of
-14 and ~$0.11 on the largest run observed (80). Enabling it is a decision.
+in the pipeline: ~$0.0014 a call (`config.TRIAGE_COST_PER_CALL_USD`), ~$0.02 on
+a median run of 14 and ~$0.11 on the largest run observed (80). Enabling it is
+a decision.
 
 FAILURE IS RECORDED, NEVER INFERRED. No provider, a provider error, or an
 unparseable answer all mean the same thing for ranking — that item falls back to
@@ -185,10 +186,12 @@ def semantic_rank(strengths: Optional[dict]) -> int:
 
         rank = ip * 16 + max(jrm, ja) * 4 + min(jrm, ja)
 
-    The shape is the MATCH rule's, not a weighting anyone chose by feel. R2.1
-    makes a match "IP present AND at least one of the other two present", so IP
-    is lexicographically dominant and the remaining two rings are interchangeable
-    with each other — which is exactly what taking their max and then their min
+    The shape is the MATCH rule's, not a weighting anyone chose by feel. The
+    validation record (analytics/locked_set/VALIDATION_RECORD.md; supersedes
+    the uncommitted "R2.1 record", 2026-09-13) makes a match "IP present AND at
+    least one of the other two present", so IP is lexicographically dominant and
+    the remaining two rings are interchangeable with each other — which is
+    exactly what taking their max and then their min
     encodes. Using `jrm * 4 + ja` instead would rank a judicial-ring item above
     an otherwise identical jurisdictional-ring item for no reason in the
     contract.
@@ -220,7 +223,8 @@ def lexical_subtotal(lexical_result: Optional[dict]) -> int:
 
 def triage_sort_key(item, *, lexical_result: Optional[dict],
                     strengths: Optional[dict]) -> tuple:
-    """The R2.1 total order: ``(-semantic_rank, -lexical_subtotal, source, source_id)``.
+    """The validation record's total order:
+    ``(-semantic_rank, -lexical_subtotal, source, source_id)``.
 
     TOTAL, and that is the point. The existing ranking sorts on one integer and
     leaves ties to Python's stable sort, which means the enrichment cut is

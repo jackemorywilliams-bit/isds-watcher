@@ -30,9 +30,11 @@ challenges tribunal's finding" cannot be rendered as "tribunal challenges
 State", because that word sequence is not in the title.
 
 THE LIMITATION CLAUSE IS KEYED ON WHAT WE ACTUALLY HOLD, and this is a
-deliberate, recorded deviation from the single fixed sentence R2.1 specifies.
-That sentence says the body "is paywalled and was not retrieved". For a
-headline-only source that is true. For a library comparator whose body we DID
+deliberate, recorded deviation from the single fixed sentence the validation
+record (analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+"R2.1 record", 2026-09-13) specifies. That sentence says the body "is paywalled
+and was not retrieved". For a headline-only source that is true. For a library
+comparator whose body we DID
 retrieve it is false — and printing a false statement about our own access, in
 the very sentence whose job is to be honest about our access, would be this
 project's characteristic failure committed inside its own remedy. There are

@@ -17,7 +17,9 @@ adjusted after the fact is not a validation set; it is a record of what we
 wanted the answer to be. This recomputes both hashes and fails closed.
 
 THE EMPTY STATE IS THE DESIGNED STATE. There are no items yet, deliberately:
-the candidate matters named in the R2.1 record are leads whose primary documents
+the candidate matters named in the validation record
+(analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+"R2.1 record", 2026-09-13) are leads whose primary documents
 have not been retrieved, and per the carrying-span rule no item enters this set
 on a memo's authority. So an absent LOCK.md, or an absent items.json, is not a
 failure and this exits 0 with a note saying which files are missing. It becomes

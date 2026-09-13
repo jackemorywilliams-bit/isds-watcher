@@ -1,4 +1,6 @@
-"""The R2.1 ring contract (src/rings.py), tested over its whole state space.
+"""The ring contract of the validation record
+(analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+"R2.1 record", 2026-09-13) — src/rings.py — tested over its whole state space.
 
 Three kinds of test here, and the first is the one that matters most:
 
@@ -116,7 +118,8 @@ def test_there_are_sixty_four_ring_configurations_and_we_enumerate_all_of_them()
 def test_the_classification_axis_is_the_seven_r21_states_not_the_four_outcomes():
     """The deviation this file used to encode, stated as an assertion.
 
-    R2.1 enumerates over SEVEN classification states. The implementation
+    The state-space resolution (`analytics/state-space-resolution-2026-08-09.md`)
+    enumerates over SEVEN classification states. The implementation
     imported the four `ClassifyOutcome` values of the day and enumerated 12,288
     tuples instead of 21,504, and nothing said so. The resolution
     (`analytics/state-space-resolution-2026-08-09.md`) is that the seven are the
@@ -333,7 +336,8 @@ def test_abandoned_is_not_retrying_and_can_conclude_nothing():
 
 
 def test_guard_demoted_exists_wherever_a_span_verification_demotes_a_ring():
-    """R2.1's seventh state, tied to the event that produces it."""
+    """The validation record's seventh state, tied to the event that produces
+    it."""
     body = ("The tribunal considered whether the promise utility doctrine as "
             "applied by the domestic courts breached the minimum standard.")
     # A model claim whose span is simply not in the document.
@@ -620,8 +624,9 @@ def test_pharma_news_with_no_isds_is_not_a_match():
 
 
 def test_generic_jurisdictional_jurisprudence_without_ip_is_a_lead_at_most():
-    # Both non-IP rings present (R2.1 class B3): a real ISDS development, and
-    # still not this project's question.
+    # Both non-IP rings present and no IP ring — the adjacent case of the
+    # validation record: a real ISDS development, and still not this project's
+    # question. (The lost record's "B3" class label is not carried.)
     v = _verdict(Strength.ABSENT, Strength.PRESENT, Strength.STRONG,
                  nexus=Nexus.ESTABLISHED)
     assert v.lane is Lane.ADJACENT_LEAD

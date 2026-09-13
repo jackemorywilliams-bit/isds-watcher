@@ -287,6 +287,16 @@ entry 27 by name, never by number.
 > archivist's to do** — it changes what a council ruling says. So the record now holds a
 > number-as-adopted (27) and a number-as-filed (30) for one entry, which is a defect of the
 > same family as the collision it sits under. **Wanted:** one chairman's ruling settling both,
+>
+> **Correction, 2026-09-13, written at the merge of this branch.** The filing at **30** did not
+> survive. While PR #170 sat unmerged from 2026-09-11, the daily sittings of 09-11, 09-12 and
+> 09-13 adopted six other patterns at **30, 31, 32, 32a, 33 and 34**, and those are the rows in
+> the table above — they are on `main`, and this branch was rebased onto them. Applying the
+> standing disposition (**renumbering is not this seat's to do**) and the 09-13 note's own
+> instruction (**do not renumber either set; cite every entry from 30 upward by name**), the row
+> for *untested counterfactual* is **not written into the table here**. The entry stands
+> **adopted in session and unfiled**, cited by name only, until the chairman rules on C11/D17.
+> Nothing above was renumbered and no row was displaced to make room for it.
 > alongside the C11 ruling that has been open since 2026-08-07. Until it comes, the standing
 > convention applies to this entry too — **cite it by name, never by number**.
 >

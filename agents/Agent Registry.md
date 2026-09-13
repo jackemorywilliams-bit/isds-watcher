@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `7a3d14a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `188cabe`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -526,12 +526,12 @@ table rather than restate the list from memory.
   `src/models.py` was touched by any of the six PRs opened out of the assignment table
   (**#160**–**#165**, all open and unmerged at the time of writing), and this seat did not edit
   them either. What changed here is the **adopted-method-rules** table: one row for **fabrication
-  taxonomy entry 30, untested counterfactual**, adopted in session 2026-09-10 and filed at the
-  next free number because the number it was adopted under — **27** — has been issued twice
-  before; one row **reserving 31 and 32 for two proposals that are NOT adopted**, so the next
-  entry cannot take a number a proposal is already using; and two rows restating rules the session
-  made binding on the *escalation wording* rather than only on findings — **a grep establishes
-  absence from the repository, never from the project**, and **agreement between seats is not
+  taxonomy entry — untested counterfactual**, adopted in session 2026-09-10 under the number
+  **27**, which has been issued twice before; it could not be filed at **30** as this branch
+  first wrote, because the daily sittings adopted six other patterns at 30-34 while this PR sat
+  unmerged, so it stands **adopted and unfiled**, cited by name, pending the chairman's C11/D17
+  ruling (2026-09-13); one row recording that **two further proposals are NOT adopted** and hold
+  no number; and two rows restating rules the session
   corroboration**. **Four real subagents deliberated** — [[research-analyst]],
   [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]] (Claude Opus
   4.8) — a declared departure from the daily meeting's two-seat Rule 0, with the operator's

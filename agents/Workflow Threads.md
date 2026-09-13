@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `7a3d14a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `188cabe`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -245,11 +245,11 @@ the occasion on which a new number would be issued off a stale reading. As every
   immediately after a merge is **the known false alarm** and is not grounds for any seat to touch
   an anchor by hand.
 - **C11 (the taxonomy collision at entry 27)** — a **third** entry was adopted under that number
-  on 2026-09-10, *untested counterfactual*. It is filed in [[integrity-officer]] at the next free
-  number, **30**, with no existing row renumbered, and the number-as-adopted / number-as-filed
-  split is escalated to [[council-chairman]] with the collision it sits under. Two further
-  patterns are **reserved at 31 and 32 and not adopted**.
-- **B7 (the locked validation set)** — its premise moved: see the dated note appended to that
+  on 2026-09-10, *untested counterfactual*. It could not be filed at **30** — the daily sittings
+  adopted six other patterns at 30-34 while PR #170 sat unmerged (see **D17**) — so it stands
+  **adopted and unfiled**, cited by name with no existing row renumbered, and the
+  number-as-adopted / number-as-filed split is escalated to [[council-chairman]] with the
+  collision it sits under. Two further patterns are **proposed and not adopted**, holding no number.
   thread below.
 - **C13 / C14 (externally gated retrievals; the retrospective labelling protocol)** — untouched by
   this session and still Emory's.

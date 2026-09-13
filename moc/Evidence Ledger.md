@@ -29,6 +29,39 @@ append-only verification ledger; only the operator can mark them verified.
     "no second coder" includes "a second model reviews it".
     Source: analytics/daily-research/2026-09-10-special-session.md:128-174, :558-565;
     [[Workflow Threads]] **S1** and **B7**.
+  - **2026-09-13 — the blocker lifted, the name superseded, and the set built in batches.** This is
+    the first occurrence of "R2.1" in this note, so the citation rule is stated here once and
+    applies to every mention: for **live design citations** the record is **the validation record
+    (`analytics/locked_set/VALIDATION_RECORD.md`; supersedes the uncommitted "R2.1 record",
+    2026-09-13)** — being committed by another seat on branch `council/validation-record`, and not
+    on `main` at the time of this filing — and thereafter simply *the validation record*. **The name
+    is superseded, not reused:** citations to a document that never existed must not be silently
+    satisfied by a different document wearing its name, which would convert an honest documented
+    absence into an undetectable substitution. "R2.1" survives only in historical narrative, such as
+    the paragraph above, which is not edited. Under Emory's express delegation of 2026-09-13 the
+    chairman ruled that the council **re-derives** the candidate list under that record rather than
+    reconstructing the lost one; that the 54 named matters and the V1–V6 / S1–S3 acceptance criteria
+    are **declared lost** and the bar rebuilt under new `ACC-n` / `HALT-n` prefixes; and that
+    locked-set **steps 1 and 2 are built now**, with batch 1 = the six category-8 tier-S items and
+    **the batch as the unit of locking**. **BLOCKING 2 is not weakened, it is redirected:** every
+    row of the re-derived list is a **LEAD** carrying only category, caption, forum, candidate
+    locator, tier and ring — no label, no score, no band, no rationale — and **no item enters
+    `items.json` on that record's authority**; a lead becomes an item only on retrieval with a
+    pinpoint, logged in RETRIEVAL_LEDGER.md. **The coder is still Emory alone, and "no second coder"
+    still includes "a second model reviews it."** **Binding on every seat: six labels measure
+    grammar fidelity and whether any tier-S item surfaces at all — not precision, not recall — and
+    no seat may report batch 1 as validation.** [[Workflow Threads]] **S10**, **S11**, **S13**.
+  - **2026-09-13, supplementary — where the items may come from, and one schema defect left
+    unruled.** **No item may be drawn from a pool that carries the instrument's own verdict on that
+    item.** The archived digests are exactly such a pool, so batch 1 is **not** drawn from them —
+    the batch-1 seat's refusal was sustained and generalised as **binding precedent for batches 2
+    through 9**. The **live draw is accepted under a capture-witness requirement**, and an item
+    drawn from an active source is **excluded from production screening at the moment of capture**
+    through a reservation list the pipeline consults, with the exclusion **logged per run**.
+    Separately, gap **G-3** is open and **not ruled on**: SCHEMA.md's tier P enumerates seven host
+    families, **US federal and state court opinions are in none of them**, and **category 5 is
+    defined by such documents** — so nine rows of the re-derived list carry `UNASSIGNED` pending
+    one council ruling. [[Workflow Threads]] **S13** and **S15**.
 - **A retrieval that is real but is not in that ledger.** On 2026-08-09 the H&H v. Egypt
   (ICSID ARB/09/15) Decision on Jurisdiction and the Award's Rule 48(4) excerpts were retrieved
   into `seeds/` and 21 spans verified — but that matter has never had a row in

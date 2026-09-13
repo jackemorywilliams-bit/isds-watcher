@@ -81,6 +81,15 @@ this seat by name, that had not reached any note. See D13.
 > same disposition applies for the same reason. **Wanted:** one ruling that assigns each pair a
 > distinct id, after which every citation is updated in a single change set. **Owner: archivist,
 > on Emory's go-ahead**, since it rewrites references other seats hold.
+>
+> **2026-09-13 — the taxonomy half of that analogy now has an answer, and it is the template for
+> this half.** The chairman ruled the entry-27 collision (item (a) of the rulings session of
+> 2026-09-13): **first adoption keeps the number, every later colliding adoption moves to the
+> tail, never into a gap**, executed in one change set carrying a **dated concordance** so every
+> pre-ruling citation still resolves, with **cite-by-name permanently binding** for the three
+> patterns involved. That is exactly the shape the wanted ruling here should take — a ruling, a
+> concordance, and a permanent read-by-title convention — and it is now demonstrated rather than
+> proposed. See [[integrity-officer]]. Still **Emory's go-ahead** for the thread-id half.
 
 **Superseded snapshot, retained — 2026-09-01, at `7bc5fc0` on `main`, on a complete 922-commit history
 (`git fetch --unshallow`; the clone arrived shallow at **156**, the fourth recurrence — apply
@@ -109,9 +118,24 @@ two live collisions (see the warning at the head of this note) and a special ses
 the occasion on which a new number would be issued off a stale reading. As everywhere else here:
 **read a thread by its title, not by its number.**
 
-### S1 · The R2.1 record is not a file in this repository — **OPERATOR-GATED, and it blocks the whole of the audit's priority (i)**
+### S1 · The R2.1 record is not a file in this repository — **RULED 2026-09-13; the gate is lifted and the name is superseded**
 
-- **State** — A case-insensitive screen for the literal `R2.1` at `948947b` returns **56
+> **SUPERSEDED 2026-09-13, and this is the first occurrence in this note, so the supersession is
+> stated here once and applies to every later mention.** For **live design citations**, the record
+> to cite is **the validation record (`analytics/locked_set/VALIDATION_RECORD.md`; supersedes the
+> uncommitted "R2.1 record", 2026-09-13)** — being committed by another seat on branch
+> `council/validation-record`, and not yet on `main` at the time of this filing. Thereafter in a
+> file: *the validation record*. **The name is superseded, not reused:** 56 citations to a document
+> that never existed must not be silently satisfied by a different document wearing its name, which
+> would convert an honest documented absence into an undetectable substitution. **"R2.1" survives
+> only inside historical narrative** — the paragraphs below, `analytics/daily-research/*`,
+> `analytics/vault-sessions/*` and the special-session record — **and inside the new record's own
+> provenance header**, which states what R2.1 was, what of it survived, and that it was never under
+> version control on any branch. Citations in `src/`, `tests/` and `scripts/` are **not** this
+> seat's and are re-pointed by [[systems-designer]] in one PR (see **S10**). Chairman's rulings of
+> 2026-09-13, Ruling 1 and disposition (b). Archivist, 2026-09-13.
+
+- **State — historical, as recorded at the special session; not edited** — A case-insensitive screen for the literal `R2.1` at `948947b` returns **56
   occurrences across 17 tracked files** (this seat's own count at the close-out; the minutes say
   55 at `:894`, the chairman's hand count, and the analyst measured 56). It is the sole named
   source of the **54 candidate matters**, the **V1–V6** acceptance criteria, the **S1–S4**
@@ -132,6 +156,23 @@ the occasion on which a new number would be issued off a stale reading. As every
 - **Next** — commit the document, **or** give written authority to re-derive the candidate list
   under a new committed record. Rows **A3**, **A4** and **B** wait on it. **Owner: Emory**
   (Escalation 1).
+- **RULED 2026-09-13 — the second limb was chosen, and the escalation is discharged.** The
+  operator's express delegation of 2026-09-13 is the written authority this thread asked for, and
+  it is quoted in full in the new record's provenance header. **The council re-derives the
+  candidate list under `analytics/locked_set/VALIDATION_RECORD.md`; it does not reconstruct the
+  R2.1 record and does not wear its name.** Six elements survive in the repository and are carried,
+  not re-derived — the nine categories and the 6-each / 20-positives structure
+  (`SCHEMA.md:75-83`), the P/S/C tier rules (`:45-54`), the `labels.json` field set and blind
+  commit order (`:14-20`, `:56-71`), the disjointness constraints (`:87-89`), the 20×10 stability
+  design **and all four blocking thresholds verbatim** (`:106-107`), the S4 stop-publication rule
+  in substance (`:108-109`), and `TRIAGE_COST_PER_CALL_USD = 0.0014` in `src/config.py`. **The 54
+  named candidate matters and the V1–V6 / S1–S3 criteria are LOST and are not re-derived under
+  their own names** — reconstructing an acceptance bar from a remembered number set would fabricate
+  the bar itself. **This thread is no longer operator-gated and no longer blocks priority (i).**
+  The work it hands on is **S10** (the record), **S11** (the replacement acceptance schedule) and
+  **S12** (the tier-P excerpt rule); rows **A3**, **A4** and **B** are released. See the
+  supersession block at the head of this thread for how to cite. Chairman's rulings of 2026-09-13,
+  Ruling 1.
 
 ### S2 · Sixteen outage abandonments were never requeued
 
@@ -164,6 +205,21 @@ the occasion on which a new number would be issued off a stale reading. As every
   row **O** (the relay `schema_excerpt` mode) is designed and **deliberately not built**. Both
   seats recommend routing retrieval to Emory as a library task instead. **Owner: Emory**
   (Escalation 2).
+- **O3 RULED 2026-09-13; O4 IS NOT, AND IS THE COUNCIL'S NOT THE OPERATOR'S.** **O3 — the
+  caption-block step is struck entirely**, together with the `_extract_body` reference: that
+  function has no caption step and never had one, and on a PDF it returns the file header
+  silently. The tier-P rule is re-anchored to **¶ 1 of the document's own printed numbering**,
+  selected **by position, never by content**, 600 characters, running forward across paragraph
+  boundaries — checkable by a second reader **with no tool, no extraction library and no HTML
+  parse**. Where a document carries **no printed paragraph numbering the item is recorded at tier
+  S** — caption and locator, no excerpt — and no substitute anchor is chosen. The cost is accepted
+  and disclosed: ¶ 1 of an award is frequently procedural, so the set measures how the instrument
+  handles a document's opening statement of the dispute, which is a stated limitation of its reach
+  rather than a hidden one. **O4 — whether a 600-character verbatim excerpt of a public primary
+  may be committed at all, against the standing rule of 2026-08-03 at `scripts/fetch_relay.py:10-13`
+  — is the first item of the next sitting and is ruled by this council, not by the operator.**
+  **Nothing waits on either**: batch 1 is tier S only. The drafting work is **S12**. Chairman's
+  rulings of 2026-09-13, Ruling 2.
 
 ### S4 · Six category-8 tier-S labels — the only number on the board that can move, and the council may not touch it
 
@@ -178,6 +234,22 @@ the occasion on which a new number would be issued off a stale reading. As every
   `LOCK.md` hash, and **no scorer runs before step 4 is committed**.
 - **Next** — **Owner: Emory** (Escalation 2, **O2**). Six labels is not validation and the
   chairman has said on the record it will not be reported as validation.
+- **RULED 2026-09-13 — steps 1 and 2 are the council's and are built now; the coding alone stays
+  with Emory.** Steps 1 and 2 require no label and never did: `items.json`'s schema **contains no
+  label fields**, so the council had been sitting behind a gate that does not apply to it. **This
+  is the only carve-out on the whole rulings page**, and it holds for the reason it was always
+  given — if a seat codes the labels, the agreement measured is model-to-model consistency, the
+  project's own *"agreement is not corroboration"* rule, and the instrument permanently loses the
+  only independent measurement it will ever get. What reaches Emory is made as small as it can
+  honestly be: **one file**, `analytics/locked_set/CODING_PACKET_B1.md`, six rows, each printing
+  headline, URL, date and two empty fields, plus `analytics/locked_set/BAND_CLAUSES.md` — the band
+  clauses of `prompts/classifier.txt` transcribed verbatim, in file order, numbered, **certified
+  by [[integrity-officer]] as unreordered, unabridged and carrying no emphasis favouring any
+  band**, without which certification the packet does not ship. **Binding on every seat:** six
+  items measure grammar fidelity and whether any tier-S item surfaces at all; **they measure
+  neither precision nor recall** — a Clopper-Pearson interval on 6/6 is [0.54, 1.00] — **no seat
+  may report batch 1 as validation, and the B+ 88 and C+ 77 grades do not move on six items.**
+  The build is **S13**. Chairman's rulings of 2026-09-13, Ruling 3.
 
 ### S5 · Two recurring cost switches and one publication policy — **O5 rides with them**
 
@@ -191,6 +263,22 @@ the occasion on which a new number would be issued off a stale reading. As every
   it and the tail path does not. Row **C** was expressly forbidden to change the score on that
   path for this reason.
 - **Next** — **Owner: Emory** (Escalation 3).
+- **RULED 2026-09-13 — both switches on, bounded, and O5 disposed of mechanically.**
+  **`TRIAGE_ENABLED` ON**, hard cap **100 triage calls per run** (largest observed run is 80);
+  above the cap, triage the top 100 by lexical rank and record `triage_skipped`; `meta.json` gains
+  `triage_calls` and `triage_cost_usd`; worst case ~$0.14 a run, roughly $1–$6 a year at a weekly
+  cadence. Disclosed as a dated configuration change: **the 16 archived runs are pre-triage and
+  any comparison across that boundary states it.** **`V2_SHADOW_CALLS` ON at `sample:3`** — not on
+  the calibration ground, which the config raised and the chairman expressly did **not** overrule,
+  but because all 328 V2 telemetry records are `lexical_only` and the V2 ring contract's model
+  call **has never fired once**, which is an unexecuted path asserting a contract. **The bound is
+  the whole point: no V2 shadow figure may be published, cited or compared in any digest, memo,
+  brief or site surface until the locked set produces a calibration** — the lane is instrumented,
+  not consulted, and a guard test enforces that no publication path reads a V2 shadow field.
+  **O5 needs no separate decision:** a tail keyword score produced after a failed provider call
+  carries `keyword_after_provider_error` and is **not published**; a genuine
+  `keyword_only_by_design` score (`attempts == 0`, no provider configured) publishes as today.
+  It follows from row C. The build is **S14**. Chairman's rulings of 2026-09-13, Ruling 4.
 
 ### S6 · Human verification stopped 45 days ago, and is thinner than the number suggests
 
@@ -232,6 +320,17 @@ the occasion on which a new number would be issued off a stale reading. As every
   (`…special-session.md:393-404`, `:567-578`). Row **N**, the stratified tail audit, stays
   **deferred** — but on revised grounds: its per-call cost is unpriced, and its premise is
   unestablished.
+- **2026-09-13 — NEITHER DEFERRAL GROUND SURVIVED, and the audit is built.** *"Its per-call cost
+  is unpriced because the costing table lived in the R2.1 record"* does not survive Ruling 1: the
+  number was never only there — `TRIAGE_COST_PER_CALL_USD = 0.0014` is a committed constant in
+  `src/config.py`, and a tail-audit call is a **classification** call whose real cost is derivable
+  from hundreds of executed classification records in the instrument's own telemetry. *"Its premise
+  is unestablished because on the only healthy run with a tail the tail went to the model, 6/6 `llm
+  ok`"* does not survive its own evidence base: **one run is an anecdote, and it is the positive
+  limb of the very proposition the audit says is unmeasured** — and it is stale by construction,
+  because with triage on the ranking gate is no longer purely lexical and the tail's composition
+  changes. The `44550ca` finding above is **untouched by this ruling and remains GAP-UNRESOLVED**.
+  The build is **S14**. Chairman's rulings of 2026-09-13, Ruling 4(c).
 
 ### S9 · Threads this session touched without closing
 
@@ -246,13 +345,229 @@ the occasion on which a new number would be issued off a stale reading. As every
   an anchor by hand.
 - **C11 (the taxonomy collision at entry 27)** — a **third** entry was adopted under that number
   on 2026-09-10, *untested counterfactual*. It could not be filed at **30** — the daily sittings
-  adopted six other patterns at 30-34 while PR #170 sat unmerged (see **D17**) — so it stands
+  adopted six other patterns at 30-34 while PR #170 sat unmerged (see **D17**) — so it stood
   **adopted and unfiled**, cited by name with no existing row renumbered, and the
-  number-as-adopted / number-as-filed split is escalated to [[council-chairman]] with the
-  collision it sits under. Two further patterns are **proposed and not adopted**, holding no number.
+  number-as-adopted / number-as-filed split was escalated to [[council-chairman]] with the
+  collision it sits under. Two further patterns were **proposed and not adopted**, holding no
+  number. **RULED AND CLOSED 2026-09-13.** The chairman's rulings session, item (a):
+  *scope-mixed screen* keeps **27**, *manufactured residual* is filed at **35**, *untested
+  counterfactual* is filed at **36**, and PR #170's filing at 30 with its reservations at 31 and
+  32 are **void**. Executed in one change set with a dated concordance in [[integrity-officer]];
+  **cite-by-name is permanently binding for all three.** C11 is closed in the **C11 · Taxonomy**
   thread below.
 - **C13 / C14 (externally gated retrievals; the retrospective labelling protocol)** — untouched by
   this session and still Emory's.
+
+## S (continued) · The rulings session of 2026-09-13 — the work the chair set in motion
+
+**Opened 2026-09-13 by the archivist, executing item (a) of the chairman's rulings session of the
+same day.** Four rulings and two dispositions were made under the operator's express delegation of
+2026-09-13, which is the written authority **S1** asked for. **Every thread below names its seat**,
+because the rulings do. Ids continue the **S** space for the same reason the special session's did:
+the `C` and `D` spaces carry live collisions, and a new sitting is exactly the occasion on which a
+number would be issued off a stale reading. **Read a thread by its title, not by its number.**
+
+**The rulings record is not itself a file under version control in this repository at the time of
+this filing.** Its operative holding on the numbering is transcribed verbatim in
+[[integrity-officer]]; each thread below states its ruling in substance. **That is itself a thread:
+the chair owes the record a committed sitting record, and until it lands this vault is the carrier.**
+
+### S10 · The validation record — re-derived, under a new name, with the loss on the record
+
+- **State** — Ruling 1. The council re-derives the candidate list under
+  **`analytics/locked_set/VALIDATION_RECORD.md`**, cited as *the validation record (2026-09-13)*.
+  It does not reconstruct the R2.1 record, does not wear its name, and does not pretend the loss
+  did not happen. Nine categories × six matters; each row carries **only** category, matter
+  caption, forum, candidate primary locator, tier, and which ring the matter exercises —
+  descriptive, nothing else. **MUST NOT:** no label, no score, no band, no `L_theme`, no `L_band`,
+  not provisionally and not "for review"; no rationale arguing toward a verdict; no
+  content-selected excerpt; **no item enters `items.json` on this record's authority** — every row
+  is a LEAD, and a lead becomes an item only when its primary document is retrieved with a pinpoint
+  and logged in `RETRIEVAL_LEDGER.md`. A **binding disjointness certificate at the level of the
+  MATTER, not the document**, proved against all three development sets: the retired 20-item
+  holdout, the 14 frozen probes, and the **16 distinct published matters** (17 files; one Telefónica
+  duplicate, `italaw.com/cases/12153`, published 06-09 and 06-10). Every collision is named in the
+  certificate and the colliding nomination is **replaced, not quietly dropped**. Curia, BAILII, WTO
+  and `legal.un.org` rows are marked **unverified locator** — those hosts are not in
+  `scripts/fetch_relay.py` `ALLOWED_HOSTS`. The record states **on its face** that a seat chose
+  these candidates under delegated authority, that Emory may substitute any row freely at any time,
+  and that the original R2.1 record was never under version control on any branch.
+- **The second limb — the citations are re-pointed, not left as a stated absence.** A production
+  file failing closed against a document nobody can read is a defect; a stated absence leaves 56 of
+  them. **Re-measure at the executing commit, never from the remembered count:** the 56-across-17
+  figure is from `61152d5`, and at `origin/main` on 2026-09-13 `git grep -o -i "R2\.1"` returns
+  **85 occurrences across 20 files**. Every occurrence is classified into (a) cites the candidate
+  list, (b) cites a threshold or a number, (c) cites a design rationale, and **the classification
+  is committed as a table in `VALIDATION_RECORD.md` — that table is the acceptance test.** Class (b)
+  citations are re-pointed at the number's **surviving home**, not at the new record. **Historical
+  narrative is not edited** — `analytics/daily-research/*`, `analytics/*-2026-08-*.md` and the
+  special-session record keep the name verbatim, because editing a record of what was lost
+  falsifies the record of the loss.
+- **Seats** — **[[research-analyst]] drafts** the candidate list; **[[integrity-officer]] certifies
+  before a single row is committed**; **[[council-chairman]] adopts**. The citation re-pointing is
+  **[[systems-designer]], one PR**. The vault's own citations were re-pointed by
+  **[[obsidian-archivist]]** in this change set — see the supersession block at **S1**.
+- **Owner** — [[research-analyst]], then [[integrity-officer]], then [[council-chairman]]; the
+  citation PR is [[systems-designer]]'s.
+
+### S11 · The acceptance schedule — ACC-n / HALT-n, pre-registered, under names that cannot be confused with the lost ones
+
+- **State** — Ruling 1. **V1–V6 and S1–S3 are declared lost and are NOT re-derived under their own
+  names.** Reconstructing six acceptance criteria from a remembered number set would fabricate the
+  acceptance bar itself — strictly worse than having none, because an instrument that then passes a
+  fabricated bar produces a validated-looking result with no provenance and no later reader could
+  tell. **Instead:** a new, smaller, pre-registered schedule written from what the repository can
+  actually support, under prefixes **`ACC-1…ACC-n`** (acceptance) and **`HALT-1…HALT-n`**
+  (stop-publication). **`HALT-1` carries S4's preserved content** because that content is
+  *preserved*, not remembered (`SCHEMA.md:108-109`). The **20×10 stability design and its four
+  blocking thresholds are transcribed from `SCHEMA.md:106-107` and marked as carried, not
+  re-derived**: decision flip > 0.10, mean score range > 10, any range > 20, silent-fallback rate
+  > 0.05.
+- **When** — **committed BEFORE the first label is coded**, as a pre-registration, and per taxonomy
+  entry 34 it states only what the repository supports and marks anything inferred as inferred.
+- **Seats** — **[[systems-researcher]] drafts** — it studies the instrument and holds no stake in
+  the candidate list, which the analyst does. **[[integrity-officer]] reviews. [[council-chairman]]
+  adopts.**
+- **Owner** — [[systems-researcher]].
+
+### S12 · The tier-P excerpt rule — ¶ 1, tool-free; and what happens to a document that cannot be read that way
+
+- **State** — Ruling 2. Option B's first limb with Option D as the narrow fallback; A and C
+  rejected. The tier-P bullet at `analytics/locked_set/SCHEMA.md:46-51` is replaced: `text` is a
+  verbatim excerpt **capped at 600 characters**, selected **by position, never by content**,
+  beginning at the first character of **¶ 1 of the document's own printed numbering** and running
+  forward in printed reading order across paragraph boundaries. **The `_extract_body` reference and
+  the "after the caption block" step are struck entirely** — that function has no caption step and
+  never had one, and on a PDF it returns the file header silently. **The unreadable-document
+  outcome, ruled:** where a document carries **no printed paragraph numbering the item is recorded
+  at tier S** — caption and locator, no excerpt — and **no substitute anchor is chosen**. That
+  closes B's judgment-call escape hatch, which was B's only real defect.
+- **Why tool-free is the guarantee, not a convenience** — a rule anchored to a tool inherits that
+  tool's bugs and version-to-version reading order and can only be checked by re-running it; a rule
+  anchored to a printed numeral is checkable by a second reader with nothing in hand. It survives
+  the measured failure that killed the old rule: **4,817,785 characters of PDF file header** for
+  *Philip Morris v Australia* and **1,224,008** of compressed stream for *Eli Lilly*, silently, the
+  two documents failing **differently**.
+- **The cost, disclosed on the face of the record** — ¶ 1 of an award is frequently procedural, so
+  for tier P the set measures how the instrument handles a document's opening statement of the
+  dispute. A stated limitation of the instrument's reach, not a hidden one.
+- **Mechanics of the edit** — a **surgical diff, the tier-P bullet only**; `git diff --word-diff`
+  shows nothing else changed; the OLD string verified to occur **exactly once file-wide** before
+  substitution.
+- **Seats** — **[[research-analyst]] drafts. [[integrity-officer]] verifies. [[council-chairman]]
+  adopts.** Not gated on anything, and **nothing waits on this rule's first use** — batch 1 is tier
+  S only.
+- **Also here** — **O4**, whether a 600-character verbatim excerpt of a public primary may be
+  committed at all against the standing rule of 2026-08-03 at `scripts/fetch_relay.py:10-13`, is
+  the **first item of the next sitting, ruled by this council and not by the operator.**
+- **Owner** — [[research-analyst]].
+
+### S13 · Batch 1 of the locked set — steps 1 and 2 built now; the coding is the one carve-out
+
+- **State** — Ruling 3. **Batch 1 = the six category-8 tier-S items.** Each carries `id`,
+  `category: 8`, `tier: "S"`, `source_url`, `document_title`, `document_date`, `text` (the
+  headline, verbatim) and `access_status`. Commit `items.json`; commit `LOCK.md` with its sha256
+  and the recording commit SHA; `python3 scripts/check_lock.py` exits 0. **After that the only
+  thing outstanding in the entire locked set is the coding itself.** Six, not fewer — below six the
+  category's own 6-item structure breaks and the set stops being the set.
+- **Batching, ruled now so the second batch does not force a re-lock of the first** — the **batch
+  is the unit of locking**. Batch 1 sits at `analytics/locked_set/` as `SCHEMA.md` names it;
+  batches 2+ sit at `analytics/locked_set/batch-N/` with their own `items.json` / `labels.json` /
+  `LOCK.md`. **`check_lock.py` already takes `--dir` and needs no change to its hashing logic** —
+  the CI wiring in `.github/workflows/pipeline-guards.yml` iterates the directories, and **a test
+  is added that a new batch directory without a lock entry fails closed.**
+- **The carve-out** — **the coding stays with Emory**, and this is the only item on the rulings
+  page that meets the operator's own test. What reaches him is **one file**,
+  `analytics/locked_set/CODING_PACKET_B1.md`, six rows, each printing headline, URL, date and two
+  empty fields (`L_theme`, `L_band`), **nothing else on the page** — plus
+  `analytics/locked_set/BAND_CLAUSES.md`, the band clauses of `prompts/classifier.txt` transcribed
+  **verbatim, in file order, numbered**, with **[[integrity-officer]]'s binding certification that
+  the sheet is unreordered, unabridged and carries no emphasis favouring any band. Without that
+  certification the packet does not ship.**
+- **Binding on every seat** — six items measure **grammar fidelity** and **whether any tier-S item
+  surfaces at all**. **They do not measure precision. They do not measure recall.** Clopper-Pearson
+  on 6/6 is [0.54, 1.00]. **No seat may report batch 1 as validation, and the B+ 88 and C+ 77
+  grades do not move on six items.**
+- **SUPPLEMENTARY RULING, 2026-09-13 — where batch 1's six items may come from, and what happens
+  to them the moment they are captured.** The batch-1 seat refused to draw the six items from the
+  **archived digests**, and the chair **sustained the refusal and generalised it**:
+  - **No item may be drawn from a pool that carries the instrument's own verdict on that item.**
+    The archive is exactly such a pool — every entry in it has already been screened, scored and
+    either surfaced or not by the instrument the set exists to measure. Drawing from it does not
+    merely risk contamination; it guarantees that the measurement is taken on items the instrument
+    has already ruled on, which is the same defect as a second coder wearing a different hat.
+    **This is binding precedent for batches 2 through 9**, not a one-off disposition for batch 1.
+  - **The live draw is accepted, under a capture-witness requirement.** Items come from an active
+    source, and each capture is witnessed — the capture is itself the record, so that a later
+    reader can tell what was in hand at the moment the item entered the set rather than
+    reconstructing it afterwards.
+  - **An item drawn from an active source is excluded from production screening at the moment of
+    capture.** The mechanism is a **reservation list the pipeline consults**, and **the exclusion
+    is logged per run** — so the exclusion is visible in the run's own record rather than inferred
+    from an absence. Without the reservation, the production path would screen the very item the
+    set is measuring it against, and the archive defect would reappear one cycle later by a
+    different route.
+  - **Seat** — [[systems-designer]] for the reservation list, the pipeline consultation and the
+    per-run logging; [[research-analyst]] for the witnessed live draw; [[integrity-officer]]
+    certifies, as it does for the packet and the band-clause sheet.
+- **Seats** — **[[research-analyst]] retrieves; [[integrity-officer]] certifies;
+  [[systems-designer]] wires.** The coding: **Emory**.
+- **Owner** — [[research-analyst]] to open, [[systems-designer]] to land the wiring.
+
+### S14 · Triage on, V2 shadow on and quarantined, and the tail audit built
+
+- **State** — Ruling 4, all three to **[[systems-designer]]**. **(a) `TRIAGE_ENABLED` ON**, hard
+  cap **100 calls per run**; above the cap, triage the top 100 by lexical rank and record
+  `triage_skipped`; `meta.json` gains `triage_calls` and `triage_cost_usd`; worst case ~$0.14/run.
+  **Disclosed as a dated configuration change — the 16 archived runs are pre-triage and any
+  comparison across that boundary states it.** **(b) `V2_SHADOW_CALLS` ON at `sample:3`**, plus a
+  **guard test that no publication path reads a V2 shadow field**; **no V2 shadow figure may be
+  published, cited or compared in any digest, memo, brief or site surface until the locked set
+  produces a calibration.** **(c) The stratified tail audit, BUILT** — stratified on
+  `lexical_subtotal` (A: `== 0`; B: `0 < s < 12`; C: `>= 12`), **N = 2 per stratum,
+  `TAIL_AUDIT_N = 6`**, sampled from the **un-enriched tail only** (rank > `ENRICH_TOP_N = 24`)
+  under a **recorded seed** with a **persisted cross-run sample ledger** so strata are not re-drawn
+  and no item is re-audited. **Method: paired within-item enriched-vs-unenriched re-classification**
+  — it needs **no human label** to detect a band flip, and it measures a flip, not a truth. The stub
+  note's warning that a non-zero value means "unimplemented" is **deleted in the same commit that
+  implements it**.
+- **Precondition, already assigned** — **row C (SD-2, `KEYWORD_AFTER_PROVIDER_ERROR`) lands
+  first.** Until it does, a provider failure inside a tail-audit call is recorded as
+  `keyword_only_by_design` and the audit measures the outage rather than the gate.
+- **The privacy hole this would otherwise open** — the ledger is `analytics/tail_audit.jsonl`,
+  **append-only, NO candidate text**: run id, item id, source, stratum, `lexical_subtotal`,
+  `band_unenriched`, `band_enriched`, `score_delta`, seed. **`scripts/check_telemetry_privacy.py`
+  is extended to cover the new file in the same PR** — that guard is the only thing between the
+  telemetry stream and article text, and a new stream outside it is a hole.
+- **Reporting surface: `scripts/telemetry_query.py` ONLY.** Never the digest, never the
+  professor-facing site, never the README. A tail-audit flip rate is an internal measurement of the
+  instrument, not a finding about ISDS; publishing it to the recipient would be the instrument
+  grading itself in her inbox. Cost: 6 classification calls per run, priced from the telemetry
+  re-derivation, reported in `meta.json` as `tail_audit_cost_usd`.
+- **Owner** — [[systems-designer]].
+
+### S15 · G-3 — tier P has no host family for a US court opinion, and category 5 is defined by them
+
+- **State** — **A real schema defect, opened by the validation-record seat while drafting under
+  Ruling 1, and it is recorded here unruled.** `analytics/locked_set/SCHEMA.md` enumerates **seven
+  host families** for tier P — ICSID, PCA, italaw, Curia, BAILII, UN RIAA, WTO. **US federal and
+  state court opinions are in none of them**, while **category 5 is defined by exactly such
+  documents.** The two statements cannot both be satisfied, so **nine rows of the re-derived
+  candidate list carry `UNASSIGNED`** rather than a tier, pending a ruling.
+- **Why it is filed rather than fixed** — it is a defect in the set's own schema, not in the
+  drafting, and the disposition is a choice between real alternatives with different costs (extend
+  tier P's enumeration; record the nine at tier S; narrow category 5; or something else). **This
+  seat does not rule on it and has not.** The nine rows stand marked, which is the honest state: an
+  `UNASSIGNED` that is visible is a question the council can answer, and a tier guessed to clear the
+  field is taxonomy entry 34's shape — a premise frozen into a committed artefact ahead of vetting.
+- **Interaction with the rulings already made** — it is **not** blocked by, and does not block,
+  **S12**: Ruling 2's ¶ 1 anchor governs *what the excerpt is* for a tier-P item, while G-3 is
+  about *whether these documents are tier P at all*. Nor does it touch **S13**: batch 1 is
+  category 8, tier S, and no row of it is affected.
+- **Recorded** — gap **G-3**, opened by the validation-record seat, 2026-09-13.
+- **Next** — one council ruling on the disposition of the nine, after which the rows are assigned
+  and the certificate re-run. **Owner: [[council-chairman]]**, on the record drafted by
+  [[research-analyst]] and certified by [[integrity-officer]].
 
 ---
 
@@ -535,7 +850,7 @@ still the only open PR in the repository before this session's own.
   (`203dbf6`). **Emory's choice at "Next action" above is unchanged and is now five adoptions
   overdue.**
 
-### D17 — an operator-mandated special session is not on `main`, and its absence has produced a three-way numbering collision *(new 2026-09-13; owner: Emory — land or close PR #170)*
+### D17 — an operator-mandated special session is not on `main`, and its absence has produced a three-way numbering collision *(new 2026-09-13; owner reassigned from Emory to the archivist by the ruling of 2026-09-13 — **CLOSED, REMEDIED, the same day**)*
 
 - **State** — **PR #170** (`council/archivist-close-out`, tip `7f1d01c`) has been **open since
   2026-09-11T14:56Z** and carries 1,736 insertions across 12 files: the entire record of the
@@ -569,6 +884,36 @@ still the only open PR in the repository before this session's own.
   citation. If it is closed, the special session's record should still be landed on its own, because
   a 1,267-line operator-mandated sitting that `main` cannot see is a hole in the project's memory
   regardless of the taxonomy question. **Until either happens, cite entries 30 and up by name.**
+- **CLOSED 2026-09-13 — REMEDIED, both limbs, the same day it opened.**
+  - **What landed, and when.** **PR #170 was merged at `3099610`, 2026-09-13 17:52:52 -0400.**
+    `analytics/daily-research/2026-09-10-special-session.md` — the full **1,267-line**
+    operator-mandated sitting — is on `main` at **`188cabe`** (17:49:40 -0400), and the branch's
+    vault close-out at **`c894a4b`** (17:51:49 -0400). The taxonomy filing came with it. **`main`
+    can now see that sitting**, which was the whole of this thread's first limb.
+  - **What the chairman then ruled**, item (a) of the rulings session of 2026-09-13: `main`'s table
+    is canonical, **first adoption keeps the number, every later colliding adoption moves to the
+    tail, never into a gap.** **27 stays *scope-mixed screen*; *manufactured residual* → 35;
+    *untested counterfactual* → 36; PR #170's filing at 30 and its reservations at 31 and 32 are
+    VOID**, because 30, 31, 32, 32a, 33 and 34 are occupied on `main` and do not move. **Three
+    numbers no longer name two patterns each.**
+  - **Owner reassigned by the ruling — from Emory to [[obsidian-archivist]].** In the chairman's
+    words: *"A sitting `main` cannot see is a hole in the project's memory, and closing it is not
+    the operator's errand."* The renumbering is executed here, in **one change set touching every
+    citation**, carrying a **dated concordance** (number-as-adopted → number-as-filed) in
+    [[integrity-officer]] so that every pre-ruling "27", every "27 ⚠", the branch-era "30" and the
+    "reserved at 31 and 32" language all resolve. **Nothing already correctly numbered was
+    renumbered.**
+  - **What survives the closure, permanently** — **cite *scope-mixed screen*, *manufactured
+    residual* and *untested counterfactual* by name, never by number.** That is binding
+    indefinitely, not an interim measure: a number that has meant three different things across
+    three sittings cannot be made safe, only resolvable. Numbering is safe again at **37**.
+  - **What this thread does not close** — the structural cause it named. The 2026-08-07 collision
+    was a stale *heading* and the fix (move the heading with the row) held; **what failed here was
+    one level up, a change set that never landed**, and no heading discipline reaches that. **D15**
+    (a rule routed to `agents/` is invisible to the seat bound by it for up to three days) and
+    **D18** (a `[skip ci]` bot commit on `main` skipping both the mover and the guard) are the live
+    forms of that cause and stay open, with their own owners.
+- **Owner** — [[obsidian-archivist]] by reassignment; **CLOSED 2026-09-13** in this change set.
 
 ### D13 — a rule the council adopted and routed to this seat by name had reached no note *(new 2026-09-04; owner: archivist — CLOSED in this change set)*
 
@@ -1093,6 +1438,16 @@ re-verified open, and section F is new.
   audit, is a configuration stub**: `TAIL_AUDIT_N = 0` (`src/config.py:229-243`), expressly
   unimplemented. It is named here so the workstream is never reported complete on the strength
   of F and G.
+  - **2026-09-13 — ordered built, and it no longer has a lost document behind it.** The chairman
+    ruled the stratified tail audit **BUILT** (Ruling 4(c)), on top of row C: strata on
+    `lexical_subtotal`, **N = 2 per stratum, `TAIL_AUDIT_N = 6`**, un-enriched tail only, recorded
+    seed, persisted cross-run sample ledger, paired within-item enriched-vs-unenriched
+    re-classification — **which needs no human label** — and `scripts/check_telemetry_privacy.py`
+    extended over the new ledger in the same PR. **The stub note's "non-zero means unimplemented"
+    warning is deleted in the same commit that implements it.** The design authority for this piece
+    is now **the validation record** and the ruling itself, not the uncommitted R2.1 record; the
+    sentence above is left as the historical statement it was. Thread **S14**, seat
+    [[systems-designer]].
 - **Recorded** — `src/rings.py`, `src/classify_v2.py`, `src/triage.py`, `src/headline_lane.py`,
   `src/config.py`, `prompts/classifier_v2.txt`, `prompts/triage.txt`,
   `scripts/check_headline_lane.py`, `tests/test_rings.py`, `METHODOLOGY.md:69`,
@@ -1153,6 +1508,20 @@ re-verified open, and section F is new.
   **no rows**; the 13 rows that do exist are the project's pre-existing open-source list, not
   locked-set items. **Zero of the 54 exist as ledger rows.** Row **A2** (**PR #165**) corrects the
   header and the schema's exclusion set; **S1** above carries the blocker and its scoping rule.
+- **2026-09-13 — the blocker lifted, and the set is built in batches starting now.** The operator's
+  express delegation of 2026-09-13 gave the written authority **S1** asked for, and the chairman
+  ruled that **the council re-derives the candidate list under a new committed record** — **the
+  validation record**, `analytics/locked_set/VALIDATION_RECORD.md` — rather than reconstructing the
+  lost one or wearing its name. **BLOCKING 2 is not weakened, it is redirected:** every row of the
+  re-derived list is a **LEAD**, carrying only category, caption, forum, candidate locator, tier
+  and ring, with **no label, no score, no band and no rationale**, and **no item enters
+  `items.json` on that record's authority** — a lead becomes an item only on retrieval with a
+  pinpoint, logged in `RETRIEVAL_LEDGER.md`. The carrying-span rule is untouched. Separately, the
+  council builds **steps 1 and 2 now** — they never needed a label, because `items.json`'s schema
+  contains no label fields — with **batch 1 = the six category-8 tier-S items**, and **the batch
+  becomes the unit of locking** so a second batch never forces a re-lock of the first. **The coding
+  stays with Emory**, which is the one carve-out. Threads: **S10** (the record), **S13** (batch 1).
+  Chairman's rulings of 2026-09-13, Rulings 1 and 3.
 
 ---
 
@@ -1465,7 +1834,7 @@ specifically unblocks it.
   labelling them.
 - **Owner** — closed; no action.
 
-### C11 · Taxonomy entry 27 was adopted twice, for two different patterns
+### C11 · Taxonomy entry 27 was adopted twice, for two different patterns — **RULED AND CLOSED 2026-09-13, thirty-seven days open**
 
 - **State** — Opened 2026-08-07. The chairman adopted **27 · scope-mixed screen** on 2026-08-06
   (`analytics/daily-research/2026-08-06.md:940`, `aa48406`) and **27 · manufactured residual** on
@@ -1483,7 +1852,30 @@ specifically unblocks it.
   archivist has **not** renumbered: doing so would change what two council rulings say.
 - **Next** — The chairman and the integrity officer settle which pattern keeps 27 and which
   becomes 28, in a ruling that can be cited. Until then, cite entry 27 by name, never by number.
+- **THE ANSWER, 2026-09-13 — the ruling this thread has waited for since 2026-08-07.** The
+  chairman's rulings session of 2026-09-13, item (a): **`main`'s table is canonical, because it is
+  the merged and citable record; first adoption keeps the number; every later colliding adoption
+  moves to the tail, never into a gap.** Applied:
+  - **27 = *scope-mixed screen*** (2026-08-06, `aa48406`) — **unchanged.** The thread asked which
+    pattern keeps 27; the first one does.
+  - ***Manufactured residual*** (2026-08-07, `7adfd68`) → **35.** Not 28, and the difference
+    matters: 28 through 34 were issued to seven other patterns in the thirty-seven days this thread
+    stayed open, so the answer the thread originally framed — *"which becomes 28"* — had expired
+    before it arrived. Moving to the tail is the rule precisely because a gap is never safe.
+  - ***Untested counterfactual*** (2026-09-10) → **36**, and PR #170's filing at 30 with its
+    reservations at 31 and 32 are **void**.
+- **CLOSED, not narrowed.** The question the thread was opened to answer is fully answered and no
+  residue of it remains open. **One thing outlives it as a standing convention rather than a
+  thread:** cite *scope-mixed screen*, *manufactured residual* and *untested counterfactual* **by
+  name, never by number — permanently binding.** That is a convention, recorded in
+  [[integrity-officer]] and in [[Agent Registry]]'s adopted-method-rules table; it needs no owner
+  and no next action, which is why this thread closes rather than narrows.
+- **Executed** — [[obsidian-archivist]], 2026-09-13, in one change set touching every citation and
+  carrying the **dated concordance** (number-as-adopted → number-as-filed) in [[integrity-officer]]
+  under the taxonomy table. **Nothing already correctly numbered was renumbered.** Next free
+  number: **37**.
 - **Owner** — [[council-chairman]] with [[integrity-officer]]; Emory only if they disagree.
+  **CLOSED 2026-09-13 by the chairman's ruling; no action outstanding.**
 
 ### C12 · `build_graph` is whole-vault, and the archivist's merge authority is not
 
@@ -2210,6 +2602,33 @@ the source of truth, and a disagreement between them is a defect in this note.
 
 ## Change log
 
+- **2026-09-13 (the chairman's rulings session — two threads closed, five opened, six updated)** —
+  Audited against `66df2d2` (`origin/main`). **CLOSED: C11** (taxonomy entry 27 adopted twice —
+  ruled, thirty-seven days open) and **D17** (an operator-mandated special session not on `main` —
+  remedied the same day it opened, PR #170 merged at `3099610`, the 1,267-line record landing at
+  `188cabe`; **owner reassigned from Emory to the archivist by the ruling**). **OPENED: S10–S14** —
+  the validation record ([[research-analyst]] / [[integrity-officer]] / [[council-chairman]], with
+  the citation re-pointing to [[systems-designer]]), the ACC/HALT acceptance schedule
+  ([[systems-researcher]]), the tier-P ¶ 1 excerpt rule and the unreadable-document outcome
+  ([[research-analyst]]), batch 1 of the locked set ([[research-analyst]] / [[integrity-officer]] /
+  [[systems-designer]], coding reserved to Emory), and triage / V2 shadow / the tail audit
+  ([[systems-designer]]), and **S15** — gap **G-3**, a real schema defect opened by the
+  validation-record seat and **recorded unruled**: tier P enumerates seven host families and US
+  court opinions are in none of them while category 5 is defined by such documents, so nine rows
+  carry `UNASSIGNED` pending one council ruling ([[council-chairman]]). A **supplementary ruling**
+  of the same day is recorded at **S13**: no item may be drawn from a pool carrying the
+  instrument's own verdict on that item — **binding precedent for batches 2 through 9** — the live
+  draw accepted under a capture-witness requirement, and an item drawn from an active source
+  excluded from production screening at the moment of capture through a reservation list the
+  pipeline consults, logged per run. **UPDATED with dated dispositions: S1** (no longer operator-gated; the
+  R2.1 name superseded by the validation record, with the supersession stated once at the first
+  occurrence in this note), **S3** (O3 ruled, O4 routed to the council's next sitting), **S4**
+  (steps 1 and 2 are the council's; the coding is the one carve-out), **S5** (both switches on,
+  bounded; O5 disposed of mechanically), **S8** (neither tail-audit deferral ground survived), and
+  **B7** (the blocker lifted; batch is the unit of locking). The thread-id collision warning at the
+  head of this note gains the ruling as its template. **Nothing already correctly numbered was
+  renumbered**; the concordance lives in [[integrity-officer]]. *The rulings record is not itself a
+  file under version control in this repository at the time of filing.*
 - **2026-08-18 (chart-overlap fix)** — audited against `38a294f`; the drift since `95f2f66` is the intervening council/cron commits, none touching a thread's substance. The workflow chart's banner now grows with the source-chip row count (GDELT made a 4th row that overflowed the fixed banner into the columns band); fix in tools/isds-workflow-3d/src/chart-core.mjs, SVG/docs regenerated.
 - **2026-08-17 (source-outage repair)** — audited against `95f2f66` (the weekly-watch state commit that carries italaw's first archive recovery); the drift since
   `d997c32` is sixteen council-session and fetch-relay commits touching analytics and

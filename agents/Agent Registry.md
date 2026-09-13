@@ -491,11 +491,11 @@ statements live in the seat's own note.
 | [[council-chairman]] | Before Part 1 asserts anything about the repository, **run the command and paste the output** (fourth iteration) | 2026-08-05 | `3ff5498` / `2026-08-05.md:1012`, `:1026` |
 | [[council-chairman]] | Intermediate council part-commits carry `[skip ci]`; the final commit does not — adopted as a stopgap with its own defect stated | 2026-08-05 | `3ff5498` / `2026-08-05.md:981` |
 | [[integrity-officer]] | Taxonomy entry 26 — tautological instrument check | 2026-08-06 | `aa48406` / `2026-08-06.md:919` |
-| [[integrity-officer]] | Taxonomy entry 27 — scope-mixed screen | 2026-08-06 | `aa48406` / `2026-08-06.md:940` |
+| [[integrity-officer]] | Taxonomy entry 27 — scope-mixed screen. **Keeps 27** under the chairman's ruling of 2026-09-13 (first adoption keeps the number); **cite by name, never by number — permanently binding** | 2026-08-06 | `aa48406` / `2026-08-06.md:940`; numbering ruled 2026-09-13, concordance in [[integrity-officer]] |
 | [[council-chairman]] | A grep establishes absence from the repository, never from the project | 2026-08-06 | `aa48406` / `2026-08-06.md:943` |
 | [[council-chairman]] | Every relay null carries the entity-blind qualification alongside attribute-stripping | 2026-08-06 | `aa48406` / `2026-08-06.md:955` |
 | [[council-chairman]] | Before acting on any instruction that names a file and a line, **open the line** — extended from the chairman to **every seat** | 2026-08-07 | `7adfd68` / `2026-08-07.md:968` |
-| [[integrity-officer]] | Taxonomy entry 27 ⚠ — manufactured residual; **same number as scope-mixed screen** | 2026-08-07 | `7adfd68` / `2026-08-07.md:975` |
+| [[integrity-officer]] | **Taxonomy entry 35 — manufactured residual.** Adopted 2026-08-07 as **27**, colliding with scope-mixed screen; **filed at 35 by the chairman's ruling of 2026-09-13**, under which first adoption keeps the number and every later colliding adoption moves to the tail. **Cite by name — permanently binding** | 2026-08-07 (adopted) · 2026-09-13 (numbered) | `7adfd68` / `2026-08-07.md:975`; numbering ruled 2026-09-13, concordance in [[integrity-officer]] |
 | [[council-chairman]] | Elapsed intervals are truncated, never rounded | 2026-08-07 | `7adfd68` / `2026-08-07.md:984` |
 | [[research-analyst]] | `find_matched` has three states, not two — the third is *asked nothing* | 2026-08-07 | `7adfd68` / `2026-08-07.md:1000` |
 | [[integrity-officer]] | A zero-hit screen is not absence until the synonym is tried | 2026-08-07 | `7adfd68` / `2026-08-07.md:1029` |
@@ -511,6 +511,9 @@ statements live in the seat's own note.
 | [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] · **every seat** | **A count of a set the same paragraph enumerates is read back against that enumeration before the paragraph closes** — entry 33 stated as a binding writing discipline; the cheapest check in the set, needing no file, no tool and no second reader | 2026-09-12 | `639c16e` / `2026-09-12.md:1483` |
 | [[integrity-officer]] | **Taxonomy entry 34 — premise-in-the-pre-registration.** A follow-up batch's note restates the prior batch's inference as established fact, freezing it into a committed artefact ahead of vetting. Countermeasure: state the premise in the hedged form the prior batch's spans carry, or mark it "inferred, unvetted" | 2026-09-13 | `e256de2` (proposed, `2026-09-13.md:811`) / `203dbf6` (adopted, `:1005`) |
 | [[integrity-officer]] | **Taxonomy 32a — boolean-as-count screen record.** A `find_matched` boolean written into a `V` mark's `<term:count>` slot as a numeral. Adopted **as an extension of 32, not a new number**, expressly because of the entry-27 collision history. Countermeasure: a boolean instrument's screen record writes `matched` / `not matched`, never a count | 2026-09-13 | `e256de2` (proposed, `2026-09-13.md:812`) / `203dbf6` (adopted as an extension, `:1005`) |
+| [[integrity-officer]] | **Taxonomy entry 36 — untested counterfactual.** Asserting what an alternative code path would produce without executing it. Countermeasure, in the officer's own words: *"a counterfactual over code is executed or it is not filed."* Adopted at the operator-mandated special session of 2026-09-10 as **27** — the third pattern issued that number; filed at **30** on PR #170 while that branch sat unmerged; **filed at 36 by the chairman's ruling of 2026-09-13**, the PR #170 filing being void. **Cite by name — permanently binding** | 2026-09-10 (adopted) · 2026-09-13 (numbered) | `analytics/daily-research/2026-09-10-special-session.md:552`; landed on `main` at `188cabe` (PR #170, merged `3099610`); numbering ruled 2026-09-13, concordance in [[integrity-officer]] |
+| [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] · [[systems-designer]] | **No item may be drawn from a pool that carries the instrument's own verdict on that item** — the locked set's item-pool rule, adopted on the supplementary ruling of 2026-09-13 sustaining the batch-1 seat's refusal to draw from the archived digests, and **binding precedent for batches 2 through 9**. Every archive entry has already been screened, scored and surfaced-or-not by the instrument the set exists to measure, so drawing from it does not risk contamination, it guarantees the measurement is taken on items already ruled on. **Accepted instead: the live draw under a capture-witness requirement**, each capture being its own record. **And the consequence that makes it hold:** an item drawn from an active source is **excluded from production screening at the moment of capture**, via a **reservation list the pipeline consults**, with the **exclusion logged per run** — otherwise the production path screens the item the set is measuring it against and the archive defect returns one cycle later by another route | 2026-09-13 | Chairman's supplementary ruling of 2026-09-13; threads **S13** in [[Workflow Threads]] (the rulings record is not itself a file under version control in this repository at the time of filing) |
+| [[council-chairman]] | **First adoption keeps the number; every later colliding adoption moves to the tail, never into a gap** — the numbering rule for the fabrication taxonomy, adopted with the ruling that applied it. `main`'s table is canonical because it is the merged and citable record. A number issued twice is resolved by a dated concordance, never by silently renumbering a row a council ruling already names | 2026-09-13 | Chairman's rulings of 2026-09-13, item (a); transcribed verbatim and executed in [[integrity-officer]] (the rulings record is not itself a file under version control in this repository at the time of filing) |
 
 The taxonomy's canonical statement is the table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
@@ -518,6 +521,37 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-09-13 (rulings session of the chair)** — **No roster change and no contract change; four
+  rulings and two dispositions, and the adopted-method-rules table moved three rows.** The
+  chairman convened a rulings session under the operator's express delegation of 2026-09-13 and
+  decided: **(1)** the lost "R2.1 record" is **not** reconstructed — the council re-derives the
+  candidate list under a **new committed record**, `analytics/locked_set/VALIDATION_RECORD.md`,
+  cited as *the validation record (2026-09-13)*, and V1–V6 / S1–S3 are declared lost and replaced
+  by new `ACC-n` / `HALT-n` prefixes that cannot be confused with the originals; **(2)** the
+  tier-P excerpt rule is amended to a **tool-free ¶ 1 anchor**, with an unnumbered document
+  recorded at tier S; **(3)** locked-set steps 1 and 2 are **built now** and batch 1 is six
+  category-8 tier-S items, while **the coding stays with Emory** as the single independent coder;
+  **(4)** `TRIAGE_ENABLED` **on** at a hard cap of 100 calls per run, `V2_SHADOW_CALLS` **on** at
+  `sample:3` with every shadow figure **quarantined from publication**, and the stratified tail
+  audit **built**, on top of row C. Two rows added here: **taxonomy entry 36 — untested
+  counterfactual**, and the chairman's numbering rule itself. One row renumbered: *manufactured
+  residual* from **27 ⚠** to **35**. One row annotated: *scope-mixed screen* keeps **27**. A
+  **supplementary ruling** of the same day adds a third row: **no item may be drawn from a pool
+  carrying the instrument's own verdict on that item** — the batch-1 seat's refusal to draw from
+  the archived digests, sustained and generalised as **binding precedent for batches 2 through
+  9** — with the live draw accepted under a **capture-witness** requirement and every item drawn
+  from an active source **excluded from production screening at the moment of capture**, through a
+  reservation list the pipeline consults, logged per run. **Also recorded and expressly not ruled
+  on:** gap **G-3**, opened by the validation-record seat — `SCHEMA.md`'s tier P enumerates seven
+  host families and **US federal and state court opinions are in none of them**, while category 5
+  is defined by such documents, so **nine rows carry `UNASSIGNED`** pending one council ruling
+  ([[Workflow Threads]] **S15**, owner [[council-chairman]]).
+  **Cite-by-name is permanently binding for all three.** The concordance and the ruling's verbatim
+  holding are in [[integrity-officer]]; the work each ruling set in motion is **S10–S14** in
+  [[Workflow Threads]], each naming its seat. *Recorded on `vault/taxonomy-concordance`; the
+  rulings record is not itself a file under version control in this repository at the time of
+  filing, and this vault is its citable carrier.*
 
 - **2026-09-11** — Registry read at `948947b` (`origin/main`) for the **row L close-out of the
   operator-mandated special session of 2026-09-10**
@@ -530,9 +564,14 @@ table rather than restate the list from memory.
   **27**, which has been issued twice before; it could not be filed at **30** as this branch
   first wrote, because the daily sittings adopted six other patterns at 30-34 while this PR sat
   unmerged, so it stands **adopted and unfiled**, cited by name, pending the chairman's C11/D17
-  ruling (2026-09-13); one row recording that **two further proposals are NOT adopted** and hold
-  no number; and two rows restating rules the session
-  corroboration**. **Four real subagents deliberated** — [[research-analyst]],
+  ruling (2026-09-13) — **[SUPERSEDED THE SAME DAY. The chairman ruled item (a) on 2026-09-13:
+  the entry is filed at **36**, the two proposals' reservations at 31 and 32 are void and they
+  hold no number, and 27 stays with *scope-mixed screen*. Concordance in [[integrity-officer]].
+  Archivist, 2026-09-13.]**; one row recording that **two further proposals are NOT adopted** and
+  hold no number; and two rows restating rules the session bound on every seat. **[The clause
+  naming those two rules was severed by the merge-time splice of 2026-09-13; only its last word,
+  "corroboration", survived. Not reconstructed — the rows themselves stand in the table above.
+  Archivist, 2026-09-13.]** **Four real subagents deliberated** — [[research-analyst]],
   [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]] (Claude Opus
   4.8) — a declared departure from the daily meeting's two-seat Rule 0, with the operator's
   convening instruction as the precedence (`…special-session.md:18-34`); [[analytics-officer]] did

@@ -2004,6 +2004,144 @@ def test_the_triage_cap_bites_at_one_hundred_and_one_candidates(
         100 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
 
 
+# =============================================================================
+# Ruling 4(d) — an outage's fallback score does not publish
+# =============================================================================
+def _scored(score, outcome):
+    """A ClassifiedItem carrying a score and an outcome, built the real way."""
+    from src.classify import OUTCOME_KEY, from_candidate
+
+    ci = from_candidate(_cand(f"x-{score}-{outcome}"), score, [], [], "")
+    ci.metadata = {**(ci.metadata or {}), OUTCOME_KEY: outcome}
+    return ci
+
+
+def test_a_keyword_score_produced_after_a_failed_provider_call_never_publishes():
+    """Ruling 4(d). It is suppressed at ANY score, including well over the bar."""
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(95, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    genuine = _scored(95, ClassifyOutcome.OK.value)
+
+    surfaced = main_mod.select_surfaced([outage, genuine], 40, 6, 25,
+                                        fill_floor_suspended=True,
+                                        status_only=False)
+    assert genuine in surfaced
+    assert outage not in surfaced, \
+        "a score an outage produced was published as if the model had made it"
+
+
+def test_a_genuine_by_design_keyword_score_publishes_exactly_as_today():
+    """The other half of the ruling, and the half easiest to break by accident.
+
+    `keyword_only_by_design` means no model was expected and none was called.
+    That score is the intended result, not a degraded one, and the rider does
+    not touch it.
+    """
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    by_design = _scored(95, ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value)
+    surfaced = main_mod.select_surfaced([by_design], 40, 6, 25,
+                                        fill_floor_suspended=True,
+                                        status_only=False)
+    assert surfaced == [by_design]
+
+
+def test_the_suppression_runs_before_the_fill_so_it_costs_no_slot():
+    """A suppressed item must not silently occupy one of the fill's places."""
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(38, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    lead = _scored(30, ClassifyOutcome.OK.value)
+    surfaced = main_mod.select_surfaced([outage, lead], 40, 1, 25,
+                                        fill_floor_suspended=False,
+                                        status_only=False)
+    assert surfaced == [lead], \
+        "the suppressed item took the fill slot and the eligible lead lost it"
+
+
+def test_the_counterfactual_still_counts_a_suppressed_item_as_held():
+    """`would_surface` is the counterfactual and does not apply the rider.
+
+    That is what keeps the archive's arithmetic honest: a suppressed match is a
+    match that is deliberately not on disk, which is exactly what
+    `held_for_review` counts, and `scripts/validate_archive.py` reconciles
+    meta.json against it.
+    """
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(95, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    assert main_mod.would_surface([outage], 40, 6, 25,
+                                  fill_floor_suspended=True) == [outage]
+    assert main_mod.publication_suppressed(outage) is True
+
+
+def test_an_outage_item_is_held_with_its_own_reason_not_the_gates(
+        tmp_path, monkeypatch):
+    """End to end, and the reason is recorded per candidate.
+
+    The provider canary fails, so no model call is made at all. The ENRICHED top
+    set records `provider_error` and is deferred — that path is unchanged. The
+    TAIL, where a keyword score was always the expected result, is terminal and
+    records `keyword_after_provider_error`; those are the scores the rider
+    suppresses. Thirty candidates, so there is a tail at all.
+    """
+    from src import telemetry
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    items = [_cand(f"cand-{i}") for i in range(30)]
+    run = _sandbox(tmp_path, monkeypatch, items, dead, status_only=False)
+    run()
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    outage = [r for r in recs
+              if r["classification"]["outcome"] == "keyword_after_provider_error"]
+    assert outage, "the tail did not reach the outcome this rider is about"
+    for rec in outage:
+        assert rec["surfacing"]["surfaced"] is False, \
+            "an outage's fallback score reached the digest"
+
+    import glob
+    articles = glob.glob("digests/*_ISDS-Thematic-Watch/articles/*.md")
+    assert articles == [], "an outage's fallback score was written to the archive"
+
+
+def test_the_held_reason_names_the_outage_rather_than_the_validation_gate(
+        tmp_path, monkeypatch):
+    """A suppressed item is held, and the record says WHY it was held.
+
+    "Below the floor" and "held because an outage produced this number" are not
+    the same absence, and a run that reported them identically would hide the
+    outage behind the gate.
+    """
+    from src import config as config_mod, telemetry
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    items = [_cand(f"cand-{i}") for i in range(30)]
+    run = _sandbox(tmp_path, monkeypatch, items, dead, status_only=False)
+    # The fill is what would otherwise have carried these sub-threshold scores
+    # into the digest; turning it on is what makes the suppression observable.
+    monkeypatch.setattr(config_mod, "FILL_FLOOR_SUSPENDED", False)
+    run()
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    reasons = {r["surfacing"]["reason"] for r in recs
+               if r["classification"]["outcome"] == "keyword_after_provider_error"}
+    assert "suppressed_keyword_after_provider_error" in reasons, \
+        f"the outage was not named as the reason; got {sorted(reasons)}"
+    assert not any(r["surfacing"]["surfaced"] for r in recs
+                   if r["classification"]["outcome"]
+                   == "keyword_after_provider_error")
+
+
 AUDIT_MARKER = "A FETCHED BODY THE HEADLINE NEVER SHOWED"
 FLIPPED_JSON = json.dumps({"relevance_score": 30,
                            "matched_rings": [],

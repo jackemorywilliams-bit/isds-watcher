@@ -187,6 +187,38 @@ def parse_since(spec: str) -> datetime:
     return now - delta
 
 
+# Outcomes whose SCORE must never be published, however high it is.
+#
+# Council rulings session of 2026-09-13, Ruling 4(d), ruled mechanically because
+# row C had already made it mechanical. A tail item is classified without a body
+# and, when a provider call is made for it and fails, it falls back to a keyword
+# score. Until 2026-09-10 that was recorded as `keyword_only_by_design` and was
+# indistinguishable from the genuine by-design case. It is not the same thing:
+#
+#   KEYWORD_ONLY_BY_DESIGN         no model was expected and NONE WAS CALLED
+#                                  (`attempts == 0`; the offline dry-run case).
+#                                  The keyword score is the intended result, so
+#                                  it publishes exactly as it does today.
+#   KEYWORD_AFTER_PROVIDER_ERROR   a call WAS made for this item and it failed.
+#                                  The score is what an outage left behind, and
+#                                  publishing it would put a number in front of
+#                                  a reader that the instrument did not produce
+#                                  by the route it claims to use.
+#
+# Suppression lives HERE, in the publication decision, and not in
+# `src/classify.py`. Whether an outage's fallback score may be published is
+# POLICY; what happened to the item is a FACT, and the classifier's job ends at
+# the fact. Putting the policy in the classifier would also make the item
+# non-terminal or unscored, and it is neither: it is finished, it has a number,
+# and the number simply does not publish.
+UNPUBLISHABLE_OUTCOMES = frozenset({ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR})
+
+
+def publication_suppressed(ci) -> bool:
+    """Whether this item's score may not be published, whatever it is."""
+    return outcome_of(ci) in UNPUBLISHABLE_OUTCOMES
+
+
 def would_surface(classified, threshold, min_items, floor,
                   fill_floor_suspended=None):
     """The items the score-and-fill rule alone would publish.
@@ -231,7 +263,7 @@ def select_surfaced(classified, threshold, min_items, floor,
                     fill_floor_suspended=None, status_only=None):
     """Choose which classified items are actually published this cycle.
 
-    Two independent gates, in this order:
+    Three independent gates, in this order:
 
     1. ``status_only`` (``config.VALIDATION_STATUS_ONLY``, ON by default). While
        the classifier is under validation NOTHING publishes at item level — not
@@ -244,7 +276,22 @@ def select_surfaced(classified, threshold, min_items, floor,
        reads as. This gate is checked FIRST and no argument to this function can
        be set such that the fill flag disables it.
 
-    2. the score-and-fill rule (``would_surface``).
+    2. ``UNPUBLISHABLE_OUTCOMES`` (Ruling 4(d), 2026-09-13). An item whose score
+       is a keyword fallback produced AFTER a failed provider call does not
+       publish, at any score. A genuine ``keyword_only_by_design`` score — no
+       provider configured, no call made, ``attempts == 0`` — publishes as
+       today. The filter runs BEFORE the fill rather than after it, so a
+       suppressed item does not silently occupy one of the fill's slots: the
+       next eligible item takes it.
+
+    3. the score-and-fill rule (``would_surface``).
+
+    ``would_surface`` deliberately does NOT apply gate 2. It is the
+    counterfactual — what the score-and-fill rule alone would have published —
+    and the difference between the two lists is what the gates HELD. A
+    suppressed item is a held item; ``src/main.py`` records the distinct reason
+    per candidate in telemetry and prints the count in the run summary, so the
+    holding is countable and its cause is not summarised away.
 
     Returning ``[]`` rather than filtering later is deliberate: every downstream
     surface — the email body, the archive folder, the article files, meta.json,
@@ -255,7 +302,8 @@ def select_surfaced(classified, threshold, min_items, floor,
         status_only = config.VALIDATION_STATUS_ONLY
     if status_only:
         return []
-    return would_surface(classified, threshold, min_items, floor,
+    eligible = [c for c in classified if not publication_suppressed(c)]
+    return would_surface(eligible, threshold, min_items, floor,
                          fill_floor_suspended)
 
 
@@ -989,6 +1037,11 @@ def main(argv=None) -> int:
     # validator reconciles disk + held against screened matches.
     stats["held_for_review"] = len(held)
     stats["validation_status_only"] = bool(config.VALIDATION_STATUS_ONLY)
+    # Held BECAUSE an outage produced the number, not because the validation
+    # gate is on. Counted separately so that when the validation gate is one day
+    # lifted, a run that suppressed an item still says so out loud.
+    stats["suppressed_provider_error"] = sum(
+        1 for c in held if publication_suppressed(c))
 
     # 4a. Record, per candidate, why it did or did not appear. "Not surfaced" has
     #     several different meanings — below the floor, above the floor but not
@@ -1019,12 +1072,16 @@ def main(argv=None) -> int:
                                    digest=folder_rel,
                                    position=surfaced_ids[id(match)])
         elif id(match) in held_ids:
-            # It would have published; the validation gate held it. Distinct from
-            # every other not-surfaced reason on purpose — "below the floor" and
+            # It would have published and a gate held it. Distinct from every
+            # other not-surfaced reason on purpose — "below the floor" and
             # "cleared the threshold and was held" are the two ends of the range
-            # and must never be summarised into the same absence.
-            run_tel.note_surfacing(cid, surfaced=False,
-                                   reason="held_validation_status_only",
+            # and must never be summarised into the same absence. WHICH gate
+            # held it is recorded too: an outage's fallback score and an item
+            # awaiting validation are held for opposite reasons.
+            reason = ("suppressed_keyword_after_provider_error"
+                      if publication_suppressed(match)
+                      else "held_validation_status_only")
+            run_tel.note_surfacing(cid, surfaced=False, reason=reason,
                                    digest="", position=-1)
         else:
             if match.relevance_score < config.RELEVANCE_FLOOR:
@@ -1220,6 +1277,11 @@ def main(argv=None) -> int:
               f"{stats['triage_skipped']} skipped, {stats['triage_calls']} call(s) "
               f"~${stats['triage_cost_usd']:.4f} (cap "
               f"{config.TRIAGE_MAX_CALLS_PER_RUN}/run)")
+    if stats.get("suppressed_provider_error"):
+        print(f"  !! NOT PUBLISHED: {stats['suppressed_provider_error']} item(s) "
+              f"whose keyword score was produced after a failed provider call "
+              f"({ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value}) — the "
+              f"number is an outage's fallback and does not publish at any score")
     if stats.get("tail_audit_calls"):
         print(f"tail audit:       {stats['tail_audit_rows']} pair(s) recorded, "
               f"{stats['tail_audit_calls']} call(s) "

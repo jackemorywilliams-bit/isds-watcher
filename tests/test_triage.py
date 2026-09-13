@@ -345,8 +345,63 @@ def test_only_a_parsed_answer_names_a_model_in_the_triage_basis(provider,
 # =============================================================================
 # The flags
 # =============================================================================
-def test_triage_is_off_by_default():
-    assert config.TRIAGE_ENABLED is False
+def _config_under(monkeypatch, **env):
+    """Re-resolve ``src.config`` under a named environment.
+
+    The flags are module-level constants resolved at import, so asserting on
+    ``config.TRIAGE_ENABLED`` as imported would be asserting about whatever the
+    developer happens to have exported. This asserts about the SHIPPED default
+    and about the override, which are the two things the ruling fixed.
+    """
+    import importlib
+    for key, value in env.items():
+        if value is None:
+            monkeypatch.delenv(key, raising=False)
+        else:
+            monkeypatch.setenv(key, value)
+    return importlib.reload(config)
+
+
+@pytest.fixture
+def fresh_config(monkeypatch):
+    """``_config_under``, with the ambient environment's config restored after."""
+    import importlib
+    yield lambda **env: _config_under(monkeypatch, **env)
+    monkeypatch.undo()
+    importlib.reload(config)
+
+
+def test_triage_ships_on_since_the_council_ruled_it_on_2026_09_13(fresh_config):
+    """Ruling 4(a). The default is the decision; it is not read off the shell."""
+    assert fresh_config(TRIAGE_ENABLED=None).TRIAGE_ENABLED is True
+
+
+@pytest.mark.parametrize("value,expected", [
+    ("0", False), ("false", False), ("no", False), ("off", False), ("", False),
+    ("1", True), ("true", True), ("on", True),
+])
+def test_the_triage_env_override_still_works_in_both_directions(
+        fresh_config, value, expected):
+    assert fresh_config(TRIAGE_ENABLED=value).TRIAGE_ENABLED is expected
+
+
+def test_the_triage_pass_is_capped_at_one_hundred_calls_a_run(fresh_config):
+    """The bound the ruling attached to the switch, stated as a number."""
+    assert fresh_config(TRIAGE_ENABLED=None).TRIAGE_MAX_CALLS_PER_RUN == 100
+
+
+def test_an_over_cap_candidate_is_a_named_skip_that_costs_nothing():
+    """Not an absent record: "we declined to pay" is its own fact."""
+    result = triage.skipped_over_cap()
+    assert result.ran is False
+    assert result.basis == triage.TRIAGE_BASIS_OVER_CAP
+    assert result.basis in triage.SKIP_BASES
+    assert result.attempts == 0
+    assert result.rank == 0, "an untriaged item must keep its lexical position"
+    section = triage.telemetry_section(result)
+    assert section["basis"] == "skipped_over_run_cap"
+    assert section["strengths"] == {}
+    assert triage.basis_names_a_model(result.basis) is False
 
 
 def test_the_tail_audit_is_a_documented_stub_and_runs_nothing():

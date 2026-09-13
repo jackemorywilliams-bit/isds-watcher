@@ -749,6 +749,14 @@ def _sandbox(tmp_path, monkeypatch, items, responder, *, status_only=False):
     monkeypatch.setattr(main_mod, "enrich", lambda it: it)     # offline
     monkeypatch.setattr(config_mod, "RESEARCH_BRIEF_ENABLED", False)
     monkeypatch.setattr(config_mod, "VALIDATION_STATUS_ONLY", status_only)
+    # The cost-bearing optional passes are pinned OFF here, explicitly, for the
+    # same reason `status_only` is an explicit argument: almost every test below
+    # counts the calls a run makes. Triage ships ON since 2026-09-13, so leaving
+    # these to the shipped default would add a call per candidate to every count
+    # in this file AND make the suite depend on what the developer happens to
+    # have exported. The tests that are ABOUT these passes turn them on
+    # explicitly, one line each, and the shipped defaults have their own tests.
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", False)
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setattr(classify_mod, "_call_anthropic", responder)
@@ -1755,9 +1763,16 @@ TRIAGE_GOOD = json.dumps({"rings": {
     "jurisdictional_admissibility": "absent"}})
 
 
-def test_a_default_run_makes_no_triage_and_no_v2_call_and_says_lexical_only(
+def test_with_both_optional_passes_off_nothing_extra_is_spent_or_claimed(
         tmp_path, monkeypatch):
-    """The shipped configuration: nothing extra is spent and nothing is claimed."""
+    """The floor of the instrument: one classification call per candidate.
+
+    This used to be the test of the SHIPPED configuration. The council turned
+    triage on (2026-09-13, Ruling 4(a)), so the shipped configuration now buys
+    more than this and is tested separately; what this test protects is the
+    property that turning the optional passes OFF really does leave nothing but
+    the classifier, which is what makes the cost of each pass attributable.
+    """
     from src import config as config_mod, telemetry
 
     log = []
@@ -1886,6 +1901,14 @@ def test_a_triage_outage_is_recorded_and_the_run_still_completes(
     monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
     assert run() == 0, "a triage outage must not fail the run"
 
+    # The outage is PRICED, not written off. A call that failed is still a call,
+    # so the reported cost is an honest upper bound on the spend rather than a
+    # count of the answers we got to keep.
+    meta = _meta_json()
+    assert meta["triage_calls"] == 2
+    assert meta["triage_cost_usd"] == round(
+        2 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+
     for rec in telemetry.load_records("analytics/candidate_telemetry.jsonl"):
         t = rec["triage"]
         assert t["ran"] is False
@@ -1894,6 +1917,86 @@ def test_a_triage_outage_is_recorded_and_the_run_still_completes(
         assert t["strengths"] == {}
         # The classification still happened; only the ranking hint was lost.
         assert rec["classification"]["outcome"] == "ok"
+
+
+def _meta_json():
+    """The one meta.json this run wrote. The archive is per-date, so there is one."""
+    import glob
+    paths = glob.glob("digests/*_ISDS-Thematic-Watch/meta.json")
+    assert len(paths) == 1, f"expected one dated record, found {paths}"
+    return json.load(open(paths[0], encoding="utf-8"))
+
+
+def test_the_shipped_triage_default_prices_its_own_pass_in_meta_json(
+        tmp_path, monkeypatch):
+    """Ruling 4(a): the run reports `triage_calls` and `triage_cost_usd`.
+
+    The decision to turn triage on was made on a cost estimate. An estimate that
+    never meets a meter is a guess with a date on it, so the number the run
+    actually spent is written into the dated record beside the counts it bought.
+    """
+    from src import config as config_mod
+
+    items = [_cand(f"cand-{i}") for i in range(3)]
+    run = _sandbox(tmp_path, monkeypatch, items,
+                   _three_prompt_responder(triage_payload=TRIAGE_GOOD),
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
+    monkeypatch.setenv("ANTHROPIC_MODEL", "test-model-id")
+    assert run() == 0
+
+    meta = _meta_json()
+    assert meta["triage_calls"] == 3, "one call per candidate, counted"
+    assert meta["triage_cost_usd"] == round(
+        3 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+    # And the pass is priced from the committed constant, not from a literal
+    # typed into this test: the arithmetic is the assertion.
+    assert meta["triage_cost_usd"] == 0.0042
+
+
+def test_the_triage_cap_bites_at_one_hundred_and_one_candidates(
+        tmp_path, monkeypatch):
+    """The bound, exercised where it actually binds.
+
+    101 candidates, a cap of 100: exactly 100 calls are made, the 101st is
+    recorded as the named skip `skipped_over_run_cap` rather than vanishing, and
+    WHICH item is left out is a function of the candidate set — the cap is
+    applied against the total order (-score, source, source_id), so it is not
+    settled by fetch order.
+    """
+    from src import config as config_mod, telemetry, triage as triage_mod
+
+    log = []
+    items = [_cand(f"cand-{i}") for i in range(101)]
+    run = _sandbox(tmp_path, monkeypatch, items,
+                   _three_prompt_responder(triage_payload=TRIAGE_GOOD, log=log),
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
+    monkeypatch.setenv("ANTHROPIC_MODEL", "test-model-id")
+    assert config_mod.TRIAGE_MAX_CALLS_PER_RUN == 100
+    assert run() == 0
+
+    assert len([p for p in log if _is_triage(p)]) == 100, \
+        "the cap did not bite: triage bought more calls than it was allowed"
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    assert len(recs) == 101
+    ran = [r for r in recs if r["triage"]["ran"]]
+    over = [r for r in recs
+            if r["triage"]["basis"] == triage_mod.TRIAGE_BASIS_OVER_CAP]
+    assert len(ran) == 100
+    assert len(over) == 1
+    # Every candidate here scores identically, so the tiebreak decides — and the
+    # tiebreak is (source, source_id). "cand-99" sorts last of the 101.
+    assert over[0]["candidate_id"] == telemetry.candidate_id("iisd_itn", "cand-99")
+    assert over[0]["triage"]["attempts"] == 0, "a skipped candidate was charged"
+    assert over[0]["triage"]["semantic_rank"] == 0, \
+        "an untriaged candidate must keep its lexical position"
+
+    meta = _meta_json()
+    assert meta["triage_calls"] == 100
+    assert meta["triage_cost_usd"] == round(
+        100 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
 
 
 def test_an_abandoned_item_is_recorded_as_abandoned_not_as_still_retrying(

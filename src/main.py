@@ -600,18 +600,44 @@ def main(argv=None) -> int:
     #     a triage result keeps its lexical position (semantic_rank 0). When no
     #     item is triaged, every rank is 0 and the sort key collapses to the
     #     lexical order — so a total outage reproduces lexical ranking exactly.
+    #     BOUNDED (council ruling of 2026-09-13, Ruling 4(a)). The pass is priced
+    #     per candidate and the candidate count is the one quantity this pipeline
+    #     does not control, so it is capped at config.TRIAGE_MAX_CALLS_PER_RUN.
+    #     Above the cap the top 100 BY LEXICAL RANK are triaged and the remainder
+    #     are recorded as the named skip they are. The cap is applied against a
+    #     TOTAL order — (-relevance_score, source, source_id) — so which 100
+    #     items are bought is a property of the candidate set rather than of
+    #     fetch order, and a re-run over the same candidates buys the same 100.
     triage_results: dict = {}
     if config.TRIAGE_ENABLED:
-        for it in new_candidates:
+        by_lexical_rank = sorted(
+            new_candidates,
+            key=lambda it: (-lex[id(it)][1]["relevance_score"],
+                            getattr(it, "source", "") or "",
+                            getattr(it, "source_id", "") or ""))
+        within_cap = by_lexical_rank[:config.TRIAGE_MAX_CALLS_PER_RUN]
+        over_cap = by_lexical_rank[config.TRIAGE_MAX_CALLS_PER_RUN:]
+        for it in within_cap:
             result = triage.triage_item(it, provider=provider)
             triage_results[id(it)] = result
+            stats["triage_calls"] += int(result.attempts)
             if result.ran:
                 stats["triage_ran"] += 1
             else:
                 stats["triage_skipped"] += 1
-        logger.info("triage: %d ranked semantically, %d skipped (~$%.4f)",
-                    stats["triage_ran"], stats["triage_skipped"],
-                    stats["triage_ran"] * config.TRIAGE_COST_PER_CALL_USD)
+        for it in over_cap:
+            triage_results[id(it)] = triage.skipped_over_cap()
+            stats["triage_skipped"] += 1
+        stats["triage_cost_usd"] = round(
+            stats["triage_calls"] * config.TRIAGE_COST_PER_CALL_USD, 4)
+        if over_cap:
+            logger.warning(
+                "triage: %d candidate(s) past the %d-call cap were not triaged "
+                "and keep their lexical position", len(over_cap),
+                config.TRIAGE_MAX_CALLS_PER_RUN)
+        logger.info("triage: %d ranked semantically, %d skipped, %d call(s) "
+                    "(~$%.4f)", stats["triage_ran"], stats["triage_skipped"],
+                    stats["triage_calls"], stats["triage_cost_usd"])
     for it in new_candidates:
         run_tel.note_triage(lex[id(it)][0],
                             triage.telemetry_section(triage_results.get(id(it))))
@@ -1132,6 +1158,11 @@ def main(argv=None) -> int:
               f"call was made; {len(deferred_now)} item(s) queued WITHOUT an "
               f"attempt charged; the workflow's provider gate fails this run "
               f"after state is committed so the failure alert fires")
+    if stats.get("triage_calls") or stats.get("triage_skipped"):
+        print(f"triage:           {stats['triage_ran']} ranked semantically, "
+              f"{stats['triage_skipped']} skipped, {stats['triage_calls']} call(s) "
+              f"~${stats['triage_cost_usd']:.4f} (cap "
+              f"{config.TRIAGE_MAX_CALLS_PER_RUN}/run)")
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")
     print(f"surfaced in digest: {len(surfaced)}")
     if config.VALIDATION_STATUS_ONLY:

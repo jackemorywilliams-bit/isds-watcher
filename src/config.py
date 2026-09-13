@@ -211,14 +211,47 @@ ENRICH_TOP_N = 24
 # reach enrichment, so it can never reach classification, so the instrument
 # cannot see it at all. Ranking is the gate, and the gate is lexical.
 #
-# OFF BY DEFAULT, and that is a cost decision rather than a doubt about the
-# design. Triage calls the model once per CANDIDATE, not once per enriched item:
-# on the observed run sizes (median 14, max 80) at the R2.1 table's ~$0.0014 per
-# call that is roughly $0.02 on a median run and $0.11 on the largest observed
-# one. Small, recurring, and Emory's to authorise. Enabling it is one
-# environment variable; nothing else changes.
-TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "0").strip().lower() not in (
+# ON BY DEFAULT SINCE 2026-09-13, by RULING OF THE COUNCIL (rulings session of
+# 2026-09-13, Ruling 4(a)), made under the operator's delegation of the same
+# date. This comment used to say the pass was "small, recurring, and Emory's to
+# authorise"; the authorisation exists now and is a dated decision on the
+# record, so the configuration states the decision rather than the wait.
+#
+# WHY THE COUNCIL RULED IT ON. The gate this pass exists to open is the external
+# audit's point (3): ranking is lexical, so the instrument's false-negative rate
+# is not merely unmeasured but unmeasurable. The repository's own probe suite
+# carries the demonstration — E5_einarsson_lexical_brittle is a documented
+# HIGH-band item whose `keyword_score` is 0. It can never reach enrichment, so it
+# can never reach classification, so the instrument cannot see it at all. No
+# amount of prompt work downstream reaches an item the queue never admits.
+#
+# THE COST, AND THE BOUND. Triage calls the model once per CANDIDATE, not once
+# per enriched item. At ~$0.0014 a call over the observed run sizes (median 14,
+# max 80) that is ~$0.02 on a median run and ~$0.11 on the largest observed one
+# — roughly $1-$6 a year at a weekly cadence. TRIAGE_MAX_CALLS_PER_RUN caps the
+# pass regardless, and the run reports `triage_calls` and `triage_cost_usd` in
+# `meta.json`, so what a pass cost is a number in the record rather than
+# something to be reconstructed from a bill.
+#
+# DISCLOSED. This is a dated configuration change, not a silent one: the 16
+# archived runs before it are pre-triage, and any comparison across that
+# boundary has to say so.
+#
+# The environment variable still overrides in BOTH directions: TRIAGE_ENABLED=0
+# (or false/no/off/empty) turns the pass off; TRIAGE_ENABLED=1 turns it on.
+TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "1").strip().lower() not in (
     "0", "false", "no", "off", "")
+
+# HARD PER-RUN CAP on triage calls (Ruling 4(a), 2026-09-13). The largest run
+# ever observed is 80 candidates, so on today's traffic the cap does not bind;
+# it exists because the pass is priced per CANDIDATE and the candidate count is
+# the one quantity this project does not control. A feed that starts returning a
+# thousand items must not be able to turn a $0.02 pass into a charge nobody
+# authorised. Above the cap, `src/main.py` triages the top 100 by lexical rank
+# and records every remaining candidate as a NAMED skip
+# (`triage.TRIAGE_BASIS_OVER_CAP`) rather than as an item that merely has no
+# triage result. Worst case at the cap: ~$0.14 a run.
+TRIAGE_MAX_CALLS_PER_RUN = 100
 
 # Expected cost per triage call, from the R2.1 costing table (~600 input tokens,
 # ~150 output). Recorded as a constant so the run can report what a triage pass

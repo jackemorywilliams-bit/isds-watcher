@@ -44,11 +44,19 @@ Tier rules (the copyright constraint is hard: `seeds/` is gitignored because a
 commit is publication):
 
 - **P (public primary)** — ICSID, PCA, italaw, Curia, BAILII, UN RIAA, WTO.
-  `text` is a verbatim excerpt **capped at 600 characters**, selected **by
-  position, never by content**: the first 600 characters of the body as
-  `src/enrich.py::_extract_body` would extract it, after the caption block. A
-  coder who picks the passage picks the passage that scores; position selection
-  is the anti-contamination rule that matters most.
+  `text` is a verbatim excerpt **capped at 600 characters**, selected **by position,
+  never by content**: the 600 characters beginning at the first character of
+  **paragraph 1 of the document's own printed numbering** (¶ 1), running forward in
+  the document's printed reading order and across paragraph boundaries where ¶ 1 is
+  shorter than 600 characters. Where a document carries no printed paragraph
+  numbering, **the item is recorded at tier S** — caption and locator, no excerpt —
+  and no substitute anchor is chosen. The anchor is printed on the face of the
+  document: a second reader verifies the excerpt by looking, with no tool, no
+  extraction library and no HTML parse. **Amended 2026-09-13**; the prior rule keyed
+  to `src/enrich.py::_extract_body` "after the caption block" is struck — that
+  function has no caption step and never had one, and on a PDF it returns the file
+  header silently. A coder who picks the passage picks the passage that scores;
+  position selection is the anti-contamination rule that matters most.
 - **S (paywalled/headline-only)** — `text` is the headline only. That is
   fidelity, not degradation: `raw_text=title` is what production sees.
 - **C (copyrighted secondary — Ferguson, Kim)** — never item text; labelling

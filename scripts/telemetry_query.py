@@ -51,6 +51,7 @@ sys.path.insert(0, str(REPO))
 
 from src.classify import READ_TERMINAL_OUTCOMES  # noqa: E402
 from src.telemetry import TELEMETRY_PATH, load_records  # noqa: E402
+from src.tail_audit import LEDGER_PATH, STRATA, read_ledger  # noqa: E402
 
 # What `--source-yield`'s "classified" column counts: the outcomes after which
 # the run was genuinely finished with the item. DERIVED from the classifier's own

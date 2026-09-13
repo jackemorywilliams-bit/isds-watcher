@@ -272,6 +272,25 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         "source_health": source_health,
         "health_warnings": health_warnings,
         "reserved_excluded": reserved_excluded,
+        # What the run's optional, cost-bearing passes actually spent. Recorded
+        # per run because the decision that turned them on (council ruling of
+        # 2026-09-13) was made on a cost estimate, and an estimate that is never
+        # checked against the meter is a guess with a date on it.
+        #   triage_calls    = provider calls ATTEMPTED by the triage pass
+        #   triage_cost_usd = triage_calls x config.TRIAGE_COST_PER_CALL_USD
+        #   tail_audit_cost_usd = tail-audit re-classification calls x
+        #                         config.TAIL_AUDIT_COST_PER_CALL_USD
+        # The tail audit's COST is recorded here and nowhere else on this
+        # surface. Its MEASUREMENT — the paired bands, the flip — never reaches
+        # a digest, the site or the README (Ruling 4(c)); it lives in its own
+        # ledger and has exactly one reader, scripts/telemetry_query.py. This
+        # file is a publication surface, so it does not name that ledger, does
+        # not read it, and tests/test_publication_quarantine.py fails the build
+        # if it starts to.
+        "triage_calls": int(stats.get("triage_calls", 0) or 0),
+        "triage_cost_usd": round(float(stats.get("triage_cost_usd", 0.0) or 0.0), 4),
+        "tail_audit_cost_usd": round(
+            float(stats.get("tail_audit_cost_usd", 0.0) or 0.0), 4),
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)

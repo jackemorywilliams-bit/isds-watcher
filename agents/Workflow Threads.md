@@ -2342,3 +2342,5 @@ the source of truth, and a disagreement between them is a defect in this note.
 <!-- graph:auto start -->
 Map: [[Council]]
 <!-- graph:auto end -->
+
+<!-- CI trigger probe 2026-09-13, throwaway: does a DRAFT PR fire pull_request workflows here? -->

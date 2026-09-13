@@ -37,7 +37,13 @@ freezing an *inference* into a committed artefact that then carries a pre-regist
 authority — **every threshold below is tagged `[CARRIED]`, `[GROUNDED]` or `[CHOSEN]` on its
 face**, and an inference is marked as an inference in those words.
 
-- `[CARRIED]` — transcribed from a surviving committed file, cited by line. Not re-derived.
+- `[CARRIED]` — transcribed from a surviving committed file, cited by line, **and used for
+  what that file uses it for**. Not re-derived.
+- `[CARRIED ACROSS A SCOPE BOUNDARY ITS SOURCE DISCLAIMS]` — transcribed faithfully, but
+  **applied to something its own source says it does not measure**. The boundary is stated on
+  the criterion's face, never in a footnote: what the number was measured on, what this
+  schedule measures instead, and what that means for reading a pass or a fail. **ACC-2 and
+  ACC-3 both carry this tag**, and neither may be reported as a plain `[CARRIED]` result.
 - `[GROUNDED]` — computed or read from a committed artefact of this repository, cited.
 - `[CHOSEN]` — a judgment call made by this seat, with the reason stated. No `[CHOSEN]`
   number has provenance older than this file.
@@ -48,13 +54,15 @@ Verified at the commit that adds this file.
 
 | Source | What it supplies | Verified |
 |---|---|---|
-| `analytics/locked_set/SCHEMA.md:96-109` | the evaluation design: production-path replay, surfaced/not-surfaced as the decision, run-size batching under a recorded seed, Clopper-Pearson intervals, per-category reporting | read at this commit |
+| `analytics/locked_set/SCHEMA.md:96-110` | the evaluation design: production-path replay, surfaced/not-surfaced as the decision, run-size batching under a recorded seed, Clopper-Pearson intervals, per-category reporting | read at this commit |
 | `SCHEMA.md:105-107` | the 20×10 stability design and its **four blocking thresholds**, surviving verbatim | read at this commit |
-| `SCHEMA.md:107-109` | **S4**'s content, preserved in substance | read at this commit |
+| `SCHEMA.md:107-110` | **S4**'s content, preserved in substance | read at this commit |
 | `SCHEMA.md:74-84`, `:87-94` | nine categories, 6 each, 20 positives — **the design target**; matter-level disjointness | read at this commit |
 | the validation record (2026-09-13) §3.12 | **the set as built: 38 of 54 rows** — cat 1: 6, cat 2: 2, cat 3: 6, cat 4: 6, cat 5: 6, cat 6: 6, cat 7: 6, cat 8: 0, cat 9: 0; 16 rows open under gaps `G-1` and `G-2` | read at this commit |
 | the validation record (2026-09-13) §3.11, rows `C-1`…`C-6` | the six anchor matters excluded by the disjointness certificate | read at this commit |
 | `SCHEMA.md:12-24`, `:57-72` | commit order that proves blindness; single coder; `L_theme`/`L_band` never reconciled | read at this commit |
+| `scripts/eval_holdout.py:13-19` | **the harness's own SCOPE disclaimer**: it "does not exercise the production path: it scores `keyword_score` in isolation at 40, while production classifies its top-ranked candidates with a language model and publishes at `RELEVANCE_FLOOR=25`"; "regression floors, not validation targets" | read at this commit |
+| `src/config.py:28` | `RELEVANCE_FLOOR = 25` — the production publication floor | read at this commit |
 | `scripts/eval_holdout.py:37-42` | CI floors `DEFAULT_FAIL_UNDER_PRECISION = 0.90`, `DEFAULT_FAIL_UNDER_RECALL = 0.60`, set deliberately below the holdout's observed precision 1.00 / recall 0.75 | read at this commit |
 | `scripts/eval_holdout.py:14` | the repository's own worked Clopper-Pearson example: 3/4 → [0.19, 0.99] | read at this commit |
 | `analytics/candidate_telemetry.jsonl` | 328 records, 9 run ids; `classification.outcome` = 141 `keyword_only_by_design`, 120 `provider_error`, 67 `ok`; all 328 `v2_call.basis = "lexical_only"` | counted at this commit |
@@ -257,9 +265,31 @@ together with the §2.3 anchor-matter limitation.
 - **Statistic.** Publication precision, point estimate, **printed with its denominator**, and
   with its exact Clopper-Pearson 95% interval.
 - **Data.** Surfaced/not-surfaced from the replay; `L_theme` from `labels.json`.
-- **Threshold.** Point estimate **≥ 0.90**. `[CARRIED]` from
-  `scripts/eval_holdout.py:41` (`DEFAULT_FAIL_UNDER_PRECISION = 0.90`), the floor this
-  repository already fails a build against, itself set below the holdout's observed 1.00.
+- **Threshold.** Point estimate **≥ 0.90**. **`[CARRIED ACROSS A SCOPE BOUNDARY ITS SOURCE
+  DISCLAIMS]`** from `scripts/eval_holdout.py:41` (`DEFAULT_FAIL_UNDER_PRECISION = 0.90`),
+  itself set below the holdout's observed 1.00. **The hedge is on this criterion's face
+  because the number cannot be read without it:**
+  - **What the floor was measured on.** The 20-item holdout harness, which
+    `scripts/eval_holdout.py:13-19` says in its own words **"does not exercise the production
+    path: it scores `keyword_score` in isolation at 40, while production classifies its
+    top-ranked candidates with a language model and publishes at `RELEVANCE_FLOOR=25`"**
+    (`src/config.py:28`). The same passage calls the defaults **"regression floors, not
+    validation targets."**
+  - **What the replay measures instead.** ACC-2 replays `src/main.py` steps 2–4 as production
+    runs them (`SCHEMA.md:96-99`) — lexical ranking, then model classification, published at
+    the production floor. **It is a different statistic on a different population at a
+    different cut-point**, and its value is not commensurable with the number the floor was
+    calibrated against.
+  - **What follows for reading a result.** **A pass against 0.90 is not evidence that the
+    production path meets the holdout's floor**, because the floor was never a claim about the
+    production path. **A fail is the more informative direction**: falling below a regression
+    floor set deliberately low, on a path with a model in it, is a signal worth acting on.
+    Either way the figure is reported as *precision on the locked set at the production
+    floor*, never as *the harness floor met*, and the sentence naming the boundary travels
+    with it.
+  - **This is not `[CARRIED]` in the sense §0 defines.** A `[CARRIED]` number is transcribed
+    from a surviving file **and used for what that file uses it for**. This one is not, and
+    the tag says so rather than borrowing the provenance.
 - **Cannot decide.** Per §2, at these sample sizes the interval **cannot exclude** true
   values below 0.90 — even a perfect result across the whole built set bottoms out at 0.9075
   (§2.1(b), 38/38), and the denominator here is not N but however many items the instrument
@@ -278,10 +308,27 @@ together with the §2.3 anchor-matter limitation.
   per-category without a threshold, categories 8 and 9 printed at `n = 0`.
 - **Data.** Surfaced/not-surfaced from the replay; the items the coder recorded at
   `L_theme = 1` in `labels.json`.
-- **Threshold.** Point estimate **≥ 0.60**. `[CARRIED]` from
-  `scripts/eval_holdout.py:42` (`DEFAULT_FAIL_UNDER_RECALL = 0.60`), set below the holdout's
-  observed 0.75. **The threshold is carried unchanged; only the denominator it is applied to
-  has been corrected.**
+- **Threshold.** Point estimate **≥ 0.60**. **`[CARRIED ACROSS A SCOPE BOUNDARY ITS SOURCE
+  DISCLAIMS]`** from `scripts/eval_holdout.py:42` (`DEFAULT_FAIL_UNDER_RECALL = 0.60`), set
+  below the holdout's observed 0.75. **The value is unchanged; what is hedged is the tag.**
+  The same three statements ACC-2 makes apply here verbatim and are not abbreviated by
+  cross-reference:
+  - **What the floor was measured on.** The 20-item holdout harness, which
+    `scripts/eval_holdout.py:13-19` says **"does not exercise the production path: it scores
+    `keyword_score` in isolation at 40, while production classifies its top-ranked candidates
+    with a language model and publishes at `RELEVANCE_FLOOR=25`"** (`src/config.py:28`), and
+    which calls its own defaults **"regression floors, not validation targets."** The observed
+    0.75 it sits below is **3 of 4 on-theme items**.
+  - **What the replay measures instead.** Recall on the production path over the P positives
+    of the locked set, at the production floor — **a different statistic, on a different
+    population, at a different cut-point.**
+  - **What follows for reading a result.** **A pass against 0.60 is not evidence that the
+    production path meets the harness's floor.** A fail is the more informative direction, for
+    ACC-2's reason. The figure is reported as *recall on the locked set at the production
+    floor, over P positives*, never as *the harness floor met*.
+  - **Compounding, stated once.** ACC-3 carries **two** disclosed defects at once — this scope
+    boundary, and the denominator correction of §2.0 (P is not the design's 20). Neither
+    excuses the other, and a report of ACC-3 states both.
 - **Cannot decide.** Same limitation as ACC-2, and sharper for two reasons. First, the
   holdout's own 0.75 rests on **4 on-theme items** (`scripts/eval_holdout.py:14`,
   3/4 → [0.19, 0.99]); neither the holdout nor this set can separate 0.60 from 0.95. Second,
@@ -346,7 +393,7 @@ A HALT is not a failed criterion. A HALT stops publication or declares the set u
 ### HALT-1 — Zero positives reach the threshold on the production path
 
 **This rule carries S4's content, which is *preserved*, not remembered.**
-`[CARRIED]` from **`SCHEMA.md:107-109`**: *S4 (zero positives reach 40 on the production
+`[CARRIED]` from **`SCHEMA.md:107-110`**: *S4 (zero positives reach 40 on the production
 path) is the current state of the system and the reason the fill-floor is suspended.*
 
 - **Trigger.** No `L_theme = 1` item in the locked set as built reaches the digest threshold
@@ -364,8 +411,13 @@ path) is the current state of the system and the reason the fill-floor is suspen
 ### HALT-2 — Disjointness breach at the level of the matter
 
 - **Trigger.** Any locked-set matter is found, after locking, to collide with the development
-  sets — the retired 20-item holdout, the 14 frozen probes, or the 16 distinct published
-  matters — at the level of the **matter**, not the document (`SCHEMA.md:87-94`).
+  sets — the retired 20-item holdout, the 14 frozen probes, or the **15 distinct published
+  matters** — at the level of the **matter**, not the document (`SCHEMA.md:88-94`). **15, not
+  16:** 16 is a *document* count (17 article files less the Telefónica duplicate at
+  `italaw.com/cases/12153`, published 06-09 and 06-10); the *matter* count is 15 because two
+  of those documents report the same matter, Okuashvili v. Georgia, through different forums.
+  `SCHEMA.md:90-94` says 15 and this rule is a matter-level rule, so 15 is the figure that
+  governs.
 - **Effect.** The affected item is struck; **its category's figures are reported at the
   reduced n with the strike named**, and any already-published figure that included it is
   withdrawn and corrected, not silently recomputed. The replacement row goes through the same
@@ -400,9 +452,13 @@ Recorded so that a later reader can tell absence from oversight.
 
 - **No V1–V6 and no S1–S3, and no criterion numbered in either series.** Lost, declared lost,
   not re-derived. See §0.
-- **No restatement of the four stability thresholds.** ACC-4 cites `SCHEMA.md:105-107`.
-  Copying four surviving numbers into a new file creates a second home for them that can
-  drift from the first.
+- **No restatement of the four stability thresholds as thresholds of this schedule.** ACC-4
+  cites `SCHEMA.md:105-107` and no ACC or HALT rule takes its value from them. Copying four
+  surviving numbers into a new file creates a second home for them that can drift from the
+  first. **One exception, stated so the claim is exact:** ACC-5 names the silent-fallback
+  **0.05** once, and names it only to record that ACC-5 does **not** reuse it. Naming a number
+  in order to disclaim it is not a second home for it — but the sentence above would be false
+  without this line, so the line is here.
 - **No per-category pass/fail threshold.** n ≤ 6 per category, and 2, 0, 0 in three of them;
   §2.0 and §2.2 give the reason.
 - **No criterion, and no interval, written in 54 or 20.** Those are design targets. The set is
@@ -459,8 +515,11 @@ written to prevent.
 
 | Date | Identifier | Was | Is | Reason | Labels coded at amendment |
 |---|---|---|---|---|---|
-| 2026-09-13 | §0, §1, §2 (whole), ACC-1 "Cannot decide", ACC-2 "Cannot decide", ACC-3 (whole), ACC-4 "Data", HALT-1 "Trigger", §5, §6 | the set stated as **54 items with 20 positives**; ACC-3's denominator "the 20 positives"; §2's 20/20 and 54/54 intervals presented as this set's power; "n = 6 by construction" per category; "evaluated on the full 54-item set only" | the set stated as **38 of 54 nominated rows with P unknown until coding**; ACC-3's denominator **P, printed as a count**; the 20/20 and 54/54 intervals **relabelled as a hypothetical set** and rows for 38/38, 36/38 and 2/2 added; per-category n stated as **6, 2, 6, 6, 6, 6, 6, 0, 0**; §2.3 added for the six excluded anchor matters | the chairman ruled that the schedule may not be drafted against a 54-item assumption: the validation record's list came in at **38 of 54**, categories 8 and 9 at 0 of 6 by decision and category 2 at 2 of 6 through development-set collision, and **20 positives is a target the set has not met, not a property it has**. No threshold changed; only the populations they are applied to | **none — `labels.json` and `items.json` still do not exist at any commit on any branch** |
+| 2026-09-13 | §0, §1, §2 (whole), ACC-1 "Cannot decide", ACC-2 "Cannot decide", ACC-3 (whole), ACC-4 "Data", HALT-1 "Trigger", §5, §6 | the set stated as **54 items with 20 positives**; ACC-3's denominator "the 20 positives"; §2's 20/20 and 54/54 intervals presented as this set's power; "n = 6 by construction" per category; "evaluated on the full 54-item set only" | the set stated as **38 of 54 nominated rows with P unknown until coding**; ACC-3's denominator **P, printed as a count**; the 20/20 and 54/54 intervals **relabelled as a hypothetical set** and rows for 38/38, 36/38 and 2/2 added; per-category n stated as **6, 2, 6, 6, 6, 6, 6, 0, 0**; §2.3 added for the six excluded anchor matters | the chairman ruled that the schedule may not be drafted against a 54-item assumption: the validation record's list came in at **38 of 54**, categories 8 and 9 at 0 of 6 by decision and category 2 at 2 of 6 through development-set collision, and **20 positives is a target the set has not met, not a property it has**. No threshold changed; only the populations they are applied to | **none.** `labels.json` does not exist at any commit on any branch; `items.json` does, at `5c24077` (six category-8 tier-S rows, no label field), consistent with §6 and not with this cell's first wording, which was corrected in the same sitting |
+| 2026-09-13 | §0 tag legend, §1, ACC-2 "Threshold", ACC-3 "Threshold", HALT-2 "Trigger", §5, §6 | ACC-2's 0.90 and ACC-3's 0.60 tagged plain `[CARRIED]`; HALT-2's "the **16** distinct published matters" cited to `SCHEMA.md:87-94`; S4 cited at `SCHEMA.md:107-109`; §5 claiming no restatement of the stability thresholds while ACC-5 names the 0.05; the amendment table's first "labels coded" cell asserting `items.json` did not exist | both floors re-tagged **`[CARRIED ACROSS A SCOPE BOUNDARY ITS SOURCE DISCLAIMS]`** with the boundary stated on each criterion's face — what the floor was measured on, what the replay measures instead, and what follows for reading a pass or a fail; **15** distinct published matters cited to `SCHEMA.md:88-94` with the 15-versus-16 matter/document distinction spelled out; S4 cited at `SCHEMA.md:107-110`; §5's claim made exact; the table cell corrected | integrity gate, three binding objections on `9393277`. The floors are applied to a production-path replay that `scripts/eval_holdout.py:13-19` expressly says the harness does not exercise, and the harness calls them "regression floors, not validation targets"; 16 is a document count and the rule is matter-level. **No threshold value changed — 0.90, 0.60, 0.333 and ACC-5's zero all stand as first committed** | **none** — `labels.json` still does not exist at any commit on any branch |
 
 **Provenance of this file's own numbers, in one line:** every threshold is tagged
-`[CARRIED]`, `[GROUNDED]` or `[CHOSEN]`; exactly one — ACC-5's zero — is `[CHOSEN]`, and it
-says so where it stands.
+`[CARRIED]`, `[CARRIED ACROSS A SCOPE BOUNDARY ITS SOURCE DISCLAIMS]`, `[GROUNDED]` or
+`[CHOSEN]`; exactly one — ACC-5's zero — is `[CHOSEN]`, and **two — ACC-2's 0.90 and ACC-3's
+0.60 — are carried across a boundary their own source disclaims**. Each says so where it
+stands, and none of the four values was altered by any amendment.

@@ -112,6 +112,26 @@ def test_a_sent_marker_only_commit_is_maintenance(monkeypatch):
     assert cc._is_maintenance("x") is True
 
 
+def test_a_vault_session_marker_only_commit_is_maintenance(monkeypatch):
+    """vault-log.yml commits these to main exactly as daily-update.yml does.
+    Until 2026-09-13 only the daily-research family was exempt, so a vault
+    marker read as substantive drift and staled every tracked note behind it
+    (thread D18) — and its [skip ci] token stopped both the mover and this
+    guard from running, so main ended the day stale and silent."""
+    _with_fake_show(monkeypatch, "analytics/vault-sessions/.sent/2026-09-13")
+    assert cc._is_maintenance("x") is True
+
+
+def test_both_marker_families_are_exempt_and_nothing_else_under_them(monkeypatch):
+    _with_fake_show(monkeypatch,
+                    "analytics/daily-research/.sent/2026-09-13\n"
+                    "analytics/vault-sessions/.sent/2026-09-13")
+    assert cc._is_maintenance("x") is True
+    # A real vault-session record is not a marker and must still count as drift.
+    _with_fake_show(monkeypatch, "analytics/vault-sessions/2026-09-13.md")
+    assert cc._is_maintenance("x") is False
+
+
 def test_markers_mixed_with_notes_is_still_maintenance(monkeypatch):
     _with_fake_show(monkeypatch,
                     "STATE_OF_THE_ANSWER.md\nanalytics/daily-research/.sent/2026-08-27")

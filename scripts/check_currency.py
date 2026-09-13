@@ -91,10 +91,21 @@ def _is_ancestor(sha: str) -> bool:
 
 
 # Paths a commit can touch without altering any substance a note audits: the
-# per-day "sent" markers `daily-update.yml` commits to main several times a day.
-# They fall under `analytics/`, a declared path for Workflow Threads, but record
-# only that an email went out.
-_MARKER_PREFIXES = ("analytics/daily-research/.sent/",)
+# per-day "sent" markers the mailers commit to main several times a day. They
+# fall under `analytics/`, a declared path for Workflow Threads, but record only
+# that an email went out.
+#
+# `vault-sessions/.sent/` was missing until 2026-09-13, and the omission was the
+# whole of a real defect (thread D18): `vault-log.yml` lands
+# `chore: vault-log sent marker [skip ci]` on main touching one such file, that
+# commit read as substantive drift, and every tracked note's anchor went stale
+# behind it — with the `[skip ci]` token keeping both the re-anchor mover and
+# this guard from running, so main ended the day stale and silent. The two
+# marker families are identical in kind; only one was listed.
+_MARKER_PREFIXES = (
+    "analytics/daily-research/.sent/",
+    "analytics/vault-sessions/.sent/",
+)
 
 
 def _is_maintenance(sha: str) -> bool:

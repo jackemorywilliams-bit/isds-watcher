@@ -25,8 +25,10 @@ This file is append-only; entries are dated.
 
 ## Locked-set retrieval queue — 0 rows; 54 is a design target, not a queue
 
-None retrieved as of 2026-08-08. The candidate matters named in the R2.1
-record are leads; each row added here must carry: category, caption as printed
+None retrieved as of 2026-08-08. The candidate matters named in the validation
+record (`analytics/locked_set/VALIDATION_RECORD.md`; supersedes the uncommitted
+"R2.1 record", 2026-09-13 — that record was never under version control on any
+branch) are leads; each row added here must carry: category, caption as printed
 on the retrieved document, document date, URL, pinpoint, and the date
 retrieved.
 

@@ -23,7 +23,7 @@ from . import classify as classify_mod
 from .classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                        keyword_score, outcome_of, prompt_version)
 from .email_send import send_digest
-from .enrich import enrich, notable_quote as enrich_notable
+from .enrich import NO_BODY_FETCH, enrich, notable_quote as enrich_notable
 from .sources import all_sources, base
 from .sources.base import CandidateItem, parse_date
 
@@ -48,7 +48,8 @@ TERMINAL_VALUES = frozenset(o.value for o in TERMINAL_OUTCOMES)
 PROVIDER_DOWN_MARKER = "!! PROVIDER DOWN"
 
 
-def deferred_candidates(deferred: dict, already: set[tuple[str, str]]) -> list:
+def deferred_candidates(deferred: dict, already: set[tuple[str, str]],
+                        listings: "dict[str, dict[str, str]] | None" = None) -> list:
     """Rebuild CandidateItems for queued items the current fetch did not return.
 
     A deferred item is not in the seen state, so if its source still lists it the
@@ -59,22 +60,86 @@ def deferred_candidates(deferred: dict, already: set[tuple[str, str]]) -> list:
     much as luck. What we can rebuild is what the queue keeps: identity, title,
     summary, published. The body is gone and enrichment may or may not get it
     back, which is exactly the honest position to retry from.
+
+    ``listings`` maps a source name to ``{source_id: title}`` for every item that
+    source LISTED this run, and it is present ONLY for sources whose listing we
+    actually read. It exists for one population, and the population is why
+    (2026-09-13):
+
+    THE ELEVEN. Eleven `iareporter_headlines` items sit in the queue with no
+    title and no summary, because the abandoned ledger keeps only identity and a
+    URL. Their source is in ``enrich.NO_BODY_FETCH`` — it is paywalled and we do
+    not fetch its article bodies, correctly and permanently — so enrichment can
+    never give such an item any text. The ONLY words that will ever exist for it
+    are the words the source itself put in its listing. Two rules follow, and
+    they are different facts about a source that must not be collapsed:
+
+      1. THE SOURCE STILL LISTS IT. Take the headline from the live listing. It
+         is the source's own text, read from the source's own page in this run,
+         and with it the item is readable and is classified like any other
+         headline. What is NOT done: no article body is fetched from the
+         paywalled source, and no title is mined out of the URL slug. A slug is
+         our reconstruction of what a headline might have said, and the council
+         has ruled that fabrication.
+
+         BE CLEAR ABOUT WHEN THIS FIRES, because the paragraph above this one
+         says the normal fetch usually gets there first: a queued item is unseen,
+         so a source that still lists it returns it with its headline and the
+         item never reaches this function at all — it is in ``already``. This
+         branch is the backstop for the case where the two disagree, and it is
+         here so that the rescue is a property of the rebuild rather than of the
+         caller's bookkeeping. Rule 2 and the third case below are what change
+         behaviour on the queue as it stands today.
+
+      2. WE READ THE LISTING AND IT IS GONE. The item has scrolled off, nothing
+         will ever give it text, and it is rebuilt with none — which is now a
+         terminal `ClassifyOutcome.UNREADABLE` rather than a silent zero.
+
+    AND THE THIRD CASE IS WHY ``listings`` CARRIES ABSENCE. If we could not read
+    the source's listing at all this run, we know NOTHING about whether it still
+    lists the URL, and "the source dropped it" and "we could not reach the
+    source" are not the same fact — the same distinction the source-health table
+    makes between a quiet feed and a refused one. Retiring the item on that
+    would turn one bad morning at iareporter into eleven items permanently
+    retired unread, which is the defect this whole change exists to end, arriving
+    through the door marked "fix". So a titleless NO_BODY_FETCH item whose source
+    we did not read is NOT rebuilt: it stays in the queue, uncharged, for a run
+    that can actually ask.
     """
+    listings = listings or {}
     out = []
     for source, source_id, entry in state.deferred_entries(deferred):
         if (source, source_id) in already:
             continue
+        title = entry.get("title", "") or ""
+        metadata = {"from_deferred": True,
+                    "deferred_attempts": int(entry.get("attempts", 0))}
+        if not title.strip() and source in NO_BODY_FETCH:
+            listed = listings.get(source)
+            if listed is None:
+                logger.info(
+                    "main: %s / %s has no title and its source was not read this "
+                    "run — left queued rather than retired unread",
+                    source, source_id)
+                continue
+            live_title = (listed.get(source_id) or "").strip()
+            if live_title:
+                title = live_title
+                # Says where the words came from. They are the source's own, read
+                # from its listing in this run — never derived from the URL.
+                metadata["title_from_live_listing"] = True
+                logger.info("main: recovered the headline for %s / %s from the "
+                            "live listing", source, source_id)
         published = parse_date(entry.get("published")) or datetime.now(timezone.utc)
         out.append(CandidateItem(
             source=source,
             source_id=source_id,
             url=entry.get("url", "") or "",
-            title=entry.get("title", "") or "",
+            title=title,
             published=published,
             summary=entry.get("summary", "") or "",
             raw_text="",
-            metadata={"from_deferred": True,
-                      "deferred_attempts": int(entry.get("attempts", 0))},
+            metadata=metadata,
         ))
     return out
 
@@ -285,6 +350,11 @@ def main(argv=None) -> int:
                     locked_set.reserved_count(reservations))
     reserved_excluded = []
     new_candidates = []
+    # source -> {source_id: title} for every item the source LISTED this run.
+    # Read by `deferred_candidates`; a source ABSENT from this map is one whose
+    # listing we could not read, which is a different fact from a listing that
+    # does not contain a URL. See that function.
+    listings: dict[str, dict[str, str]] = {}
     for src in all_sources(cfg):
         if only and src.name not in only:
             continue
@@ -326,6 +396,16 @@ def main(argv=None) -> int:
             status = "HEADLINE-ONLY"
         else:
             status = "RETURNED"
+        if items:
+            # What this source LISTED this run, whether or not each item was
+            # fresh — read by `deferred_candidates` to recover the headline of a
+            # queued NO_BODY_FETCH item that has none. Recorded only when the
+            # source returned something: for `iareporter_headlines` an empty
+            # return IS the homepage-unavailable path (`fetch_html` -> None ->
+            # []), so an empty listing is a source we could not read, not a
+            # source that lists nothing, and it must not be read as proof that a
+            # URL is gone.
+            listings[src.name] = {it.source_id: (it.title or "") for it in items}
         entry = {"name": src.name, "status": status, "count": len(items)}
         if refusals:
             # Keep the evidence: what refused us, and how.
@@ -389,7 +469,7 @@ def main(argv=None) -> int:
     #     FIRST, so a backlog is worked off ahead of the day's news rather than
     #     ranked against it and pushed below the enrichment cut forever.
     already = {(it.source, it.source_id) for it in new_candidates}
-    returning = [it for it in deferred_candidates(dq, already)
+    returning = [it for it in deferred_candidates(dq, already, listings)
                  if not only or it.source in only]
     # An item queued by an earlier run, before its batch was locked, is reserved
     # now. The queue is left alone: it is not a publication surface, it holds no

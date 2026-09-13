@@ -2366,3 +2366,202 @@ def test_the_run_counts_unreadable_items_separately_and_says_so(
     # "below_floor" would be a claim about a score, and a score is a claim about
     # text that was read.
     assert recs[cid]["surfacing"]["reason"] == "unreadable"
+
+
+# --- the eleven: a queued headline item with no title ------------------------
+#
+# `iareporter_headlines` is in `enrich.NO_BODY_FETCH` — paywalled, and we never
+# fetch its article bodies. So for a queued item of that source with no title,
+# the only text that will ever exist is the text the source itself listed. Three
+# facts about a listing, and they must not collapse into each other.
+def _queue_one_titleless(sid="http://ia/1", source="iareporter_headlines"):
+    return {source: {sid: {"first_deferred": "2026-09-07T00:00:00+00:00",
+                           "attempts": 0, "last_outcome": "provider_error",
+                           "url": sid, "title": "", "summary": "",
+                           "published": "2026-09-07T00:00:00+00:00"}}}
+
+
+def test_a_queued_headline_item_takes_its_title_from_the_live_listing():
+    """The source still lists the URL: the headline is recovered, from the
+    source's own listing, and the item is readable again."""
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+    from src.main import deferred_candidates
+
+    listings = {"iareporter_headlines": {
+        "http://ia/1": "Tribunal in Liberty v. Venezuela rules on trademark "
+                       "expropriation"}}
+    out = deferred_candidates(_queue_one_titleless(), set(), listings)
+
+    assert len(out) == 1
+    it = out[0]
+    assert it.title == ("Tribunal in Liberty v. Venezuela rules on trademark "
+                        "expropriation")
+    # The record says where the words came from: the source's own listing, read
+    # this run. Never the URL slug.
+    assert it.metadata["title_from_live_listing"] is True
+    assert it.metadata["from_deferred"] is True
+    # No body was taken from the paywalled source, and none was invented.
+    assert it.raw_text == "" and it.summary == ""
+    # And with a title it is READABLE: it classifies normally, not as unreadable.
+    assert outcome_of(classify_item(it, provider=None)) \
+        is not ClassifyOutcome.UNREADABLE
+
+
+def test_a_queued_headline_item_the_source_has_dropped_is_genuinely_unreadable():
+    """We read the listing and the URL is not in it. Nothing will ever give this
+    item text, so it is rebuilt with none and reaches the terminal outcome."""
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+    from src.main import deferred_candidates
+
+    # The listing was read — it has other items in it — and this URL is gone.
+    listings = {"iareporter_headlines": {"http://ia/999": "Some other headline"}}
+    out = deferred_candidates(_queue_one_titleless(), set(), listings)
+
+    assert len(out) == 1
+    assert out[0].title == ""
+    assert "title_from_live_listing" not in out[0].metadata
+    assert outcome_of(classify_item(out[0], provider=None)) \
+        is ClassifyOutcome.UNREADABLE
+
+
+def test_a_queued_headline_item_is_not_retired_when_the_listing_was_not_read():
+    """The third fact, and the one that would otherwise turn a fix into a loss.
+
+    "The source no longer lists it" and "we could not read the source" are
+    different facts — the same distinction the source-health table makes between
+    a quiet feed and a refused one. `iareporter_headlines` returns [] when its
+    homepage is unavailable, so an absent listing is an unanswered question, not
+    a missing URL. Retiring the item on it would turn one bad morning at
+    iareporter into eleven items permanently retired unread. The item is left in
+    the queue instead, with no attempt charged against it.
+    """
+    from src.main import deferred_candidates
+
+    dq = _queue_one_titleless()
+    assert deferred_candidates(dq, set(), {}) == []
+    assert deferred_candidates(dq, set(), None) == []
+    # Untouched: still queued, still at zero attempts, for a run that can ask.
+    assert state.deferral_attempts(dq, "iareporter_headlines", "http://ia/1") == 0
+
+    # A source that DID answer has its other queued items rebuilt as before, so
+    # one unreachable source never holds up the rest of the queue.
+    dq["gdelt"] = {"http://g/1": {"first_deferred": "2026-09-07T00:00:00+00:00",
+                                  "attempts": 1, "last_outcome": "parse_failed",
+                                  "url": "http://g/1", "title": "A headline",
+                                  "summary": "", "published": ""}}
+    out = deferred_candidates(dq, set(), {})
+    assert [it.source_id for it in out] == ["http://g/1"]
+
+
+def test_only_a_titleless_no_body_fetch_item_consults_the_listing():
+    """Narrow by construction. A queued item that HAS a title is rebuilt from the
+    queue exactly as before, and a titleless item from a source we DO body-fetch
+    still goes through enrichment, which can recover a title from the page."""
+    from src.main import deferred_candidates
+
+    # Has a title: the listing is never consulted, and an absent listing does
+    # not hold it back.
+    kept = {"iareporter_headlines": {"http://ia/2": {
+        "first_deferred": "", "attempts": 0, "last_outcome": "parse_failed",
+        "url": "http://ia/2", "title": "A headline the queue kept",
+        "summary": "", "published": ""}}}
+    out = deferred_candidates(kept, set(), {})
+    assert [it.title for it in out] == ["A headline the queue kept"]
+    assert "title_from_live_listing" not in out[0].metadata
+
+    # Titleless, but from a source whose bodies we DO fetch: rebuilt as before
+    # (enrichment is its route to text), never skipped.
+    other = _queue_one_titleless(sid="http://g/2", source="gdelt")
+    out = deferred_candidates(other, set(), {})
+    assert [it.source_id for it in out] == ["http://g/2"]
+    assert out[0].title == ""
+
+
+def test_the_run_recovers_a_queued_headline_from_the_live_source(
+        tmp_path, monkeypatch, capsys):
+    """End to end, with a fake source standing in for iareporter.
+
+    The item is queued with no title and the source no longer lists it: the run
+    retires it as unreadable. Re-queued against a source that DOES list it, the
+    run reads the headline from the listing and classifies it instead.
+    """
+    import copy
+    import shutil
+    import src.classify as classify_mod
+    import src.main as main_mod
+    from src import config as config_mod
+
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if not (tmp_path / "templates").exists():
+        shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+
+    listed = []
+
+    class FakeHeadlineSource:
+        name = "iareporter_headlines"
+        priority = "primary"
+
+        def fetch(self, since):
+            return [copy.deepcopy(it) for it in listed]
+
+    monkeypatch.setattr(main_mod, "all_sources", lambda cfg=None: [FakeHeadlineSource()])
+    monkeypatch.setattr(main_mod, "enrich", lambda it: it)
+    monkeypatch.setattr(config_mod, "RESEARCH_BRIEF_ENABLED", False)
+    monkeypatch.setattr(config_mod, "VALIDATION_STATUS_ONLY", False)
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    state.save_state({"sources": {"iareporter_headlines": {
+        "_seed": "2026-01-01T00:00:00+00:00"}}}, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+
+    # (a) The source answers, and lists something ELSE. The queued URL is gone.
+    listed = [CandidateItem("iareporter_headlines", "http://ia/other",
+                            "http://ia/other", "An unrelated headline",
+                            datetime.datetime.now(UTC), "", "An unrelated headline",
+                            {})]
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" in out and "iareporter_headlines / http://ia/1" in out
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iareporter_headlines", "http://ia/1") == "unreadable"
+
+    # (b) The same item, queued again, against a source that DOES list it. It
+    #     is classified rather than retired. The mechanism here is the normal
+    #     fetch — a queued item is unseen, so a source that still lists it hands
+    #     it back with its headline and it never reaches the rebuild — which is
+    #     the better of the two routes and the one this asserts end to end. The
+    #     rebuild-side recovery is the backstop, pinned by
+    #     test_a_queued_headline_item_takes_its_title_from_the_live_listing.
+    st["sources"]["iareporter_headlines"].pop("http://ia/1")
+    state.save_state(st, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+    listed = [CandidateItem(
+        "iareporter_headlines", "http://ia/1", "http://ia/1",
+        "Tribunal rules on trademark expropriation",
+        datetime.datetime.now(UTC), "", "Tribunal rules on trademark expropriation",
+        {})]
+    capsys.readouterr()
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" not in out, out
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iareporter_headlines", "http://ia/1") \
+        == "keyword_only_by_design"
+
+    # (c) The source cannot be read at all. The item must NOT be retired on a
+    #     question nobody asked.
+    st["sources"]["iareporter_headlines"].pop("http://ia/1")
+    state.save_state(st, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+    listed = []
+    capsys.readouterr()
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" not in out, out
+    st = state.load_state("state/seen.json")
+    assert not state.is_seen(st, "iareporter_headlines", "http://ia/1"), \
+        "an item was retired unread on a run that never read its source"
+    dq = state.load_deferred("state/deferred.json")
+    assert "http://ia/1" in dq["iareporter_headlines"]
+    assert dq["iareporter_headlines"]["http://ia/1"]["attempts"] == 0

@@ -57,6 +57,7 @@ on:
       - "src/config.py"
       - "src/triage.py"
       - "src/headline_lane.py"
+      - "src/locked_set.py"
       - "agents/**"
       - "HANDOFF.md"
       - "STATE_OF_THE_ANSWER.md"
@@ -72,6 +73,7 @@ on:
       - "tests/test_triage.py"
       - "tests/test_headline_lane.py"
       - "tests/test_check_lock.py"
+      - "tests/test_locked_set.py"
       - ".claude/agents/**"
       - "prompts/**"
       - "src/models.py"
@@ -110,6 +112,7 @@ on:
       - "src/config.py"
       - "src/triage.py"
       - "src/headline_lane.py"
+      - "src/locked_set.py"
       - "agents/**"
       - "HANDOFF.md"
       - "STATE_OF_THE_ANSWER.md"
@@ -158,6 +161,17 @@ jobs:
 
       - name: The lock guard's own tests (planted tamper)
         run: python -m pytest tests/test_check_lock.py -q
+
+      # The locked-set RESERVATION (council SUPPLEMENTARY RULING 2026-09-13 ¶5).
+      # Named separately from the suite because its failure has one specific and
+      # unrecoverable meaning: a locked validation-set item reached production
+      # screening. Once such an item carries the instrument's own verdict, the
+      # set's disjointness from production is broken retroactively and no later
+      # edit restores it — check_lock.py would still pass, because items.json is
+      # untouched. This is the guard for the damage that leaves no trace in the
+      # locked files themselves.
+      - name: No locked-set item can reach production screening
+        run: python -m pytest tests/test_locked_set.py -q
 
       # The ring contract and the two model paths that feed it. The enumeration
       # in test_rings.py is the closed statement that no state lets a MATCH out

@@ -236,3 +236,27 @@ def test_cli_exit_codes(repo, monkeypatch):
 
     (repo / "src" / "classify.py").unlink()
     assert check_claims.main(["check_claims"]) == 2
+
+
+def test_the_claims_workflow_installs_what_the_harness_imports():
+    """2026-09-13: claims-consistency stood RED on main because its job installed
+    only pytest and pyyaml, while check_claims reads the archive counts by
+    importing scripts/build_site.py — which imports jinja2 at module scope. The
+    harness raised ModuleNotFoundError, the reading came back Unreadable, and two
+    tests in this file failed. A guard that cannot run is not a guard, and the
+    failure looked like a claims disagreement rather than a missing dependency."""
+    import pathlib
+    import re
+    root = pathlib.Path(__file__).resolve().parent.parent
+    wf = (root / ".github" / "workflows" / "claims-consistency.yml").read_text(encoding="utf-8")
+    installs = " ".join(re.findall(r"pip install ([^\n]+)", wf))
+    # Every module scripts/build_site.py imports at module scope must be installed.
+    src = (root / "scripts" / "build_site.py").read_text(encoding="utf-8")
+    top = src.split("\ndef ", 1)[0]
+    third_party = {"jinja2"} & set(re.findall(r"^\s*(?:import|from)\s+([a-z0-9_]+)", top, re.M))
+    assert third_party, "expected build_site to import jinja2 at module scope"
+    for mod in sorted(third_party):
+        assert mod in installs, (
+            f"claims-consistency.yml must install {mod}: scripts/check_claims.py "
+            f"imports scripts/build_site.py as a harness, and without it the "
+            f"reading is Unreadable and this file's own tests fail")

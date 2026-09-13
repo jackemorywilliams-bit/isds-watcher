@@ -56,7 +56,16 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install pytest pyyaml
+      # jinja2 is required, not optional: scripts/check_claims.py reads the
+      # archive counts by importing scripts/build_site.py and running
+      # archive_status() as a harness, and build_site imports jinja2 at module
+      # scope. Without it the harness raises ModuleNotFoundError, check_claims
+      # reports the reading Unreadable, and two of its own tests fail — which is
+      # how this job stood red on main while the guard it runs was not running
+      # at all. Added 2026-09-13. Kept as an explicit list rather than
+      # requirements.txt so the job stays fast and its dependency on a renderer
+      # is visible.
+      - run: pip install pytest pyyaml jinja2
 
       # The checker must itself be checked — a broken checker reports clean.
       - name: The checker's own tests

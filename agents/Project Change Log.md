@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `794d1af`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `d90fcc3`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,123 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-13 (the chairman's rulings session, and the archivist executing item (a))
+
+*Recorded on branch `vault/taxonomy-concordance`, cut from `origin/main` at `66df2d2`. **The
+rulings record of 2026-09-13 is not itself a file under version control in this repository at the
+time of this entry**, said in those words rather than left to be inferred; its operative holding on
+the numbering is transcribed verbatim in [[integrity-officer]] under the taxonomy table, and this
+vault is its citable carrier until the chair lands the sitting record. The enabling merges are on
+`main` and are cited by hash below.*
+
+- **The session, and the authority it sat under.** Four rulings and two dispositions, made under
+  the operator's **express delegation of 2026-09-13** — the written authority that **S1**, the
+  special session's Escalation 1, had asked for since 2026-09-10. The chair's own test for what may
+  be escalated is adopted with it: **before an item is escalated, state what the operator knows
+  that the council does not; if the answer is "nothing", it is a ruling and the chair makes it.**
+  Applied, that test reserved exactly **one** item — the locked set's labels.
+- **Ruling 1 — the lost record is re-derived, not reconstructed, and not under its old name.** The
+  new record is **`analytics/locked_set/VALIDATION_RECORD.md`**, cited as *the validation record
+  (2026-09-13)*, being committed by another seat on branch `council/validation-record` and **not on
+  `main` at the time of this entry**. What the repository still carries is carried rather than
+  re-derived — the nine categories and 6-each / 20-positives structure (`SCHEMA.md:75-83`), the
+  P/S/C tier rules (`:45-54`), the `labels.json` field set and blind commit order (`:14-20`,
+  `:56-71`), the disjointness constraints (`:87-89`), the 20×10 stability design **and all four
+  blocking thresholds verbatim** (`:106-107`), S4 in substance (`:108-109`), and
+  `TRIAGE_COST_PER_CALL_USD = 0.0014` in `src/config.py`. **The 54 named matters and the V1–V6 /
+  S1–S3 criteria are declared LOST**; the acceptance bar is rebuilt under new prefixes
+  **`ACC-n` / `HALT-n`** that cannot be confused with the originals, because reconstructing six
+  criteria from a remembered number set would fabricate the bar itself. **Disposition (b): the name
+  is superseded, not reused** — 56 citations to a document that never existed must not be silently
+  satisfied by a different document wearing its name. Seats: [[research-analyst]] drafts,
+  [[integrity-officer]] certifies, [[council-chairman]] adopts; [[systems-researcher]] drafts the
+  schedule; [[systems-designer]] re-points the citations in `src/`, `tests/` and `scripts/` in one
+  PR, re-measured at the executing commit (**85 occurrences across 20 files** at `origin/main`
+  today, against the remembered 56-across-17 from `61152d5`). [[Workflow Threads]] **S10**, **S11**.
+- **Ruling 2 — the tier-P excerpt rule is anchored at ¶ 1 and is tool-free.** 600 characters from
+  the first character of paragraph 1 of the document's **own printed numbering**, selected by
+  position and never by content; **the `_extract_body` reference and the "after the caption block"
+  step are struck** — that function has no caption step and never had one, and on a PDF it returns
+  the file header silently (measured: 4,817,785 characters for *Philip Morris v Australia*,
+  1,224,008 for *Eli Lilly*, the two failing differently). **A document with no printed paragraph
+  numbering is recorded at tier S** and no substitute anchor is chosen. Seats:
+  [[research-analyst]] drafts the surgical diff, [[integrity-officer]] verifies,
+  [[council-chairman]] adopts. [[Workflow Threads]] **S12**.
+- **Ruling 3 — locked-set steps 1 and 2 are built now; the coding is the one carve-out.**
+  `items.json`'s schema contains no label fields, so the council had been sitting behind a gate that
+  does not apply to it. **Batch 1 = the six category-8 tier-S items**, and **the batch becomes the
+  unit of locking** (`check_lock.py` already takes `--dir`; the CI wiring iterates directories and a
+  test makes an unlocked batch directory fail closed). What reaches Emory is one file,
+  `CODING_PACKET_B1.md`, six rows, two empty fields each, alongside a **verbatim, unreordered,
+  unabridged** `BAND_CLAUSES.md` under [[integrity-officer]]'s binding certification. **Binding on
+  every seat: six items measure grammar fidelity and surfacing, not precision and not recall; no
+  seat may report batch 1 as validation, and the B+ 88 and C+ 77 grades do not move on six items.**
+  [[Workflow Threads]] **S13**.
+- **Ruling 4 — both cost switches on, bounded, and the tail audit built.** `TRIAGE_ENABLED` **on**
+  at a hard cap of **100 calls per run** with `triage_calls` and `triage_cost_usd` in `meta.json`
+  (~$0.14 worst case per run; the 16 archived runs are pre-triage and every comparison across that
+  boundary says so). `V2_SHADOW_CALLS` **on at `sample:3`** — ruled not on the calibration ground,
+  which still holds and was expressly not overruled, but because all **328** V2 telemetry records
+  are `lexical_only` and the ring contract's model call has **never fired once**; **no V2 shadow
+  figure may be published, cited or compared anywhere until the locked set produces a calibration.**
+  The **stratified tail audit is built** on top of row C (SD-2), `TAIL_AUDIT_N = 6`, paired
+  within-item enriched-vs-unenriched re-classification needing **no human label**, with
+  `scripts/check_telemetry_privacy.py` extended over `analytics/tail_audit.jsonl` in the same PR and
+  **`scripts/telemetry_query.py` as the only reporting surface.** Seat: [[systems-designer]].
+  [[Workflow Threads]] **S14**.
+- **Item (a) — the numbering, ruled and executed here.** **`main`'s table is canonical; first
+  adoption keeps the number; every later colliding adoption moves to the tail, never into a gap.**
+  **27 = *scope-mixed screen*** (2026-08-06, `aa48406`) — unchanged. ***Manufactured residual***
+  (2026-08-07, `7adfd68`) → **35**. ***Untested counterfactual*** (2026-09-10,
+  `analytics/daily-research/2026-09-10-special-session.md:552`) → **36**. **PR #170's filing at 30
+  and its reservations at 31 and 32 are VOID** — 30, 31, 32, 32a, 33 and 34 are occupied on `main`
+  and do not move. Executed by [[obsidian-archivist]] in **one change set touching every citation**,
+  carrying a **dated concordance** (number-as-adopted → number-as-filed) in [[integrity-officer]] so
+  that every pre-ruling "27", every "27 ⚠", the branch-era "30" and the "reserved at 31 and 32"
+  language all resolve. **Nothing already correctly numbered was renumbered. Cite-by-name is
+  permanently binding for these three.** Next free number: **37**.
+- **D17 closed, remedied, with its owner reassigned.** **PR #170 merged at `3099610`
+  (2026-09-13 17:52:52 -0400)**; `analytics/daily-research/2026-09-10-special-session.md`, the full
+  **1,267-line** operator-mandated sitting, is on `main` at **`188cabe`**, and the branch's vault
+  close-out at **`c894a4b`**. The ruling reassigned D17 from Emory to this seat — *"a sitting `main`
+  cannot see is a hole in the project's memory, and closing it is not the operator's errand."* The
+  structural cause it named is **not** closed with it: **D15** and **D18** carry it.
+- **C11 closed, thirty-seven days after it opened on 2026-08-07.** The thread asked which pattern
+  keeps 27 and which becomes 28. The first half is answered — the first adoption keeps it — and the
+  second half had expired before the answer arrived: 28 through 34 were issued to seven other
+  patterns while the thread stayed open, which is exactly why the rule is *move to the tail, never
+  into a gap*. **Closed, not narrowed.** One thing outlives it as a standing convention rather than
+  a thread: cite those three patterns by name, never by number, permanently.
+- **Supplementary ruling of the same day — the item pool, and what capture does to an item.** The
+  batch-1 seat refused to draw batch 1's six items from the **archived digests**; the chair
+  **sustained the refusal and generalised it into precedent**: **no item may be drawn from a pool
+  that carries the instrument's own verdict on that item.** Every archive entry has already been
+  screened, scored and surfaced-or-not by the instrument the set exists to measure, so drawing from
+  it does not risk contamination — it guarantees the measurement is taken on items already ruled
+  on. **Binding on batches 2 through 9**, not a one-off for batch 1. **The live draw is accepted,
+  under a capture-witness requirement**, each capture being its own record of what was in hand at
+  the moment the item entered the set. **And an item drawn from an active source is excluded from
+  production screening at the moment of capture** — via a **reservation list the pipeline
+  consults**, with the **exclusion logged per run**, so it is visible in the run's own record
+  rather than inferred from an absence. Without it, the production path would screen the very item
+  the set measures it against and the archive defect would return one cycle later by another route.
+  Seats: [[systems-designer]] for the reservation list and the per-run logging,
+  [[research-analyst]] for the witnessed draw, [[integrity-officer]] certifying. [[Workflow
+  Threads]] **S13**; a binding row added to [[Agent Registry]]'s adopted-method-rules table.
+- **Gap G-3 opened by the validation-record seat, and recorded here UNRULED.** Drafting under
+  Ruling 1 surfaced a real defect in the set's own schema: `analytics/locked_set/SCHEMA.md`
+  enumerates **seven host families** for tier P — ICSID, PCA, italaw, Curia, BAILII, UN RIAA,
+  WTO — and **US federal and state court opinions are in none of them**, while **category 5 is
+  defined by exactly such documents**. The two cannot both be satisfied, so **nine rows of the
+  re-derived candidate list carry `UNASSIGNED`** rather than a guessed tier. **This seat does not
+  rule on it**: the disposition is a choice between real alternatives with different costs, and a
+  tier guessed to clear the field would be taxonomy entry 34's shape — a premise frozen into a
+  committed artefact ahead of vetting. It neither blocks nor is blocked by Ruling 2 (which governs
+  *what the excerpt is*, not *whether these are tier P*) and does not touch batch 1, which is
+  category 8, tier S. **Owner: [[council-chairman]]**, on one ruling. [[Workflow Threads]] **S15**.
+- **No agent contract changed and no roster change.** Nothing under `.claude/agents/`, `prompts/`
+  or `src/models.py` is touched by this change set, which is confined to `agents/` and `moc/`.
 
 ## 2026-09-13 (archivist session — fifteenth deployment)
 
@@ -44,7 +161,11 @@ scheduled sitting of 2026-09-10 did not run, so this window covers six days rath
   already realised: numbers 30, 31 and 32 each now name two different patterns**, because that
   branch files *untested counterfactual* as 30 and reserves 31/32 while the daily council,
   reading `main`'s accurate "29" heading, adopted six others. Recorded in [[integrity-officer]]
-  as a side-by-side table; **not renumbered** — that is the chairman's ruling.
+  as a side-by-side table; **not renumbered** — that is the chairman's ruling. **[The ruling came
+  the same day. PR #170 merged at `3099610`; 27 stays *scope-mixed screen*, *manufactured residual*
+  is filed at 35, *untested counterfactual* at 36, and the branch's filing at 30 with its
+  reservations at 31 and 32 are void. See the rulings-session entry below and the concordance in
+  [[integrity-officer]]. Archivist, 2026-09-13.]**
 - **D16 largely remedied, and it is the one escalation that moved.** `8a9158a` (PR #152,
   2026-09-08) added `push: branches: [main]` to `.github/workflows/reanchor.yml`; `6fb76e6` and
   `731eb96` (PR #160, 2026-09-11) put the `currency` guard behind `needs: reanchor`. All **18**

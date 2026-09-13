@@ -111,10 +111,23 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**34 entries as of 2026-09-13; entry 32 carries an adopted extension 32a; entry 27 is a
-collision; and numbers 30, 31 and 32 are each CONTESTED between two sittings — see the notes
-under the table before numbering anything.** Each cites the record that adopted it.
+**36 entries as of 2026-09-13; entries 17 and 32 carry adopted extensions 17a and 32a; the
+collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's ruling of
+2026-09-13, item (a) — read the concordance directly under the table before citing 27, 35 or
+36.** The next free number is **37**. Each row cites the record that adopted it.
 
+> [!important] **SETTLED BY THE CHAIRMAN, 2026-09-13. Numbering is safe again at 37 and upward.**
+> `main`'s table is canonical; **first adoption keeps the number, and every later colliding
+> adoption moves to the tail, never into a gap.** *Scope-mixed screen* keeps **27**;
+> *manufactured residual* is filed at **35**; *untested counterfactual* is filed at **36**;
+> PR #170's filing at 30 and its reservations at 31 and 32 are **void**. **For those three
+> patterns, cite by name and never by number — permanently binding.** The concordance under the
+> table resolves every citation written before the ruling. The block immediately below is the
+> state this table carried until the ruling landed, kept because the narrative of how the
+> collision happened is the part with value.
+
+> **[SUPERSEDED 2026-09-13 by the chairman's ruling — see the block above and the concordance
+> below. Kept verbatim as the record of what this seat could see before it came.]**
 > **NUMBERING IS NOT SAFE AT 30, 31 OR 32 UNTIL THE CHAIRMAN RULES. Archivist, 2026-09-13.**
 > The rows below are the **daily council's** adoptions, which are the ones on `main`. A second,
 > conflicting set of numbers exists on the **open, unmerged PR #170**
@@ -166,8 +179,7 @@ under the table before numbering anything.** Each cites the record that adopted 
 | 24 | Amendment-stripping | 2026-08-04 | integrity-officer vetting note, 2026-08-04 implementation session (in-session; not a committed artifact) |
 | 25 | Mutable-reduction citation | 2026-08-05 | `analytics/daily-research/2026-08-05.md:616` (adopted at vetting), `:976` (chairman's close-out, house rule 1); `3ff5498` |
 | 26 | Tautological instrument check | 2026-08-06 | `analytics/daily-research/2026-08-06.md:607` (proposed), `:919` (adopted by the chairman); `aa48406` |
-| 27 | Scope-mixed screen | 2026-08-06 | `analytics/daily-research/2026-08-06.md:876`, `:940` ("Taxonomy 27, **SCOPE-MIXED SCREEN**, adopted"); `aa48406` |
-| 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
+| 27 | Scope-mixed screen — **keeps this number** under the chairman's ruling of 2026-09-13, item (a): first adoption keeps the number. Two later patterns were adopted at 27 and are now filed at **35** and **36**. **Cite by name, never by number — permanently binding.** | 2026-08-06 | `analytics/daily-research/2026-08-06.md:876`, `:940` ("Taxonomy 27, **SCOPE-MIXED SCREEN**, adopted"); `aa48406` |
 | 28 | **Unscreened first-ness claim** — a novelty assertion ("first", "never", "no seat has ever", "this council had never", "new to this corpus") is an **absence claim about the project's own record** and carries the same burden as any other absence claim: a whitespace-normalised, case-insensitive, emphasis-stripped screen at a named commit, run **before** the claim rather than after the challenge. Distinguished from entry 14 (silent class truncation), which shortens an enumerated class, and from entry 10 (superseded-formulation restatement), which restates an older version of a live proposition. **Mechanical carrier, adopted with it:** no memo may carry such a phrase without an adjacent line stating the literals tried, the synonyms tried, the file count, the scope and the commit | 2026-09-04 | `analytics/daily-research/2026-09-04.md:968` (proposed by this seat, `51a2bae`), `:1040` (mechanical carrier), `:1111`, `:1148` (adopted by the chairman, `687cfde`); landed on `main` at `e3d0255` |
 | 29 | **Off-read-path carrier** — an absence, uniqueness or "only carrier" claim screened over the scope a seat *habitually reads* (the prose record) and then stated over the scope where the fact actually lives. The blind spot is systematic, not incidental: the machine-readable and configuration trees (`specs/`, `state/`, `tests/fixtures/`, `.github/`) sit outside every seat's default screen roots **and** outside the sweeps that measure "uncarried knowledge", so a fact stored there is invisible in both directions at once and reads as absent twice over. **Distinguished from entry 27 (scope-mixed screen)**, where the *referent clause* is populated more widely than the screen annotating it: here the *claim* is stated more widely than the screen, and the omitted roots are the same two or three every time. **Countermeasure, mechanical and deliberately tool-free:** any screen supporting an unqualified claim about "the tree" or "the repository" enumerates candidate files with `git ls-tree -r <commit>` and **no path argument**, whatever instrument reads them; a narrower root set is named in the sentence and the claim narrowed to match. **The tool-free wording was adopted on challenge** — the officer's first draft keyed the countermeasure to `scripts/wsgrep_at.py`, the chairman objected that a countermeasure keyed to a non-existent file inherits the exact defect entry 28 was adopted on, and the officer rewrote it: `git ls-tree` is git, not a project script, so it cannot go missing. **Four instances, three seats, one day**, all 2026-09-05 and all verified: `0905-B1` (chairman, `specs/` and `tests/fixtures/`), `0905-B2` (chairman, `state/council_log.json:460`), `0905-B9` (analyst, `JS-rendered` → 6 hits in 6 files, not "0 anywhere"), `0905-B12` (analyst, the `Ecuador` and `Upreti` "full tree" clauses, `state/`) | 2026-09-05 | `analytics/daily-research/2026-09-05.md:1321` (adopted with the officer's own amendment), `:1421` (binding form, both `d969ca4`); `analytics/optimization-log.md:71` (`7fa1ef4`, on `main`) |
 | 30 | **Re-implementation drift** — a seat measures a code path's effect by **re-implementing** the function rather than executing it, the re-implementation differs from the original in one operation, and the resulting figure is published as what that function produces. The citation names executable code the figure cannot come from, so it is uncheckable against the thing it cites **while looking maximally checkable**. **Distinguished from entry 26** (tautological instrument check), where the instrument runs but cannot discriminate; here the instrument never runs. **Countermeasure: execute the function against a scratch copy and read its return; if re-implementation is unavoidable, publish the diff from the original and the figure under both.** **Instance, verified:** `0911-B1` — the chair's 82,274 is the un-`rstrip`ed slice; `_handwritten_sections` (`src/council_log.py:145`) returns 82,257 | 2026-09-11 | `analytics/daily-research/2026-09-11.md:702` (proposed by this seat, `3f25b7f`), `:962` (adopted by the chairman, `28c0db8`) |
@@ -176,7 +188,52 @@ under the table before numbering anything.** Each cites the record that adopted 
 | 32a | **Boolean-as-count screen record** — adopted as an **extension of 32, not a new number**, expressly because of this table's collision history. A `find_matched` **boolean** written into a `V` mark's `<term:count>` slot as a numeral, converting "at least one occurrence" into "exactly one", after which Amendment 2's referent clause reads as exhaustive. **Distinguished from 32 proper**, which governs the *clause's* reach; this governs the *numeral*. **Countermeasure: a screen record from a boolean instrument writes `matched` / `not matched`, never a count.** **Instance, verified and disproved by the project's own same-day artefact:** `"Award" 1` in Entry 1, against ≥3 occurrences visible in `2026-09-13-zz-docket-chronology.json` `records[4]` | 2026-09-13 | `analytics/daily-research/2026-09-13.md:812` (proposed by this seat, `e256de2`), `:1005` (adopted by the chairman as an extension, `203dbf6`) |
 | 33 | **Self-contradicting adjacent enumeration** — a count stated in a headline sentence that disagrees with the enumeration in the **adjacent** sentence, so the defect is detectable without leaving the paragraph and without opening any file. **Distinguished from entry 14** (silent class truncation), where the short enumeration is the *only* statement and the fuller class lives elsewhere in the record; here both the count and the fuller enumeration are on the page, disagreeing. **Countermeasure: any count of a set the same paragraph enumerates is read back against that enumeration before the paragraph closes** — the cheapest check in the set, requiring no file, no tool and no second reader. **Proposed as a sub-number (`17b/14a`) and adopted as its own entry** because it had three verified instances in one session and a mechanical countermeasure of its own — and because the gate committed it *in the very paragraph proposing it*. **Three instances, one session, two seats, all verified:** `0912-B2` (forecast tally), `0912-B6` (row-fragment count), `0912-B3` (median correction, "published twice" against eight live occurrences) | 2026-09-12 | `analytics/daily-research/2026-09-12.md:1112` (proposed by this seat as `17b/14a`, `3828137`), `:1377` (adopted by the chairman **as entry 33**, `639c16e`) |
 | 34 | **Premise-in-the-pre-registration** — a follow-up batch's note restates the prior batch's *inference* as established fact, so the inference is frozen into a **committed artefact ahead of vetting** and inherits the epistemic authority of a pre-registration. **Distinguished from entry 25** (mutable-reduction citation): the defect is not the citation's mutability but the **premise's firmness**. **Countermeasure: a follow-up note states its premise in the hedged form the prior batch's spans actually carry, or marks it "inferred, unvetted".** **Instance, verified:** `2026-09-13-zz-docket-chronology.json` states an objection "was filed pursuant to ICSID Arbitration Rule 41(1) **and fully briefed**" — an attribution that is inferred (`0913-B11`) and a completeness claim the batch's **own row 1** then falsified (`0913-B9`). The chairman recorded the instance as against himself | 2026-09-13 | `analytics/daily-research/2026-09-13.md:811` (proposed by this seat, `e256de2`), `:1005` (adopted by the chairman, `203dbf6`) |
+| 35 | **Manufactured residual** — reporting a bucket as UNACCOUNTED under an anti-rounding rule when the split in fact reconciles exactly, so a rule written to stop smoothing instead plants a phantom irreducible remainder that later seats inherit and cannot dissolve. **Countermeasure: an UNACCOUNTED declaration carries the per-file enumeration that failed to close; if the enumeration is not shown, the residual is not established.** **Adopted 2026-08-07 as 27**, one day after *scope-mixed screen* took that number and before it reached this table; **filed at 35 by the chairman's ruling of 2026-09-13**, under which first adoption keeps the number and every later colliding adoption moves to the tail. **Cite by name, never by number — permanently binding.** | 2026-08-07 (adopted) · 2026-09-13 (numbered) | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68`. Numbering: chairman's rulings of 2026-09-13, item (a), transcribed verbatim in the concordance below |
+| 36 | **Untested counterfactual** — asserting what an alternative code path would produce without executing it. **Countermeasure, in the officer's own words: _"a counterfactual over code is executed or it is not filed."_** **Instance, verified:** the analyst's claim that neutralising `EXTRA_WEIGHT_RING` drops holdout recall from 3/4 to 1/4; run rather than reasoned, Loewen scores 48 and Mondev 54, both still clearing 40 through the `sub >= STRONG_SUBTOTAL or second` branch at `src/classify.py:293-295`, and recall is unchanged at 3/4 — the counterfactual was struck from the record. **Adopted 2026-09-10 as 27** at the operator-mandated special session; filed at **30** on PR #170 while that branch sat unmerged; **filed at 36 by the chairman's ruling of 2026-09-13**, the PR #170 filing being void. **Cite by name, never by number — permanently binding.** | 2026-09-10 (adopted) · 2026-09-13 (numbered) | `analytics/daily-research/2026-09-10-special-session.md:552` (opened and numbered in session), `:1213`; landed on `main` at `188cabe` (PR #170, merged `3099610`). Numbering: chairman's rulings of 2026-09-13, item (a), transcribed verbatim in the concordance below |
 
+> [!important] **THE TAXONOMY CONCORDANCE — number-as-adopted → number-as-filed. Chairman's
+> ruling of 2026-09-13, item (a); executed by the archivist in one change set, 2026-09-13.**
+>
+> Every citation of these three patterns written before the ruling resolves through this table.
+> **Nothing already correctly numbered was renumbered and no row was displaced** to make room for
+> anything.
+>
+> | Pattern | Number as adopted | Date of that adoption | Number as filed | What it resolves |
+> | --- | --- | --- | --- | --- |
+> | **Scope-mixed screen** | 27 | 2026-08-06 (`aa48406`) | **27 — unchanged** | every "27" / "entry 27" / "taxonomy 27" in the record, unless the citation is marked `27 ⚠` or names *manufactured residual* |
+> | **Manufactured residual** | 27 (colliding) | 2026-08-07 (`7adfd68`) | **35** | every "27 ⚠", and every "27" that names *manufactured residual* |
+> | **Untested counterfactual** | 27 (colliding) | 2026-09-10 (`…special-session.md:552`) | **36** | the special session's "27", **and** the branch-era "30" filed on PR #170, which is void |
+> | *unqueried configuration assertion* — **proposed, not adopted** | — | proposed 2026-09-11 (PR #160, row D) | **none**; the PR #170 reservation at 31 is **VOID** | any branch-era "reserved at 31" |
+> | *same-date execution conflation* — **proposed, not adopted** | — | proposed 2026-09-11 (PR #163, row K) | **none**; the PR #170 reservation at 32 is **VOID** | any branch-era "reserved at 32" |
+>
+> **30, 31, 32, 32a, 33 and 34 are occupied on `main` by the daily sittings and do not move** —
+> re-implementation drift (30), assumed-remedy claim (31), single-window referent clause (32) with
+> its extension 32a, self-contradicting adjacent enumeration (33), premise-in-the-pre-registration
+> (34). **The next free number is 37.**
+>
+> **Cite-by-name is permanently binding for scope-mixed screen, manufactured residual and untested
+> counterfactual.** Three sittings issued the number 27 for three different patterns across
+> thirty-five days. A number that has meant three things is not made safe by a table; it is only
+> made *resolvable* by one — and the citations already written into the daily records cannot be
+> reached by any edit this vault is allowed to make, because those records are not rewritten.
+>
+> **The ruling's operative holding, transcribed verbatim**, because the rulings record of
+> 2026-09-13 is not itself a file under version control in this repository at the time of this
+> filing and this note is therefore its citable carrier:
+>
+> > **Principle:** `main`'s table is canonical, because it is the merged and citable record;
+> > **first adoption keeps the number; every later colliding adoption moves to the tail, never
+> > into a gap.**
+> >
+> > - **27 = Scope-mixed screen** (2026-08-06, `aa48406`) — **unchanged.**
+> > - **Manufactured residual** (2026-08-07, `7adfd68`, currently `27 ⚠`) → **35.**
+> > - **Untested counterfactual** (special session 2026-09-10, adopted-as-27, filed-as-30 on the
+> >   unmerged branch) → **36.**
+> > - **PR #170's filing at 30 and its reservations at 31 and 32 are VOID** — 30, 31, 32, 32a, 33
+> >   and 34 are occupied on `main` by the daily sittings and those entries do not move.
+
+> **[SETTLED 2026-09-13 — the ruling came the same day. See the disposition at the foot of this
+> block; the side-by-side table is kept unaltered because it is the record of the failure.]**
 > **THE COLLISION AT 30/31/32, STATED IN FULL BEFORE THE FILING NOTE. Archivist, 2026-09-13.**
 > Two sittings issued the same three numbers for different patterns, and neither could see the
 > other:
@@ -200,6 +257,19 @@ under the table before numbering anything.** Each cites the record that adopted 
 > ruling is the chairman's — alongside the C11 ruling open since 2026-08-07. Escalated in
 > [[Workflow Threads]] as **D17**, and to Emory in `analytics/vault-sessions/2026-09-13.md`, where
 > the operative request is simply: **land or close PR #170.**
+>
+> **DISPOSITION — 2026-09-13, the same day. PR #170 landed and the chairman ruled.** The merge is
+> `3099610` (2026-09-13 17:52 -0400); the special session's 1,267-line record reached `main` at
+> `188cabe` and the branch's vault close-out at `c894a4b`. **D17's owner was reassigned from Emory
+> to this seat by the ruling** — a sitting `main` cannot see is a hole in the project's memory and
+> closing it is not the operator's errand. The chairman then ruled item (a): `main`'s table is
+> canonical, first adoption keeps the number, every later colliding adoption moves to the tail.
+> **The right-hand column of the table above is void** — the branch's filing at 30 and its
+> reservations at 31 and 32 have no effect — and the three colliding patterns are filed at **27**
+> (unchanged), **35** and **36** per the concordance above. **Both sets are still recorded here
+> unaltered**, because the record of how one unlanded branch produced three two-way collisions in
+> three days is the part of this note a later seat needs. Archivist, 2026-09-13, executing the
+> ruling.
 
 > **Filed 2026-09-13 by the archivist. Five adoptions, four sessions, and this is the routing
 > failure the council escalated rather than the archivist being late.** Entries **30** and **31**
@@ -262,6 +332,17 @@ is not the archivist's to do** — it changes what two council rulings say — a
 in [[Workflow Threads]] C11 for the chairman and this seat to settle. Until they do, cite
 entry 27 by name, never by number.
 
+**RULED 2026-09-13, thirty-seven days after it opened, and C11 is CLOSED.** The chairman settled
+it in the rulings session of 2026-09-13, item (a): `main`'s table is canonical, **first adoption
+keeps the number, and every later colliding adoption moves to the tail, never into a gap.**
+*Scope-mixed screen* keeps **27**; *manufactured residual* is filed at **35**; the third pattern
+adopted under the same number, *untested counterfactual*, is filed at **36**. Renumbering was
+never this seat's to do and it still is not — it is done here on the chairman's ruling and on
+nothing else, in one change set touching every citation, carrying the concordance above. **The one
+thing that survives the ruling is the convention the collision grew:** cite *scope-mixed screen*,
+*manufactured residual* and *untested counterfactual* by name, never by number — **permanently
+binding**, not an interim measure.
+
 > **Still unsettled at 2026-09-04 — day twenty-eight, and this seat re-raised it unasked.** In
 > its own accountability section the officer recorded the collision as *"escalated at
 > `Workflow Threads` C11 since 2026-08-07 — 28 days open"* and stated that it *"cited entry 27 by
@@ -287,26 +368,36 @@ entry 27 by name, never by number.
 > archivist's to do** — it changes what a council ruling says. So the record now holds a
 > number-as-adopted (27) and a number-as-filed (30) for one entry, which is a defect of the
 > same family as the collision it sits under. **Wanted:** one chairman's ruling settling both,
+> alongside the C11 ruling that had been open since 2026-08-07. **It came on 2026-09-13 and it
+> settled both — see immediately below.** (The clause that used to end this paragraph was left
+> severed when the merge-time correction was spliced into it; it is repaired here rather than
+> left dangling.)
 >
-> **Correction, 2026-09-13, written at the merge of this branch.** The filing at **30** did not
-> survive. While PR #170 sat unmerged from 2026-09-11, the daily sittings of 09-11, 09-12 and
-> 09-13 adopted six other patterns at **30, 31, 32, 32a, 33 and 34**, and those are the rows in
-> the table above — they are on `main`, and this branch was rebased onto them. Applying the
-> standing disposition (**renumbering is not this seat's to do**) and the 09-13 note's own
-> instruction (**do not renumber either set; cite every entry from 30 upward by name**), the row
-> for *untested counterfactual* is **not written into the table here**. The entry stands
-> **adopted in session and unfiled**, cited by name only, until the chairman rules on C11/D17.
-> Nothing above was renumbered and no row was displaced to make room for it.
-> alongside the C11 ruling that has been open since 2026-08-07. Until it comes, the standing
-> convention applies to this entry too — **cite it by name, never by number**.
+> **RULED AND FILED — 2026-09-13, the chairman's rulings session, item (a). This replaces the
+> correction this seat wrote at the merge of PR #170; the narrative it carried is kept here
+> because how the collision happened is the part with value.** What happened, in order: the filing
+> at **30** did not survive the branch. While PR #170 sat unmerged from 2026-09-11, the daily
+> sittings of 09-11, 09-12 and 09-13 adopted six other patterns at **30, 31, 32, 32a, 33 and 34**,
+> and those are the rows in the table above — they are on `main`, and the branch was rebased onto
+> them. At the merge (`3099610`) this seat recorded *untested counterfactual* as **adopted in
+> session and unfiled**, because renumbering is not the archivist's to do and it would not write a
+> row the chairman had not authorised. **The chairman ruled the same day, and the entry is no
+> longer unfiled.** `main`'s table is canonical; first adoption keeps the number; every later
+> colliding adoption moves to the tail, never into a gap. **_Untested counterfactual_ is filed at
+> 36**, and **PR #170's filing at 30 is void**, as are its reservations at 31 and 32. Nothing on
+> `main` was renumbered and no row was displaced to make room for anything. The concordance under
+> the table resolves both the session's "27" and the branch's "30". **Cite it by name, never by
+> number — permanently binding.** Archivist, 2026-09-13, executing the ruling.
 >
-> **Two further patterns were proposed on 2026-09-11 and are NOT adopted.** They are reserved
-> at **31** and **32** above with their provenance stated on the row, so that the next entry
-> does not take a number a proposal is already using. They were reported to this seat at the
-> row L close-out, arising on PR #160 (row D) and PR #163 (row K); no committed council
-> artifact records an adoption for either, and this seat does not write an entry it cannot
-> source. **Owner: [[council-chairman]]** — adopt, amend, or decline, at which point the rows
-> are filled in or the numbers released. Archivist, 2026-09-11.
+> **Two further patterns were proposed on 2026-09-11 and are NOT adopted.** They were reserved at
+> **31** and **32** on PR #170 so that the next entry would not take a number a proposal was
+> already using; **the chairman's ruling of 2026-09-13 voids both reservations.** 31 and 32 are
+> occupied on `main` by *assumed-remedy claim* and *single-window referent clause*, and the two
+> proposals hold **no number at all**. They were reported to this seat at the row L close-out,
+> arising on PR #160 (row D) and PR #163 (row K); no committed council artifact records an
+> adoption for either, and this seat does not write an entry it cannot source. If either is
+> adopted it takes the next free number, which is **37**. **Owner: [[council-chairman]]** — adopt,
+> amend, or decline. Archivist, 2026-09-11; reservations voided by the ruling of 2026-09-13.
 
 **Entry 28 came to this table by a routing, and the routing is why it is here today.** The
 2026-09-04 optimization log closes its entry with: *"routed to the archivist for the vault table
@@ -339,12 +430,18 @@ memory of itself. Which is this vault's subject matter, and this seat's.
   it annotates, so the clause cannot be checked by re-running the command it cites.
   Countermeasure: state each scope separately. Its standing corollary, adopted as a house
   rule the same day: **a grep establishes absence from the repository, never from the
-  project** (`analytics/daily-research/2026-08-06.md:943`).
-- **27 ⚠ · Manufactured residual** — reporting a bucket as UNACCOUNTED under an anti-rounding
+  project** (`analytics/daily-research/2026-08-06.md:943`). **Keeps 27** under the ruling of
+  2026-09-13; **cite by name.**
+- **35 · Manufactured residual** — reporting a bucket as UNACCOUNTED under an anti-rounding
   rule when the split in fact reconciles exactly, so a rule written to stop smoothing instead
   plants a phantom irreducible remainder that later seats inherit and cannot dissolve.
   Countermeasure: an UNACCOUNTED declaration must be accompanied by the per-file enumeration
   that failed to close; if the enumeration is not shown, the residual is not established.
+  **Adopted 2026-08-07 as 27; filed at 35 by the ruling of 2026-09-13; cite by name.**
+- **36 · Untested counterfactual** — asserting what an alternative code path would produce
+  without executing it. Countermeasure, in the officer's own words: **a counterfactual over
+  code is executed or it is not filed. Adopted 2026-09-10 as 27, filed at 30 on the unmerged
+  PR #170, and filed at 36 by the ruling of 2026-09-13; cite by name.**
 
 **One further standing rule for this seat, adopted 2026-08-07 out of its own near-miss and
 recorded here because it is a screening discipline, not a fabrication pattern:** *a zero-hit
@@ -477,6 +574,36 @@ taxonomy, extending it whenever a new pattern appears." Five patterns named agai
 taxonomy of ten.
 
 ## Change log
+
+- **2026-09-13** — **The numbering ruled, and the collision closed in one change set,
+  thirty-seven days after it opened.** The chairman's rulings session of 2026-09-13, item (a),
+  settled C11 (open since 2026-08-07) and D17 (opened 2026-09-13) together: `main`'s table is canonical, **first adoption
+  keeps the number, every later colliding adoption moves to the tail, never into a gap.**
+  *Scope-mixed screen* keeps **27**; *manufactured residual*, adopted 2026-08-07 under the same
+  number (`7adfd68`), is filed at **35**; *untested counterfactual*, adopted 2026-09-10 under the
+  same number again (`analytics/daily-research/2026-09-10-special-session.md:552`) and filed at
+  **30** on the then-unmerged PR #170, is filed at **36**. **PR #170's filing at 30 and its
+  reservations at 31 and 32 are void**; 30, 31, 32, 32a, 33 and 34 are occupied on `main` and did
+  not move. A **dated concordance** was added under the table so that every pre-ruling citation —
+  every "27", every "27 ⚠", the branch-era "30", and the "reserved at 31 and 32" language —
+  resolves to the right pattern; the ruling's operative holding is transcribed verbatim there,
+  because the rulings record is not itself a file under version control in this repository and
+  this note is its citable carrier. **Cite-by-name is permanently binding for all three.** The
+  heading moved from "34 entries" to "36 entries" **in the same change set as the rows**, which is
+  this table's own maintenance rule. Nothing already correctly numbered was renumbered. Enabling
+  facts: PR #170 merged at `3099610`, the special session's 1,267-line record landing on `main` at
+  `188cabe` and its vault close-out at `c894a4b`. **Two certifications this seat now owes, both
+  from rulings of the same day and both recorded in [[Workflow Threads]]:** the band-clause sheet
+  `analytics/locked_set/BAND_CLAUSES.md` must be certified **unreordered, unabridged and carrying
+  no emphasis favouring any band** before the coding packet ships (**S13**), and the candidate
+  list's **disjointness certificate at the level of the MATTER, not the document** must be
+  certified before a single row is committed (**S10**). A supplementary ruling also binds the item
+  pool: **no item may be drawn from a pool carrying the instrument's own verdict on that item** —
+  the archived digests are exactly such a pool — with the live draw accepted under a
+  capture-witness requirement and every captured item excluded from production screening through a
+  reservation list, logged per run. Gap **G-3** is open and **unruled** (**S15**). *Recorded on
+  `vault/taxonomy-concordance`; the rulings record itself is not in this repository at the time of
+  filing.*
 
 - **2026-08-09** — **Round two: three passages, zero adopted, and the exemption is the
   interesting one.** Uncommitted, `fix/restore-council-label`; recorded at

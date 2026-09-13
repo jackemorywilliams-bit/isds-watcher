@@ -242,20 +242,40 @@ def test_the_table_accounts_for_every_measured_occurrence():
 
 
 @pytest.mark.xfail(strict=True, reason=(
-    "The validation record is committed by another seat on "
-    "council/validation-record and is not on this branch yet. STRICT on "
-    "purpose: the moment that branch lands, this test XPASSes, a strict xfail "
-    "turns an xpass into a FAILURE, and the build stops until the marker is "
-    "deleted. That is the point -- the whole defect this file exists to close "
-    "is a citation nobody checked, and an existence check that quietly passed "
-    "would be the same defect wearing a test's name."))
+    "WHAT TO DO ABOUT THIS RESULT, in one line: if you are reading this as an "
+    "XPASS(strict) FAILURE, analytics/locked_set/VALIDATION_RECORD.md has "
+    "landed -- delete this @pytest.mark.xfail decorator (the decorator only, "
+    "not the test) and the build goes green with the check now permanent. "
+    "WHY IT IS HERE: the record is written by another seat on branch "
+    "council/validation-record, so on the branch that re-pointed the citations "
+    "the file it cites is not yet present and this test cannot pass. STRICT on "
+    "purpose: the moment the record merges, this xfails no longer -- it "
+    "XPASSes, a strict xfail turns an xpass into a FAILURE, and the build "
+    "stops until the decorator is removed. That is the forcing function. A "
+    "non-strict xfail would go quiet in both states, and an existence check "
+    "that can never fail is the same defect this whole file exists to close, "
+    "wearing a test's name."))
 def test_the_record_every_citation_points_at_exists():
-    """The citation must resolve to a file, not to another absent memo."""
+    """The citation must resolve to a real file, not to another absent memo.
+
+    This is the assertion whose absence caused the defect. Every class-(a) and
+    class-(c) row in TABLE points at one path; nothing checked that the path
+    led anywhere, and for the record this one supersedes it never did.
+    """
     record = REPO / RECORD_PATH
     assert record.is_file(), (
-        f"{RECORD_PATH} is missing; every class-(a) and class-(c) citation in "
-        "TABLE currently points at nothing")
-    assert record.read_text(encoding="utf-8").strip(), f"{RECORD_PATH} is empty"
+        f"{RECORD_PATH} does not exist, so every class-(a) and class-(c) "
+        "citation listed in TABLE points at nothing -- exactly the defect this "
+        "file was written to close. Either commit the record at that path, or "
+        "re-point the citations at whatever superseded it and update TABLE.")
+
+    text = record.read_text(encoding="utf-8")
+    assert text.strip(), f"{RECORD_PATH} exists but is empty"
+    assert MARK.split('"')[1] in text, (
+        f"{RECORD_PATH} must name the record it supersedes in its provenance "
+        "header. The citations in TABLE say this document replaces a record "
+        "that was never committed; if the document itself does not say so, the "
+        "supersession is undocumented at the only place a reader lands.")
 
 
 def test_every_file_that_carries_the_note_is_in_the_table():

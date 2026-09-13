@@ -53,25 +53,50 @@ def _write_locked_set(root, urls, *, subdir="", raw=None):
 
 
 def _run(tmp_path, monkeypatch, *, feed_urls, classified_sink=None,
-         forbidden=RESERVED_URL):
+         forbidden=RESERVED_URL, recovered_urls=None, deferred_urls=None):
     """A full offline pipeline run over `feed_urls`, in a sandboxed cwd.
+
+    `recovered_urls` drives the Internet-Archive recovery route (intake point 2):
+    the source refuses and yields nothing, so it lands on NOT-READ, and the
+    recovery registry returns those URLs instead.
+
+    `deferred_urls` drives the deferred-queue rebuild route (intake point 3):
+    the queue is pre-seeded with those URLs and the feed does not list them, so
+    `deferred_candidates` rebuilds them from the queue.
 
     Returns the parsed meta.json for the run's digest folder.
     """
     import src.main as main_mod
     import src.state as state
     from src.classify import ClassifiedItem
+    from src.sources import base
     from src.sources.base import CandidateItem
 
     now = datetime.datetime.now(UTC)
+
+    def _item(u):
+        return CandidateItem("iareporter_headlines", u, u, "Arbitrator challenge",
+                             now, ON_THEME, ON_THEME, {})
 
     class FakeSource:
         name = "iareporter_headlines"
         priority = "primary"
 
         def fetch(self, since):
-            return [CandidateItem(self.name, u, u, "Arbitrator challenge", now,
-                                  ON_THEME, ON_THEME, {}) for u in feed_urls]
+            if recovered_urls is not None:
+                # A refusal with nothing read and nothing yielded is what puts
+                # the source on NOT-READ, which is what gates the recovery.
+                base._record_outcome("https://www.iareporter.com/", "refused", "403")
+                return []
+            return [_item(u) for u in feed_urls]
+
+    if recovered_urls is not None:
+        monkeypatch.setattr(main_mod.source_recovery, "is_recoverable",
+                            lambda name: name == "iareporter_headlines")
+        monkeypatch.setattr(
+            main_mod.source_recovery, "recover_with_report",
+            lambda name, since: ([_item(u) for u in recovered_urls],
+                                 main_mod.source_recovery.RecoveryReport()))
 
     def responder(item, provider=None, intended_model=False, **kw):
         """The classifier stand-in. It RAISES on a reserved item.
@@ -103,6 +128,13 @@ def _run(tmp_path, monkeypatch, *, feed_urls, classified_sink=None,
     # Pre-seed the seen-state so this is not a bootstrap run.
     state.save_state({"sources": {"iareporter_headlines": {"_seed": "t"}}},
                      "state/seen.json")
+    if deferred_urls:
+        state.save_deferred({"iareporter_headlines": {
+            u: {"first_deferred": now.isoformat(), "attempts": 1,
+                "last_outcome": "malformed_output", "url": u,
+                "title": "Arbitrator challenge", "published": now.isoformat(),
+                "summary": ON_THEME}
+            for u in deferred_urls}})
 
     rc = main_mod.main(["--since", "30d", "--no-email"])
     assert rc == 0
@@ -147,6 +179,52 @@ def test_an_unreserved_item_from_the_same_source_is_screened_exactly_as_before(
     assert health["iareporter_headlines"]["status"] == "HEADLINE-ONLY"
     # ...while per-source screening counts report what was actually screened.
     assert meta["per_source"]["iareporter_headlines"] == 1
+
+
+# The CI step is named "No locked-set item can reach production screening" and
+# `src/main.py` applies the split at THREE intake points. The two tests below
+# exist because the integrity officer deleted the other two guards and the full
+# suite stayed green: only the fetch loop was covered, so the step asserted three
+# paths while testing one. Each of these goes red when its own guard is removed.
+
+def test_a_reserved_url_recovered_from_the_archive_never_reaches_classification(
+        tmp_path, monkeypatch):
+    # INTAKE POINT 2 — src/main.py, the Internet-Archive recovery block. A source
+    # that refused us is re-read from the Archive, keyed to the real origin URL.
+    # That is the same URL the locked set reserves, so a reservation that only
+    # covered the live fetch would be bypassed by the instrument's own self-heal.
+    _write_locked_set(tmp_path, [RESERVED_URL])
+    seen = []
+    meta = _run(tmp_path, monkeypatch, feed_urls=[],
+                recovered_urls=[RESERVED_URL, OPEN_URL], classified_sink=seen)
+    assert seen == [OPEN_URL]
+    assert meta["reserved_excluded"] == 1
+    assert meta["screened"] == 1
+    # The recovery itself still reports honestly: it recovered two pages, and the
+    # reservation is not allowed to make the self-heal look like a failure.
+    health = {h["name"]: h for h in meta["source_health"]}
+    assert health["iareporter_headlines"]["status"] == "RECOVERED (Internet Archive)"
+    assert health["iareporter_headlines"]["count"] == 2
+
+
+def test_a_reserved_url_rebuilt_from_the_deferred_queue_never_reaches_classification(
+        tmp_path, monkeypatch):
+    # INTAKE POINT 3 — src/main.py, the deferred-queue rebuild. An item queued by
+    # an earlier run, before its batch was locked, is rebuilt from the queue when
+    # the feed has dropped it. A rebuilt item carries no body text, so it is read
+    # UNCONDITIONALLY, on top of the enrichment cut — it is the one candidate that
+    # cannot be kept away from the classifier by ranking.
+    _write_locked_set(tmp_path, [RESERVED_URL])
+    seen = []
+    meta = _run(tmp_path, monkeypatch, feed_urls=[],
+                deferred_urls=[RESERVED_URL, OPEN_URL], classified_sink=seen)
+    assert seen == [OPEN_URL]
+    assert meta["reserved_excluded"] == 1
+    assert meta["screened"] == 1
+    # The queue is left alone: it is not a publication surface, it holds no score,
+    # and clearing it would erase the record that we once had the item.
+    import src.state as state
+    assert RESERVED_URL in state.load_deferred()["iareporter_headlines"]
 
 
 # --------------------------------------------------------------------------- #
@@ -345,6 +423,41 @@ def test_an_items_file_of_the_wrong_shape_reserves_nothing_and_warns(tmp_path, c
     _write_locked_set(tmp_path, None, raw='{"schema": 1}')
     assert locked_set.load_reservations(str(tmp_path)) == {}
     assert any("not a list" in r.getMessage() for r in caplog.records)
+
+
+def test_a_reserved_url_that_carries_a_query_warns_by_item_id_and_parameter(
+        tmp_path, caplog):
+    # The subset rule's fatal direction, guarded by a warning rather than by
+    # changing the rule. A capture recorded WITH a tracking parameter does not
+    # reserve the clean URL a feed emits, and the person doing the batch-2+
+    # capture is the one who can fix it — so they are told, by item id and by
+    # parameter name, at the moment the file is read.
+    caplog.set_level("WARNING", logger="isds.locked_set")
+    _write_locked_set(tmp_path, None, raw=json.dumps([
+        {"id": "cat3-04", "source_url": RESERVED_URL.rstrip("/") + "?utm_source=rss"},
+        {"id": "cat3-05", "source_url": OPEN_URL},
+    ]))
+    reservations = locked_set.load_reservations(str(tmp_path))
+    hit = [r.getMessage() for r in caplog.records if "WITH a query" in r.getMessage()]
+    assert len(hit) == 1, [r.getMessage() for r in caplog.records]
+    assert "cat3-04" in hit[0]
+    assert "utm_source" in hit[0]
+    # The clean item is not warned about, and the RULE ITSELF IS UNCHANGED: the
+    # query-bearing capture still reserves only the decorated URL. The warning is
+    # the fix path, not a silent relaxation of identity.
+    assert "cat3-05" not in hit[0]
+    assert locked_set.is_reserved(RESERVED_URL.rstrip("/") + "?utm_source=rss",
+                                  reservations)
+    assert not locked_set.is_reserved(RESERVED_URL, reservations)
+
+
+def test_a_query_free_capture_is_not_warned_about(tmp_path, caplog):
+    # Batch 1 is entirely query-free and must produce no capture warning at all,
+    # or the signal is already noise by the time batch 2 lands.
+    caplog.set_level("WARNING", logger="isds.locked_set")
+    _write_locked_set(tmp_path, [RESERVED_URL, OPEN_URL])
+    locked_set.load_reservations(str(tmp_path))
+    assert not [r for r in caplog.records if "query" in r.getMessage()]
 
 
 def test_an_items_wrapper_object_is_accepted(tmp_path):

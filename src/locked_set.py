@@ -122,6 +122,41 @@ def _reserve(into: dict, url: str) -> bool:
     return True
 
 
+def _warn_if_query_bearing(path: str, entry: dict, url: str) -> None:
+    """Warn when a RESERVED url carries a query — the subset rule's one weak side.
+
+    `is_reserved` requires every parameter the reserved URL carries to be present
+    on the candidate. That direction is the safe one for a query-free reserved
+    URL: any decoration a feed adds is absorbed, and nothing escapes. Batch 1 is
+    entirely query-free, so it is fully protected.
+
+    The other direction is not symmetric and is the one that loses an item. If a
+    capture records `…/article?utm_source=rss` or `…/article?amp=1`, then the
+    reserved parameter set is non-empty and the CLEAN url the feed actually emits
+    does not carry it — so the item is NOT reserved and the next run screens it.
+    Relaxing the rule to fix that would over-reserve every neighbour of a
+    genuinely query-identified URL (`?p=1234` vs `?p=1235`), so the rule stays as
+    it is and the capture is corrected instead.
+
+    That is a realistic correction to ask for, not a wish: the supplementary
+    ruling already makes the batch-2+ capture positional and auditable, and a
+    human is reading it. This warning names the item id and the parameters so the
+    person doing that capture is told which URL to re-record without its query,
+    at the moment the file is read, rather than discovering the gap from a
+    published digest.
+    """
+    params = identity(url)[1]
+    if not params:
+        return
+    logger.warning(
+        "locked_set: %s item %r reserves a URL WITH a query (%s): %s — the "
+        "reservation then requires those parameters on the candidate too, so the "
+        "clean URL a feed emits will NOT be reserved. Re-record this item's "
+        "source_url without its query unless the query identifies the document.",
+        path, entry.get("id") or "<no id>",
+        ", ".join(sorted(k for k, _ in params)), url)
+
+
 def _items_files(root: str = "") -> list[str]:
     """Every locked-set items file, sorted, so two runs read the same thing."""
     pattern = os.path.join(root, ITEMS_GLOB) if root else ITEMS_GLOB
@@ -171,8 +206,13 @@ def load_reservations(root: str = "") -> Reservations:
             continue
         taken = 0
         for entry in data:
-            if isinstance(entry, dict) and _reserve(reservations, entry.get("source_url")):
-                taken += 1
+            if not isinstance(entry, dict):
+                continue
+            source_url = entry.get("source_url")
+            if not _reserve(reservations, source_url):
+                continue
+            taken += 1
+            _warn_if_query_bearing(path, entry, source_url)
         if taken != len(data):
             logger.warning("locked_set: %s — %d of %d items have no usable "
                            "source_url and are NOT reserved", path,

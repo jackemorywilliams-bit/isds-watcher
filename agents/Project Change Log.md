@@ -15,6 +15,61 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-09-13 (archivist session — fifteenth deployment)
+
+*Audited against `349ca12` (`main`, complete history after `git fetch --unshallow` — **1,226**
+commits; the container's clone arrived shallow at **133**, the **seventh** consecutive
+recurrence). True window `4bbe5cb..349ca12` = **178 commits**, the largest window this log has
+carried. Paths: `agents/`, `.claude/agents/`, `prompts/`, `src/models.py`, `src/sources/`,
+`README.md`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `docs/`, `scripts/site_templates/`,
+`views/isds-workflow-3d/workflow.json`, `scripts/`, `.github/workflows/`, `analytics/`. The
+scheduled sitting of 2026-09-10 did not run, so this window covers six days rather than three.*
+
+- **Six adopted fabrication-taxonomy entries filed, the first time any reached a note.**
+  **30 · re-implementation drift** and **31 · assumed-remedy claim** (proposed `3f25b7f`,
+  `analytics/daily-research/2026-09-11.md:702`, `:704`; adopted `28c0db8`, `:962`);
+  **32 · single-window referent clause** and **33 · self-contradicting adjacent enumeration**
+  (proposed `3828137`, `2026-09-12.md:1102`, `:1112`; adopted `639c16e`, `:1376`, `:1377`);
+  **34 · premise-in-the-pre-registration** and **32a · boolean-as-count screen record** (proposed
+  `e256de2`, `2026-09-13.md:811`, `:812`; adopted `203dbf6`, `:1005`). Filed in
+  [[integrity-officer]] with the heading moved in the same change set; eight rows added to
+  [[Agent Registry]]'s adopted-method-rules table, including the two general disciplines the
+  council bound on every seat (`28c0db8` / `2026-09-11.md:1006-1016`; `639c16e` /
+  `2026-09-12.md:1483`). [[Workflow Threads]] **D15** updated: five consecutive adoptions overdue.
+- **D17 opened — PR #170 has been open since 2026-09-11 and `main` cannot see the 2026-09-10
+  special session.** Tip `7f1d01c` on `council/archivist-close-out`: 1,736 insertions over 12
+  files, including `analytics/daily-research/2026-09-10-special-session.md` at **1,267 lines**.
+  Verified absent from `main`, and no file on `main` contains the string
+  `2026-09-10-special-session`. It is the only unmerged PR of the #162–#173 batch. **Consequence,
+  already realised: numbers 30, 31 and 32 each now name two different patterns**, because that
+  branch files *untested counterfactual* as 30 and reserves 31/32 while the daily council,
+  reading `main`'s accurate "29" heading, adopted six others. Recorded in [[integrity-officer]]
+  as a side-by-side table; **not renumbered** — that is the chairman's ruling.
+- **D16 largely remedied, and it is the one escalation that moved.** `8a9158a` (PR #152,
+  2026-09-08) added `push: branches: [main]` to `.github/workflows/reanchor.yml`; `6fb76e6` and
+  `731eb96` (PR #160, 2026-09-11) put the `currency` guard behind `needs: reanchor`. All **18**
+  `reanchor` runs on `main` conclude success; bot re-anchor commits on `main` are now **27 of 47**
+  against the **2 of 16** that opened the thread.
+- **D18 opened — the residual, measured.** A `[skip ci]` bot commit landing on `main` after the
+  day's last re-anchor skips both the mover and the guard. **8 of the last 10 UTC days ended with
+  `main` failing its own currency guard**, each from a bot commit of that kind (`4277c6f`,
+  `238f0f4`, `ec4ca67`, `72adf10`, `3150677`, `349ca12`). Includes one narrow, plainly-correct bug:
+  `check_currency._is_maintenance` exempts `analytics/daily-research/.sent/` but not the
+  structurally identical `analytics/vault-sessions/.sent/`. Owner: systems-designer.
+- **Two long-standing escalations closed on re-measurement.** The site's nine-versus-ten
+  self-contradiction is **fixed** — zero occurrences of "nine public sources" in `docs/` and
+  `scripts/site_templates/`, `check_site_sync.py` exits 0 (`b6edc44`, `74bd60c`, `e78ebda`,
+  `a7a6d14`); 22 days. **D7 is not** — `METHODOLOGY.md:33` still says "eight" queries against 12
+  and still omits GDELT against 10 sources, though `5e70b00` and `36d1c37` corrected six other
+  sentences in the same file in this window and `ca81357` fixed the matching README gap.
+- **No agent contract changed.** All nine `.claude/agents/` definitions declare `model: opus`;
+  `scripts/check_models.py` exits 0 over 12 cards; `node tools/isds-workflow-3d/validate.mjs`
+  exits 0 at 30 cards / 10 chips / 44 edges, zero "Jack" tokens. **D5** unchanged at day 31 —
+  eight of nine definitions never name their own vault note. **D6** unchanged at day 29 —
+  this seat's runtime reports `claude-opus-5` for `configured_model`, `session_context.model` and
+  `external_metadata.last_served_model`, against `.claude/agents/obsidian-archivist.md:3`/`:24`
+  reading "Claude Opus 4.8"; rows left unchanged, as they record the operator's directive.
+
 ## 2026-09-07 (archivist session — fourteenth deployment)
 
 *Audited against `4bbe5cb` (`main`, complete history after `git fetch --unshallow` — **1,048**

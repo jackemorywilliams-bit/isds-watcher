@@ -60,6 +60,16 @@ this seat by name, that had not reached any note. See D13.
 > C11 for the taxonomy collision on 2026-09-04. One label, three meanings, in two records four days
 > apart.
 >
+> **UPDATE 2026-09-13 — the third referent is now moot on its merits, which retires the confusion
+> without retiring the collision.** The defect that mis-citation named is **fixed**:
+> `docs/how-it-works.html` and `scripts/site_templates/how_it_works.html.j2` now carry **zero**
+> occurrences of "nine public sources", the page reads *"the 10 sources it reads — 8 open"* against
+> an SVG that says "THE 10 SOURCES", and `scripts/check_site_sync.py` exits **0**. Landed by
+> site-experience in this window — `b6edc44` (*"two different denominators were printed under one
+> heading"*), `74bd60c`, `e78ebda`, `a7a6d14`. **Closed after 22 days**, and it is the second of
+> two long-standing escalations that moved this window. The **two genuine** C11/C12 collisions are
+> untouched and still need Emory's word.
+>
 > **The irony is exact and worth stating rather than smoothing over.** The C11 taxonomy thread
 > exists because a stale count in a heading became the input to the next entry's number. This note
 > then reproduced the identical defect one level up: a stale ID space became the input to the next
@@ -279,6 +289,56 @@ still the only open PR in the repository before this session's own.
   `scripts/reanchor.py` before opening the PR rather than relying on the bot, which removes the
   race instead of winning it. Either one also closes **D11**, since a pre-merge anchor leaves the
   bot nothing to push.
+- **UPDATE 2026-09-13 — LARGELY REMEDIED, by a different and better fix than either option above,
+  and this is the one escalation on this page that moved.** Two changes landed in the window:
+  `8a9158a` (PR #152, 2026-09-08) added a `push: branches: [main]` trigger so **every push to
+  `main` re-anchors `main` itself**, and `6fb76e6` + `731eb96` (PR #160, 2026-09-11) moved the
+  `currency` guard into `reanchor.yml` behind `needs: reanchor`, so the guard can no longer read
+  the anchors while the mover is still computing them. **Measured, not assumed:** all **18**
+  `reanchor` runs on `main` conclude `success`; bot re-anchor commits reaching `main` have gone
+  from the **2 of 16** this thread was opened on to **27 of 47** across all history. The squash
+  race the thread names is no longer the live failure.
+- **RESIDUAL, and it is now the whole of the defect — see D18.** The push trigger cannot fire on a
+  commit whose message carries `[skip ci]`, and neither can the guard. Every automated writer that
+  lands on `main` after the day's last re-anchor carries that token, so `main` ends the day stale
+  **and silent**.
+
+### D18 — a `[skip ci]` bot commit on `main` skips both the mover and the guard, and `main` ends the day stale 8 days in 10 *(new 2026-09-13; owner: systems-designer, one narrow bug for Emory)*
+
+- **State** — measured over the last ten UTC days by taking `main`'s tip at end of day and
+  evaluating each tracked note's anchor against it: **8 of 10 days ended RED.** The two green days
+  (09-10, 09-11) are green only because the tip happened to be a re-anchor commit itself.
+- **One cause, five different writers.** In every red case the offending tip is a bot commit
+  carrying `[skip ci]`, landing after the day's last re-anchor, and staling
+  [[Workflow Threads]] (declared paths `analytics`, `state`, `agents`):
+
+  | Day | Tip | Writer | Path it wrote |
+  | --- | --- | --- | --- |
+  | 09-04 | `4277c6f` | vault-log sent marker | `analytics/vault-sessions/.sent/2026-09-04` |
+  | 09-07 | `238f0f4` | weekly digest | `analytics/candidate_telemetry.jsonl`, `analytics/source-receptivity.md` |
+  | 09-08 | `ec4ca67` | scholar intake | `analytics/scholar-intake/2026-09-08.json` |
+  | 09-09 | `72adf10` | fetch-relay | `analytics/fetch-results/2026-09-09-daily.json` |
+  | 09-12 | `3150677` | fetch-relay | `analytics/fetch-results/2026-09-12-zzz-icsid-header-second-pass.json` |
+  | 09-13 | `349ca12` | scholar intake | `analytics/scholar-intake/2026-09-13.json` |
+
+- **`main` is in this state right now.** `scripts/check_currency.py` exits **1** at `349ca12`, one
+  STALE, and the last `reanchor` run on `main` was **11:54:27Z** against `f6b693d` while the
+  scholar intake landed at **12:11Z**. Nothing reported it, because the guard was skipped by the
+  same token.
+- **A narrow, plainly-correct half that needs no judgement.** `check_currency._is_maintenance`
+  exempts `analytics/daily-research/.sent/` as a pure "an email went out" marker. The
+  **vault-sessions** sent marker — `analytics/vault-sessions/.sent/` — is structurally identical
+  and is **not** exempt, which is the whole of 09-04's red. One entry added to `_MARKER_PREFIXES`
+  fixes that case. **Owner: systems-designer** (`scripts/` is outside this seat's paths).
+- **The general half needs a ruling and this seat does not make it.** Scholar-intake, fetch-results
+  and the weekly digest are *substance*, not markers, so exempting them would be wrong. The two
+  real options are (a) drop `[skip ci]` from those writers so the push re-anchor fires — which also
+  makes every guard run on every such push, a cost the systems designer should price — or (b) give
+  `reanchor.yml` a scheduled run after the day's last automated writer. **Not proposed as adopted.**
+- **Why it matters beyond a red badge.** The 2026-09-07 session established that a red nobody reads
+  is a red nobody acts on, and that a seat once "fixed" it by hand-writing an anchor — the exact
+  failure `reanchor.py` exists to end. This residual keeps that red chronic while making it
+  invisible, which is the worse of the two states.
 
 ### D15 — a rule routed to `agents/` is invisible to the seat bound by it for up to three days *(new 2026-09-07; owner: Emory — routing or cadence)*
 
@@ -303,6 +363,53 @@ still the only open PR in the repository before this session's own.
   or accept the latency and have the council carry an explicit *"UNFILED — routed to archivist on
   <date>"* line in its close-out so the next session finds it by grep instead of by luck. The
   archivist can execute either; neither is the archivist's to decide.
+- **UPDATE 2026-09-13 — the latency reached five consecutive adoptions, and the council escalated
+  the routing rather than this seat.** Entries **30**/**31** (2026-09-11, `28c0db8`), **32**/**33**
+  (2026-09-12, `639c16e`) and **34**/**32a** (2026-09-13, `203dbf6`) were each adopted and routed
+  to `agents/`; all six are filed in [[integrity-officer]] in this change set, the first time any
+  of them reached a note. The 2026-09-10 archivist sitting did not run, which widened the window
+  from three days to six. **The cost is again recorded by a seat that is not the archivist:** on
+  2026-09-12 the officer opened the table, found it heading "29" while the council stood at 31, and
+  numbered from the council's adoptions rather than the heading, saying so first
+  (`analytics/daily-research/2026-09-12.md:1096`, `3828137`). The chairman ruled that he escalates
+  *"the routing, not the archivist"* (`:1374`, `639c16e`) and repeated it on 2026-09-13 at `:1162`
+  (`203dbf6`). **Emory's choice at "Next action" above is unchanged and is now five adoptions
+  overdue.**
+
+### D17 — an operator-mandated special session is not on `main`, and its absence has produced a three-way numbering collision *(new 2026-09-13; owner: Emory — land or close PR #170)*
+
+- **State** — **PR #170** (`council/archivist-close-out`, tip `7f1d01c`) has been **open since
+  2026-09-11T14:56Z** and carries 1,736 insertions across 12 files: the entire record of the
+  **operator-mandated special session of 2026-09-10**
+  (`analytics/daily-research/2026-09-10-special-session.md`, **1,267 lines**) plus its vault
+  close-out — [[Agent Registry]], [[Claim Map]], [[Project Change Log]], [[Workflow Threads]],
+  [[integrity-officer]], [[systems-designer]], `moc/Council.md`, `moc/Evidence Ledger.md`,
+  `moc/Workflow.md`, `HANDOFF.md`. **Verified against `main` today:** the special-session record
+  does not exist there, no file under `analytics/`, `agents/` or `HANDOFF.md` on `main` contains
+  the string `2026-09-10-special-session`, and `analytics/daily-research/` holds no special-session
+  record of any date. **From `main`'s point of view that sitting did not happen.**
+- **It is the only unmerged PR of its batch.** #162–#169 and #171–#173, all opened within minutes
+  of it on 2026-09-11, are closed. #170 alone stayed open.
+- **The consequence is already concrete, and it is a defect of the exact kind this project has
+  fought before.** The special session adopted *untested counterfactual*, numbered **27** in
+  session; the archivist filed it on that branch at the next free number, **30**, and reserved
+  **31** and **32** for two proposals it would not write unsourced. Because none of that reached
+  `main`, the daily sittings of 09-11, 09-12 and 09-13 read a heading of "29" — accurate for
+  `main` — and adopted **30, 31, 32, 32a, 33, 34** for six entirely different patterns. **Three
+  numbers now name two patterns each.** Every seat behaved correctly; only the branch failed.
+- **Why this belongs to this seat's charter and not merely to branch hygiene.** This is the
+  2026-08-03 failure repeating in a new place: correct, real vault memory sitting on an unmerged
+  branch while a downstream seat reasons from its absence. The 2026-08-07 collision was blamed on
+  a stale heading and fixed by moving the heading with the row; that fix held. **What failed here
+  is one level up — the change set itself never landed**, and no heading discipline can reach it.
+- **Not renumbered, deliberately.** Renumbering changes what a council ruling says, and the
+  standing disposition since 2026-08-07 is that it is not the archivist's to do. Both sets are
+  recorded side by side in [[integrity-officer]] under the table.
+- **Next action** — **Emory: land or close PR #170.** If it lands, the chairman then rules one
+  renumbering across both sets and this seat executes it in a single change set touching every
+  citation. If it is closed, the special session's record should still be landed on its own, because
+  a 1,267-line operator-mandated sitting that `main` cannot see is a hole in the project's memory
+  regardless of the taxonomy question. **Until either happens, cite entries 30 and up by name.**
 
 ### D13 — a rule the council adopted and routed to this seat by name had reached no note *(new 2026-09-04; owner: archivist — CLOSED in this change set)*
 
@@ -1751,6 +1858,17 @@ specifically unblocks it.
 - **Owner** — **Emory**. `METHODOLOGY.md` is his own document and prose; this seat does not edit
   it. Escalated with the two exact numbers and their code locations so the correction is a
   two-number edit, not a re-derivation.
+- **RE-MEASURED 2026-09-13 — both limbs still stand, and the fact that makes this sharper is that
+  the document was corrected twice in the window and this paragraph was not among the
+  corrections.** `METHODOLOGY.md:33` still reads *"Bing News search feeds, polled through **eight**
+  fixed, fingerprint-derived queries"* while `len(bing_news.QUERIES)` is **12**; the same sentence
+  still enumerates seven open repositories plus two added channels — **nine** — while
+  `len(all_sources())` is **10**, and `grep -ci gdelt METHODOLOGY.md` returns **0**. Meanwhile
+  `5e70b00` (*"five sentences that stopped being true, replaced in place"*) and `36d1c37` (*"the
+  sixth stale sentence at :41"*) both landed on this file in this window, and `ca81357` fixed the
+  matching gap in `README.md`, which now names GDELT at `:235`. **So the surrounding paragraphs
+  were audited and repaired; §III's source-architecture sentence was passed over twice.** Day
+  carried; unchanged in substance, and still a two-number edit.
 
 ---
 

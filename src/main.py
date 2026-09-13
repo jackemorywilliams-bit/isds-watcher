@@ -445,8 +445,11 @@ def main(argv=None) -> int:
                             triage.telemetry_section(triage_results.get(id(it))))
 
     if config.TRIAGE_ENABLED:
-        # The R2.1 total order. Total on purpose: every component is a property
-        # of the candidate, so the queue does not depend on fetch order.
+        # The total order of the validation record
+        # (analytics/locked_set/VALIDATION_RECORD.md; supersedes the
+        # uncommitted "R2.1 record", 2026-09-13). Total on purpose: every
+        # component is a property of the candidate, so the queue does not
+        # depend on fetch order.
         triage_strengths = {
             key: (r.strengths if r.ran else None)
             for key, r in triage_results.items()}
@@ -598,9 +601,10 @@ def main(argv=None) -> int:
         )
 
         # 3a. Disposition FIRST, then the shadow derivation. The order matters
-        #     and it changed here: "abandoned" is one of the seven R2.1
-        #     classification states, it is decided in this block, and a verdict
-        #     built before the decision would have to guess at it. An abandoned
+        #     and it changed here: "abandoned" is one of the seven
+        #     classification states of `rings.ClassifyState`, it is decided in
+        #     this block, and a verdict built before the decision would have
+        #     to guess at it. An abandoned
         #     item is the one case that is finished AND never read, and the lane
         #     rule has to see it as such or an item we gave up on can reach a
         #     conclusion about its own contents (rings.CLASSIFIED_STATES).
@@ -634,8 +638,9 @@ def main(argv=None) -> int:
                 run_tel.note_dedup(cid, seen_before=False, marked_seen=False,
                                    deferred=True, abandoned=False)
 
-        # 3b. STATE_MODEL_V2, in shadow. Derives the R2.1 lane from per-ring
-        #     findings, the ISDS nexus, and where the evidence actually lives —
+        # 3b. STATE_MODEL_V2, in shadow. Derives the validation record's lane
+        #     from per-ring findings, the ISDS nexus, and where the evidence
+        #     actually lives —
         #     and decides NOTHING. It is written to telemetry beside the score so
         #     the two derivations can be compared over a real corpus before
         #     anyone is asked to trust either. Wrapped because instrumentation

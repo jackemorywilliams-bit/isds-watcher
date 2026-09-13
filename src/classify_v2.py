@@ -89,7 +89,9 @@ NEXUS_WORDS = {n.value: n for n in Nexus}
 # A call was made and failed at the transport/provider level.
 V2_BASIS_PROVIDER_ERROR = "semantic_unavailable_provider_error"
 # A call was made, the provider answered, and the answer would not parse even
-# after the strict retry. R2.1 relies on malformed-vs-provider-failure being a
+# after the strict retry. The validation record
+# (analytics/locked_set/VALIDATION_RECORD.md; supersedes the uncommitted
+# "R2.1 record", 2026-09-13) relies on malformed-vs-provider-failure being a
 # binding distinction (see rings.ClassifyState), so it is not collapsed into the
 # line above: one of these is somebody else's infrastructure and the other is
 # our prompt, and a week of each looks identical if they share a label.

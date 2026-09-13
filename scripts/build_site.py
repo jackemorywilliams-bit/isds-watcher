@@ -48,6 +48,8 @@ TEMPLATE_DIR = REPO_ROOT / "scripts" / "site_templates"
 DOCS = REPO_ROOT / "docs"
 DIGESTS_SRC = REPO_ROOT / "digests"
 METHODOLOGY_MD = REPO_ROOT / "METHODOLOGY.md"
+VERIFICATION_LEDGER = REPO_ROOT / "analytics" / "verification_ledger.jsonl"
+HUMAN_REVIEW_MD = REPO_ROOT / "HUMAN_REVIEW.md"
 
 REPO_URL = "https://github.com/jackemorywilliams-bit/isds-watcher"
 
@@ -1081,6 +1083,124 @@ def archive_status(digests: list[Digest]) -> dict:
     }
 
 
+def review_status() -> dict:
+    """Every number the site states about human review, read from the record.
+
+    TWO POPULATIONS, deliberately counted apart, because conflating them is the
+    defect this function exists to fix. The page used to say "One operator review
+    cycle has been logged — 2026-07-18 — covering three claims": true about formal
+    CYCLES, and a large understatement of the record, since the ledger by then
+    carried an operator verification on twenty-one claims. Both halves are now
+    measured:
+
+      * ``cycles_completed`` / ``cycle_last`` — sit-down review passes, from the
+        ``### YYYY-MM-DD — ... — COMPLETED`` headings of ``HUMAN_REVIEW.md``.
+        A heading must carry a real date, so the template stub literally headed
+        ``### YYYY-MM-DD`` is not a cycle; ``cycles_draft`` counts the
+        council-prepared drafts that await operator ratification and are
+        therefore NOT completed cycles either.
+      * ``claims_tracked`` / ``claims_marked`` — the append-only
+        ``analytics/verification_ledger.jsonl``: how many distinct claims the
+        ledger tracks at all, and how many of them carry a verification event
+        moving them to an operator-verified status.
+
+    A mark is NOT a cycle. Most marks were recorded in session by the assistant
+    under the operator's standing instruction that a verification given in chat is
+    a mark; the notes say so. That makes those operator verifications OF THAT
+    CLAIM — and not twenty-one review cycles. The template must keep the two
+    words apart.
+
+    THREE FURTHER FIGURES, all of them hedges the integrity gate required on
+    2026-09-13 because the first version of the rewritten sentence, while it
+    restated the COUNT faithfully, glossed it in terms the record does not
+    support:
+
+      * ``marks_self_checked`` — of the marked claims, how many carry a note
+        saying the source was SELF-CHECKED: a primary document the assistant
+        fetched and read against itself, which the operator never saw. Three of
+        the twenty-one say "fetched from uncitral.un.org ... self-checked
+        verbatim". Their ``new_status`` is ``operator_verified`` all the same,
+        and the ledger is append-only, so the honest move is not to quietly
+        narrow the count but to publish this figure beside it. "Operator" is the
+        load-bearing word in the whole disclosure; a gloss that rounds three off
+        is the same failure as the sentence this function replaced.
+      * ``mark_days`` / ``mark_first`` / ``mark_last`` — the distinct dates the
+        marks were ENTERED on, and the range. All twenty-one were written inside
+        one sixty-second batch on a single date, so "the most recent on
+        2026-07-27" — true — invited a reader to picture marks accruing over
+        weeks. And one note records a verification the operator gave in chat on
+        2026-07-18 under a 2026-07-27 timestamp: these are RECORDING dates, not
+        verification dates, and the page may not let them read as the same thing.
+
+    Fails soft to zeros: an unreadable ledger or review log renders the page's
+    numberless sentence rather than a figure nothing backs.
+    """
+    tracked: set[str] = set()
+    marked: set[str] = set()
+    self_checked: set[str] = set()
+    mark_dates: set[str] = set()
+    try:
+        for line in VERIFICATION_LEDGER.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            ev = json.loads(line)
+            cid = ev.get("claim_id") or ""
+            if not cid:
+                continue
+            tracked.add(cid)
+            if (ev.get("event") == "verification_changed"
+                    and str(ev.get("new_status", "")).startswith("operator_")):
+                marked.add(cid)
+                mark_dates.add(str(ev.get("ts", ""))[:10])
+                # The ledger's own term for a source the assistant fetched and
+                # read against itself. Matched on the note, because the note is
+                # the only place the distinction survives: new_status reads
+                # operator_verified either way.
+                if "self-checked" in str(ev.get("note", "")).lower():
+                    self_checked.add(cid)
+    except Exception as exc:  # noqa: BLE001 - the site must build without the ledger
+        # Never silently: a swallowed error here renders a permanent zero that
+        # looks exactly like an honest zero. _digest_verification_counts learned
+        # this the hard way on its first wiring.
+        print(f"build_site: verification ledger unavailable ({exc!r}); "
+              "rendering the review disclosure without figures", file=sys.stderr)
+        tracked, marked, self_checked, mark_dates = set(), set(), set(), set()
+    mark_dates.discard("")
+
+    cycles_completed = cycles_draft = 0
+    cycle_last = ""
+    try:
+        for line in HUMAN_REVIEW_MD.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"^###\s+(\d{4}-\d{2}-\d{2})\b(.*)$", line)
+            if not m:
+                continue  # the undated ``### YYYY-MM-DD`` stub is not a cycle
+            date, rest = m.group(1), m.group(2).upper()
+            if "COMPLETED" in rest:
+                cycles_completed += 1
+                if date > cycle_last:
+                    cycle_last = date
+            elif "DRAFT" in rest:
+                cycles_draft += 1
+    except Exception as exc:  # noqa: BLE001 - as above
+        print(f"build_site: review log unavailable ({exc!r}); "
+              "rendering the review disclosure without figures", file=sys.stderr)
+        cycles_completed = cycles_draft = 0
+        cycle_last = ""
+
+    return {
+        "claims_tracked": len(tracked),
+        "claims_marked": len(marked),
+        "marks_self_checked": len(self_checked),
+        "mark_days": len(mark_dates),
+        "mark_first": min(mark_dates) if mark_dates else "",
+        "mark_last": max(mark_dates) if mark_dates else "",
+        "cycles_completed": cycles_completed,
+        "cycles_draft": cycles_draft,
+        "cycle_last": cycle_last,
+    }
+
+
 def make_env() -> Environment:
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATE_DIR)),
@@ -1136,6 +1256,14 @@ def build() -> int:
     env.globals["status"] = archive_status(digests)
     print("  archive status: " + ", ".join(
         f"{k}={v}" for k, v in env.globals["status"].items()))
+
+    # Same reasoning for the human-review figures: the how-it-works page states
+    # them today and any page may tomorrow, so they are a GLOBAL beside `status`
+    # rather than a keyword handed to one render. The sentence they feed used to
+    # be typed into the template, and it drifted the moment the ledger grew.
+    env.globals["review"] = review_status()
+    print("  review status: " + ", ".join(
+        f"{k}={v}" for k, v in env.globals["review"].items()))
 
     memo = parse_methodology(METHODOLOGY_MD)
 

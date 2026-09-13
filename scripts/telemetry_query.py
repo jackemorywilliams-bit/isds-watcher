@@ -34,7 +34,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 sys.path.insert(0, str(REPO))
 
-from src.classify import TERMINAL_OUTCOMES  # noqa: E402
+from src.classify import READ_TERMINAL_OUTCOMES  # noqa: E402
 from src.telemetry import TELEMETRY_PATH, load_records  # noqa: E402
 
 # What `--source-yield`'s "classified" column counts: the outcomes after which
@@ -43,7 +43,12 @@ from src.telemetry import TELEMETRY_PATH, load_records  # noqa: E402
 # pair ("ok", "keyword_only_by_design") that would have silently stopped counting
 # the tail the moment `keyword_after_provider_error` was added on 2026-09-10 — an
 # outage would have read as a drop in yield instead of as an outage.
-CLASSIFIED_OUTCOMES = frozenset(o.value for o in TERMINAL_OUTCOMES)
+# 2026-09-13: derived from READ_TERMINAL_OUTCOMES, not TERMINAL_OUTCOMES. The
+# two differ by `unreadable`, the terminal outcome in which NOTHING WAS READ.
+# Counting it here would put an item that was never looked at into the column
+# headed "classified" — the same conflation the outcome was added to end, one
+# surface further out.
+CLASSIFIED_OUTCOMES = frozenset(o.value for o in READ_TERMINAL_OUTCOMES)
 
 
 def _filtered(records: list[dict], run: str | None) -> list[dict]:

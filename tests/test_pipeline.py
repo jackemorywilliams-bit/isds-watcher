@@ -10,6 +10,7 @@ import pytest
 import yaml
 
 from src import config, state
+from src import telemetry as telemetry_mod
 from src.classify import keyword_score, parse_json_response, classify_item
 from src.main import parse_since
 from src.sources.base import CandidateItem, parse_date
@@ -912,13 +913,18 @@ def test_classification_failure_states_never_collapse(monkeypatch):
     from src.classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                               outcome_of)
 
-    # Five states, five values, and only three of them mean "done with it".
-    assert len({o.value for o in ClassifyOutcome}) == 5
+    # Six states, six values, and only four of them mean "done with it".
+    assert len({o.value for o in ClassifyOutcome}) == 6
     assert TERMINAL_OUTCOMES == {ClassifyOutcome.OK,
                                  ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN,
-                                 ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR}
+                                 ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR,
+                                 ClassifyOutcome.UNREADABLE}
     assert ClassifyOutcome.PARSE_FAILED not in TERMINAL_OUTCOMES
     assert ClassifyOutcome.PROVIDER_ERROR not in TERMINAL_OUTCOMES
+    # UNREADABLE is terminal and is NOT a classification. Every "how many did we
+    # classify" count reads the smaller set, which is derived, never listed.
+    from src.classify import READ_TERMINAL_OUTCOMES
+    assert READ_TERMINAL_OUTCOMES == TERMINAL_OUTCOMES - {ClassifyOutcome.UNREADABLE}
 
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
@@ -2136,3 +2142,426 @@ def test_enrich_takes_the_page_title_when_the_item_has_none(monkeypatch):
     it2 = CandidateItem("gdelt", "http://x/q", "http://x/q", "Given", None, "", "", {})
     enrich_mod.enrich(it2)
     assert it2.title == "Given" and "title_from_page" not in it2.metadata
+
+
+# =============================================================================
+# The unreadable item (2026-09-13)
+#
+# The defect, established by the integrity officer on 2026-09-11: an item that
+# reaches classification with NO text — no title, no summary, no body — was
+# scored against the lexicon on an empty haystack, scored 0, received a terminal
+# outcome of "ok", and was marked seen. It was retired having never been read,
+# and nothing in the record told that apart from an item that was read in full
+# and found irrelevant.
+# =============================================================================
+def test_an_item_with_no_text_is_never_sent_to_a_model(monkeypatch):
+    """It costs nothing. The responder raises AND records; neither fires."""
+    import src.classify as classify_mod
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+
+    calls = []
+
+    def never(prompt):
+        calls.append(prompt)
+        raise AssertionError("a model was called for an item with no text")
+
+    monkeypatch.setenv("MODEL_PROVIDER", "claude")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+    monkeypatch.setattr(classify_mod, "_call_anthropic", never)
+    monkeypatch.setattr(classify_mod, "_call_gemini", never)
+
+    empty = CandidateItem("iareporter_headlines", "http://x/none", "http://x/none",
+                          "", datetime.datetime.now(UTC), "", "", {})
+    ci = classify_item(empty, provider="claude", intended_model=True)
+
+    assert calls == [], "an item with no text reached the provider"
+    assert outcome_of(ci) is ClassifyOutcome.UNREADABLE
+    # The record claims nothing: no model, no path, no attempt.
+    assert ci.metadata["model"] == ""
+    assert ci.metadata["classify_path"] == "none"
+    assert ci.metadata["classify_attempts"] == 0
+    assert ci.metadata["retried_strict"] is False
+    # And no finding: a ring list here would be a claim about text that is absent.
+    assert ci.relevance_score == 0
+    assert ci.matched_rings == []
+    assert "keyword_fallback" not in ci.thematic_tags
+
+
+def test_whitespace_only_text_is_unreadable_and_any_one_field_is_enough(monkeypatch):
+    """The definition, at its two edges. Narrow on purpose."""
+    from src.classify import (ClassifyOutcome, classify_item,
+                              has_classifiable_text, outcome_of)
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+
+    def cand(title="", summary="", raw=""):
+        return CandidateItem("gdelt", "http://x/e", "http://x/e", title,
+                             datetime.datetime.now(UTC), summary, raw, {})
+
+    # All three empty, or all three nothing but whitespace: unreadable.
+    for blank in ("", "   ", "\n\t "):
+        it = cand(blank, blank, blank)
+        assert has_classifiable_text(it) is False
+        assert outcome_of(classify_item(it)) is ClassifyOutcome.UNREADABLE
+
+    # ANY one of the three carrying real text makes the item readable, and it is
+    # then classified by the normal path with the normal outcome.
+    for kwargs in ({"title": "A tribunal ruled"}, {"summary": "A tribunal ruled"},
+                   {"raw": "A tribunal ruled"}):
+        it = cand(**kwargs)
+        assert has_classifiable_text(it) is True
+        assert outcome_of(classify_item(it)) \
+            is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN
+
+    # The URL is NOT text. An item whose only artefact is its address has not
+    # been read, and mining a headline out of the slug would fabricate one.
+    slug = CandidateItem(
+        "iareporter_headlines",
+        "https://www.iareporter.com/articles/tribunal-rules-on-patent-expropriation",
+        "https://www.iareporter.com/articles/tribunal-rules-on-patent-expropriation",
+        "", datetime.datetime.now(UTC), "", "", {})
+    assert has_classifiable_text(slug) is False
+    assert outcome_of(classify_item(slug)) is ClassifyOutcome.UNREADABLE
+
+
+def test_a_headline_only_item_that_carries_its_headline_is_read_normally(monkeypatch):
+    """The line the constrained-lane design rests on.
+
+    `iareporter_headlines` is paywalled and is in `enrich.NO_BODY_FETCH`, so a
+    headline is ALL the text such an item will ever have — and a headline is
+    evidence. What makes the eleven queued iareporter items unreadable is that
+    the abandoned ledger kept no title for them, not that their source is
+    paywalled. If this test ever fails, the whole headline lane has been retired
+    by accident.
+    """
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+
+    headline = CandidateItem(
+        "iareporter_headlines", "http://ia/1", "http://ia/1",
+        "Tribunal in Liberty v. Venezuela rules on trademark expropriation",
+        datetime.datetime.now(UTC), "", "", {})
+    ci = classify_item(headline)
+    assert outcome_of(ci) is not ClassifyOutcome.UNREADABLE
+    assert outcome_of(ci) is ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN
+    assert "keyword_fallback" in ci.thematic_tags
+
+    # The SAME source, the SAME URL, with the title stripped: now unreadable.
+    stripped = CandidateItem("iareporter_headlines", "http://ia/1", "http://ia/1",
+                             "", datetime.datetime.now(UTC), "", "", {})
+    assert outcome_of(classify_item(stripped)) is ClassifyOutcome.UNREADABLE
+
+
+def test_an_unreadable_item_is_terminal_in_both_guards_at_once(tmp_path):
+    """Terminal means: marked seen, and every guard that reads a seen entry
+    accepts it. The pair is what a new outcome most often gets half of."""
+    import importlib
+    from src.classify import TERMINAL_OUTCOMES, ClassifyOutcome
+
+    assert ClassifyOutcome.UNREADABLE in TERMINAL_OUTCOMES
+    assert ClassifyOutcome.UNREADABLE.value in state.TERMINAL_SEEN_OUTCOMES
+
+    sys.path.insert(0, os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+    guard = importlib.import_module("check_seen_integrity")
+    st_path = tmp_path / "seen.json"
+    st_path.write_text(json.dumps({"sources": {"iareporter_headlines": {
+        "http://ia/1": {"at": "2026-09-13T00:00:00+00:00",
+                        "outcome": "unreadable", "run": "2026-09-13"}}}}))
+    checked, legacy, problems = guard.check(st_path, tmp_path / "ledger.jsonl")
+    assert (checked, legacy, problems) == (1, 0, []), problems
+
+    # And it is NOT "abandoned": an abandonment is three charged attempts plus a
+    # ledger line, and this item was never attempted, so the ledger rule that
+    # binds "abandoned" must not be borrowed to describe it.
+    assert ClassifyOutcome.UNREADABLE.value != "abandoned"
+
+
+def test_an_unreadable_item_can_never_be_surfaced():
+    """It never publishes — not over the threshold, and not through the fill.
+
+    Asserted through `select_surfaced` and through the fill rule with the
+    suspension explicitly LIFTED, because the fill is the path by which nearly
+    everything the professor has ever been sent arrived. A score of 0 is below
+    RELEVANCE_FLOOR, so neither gate can reach it whatever the run is short of.
+    """
+    from src.classify import ClassifyOutcome, classify_item
+    from src.main import select_surfaced, would_surface
+
+    empty = CandidateItem("gmail_scholar", "http://hein/1", "http://hein/1", "",
+                          datetime.datetime.now(UTC), "", "", {})
+    ci = classify_item(empty, provider=None)
+    assert ci.metadata["outcome"] == ClassifyOutcome.UNREADABLE.value
+    assert ci.relevance_score == 0
+
+    threshold = config.load_config().threshold
+    assert select_surfaced([ci], threshold=threshold,
+                           min_items=config.MIN_DIGEST_ITEMS,
+                           floor=config.RELEVANCE_FLOOR) == []
+    # The fill floor, unsuspended and starving for items: still not this one.
+    assert would_surface([ci], threshold=threshold, min_items=6,
+                         floor=config.RELEVANCE_FLOOR,
+                         fill_floor_suspended=False) == []
+
+
+def test_the_run_counts_unreadable_items_separately_and_says_so(
+        tmp_path, monkeypatch, capsys):
+    """The run says so, and the summary keeps four facts apart.
+
+    One readable item and one with no text at all. The readable one is
+    classified and counted; the textless one is marked seen, counted on its own
+    line, kept out of "classified", kept out of DEGRADED (nothing failed), and
+    kept out of the per-source health table (it is not a source failure).
+    """
+    import src.classify as classify_mod
+    prompts = []
+
+    def responder(prompt):
+        prompts.append(prompt)
+        if prompt == classify_mod.CANARY_PROMPT:
+            return "OK"
+        return GOOD_JSON
+
+    good = _cand("readable")
+    blank = CandidateItem("iisd_itn", "textless", "http://x/textless", "",
+                          datetime.datetime.now(UTC), "", "", {})
+    run = _sandbox(tmp_path, monkeypatch, [good, blank], responder)
+    assert run() == 0
+
+    out = capsys.readouterr().out
+    assert "classified:       1" in out, out
+    assert ("!! UNREADABLE (no title, no summary, no body — never read, "
+            "no model call, marked seen): 1") in out, out
+    assert "     - iisd_itn / textless" in out, out
+    # Not a failure: no DEGRADED line, nothing deferred, nothing abandoned.
+    assert "!! DEGRADED" not in out
+    assert "ABANDONED" not in out
+    # Not a source failure either: the feed returned both items and is RETURNED.
+    assert "iisd_itn" in out
+    assert "DISABLED" not in out and "FAILED" not in out
+
+    # Terminal: seen, with the new outcome, and out of the deferred queue.
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iisd_itn", "textless") == "unreadable"
+    assert state.seen_outcome(st, "iisd_itn", "readable") == "ok"
+    assert state.load_deferred("state/deferred.json") == {}
+
+    # It cost nothing: the canary plus exactly one item prompt, for the one item
+    # that had text. The textless one was never described to a model.
+    item_prompts = [p for p in prompts if p != classify_mod.CANARY_PROMPT]
+    assert len(item_prompts) == 1, item_prompts
+    assert "textless" not in " ".join(item_prompts)
+
+    # And the telemetry is honest about it.
+    recs = {r["candidate_id"]: r for r in telemetry_mod.load_records(
+        "analytics/candidate_telemetry.jsonl")}
+    cid = telemetry_mod.candidate_id("iisd_itn", "textless")
+    cls = recs[cid]["classification"]
+    assert cls["outcome"] == "unreadable"
+    assert cls["ran"] is False
+    assert cls["model"] == ""
+    assert cls["path"] == "none"
+    assert cls["attempts"] == 0
+    assert recs[cid]["dedup"]["marked_seen"] is True
+    assert recs[cid]["surfacing"]["surfaced"] is False
+    # "below_floor" would be a claim about a score, and a score is a claim about
+    # text that was read.
+    assert recs[cid]["surfacing"]["reason"] == "unreadable"
+
+
+# --- the eleven: a queued headline item with no title ------------------------
+#
+# `iareporter_headlines` is in `enrich.NO_BODY_FETCH` — paywalled, and we never
+# fetch its article bodies. So for a queued item of that source with no title,
+# the only text that will ever exist is the text the source itself listed. Three
+# facts about a listing, and they must not collapse into each other.
+def _queue_one_titleless(sid="http://ia/1", source="iareporter_headlines"):
+    return {source: {sid: {"first_deferred": "2026-09-07T00:00:00+00:00",
+                           "attempts": 0, "last_outcome": "provider_error",
+                           "url": sid, "title": "", "summary": "",
+                           "published": "2026-09-07T00:00:00+00:00"}}}
+
+
+def test_a_queued_headline_item_takes_its_title_from_the_live_listing():
+    """The source still lists the URL: the headline is recovered, from the
+    source's own listing, and the item is readable again."""
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+    from src.main import deferred_candidates
+
+    listings = {"iareporter_headlines": {
+        "http://ia/1": "Tribunal in Liberty v. Venezuela rules on trademark "
+                       "expropriation"}}
+    out = deferred_candidates(_queue_one_titleless(), set(), listings)
+
+    assert len(out) == 1
+    it = out[0]
+    assert it.title == ("Tribunal in Liberty v. Venezuela rules on trademark "
+                        "expropriation")
+    # The record says where the words came from: the source's own listing, read
+    # this run. Never the URL slug.
+    assert it.metadata["title_from_live_listing"] is True
+    assert it.metadata["from_deferred"] is True
+    # No body was taken from the paywalled source, and none was invented.
+    assert it.raw_text == "" and it.summary == ""
+    # And with a title it is READABLE: it classifies normally, not as unreadable.
+    assert outcome_of(classify_item(it, provider=None)) \
+        is not ClassifyOutcome.UNREADABLE
+
+
+def test_a_queued_headline_item_the_source_has_dropped_is_genuinely_unreadable():
+    """We read the listing and the URL is not in it. Nothing will ever give this
+    item text, so it is rebuilt with none and reaches the terminal outcome."""
+    from src.classify import ClassifyOutcome, classify_item, outcome_of
+    from src.main import deferred_candidates
+
+    # The listing was read — it has other items in it — and this URL is gone.
+    listings = {"iareporter_headlines": {"http://ia/999": "Some other headline"}}
+    out = deferred_candidates(_queue_one_titleless(), set(), listings)
+
+    assert len(out) == 1
+    assert out[0].title == ""
+    assert "title_from_live_listing" not in out[0].metadata
+    assert outcome_of(classify_item(out[0], provider=None)) \
+        is ClassifyOutcome.UNREADABLE
+
+
+def test_a_queued_headline_item_is_not_retired_when_the_listing_was_not_read():
+    """The third fact, and the one that would otherwise turn a fix into a loss.
+
+    "The source no longer lists it" and "we could not read the source" are
+    different facts — the same distinction the source-health table makes between
+    a quiet feed and a refused one. `iareporter_headlines` returns [] when its
+    homepage is unavailable, so an absent listing is an unanswered question, not
+    a missing URL. Retiring the item on it would turn one bad morning at
+    iareporter into eleven items permanently retired unread. The item is left in
+    the queue instead, with no attempt charged against it.
+    """
+    from src.main import deferred_candidates
+
+    dq = _queue_one_titleless()
+    assert deferred_candidates(dq, set(), {}) == []
+    assert deferred_candidates(dq, set(), None) == []
+    # Untouched: still queued, still at zero attempts, for a run that can ask.
+    assert state.deferral_attempts(dq, "iareporter_headlines", "http://ia/1") == 0
+
+    # A source that DID answer has its other queued items rebuilt as before, so
+    # one unreachable source never holds up the rest of the queue.
+    dq["gdelt"] = {"http://g/1": {"first_deferred": "2026-09-07T00:00:00+00:00",
+                                  "attempts": 1, "last_outcome": "parse_failed",
+                                  "url": "http://g/1", "title": "A headline",
+                                  "summary": "", "published": ""}}
+    out = deferred_candidates(dq, set(), {})
+    assert [it.source_id for it in out] == ["http://g/1"]
+
+
+def test_only_a_titleless_no_body_fetch_item_consults_the_listing():
+    """Narrow by construction. A queued item that HAS a title is rebuilt from the
+    queue exactly as before, and a titleless item from a source we DO body-fetch
+    still goes through enrichment, which can recover a title from the page."""
+    from src.main import deferred_candidates
+
+    # Has a title: the listing is never consulted, and an absent listing does
+    # not hold it back.
+    kept = {"iareporter_headlines": {"http://ia/2": {
+        "first_deferred": "", "attempts": 0, "last_outcome": "parse_failed",
+        "url": "http://ia/2", "title": "A headline the queue kept",
+        "summary": "", "published": ""}}}
+    out = deferred_candidates(kept, set(), {})
+    assert [it.title for it in out] == ["A headline the queue kept"]
+    assert "title_from_live_listing" not in out[0].metadata
+
+    # Titleless, but from a source whose bodies we DO fetch: rebuilt as before
+    # (enrichment is its route to text), never skipped.
+    other = _queue_one_titleless(sid="http://g/2", source="gdelt")
+    out = deferred_candidates(other, set(), {})
+    assert [it.source_id for it in out] == ["http://g/2"]
+    assert out[0].title == ""
+
+
+def test_the_run_recovers_a_queued_headline_from_the_live_source(
+        tmp_path, monkeypatch, capsys):
+    """End to end, with a fake source standing in for iareporter.
+
+    The item is queued with no title and the source no longer lists it: the run
+    retires it as unreadable. Re-queued against a source that DOES list it, the
+    run reads the headline from the listing and classifies it instead.
+    """
+    import copy
+    import shutil
+    import src.classify as classify_mod
+    import src.main as main_mod
+    from src import config as config_mod
+
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if not (tmp_path / "templates").exists():
+        shutil.copytree(os.path.join(repo, "templates"), tmp_path / "templates")
+    monkeypatch.chdir(tmp_path)
+
+    listed = []
+
+    class FakeHeadlineSource:
+        name = "iareporter_headlines"
+        priority = "primary"
+
+        def fetch(self, since):
+            return [copy.deepcopy(it) for it in listed]
+
+    monkeypatch.setattr(main_mod, "all_sources", lambda cfg=None: [FakeHeadlineSource()])
+    monkeypatch.setattr(main_mod, "enrich", lambda it: it)
+    monkeypatch.setattr(config_mod, "RESEARCH_BRIEF_ENABLED", False)
+    monkeypatch.setattr(config_mod, "VALIDATION_STATUS_ONLY", False)
+    monkeypatch.delenv("MODEL_PROVIDER", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    state.save_state({"sources": {"iareporter_headlines": {
+        "_seed": "2026-01-01T00:00:00+00:00"}}}, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+
+    # (a) The source answers, and lists something ELSE. The queued URL is gone.
+    listed = [CandidateItem("iareporter_headlines", "http://ia/other",
+                            "http://ia/other", "An unrelated headline",
+                            datetime.datetime.now(UTC), "", "An unrelated headline",
+                            {})]
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" in out and "iareporter_headlines / http://ia/1" in out
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iareporter_headlines", "http://ia/1") == "unreadable"
+
+    # (b) The same item, queued again, against a source that DOES list it. It
+    #     is classified rather than retired. The mechanism here is the normal
+    #     fetch — a queued item is unseen, so a source that still lists it hands
+    #     it back with its headline and it never reaches the rebuild — which is
+    #     the better of the two routes and the one this asserts end to end. The
+    #     rebuild-side recovery is the backstop, pinned by
+    #     test_a_queued_headline_item_takes_its_title_from_the_live_listing.
+    st["sources"]["iareporter_headlines"].pop("http://ia/1")
+    state.save_state(st, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+    listed = [CandidateItem(
+        "iareporter_headlines", "http://ia/1", "http://ia/1",
+        "Tribunal rules on trademark expropriation",
+        datetime.datetime.now(UTC), "", "Tribunal rules on trademark expropriation",
+        {})]
+    capsys.readouterr()
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" not in out, out
+    st = state.load_state("state/seen.json")
+    assert state.seen_outcome(st, "iareporter_headlines", "http://ia/1") \
+        == "keyword_only_by_design"
+
+    # (c) The source cannot be read at all. The item must NOT be retired on a
+    #     question nobody asked.
+    st["sources"]["iareporter_headlines"].pop("http://ia/1")
+    state.save_state(st, "state/seen.json")
+    state.save_deferred(_queue_one_titleless(), "state/deferred.json")
+    listed = []
+    capsys.readouterr()
+    assert main_mod.main(["--since", "30d", "--no-email"]) == 0
+    out = capsys.readouterr().out
+    assert "UNREADABLE" not in out, out
+    st = state.load_state("state/seen.json")
+    assert not state.is_seen(st, "iareporter_headlines", "http://ia/1"), \
+        "an item was retired unread on a run that never read its source"
+    dq = state.load_deferred("state/deferred.json")
+    assert "http://ia/1" in dq["iareporter_headlines"]
+    assert dq["iareporter_headlines"]["http://ia/1"]["attempts"] == 0

@@ -136,6 +136,12 @@ class ClassifyState(str, Enum):
       RETRY_ABANDONED   we stopped trying. Terminal for the run, and yet nothing
                         was ever read — the one state that is finished AND
                         unknowable, which is why it is not in CLASSIFIED_STATES.
+                        TWO operational events reach it: three failed attempts
+                        (`abandoned=True`), and, since 2026-09-13, an item with
+                        no text at all to attempt (`ClassifyOutcome.UNREADABLE`).
+                        They agree on both halves of the definition, so they
+                        share the state; `classification_outcome` keeps them
+                        apart in the record.
       GUARD_DEMOTED     the classification parsed, and this module's evidence
                         rules cut at least one ring below what was claimed for
                         it. R2.1 lists it among the seven because a demotion is
@@ -245,8 +251,35 @@ def classification_state(*, outcome: str, attempts: int = 0,
          because it is the rarer and more consequential fact, and `retried_strict`
          is written to telemetry beside the state, so the retry is still
          countable. This is the projection referred to in the class docstring.
+
+      5. UNREADABLE IS RETRY_ABANDONED, AND NO EIGHTH STATE IS ADDED. Since
+         2026-09-13 an item that reaches the classifier with no title, no summary
+         and no body records `ClassifyOutcome.UNREADABLE` instead of being scored
+         on an empty haystack. It is TERMINAL — `src/main.py` marks it seen —
+         and it was NEVER READ, and RETRY_ABANDONED is precisely the state this
+         module already defines for that pair: "finished AND unknowable", the one
+         state deliberately kept out of CLASSIFIED_STATES so that nothing about
+         the item's contents can be concluded at `derive_lane` steps 3 and 5.
+         Both land at Lane.RETRY under REASON_ABANDONED, which is the honest
+         reading of both: we stopped trying.
+
+         An EIGHTH logical state was the alternative and it is refused. R2.1
+         enumerates over seven and this module's whole contract is that the
+         operational record projects onto that axis — adding a state would change
+         the advertised 21,504 and make the projection something else. The
+         operational distinction is not lost: `RingVerdict.classification_outcome`
+         carries the literal "unreadable" beside the state and it is written to
+         telemetry, which is exactly the disclosure the class docstring promises
+         for "the raw outcome under an abandonment". A reader who needs to
+         separate "we tried three times and gave up" from "there was nothing to
+         try" reads that field; a reader asking what may be concluded reads the
+         state, and the answer is the same for both: nothing.
     """
     if abandoned:
+        return ClassifyState.RETRY_ABANDONED
+    if outcome == ClassifyOutcome.UNREADABLE.value:
+        # See step 5. Terminal, never read, and therefore the same LOGICAL state
+        # as an abandonment — which is why the axis is still seven.
         return ClassifyState.RETRY_ABANDONED
     if outcome == ClassifyOutcome.PARSE_FAILED.value:
         return ClassifyState.MALFORMED_OUTPUT

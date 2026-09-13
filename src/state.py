@@ -69,9 +69,17 @@ MAX_CLASSIFY_ATTEMPTS = 3
 # Stated as literal strings rather than imported from ``src.classify`` on
 # purpose: this module reads a file written by past versions of the pipeline and
 # must still recognise an outcome whose enum member has since been renamed.
+#
+# "unreadable" (2026-09-13) is the item that reached the classifier with no
+# title, no summary and no body. It is terminal because nothing a retry could do
+# would give it any, and it is accepted here for exactly the reason the
+# keyword_after_provider_error paragraph gives: ``src/main.py`` marks it seen
+# with that value, and an outcome the classifier calls terminal that this set
+# does not accept is a red build on the first item that reaches it. It is NOT "abandoned" — an abandonment is a ledger
+# entry after three charged attempts, and this item was never attempted.
 TERMINAL_SEEN_OUTCOMES = frozenset({
     "ok", "keyword_only_by_design", "keyword_after_provider_error",
-    "abandoned", "bootstrap",
+    "unreadable", "abandoned", "bootstrap",
 })
 LEGACY_OUTCOME = "legacy"
 

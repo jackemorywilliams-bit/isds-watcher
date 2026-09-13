@@ -44,7 +44,7 @@ class ClassifyOutcome(str, Enum):
     returns something publishable", and those are different promises. A provider
     outage returned a keyword score with an extra tag nobody reads, the item was
     marked seen, and the run reported it as classified. The failure left no trace
-    anywhere a person or a guard would look. These five values are the trace.
+    anywhere a person or a guard would look. These six values are the trace.
 
       OK                     — the model classified it and we parsed the answer.
       KEYWORD_ONLY_BY_DESIGN — no model was expected and NONE WAS CALLED. Either
@@ -71,8 +71,12 @@ class ClassifyOutcome(str, Enum):
                                after the strict retry.
       PROVIDER_ERROR         — the call itself failed on an item we intended to
                                model-classify.
+      UNREADABLE             — the item reached the classifier with NO TEXT AT
+                               ALL, so there was nothing to classify and no call
+                               was made. TERMINAL: see below.
 
-    The first three are TERMINAL: the run is finished with the item. The last two
+    OK, KEYWORD_ONLY_BY_DESIGN, KEYWORD_AFTER_PROVIDER_ERROR and UNREADABLE are
+    TERMINAL: the run is finished with the item. PARSE_FAILED and PROVIDER_ERROR
     are not, and ``src/main.py`` defers them rather than marking them seen — an
     item we failed to classify has not been processed, and recording it as
     processed is how a failure becomes permanent silently.
@@ -102,6 +106,35 @@ class ClassifyOutcome(str, Enum):
     ``attempts > 0`` rule. No run has yet been archived on that route, so no
     historical record is affected; the hole was there to be fallen into.
 
+    WHY THE SIXTH VALUE EXISTS (added 2026-09-13, on the integrity officer's
+    2026-09-11 finding). An item with no title, no summary and no body reached
+    `keyword_score`, which ran the whole lexicon over an EMPTY HAYSTACK, matched
+    nothing because there was nothing to match, scored 0, and returned OK — a
+    terminal outcome. The item was marked seen and retired, and the record it
+    left was byte-identical to the record left by an item that was read in full
+    and found irrelevant. Those are opposite facts and they had the same
+    spelling. Live proof: on the 2026-09-07 23:25 run five requeued items carried
+    `access.text_len_title == 0` and `text_len_body == 0` and were recorded
+    `outcome: ok, path: llm`.
+
+    It is not a rare shape. Two populations reach it by design, not by accident:
+    the eleven `iareporter_headlines` items in `state/deferred.json` whose
+    abandoned ledger kept no title and whose source is in `enrich.NO_BODY_FETCH`
+    (so no body will ever be fetched for them, correctly — the site is
+    paywalled); and PDF endpoints whose fetch SUCCEEDS and yields no extractable
+    HTML (heinonline, taylorfrancis: `fetch_outcome: "ok"`, `text_len_body: 0`).
+    Neither is a source failure and neither is a classification.
+
+    TERMINAL, and that is the argued half. Nothing about an item with no text
+    improves by retrying it: the deferred queue exists to carry an item whose
+    FAILURE was the instrument's and might not recur, and "this item has no text"
+    recurs every time. Carrying it forever is the defect the queue was built to
+    prevent, and the sixteen abandonments of 2026-09-07 taught the same lesson
+    from the other side. So the item is marked seen — finished with — while the
+    record says plainly that it was never read. `src/rings.py` therefore maps it
+    to `ClassifyState.RETRY_ABANDONED`, the one logical state that already means
+    finished AND never read, so no lane can conclude anything about its contents.
+
     A str-valued Enum so the value serialises into metadata, telemetry, and
     ``state/seen.json`` without a conversion step at each boundary.
     """
@@ -111,6 +144,7 @@ class ClassifyOutcome(str, Enum):
     KEYWORD_AFTER_PROVIDER_ERROR = "keyword_after_provider_error"
     PARSE_FAILED = "parse_failed"
     PROVIDER_ERROR = "provider_error"
+    UNREADABLE = "unreadable"
 
 
 # Outcomes after which the run is genuinely done with an item.
@@ -122,11 +156,29 @@ class ClassifyOutcome(str, Enum):
 # here must also be added to ``src.state.TERMINAL_SEEN_OUTCOMES`` or
 # ``scripts/check_seen_integrity.py`` will (correctly) fail the build on the first
 # item marked seen with it.
+# UNREADABLE (2026-09-13) is here for a DIFFERENT reason from the other three,
+# and the difference is the whole of it. The other three are terminal because the
+# item got the number it was always going to get. This one is terminal because
+# there is no number to get and never will be: an item with no title, no summary
+# and no body has nothing a retry could add, and the deferred queue exists for
+# failures that might not recur. It is the only terminal outcome that is NOT a
+# classification, so it is excluded wherever "classified" is counted —
+# ``src/main.py``'s run summary and ``scripts/telemetry_query.py``'s yield column
+# both subtract it — and ``src/rings.py`` maps it to a state outside
+# CLASSIFIED_STATES so no lane can read a conclusion off it.
 TERMINAL_OUTCOMES = frozenset({
     ClassifyOutcome.OK,
     ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN,
     ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR,
+    ClassifyOutcome.UNREADABLE,
 })
+
+# The terminal outcomes in which an item was actually READ — a classifier, model
+# or lexicon, was applied to real text. TERMINAL_OUTCOMES minus UNREADABLE, and
+# stated as a derivation rather than a second list so the two cannot drift.
+# This is the set any "classified" count must use: folding an unreadable item
+# into that number is the defect restated one surface further out.
+READ_TERMINAL_OUTCOMES = TERMINAL_OUTCOMES - {ClassifyOutcome.UNREADABLE}
 
 # THE authoritative location for an item's outcome: one key, in the metadata of
 # the ClassifiedItem the classifier returns. Not a second return value, because
@@ -273,6 +325,31 @@ def _item_text(item: CandidateItem) -> str:
         getattr(item, "raw_text", "") or "",
     ]
     return " ".join(parts).lower()
+
+
+def has_classifiable_text(item: CandidateItem) -> bool:
+    """Whether this item carries ANY text a classifier could read.
+
+    THE DEFINITION IS NARROW ON PURPOSE. True unless ``title``, ``summary`` AND
+    ``raw_text`` are all empty once stripped of whitespace. Nothing else counts:
+    not the URL, not the source name, not the publication date.
+
+    A HEADLINE IS TEXT. An `iareporter_headlines` item that carries its headline
+    is READABLE and is classified exactly as before — the constrained-lane design
+    rests on headlines being real evidence (``src/rings.py`` gives them
+    EvidenceLocation.TITLE and forbids a MATCH from them, which is a limit on
+    what may be CONCLUDED, not a claim that nothing was read). What makes the
+    eleven queued iareporter items unreadable is that the abandoned ledger kept
+    no title for them, not that their source is paywalled.
+
+    AND THE URL IS NOT TEXT. Mining a title out of a URL slug would manufacture a
+    headline the source never wrote; the council has ruled that fabrication. An
+    item whose only artefact is its URL has not been read, and the honest record
+    says so rather than inventing the words that would make it look read.
+    """
+    return bool((getattr(item, "title", "") or "").strip()
+                or (getattr(item, "summary", "") or "").strip()
+                or (getattr(item, "raw_text", "") or "").strip())
 
 
 def keyword_score(item: CandidateItem) -> dict:
@@ -763,6 +840,37 @@ def classify_item(
     deliberately leaves it alone; ``intended_model`` is about how we treat a
     failure, not about suppressing a call.
     """
+    # NOTHING TO CLASSIFY. Checked FIRST, before the provider is even resolved,
+    # because every path below this line assumes there is something to read. The
+    # keyword scorer would run the whole lexicon over an empty haystack and
+    # return a confident 0; the LLM path would spend a call describing a prompt
+    # with no article in it. Both produced a terminal outcome indistinguishable
+    # from "read and found irrelevant". The item is finished with — see
+    # ClassifyOutcome.UNREADABLE for why terminal is the right ending — and the
+    # record now says which kind of finished.
+    #
+    # Score 0, no rings, no tags that claim a finding, and NO MODEL NAMED: the
+    # metadata must not attribute this to an instrument that was never run.
+    if not has_classifiable_text(item):
+        logger.warning(
+            "classify: no classifiable text (title, summary and body all empty) "
+            "for %s — recording it as unreadable rather than scoring an empty "
+            "haystack", getattr(item, "url", "") or getattr(item, "source_id", ""))
+        ci = from_candidate(
+            item, 0, [], ["unreadable"],
+            "No classifiable text: this item reached the classifier with no "
+            "title, no summary and no body, so it was never read.",
+        )
+        ci.metadata = {
+            **(ci.metadata or {}),
+            "model": "",
+            "classify_path": "none",
+            "classify_attempts": 0,
+            "retried_strict": False,
+            OUTCOME_KEY: ClassifyOutcome.UNREADABLE.value,
+        }
+        return ci
+
     raw_provider = provider if provider is not None else os.environ.get("MODEL_PROVIDER")
     norm = _normalize_provider(raw_provider)
 

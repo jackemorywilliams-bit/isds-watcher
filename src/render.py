@@ -253,6 +253,12 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
     # (src/source_health.py). Persisted in meta.json and shown prominently in
     # the README below so a broken feed can never read as a quiet week.
     health_warnings = list(stats.get("health_warnings", []) or [])
+    # Locked-set reservations withheld from screening this run (council
+    # SUPPLEMENTARY RULING 2026-09-13 ¶5). It rides here so `screened` can be read
+    # honestly: screened is what the instrument judged, and this is what it was
+    # forbidden to judge. Always an integer, including 0 — a reader must be able
+    # to see that nothing was withheld, not merely fail to find a key.
+    reserved_excluded = int(stats.get("reserved_excluded", 0) or 0)
     meta = {
         "date": date_str,
         "screened": screened,
@@ -265,6 +271,7 @@ def write_digest_folder(html: str, items, generated_at: datetime, stats: dict,
         "accepted_by_source": accepted_by_source,
         "source_health": source_health,
         "health_warnings": health_warnings,
+        "reserved_excluded": reserved_excluded,
     }
     with open(os.path.join(folder, "meta.json"), "w", encoding="utf-8") as fh:
         json.dump(meta, fh, indent=2)

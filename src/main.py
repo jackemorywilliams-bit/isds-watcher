@@ -16,9 +16,9 @@ import sys
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 
-from . import (classify_v2, config, council_log, render, research_brief,
-               research_state, rings, source_health, source_recovery, state,
-               telemetry, triage)
+from . import (classify_v2, config, council_log, locked_set, render,
+               research_brief, research_state, rings, source_health,
+               source_recovery, state, telemetry, triage)
 from . import classify as classify_mod
 from .classify import (TERMINAL_OUTCOMES, ClassifyOutcome, classify_item,
                        keyword_score, outcome_of, prompt_version)
@@ -77,6 +77,28 @@ def deferred_candidates(deferred: dict, already: set[tuple[str, str]]) -> list:
                       "deferred_attempts": int(entry.get("attempts", 0))},
         ))
     return out
+
+
+def partition_reserved(items, reservations):
+    """``(screenable, reserved)`` — the locked-set split, applied at intake.
+
+    Council SUPPLEMENTARY RULING 2026-09-13 ¶5. An item that is in the locked
+    validation set is excluded from production screening *at the moment of
+    capture*: before enrichment, before triage, before classification, before any
+    score for it exists anywhere. Screening one would give a locked-set item the
+    instrument's own verdict and break the set's disjointness from production
+    retroactively — an outcome no later edit can undo.
+
+    Matched on ``url`` and, for the rebuilt-from-queue case where a URL was not
+    kept, on ``source_id`` — which every source adapter sets to the URL anyway.
+    """
+    if not reservations:
+        return list(items), []
+    screenable, reserved = [], []
+    for it in items:
+        url = getattr(it, "url", "") or getattr(it, "source_id", "") or ""
+        (reserved if locked_set.is_reserved(url, reservations) else screenable).append(it)
+    return screenable, reserved
 
 
 def _norm_line(s: str) -> str:
@@ -230,6 +252,11 @@ def main(argv=None) -> int:
         # Cost-bearing optional passes. Reported as counts so a run says what it
         # spent instead of leaving it to be reconstructed from the bill.
         "triage_ran": 0, "triage_skipped": 0, "v2_shadow_calls": 0,
+        # Locked-set reservations withheld from screening this run. Present from
+        # the start and always a number: "we excluded none" and "we never looked"
+        # are different facts and a reader must not have to tell them apart by
+        # the absence of a key.
+        "reserved_excluded": 0,
         # Non-empty when the provider canary failed: the detail, verbatim.
         "provider_down": provider_down,
     }
@@ -245,6 +272,18 @@ def main(argv=None) -> int:
     #    A quiet or failed feed shows as such here — it is never hidden. NOT-READ
     #    states only what WE could read: a 403 to our runner may be our own IP
     #    class, so no status ever asserts a defect in the source itself.
+    #
+    #    LOCKED-SET RESERVATIONS (council SUPPLEMENTARY RULING 2026-09-13 ¶5) are
+    #    applied inside this loop, on each source's fresh items, so that a
+    #    reserved item is withheld at capture and the per-source SOURCE-HEALTH
+    #    `count` still reports what the source ACTUALLY RETURNED. A reservation is
+    #    a decision of ours about an item; it is not a fact about the feed, and it
+    #    must never make a healthy source read as a quiet or failed one.
+    reservations = locked_set.load_reservations()
+    if reservations:
+        logger.info("locked_set: %d reserved URL(s) will be withheld from screening",
+                    locked_set.reserved_count(reservations))
+    reserved_excluded = []
     new_candidates = []
     for src in all_sources(cfg):
         if only and src.name not in only:
@@ -265,6 +304,10 @@ def main(argv=None) -> int:
                                                             "robots_disallowed")]
         reached = any(o["outcome"] == "ok" for o in outcomes)
         fresh = [it for it in items if not state.is_seen(st, src.name, it.source_id)]
+        # The exclusion point. `items` (what the source returned) is untouched
+        # below; only what proceeds to screening is reduced.
+        fresh, held_back = partition_reserved(fresh, reservations)
+        reserved_excluded.extend(held_back)
         stats["per_source"][src.name] = len(fresh)
         if not items:
             stats["dropped_sources"].append(src.name)
@@ -317,6 +360,9 @@ def main(argv=None) -> int:
                     recovered, report = [], source_recovery.RecoveryReport()
                 fresh_rec = [it for it in recovered
                              if not state.is_seen(st, entry["name"], it.source_id)]
+                # A reserved item reached through the Archive is still reserved.
+                fresh_rec, held_back = partition_reserved(fresh_rec, reservations)
+                reserved_excluded.extend(held_back)
                 if recovered:
                     entry["count"] = len(recovered)
                     entry["status"] = "RECOVERED (Internet Archive)"
@@ -345,6 +391,11 @@ def main(argv=None) -> int:
     already = {(it.source, it.source_id) for it in new_candidates}
     returning = [it for it in deferred_candidates(dq, already)
                  if not only or it.source in only]
+    # An item queued by an earlier run, before its batch was locked, is reserved
+    # now. The queue is left alone: it is not a publication surface, it holds no
+    # score, and clearing it would erase the record that we once had the item.
+    returning, held_back = partition_reserved(returning, reservations)
+    reserved_excluded.extend(held_back)
     carried = sum(1 for it in new_candidates
                   if state.deferral_attempts(dq, it.source, it.source_id))
     new_candidates = returning + new_candidates
@@ -352,6 +403,45 @@ def main(argv=None) -> int:
     stats["total_candidates"] = len(new_candidates)
     logger.info("main: %d new candidates across sources (%d retried from the "
                 "deferred queue)", len(new_candidates), stats["retried_deferred"])
+
+    # 1a-locked. The reservation, made visible and countable as ¶5 requires.
+    #
+    #   SEEN vs SKIPPED — the decision, and why. A reserved item is NOT marked
+    #   seen. It is skipped afresh on every run, which costs nothing: the
+    #   exclusion happens before enrichment and before classification, so no
+    #   polite fetch and no model call is spent on it, and because it never
+    #   reaches classification it can never enter the deferred queue either — the
+    #   "churn the queue forever" failure mode does not exist on this path.
+    #   Against that, marking seen would cost two things the ruling will not pay.
+    #   First, VISIBILITY: `mark_seen` makes the item vanish from the fetch's
+    #   fresh set, so this run's count would be 6 and every run after it 0, and
+    #   the suppression the council ordered to be "visible and countable rather
+    #   than silent" would go silent after one week. Second, REVERSIBILITY: the
+    #   reservation list is DERIVED from items.json and can be corrected by
+    #   correcting items.json, but a seen-state entry is a committed, permanent
+    #   write that survives the correction. Skipping keeps the reservation as
+    #   reversible as the thing it is derived from.
+    #
+    #   Each reserved item still gets a telemetry record — observed, never
+    #   screened — so the exclusion is countable per item and not just in
+    #   aggregate. No new telemetry stream: `surfacing.reason` already carries
+    #   why an item did not appear, and "it was reserved" is one of those reasons.
+    stats["reserved_excluded"] = len(reserved_excluded)
+    for it in reserved_excluded:
+        cid = run_tel.observe(it)
+        run_tel.note_access(cid, it,
+                            headline_only=it.source in config.HEADLINE_ONLY_SOURCES,
+                            body_fetched=False, fetch_outcome="not_attempted")
+        run_tel.note_dedup(cid, seen_before=False, marked_seen=False,
+                           deferred=False, abandoned=False)
+        run_tel.note_surfacing(cid, surfaced=False, reason="reserved_locked_set",
+                               digest="", position=-1)
+        logger.info("locked_set: RESERVED, not screened — %s / %s",
+                    it.source, it.source_id)
+    if reserved_excluded:
+        logger.warning("locked_set: %d candidate(s) withheld from screening this "
+                       "run because they are locked validation-set items",
+                       len(reserved_excluded))
 
     # 1a. Silent-decay guard. Persist per-source consecutive-zero-run streaks
     #     (state/source_health.json); a documented-active source at 3+ zero runs
@@ -395,6 +485,8 @@ def main(argv=None) -> int:
         logger.info("main: bootstrap run — indexed %d items as seen, no digest", n)
         print("\n=== ISDS Watcher run summary (baseline bootstrap) ===")
         print(f"new candidates indexed: {n}")
+        print(f"locked-set reserved (excluded from screening): "
+              f"{stats.get('reserved_excluded', 0)}")
         print(f"email:                  {email_status}")
         # A failed baseline send must fail the run too, so the failure alert fires
         # (consistent with the main path's "green == delivered" guarantee).
@@ -885,6 +977,10 @@ def main(argv=None) -> int:
     for w in stats.get("health_warnings", []):
         print(f"  !! {w}")
     print(f"new candidates:   {stats['total_candidates']}")
+    # Countable, every run, whether or not it fired — a suppression that only
+    # prints when it happens is one a reader cannot confirm did not happen.
+    print(f"locked-set reserved (excluded from screening): "
+          f"{stats.get('reserved_excluded', 0)}")
     if stats.get("retried_deferred"):
         print(f"  of which retried from the deferred queue: {stats['retried_deferred']}")
     print(f"classified:       {stats['classified']}")

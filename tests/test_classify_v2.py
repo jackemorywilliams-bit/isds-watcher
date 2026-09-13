@@ -371,12 +371,35 @@ def test_the_legacy_v1_ring_list_is_recorded_and_wholly_demoted():
 # =============================================================================
 # The cost gate
 # =============================================================================
-def test_v2_shadow_calls_defaults_to_off():
+def test_v2_shadow_calls_ships_at_sample_3_since_the_council_ruled_it(monkeypatch):
+    """Ruling 4(b), 2026-09-13. Three calls a run, and the switch still turns off.
+
+    Asserted against a RE-RESOLVED config rather than the imported constant: the
+    flag is resolved from the environment at import, so reading it as imported
+    would assert about whatever the developer happens to have exported.
+    """
+    import importlib
+
+    try:
+        monkeypatch.delenv("V2_SHADOW_CALLS", raising=False)
+        fresh = importlib.reload(config)
+        assert fresh.V2_SHADOW_CALLS_DEFAULT == "sample:3"
+        assert fresh.V2_SHADOW_CALLS_MODE == "sample"
+        assert fresh.V2_SHADOW_SAMPLE_N == 3
+        assert fresh.V2_SHADOW_CALLS_SPEC == "sample:3"
+
+        # Off in both directions, still.
+        monkeypatch.setenv("V2_SHADOW_CALLS", "off")
+        assert importlib.reload(config).V2_SHADOW_CALLS_MODE == "off"
+        monkeypatch.setenv("V2_SHADOW_CALLS", "")
+        assert importlib.reload(config).V2_SHADOW_CALLS_MODE == "off"
+    finally:
+        monkeypatch.undo()
+        importlib.reload(config)
+
+    # The resolver itself is unchanged: an explicit empty/`off` is still off.
     assert config._v2_shadow_calls("") == ("off", 0)
     assert config._v2_shadow_calls("off") == ("off", 0)
-    # And the module-level resolution, as a default run sees it.
-    assert config.V2_SHADOW_CALLS_MODE == config.V2_SHADOW_CALLS_OFF
-    assert config.V2_SHADOW_CALLS_SPEC == "off"
 
 
 def test_replace_is_refused_rather_than_honoured():

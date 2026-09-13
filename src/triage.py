@@ -27,10 +27,15 @@ never reaches the digest. It reorders a queue. A triage strength is a guess made
 from a headline; the actual finding is still made downstream from a fetched body
 by a prompt that has to show its evidence.
 
-OFF BY DEFAULT (`config.TRIAGE_ENABLED`). It calls the model once per CANDIDATE
-rather than once per enriched item, so it is the most cost-sensitive component
-in the pipeline: ~$0.0014 a call on the R2.1 table, ~$0.02 on a median run of
-14 and ~$0.11 on the largest run observed (80). Enabling it is a decision.
+ON BY DEFAULT SINCE 2026-09-13 (`config.TRIAGE_ENABLED`), by ruling of the
+council, AND CAPPED (`config.TRIAGE_MAX_CALLS_PER_RUN`, 100 calls a run). It
+calls the model once per CANDIDATE rather than once per enriched item, so it is
+the most cost-sensitive component in the pipeline: ~$0.0014 a call, ~$0.02 on a
+median run of 14 and ~$0.11 on the largest run observed (80). Because the price
+scales with the candidate count and nothing here controls the candidate count,
+the cap is part of the design and not a safety rail bolted on: above it the top
+100 by lexical rank are triaged and every remaining candidate is recorded under
+`TRIAGE_BASIS_OVER_CAP`, keeping its lexical position.
 
 FAILURE IS RECORDED, NEVER INFERRED. No provider, a provider error, or an
 unparseable answer all mean the same thing for ranking — that item falls back to
@@ -78,10 +83,16 @@ TRIAGE_BASIS_NOT_RUN = "not_run"                 # the flag is off
 TRIAGE_BASIS_NO_PROVIDER = "skipped_no_provider"
 TRIAGE_BASIS_PROVIDER_ERROR = "skipped_provider_error"
 TRIAGE_BASIS_MALFORMED = "skipped_malformed_output"
+# The run's per-run call cap (config.TRIAGE_MAX_CALLS_PER_RUN) was reached before
+# this candidate's turn. A NAMED basis rather than an absent record, because "we
+# declined to pay for this one" and "the call failed" are different facts about
+# an item and the telemetry must not summarise them into the same silence.
+TRIAGE_BASIS_OVER_CAP = "skipped_over_run_cap"
 _SEMANTIC_PREFIX = "semantic:"
 
 SKIP_BASES = frozenset({TRIAGE_BASIS_NOT_RUN, TRIAGE_BASIS_NO_PROVIDER,
-                        TRIAGE_BASIS_PROVIDER_ERROR, TRIAGE_BASIS_MALFORMED})
+                        TRIAGE_BASIS_PROVIDER_ERROR, TRIAGE_BASIS_MALFORMED,
+                        TRIAGE_BASIS_OVER_CAP})
 
 
 def semantic_basis(model_id: str) -> str:
@@ -261,6 +272,18 @@ def _skipped(basis: str, outcome: ClassifyOutcome, *, model: str = "",
              attempts: int = 0) -> TriageResult:
     return TriageResult(basis=basis, outcome=outcome, model=model,
                         prompt_version=triage_prompt_version(), attempts=attempts)
+
+
+def skipped_over_cap() -> TriageResult:
+    """The result for a candidate the per-run call cap excluded.
+
+    No call was made and none was ever going to be, so the outcome is
+    KEYWORD_ONLY_BY_DESIGN with ``attempts == 0`` — the same shape as the
+    no-provider route, and for the same reason: nothing on this path can spend
+    money. ``strengths`` is empty, so ``semantic_rank`` is 0 and the candidate
+    keeps its lexical position exactly as an outage leaves it.
+    """
+    return _skipped(TRIAGE_BASIS_OVER_CAP, ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN)
 
 
 def triage_item(item, provider: Optional[str] = None) -> TriageResult:

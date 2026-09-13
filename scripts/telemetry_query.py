@@ -16,9 +16,24 @@ questions, each with one definition, printed the same way every time.
                      seen — the items a failed classification is holding.
     --abandoned      candidates that exhausted their attempts. Each one is a
                      thing we gave up on, and giving up should be countable.
+    --tail-audit     the stratified tail audit's paired re-classifications, by
+                     stratum: how many pairs, how many flipped band, which way,
+                     and the mean score delta. Reads
+                     `analytics/tail_audit.jsonl`, not the candidate telemetry.
+
+THE TAIL AUDIT IS REPORTED HERE AND NOWHERE ELSE (council ruling of 2026-09-13,
+Ruling 4(c)). A flip rate is an internal measurement of the INSTRUMENT, not a
+finding about ISDS; putting one in the digest or on the professor-facing site
+would be the instrument grading itself in her inbox.
+`tests/test_publication_quarantine.py` fails the build if any other surface
+starts reading the ledger. It is also not a validation result: a flip says the
+enrichment cut changed what the instrument said about an item, and says nothing
+about which of the two readings was right. Nothing here is evidence of accuracy.
 
 CLI:
     python scripts/telemetry_query.py --source-yield [--run RUN_ID] [--path FILE]
+    python scripts/telemetry_query.py --tail-audit [--run RUN_ID]
+                                      [--tail-audit-path FILE]
 
 Exit 0 always when the file is readable (a query is a report, not a gate); 2 if
 the file cannot be read.
@@ -88,6 +103,52 @@ def _outcome_rows(records: list[dict], key: str, label: str) -> None:
               f"{cls.get('outcome', ''):<22} {cls.get('attempts', 0)}")
 
 
+def tail_audit_report(rows: list[dict]) -> None:
+    """Per stratum: pairs, flips, direction, mean delta.
+
+    A "flip" is `band_unenriched != band_enriched` — the enrichment cut changed
+    what the instrument said about this exact item. UP and DOWN are counted
+    separately because they mean opposite things about the gate: UP is an item
+    the cut was hiding, DOWN is an item the headline flattered.
+    """
+    order = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
+    buckets: dict[str, dict] = {
+        s: {"pairs": 0, "flips": 0, "up": 0, "down": 0, "delta": 0}
+        for s in STRATA}
+    for r in rows:
+        b = buckets.get(str(r.get("stratum", "")))
+        if b is None:
+            continue
+        before = str(r.get("band_unenriched", ""))
+        after = str(r.get("band_enriched", ""))
+        b["pairs"] += 1
+        b["delta"] += int(r.get("score_delta", 0) or 0)
+        if before != after:
+            b["flips"] += 1
+            if order.get(after, -1) > order.get(before, -1):
+                b["up"] += 1
+            else:
+                b["down"] += 1
+
+    print(f"{'stratum':<32} {'pairs':>6} {'flips':>6} {'up':>4} {'down':>5} "
+          f"{'mean delta':>11}")
+    total = {"pairs": 0, "flips": 0, "up": 0, "down": 0, "delta": 0}
+    for name in STRATA:
+        b = buckets[name]
+        mean = (b["delta"] / b["pairs"]) if b["pairs"] else 0.0
+        print(f"{name:<32} {b['pairs']:>6} {b['flips']:>6} {b['up']:>4} "
+              f"{b['down']:>5} {mean:>11.1f}")
+        for key in total:
+            total[key] += b[key]
+    mean = (total["delta"] / total["pairs"]) if total["pairs"] else 0.0
+    print(f"{'TOTAL':<32} {total['pairs']:>6} {total['flips']:>6} "
+          f"{total['up']:>4} {total['down']:>5} {mean:>11.1f}")
+    print("\nA flip is a change in what the instrument said about one item when "
+          "it was\ngiven a body. It is NOT evidence that either reading was "
+          "correct, and it is\nnot a validation result. Internal only — never "
+          "the digest, the site or the README.")
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="telemetry_query")
     p.add_argument("--path", default=str(REPO / TELEMETRY_PATH))
@@ -95,11 +156,32 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--source-yield", action="store_true", help="the per-source funnel")
     p.add_argument("--deferred", action="store_true", help="candidates held for retry")
     p.add_argument("--abandoned", action="store_true", help="candidates given up on")
+    p.add_argument("--tail-audit-path", default=str(REPO / LEDGER_PATH))
+    p.add_argument("--tail-audit", action="store_true",
+                   help="the tail audit's paired re-classifications, by stratum")
     return p
 
 
 def main(argv: list[str]) -> int:
     args = build_parser().parse_args(argv[1:])
+
+    if args.tail_audit:
+        try:
+            rows = read_ledger(args.tail_audit_path)
+        except OSError as exc:
+            print(f"cannot read {args.tail_audit_path}: {exc}", file=sys.stderr)
+            return 2
+        if args.run:
+            rows = [r for r in rows
+                    if str(r.get("run_id", "")).startswith(args.run)]
+        print(f"{len(rows)} tail-audit pairs from {args.tail_audit_path}"
+              + (f" (run {args.run})" if args.run else ""))
+        print()
+        tail_audit_report(rows)
+        if not (args.source_yield or args.deferred or args.abandoned):
+            return 0
+        print()
+
     try:
         records = _filtered(load_records(args.path), args.run)
     except OSError as exc:

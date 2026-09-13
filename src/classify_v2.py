@@ -119,6 +119,44 @@ def basis_is_semantic(basis: str) -> bool:
 
 
 # --------------------------------------------------------------------------- #
+# The quarantine list
+# --------------------------------------------------------------------------- #
+# COUNCIL RULING OF 2026-09-13, Ruling 4(b), in one sentence: no V2 shadow
+# figure may be published, cited or compared in any digest, memo, brief or site
+# surface until the locked set produces a calibration. The lane is instrumented,
+# not consulted.
+#
+# WHY A LIST AND NOT A SENTENCE. That bound is a property of the whole
+# repository, and a rule stated in a comment is satisfied by whoever read the
+# comment. These are the identifiers by which a V2 shadow figure can be reached
+# — telemetry section names, the fields inside them, the config switches, and
+# the functions that produce them. `tests/test_publication_quarantine.py` scans
+# every file in `src/`, `scripts/`, `templates/` and `prompts/` for them and
+# fails on any hit outside a short, explicit allowlist. So the failure mode the
+# ruling is actually worried about — a new surface starts reading the shadow
+# lane and the number reaches the professor before anyone notices — is a BUILD
+# failure rather than something a reader has to catch.
+#
+# Names that live in `src/rings.py` (`verdict_v2`, `v2_basis`, `claims_source`,
+# `shadow_verdict`) are listed here anyway: the guard needs ONE authority, and
+# splitting the list across two modules is how half of it stops being checked.
+V2_SHADOW_KEYS = frozenset({
+    # Telemetry sections and the config switch behind them
+    "verdict_v2", "v2_call", "v2_shadow_calls",
+    "V2_SHADOW_CALLS", "V2_SHADOW_CALLS_MODE", "V2_SHADOW_SAMPLE_N",
+    "V2_SHADOW_CALLS_SPEC", "V2_SHADOW_CALLS_DEFAULT", "STATE_MODEL_V2",
+    # Fields carried on those sections
+    "v2_basis", "v2_strengths", "v2_spans", "claims_source",
+    "model_nexus_advisory",
+    # The basis vocabulary itself — a surface printing one of these values is
+    # publishing the shadow lane's provenance even if it never names a field.
+    "lexical_only", "semantic_unavailable",
+    # The producers
+    "classify_v2", "classify_item_v2", "shadow_verdict",
+})
+
+
+# --------------------------------------------------------------------------- #
 # Prompt
 # --------------------------------------------------------------------------- #
 def load_v2_prompt() -> str:

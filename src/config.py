@@ -141,17 +141,38 @@ STATE_MODEL_V2 = _state_model_v2_mode()
 #                 shadow experiment does not get to stop the instrument's
 #                 primary measurement.
 #
-# WHY THE DEFAULT IS "off" AND NOT "sample:3". Two reasons, and the first is the
-# operator's rule rather than my preference. (1) The project runs under a
-# standing zero-cost constraint; a recurring per-run charge, however small, is
-# Emory's decision to make and not a side effect of a session that was asked to
-# build the capability. (2) `analytics/locked_set/` is deliberately empty, so
-# there is no validated instrument against which V2 strengths could be read yet
-# — semantic shadow data collected now would be uncalibrated data, and the
-# argument for collecting it is weaker than the argument for being able to.
-# The route is built, wired and tested end to end; enabling it is one
-# environment variable and no code change.
+# THE DEFAULT IS "sample:3" SINCE 2026-09-13, by RULING OF THE COUNCIL (rulings
+# session of 2026-09-13, Ruling 4(b)), under the operator's delegation of the
+# same date. It was "off" for two stated reasons, and the ruling handles them
+# differently rather than sweeping both aside.
+#
+#   (1) The standing zero-cost constraint — LIFTED by the delegation. Three
+#       calls a run is a rounding error against the triage pass enabled beside
+#       it.
+#   (2) `analytics/locked_set/` is empty, so shadow strengths would be
+#       uncalibrated — STILL TRUE, AND NOT OVERRULED. It is the reason for the
+#       quarantine below, which is the operative half of this setting.
+#
+# THE GROUND THE RULING ACTUALLY TURNS ON, which reason (2) does not reach: all
+# 328 V2 telemetry records say `lexical_only`. The V2 ring contract's model call
+# has never fired once. That is an UNEXECUTED PATH ASSERTING A CONTRACT — the
+# project's own failure taxonomy, entry 31. Three calls a run establish that the
+# path executes at all, which is a fact ABOUT THE CODE and not a measurement of
+# the world, and reason (2) governs measurements of the world.
+#
+# THE QUARANTINE, WHICH IS THE WHOLE POINT. No V2 shadow figure may be
+# published, cited or compared in any digest, memo, brief or site surface until
+# the locked set produces a calibration. The lane is INSTRUMENTED, NOT CONSULTED.
+# That bound is not left to this comment: `V2_SHADOW_KEYS` in
+# `src/classify_v2.py` names the fields and `tests/test_publication_quarantine.py`
+# fails the build if any file outside a short, explicit allowlist reads one — so
+# a NEW publication surface that starts consulting the shadow fails closed
+# instead of shipping a number to a professor.
+#
+# The environment variable still overrides in both directions:
+# V2_SHADOW_CALLS=off (or empty) turns the calls off; "sample:N" sets the bound.
 V2_SHADOW_CALLS_OFF = "off"
+V2_SHADOW_CALLS_DEFAULT = "sample:3"
 V2_SHADOW_SAMPLE_PREFIX = "sample:"
 V2_SHADOW_CALLS_FORBIDDEN = ("replace",)
 
@@ -159,7 +180,8 @@ V2_SHADOW_CALLS_FORBIDDEN = ("replace",)
 def _v2_shadow_calls(raw: str | None = None) -> tuple[str, int]:
     """Resolve V2_SHADOW_CALLS to ``(mode, sample_n)``. Fails closed to off."""
     value = (raw if raw is not None
-             else os.getenv("V2_SHADOW_CALLS", V2_SHADOW_CALLS_OFF)).strip().lower()
+             else os.getenv("V2_SHADOW_CALLS",
+                            V2_SHADOW_CALLS_DEFAULT)).strip().lower()
     if value in ("", V2_SHADOW_CALLS_OFF):
         return V2_SHADOW_CALLS_OFF, 0
     if value in V2_SHADOW_CALLS_FORBIDDEN:
@@ -211,14 +233,47 @@ ENRICH_TOP_N = 24
 # reach enrichment, so it can never reach classification, so the instrument
 # cannot see it at all. Ranking is the gate, and the gate is lexical.
 #
-# OFF BY DEFAULT, and that is a cost decision rather than a doubt about the
-# design. Triage calls the model once per CANDIDATE, not once per enriched item:
-# on the observed run sizes (median 14, max 80) at the R2.1 table's ~$0.0014 per
-# call that is roughly $0.02 on a median run and $0.11 on the largest observed
-# one. Small, recurring, and Emory's to authorise. Enabling it is one
-# environment variable; nothing else changes.
-TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "0").strip().lower() not in (
+# ON BY DEFAULT SINCE 2026-09-13, by RULING OF THE COUNCIL (rulings session of
+# 2026-09-13, Ruling 4(a)), made under the operator's delegation of the same
+# date. This comment used to say the pass was "small, recurring, and Emory's to
+# authorise"; the authorisation exists now and is a dated decision on the
+# record, so the configuration states the decision rather than the wait.
+#
+# WHY THE COUNCIL RULED IT ON. The gate this pass exists to open is the external
+# audit's point (3): ranking is lexical, so the instrument's false-negative rate
+# is not merely unmeasured but unmeasurable. The repository's own probe suite
+# carries the demonstration — E5_einarsson_lexical_brittle is a documented
+# HIGH-band item whose `keyword_score` is 0. It can never reach enrichment, so it
+# can never reach classification, so the instrument cannot see it at all. No
+# amount of prompt work downstream reaches an item the queue never admits.
+#
+# THE COST, AND THE BOUND. Triage calls the model once per CANDIDATE, not once
+# per enriched item. At ~$0.0014 a call over the observed run sizes (median 14,
+# max 80) that is ~$0.02 on a median run and ~$0.11 on the largest observed one
+# — roughly $1-$6 a year at a weekly cadence. TRIAGE_MAX_CALLS_PER_RUN caps the
+# pass regardless, and the run reports `triage_calls` and `triage_cost_usd` in
+# `meta.json`, so what a pass cost is a number in the record rather than
+# something to be reconstructed from a bill.
+#
+# DISCLOSED. This is a dated configuration change, not a silent one: the 16
+# archived runs before it are pre-triage, and any comparison across that
+# boundary has to say so.
+#
+# The environment variable still overrides in BOTH directions: TRIAGE_ENABLED=0
+# (or false/no/off/empty) turns the pass off; TRIAGE_ENABLED=1 turns it on.
+TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "1").strip().lower() not in (
     "0", "false", "no", "off", "")
+
+# HARD PER-RUN CAP on triage calls (Ruling 4(a), 2026-09-13). The largest run
+# ever observed is 80 candidates, so on today's traffic the cap does not bind;
+# it exists because the pass is priced per CANDIDATE and the candidate count is
+# the one quantity this project does not control. A feed that starts returning a
+# thousand items must not be able to turn a $0.02 pass into a charge nobody
+# authorised. Above the cap, `src/main.py` triages the top 100 by lexical rank
+# and records every remaining candidate as a NAMED skip
+# (`triage.TRIAGE_BASIS_OVER_CAP`) rather than as an item that merely has no
+# triage result. Worst case at the cap: ~$0.14 a run.
+TRIAGE_MAX_CALLS_PER_RUN = 100
 
 # Expected cost per triage call, from the R2.1 costing table (~600 input tokens,
 # ~150 output). Recorded as a constant so the run can report what a triage pass
@@ -226,21 +281,60 @@ TRIAGE_ENABLED = os.getenv("TRIAGE_ENABLED", "0").strip().lower() not in (
 TRIAGE_COST_PER_CALL_USD = 0.0014
 
 # --------------------------------------------------------------------------- #
-# TAIL_AUDIT_N — R2.1 design (c), stratified tail audit. STUB.
+# TAIL_AUDIT_N — the stratified tail audit. BUILT 2026-09-13.
 # --------------------------------------------------------------------------- #
-# The full design samples N items from the un-enriched tail per run, classifies
-# them, and reports what the enrichment cut is throwing away — the only way to
-# measure the false-negative rate of the ranking step rather than assuming it.
+# It samples N items from the un-enriched tail each run, enriches them,
+# classifies them a second time, and records the PAIR — the band the instrument
+# gave the item without a body and the band it gives with one. The difference is
+# a flip, and a flip needs no human label to detect, which is why this could be
+# built before `analytics/locked_set/` holds a single coded label. It measures a
+# flip, never a truth.
 #
-# NOT BUILT. This session implemented the triage pass (design (a)) and the
-# constrained headline lane; the audit loop needs a stratification rule, a
-# persisted cross-run sample ledger so the strata are not re-drawn every run,
-# and a reporting surface, and building it here would have meant building three
-# things badly instead of two things properly. The constant exists so the
-# decision is visible in configuration rather than remembered, and it is 0,
-# which means no tail audit runs. Anything reading it must treat a non-zero
-# value as unimplemented rather than as a request.
-TAIL_AUDIT_N = 0
+# The three pieces the earlier stub said were missing all exist now, in
+# `src/tail_audit.py`: stratification on `lexical_subtotal` (A == 0,
+# B below `classify.PRESENT_FLOOR`, C at or above it), a persisted cross-run
+# ledger at `analytics/tail_audit.jsonl` so the strata are not re-drawn every
+# run and no item is audited twice, and a reporting surface —
+# `scripts/telemetry_query.py --tail-audit`, which is the ONLY one. A tail-audit
+# flip rate is an internal measurement of the instrument, not a finding about
+# ISDS; it never reaches the digest, the site or the README, and
+# `tests/test_publication_quarantine.py` fails the build if it starts to.
+#
+# 6 = 2 per stratum x 3 strata. `src/tail_audit.py` derives the per-stratum draw
+# from this number, so the two cannot drift apart. Set TAIL_AUDIT_N=0 to turn
+# the audit off; a short stratum takes what exists and records the shortfall
+# rather than refusing to run or quietly pretending it drew two.
+#
+# Council rulings session of 2026-09-13, Ruling 4(c).
+TAIL_AUDIT_N = 6
+
+# What one tail-audit call costs, RE-DERIVED FROM THIS REPOSITORY'S OWN
+# TELEMETRY rather than from the lost costing table (Ruling 4(c) ground 1: the
+# number was never only in that memo). A tail-audit call is an ENRICHED
+# classification call, and the run record holds 87 of those. The derivation, so
+# a later reader can redo it rather than trust it:
+#
+#   prompt      `prompts/classifier.txt` is 15,389 characters; the four
+#               placeholders it substitutes account for 88 of them, leaving
+#               15,301 characters of fixed prompt.
+#   item        for the 87 telemetry records with `access.body_fetched` true and
+#               `classification.path` "llm": title + source + host + body,
+#               body capped at `classify.MAX_TEXT_CHARS` (6,000). Median total
+#               19,420 characters, max 20,522.
+#   tokens      at ~4 characters a token: ~4,855 input (median), ~5,130 (max).
+#   output      ~250 tokens. THIS IS THE ONE INFERRED TERM — the classifier's
+#               answer length is not in telemetry. `max_tokens` is 1,024, so the
+#               hard ceiling is ~$0.0103 a call.
+#   price       claude-haiku-4-5 (src/models.py: the digest classifier is
+#               unchanged), $1.00 / 1M input and $5.00 / 1M output.
+#
+#   median: 4,855/1e6 x $1.00 + 250/1e6 x $5.00 = $0.00611
+#   max:    5,130/1e6 x $1.00 + 250/1e6 x $5.00 = $0.00638  -> rounded UP below
+#
+# 0.0064 is the max-observed figure, so `tail_audit_cost_usd` overstates rather
+# than understates. Six calls a run is ~$0.038 — about $2 a year at a weekly
+# cadence.
+TAIL_AUDIT_COST_PER_CALL_USD = 0.0064
 
 # The interpretive Research Brief (the council's second weekly email). Enabled by
 # default; set RESEARCH_BRIEF_ENABLED=0 to suppress it. It requires the Anthropic

@@ -10,6 +10,7 @@ classifier uses its keyword fallback — so --dry-run works fully offline.
 from __future__ import annotations
 
 import argparse
+import copy
 import logging
 import re
 import sys
@@ -186,6 +187,38 @@ def parse_since(spec: str) -> datetime:
     return now - delta
 
 
+# Outcomes whose SCORE must never be published, however high it is.
+#
+# Council rulings session of 2026-09-13, Ruling 4(d), ruled mechanically because
+# row C had already made it mechanical. A tail item is classified without a body
+# and, when a provider call is made for it and fails, it falls back to a keyword
+# score. Until 2026-09-10 that was recorded as `keyword_only_by_design` and was
+# indistinguishable from the genuine by-design case. It is not the same thing:
+#
+#   KEYWORD_ONLY_BY_DESIGN         no model was expected and NONE WAS CALLED
+#                                  (`attempts == 0`; the offline dry-run case).
+#                                  The keyword score is the intended result, so
+#                                  it publishes exactly as it does today.
+#   KEYWORD_AFTER_PROVIDER_ERROR   a call WAS made for this item and it failed.
+#                                  The score is what an outage left behind, and
+#                                  publishing it would put a number in front of
+#                                  a reader that the instrument did not produce
+#                                  by the route it claims to use.
+#
+# Suppression lives HERE, in the publication decision, and not in
+# `src/classify.py`. Whether an outage's fallback score may be published is
+# POLICY; what happened to the item is a FACT, and the classifier's job ends at
+# the fact. Putting the policy in the classifier would also make the item
+# non-terminal or unscored, and it is neither: it is finished, it has a number,
+# and the number simply does not publish.
+UNPUBLISHABLE_OUTCOMES = frozenset({ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR})
+
+
+def publication_suppressed(ci) -> bool:
+    """Whether this item's score may not be published, whatever it is."""
+    return outcome_of(ci) in UNPUBLISHABLE_OUTCOMES
+
+
 def would_surface(classified, threshold, min_items, floor,
                   fill_floor_suspended=None):
     """The items the score-and-fill rule alone would publish.
@@ -230,7 +263,7 @@ def select_surfaced(classified, threshold, min_items, floor,
                     fill_floor_suspended=None, status_only=None):
     """Choose which classified items are actually published this cycle.
 
-    Two independent gates, in this order:
+    Three independent gates, in this order:
 
     1. ``status_only`` (``config.VALIDATION_STATUS_ONLY``, ON by default). While
        the classifier is under validation NOTHING publishes at item level — not
@@ -243,7 +276,22 @@ def select_surfaced(classified, threshold, min_items, floor,
        reads as. This gate is checked FIRST and no argument to this function can
        be set such that the fill flag disables it.
 
-    2. the score-and-fill rule (``would_surface``).
+    2. ``UNPUBLISHABLE_OUTCOMES`` (Ruling 4(d), 2026-09-13). An item whose score
+       is a keyword fallback produced AFTER a failed provider call does not
+       publish, at any score. A genuine ``keyword_only_by_design`` score — no
+       provider configured, no call made, ``attempts == 0`` — publishes as
+       today. The filter runs BEFORE the fill rather than after it, so a
+       suppressed item does not silently occupy one of the fill's slots: the
+       next eligible item takes it.
+
+    3. the score-and-fill rule (``would_surface``).
+
+    ``would_surface`` deliberately does NOT apply gate 2. It is the
+    counterfactual — what the score-and-fill rule alone would have published —
+    and the difference between the two lists is what the gates HELD. A
+    suppressed item is a held item; ``src/main.py`` records the distinct reason
+    per candidate in telemetry and prints the count in the run summary, so the
+    holding is countable and its cause is not summarised away.
 
     Returning ``[]`` rather than filtering later is deliberate: every downstream
     surface — the email body, the archive folder, the article files, meta.json,
@@ -254,7 +302,8 @@ def select_surfaced(classified, threshold, min_items, floor,
         status_only = config.VALIDATION_STATUS_ONLY
     if status_only:
         return []
-    return would_surface(classified, threshold, min_items, floor,
+    eligible = [c for c in classified if not publication_suppressed(c)]
+    return would_surface(eligible, threshold, min_items, floor,
                          fill_floor_suspended)
 
 
@@ -600,18 +649,44 @@ def main(argv=None) -> int:
     #     a triage result keeps its lexical position (semantic_rank 0). When no
     #     item is triaged, every rank is 0 and the sort key collapses to the
     #     lexical order — so a total outage reproduces lexical ranking exactly.
+    #     BOUNDED (council ruling of 2026-09-13, Ruling 4(a)). The pass is priced
+    #     per candidate and the candidate count is the one quantity this pipeline
+    #     does not control, so it is capped at config.TRIAGE_MAX_CALLS_PER_RUN.
+    #     Above the cap the top 100 BY LEXICAL RANK are triaged and the remainder
+    #     are recorded as the named skip they are. The cap is applied against a
+    #     TOTAL order — (-relevance_score, source, source_id) — so which 100
+    #     items are bought is a property of the candidate set rather than of
+    #     fetch order, and a re-run over the same candidates buys the same 100.
     triage_results: dict = {}
     if config.TRIAGE_ENABLED:
-        for it in new_candidates:
+        by_lexical_rank = sorted(
+            new_candidates,
+            key=lambda it: (-lex[id(it)][1]["relevance_score"],
+                            getattr(it, "source", "") or "",
+                            getattr(it, "source_id", "") or ""))
+        within_cap = by_lexical_rank[:config.TRIAGE_MAX_CALLS_PER_RUN]
+        over_cap = by_lexical_rank[config.TRIAGE_MAX_CALLS_PER_RUN:]
+        for it in within_cap:
             result = triage.triage_item(it, provider=provider)
             triage_results[id(it)] = result
+            stats["triage_calls"] += int(result.attempts)
             if result.ran:
                 stats["triage_ran"] += 1
             else:
                 stats["triage_skipped"] += 1
-        logger.info("triage: %d ranked semantically, %d skipped (~$%.4f)",
-                    stats["triage_ran"], stats["triage_skipped"],
-                    stats["triage_ran"] * config.TRIAGE_COST_PER_CALL_USD)
+        for it in over_cap:
+            triage_results[id(it)] = triage.skipped_over_cap()
+            stats["triage_skipped"] += 1
+        stats["triage_cost_usd"] = round(
+            stats["triage_calls"] * config.TRIAGE_COST_PER_CALL_USD, 4)
+        if over_cap:
+            logger.warning(
+                "triage: %d candidate(s) past the %d-call cap were not triaged "
+                "and keep their lexical position", len(over_cap),
+                config.TRIAGE_MAX_CALLS_PER_RUN)
+        logger.info("triage: %d ranked semantically, %d skipped, %d call(s) "
+                    "(~$%.4f)", stats["triage_ran"], stats["triage_skipped"],
+                    stats["triage_calls"], stats["triage_cost_usd"])
     for it in new_candidates:
         run_tel.note_triage(lex[id(it)][0],
                             triage.telemetry_section(triage_results.get(id(it))))
@@ -761,6 +836,7 @@ def main(argv=None) -> int:
             logger.error("classify failed for %s: %s", it.source_id, exc)
             outcome_value = "pipeline_error"
 
+        classified_by_item[id(it)] = (ci, outcome_value)
         cmeta = (getattr(ci, "metadata", None) if ci is not None else None) or {}
         # `ran` is whether a CLASSIFICATION HAPPENED, not whether an object came
         # back. An unreadable item returns a ClassifiedItem — it has to, so the
@@ -881,6 +957,61 @@ def main(argv=None) -> int:
     stats["deferred"] = len(deferred_now)
     stats["abandoned"] = len(abandoned_now)
 
+    # 3c. THE STRATIFIED TAIL AUDIT (council ruling of 2026-09-13, Ruling 4(c)).
+    #     The enrichment cut decides what the model reads, and nothing has ever
+    #     measured what it throws away. This samples the UN-ENRICHED tail — two
+    #     items from each of three strata of `lexical_subtotal`, under a recorded
+    #     seed — enriches each one, classifies it a SECOND time, and records the
+    #     pair: the band the item got without a body and the band it gets with
+    #     one. A difference is a flip, and a flip needs no human label, which is
+    #     why this is buildable before the locked set holds a single label. See
+    #     `src/tail_audit.py` for the design; this block is only the wiring.
+    #
+    #     THREE THINGS IT DELIBERATELY DOES NOT DO.
+    #       - It does not run when the provider canary failed. Every
+    #         re-classification would fall back to a keyword score and the audit
+    #         would measure the outage rather than the gate.
+    #       - It does not run on --dry-run. The ledger is cross-run memory: an
+    #         item recorded as audited is never audited again, and a rehearsal
+    #         must not spend the instrument's memory.
+    #       - It works on a DEEP COPY of each sampled candidate, so the body it
+    #         fetches cannot reach the published item, the telemetry record or
+    #         the state file by any path at all.
+    if config.TAIL_AUDIT_N and not provider_down and not args.dry_run:
+        run_id = telemetry.compute_run_id(
+            date_str, [lex[id(it)][0] for it in new_candidates])
+        pool = []
+        for it in ranked[config.ENRICH_TOP_N:]:
+            if id(it) in enrich_set:
+                continue  # read on top of the cut; not part of the tail
+            ci_tail, outcome_tail = classified_by_item.get(id(it), (None, ""))
+            if ci_tail is None:
+                continue
+            pool.append(tail_audit.tail_candidate(
+                copy.deepcopy(it),
+                lexical_subtotal=triage.lexical_subtotal(lex[id(it)][1]),
+                classified=ci_tail, outcome=outcome_tail))
+        prior = tail_audit.read_ledger()
+        audit = tail_audit.run_audit(
+            pool, run_id=run_id, enrich=enrich,
+            classify=lambda item: classify_item(item, provider=provider,
+                                                intended_model=True),
+            per_stratum=tail_audit.per_stratum_n(),
+            already_audited=tail_audit.audited_item_ids(prior))
+        stats["tail_audit_calls"] = audit.calls
+        stats["tail_audit_cost_usd"] = round(
+            audit.calls * config.TAIL_AUDIT_COST_PER_CALL_USD, 4)
+        stats["tail_audit_rows"] = tail_audit.append_rows(audit.rows)
+        stats["tail_audit_shortfalls"] = dict(audit.shortfalls)
+        stats["tail_audit_unmeasurable"] = audit.skipped_not_measurable
+        logger.info("tail audit: %d tail item(s) in the pool, %d call(s) "
+                    "(~$%.4f), %d pair(s) recorded, %d not measurable",
+                    len(pool), audit.calls, stats["tail_audit_cost_usd"],
+                    stats["tail_audit_rows"], audit.skipped_not_measurable)
+        for stratum, short in sorted(audit.shortfalls.items()):
+            logger.info("tail audit: stratum %s was %d short of the draw",
+                        stratum, short)
+
     # 4. Select what to surface (see select_surfaced for the two gates).
     #
     #    Both lists are computed, because they answer different questions. The
@@ -906,6 +1037,11 @@ def main(argv=None) -> int:
     # validator reconciles disk + held against screened matches.
     stats["held_for_review"] = len(held)
     stats["validation_status_only"] = bool(config.VALIDATION_STATUS_ONLY)
+    # Held BECAUSE an outage produced the number, not because the validation
+    # gate is on. Counted separately so that when the validation gate is one day
+    # lifted, a run that suppressed an item still says so out loud.
+    stats["suppressed_provider_error"] = sum(
+        1 for c in held if publication_suppressed(c))
 
     # 4a. Record, per candidate, why it did or did not appear. "Not surfaced" has
     #     several different meanings — below the floor, above the floor but not
@@ -936,12 +1072,16 @@ def main(argv=None) -> int:
                                    digest=folder_rel,
                                    position=surfaced_ids[id(match)])
         elif id(match) in held_ids:
-            # It would have published; the validation gate held it. Distinct from
-            # every other not-surfaced reason on purpose — "below the floor" and
+            # It would have published and a gate held it. Distinct from every
+            # other not-surfaced reason on purpose — "below the floor" and
             # "cleared the threshold and was held" are the two ends of the range
-            # and must never be summarised into the same absence.
-            run_tel.note_surfacing(cid, surfaced=False,
-                                   reason="held_validation_status_only",
+            # and must never be summarised into the same absence. WHICH gate
+            # held it is recorded too: an outage's fallback score and an item
+            # awaiting validation are held for opposite reasons.
+            reason = ("suppressed_keyword_after_provider_error"
+                      if publication_suppressed(match)
+                      else "held_validation_status_only")
+            run_tel.note_surfacing(cid, surfaced=False, reason=reason,
                                    digest="", position=-1)
         else:
             if match.relevance_score < config.RELEVANCE_FLOOR:
@@ -1132,6 +1272,24 @@ def main(argv=None) -> int:
               f"call was made; {len(deferred_now)} item(s) queued WITHOUT an "
               f"attempt charged; the workflow's provider gate fails this run "
               f"after state is committed so the failure alert fires")
+    if stats.get("triage_calls") or stats.get("triage_skipped"):
+        print(f"triage:           {stats['triage_ran']} ranked semantically, "
+              f"{stats['triage_skipped']} skipped, {stats['triage_calls']} call(s) "
+              f"~${stats['triage_cost_usd']:.4f} (cap "
+              f"{config.TRIAGE_MAX_CALLS_PER_RUN}/run)")
+    if stats.get("suppressed_provider_error"):
+        print(f"  !! NOT PUBLISHED: {stats['suppressed_provider_error']} item(s) "
+              f"whose keyword score was produced after a failed provider call "
+              f"({ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value}) — the "
+              f"number is an outage's fallback and does not publish at any score")
+    if stats.get("tail_audit_calls"):
+        print(f"tail audit:       {stats['tail_audit_rows']} pair(s) recorded, "
+              f"{stats['tail_audit_calls']} call(s) "
+              f"~${stats['tail_audit_cost_usd']:.4f}"
+              + (f", {stats['tail_audit_unmeasurable']} not measurable"
+                 if stats.get("tail_audit_unmeasurable") else "")
+              + (f", short: {stats['tail_audit_shortfalls']}"
+                 if stats.get("tail_audit_shortfalls") else ""))
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")
     print(f"surfaced in digest: {len(surfaced)}")
     if config.VALIDATION_STATUS_ONLY:

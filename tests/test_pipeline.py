@@ -749,6 +749,19 @@ def _sandbox(tmp_path, monkeypatch, items, responder, *, status_only=False):
     monkeypatch.setattr(main_mod, "enrich", lambda it: it)     # offline
     monkeypatch.setattr(config_mod, "RESEARCH_BRIEF_ENABLED", False)
     monkeypatch.setattr(config_mod, "VALIDATION_STATUS_ONLY", status_only)
+    # The cost-bearing optional passes are pinned OFF here, explicitly, for the
+    # same reason `status_only` is an explicit argument: almost every test below
+    # counts the calls a run makes. Triage ships ON since 2026-09-13, so leaving
+    # these to the shipped default would add a call per candidate to every count
+    # in this file AND make the suite depend on what the developer happens to
+    # have exported. The tests that are ABOUT these passes turn them on
+    # explicitly, one line each, and the shipped defaults have their own tests.
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", False)
+    monkeypatch.setattr(config_mod, "V2_SHADOW_CALLS_MODE",
+                        config_mod.V2_SHADOW_CALLS_OFF)
+    monkeypatch.setattr(config_mod, "V2_SHADOW_CALLS_SPEC",
+                        config_mod.V2_SHADOW_CALLS_OFF)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 0)
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setattr(classify_mod, "_call_anthropic", responder)
@@ -1755,9 +1768,16 @@ TRIAGE_GOOD = json.dumps({"rings": {
     "jurisdictional_admissibility": "absent"}})
 
 
-def test_a_default_run_makes_no_triage_and_no_v2_call_and_says_lexical_only(
+def test_with_both_optional_passes_off_nothing_extra_is_spent_or_claimed(
         tmp_path, monkeypatch):
-    """The shipped configuration: nothing extra is spent and nothing is claimed."""
+    """The floor of the instrument: one classification call per candidate.
+
+    This used to be the test of the SHIPPED configuration. The council turned
+    triage on (2026-09-13, Ruling 4(a)), so the shipped configuration now buys
+    more than this and is tested separately; what this test protects is the
+    property that turning the optional passes OFF really does leave nothing but
+    the classifier, which is what makes the cost of each pass attributable.
+    """
     from src import config as config_mod, telemetry
 
     log = []
@@ -1886,6 +1906,14 @@ def test_a_triage_outage_is_recorded_and_the_run_still_completes(
     monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
     assert run() == 0, "a triage outage must not fail the run"
 
+    # The outage is PRICED, not written off. A call that failed is still a call,
+    # so the reported cost is an honest upper bound on the spend rather than a
+    # count of the answers we got to keep.
+    meta = _meta_json()
+    assert meta["triage_calls"] == 2
+    assert meta["triage_cost_usd"] == round(
+        2 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+
     for rec in telemetry.load_records("analytics/candidate_telemetry.jsonl"):
         t = rec["triage"]
         assert t["ran"] is False
@@ -1894,6 +1922,346 @@ def test_a_triage_outage_is_recorded_and_the_run_still_completes(
         assert t["strengths"] == {}
         # The classification still happened; only the ranking hint was lost.
         assert rec["classification"]["outcome"] == "ok"
+
+
+def _meta_json():
+    """The one meta.json this run wrote. The archive is per-date, so there is one."""
+    import glob
+    paths = glob.glob("digests/*_ISDS-Thematic-Watch/meta.json")
+    assert len(paths) == 1, f"expected one dated record, found {paths}"
+    return json.load(open(paths[0], encoding="utf-8"))
+
+
+def test_the_shipped_triage_default_prices_its_own_pass_in_meta_json(
+        tmp_path, monkeypatch):
+    """Ruling 4(a): the run reports `triage_calls` and `triage_cost_usd`.
+
+    The decision to turn triage on was made on a cost estimate. An estimate that
+    never meets a meter is a guess with a date on it, so the number the run
+    actually spent is written into the dated record beside the counts it bought.
+    """
+    from src import config as config_mod
+
+    items = [_cand(f"cand-{i}") for i in range(3)]
+    run = _sandbox(tmp_path, monkeypatch, items,
+                   _three_prompt_responder(triage_payload=TRIAGE_GOOD),
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
+    monkeypatch.setenv("ANTHROPIC_MODEL", "test-model-id")
+    assert run() == 0
+
+    meta = _meta_json()
+    assert meta["triage_calls"] == 3, "one call per candidate, counted"
+    assert meta["triage_cost_usd"] == round(
+        3 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+    # And the pass is priced from the committed constant, not from a literal
+    # typed into this test: the arithmetic is the assertion.
+    assert meta["triage_cost_usd"] == 0.0042
+
+
+def test_the_triage_cap_bites_at_one_hundred_and_one_candidates(
+        tmp_path, monkeypatch):
+    """The bound, exercised where it actually binds.
+
+    101 candidates, a cap of 100: exactly 100 calls are made, the 101st is
+    recorded as the named skip `skipped_over_run_cap` rather than vanishing, and
+    WHICH item is left out is a function of the candidate set — the cap is
+    applied against the total order (-score, source, source_id), so it is not
+    settled by fetch order.
+    """
+    from src import config as config_mod, telemetry, triage as triage_mod
+
+    log = []
+    items = [_cand(f"cand-{i}") for i in range(101)]
+    run = _sandbox(tmp_path, monkeypatch, items,
+                   _three_prompt_responder(triage_payload=TRIAGE_GOOD, log=log),
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TRIAGE_ENABLED", True)
+    monkeypatch.setenv("ANTHROPIC_MODEL", "test-model-id")
+    assert config_mod.TRIAGE_MAX_CALLS_PER_RUN == 100
+    assert run() == 0
+
+    assert len([p for p in log if _is_triage(p)]) == 100, \
+        "the cap did not bite: triage bought more calls than it was allowed"
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    assert len(recs) == 101
+    ran = [r for r in recs if r["triage"]["ran"]]
+    over = [r for r in recs
+            if r["triage"]["basis"] == triage_mod.TRIAGE_BASIS_OVER_CAP]
+    assert len(ran) == 100
+    assert len(over) == 1
+    # Every candidate here scores identically, so the tiebreak decides — and the
+    # tiebreak is (source, source_id). "cand-99" sorts last of the 101.
+    assert over[0]["candidate_id"] == telemetry.candidate_id("iisd_itn", "cand-99")
+    assert over[0]["triage"]["attempts"] == 0, "a skipped candidate was charged"
+    assert over[0]["triage"]["semantic_rank"] == 0, \
+        "an untriaged candidate must keep its lexical position"
+
+    meta = _meta_json()
+    assert meta["triage_calls"] == 100
+    assert meta["triage_cost_usd"] == round(
+        100 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+
+
+# =============================================================================
+# Ruling 4(d) — an outage's fallback score does not publish
+# =============================================================================
+def _scored(score, outcome):
+    """A ClassifiedItem carrying a score and an outcome, built the real way."""
+    from src.classify import OUTCOME_KEY, from_candidate
+
+    ci = from_candidate(_cand(f"x-{score}-{outcome}"), score, [], [], "")
+    ci.metadata = {**(ci.metadata or {}), OUTCOME_KEY: outcome}
+    return ci
+
+
+def test_a_keyword_score_produced_after_a_failed_provider_call_never_publishes():
+    """Ruling 4(d). It is suppressed at ANY score, including well over the bar."""
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(95, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    genuine = _scored(95, ClassifyOutcome.OK.value)
+
+    surfaced = main_mod.select_surfaced([outage, genuine], 40, 6, 25,
+                                        fill_floor_suspended=True,
+                                        status_only=False)
+    assert genuine in surfaced
+    assert outage not in surfaced, \
+        "a score an outage produced was published as if the model had made it"
+
+
+def test_a_genuine_by_design_keyword_score_publishes_exactly_as_today():
+    """The other half of the ruling, and the half easiest to break by accident.
+
+    `keyword_only_by_design` means no model was expected and none was called.
+    That score is the intended result, not a degraded one, and the rider does
+    not touch it.
+    """
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    by_design = _scored(95, ClassifyOutcome.KEYWORD_ONLY_BY_DESIGN.value)
+    surfaced = main_mod.select_surfaced([by_design], 40, 6, 25,
+                                        fill_floor_suspended=True,
+                                        status_only=False)
+    assert surfaced == [by_design]
+
+
+def test_the_suppression_runs_before_the_fill_so_it_costs_no_slot():
+    """A suppressed item must not silently occupy one of the fill's places."""
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(38, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    lead = _scored(30, ClassifyOutcome.OK.value)
+    surfaced = main_mod.select_surfaced([outage, lead], 40, 1, 25,
+                                        fill_floor_suspended=False,
+                                        status_only=False)
+    assert surfaced == [lead], \
+        "the suppressed item took the fill slot and the eligible lead lost it"
+
+
+def test_the_counterfactual_still_counts_a_suppressed_item_as_held():
+    """`would_surface` is the counterfactual and does not apply the rider.
+
+    That is what keeps the archive's arithmetic honest: a suppressed match is a
+    match that is deliberately not on disk, which is exactly what
+    `held_for_review` counts, and `scripts/validate_archive.py` reconciles
+    meta.json against it.
+    """
+    import src.main as main_mod
+    from src.classify import ClassifyOutcome
+
+    outage = _scored(95, ClassifyOutcome.KEYWORD_AFTER_PROVIDER_ERROR.value)
+    assert main_mod.would_surface([outage], 40, 6, 25,
+                                  fill_floor_suspended=True) == [outage]
+    assert main_mod.publication_suppressed(outage) is True
+
+
+def test_an_outage_item_is_held_with_its_own_reason_not_the_gates(
+        tmp_path, monkeypatch):
+    """End to end, and the reason is recorded per candidate.
+
+    The provider canary fails, so no model call is made at all. The ENRICHED top
+    set records `provider_error` and is deferred — that path is unchanged. The
+    TAIL, where a keyword score was always the expected result, is terminal and
+    records `keyword_after_provider_error`; those are the scores the rider
+    suppresses. Thirty candidates, so there is a tail at all.
+    """
+    from src import telemetry
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    items = [_cand(f"cand-{i}") for i in range(30)]
+    run = _sandbox(tmp_path, monkeypatch, items, dead, status_only=False)
+    run()
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    outage = [r for r in recs
+              if r["classification"]["outcome"] == "keyword_after_provider_error"]
+    assert outage, "the tail did not reach the outcome this rider is about"
+    for rec in outage:
+        assert rec["surfacing"]["surfaced"] is False, \
+            "an outage's fallback score reached the digest"
+
+    import glob
+    articles = glob.glob("digests/*_ISDS-Thematic-Watch/articles/*.md")
+    assert articles == [], "an outage's fallback score was written to the archive"
+
+
+def test_the_held_reason_names_the_outage_rather_than_the_validation_gate(
+        tmp_path, monkeypatch):
+    """A suppressed item is held, and the record says WHY it was held.
+
+    "Below the floor" and "held because an outage produced this number" are not
+    the same absence, and a run that reported them identically would hide the
+    outage behind the gate.
+    """
+    from src import config as config_mod, telemetry
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    items = [_cand(f"cand-{i}") for i in range(30)]
+    run = _sandbox(tmp_path, monkeypatch, items, dead, status_only=False)
+    # The fill is what would otherwise have carried these sub-threshold scores
+    # into the digest; turning it on is what makes the suppression observable.
+    monkeypatch.setattr(config_mod, "FILL_FLOOR_SUSPENDED", False)
+    run()
+
+    recs = telemetry.load_records("analytics/candidate_telemetry.jsonl")
+    reasons = {r["surfacing"]["reason"] for r in recs
+               if r["classification"]["outcome"] == "keyword_after_provider_error"}
+    assert "suppressed_keyword_after_provider_error" in reasons, \
+        f"the outage was not named as the reason; got {sorted(reasons)}"
+    assert not any(r["surfacing"]["surfaced"] for r in recs
+                   if r["classification"]["outcome"]
+                   == "keyword_after_provider_error")
+
+
+AUDIT_MARKER = "A FETCHED BODY THE HEADLINE NEVER SHOWED"
+FLIPPED_JSON = json.dumps({"relevance_score": 30,
+                           "matched_rings": [],
+                           "thematic_tags": [],
+                           "digest_summary": "With a body, it reads differently."})
+
+
+TAIL_TEXT = "A mining concession was renewed this quarter."
+
+
+def _audit_items():
+    """24 on-theme candidates to fill the enrichment cut, 6 off-theme tail."""
+    return ([_cand(f"top-{i}") for i in range(24)]
+            + [_cand(f"tail-{i}", title="Solar tariff review", text=TAIL_TEXT)
+               for i in range(6)])
+
+
+def test_the_tail_audit_runs_over_the_unenriched_tail_and_never_touches_the_run(
+        tmp_path, monkeypatch):
+    """Ruling 4(c), end to end through main().
+
+    All six tail items are lexically invisible, so the draw is two from stratum
+    A and the other two strata are recorded SHORT rather than padded. The two
+    drawn items are enriched, classified a second time, and the pair is written
+    to the ledger.
+
+    The load-bearing assertion is the last one: the body the audit fetched must
+    not reach the run's own record. The audit works on a deep copy, so the
+    audited items' telemetry still says the run never enriched them - which is
+    the truth about what the RUN did with them.
+    """
+    from src import config as config_mod, tail_audit as ta, telemetry
+
+    def audit_aware(prompt):
+        if AUDIT_MARKER in prompt:
+            return FLIPPED_JSON        # the enriched half of the pair
+        return GOOD_JSON
+
+    run = _sandbox(tmp_path, monkeypatch, _audit_items(), audit_aware,
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+
+    import src.main as main_mod
+
+    def fake_enrich(item):
+        item.raw_text = AUDIT_MARKER + " " + (item.raw_text or "")
+        item.metadata = {**(item.metadata or {}), "enriched": True}
+        return item
+
+    monkeypatch.setattr(main_mod, "enrich", fake_enrich)
+    assert run() == 0
+
+    rows = ta.read_ledger()
+    assert len(rows) == 2, "two per stratum, from the one stratum that had items"
+    for row in rows:
+        assert set(row) == set(ta.LEDGER_FIELDS)
+        assert row["stratum"] == ta.STRATUM_A
+        assert row["lexical_subtotal"] == 0
+        assert row["band_enriched"] == "LOW"        # 30, with a body
+        assert row["band_unenriched"] != row["band_enriched"], "no flip recorded"
+        assert row["seed"] == row["run_id"]
+
+    # The cost is in the dated record; the measurement is not.
+    meta = _meta_json()
+    assert meta["tail_audit_cost_usd"] == round(
+        2 * config_mod.TAIL_AUDIT_COST_PER_CALL_USD, 4)
+    blob = json.dumps(meta)
+    assert "band_enriched" not in blob and "stratum" not in blob
+
+    # The audited items are tail items, and the run's own record still says the
+    # run never read their bodies - because it never did.
+    audited = {r["item_id"] for r in rows}
+    recs = {r["candidate_id"]: r for r in
+            telemetry.load_records("analytics/candidate_telemetry.jsonl")}
+    for cid in audited:
+        rec = recs[cid]
+        assert rec["entered_enrichment"] is False
+        assert rec["access"]["body_fetched"] is False, \
+            "the tail audit's fetch leaked into the run's own record"
+        assert rec["access"]["text_len_body"] == len(TAIL_TEXT), \
+            "the record's body length grew; the audit's fetch reached it"
+    assert AUDIT_MARKER not in open(
+        "analytics/candidate_telemetry.jsonl", encoding="utf-8").read()
+    assert AUDIT_MARKER not in open(ta.LEDGER_PATH, encoding="utf-8").read()
+
+
+def test_a_dry_run_never_spends_the_tail_audits_cross_run_memory(
+        tmp_path, monkeypatch):
+    """The ledger is memory: an audited item is never audited again.
+
+    A rehearsal that marked items audited would silently consume items the real
+    run can no longer measure, and nothing would say so.
+    """
+    from src import config as config_mod, tail_audit as ta
+
+    _sandbox(tmp_path, monkeypatch, _audit_items(), lambda p: GOOD_JSON,
+             status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+
+    import src.main as main_mod
+    assert main_mod.main(["--since", "30d", "--no-email", "--dry-run"]) == 0
+    assert ta.read_ledger() == []
+
+
+def test_a_provider_outage_skips_the_tail_audit_rather_than_measuring_itself(
+        tmp_path, monkeypatch):
+    """With the canary down, every re-classification is a keyword fallback.
+
+    Auditing then would measure the outage and call it the enrichment cut.
+    """
+    from src import config as config_mod, tail_audit as ta
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    run = _sandbox(tmp_path, monkeypatch, _audit_items(), dead, status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+    run()
+    assert ta.read_ledger() == [], \
+        "the audit ran during an outage and recorded the outage as a flip"
 
 
 def test_an_abandoned_item_is_recorded_as_abandoned_not_as_still_retrying(

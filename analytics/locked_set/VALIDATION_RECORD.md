@@ -60,6 +60,27 @@ lost record.
 3. **The original R2.1 record was never under version control on any branch.**
 4. **No row in §3 is a label, a score, or a finding.** Every row is a LEAD. Per
    §3's binding constraints, no item enters `items.json` on this record's authority.
+5. **The set is short of its design target, and by how much, per category.** The
+   target is nine categories × six matters = 54. **Thirty-eight rows are nominated:
+   category 1 — 6 of 6; category 2 — 2 of 6; category 3 — 6 of 6; category 4 — 6 of
+   6; category 5 — 6 of 6; category 6 — 6 of 6; category 7 — 6 of 6; category 8 — 0
+   of 6; category 9 — 0 of 6.** Sixteen rows are open, under gaps `G-1` and `G-2`
+   (§3.12). Categories 8 and 9 are empty **by decision**: their item text *is* the
+   headline, so nominating one from memory would fabricate the field the coder reads.
+   Category 2 is short because every matter this repository knows in it is in a
+   development set. **Nothing was padded to reach six.**
+6. **THE REMOVAL OF THE SIX ANCHOR MATTERS IS A FINDING, NOT A CASUALTY OF
+   BOOKKEEPING.** *Eli Lilly and Company v. Government of Canada*, *Bridgestone
+   Licensing Services, Inc. v. Panama*, *Philip Morris Asia Limited v. Commonwealth
+   of Australia*, *Philip Morris Brands SARL and others v. Uruguay*, *Apotex Inc. v.
+   United States* and *Hela Schwarz GmbH v. People's Republic of China* are
+   unavailable to this validation set **precisely because they are the classifier's
+   development seeds and probe referents** — the instrument was built on them, so
+   they cannot be used to test it. It follows, and it is stated here rather than
+   inferred later, that **this set can never evidence the instrument's performance on
+   the six matters the project most cares about.** That limitation attaches to
+   **every grade this set ever moves**, and belongs in the limitations of any such
+   grade — on its face, not in a footnote.
 
 ---
 
@@ -68,21 +89,23 @@ lost record.
 Re-deriving something the repository already holds is fabrication dressed as
 recovery. Each survivor below was opened and read at
 `origin/main` = `66df2d2`, and is quoted with its own pinpoint. **The line numbers
-in this section are as of `66df2d2`**; the tier-P amendment committed on this same
-branch (RULING 2) lengthens the tier-P bullet from 6 printed lines to 14, so every
-`SCHEMA.md` citation below line 51 shifts by **+8** after that commit. Both
-numbers are given where the shift applies.
+in this section are as of `66df2d2`**. Two amendments on this same branch lengthen
+the tier-P bullet — RULING 2 (¶ 1 anchor) takes it from 6 printed lines to 14, and
+the chairman's G-3 ruling (tier P redefined by criterion; the structural-ordinal
+anchor) takes it to 32 — so every `SCHEMA.md` citation below line 51 shifts by
+**+26** in total. Both the original and the final numbers are given where the shift
+applies, and every final number below was re-read against the amended file.
 
-| Element | Status | Pinpoint (at `66df2d2`) | Pinpoint (after the RULING 2 amendment) |
+| Element | Status | Pinpoint (at `66df2d2`) | Pinpoint (after RULING 2 + the G-3 ruling) |
 |---|---|---|---|
-| Nine categories, with definitions | **SURVIVES** | `SCHEMA.md:74` (heading), `:76-84` (the nine) | `:82`, `:84-92` |
-| Six-each / twenty-positives structure | **SURVIVES** | `SCHEMA.md:74` | `:82` |
-| P / S / C tier rules | **SURVIVES** | `SCHEMA.md:43-55` (P at `:46-51`, as amended by RULING 2; S at `:52-53`; C at `:54-55`) | `:43-63` |
-| `labels.json` field set | **SURVIVES** | `SCHEMA.md:57-72` (JSON block `:59-67`) | `:65-80` (JSON block `:67-75`) |
+| Nine categories, with definitions | **SURVIVES** | `SCHEMA.md:74` (heading), `:76-84` (the nine) | `:100`, `:102-110` |
+| Six-each / twenty-positives structure | **SURVIVES** | `SCHEMA.md:74` | `:100` |
+| P / S / C tier rules | **SURVIVES** | `SCHEMA.md:43-55` (P at `:46-51`, as twice amended; S at `:52-53`; C at `:54-55`) | `:43-81` (P at `:46-77`; S at `:78-79`; C at `:80-81`) |
+| `labels.json` field set | **SURVIVES** | `SCHEMA.md:57-72` (JSON block `:59-67`) | `:83-98` (JSON block `:85-93`) |
 | Blind commit order | **SURVIVES** | `SCHEMA.md:14-20`, enforced by `scripts/check_lock.py` (wired at `.github/workflows/pipeline-guards.yml:140,160`, per `SCHEMA.md:22-24`) | unchanged / `:22-24` |
-| Disjointness constraints | **SURVIVES** | `SCHEMA.md:86-94` | `:94-102` |
-| 20×10 stability design + four blocking thresholds | **SURVIVES VERBATIM** | `SCHEMA.md:105-107` | `:113-115` |
-| S4 stop-publication rule | **SURVIVES IN SUBSTANCE** | `SCHEMA.md:107-109` | `:115-117` |
+| Disjointness constraints | **SURVIVES** | `SCHEMA.md:86-94` | `:112-120` |
+| 20×10 stability design + four blocking thresholds | **SURVIVES VERBATIM** | `SCHEMA.md:105-107` | `:131-133` |
+| S4 stop-publication rule | **SURVIVES IN SUBSTANCE** | `SCHEMA.md:107-109` | `:133-135` |
 | Triage per-call cost | **SURVIVES AS A COMMITTED CONSTANT** | `src/config.py`, `TRIAGE_COST_PER_CALL_USD = 0.0014` | unchanged |
 | **The 54 named candidate matters** | **LOST** | — | — |
 | **V1–V6 acceptance criteria; S1–S3** | **LOST** | — | — |
@@ -202,15 +225,38 @@ in §0. Integrity-officer certifies before a single row is committed to
   R3 jurisdiction/admissibility) the matter's own subject touches. It is not a
   prediction, not a score, and not a label.
 
-### 3.1 Tier assignment, and a defect this drafting exposed
+### 3.1 Tier assignment — gap `G-3`, raised by this drafting and RULED THE SAME DAY
 
-`SCHEMA.md`'s tier P enumerates seven host families — ICSID, PCA, italaw, Curia,
-BAILII, UN RIAA, WTO. **United States federal and state court opinions are in none
-of them, and are neither S (paywalled/headline-only) nor C (Ferguson/Kim).**
-Category 5 ("Domestic trade-secret litigation, no state/treaty nexus") is composed
-almost entirely of such documents. Nine rows below therefore carry
-**`UNASSIGNED`** rather than a tier, and the gap is filed as **`G-3`** in §3.12
-rather than papered over by stretching tier P to a host the schema does not name.
+This drafting found that `SCHEMA.md`'s tier P enumerated seven **host families** —
+ICSID, PCA, italaw, Curia, BAILII, UN RIAA, WTO — in which United States federal and
+state court opinions appeared nowhere, while being neither S (paywalled/headline-only)
+nor C (Ferguson/Kim). Category 5 ("Domestic trade-secret litigation, no state/treaty
+nexus") is composed almost entirely of such documents. Nine rows were committed
+`UNASSIGNED` and the defect was filed as gap **`G-3`** rather than papered over by
+stretching tier P to a host the schema did not name.
+
+**The chairman ruled `G-3` on 2026-09-13 and it is implemented here. Tier P is
+redefined BY CRITERION, not extended by host list — the enumeration was the defect.**
+Tier P is now the text of a public primary legal instrument issued by a court,
+tribunal or treaty body and published by that body or by an authorised public
+repository; the host list is expressly **non-exhaustive**; and **authorship governs,
+not host**, so commentator-authored material is C or S wherever it is hosted
+(`SCHEMA.md:46-77`). The anchor generalises in the same ruling to the document's
+**first printed structural ordinal** under a fixed three-limb priority.
+
+**The nine rows are therefore committed at tier P**, each carrying
+`anchor: undetermined — resolved at retrieval`. Which limb governs is a fact about
+the document, knowable only with the document in hand. **A row may not be moved to
+tier S before retrieval: falling to limb (3) is a finding, not a forecast.**
+
+**The chairman's copyright basis, recorded as he instructed.** His ground for US
+opinions is that they are government edicts carrying no copyright, **citing by name
+*Banks v. Manchester* and *Georgia v. Public.Resource.Org***. **Both citations are
+his, both are UNVERIFIED against any source in hand, and neither is presented here as
+verified** — they are to be verified at retrieval, and until then the criterion in
+`SCHEMA.md` stands on its own terms without them. He notes, and this record carries
+it, that tier P's most exposed members on access terms are actually **BAILII and
+italaw**, which impose their own terms of use independent of copyright.
 
 ### 3.2 Category 1 — IP + ISDS + administrative state measure
 
@@ -247,8 +293,8 @@ under gap **`G-1`** rather than filled with matters this seat cannot source.
 | 3-01 | InterMune UK Ltd. and others v. European Medicines Agency | General Court of the European Union, Case T-73/13 | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (clinical-trial data, commercial confidentiality); **no R2 treaty measure, no R3** |
 | 3-02 | AbbVie Inc. and AbbVie Ltd v. European Medicines Agency | General Court of the European Union, Case T-44/13 | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (clinical-trial data disclosure); no R2, no R3 |
 | 3-03 | PTC Therapeutics International Ltd v. European Medicines Agency | General Court of the EU, Case T-718/15; Court of Justice, Case C-175/18 P | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (regulatory data, Policy 0070); no R2, no R3 |
-| 3-04 | Vanda Pharmaceuticals, Inc. v. Food & Drug Administration | US District Court for the District of Columbia / DC Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (clinical data, exclusivity); no R2, no R3 |
-| 3-05 | Vanda Pharmaceuticals, Inc. v. United States, No. 23-629C | US Court of Federal Claims | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (patent/regulatory data as property); no R2, no R3 |
+| 3-04 | Vanda Pharmaceuticals, Inc. v. Food & Drug Administration | US District Court for the District of Columbia / DC Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (clinical data, exclusivity); no R2, no R3 |
+| 3-05 | Vanda Pharmaceuticals, Inc. v. United States, No. 23-629C | US Court of Federal Claims | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (patent/regulatory data as property); no R2, no R3 |
 | 3-06 | Matalia v. Warwickshire County Council | Court of Appeal of England and Wales (Civil Division) | `bailii.org` — **unverified locator** | P | R1 (copyright); no R2, no R3 |
 
 ### 3.5 Category 4 — ISDS administrative-measure claim, no IP
@@ -264,19 +310,22 @@ under gap **`G-1`** rather than filled with matters this seat cannot source.
 
 ### 3.6 Category 5 — Domestic trade-secret litigation, no state/treaty nexus
 
-Every row in this category is a United States court document. **All six carry
-`UNASSIGNED` tier under gap `G-3` and all six are unverified locators**, because no
-US court host is in `ALLOWED_HOSTS` and no US court host is in `SCHEMA.md`'s tier-P
-enumeration.
+Every row in this category is a United States court document. Under the chairman's
+`G-3` ruling (§3.1) **all six are tier P** — a US court opinion is a public primary
+legal instrument issued by a court and published by it or by an authorised public
+repository — each carrying `anchor: undetermined — resolved at retrieval`. **All six
+remain unverified locators**, which is a separate defect: no US court host is in
+`scripts/fetch_relay.py` `ALLOWED_HOSTS`, and the relay allowlist is untouched by the
+tier ruling.
 
 | # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
 |---|---|---|---|---|---|
-| 5-01 | Celgard, LLC v. Shenzhen Senior Technology Material Co. Ltd | US Court of Appeals for the Federal Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; **no R2, no R3, no state party** |
-| 5-02 | E.I. du Pont de Nemours & Co. v. Kolon Industries, Inc. | US Court of Appeals for the Fourth Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
-| 5-03 | Motorola Solutions, Inc. v. Hytera Communications Corp. Ltd. | US District Court, Northern District of Illinois / Seventh Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
-| 5-04 | Waymo LLC v. Uber Technologies, Inc. | US District Court, Northern District of California | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
-| 5-05 | Epic Systems Corp. v. Tata Consultancy Services Ltd. | US Court of Appeals for the Seventh Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
-| 5-06 | Title Source, Inc. v. HouseCanary, Inc. | Court of Appeals of Texas, Fourth District | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-01 | Celgard, LLC v. Shenzhen Senior Technology Material Co. Ltd | US Court of Appeals for the Federal Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; **no R2, no R3, no state party** |
+| 5-02 | E.I. du Pont de Nemours & Co. v. Kolon Industries, Inc. | US Court of Appeals for the Fourth Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-03 | Motorola Solutions, Inc. v. Hytera Communications Corp. Ltd. | US District Court, Northern District of Illinois / Seventh Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-04 | Waymo LLC v. Uber Technologies, Inc. | US District Court, Northern District of California | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-05 | Epic Systems Corp. v. Tata Consultancy Services Ltd. | US Court of Appeals for the Seventh Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-06 | Title Source, Inc. v. HouseCanary, Inc. | Court of Appeals of Texas, Fourth District | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R1 vocabulary (trade secret) only; no R2, no R3 |
 
 ### 3.7 Category 6 — Court enforcement / set-aside that is not a denial-of-justice claim
 
@@ -286,7 +335,7 @@ enumeration.
 | 6-02 | Micula and others v. Romania (enforcement) | Supreme Court of the United Kingdom | `bailii.org` — **unverified locator** | P | R2 as forum only; R3 (enforcement obligation vs EU law); no R1 |
 | 6-03 | Malicorp Limited v. Government of the Arab Republic of Egypt (enforcement) | High Court of Justice of England and Wales (Commercial Court) | `bailii.org` — **unverified locator** | P | R2 as forum only; R3 (recognition/enforcement grounds); no R1 |
 | 6-04 | OI European Group B.V. v. Bolivarian Republic of Venezuela (annulment) | ICSID ad hoc committee, Case No. ARB/11/25 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/11/25` | P | R3 (annulment grounds, ICSID Convention art. 52); no R1, no R2 |
-| 6-05 | NextEra Energy Global Holdings B.V. and NextEra Energy Spain Holdings B.V. v. Kingdom of Spain (enforcement) | US Court of Appeals for the District of Columbia Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R2 as forum only; R3 (FSIA arbitration exception); no R1 |
+| 6-05 | NextEra Energy Global Holdings B.V. and NextEra Energy Spain Holdings B.V. v. Kingdom of Spain (enforcement) | US Court of Appeals for the District of Columbia Circuit | US court records host — **unverified locator** | P — `anchor: undetermined — resolved at retrieval` | R2 as forum only; R3 (FSIA arbitration exception); no R1 |
 | 6-06 | Unión Fenosa Gas, S.A. v. Arab Republic of Egypt (annulment) | ICSID ad hoc committee, Case No. ARB/14/4 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/14/4` | P | R3 (annulment grounds); no R1, no R2 |
 
 ### 3.8 Category 7 — Jurisdiction/admissibility decision, no IP
@@ -437,7 +486,7 @@ nominated row collides with any development-set matter.**
 |---|---|---|
 | `G-1` `locked-set-cat2-negative-ip-holding-unfillable` | Category 2 has 2 of 6 rows. Every matter the repository knows in this category is in a development set (C-1 … C-6). | Four IP-as-investment matters with a negative investment or jurisdiction holding, none in any development set, each with a retrievable primary document. |
 | `G-2` `locked-set-cat8-cat9-retrieval-generated` | Categories 8 and 9 have 0 of 6 rows each, by decision: their item text cannot be nominated without fabricating it. | Twelve headlines retrieved verbatim from the live feeds, matter-checked against §3.11, logged in `RETRIEVAL_LEDGER.md`. |
-| `G-3` `schema-tier-p-omits-domestic-court-hosts` | Nine rows carry `UNASSIGNED` tier: US federal and state court opinions are in none of `SCHEMA.md`'s P, S or C tiers, yet category 5 is defined by them. | A council ruling that either extends the tier-P host enumeration or creates a tier for domestic court primary documents. |
+| `G-3` `schema-tier-p-omits-domestic-court-hosts` — **CLOSED 2026-09-13** | Nine rows carried `UNASSIGNED` tier: US federal and state court opinions were in none of `SCHEMA.md`'s P, S or C tiers, yet category 5 is defined by them. | **Closed by the chairman's ruling of 2026-09-13**: tier P redefined by criterion rather than by host enumeration, authorship governing over host; the nine rows are committed at tier P with `anchor: undetermined — resolved at retrieval` (§3.1). The relay-allowlist defect is NOT closed by it and is carried in §3.14. |
 | `G-4` `published-swiss-federal-tribunal-matter-unnamed` | The 2026-08-10 art. 03 headline names no matter, so it cannot be excluded from or admitted to the exclusion list; *Zeph Investments v. Australia* is un-nominated on that account. | The underlying Swiss Federal Tribunal judgment read, and its caption recorded. |
 
 **Filled tally, stated plainly: 38 of the 54 design-target rows are nominated
@@ -494,7 +543,8 @@ dropped.
 
 ### 3.14 Locator status, counted
 
-**Sixteen of the 38 nominated rows carry "unverified locator"** — their host is
+**The tier ruling does not touch the relay allowlist, and the two must not be
+conflated. Sixteen of the 38 nominated rows carry "unverified locator"** — their host is
 absent from `scripts/fetch_relay.py` `ALLOWED_HOSTS` (18 hosts, one of which,
 `example.com`, is a neutral control only), so this council cannot confirm the URL
 resolves: rows **3-01, 3-02, 3-03, 3-04, 3-05, 3-06, 5-01, 5-02, 5-03, 5-04, 5-05,

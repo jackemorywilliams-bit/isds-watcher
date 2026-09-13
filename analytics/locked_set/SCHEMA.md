@@ -43,14 +43,32 @@ fails closed if either file changed after its lock entry.
 Tier rules (the copyright constraint is hard: `seeds/` is gitignored because a
 commit is publication):
 
-- **P (public primary)** — ICSID, PCA, italaw, Curia, BAILII, UN RIAA, WTO.
+- **P (public primary)** — the text of a public primary legal instrument (judgment,
+  award, decision, order, or their annexes) **issued by a court, tribunal or treaty
+  body and published by that body or by an authorised public repository**.
+  Non-exhaustive: ICSID, PCA, italaw, Curia, BAILII, UN RIAA, WTO, and the official
+  reporters and public dockets of US federal and state courts. **Authorship governs,
+  not host:** anything authored by a commentator — Ferguson, Kim, IAReporter,
+  law-firm or journal commentary — is tier C or tier S wherever it is hosted, and no
+  hosting arrangement moves it into P. **Redefined by criterion 2026-09-13**; the
+  prior closed host enumeration is struck, because the enumeration was the defect.
   `text` is a verbatim excerpt **capped at 600 characters**, selected **by position,
-  never by content**: the 600 characters beginning at the first character of
-  **paragraph 1 of the document's own printed numbering** (¶ 1), running forward in
-  the document's printed reading order and across paragraph boundaries where ¶ 1 is
-  shorter than 600 characters. Where a document carries no printed paragraph
-  numbering, **the item is recorded at tier S** — caption and locator, no excerpt —
-  and no substitute anchor is chosen. The anchor is printed on the face of the
+  never by content**, running forward in the document's printed reading order and
+  across structural boundaries where the opening unit is shorter than 600 characters.
+  The excerpt begins at the first character of **the document's first printed
+  structural ordinal**, determined in this fixed priority and no other: **(1)**
+  paragraph 1 of the document's own printed paragraph numbering (¶ 1), where the
+  document numbers paragraphs; **(2)** failing that, the first unit of the document's
+  own first-level part numbering — Part I, or `1.`, or `A.`, whichever series the
+  document itself uses at its first level; **(3)** failing both, the item is recorded
+  at tier S, caption and locator, no excerpt, and no substitute anchor is chosen.
+  The priority is fixed by the document rather than by the coder, so no choice is
+  created; and anchoring at limb (2) mechanically skips the caption, the counsel
+  listing and the reporter's syllabus — which is reporter-authored and, in US Supreme
+  Court practice, expressly not part of the opinion — solving the caption-block
+  problem by the document's own structure instead of by anyone's judgment. Falling to
+  limb (3) is a **finding made with the document in hand, never a forecast**: no item
+  is moved to tier S before retrieval. The anchor is printed on the face of the
   document: a second reader verifies the excerpt by looking, with no tool, no
   extraction library and no HTML parse. **Amended 2026-09-13**; the prior rule keyed
   to `src/enrich.py::_extract_body` "after the caption block" is struck — that

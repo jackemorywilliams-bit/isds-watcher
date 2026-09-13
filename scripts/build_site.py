@@ -1099,24 +1099,46 @@ def review_status() -> dict:
         ``### YYYY-MM-DD`` is not a cycle; ``cycles_draft`` counts the
         council-prepared drafts that await operator ratification and are
         therefore NOT completed cycles either.
-      * ``claims_tracked`` / ``claims_marked`` / ``mark_last`` — the append-only
+      * ``claims_tracked`` / ``claims_marked`` — the append-only
         ``analytics/verification_ledger.jsonl``: how many distinct claims the
-        ledger tracks at all, how many of them carry a verification event moving
-        them to an operator-verified status, and the date of the most recent such
-        event.
+        ledger tracks at all, and how many of them carry a verification event
+        moving them to an operator-verified status.
 
     A mark is NOT a cycle. Most marks were recorded in session by the assistant
     under the operator's standing instruction that a verification given in chat is
-    a mark; the notes say so on their face. That makes each one an operator
-    verification OF THAT CLAIM — and not twenty-one review cycles. The template
-    must keep the two words apart.
+    a mark; the notes say so. That makes those operator verifications OF THAT
+    CLAIM — and not twenty-one review cycles. The template must keep the two
+    words apart.
+
+    THREE FURTHER FIGURES, all of them hedges the integrity gate required on
+    2026-09-13 because the first version of the rewritten sentence, while it
+    restated the COUNT faithfully, glossed it in terms the record does not
+    support:
+
+      * ``marks_self_checked`` — of the marked claims, how many carry a note
+        saying the source was SELF-CHECKED: a primary document the assistant
+        fetched and read against itself, which the operator never saw. Three of
+        the twenty-one say "fetched from uncitral.un.org ... self-checked
+        verbatim". Their ``new_status`` is ``operator_verified`` all the same,
+        and the ledger is append-only, so the honest move is not to quietly
+        narrow the count but to publish this figure beside it. "Operator" is the
+        load-bearing word in the whole disclosure; a gloss that rounds three off
+        is the same failure as the sentence this function replaced.
+      * ``mark_days`` / ``mark_first`` / ``mark_last`` — the distinct dates the
+        marks were ENTERED on, and the range. All twenty-one were written inside
+        one sixty-second batch on a single date, so "the most recent on
+        2026-07-27" — true — invited a reader to picture marks accruing over
+        weeks. And one note records a verification the operator gave in chat on
+        2026-07-18 under a 2026-07-27 timestamp: these are RECORDING dates, not
+        verification dates, and the page may not let them read as the same thing.
 
     Fails soft to zeros: an unreadable ledger or review log renders the page's
     numberless sentence rather than a figure nothing backs.
     """
     tracked: set[str] = set()
     marked: set[str] = set()
-    mark_last = ""
+    self_checked: set[str] = set()
+    mark_dates: set[str] = set()
     try:
         for line in VERIFICATION_LEDGER.read_text(encoding="utf-8").splitlines():
             line = line.strip()
@@ -1130,16 +1152,21 @@ def review_status() -> dict:
             if (ev.get("event") == "verification_changed"
                     and str(ev.get("new_status", "")).startswith("operator_")):
                 marked.add(cid)
-                ts = str(ev.get("ts", ""))[:10]
-                if ts > mark_last:
-                    mark_last = ts
+                mark_dates.add(str(ev.get("ts", ""))[:10])
+                # The ledger's own term for a source the assistant fetched and
+                # read against itself. Matched on the note, because the note is
+                # the only place the distinction survives: new_status reads
+                # operator_verified either way.
+                if "self-checked" in str(ev.get("note", "")).lower():
+                    self_checked.add(cid)
     except Exception as exc:  # noqa: BLE001 - the site must build without the ledger
         # Never silently: a swallowed error here renders a permanent zero that
         # looks exactly like an honest zero. _digest_verification_counts learned
         # this the hard way on its first wiring.
         print(f"build_site: verification ledger unavailable ({exc!r}); "
               "rendering the review disclosure without figures", file=sys.stderr)
-        tracked, marked, mark_last = set(), set(), ""
+        tracked, marked, self_checked, mark_dates = set(), set(), set(), set()
+    mark_dates.discard("")
 
     cycles_completed = cycles_draft = 0
     cycle_last = ""
@@ -1164,7 +1191,10 @@ def review_status() -> dict:
     return {
         "claims_tracked": len(tracked),
         "claims_marked": len(marked),
-        "mark_last": mark_last,
+        "marks_self_checked": len(self_checked),
+        "mark_days": len(mark_dates),
+        "mark_first": min(mark_dates) if mark_dates else "",
+        "mark_last": max(mark_dates) if mark_dates else "",
         "cycles_completed": cycles_completed,
         "cycles_draft": cycles_draft,
         "cycle_last": cycle_last,

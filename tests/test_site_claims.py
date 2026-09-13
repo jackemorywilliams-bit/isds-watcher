@@ -573,11 +573,12 @@ def test_how_it_works_states_the_real_review_count():
     assert "No digest entry" in text
     for token in ("review.cycles_completed", "review.cycle_last",
                   "review.claims_tracked", "review.claims_marked",
+                  "review.marks_self_checked", "review.mark_days",
                   "review.mark_last"):
         assert token in text, f"review sentence hardcodes what should be {token}"
     # A mark is not a cycle, and the sentence has to say both words.
     assert "review cycle" in text
-    assert "operator verification mark" in text
+    assert "recorded in it as" in text and "operator-verified" in text
 
 
 def test_review_status_matches_the_committed_record(bs):
@@ -600,6 +601,12 @@ def test_review_status_matches_the_committed_record(bs):
     # The undated template stub is not a cycle, and a council DRAFT awaiting
     # operator ratification is not a completed one.
     assert r["cycles_draft"] >= 1
+    # Three of the twenty-one marks record a source the ASSISTANT fetched and
+    # read against itself (the uncitral.un.org A/CN.9/1246 advance copy), not
+    # one the operator supplied. The ledger calls them operator_verified and is
+    # append-only, so the page must publish this number rather than fold it in.
+    assert r["marks_self_checked"] >= 3
+    assert r["marks_self_checked"] < r["claims_marked"]
 
 
 def test_review_status_counts_the_record_exactly(bs):
@@ -620,11 +627,17 @@ def test_review_status_counts_the_record_exactly(bs):
         if line.strip()
     ]
     tracked = {e["claim_id"] for e in events if e.get("claim_id")}
-    marked = {
-        e["claim_id"] for e in events
+    marks = [
+        e for e in events
         if e.get("event") == "verification_changed"
         and str(e.get("new_status", "")).startswith("operator_")
+    ]
+    marked = {e["claim_id"] for e in marks}
+    self_checked = {
+        e["claim_id"] for e in marks
+        if "self-checked" in str(e.get("note", "")).lower()
     }
+    dates = {e["ts"][:10] for e in marks}
     log = (REPO / "HUMAN_REVIEW.md").read_text(encoding="utf-8")
     headings = re.findall(r"^###\s+(\d{4}-\d{2}-\d{2})\b(.*)$", log, re.M)
     completed = [d for d, rest in headings if "COMPLETED" in rest.upper()]
@@ -632,6 +645,9 @@ def test_review_status_counts_the_record_exactly(bs):
     r = bs.review_status()
     assert r["claims_tracked"] == len(tracked)
     assert r["claims_marked"] == len(marked)
+    assert r["marks_self_checked"] == len(self_checked)
+    assert r["mark_days"] == len(dates)
+    assert r["mark_first"] == min(dates) and r["mark_last"] == max(dates)
     assert r["cycles_completed"] == len(completed)
     assert r["cycle_last"] == max(completed)
     # The stub heading is literally "### YYYY-MM-DD"; it must never be a cycle.
@@ -653,13 +669,24 @@ def test_rendered_review_sentence_restates_the_record(bs):
         active="how", root="", workflow_svg="",
         **bs._digest_verification_counts())
     assert f"{r['claims_tracked']} claims" in html
-    assert f"{r['claims_marked']} carry an operator verification mark" in html
+    assert f"{r['claims_marked']} are recorded in it as" in html
     assert r["cycle_last"] in html
     assert r["mark_last"] in html
     # A mark recorded in chat is an operator verification of the claim and NOT a
     # cycle — the page has to keep saying so, or the overclaim comes back.
     assert "verification given in chat is a mark" in html
     assert "review cycle of its own" in html
+    # The three hedges the integrity gate required on 2026-09-13. Each one is a
+    # sentence the page was asked to add because a true count had been given a
+    # gloss the ledger does not support; dropping any of them re-opens the
+    # objection, so each is asserted rather than trusted to prose review.
+    assert f"{r['marks_self_checked']} of the {r['claims_marked']}" in html
+    assert "fetched and checked against itself" in html
+    assert "not when a claim was verified" in html
+    assert "gave in chat on an earlier date" in html
+    # And the overreaching wording itself must not come back.
+    assert "every one is an operator verification" not in html
+    assert "the ledger note on each says" not in html
 
 
 def test_no_template_hardcodes_a_review_count():

@@ -77,13 +77,32 @@
         {{ review.cycle_last }} &mdash; each a sit-down pass over a sample of the
         record, written up in full. Separately, of the
         {{ review.claims_tracked }} claims the append-only verification ledger tracks,
-        <strong>{{ review.claims_marked }} carry an operator verification mark</strong>
-        against a named source, the most recent on {{ review.mark_last }}; the other
-        {{ review.claims_tracked - review.claims_marked }} carry none. Most of those
-        marks were recorded in session under the operator&rsquo;s standing instruction
-        that a verification given in chat is a mark, and the ledger note on each says
-        so: every one is an operator verification of that claim, and none of them is a
-        review cycle of its own. Both counts are read from the record at build time,
+        <strong>{{ review.claims_marked }} are recorded in it as
+        operator-verified</strong> against a named source; the other
+        {{ review.claims_tracked - review.claims_marked }} carry no mark.
+        That second count needs reading carefully.
+        {% if review.mark_days == 1 %}
+        All {{ review.claims_marked }} marks were entered on a single day,
+        {{ review.mark_last }}, in one batch &mdash; so that date records when a mark
+        was written down, not when a claim was verified, and one of the notes records a
+        verification the operator gave in chat on an earlier date.
+        {% else %}
+        The marks were entered between {{ review.mark_first }} and
+        {{ review.mark_last }}, and those are the dates a mark was written down rather
+        than the dates a claim was verified.
+        {% endif %}
+        Most were entered in session under the operator&rsquo;s standing instruction
+        that a verification given in chat is a mark, and the ledger notes say so; each
+        of those is an operator verification of that claim, and none of them is a
+        review cycle of its own.
+        {% if review.marks_self_checked %}
+        But {{ review.marks_self_checked }} of the {{ review.claims_marked }} record a
+        primary source the assistant fetched and checked against itself rather than one
+        the operator supplied or read. The ledger marks those operator-verified too, and
+        it is append-only, so the count above restates what the ledger says rather than
+        narrowing it here &mdash; and this sentence is how you know the difference.
+        {% endif %}
+        Both counts are read from the record at build time,
         not written here. These are research-record claims &mdash; the assertions
         behind the memos and one-pagers &mdash; and not digest entries, which are
         counted separately.

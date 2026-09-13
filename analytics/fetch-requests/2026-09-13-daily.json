@@ -1,0 +1,29 @@
+{
+  "note": "2026-09-13 DAILY BATCH, pre-registered by the chairman at session open, BEFORE any seat is convened and before any reduction of today has been read. Epistemic status declared so it cannot be mistaken later: this batch is written from yesterday's close-out next steps 1 and 2 alone, not from anything observed today. WHY IT EXISTS: yesterday's record established that ICSID's own Decisions on Manifest Lack of Legal Merit table carries a row reading 'Spentech Engineering Limited v. United Arab Emirates (ICSID Case No. ARB/24/16) Award July 28, 2025 Yes', and that the council has never once requested the DOCKET PAGE for that case, which is the chair's own standing docket-page-before-document-hunt rule left unapplied for a full session with a live channel. Rows 1-5 apply it. ROWS 1-5, PRE-REGISTRATION, BINDING: the docket URL is CONSTRUCTED by this session from ICSID's case-database URL pattern. IT IS NOT CERTIFIED. A 404, a 403 or an empty find tells us NOTHING about whether ICSID publishes a docket page for ARB/24/16, and NOTHING WHATEVER about the case; it is a fact about a URL this council guessed. Only a 200 whose excerpt names the matter licenses any reading at all, and even then the excerpt is a rendering of a listing, not a holding. ROW 6 is a re-fetch of the manifest-lack-of-legal-merit table centred on 'Spentech': its purpose is to give today's analyst a FRESH primary anchor with today's own sha256 and byte count rather than a figure quoted from yesterday's prose, and to test yesterday's stability observation (21 fetches across three runs, sha256 64eb3f52bfc496cf..., 96161 bytes) against a fourth run on a new day. A CHANGED sha256 is a finding, not a failure. BINDING READING RULE, carried unchanged from 2026-09-12 and now load-bearing for a fourth batch: the windows this batch returns will contain case names, case numbers, document types and dates belonging to matters this project is not researching. NONE may be entered as a discovered matter, screened, graded on any ring, or carried as a lead, INCLUDING in the candidate-claims block. This instrument retrieves what the record already identified; it is not a discovery channel (METHODOLOGY Part VIII). A null find licenses ONLY that the literal is absent from the rendering this relay received at this time. CONTROL: the relay prepends https://example.com/ automatically; if the control fails the entire batch is VOID and no row may be read as information about its resource. CAP DECLARED IN ADVANCE: six rows here; the analyst may propose at most ONE follow-up batch, and I will state in Part I whether I fired it.",
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Spentech"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Outcome"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Award"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Rule 41"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "intellectual"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Spentech"
+    }
+  ]
+}

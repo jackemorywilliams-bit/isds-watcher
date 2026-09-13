@@ -559,11 +559,128 @@ def test_how_it_works_carries_the_shared_error_caveat():
 
 
 def test_how_it_works_states_the_real_review_count():
+    """The review disclosure must be READ from the record, not typed into prose.
+
+    This test used to assert the opposite: that the template carried the literal
+    "2026-07-18" and "three claims". Those were true of the formal review CYCLES
+    and a large understatement of the record — the ledger already carried an
+    operator mark on twenty-one claims — and the operator objected in exactly
+    those terms. The sentence is now rendered from ``review_status()``, so the
+    template must carry the variables and none of the digits.
+    """
     text = (TEMPLATES / "how_it_works.html.j2").read_text(encoding="utf-8")
     assert "remain provisional" in text
-    assert "2026-07-18" in text, "the one logged review cycle must be dated"
-    assert "three claims" in text
     assert "No digest entry" in text
+    for token in ("review.cycles_completed", "review.cycle_last",
+                  "review.claims_tracked", "review.claims_marked",
+                  "review.mark_last"):
+        assert token in text, f"review sentence hardcodes what should be {token}"
+    # A mark is not a cycle, and the sentence has to say both words.
+    assert "review cycle" in text
+    assert "operator verification mark" in text
+
+
+def test_review_status_matches_the_committed_record(bs):
+    """The computed tuple, against the ledger and review log as committed.
+
+    Measured on 2026-09-13 from ``analytics/verification_ledger.jsonl`` (58
+    events, 37 ``claim_created`` and 21 ``verification_changed``, over 37
+    distinct claim ids) and ``HUMAN_REVIEW.md`` (a ``### YYYY-MM-DD`` template
+    stub, a 2026-06-29 DRAFT, and the 2026-07-18 COMPLETED cycle). Both files
+    are append-only, so these are floors: the day one grows, this test is the
+    thing that makes the page's numbers grow with it rather than drift.
+    """
+    r = bs.review_status()
+    assert r["claims_tracked"] >= 37
+    assert r["claims_marked"] >= 21
+    assert r["claims_marked"] <= r["claims_tracked"]
+    assert r["cycles_completed"] >= 1
+    assert r["cycle_last"] >= "2026-07-18"
+    assert r["mark_last"] >= "2026-07-27"
+    # The undated template stub is not a cycle, and a council DRAFT awaiting
+    # operator ratification is not a completed one.
+    assert r["cycles_draft"] >= 1
+
+
+def test_review_status_counts_the_record_exactly(bs):
+    """Recount the two files independently and demand the same answer.
+
+    The guard for this fact lives here rather than in ``check_claims.py``: that
+    registry is at its declared ceiling of fifteen facts, and the test holding
+    it there treats a sixteenth as a decision rather than a default. The shape
+    is the registry's all the same — one authority (the ledger, and the review
+    log for cycles), one restatement (the rendered page), recomputed and
+    compared.
+    """
+    import json as _json
+    events = [
+        _json.loads(line)
+        for line in (REPO / "analytics" / "verification_ledger.jsonl")
+        .read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    tracked = {e["claim_id"] for e in events if e.get("claim_id")}
+    marked = {
+        e["claim_id"] for e in events
+        if e.get("event") == "verification_changed"
+        and str(e.get("new_status", "")).startswith("operator_")
+    }
+    log = (REPO / "HUMAN_REVIEW.md").read_text(encoding="utf-8")
+    headings = re.findall(r"^###\s+(\d{4}-\d{2}-\d{2})\b(.*)$", log, re.M)
+    completed = [d for d, rest in headings if "COMPLETED" in rest.upper()]
+
+    r = bs.review_status()
+    assert r["claims_tracked"] == len(tracked)
+    assert r["claims_marked"] == len(marked)
+    assert r["cycles_completed"] == len(completed)
+    assert r["cycle_last"] == max(completed)
+    # The stub heading is literally "### YYYY-MM-DD"; it must never be a cycle.
+    assert "### YYYY-MM-DD" in log
+    assert len(re.findall(r"^### ", log, re.M)) > len(headings)
+
+
+def test_rendered_review_sentence_restates_the_record(bs):
+    """The page is a restatement of the ledger, and must equal it.
+
+    This is the drift guard proper. The defect was a sentence that was true when
+    it was written and wrong a week later because nothing recomputed it.
+    """
+    env = bs.make_env()
+    env.globals["status"] = bs.archive_status(bs.collect_digests())
+    env.globals["review"] = bs.review_status()
+    r = env.globals["review"]
+    html = env.get_template("how_it_works.html.j2").render(
+        active="how", root="", workflow_svg="",
+        **bs._digest_verification_counts())
+    assert f"{r['claims_tracked']} claims" in html
+    assert f"{r['claims_marked']} carry an operator verification mark" in html
+    assert r["cycle_last"] in html
+    assert r["mark_last"] in html
+    # A mark recorded in chat is an operator verification of the claim and NOT a
+    # cycle — the page has to keep saying so, or the overclaim comes back.
+    assert "verification given in chat is a mark" in html
+    assert "review cycle of its own" in html
+
+
+def test_no_template_hardcodes_a_review_count():
+    """No template may type a review count, a cycle date, or "three claims".
+
+    The whole defect in one assertion: the old sentence was a literal, and a
+    literal cannot be corrected by the data that proves it wrong.
+    """
+    banned = re.compile(
+        r"three claims"
+        r"|(?:one|two|three|four|five|\d+)\s+(?:formal\s+)?operator\s+review\s+cycles?"
+        r"|(?:one|two|three|four|five|\d+)\s+claims?\s+(?:from\s+the\s+research|carry)",
+        re.I)
+    for path in sorted(TEMPLATES.rglob("*.j2")):
+        text = path.read_text(encoding="utf-8")
+        # Jinja expressions are the sanctioned way to state these numbers.
+        prose = re.sub(r"\{\{.*?\}\}|\{%.*?%\}", "", text, flags=re.S)
+        hit = banned.search(prose)
+        assert not hit, (
+            f"{path.relative_to(REPO)} hardcodes a review figure: {hit.group(0)!r} "
+            "— render it from review_status() instead")
 
 
 def test_homepage_carries_the_status_line():

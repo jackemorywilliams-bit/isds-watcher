@@ -68,12 +68,31 @@
       </p>
       <p class="caveat">
         <strong>Claims here are machine-assisted and remain provisional</strong>
-        unless an item is individually marked human-verified. One operator review
-        cycle has been logged &mdash; 2026-07-18 &mdash; covering three claims from
-        the research record: one verified against a primary source, one partially
-        verified, one not reviewed.
+        unless an item is individually marked human-verified.
+        {% if review.cycles_completed and review.claims_tracked %}
+        Two counts describe that review and they are not the same count.
+        The repository&rsquo;s review log records {{ review.cycles_completed }}
+        completed operator review
+        cycle{{ '' if review.cycles_completed == 1 else 's' }}, the most recent on
+        {{ review.cycle_last }} &mdash; each a sit-down pass over a sample of the
+        record, written up in full. Separately, of the
+        {{ review.claims_tracked }} claims the append-only verification ledger tracks,
+        <strong>{{ review.claims_marked }} carry an operator verification mark</strong>
+        against a named source, the most recent on {{ review.mark_last }}; the other
+        {{ review.claims_tracked - review.claims_marked }} carry none. Most of those
+        marks were recorded in session under the operator&rsquo;s standing instruction
+        that a verification given in chat is a mark, and the ledger note on each says
+        so: every one is an operator verification of that claim, and none of them is a
+        review cycle of its own. Both counts are read from the record at build time,
+        not written here. These are research-record claims &mdash; the assertions
+        behind the memos and one-pagers &mdash; and not digest entries, which are
+        counted separately.
+        {% else %}
+        Human review of those claims is recorded in the repository&rsquo;s review log
+        and verification ledger; this page states no figure it cannot read from them.
+        {% endif %}
         {% if digest_verified == 0 %}
-        No digest entry and no sentence on this website
+        No digest entry &mdash; and no sentence on this website resting on one &mdash;
         has been checked by a human against its original source; every archived
         digest entry to date is machine-screened only.
         {% else %}

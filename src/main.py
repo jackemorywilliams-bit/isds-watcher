@@ -17,7 +17,7 @@ import sys
 from dataclasses import asdict
 from datetime import datetime, timedelta, timezone
 
-from . import (classify_v2, config, council_log, locked_set, render,
+from . import (classify_v2, config, council_log, locked_set, tail_audit, render,
                research_brief, research_state, rings, source_health,
                source_recovery, state, telemetry, triage)
 from . import classify as classify_mod
@@ -366,6 +366,14 @@ def main(argv=None) -> int:
         # Cost-bearing optional passes. Reported as counts so a run says what it
         # spent instead of leaving it to be reconstructed from the bill.
         "triage_ran": 0, "triage_skipped": 0, "v2_shadow_calls": 0,
+        # triage_calls is ACCUMULATED with += at the triage loop, so unlike the
+        # keys assigned once it must exist before the first candidate. It was
+        # lost on 2026-09-13 when two branches that both edited this dict were
+        # rebased onto one another and the conflict resolved toward the older
+        # side, leaving the consumer without its counter: every run raised
+        # KeyError and 52 tests failed on main. A key that is incremented
+        # rather than assigned belongs here, beside the ones it is counted with.
+        "triage_calls": 0, "triage_cost_usd": 0.0,
         # Locked-set reservations withheld from screening this run. Present from
         # the start and always a number: "we excluded none" and "we never looked"
         # are different facts and a reader must not have to tell them apart by
@@ -771,6 +779,12 @@ def main(argv=None) -> int:
     #    Non-terminal outcomes now go to the deferred queue to be retried, and
     #    after MAX_CLASSIFY_ATTEMPTS they are abandoned loudly.
     classified = []
+    # Keyed by id(it) so the tail audit can pair an item's unenriched reading
+    # with its enriched one: the unenriched half must be the number THIS run
+    # produced, not one recomputed later, or the pair compares two readings
+    # taken under different conditions and calls the difference enrichment.
+    # Dropped on 2026-09-13 by a rebase that kept both writer and reader.
+    classified_by_item: dict = {}
     deferred_now = []
     abandoned_now = []
     # Items that reached the classifier with no title, no summary and no body.

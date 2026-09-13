@@ -2933,3 +2933,64 @@ def test_the_run_recovers_a_queued_headline_from_the_live_source(
     dq = state.load_deferred("state/deferred.json")
     assert "http://ia/1" in dq["iareporter_headlines"]
     assert dq["iareporter_headlines"]["http://ia/1"]["attempts"] == 0
+
+
+def test_every_accumulated_stat_is_initialised_before_the_run_starts():
+    """2026-09-13: `stats["triage_calls"] += ...` shipped to main with no
+    initialiser — two branches edited the same dict, the rebase resolved toward
+    the side that lacked the key, and every run raised KeyError. A key assigned
+    once can be created late; a key ACCUMULATED cannot. This derives the rule
+    from the source rather than pinning today's names, so the next += is covered
+    the day it is written."""
+    import re
+    import src.main as main_mod
+    src = open(main_mod.__file__, encoding="utf-8").read()
+    block = src[src.index("stats = {"):]
+    block = block[:block.index("\n    }")]
+    initialised = set(re.findall(r'"([a-z_]+)"\s*:', block))
+    accumulated = set(re.findall(r'stats\["([a-z_]+)"\]\s*\+=', src))
+    missing = sorted(accumulated - initialised)
+    assert not missing, (
+        f"these stats keys are incremented with += but never initialised, so the "
+        f"first increment raises KeyError: {missing}")
+
+
+def test_no_module_calls_a_name_it_never_defines_or_imports():
+    """2026-09-13, and this is the guard for how it happened, not just for what
+    broke. Ten branches merged in one night; each was rebased onto the moving
+    main with a conflict strategy that resolves toward the older side. Three
+    times it kept a CALLER and dropped the DEFINITION it needed — an import in
+    scripts/telemetry_query.py, a dict initialiser in src/main.py, two meta keys
+    in src/render.py. Every branch had passed alone; main had 52 failures. A
+    NameError of this shape is invisible to review and to any test that does not
+    execute the path, so it is derived statically here instead."""
+    import ast
+    import builtins
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    problems = {}
+    for path in sorted(list((root / "src").rglob("*.py")) + list((root / "scripts").glob("*.py"))):
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        defined = set(dir(builtins)) | {"__file__", "__name__", "__doc__"}
+        for n in ast.walk(tree):
+            if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                defined.add(n.name)
+            elif isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store):
+                defined.add(n.id)
+            elif isinstance(n, ast.arg):
+                defined.add(n.arg)
+            elif isinstance(n, ast.alias):
+                defined.add((n.asname or n.name).split(".")[0])
+            elif isinstance(n, ast.ExceptHandler) and n.name:
+                defined.add(n.name)
+            elif isinstance(n, ast.Global):
+                defined.update(n.names)
+        used = {n.id for n in ast.walk(tree)
+                if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)}
+        missing = sorted(used - defined)
+        if missing:
+            problems[str(path.relative_to(root))] = missing
+    assert not problems, (
+        "these modules load a name that is never defined or imported in them — "
+        "the signature of a merge that kept a caller and dropped its definition: "
+        f"{problems}")

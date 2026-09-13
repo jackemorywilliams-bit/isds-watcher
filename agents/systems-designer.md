@@ -160,6 +160,8 @@ stands — no mandate is invented here.
     [[Workflow Threads]] **B8**, and closes it beyond its terms: the thread asked for wiring and
     got wiring *plus* proof that each guard still fails when it should.
     `scripts/check_lock.py` was written and treats the empty set as the designed state.
+
+    **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
   - **Deviation of record, and it is this seat's.** `scripts/check_site_sync.py` **rebuilds
     `docs/` in place** — `:25` runs `build_site.py` with no temporary directory, `:31` diffs the
     working tree — so it is a **mutating command wearing the name of a check**. It was run here

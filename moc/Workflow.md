@@ -45,3 +45,17 @@ from any of them.
   which is `False`. Two further lanes exist and are off by default — `src/triage.py`
   (`TRIAGE_ENABLED`) and the semantic `src/classify_v2.py` (`V2_SHADOW_CALLS`, so every
   default-run verdict is labelled `lexical_only`).
+  - **2026-09-10 — read "the R2.1 contract" as the code, never as a document you can open.**
+    The **R2.1 record** that `src/rings.py` and three other production files cite is **not a
+    file in this repository and never has been on any branch** — 56 occurrences of the literal
+    across 17 tracked files at `948947b`, naming a document nobody here can read. The code is
+    real and runs; the specification it fails closed against is not in version control. A grep
+    establishes absence **from the repository**, never from the project: no seat may restate
+    this as "the R2.1 record does not exist." See [[Workflow Threads]] **S1** and
+    analytics/daily-research/2026-09-10-special-session.md:128-174.
+  - **And the V2 lane's "shadow" has never made a model call.** `v2_basis` is `lexical_only`
+    and `v2_call` is `{"called": false, …}` on **all 328** rows of
+    analytics/candidate_telemetry.jsonl. The instrument is scrupulously honest about it — that
+    is why the number is knowable — but "V2 runs in shadow on every cycle" means the lexical
+    half runs. Turning `V2_SHADOW_CALLS` on is a recurring cost decision and is Emory's.
+    Source: analytics/daily-research/2026-09-10-special-session.md:500-508.

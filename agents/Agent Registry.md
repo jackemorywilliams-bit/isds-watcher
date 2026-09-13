@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `7a3d14a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `c894a4b`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -519,6 +519,31 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-09-11** — Registry read at `948947b` (`origin/main`) for the **row L close-out of the
+  operator-mandated special session of 2026-09-10**
+  (`analytics/daily-research/2026-09-10-special-session.md`). **No roster change and no contract
+  change**, and the session did not propose one: nothing under `.claude/agents/`, `prompts/` or
+  `src/models.py` was touched by any of the six PRs opened out of the assignment table
+  (**#160**–**#165**, all open and unmerged at the time of writing), and this seat did not edit
+  them either. What changed here is the **adopted-method-rules** table: one row for **fabrication
+  taxonomy entry — untested counterfactual**, adopted in session 2026-09-10 under the number
+  **27**, which has been issued twice before; it could not be filed at **30** as this branch
+  first wrote, because the daily sittings adopted six other patterns at 30-34 while this PR sat
+  unmerged, so it stands **adopted and unfiled**, cited by name, pending the chairman's C11/D17
+  ruling (2026-09-13); one row recording that **two further proposals are NOT adopted** and hold
+  no number; and two rows restating rules the session
+  corroboration**. **Four real subagents deliberated** — [[research-analyst]],
+  [[systems-designer]], [[site-experience]] (Claude Opus 5) and [[integrity-officer]] (Claude Opus
+  4.8) — a declared departure from the daily meeting's two-seat Rule 0, with the operator's
+  convening instruction as the precedence (`…special-session.md:18-34`); [[analytics-officer]] did
+  not sit and holds row **K** regardless. Dated detail, the six PRs and the seven operator-gated
+  items are in [[Project Change Log]]; the threads opened are **S1–S9** in [[Workflow Threads]].
+  **One correction this seat owes the record:** the deployment brief for this close-out described
+  the taxonomy heading in [[integrity-officer]] as reading *"24 entries as of 2026-08-04"*. It does
+  not, and has not since 2026-08-07 — it read *"29 entries as of 2026-09-07"* at `4eb3fc9`, three
+  days before the session, and the only occurrence of the "24 entries" string in that file is
+  inside the 2026-08-07 collision narrative, quoting what *that* session found. The heading was
+  not the cause of this collision.
 - **2026-09-04** — Registry re-audited against `c2558d9` (`main`, clean tree, complete
   **983**-commit history after `git fetch --unshallow`; the container's clone arrived shallow at
   **173**, the fifth consecutive recurrence). **No roster change and no contract change, and this

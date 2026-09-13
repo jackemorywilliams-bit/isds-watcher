@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `7a3d14a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `c894a4b`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -381,6 +381,8 @@ remote branch tip.*
   `git fetch --unshallow` the same guard reports the true count with zero `FAIL`s. CI is
   unaffected (`.github/workflows/pipeline-guards.yml:172` sets `fetch-depth: 0`). Written into
   [[Workflow Threads]]' snapshot block.
+
+  **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 - **Currency: 4 failed → 2.** [[Agent Registry]], [[Claim Map]], [[Workflow Threads]] and this
   note restamped to `c4f6825`. `STATE_OF_THE_ANSWER.md` left stale by decision — it is
   [[research-analyst]]'s living memory and the 2026-08-08 rule against restamping another seat's
@@ -595,6 +597,8 @@ copied from a report.
   reports the empty set as **the designed current state, not an error**, and exits 0.
   [[Workflow Threads]] **B8** closes on the file. *(`.github/workflows/pipeline-guards.yml`,
   `scripts/check_lock.py`.)*
+
+  **[2026-09-11: the `currency` job moved out of `.github/workflows/pipeline-guards.yml` into `.github/workflows/reanchor.yml` as a second job behind `needs: reanchor`, PR #160. The `pipeline-guards.yml` locator above is accurate for its date and is left unedited.]**
 - **The comment package's five audit contradictions were closed, and one of them was closed by
   going and reading the document.** **H&H v. Egypt (ICSID ARB/09/15) is CLOSED BY RETRIEVAL:**
   the Decision on Jurisdiction of 5 June 2012 (`ita1012.pdf`) and the Award's Rule 48(4)

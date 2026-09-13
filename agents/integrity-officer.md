@@ -269,6 +269,45 @@ entry 27 by name, never by number.
 > "Reported against myself", item 3, `51a2bae`). The convention is holding. The ruling that would
 > retire it has not come. **Owner: [[council-chairman]] with this seat.**
 
+> **A third entry was adopted under the number 27, and this time the heading was not stale —
+> 2026-09-11, at the special session's close-out.** At the operator-mandated special session of
+> 2026-09-10 the officer opened *untested counterfactual* and numbered it **27**
+> (`analytics/daily-research/2026-09-10-special-session.md:552`). The previous entry in this
+> note's collision narrative blames a stale heading for the 2026-08-07 collision, and the fix
+> that followed was to move the heading in the same change set as the row. **That fix held and
+> was not the failure here.** The heading read *"29 entries as of 2026-09-07"* at `4eb3fc9`,
+> committed three days before the session, and the only occurrence of the string
+> "24 entries as of 2026-08-04" anywhere in this file is inside the 2026-08-07 narrative
+> immediately above — a quotation of what that session found, not a live heading. The number
+> issued in session therefore came from a count this file does not carry.
+>
+> **Filed at the next free number; nothing renumbered.** *Untested counterfactual* is filed as
+> **30**, because adopting at an occupied number does not vacate the row already there, and
+> because the disposition this note has held since 2026-08-07 is that **renumbering is not the
+> archivist's to do** — it changes what a council ruling says. So the record now holds a
+> number-as-adopted (27) and a number-as-filed (30) for one entry, which is a defect of the
+> same family as the collision it sits under. **Wanted:** one chairman's ruling settling both,
+>
+> **Correction, 2026-09-13, written at the merge of this branch.** The filing at **30** did not
+> survive. While PR #170 sat unmerged from 2026-09-11, the daily sittings of 09-11, 09-12 and
+> 09-13 adopted six other patterns at **30, 31, 32, 32a, 33 and 34**, and those are the rows in
+> the table above — they are on `main`, and this branch was rebased onto them. Applying the
+> standing disposition (**renumbering is not this seat's to do**) and the 09-13 note's own
+> instruction (**do not renumber either set; cite every entry from 30 upward by name**), the row
+> for *untested counterfactual* is **not written into the table here**. The entry stands
+> **adopted in session and unfiled**, cited by name only, until the chairman rules on C11/D17.
+> Nothing above was renumbered and no row was displaced to make room for it.
+> alongside the C11 ruling that has been open since 2026-08-07. Until it comes, the standing
+> convention applies to this entry too — **cite it by name, never by number**.
+>
+> **Two further patterns were proposed on 2026-09-11 and are NOT adopted.** They are reserved
+> at **31** and **32** above with their provenance stated on the row, so that the next entry
+> does not take a number a proposal is already using. They were reported to this seat at the
+> row L close-out, arising on PR #160 (row D) and PR #163 (row K); no committed council
+> artifact records an adoption for either, and this seat does not write an entry it cannot
+> source. **Owner: [[council-chairman]]** — adopt, amend, or decline, at which point the rows
+> are filled in or the numbers released. Archivist, 2026-09-11.
+
 **Entry 28 came to this table by a routing, and the routing is why it is here today.** The
 2026-09-04 optimization log closes its entry with: *"routed to the archivist for the vault table
 because `agents/` is outside this session's merge scope"* (`analytics/optimization-log.md:65`,

@@ -111,8 +111,19 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**29 entries as of 2026-09-07, and entry 27 is a collision — see the note under the table.**
-Each cites the record that adopted it.
+**34 entries as of 2026-09-13; entry 32 carries an adopted extension 32a; entry 27 is a
+collision; and numbers 30, 31 and 32 are each CONTESTED between two sittings — see the notes
+under the table before numbering anything.** Each cites the record that adopted it.
+
+> **NUMBERING IS NOT SAFE AT 30, 31 OR 32 UNTIL THE CHAIRMAN RULES. Archivist, 2026-09-13.**
+> The rows below are the **daily council's** adoptions, which are the ones on `main`. A second,
+> conflicting set of numbers exists on the **open, unmerged PR #170**
+> (`council/archivist-close-out`, `7f1d01c`), which files *untested counterfactual* as **30** and
+> reserves **31** and **32** for two unadopted proposals. Both sets are real and both are sourced;
+> neither seat did anything wrong. The cause is that PR #170 has not landed, so the daily sittings
+> could not see it. **Do not renumber either set** — that is a chairman's ruling, not this seat's
+> edit. Until it comes, **cite every entry from 30 upward by name, never by number**, exactly as
+> the standing convention already requires for 27.
 
 > **This count was updated on 2026-09-04 because leaving it stale is how the collision at 27 was
 > made, and this seat said so on the day it happened.** The note under this table states the
@@ -159,6 +170,59 @@ Each cites the record that adopted it.
 | 27 ⚠ | Manufactured residual — **same number, different pattern** | 2026-08-07 | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68` |
 | 28 | **Unscreened first-ness claim** — a novelty assertion ("first", "never", "no seat has ever", "this council had never", "new to this corpus") is an **absence claim about the project's own record** and carries the same burden as any other absence claim: a whitespace-normalised, case-insensitive, emphasis-stripped screen at a named commit, run **before** the claim rather than after the challenge. Distinguished from entry 14 (silent class truncation), which shortens an enumerated class, and from entry 10 (superseded-formulation restatement), which restates an older version of a live proposition. **Mechanical carrier, adopted with it:** no memo may carry such a phrase without an adjacent line stating the literals tried, the synonyms tried, the file count, the scope and the commit | 2026-09-04 | `analytics/daily-research/2026-09-04.md:968` (proposed by this seat, `51a2bae`), `:1040` (mechanical carrier), `:1111`, `:1148` (adopted by the chairman, `687cfde`); landed on `main` at `e3d0255` |
 | 29 | **Off-read-path carrier** — an absence, uniqueness or "only carrier" claim screened over the scope a seat *habitually reads* (the prose record) and then stated over the scope where the fact actually lives. The blind spot is systematic, not incidental: the machine-readable and configuration trees (`specs/`, `state/`, `tests/fixtures/`, `.github/`) sit outside every seat's default screen roots **and** outside the sweeps that measure "uncarried knowledge", so a fact stored there is invisible in both directions at once and reads as absent twice over. **Distinguished from entry 27 (scope-mixed screen)**, where the *referent clause* is populated more widely than the screen annotating it: here the *claim* is stated more widely than the screen, and the omitted roots are the same two or three every time. **Countermeasure, mechanical and deliberately tool-free:** any screen supporting an unqualified claim about "the tree" or "the repository" enumerates candidate files with `git ls-tree -r <commit>` and **no path argument**, whatever instrument reads them; a narrower root set is named in the sentence and the claim narrowed to match. **The tool-free wording was adopted on challenge** — the officer's first draft keyed the countermeasure to `scripts/wsgrep_at.py`, the chairman objected that a countermeasure keyed to a non-existent file inherits the exact defect entry 28 was adopted on, and the officer rewrote it: `git ls-tree` is git, not a project script, so it cannot go missing. **Four instances, three seats, one day**, all 2026-09-05 and all verified: `0905-B1` (chairman, `specs/` and `tests/fixtures/`), `0905-B2` (chairman, `state/council_log.json:460`), `0905-B9` (analyst, `JS-rendered` → 6 hits in 6 files, not "0 anywhere"), `0905-B12` (analyst, the `Ecuador` and `Upreti` "full tree" clauses, `state/`) | 2026-09-05 | `analytics/daily-research/2026-09-05.md:1321` (adopted with the officer's own amendment), `:1421` (binding form, both `d969ca4`); `analytics/optimization-log.md:71` (`7fa1ef4`, on `main`) |
+| 30 | **Re-implementation drift** — a seat measures a code path's effect by **re-implementing** the function rather than executing it, the re-implementation differs from the original in one operation, and the resulting figure is published as what that function produces. The citation names executable code the figure cannot come from, so it is uncheckable against the thing it cites **while looking maximally checkable**. **Distinguished from entry 26** (tautological instrument check), where the instrument runs but cannot discriminate; here the instrument never runs. **Countermeasure: execute the function against a scratch copy and read its return; if re-implementation is unavoidable, publish the diff from the original and the figure under both.** **Instance, verified:** `0911-B1` — the chair's 82,274 is the un-`rstrip`ed slice; `_handwritten_sections` (`src/council_log.py:145`) returns 82,257 | 2026-09-11 | `analytics/daily-research/2026-09-11.md:702` (proposed by this seat, `3f25b7f`), `:962` (adopted by the chairman, `28c0db8`) |
+| 31 | **Assumed-remedy claim** — asserting that a repair path *would* restore a record (a render, a rebuild, a replay) where the path **has never been executed** and in fact produces an empty or degraded artifact. The harm exceeds the unfixed defect, because the record now says a loss is recoverable and a later seat closes the escalation on that basis. **Distinguished from entry 22** (unverified control design), which concerns a control's assumed negativity; here it is a *remedy's* assumed sufficiency. **Countermeasure: a remedy claim is run, in a scratch copy, and its output is quoted — or it is stated as untested.** **Instance, verified:** `0911-B2` — "a successful `_render_md` would make them appear"; executed, it emits 32-character stubs and would make the ledger falsely assert that six unlogged sittings were logged | 2026-09-11 | `analytics/daily-research/2026-09-11.md:704` (proposed by this seat, `3f25b7f`), `:962` (adopted by the chairman, `28c0db8`) |
+| 32 | **Single-window referent clause** — an Amendment 2 referent clause stating **where a screened term's occurrences lie**, written from an instrument that can only return the **first** match. The clause reads as a statement about the term in the document; the instrument only ever saw one occurrence, chosen by construction. It is corrosive precisely where Amendment 2 is meant to bite: a nonzero count annotated with a confident referent reads as *excluded*. **Distinguished from entry 26**, where the instrument's construction guarantees the *result* — here it guarantees the *sample*; **and from entry 27** (scope-mixed screen), where the clause is populated at a wider scope than the screen — here at a wider scope than the **instrument's reach on that same screen**. **Countermeasure: a referent clause written from a first-match-only instrument names that limit inside the clause and never states where the term does not occur.** **Instance, verified:** `0912-N5` — "`Manifest` matched — that occurrence is … not the table body", contradicted by the analyst's own span, `excerpt_of` being centred on `body.lower().find(...)` (`scripts/fetch_relay.py:131`) | 2026-09-12 | `analytics/daily-research/2026-09-12.md:1102` (proposed by this seat, `3828137`), `:1376` (adopted by the chairman, `639c16e`) |
+| 32a | **Boolean-as-count screen record** — adopted as an **extension of 32, not a new number**, expressly because of this table's collision history. A `find_matched` **boolean** written into a `V` mark's `<term:count>` slot as a numeral, converting "at least one occurrence" into "exactly one", after which Amendment 2's referent clause reads as exhaustive. **Distinguished from 32 proper**, which governs the *clause's* reach; this governs the *numeral*. **Countermeasure: a screen record from a boolean instrument writes `matched` / `not matched`, never a count.** **Instance, verified and disproved by the project's own same-day artefact:** `"Award" 1` in Entry 1, against ≥3 occurrences visible in `2026-09-13-zz-docket-chronology.json` `records[4]` | 2026-09-13 | `analytics/daily-research/2026-09-13.md:812` (proposed by this seat, `e256de2`), `:1005` (adopted by the chairman as an extension, `203dbf6`) |
+| 33 | **Self-contradicting adjacent enumeration** — a count stated in a headline sentence that disagrees with the enumeration in the **adjacent** sentence, so the defect is detectable without leaving the paragraph and without opening any file. **Distinguished from entry 14** (silent class truncation), where the short enumeration is the *only* statement and the fuller class lives elsewhere in the record; here both the count and the fuller enumeration are on the page, disagreeing. **Countermeasure: any count of a set the same paragraph enumerates is read back against that enumeration before the paragraph closes** — the cheapest check in the set, requiring no file, no tool and no second reader. **Proposed as a sub-number (`17b/14a`) and adopted as its own entry** because it had three verified instances in one session and a mechanical countermeasure of its own — and because the gate committed it *in the very paragraph proposing it*. **Three instances, one session, two seats, all verified:** `0912-B2` (forecast tally), `0912-B6` (row-fragment count), `0912-B3` (median correction, "published twice" against eight live occurrences) | 2026-09-12 | `analytics/daily-research/2026-09-12.md:1112` (proposed by this seat as `17b/14a`, `3828137`), `:1377` (adopted by the chairman **as entry 33**, `639c16e`) |
+| 34 | **Premise-in-the-pre-registration** — a follow-up batch's note restates the prior batch's *inference* as established fact, so the inference is frozen into a **committed artefact ahead of vetting** and inherits the epistemic authority of a pre-registration. **Distinguished from entry 25** (mutable-reduction citation): the defect is not the citation's mutability but the **premise's firmness**. **Countermeasure: a follow-up note states its premise in the hedged form the prior batch's spans actually carry, or marks it "inferred, unvetted".** **Instance, verified:** `2026-09-13-zz-docket-chronology.json` states an objection "was filed pursuant to ICSID Arbitration Rule 41(1) **and fully briefed**" — an attribution that is inferred (`0913-B11`) and a completeness claim the batch's **own row 1** then falsified (`0913-B9`). The chairman recorded the instance as against himself | 2026-09-13 | `analytics/daily-research/2026-09-13.md:811` (proposed by this seat, `e256de2`), `:1005` (adopted by the chairman, `203dbf6`) |
+
+> **THE COLLISION AT 30/31/32, STATED IN FULL BEFORE THE FILING NOTE. Archivist, 2026-09-13.**
+> Two sittings issued the same three numbers for different patterns, and neither could see the
+> other:
+>
+> | Number | On `main` (daily council, filed above) | On open PR #170 (`7f1d01c`, unmerged) |
+> | --- | --- | --- |
+> | 30 | Re-implementation drift (2026-09-11, `28c0db8`) | *Untested counterfactual* — adopted in session as **27**, filed at the next free number |
+> | 31 | Assumed-remedy claim (2026-09-11, `28c0db8`) | RESERVED, **not adopted** — *unqueried configuration assertion* (proposed) |
+> | 32 | Single-window referent clause (2026-09-12, `639c16e`) | RESERVED, **not adopted** — *same-date execution conflation* (proposed) |
+>
+> **The mechanism is the one this note already describes, one level up.** The 2026-08-07 collision
+> was caused by a stale *heading*; the fix — move the heading in the same change set as the row —
+> held, and is not what failed here. What failed is that **the change set itself never landed**:
+> PR #170 carries the 2026-09-10 special session's entire record
+> (`analytics/daily-research/2026-09-10-special-session.md`, 1,267 lines) and its vault close-out,
+> and has been open since 2026-09-11. Nothing on `main` so much as names that sitting. So the daily
+> council read a heading that was accurate *for `main`* and numbered off it correctly, three days
+> running. **A stale heading produced one collision; an unlanded branch has now produced three.**
+>
+> **This seat files, it does not renumber.** Both sets are recorded, neither is altered, and the
+> ruling is the chairman's — alongside the C11 ruling open since 2026-08-07. Escalated in
+> [[Workflow Threads]] as **D17**, and to Emory in `analytics/vault-sessions/2026-09-13.md`, where
+> the operative request is simply: **land or close PR #170.**
+
+> **Filed 2026-09-13 by the archivist. Five adoptions, four sessions, and this is the routing
+> failure the council escalated rather than the archivist being late.** Entries **30** and **31**
+> were adopted 2026-09-11 (`28c0db8`), **32** and **33** on 2026-09-12 (`639c16e`), **34** and
+> **32a** on 2026-09-13 (`203dbf6`). None could be written by the sitting that adopted it, because
+> `agents/` is outside the daily council's merge scope; this seat runs every three days, and the
+> 2026-09-10 session did not run at all. **The cost is recorded by seats that are not the
+> archivist, and it is no longer hypothetical:**
+>
+> - On **2026-09-12** the officer opened this table, found it heading "29 entries as of
+>   2026-09-07" while the council stood at 31, and **numbered from the council's adoptions rather
+>   than from the heading** — stating that it had done so before numbering
+>   (`analytics/daily-research/2026-09-12.md:1096`, `3828137`). That is the correct handling **and
+>   the proof of the defect**: the file the officer's mandate names could not be trusted for the
+>   one fact the mandate needs from it.
+> - The chairman ruled the same day that he escalates *"the routing, not the archivist"*
+>   (`:1374`, `639c16e`), and again on 2026-09-13 at `:1162` (`203dbf6`), where he records the
+>   routing as **five consecutive adoptions into a directory the daily session cannot merge**.
+>
+> **Had this table been current, entry 32 would have been numbered off a table that agreed with
+> the council** and the officer would not have had to explain, twice, which authority it was
+> counting from. That is the concrete prevention claim for this note, and it is the reason D15 is
+> a defect about *routing latency* rather than about diligence.
 
 > **Filed 2026-09-07 by the archivist, two days late, and the delay had already been paid for.**
 > Entry 29 was adopted 2026-09-05 and routed to this seat because `agents/` is outside the daily

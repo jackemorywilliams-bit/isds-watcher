@@ -1,0 +1,93 @@
+{
+  "request": "2026-09-13-zz-docket-chronology.json",
+  "note": "2026-09-13 FOLLOW-UP BATCH, and the LAST relay batch of this session regardless of what it returns - the cap was declared in the daily batch's note before any row was fired and I am holding to it. EPISTEMIC STATUS, declared honestly: this batch was WRITTEN BY THE RESEARCH ANALYST and is fired by the chairman unaltered, AFTER the daily reduction was read and after the analyst's return was entered in the record, but BEFORE the integrity officer has vetted anything. It is not session-open pre-registration and must never be cited as such. WHY IT EXISTS: the daily batch established from ICSID's own case-detail page for ICSID Case No. ARB/24/16 that a Respondent's objection that the claim is manifestly without legal merit was filed pursuant to ICSID Arbitration Rule 41(1) and fully briefed (Claimant's observations 14 December 2024; Respondent's response 29 January 2025), and that the Tribunal rendered an award on 28 July 2025 with Status of Proceeding 'Concluded'. What the page does NOT state, in any window returned, is the DISPOSITION of that objection or the GROUND of that award - which is exactly the limb the thread needs and has never had. The first row below is aimed at precisely that: it centres the window on the LAST observed chronology entry so the window extends into the region AFTER it, where a disposition would appear if the page records one. FORECASTS ARE REGISTERED IN ADVANCE ON EVERY ROW, which the daily batch failed to do and which the analyst faulted the chair for omitting: Row 1 (find 'January 29, 2025') - matches HIGH; window contains at least one chronology entry dated after 29 January 2025 MODERATE-HIGH; window names the award as disposing of the Rule 41(1) objection LOW-MODERATE, registered low deliberately. Row 2 (find 'Date of Constitution of ad hoc Committee') - matches HIGH; window carries at least one annulment chronology entry dated 2026 MODERATE. Row 3 (find 'Instrument(s) Invoked') - matches HIGH; window names an ICSID Arbitration Rules vintage LOW-MODERATE, the analyst stating expressly that it is guessing at page structure. Row 4 (find 'Award of the Tribunal') - this literal is SPECULATIVE, never observed in any returned excerpt; find_matched false MODERATE, and a null licenses ONLY that the literal is absent from the rendering received at this time. Row 5 (find 'Decisions on Manifest Lack of Legal Merit', on the decisions-table URL) - matches HIGH; window character-for-character identical to the 2026-09-12 header window MODERATE-HIGH, and if identical the day-over-day sha256 change at unchanged byte count lies outside both observed regions, which strengthens the mutable-chrome reading and forbids any claim that the TABLE changed. BINDING READING RULE, carried unchanged and now load-bearing for a fifth batch: the windows this batch returns will contain case names, case numbers, document types and dates belonging to matters this project is not researching. NONE may be entered as a discovered matter, screened, graded on any ring, or carried as a lead, INCLUDING in any candidate-claims block. This instrument retrieves what the record already identified; it is not a discovery channel (METHODOLOGY Part VIII). CONTROL: the relay prepends https://example.com/ automatically; if the control fails the entire batch is VOID and no row may be read as information about its resource.",
+  "fetched_at": "2026-09-13T11:29:39.736841+00:00",
+  "environment": "github-actions-runner (run 34754557861)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "January 29, 2025",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "da8b441f33bd8612edb6f64c5ae8f98d5a28bf7a358f29fc81c233017999d23d",
+      "excerpt": " observations on the Respondent&rsquo;s objection that the claim is manifestly without legal merit. January 29, 2025 The Respondent files a response to the Claimant&rsquo;s observations of December 14, 2025. March 14, 2025 The Claimant files further observations on the Respondent&rsquo;s objection that the claim is manifestly without legal merit. April 30, 2025 The President holds a pre-hearing or",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Date of Constitution of ad hoc Committee",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "da8b441f33bd8612edb6f64c5ae8f98d5a28bf7a358f29fc81c233017999d23d",
+      "excerpt": "nt Proceeding Applicant(s)/Requesting Party(ies): (i) Claimant(s) Date Registered: December 8, 2025 Date of Constitution of ad hoc Committee: January 26, 2026 Composition of ad hoc Committee (Appointed by the Chairman of the Administrative Council) President: Andrea K. BJORKLUND (Canadian, U.S.) Members: Nicolas ANGELET (Belgian) Makane Mo\u00efse MBENGUE (Senegalese) Party Representatives Claimant(s):",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Instrument(s) Invoked",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "da8b441f33bd8612edb6f64c5ae8f98d5a28bf7a358f29fc81c233017999d23d",
+      "excerpt": "Materials Procedural Details Subject of Dispute: Construction project Economic Sector: Construction Instrument(s) Invoked: (i) BIT Kenya - United Arab Emirates 2014 Applicable Rules: ICSID Convention - Arbitration Rules (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Spentech Engineering Limited (Kenyan) Respondent(s): United Arab Emirates (Emirati) Date Registered: May 24, 2024 Date of ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Award of the Tribunal",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "da8b441f33bd8612edb6f64c5ae8f98d5a28bf7a358f29fc81c233017999d23d",
+      "excerpt": "rd.&nbsp; (a) Original Proceeding Published Decisions Procedural Order No. 1 Procedural Order No. 2 Award of the Tribunal Procedural Order No. 3 Available on the ICSID Website Procedural Order No. 1 (October 25, 2024) English (Original) Procedural Order No. 2 (November 8, 2024) English (Original) Award of the Tribunal (July 28, 2025) English (Original) Procedural Order No. 3 (April 30, 2025) Engli",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "Decisions on Manifest Lack of Legal Merit",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "content_type": "text/html",
+      "bytes": 96161,
+      "sha256": "e1ceead703fcce31e70f0c7475b954904ee1b23795414de886dc40cb701d3c7c",
+      "excerpt": "Decisions on Manifest Lack of Legal Merit | ICSID Skip to main content File a Request Languages English Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels De",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

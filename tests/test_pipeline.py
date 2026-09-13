@@ -761,6 +761,7 @@ def _sandbox(tmp_path, monkeypatch, items, responder, *, status_only=False):
                         config_mod.V2_SHADOW_CALLS_OFF)
     monkeypatch.setattr(config_mod, "V2_SHADOW_CALLS_SPEC",
                         config_mod.V2_SHADOW_CALLS_OFF)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 0)
     monkeypatch.setenv("MODEL_PROVIDER", "claude")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
     monkeypatch.setattr(classify_mod, "_call_anthropic", responder)
@@ -2001,6 +2002,128 @@ def test_the_triage_cap_bites_at_one_hundred_and_one_candidates(
     assert meta["triage_calls"] == 100
     assert meta["triage_cost_usd"] == round(
         100 * config_mod.TRIAGE_COST_PER_CALL_USD, 4)
+
+
+AUDIT_MARKER = "A FETCHED BODY THE HEADLINE NEVER SHOWED"
+FLIPPED_JSON = json.dumps({"relevance_score": 30,
+                           "matched_rings": [],
+                           "thematic_tags": [],
+                           "digest_summary": "With a body, it reads differently."})
+
+
+TAIL_TEXT = "A mining concession was renewed this quarter."
+
+
+def _audit_items():
+    """24 on-theme candidates to fill the enrichment cut, 6 off-theme tail."""
+    return ([_cand(f"top-{i}") for i in range(24)]
+            + [_cand(f"tail-{i}", title="Solar tariff review", text=TAIL_TEXT)
+               for i in range(6)])
+
+
+def test_the_tail_audit_runs_over_the_unenriched_tail_and_never_touches_the_run(
+        tmp_path, monkeypatch):
+    """Ruling 4(c), end to end through main().
+
+    All six tail items are lexically invisible, so the draw is two from stratum
+    A and the other two strata are recorded SHORT rather than padded. The two
+    drawn items are enriched, classified a second time, and the pair is written
+    to the ledger.
+
+    The load-bearing assertion is the last one: the body the audit fetched must
+    not reach the run's own record. The audit works on a deep copy, so the
+    audited items' telemetry still says the run never enriched them - which is
+    the truth about what the RUN did with them.
+    """
+    from src import config as config_mod, tail_audit as ta, telemetry
+
+    def audit_aware(prompt):
+        if AUDIT_MARKER in prompt:
+            return FLIPPED_JSON        # the enriched half of the pair
+        return GOOD_JSON
+
+    run = _sandbox(tmp_path, monkeypatch, _audit_items(), audit_aware,
+                   status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+
+    import src.main as main_mod
+
+    def fake_enrich(item):
+        item.raw_text = AUDIT_MARKER + " " + (item.raw_text or "")
+        item.metadata = {**(item.metadata or {}), "enriched": True}
+        return item
+
+    monkeypatch.setattr(main_mod, "enrich", fake_enrich)
+    assert run() == 0
+
+    rows = ta.read_ledger()
+    assert len(rows) == 2, "two per stratum, from the one stratum that had items"
+    for row in rows:
+        assert set(row) == set(ta.LEDGER_FIELDS)
+        assert row["stratum"] == ta.STRATUM_A
+        assert row["lexical_subtotal"] == 0
+        assert row["band_enriched"] == "LOW"        # 30, with a body
+        assert row["band_unenriched"] != row["band_enriched"], "no flip recorded"
+        assert row["seed"] == row["run_id"]
+
+    # The cost is in the dated record; the measurement is not.
+    meta = _meta_json()
+    assert meta["tail_audit_cost_usd"] == round(
+        2 * config_mod.TAIL_AUDIT_COST_PER_CALL_USD, 4)
+    blob = json.dumps(meta)
+    assert "band_enriched" not in blob and "stratum" not in blob
+
+    # The audited items are tail items, and the run's own record still says the
+    # run never read their bodies - because it never did.
+    audited = {r["item_id"] for r in rows}
+    recs = {r["candidate_id"]: r for r in
+            telemetry.load_records("analytics/candidate_telemetry.jsonl")}
+    for cid in audited:
+        rec = recs[cid]
+        assert rec["entered_enrichment"] is False
+        assert rec["access"]["body_fetched"] is False, \
+            "the tail audit's fetch leaked into the run's own record"
+        assert rec["access"]["text_len_body"] == len(TAIL_TEXT), \
+            "the record's body length grew; the audit's fetch reached it"
+    assert AUDIT_MARKER not in open(
+        "analytics/candidate_telemetry.jsonl", encoding="utf-8").read()
+    assert AUDIT_MARKER not in open(ta.LEDGER_PATH, encoding="utf-8").read()
+
+
+def test_a_dry_run_never_spends_the_tail_audits_cross_run_memory(
+        tmp_path, monkeypatch):
+    """The ledger is memory: an audited item is never audited again.
+
+    A rehearsal that marked items audited would silently consume items the real
+    run can no longer measure, and nothing would say so.
+    """
+    from src import config as config_mod, tail_audit as ta
+
+    _sandbox(tmp_path, monkeypatch, _audit_items(), lambda p: GOOD_JSON,
+             status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+
+    import src.main as main_mod
+    assert main_mod.main(["--since", "30d", "--no-email", "--dry-run"]) == 0
+    assert ta.read_ledger() == []
+
+
+def test_a_provider_outage_skips_the_tail_audit_rather_than_measuring_itself(
+        tmp_path, monkeypatch):
+    """With the canary down, every re-classification is a keyword fallback.
+
+    Auditing then would measure the outage and call it the enrichment cut.
+    """
+    from src import config as config_mod, tail_audit as ta
+
+    def dead(prompt):
+        raise RuntimeError("provider is down")
+
+    run = _sandbox(tmp_path, monkeypatch, _audit_items(), dead, status_only=True)
+    monkeypatch.setattr(config_mod, "TAIL_AUDIT_N", 6)
+    run()
+    assert ta.read_ledger() == [], \
+        "the audit ran during an outage and recorded the outage as a flip"
 
 
 def test_an_abandoned_item_is_recorded_as_abandoned_not_as_still_retrying(

@@ -33,11 +33,26 @@ string, and it cannot recognise text under 200 characters in a field it does not
 know about. Check 1 is the specific rule; check 2 is the general net; neither
 replaces reading a new field's name before adding it.
 
+THE SECOND STREAM — ``analytics/tail_audit.jsonl`` (added 2026-09-13, council
+Ruling 4(c), in the same change that created the file). The tail audit appends
+one row per audited item, for ever, and that is the same shape of file as the
+telemetry: append-only, rarely read, and one debugging session away from
+carrying a title "just to see which item this is". A new stream outside this
+guard is a hole, so it is inside it from its first line.
+
+The tail-audit ledger gets a STRICTER check than the telemetry, because it can:
+its schema is nine fields fixed by the ruling, so this asserts the key set
+EXACTLY against ``src.tail_audit.LEDGER_FIELDS``. A tenth field fails the build
+whatever it is called. That is the difference between a guard that catches the
+fields it was told about and one that catches the field nobody declared — and
+the tail audit is small enough to afford the strict version.
+
 CLI:
     python scripts/check_telemetry_privacy.py [--path FILE]
+                                              [--tail-audit-path FILE]
 
-Exit 0 clean (including when the file does not exist yet — no data is not a
-violation), 1 on any violation, 2 if the file exists but cannot be read.
+Both streams are checked by default; a missing file is not a violation. Exit 0
+clean, 1 on any violation, 2 if a file exists but cannot be read.
 """
 
 from __future__ import annotations
@@ -51,6 +66,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 sys.path.insert(0, str(REPO))
 
+from src.tail_audit import LEDGER_FIELDS, LEDGER_PATH  # noqa: E402
 from src.telemetry import (  # noqa: E402
     FORBIDDEN_FIELDS,
     LONG_STRING_ALLOWLIST,
@@ -108,7 +124,32 @@ def check_record(rec: dict, lineno: int) -> list[str]:
     return problems
 
 
-def check(path: Path) -> tuple[int, list[str]]:
+def check_tail_audit_record(rec: dict, lineno: int) -> list[str]:
+    """The ledger row checks: the general ones, plus an EXACT schema match."""
+    problems = _walk_record(rec, lineno)
+    keys = set(rec)
+    expected = set(LEDGER_FIELDS)
+    for extra in sorted(keys - expected):
+        problems.append(
+            f"line {lineno}: field `{extra}` is not one of the tail audit's "
+            f"nine declared fields {LEDGER_FIELDS}. The ledger's schema was "
+            "fixed by the ruling that created it; a new field must be added to "
+            "src.tail_audit.LEDGER_FIELDS deliberately, which is what makes "
+            "adding candidate text to this stream a decision rather than a slip")
+    for missing in sorted(expected - keys):
+        problems.append(
+            f"line {lineno}: field `{missing}` is missing — a partial row "
+            "cannot be read back as a pair")
+    return problems
+
+
+def _walk_record(rec: dict, lineno: int) -> list[str]:
+    problems: list[str] = []
+    _walk(rec, "", problems, lineno)
+    return problems
+
+
+def check(path: Path, *, record_check=check_record) -> tuple[int, list[str]]:
     """Returns (records checked, problems)."""
     problems: list[str] = []
     checked = 0
@@ -126,37 +167,55 @@ def check(path: Path) -> tuple[int, list[str]]:
                 problems.append(f"line {lineno}: record is not a JSON object")
                 continue
             checked += 1
-            problems.extend(check_record(rec, lineno))
+            problems.extend(record_check(rec, lineno))
     return checked, problems
+
+
+def _check_stream(path: Path, label: str, record_check) -> tuple[int, int]:
+    """Check one stream. Returns (exit code, problems found)."""
+    if not path.exists():
+        print(f"No {label} at {path} — nothing to check.")
+        return 0, 0
+
+    try:
+        checked, problems = check(path, record_check=record_check)
+    except OSError as exc:
+        print(f"cannot read {path}: {exc}", file=sys.stderr)
+        return 2, 0
+
+    print(f"Checked {checked} {label} records in {path}.")
+    for p in problems:
+        print(f"  FAIL {p}")
+    return (1 if problems else 0), len(problems)
 
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="check_telemetry_privacy")
     ap.add_argument("--path", default=str(REPO / TELEMETRY_PATH),
                     help="telemetry jsonl to check")
+    ap.add_argument("--tail-audit-path", default=str(REPO / LEDGER_PATH),
+                    help="tail-audit ledger jsonl to check")
     args = ap.parse_args(argv[1:])
-    path = Path(args.path)
 
-    if not path.exists():
-        print(f"No telemetry at {path} — nothing to check.")
-        return 0
+    codes = []
+    problems = 0
+    for path, label, record_check in (
+            (Path(args.path), "telemetry", check_record),
+            (Path(args.tail_audit_path), "tail-audit", check_tail_audit_record)):
+        code, found = _check_stream(path, label, record_check)
+        codes.append(code)
+        problems += found
 
-    try:
-        checked, problems = check(path)
-    except OSError as exc:
-        print(f"cannot read {path}: {exc}", file=sys.stderr)
+    if 2 in codes:
         return 2
-
-    print(f"Checked {checked} telemetry records in {path}.")
-    for p in problems:
-        print(f"  FAIL {p}")
     if problems:
         print("\nCandidate telemetry records our own processing — lengths, hashes, "
               "rings, outcomes.\nIt must never accumulate the sources' text.",
               file=sys.stderr)
         return 1
     print("  ok — no candidate text, no over-long strings, no excerpts from "
-          "headline-only sources.")
+          "headline-only sources, and the tail-audit ledger carries exactly its "
+          "nine declared fields.")
     return 0
 
 

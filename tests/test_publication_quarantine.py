@@ -35,7 +35,7 @@ import os
 
 import pytest
 
-from src import classify_v2
+from src import classify_v2, tail_audit
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -96,10 +96,105 @@ def _scanned_files():
                 yield os.path.relpath(full, REPO).replace(os.sep, "/"), full
 
 
-def _hits(path: str) -> list[str]:
+def _hits(path: str, keys=None) -> list[str]:
     with open(path, "r", encoding="utf-8", errors="replace") as fh:
         text = fh.read()
-    return sorted(k for k in classify_v2.V2_SHADOW_KEYS if k in text)
+    return sorted(k for k in (keys or classify_v2.V2_SHADOW_KEYS) if k in text)
+
+
+# --------------------------------------------------------------------------- #
+# The tail audit (Ruling 4(c)): the MEASUREMENT is internal; the COST is not
+# --------------------------------------------------------------------------- #
+# "Reporting surface: scripts/telemetry_query.py ONLY. Never the digest, never
+# the professor-facing site, never the README. A tail-audit flip rate is an
+# internal measurement of the instrument, not a finding about ISDS; publishing
+# it to the recipient would be the instrument grading itself in her inbox."
+#
+# The scan therefore reaches further than the V2 one: past the code and the
+# templates into the GENERATED site (`docs/`), the committed digest archive
+# (`digests/`) and `README.md`, because those are the places the ruling names
+# and because a leak that already shipped is exactly what a guard should find.
+#
+# `tail_audit_cost_usd` and `TAIL_AUDIT_N` are deliberately NOT quarantined
+# identifiers — the same ruling REQUIRES the cost in `meta.json` and the run
+# summary. What may not be published is the measurement: the ledger and the
+# paired bands in it. See `src.tail_audit.PUBLICATION_KEYS`.
+TAIL_SCANNED_DIRS = SCANNED_DIRS + ("docs", "digests")
+TAIL_SCANNED_FILES = ("README.md",)
+
+TAIL_ALLOWED = {
+    "src/tail_audit.py": "the audit itself; owns PUBLICATION_KEYS",
+    "src/main.py": "the run; draws the sample and appends to the ledger",
+    "src/config.py": "documents the audit and its cost derivation",
+    "scripts/check_telemetry_privacy.py": "the guard on the ledger's schema",
+    "scripts/telemetry_query.py": "the ONE reporting surface the ruling allows",
+}
+
+# `src/render.py` is deliberately absent and must stay absent: it writes the
+# digest, the article files and meta.json, so it is the surface this ruling is
+# most about. It reports the audit's COST (a required field) and names neither
+# the ledger nor a band.
+
+
+def _tail_scanned_files():
+    for d in TAIL_SCANNED_DIRS:
+        root = os.path.join(REPO, d)
+        if not os.path.isdir(root):
+            continue
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = sorted(n for n in dirnames
+                                 if n not in ("__pycache__", ".git"))
+            for name in sorted(filenames):
+                if not name.endswith(SCANNED_SUFFIXES):
+                    continue
+                full = os.path.join(dirpath, name)
+                yield os.path.relpath(full, REPO).replace(os.sep, "/"), full
+    for rel in TAIL_SCANNED_FILES:
+        full = os.path.join(REPO, rel)
+        if os.path.exists(full):
+            yield rel, full
+
+
+def test_the_tail_audit_key_list_names_the_measurement_and_not_the_cost():
+    keys = tail_audit.PUBLICATION_KEYS
+    assert {"tail_audit.jsonl", "band_unenriched", "band_enriched",
+            "score_delta"} <= keys
+    # The cost is required in meta.json by the same ruling. Quarantining it
+    # would make the ruling contradict itself and the guard unsatisfiable.
+    assert "tail_audit_cost_usd" not in keys
+    assert "TAIL_AUDIT_N" not in keys
+
+
+def test_the_readme_and_the_generated_site_are_actually_scanned():
+    scanned = {rel for rel, _ in _tail_scanned_files()}
+    assert "README.md" in scanned
+    assert any(rel.startswith("docs/") for rel in scanned),         "the professor-facing site is named in Ruling 4(c) and was not scanned"
+    assert any(rel.startswith("digests/") for rel in scanned),         "the digest archive is named in Ruling 4(c) and was not scanned"
+
+
+def test_the_tail_audit_measurement_reaches_no_surface_outside_its_allowlist():
+    """Never the digest, never the site, never the README."""
+    offenders = {}
+    for rel, full in _tail_scanned_files():
+        if rel in TAIL_ALLOWED:
+            continue
+        hits = _hits(full, tail_audit.PUBLICATION_KEYS)
+        if hits:
+            offenders[rel] = hits
+    assert not offenders, (
+        f"the tail audit's measurement is read outside its allowlist: "
+        f"{offenders}. Ruling 4(c) of 2026-09-13: the reporting surface is "
+        "scripts/telemetry_query.py and nothing else. A flip rate is an "
+        "internal measurement of the instrument, not a finding about ISDS.")
+
+
+def test_the_tail_audit_allowlist_has_no_stale_entries():
+    for rel in TAIL_ALLOWED:
+        full = os.path.join(REPO, rel)
+        assert os.path.exists(full), f"allowlisted {rel} no longer exists"
+        assert _hits(full, tail_audit.PUBLICATION_KEYS), (
+            f"{rel} is allowlisted for the tail audit but no longer references "
+            "any of its keys; remove it from TAIL_ALLOWED")
 
 
 def test_the_key_list_is_not_empty_and_names_the_fields_it_claims_to():

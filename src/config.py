@@ -281,21 +281,60 @@ TRIAGE_MAX_CALLS_PER_RUN = 100
 TRIAGE_COST_PER_CALL_USD = 0.0014
 
 # --------------------------------------------------------------------------- #
-# TAIL_AUDIT_N — R2.1 design (c), stratified tail audit. STUB.
+# TAIL_AUDIT_N — the stratified tail audit. BUILT 2026-09-13.
 # --------------------------------------------------------------------------- #
-# The full design samples N items from the un-enriched tail per run, classifies
-# them, and reports what the enrichment cut is throwing away — the only way to
-# measure the false-negative rate of the ranking step rather than assuming it.
+# It samples N items from the un-enriched tail each run, enriches them,
+# classifies them a second time, and records the PAIR — the band the instrument
+# gave the item without a body and the band it gives with one. The difference is
+# a flip, and a flip needs no human label to detect, which is why this could be
+# built before `analytics/locked_set/` holds a single coded label. It measures a
+# flip, never a truth.
 #
-# NOT BUILT. This session implemented the triage pass (design (a)) and the
-# constrained headline lane; the audit loop needs a stratification rule, a
-# persisted cross-run sample ledger so the strata are not re-drawn every run,
-# and a reporting surface, and building it here would have meant building three
-# things badly instead of two things properly. The constant exists so the
-# decision is visible in configuration rather than remembered, and it is 0,
-# which means no tail audit runs. Anything reading it must treat a non-zero
-# value as unimplemented rather than as a request.
-TAIL_AUDIT_N = 0
+# The three pieces the earlier stub said were missing all exist now, in
+# `src/tail_audit.py`: stratification on `lexical_subtotal` (A == 0,
+# B below `classify.PRESENT_FLOOR`, C at or above it), a persisted cross-run
+# ledger at `analytics/tail_audit.jsonl` so the strata are not re-drawn every
+# run and no item is audited twice, and a reporting surface —
+# `scripts/telemetry_query.py --tail-audit`, which is the ONLY one. A tail-audit
+# flip rate is an internal measurement of the instrument, not a finding about
+# ISDS; it never reaches the digest, the site or the README, and
+# `tests/test_publication_quarantine.py` fails the build if it starts to.
+#
+# 6 = 2 per stratum x 3 strata. `src/tail_audit.py` derives the per-stratum draw
+# from this number, so the two cannot drift apart. Set TAIL_AUDIT_N=0 to turn
+# the audit off; a short stratum takes what exists and records the shortfall
+# rather than refusing to run or quietly pretending it drew two.
+#
+# Council rulings session of 2026-09-13, Ruling 4(c).
+TAIL_AUDIT_N = 6
+
+# What one tail-audit call costs, RE-DERIVED FROM THIS REPOSITORY'S OWN
+# TELEMETRY rather than from the lost costing table (Ruling 4(c) ground 1: the
+# number was never only in that memo). A tail-audit call is an ENRICHED
+# classification call, and the run record holds 87 of those. The derivation, so
+# a later reader can redo it rather than trust it:
+#
+#   prompt      `prompts/classifier.txt` is 15,389 characters; the four
+#               placeholders it substitutes account for 88 of them, leaving
+#               15,301 characters of fixed prompt.
+#   item        for the 87 telemetry records with `access.body_fetched` true and
+#               `classification.path` "llm": title + source + host + body,
+#               body capped at `classify.MAX_TEXT_CHARS` (6,000). Median total
+#               19,420 characters, max 20,522.
+#   tokens      at ~4 characters a token: ~4,855 input (median), ~5,130 (max).
+#   output      ~250 tokens. THIS IS THE ONE INFERRED TERM — the classifier's
+#               answer length is not in telemetry. `max_tokens` is 1,024, so the
+#               hard ceiling is ~$0.0103 a call.
+#   price       claude-haiku-4-5 (src/models.py: the digest classifier is
+#               unchanged), $1.00 / 1M input and $5.00 / 1M output.
+#
+#   median: 4,855/1e6 x $1.00 + 250/1e6 x $5.00 = $0.00611
+#   max:    5,130/1e6 x $1.00 + 250/1e6 x $5.00 = $0.00638  -> rounded UP below
+#
+# 0.0064 is the max-observed figure, so `tail_audit_cost_usd` overstates rather
+# than understates. Six calls a run is ~$0.038 — about $2 a year at a weekly
+# cadence.
+TAIL_AUDIT_COST_PER_CALL_USD = 0.0064
 
 # The interpretive Research Brief (the council's second weekly email). Enabled by
 # default; set RESEARCH_BRIEF_ENABLED=0 to suppress it. It requires the Anthropic

@@ -404,5 +404,19 @@ def test_an_over_cap_candidate_is_a_named_skip_that_costs_nothing():
     assert triage.basis_names_a_model(result.basis) is False
 
 
-def test_the_tail_audit_is_a_documented_stub_and_runs_nothing():
-    assert config.TAIL_AUDIT_N == 0
+def test_the_tail_audit_is_built_and_no_longer_a_stub(fresh_config):
+    """It was 0 with a note saying a non-zero value meant unimplemented.
+
+    Both halves changed on 2026-09-13: the audit exists (`src/tail_audit.py`)
+    and the note is gone. The tests that matter are in tests/test_tail_audit.py;
+    this one only pins the shipped number, which is what the ruling set.
+    """
+    fresh = fresh_config(TAIL_AUDIT_N=None)
+    assert fresh.TAIL_AUDIT_N == 6
+    assert fresh.TAIL_AUDIT_COST_PER_CALL_USD > 0
+    import inspect
+
+    import src.config as config_mod
+    source = inspect.getsource(config_mod)
+    assert "treat a non-zero\n# value as unimplemented" not in source, \
+        "the stub warning outlived the stub"

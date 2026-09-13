@@ -10,6 +10,7 @@ classifier uses its keyword fallback — so --dry-run works fully offline.
 from __future__ import annotations
 
 import argparse
+import copy
 import logging
 import re
 import sys
@@ -787,6 +788,7 @@ def main(argv=None) -> int:
             logger.error("classify failed for %s: %s", it.source_id, exc)
             outcome_value = "pipeline_error"
 
+        classified_by_item[id(it)] = (ci, outcome_value)
         cmeta = (getattr(ci, "metadata", None) if ci is not None else None) or {}
         # `ran` is whether a CLASSIFICATION HAPPENED, not whether an object came
         # back. An unreadable item returns a ClassifiedItem — it has to, so the
@@ -906,6 +908,61 @@ def main(argv=None) -> int:
     stats["classified"] = len(classified) - len(unreadable_now)
     stats["deferred"] = len(deferred_now)
     stats["abandoned"] = len(abandoned_now)
+
+    # 3c. THE STRATIFIED TAIL AUDIT (council ruling of 2026-09-13, Ruling 4(c)).
+    #     The enrichment cut decides what the model reads, and nothing has ever
+    #     measured what it throws away. This samples the UN-ENRICHED tail — two
+    #     items from each of three strata of `lexical_subtotal`, under a recorded
+    #     seed — enriches each one, classifies it a SECOND time, and records the
+    #     pair: the band the item got without a body and the band it gets with
+    #     one. A difference is a flip, and a flip needs no human label, which is
+    #     why this is buildable before the locked set holds a single label. See
+    #     `src/tail_audit.py` for the design; this block is only the wiring.
+    #
+    #     THREE THINGS IT DELIBERATELY DOES NOT DO.
+    #       - It does not run when the provider canary failed. Every
+    #         re-classification would fall back to a keyword score and the audit
+    #         would measure the outage rather than the gate.
+    #       - It does not run on --dry-run. The ledger is cross-run memory: an
+    #         item recorded as audited is never audited again, and a rehearsal
+    #         must not spend the instrument's memory.
+    #       - It works on a DEEP COPY of each sampled candidate, so the body it
+    #         fetches cannot reach the published item, the telemetry record or
+    #         the state file by any path at all.
+    if config.TAIL_AUDIT_N and not provider_down and not args.dry_run:
+        run_id = telemetry.compute_run_id(
+            date_str, [lex[id(it)][0] for it in new_candidates])
+        pool = []
+        for it in ranked[config.ENRICH_TOP_N:]:
+            if id(it) in enrich_set:
+                continue  # read on top of the cut; not part of the tail
+            ci_tail, outcome_tail = classified_by_item.get(id(it), (None, ""))
+            if ci_tail is None:
+                continue
+            pool.append(tail_audit.tail_candidate(
+                copy.deepcopy(it),
+                lexical_subtotal=triage.lexical_subtotal(lex[id(it)][1]),
+                classified=ci_tail, outcome=outcome_tail))
+        prior = tail_audit.read_ledger()
+        audit = tail_audit.run_audit(
+            pool, run_id=run_id, enrich=enrich,
+            classify=lambda item: classify_item(item, provider=provider,
+                                                intended_model=True),
+            per_stratum=tail_audit.per_stratum_n(),
+            already_audited=tail_audit.audited_item_ids(prior))
+        stats["tail_audit_calls"] = audit.calls
+        stats["tail_audit_cost_usd"] = round(
+            audit.calls * config.TAIL_AUDIT_COST_PER_CALL_USD, 4)
+        stats["tail_audit_rows"] = tail_audit.append_rows(audit.rows)
+        stats["tail_audit_shortfalls"] = dict(audit.shortfalls)
+        stats["tail_audit_unmeasurable"] = audit.skipped_not_measurable
+        logger.info("tail audit: %d tail item(s) in the pool, %d call(s) "
+                    "(~$%.4f), %d pair(s) recorded, %d not measurable",
+                    len(pool), audit.calls, stats["tail_audit_cost_usd"],
+                    stats["tail_audit_rows"], audit.skipped_not_measurable)
+        for stratum, short in sorted(audit.shortfalls.items()):
+            logger.info("tail audit: stratum %s was %d short of the draw",
+                        stratum, short)
 
     # 4. Select what to surface (see select_surfaced for the two gates).
     #
@@ -1163,6 +1220,14 @@ def main(argv=None) -> int:
               f"{stats['triage_skipped']} skipped, {stats['triage_calls']} call(s) "
               f"~${stats['triage_cost_usd']:.4f} (cap "
               f"{config.TRIAGE_MAX_CALLS_PER_RUN}/run)")
+    if stats.get("tail_audit_calls"):
+        print(f"tail audit:       {stats['tail_audit_rows']} pair(s) recorded, "
+              f"{stats['tail_audit_calls']} call(s) "
+              f"~${stats['tail_audit_cost_usd']:.4f}"
+              + (f", {stats['tail_audit_unmeasurable']} not measurable"
+                 if stats.get("tail_audit_unmeasurable") else "")
+              + (f", short: {stats['tail_audit_shortfalls']}"
+                 if stats.get("tail_audit_shortfalls") else ""))
     print(f"at/above threshold ({cfg.threshold}): {stats['above_threshold']}")
     print(f"surfaced in digest: {len(surfaced)}")
     if config.VALIDATION_STATUS_ONLY:

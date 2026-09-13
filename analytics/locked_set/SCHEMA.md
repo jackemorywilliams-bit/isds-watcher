@@ -1,8 +1,11 @@
 # Locked validation set — schema and lock procedure (no items yet, by design)
 
 This directory will hold the 54-item, 9-category production-path validation set
-specified in the R2.1 record. **It is created empty of items on purpose.** The
-named candidate matters in that record are leads drawn from this repository's
+specified in the validation record (`analytics/locked_set/VALIDATION_RECORD.md`;
+supersedes the uncommitted "R2.1 record", 2026-09-13 — that record was never under
+version control on any branch). **It is created empty of items on purpose.** The
+named candidate matters in the validation record are leads — 38 of the 54
+design-target rows are nominated, and 24 of those are drawn from this repository's
 own corpus; several docket numbers and dates are unverified against primary
 sources, and per the carrying-span rule **no item enters this set on a memo's
 authority**. Primary retrieval is a library task and is recorded as externally
@@ -109,7 +112,7 @@ disclosed; no inter-rater statistic is computed, reported, or proposed.
 8. Headline-only / paywalled candidates
 9. Paraphrase-heavy trade-secret / clinical-data / regulatory-data reporting
 
-Candidate matters per category are listed in the R2.1 record; each is a lead
+Candidate matters per category are listed in the validation record, §3; each is a lead
 until its primary document is retrieved with a pinpoint and logged in
 `RETRIEVAL_LEDGER.md`. Disjointness is at the level of the **matter**, not
 the document: no case in the development set (the retired 20-item holdout,
@@ -129,8 +132,12 @@ any publication-status difference as a first-class finding. Metrics:
 publication precision and recall with exact Clopper-Pearson intervals,
 floor-band composition on [25, 40), threshold-band count, grammar fidelity
 (band vs `L_band`), always per-category. Stability: 20 items × 10 runs;
-blocking thresholds per the R2.1 record (decision flip > 0.10, mean score range
-> 10, any range > 20, silent-fallback rate > 0.05). Acceptance V1–V6 and
-stop-publication S1–S4 per the R2.1 record; S4 (zero positives reach 40 on the
-production path) is the current state of the system and the reason the
-fill-floor is suspended.
+blocking thresholds, whose surviving home is THIS LINE and no other (decision
+flip > 0.10, mean score range > 10, any range > 20, silent-fallback rate > 0.05)
+— the validation record §1 transcribes them from here verbatim and marks them
+carried, not re-derived. **Acceptance V1–V6 and stop-publication S1–S3 are LOST**
+and are not reconstructed under their own names; the pre-registered `ACC-1…n` /
+`HALT-1…n` schedule replaces them (the validation record §2). **S4's content
+survives on this line** — zero positives reach 40 on the production path — which
+is the current state of the system and the reason the fill-floor is suspended,
+and is what `HALT-1` carries.

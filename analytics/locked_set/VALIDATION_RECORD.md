@@ -89,23 +89,26 @@ lost record.
 Re-deriving something the repository already holds is fabrication dressed as
 recovery. Each survivor below was opened and read at
 `origin/main` = `66df2d2`, and is quoted with its own pinpoint. **The line numbers
-in this section are as of `66df2d2`**. Two amendments on this same branch lengthen
-the tier-P bullet — RULING 2 (¶ 1 anchor) takes it from 6 printed lines to 14, and
-the chairman's G-3 ruling (tier P redefined by criterion; the structural-ordinal
-anchor) takes it to 32 — so every `SCHEMA.md` citation below line 51 shifts by
-**+26** in total. Both the original and the final numbers are given where the shift
-applies, and every final number below was re-read against the amended file.
+in this section are as of `66df2d2`**. Three commits on this branch change
+`SCHEMA.md`'s length — RULING 2 (¶ 1 anchor) takes the tier-P bullet from 6 printed
+lines to 14; the chairman's G-3 ruling (tier P redefined by criterion, the
+structural-ordinal anchor) takes it to 32; and the R2.1 re-pointing adds three lines
+to the file's opening paragraph, which shifts everything below it as well. **Because
+the arithmetic is no longer a single offset, the right-hand column is not computed —
+every line in it was re-read against `SCHEMA.md` at this branch's HEAD**, which is
+the practice taxonomy entry 25 requires and the practice that caught RULING 1's own
+four stale ranges.
 
-| Element | Status | Pinpoint (at `66df2d2`) | Pinpoint (after RULING 2 + the G-3 ruling) |
+| Element | Status | Pinpoint (at `66df2d2`) | Pinpoint (re-read at this branch's HEAD) |
 |---|---|---|---|
-| Nine categories, with definitions | **SURVIVES** | `SCHEMA.md:74` (heading), `:76-84` (the nine) | `:100`, `:102-110` |
-| Six-each / twenty-positives structure | **SURVIVES** | `SCHEMA.md:74` | `:100` |
-| P / S / C tier rules | **SURVIVES** | `SCHEMA.md:43-55` (P at `:46-51`, as twice amended; S at `:52-53`; C at `:54-55`) | `:43-81` (P at `:46-77`; S at `:78-79`; C at `:80-81`) |
-| `labels.json` field set | **SURVIVES** | `SCHEMA.md:57-72` (JSON block `:59-67`) | `:83-98` (JSON block `:85-93`) |
+| Nine categories, with definitions | **SURVIVES** | `SCHEMA.md:74` (heading), `:76-84` (the nine) | `:103`, `:105-113` |
+| Six-each / twenty-positives structure | **SURVIVES** | `SCHEMA.md:74` | `:103` |
+| P / S / C tier rules | **SURVIVES** | `SCHEMA.md:43-55` (P at `:46-51`, as twice amended; S at `:52-53`; C at `:54-55`) | `:46-84` (P at `:49-80`; S at `:81-82`; C at `:83-84`) |
+| `labels.json` field set | **SURVIVES** | `SCHEMA.md:57-72` (JSON block `:59-67`) | `:86-101` (JSON block `:88-96`) |
 | Blind commit order | **SURVIVES** | `SCHEMA.md:14-20`, enforced by `scripts/check_lock.py` (wired at `.github/workflows/pipeline-guards.yml:140,160`, per `SCHEMA.md:22-24`) | unchanged / `:22-24` |
-| Disjointness constraints | **SURVIVES** | `SCHEMA.md:86-94` | `:112-120` |
-| 20×10 stability design + four blocking thresholds | **SURVIVES VERBATIM** | `SCHEMA.md:105-107` | `:131-133` |
-| S4 stop-publication rule | **SURVIVES IN SUBSTANCE** | `SCHEMA.md:107-109` | `:133-135` |
+| Disjointness constraints | **SURVIVES** | `SCHEMA.md:86-94` | `:115-123` |
+| 20×10 stability design + four blocking thresholds | **SURVIVES VERBATIM** | `SCHEMA.md:105-107` | `:134-137` |
+| S4 stop-publication rule | **SURVIVES IN SUBSTANCE** | `SCHEMA.md:107-109` | `:140-143` |
 | Triage per-call cost | **SURVIVES AS A COMMITTED CONSTANT** | `src/config.py`, `TRIAGE_COST_PER_CALL_USD = 0.0014` | unchanged |
 | **The 54 named candidate matters** | **LOST** | — | — |
 | **V1–V6 acceptance criteria; S1–S3** | **LOST** | — | — |
@@ -124,19 +127,23 @@ measured list at the executing commit, never from a remembered one.
 
 ### The four blocking thresholds, transcribed verbatim
 
-From `SCHEMA.md:105-107`:
+From `SCHEMA.md:105-107` (at `66df2d2`; `:134-137` at HEAD):
 
 > Stability: 20 items × 10 runs; blocking thresholds per the R2.1 record (decision
 > flip > 0.10, mean score range > 10, any range > 20, silent-fallback rate > 0.05).
 
 These four numbers are **carried, not re-derived**: they are read off a committed
-file, not remembered. The clause "per the R2.1 record" attributes them to the lost
+file, not remembered. The clause "per the R2.1 record" attributed them to the lost
 document; the numbers themselves are in `SCHEMA.md` and are therefore preserved.
-The 20×10 design is preserved by the same sentence.
+The 20×10 design is preserved by the same sentence. **The quotation above is of the
+text as it stood at `66df2d2`. §4 of this record re-points that clause — the line
+now reads "blocking thresholds, whose surviving home is THIS LINE and no other" —
+and the four numbers and the 20×10 design are byte-for-byte unchanged by that
+edit.**
 
 ### S4, in substance
 
-From `SCHEMA.md:107-109`:
+From `SCHEMA.md:107-109` (at `66df2d2`; `:140-143` at HEAD):
 
 > Acceptance V1–V6 and stop-publication S1–S4 per the R2.1 record; S4 (zero
 > positives reach 40 on the production path) is the current state of the system and
@@ -144,7 +151,11 @@ From `SCHEMA.md:107-109`:
 
 S4's **content** — zero positives reach 40 on the production path — is preserved on
 the face of `SCHEMA.md`. Its identifier, its ordering among S1–S3, and any threshold
-or tolerance it carried are not.
+or tolerance it carried are not. **The quotation above is of the text as it stood at
+`66df2d2`.** §4 re-points that sentence too, splitting it because its two halves have
+opposite fates: V1–V6 and S1–S3 are recorded as lost and replaced by `ACC-*` /
+`HALT-*`, while S4's content is recorded as surviving on the line and as what
+`HALT-1` carries. **S4's preserved words are unchanged by that edit.**
 
 ---
 
@@ -606,3 +617,43 @@ host resolves — and they are recorded separately so the two defects are not
 conflated.
 
 ---
+
+## 4. Disposition of the R2.1 citations inside `analytics/locked_set/`
+
+RULING 1 re-points every live citation of the lost record; the 85 occurrences
+across 20 files are the systems-designer's PR. **Five of them are in this
+directory, and nobody owned them**: `SCHEMA.md` is a governing spec enforced by
+`scripts/check_lock.py`, so it is **not** within the ruling's historical-narrative
+exemption (which covers `analytics/daily-research/*`, the 2026-08 analytics memos
+and the special-session record); it is outside the citation seat's scope (`src`,
+`scripts`, `tests`, `PLAN.md`) and outside the archivist's (`agents/`, `moc/`).
+**This seat amended `SCHEMA.md` twice — `e10a016` and `a22aedf` — without
+re-pointing them, and the integrity gate found it.** They are re-pointed here.
+
+| Occurrence (at `a22aedf`) | Class | Disposition |
+|---|---|---|
+| `SCHEMA.md:4` — "the 54-item, 9-category … set specified in the R2.1 record" | **(a)** cites the candidate list / design | **First occurrence in the file**: full supersession parenthetical naming `analytics/locked_set/VALIDATION_RECORD.md` and stating the R2.1 record was never under version control on any branch. |
+| `SCHEMA.md:112` — "Candidate matters per category are listed in the R2.1 record" | **(a)** cites the candidate list | Later occurrence in the same file: "the validation record", with the section that now holds them (§3). |
+| `SCHEMA.md:132` — "blocking thresholds per the R2.1 record (decision flip > 0.10 …)" | **(b)** cites NUMBERS | **Not re-pointed at the new record.** The four thresholds' surviving home is that line itself; the text now says so, and says the validation record §1 transcribes them *from here* and marks them carried, not re-derived. Pointing a live number at a record that does not carry it is how the first citation rotted. |
+| `SCHEMA.md:134` — "Acceptance V1–V6 and stop-publication S1–S4 per the R2.1 record" | **(b)** + **(c)**, and it was two claims in one clause | Split, because the two halves have opposite fates: **V1–V6 and S1–S3 are LOST**, not reconstructed, replaced by the pre-registered `ACC-1…n` / `HALT-1…n` schedule (§2); **S4's content survives on that line** and is what `HALT-1` carries. |
+| `RETRIEVAL_LEDGER.md:28` — "The candidate matters named in the R2.1 record are leads" | **(a)** cites the candidate list | First and only occurrence in that file: full supersession parenthetical. |
+
+**"R2.1" now survives in these two files only inside the two supersession
+parentheticals**, which is the ruling's prescribed form — the name appears as the
+thing superseded, never as a live citation.
+
+### 4.1 A guard gap this seat may not close itself
+
+`tests/test_r21_citations.py` scopes its scan to code, deliberately, so **it will
+never catch a regression in `analytics/locked_set/SCHEMA.md` or
+`RETRIEVAL_LEDGER.md`** — which is precisely how these five survived two amendments
+by the one seat that edits them. The evidence that the gap is real is that it
+already failed once, silently, in this branch's own history.
+
+**This seat does not extend that guard: `tests/` is the systems-designer's file, and
+reaching into another seat's guard to cover its own lapse is the failure mode the
+council has ruled against before.** The recommendation, for the chairman to assign:
+**systems-designer** extends the scan to `analytics/locked_set/**` with the
+supersession parenthetical allow-listed, in the same PR as the 85-occurrence
+re-pointing. Until that lands, these two files are protected by nothing but this
+paragraph.

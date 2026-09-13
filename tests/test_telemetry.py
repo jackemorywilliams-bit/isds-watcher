@@ -316,13 +316,22 @@ def test_source_yield_still_counts_a_tail_item_an_outage_fell_back_on(tmp_path, 
     would have made an outage read as a COLLAPSE IN YIELD — the tail still
     published, and the funnel would have reported it as never classified. That is
     a worse misreading than the one the new outcome fixes, so the set is derived
-    from `classify.TERMINAL_OUTCOMES` and this test proves the derivation bites.
+    from the classifier's own set and this test proves the derivation bites.
+
+    THE SET IT DERIVES FROM NARROWED ON 2026-09-13, and the narrowing is the
+    point of the second half of this test. `READ_TERMINAL_OUTCOMES` is
+    `TERMINAL_OUTCOMES` minus `unreadable` — the terminal outcome in which
+    nothing was read. Counting that one here would have put an item nobody ever
+    looked at into a column headed "classified", which is the conflation the
+    outcome exists to end.
     """
     query = importlib.import_module("telemetry_query")
-    from src.classify import TERMINAL_OUTCOMES
+    from src.classify import READ_TERMINAL_OUTCOMES, TERMINAL_OUTCOMES
 
-    assert query.CLASSIFIED_OUTCOMES == {o.value for o in TERMINAL_OUTCOMES}
+    assert query.CLASSIFIED_OUTCOMES == {o.value for o in READ_TERMINAL_OUTCOMES}
     assert "keyword_after_provider_error" in query.CLASSIFIED_OUTCOMES
+    assert "unreadable" not in query.CLASSIFIED_OUTCOMES
+    assert "unreadable" in {o.value for o in TERMINAL_OUTCOMES}
 
     path = tmp_path / "outage.jsonl"
     tel = telemetry.RunTelemetry("2026-09-10")
@@ -408,3 +417,49 @@ def test_an_unenumerated_outcome_is_warned_and_still_recorded_verbatim(tmp_path,
     tel.flush(str(path))
     rec = json.loads(open(path, encoding="utf-8").read().strip())
     assert rec["classification"]["outcome"] == "invented_outcome"
+
+
+def test_an_unreadable_items_telemetry_claims_no_model_and_no_run(tmp_path):
+    """The honest record for an item that reached the classifier with no text.
+
+    `unreadable` is in the enumerated vocabulary by DERIVATION — the vocabulary
+    is built from `ClassifyOutcome`, so a new value cannot be added to the
+    classifier and forgotten here — and the record it writes must claim nothing:
+    the classification did not run, no model is named, no attempt was made, and
+    the privacy guard still passes on the file.
+    """
+    from src.classify import ClassifyOutcome
+
+    assert ClassifyOutcome.UNREADABLE.value in telemetry.CLASSIFICATION_OUTCOME_VALUES
+
+    path = tmp_path / "unreadable.jsonl"
+    tel = telemetry.RunTelemetry("2026-09-13")
+    it = _item(source="iareporter_headlines", sid="http://ia/1", title="",
+               summary="", raw="")
+    cid = tel.observe(it)
+    tel.note_access(cid, it, headline_only=True, body_fetched=False,
+                    fetch_outcome="not_attempted")
+    tel.note_classification(cid, ran=False, path="none", model="",
+                            prompt_version="v1",
+                            outcome=ClassifyOutcome.UNREADABLE.value,
+                            attempts=0, retried_strict=False,
+                            model_score_advisory=None)
+    tel.note_dedup(cid, seen_before=False, marked_seen=True, deferred=False,
+                   abandoned=False)
+    tel.note_surfacing(cid, surfaced=False, reason="unreadable", digest="",
+                       position=-1)
+    tel.flush(str(path))
+
+    rec = json.loads(path.read_text().splitlines()[0])
+    cls = rec["classification"]
+    assert cls["outcome"] == "unreadable"
+    assert cls["ran"] is False
+    assert cls["model"] == ""
+    assert cls["path"] == "none"
+    assert cls["attempts"] == 0
+    assert cls["model_score_advisory"] is None
+    # Terminal: the item is finished with, and the record says it was not read.
+    assert rec["dedup"]["marked_seen"] is True
+    assert rec["access"]["text_len_title"] == 0
+    assert rec["access"]["text_len_body"] == 0
+    assert _run_guard(path) == 0

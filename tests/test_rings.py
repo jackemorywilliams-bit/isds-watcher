@@ -135,8 +135,12 @@ def test_the_classification_axis_is_the_seven_r21_states_not_the_four_outcomes()
     assert {s.value for s in ALL_STATES} == {
         "ok_first_pass", "ok_after_retry", "malformed_output", "provider_failure",
         "keyword_only", "retry_abandoned", "guard_demoted"}
-    # Five operational outcomes since 2026-09-10, and the enumeration is unmoved.
-    assert len(rings.ALL_OUTCOME_VALUES) == 5
+    # AND IT DID NOT MOVE FOR THE SIXTH EITHER (2026-09-13). `UNREADABLE` is a
+    # new EVENT — an item reaching the classifier with no text at all — and not a
+    # new logical state: it is terminal and never read, which is exactly what
+    # RETRY_ABANDONED already means, so it derives to a state that exists. Six
+    # operational outcomes now; the axis is still 7 and 21,504 is still 21,504.
+    assert len(rings.ALL_OUTCOME_VALUES) == 6
     assert 64 * 4 * 4 * 3 * 7 == 21_504
     # The historical arithmetic, kept as history: four outcomes on the wrong axis.
     assert 64 * 4 * 4 * 3 * 4 == 12_288
@@ -973,3 +977,64 @@ def test_the_shadow_derivation_is_byte_stable_for_the_same_input():
         assert ring["evidence_span_sha256"] in ("",) or len(
             ring["evidence_span_sha256"]) == 64
     assert all(len(v) <= 200 for v in (a["lane"], a["lane_reason"], a["nexus"]))
+
+
+def test_an_unreadable_item_is_finished_and_never_read_and_the_lane_says_so():
+    """The pair, for the outcome added on 2026-09-13, and the third property.
+
+    TERMINAL: `src/main.py` marks the item seen, because an item with no text has
+    nothing a retry could add and carrying it forever is the defect the deferred
+    queue exists to prevent.
+
+    NOT A CLASSIFIED_STATE: no classifier read anything, so no finding about its
+    contents is entitled to a reading. It derives to RETRY_ABANDONED — the state
+    this module already defines as finished AND unknowable — so the axis is still
+    the seven R2.1 enumerates and 21,504 is still 21,504.
+
+    AND THE RECORD STILL SEPARATES THEM: `classification_outcome` carries the
+    literal "unreadable" beside the state, which is how a reader tells "we tried
+    three times and gave up" from "there was nothing to try".
+    """
+    from src.classify import TERMINAL_OUTCOMES, ClassifyOutcome
+
+    assert ClassifyOutcome.UNREADABLE in TERMINAL_OUTCOMES
+    assert ClassifyOutcome.UNREADABLE.value in rings.TERMINAL_OUTCOME_VALUES
+    assert ClassifyOutcome.UNREADABLE.value in rings.ALL_OUTCOME_VALUES
+
+    st = rings.classification_state(outcome="unreadable")
+    assert st is ClassifyState.RETRY_ABANDONED
+    assert st not in rings.CLASSIFIED_STATES
+    # Never read is never read, whatever else the record says about it.
+    assert rings.classification_state(outcome="unreadable", attempts=3,
+                                      retried_strict=True) is st
+
+    # The lane, on the MOST favourable inputs the space allows: three PRESENT
+    # rings, an established nexus, a verified accessible body. Even here nothing
+    # may be concluded, because nothing was read.
+    findings = _findings(Strength.PRESENT, Strength.PRESENT, Strength.PRESENT)
+    lane, reason = rings.derive_lane(
+        strengths={f.ring: f.strength for f in findings},
+        nexus=Nexus.ESTABLISHED, location=EvidenceLocation.ACCESSIBLE_BODY,
+        validity=EvidenceValidity.VERIFIED, classification_state=st)
+    assert lane is Lane.RETRY
+    assert lane is not Lane.MATCH and lane is not Lane.REJECTED_CLASSIFICATION
+
+    # And the same at the other end: three ABSENT rings on a body we "read"
+    # cannot become an earned rejection either. A negative conclusion about an
+    # item nobody looked at is the same error as a positive one.
+    absent = _findings(Strength.ABSENT, Strength.ABSENT, Strength.ABSENT)
+    lane2, _ = rings.derive_lane(
+        strengths={f.ring: f.strength for f in absent},
+        nexus=Nexus.ESTABLISHED, location=EvidenceLocation.ACCESSIBLE_BODY,
+        validity=EvidenceValidity.VERIFIED, classification_state=st)
+    assert lane2 is Lane.RETRY
+
+    # The verdict keeps the operational value beside the projected state.
+    v = RingVerdict(findings=absent, isds_nexus=Nexus.ESTABLISHED,
+                    evidence_location=EvidenceLocation.ACCESSIBLE_BODY,
+                    evidence_validity=EvidenceValidity.VERIFIED,
+                    classification_state=st,
+                    classification_outcome="unreadable",
+                    path=DerivationPath.DETERMINISTIC)
+    assert v.classification_outcome == "unreadable"
+    assert v.lane is Lane.RETRY

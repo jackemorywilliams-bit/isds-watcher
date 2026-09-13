@@ -618,6 +618,11 @@ def main(argv=None) -> int:
     classified = []
     deferred_now = []
     abandoned_now = []
+    # Items that reached the classifier with no title, no summary and no body.
+    # Terminal (marked seen; see ClassifyOutcome.UNREADABLE) and counted on their
+    # own, because "we read it and it scored 0" and "there was nothing to read"
+    # are opposite facts that this run summary used to report identically.
+    unreadable_now = []
     pver = prompt_version()
 
     # The V2 shadow sample. `config.V2_SHADOW_CALLS` is "off" by default, so this
@@ -677,9 +682,15 @@ def main(argv=None) -> int:
             outcome_value = "pipeline_error"
 
         cmeta = (getattr(ci, "metadata", None) if ci is not None else None) or {}
+        # `ran` is whether a CLASSIFICATION HAPPENED, not whether an object came
+        # back. An unreadable item returns a ClassifiedItem — it has to, so the
+        # score-0 travels through selection and can be refused there — but no
+        # classifier was applied to anything, so the record must not say one was.
+        # The metadata it carries backs that up: path "none", model "", attempts 0.
+        is_unreadable = outcome_value == ClassifyOutcome.UNREADABLE.value
         run_tel.note_classification(
             cid,
-            ran=ci is not None,
+            ran=ci is not None and not is_unreadable,
             path=cmeta.get("classify_path", "none"),
             model=cmeta.get("model", ""),
             prompt_version=pver,
@@ -698,7 +709,16 @@ def main(argv=None) -> int:
         #     conclusion about its own contents (rings.CLASSIFIED_STATES).
         was_abandoned = False
         if outcome_value in TERMINAL_VALUES:
+            # An unreadable item is appended to `classified` like any other
+            # terminal item — deliberately, and it is the safer of the two
+            # choices. It keeps its score of 0 in front of `select_surfaced`,
+            # where the floor refuses it, rather than leaving publication to
+            # depend on the item having been dropped from a list. It is subtracted
+            # from the reported "classified" count below and recorded under its
+            # own surfacing reason, so nothing counts it as read.
             classified.append(ci)
+            if is_unreadable:
+                unreadable_now.append(it)
             state.mark_seen(st, it.source, it.source_id, when=generated_at,
                             outcome=outcome_value, run=date_str)
             state.clear_deferral(dq, it.source, it.source_id)
@@ -772,7 +792,12 @@ def main(argv=None) -> int:
             except Exception as exc:  # noqa: BLE001 - shadow must never be fatal
                 logger.error("rings: V2 shadow derivation failed for %s / %s: %s",
                              it.source, it.source_id, exc)
-    stats["classified"] = len(classified)
+    # "classified" means READ. An unreadable item is terminal and is in
+    # `classified` for the selection machinery's sake, and it is subtracted here
+    # so the number a person reads is the number of items a classifier actually
+    # looked at. The unreadable ones are reported on their own line below.
+    stats["unreadable"] = len(unreadable_now)
+    stats["classified"] = len(classified) - len(unreadable_now)
     stats["deferred"] = len(deferred_now)
     stats["abandoned"] = len(abandoned_now)
 
@@ -809,12 +834,20 @@ def main(argv=None) -> int:
     folder_rel = f"digests/{render.folder_name(date_str)}"
     surfaced_ids = {id(c): pos for pos, c in enumerate(surfaced)}
     held_ids = {id(c) for c in held}
+    unreadable_ids = {(u.source, u.source_id) for u in unreadable_now}
     for it in new_candidates:
         cid = lex[id(it)][0]
         match = next((c for c in classified
                       if c.source == it.source and c.source_id == it.source_id), None)
         if match is None:
             run_tel.note_surfacing(cid, surfaced=False, reason="not_classified",
+                                   digest="", position=-1)
+        elif (it.source, it.source_id) in unreadable_ids:
+            # NOT "below_floor". Below the floor is a statement about a score,
+            # and a score is a statement about text that was read. This item had
+            # none, so the only true thing to say about why it did not appear is
+            # that there was nothing to appear with.
+            run_tel.note_surfacing(cid, surfaced=False, reason="unreadable",
                                    digest="", position=-1)
         elif id(match) in surfaced_ids:
             reason = ("at_or_above_threshold"
@@ -984,6 +1017,19 @@ def main(argv=None) -> int:
     if stats.get("retried_deferred"):
         print(f"  of which retried from the deferred queue: {stats['retried_deferred']}")
     print(f"classified:       {stats['classified']}")
+    # UNREADABLE IS ITS OWN LINE, not part of "classified" and not part of
+    # DEGRADED. It is neither: the item was not read, so it was not classified,
+    # and nothing failed — the fetch worked, the source is fine, and the run did
+    # exactly the right thing. What it is, is an item retired without ever having
+    # been read, and that is worth a line of its own on every run it happens.
+    # The per-source health table above is untouched by this on purpose: an
+    # unreadable item is not a source failure, and marking one would make a
+    # working feed read as a broken one.
+    if unreadable_now:
+        print(f"  !! UNREADABLE (no title, no summary, no body — never read, "
+              f"no model call, marked seen): {len(unreadable_now)}")
+        for it in unreadable_now:
+            print(f"     - {it.source} / {it.source_id}")
     # A run that could not classify part of its intake is DEGRADED, and it says
     # so here rather than reporting a smaller "classified" count and letting the
     # difference pass as a quiet week.

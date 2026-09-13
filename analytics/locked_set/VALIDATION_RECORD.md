@@ -175,3 +175,338 @@ inferred as inferred.
 > and no seat may report the locked set as passing or failing anything.
 
 ---
+
+## 3. The candidate list — nine categories, six matters each (design target)
+
+**Seat: research-analyst drafted this section under the delegated authority quoted
+in §0. Integrity-officer certifies before a single row is committed to
+`items.json`. Chairman adopts.**
+
+### 3.0 Binding constraints on every row in this section
+
+- Each row carries **only**: category, matter caption, forum/tribunal, candidate
+  primary locator, tier (P/S/C), and which ring the matter exercises. Descriptive.
+  Nothing else.
+- **No label. No score. No band.** No `L_theme`, no `L_band` — not provisionally,
+  not in a comment, not "for review". **No rationale that argues toward a verdict.**
+  **No content-selected excerpt.**
+- **No item enters `items.json` on this record's authority.** Every row is a **LEAD**.
+  A lead becomes an item only when its primary document is retrieved with a pinpoint
+  and logged in `RETRIEVAL_LEDGER.md`.
+- The carrying-span rule (2026-08-03 as amended) is untouched by this section and
+  binds every proposition later drawn from any of these documents.
+- Rows whose host is absent from `scripts/fetch_relay.py` `ALLOWED_HOSTS` are marked
+  **unverified locator** — this council cannot confirm the URL resolves.
+- "Ring exercised" is a **descriptive** note of which of the three rings
+  (`prompts/classifier.txt:35` R1 IP-as-investment; R2 judicial/regulatory measure;
+  R3 jurisdiction/admissibility) the matter's own subject touches. It is not a
+  prediction, not a score, and not a label.
+
+### 3.1 Tier assignment, and a defect this drafting exposed
+
+`SCHEMA.md`'s tier P enumerates seven host families — ICSID, PCA, italaw, Curia,
+BAILII, UN RIAA, WTO. **United States federal and state court opinions are in none
+of them, and are neither S (paywalled/headline-only) nor C (Ferguson/Kim).**
+Category 5 ("Domestic trade-secret litigation, no state/treaty nexus") is composed
+almost entirely of such documents. Nine rows below therefore carry
+**`UNASSIGNED`** rather than a tier, and the gap is filed as **`G-3`** in §3.12
+rather than papered over by stretching tier P to a host the schema does not name.
+
+### 3.2 Category 1 — IP + ISDS + administrative state measure
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 1-01 | Theodore David Einarsson, Harold Paul Einarsson and Russell John Einarsson (on behalf of Geophysical Services Incorporated) v. Government of Canada | ICSID (NAFTA ch. 11), Case No. UNCT/20/6 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6` | P | R1 (copyright in seismic data as the asserted investment), R2 (regulatory disclosure regime and Canadian court judgments), R3 |
+| 1-02 | Les Laboratoires Servier, S.A.S. and others v. Republic of Poland | UNCITRAL (ad hoc) | `italaw.com` — case page for this caption (numeric case id **not verified**) | P | R1 (pharmaceutical marketing authorisations pleaded as the investment), R2 (administrative withdrawal) |
+| 1-03 | Merck & Co., Inc. v. Republic of Ecuador | PCA Case No. 2012-10 (US–Ecuador BIT, UNCITRAL) | `pca-cpa.org` — case page for this caption | P | R1 (trademark), R2 (domestic court judgment), R3 |
+| 1-04 | Shell Brands International AG and Shell Overseas Holdings Ltd v. Republic of Nicaragua | ICSID Case No. ARB/06/14 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/06/14` | P | R1 (trademark seized in execution), R2 (judicial/administrative measure) |
+| 1-05 | Huawei Technologies Co., Ltd. v. Kingdom of Sweden | ICSID Case No. ARB/22/2 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2` | P | R1 (telecommunications licences; ICSID's own subject label is "Telecommunication license agreements"), R2 (regulatory exclusion and its judicial review) |
+| 1-06 | Grand River Enterprises Six Nations, Ltd. and others v. United States of America | UNCITRAL (NAFTA ch. 11) | `italaw.com` — case page for this caption (numeric case id **not verified**) | P | R1 limb is brand/goodwill rather than a registered IP right; R2 (state regulatory escrow statutes) |
+
+### 3.3 Category 2 — IP + ISDS with a negative investment/jurisdiction holding
+
+**This category cannot be filled, and the reason is the finding.** Every matter this
+repository knows that fits it — *Apotex Inc. v. United States* (2013 jurisdictional
+award), *Philip Morris Asia v. Australia* (abuse of right), *Philip Morris Brands v.
+Uruguay*, *Eli Lilly v. Canada*, *Hela Schwarz GmbH v. China* — is in a development
+set and is named as a collision in §3.11. They are **replaced, not dropped**, so far
+as replacements exist; two licence-as-investment matters below carry the category's
+structural shape with an **expressly weak Ring 1**, and four slots are left open
+under gap **`G-1`** rather than filled with matters this seat cannot source.
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 2-01 | Emmis International Holding, B.V. and others v. Hungary | ICSID Case No. ARB/12/2 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/2` | P | R1 limb is a radio broadcasting licence, **not an IP right**; R3 (whether the licence is a covered investment) |
+| 2-02 | Cortec Mining Kenya Ltd and others v. Republic of Kenya | ICSID Case No. ARB/15/29 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/15/29` | P | R1 limb is a mining licence, **not an IP right**; R3 (legality/investment definition) |
+| 2-03 … 2-06 | — | — | — | — | **OPEN — gap `G-1`** |
+
+### 3.4 Category 3 — IP dispute, no investment-treaty claim
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 3-01 | InterMune UK Ltd. and others v. European Medicines Agency | General Court of the European Union, Case T-73/13 | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (clinical-trial data, commercial confidentiality); **no R2 treaty measure, no R3** |
+| 3-02 | AbbVie Inc. and AbbVie Ltd v. European Medicines Agency | General Court of the European Union, Case T-44/13 | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (clinical-trial data disclosure); no R2, no R3 |
+| 3-03 | PTC Therapeutics International Ltd v. European Medicines Agency | General Court of the EU, Case T-718/15; Court of Justice, Case C-175/18 P | `curia.europa.eu` — **unverified locator** | P | R1 vocabulary (regulatory data, Policy 0070); no R2, no R3 |
+| 3-04 | Vanda Pharmaceuticals, Inc. v. Food & Drug Administration | US District Court for the District of Columbia / DC Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (clinical data, exclusivity); no R2, no R3 |
+| 3-05 | Vanda Pharmaceuticals, Inc. v. United States, No. 23-629C | US Court of Federal Claims | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (patent/regulatory data as property); no R2, no R3 |
+| 3-06 | Matalia v. Warwickshire County Council | Court of Appeal of England and Wales (Civil Division) | `bailii.org` — **unverified locator** | P | R1 (copyright); no R2, no R3 |
+
+### 3.5 Category 4 — ISDS administrative-measure claim, no IP
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 4-01 | Tethyan Copper Company Pty Limited v. Islamic Republic of Pakistan | ICSID Case No. ARB/12/1 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/12/1` | P | R2 (mining-licence refusal as an administrative measure), R3; **no R1** |
+| 4-02 | Burlington Resources Inc. v. Republic of Ecuador | ICSID Case No. ARB/08/5 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/08/5` | P | R2 (windfall-levy legislation), R3; no R1 |
+| 4-03 | Saluka Investments B.V. v. Czech Republic | UNCITRAL (PCA-administered) | `pca-cpa.org` — case page for this caption | P | R2 (banking regulation and forced administration); no R1 |
+| 4-04 | Eugenio Montenero v. People's Republic of China | ICSID (China–Switzerland BIT) — case number **not verified** | `icsid.worldbank.org/cases/case-database` — caption search; **case number unverified** | P | R2 (administrative measure), R3; no R1 |
+| 4-05 | Franco-Nevada Corporation v. Republic of Panama | ICSID — case number **not verified** | `icsid.worldbank.org/cases/case-database` — caption search; **case number unverified** | P | R2 (mine closure as a state measure), R3; no R1 |
+| 4-06 | Ntega Holding Burundi S.A. v. Republic of Burundi | ICSID Case No. ARB(AF)/26/1 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB(AF)/26/1` | P | R2 (administrative measure); no R1 |
+
+### 3.6 Category 5 — Domestic trade-secret litigation, no state/treaty nexus
+
+Every row in this category is a United States court document. **All six carry
+`UNASSIGNED` tier under gap `G-3` and all six are unverified locators**, because no
+US court host is in `ALLOWED_HOSTS` and no US court host is in `SCHEMA.md`'s tier-P
+enumeration.
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 5-01 | Celgard, LLC v. Shenzhen Senior Technology Material Co. Ltd | US Court of Appeals for the Federal Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; **no R2, no R3, no state party** |
+| 5-02 | E.I. du Pont de Nemours & Co. v. Kolon Industries, Inc. | US Court of Appeals for the Fourth Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-03 | Motorola Solutions, Inc. v. Hytera Communications Corp. Ltd. | US District Court, Northern District of Illinois / Seventh Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-04 | Waymo LLC v. Uber Technologies, Inc. | US District Court, Northern District of California | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-05 | Epic Systems Corp. v. Tata Consultancy Services Ltd. | US Court of Appeals for the Seventh Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+| 5-06 | Title Source, Inc. v. HouseCanary, Inc. | Court of Appeals of Texas, Fourth District | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R1 vocabulary (trade secret) only; no R2, no R3 |
+
+### 3.7 Category 6 — Court enforcement / set-aside that is not a denial-of-justice claim
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 6-01 | Infrastructure Services Luxembourg S.à r.l. and Energia Termosolar B.V. v. Kingdom of Spain (enforcement) | Supreme Court of the United Kingdom | `bailii.org` — **unverified locator** | P | R2 present only as the *forum* (a domestic court), **not as the disputed conduct**; R3 (state immunity / ICSID Convention arts. 54, 55); no R1 |
+| 6-02 | Micula and others v. Romania (enforcement) | Supreme Court of the United Kingdom | `bailii.org` — **unverified locator** | P | R2 as forum only; R3 (enforcement obligation vs EU law); no R1 |
+| 6-03 | Malicorp Limited v. Government of the Arab Republic of Egypt (enforcement) | High Court of Justice of England and Wales (Commercial Court) | `bailii.org` — **unverified locator** | P | R2 as forum only; R3 (recognition/enforcement grounds); no R1 |
+| 6-04 | OI European Group B.V. v. Bolivarian Republic of Venezuela (annulment) | ICSID ad hoc committee, Case No. ARB/11/25 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/11/25` | P | R3 (annulment grounds, ICSID Convention art. 52); no R1, no R2 |
+| 6-05 | NextEra Energy Global Holdings B.V. and NextEra Energy Spain Holdings B.V. v. Kingdom of Spain (enforcement) | US Court of Appeals for the District of Columbia Circuit | US court records host — **unverified locator** | UNASSIGNED (gap `G-3`) | R2 as forum only; R3 (FSIA arbitration exception); no R1 |
+| 6-06 | Unión Fenosa Gas, S.A. v. Arab Republic of Egypt (annulment) | ICSID ad hoc committee, Case No. ARB/14/4 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/14/4` | P | R3 (annulment grounds); no R1, no R2 |
+
+### 3.8 Category 7 — Jurisdiction/admissibility decision, no IP
+
+| # | Matter caption | Forum / tribunal | Candidate primary locator | Tier | Ring exercised |
+|---|---|---|---|---|---|
+| 7-01 | Salini Costruttori S.p.A. and Italstrade S.p.A. v. Kingdom of Morocco | ICSID Case No. ARB/00/4 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/00/4` | P | R3 (the Salini criteria; investment definition); no R1, no R2 |
+| 7-02 | Fedax N.V. v. Republic of Venezuela | ICSID Case No. ARB/96/3 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/96/3` | P | R3 (investment definition, promissory notes); no R1, no R2 |
+| 7-03 | Bayview Irrigation District and others v. United Mexican States | ICSID (Additional Facility) Case No. ARB(AF)/05/1 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB(AF)/05/1` | P | R3 (investor in the territory of another Party); no R1, no R2 |
+| 7-04 | Alps Finance and Trade AG v. Slovak Republic | UNCITRAL (ad hoc) | `italaw.com` — case page for this caption (numeric case id **not verified**) | P | R3 (investment and investor definition); no R1, no R2 |
+| 7-05 | H&H Enterprises Investments, Inc. v. Arab Republic of Egypt | ICSID Case No. ARB/09/15 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/09/15` | P | R3 (jurisdiction ratione materiae, assignment); no R1, no R2 |
+| 7-06 | ACP Axos Capital GmbH v. Republic of Kosovo | ICSID Case No. ARB/15/22 | `icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/15/22` | P | R3 (jurisdiction/admissibility, legality); no R1, no R2 |
+
+### 3.9 Category 8 — Headline-only / paywalled candidates
+
+**Not nominated in advance, and that is a decision, not an omission.** A category-8
+item **is** its headline (`SCHEMA.md:52-53`: `raw_text=title` is what production
+sees). Nominating six paywalled headlines from a seat's memory would **fabricate the
+item text itself** — the one field the coder reads. The repository holds no pool of
+unpublished paywalled headlines to draw from: every IAReporter URL anywhere in
+`digests/` is one of the 13 already published (`grep -rho
+"https://www.iareporter.com/articles/[a-z0-9-]*" digests/ | sort -u | wc -l` → 13),
+`state/seen.json` stores URLs without titles, and `state/deferred.json` carries
+exactly one non-empty title (`grep -o '"title": "[^"]\{25,\}"' state/deferred.json |
+sort -u | wc -l` → 1).
+
+**Category 8's six rows are therefore RETRIEVAL-GENERATED**: the seat building batch
+1 under RULING 3 takes the six headlines **as fetched, verbatim, in feed order**,
+checks each against §3.11's exclusion list at matter level, and logs each in
+`RETRIEVAL_LEDGER.md` before it enters `items.json`. Gap **`G-2`** stands until
+those six are logged.
+
+### 3.10 Category 9 — Paraphrase-heavy trade-secret / clinical-data / regulatory-data reporting
+
+**Not nominated in advance, for the same reason and one more.** The category is
+defined by *how a source paraphrases*, which is a property of the retrieved text and
+cannot be known from a caption. The one instance the repository holds — "A panoramic
+overview of China's pharmaceutical IP protection system" (Managing IP, via Bing
+News) — is in the published set and is a collision (§3.11).
+
+**Category 9's six rows are RETRIEVAL-GENERATED** on the same terms as category 8.
+Gap **`G-2`** covers both.
+
+### 3.11 Disjointness certificate — at the level of the MATTER, not the document
+
+Binding. Proved against all three development sets. Every collision is **named**;
+none is quietly dropped.
+
+#### Counts, each with the command that produced it
+
+| Development set | Count | Command |
+|---|---|---|
+| Retired holdout | **20 items**, of which **11 are named matters** and 9 are non-matter editorial/institutional listings | `python3 -c "import json;print(len(json.load(open('scripts/holdout_set.json'))['items']))"` |
+| Frozen probes | **14 probes**, of which **11 are synthetic** (invented parties and states) and **3 reference real matters** | `python3 -c "import json;print(len(json.load(open('analytics/fingerprint_probes.json'))['probes']))"` |
+| Published corpus | **17 article files**, **16 distinct captions and 16 distinct locators**, **15 distinct matters** | `ls digests/*/articles/*.md \| wc -l` → 17; `grep -h -o 'Read the original ↗](\([^)]*\)' digests/*/articles/*.md \| sed 's/.*](//' \| sort -u \| wc -l` → 16; `grep -h '^# ' digests/*/articles/*.md \| sed 's/^# [0-9]*\. //' \| sort -u \| wc -l` → 16; `grep -l -i okuashvili digests/*/articles/*.md \| wc -l` → 2 |
+
+**Which published number this certificate uses, and why: 15.** RULING 1 states "the
+**16 distinct published matters** (17 files; one Telefónica duplicate,
+`italaw.com/cases/12153`, published 06-09 and 06-10)". Re-measured here, **16 is the
+distinct-*document* count, not the distinct-*matter* count**: the Telefónica
+duplicate takes 17 files to 16 distinct captions and locators, and then
+*Okuashvili v. Georgia* is reported by **two different documents** — the italaw case
+page `italaw.com/cases/9965` (2026-06-29 art. 01) and the IAReporter headline
+"Swedish Supreme Court finds that claimant in Okuashvili v. Georgia can use MFN
+detour to access arbitration under SCC Arbitration Rules" (2026-06-29 art. 03) —
+which takes 16 distinct documents to **15 distinct matters**. That is also what
+`SCHEMA.md:86-94` already records ("the 15 published matters — 17 article files, of
+which one is a duplicate of another … and two report the same matter, Okuashvili v.
+Georgia, through different forums"). **This certificate is at matter level, so it
+uses 15.** The earlier analyst's figure of 15 distinct matters is confirmed; the
+ruling's 16 is correct as a document count and is corrected here as a matter count.
+
+#### The exclusion list (matter level) and the collisions found
+
+**From the holdout (11 matters).** The Loewen Group v. United States; Mondev
+International v. United States; Apotex Inc. v. United States; Philip Morris Brands
+v. Uruguay; Chevron Corporation and Texaco Petroleum Corporation v. Ecuador (II),
+PCA Case No. 2009-23; Spentech Engineering Limited v. United Arab Emirates; Smurfit
+Holdings B.V. v. Venezuela, ICSID Case No. ARB/18/49; Rockhopper v. Italy
+(resubmission); Gabriel Resources Ltd. and Gabriel Resources (Jersey) v. Romania,
+ICSID Case No. ARB/15/31; Angel Samuel Seda and others v. Colombia, ICSID Case No.
+ARB/19/6; Kurt Harald Grüninger, Alexandra Grüninger and Sascha Spittel v. Costa
+Rica, ICSID Case No. ARB/23/16. *(The remaining nine holdout items — ITN issue
+listings, an OECD Guidelines note, an ICSID office announcement, a staff vacancy —
+name no matter and exclude nothing.)*
+
+**From the frozen probes (3 real matters, reached through the probe texts).** Eleven
+probes invent their parties and respondent states and exclude nothing.
+`S1_seed_eli_lilly` is captioned "Eli Lilly-type claim" and `S2_seed_bridgestone_pm`
+"Bridgestone / Philip Morris-type claim"; `E4_einarsson_negative_space` is an
+anonymised award summary whose shape `agents/Claim Map.md:858` identifies as "the
+**Apotex / Hela Schwarz negative-space shape**". Those texts make the matters appear
+in the development set **"in any form"**, which is the standard `SCHEMA.md:89` sets.
+They are further excluded as the instrument's three **development seeds** at
+`prompts/classifier.txt:26-33`. Excluded: **Eli Lilly and Company v. Government of
+Canada; Bridgestone Licensing Services, Inc. and Bridgestone Americas, Inc. v.
+Panama; Philip Morris Asia Limited v. Commonwealth of Australia; Philip Morris
+Brands SARL and others v. Uruguay; Apotex Inc. v. United States; Hela Schwarz GmbH
+v. People's Republic of China.**
+
+**From the published corpus (15 matters).** Individual gambling investors v. Ecuador
+(ICSID, following an UNCITRAL dismissal); Telefónica, S.A. v. Republic of Colombia,
+ICSID Case No. ARB/18/3; Hydro S.r.l. and others v. Republic of Albania (I), ICSID
+Case No. ARB/15/28; the ICSID sanctions-related Ukraine provisional-measures matter
+(**unnamed on the face of the published headline**); the UK High Court set-aside
+amendment matter (**unnamed**); the French Cour de cassation shipyard-investor /
+Greek growthfund enforcement matter; Okuashvili v. Georgia (two documents, one
+matter); the Court of Appeal of Santiago salmon-venture set-aside; Suez v. Argentina
+(1); B-Mex v. Mexico; the ICSID ad hoc committee / Peru MST annulment (**unnamed**);
+the Gazprom-affiliate / Linde Russian-subsidiary enforcement matter; the UK High
+Court / Bahrain state oil company guarantees matter; the Swiss Federal Tribunal
+set-aside of an award declining jurisdiction over a mining company's multi-billion
+claim against Australia (**unnamed**); and one article that names no matter at all
+("A panoramic overview of China's pharmaceutical IP protection system").
+
+#### Collisions found, named, and disposed of
+
+| # | Colliding nomination | Set collided with | Disposition |
+|---|---|---|---|
+| C-1 | Eli Lilly and Company v. Government of Canada | probes `S1`; development seed `prompts/classifier.txt:26-33` | **Named and excluded.** Category 1's replacement: row 1-01 (Einarsson/GSI). |
+| C-2 | Bridgestone Licensing Services, Inc. v. Panama | probes `S2`; development seed | **Named and excluded.** Replacement: row 1-03 (Merck v. Ecuador — trademark + domestic court judgment). |
+| C-3 | Philip Morris Asia Limited v. Commonwealth of Australia | probes `S2`; development seed | **Named and excluded.** Replacement: row 2-01 (Emmis v. Hungary — licence-as-investment, negative). |
+| C-4 | Philip Morris Brands SARL and others v. Uruguay | holdout `pm_v_uruguay`; probes `S2` | **Named and excluded.** Replacement: row 1-04 (Shell Brands v. Nicaragua). |
+| C-5 | Apotex Inc. v. United States | holdout `apotex_v_us`; probe `E4` shape | **Named and excluded.** Replacement: row 2-02 (Cortec v. Kenya). |
+| C-6 | Hela Schwarz GmbH v. People's Republic of China | probe `E4` shape, per `agents/Claim Map.md:858` | **Named and excluded.** No replacement available; counted in gap `G-1`. |
+| C-7 | Chevron Corporation and Texaco Petroleum Corporation v. Ecuador (II) | holdout `iisd_itn:Chevron…` | **Named; never nominated.** No replacement needed. |
+| C-8 | Tethyan Copper Company Pty Limited v. Pakistan (enforcement/annulment framing) | none — the **award** is in no development set | **Not a collision.** Nominated once only, at row 4-01, and deliberately **not** re-nominated in category 6, which would have collided with itself at matter level. |
+| C-9 | "A panoramic overview of China's pharmaceutical IP protection system" | published corpus, 2026-08-10 art. 01 | **Named; excluded from category 9**, which is why category 9 is retrieval-generated. |
+| C-10 | Zeph Investments Pte Ltd v. Commonwealth of Australia | **possible** collision with the published 2026-08-10 art. 03 Swiss Federal Tribunal headline, which does not name its matter | **Not nominated.** The published headline names no matter, so the collision can be neither proved nor excluded; nominating Zeph would risk an unprovable collision. Filed under gap `G-4`. |
+
+**Cross-check performed.** Every nominated caption in §3.2–§3.8 was checked against
+all three sets. Beyond C-1 … C-6, which were caught before nomination and are listed
+because the ruling requires collisions to be named rather than quietly avoided, **no
+nominated row collides with any development-set matter.**
+
+#### Two matters deliberately NOT nominated, and why
+
+- ***Wingtech Technology Co. v. Kingdom of the Netherlands*** and ***Nexperia v.
+  Netherlands***. This project's own standing watch records that an ICSID
+  registration of a Wingtech proceeding is **NOT FOUND IN ACCESSIBLE SOURCES, and it
+  is never stated that none exists** (`STATE_OF_THE_ANSWER.md:62`, `:73`, `:96`).
+  Nominating a matter whose existence this record expressly does not establish would
+  assert, by the act of nominating it, the very thing the record declines to assert.
+
+### 3.12 Gaps opened by this section — stable slugs
+
+| Slug | What is open | Closure condition |
+|---|---|---|
+| `G-1` `locked-set-cat2-negative-ip-holding-unfillable` | Category 2 has 2 of 6 rows. Every matter the repository knows in this category is in a development set (C-1 … C-6). | Four IP-as-investment matters with a negative investment or jurisdiction holding, none in any development set, each with a retrievable primary document. |
+| `G-2` `locked-set-cat8-cat9-retrieval-generated` | Categories 8 and 9 have 0 of 6 rows each, by decision: their item text cannot be nominated without fabricating it. | Twelve headlines retrieved verbatim from the live feeds, matter-checked against §3.11, logged in `RETRIEVAL_LEDGER.md`. |
+| `G-3` `schema-tier-p-omits-domestic-court-hosts` | Nine rows carry `UNASSIGNED` tier: US federal and state court opinions are in none of `SCHEMA.md`'s P, S or C tiers, yet category 5 is defined by them. | A council ruling that either extends the tier-P host enumeration or creates a tier for domestic court primary documents. |
+| `G-4` `published-swiss-federal-tribunal-matter-unnamed` | The 2026-08-10 art. 03 headline names no matter, so it cannot be excluded from or admitted to the exclusion list; *Zeph Investments v. Australia* is un-nominated on that account. | The underlying Swiss Federal Tribunal judgment read, and its caption recorded. |
+
+**Filled tally, stated plainly: 38 of the 54 design-target rows are nominated
+(cat 1: 6, cat 2: 2, cat 3: 6, cat 4: 6, cat 5: 6, cat 6: 6, cat 7: 6, cat 8: 0,
+cat 9: 0). Sixteen rows are open under `G-1` and `G-2`.** Six-per-category remains
+the design target; `RETRIEVAL_LEDGER.md:26` already records that "54 is a design
+target, not a queue". Padding the sixteen would have produced a full-looking table
+whose missing rows no later reader could find.
+
+### 3.13 Provenance index — where each caption came from
+
+Not a row field; recorded separately so the row constraint in §3.0 is not breached.
+Two classes only.
+
+**(a) Sourced from this repository's own corpus** — the caption appears at the
+pinpoint given, and the row's docket number, where stated, is quoted from there:
+
+| Row | Pinpoint |
+|---|---|
+| 1-01 | `analytics/daily-research/2026-06-23.md:39` |
+| 1-02 | `lit-review/ferguson-memo.md:38` ("Les Laboratoires Servier v Poland (Award) (14 February 2012") |
+| 1-05 | `analytics/insights.jsonl:31` |
+| 3-01 | `lit-review/kim-memo.md:158` |
+| 3-02 | `lit-review/kim-memo.md:170` |
+| 3-03 | `lit-review/kim-memo.md:182` |
+| 3-04 | `lit-review/kim-memo.md:194` |
+| 3-05 | `analytics/locked_set/RETRIEVAL_LEDGER.md:18-19` (RETRIEVED 2026-08-06, verified 2026-08-08) |
+| 3-06 | `lit-review/ferguson-memo.md:233` |
+| 4-01 | `lit-review/ferguson-memo.md:271` |
+| 4-02 | `lit-review/ferguson-memo.md:185` |
+| 4-03 | `lit-review/ferguson-memo.md:123` |
+| 4-04 | `analytics/daily-research/2026-07-19.md:130` |
+| 4-05 | `analytics/insights.jsonl:102` |
+| 4-06 | `analytics/fetch-results/2026-09-09-daily.json:49` |
+| 5-01 | `lit-review/ferguson-memo.md:221` |
+| 6-03 | `analytics/council-sessions/2026-08-03-proposition-rule.md:120` |
+| 6-04 | `analytics/locked_set/RETRIEVAL_LEDGER.md:23` |
+| 7-01 | `lit-review/ferguson-memo.md:99`; `lit-review/kim-memo.md:110` |
+| 7-02 | `lit-review/ferguson-memo.md:111` |
+| 7-03 | `lit-review/ferguson-memo.md:135` |
+| 7-04 | `lit-review/ferguson-memo.md:159` |
+| 7-05 | `lit-review/ferguson-memo.md:171` |
+| 7-06 | `lit-review/ferguson-memo.md:147` |
+
+**(b) Analyst knowledge, unverified against any source in hand** — rows **1-03,
+1-04, 1-06, 2-01, 2-02, 5-02, 5-03, 5-04, 5-05, 5-06, 6-01, 6-02, 6-05, 6-06**.
+Fourteen rows. **The caption, the forum and any docket number in these rows are
+this seat's recollection and are asserted as nothing more than a lead to be
+checked.** This is disclosed rather than smoothed over: under the carrying-span
+rule none of these may be relied on for any proposition until its primary document
+is retrieved and read. If any of them proves not to exist, the honest record is that
+this record nominated it and retrieval found nothing — not that the matter was
+dropped.
+
+### 3.14 Locator status, counted
+
+**Sixteen of the 38 nominated rows carry "unverified locator"** — their host is
+absent from `scripts/fetch_relay.py` `ALLOWED_HOSTS` (18 hosts, one of which,
+`example.com`, is a neutral control only), so this council cannot confirm the URL
+resolves: rows **3-01, 3-02, 3-03, 3-04, 3-05, 3-06, 5-01, 5-02, 5-03, 5-04, 5-05,
+5-06, 6-01, 6-02, 6-03, 6-05** — `curia.europa.eu` (3), `bailii.org` (4) and US
+court record hosts (9). RULING 1 anticipated Curia, BAILII, WTO and `legal.un.org`;
+**US court hosts are a fifth off-allowlist family this drafting found**, and they
+carry nine of the sixteen. No WTO or `legal.un.org` row was nominated.
+
+Two further rows carry an allowlisted host but an **unverified case number** (4-04,
+4-05) and three carry an allowlisted host with an **unverified numeric case id**
+(1-02, 1-06, 7-04). Those are not "unverified locator" in the ruling's sense — the
+host resolves — and they are recorded separately so the two defects are not
+conflated.
+
+---

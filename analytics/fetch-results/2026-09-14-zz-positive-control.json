@@ -1,0 +1,54 @@
+{
+  "request": "2026-09-14-zz-positive-control.json",
+  "note": "2026-09-14 POSITIVE-CONTROL BATCH. EPISTEMIC STATUS, declared honestly: written and fired by the CHAIRMAN, after the session-open reduction returned but BEFORE any seat has read it and before the analyst was convened. It is NOT session-open pre-registration and must never be cited as such. WHY IT EXISTS: the session-open batch returned SEVEN CONSECUTIVE NULLS on one URL - patent, trademark, trade secret, copyright, know-how, licen, technology all find_matched false. Three of those nulls FALSIFY the chair's own registered forecasts, which predicted copyright to match at MODERATE-HIGH and licen and technology to match at MODERATE. A batch in which every row is null and the chair's match predictions all failed cannot distinguish 'the page carries no intellectual-property vocabulary' from 'the find mechanism did not operate on this run or on this rendering'. The batch control (https://example.com/) proves only that the RUNNER reached an origin; it proves nothing about whether a find-literal can match on THIS document. The council's own standing discipline, recorded in analytics/optimization-log.md at the 2026-09-06 entry, is to VALIDATE AGAINST A KNOWN POSITIVE BEFORE TRUSTING ANY ZERO. That validation has not been run on this document on this run, and until it is, no ruling may rest on the seven nulls. NEXT STEP 3 COMPLIANCE, addressed rather than assumed: the 2026-09-13 close-out forbids re-firing a (URL, find-literal) pair already fired, on the ground that a spent pair returns the identical 400 characters and buys nothing. NEITHER LITERAL BELOW HAS BEEN FIRED. 'Construction' is a new literal, chosen as the positive control precisely because it is not a re-fire: the word is already established on this docket from the 2026-09-13 reduction's 'Instrument(s) Invoked' window, which returned 'Subject of Dispute: Construction project Economic Sector: Construction', so a match is near-certain on a working instrument and a NULL WOULD FALSIFY THE INSTRUMENT RATHER THAN THE PAGE. FORECASTS REGISTERED IN ADVANCE ON BOTH ROWS. Row 1 'Construction' - find_matched TRUE, VERY HIGH; this is the instrument test and the chair states plainly that a null here invalidates the entire session-open batch and that the seven nulls would then license nothing at all. Row 2 'secret' - find_matched FALSE, HIGH; it is the single-word form of the two-word literal 'trade secret' and exists to guard the one failure mode that a two-word literal has and a one-word literal does not: the relay strips tags and does not decode HTML entities, so any markup or entity falling between 'trade' and 'secret' defeats the two-word literal independently of the page's content. A null on 'secret' therefore licenses more than the null on 'trade secret' did; a MATCH on 'secret' where 'trade secret' was null would mean the word appears in some other construction and would have to be read from its own window, not assumed. WHOLE-PAGE OBSERVATION, registered: the session-open batch returned bytes 98122 and sha256 4b260927df26a437, against 2026-09-13's 98122 and da8b441f33bd8612 - byte count unchanged, hash changed, both as the chair forecast. Predicted here: bytes 98122 again, HIGH; sha256 equal to 4b260927df26a437 MODERATE, since the two runs are minutes apart, and a CHANGE within minutes at unchanged byte count would sharpen the mutable-chrome reading considerably. BINDING READING RULE, carried unchanged and load-bearing for a seventh batch: any window returned may contain case names, case numbers, document types and dates belonging to matters this project is not researching. NONE may be entered as a discovered matter, screened, graded on any ring, or carried as a lead, INCLUDING in any candidate-claims block. This instrument retrieves what the record already identified; it is not a discovery channel (METHODOLOGY Part VIII). CONTROL: the relay prepends https://example.com/ automatically; if the control fails the entire batch is VOID and no row may be read as information about its resource.",
+  "fetched_at": "2026-09-14T11:18:06.098072+00:00",
+  "environment": "github-actions-runner (run 34837472788)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 2,
+  "completed": 2,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "Construction",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "4b260927df26a437587dd69f60ec80484aec529f8930a8ba9e7d2f50e87b603f",
+      "excerpt": "Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Construction project Economic Sector: Construction Instrument(s) Invoked: (i) BIT Kenya - United Arab Emirates 2014 Applicable Rules: ICSID Convention - Arbitration Rules (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Spentech Engineering Limited (Kenyan) Respondent(s): United Arab Emirat",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "find": "secret",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB%2F24%2F16",
+      "content_type": "text/html",
+      "bytes": 98122,
+      "sha256": "4b260927df26a437587dd69f60ec80484aec529f8930a8ba9e7d2f50e87b603f",
+      "excerpt": "tates Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Procedure Young ICSID Contact Frequently Asked Questions Services Case Administration Overview Appointments &amp;",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

@@ -61,17 +61,17 @@
     <p class="status-strip-label" id="status-strip-h">Status</p>
     <p class="status-strip-body">
       <strong>Exploratory research prototype.</strong>
-      16 archived runs;
-      492 candidates screened;
+      17 archived runs;
+      554 candidates screened;
       0 above-threshold matches.
       Validation is preliminary. Output is machine-assisted and remains provisional
       unless individually marked human-verified &mdash;
       <a href="how-it-works.html">what that means</a>.
     </p>
     <p class="status-strip-note">
-      What that middle number counts: 492 is the number of
-      <strong>candidates evaluated</strong> summed over the 16 archived
-      runs &mdash; the sum of <code>screened</code> across the 16
+      What that middle number counts: 554 is the number of
+      <strong>candidates evaluated</strong> summed over the 17 archived
+      runs &mdash; the sum of <code>screened</code> across the 17
       <code>digests/*/meta.json</code> files &mdash; so it counts screening events in
       the surviving archive. It is not a count of pipeline runs, of evaluation events
       recorded in telemetry, or of distinct candidates. A same-day re-run overwrites
@@ -196,7 +196,7 @@
         <span class="sep">·</span>
         <span class="badge badge-low">LOW&nbsp;&lt;40</span> one weak ring or none
         <span class="sep">·</span>
-        <span class="muted">No item has reached the three-ring intersection in 16 runs across 492 screenings.</span>
+        <span class="muted">No item has reached the three-ring intersection in 17 runs across 554 screenings.</span>
       </div>
     </div>
   </div>
@@ -257,9 +257,9 @@
   <div class="measure closing-inner">
     <div class="closing-text">
       <p class="closing-kicker">Latest run</p>
-      <h2 class="closing-title">The most recent digest is dated 2026-09-07.</h2>
+      <h2 class="closing-title">The most recent digest is dated 2026-09-14.</h2>
       <p class="closing-sub">
-        30 candidates screened,
+        62 candidates screened,
         0 matches,
         0 items surfaced.
         Each item shown carries its source named and linked, and quoted where the source text
@@ -267,7 +267,7 @@
       </p>
     </div>
     <div class="closing-actions">
-      <a class="btn btn-primary" href="digests/2026-09-07.html">Read the 2026-09-07 digest</a>
+      <a class="btn btn-primary" href="digests/2026-09-14.html">Read the 2026-09-14 digest</a>
       <a class="btn btn-ghost" href="digests/index.html">View all runs</a>
     </div>
   </div>
@@ -308,7 +308,7 @@
           and built on free GitHub Actions minutes.</p>
         <p class="footer-fine">Sources are read at headline level where access is restricted; the Robots Exclusion
           Protocol is honored, never evaded.</p>
-<p class="footer-build">Site built 2026-09-13 22:56 UTC &middot; d36bb90</p>      </div>
+<p class="footer-build">Site built 2026-09-14 14:04 UTC &middot; 0ee1ff8</p>      </div>
     </div>
   </footer>
   <script>
@@ -519,7 +519,7 @@
       if (n >= 2) {
         if (n === 3) {
           return { cls: 'high', label: 'HIGH ≥70',
-            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 16 runs across 492 candidates.' };
+            reason: 'All three rings present — the watched theme itself. It scores 73–95; two rings score 72–86, so the ranges overlap and no score band distinguishes them. No item has reached three rings in 17 runs across 554 candidates.' };
         }
         return { cls: 'high', label: 'HIGH ≥70',
           reason: 'Two rings present, scoring 72–86 — which overlaps the three-ring range. HIGH means “two or more”, never “all three”.' };

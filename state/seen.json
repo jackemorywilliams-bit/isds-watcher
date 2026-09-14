@@ -29,6 +29,16 @@
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
         "run": "2026-09-14"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6aa83ad4109248a3bc413f2940408358&url=https%3a%2f%2fmarkets.businessinsider.com%2fnews%2fstocks%2fbeam-therapeutics-presents-updated-clinical-data-from-the-phase-1-2-trial-of-beam-302-in-alpha-1-antitrypsin-deficiency-aatd-at-the-european-respiratory-society-ers-congress-2026-1036527840&c=10501445702868673733&mkt=en-us": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6aa83ad4109248a3bc413f2940408358&url=https%3a%2f%2fwww.msn.com%2fen-us%2fnews%2fother%2fstructure-therapeutics-falls-after-trial-data-for-lead-obesity-drugs%2far-AA2bOLwI&c=4391363576709212249&mkt=en-us": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
       }
     },
     "gdelt": {
@@ -742,6 +752,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/analysis-icsid-tribunal-splits-on-ownership-and-control-requirement-in-cafta-dr-arbitration-against-honduras/": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
+      },
       "https://www.iareporter.com/articles/analysis-uk-court-finds-that-state-controlled-company-holds-bank-accounts-in-england-on-behalf-of-djibouti-and-allows-attachment-of-monies-in-satisfaction-of-pair-of-lcia-awards-against-the-state/": {
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
@@ -823,6 +838,11 @@
       "https://www.iareporter.com/articles/court-of-appeal-of-santiago-sets-aside-salmon-venture-award-on-ultra-petita-grounds/": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/croatia-ratifies-modernized-energy-charter-treaty/": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
       },
       "https://www.iareporter.com/articles/cyprus-files-for-partial-annulment-of-still-unpublished-banking-award/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
@@ -943,6 +963,11 @@
       "https://www.iareporter.com/articles/icsid-tribunal-allows-non-disputing-party-to-address-environmental-and-human-rights-dimensions-of-coal-mining-dispute-through-written-submissions-but-rejects-requests-for-access-to-documents-and-hear/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/icsid-tribunal-declines-jurisdiction-over-taximeter-investors-nafta-legacy-claim-tribunal-splits-on-whether-investors-can-renounce-right-to-access-treaty-arbitration/": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
       },
       "https://www.iareporter.com/articles/icsid-tribunal-dismisses-600-million-eur-claims-in-fracking-arbitration-against-slovenia/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
@@ -1167,6 +1192,11 @@
         "outcome": "ok",
         "run": "2026-09-14"
       },
+      "https://www.iareporter.com/articles/south-korea-defeats-chinese-investors-bid-to-annul-award-that-declined-jurisdiction-on-illegality-grounds/": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
+      },
       "https://www.iareporter.com/articles/spain-announces-new-appointees-to-icsids-panels-of-arbitrators-and-conciliators/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
@@ -1200,6 +1230,11 @@
       "https://www.iareporter.com/articles/three-are-in-place-to-hear-29-billion-usd-mining-claim-against-the-republic-of-guinea/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/three-are-in-place-to-hear-cyprus-attempt-to-partially-annul-award-in-mass-banking-arbitration/": {
+        "at": "2026-09-14T18:19:25.423756+00:00",
+        "outcome": "ok",
+        "run": "2026-09-14"
       },
       "https://www.iareporter.com/articles/three-are-in-place-to-hear-italys-bid-to-annul-ect-award/": {
         "at": "2026-06-22T17:28:18.632973+00:00",

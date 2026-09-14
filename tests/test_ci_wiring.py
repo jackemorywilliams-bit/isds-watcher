@@ -166,3 +166,37 @@ def test_every_test_file_is_reachable_by_some_workflow():
         "these test files are named by no workflow step and no job runs the "
         f"whole tree: {unreachable}"
     )
+
+
+def test_a_push_triggered_mailer_reads_the_branch_tip_not_its_trigger_commit():
+    """2026-09-14: the operator received THREE emails for one daily meeting.
+
+    A workflow that de-duplicates with a committed "sent" marker must not read
+    the commit that triggered it. On a push event actions/checkout takes the
+    trigger commit, while the marker is written by an earlier run and pushed
+    afterwards — so every run in a burst reads a marker-free tree and sends.
+    The council record lands in several part-commits, each matching the path
+    filter, so a burst is the normal case and not an edge one.
+
+    The rule is derived, not pinned: any workflow with a push trigger whose job
+    writes a .sent marker must pin its checkout ref.
+    """
+    import pathlib
+    import re
+    root = pathlib.Path(__file__).resolve().parent.parent
+    offenders = []
+    for wf in sorted((root / ".github" / "workflows").glob("*.yml")):
+        text = wf.read_text(encoding="utf-8")
+        head = text.split("\njobs:", 1)[0]
+        has_push = re.search(r"^\s{2}push:", head, re.M) is not None
+        marks_sent = ".sent" in text or "sent marker" in text
+        if not (has_push and marks_sent):
+            continue
+        checkout = re.search(r"uses: actions/checkout@[^\n]*\n((?:\s+(?:with|ref|fetch-depth):[^\n]*\n)*)", text)
+        pinned = bool(checkout and "ref:" in checkout.group(1))
+        if not pinned:
+            offenders.append(wf.name)
+    assert not offenders, (
+        "these workflows trigger on push AND de-duplicate with a committed "
+        "'sent' marker, but read their trigger commit rather than the branch "
+        f"tip, so a burst of pushes sends a duplicate email each: {offenders}")

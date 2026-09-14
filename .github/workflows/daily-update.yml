@@ -48,7 +48,28 @@ jobs:
       SMTP_USER: ${{ secrets.SMTP_USER }}
       SMTP_PASS: ${{ secrets.SMTP_PASS }}
     steps:
+      # Check out the DEFAULT BRANCH, not the pushed commit. On a push event
+      # actions/checkout takes the commit that triggered the run, and the
+      # per-day "sent" marker is committed by an EARLIER run and pushed after
+      # that commit exists — so a push-triggered run reads a tree in which the
+      # marker is not yet present, finds nothing, and sends again.
+      #
+      # 2026-09-14, observed: the daily council record lands in several
+      # part-commits under analytics/daily-research/, each one a push that
+      # matches this workflow's path filter. Four runs fired (11:17, 11:41,
+      # 12:15, 12:17 UTC) on four different head shas; the first three each
+      # read a marker-free tree and sent, and only the fourth — whose own
+      # trigger commit happened to contain a marker — reported "already sent
+      # today". The operator received three emails for one meeting.
+      #
+      # The concurrency group already serialises these runs, so taking the
+      # branch tip means each run sees every marker committed before it. The
+      # tip also contains the record that triggered the run, so nothing is
+      # lost by not checking out the trigger commit itself.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

@@ -601,6 +601,37 @@ see item 2 of the 2026-08-03 slice.)*
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
 
+- **2026-09-16 (sixteenth deployment)** — Standing every-3-days session, audited against `98dcff9`
+  (`main`), complete **1,378**-commit history after `git fetch --unshallow`; the clone arrived
+  shallow at **144**, the **eighth consecutive** session. Window `349ca12..98dcff9` = **152**
+  commits.
+  **Filed what the council could not:** taxonomy **37** (`0390fe3`, 2026-09-14), the chairman's
+  **Ruling 1 of 2026-09-15** (`b509f1d`), and taxonomy **38** (`c231022`, 2026-09-16) — into
+  [[integrity-officer]] and [[Agent Registry]], heading moved 36 → 38, nothing renumbered. **D15 at
+  occurrences seven and eight.**
+  **Repaired a defect this seat wrote.** `d90fcc3` left a wiki-link wrapped across a line break in
+  [[Project Change Log]] at `:119`, which `build_graph.py` counts as a link to a nonexistent note —
+  the same defect class the 2026-09-04 session recorded, and the 2026-09-13 record asserted it
+  *"has not recurred"* on the very day this seat recreated it. Fixed; four broken targets remain,
+  all under `think-tank/` and all outside these paths.
+  **Confirmed closed on `main` rather than assumed:** **D17** (special session at `188cabe`, PR #170
+  merged `3099610`), **C11 taxonomy** (ruled and executed `d90fcc3`), and **D18's narrow half**
+  (`aa459dc`). **Opened D19** — PR #184, the systems designer's execution of Ruling 1's citation
+  half, open three days while `main` still carries two of the dangling citations it repairs
+  (`src/rings.py:923`, `scripts/check_lock.py:20`).
+  **D6, sixth first-person observation, day thirty-two:** requested `claude-opus-4-8`, served
+  `claude-opus-5` on all three runtime fields. Rows left unchanged, as before.
+  Record: `analytics/vault-sessions/2026-09-16.md`.
+
+> **This log skipped 2026-09-07 and 2026-09-13, and the gap is again the record. Noted 2026-09-16.**
+> Both sessions ran, both landed on `main`, and both wrote full records under
+> `analytics/vault-sessions/`. Neither wrote its entry here. That is the same small instance of this
+> seat's own defect that the 2026-09-04 note recorded about 2026-08-28 and 2026-09-01 — a future
+> archivist reading this note first would find its owner's memory two deployments short, and would
+> have to know to go looking in `analytics/` to correct it. The remedy is not a new convention; it
+> is doing the thing the convention already says. Today's entry is written before the session
+> record, not after it.
+
 - **2026-09-04 (thirteenth deployment)** — Standing every-3-days session, audited against
   `c2558d9` (`main`, clean tree, complete history — **983** commits after `git fetch
   --unshallow`; the clone arrived shallow at **173**, the **fifth consecutive** session). Cadence

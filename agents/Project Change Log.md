@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `fdb270b`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `d04c93c`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,45 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-16 (archivist session)
+
+*Audited against `98dcff9` (`main`), on a complete **1,378**-commit history — the container's clone
+arrived shallow at **144**, the **eighth consecutive** session, so every sha below was resolved only
+after `git fetch --unshallow`. Window `349ca12..98dcff9` = **152** commits. Paths: `agents/`,
+`.claude/agents/`, `prompts/`, `src/models.py`, `analytics/`, `METHODOLOGY.md`, `README.md`,
+`docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/`.*
+
+- **Taxonomy 37 and 38 filed; the canonical table's heading moved 36 → 38** —
+  [[integrity-officer]], and three rows added to [[Agent Registry]]'s adopted-method-rules table.
+  **37, cross-boundary window attribution**, adopted 2026-09-14 (`0390fe3`,
+  `analytics/daily-research/2026-09-14.md:769`; proposed `48d43ca`, `:623`). **38, exact-match
+  screen generalised to a pattern claim**, number issued 2026-09-16 (`c231022`, `2026-09-16.md:1021`;
+  proposed by name `007909d`, `:669`). Also filed: the chairman's **Ruling 1 of 2026-09-15**
+  (`b509f1d`, `2026-09-15.md:1202-1211`) — *a candidate literal is screened against the assembled
+  on-state run of every committed window for that page, never against the list of spent finds and
+  never against a single window.* **Nothing was renumbered**; both new numbers are at the tail under
+  the numbering rule adopted 2026-09-13.
+- **No contract change and no roster change.** `git log 349ca12..98dcff9 -- .claude/agents/
+  prompts/ src/models.py` returns **zero** commits. `scripts/check_models.py` exits **0** over 12
+  cards; `node tools/isds-workflow-3d/validate.mjs` exits **0** — 30 cards, 10 chips, 44 edges, SVG
+  fresh against its inputs-sha256, zero "Jack" tokens.
+- **A broken wiki-link this seat wrote on 2026-09-13 is repaired.** `d90fcc3` left the wiki-link to
+  the threads note wrapped across a line break at this note's `:119` — opening brackets at the end
+  of one line, target on the next — which `scripts/build_graph.py` counts as a link to a nonexistent
+  note. (The broken form is not reproduced here: writing it out would recreate it.) Same class as
+  the one recorded on 2026-09-04, and the 2026-09-13 record asserted it *"has not recurred"* on the
+  same day this seat recreated it. Repaired here; the vault is back to **four** broken targets, all
+  under `think-tank/`, all long-standing and all outside this seat's paths.
+- **D17 and C11 (taxonomy) confirmed closed on `main`, not merely recorded as closed.** The
+  2026-09-10 special session is on `main` at `188cabe` (PR #170, merged `3099610`); its vault
+  close-out at `c894a4b`; the numbering ruled and executed at `d90fcc3`; the five unowned R2.1
+  citations re-pointed at `f8164b4`, and `analytics/locked_set/VALIDATION_RECORD.md` now exists as a
+  committed file. `council/archivist-close-out` no longer appears among the branches that are not
+  ancestors of `main`.
+- **D18's narrow half is fixed** — `aa459dc`, *"exempt the vault-session sent markers, like the
+  daily ones"*, adds `analytics/vault-sessions/.sent/` to `_MARKER_PREFIXES`
+  (`scripts/check_currency.py:107`). Landed by the systems designer the same day it was escalated.
 
 ## 2026-09-13 (the chairman's rulings session, and the archivist executing item (a))
 
@@ -116,8 +155,9 @@ vault is its citable carrier until the chair lands the sitting record. The enabl
   rather than inferred from an absence. Without it, the production path would screen the very item
   the set measures it against and the archive defect would return one cycle later by another route.
   Seats: [[systems-designer]] for the reservation list and the per-run logging,
-  [[research-analyst]] for the witnessed draw, [[integrity-officer]] certifying. [[Workflow
-  Threads]] **S13**; a binding row added to [[Agent Registry]]'s adopted-method-rules table.
+  [[research-analyst]] for the witnessed draw, [[integrity-officer]] certifying.
+  [[Workflow Threads]] **S13**; a binding row added to [[Agent Registry]]'s adopted-method-rules
+  table.
 - **Gap G-3 opened by the validation-record seat, and recorded here UNRULED.** Drafting under
   Ruling 1 surfaced a real defect in the set's own schema: `analytics/locked_set/SCHEMA.md`
   enumerates **seven host families** for tier P — ICSID, PCA, italaw, Curia, BAILII, UN RIAA,

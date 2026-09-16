@@ -52,6 +52,20 @@ this seat by name, that had not reached any note. See D13.
 > *"`build_graph` is whole-vault, and the archivist's merge authority is not"*. Both pairs were
 > opened 2026-08-07/08-08 and have coexisted since.
 >
+> **2026-09-16 — there is a THIRD colliding pair, and this block has never named it: `B5`.**
+> Enumerated mechanically this session rather than by eye — `grep -o '^### [A-Z][0-9]*' | sort |
+> uniq -d` returns **B5, C11, C12**, not two ids. The pair is *"`check_currency.py` covers 5 of 13
+> anchored notes, and nothing runs it"* and *"The prose statements the publication gates left
+> behind"*, both opened 2026-08-08.
+> **And unlike C11/C12 it has already produced divergent citations in two different vault notes,
+> both written by this seat.** [[Claim Map]] `:1026` — *"`fingerprint.yaml` is [[systems-designer]]'s.
+> Tracked as [[Workflow Threads]] **B5**"* — means the **stale-prose** thread. [[Project Change Log]]
+> `:981` — *"Running it today: 8 claims checked, 6 failed. [[Workflow Threads]] B5"* — and `:1016`,
+> folding a defect in *"as its third gap"*, both mean the **`check_currency` coverage** thread. A
+> reader following either citation lands on whichever B5 they scroll to first.
+> **Same disposition as C11 and C12: not renumbered, for the same reason, and folded into the same
+> wanted ruling.** It changes the scope of that ruling from two pairs to three, and nothing else.
+>
 > **This is not cosmetic, and it has already produced one wrong citation — in a record this seat
 > wrote.** The 2026-09-01 session's escalation table lists *"**C11** — `docs/how-it-works.html`
 > says nine and ten on one page"* (`analytics/vault-sessions/2026-09-01.md:210`). That is a
@@ -777,6 +791,33 @@ still the only open PR in the repository before this session's own.
   lands on `main` after the day's last re-anchor carries that token, so `main` ends the day stale
   **and silent**.
 
+### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
+
+- **State** — **PR #184** (`fix/repoint-r21-citations`, tip `529c744`) was opened
+  **2026-09-13T22:49Z** and is open at the time of this entry. It carries **409 insertions across
+  16 files**: `src/rings.py`, `src/config.py`, `src/main.py`, `src/triage.py`,
+  `src/headline_lane.py`, `src/classify_v2.py`, `scripts/check_lock.py`, `PLAN.md`, and a new
+  **296-line** `tests/test_r21_citations.py`.
+- **What it is.** The citation half of **Ruling 1** of the chairman's rulings session of
+  2026-09-13, seat systems-designer, scope `src/`, `tests/`, `scripts/`, `PLAN.md`. Production
+  code, its tests and one script cited *"the R2.1 record"* — a document that has never existed as a
+  file on any branch — and the commit re-points them at the committed
+  `analytics/locked_set/VALIDATION_RECORD.md`. Commits `d60f686` and `b6a3b7c`; the second adds a
+  strict-xfail forcing function that fails the build the moment the cited record can be opened, so
+  the guard cannot stay dormant through a merge.
+- **Measured on `main` today, not inferred from the branch.** `analytics/locked_set/VALIDATION_RECORD.md`
+  **does** exist on `main` (`f8164b4`, which re-pointed the five citations nobody owned), and
+  `main` **still carries two** bare citations of *"the R2.1 record"* in code —
+  `src/rings.py:923` and `scripts/check_lock.py:20`. Both are exactly what PR #184 repairs. So the
+  defect is live on `main`, the fix exists, and the two are three days apart.
+- **Why it is a thread and not a note.** This is the 2026-08-03 shape and the D17 shape again, one
+  seat over: correct, reviewed work sitting on an unmerged branch while `main` reasons without it.
+  It differs from D17 in that nothing has yet been *decided* wrongly because of it — which is
+  precisely why it is worth saying now rather than after something is.
+- **Next action** — **Emory.** Land PR #184, or close it and say which of the two remaining
+  citations stands as written. Not the archivist's: every path in it is outside this seat's merge
+  scope.
+
 ### D18 — a `[skip ci]` bot commit on `main` skips both the mover and the guard, and `main` ends the day stale 8 days in 10 *(new 2026-09-13; owner: systems-designer, one narrow bug for Emory)*
 
 - **State** — measured over the last ten UTC days by taking `main`'s tip at end of day and
@@ -813,6 +854,39 @@ still the only open PR in the repository before this session's own.
   is a red nobody acts on, and that a seat once "fixed" it by hand-writing an anchor — the exact
   failure `reanchor.py` exists to end. This residual keeps that red chronic while making it
   invisible, which is the worse of the two states.
+- **UPDATE 2026-09-16 — the narrow half is FIXED, the general half is not, and the measurement is
+  now sharper than "five writers".** The systems designer landed `aa459dc` (*"exempt the
+  vault-session sent markers, like the daily ones"*) on 2026-09-13, adding
+  `analytics/vault-sessions/.sent/` to `_MARKER_PREFIXES` at `scripts/check_currency.py:107`. That
+  closes the 09-04 case and it holds: the 09-15 tip *is* a sent-marker commit (`30759c1`,
+  `analytics/daily-research/.sent/2026-09-15`) and the guard correctly ignores it.
+- **Re-measured over the last ten UTC days, the same way: 6 of 10 ended RED**, improved from 8.
+
+  | Day | Tip | Verdict | What staled it |
+  | --- | --- | --- | --- |
+  | 09-07 | `238f0f4` | RED | weekly digest |
+  | 09-08 | `ec4ca67` | RED | scholar intake |
+  | 09-09 | `6df6114` | RED | fetch-relay (`72adf10`, earlier the same day) |
+  | 09-10 | `61152d5` | green | tip was a re-anchor |
+  | 09-11 | `53987c6` | green | tip was a re-anchor |
+  | 09-12 | `3150677` | RED | fetch-relay |
+  | 09-13 | `8f3d727` | green | tip was a re-anchor |
+  | 09-14 | `1d559a7` | RED | weekly digest |
+  | 09-15 | `30759c1` | RED | fetch-relay (`6fae1dd`, earlier the same day) |
+  | 09-16 | `98dcff9` | green | tip was a re-anchor |
+
+- **The sharper finding: every one of those six reds is ONE note.** In all six, the single STALE
+  line is [[Workflow Threads]] and nothing else — its declared paths are `analytics`, `state`,
+  `agents`, and `analytics/` is where every automated writer in this project writes. The other four
+  tracked notes declare `.claude/agents`, `prompts`, `src/models.py`, `METHODOLOGY.md`,
+  `STATE_OF_THE_ANSWER.md`, `lit-review` and `scripts/site_templates` — paths no bot touches daily.
+  **So D18 is not a general anchor problem; it is this note's `analytics` declaration meeting three
+  named writers** — `chore: weekly digest + state update`, `chore: scholar intake`, and
+  `chore: fetch-relay results`. Stated as a narrowing of the thread, not as a proposed remedy:
+  all three write substance, so exempting them would still be wrong, and the two options at the
+  bullet above are unchanged. **This seat does not propose changing its own note's declared paths
+  to make its own guard green** — that is the failure mode the guard exists to prevent, and it is
+  recorded here so no later session mistakes it for an easy win.
 
 ### D15 — a rule routed to `agents/` is invisible to the seat bound by it for up to three days *(new 2026-09-07; owner: Emory — routing or cadence)*
 
@@ -849,6 +923,28 @@ still the only open PR in the repository before this session's own.
   *"the routing, not the archivist"* (`:1374`, `639c16e`) and repeated it on 2026-09-13 at `:1162`
   (`203dbf6`). **Emory's choice at "Next action" above is unchanged and is now five adoptions
   overdue.**
+- **UPDATE 2026-09-16 — occurrences seven and eight, and this time the bound seat said so in
+  advance both times.** **Taxonomy 37** (cross-boundary window attribution) was adopted 2026-09-14
+  (`0390fe3`, `analytics/daily-research/2026-09-14.md:769`) and **taxonomy 38** (exact-match screen
+  generalised to a pattern claim) on 2026-09-16 (`c231022`, `2026-09-16.md:1021`); the chairman's
+  **Ruling 1 of 2026-09-15** (`b509f1d`, `2026-09-15.md:1202-1211`) rode with them. All three are
+  filed in [[integrity-officer]] and [[Agent Registry]] in this change set — the first time any of
+  them reached a note. Each adopting record names the routing itself: *"`agents/` is outside this
+  session's merge scope, so the entry is routed to the archivist and is UNFILED in the vault — the
+  sixth consecutive routing failure"* (`2026-09-14.md:777-779`), and *"entry 38 cannot be filed to
+  `agents/`, which is outside this session's merge scope — which is escalation 4 below, now eight
+  days old"* (`2026-09-16.md:1030`).
+- **What is new, and it is the strongest argument yet for the one-file widening.** On **2026-09-15**
+  the officer opened the table, found it heading "36 … next free 37" against an entry 37 it was
+  citing three times in that day's record as a governing rule, **declined to renumber**, and filed
+  `0915-N10` against itself (`2026-09-15.md:891`, `:968`). On **2026-09-16** it proposed entry 38
+  **by name only** and refused to take a number at all: *"numbering off a stale heading is how the
+  collision at 27 was made and how three two-way collisions were made in three days. Cite by name;
+  the number is the chairman's to issue"* (`:671`). **Twice in three days the bound seat detected
+  the staleness of the one file its mandate directs it to read, and handled it correctly.** The
+  read-the-table mandate is working exactly as designed. What it cannot do is write the table. The
+  council escalated this against the routing for the third consecutive sitting and the archivist's
+  cadence has not changed — **three days is the floor, and the council sits daily.**
 
 ### D17 — an operator-mandated special session is not on `main`, and its absence has produced a three-way numbering collision *(new 2026-09-13; owner reassigned from Emory to the archivist by the ruling of 2026-09-13 — **CLOSED, REMEDIED, the same day**)*
 
@@ -2357,6 +2453,19 @@ specifically unblocks it.
   finding.
 - **Owner** — **Emory** for the contract decision (`.claude/agents/`, `src/models.py`);
   [[systems-designer]] for the `record_fallback()` wiring and the `workflow.json` cards.
+- **Re-measured 2026-09-16 against `98dcff9` — day thirty-two, and the sixth runtime observation
+  from this seat.** `configured_model`, `session_context.model` and
+  `external_metadata.last_served_model` are all **`claude-opus-5`**, against
+  `.claude/agents/obsidian-archivist.md:3` and `:24`, which both say "Runs on Claude Opus 4.8."
+  **REQUESTED `claude-opus-4-8` → ACTUAL `claude-opus-5`.** Consistent with 2026-08-16, 08-25,
+  09-04, 09-07 and 09-13. `git log 349ca12..98dcff9 -- .claude/agents/ src/models.py` returns
+  **zero** commits across 152; `scripts/check_models.py` still exits **0** over twelve cards,
+  because it compares three declarations to each other and cannot see a runtime.
+  **The rows are again left unchanged**, on the unchanged reason: they record the operator's
+  directive, and rewriting them would ratify a substitution nobody authorised. Four of nine
+  definitions say "Opus 5 per the operator's directive" and four say "Opus 4.8"; one
+  ([[research-analyst]]) names no model in prose at all. That split is itself the record of a
+  decision made twice and applied once.
 
 ---
 
@@ -2437,6 +2546,17 @@ specifically unblocks it.
   matching gap in `README.md`, which now names GDELT at `:235`. **So the surrounding paragraphs
   were audited and repaired; §III's source-architecture sentence was passed over twice.** Day
   carried; unchanged in substance, and still a two-number edit.
+- **RE-MEASURED 2026-09-16 — both limbs stand, and the isolation is now total.** Re-derived from
+  the code today: `len(bing_news.QUERIES)` is **12** against the memo's *"eight fixed,
+  fingerprint-derived queries"*; `len(all_sources())` is **10** against the memo's enumeration of
+  seven open repositories plus two added channels. **`METHODOLOGY.md` was not touched at all in
+  this 152-commit window** — `git log 349ca12..98dcff9 -- METHODOLOGY.md` returns zero commits — so
+  nothing was passed over this time; the file simply stood still. **The new fact is where GDELT now
+  stands named:** `README.md` **1**, `docs/` **9 files**, `scripts/site_templates/` **1**,
+  `METHODOLOGY.md` **0**. Every professor-facing surface in the project names the tenth source
+  except the one document a reviewer reads to judge the method. `scripts/check_site_sync.py` exits
+  **0** and no surface anywhere still says "nine public sources" — the site half of this is
+  genuinely finished, which leaves METHODOLOGY §III alone. Still a two-number edit; still Emory's.
 
 ---
 

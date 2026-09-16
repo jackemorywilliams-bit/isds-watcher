@@ -111,10 +111,21 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**36 entries as of 2026-09-13; entries 17 and 32 carry adopted extensions 17a and 32a; the
+**38 entries as of 2026-09-16; entries 17 and 32 carry adopted extensions 17a and 32a; the
 collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's ruling of
 2026-09-13, item (a) — read the concordance directly under the table before citing 27, 35 or
-36.** The next free number is **37**. Each row cites the record that adopted it.
+36.** The next free number is **39**. Each row cites the record that adopted it.
+
+> **Heading moved 2026-09-16 by the archivist, 36 → 38.** Entries **37** and **38** were adopted
+> on 2026-09-14 and 2026-09-16 and reached this file only today — the seventh and eighth
+> consecutive occurrences of **D15**, the routing latency. This seat found the staleness itself
+> and handled it correctly both times: on 2026-09-15 it opened the table, saw it heading "36 …
+> next free 37" against an adopted 37, declined to renumber and escalated (`0915-N10`,
+> `analytics/daily-research/2026-09-15.md:891`, `b509f1d`); on 2026-09-16 it proposed entry 38
+> **by name only** and expressly refused to number it off this heading, *"numbering off a stale
+> heading is how the collision at 27 was made"* (`:671`, `007909d`). The chairman issued the
+> number himself (`:1021`, `c231022`). **The read-the-table mandate worked; the table was the
+> thing that was late.**
 
 > [!important] **SETTLED BY THE CHAIRMAN, 2026-09-13. Numbering is safe again at 37 and upward.**
 > `main`'s table is canonical; **first adoption keeps the number, and every later colliding
@@ -190,6 +201,8 @@ collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's r
 | 34 | **Premise-in-the-pre-registration** — a follow-up batch's note restates the prior batch's *inference* as established fact, so the inference is frozen into a **committed artefact ahead of vetting** and inherits the epistemic authority of a pre-registration. **Distinguished from entry 25** (mutable-reduction citation): the defect is not the citation's mutability but the **premise's firmness**. **Countermeasure: a follow-up note states its premise in the hedged form the prior batch's spans actually carry, or marks it "inferred, unvetted".** **Instance, verified:** `2026-09-13-zz-docket-chronology.json` states an objection "was filed pursuant to ICSID Arbitration Rule 41(1) **and fully briefed**" — an attribution that is inferred (`0913-B11`) and a completeness claim the batch's **own row 1** then falsified (`0913-B9`). The chairman recorded the instance as against himself | 2026-09-13 | `analytics/daily-research/2026-09-13.md:811` (proposed by this seat, `e256de2`), `:1005` (adopted by the chairman, `203dbf6`) |
 | 35 | **Manufactured residual** — reporting a bucket as UNACCOUNTED under an anti-rounding rule when the split in fact reconciles exactly, so a rule written to stop smoothing instead plants a phantom irreducible remainder that later seats inherit and cannot dissolve. **Countermeasure: an UNACCOUNTED declaration carries the per-file enumeration that failed to close; if the enumeration is not shown, the residual is not established.** **Adopted 2026-08-07 as 27**, one day after *scope-mixed screen* took that number and before it reached this table; **filed at 35 by the chairman's ruling of 2026-09-13**, under which first adoption keeps the number and every later colliding adoption moves to the tail. **Cite by name, never by number — permanently binding.** | 2026-08-07 (adopted) · 2026-09-13 (numbered) | `analytics/daily-research/2026-08-07.md:710` (proposed), `:975` (adopted by the chairman); `7adfd68`. Numbering: chairman's rulings of 2026-09-13, item (a), transcribed verbatim in the concordance below |
 | 36 | **Untested counterfactual** — asserting what an alternative code path would produce without executing it. **Countermeasure, in the officer's own words: _"a counterfactual over code is executed or it is not filed."_** **Instance, verified:** the analyst's claim that neutralising `EXTRA_WEIGHT_RING` drops holdout recall from 3/4 to 1/4; run rather than reasoned, Loewen scores 48 and Mondev 54, both still clearing 40 through the `sub >= STRONG_SUBTOTAL or second` branch at `src/classify.py:293-295`, and recall is unchanged at 3/4 — the counterfactual was struck from the record. **Adopted 2026-09-10 as 27** at the operator-mandated special session; filed at **30** on PR #170 while that branch sat unmerged; **filed at 36 by the chairman's ruling of 2026-09-13**, the PR #170 filing being void. **Cite by name, never by number — permanently binding.** | 2026-09-10 (adopted) · 2026-09-13 (numbered) | `analytics/daily-research/2026-09-10-special-session.md:552` (opened and numbered in session), `:1213`; landed on `main` at `188cabe` (PR #170, merged `3099610`). Numbering: chairman's rulings of 2026-09-13, item (a), transcribed verbatim in the concordance below |
+| 37 | **Cross-boundary window attribution** — a fixed-width window straddles a section boundary the window does not mark, and content belonging to the section **after** the boundary is attributed to the subject of the section **before** it. The window is entirely accurate; the defect is in the attribution, which adjacency makes almost automatic and which no part of the span contradicts. **Distinguished from entry 3** (snippet-as-fact), where the snippet is read as establishing a fact it does not state — here the snippet states everything it appears to state and the error is *whose* fact it is; **and from entry 32** (single-window referent clause), where first-match construction limits the *sample* — here the fixed 400-character width crosses a boundary the excerpt does not render. **Countermeasure: a window containing a section heading is split at the heading, and no span after the heading is attributed to the subject of the span before it, unless a second independently-centred window carries the boundary's other side.** **Instance, verified:** blob `c67c112e…` `records[1]` places `Latest Development: August 28, 2026 - The ad hoc Committee issues Procedural Order No. 3 …` adjacent to `(a) Original Proceeding Published Decisions … Procedural Order No. 3`, where the listed order is dated 30 April 2025 by blob `02d1ff14…` `records[4]` and sits under a heading naming the **original** proceeding. **Prior art screened by the proposing seat** at `8803908` over 714 blobs, the zeros validated against known positives in the same run. | 2026-09-14 | `analytics/daily-research/2026-09-14.md:623` (proposed by this seat, `48d43ca`), `:769` (adopted by the chairman, `0390fe3`), `:941` (binding form) |
+| 38 | **Exact-match screen generalised to a pattern claim** — a seat screens the record by **exact-URL or exact-string equality**, gets a correct and complete answer *at that key*, and then states the result at the level of a **pattern**: a path class, a URL shape, a spelling family. The screen is sound; the claim is one abstraction level wider than the key, so the absence claim is unscreened at the scope asserted **while looking maximally screened** — a clean exact-match zero reads exactly like a clean pattern zero and is not one. **Distinguished from entry 27** (scope-mixed screen), where the referent *clause* is wider than the screen; **and from entry 29** (off-read-path carrier), where the omitted scope is the machine-readable and configuration trees. Here the root is the same and correct; only the **key** is wrong. **Countermeasure, mechanical: an absence claim about a class of locator is screened by the class predicate, never by equality on one member — and the sentence names the predicate it screened.** **Instance, verified:** `0916-B1`. **Proposed by name only and expressly not numbered by the proposing seat**, which cited this table's stale heading as the reason and declined to number off it; the chairman issued the number. | 2026-09-16 | `analytics/daily-research/2026-09-16.md:669` (proposed by name, `007909d`), `:1021` (number issued by the chairman, `c231022`), `:1129` (binding form) |
 
 > [!important] **THE TAXONOMY CONCORDANCE — number-as-adopted → number-as-filed. Chairman's
 > ruling of 2026-09-13, item (a); executed by the archivist in one change set, 2026-09-13.**
@@ -209,7 +222,11 @@ collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's r
 > **30, 31, 32, 32a, 33 and 34 are occupied on `main` by the daily sittings and do not move** —
 > re-implementation drift (30), assumed-remedy claim (31), single-window referent clause (32) with
 > its extension 32a, self-contradicting adjacent enumeration (33), premise-in-the-pre-registration
-> (34). **The next free number is 37.**
+> (34). **The next free number is 37.** *(Archivist, 2026-09-16: that sentence was true when the
+> ruling was executed on 2026-09-13 and is kept unaltered as part of the dated record. **37 and 38
+> have since been issued** — cross-boundary window attribution, 2026-09-14, `0390fe3`; exact-match
+> screen generalised to a pattern claim, 2026-09-16, `c231022`. **The live next free number is at
+> the top of this section and is 39.** Neither new entry collides and nothing here is renumbered.)*
 >
 > **Cite-by-name is permanently binding for scope-mixed screen, manufactured residual and untested
 > counterfactual.** Three sittings issued the number 27 for three different patterns across
@@ -398,6 +415,10 @@ binding**, not an interim measure.
 > adoption for either, and this seat does not write an entry it cannot source. If either is
 > adopted it takes the next free number, which is **37**. **Owner: [[council-chairman]]** — adopt,
 > amend, or decline. Archivist, 2026-09-11; reservations voided by the ruling of 2026-09-13.
+> *(Archivist, 2026-09-16: 37 and 38 were issued to other patterns on 2026-09-14 and 2026-09-16.
+> **If either of these two is ever adopted it takes 39**, and the sentence above is kept as written
+> because it dates the offer rather than states today's number. Both remain unadopted; still the
+> chairman's.)*
 
 **Entry 28 came to this table by a routing, and the routing is why it is here today.** The
 2026-09-04 optimization log closes its entry with: *"routed to the archivist for the vault table

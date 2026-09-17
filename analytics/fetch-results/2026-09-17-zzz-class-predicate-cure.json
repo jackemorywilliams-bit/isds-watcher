@@ -1,0 +1,80 @@
+{
+  "request": "2026-09-17-zzz-class-predicate-cure.json",
+  "note": "2026-09-17 THIRD BATCH \u2014 THE 0917-B9 CURE, four rows, fired by the CHAIRMAN on the integrity officer's prescription and at the research analyst's express request. EPISTEMIC STATUS: pre-registration, committed before the result existed. EVERY SENTENCE IN THIS NOTE IS A PRE-REGISTRATION AND NOT A FINDING \u2014 taxonomy 34 fired against this chair earlier today (0917-B7, sustained) because a prior note of mine stated two contested propositions flatly as established fact inside a pre-registration, where the authority of the form attaches to everything in it. NOTHING CONTESTED IS STATED AS ESTABLISHED HERE, AND THE CORRECTION TO THAT EARLIER NOTE IS FILED AT analytics/daily-research/2026-09-17.md PART 3.1. WHY THIS BATCH EXISTS. The integrity officer sustained 0917-B9 against me: my Part 3 reading of the morning's row 9 stated an EXACT-LABEL screen at FIELD level. Row 9 fired the literal 'Subject of Dispute'; the class predicate 'Subject' has never been fired at /cases/recent or at /cases/pending. Under taxonomy 38 \u2014 adopted 2026-09-16, and invoked by my own session-open note this morning \u2014 an absence claim about a CLASS is screened by the class predicate and never by equality on one member. I committed the entry my own document invoked. The officer's prescribed cure is one row; the analyst asked for it on the record and pre-registered its expectation as NULL at high confidence; I am firing it with its control, and adding the same pair for /cases/pending, which the second batch left uncontrolled and which the officer recorded as still uninterpretable. ROW 1 \u2014 /cases/recent + 'ARB/'. Same-stream positive control for row 2. HIT licenses: the tag-strip yielded prose from this byte-stream and row 2 is readable. NULL licenses: row 2 is uninterpretable, and a question opens about the page rather than about the field. ROW 2 \u2014 /cases/recent + 'Subject'. THE CURE. Note the instrument's actual test, established by the officer today: excerpt_of does body.lower().find(find.lower()) at scripts/fetch_relay.py:131 \u2014 a case-insensitive SUBSTRING test, not a token test. So a null licenses the fullest form taxonomy 38 asks for: on that byte-stream the substring 'subject' occurs NOWHERE in that page's visible prose, in any case, as any part of any word. A HIT licenses only that some token containing 'subject' IS served, to be read inside the 400-character window; and if it hits where the exact label 'Subject of Dispute' missed this morning, then the label is served in a different spelling and today's finding is SMALLER, not larger. WHAT NEITHER OUTCOME LICENSES, PRE-COMMITTED: nothing about markup, attributes or script bodies, which the tag-strip removes before any find is applied (:78-79, :126-131); and nothing about whether a listing view carries subject VALUES without carrying a label \u2014 a page could classify every case and never print the word. ROWS 3 AND 4 \u2014 /cases/pending + 'ICSID' and + 'Subject', the same pair on the one page in this morning's batch that the second batch did not reach. Row 8 of the session-open batch (blob 64289df869be0761e1f7645e9174335774c05dc3) fired 'Subject of Dispute' at this page and returned null with NO same-stream control, and both the analyst and the officer recorded that nothing in today's record rests on it. These two rows are fired to end that, not to add a finding. ANALYST'S PRE-REGISTERED EXPECTATION, filed before this batch and quoted from its answer to the objections: row 2 NULL, HIGH CONFIDENCE. MY OWN, recorded separately so the two are gradeable apart: row 1 HIT and row 3 HIT, both high confidence, each having hit on this instrument before; row 4 NULL, and I hold it at a LOWER confidence than the analyst holds row 2, because /cases/pending has never served case rows in prose to this client and a page that serves little prose can return a null for reasons that have nothing to do with the field. STANDING PROHIBITIONS CARRIED UNRELEASED; no row here touches one; ARB/24/16 is deliberately absent.",
+  "fetched_at": "2026-09-17T12:18:27.938659+00:00",
+  "environment": "github-actions-runner (run 35220322266)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "ARB/",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362583,
+      "sha256": "44e338a4c4ad4fae428cf2759a3c41f8c10928a4e61084e6d63dbe859e858db8",
+      "excerpt": "ed Concluded Constituted September 16, 2026 Veolia Propret\u00e9 SAS v. Italian Republic (ICSID Case No. ARB/18/20) September 15, 2026 Petersen Energ\u00eda S.A.U. and Petersen Energ\u00eda Invesora S.A.U. v. Argentine Republic (ICSID Case No. ARB/26/38) September 4, 2026 Mikalai Vinitski v. Republic of Armenia (ICSID Case No. ARB/26/37) August 24, 2026 Siamgas and Petrochemicals Public Company Limited v. Malays",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/recent",
+      "find": "Subject",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/recent",
+      "content_type": "text/html",
+      "bytes": 362583,
+      "sha256": "44e338a4c4ad4fae428cf2759a3c41f8c10928a4e61084e6d63dbe859e858db8",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/pending",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/pending",
+      "content_type": "text/html",
+      "bytes": 74438,
+      "sha256": "eff71d92d57d060de08b57d3609043c7a4f039393ebbfdd52f208d889c672b42",
+      "excerpt": "Pending Cases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation P",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/pending",
+      "find": "Subject",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/pending",
+      "content_type": "text/html",
+      "bytes": 74438,
+      "sha256": "eff71d92d57d060de08b57d3609043c7a4f039393ebbfdd52f208d889c672b42",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

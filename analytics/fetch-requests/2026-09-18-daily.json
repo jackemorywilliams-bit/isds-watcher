@@ -1,0 +1,41 @@
+{
+  "note": "2026-09-18 FOLLOW-UP BATCH, designed by the RESEARCH ANALYST (Task 3 of its filed return) and fired by the CHAIRMAN. EPISTEMIC STATUS: pre-registration; may be cited as such; never edited. CHANNEL PROBES AT SESSION OPEN, on NEUTRAL CONTROLS, nothing inherited: (1) curl https://example.com/ -> 'CONNECT tunnel failed, response 403' (exit 56), logged by the agent proxy's status endpoint under recentRelayFailures as connect_rejected, host example.com:443, at 2026-09-18T11:12:19.215Z, with a second identical entry for icsid.worldbank.org:443 at 2026-09-18T11:12:19.431Z; (2) the fetch service returned {\"error_type\":\"EGRESS_BLOCKED\",\"domain\":\"example.com\"} on the same neutral control. This session has NO fetch of its own. That is a fact about this container and NOT about any resource on the internet. The relay is the day's retrieval instrument. NO SESSION-OPEN BATCH WAS FIRED TODAY. The day's first question was answered from committed artefacts; this is the day's only batch and it exists because the analyst identified a weakness in that answer that only new evidence can cure. WHY THIS BATCH EXISTS, STATED AS THE ANALYST STATED IT. The committed archive shows ICSID's 'Subject of Dispute' returning 13 distinct values on 13 distinct cases with zero cross-case repeats, while the adjacent 'Economic Sector' on the same excerpt windows returns 7 values WITH repeats. The analyst's bounded reading is that this EXCLUDES a controlled vocabulary of Economic-Sector scale and establishes a value-set of at least 13 members, and that it does NOT establish free text, does NOT exclude a large controlled vocabulary, and does NOT distinguish either from semi-control by accretion. The analyst names ONE uncurable-by-argument weakness: the 13 cases are this project's own watched dockets, recruited by different threads for different substantive reasons, so they are not a sample of ICSID's docket. This batch draws cases THE COUNCIL DID NOT CHOOSE. WHAT I VERIFIED MYSELF BEFORE FIRING, RATHER THAN ACCEPTING FROM THE SEAT. (a) PROVENANCE: every case number below is carried in a committed relay reduction under analytics/fetch-results/ - ARB/26/36 and 'Cadence Minerals' in 2026-09-07-daily.json; ARB/26/2 and 'Shell PLC' in 2026-09-09-daily.json; ARB/26/38, 'Petersen Energia', ARB/18/20 and 'Veolia' in 2026-09-17-zz-controls-and-databases.json and 2026-09-17-zzz-class-predicate-cure.json. These are names ICSID's own pages served into our excerpts. This is retrieval of what the record already identified, NOT discovery (METHODOLOGY Part VIII). (b) INSTRUMENT RELIABILITY, recounted by me over all committed result files: the find 'Status of Proceeding' stands at 56/56 find_matched across 14 distinct case-detail URLs with zero nulls; the find 'Subject of Dispute' stands at 24/24 across 12 distinct case-detail URLs with zero nulls. Both figures match the analyst's to the digit. WHAT EACH OUTCOME LICENSES, PRE-COMMITTED BEFORE THE FIRE. Rows 1, 3, 5, 7 (find 'Subject of Dispute' on four unchosen cases): a value that REPEATS any of the thirteen already observed is decisive evidence FOR a maintained list and MATERIALLY WEAKENS the day's finding - the analyst asked for that outcome to stand on the page in advance and I record that it did. A fourteenth (or fifteenth, sixteenth, seventeenth) distinct value moves the observed lower bound of the value-set and NOTHING ELSE; it does not establish free text, which no row in this batch can do. A NULL on any of those rows licenses nothing about the field - only that the label did not appear in that page's tag-stripped visible prose on that byte-stream. Rows 2, 4, 6 (find 'Status of Proceeding' on the same three URLs) are COMPANION CONTROLS, per analytics/fetch-requests/README.md: without them a null on rows 1, 3, 5 could not be told apart from an instrument failure. A LIMIT THE ANALYST DECLARED AND I CARRY RATHER THAN SOFTEN: a same-RUN control is not a same-STREAM control - insights.jsonl:147 records within-run instability on one URL 9,035 bytes apart - so rows 2/4/6 control rows 1/3/5 only where the paired sha256 values are identical, and where they differ the control is weaker and must be graded as such when read. ROW 7 IS DELIBERATELY UNCONTROLLED AT THE BYTE-STREAM LEVEL AND THE ANALYST DECLARED THAT BEFORE THE FIRE RATHER THAN AFTER. A null on row 7 is uninterpretable and may not be read as information about ARB/18/20 or about the field. Row 8 (find 'Status of Proceeding' on ARB/22/2, Huawei v Sweden) is the standing award watch, twelve days stale, last read 2026-09-06 as 'Pending' / 'Latest Development: July 10, 2025 - Each party files a reply submission on costs.' It doubles as a class-level positive control on this batch's control literal: if the 56/56 literal fails here, the batch's whole control scheme is in doubt and that is worth knowing immediately. No separate 'Latest Development' row is fired because its value stands inside the 'Status of Proceeding' window on this same page - a separate row would be entailed and carry zero additional information, which is the defect the officer found in rows 1-2 of the 2026-09-17 batch. Row 9 is the G18 ANALYST-SUPPLIED TAIL BRACKET CONTROL, distinct from the relay's own prepended head control. The analyst flagged it as the chair's to add rather than silently omitting it; I add it. ANALYST FORECASTS, ON THE RECORD BEFORE THE ANSWER: HIT on rows 1, 3, 7, 8 and on every control; HIT at lower confidence on row 5, ARB/26/2 being the newest case in the set and carrying the highest sparse-page risk. WHAT NO ROW IN THIS BATCH CAN DO: none enumerates anything and 0824-R30's bar is untouched; none establishes the field's type; none disturbs the 2026-08-25 asymmetric licence, under which no proceeding moves to EXCLUDED on any value and a non-IP value establishes nothing in either direction; none asserts anything about any proceeding as a research object, ARB/24/16 included, whose docket stays at zero budget. A TOOL-LAYER OUTCOME IS NEVER A CLAIM ABOUT A RESOURCE.",
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/36",
+      "find": "Subject of Dispute"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/36",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/38",
+      "find": "Subject of Dispute"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/38",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/2",
+      "find": "Subject of Dispute"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/26/2",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/18/20",
+      "find": "Subject of Dispute"
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "find": "Status of Proceeding"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain"
+    }
+  ]
+}

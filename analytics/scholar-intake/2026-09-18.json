@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-09-18",
+  "at": "2026-09-18T11:36:08.920906+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 9,
+    "newest_alert_date": "2026-09-17T12:02:17+00:00",
+    "newest_alert_subject": "\"Philip Morris v. Australia\" OR \"Philip Morris Asia ... - new results",
+    "alert_dates": [
+      "2026-09-17",
+      "2026-09-08",
+      "2026-08-30",
+      "2026-08-30",
+      "2026-08-25",
+      "2026-08-25",
+      "2026-08-23",
+      "2026-08-22",
+      "2026-08-19"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 1,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://www.tandfonline.com/doi/full/10.1080/10383441.2026.2732469"
+  ]
+}

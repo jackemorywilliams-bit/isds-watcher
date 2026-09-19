@@ -601,6 +601,26 @@ see item 2 of the 2026-08-03 slice.)*
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
 
+- **2026-09-19 (seventeenth deployment)** — Standing every-3-days session, audited against
+  `f1a7850` (`main`), complete **1,461**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **136**, the **ninth consecutive** session. Window `98dcff9..f1a7850` = **83**
+  commits. **Zero commits to `.claude/agents/`, `prompts/` or `src/models.py`, and zero to any
+  deliverable surface** — an entire window in which nothing this seat audits for drift moved, so
+  every finding below is carried state re-measured rather than new drift. **Filed taxonomy 39, 40
+  and extension 34a** into [[integrity-officer]], heading 38 → 40, six rows to [[Agent Registry]]
+  — **D15** at occurrences nine, ten and eleven. **Filed three 2026-09-19 by-name proposals
+  unnumbered** in a pending block rather than issuing numbers the council did not issue.
+  **Two corrections entered against this seat's own prior record**, both in the notes that carry
+  the claims: the 2026-09-16 session's model-split count (*"four and four; one names no model"*)
+  is **4 / 5 / 0** on measurement, corrected in [[Workflow Threads]] **D6**; and the integrity
+  officer's report that its definition *"still enumerates five patterns"* is false against the
+  file, corrected in [[integrity-officer]] so the next seat does not edit a correct contract.
+  **D6 at day thirty-five**, seventh first-person runtime observation, rows unchanged.
+  **D18 improved again and its diagnosis held for a third session**: 1 of 3 end-of-day tips red,
+  and the single STALE line is [[Workflow Threads]] and nothing else, exactly as narrowed on
+  2026-09-16. **D20 unmoved at five days and twelve merged pull requests.** **Orphan sweep: 175
+  remote refs, 33 non-ancestors, zero of them new this window** — the first clean window in this
+  log's recent record.
 - **2026-09-16 (sixteenth deployment)** — Standing every-3-days session, audited against `98dcff9`
   (`main`), complete **1,378**-commit history after `git fetch --unshallow`; the clone arrived
   shallow at **144**, the **eighth consecutive** session. Window `349ca12..98dcff9` = **152**

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `801c7bf`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `37fd77e`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,61 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-09-19 (archivist session — seventeenth deployment)
+
+*Audited against `f1a7850` (`main`), on a complete **1,461**-commit history — the container's clone
+arrived shallow at **136**, the **ninth consecutive** session, so every sha below was resolved only
+after `git fetch --unshallow`. Window `98dcff9..f1a7850` = **83** commits. Paths: `agents/`,
+`.claude/agents/`, `prompts/`, `src/models.py`, `analytics/`, `METHODOLOGY.md`, `README.md`,
+`docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, and every remote branch
+tip.*
+
+- **Taxonomy 39 and 40 filed and extension 34a filed with its parent; the canonical table's heading
+  moved 38 → 40** — [[integrity-officer]], with six rows added to [[Agent Registry]]'s
+  adopted-method-rules table. **39, dedup-screen referent inversion**, adopted 2026-09-17
+  (`710842c`, `analytics/daily-research/2026-09-17.md:1275`; proposed `226d697`, `:887`).
+  **40, stale-population screen record**, adopted 2026-09-18 (`018c1f1`, `2026-09-18.md:1195`;
+  proposed by name `af479da`, `:906`). **34a, licence-in-the-pre-registration**, adopted as an
+  extension the same day (`018c1f1`, `:1203`; proposed by name `af479da`, `:904`). **Nothing was
+  renumbered** — 39 and 40 to the tail, 34a beside 34, both under the rule of 2026-09-13. The
+  live next free number is **41**.
+- **Three patterns proposed by name on 2026-09-19 filed unnumbered in a pending block**
+  (`b267efd`, `analytics/daily-research/2026-09-19.md:877-882`): *zero-screen counted as a
+  carrier*, *selective self-quotation deflation*, *own screen unread as evidence for a second
+  proposition*. The first was **adopted as binding practice without a number** in the chairman's
+  close-out (`:1323-1326`) and has a registry row of its own. They are filed outside the table
+  because this seat does not issue numbers the council did not issue.
+- **A correction entered against the integrity officer's self-report, in the officer's own note.**
+  `2026-09-19.md:875` (`b267efd`) records *"my own definition still enumerates five patterns
+  against a vault of forty."* Measured against the file: `.claude/agents/integrity-officer.md:11-21`
+  enumerates the **four contract categories** from `prompts/council_security.txt`, which are not
+  taxonomy entries; `:48-56` expressly forbids working from an enumeration in that file and names
+  the council-R8 incident in which the definition once did name five against a vault of ten.
+  **That historical sentence is what a grep returns.** The read path is correct as written. Recorded
+  in [[integrity-officer]] because the next seat to act on that report would have edited a correct
+  contract.
+- **No contract change and no roster change** — `git log 98dcff9..f1a7850 -- .claude/agents/
+  prompts/ src/models.py` returns **zero** commits; `scripts/check_models.py` exits **0** over 12
+  cards; `node tools/isds-workflow-3d/validate.mjs` exits **0** (30 cards / 10 chips / 44 edges,
+  SVG fresh against its inputs-sha256, zero "Jack" tokens).
+- **No deliverable-surface change** — `git log 98dcff9..f1a7850 -- README.md docs/
+  scripts/site_templates/ METHODOLOGY.md HANDOFF.md COUNCIL.md
+  views/isds-workflow-3d/workflow.json` returns **zero** commits. **D7 is therefore carried
+  unchanged and re-measured rather than restated**: `METHODOLOGY.md:33` says **eight** Bing queries
+  against `len(bing_news.QUERIES)` = **12**, and enumerates **nine** channels against
+  `len(all_sources())` = **10**. GDELT is named in `README.md` ×1, `docs/` ×9 files,
+  `scripts/site_templates/` ×1, `METHODOLOGY.md` ×**0**.
+- **Orphan sweep: 175 remote refs, 33 not ancestors of `origin/main`, and for the first time in
+  this log's recent record, zero of them are new this window.** Every council sitting on 09-17,
+  09-18 and 09-19 landed and had its branch deleted. The carried set is unchanged: PR **#184**
+  (`529c744`, 6 days), PR **#150** (`f73ac06`, 11 days), PR **#110** (`de73f9f`, 22 days),
+  `chore/operator-marks-2026-07-27` (`6f9e1da`, **F1**, 54 days), and
+  `council/analyst-gaps-and-methodology` (`74958fd`, 8 days, 9 files / 26 insertions).
+- **`main`'s test suite is still red, five days on, and the failure is byte-for-byte the one filed
+  on 2026-09-16** — `pipeline-guards` runs **215, 216 and 217** all conclude failure; the `guards`
+  job passes and the `suite` job fails on `tests/test_site_claims.py` with `runs` 16→17,
+  `screened` 492→499 and `per_source` 11→12. **D20**, unmoved.
 
 ## 2026-09-16 (archivist session)
 

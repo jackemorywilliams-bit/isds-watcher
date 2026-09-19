@@ -1,0 +1,89 @@
+{
+  "request": "2026-09-19-daily.json",
+  "note": "2026-09-19 DAILY BATCH \u2014 designed by the RESEARCH ANALYST (Task 3 \u00a73.3 of its filed return) and fired by the CHAIRMAN. EPISTEMIC STATUS: pre-registration; may be cited as such; never edited. CHANNEL PROBES AT SESSION OPEN, ON NEUTRAL CONTROLS, NOTHING INHERITED: (1) curl https://example.com/ -> 'CONNECT tunnel failed, response 403' (exit 56), logged by the agent proxy's status endpoint under recentRelayFailures as connect_rejected at 2026-09-19T11:09:47.636Z, with a second identical entry for icanhazip.com:443 at 2026-09-19T11:09:47.865Z; (2) the fetch service returned {\"error_type\":\"EGRESS_BLOCKED\",\"domain\":\"example.com\"} on the same neutral control. This session has NO fetch of its own. That is a fact about this container and NOT about any resource on the internet. The relay is the day's only retrieval instrument. A TOOL-LAYER OUTCOME IS NEVER A CLAIM ABOUT A RESOURCE. THIS IS THE DAY'S ONLY BATCH AND IT IS THE ONLY ONE THAT CLEARED THE BAR I SET. The agenda bar, given to the analyst before it worked: propose a row only where BOTH a hit and a null would move something this council actually relies on. The five rows queued by yesterday's analyst (ARB/26/37, ARB/26/4, ARB/20/13) serve the field-type / enumeration line that yesterday's close-out retired, and I declined to fire them. ARB/22/2 was read yesterday and is not re-read. WHY THIS BATCH EXISTS. The slug grosse-ruse-khan-itn-ip-isds-plain-packaging-to-patent-revocation is CARRIED-UNRESOLVED at STATE_OF_THE_ANSWER.md:67 and :265. The article \u2014 Henning Grosse Ruse-Khan, 'Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation', IISD Investment Treaty News, 18 Nov 2014 \u2014 is, on its title alone, the closest item in this project's reach to the three-ring structure, and IISD ITN is a prompt-named preferred source with zero carriers of this article. WHAT I VERIFIED MYSELF BEFORE FIRING, RATHER THAN ACCEPTING FROM THE SEAT. (a) A json.load() walk over every file in analytics/fetch-results/ returns SEVEN rows at this article, ALL at the /itn/en/ spelling, ALL outcome:refused, status:403, sha256:null, excerpt length 0 \u2014 six in 2026-09-04-daily2.json (finds 'From Plain Packaging to Patent Revocation', 'Grosse Ruse-Khan', 'Eli Lilly', 'Philip Morris', 'trade secret', 'clinical trial') and one in 2026-09-05-daily.json (find 'Grosse Ruse-Khan'). (b) Five distinct iisd.org URLs appear in any fetch artefact and exactly one is this article; the no-/en/ spelling of THIS article has never been fired. (c) PROVENANCE: the no-/en/ spelling is carried in this repository's own committed records at 2 files / 9 occurrences (2026-09-15.md:421,:507,:508,:603; 2026-09-16.md:262). This is retrieval of what the record already identified, NOT discovery (METHODOLOGY Part VIII). Both hosts are www.iisd.org, on ALLOWED_HOSTS. A DEFECT I FOUND IN THE ANALYST'S FORECAST AND AM RECORDING BEFORE THE ANSWER RATHER THAN AFTER. The memo states 'The only article-page evidence either way is the docstring of src/sources/iisd_itn.py'. THAT IS FALSE. On 2026-09-12 this project fired FIVE rows at https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/ \u2014 an ARTICLE PAGE at the NO-/en/ SPELLING, the exact path class this batch tests \u2014 with finds 'Rule 41', 'intellectual property', 'trademark', 'territorial', 'covered investment', and ALL FIVE returned outcome:refused, status:403, bytes:null (analytics/fetch-results/2026-09-12-daily.json). That is a dated, committed, article-page observation at the spelling in question and it is stronger than the undated docstring the seat relied on. It bears on the PATH CLASS, not on this URL, so it does not make the batch redundant \u2014 but it moves the forecast against the seat. THE COUNTERWEIGHT, STATED SO THE FORECAST IS NOT ONE-SIDED: on 2026-09-16 the host answered https://www.iisd.org/itn/ at 200, 64,391 bytes in the same run in which https://www.iisd.org/itn/feed/ refused at 403, so the host does discriminate by path and a section index is not an article page. FORECASTS, ON THE RECORD BEFORE THE ANSWER. ANALYST: 'close to even and slightly against a 200.' CHAIRMAN: REFUSAL ON ALL FOUR SUBSTANTIVE ROWS, on the Spentech evidence the seat missed. If I am right the day's yield from this batch is the negative branch, which is worth firing for and is the only reason I am firing it. PRE-REGISTERED FALSIFICATION CONDITION, written at the weakest form that still makes this a test (extension 34a; nothing contested, and no 'decisive'). (i) If row 1 returns a non-empty excerpt and row 4 returns 403 in the same run, the refusal is SPELLING-DEPENDENT at the article path class. (ii) If rows 1 and 4 both refuse, the refusal is NOT spelling-dependent at the article path class, and the slug's testability by this instrument is closed. Either result is recorded as what one host answered one GitHub runner at one timestamp \u2014 never as a property of the resource. WHAT EACH ROW IS FOR. Row 1 (find 'Investment Treaty News') is the SAME-URL WINDOW-ESTABLISHER and is mandatory: a missed find returns the empty string and no head excerpt (scripts/fetch_relay.py:132-133), so a null on rows 2 or 3 would be uninterpretable without a row that demonstrably extracted prose from that byte-stream. That literal is masthead chrome shown to survive the tag-strip by the 2026-09-16 homepage row. Row 2 (find 'Grosse Ruse-Khan') is authorship, and is the identical find fired at the /en/ spelling on 2026-09-04 and 2026-09-05, so it is a direct comparison. Row 3 (find 'trade secret') is the substantive sub-question. Row 4 is the CONTEMPORANEOUS /en/ RE-OBSERVATION and is mandatory and not padding: without it a 200 on row 1 against the 403s of fifteen days ago is confounded by the site simply having changed; row 4 puts both spellings on the same runner, same client, same minute. Row 5 is the G18 ANALYST-SUPPLIED TAIL BRACKET CONTROL, distinct from the relay's own prepended head control; the analyst did not name it and I add it as the chair's to add. GRADING INSTRUCTION, NOT OPTIONAL. Rows 1-3 share a URL but are THREE SEPARATE FETCHES. Same-run is not same-stream on this host's pages (insights.jsonl:147 records within-run instability 9,035 bytes apart). PAIR THE sha256 VALUES. If rows 1-3 do not return an identical digest, a negative on row 3 belongs only to its own byte-stream and may not be read against row 1's window. WHAT NO ROW IN THIS BATCH CAN DO. None discharges the slug: one 400-character window is not a body, and a hit moves the slug only from 'unread and untested' to 'one window read'. None establishes anything about EU law, about NAFTA Article 1110(7), or about any treaty \u2014 those are operator items by construction, no EU host and no NAFTA-text locator being reachable. None disturbs the 2026-08-25 asymmetric licence, which stays carried unreleased. None touches the field-type or enumeration questions, which are off today's agenda. CITATION FORM, GIVEN THE MERGE-REWRITES-RESULTS DEFECT DEMONSTRATED ON 2026-09-18. The merge of this session's pull request will touch analytics/fetch-requests/**, re-fire this workflow on main, and rewrite this batch's result file under the same name with a new run id. THE CORRECT CITATION FOR ANY FINDING FROM THIS BATCH IS THE sha256, WHICH IS STABLE ACROSS EXECUTIONS. The run id is a soft identifier and a later seat finding a different one must not read the mismatch as evidence that anything was altered.",
+  "fetched_at": "2026-09-19T11:32:18.091477+00:00",
+  "environment": "github-actions-runner (run 35440358173)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 1,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Investment Treaty News",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Grosse Ruse-Khan",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "trade secret",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://www.iisd.org/itn/en/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+      "find": "Investment Treaty News",
+      "outcome": "refused",
+      "status": "403",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    },
+    {
+      "url": "https://example.com/",
+      "find": "Example Domain",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

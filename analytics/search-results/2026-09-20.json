@@ -1,0 +1,526 @@
+{
+  "date": "2026-09-20",
+  "seat": "research-analyst",
+  "instrument": "WebSearch (the session's only working search tool; WebFetch and curl are EGRESS_BLOCKED this session)",
+  "schema_note": "One object per search call. Result rows carry ONLY the engine's verbatim title, the verbatim url, the host derived from that url, and retrieved_body:false. No engine-composed prose is merged into any result row. Where composed prose purported to state the content of a primary source it is transcribed verbatim into engine_summary and expressly quarantined; elsewhere engine_summary is null and engine_summary_present records that prose existed and was not transcribed.",
+  "retrieved_body_note": "retrieved_body is false on EVERY row in this file. This session retrieved no body from any host. A title is a lead, never a finding.",
+  "call_count": 7,
+  "result_row_count": 67,
+  "calls": [
+    {
+      "call_id": "S1",
+      "purpose": "TASK 1 — identify a concrete NAFTA Chapter 11 locator at an ALLOWED_HOSTS host.",
+      "query": "North American Free Trade Agreement NAFTA treaty text investment chapter eleven",
+      "allowed_domains": [
+        "investmentpolicy.unctad.org"
+      ],
+      "blocked_domains": null,
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "results": [
+        {
+          "title": "11-1 PART FIVE INVESTMENT, SERVICES AND RELATED MATTERS Chapter Eleven",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2413/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA (1992) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "11-1 CHAPTER ELEVEN INVESTMENT Section A: Investment",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2542/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "NORTH AMERICAN FREE TRADE AGREEMENT _______________ TABLE OF CONTENTS Preamble",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2412/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "14-1 CHAPTER 14 INVESTMENT Article 14.1: Definitions",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/6008/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Canada - Investment Canada Act | Investment Laws Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/investment-laws/laws/166/canada-investment-canada-act-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Home | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "U.S. GOVERNMENT PRINTING OFFICE WASHINGTON : 1 29–118 SENATE \" ! 104TH CONGRESS",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2381/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Mexico | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/countries/136/mexico",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "multilateral agreement on investment draft negotiating text ...",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2813/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S2",
+      "purpose": "TASK 1 — test whether the engine's index associates the literal string 'Article 1110' with a specific UNCTAD treaty-file locator.",
+      "query": "\"Article 1110\" Expropriation and Compensation NAFTA Chapter Eleven treaty file",
+      "allowed_domains": [
+        "investmentpolicy.unctad.org"
+      ],
+      "blocked_domains": null,
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "Based on the search results, I found detailed information about Article 1110 on Expropriation and Compensation in NAFTA Chapter Eleven: ## Article 1110: Expropriation and Compensation No Party may directly or indirectly nationalize or expropriate an investment of an investor of another Party in its territory or take a measure tantamount to nationalization or expropriation of such an investment (\"expropriation\"), except: (a) for a public purpose; (b) on a non-discriminatory basis; (c) in accordance with due process of law and Article 1105(1); and (d) on payment of compensation in accordance with paragraphs 2 through 6. ### Compensation Requirements Compensation shall be equivalent to the fair market value of the expropriated investment immediately before the expropriation took place (\"date of expropriation\"), and shall not reflect any change in value occurring because the intended expropriation had become known earlier. Compensation shall be paid without delay and be fully realizable. Compensation is converted into that G7 currency at the market rate of exchange prevailing on that date, and interest had accrued at a commercially reasonable rate for that G7 currency from the date of expropriation. On payment, compensation shall be freely transferable as provided in Article 1109. The treaty document is available from UNCTAD's International Investment Agreements Navigator database, which maintains the official text files for NAFTA and related trade agreements.",
+      "engine_summary_quarantine_note": "TRANSCRIBED VERBATIM AND QUARANTINED. This prose purports to state the content of NAFTA Article 1110. NO BODY WAS RETRIEVED. Nothing in this field is used, relied on, quoted as a source quote, or proposed as a claim anywhere in the 2026-09-20 return. It is recorded here only so that a later reader can see exactly what the analyst declined to use.",
+      "results": [
+        {
+          "title": "11-1 PART FIVE INVESTMENT, SERVICES AND RELATED MATTERS Chapter Eleven",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2413/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "11-1 CHAPTER ELEVEN INVESTMENT Section A: Investment",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2542/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "(b) addresses terminology, symbols, packaging, marking, ...",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2719/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "PART FOUR: INVESTMENT, SERVICES AND RELATED MATTERS CHAPTER 10: INVESTMENT",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/8378/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA (1992) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Mexico | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/country/136/mexico/investor",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "10-1 Chapter Ten Investment Section A: Investment",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2737/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "multilateral agreement on investment draft negotiating text ...",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2813/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "9-1 CHAPTER 9 INVESTMENT Section A : Investment Article 9.1 : Scope 1.",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/7705/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 Chapter Nine - Investment Section A - Definitions Article 9.01: Definitions",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2612/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S3",
+      "purpose": "TASK 1 — test whether www.italaw.com (on ALLOWED_HOSTS) serves NAFTA Article 1110 anywhere in a form a relay 'find' could reach.",
+      "query": "NAFTA Chapter 11 \"Article 1110\" expropriation treaty text",
+      "allowed_domains": [
+        "italaw.com",
+        "www.italaw.com"
+      ],
+      "blocked_domains": null,
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "I've found search results related to NAFTA Chapter 11 Article 1110 on expropriation. Here's what the search reveals about this provision: Article 1110 provides that no government may \"directly or indirectly expropriate or nationalize\" or take \"a measure tantamount to expropriation or nationalization\" except for a \"public purpose,\" on a \"non-discriminatory basis,\" in accordance with \"due process of law and minimum standards of treatment\" and on \"payment of compensation.\" Under Article 1110, an expropriation may either be direct or indirect, and acts constituting an expropriation may occur under a variety of circumstances. The search results primarily contain legal documents from NAFTA Chapter 11 arbitration cases discussing the application and interpretation of Article 1110, rather than the full treaty text itself.",
+      "engine_summary_quarantine_note": "TRANSCRIBED VERBATIM AND QUARANTINED, same basis as S2. NO BODY WAS RETRIEVED. Not used anywhere in the return.",
+      "results": [
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw16352.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9496.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES AND THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw8060_0.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw10824.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE ARBITRATION UNDER CHAPTER 11 OF THE NORTH AMERICAN FREE TRADE AGREEMENT",
+          "url": "https://italaw.com/sites/default/files/case-documents/italaw9114.pdf",
+          "host": "italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Separate Opinion",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/ita0432.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "CONFIDENTIAL Paris 8766501.1",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw1243.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE ARBITRATION UNDER CHAPTER 11 OF THE NORTH AMERICAN FREE TRADE AGREEMENT",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9111_0.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "NORTH AMERICAN FREE TRADE AGREEMENT _______________ TABLE OF CONTENTS Preamble",
+          "url": "https://www.italaw.com/sites/default/files/laws/italaw6187(6).pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Court File No. 01-CV-208141 ONTARIO SUPERIOR COURT OF JUSTICE B E T W E E N:",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/ita0964_0.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S4",
+      "purpose": "TASK 1 — look for a UNCTAD IIA-Mapping rendering of NAFTA's expropriation provision (HTML, i.e. potentially visible prose) as an alternative to a treaty-file download.",
+      "query": "NAFTA 1992 IIA mapping expropriation provision mapped content navigator",
+      "allowed_domains": [
+        "investmentpolicy.unctad.org"
+      ],
+      "blocked_domains": null,
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "results": [
+        {
+          "title": "NAFTA (1992) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "IIA Content Mapping | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/iia-mapping",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA Chapter 11",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2413/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/%20bilateral-investment-treaties/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "IIA Facilitation Mapping | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/iia-mapping/Facilitation",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "USMCA (2018) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/treaties-with-investment-provisions/3841/usmca-2018-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United States of America | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/countries/223/united-states-of-america",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "REFORM PACKAGE FOR THE INTERNATIONAL INVESTMENT REGIME UNCTAD’s REFORM PACKAGE",
+          "url": "https://investmentpolicy.unctad.org/uploaded-files/document/Reform_Package_web_18%20Dec.pdf",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "TC Energy and TransCanada v. USA (II) | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1168/tc-energy-and-transcanada-v-usa-ii-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Canada | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/country/35/canada/investor",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S5",
+      "purpose": "TASK 2 — standing check at the three-ring intersection, unfiltered.",
+      "query": "investment treaty arbitration intellectual property patent trade secret jurisdiction objection 2026 award",
+      "allowed_domains": null,
+      "blocked_domains": null,
+      "result_count": 9,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "results": [
+        {
+          "title": "In Significant Win for International Investors, Investment Treaty Arbitration Award Enforced in Singapore Despite EU Law Objection | Paul, Weiss",
+          "url": "https://www.paulweiss.com/insights/client-memos/in-significant-win-for-international-investors-investment-treaty-arbitration-award-enforced-in-singapore-despite-eu-law-objection",
+          "host": "www.paulweiss.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Awards – Investment Treaty News",
+          "url": "https://www.iisd.org/itn/awards/",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Subject-Matter Jurisdiction Issues in AI-Related Investment Treaty Cases – Daily Jus by Jus Mundi",
+          "url": "https://dailyjus.com/legal-tech/2026/06/subject-matter-jurisdiction-issues-in-ai-related-investment-treaty-cases",
+          "host": "dailyjus.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Biannual Review - Young IFILA Blog",
+          "url": "https://blog.ifila.org/2026/05/28/biannual-review/",
+          "host": "blog.ifila.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Trade Secrets 2026 | Global Practice Guides | Chambers and Partners",
+          "url": "https://practiceguides.chambers.com/practice-guides/trade-secrets-2026",
+          "host": "practiceguides.chambers.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IP Arbitration | International Arbitration | Charles River Associates",
+          "url": "https://www.crai.com/services/international-arbitration/ip-arbitration/",
+          "host": "www.crai.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Impact of International Investment Dispute Arbitration on ...",
+          "url": "https://drpress.org/ojs/index.php/HBEM/article/download/10602/10321/10384",
+          "host": "drpress.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Jurisdiction: assessing the main elements in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S6",
+      "purpose": "TASK 2 — the trade-secret / clinical-trial-data sub-question, scoped to preferred primary and official-secondary hosts.",
+      "query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure",
+      "allowed_domains": [
+        "iisd.org",
+        "www.iisd.org",
+        "italaw.com",
+        "www.italaw.com",
+        "investmentpolicy.unctad.org",
+        "icsid.worldbank.org"
+      ],
+      "blocked_domains": null,
+      "result_count": 9,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "domain_filter_audit": "ALLOWED_DOMAINS DID NOT HOLD ON THIS CALL. 5 of 9 result rows are inside the 6-host allowed set; 4 are outside it (cdn.clinicaltrials.gov x2, image-ppubs.uspto.gov, www.ncbi.nlm.nih.gov). Recorded as an observation about the search instrument, with no mechanism claimed.",
+      "results": [
+        {
+          "title": "IIA Issues Note on Public Health Provisions & ISDS | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/news/hub/1678/20210729-iia-issues-note-on-public-health-provisions-isds",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Special Update on Investor-State Dispute Settlement: Facts and Figures | Publications | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/publications/180/special-update-on-investor-state-dispute-settlement-facts-and-figures",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "5.4.4 Indirect Expropriation (Regulatory Taking) – A Sustainability Toolkit for Trade Negotiators",
+          "url": "https://www.iisd.org/toolkits/sustainability-toolkit-for-trade-negotiators/5-investment-provisions/5-4-safeguarding-policy-space/5-4-4-indirect-expropriation-regulatory-taking/",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Theranova Randomized, Controlled, Trial (RCT) in China",
+          "url": "https://cdn.clinicaltrials.gov/large-docs/91/NCT05309291/Prot_000.pdf",
+          "host": "cdn.clinicaltrials.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "IISD.org 1 Q & A The Risk of ISDS Claims Through National Investment Laws:",
+          "url": "https://www.iisd.org/system/files/2020-09/isds-claims-investment-laws-en.pdf",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study – Investment Treaty News",
+          "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "System and method for healthcare security and interoperability",
+          "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11848080",
+          "host": "image-ppubs.uspto.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "APRIL CAR T Cells (AUTO2) Targeting BCMA and TACI for the Treatment of Multiple Myeloma",
+          "url": "https://cdn.clinicaltrials.gov/large-docs/04/NCT03287804/Prot_000.pdf",
+          "host": "cdn.clinicaltrials.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "Can the accepting foreign clinical data policy improve innovation investment of pharmaceutical firms? Empirical evidence from China",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12343521/",
+          "host": "www.ncbi.nlm.nih.gov",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S7",
+      "purpose": "TASK 2 — Ring 3 formulation: a live, litigated jurisdictional doctrine asserted against an IP-based claim in 2026.",
+      "query": "\"abuse of right\" OR \"treaty shopping\" jurisdiction intellectual property investor-state arbitration 2026 tribunal decision",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com"
+      ],
+      "result_count": 9,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "domain_filter_audit": "blocked_domains held on this call (0 dailyjus.com rows), but the block is UNTESTED: this query is not the query that surfaced that host (S5 was), so a zero here is not evidence the block works.",
+      "results": [
+        {
+          "title": "1 Abuse of Rights in International Investment Arbitration 1. Introduction",
+          "url": "https://arbitrationacademy.org/wp-content/uploads/2025/02/AA-_-Suchit-Reddy-3rd.pdf",
+          "host": "arbitrationacademy.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Resolving Concerns of Treaty Shopping in International Investment Arbitration",
+          "url": "https://jusmundi.com/en/document/publication/en-resolving-concerns-of-treaty-shopping-in-international-investment-arbitration",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Resolving Concerns of Treaty Shopping in International Investment Arbitration",
+          "url": "https://www.researchgate.net/publication/276427121_Resolving_Concerns_of_Treaty_Shopping_in_International_Investment_Arbitration",
+          "host": "www.researchgate.net",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Abuse of Process",
+          "url": "https://jusmundi.com/en/document/publication/en-abuse-of-process",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "TagTime with Alvin Yeo SC – Indirect Investments in Investor-State Dispute Settlement* – American Review of International Arbitration",
+          "url": "https://aria.law.columbia.edu/tagtime-with-alvin-yeo-sc-indirect-investments-in-investor-state-dispute-settlement/",
+          "host": "aria.law.columbia.edu",
+          "retrieved_body": false
+        },
+        {
+          "title": "Accessing Investment Treaty Protection: The Investor’s Perspective - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/accessing-investment-treaty-protection-the-investors-perspective",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Jurisdiction: navigating challenges in investment treaty arbitration - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=d8d9f1fc-9d3d-400b-9fc9-f9edf0761574",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Convergence of WTO Dispute Settlement and Investor-State Arbitration: A Closer Look at Umbrella Clauses | Chicago Journal of International Law",
+          "url": "https://cjil.uchicago.edu/print-archive/convergence-wto-dispute-settlement-and-investor-state-arbitration-closer-look",
+          "host": "cjil.uchicago.edu",
+          "retrieved_body": false
+        }
+      ]
+    }
+  ]
+}

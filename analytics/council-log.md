@@ -591,6 +591,160 @@ Each council session is recorded here, newest first: the weekly reconvene (per-m
 **Next steps.** The enumeration gap may be ill-posed — do not fire another enumeration row until the field's type (controlled vocabulary or free text) is addressed.; The `subject` substring is absent from the visible prose of five ICSID byte-streams, each same-stream controlled — a fact about five byte-streams, never about ICSID.; **Every URL expected to return a null gets a same-stream companion control, without exception** — learned three times today at a cost of seven wasted rows and two extra batches, and now documented in `analytics/fetch-requests/README.md`.; **Nothing contested goes into a pre-registration** — its authority attaches to every sentence and it may never be edited (taxonomy 34).; **A dedup screen is discharged by quoting what it returned, never by characterising it** (taxonomy 39, adopted today).; The 2026-08-25 asymmetric licence is unchanged and was re-verified — do not re-open it as an unknown.; Resolve any `insights.jsonl` citation before relying on it: 17 of 28 cited run ids do not resolve.
 **Escalations.** The 28 July 2025 award is still published, still readable by a person in ten minutes, and is still the one action that needs the operator.; **The question this council has worked for three weeks may be ill-posed at its root** — nothing in this repository establishes that ICSID's `Subject of Dispute` is a controlled vocabulary, and the 2026-08-30 grading saying so has stood unheeded for eighteen days; the cheapest resolution is a person reading ICSID's own documentation once.; **The ledger's citations are failing at scale and the data are not** — 17 of 28 distinct run ids resolve to no committed artefact and a cited blob is *not a valid object name*; no finding is impugned, but an unresolvable citation is a line a later seat cannot check.; **THE STRANDED-TAXONOMY ESCALATION IS RETIRED — the operator's cadence fix worked**, `agents/integrity-officer.md` is current at 38, and only entry 39 adopted today is pending, a one-day lag rather than an eight-day backlog.; The search track is unauditable for the fourth consecutive session and **both seats now ask for** `analytics/search-results/<date>.json`.; `scripts/check_marks.py` checked nothing on this record again — every carrying-span mark was checked by hand.; `main`'s test suite has been red since 2026-09-14; the archive holds 17 runs / 499 screened / 12 `per_source` against test constants of 16 / 492 / 11, measured from the repository by the chair — the fix is in `tests/`, outside this session's merge scope.
 
+## 2026-09-18 — daily council (record: `analytics/daily-research/2026-09-18.md`)
+
+**ENTERED 2026-09-20 AS A REPAIR.** This entry and the 2026-09-19 entry below were absent from this
+log until today. Both sessions ran and both records are committed on `main`; only the index of them
+was missed. The gap was found by the 2026-09-20 chair at session open, is reported at
+`analytics/daily-research/2026-09-20.md` §1.7(a), and is entered here as a repair rather than written
+in as though it had always been present.
+
+**Status.** Two real subagent seats convened (`research-analyst`, `integrity-officer`), both returned,
+neither performed. Fetch dead on both channels at session open, probed on neutral controls — no state
+change; the committed relay carried the day's retrieval. Digest of record **unchanged**:
+`Digest 2026-09-14: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads)`. **No
+batch was fired at session open, and that was the day's first decision.** Seven blocking objections,
+all SUSTAINED, all against the analyst, every one sustained by the analyst against itself after
+independent verification and none contested. All thirteen non-blocking sustained, with one partial
+disposition. Taxonomy entry **40** adopted, and extension **34a** against both the chair and the
+analyst.
+**Members.** chairman: agenda, the decision not to fire, rulings on seven blocking and thirteen
+non-blocking objections, taxonomy 40 and extension 34a, close-out; research-analyst: the field-type
+question, the population arithmetic, seven sustained blocking objections and substitute forms for
+each; integrity-officer: seven blocking and thirteen non-blocking objections.
+**Next steps.** The field-type question is answered well enough to stop working on it — `Subject of
+Dispute` reuses terms across cases (`Mining concession` on ARB/24/26 and ARB/26/36, codepoint-identical
+across three byte-streams) and its value-set has **at least sixteen members**, and everything beyond
+those two facts is model-dependent.; **`K ≈ 130` is not a bound and may not be cited as one** — only
+`K ≥ 16` binds.; The 2026-08-29 gap-bridge's economic-sector limb cannot stand as a statement about
+the case-detail field on either branch of its dilemma; reopening it is the operator's.; **A referent
+clause's unit is part of the clause** — taxonomy 40: print the population from the pass that produced
+the hits, in the same output, adjacent to them.; **An absence screen licenses a query and never an
+identification** — model knowledge returning through a query string is the shape to watch for.;
+**Nothing contested, and no "decisive", goes into a pre-registration** (extension 34a).
+**Escalations.** The 2026-08-25 asymmetric licence is unchanged, but the registration finding raises a
+risk to its *"never the claimant's pleading"* limb that nobody can currently answer.
+
+## 2026-09-19 — daily council (record: `analytics/daily-research/2026-09-19.md`)
+
+**ENTERED 2026-09-20 AS A REPAIR** — see the note on the 2026-09-18 entry above.
+
+**Status.** Two real subagent seats convened (`research-analyst`, `integrity-officer`), both returned
+and the analyst was reconvened to answer the objections; neither performed. Fetch dead on both
+channels at session open, probed on neutral controls — no state change. One relay batch, four rows,
+both control brackets passed, non-void. Digest of record **unchanged**: `Digest 2026-09-14: 7
+candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads)`. **The theme is quiet for a
+ninth consecutive session** and the day's honest movement is **subtractive**. **Ten blocking
+objections, all SUSTAINED, none overruled** — six to the analyst, four to the chair. The European
+Ring-2 object was **demoted to a standing watch at zero search budget**, its status recorded as
+**UNKNOWN rather than foreclosed**, after two of its three grounds were struck as unsourced model
+knowledge. The Grosse Ruse-Khan ITN slug was **closed as to the body** on a clean negative — eleven
+rows, four sessions, two spellings, every one 403 — which also corrects a falsified reason string in
+`specs/iisd_itn.yaml:24`. **The day's best new object is a named, checkable hole in this project's map
+of its own seed treaty:** whether **NAFTA Article 1110(7)** exists and carves compulsory licensing out
+of the expropriation article — worked in one methodology paragraph, three operator-verified ledger
+claims and two notes, and never recorded.
+**Members.** chairman: agenda, one pre-registered batch fired and graded, rulings on ten blocking and
+eleven non-blocking objections, close-out — **four objections sustained against himself, both defects
+in a committed un-editable artefact**; research-analyst: four tasks, six sustained blocking objections
+conceded without contest, substitute forms written in full for every one, `candidate_claims` [13]
+withdrawn entirely; integrity-officer: ten blocking and eleven non-blocking objections, roughly thirty
+reported screens re-run and twenty more that no seat reported, two taxonomy patterns proposed by name
+with no number taken.
+- research-analyst: the strongest method and the weakest discipline in one memo — the omission-set
+  technique is a genuine advance, and two of the six blocking objections are `0918-B6` relocated,
+  model knowledge entering as evidence twenty-four hours after being sustained on precisely that.
+- integrity-officer: the best note it has filed; ten objections, every one verified against the
+  artefact by the chair, every one correct, four of them against the chair.
+- chairman: two defects in a committed artefact, both in the un-editable request note, one breaching a
+  rule adopted the day before.
+**Next steps.** EU Ring-2 demoted to a standing watch at **zero** search budget — the surviving ground
+is that **there is no channel**, and its ISDS exposure is **UNKNOWN, not foreclosed**.; Carry the NAFTA
+1110(7) hole with its corrected scope and the `sice.oas.org` locator; the 19 occurrences reduce to one
+methodology paragraph double-counted through its HTML render, three ledger claims and two notes.; **Do
+not fire a twelfth row at the Grosse Ruse-Khan slug** — closed as to the body only.; **A screen
+licenses a question and nothing else** — not an identification, not a co-reference, not a direction.;
+**An enumeration built for one proposition is evidence for others, and nothing in any seat's procedure
+re-reads it** ("own screen unread as evidence for a second proposition", proposed by name, no number
+taken).; **An occurrence count offered as corroboration must exclude loci whose content is a screen
+record for the same term, and say how many were excluded** ("zero-screen counted as a carrier",
+adopted as binding practice, unnumbered).
+**Escalations.** The 28 July 2025 award is still published and still readable by a person in ten
+minutes — ninth day, unchanged.; **Two minutes of NAFTA reading closes a hole in the seed treaty's own
+expropriation article**, and the project already holds a locator for the chapter.; One sentence of EU
+reading closes or revives the whole Ring-2 thread.; **The search track is unauditable by our own
+machinery for the sixth consecutive session** and yesterday it cost a measurable thing — the ask is a
+committed `analytics/search-results/<date>.json`.; `scripts/check_marks.py` checked nothing on this
+record for the third consecutive session and then printed a green line.; `main` has been red since
+2026-09-14 and the fix is in `tests/`, outside session merge scope.; `specs/iisd_itn.yaml:24` carries
+a falsified reason and it is a one-string fix.; The vault taxonomy table lags by four.; Three pull
+requests have sat open between six and twenty-two days.
+
+## 2026-09-20 — daily council (record: `analytics/daily-research/2026-09-20.md`)
+
+**Status.** Two real subagent seats convened with the Agent tool against their committed
+`.claude/agents/` definitions (`research-analyst`, `integrity-officer`); both returned and the analyst
+was reconvened to answer the objections; neither was performed; **no spawn failed and no seat is
+recorded as PROCEDURAL FAILURE.** Rule 0 departure declared for the eighteenth consecutive session.
+Fetch dead on both channels at session open, probed on **two** neutral controls — **no state change**
+— and the committed relay carried the day's retrieval, so **nothing was stranded**. Digest of record
+**unchanged**: `Digest 2026-09-14: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list
+leads)`; `weekly.yml` is Mondays 13:00 UTC and the next collection is due 2026-09-21, so the archive
+is not late. **One batch, 8 requested rows plus the relay's prepended control (run 35507965528): both
+control brackets `ok`/200 on an identical `sha256` with `find_matched: true` on the closing bracket,
+`control_ok: true`, `void: false` — and ALL SEVEN SUBSTANTIVE ROWS REFUSED AT 403.** Pre-registered
+branch 3 selected: **instrument, not resource; nothing about NAFTA is licensed.** The analyst's
+pessimistic forecast was correct. **The theme is quiet at the intersection for a TENTH consecutive
+session.** **The day's build is the first auditable record of this council's own search track** —
+`analytics/search-results/2026-09-20.json`, written by hand inside the session's merge scope rather
+than waiting six more days for the `scripts/` change, 7 calls and 67 rows with engine prose
+quarantined — **and it caught two defects on day one, one of them against its own author.**
+**Escalation 4 is closed as an ask of the operator.**
+**Members.** chairman: agenda, channel probes, two defects found before convening anyone, one batch
+fired and graded, rulings on seven blocking and nine non-blocking objections, taxonomy 41 and
+extension 40a adopted, a gap slug opened on the analyst's own trigger, close-out — **two blocking
+objections sustained against himself, both discharged by express withdrawal**; research-analyst: five
+tasks, a correct pessimistic forecast, the search artefact, five sustained blocking objections
+conceded without contest with substitute forms for every banked object, and two express withdrawals
+from its own pre-registration; integrity-officer: seven blocking and nine non-blocking objections, ten
+"tried to break, could not" entries, five near-misses reported against itself, taxonomy 41 proposed
+off a heading it opened and verified.
+- research-analyst: the best artefact this council has built and five blocking objections of which
+  **four are recurrences inside forty-eight hours**. Its own diagnosis is the one to carry: *"The
+  marks held every time and the prose failed every time."*
+- integrity-officer: the strongest note this council has had, and the second consecutive day it caught
+  its chair breaking a rule he had adopted against himself. Every one of its sixteen objections was
+  verified by the chair against the artefact and every one was correct.
+- chairman: two blocking and four non-blocking sustained against him — a 34a licence frozen in a
+  committed un-editable pre-registration, and an unsourced premise about what two allowlisted hosts
+  serve, written into the paragraph instructing another seat not to do that.
+**Next steps.** The NAFTA channel question is open and the slug
+`nafta-chapter-11-allowlisted-host-visible-prose-untested` is opened; closure condition is one `ok`
+row with a non-empty excerpt at any allowlisted locator.; **Do not re-fire at
+`investmentpolicy.unctad.org` as a batch** — a six-week 403 regime, indifferent to path across all
+five shapes tried; a single `find:""` diagnostic if ever re-tried.; If any UNCTAD row is fired again,
+fire `treaty-files/2412`, not `2542` — and carry the caveat that **adjacency in a database is not
+identity**.; **A diagnostic row's promised yield is stated per OUTCOME CLASS, never per document** — a
+refusal has no body to type.; **Every restatement of a population figure carries its commit**: 69
+files at `8b05d3c`, 70 at `798c0f7`.; `blocked_domains: ["dailyjus.com","unis.unvienna.org"]` on every
+call, mechanically — compliance today was **0 of 7**.; Taxonomy 41 (INVENTED LIMB) and extension 40a
+(UNIT-SWAPPED SCREEN RECORD) bind from today.; **The `0919-N2` render double-count is UNCHANGED and
+today's screen does not retire it.**
+**Escalations.** The 28 July 2025 award is still published and still readable by a person in ten
+minutes — tenth day, unchanged.; **Escalation 2 is rewritten rather than repeated**: the operator is
+now pointed at an https locator on an allowlisted host, engine-titled "NAFTA Chapter 11", with every
+caveat attached and with `treaty-files/2412` as a sibling worth a glance — the question is still
+whether Article 1110 carries an IP-specific limitation at a paragraph (7).; One sentence of EU reading
+still closes or revives the Ring-2 thread.; **Escalation 4 is DISCHARGED on the council's side and
+closed as an ask** — the artefact was written by hand and needs nothing from the operator.;
+`scripts/check_marks.py` checked nothing for the fourth consecutive session and printed a green line —
+fifth day of that escalation.; `main` red since 2026-09-14, re-measured across **all five** constants,
+single cause, fix in `tests/`.; `specs/iisd_itn.yaml:24` still carries a falsified reason.; The vault
+taxonomy needs entry 41 and extension 40a filed, and carries one pattern proposed by name.; Three pull
+requests have sat open between seven and twenty-three days.; **The council log had silently missed two
+consecutive sessions and was repaired today** — the exact failure mode the operator rebuilt this
+routine to prevent.
+
 <!-- graph:auto start -->
 Map: [[Evidence Ledger]]
 <!-- graph:auto end -->

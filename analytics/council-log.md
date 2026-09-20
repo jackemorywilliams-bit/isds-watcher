@@ -680,6 +680,71 @@ record for the third consecutive session and then printed a green line.; `main` 
 a falsified reason and it is a one-string fix.; The vault taxonomy table lags by four.; Three pull
 requests have sat open between six and twenty-two days.
 
+## 2026-09-20 — daily council (record: `analytics/daily-research/2026-09-20.md`)
+
+**Status.** Two real subagent seats convened with the Agent tool against their committed
+`.claude/agents/` definitions (`research-analyst`, `integrity-officer`); both returned and the analyst
+was reconvened to answer the objections; neither was performed; **no spawn failed and no seat is
+recorded as PROCEDURAL FAILURE.** Rule 0 departure declared for the eighteenth consecutive session.
+Fetch dead on both channels at session open, probed on **two** neutral controls — **no state change**
+— and the committed relay carried the day's retrieval, so **nothing was stranded**. Digest of record
+**unchanged**: `Digest 2026-09-14: 7 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list
+leads)`; `weekly.yml` is Mondays 13:00 UTC and the next collection is due 2026-09-21, so the archive
+is not late. **One batch, 8 requested rows plus the relay's prepended control (run 35507965528): both
+control brackets `ok`/200 on an identical `sha256` with `find_matched: true` on the closing bracket,
+`control_ok: true`, `void: false` — and ALL SEVEN SUBSTANTIVE ROWS REFUSED AT 403.** Pre-registered
+branch 3 selected: **instrument, not resource; nothing about NAFTA is licensed.** The analyst's
+pessimistic forecast was correct. **The theme is quiet at the intersection for a TENTH consecutive
+session.** **The day's build is the first auditable record of this council's own search track** —
+`analytics/search-results/2026-09-20.json`, written by hand inside the session's merge scope rather
+than waiting six more days for the `scripts/` change, 7 calls and 67 rows with engine prose
+quarantined — **and it caught two defects on day one, one of them against its own author.**
+**Escalation 4 is closed as an ask of the operator.**
+**Members.** chairman: agenda, channel probes, two defects found before convening anyone, one batch
+fired and graded, rulings on seven blocking and nine non-blocking objections, taxonomy 41 and
+extension 40a adopted, a gap slug opened on the analyst's own trigger, close-out — **two blocking
+objections sustained against himself, both discharged by express withdrawal**; research-analyst: five
+tasks, a correct pessimistic forecast, the search artefact, five sustained blocking objections
+conceded without contest with substitute forms for every banked object, and two express withdrawals
+from its own pre-registration; integrity-officer: seven blocking and nine non-blocking objections, ten
+"tried to break, could not" entries, five near-misses reported against itself, taxonomy 41 proposed
+off a heading it opened and verified.
+- research-analyst: the best artefact this council has built and five blocking objections of which
+  **four are recurrences inside forty-eight hours**. Its own diagnosis is the one to carry: *"The
+  marks held every time and the prose failed every time."*
+- integrity-officer: the strongest note this council has had, and the second consecutive day it caught
+  its chair breaking a rule he had adopted against himself. Every one of its sixteen objections was
+  verified by the chair against the artefact and every one was correct.
+- chairman: two blocking and four non-blocking sustained against him — a 34a licence frozen in a
+  committed un-editable pre-registration, and an unsourced premise about what two allowlisted hosts
+  serve, written into the paragraph instructing another seat not to do that.
+**Next steps.** The NAFTA channel question is open and the slug
+`nafta-chapter-11-allowlisted-host-visible-prose-untested` is opened; closure condition is one `ok`
+row with a non-empty excerpt at any allowlisted locator.; **Do not re-fire at
+`investmentpolicy.unctad.org` as a batch** — a six-week 403 regime, indifferent to path across all
+five shapes tried; a single `find:""` diagnostic if ever re-tried.; If any UNCTAD row is fired again,
+fire `treaty-files/2412`, not `2542` — and carry the caveat that **adjacency in a database is not
+identity**.; **A diagnostic row's promised yield is stated per OUTCOME CLASS, never per document** — a
+refusal has no body to type.; **Every restatement of a population figure carries its commit**: 69
+files at `8b05d3c`, 70 at `798c0f7`.; `blocked_domains: ["dailyjus.com","unis.unvienna.org"]` on every
+call, mechanically — compliance today was **0 of 7**.; Taxonomy 41 (INVENTED LIMB) and extension 40a
+(UNIT-SWAPPED SCREEN RECORD) bind from today.; **The `0919-N2` render double-count is UNCHANGED and
+today's screen does not retire it.**
+**Escalations.** The 28 July 2025 award is still published and still readable by a person in ten
+minutes — tenth day, unchanged.; **Escalation 2 is rewritten rather than repeated**: the operator is
+now pointed at an https locator on an allowlisted host, engine-titled "NAFTA Chapter 11", with every
+caveat attached and with `treaty-files/2412` as a sibling worth a glance — the question is still
+whether Article 1110 carries an IP-specific limitation at a paragraph (7).; One sentence of EU reading
+still closes or revives the Ring-2 thread.; **Escalation 4 is DISCHARGED on the council's side and
+closed as an ask** — the artefact was written by hand and needs nothing from the operator.;
+`scripts/check_marks.py` checked nothing for the fourth consecutive session and printed a green line —
+fifth day of that escalation.; `main` red since 2026-09-14, re-measured across **all five** constants,
+single cause, fix in `tests/`.; `specs/iisd_itn.yaml:24` still carries a falsified reason.; The vault
+taxonomy needs entry 41 and extension 40a filed, and carries one pattern proposed by name.; Three pull
+requests have sat open between seven and twenty-three days.; **The council log had silently missed two
+consecutive sessions and was repaired today** — the exact failure mode the operator rebuilt this
+routine to prevent.
+
 <!-- graph:auto start -->
 Map: [[Evidence Ledger]]
 <!-- graph:auto end -->

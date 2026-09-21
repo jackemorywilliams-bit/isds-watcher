@@ -39,6 +39,11 @@
         "at": "2026-09-14T18:19:25.423756+00:00",
         "outcome": "ok",
         "run": "2026-09-14"
+      },
+      "http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=6ab176f270534cf7b9be43e8078a0601&url=https%3a%2f%2fwww.china.org.cn%2f2026-09%2f21%2fcontent_118706354.shtml&c=5855986226689058668&mkt=en-us": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       }
     },
     "gdelt": {
@@ -643,6 +648,11 @@
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
         "run": "2026-09-14"
+      },
+      "https://www.tandfonline.com/doi/full/10.1080/10383441.2026.2732469": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       }
     },
     "google_alerts": {
@@ -779,6 +789,11 @@
         "outcome": "unreadable",
         "run": "2026-09-14"
       },
+      "https://www.iareporter.com/articles/analysis-uncitral-tribunal-in-rutas-de-lima-v-municipality-of-lima-3-partially-upholds-claimants-claims-related-to-highway-concession-terminated-on-public-interest-grounds/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/arbitration-dispute-between-qatars-sovereign-wealth-fund-and-former-indian-ed-tech-guru-sees-new-developments/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -879,6 +894,11 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.iareporter.com/articles/ecuador-round-up-an-update-on-arbitration-related-developments-involving-the-state/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/electricity-distribution-investor-claims-victory-in-icsid-annulment-proceedings/": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
@@ -942,6 +962,16 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/icc-emergency-arbitrator-reportedly-orders-albania-to-refrain-from-taking-steps-that-could-aggravate-vlora-airport-concession-dispute-but-parties-provide-diverging-accounts-of-emergency-arbitration/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
+      "https://www.iareporter.com/articles/icc-tribunal-rejects-multi-million-usd-claim-against-nigeria-stemming-from-settlement-of-previous-arbitration-but-states-counterclaim-suffers-same-fate/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/icc-tribunal-renders-award-in-dispute-between-airport-operator-and-peruvian-ministry/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
@@ -949,6 +979,11 @@
       "https://www.iareporter.com/articles/icsid-ad-hoc-committee-lifts-stay-of-enforcement-in-webuild-v-argentina-3/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/icsid-af-tribunal-renders-award-in-gas-compression-plant-arbitration-against-venezuela/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.iareporter.com/articles/icsid-launches-singapore-office/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -959,6 +994,11 @@
         "at": "2026-08-17T21:15:12.674375+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.iareporter.com/articles/icsid-renewable-energy-arbitration-against-romania-concludes-with-an-award/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.iareporter.com/articles/icsid-tribunal-allows-non-disputing-party-to-address-environmental-and-human-rights-dimensions-of-coal-mining-dispute-through-written-submissions-but-rejects-requests-for-access-to-documents-and-hear/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
@@ -1100,6 +1140,16 @@
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/paris-first-instance-court-confirms-that-libyas-national-oil-corporation-qualifies-as-an-emanation-of-the-state-for-exequatur-purposes/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
+      "https://www.iareporter.com/articles/paulsson-steps-down-from-icsid-tribunal-hearing-port-concession-arbitration-between-swiss-investor-and-algeria/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/peru-satisfies-ic-power-and-kenon-holdings-200-million-usd-icsid-award/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -1201,6 +1251,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/spanish-company-claims-victory-in-duo-of-arbitrations-over-accra-desalination-plant/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/state-controlled-egyptian-fertilizer-producer-settles-disputes-with-french-trading-partner-and-three-other-companies/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -1299,6 +1354,11 @@
         "outcome": "unreadable",
         "run": "2026-09-14"
       },
+      "https://www.iareporter.com/articles/us-appeals-court-reverses-district-courts-dismissal-of-laos-bid-to-enforce-arbitral-awards-against-alleged-alter-egos-of-award-debtors/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.iareporter.com/articles/us-appeals-court-splits-on-enforcement-of-100-million-usd-uncitral-award-against-venezuela-dissenter-opines-that-granting-enforcement-to-award-obtained-when-state-was-represented-by-maduro-government/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1347,6 +1407,11 @@
       "https://www.iareporter.com/articles/usa-declines-to-renew-usmca-triggering-annual-review-until-termination-scheduled-for-2036/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/veijo-heiskanen-tapped-to-chair-lithium-mining-arbitration-against-nigeria/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.iareporter.com/articles/venezuela-and-pdvsa-reportedly-at-risk-of-arbitration-claims-stemming-from-alleged-transfer-of-oil-field-operations-to-us-company/": {
         "at": "2026-09-07T23:25:56.267336+00:00",
@@ -1615,6 +1680,11 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/1057": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.italaw.com/cases/10666": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1623,6 +1693,11 @@
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
         "run": "2026-09-14"
+      },
+      "https://www.italaw.com/cases/1175": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.italaw.com/cases/118": {
         "at": "2026-08-17T23:14:25.434938+00:00",
@@ -1701,10 +1776,20 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/3300": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.italaw.com/cases/3338": {
         "at": "2026-08-17T23:14:25.434938+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.italaw.com/cases/35": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.italaw.com/cases/356": {
         "at": "2026-08-17T23:14:25.434938+00:00",
@@ -1765,6 +1850,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },
+      "https://www.italaw.com/cases/621": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.italaw.com/cases/632": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
@@ -1820,6 +1910,11 @@
         "outcome": "ok",
         "run": "2026-08-17"
       },
+      "https://www.italaw.com/cases/961": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
+      },
       "https://www.italaw.com/cases/9736": {
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
@@ -1836,6 +1931,11 @@
       "https://www.italaw.com/cases/9965": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/documents/1088": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://www.italaw.com/cases/documents/826": {
         "at": "2026-09-14T13:57:16.666992+00:00",
@@ -1898,6 +1998,11 @@
       "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2025-45-arbitration-pursuant-to-the-asylum-partnership-agreement-the-republic-of-rwanda-v-the-united-kingdom-of-great-britain-and-northern-ireland-3/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2026-35-conciliation-between-the-kingdom-of-cambodia-and-the-kingdom-of-thailand-2/": {
+        "at": "2026-09-21T18:26:17.549906+00:00",
+        "outcome": "ok",
+        "run": "2026-09-21"
       },
       "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2026-35-conciliation-between-the-kingdom-of-cambodia-and-the-kingdom-of-thailand/": {
         "at": "2026-09-14T13:57:16.666992+00:00",

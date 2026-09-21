@@ -1,53 +1,53 @@
 {
   "sources": {
     "bing_news": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     },
     "gdelt": {
       "last_nonzero": "2026-09-07",
-      "last_run": "2026-09-14",
-      "zero_streak": 4
+      "last_run": "2026-09-21",
+      "zero_streak": 5
     },
     "gmail_scholar": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     },
     "google_alerts": {
       "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
-      "zero_streak": 0
+      "last_run": "2026-09-21",
+      "zero_streak": 1
     },
     "iareporter_headlines": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     },
     "icsid": {
       "last_nonzero": "2026-08-31",
-      "last_run": "2026-09-14",
-      "zero_streak": 5
+      "last_run": "2026-09-21",
+      "zero_streak": 6
     },
     "iisd_itn": {
       "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
-      "zero_streak": 0
+      "last_run": "2026-09-21",
+      "zero_streak": 1
     },
     "italaw": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     },
     "pca_press": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     },
     "unctad_isds": {
-      "last_nonzero": "2026-09-14",
-      "last_run": "2026-09-14",
+      "last_nonzero": "2026-09-21",
+      "last_run": "2026-09-21",
       "zero_streak": 0
     }
   }

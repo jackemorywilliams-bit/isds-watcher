@@ -1,18 +1,1 @@
-{
-  "gmail_scholar": {
-    "https://www.tandfonline.com/doi/full/10.1080/10383441.2026.2732469": {
-      "attempts": 0,
-      "first_deferred": "2026-09-18T11:36:08.920906+00:00",
-      "intake": {
-        "at": "2026-09-18T11:36:08.920906+00:00",
-        "by": "scholar-intake",
-        "window_days": 3
-      },
-      "last_outcome": "intake",
-      "published": "2026-09-17T12:02:17+00:00",
-      "summary": "L Nottage\u00a0- Griffith Law Review, 2026 \u2026 Donald McRae (nominated by Australia, as in the Philip Morris Asia arbitration), William Kirtley (nominated by Zeph) and Prof Gabrielle Kaufmann-Kohler (presiding, and interestingly appointed by claimant Philip Morris Asia in that earlier arbitration\u00a0\u2026",
-      "title": "Evolving antipodean, Asian and European ambivalence around ISDS arbitration: a compromise way forward?",
-      "url": "https://www.tandfonline.com/doi/full/10.1080/10383441.2026.2732469"
-    }
-  }
-}
+{}

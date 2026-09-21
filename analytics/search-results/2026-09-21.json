@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-21",
+  "seat": "research-analyst",
+  "instrument": "WebSearch (the only retrieval instrument native to this session; curl egress and the fetch service are both dead, probed on neutral controls at session open)",
+  "schema_note": "PRE-FILED SKELETON. Written by the CHAIRMAN before the analyst was convened and before any call was made, per the 2026-09-20 close-out §6.4. The fields below are named and left empty ON PURPOSE: filing this artefact AFTER the calls on 2026-09-20 recorded three defects (0920-B6, 0920-N5, half of 0920-B5) that a pre-filed template would have PREVENTED. An empty blocked_domains is visible before the call is made; an 'independence' field cannot be filled with 'three independent queries' when the allowed_domains values are printed above it; a 'propositions_borne_on' field forces the second read. The analyst fills one block per call, in order, and does not edit a block after the call returns.",
+  "retrieved_body_note": "A search engine's title and snippet are the ENGINE's, not the document's. Nothing in this file is a retrieved body. retrieved_body is false on every row and no row may be quoted as a source text.",
+  "mandatory_blocked_domains": ["dailyjus.com", "unis.unvienna.org"],
+  "mandatory_blocked_domains_note": "Zero-budget hosts under standing operator prohibition. These go on EVERY call, mechanically. Compliance on 2026-09-20 was 0 of 7; three prior sessions managed 100%.",
+  "call_count": null,
+  "result_row_count": null,
+  "calls": [
+    {
+      "call_id": "S1",
+      "purpose": "",
+      "propositions_borne_on": [],
+      "query": "",
+      "allowed_domains": null,
+      "blocked_domains": ["dailyjus.com", "unis.unvienna.org"],
+      "independence": "",
+      "result_count": null,
+      "engine_summary_present": null,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "results": []
+    }
+  ]
+}

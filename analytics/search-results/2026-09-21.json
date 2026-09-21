@@ -1,0 +1,725 @@
+{
+  "date": "2026-09-21",
+  "seat": "research-analyst",
+  "instrument": "WebSearch (the only retrieval instrument native to this session; curl egress and the fetch service are both dead, probed on neutral controls at session open)",
+  "schema_note": "PRE-FILED SKELETON written by the CHAIRMAN before the analyst was convened and before any call was made, per the 2026-09-20 close-out 6.4. The analyst filled one block per call, in order, as the calls returned, and edited no block after its call returned. Blocks S1-S6 are the six budgeted searches; block S0 is an invocation that returned a tool error and zero rows, recorded in full rather than dropped.",
+  "retrieved_body_note": "A search engine's title and snippet are the ENGINE's, not the document's. Nothing in this file is a retrieved body. retrieved_body is false on every row and no row may be quoted as a source text.",
+  "mandatory_blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org"
+  ],
+  "mandatory_blocked_domains_note": "Zero-budget hosts under standing operator prohibition. The chairman required these on EVERY call, mechanically. SEE parameter_conflict: the tool makes that impossible on any call that also uses allowed_domains, which is every call in this file.",
+  "parameter_conflict": "PARAMETER CONFLICT DISCOVERED AT SESSION OPEN AND RECORDED BEFORE ANY RESULT ROW WAS READ. WebSearch REFUSES allowed_domains and blocked_domains in the same request: the literal error returned was 'Error: Cannot specify both allowed_domains and blocked_domains in the same request'. The chairman's brief required BOTH on every call. They cannot both be passed. THE RESOLUTION THE ANALYST ADOPTED, STATED SO A LATER SEAT MAY RULE AGAINST IT: on every call the analyst passed a single-host or small allowed_domains list that contains NEITHER prohibited host, which excludes them by construction rather than by parameter, and the analyst then SCREENED all 90 returned rows for both prohibited hosts and reports the count (0). THE RESIDUAL RISK IS NAMED AND NOT WAVED AWAY: analytics/insights.jsonl:198 (2026-09-20) records that allowed_domains DID NOT constrain one multi-host result set, so exclusion-by-construction is not a guarantee, which is why the row screen is reported and not merely promised.",
+  "allowed_domains_suffix_matching": "OBSERVED THIS SESSION, AND IT IS A FACT ABOUT THE PARAMETER AND NOT ABOUT ANY RESOURCE: allowed_domains admits SUBDOMAINS of the value passed. Call S1 passed exactly ['unctad.org'] and 4 of 10 returned rows are at investmentpolicy.unctad.org, a different host. Call S3 passed exactly ['italaw.com'] and 10 of 10 returned rows are at www.italaw.com. Call S4 passed 'pca-cpa.org' and returned one row at files.pca-cpa.org. CONSEQUENCE THAT MATTERS TO THIS PROJECT: files.pca-cpa.org is NOT on scripts/fetch_relay.py ALLOWED_HOSTS while pca-cpa.org is, so a search restricted to an allowlisted host can hand back a locator the relay may not fetch. THIS DOES NOT RETIRE THE 2026-09-20 LEAK FINDING at analytics/insights.jsonl:198 and that finding is UNCHANGED: the four out-of-set rows recorded there (cdn.clinicaltrials.gov x2, image-ppubs.uspto.gov, www.ncbi.nlm.nih.gov) are not subdomains of any value in that call's list, so suffix-matching does not explain them.",
+  "prohibited_host_row_screen": "Screened all 90 result rows across S1-S6 for the two prohibited hosts. dailyjus.com: 0 rows. unis.unvienna.org: 0 rows. Screen run 2026-09-21 by the analyst over this file's own rows.",
+  "out_of_allowlist_row_screen": "Screened all 90 rows against scripts/fetch_relay.py ALLOWED_HOSTS as read at commit 256cb6e. 89 rows are at hosts in the set; ONE is not - https://files.pca-cpa.org/pcadocs/... (S4 result 7). That row is therefore not relay-fetchable and no batch row was proposed for it.",
+  "host_tally": {
+    "digitallibrary.un.org": 40,
+    "www.italaw.com": 30,
+    "icsid.worldbank.org": 9,
+    "unctad.org": 6,
+    "investmentpolicy.unctad.org": 4,
+    "files.pca-cpa.org": 1
+  },
+  "call_count": 7,
+  "searches_budgeted": 6,
+  "searches_returning_rows": 6,
+  "result_row_count": 90,
+  "calls": [
+    {
+      "call_id": "S0",
+      "purpose": "First attempt at call S1, made exactly as the chairman's brief directed: allowed_domains AND blocked_domains together.",
+      "propositions_borne_on": [
+        "Whether the chairman's two mandatory search parameters can both be honoured on one call."
+      ],
+      "query": "NAFTA Chapter Eleven Article 1110 expropriation treaty text",
+      "allowed_domains": [
+        "www.italaw.com",
+        "italaw.com"
+      ],
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "N/A - no result set was returned.",
+      "result_count": 0,
+      "engine_summary_present": false,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "outcome": "TOOL ERROR, NO ROWS RETURNED",
+      "error_verbatim": "Error: Cannot specify both allowed_domains and blocked_domains in the same request",
+      "budget_treatment": "The analyst counts this as an invocation made but NOT as one of the six searches the chairman budgeted, because it returned zero rows. The choice is declared here so the integrity officer may rule against it; if it is counted, the session used 7 of 6 and the analyst accepts that finding.",
+      "results": []
+    },
+    {
+      "call_id": "S1",
+      "purpose": "Test whether the bare host unctad.org - which this relay has NEVER contacted, zero rows ever (0920-B7) - carries a NAFTA Chapter Eleven locator in a non-PDF shape.",
+      "propositions_borne_on": [
+        "An allowlisted host other than investmentpolicy.unctad.org serves NAFTA Chapter Eleven.",
+        "unctad.org and investmentpolicy.unctad.org are different hosts (scripts/fetch_relay.py:53-54)."
+      ],
+      "query": "UNCTAD North American Free Trade Agreement NAFTA investment chapter eleven full text",
+      "allowed_domains": [
+        "unctad.org"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration. This call also returned 4 rows at investmentpolicy.unctad.org, which is the suffix-matching observation recorded at the head of this file.",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE. Engine prose asserting that NAFTA's full text and investment chapter are available through UNCTAD's IIA Navigator. No body was retrieved by this session; the assertion is the engine's and is not evidence of what is served at any locator.",
+      "results": [
+        {
+          "title": "11-1 PART FIVE INVESTMENT, SERVICES AND RELATED MATTERS Chapter Eleven",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2413/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "11-1 CHAPTER ELEVEN INVESTMENT Section A: Investment",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2542/download",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA (1992) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT INVESTOR-STATE DISPUTES",
+          "url": "https://unctad.org/system/files/official-document/iteiit20054_en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNCTAD/ITE/IIT/2005/10 UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT",
+          "url": "https://unctad.org/system/files/official-document/iteiit200510ch4_en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "INTERNATIONAL INVESTMENT AGREEMENTS: KEY ...",
+          "url": "https://unctad.org/system/files/official-document/iteiit200410_en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Unctad",
+          "url": "https://unctad.org/system/files/official-document/edmmisc232add2_en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+          "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/%20bilateral-investment-treaties/3104/nafta-1992-",
+          "host": "investmentpolicy.unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 NO. 1 MAY 2026 IIA Issues Note International Investment Agreements",
+          "url": "https://unctad.org/system/files/official-document/diaepcbinf2026d3_en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT UNCTAD Series",
+          "url": "https://unctad.org/system/files/official-document/psiteiitd15.en.pdf",
+          "host": "unctad.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S2",
+      "purpose": "Docket-page-before-document-hunt at the UN Digital Library: is NAFTA held there as a registered treaty record rather than as commentary?",
+      "propositions_borne_on": [
+        "An allowlisted UN-family host serves NAFTA Chapter Eleven in visible prose."
+      ],
+      "query": "North American Free Trade Agreement 1992 United Nations Treaty Series registration record",
+      "allowed_domains": [
+        "digitallibrary.un.org"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration. The engine ran four internal result blocks inside this single invocation; all 40 rows are recorded, including the repeats, and the repeats are NOT corroboration (taxonomy 16).",
+      "result_count": 40,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE. Engine prose stating it did not locate a UN Treaty Series registration record for NAFTA and suggesting treaties.un.org, a host that is not on ALLOWED_HOSTS. An engine's failure to surface a record is not evidence that no record exists.",
+      "results": [
+        {
+          "title": "Treaty series :",
+          "url": "https://digitallibrary.un.org/record/112061?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The North American Free Trade Agreement (NAFTA), 3 years after implementation",
+          "url": "https://digitallibrary.un.org/record/259745?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Trade agreements, petroleum and energy policies",
+          "url": "https://digitallibrary.un.org/record/425718?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Un",
+          "url": "https://digitallibrary.un.org/nanna/record/143313/files/278477-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Registration and publication of treaties and international agreements pursuant to article 102 of the Charter of the United Nations :",
+          "url": "https://digitallibrary.un.org/record/655205/?v=%5B%22%5B'pdf'%5D%22%5D&amp%3Bamp%3Bamp%3Bamp%3Bln=en&amp%3Bamp%3Bamp%3Bln=en&amp%3Bamp%3Bln=en&amp%3Bln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED NATIONS NATIONS UNIES",
+          "url": "https://digitallibrary.un.org/nanna/record/3929420/files/tdstat40_en.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The United Nations University is an organ of the United Nations estab-",
+          "url": "https://digitallibrary.un.org/nanna/record/500894/files/ebrary9280810839.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED A NATIONS -_I_- ___. _.--. I_- Oenerrl Awsmbly PROVIsIONAL A/lb/W.9",
+          "url": "https://digitallibrary.un.org/nanna/record/130362/files/A_46_PV.9-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED NATIONS -. -. .-e-m- General Assembly Distr. GENERAL A/47/116 3 April",
+          "url": "https://digitallibrary.un.org/nanna/record/141830/files/A_47_116-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Registration and publication of treaties and international agreements",
+          "url": "https://digitallibrary.un.org/record/666809?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Treaties and international agreements registered or filed and recorded with the Secretariat of the United Nations, Vol. 866, 1973, I. Nos. 12423-12436.",
+          "url": "https://digitallibrary.un.org/record/14978?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "DIVISION OT CXNXRAIJ ASSN{EIIY ArF4if$ -7A \\: -t at E: UN'IED NAI'ONS GENERAL",
+          "url": "https://digitallibrary.un.org/nanna/record/655205/files/A_33_258-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Treaty series :",
+          "url": "https://digitallibrary.un.org/record/112061?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations A/RES/62/101 General Assembly Distr.: General 10 January 2008",
+          "url": "https://digitallibrary.un.org/nanna/record/614200/files/A_RES_62_101-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Registration and publication of treaties and international agreements pursuant to article 102 of the Charter of the United Nations : [long amp-repeated query string, recorded truncated at 120 chars]",
+          "url": "https://digitallibrary.un.org/record/655205/?v=%5B%22%5B'pdf'%5D%22%5D&amp%3B[TRUNCATED]",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations University Press is the publishing arm of the United",
+          "url": "https://digitallibrary.un.org/nanna/record/719485/files/ebrary9789280811940.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The North American Free Trade Agreement (NAFTA), 3 years after implementation",
+          "url": "https://digitallibrary.un.org/record/259745?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "2018 International Trade Outlook for Latin America and the Caribbean",
+          "url": "https://digitallibrary.un.org/nanna/record/1657878/files/ITO2018.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Registration and publication of treaties and international agreements",
+          "url": "https://digitallibrary.un.org/record/666809?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Depositary functions of the Secretary-General and registration and publication of treaties :",
+          "url": "https://digitallibrary.un.org/record/62421?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The North American Free Trade Agreement (NAFTA), 3 years after implementation",
+          "url": "https://digitallibrary.un.org/record/259745?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Trade agreements, petroleum and energy policies",
+          "url": "https://digitallibrary.un.org/record/425718?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "La solucion de controversias en los acuerdos regionales de America Latina con paises desarrollados /",
+          "url": "https://digitallibrary.un.org/record/577241?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investor-State disputes arising from investment treaties :",
+          "url": "https://digitallibrary.un.org/record/573815?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment promotion provisions in international investment agreements",
+          "url": "https://digitallibrary.un.org/record/630705?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations A/CN.9/538 General Assembly Distr.: General 25 April 2003",
+          "url": "https://digitallibrary.un.org/nanna/record/498560/files/A_CN.9_538-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Treaty series :",
+          "url": "https://digitallibrary.un.org/record/112061?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Proceedings of the United Nations Conference on TRADE AND DEVELOPMENT",
+          "url": "https://digitallibrary.un.org/nanna/record/4075841/files/TD_97_Vol.III-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations University Press is the publishing arm of the United Na-",
+          "url": "https://digitallibrary.un.org/nanna/record/526021/files/Tests_of_global_governance.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "UNITED NATIONS DOCUMENTS INDEX CUMULATIVE INDEX - Part 1, Vol. II Volume 20 -",
+          "url": "https://digitallibrary.un.org/nanna/record/1636823/files/ST_LIB_SER.E_CUM.13,_Part_1,_Vol._2-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The North American Free Trade Agreement (NAFTA), 3 years after implementation",
+          "url": "https://digitallibrary.un.org/record/259745?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Treaty series :",
+          "url": "https://digitallibrary.un.org/record/112061?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Naciones Unidas A/CN.4/705 Asamblea General Distr. general 31 de enero de 2017",
+          "url": "https://digitallibrary.un.org/nanna/record/1286266/files/A_CN.4_705-ES.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Cooperacion ambiental en el NAFTA y perspectivas para el DR-CAFTA /",
+          "url": "https://digitallibrary.un.org/record/577820",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Un",
+          "url": "https://digitallibrary.un.org/nanna/record/785119/files/Treaty_handbook.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Electronic treaties database :",
+          "url": "https://digitallibrary.un.org/record/228678?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The role of science in the Uruguay Round and NAFTA trade disciplines /",
+          "url": "https://digitallibrary.un.org/record/227112?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Registration and publication of treaties and international agreements pursuant to article 102 of the Charter of the United Nations : [long amp-repeated query string, recorded truncated at 120 chars]",
+          "url": "https://digitallibrary.un.org/record/655205/?v=%5B%22%5B'pdf'%5D%22%5D&amp%3B[TRUNCATED-2]",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "First report on subsequent agreements and subsequent practice in relation to treaty interpretation /",
+          "url": "https://digitallibrary.un.org/record/749044?ln=en",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations A/CN.9/736 General Assembly Distr.: General 17 October 2011",
+          "url": "https://digitallibrary.un.org/nanna/record/716705/files/A_CN.9_736-EN.pdf?withWatermark=0&withMetadata=0&registerDownload=1&version=1",
+          "host": "digitallibrary.un.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S3",
+      "purpose": "Re-probe italaw for a NAFTA treaty-text locator, using the treaty's own structural vocabulary rather than the doctrine keyword used on 2026-09-20 S3.",
+      "propositions_borne_on": [
+        "www.italaw.com serves a NAFTA full-text document.",
+        "An engine title individuates the file it is attached to."
+      ],
+      "query": "italaw NAFTA investment treaty texts Chapter Eleven Section A investment",
+      "allowed_domains": [
+        "italaw.com"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration. A near neighbour of this query was run on 2026-09-20 as that session's S3; the two are the same engine on consecutive days and are treated as one observation, not two.",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE. Engine prose summarising Chapter Eleven Section A's scope and asserting that result 1 is a direct link to the NAFTA treaty text. Nothing was retrieved; the characterisation is the engine's.",
+      "results": [
+        {
+          "title": "NORTH AMERICAN FREE TRADE AGREEMENT _______________ TABLE OF CONTENTS Preamble",
+          "url": "https://www.italaw.com/sites/default/files/laws/italaw6187(14).pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9271.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw11902.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "A. Introduction 1.",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9071.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE ARBITRATION UNDER CHAPTER ELEVEN",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw7789.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9496.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw171327.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw16352.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "In The Arbitration between BAYVIEW IRRIGATION DISTRICT ET AL.,",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw7773.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw8595.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S4",
+      "purpose": "One multi-host sweep of the four allowlisted host families not yet tried today - UN, ICSID, PCA - for any NAFTA Chapter Eleven locator that is not a PDF.",
+      "propositions_borne_on": [
+        "Some allowlisted host other than italaw or UNCTAD serves NAFTA Chapter Eleven.",
+        "The relay-fetchable subset of a domain-scoped search result is smaller than the result set."
+      ],
+      "query": "NAFTA Chapter Eleven investment Article 1110 expropriation provision text",
+      "allowed_domains": [
+        "uncitral.un.org",
+        "undocs.org",
+        "docs.un.org",
+        "www.un.org",
+        "icsid.worldbank.org",
+        "pca-cpa.org"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration. This is the one multi-host call of the session and is therefore the one exposed to the 2026-09-20 leak condition; its rows were screened and every returned host is a suffix match of a passed value.",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE, AND THIS ONE IS THE DANGEROUS KIND. The engine returned narrative prose purporting to state what NAFTA Article 1110(2) requires and what expropriation under NAFTA includes. NO TREATY TEXT WAS RETRIEVED BY THIS SESSION. This field exists so that it is checkable that the prose was used nowhere, and it is used nowhere.",
+      "results": [
+        {
+          "title": "The Concept of Expropriation under the ETC and other ...",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 CASE No. ARB(AF)/97/1 INTERNATIONAL CENTRE FOR",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0260.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Date of dispatch to the parties: December 16, 2002 International Centre for",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0050-ENG%20-%20SPA%20-%20Feldman%20v%20Mexico.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "\"Indirect Expropriation\" and the \"Right to Regulate\" in ... - ICSID",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0279.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0476.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE ARBITRATION UNDER CHAPTER ELEVEN",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C6106/2020-06-30%20Claimants_%20Comments%20on%20US%20Submission/Legal%20Authorities/CL-0273.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "RA-49 - NAFTA FTC, Notes of Interpretation (July 31, 2001) ...",
+          "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-49%20-%20NAFTA%20FTC,%20Notes%20of%20Interpretation%20(July%2031,%202001).pdf",
+          "host": "files.pca-cpa.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Indirect Expropriation in Investment Treaty Arbitrations*** ...",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "3XEOLF\u00039HUVLRQ In The Matter Of Two Arbitrations Under Chapter 11 Of The NAFTA",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/G%20-%20Rejoinder%20-%2008.17.2023/02.%20Autoridades%20legales/RL-0116-ENG.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "000015 INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0032-ENG%20-%20SPA%20Cargill%20v%20Mexico.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S5",
+      "purpose": "Docket-page-before-document-hunt at italaw: find italaw's own landing and index pages rather than guessing a document path (METHODOLOGY Part VIII).",
+      "propositions_borne_on": [
+        "www.italaw.com serves a non-PDF, HTML-shaped page whose subject is NAFTA.",
+        "A landing page identified by a source is available in place of a guessed URL shape."
+      ],
+      "query": "italaw.com browse investment treaties and laws index page",
+      "allowed_domains": [
+        "www.italaw.com"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration.",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE. Engine prose describing italaw's browse categories and asserting that the Investment Treaties page provides 'Full text of Investment Treaties'. THAT ASSERTION IS THE ENGINE'S AND IS NOT RELIED ON ANYWHERE IN TODAY'S MEMO OR BATCH DESIGN; the batch tests it rather than assuming it.",
+      "results": [
+        {
+          "title": "Investment Treaties | italaw",
+          "url": "https://www.italaw.com/investment-treaties",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Browse Cases by Categories | italaw",
+          "url": "https://www.italaw.com/browse",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Chronological | italaw",
+          "url": "https://www.italaw.com/browse/chronological",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "International Investment Agreement Name | italaw",
+          "url": "https://www.italaw.com/browse/international-investment-agreement-name?field_case_treaties_tid=234",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment Case Type | italaw",
+          "url": "https://www.italaw.com/browse/investment-case-type",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA - Investment treaties Profile & Case History",
+          "url": "https://www.italaw.com/investment-treaties/nafta",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "10-1 Chapter Ten Investment Section A: Investment",
+          "url": "https://www.italaw.com/sites/default/files/laws/italaw16017.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Respondent State | italaw",
+          "url": "https://www.italaw.com/browse/respondent-state",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "2012 U.S. Model Bilateral Investment Treaty TREATY BETWEEN",
+          "url": "https://www.italaw.com/sites/default/files/archive/ita1028.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Agreement between Italy and Argentine Republic for the ...",
+          "url": "https://www.italaw.com/sites/default/files/laws/italaw9545.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S6",
+      "purpose": "Second, differently-worded probe at the same host for the NAFTA-specific branch, to see whether the locator returned at S5 result 6 returns again and whether any HTML case page shares its shape.",
+      "propositions_borne_on": [
+        "https://www.italaw.com/investment-treaties/nafta is a stable locator in this engine's index.",
+        "italaw serves HTML case pages of the /cases/NNN shape."
+      ],
+      "query": "NAFTA profile case history investment treaty page italaw full text of treaty",
+      "allowed_domains": [
+        "www.italaw.com"
+      ],
+      "blocked_domains": null,
+      "blocked_domains_omitted_reason": "See parameter_conflict at the head of this file. The tool rejects allowed_domains and blocked_domains together; allowed_domains was retained and contains neither prohibited host.",
+      "independence": "NOT INDEPENDENT of the other calls in this file, and the analyst says so rather than being told: one engine, one session, one seat, and a single-value or small allowed_domains list printed directly above these rows. 0920-B5, sustained, forbids calling repeat returns under these conditions independent corroboration. S5 and S6 returned the same /investment-treaties/nafta locator. THAT IS ONE ENGINE TWICE, NOT TWO SOURCES, and it raises the strength of the lead without making it an identification.",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": "QUARANTINED, USED NOWHERE. Engine prose listing cases it says appear on the NAFTA profile page and stating that the results do not contain the full text of the NAFTA treaty itself.",
+      "results": [
+        {
+          "title": "NAFTA - Investment treaties Profile & Case History",
+          "url": "https://www.italaw.com/investment-treaties/nafta",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Respondent/Party. 1. Pursuant to NAFTA Article 1128, the ...",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw7789.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Mondev International Ltd. v. United States of America, ICSID Case No. ARB(AF)/99/2 | italaw",
+          "url": "https://www.italaw.com/cases/715",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Pope & Talbot Inc. v. The Government of Canada, UNCITRAL | italaw",
+          "url": "https://www.italaw.com/cases/863",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 NAFTA CHAPTER 11 ARBITRATION (ICSID CASE NO. UNCT/20/3)",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw16012.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "NAFTA ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES AND THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw8060_0.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investor's NAFTA Article 1128 Response",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw11216.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN THE MATTER OF AN ARBITRATION UNDER THE RULES OF THE",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw16324.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "S.D. Myers, Inc. v. Government of Canada, UNCITRAL | italaw",
+          "url": "https://www.italaw.com/cases/969",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 Claimant -and- Respondent. ICSID CASE NO. ARB(AF)/ ...",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw10824.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        }
+      ]
+    }
+  ]
+}

@@ -745,6 +745,89 @@ requests have sat open between seven and twenty-three days.; **The council log h
 consecutive sessions and was repaired today** — the exact failure mode the operator rebuilt this
 routine to prevent.
 
+## 2026-09-21 — daily council (record: `analytics/daily-research/2026-09-21.md`)
+
+**Status.** Two real subagent seats convened with the Agent tool against their committed
+`.claude/agents/` definitions (`research-analyst`, `integrity-officer`); both returned and the analyst
+was reconvened under Rule 2 to answer the objections; neither was performed; **no spawn failed and no
+seat is recorded as PROCEDURAL FAILURE.** Rule 0 departure declared for the nineteenth consecutive
+session. **Model discrepancy, disclosed by the seat itself and recorded rather than smoothed over: the
+integrity officer reports being served by `claude-opus-5` where its committed definition names
+`claude-opus-4-8`.** Fetch dead on both channels at session open, probed on neutral controls — **no
+state change**, though the fetch service now returns a typed `EGRESS_BLOCKED` naming the proxy where
+earlier sessions saw an undifferentiated 403 — and the committed relay carried the day's retrieval, so
+**nothing was stranded.** Digest of record **unchanged**: `Digest 2026-09-14: 7 candidates evaluated,
+0 items surfaced (0 matches, 0 watch-list leads)`; `weekly.yml` fires Mondays 13:00 UTC and this
+session convened at 11:12, so the 2026-09-21 digest did not yet exist. **One batch, 9 requested rows
+plus the relay's prepended control (run 35596605671): `control_ok: true`, `void: false`, both brackets
+held with `find_matched: true` on the closing bracket — ROWS 1–6 REFUSED AT 403 AND ROWS 7–8 RETURNED
+`ok`/200/`application/pdf`, which is EXACTLY the analyst's pre-registered prior, stated against its
+own interest before firing.** **THE GAP DID NOT CLOSE** and is carried open with a repaired closure
+condition. **Group D discriminated by retrieval: `italaw6187(14).pdf` and `italaw6187(6).pdf` are ONE
+BYTE-STREAM AT TWO PATHS** (identical sha256, 1,503,182 bytes), so the engine title that sent the
+operator to three locators sends him to two documents. **The theme is quiet at the intersection for an
+ELEVENTH consecutive session and was NOT SEARCHED today** — weaker than "not found", and not upgraded.
+The day's own artefact is the **pre-filed** search skeleton, written by the chair before the analyst
+was convened per yesterday's §6.4, and it did the job it was built for: the parameter conflict was
+recorded at the moment it fired rather than reconstructed afterwards.
+
+**Objections.** Sixteen filed — five blocking (`0921-B1`–`B5`), ten non-blocking (`0921-N1`–`N10`), one
+verification (`0921-V1`), one ruling put to the chair (`0921-R1`). **ALL SIXTEEN SUSTAINED, NONE
+OVERRULED**, and the challenged seat sustained every one against itself without contest. `0921-V1`:
+the officer ran four of its own invocations and verified the day's central instrument claim more
+strongly than the analyst could state it. `0921-B1`: three `supporting_quote` fields and one `Q` mark
+were compact re-typings of pretty-printed JSON and occur **zero** times in the files cited — sustained
+on the chair's own re-run, **with one sub-fact inside the objection corrected against the officer**
+(`2026-09-12-daily.json` indices 6–7 ARE italaw rows). `0921-B5`: **the `0920-B6` re-scoping is
+REFUSED on its operative limb and `0920-B6` STANDS AT 0 OF 7**, because the one call that actually
+produced a prohibited-host row passed no filters at all and sits inside the denominator the
+re-scoping would have exculpated — a particular the **analyst** found while checking whether to
+contest, and which settles the question against its own position. `STATE_OF_THE_ANSWER.md:9` stands as
+written (`0921-N9`), said expressly so no later seat reads the discussion as a retirement.
+
+**Accountability.** **The day's defect is the CHAIRMAN'S.** I gave the officer, as a re-measured fact,
+that the 2026-09-14 digest entered `main` in a `[skip ci]` re-anchor commit. **That was an artefact of
+a shallow clone** — `fe3e9d6` was the clone's boundary, had no parent, and therefore appeared to add
+every file in the repository. The officer caught it with a demonstration (the same commit "adds"
+`analytics/daily-research/2026-06-26.md`) and I withdrew it, unshallowed the repository, and
+re-measured: the digest landed at **`3f07d57`**, message `chore: weekly digest + state update
+[skip ci]`. **The finding survives in a narrower and better-sourced form and the re-anchor limb is
+gone.** I published an inference whose preconditions I had not established, in a session where I
+instructed both seats to establish theirs.
+
+**Next steps.** The NAFTA channel gap is carried open under a **repaired closure condition** — `ok`,
+`content_type` html or text, non-empty excerpt, at a locator serving NAFTA Chapter Eleven, with
+`example.com` expressly excluded and `application/pdf` expressly insufficient.; **Do not fire another
+`/investment-treaties/` row at `www.italaw.com`** — fourteen of fourteen non-PDF rows refused at that
+host against five of five PDF-suffixed rows returning 200; answered for this relay, **not** for a
+browser.; **Next step 6 as re-issued was NOT EXECUTABLE and is replaced**: the two search parameters
+are mutually exclusive at the schema, so pass an `allowed_domains` list containing neither prohibited
+host and **screen and report every returned row**; where no `allowed_domains` is passed,
+`blocked_domains` must carry both hosts — that is where the harm landed.; **Three procedures bind from
+today**, proposed by the analyst against itself: paste every quote back and print its count before
+filing; enumerate every nonzero dedup cell by locator, never characterise; compute every count in
+prose or delete it.; **Amendment 2 carries no qualifier** — every nonzero screened term gets a referent
+clause, not every one a seat relies on.; A screen names its **unit and flag** in the same clause as its
+number (40a).; The engine title that pointed at three locators points at **two documents**.
+
+**Escalations.** **Escalation 2 is the best ask this thread has carried**: the two italaw `/laws/`
+PDFs ANSWERED our relay at 200 — the first locator here our own instrument has confirmed is served,
+against UNCTAD's twenty-three consecutive refusals since 10 August — but they are one file at two
+paths and **nothing identifies it as NAFTA**; Emory has a PDF reader and we do not.; The 28 July 2025
+award is still published and still readable in ten minutes — **eleventh day**.; One sentence of EU
+Pharma Package reading still closes or revives the Ring-2 thread, **UNKNOWN not foreclosed**.;
+`scripts/check_marks.py` checked nothing for the fifth consecutive session and printed a green line —
+**sixth day**.; **`main` is red and the diagnosis is CORRECTED rather than repeated**: `pipeline-guards
+/ suite` run #226, `2 failed, 821 passed, 5 xfailed`, both in `tests/test_site_claims.py`; the archive
+measures 17/499/12/198/237 against pins 16/492/11/191/230 and every delta is the 2026-09-14 digest —
+single cause, five numbers, in `tests/`.; **A `[skip ci]` on the weekly digest commit is switching off
+the guard whose `digests/**` filter exists to check that very artefact.**; `specs/iisd_itn.yaml:24`
+still carries a falsified reason.; The vault still reads 40 entries while 41 and 40a bound both seats
+today — twelfth consecutive routing latency.; Three pull requests have sat open between eight and
+twenty-four days.; **`state/council_log.json` had not been written since 2026-09-19 although 09-20 ran
+and is in this file** — today's entry is appended to both, and the eight missing historical entries are
+recorded as observed and deliberately NOT back-filled, because inventing timestamps is worse than a gap.
+
 <!-- graph:auto start -->
 Map: [[Evidence Ledger]]
 <!-- graph:auto end -->

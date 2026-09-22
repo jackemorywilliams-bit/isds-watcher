@@ -78,6 +78,22 @@ before this record: **194** notes, **402** edges, **0** orphans, 84 managed bloc
 carry **zero** occurrences of *"Jack"*; the two known live defects are unchanged and both outside
 this seat's paths (`HUMAN_REVIEW.md:115`, `prompts/council_roundtable.txt:73`).
 
+**Post-merge addendum, same session.** **D11 did not fire** — PR #212 merged cleanly at
+`ee0565e` with every path inside `agents/` or `analytics/` and `STATE_OF_THE_ANSWER.md` untouched.
+**But the merge armed a latent defect in `scripts/check_currency.py` and `main` came back with a
+hard FAIL.** `_pr_for` (`:139-148`) matches only GitHub's default merge subject
+(`Merge pull request #(\d+)`), while this repository's recent merges carry customised subjects of
+the form `<PR title> (#N)` — so the PR-citation check has been **silently inert** across this
+window, and the first default-subject merge to land becomes the answer for every sha behind it.
+Measured at `ee0565e`: `_pr_for` returns **212** for `7703720`, `018c1f1` and `1d6e3e7`, while
+`aa48406` → 59 and `51bb7a2` → 48 still resolve correctly. The one citation in a tracked note that
+the parser could reach was **reworded, not deleted** — both facts kept, only the parsed token
+dropped — which clears `main` and **is not the fix**. Filed as [[Workflow Threads]] **D21**, owner
+systems-designer. **The half that was this seat's:** the merge was made through the GitHub API with
+no commit title, so it took the default subject where #204 and #205 had taken customised ones; the
+standing instruction to the next session is to pass `vault: archivist session <date> (#N)`
+explicitly.
+
 ## 2026-09-19 (archivist session — seventeenth deployment)
 
 *Audited against `f1a7850` (`main`), on a complete **1,461**-commit history — the container's clone

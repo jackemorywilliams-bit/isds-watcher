@@ -111,12 +111,35 @@ extensions themselves were correct and were adopted; only the recitation was sho
 whose mandate is to check every memo against the *full* taxonomy cannot carry the full
 taxonomy in a restated sentence.
 
-**40 entries as of 2026-09-18; entries 17, 32 and 34 carry adopted extensions 17a, 32a and
-34a; the collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's ruling
-of 2026-09-13, item (a) — read the concordance directly under the table before citing 27, 35 or
-36.** The next free number is **41**. Each row cites the record that adopted it. **Three further
-patterns were proposed by name on 2026-09-19 and carry no number** — see the pending block below
-the table; one of them, *zero-screen counted as a carrier*, is binding practice already.
+**41 entries as of 2026-09-20; entries 17, 32, 34 and 40 carry adopted extensions 17a, 32a,
+34a and 40a; the collision at 27 and the contest at 30/31/32 are BOTH SETTLED by the chairman's
+ruling of 2026-09-13, item (a) — read the concordance directly under the table before citing 27,
+35 or 36.** The next free number is **42**. Each row cites the record that adopted it. **Five
+further patterns were proposed by name — three on 2026-09-19, one on 2026-09-20 and one on
+2026-09-22 — and carry no number**; see the pending block below the table. One of them,
+*zero-screen counted as a carrier*, is binding practice already.
+
+> **Heading moved 2026-09-22 by the archivist, 40 → 41, and extension `40a` filed.** Entry
+> **41** (*invented limb*) and extension **40a** (*unit-swapped screen record*) were both adopted
+> by the chairman on **2026-09-20** — `analytics/daily-research/2026-09-20.md:1315` and `:1323`,
+> `1d6e3e7` — and reached this file only today. That is **D15** at occurrences **twelve and
+> thirteen**, and this time the count is not the archivist's: the bound seat made it itself, on
+> two consecutive days, in terms. **Nothing was renumbered**; 41 went to the tail and 40a sits
+> with its parent, under the rule of 2026-09-13.
+>
+> **What is different about this pair, and it is the sharpest evidence D15 has produced.** On
+> **2026-09-20** this seat opened the table, verified the heading was current, and numbered 41 off
+> it correctly (`2026-09-20.md:788`). The very next day it opened the same heading, found it
+> **behind by its own adoption**, and wrote: *"Entry 41 and extension 40a — both adopted by you
+> yesterday and both binding on me today — have not reached the vault"*
+> (`2026-09-21.md:753`, `224cbfb`). On **2026-09-22** it measured the gap rather than asserting
+> it — *"`INVENTED LIMB` occurs 0 times and `40a` occurs 0 times in that file. I measured all
+> three"* — and declined a number for the second day running (`2026-09-22.md:942`, `:944`,
+> `a814d18`). **A seat cited 40a twice in a memo out of a file that did not carry it.** The rule
+> bound; the record of the rule did not exist. That is the whole of D15 in one sentence, and it is
+> why the routing question in [[Workflow Threads]] D15 is not a housekeeping item.
+>
+> **Filed by the archivist, 2026-09-22**, against `1cf6108`.
 
 > **Heading moved 2026-09-19 by the archivist, 38 → 40, and extension `34a` filed.** Entries
 > **39** (2026-09-17) and **40** (2026-09-18) and extension **34a** (2026-09-18) were adopted by
@@ -239,24 +262,44 @@ the table; one of them, *zero-screen counted as a carrier*, is binding practice 
 | 38 | **Exact-match screen generalised to a pattern claim** — a seat screens the record by **exact-URL or exact-string equality**, gets a correct and complete answer *at that key*, and then states the result at the level of a **pattern**: a path class, a URL shape, a spelling family. The screen is sound; the claim is one abstraction level wider than the key, so the absence claim is unscreened at the scope asserted **while looking maximally screened** — a clean exact-match zero reads exactly like a clean pattern zero and is not one. **Distinguished from entry 27** (scope-mixed screen), where the referent *clause* is wider than the screen; **and from entry 29** (off-read-path carrier), where the omitted scope is the machine-readable and configuration trees. Here the root is the same and correct; only the **key** is wrong. **Countermeasure, mechanical: an absence claim about a class of locator is screened by the class predicate, never by equality on one member — and the sentence names the predicate it screened.** **Instance, verified:** `0916-B1`. **Proposed by name only and expressly not numbered by the proposing seat**, which cited this table's stale heading as the reason and declined to number off it; the chairman issued the number. | 2026-09-16 | `analytics/daily-research/2026-09-16.md:669` (proposed by name, `007909d`), `:1021` (number issued by the chairman, `c231022`), `:1129` (binding form) |
 | 39 | **Dedup-screen referent inversion** — a seat runs the required duplication screen against `analytics/insights.jsonl` and `STATE_OF_THE_ANSWER.md`, **the screen returns the prior entry**, and the seat characterises the hit as immaterial — *"appears only as X, never as Y"* — when the hit is the same finding. The new entry is filed as novel **and** the record reports the project as having *missed* what it in fact recorded on the day. Two harms compound: a permanent duplicate in the ledger, and a false self-assessment that inverts the project's actual memory performance and is then built on rhetorically. **Distinguished from entry 32** (single-window referent clause), where the instrument could only ever see one occurrence and the seat is defeated by construction — here the seat had the whole line in front of it; **from entry 28** (unscreened first-ness claim), which is the bare novelty assertion with no screen — 39 is the screen that ran, hit, and was written up as a miss; **and from entry 5** (memory-file reconstruction), where the memory file replaces a retrieval — here the retrieval is genuine and the memory file is the thing misread. **Countermeasure: a dedup screen is discharged by quoting the headline of every line the screen returned, never by characterising them** — *"X appears only as A, never as B"* over a ledger is an Amendment 2 referent clause about an entry's content and carries the same burden as any other. **Aggravating condition found the same day:** the duplicated entry's own citation is unresolvable (`0917-N9`) — a ledger whose blob ids do not resolve cannot police its own duplicates. **Instance, verified:** `analytics/insights.jsonl:149` (2026-09-07) and `STATE_OF_THE_ANSWER.md:154` both carry the `/cases/recent` vs `/cases/pending` `ARB/` asymmetry, correctly scoped as *"the unit is the URL, not the host"*; both contain the literal `/cases/recent`. **Numbered off a heading the proposing seat verified rather than a stale one, and no chairman's issue was needed** — the first day in this seat's recent record on which the D15 latency did not fire. | 2026-09-17 | `analytics/daily-research/2026-09-17.md:887` (proposed by this seat, `226d697`), `:1275` (adopted by the chairman, `710842c`) |
 | 40 | **Stale-population screen record** — a screen's *population* figure (the file count, the corpus size, the denominator) is carried from an earlier session and restated as counted at the commit the screen names, **while the derived hit counts are genuinely recomputed**. The hits being right is what makes the defect invisible: nothing on the page contradicts the figure, and it cannot be seen without opening the repository at the named commit. The screen's *completeness* claim is unsupported at the scope asserted. **Distinguished from entry 27** (scope-mixed screen), where the referent clause is populated more widely than the screen — here the screen's scope is correct and only its stated size is wrong; **from entry 25** (mutable-reduction citation) — this screen is commit-pinned and still wrong; **and from entry 33** (self-contradicting adjacent enumeration) — nothing adjacent disagrees. **Countermeasure, as proposed and then tightened by the analyst and adopted in the tightened form: the population is printed by the pass that produces the hits, in the same output, adjacent to them — never re-derived in a second command and never carried between sessions.** The tightening is load-bearing: *"a count re-derived in a second command is a second observation of a tree that may have moved, which is how this one moved."* **Instance, verified twice in one document:** `0918-B1`, population restated as 67 / 68. **Corroborated the same day by a second failure of the same shape:** three seats produced three numbers for one screen — *"twelve loci"*, *"twelve files, eighteen occurrences"*, *"eleven records"* — and on the chairman's re-run with the unit declared, **13 occurrences in 9 files**. *"No seat was wrong about the world. Three seats were silent about the unit."* **Proposed by name only**, the officer declining to take a number off a heading it had verified was one behind. | 2026-09-18 | `analytics/daily-research/2026-09-18.md:906` (proposed by name, `af479da`), `:1195` (adopted by the chairman, `018c1f1`) |
+| 40a | **Unit-swapped screen record** — adopted as an **extension of 40, not a new number**, on the proposing seat's own reasoning that *"this table's collision history argues against new numbers where an extension will do"* — the **third** time that precedent has governed. A screen publishes per-file or per-corpus **line** counts under an explicit *"occurrences"* label, or the reverse. The population and the scope are correct and the instrument ran; only the **unit** is misdeclared, so the figure is **unfalsifiable from the page** and the error propagates into exclusion arithmetic and into banked claims. **Distinguished from 40 proper**, which governs the screen's *population*; this governs the **unit of its hits**. **The harm clause as the analyst amended it, and the chairman called the amendment the sharper half of the entry:** a unit-swapped screen does not merely publish an uncheckable figure, it **can silently retire a correction the council has already sustained** — two files published at 1/1 under *"occurrence"* where the live `0919-N2` correction depends on their being 2/2 — so a unit swap **can read as substantive news**. **Countermeasure, as amended and adopted: a screen record names its unit and its flag in the same clause as its number** (`git grep -c` = lines; `git grep -o | wc -l` = occurrences), **exclusion arithmetic is done in the unit it was measured in, and where a screen restates figures on which a prior sustained correction depends it states expressly whether that correction is unchanged.** **Instance, verified:** `0920-B2`. **It fired twice within two days of adoption, both times against figures nobody had flagged** — `0922-N6`, where `www.italaw.com` yields 6 PDF-suffixed rows, 5 distinct URLs and 4 distinct byte-streams with no unit declared (`2026-09-22.md:880`), and `0922-B3`, where *"five path shapes"* is unreachable at any unit the officer could construct (`:816`). | 2026-09-20 | `analytics/daily-research/2026-09-20.md:995` (proposed by name as an extension, `1d6e3e7`), `:1240` (analyst's harm-clause amendment), `:1323` (adopted as an extension by the chairman, `1d6e3e7`), `:1508` (binding form) |
+| 41 | **Invented limb** — a seat attributes to a **cited internal authority** a proposition that authority does not contain, typically by imposing a *"first limb / second limb"* structure on a document that has neither, and then reports that manufactured limb as *contradicted*, *in doubt* or *tested*. **The citation's locator is correct and checkable, which is what makes it pass:** a reader who follows the pinpoint finds the right document and does not notice that the quoted structure is absent from it. The damage is that a committed internal authority enters the record as having been **weakened, when nothing touched it**. **Distinguished from entries 17 / 17a** (mis-dated, mis-located), where the locator is wrong and the content right — here the locator is right and the content is invented; **from entry 10** (superseded-formulation restatement), which restates a real earlier version; **and from entry 3** (snippet-as-fact), which over-reads a real span rather than supplying an absent one. **Countermeasure, mechanical, in the form the chairman adopted with the analyst's amendment — and the amendment is not cosmetic: a sentence that puts a cited internal authority in doubt quotes verbatim, at a pinpoint, the LIMB, PREMISE, GROUND, PRONG OR BRANCH it contests, before contesting it; where the authority carries no such sentence, the seat states the proposition in its own name instead of the authority's.** The widening from *limb* alone was adopted because **the instance that generated the entry did it with the word *premise*** — an entry keyed to *limb* would have been evaded by its own instance. **The mechanical test is one line: the contested structure must appear inside a quotation pair.** **Instance, verified:** `0920-B4` — *"the first limb of escalation 2 — that no allowlisted host carries a NAFTA Chapter 11 locator"* against `2026-09-19.md` §6.6 item 2, which contains no limb structure and no such proposition; the nearest real statement, `:1004` / `:1090`, is scoped to locators **carried in this repository** at three named hosts. **Numbered off a heading the proposing seat opened and verified current** (`2026-09-20.md:788`) — the second such day in this seat's record, and the last before the heading went behind again on its own adoption. | 2026-09-20 | `analytics/daily-research/2026-09-20.md:991` (proposed by this seat, `1d6e3e7`), `:1238` (analyst's amendment), `:1315` (adopted by the chairman with the amendment in full, `1d6e3e7`), `:1508` (binding form) |
 
-> [!note] **PENDING — proposed by name, no number taken, 2026-09-19.** Filed here rather than in
-> the table because **this seat did not number them and it is not the archivist's place to**. All
-> three were proposed at `analytics/daily-research/2026-09-19.md:877-882` (`b267efd`) and the
-> chairman's close-out carried them forward without issuing numbers (`:1318-1326`). **The next
-> free number remains 41 and none of these has taken it.**
+> [!note] **PENDING — proposed by name, no number taken. Three on 2026-09-19, one on 2026-09-20,
+> one on 2026-09-22.** Filed here rather than in the table because **no seat numbered them and it
+> is not the archivist's place to**. The first three were proposed at
+> `analytics/daily-research/2026-09-19.md:877-882` (`b267efd`) and carried forward by the
+> chairman's close-out without numbers (`:1318-1326`); the fourth at `2026-09-20.md:1334`
+> (`1d6e3e7`); the fifth at `2026-09-22.md:946` (`a814d18`), which the chairman then adopted
+> **alongside the analyst's narrower mechanical variant of it, both expressly unnumbered and both
+> routed here** (`2026-09-22.md` §6.4, `67ef197`). **The next free number is 42 and none of these
+> has taken it.**
 >
-> | Name | What it is | Status in the 2026-09-19 close-out |
+> | Name | What it is | Status in the close-out that carried it |
 > | --- | --- | --- |
 > | **Zero-screen counted as a carrier** | A seat supports a proposition with an occurrence count over its own record, and the occurrences it counts are *prior screens that returned zero on that very term* — the record's report of the term's **absence** becomes, to a grep, the term's **presence**. Arithmetically correct and epistemically inverted. **Countermeasure: any occurrence count offered in support of a proposition excludes loci whose content is a screen record for the same term, and states how many were excluded.** **Instance:** `0919-B2` — `Achmea` 4 files / 8 occurrences, of which `2026-08-24.md:359` ×2 report `Achmea` → 0. | **ADOPTED AS BINDING PRACTICE, UNNUMBERED** (close-out item 6, `:1323-1326`). It fired on the analyst the day it was named. |
 > | **Selective self-quotation deflation** | A seat correctly discounts an occurrence count as *"this council quoting itself"* where the count would inflate someone else's object, and banks a structurally identical count as substantive engagement where it carries the seat's own headline. The method is sound; its application is asymmetric, **and the asymmetry tracks the seat's conclusion**. **Countermeasure: the self-quotation test is applied to every nonzero count in the memo or to none, and its result is written next to each.** **Instance:** `0919-N2`. | Proposed by name; no number taken. |
 > | **Own screen unread as evidence for a second proposition** | An enumeration built for one proposition is evidence for others, and nothing in any seat's procedure re-reads it. Proposed by the **analyst**, by name. **Instance:** the Spentech row sat inside the seat's own five-URL enumeration and was written out of existence four sections later. | Proposed by name (close-out item 5, `:1319-1322`); no number taken. |
+> | **One-pass artefact read** | A search or fetch artefact is read **once**, against the question of the call that produced it, and never again — so rows inside a seat's own committed enumeration are evidence for other propositions the same memo advances and nothing in any seat's procedure re-reads them. **Countermeasure: a search artefact is read twice — once per call against that call's question, and once WHOLE, against every proposition the memo advances, before the memo is filed.** **Instance:** `0920-N5`. | Proposed by name, 2026-09-20 (`:1334`, `1d6e3e7`). **The chairman declined the number in terms and gave the reason**: *"`agents/` is outside this session's merge scope, I am already issuing 41 into a table I cannot edit, and a second number issued blind into the same unwritable table is how the entry-27 collision happened."* **That sentence is D15 stated by the seat the latency binds.** |
+> | **Screen-record self-falsification** | An absence claim about the project's **own tree** is falsified **by the act of filing it**: once the screen record is committed, the term it reports as absent is present in the repository, and the standing sentence asserting the absence is false at the next commit. The next seat to re-run the screen gets a nonzero result **composed entirely of prior screen records** and must either contradict the standing sentence or explain it away. **Distinguished from the unnumbered *zero-screen counted as a carrier***, which governs an occurrence **count offered in support of a proposition**; this governs a standing **absence sentence about the repository**, which no count accompanies and which nothing re-checks. **Countermeasure: an absence claim about the tracked tree carries its exclusion inside the sentence — "no carrier other than this council's own screen records" — and names the screen-record loci, so re-running it returns the same verdict instead of a contradiction.** **Instance, verified:** `0922-N7` — *"No spelling of it appears anywhere in the tracked repository"* against `1110(7)` at 9 files / 48 occurrences, every carrier a screen record or escalation. | Proposed by name, 2026-09-22 (`:946`, `a814d18`); **adopted by the chairman unnumbered and routed here** (§6.4, `67ef197`). **It fired inside the record that proposed it, within one commit** — see the row below. |
+> | **Dedup screen record carries its line count** (the analyst's narrower variant, adopted with the above) | The mechanical half of *screen-record self-falsification*, narrowed to **the artefact this council files daily**: a dedup screen record carries the line count of `analytics/insights.jsonl` **at which it was run**, and states that filing the entry falsifies it. The analyst proposed it against its own artefact after finding that its §3.5 screen reported **eight** terms at 0 lines in `insights.jsonl` while the insight about to be appended **contained all eight** — *"the moment it is appended, every one of those eight zeros is false in the very file they were screened against"* (`2026-09-22.md:1218`). Executed in the same record: `AT 202 LINES BEFORE THIS ENTRY IS APPENDED`. | Proposed by name, 2026-09-22 (`:1218`, `a9bc44f`), **taking no number, as the officer did**; adopted by the chairman alongside the officer's wider form (§6.4, `67ef197`). |
 >
 > **Why they are unnumbered and why that is correct.** The proposing seat's stated reason is
 > `:875`: *"the entry-27 collision is still open and `agents/` is outside this session's merge
 > scope."* The collision is in fact **settled** — by your ruling of 2026-09-13, transcribed in the
 > concordance below — so the live reason is the merge scope alone, which is **D15**. Archivist,
 > 2026-09-19.
+>
+> **Archivist, 2026-09-22 — the reason has now been given in the chairman's own words, and it is
+> narrower and worse than the 2026-09-19 reading.** Declining a second number on 2026-09-20, the
+> chair wrote: *"a second number issued blind into the same unwritable table is how the entry-27
+> collision happened"* (`2026-09-20.md:1334`, `1d6e3e7`). Not merely *out of scope* —
+> **unwritable**, and the seat named the exact historical failure that scope produces. Two days
+> later the officer declined for the same reason having **measured** the gap rather than asserting
+> it (`2026-09-22.md:942`, `a814d18`). **Five patterns now sit unnumbered in this block, three of
+> them binding practice, because the seats that adopt them cannot write the file that carries
+> them.** That is the whole argument for the one-file scope widening put to Emory in
+> [[Workflow Threads]] **D15**, and it is now made by the bound seats rather than by this one.
 
 > [!important] **THE TAXONOMY CONCORDANCE — number-as-adopted → number-as-filed. Chairman's
 > ruling of 2026-09-13, item (a); executed by the archivist in one change set, 2026-09-13.**
@@ -287,6 +330,14 @@ the table; one of them, *zero-screen counted as a carrier*, is binding practice 
 > licence-in-the-pre-registration as `34a`, 2026-09-18, `018c1f1`. **The live next free number is
 > 41**, and it is at the top of this section, which is the only place it is ever live. None of the
 > three collides and nothing here is renumbered.)*
+> *(Archivist, 2026-09-22: the two parentheticals above are kept unaltered as dated records.
+> **Entry 41 has since been issued and extension 40a filed** — invented limb, 2026-09-20,
+> `1d6e3e7`; unit-swapped screen record as `40a`, 2026-09-20, `1d6e3e7`. **The live next free
+> number is 42**, and it is at the top of this section, which is the only place it is ever live.
+> Neither collides and nothing here is renumbered. **40a is the third adoption filed as an
+> extension rather than a new number** — after 32a and 34a — and all three cite this concordance's
+> own collision history as the reason, which is the clearest evidence available that the ruling of
+> 2026-09-13 is not merely settled but operating.)*
 >
 > **Cite-by-name is permanently binding for scope-mixed screen, manufactured residual and untested
 > counterfactual.** Three sittings issued the number 27 for three different patterns across
@@ -656,6 +707,25 @@ taxonomy of ten.
 
 ## Change log
 
+- **2026-09-22** — **Entry 41 and extension 40a filed; the heading moved 40 → 41; the pending
+  block grew from three patterns to five.** Both numbered adoptions are from **2026-09-20**
+  (`analytics/daily-research/2026-09-20.md:1315` and `:1323`, `1d6e3e7`) and reached this file two
+  days late — **D15** at occurrences twelve and thirteen. The two new pending patterns are
+  *one-pass artefact read* (2026-09-20, `:1334`) and *screen-record self-falsification*
+  (2026-09-22, `:946`, `a814d18`), the latter adopted unnumbered together with the analyst's
+  narrower variant (`:1218`, `a9bc44f`).
+  **Where this note would have prevented a recorded failure, stated because the mandate asks for
+  it.** On **2026-09-21** this seat had to write a vault-currency caveat into its own memo — *"Entry
+  41 and extension 40a … have not reached the vault"* (`2026-09-21.md:753`, `224cbfb`) — and on
+  **2026-09-22** it spent a measurement establishing the same thing (`:942`, `a814d18`) and then
+  **cited 40a twice in the memo out of a file that did not carry it** (`:816`, `:880`). Had this
+  note been current on either morning, neither paragraph would have been written and neither
+  citation would have been unsourceable at its own authority. **No objection was wrong and no
+  ruling was affected** — the cost was paid entirely in the seats' own verification time and in a
+  record that documents its own memory failing. That is the failure mode this note exists to
+  prevent, and it did not prevent it.
+  *Audited against `1cf6108`; paths: `.claude/agents/integrity-officer.md`,
+  `prompts/council_security.txt`, `analytics/daily-research/`, `agents/integrity-officer.md`.*
 - **2026-09-13** — **The numbering ruled, and the collision closed in one change set,
   thirty-seven days after it opened.** The chairman's rulings session of 2026-09-13, item (a),
   settled C11 (open since 2026-08-07) and D17 (opened 2026-09-13) together: `main`'s table is canonical, **first adoption

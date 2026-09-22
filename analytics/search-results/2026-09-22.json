@@ -1,0 +1,561 @@
+{
+ "date": "2026-09-22",
+ "seat": "research-analyst",
+ "repo_state": "f32b005",
+ "instrument": "WebSearch (one engine, one session); no body was retrieved by any call",
+ "schema_note": "calls[].results[] carries every returned row, as analytics/search-results/2026-09-20.json and 2026-09-21.json do. Filed in answer to 0922-B5.",
+ "retrieved_body_note": "retrieved_body is false on all 68 rows: this seat has no fetch and opened no URL. Titles are the engine's index, not the document's.",
+ "engine_summary_note": "Every call returned engine summary prose. NONE of it was used. S1, S2 and S3 summaries asserted content of NAFTA Article 1110(1) and 1110(2); that thread is at ZERO search budget as an operator item and no clause of it entered this memo, the insights or the candidate claims. No search-synthesis figure appears anywhere in this seat's return.",
+ "searches_budgeted": 8,
+ "call_count": 5,
+ "searches_unspent": 3,
+ "result_row_count": 68,
+ "mandatory_blocked_domains": [
+  "dailyjus.com",
+  "unis.unvienna.org"
+ ],
+ "mandatory_blocked_domains_note": "blocked_domains was passed on 0 of 5 calls: the schema excludes it alongside allowed_domains (analytics/insights.jsonl:199). The executable substitute of 2026-09-21 next step 3 was used - an allowed_domains list containing neither host, then a screen of every returned row.",
+ "prohibited_host_row_screen": {
+  "unit": "result rows",
+  "total": 68,
+  "dailyjus.com": 0,
+  "unis.unvienna.org": 0
+ },
+ "out_of_allowlist_row_screen": {
+  "unit": "result rows",
+  "in_ALLOWED_HOSTS": 61,
+  "out": 7,
+  "out_hosts": [
+   "files.pca-cpa.org"
+  ],
+  "note": "reproduces analytics/insights.jsonl:200 at 7 rows where 2026-09-21 saw 1"
+ },
+ "content_type_row_screen": {
+  "unit": "result rows",
+  "pdf_suffixed": 52,
+  "not_pdf_suffixed": 16,
+  "http_scheme_unrelayable": 9,
+  "distinct_urls": 54
+ },
+ "host_tally": {
+  "icsid.worldbank.org": 27,
+  "investmentpolicy.unctad.org": 11,
+  "icsidfiles.worldbank.org": 10,
+  "files.pca-cpa.org": 7,
+  "pca-cpa.org": 5,
+  "www.iisd.org": 3,
+  "www.italaw.com": 2,
+  "uncitral.un.org": 2,
+  "unctad.org": 1
+ },
+ "calls": [
+  {
+   "call_id": "S1",
+   "purpose": "Locate any locator serving NAFTA Chapter Eleven text at a host on ALLOWED_HOSTS.",
+   "query": "\"Article 1110\" NAFTA \"Chapter Eleven\" expropriation full text of the agreement",
+   "allowed_domains": [
+    "italaw.com",
+    "unctad.org",
+    "un.org",
+    "undocs.org",
+    "iisd.org",
+    "pca-cpa.org",
+    "worldbank.org",
+    "iareporter.com"
+   ],
+   "blocked_domains": null,
+   "independence": "one engine, one session; calls are NOT independent of each other",
+   "result_count": 10,
+   "result_blocks": 1,
+   "engine_summary_present": true,
+   "engine_summary_used": false,
+   "outcome": "returned",
+   "results": [
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C8573/DS16907_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "NAFTA's Chapter 11 and the Environment",
+     "url": "https://www.iisd.org/system/files/publications/nafta.pdf",
+     "host": "www.iisd.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "11-1 PART FIVE INVESTMENT, SERVICES AND RELATED MATTERS Chapter Eleven",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaty-files/2413/download",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Note on NAFTA Commission's July 31, 2001, Initiative to ...",
+     "url": "https://www.iisd.org/system/files/publications/trade_nafta_aug2001.pdf",
+     "host": "www.iisd.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw10824.pdf",
+     "host": "www.italaw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Concept of Expropriation under the ETC and other ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT UNCTAD Series",
+     "url": "https://unctad.org/en/Docs/psiteiitd15.en.pdf",
+     "host": "unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "13944307.22 IN THE MATTER OF THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C3544/DC7581_en.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9496.pdf",
+     "host": "www.italaw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "nafta's chapter 11 and the environment:addressing the ...",
+     "url": "https://www.iisd.org/system/files/publications/naftasummary.pdf",
+     "host": "www.iisd.org",
+     "retrieved_body": false
+    }
+   ]
+  },
+  {
+   "call_id": "S2",
+   "purpose": "Same, restricted to the UN and World Bank families plus PCA.",
+   "query": "North American Free Trade Agreement Chapter Eleven Investment text Article 1101 1110 1121",
+   "allowed_domains": [
+    "un.org",
+    "undocs.org",
+    "worldbank.org",
+    "pca-cpa.org"
+   ],
+   "blocked_domains": null,
+   "independence": "one engine, one session; calls are NOT independent of each other",
+   "result_count": 10,
+   "result_blocks": 1,
+   "engine_summary_present": true,
+   "engine_summary_used": false,
+   "outcome": "returned",
+   "results": [
+    {
+     "title": "1 IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE NORTH AMERICAN",
+     "url": "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C10297/DS18980_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "North American Free Trade Agreement PREAMBLE Skip to Section >>",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-47%20-%20NAFTA%20Preamble,%20Ch.1.,%202%20and%2011.pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C7653/DS16811_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 NAFTA CHAPTER 11 ARBITRATION (ICSID CASE NO. UNCT/20/3)",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C8473/DS16054_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C10678/DS17978_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Public Version In The Matter Of Two Arbitrations Under Chapter 11 Of The NAFTA",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/G%20-%20Rejoinder%20-%2008.17.2023/02.%20Autoridades%20legales/RL-0116-ENG.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+     "url": "http://icsidfiles.worldbank.org/icsid/icsidblobs/OnlineAwards/C246/DC653_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER 11 OF THE NORTH AMERICAN FREE",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C8573/DS18300_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 IN THE ARBITRATION UNDER CHAPTER TEN OF THE",
+     "url": "http://icsidfiles.worldbank.org/icsid/icsidblobs/OnlineAwards/C7291/DS12413_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF",
+     "url": "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C8453/DS18520_En.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "retrieved_body": false
+    }
+   ]
+  },
+  {
+   "call_id": "S3",
+   "purpose": "Same, restricted to the six allowlisted hosts with a proven html/text return.",
+   "query": "NAFTA \"Chapter Eleven\" \"Article 1110\" Expropriation and Compensation treaty text page",
+   "allowed_domains": [
+    "icsid.worldbank.org",
+    "uncitral.un.org",
+    "pca-cpa.org",
+    "undocs.org",
+    "docs.un.org",
+    "digitallibrary.un.org"
+   ],
+   "blocked_domains": null,
+   "independence": "one engine, one session; calls are NOT independent of each other",
+   "result_count": 30,
+   "result_blocks": 3,
+   "engine_summary_present": true,
+   "engine_summary_used": false,
+   "outcome": "returned",
+   "results": [
+    {
+     "title": "The Concept of Expropriation under the ETC and other ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 CASE No. ARB(AF)/97/1 INTERNATIONAL CENTRE FOR",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0260.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "\"Indirect Expropriation\" and the \"Right to Regulate\" in ... - ICSID",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0279.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "North American Free Trade Agreement PREAMBLE Skip to Section >>",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-47%20-%20NAFTA%20Preamble,%20Ch.1.,%202%20and%2011.pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN A NAFTA ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES S.D. Myers, Inc.",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0053-ENG%20-%20SD%20Myers%20v%20Canada%20-%20Partial%20Award.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "RA-49 - NAFTA FTC, Notes of Interpretation (July 31, 2001) ...",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-49%20-%20NAFTA%20FTC,%20Notes%20of%20Interpretation%20(July%2031,%202001).pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Indirect Expropriation in Investment Treaty Arbitrations*** ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES Washington, D.C.",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0062-ENG%20-%20Glamis%20Gold%20v%20USA.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT UNCTAD Series",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0245.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION UNDER CHAPTER ELEVEN OF THE",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0476.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "\"Indirect Expropriation\" and the \"Right to Regulate\" in ... - ICSID",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0279.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Concept of Expropriation under the ETC and other ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Indirect Expropriation in Investment Treaty Arbitrations*** ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT UNCTAD Series",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0245.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment Treaties and Shareholder Claims: Analysis of ...",
+     "url": "https://uncitral.un.org/sites/default/files/2014_investment_treaties_and_shareholder_claims_-_treaty_practice_-_final_website_version.pdf",
+     "host": "uncitral.un.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES Washington, D.C.",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0062-ENG%20-%20Glamis%20Gold%20v%20USA.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IN A NAFTA ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES S.D. Myers, Inc.",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0053-ENG%20-%20SD%20Myers%20v%20Canada%20-%20Partial%20Award.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 CASE No. ARB(AF)/97/1 INTERNATIONAL CENTRE FOR",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0260.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "n the matter of an international arbitration under - ICSID",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C3765/Respondent's%20Rejoinder%20(redacted%20per%20PO10)/Pi%C3%A8ces%20juridiques/RL-0097.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Possible reform of investor-State dispute settlement (ISDS) ...",
+     "url": "https://uncitral.un.org/sites/default/files/note_by_the_secretariat_-_assessment_of_damages_and_compensation_.pdf",
+     "host": "uncitral.un.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Concept of Expropriation under the ETC and other ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "1 CASE No. ARB(AF)/97/1 INTERNATIONAL CENTRE FOR",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0260.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "North American Free Trade Agreement PREAMBLE Skip to Section >>",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-47%20-%20NAFTA%20Preamble,%20Ch.1.,%202%20and%2011.pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "\"Indirect Expropriation\" and the \"Right to Regulate\" in ... - ICSID",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0279.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Date of dispatch to the parties: December 16, 2002 International Centre for",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0317.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES Washington, D.C.",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0062-ENG%20-%20Glamis%20Gold%20v%20USA.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "214 CASE Num. ARB(AF)/98/2 INTERNATIONAL CENTRE FOR",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0183.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "CONFIDENTIAL INFORMATION REDACTED IN THE ARBITRATION UNDER CHAPTER ELEVEN",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/E%20-%20Counter-Memorial%20-%2012.02.2022/Autoridades%20Legales/RL-0068-ENG.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "000015 INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0032-ENG%20-%20SPA%20Cargill%20v%20Mexico.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "PCA 388180 PCA Case No. 2016-13",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/E%20-%20Counter-Memorial%20-%2012.02.2022/Autoridades%20Legales/RL-0088-ENG.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    }
+   ]
+  },
+  {
+   "call_id": "S4",
+   "purpose": "Identify a source-named PCA locator; pca-cpa.org is 11/11 ok and no NAFTA page there had been identified.",
+   "query": "Permanent Court of Arbitration case NAFTA Chapter Eleven investor Canada case page",
+   "allowed_domains": [
+    "pca-cpa.org"
+   ],
+   "blocked_domains": null,
+   "independence": "one engine, one session; calls are NOT independent of each other",
+   "result_count": 8,
+   "result_blocks": 1,
+   "engine_summary_present": true,
+   "engine_summary_used": false,
+   "outcome": "returned",
+   "results": [
+    {
+     "title": "Bilcon of Delaware et al v. Government of Canada",
+     "url": "https://pca-cpa.org/en/cases/50/",
+     "host": "pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Bilcon of Delaware et al. v. Canada | PCA-CPA",
+     "url": "https://pca-cpa.org/en/news/bilcon-of-delaware-et-al-v-canada/",
+     "host": "pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Public Hearing on Jurisdiction: PCA Case No. 2018-54: Tennant Energy, LLC v. the Government of Canada | PCA-CPA",
+     "url": "https://pca-cpa.org/en/news/public-hearing-on-jurisdiction-pca-case-no-2018-54-tennant-energy-llc-v-the-government-of-canada/",
+     "host": "pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "ARTICLE 1103 Most-Favored-Nation Treatment 1.",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/1.%20Investors/4.%20Legal%20Authorities/CA237.pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Mesa Power Group LLC (USA) v. Government of Canada | PCA-CPA",
+     "url": "https://pca-cpa.org/en/news/mesa-power-group-llc-usa-v-government-of-canada/",
+     "host": "pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES Washington, D.C.",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/2.%20Canada/4.%20Legal%20Authorities/RA-29%20-%20Glamis%20v%20US,%20Award%20(June%208,%202009).pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "News | PCA-CPA",
+     "url": "https://pca-cpa.org/en/news/page/16/?num=25%2F%2F%2F%2F%2F",
+     "host": "pca-cpa.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Canadian Yearbook of International Law VOLUME XLIV 2006 TOME XLIV",
+     "url": "https://files.pca-cpa.org/pcadocs/bi-c/1.%20Investors/4.%20Legal%20Authorities/CA159.pdf",
+     "host": "files.pca-cpa.org",
+     "retrieved_body": false
+    }
+   ]
+  },
+  {
+   "call_id": "S5",
+   "purpose": "Test whether an HTML treaty-record page for NAFTA exists at the UNCTAD Navigator.",
+   "query": "UNCTAD Investment Policy Hub IIA Navigator North American Free Trade Agreement NAFTA treaty page full text",
+   "allowed_domains": [
+    "investmentpolicy.unctad.org"
+   ],
+   "blocked_domains": null,
+   "independence": "one engine, one session; calls are NOT independent of each other",
+   "result_count": 10,
+   "result_blocks": 1,
+   "engine_summary_present": true,
+   "engine_summary_used": false,
+   "outcome": "returned",
+   "results": [
+    {
+     "title": "NAFTA (1992) | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/treaties/bit/3104/nafta-1992-",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Home | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IIA Content Mapping | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/iia-mapping",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "United States of America | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/countries/223/united-states-of-america",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IIA Facilitation Mapping | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/iia-mapping/Facilitation",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Mexico | International Investment Agreements Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/international-investment-agreements/countries/136/mexico",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "IIA Navigator update: new treaties, in force dates and terminations | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/news/hub/1716/20230413-iia-navigator-update-new-treaties-in-force-dates-and-terminations",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "United States of America | Investment Dispute Settlement Navigator | UNCTAD Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/country/223/united-states-of-america",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Country Navigator - Investment Policy Hub",
+     "url": "https://investmentpolicy.unctad.org/country-navigator",
+     "host": "investmentpolicy.unctad.org",
+     "retrieved_body": false
+    }
+   ]
+  }
+ ]
+}

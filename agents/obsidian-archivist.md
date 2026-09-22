@@ -601,6 +601,33 @@ see item 2 of the 2026-08-03 slice.)*
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
 
+- **2026-09-22 (eighteenth deployment)** — Standing every-3-days session, audited against
+  `1cf6108` (`main`, clean tree, complete history — **1,531** commits after `git fetch
+  --unshallow`; the clone arrived shallow at **123**, the **tenth consecutive** session). Cadence
+  held: three days. Window `f1a7850..1cf6108` = **70** commits. **No seat's contract moved for the
+  second consecutive session** — zero commits to `.claude/agents/`, `prompts/` or `src/models.py`,
+  and zero to `scripts/`, `tests/`, `.github/` or `src/`. **The whole of this session's drift is
+  the taxonomy again:** entry **41** (*invented limb*) and extension **40a** (*unit-swapped screen
+  record*), both adopted 2026-09-20 (`1d6e3e7`) and filed here today, plus two further patterns
+  proposed by name and left unnumbered. **D15 at occurrences twelve and thirteen.**
+  **What this deployment should be remembered for, and it is not a compliment to this seat.** For
+  the first time the **bound seats counted the latency themselves** — the officer wrote the twelfth
+  on 2026-09-21 (`2026-09-21.md:753`, `224cbfb`), measured the thirteenth on 2026-09-22
+  (`2026-09-22.md:942`, `a814d18`), and **cited extension 40a twice in that memo out of a file that
+  did not carry it** (`:816`, `:880`). The chairman escalated the same gap to Emory as item 8 of
+  his own close-out (`67ef197`). **Three seats spent part of three sittings establishing what this
+  note is supposed to tell them for free.** No objection was wrong and no ruling was affected; the
+  cost was paid entirely in their verification time. **This is the 2026-08-03 failure in its mild
+  form** — a note that was real and correct and, for two days, invisible — and the mild form is
+  the one worth catching, because it is the one that does not announce itself.
+  **A hazard reproduced rather than rediscovered.** `scripts/check_currency.py` reported **3 hard
+  `FAIL`s** on arrival — `373cce6`, `9efafb0`, `ae42639` *"is not a commit"* — and **0 after
+  `git fetch --unshallow`**. Those are the **same three shas** recorded in this vault's standing
+  caution of 2026-08-13 ([[Workflow Threads]], the `check_currency.py` caution block). **Screened
+  before writing it up, and it is carried, not new.** CI is unaffected (`fetch-depth: 0`). Tenth
+  recurrence of the shallow-clone hazard, agent-session-only.
+  *Audited against `1cf6108`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `analytics/`, `scripts/`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-09-19 (seventeenth deployment)** — Standing every-3-days session, audited against
   `f1a7850` (`main`), complete **1,461**-commit history after `git fetch --unshallow`; the clone
   arrived shallow at **136**, the **ninth consecutive** session. Window `98dcff9..f1a7850` = **83**

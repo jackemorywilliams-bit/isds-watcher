@@ -791,6 +791,22 @@ still the only open PR in the repository before this session's own.
   lands on `main` after the day's last re-anchor carries that token, so `main` ends the day stale
   **and silent**.
 
+- **2026-09-22 — the 2026-09-19 zero was one clean window, not a fix, and the mechanism is back
+  at five in three days.** Measured over **182** remote refs (excluding `main`): **38** are not
+  ancestors of `origin/main`, up from 33. **Five are new**, and all five are this mechanism:
+  `council/daily-2026-09-20-addendum` (`0d598a6`), `council/daily-2026-09-22` (`20ff7c5`),
+  `council/daily-2026-09-22-addendum` (`11273b4`), and this seat's own
+  `vault/archivist-2026-09-19` (`fac4fe0`) and `vault/archivist-2026-09-19-addendum` (`fce1334`).
+  Classified by diff content rather than by counting: the insertion side of each is **currency
+  anchor lines and superseded generated pages only** — `20ff7c5` and `11273b4` carry **five
+  insertions each, all five of them anchor shas**. **No substantive work is stranded in any of the
+  five.** The repository squash-merges, so a landed branch's tip is never an ancestor; the
+  classification, not the count, is what says whether anything was lost. Nothing was.
+- **The 2026-09-19 prediction held.** That record predicted `vault/archivist-2026-09-16`
+  (`77c9036`) would still be on `origin` because branch deletion fails from this container. It is,
+  and so are both 09-19 branches. **This seat cannot delete its own branches and has now failed to
+  for four consecutive sessions.** Not escalated as new — it is this thread.
+
 ### D20 — `main`'s test suite has been red since 2026-09-14, across five merges and three daily sittings, and no seat has recorded it *(new 2026-09-16; owner: systems-designer / site-experience — `tests/` is outside this seat's paths)*
 
 - **State** — `pipeline-guards` on `main` concludes **failure** on every run since `c53f7c9`
@@ -851,6 +867,35 @@ still the only open PR in the repository before this session's own.
   seat's merge scope; re-measuring the constants is a `tests/` edit. Escalated for the second
   consecutive session, unchanged.
 
+- **2026-09-22 — day eight, the drift has widened from one digest to two, and the ungated-merge
+  count has gone from twelve to twenty.** `pipeline-guards` run **232** on `3eb1499` (`main`,
+  2026-09-22 12:13Z) concludes **failure**. **Re-measured against the live archive this session,
+  not restated from the last record** — the discipline of taxonomy entry 40, which this thread
+  reasons from numbers and therefore owes:
+
+  | Assertion | Pinned in `tests/` | Live archive |
+  | --- | --- | --- |
+  | `runs` | 16 | **18** |
+  | `screened` | 492 | **520** |
+  | digests carrying `per_source` | 11 | **13** |
+  | `per_source` sum | 191 | **219** |
+  | their `screened` | 230 | **258** |
+
+  **Every one of the five deltas is exactly the two digests 2026-09-14 (7) and 2026-09-21 (21).**
+  Single cause, two failing tests, five numbers in `tests/test_site_claims.py:155-156` and
+  `:305-308`. This reproduces the chairman's own escalation 5 of 2026-09-22
+  (`analytics/daily-research/2026-09-22.md` §6.9 item 5, `67ef197`) independently; **I measured
+  before reading his figures and they agree to the digit.**
+- **The cost, recounted.** `git log 529e32d0..origin/main --grep='(#[0-9]'` now returns **20**
+  squash-merged pull requests, **#192 through #211**, plus one direct commit (`37fd77e`). Twelve
+  three days ago; **twenty today**. Every one went in against a red base and not one was gated by
+  the suite.
+- **And it widens on a schedule.** The drift grows by one digest every Monday, because the weekly
+  digest writer changes the published figures the constants are pinned against. It is the only
+  thread on this list with a known growth rate.
+- **Still not the archivist's to fix**, unchanged: `tests/`, `scripts/` and `.github/` are all
+  outside this seat's merge scope. Escalated for the third consecutive session.
+
 ### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
 
 - **State** — **PR #184** (`fix/repoint-r21-citations`, tip `529c744`) was opened
@@ -888,6 +933,15 @@ still the only open PR in the repository before this session's own.
   2026-09-19 and classed it *"hygiene, not a finding"* (`analytics/daily-research/2026-09-19.md`,
   close-out item 9, `b267efd`); that is right about the council's own exposure and does not reach
   the dormant guard, which is why this thread stays open. Unchanged as **Emory's**.
+
+- **2026-09-22 — day nine, head unchanged at `529c744`, last updated 2026-09-13T22:49Z.** Nothing
+  has been pushed to it and nothing has been said on it for nine days. Confirmed open this session
+  against the GitHub API, together with **#150** (day 14) and **#110** (day 25) — three open pull
+  requests spanning nine to twenty-five days, which the chairman independently noted the same day
+  and classed *"hygiene, not a finding"* (`2026-09-22.md` §6.9 item 9, `67ef197`). **That is right
+  about the council's exposure and still does not reach this thread**, whose subject is the
+  dormant strict-xfail guard, not the PR's age. Every path in #184 is outside this seat's merge
+  scope; I cannot land it and did not try.
 
 ### D18 — a `[skip ci]` bot commit on `main` skips both the mover and the guard, and `main` ends the day stale 8 days in 10 *(new 2026-09-13; owner: systems-designer, one narrow bug for Emory)*
 
@@ -984,6 +1038,29 @@ still the only open PR in the repository before this session's own.
   `[skip ci]` from the bot writers, or give `reanchor.yml` a scheduled run after the day's last
   automated writer. **Still systems-designer's.**
 
+- **2026-09-22 — 1 of 3 days red, the same rate as the last session, and the diagnosis held for a
+  fourth.** Measured the same way: `main`'s tip at the end of each UTC day, every tracked note's
+  anchor evaluated against it in a detached worktree.
+
+  | Day | Tip | Verdict | What staled it |
+  | --- | --- | --- | --- |
+  | 09-20 | `5df71d2` | green | tip was a re-anchor |
+  | 09-21 | `1eb4235` | **RED** | `chore: weekly digest + state update [skip ci]` |
+  | 09-22 | `1cf6108` | green | tip was a re-anchor |
+
+  The one red carries **exactly one** STALE line and it is [[Workflow Threads]] — *"2 commit(s)
+  touched its declared paths since `c6db37e`"* — the other four tracked notes clean. **Fourth
+  consecutive session in which every red resolves to this note's `analytics` declaration meeting a
+  `[skip ci]` bot writer.** This window's writer is the **weekly digest**, which is the first of
+  the four named writers and the one with a fixed weekly cadence — so this red is not a coin flip
+  like the others, it is due every Monday.
+- **The fix still not proposed, restated because the temptation is now dated.** Narrowing this
+  note's declared paths so its own guard stops going red would be this seat marking its own
+  homework, which is the precise failure the guard exists to prevent. The two real options are
+  unchanged and both need pricing this seat cannot do — drop `[skip ci]` from the bot writers, or
+  give `reanchor.yml` a scheduled run after the day's last automated writer. **Still
+  systems-designer's.**
+
 ### D15 — a rule routed to `agents/` is invisible to the seat bound by it for up to three days *(new 2026-09-07; owner: Emory — routing or cadence)*
 
 - **State** — Taxonomy **entry 29, off-read-path carrier**, was adopted 2026-09-05
@@ -1061,6 +1138,48 @@ still the only open PR in the repository before this session's own.
   three unfiled adoptions, indefinitely, until either the cadence or the routing changes.** This
   session found three. The previous found three. The one before found one. Nothing about the seats'
   behaviour will change that number; only the routing or the cadence can.
+
+- **2026-09-22 — occurrences twelve and thirteen, and for the first time the count is not this
+  seat's.** **Entry 41 (*invented limb*)** and **extension 40a (*unit-swapped screen record*)**
+  were adopted by the chairman on 2026-09-20 (`analytics/daily-research/2026-09-20.md:1315`,
+  `:1323`, `1d6e3e7`) and reached [[integrity-officer]] only in this change set, two days later.
+  Both are filed now, nothing renumbered, under the rule of 2026-09-13.
+- **What is new, and it is the strongest evidence this thread has produced in fifteen days: the
+  bound seats are now counting the latency themselves, in terms, on consecutive days.**
+  - **2026-09-20** — the officer opened the table, verified the heading current, and numbered 41
+    off it correctly (`:788`). The chairman then **declined a second number in the same close-out
+    and gave the reason**: *"`agents/` is outside this session's merge scope, I am already issuing
+    41 into a table I cannot edit, and a second number issued blind into the same unwritable table
+    is how the entry-27 collision happened"* (`:1334`).
+  - **2026-09-21** — the officer opened the same heading, found it behind **by its own previous
+    day's adoption**, and wrote: *"Entry 41 and extension 40a — both adopted by you yesterday and
+    both binding on me today — have not reached the vault. … This is the twelfth consecutive
+    occurrence of the D15 routing latency the vault itself records"* (`:753`, `224cbfb`).
+  - **2026-09-22** — the officer **measured** the gap instead of asserting it — *"`INVENTED LIMB`
+    occurs 0 times and `40a` occurs 0 times in that file. I measured all three"* — declined a
+    number for the second day running, and **cited 40a twice in the same memo out of a file that
+    did not carry it** (`:942`, `:944`, and the citations at `:816` and `:880`, `a814d18`). The
+    chairman escalated it to Emory as item 8 of his own close-out (`67ef197`).
+- **The arithmetic of 2026-09-19 is confirmed by the window that followed it and does not need
+  re-deriving.** The archivist's cadence is three days; the council sits daily; every archivist
+  session will therefore find two or three unfiled adoptions indefinitely. **This window found
+  two numbered and two unnumbered.** No change in any seat's behaviour can move that — the seats
+  have now demonstrated, across seven consecutive sittings, that they handle the latency correctly
+  every time. **Only the routing or the cadence can move it.**
+- **What the window adds to the price.** The pending block in [[integrity-officer]] now holds
+  **five** unnumbered patterns, **three of them binding practice**, because the seats that adopt
+  them cannot write the file that carries them. A seat cited a rule twice out of a file that did
+  not contain it, and no objection was wrong and no ruling was affected — **the entire cost was
+  paid in the seats' verification time and in a daily record that documents its own memory
+  failing.**
+
+  > **NEEDS YOU — the choice is unchanged and only its evidence has grown.** Give the daily
+  > council write access to the taxonomy table in `agents/integrity-officer.md` **alone** — a
+  > one-file scope widening — or accept the latency and have the council's close-out carry an
+  > explicit *"UNFILED — routed to archivist on `<date>`"* line. **I can execute either and
+  > neither is mine to decide.** The risk a widening would create is a blind number issued into
+  > the table; the chairman named that exact risk on 2026-09-20 as his reason for declining one,
+  > which is the behaviour the widening would rely on and which he demonstrated unprompted.
 
 ### D17 — an operator-mandated special session is not on `main`, and its absence has produced a three-way numbering collision *(new 2026-09-13; owner reassigned from Emory to the archivist by the ruling of 2026-09-13 — **CLOSED, REMEDIED, the same day**)*
 
@@ -2612,6 +2731,32 @@ specifically unblocks it.
 
 ---
 
+**2026-09-22 — eighth first-person observation, day thirty-eight, and the split is unchanged.**
+This session queried its own runtime: `configured_model`, `session_context.model` and
+`external_metadata.last_served_model` are all **`claude-opus-5`**.
+`.claude/agents/obsidian-archivist.md:3` and `:24` say *"Runs on Claude Opus 4.8."* **REQUESTED
+`claude-opus-4-8` → ACTUAL `claude-opus-5`.** Consistent with 2026-08-16, 08-25, 09-04, 09-07,
+09-13, 09-16 and 09-19. `scripts/check_models.py` exits **0** and cannot see this — it compares
+three declarations to each other and never a runtime.
+
+**The split, re-enumerated from the files this session rather than carried** — the discipline of
+taxonomy entry 40, which this thread owes because its whole argument is a count:
+
+| | Count | Seats |
+| --- | --- | --- |
+| Description says **Opus 5** | **4** | council-chairman, research-analyst, site-experience, systems-designer |
+| Description says **Opus 4.8** | **5** | analytics-officer, integrity-officer, obsidian-archivist, research-editor, systems-researcher |
+| Names no model | **0** | — |
+
+**4 / 5 / 0**, identical to the corrected 2026-09-19 figures, and `git log f1a7850..1cf6108 --
+.claude/agents/` returns **zero** commits, which is why. `site-experience.md` and
+`systems-designer.md` still carry no `- Model:` line in their DISCIPLINE blocks; both say Opus 5,
+so nothing contradicts.
+
+**The rows are again left unchanged**, because they record Emory's directive and rewriting them
+would ratify a substitution nobody authorised. Editing `.claude/agents/` is a contract change and
+is his.
+
 ### D9 · `check_currency.py` documents a commit-citation check it does not implement
 
 - **State** — Opened 2026-08-25 against `ad66a96`. The module docstring at
@@ -2702,6 +2847,18 @@ specifically unblocks it.
   genuinely finished, which leaves METHODOLOGY §III alone. Still a two-number edit; still Emory's.
 
 ---
+
+**2026-09-22 — re-derived from the code, not restated, and the isolation has got one file
+worse.** `len(bing_news.QUERIES)` is **12** against `METHODOLOGY.md:33`'s *"eight fixed,
+fingerprint-derived queries"*; `len(all_sources())` is **10** against the same sentence's seven
+open repositories plus two added channels, which is **nine**. Both executed this session.
+
+**Where GDELT is named today:** `README.md` **1**, `docs/` **10 files** (nine on 2026-09-19; the
+2026-09-21 digest page landed at `1eb4235` and carries it), `scripts/site_templates/` **1**,
+`METHODOLOGY.md` **0**. **Every professor-facing surface in this project names the tenth source
+except the one document a reviewer reads to judge the method**, and the gap widens by one file
+each week the digest writer runs. It is a two-number edit and it is Emory's; this seat does not
+edit his prose.
 
 ### D8 · "Zero-cost" survives on a second seat's definition, eight days after it was falsified once
 

@@ -15,6 +15,69 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-09-22 (archivist session — eighteenth deployment)
+
+*Audited against `1cf6108` (`main`), on a complete **1,531**-commit history — the container's clone
+arrived shallow at **123**, the **tenth consecutive** session, so every sha below was resolved only
+after `git fetch --unshallow`. Window `f1a7850..1cf6108` = **70** commits, three days. Paths:
+`agents/`, `.claude/agents/`, `prompts/`, `src/models.py`, `analytics/`, `METHODOLOGY.md`,
+`README.md`, `docs/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, and every
+remote branch.*
+
+**No seat's contract moved, for the second consecutive session.** `git log f1a7850..1cf6108 --
+.claude/agents/ prompts/ src/models.py` returns **zero** commits; so does the same query over
+`scripts/ tests/ .github/ src/`. The deliverable surface moved once, at `1eb4235` (*chore: weekly
+digest + state update `[skip ci]`*), which is a generated write and carries no prose change.
+
+**What this change set does, and all of it is the taxonomy.**
+
+- **Taxonomy entry 41, *invented limb*, filed** in [[integrity-officer]]. Adopted by the chairman
+  2026-09-20 with the analyst's amendment in full — the countermeasure is keyed to *"the LIMB,
+  PREMISE, GROUND, PRONG OR BRANCH it contests"*, because the generating instance used the word
+  *premise* and an entry keyed to *limb* would have been evaded by its own instance. Proposed
+  `analytics/daily-research/2026-09-20.md:991`; adopted `:1315`; binding form `:1508`; all
+  `1d6e3e7`.
+- **Extension 40a, *unit-swapped screen record*, filed** beside its parent. Adopted as an
+  extension rather than a new number — the **third** time the entry-27 collision history has
+  governed that choice, after 32a and 34a. Proposed `:995`; analyst's harm-clause amendment
+  `:1240`; adopted `:1323`; all `1d6e3e7`.
+- **The taxonomy heading moved 40 → 41**; the live next free number is **42**. Nothing was
+  renumbered.
+- **The pending block grew from three unnumbered patterns to five** — *one-pass artefact read*
+  (2026-09-20, `:1334`, `1d6e3e7`) and *screen-record self-falsification* (2026-09-22, `:946`,
+  `a814d18`), the latter adopted unnumbered together with the analyst's narrower mechanical
+  variant (`:1218`, `a9bc44f`; both adopted at §6.4, `67ef197`).
+- **Six rows added to the adopted-method-rules table** in [[Agent Registry]] — the two numbered
+  adoptions, the two unnumbered patterns, the three procedures adopted 2026-09-21
+  (`2026-09-21.md:1353-1359`, `da5cb53`), and *Amendment 2 carries no qualifier* (`:1360-1363`).
+
+**D15 stands at occurrences twelve and thirteen, and this window is the first in which the bound
+seats counted the latency themselves rather than waiting for this note to count it.** The officer
+wrote the twelfth on 2026-09-21 (`2026-09-21.md:753`, `224cbfb`) and measured the thirteenth on
+2026-09-22 (`2026-09-22.md:942`, `a814d18`); the chairman escalated it to Emory as item 8 of his
+own close-out (`67ef197`). A seat cited extension 40a twice in a memo out of a file that did not
+carry it. Recorded in [[Workflow Threads]] **D15** and in [[integrity-officer]]'s change log.
+
+**Carried and re-measured, not restated.** **D20** — `main` red at day eight; `pipeline-guards`
+run **232** on `3eb1499` fails; the live archive returns 18 / 520 / 13 / 219 / 258 against pinned
+16 / 492 / 11 / 191 / 230, every delta exactly the 2026-09-14 and 2026-09-21 digests; **20**
+squash-merged pull requests (#192–#211) have now gone in ungated, up from twelve.
+**D18** — 1 of 3 days red, the red being 2026-09-21 whose tip was the weekly digest `[skip ci]`
+writer. **D16** — five new non-ancestor branches, all of them anchor-edit residue, nothing
+substantive stranded; 38 of 182 remote refs are non-ancestors. **D7** — `METHODOLOGY.md:33` still
+says eight Bing queries against **12** and nine sources against **10**, and is still the only
+professor-facing surface that does not name GDELT, now against **10** files in `docs/`. **D6** —
+eighth first-person runtime observation: requested `claude-opus-4-8`, served `claude-opus-5`; the
+description split is **4 / 5 / 0**, re-enumerated from the files.
+
+**Guards at `1cf6108`:** `check_currency.py` exit **0** over 9 claims; `check_models.py` exit **0**
+over 12 cards; `node tools/isds-workflow-3d/validate.mjs` exit **0** — 30 cards, 10 chips, 44
+edges, SVG fresh against its inputs-sha256, zero *"Jack"* tokens. `build_graph.py --dry-run`
+before this record: **194** notes, **402** edges, **0** orphans, 84 managed blocks would update,
+17 WARNs, all of them index or session notes over the four-link cap. Professor-facing surfaces
+carry **zero** occurrences of *"Jack"*; the two known live defects are unchanged and both outside
+this seat's paths (`HUMAN_REVIEW.md:115`, `prompts/council_roundtable.txt:73`).
+
 ## 2026-09-19 (archivist session — seventeenth deployment)
 
 *Audited against `f1a7850` (`main`), on a complete **1,461**-commit history — the container's clone

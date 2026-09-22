@@ -735,6 +735,49 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D21 — `check_currency.py`'s PR-citation check cannot read this repository's merge subjects, and one default-subject merge makes it mis-attribute the whole recent history *(new 2026-09-22; owner: systems-designer — `scripts/`; the session-side half is the archivist's and is fixed)*
+
+- **State — found by breaking it, in this session, with this session's own merge.** `_pr_for`
+  (`scripts/check_currency.py:139-148`) resolves which pull request brought a sha to `HEAD` by
+  walking `git log --merges --ancestry-path --reverse` and matching the regex
+  `Merge pull request #(\d+)`. **That regex only matches GitHub's *default* merge-commit
+  subject.** Every recent merge in this repository carries a **customised** subject of the form
+  `<PR title> (#N)` — `7703720 council: daily meeting 2026-09-21 (#208)`,
+  `cc572ed vault: archivist session 2026-09-19 (#204)` — which are true merge commits (they appear
+  under `git log --merges`) whose subject the regex cannot read.
+- **So the check has two failure modes and they are opposite.** (1) **Silently inert:** for every
+  sha whose merge used a customised subject, `_pr_for` returns `None` and the check passes
+  whatever PR number a note cites, correct or not. (2) **Loudly wrong the moment one
+  default-subject merge lands:** because the walk takes the **first** matching merge in
+  ancestry-path, that single commit becomes the answer for **every** sha behind it.
+- **Measured, at `ee0565e`.** This session merged PR #212 through the GitHub API without supplying
+  a commit title, so the merge took the default subject *"Merge pull request #212 from …"* — the
+  first default-subject merge on `main` in this window. Run immediately after:
+  `_pr_for('7703720') → 212`, `_pr_for('018c1f1') → 212`, `_pr_for('1d6e3e7') → 212`. Older shas
+  whose merges predate the customised-subject convention still resolve correctly:
+  `_pr_for('aa48406') → 59`, `_pr_for('51bb7a2') → 48`. **229 merge commits exist on `main`; the
+  regex can read a minority of them.**
+- **The half that is mine, and it is fixed.** The [[Agent Registry]] row added this session cited
+  the sha `7703720` followed by a comma and that pull request's number in the parser's exact
+  shape — the only citation in any tracked note matching `PR_CITE_RE`
+  (`:75`), and therefore the only one the mis-attribution could reach. It is **correct as written**:
+  `7703720` *is* #208's merge commit. **I reworded it rather than deleted it**, keeping both facts
+  and dropping only the token the parser reads. **The rewording is not the fix and I am not
+  presenting it as one** — it clears `main` and leaves the mechanism exactly where it was.
+- **The other half that is mine: the merge subject.** Previous archivist merges (#204, #205) took
+  customised subjects; this one did not, because the merge was made through the GitHub API with no
+  title supplied. **Future archivist merges should pass an explicit title in this repository's
+  convention** — `vault: archivist session <date> (#N)` — so the vault's own merges stop being the
+  one thing that arms this misfire. Recorded here as the standing instruction to the next session.
+
+  > **FOR EMORY / systems-designer — the guard is not wrong to exist and is wrong as written.**
+  > `_pr_for`'s regex should match both subject forms — GitHub's default *and* the trailing
+  > `(#N)` this repository actually produces — or the check should resolve the PR from the
+  > **commit that contains the sha**, not from the first readable merge behind it. As written it
+  > is inert on most of this history and catastrophic on the rest, and **the two states are
+  > indistinguishable from its output**, which is the same shape as D18 and D20: a guard whose
+  > green is not evidence. `scripts/` is outside this seat's paths.
+
 ### D16 — `reanchor.yml` loses a race with the squash-merge and has landed 2 of 16 commits *(new 2026-09-07; owner: Emory — one repository setting; systems-designer for the alternative)*
 
 - **State** — Measured 2026-09-07 on a complete 1,048-commit history. Of every

@@ -1,0 +1,40 @@
+{
+  "request": "2026-09-23-daily.json",
+  "note": "2026-09-23 daily batch, AMENDED BY THE CHAIRMAN AT THE SPEND CHECKPOINT. The research-analyst proposed TWO rows (analytics/daily-research/2026-09-23.md, Part 2 s3.2). The integrity officer objected to row 1 (https://unctad.org/) on the ground that it cannot do what it was for: unctad.org and investmentpolicy.unctad.org are DIFFERENT ORIGINS and need not share an edge policy, so no outcome of that row can discriminate 'organisation-wide 403 regime' from 'subdomain-scoped 403 regime' - taxonomy 22 (unverified control design) and 16 (second-instrument corroboration fallacy). THE CHAIRMAN SUSTAINED THAT OBJECTION AND ROW 1 IS NOT FIRED. One substantive row remains, plus the control the runner prepends. THE REMAINING ROW CANNOT CLOSE THE GAP nafta-chapter-11-allowlisted-host-visible-prose-untested UNDER THE AMENDED 2026-09-22 SS6.2 CONDITION AND IS NOT OFFERED AS A CLOSURE. It is fired because it converts an inference into an observation: this council currently writes off a 16-string / 13-record pool at digitallibrary.un.org as 'catalogue records, nothing of the right kind' ON THE STRENGTH OF ENGINE TITLES ALONE, which is title-as-holding (taxonomy 4). One read at a pinpoint replaces that inference. It also carries a live falsifier the council would act on: robots_disallowed would mean the robots reading is wrong. PRE-REGISTERED PREDICTION, recorded before firing: ok / text/html / non-empty excerpt containing the catalogue title, ~80%. Standing prohibitions honoured: no www.italaw.com row, no italaw.com bare-spelling row, no investmentpolicy.unctad.org row, no further IISD path-family row, no www.bing.com row.",
+  "fetched_at": "2026-09-23T11:51:25.418613+00:00",
+  "environment": "github-actions-runner (run 35856935085)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 1,
+  "completed": 0,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 559,
+      "sha256": "ff67a9d764d6a2367a187734e697f6a53217db9a21c101d410a113ca871a299d",
+      "excerpt": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://digitallibrary.un.org/record/259745?ln=en",
+      "find": "NAFTA",
+      "outcome": "refused",
+      "status": "202",
+      "final_url": null,
+      "content_type": null,
+      "bytes": null,
+      "sha256": null,
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)"
+    }
+  ]
+}

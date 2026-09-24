@@ -1,0 +1,369 @@
+{
+  "date": "2026-09-24",
+  "seat": "research-analyst",
+  "repo_state": "38acb75 (branch council/daily-2026-09-24); git rev-parse --is-shallow-repository = false, 1563 commits",
+  "instrument": "WebSearch (one engine, one session). Direct curl and the fetch service are both dead this session class at a NEUTRAL CONTROL; no body was retrieved by any call.",
+  "schema_note": "One object per search call, in the schema established 2026-09-20 and used on 2026-09-21 and 2026-09-22. calls[].results[] carries every returned row: the engine's verbatim title, the verbatim url, the host derived from that url, and retrieved_body:false.",
+  "retrieved_body_note": "retrieved_body is false on all 38 rows. This seat opened no URL. A title is a LEAD, never a finding, and no title is read as a holding (taxonomy 4).",
+  "engine_summary_note": "Every call returned engine summary prose. NONE of it was used, and none of it is transcribed here. The prose on S1 named an alleged pair of KORUS notices of intent and a French Cour de cassation decision; the prose on S4 described an unnamed 2026 Venezuelan ICSID award and its ratione materiae objections. Both are search-synthesis with no title behind them in the returned rows. They are QUARANTINED, carry no weight, and - stated expressly because the temptation was real - NO QUERY IN THIS FILE WAS DESIGNED FROM THEM. Using quarantined prose to steer a later query is using it.",
+  "budget": {
+    "searches_budgeted": 4,
+    "call_count": 4,
+    "searches_unspent": 0
+  },
+  "blocked_domains_compliance": {
+    "passed_on_calls": 4,
+    "of_calls": 4,
+    "value": [
+      "dailyjus.com",
+      "unis.unvienna.org"
+    ],
+    "allowed_domains_passed_on_calls": 0,
+    "note": "analytics/insights.jsonl:199 records, verified by two seats on 2026-09-21, that allowed_domains and blocked_domains are MUTUALLY EXCLUSIVE at the API level. The chairman's instruction to pass blocked_domains on every call is therefore executable only by passing allowed_domains on none. That is what was done, and it is also the right scoping for this task: the research question is not host-scoped."
+  },
+  "prohibited_host_row_screen": {
+    "unit": "result rows",
+    "total": 38,
+    "dailyjus.com": 0,
+    "unis.unvienna.org": 0
+  },
+  "allowlist_row_screen": {
+    "unit": "result rows",
+    "in_relay_ALLOWED_HOSTS": 5,
+    "out": 33,
+    "note": "www.italaw.com returned 1 row (S4). italaw.com is under a standing RELAY prohibition; that prohibition is on proposing a relay row, not on an engine returning the host. NO RELAY ROW IS PROPOSED FOR IT, or for any row in this file."
+  },
+  "host_tally": {
+    "globalarbitrationreview.com": 5,
+    "www.drugpatentwatch.com": 5,
+    "icsid.worldbank.org": 3,
+    "www.congress.gov": 3,
+    "practiceguides.chambers.com": 2,
+    "www.lexology.com": 2,
+    "pmc.ncbi.nlm.nih.gov": 2,
+    "www.mrllp.com": 1,
+    "arxiv.org": 1,
+    "blog.ifila.org": 1,
+    "benchcurrent.com": 1,
+    "jindalforinteconlaws.in": 1,
+    "ipkitten.blogspot.com": 1,
+    "link.springer.com": 1,
+    "academic.oup.com": 1,
+    "arbitrationlaw.com": 1,
+    "jusmundi.com": 1,
+    "www.usitc.gov": 1,
+    "intuitionlabs.ai": 1,
+    "www.drugdiscoverynews.com": 1,
+    "www.iisd.org": 1,
+    "www.italaw.com": 1,
+    "www.pillsburylaw.com": 1
+  },
+  "result_row_count": 38,
+  "distinct_urls": 34,
+  "calls": [
+    {
+      "call_id": "S1",
+      "purpose": "B3 - Ring 1 x Ring 3: any reported ISDS matter in which a trade secret or clinical-trial data is asserted as a covered investment and a jurisdictional objection is litigated.",
+      "query": "investment treaty arbitration trade secrets clinical trial data covered investment jurisdictional objection 2026",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the four calls are NOT independent of each other",
+      "result_count": 9,
+      "result_blocks": 1,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "Jurisdiction: assessing the main elements in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment Arbitration and Treaty Protections: A Practical Introduction for Investors - Michelman & Robinson",
+          "url": "https://www.mrllp.com/news-item/investment-arbitration-and-treaty-protections-a-practical-introduction-for-investors/",
+          "host": "www.mrllp.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment Disputes and Abnormal Volatility of Stocks",
+          "url": "https://arxiv.org/pdf/2006.10505",
+          "host": "arxiv.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment Arbitration: Jurisdiction and Admissibility",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0215.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement | Congress.gov | Library of Congress",
+          "url": "https://www.congress.gov/crs-product/R43988",
+          "host": "www.congress.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "Biannual Review - Young IFILA Blog",
+          "url": "https://blog.ifila.org/2026/05/28/biannual-review/",
+          "host": "blog.ifila.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "A Comprehensive Overview of Arbitration in Investment Disputes - Benchcurrent",
+          "url": "https://benchcurrent.com/arbitration-in-investment-disputes/",
+          "host": "benchcurrent.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Trade Secrets 2026 | Global Practice Guides | Chambers and Partners",
+          "url": "https://practiceguides.chambers.com/practice-guides/trade-secrets-2026",
+          "host": "practiceguides.chambers.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S2",
+      "purpose": "B3 - designator-led: an ICSID tribunal decision of 2026 on IP as a covered investment.",
+      "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the four calls are NOT independent of each other",
+      "result_count": 9,
+      "result_blocks": 1,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "ICSID Tribunal Approaches to Intellectual Property as Investments – Jindal Forum for International and Economic Laws",
+          "url": "https://jindalforinteconlaws.in/2022/02/11/icsid-tribunal-approaches-to-intellectual-property-as-investments-abhijay-srekanth/",
+          "host": "jindalforinteconlaws.in",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment disputes, trademarks and licenses, and ICSID tribunals-\"Bridgestone v. Panama\" - The IPKat",
+          "url": "https://ipkitten.blogspot.com/2018/03/investment-disputes-trademarks-and.html",
+          "host": "ipkitten.blogspot.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Intellectual Property Rights in International Investment Agreements | Springer Nature Link",
+          "url": "https://link.springer.com/rwe/10.1007/978-981-13-5744-2_42-1",
+          "host": "link.springer.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "International Intellectual Property Law as Applicable Law in Investment Disputes | ICSID Review - Foreign Investment Law Journal | Oxford Academic",
+          "url": "https://academic.oup.com/icsidreview/article/40/1/174/8121539",
+          "host": "academic.oup.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards | ArbitrationLaw.com",
+          "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+          "host": "arbitrationlaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Jurisdiction: navigating challenges in investment treaty arbitration - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=d8d9f1fc-9d3d-400b-9fc9-f9edf0761574",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Intellectual Property Issues in ISDS",
+          "url": "https://jusmundi.com/en/document/publication/en-ip-issues-in-isds",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Intellectual Property Developments | United States International Trade Commission",
+          "url": "https://www.usitc.gov/intellectual_property.htm",
+          "host": "www.usitc.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S3",
+      "purpose": "B3 - Ring 2 led, growth edge: a NEW investor-State claim in 2026 over a pharmaceutical patent or data-exclusivity regulatory measure.",
+      "query": "new investor-state arbitration registered 2026 pharmaceutical patent data exclusivity regulatory measure claim against state",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the four calls are NOT independent of each other",
+      "result_count": 10,
+      "result_blocks": 1,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "The Role of Patents and Regulatory Exclusivities in Drug Pricing | Congress.gov | Library of Congress",
+          "url": "https://www.congress.gov/crs-product/R46679",
+          "host": "www.congress.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "A Strategic Investor’s Guide to Pharmaceutical Patent Expiration - DrugPatentWatch – Transform Data into Market Domination",
+          "url": "https://www.drugpatentwatch.com/blog/a-strategic-investors-guide-to-pharmaceutical-patent-expiration/",
+          "host": "www.drugpatentwatch.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Patent Cliff Playbook: Pharmaceutical IP Valuation, Generic Entry Timing, and Biosimilar Strategy - DrugPatentWatch – Transform Data into Market Domination",
+          "url": "https://www.drugpatentwatch.com/blog/patent-expirations-seizing-opportunities-in-the-generic-drug-market/",
+          "host": "www.drugpatentwatch.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Drug Patent Challenges: The Complete Strategic Playbook for IP Teams and Portfolio Managers - DrugPatentWatch – Transform Data into Market Domination",
+          "url": "https://www.drugpatentwatch.com/blog/when-science-meets-law-the-art-and-strategy-of-challenging-drug-patents/",
+          "host": "www.drugpatentwatch.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Drug Patents Expiring in 2026: A Comprehensive Guide | IntuitionLabs",
+          "url": "https://intuitionlabs.ai/articles/drug-patent-expirations-2026",
+          "host": "intuitionlabs.ai",
+          "retrieved_body": false
+        },
+        {
+          "title": "High-Yield Hedging: Using Patent Landscape Data to Navigate Generic Entry and Revenue Erosion - DrugPatentWatch – Transform Data into Market Domination",
+          "url": "https://www.drugpatentwatch.com/blog/high-yield-hedging-using-patent-landscape-data-to-navigate-generic-entry-and-revenue-erosion/",
+          "host": "www.drugpatentwatch.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Blockbuster drugs face a massive patent cliff in 2026 | Drug Discovery News",
+          "url": "https://www.drugdiscoverynews.com/blockbuster-drugs-face-a-massive-patent-cliff-in-2026-17019",
+          "host": "www.drugdiscoverynews.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Patent and Marketing Exclusivities 101 for Drug Developers",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10242760/",
+          "host": "pmc.ncbi.nlm.nih.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "A Global Analysis of Pharmaceutical Patent and Regulatory Data Protection Strategies - DrugPatentWatch – Transform Data into Market Domination",
+          "url": "https://www.drugpatentwatch.com/blog/a-global-analysis-of-pharmaceutical-patent-and-regulatory-data-protection-strategies/",
+          "host": "www.drugpatentwatch.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "What is the impact of intellectual property rules on access to ...",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9013034/",
+          "host": "pmc.ncbi.nlm.nih.gov",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S4",
+      "purpose": "B3 - Ring 1 rigid designator crossed with a Ring 3 rigid designator: 'trade secrets' plus a ratione materiae objection in a 2026 award.",
+      "query": "\"trade secrets\" expropriation investment treaty tribunal ratione materiae objection 2026 award",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the four calls are NOT independent of each other",
+      "result_count": 10,
+      "result_blocks": 1,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "engine_summary": null,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Accessing investment treaty protection: early planning and engagement critical for investors - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/accessing-investment-treaty-protection-early-planning-and-engagement-critical-investors",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Consent after denunciation—jurisdiction and damages – Investment Treaty News",
+          "url": "https://www.iisd.org/itn/2026/04/21/consent-after-denunciation-jurisdiction-and-damages-meher-tandon/",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Trade Secrets 2026 | Global Practice Guides | Chambers and Partners",
+          "url": "https://practiceguides.chambers.com/practice-guides/trade-secrets-2026",
+          "host": "practiceguides.chambers.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "In the Matter of an Arbitration Under the UNCITRAL Arbitration Rules",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0244.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement | Congress.gov | Library of Congress",
+          "url": "https://www.congress.gov/crs-product/R43988",
+          "host": "www.congress.gov",
+          "retrieved_body": false
+        },
+        {
+          "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+          "url": "https://www.italaw.com/sites/default/files/case-documents/italaw1827033.pdf",
+          "host": "www.italaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "IN-DEPTH Investment Treaty Arbitration JURISDICTION RATIONE TEMPORIS",
+          "url": "https://www.pillsburylaw.com/a/web/mSSR8pbPZZHvZsmj9cKEJU/jurisdiction-ratione-temporis-shaw-plaza.pdf",
+          "host": "www.pillsburylaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Ratione Temporis or Temporal Scope of Investment Treaties - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=5482a708-b96e-4b80-89ba-e5abdd2845d0",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Indirect Expropriation in Investment Treaty Arbitrations*** ...",
+          "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        }
+      ]
+    }
+  ]
+}

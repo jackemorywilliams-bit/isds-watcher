@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `0098a80`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `54ae252`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -735,6 +735,65 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D22 — a rule adopted to stop exactly this was in force for eighteen days, the council proved the point itself on 2026-09-23, and on 2026-09-25 the same seat escalated the refuted claim to Emory as a permanent defect *(new 2026-09-25; owner: Emory for the routing question, council-chairman for the practice)*
+
+- **State — the sharpest instance of D5 this vault has recorded, and unlike the others it reached
+  Emory's inbox as a numbered escalation.** `agents/Agent Registry.md:505` carries an adopted
+  method rule, **binding from 2026-09-07 and naming the chairman first**: *"A `check_currency.py`
+  'FAIL … is not a commit' is a statement about the clone, not about the note … No seat may cite
+  that guard's output as a defect in the note it names without first running `git rev-parse
+  --is-shallow-repository`."* It was adopted after the guard reported three failures against
+  commits that all exist — `373cce6`, `9efafb0`, `ae42639` — on a shallow clone.
+- **The council then demonstrated the rule working, two days before it broke it.** On 2026-09-23
+  the chairman ran the screen, got `true`, and wrote the conclusion out in full:
+  *"All three are false, and the cause is this session class"* — `git rev-list --count HEAD`
+  returned **117** against **1,541**, *"Ninety-two percent of the history was absent and nothing in
+  the session announced it"*, and after `git fetch --unshallow origin` the guard re-ran at
+  **9 claims, 1 failed** (`analytics/daily-research/2026-09-23.md:1689-1694`, `64dead2`).
+- **On 2026-09-25 the same seat wrote the opposite, twice, and escalated it.** Escalation 13 states
+  that `agents/Workflow Threads.md` *"cites `ae42639`, which is not a commit in this repository"*
+  and calls it *"pre-existing and unfixable by any re-anchor"*
+  (`analytics/daily-research/2026-09-25.md:1036`, `68f1987`; repeated at `:1152`, `6ef0688`).
+  **The word "shallow" occurs zero times in that record** — screened, whitespace-normalised and
+  case-insensitive, over the whole file — **0 occurrences** across 1,232 lines / 123,802 bytes,
+  and `unshallow` and `is-shallow-repository` are 0 as well. The rule's required probe was not run.
+- **Measured here on a complete 1,598-commit history.** `git cat-file -e ae42639^{commit}`
+  succeeds; the commit is **2026-08-06** *feat(guard): check_sources.py — a quotation must exist in
+  the source it names*, and `git merge-base --is-ancestor ae42639 HEAD` returns 0. The same holds
+  for `373cce6` and `9efafb0`. **The claim is false in the same way, for the same reason, as the
+  three the rule was adopted over.**
+- **The consequence clause is wrong in three further ways, each measured rather than argued.**
+  Escalation 13 reports *"`scripts/check_currency.py` therefore fails 5 of its 9 claims at this
+  head."* Run at that head (`73283fd`) in a detached worktree on complete history: **3 failed, all
+  `STALE`, zero hard `FAIL`s.** Of the four `agents/` anchors the chairman says went stale, **two
+  did** — `Claim Map` and `Workflow Threads`; `Agent Registry` and `Project Change Log` were
+  current. And `ae42639` produced **no failure at all**.
+- **The remedy the escalation asks Emory to build already exists, already ran, and passed on that
+  very merge.** The `currency` check-run moved into `.github/workflows/reanchor.yml` on 2026-09-10
+  with `needs: reanchor`, for the reason its own header gives: *"Every council merge went red on
+  `currency` and green again seconds later, and a red that is routinely false is a red nobody
+  reads"* (`.github/workflows/reanchor.yml:36-41`). On the chairman's own merge, `reanchor` run
+  **146** at `0098a80` ran both jobs — `reanchor` **success** (it committed `b577683`, moving all
+  five anchors including the four he reverted) and `currency` **success**. **On `main` the guard was
+  never red for this merge.** Measured independently: `check_currency.py` returns 0 failed at both
+  `c46fc11` and `b577683`, the two bot commits.
+- **What survives of escalation 13, stated so the correction does not overreach.** The scope
+  conflict itself is **real**: `prompts/daily_council_protocol.md` does direct the close-out to
+  commit five tracked notes, four of which are outside the daily session's merge scope, and the
+  chairman did revert them. And the narrow exposure he quotes from the workflow's own header — a
+  session that merges without waiting for checks merges before the re-anchor commit lands — is
+  correctly stated. **What is not real is the consequence he priced it at.**
+- **Why this is D5 and not D15.** The rule was in the vault, correct, and **current** — this is not
+  latency. `.claude/agents/council-chairman.md` does not name `agents/council-chairman.md`, so the
+  seat has no pointer to the note carrying the rule that binds it. Eight of nine definitions have
+  that gap and the integrity officer's is the sole exception; the officer is also the one seat that
+  has been observed opening its own note and reading a table off it rather than reciting it
+  (`analytics/daily-research/2026-09-23.md:799`). **That contrast is now evidence, not a
+  hypothesis.**
+- **Owner** — **Emory** for the one-line contract change (D5); the practice half is the chairman's,
+  and this thread is filed in `agents/council-chairman.md` as well as here, so the seat meets it
+  where it reads.
+
 ### D21 — `check_currency.py`'s PR-citation check cannot read this repository's merge subjects, and one default-subject merge makes it mis-attribute the whole recent history *(new 2026-09-22; owner: systems-designer — `scripts/`; the session-side half is the archivist's and is fixed)*
 
 - **State — found by breaking it, in this session, with this session's own merge.** `_pr_for`
@@ -834,6 +893,19 @@ still the only open PR in the repository before this session's own.
   lands on `main` after the day's last re-anchor carries that token, so `main` ends the day stale
   **and silent**.
 
+- **2026-09-25 — six more, and the mechanism is now fully traced to the winner and loser of one
+  race.** `44` of **190** remote refs are not ancestors of `origin/main`, up from 38. The six new
+  ones are `council/daily-2026-09-23-addendum` (`0cf5249`), `council/daily-2026-09-24-addendum`
+  (`67057ae`), `council/daily-2026-09-25` (`798565d`), `council/daily-2026-09-25-addendum`
+  (`d9030dd`), `vault/archivist-2026-09-22` (`83bc860`) and `vault/archivist-2026-09-22-guard`
+  (`7f87e0e`). **Classified by diff content against each branch's own merge-base, not by counting:
+  all six are identically shaped — 5 files changed, 5 insertions, 5 deletions, the five tracked
+  notes' anchor shas and nothing else. No substantive work is stranded in any of them.**
+  **What is new is the causal account.** These are `reanchor.yml`'s commit to the *PR head*, losing
+  the race to a merge that did not wait for it; `c46fc11` and `b577683` are the same workflow's
+  commit to *`main`*, winning it. Both were measured this session at `check_currency.py` **0
+  failed**. So D16's branches and the transient redness behind escalation 13 (see **D22**) are one
+  mechanism observed from two ends, and the stranded side is the harmless one.
 - **2026-09-22 — the 2026-09-19 zero was one clean window, not a fix, and the mechanism is back
   at five in three days.** Measured over **182** remote refs (excluding `main`): **38** are not
   ancestors of `origin/main`, up from 33. **Five are new**, and all five are this mechanism:
@@ -910,6 +982,21 @@ still the only open PR in the repository before this session's own.
   seat's merge scope; re-measuring the constants is a `tests/` edit. Escalated for the second
   consecutive session, unchanged.
 
+- **2026-09-25 — day eleven; the drift is unchanged, and that is the point rather than an
+  anticlimax.** `pipeline-guards` run **246**, head `0098a80`, 2026-09-25 13:22Z: job `suite`
+  **failure**, job `guards` **success in all 14 steps** — read from the run's own job record through
+  the Actions API, not inferred. Re-measured against the live archive by execution: `runs` **18** vs
+  16 pinned, `screened` **520** vs 492, digests carrying `per_source` **13** vs 11, `per_source` sum
+  **219** vs 191, their `screened` **258** vs 230. **Every figure is identical to 2026-09-22.**
+  The 2026-09-22 record stated a growth law — *"the drift grows by one digest every Monday"* — and
+  this window contains no Monday (the last digest is 2026-09-21, the next due 2026-09-28), so a
+  zero delta is what that law predicts. **It is recorded as a prediction that survived a window,
+  not as "unchanged".** `digests/` holds **18** directories, the actual value the test scores
+  against its pinned 16. The fix remains five numbers at `tests/test_site_claims.py:155-156` and
+  `:305-308`, outside this seat's paths.
+  **The price, recounted:** `git log 529e32d0..origin/main --grep='(#[0-9]'` now returns **29**
+  merged pull requests, **#192 through #219** — **twenty on 2026-09-22, twelve on 2026-09-19.** Nine
+  more merges went in against a red base in three days.
 - **2026-09-22 — day eight, the drift has widened from one digest to two, and the ungated-merge
   count has gone from twelve to twenty.** `pipeline-guards` run **232** on `3eb1499` (`main`,
   2026-09-22 12:13Z) concludes **failure**. **Re-measured against the live archive this session,
@@ -977,6 +1064,11 @@ still the only open PR in the repository before this session's own.
   close-out item 9, `b267efd`); that is right about the council's own exposure and does not reach
   the dormant guard, which is why this thread stays open. Unchanged as **Emory's**.
 
+- **2026-09-25 — day twelve, head still `529c744`, still last updated 2026-09-13T22:49Z**, read
+  from the API this session. Nothing pushed, nothing said. The chairman listed it again on
+  2026-09-25 as escalation 9, *"hygiene, not a finding"*, alongside **#150** (day 17) and **#110**
+  (day 28) — which is right about the council's exposure and still does not reach the dormant
+  strict-xfail guard, whose triggering condition has now been true on `main` for twelve days.
 - **2026-09-22 — day nine, head unchanged at `529c744`, last updated 2026-09-13T22:49Z.** Nothing
   has been pushed to it and nothing has been said on it for nine days. Confirmed open this session
   against the GitHub API, together with **#150** (day 14) and **#110** (day 25) — three open pull
@@ -1081,6 +1173,26 @@ still the only open PR in the repository before this session's own.
   `[skip ci]` from the bot writers, or give `reanchor.yml` a scheduled run after the day's last
   automated writer. **Still systems-designer's.**
 
+- **2026-09-25 — 1 of 3 days red, and the red is the random kind again, not the weekly kind.**
+  Same method: `main`'s tip at the end of each UTC day, every tracked note's anchor evaluated
+  against it in a detached worktree on complete history.
+  | Day | Tip | Verdict | What staled it |
+  | --- | --- | --- | --- |
+  | 09-23 | `dab5b51` | green | tip was a re-anchor |
+  | 09-24 | `6f8614a` | **RED** | `chore: scholar intake 2026-09-24 [skip ci]` |
+  | 09-25 | `b577683` | green | tip was a re-anchor |
+  The one red carries **exactly one** `STALE` line and it is this note — *"1 commit(s) touched its
+  declared paths since `465ce4e`"* — the other four tracked notes clean. **Fifth consecutive session
+  in which every red resolves to this note's `analytics` declaration meeting a `[skip ci]` bot
+  writer.** Last session's red was the weekly digest, so *due*; this one is the scholar-intake
+  writer, so chance. **Both kinds are now observed, which is the distinction the 2026-09-22 record
+  asked to be held open.**
+  **And one thing this session can add that changes what the guard's output is worth.** Because the
+  `currency` check-run sits behind `needs: reanchor` in `.github/workflows/reanchor.yml`, and because
+  the re-anchor commit it produces carries `[skip ci]`, **`pipeline-guards` never runs on the healed
+  head.** Its last word on `main` is always the pre-heal state. That is not a new defect, it is the
+  design working, but it means a reader of the CI list sees red where the tree is green — the exact
+  inverse of **D21**, and the reason escalation 13 was priced as it was. See **D22**.
 - **2026-09-22 — 1 of 3 days red, the same rate as the last session, and the diagnosis held for a
   fourth.** Measured the same way: `main`'s tip at the end of each UTC day, every tracked note's
   anchor evaluated against it in a detached worktree.
@@ -1182,6 +1294,28 @@ still the only open PR in the repository before this session's own.
   session found three. The previous found three. The one before found one. Nothing about the seats'
   behaviour will change that number; only the routing or the cadence can.
 
+- **2026-09-25 — occurrences fourteen through twenty, AND the first hard evidence that filing works.**
+  **The latency half:** seven adopted method rules from three consecutive sittings had not reached
+  the vault and are filed in this change set — two from 2026-09-23 (`e05811d`: the
+  instrument-specific unavailability probe; `dbaa2c8`: the officer's §4(2) pre-registration test made
+  standing), three from 2026-09-24 (all `5fa964d`: the redrawn register-window class test, the
+  anchor-quote rule, the six-element suspension form) and two from 2026-09-25 (both `1ff7078`: the
+  hand-off by path-plus-hash, and the reporting-only length line). **Seven rows** in
+  [[Agent Registry]], one of them carrying a caveat of this seat's own.
+  **The half that argues the other way, and it is new.** On 2026-09-23 the integrity officer opened
+  the taxonomy table this seat filed on 2026-09-22 and reported it as
+  *"41 numbered rows, extensions 17a/32a/34a/40a, five unnumbered pending patterns, next free number
+  42 — I read the table, I did not recite it"* (`analytics/daily-research/2026-09-23.md:799`). **Every
+  element of that description matches what was filed, including extension `40a`, whose absence the
+  officer had measured against that same file on 2026-09-22.** No currency caveat was written into
+  its memo; no measurement was spent establishing the gap; no rule was cited out of a file that did
+  not carry it. **This is the first occasion in the record where a filing of this seat's is
+  demonstrably in a bound seat's hands on the next sitting, and it is the strongest argument yet that
+  the routing question is worth settling rather than tolerating** — the mechanism works the moment
+  the note is current, and the three-day cadence is the only reason it is not always current.
+  **The counter-evidence, stated because it belongs to this thread too:** filing is not sufficient.
+  The rule broken in **D22** was filed, current, and eighteen days old. Latency is one failure mode;
+  **D5** is the other, and this window produced one of each.
 - **2026-09-22 — occurrences twelve and thirteen, and for the first time the count is not this
   seat's.** **Entry 41 (*invented limb*)** and **extension 40a (*unit-swapped screen record*)**
   were adopted by the chairman on 2026-09-20 (`analytics/daily-research/2026-09-20.md:1315`,

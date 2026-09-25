@@ -43,6 +43,15 @@ on the flowchart's `chairman` card ("Model: Claude Opus 5").
   stub." Escalated gaps (three or more unresolved sessions) are Emory's manual action
   items and receive zero search budget.
 
+- **BINDING SINCE 2026-09-07, AND BROKEN BY THIS SEAT ON 2026-09-25 — read this before citing
+  any guard output as a defect.** A `scripts/check_currency.py` *"FAIL … is not a commit"* is a
+  statement **about the clone, not about the note**. Run `git rev-parse --is-shallow-repository`
+  first; if it returns `true`, run `git fetch --unshallow` and re-run the guard before writing a
+  word about it. The full rule is at `agents/Agent Registry.md:505`; the instance that broke it is
+  **D22** in `agents/Workflow Threads.md` and the change-log entry below. **This seat has now
+  demonstrated both halves within two days of each other** — the screen run correctly on
+  2026-09-23, and its conclusion contradicted in a numbered escalation to Emory on 2026-09-25.
+
 ## Adopted session protocol (session-derived, binding)
 
 Three rules this seat wrote for itself out of its own recorded defects. They govern how a
@@ -152,6 +161,40 @@ prior session's note. Periodically research how strong research-team leads run s
 meetings and fold in what fits."
 
 ## Change log
+
+- **2026-09-25 (entered by the archivist)** — **A rule adopted for this seat on 2026-09-07 was
+  broken by this seat on 2026-09-25, in a numbered escalation to Emory, two days after this seat
+  had itself demonstrated the rule working.** Recorded here because the mandate this vault runs
+  under asks that where a note would have prevented a recorded failure had it been read, the note
+  says so.
+  - **The rule** (`agents/Agent Registry.md:505`, adopted 2026-09-07, `34b3970`): no seat may cite
+    a `check_currency.py` *"is not a commit"* as a defect in the note it names without first
+    running `git rev-parse --is-shallow-repository`. Adopted over these three shas exactly:
+    `373cce6`, `9efafb0`, `ae42639`.
+  - **This seat applying it correctly, 2026-09-23** (`analytics/daily-research/2026-09-23.md:1689-1694`,
+    `64dead2`): the probe returned `true`, `git rev-list --count HEAD` returned **117** against
+    **1,541**, and the ruling was *"All three are false, and the cause is this session class."*
+  - **This seat contradicting it, 2026-09-25** (`:1036`, `68f1987`; `:1152`, `6ef0688`): escalation
+    13 reports `ae42639` as *"not a commit in this repository at all"* and *"pre-existing and
+    unfixable by any re-anchor."* **`shallow` occurs 0 times in that 1,232-line record.**
+  - **The archivist's measurement, complete history, 1,598 commits:** `ae42639` is a commit, dated
+    **2026-08-06** (*feat(guard): check_sources.py*), and an ancestor of `HEAD`. So are the other
+    two. **At the head escalation 13 names (`73283fd`), the guard reports 3 failures, all `STALE`,
+    zero hard `FAIL`s — not the 5 reported, and `ae42639` contributes none of them.**
+  - **And the remedy the escalation asks Emory for already ran on that merge.** `reanchor` run
+    **146** at `0098a80`: job `reanchor` success (it committed `b577683`, moving all five anchors,
+    including the four this seat reverted) and job `currency` **success**. The `currency` check-run
+    was moved behind `needs: reanchor` on 2026-09-10 for precisely this reason
+    (`.github/workflows/reanchor.yml:36-41`). **On `main`, the guard was never red for that merge.**
+  - **What of escalation 13 stands:** the scope conflict is real — the protocol does direct the
+    close-out to commit four notes outside the daily session's merge scope — and the narrow
+    exposure quoted from the workflow's own header (a merge that does not wait for checks precedes
+    the re-anchor commit) is correctly stated. **Only its priced consequence was wrong.**
+  - **Why the archivist reads this as a routing defect and not a lapse of care.** This seat's
+    definition, `.claude/agents/council-chairman.md`, does not name this note. Eight of nine
+    definitions have that gap; the integrity officer's is the exception, and the officer is the one
+    seat observed opening its own note and reading a table off it rather than reciting it
+    (`analytics/daily-research/2026-09-23.md:799`). Tracked as **D5** and **D22**.
 
 - **2026-08-08** — **A ruling from this seat was overcounted by one, and the correction came
   from re-reading the files.** Uncommitted, branch `fix/restore-council-label`.

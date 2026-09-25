@@ -1,0 +1,389 @@
+{
+  "date": "2026-09-25",
+  "seat": "research-analyst",
+  "repo_state": "c676373 (branch council/daily-2026-09-25)",
+  "instrument": "WebSearch (one engine, one session). Direct curl and the fetch service are both dead this session class at a NEUTRAL CONTROL, per the chairman's session-open probe; no body was retrieved by any call in this file.",
+  "schema_note": "One object per search call, in the schema established 2026-09-20 and used on 2026-09-21, 09-22 and 09-24. calls[].results[] carries every returned row: the engine's verbatim title, the verbatim url, the host derived from that url, and retrieved_body:false.",
+  "approach_note": "DOCTRINE-SIDE design, on the chairman's A1 instruction. Yesterday's four calls came at the question from the subject-matter side (IP as covered investment). Today's five come from the Ring-3 side: the codified early-dismissal gates (ICSID Arbitration Rule 41 / Rule 41(5), 2026 ICC Article 30), abuse of process / treaty-shopping, and the critical-date / reasonably-foreseeable-dispute test - and then cross them with the Ring-1 designators. S1, S4 and S5 are, in substance, the three query formulations named in the ADOPTED first-application tracker at analytics/optimization-log.md:67 (at c676373; :65 at 38acb75).",
+  "retrieved_body_note": "retrieved_body is false on all 42 rows. This seat opened no URL. A title is a LEAD, never a finding; no title is read as a holding.",
+  "engine_summary_note": "Every call returned engine summary prose and NONE of it was used. QUARANTINED, and named here only so a successor can see what was refused: S1's prose stated a holding and a costs disposition for Spentech Engineering Limited v United Arab Emirates - a FOURTH Spentech synthesis pass, on a matter already under a standing quarantine and whose docket is off the agenda; S2's prose named an Ontario Superior Court decision of 10 April 2026 in a Grace / Oro Negro v Mexico matter on dual nationals under NAFTA ('Oro Negro' has ZERO carriers in this tree, positive control: 'consent-after-denunciation' returns 3); S3's prose named a June 2026 ICSID claim against Ecuador by two individuals and a US$214 million predecessor claim - another Ecuador synthesis, on a slug already at zero budget with its earlier synthesis quarantined; S5's prose gave LCIA early-determination success statistics. NO returned title carries any of these. NO QUERY IN THIS FILE WAS DESIGNED FROM ANY OF IT: all five queries were pre-registered before the first call.",
+  "budget": {
+    "searches_budgeted": 5,
+    "call_count": 5,
+    "searches_unspent": 0
+  },
+  "blocked_domains_compliance": {
+    "passed_on_calls": 5,
+    "of_calls": 5,
+    "value": [
+      "dailyjus.com",
+      "unis.unvienna.org"
+    ],
+    "allowed_domains_passed_on_calls": 0,
+    "note": "analytics/insights.jsonl:199 records, verified by two seats on 2026-09-21, that allowed_domains and blocked_domains are MUTUALLY EXCLUSIVE at the API level. The two prohibited hosts are therefore excluded by blocked_domains on every call and allowed_domains is passed on none, which is also the right scoping: the research question is not host-scoped."
+  },
+  "prohibited_host_row_screen": {
+    "unit": "result rows",
+    "total": 42,
+    "dailyjus.com": 0,
+    "unis.unvienna.org": 0
+  },
+  "allowlist_row_screen": {
+    "unit": "result rows",
+    "in_relay_ALLOWED_HOSTS": 8,
+    "out": 34,
+    "note": "icsid.worldbank.org 5, www.iisd.org 1, uncitral.un.org 1, www.iareporter.com 1 (the site root). NO RELAY ROW IS PROPOSED FOR ANY ROW IN THIS FILE, and no relay row is due today (thread 11 next on or around 2026-10-13; thread 13 resumes 2026-10-18; thread 10 not due). The www.iisd.org row is the Spentech ITN piece, already carried in four daily records and under standing quarantine; the uncitral.un.org row is the A/CN.9/1270 PDF, already carried in ten files, and the relay is an HTML instrument (analytics/insights.jsonl:67-68) so a row on it would return ok and empty."
+  },
+  "prior_art_screen": {
+    "unit": "distinct URLs",
+    "distinct_urls": 37,
+    "zero_carriers_in_tree": 22,
+    "already_carried": 15,
+    "method": "grep -rlF on each distinct URL over the whole tree at c676373; validated against a known positive (the ICSID manifest-lack-of-legal-merit table URL returns 43 carrying files).",
+    "note": "22 new URLs, and NONE of them is a new matter at the three-ring intersection. They are rules-commentary, wiki notes and jurisdiction explainers."
+  },
+  "result_row_count": 42,
+  "distinct_urls": 37,
+  "calls": [
+    {
+      "call_id": "S1",
+      "purpose": "Ring 3, codified gate, designator-led: any 2026 ICSID decision under Rule 41 / Rule 41(5).",
+      "query": "\"manifest lack of legal merit\" ICSID decision 2026 tribunal Rule 41 dismissed claim",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the five calls are NOT independent of each other",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "Decisions on Manifest Lack of Legal Merit | ICSID",
+          "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Objection of Manifest Lack of Legal Merit of Claims under the ICSID Arbitration Rules - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=968dfbf3-d13a-49e4-a15e-89f694380f35",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Frivolous Claims in Arbitration: ICSID Rule 41(5) and Rule 41 • Aceris Law",
+          "url": "https://www.acerislaw.com/frivolous-claims-in-arbitration-icsid-rule-415-and-rule-41/",
+          "host": "www.acerislaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Objections that a Claim Manifestly Lacks Legal Merit (ICSID ...",
+          "url": "https://icsid.worldbank.org/sites/default/files/publications/In%20Focus%20-%20Rule%2041.5_final.pdf",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Objection of Manifest Lack of Legal Merit of Claims: ICSID Arbitration Rule 41(5) - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=f22a6552-bff7-4f36-bcb2-6bbdd4a83888",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Manifest Lack of Legal Merit - ICSID Convention Arbitration (2022 Rules) | ICSID",
+          "url": "https://icsid.worldbank.org/procedures/arbitration/convention/manifest-lack-of-legal-merit/2022",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Spentech Engineering Limited v. United Arab Emirates: The standard for manifest lack of legal merit under Rule 41 – Investment Treaty News",
+          "url": "https://www.iisd.org/itn/2026/04/21/spentech-engineering-limited-v-united-arab-emirates-rule-41-vismaya-hari/",
+          "host": "www.iisd.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Four Tribunals Apply ICSID Rule for Early Ouster of Unmeritorious Claims | ASIL",
+          "url": "https://www.asil.org/insights/volume/15/issue/10/four-tribunals-apply-icsid-rule-early-ouster-unmeritorious-claims",
+          "host": "www.asil.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Claim Manifestly without Legal Merit",
+          "url": "https://jusmundi.com/en/document/publication/en-claim-manifestly-without-legal-merits",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "United Nations A/CN.9/1270 General Assembly Distr.: General 24 June 2026",
+          "url": "https://uncitral.un.org/sites/default/files/2026-06/2609264e.pdf",
+          "host": "uncitral.un.org",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S2",
+      "purpose": "Ring 3, abuse of process / treaty-shopping: any 2026 decision declining jurisdiction on post-dispute restructuring.",
+      "query": "investment treaty arbitration 2026 decision \"abuse of process\" corporate restructuring treaty shopping jurisdiction declined",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the five calls are NOT independent of each other",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: navigating challenges in investment treaty arbitration - Global Arbitration Review",
+          "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+          "host": "globalarbitrationreview.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Jurisdiction: navigating challenges in investment treaty arbitration - Lexology",
+          "url": "https://www.lexology.com/library/detail.aspx?g=d8d9f1fc-9d3d-400b-9fc9-f9edf0761574",
+          "host": "www.lexology.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Abuse of Process",
+          "url": "https://jusmundi.com/en/document/publication/en-abuse-of-process",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Drawing a Line: Corporate Restructuring and Treaty Shopping in ICSID Arbitration | Kluwer Arbitration Blog",
+          "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/drawing-a-line-corporate-restructuring-and-treaty-shopping-in-icsid-arbitration/",
+          "host": "legalblogs.wolterskluwer.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Corporate Restructuring in Investor-State Disputes: Can We Predict Tribunals’ Decisions? | Kluwer Arbitration Blog",
+          "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/corporate-restructuring-in-investor-state-disputes-can-we-predict-tribunals-decisions/",
+          "host": "legalblogs.wolterskluwer.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Investor Conduct",
+          "url": "https://jusmundi.com/en/document/publication/en-investors-conduct",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Abuse of Process in International Arbitration",
+          "url": "https://www.gbsdisputes.com/wp-content/uploads/2024/05/20161224_EG_Article_ICSID-review_Abuse-of-Process-in-International-Arbitration.pdf",
+          "host": "www.gbsdisputes.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "1 Abuse of Rights in International Investment Arbitration 1. Introduction",
+          "url": "https://arbitrationacademy.org/wp-content/uploads/2025/02/AA-_-Suchit-Reddy-3rd.pdf",
+          "host": "arbitrationacademy.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Biannual Review - Young IFILA Blog",
+          "url": "https://blog.ifila.org/2026/05/28/biannual-review/",
+          "host": "blog.ifila.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment structuring and re-structuring: the Italian perspective",
+          "url": "https://academic.oup.com/arbitration/article-pdf/41/2/377/61663802/aiae049.pdf",
+          "host": "academic.oup.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S3",
+      "purpose": "Ring 3, critical date / reasonably-foreseeable dispute and ratione temporis in a 2026 award.",
+      "query": "investment arbitration 2026 award \"critical date\" dispute foreseeable nationality restructuring ratione temporis jurisdiction",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the five calls are NOT independent of each other",
+      "result_count": 9,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "The Nationality and Substance Thresholds in Investor-State Jurisdiction: Reassessment in Light of Barst v. Ecuador – American Review of International Arbitration",
+          "url": "https://aria.law.columbia.edu/the-nationality-and-substance-thresholds-in-investor-state-jurisdiction-reassessment-in-light-of-barst-v-ecuador/",
+          "host": "aria.law.columbia.edu",
+          "retrieved_body": false
+        },
+        {
+          "title": "Biannual Review - Young IFILA Blog",
+          "url": "https://blog.ifila.org/2026/05/28/biannual-review/",
+          "host": "blog.ifila.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Wiki Note: Nationality Planning",
+          "url": "https://jusmundi.com/en/document/publication/en-nationality-planning",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "International Arbitration Trends and Topics for 2026 | Publications | Cleary Gottlieb",
+          "url": "https://www.clearygottlieb.com/news-and-insights/publication-listing/international-arbitration-trends-and-topics-for-2026",
+          "host": "www.clearygottlieb.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Symposium on International Investment Law & Contemporary Crises: Divergent Approaches to the Nationality of Corporate Claimants in Banking and Finance Investor-State Arbitration - Opinio Juris",
+          "url": "http://opiniojuris.org/2026/02/18/symposium-on-international-investment-law-contemporary-crises-divergent-approaches-to-the-nationality-of-corporate-claimants-in-banking-and-finance-investor-state-arbitration/",
+          "host": "opiniojuris.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment structuring and re-structuring: the Italian perspective",
+          "url": "https://academic.oup.com/arbitration/article-pdf/41/2/377/61663802/aiae049.pdf",
+          "host": "academic.oup.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Challenging investment-treaty arbitral awards in domestic courts on account of investor misconduct | Arbitration International | Oxford Academic",
+          "url": "https://academic.oup.com/arbitration/article/42/1/11/8706396?login=false",
+          "host": "academic.oup.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "The 2026 ICC Arbitration Rules: An Update for International Dispute Resolution",
+          "url": "https://www.lewissilkin.com/insights/2026/08/18/the-2026-icc-arbitration-rules-an-update-for-international-dispute-resolution-102nq7h",
+          "host": "www.lewissilkin.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Investment Arbitration Reporter | Investment Arbitration Reporter",
+          "url": "https://www.iareporter.com/",
+          "host": "www.iareporter.com",
+          "retrieved_body": false
+        }
+      ]
+    },
+    {
+      "call_id": "S4",
+      "purpose": "THE CROSSING QUERY: Ring 3 rigid designator x Ring 1 rigid designators. This is the call the whole budget is for.",
+      "query": "\"manifestly without legal merit\" objection patent trademark \"trade secret\" intellectual property investment claim tribunal",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the five calls are NOT independent of each other",
+      "result_count": 3,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "Wiki Note: Claim Manifestly without Legal Merit",
+          "url": "https://jusmundi.com/en/document/publication/en-claim-manifestly-without-legal-merits",
+          "host": "jusmundi.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Manifest Lack of Legal Merit - ICSID Convention Arbitration (2022 Rules) | ICSID",
+          "url": "https://icsid.worldbank.org/procedures/arbitration/convention/manifest-lack-of-legal-merit/2022",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "Decisions on Manifest Lack of Legal Merit | ICSID",
+          "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+          "host": "icsid.worldbank.org",
+          "retrieved_body": false
+        }
+      ],
+      "row_count_note": "THREE rows, against 10, 10, 9 and 10 on the other four calls, and all three are pages this repository already carries. The row count is itself the finding: with the Ring-1 designators added the corpus the engine can offer collapses to the two ICSID pages that define the gate plus one wiki note. There is no IP-and-early-dismissal literature for it to return."
+    },
+    {
+      "call_id": "S5",
+      "purpose": "Ring 3, the second codified gate named in open thread 11: any application of 2026 ICC Article 30.",
+      "query": "ICC Arbitration Rules Article 30 early determination first application 2026 manifestly without merit decision",
+      "allowed_domains": null,
+      "blocked_domains": [
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "independence": "one engine, one session; the five calls are NOT independent of each other",
+      "result_count": 10,
+      "engine_summary_present": true,
+      "engine_summary_used": false,
+      "outcome": "returned",
+      "results": [
+        {
+          "title": "The 2026 ICC Arbitration Rules: A Practical Guide for Counsel to the Most Significant Overhaul in a Decade | Kluwer Arbitration Blog",
+          "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/the-2026-icc-arbitration-rules-a-practical-guide-for-counsel-to-the-most-significant-overhaul-in-a-decade/",
+          "host": "legalblogs.wolterskluwer.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Key Changes in the 2026 ICC Arbitration Rules • Aceris Law",
+          "url": "https://www.acerislaw.com/key-changes-in-the-2026-icc-arbitration-rules/",
+          "host": "www.acerislaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "2026 ICC Arbitration Rules: The Demise of the Terms of Reference and Other Updates",
+          "url": "https://www.pillsburylaw.com/en/news-and-insights/icc-arbitration-terms-of-reference.html",
+          "host": "www.pillsburylaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "ICC Arbitration Rules 2026: What you need to know | BCLP - Bryan Cave Leighton Paisner",
+          "url": "https://www.bclplaw.com/en-US/events-insights-news/icc-arbitration-rules-2026-what-you-need-to-know.html",
+          "host": "www.bclplaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "A New Cadence for ICC Arbitration Under the 2026 Rules | HUB | K&L Gates",
+          "url": "https://www.klgates.com/thought-leadership/A-New-Cadence-for-ICC-Arbitration-Under-the-2026-Rules-8-24-2026",
+          "host": "www.klgates.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "ICC Arbitration Rules Effective June 1, 2026: Key Changes and Practical Takeaways for Parties and Counsel | Insights & Resources | Goodwin",
+          "url": "https://www.goodwinlaw.com/en/insights/publications/2026/06/alerts-practices-ip-icc-arbitration-rules-key-changes",
+          "host": "www.goodwinlaw.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "ICC emphasises early determination in updated arbitration rules",
+          "url": "https://www.pinsentmasons.com/out-law/analysis/icc-emphasises-early-determination-in-updated-arbitration-rules",
+          "host": "www.pinsentmasons.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "Leaner, faster, greener? Procedural flexibility in the 2026 ICC Arbitration Rules | Freshfields",
+          "url": "https://www.freshfields.com/en/our-thinking/blogs/risk-and-compliance/leaner-faster-greener-procedural-flexibility-in-the-2026-icc-arbitration-rules-102n2au",
+          "host": "www.freshfields.com",
+          "retrieved_body": false
+        },
+        {
+          "title": "New ICC Rules of Arbitration enhance efficiency, clarity and usability - ICC - International Chamber of Commerce",
+          "url": "https://iccwbo.org/news-publications/news/new-icc-rules-of-arbitration-enhance-efficiency-clarity-and-usability/",
+          "host": "iccwbo.org",
+          "retrieved_body": false
+        },
+        {
+          "title": "The 2026 ICC Arbitration Rules: What's New and Why It Matters | Freshfields",
+          "url": "https://www.freshfields.com/en/our-thinking/blogs/risk-and-compliance/the-2026-icc-arbitration-rules-whats-new-and-why-it-matters-102n0q4",
+          "host": "www.freshfields.com",
+          "retrieved_body": false
+        }
+      ],
+      "row_count_note": "Ten rows: eight law firms, one practitioner blog and iccwbo.org, every one describing the mechanism. NOT ONE TITLE REPORTS AN APPLICATION of Article 30, in an investment case or any other. The Freshfields blog at 102n2au is the source_locator already in analytics/verification_ledger.jsonl:18 for this project's Article 30 claim. The Goodwin URL path carries the segment 'practices-ip', i.e. the firm's IP practice published it; its TITLE carries no IP subject-matter and nothing is asserted from the path."
+    }
+  ],
+  "verdict": "HONEST NULL, from a different half of the intersection than 2026-09-24's. Five calls, 42 rows, 37 distinct URLs, 22 of them new to this tree, and NO row reports a 2026 decision - under any of the four doctrines searched - in a matter where an intellectual-property right, trade secret or clinical-trial-data entitlement was the asserted investment. The strongest single measurement is S4's row count: 3 against 9-10, all three already in the record."
+}

@@ -601,6 +601,46 @@ see item 2 of the 2026-08-03 slice.)*
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
 
+- **2026-09-25 (nineteenth deployment)** — Standing every-3-days session, audited against
+  `b577683` (`main`), complete **1,598**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **127**, the **eleventh consecutive** session. Window `1cf6108..b577683` =
+  **67** commits. **Zero commits to `.claude/agents/`, `prompts/` or `src/models.py`, zero to
+  `scripts/`, `tests/`, `.github/` or `src/`, and zero to every professor-facing surface as well.**
+  The entire window is records. **Screened before stating it, and it is NOT a first:** the
+  2026-09-19 window (`98dcff9..f1a7850`) was also zero on both sets — re-measured here by execution,
+  not taken from that entry's own prose — so this is the **second** such window, with 2026-09-22's
+  one generated write between them.
+  **The session's finding is the inverse of the last one's, and together they make the case this
+  seat has been arguing for six weeks.** On 2026-09-22 a correct note was invisible because it was
+  three days stale. On 2026-09-25 a correct note was **current, eighteen days old, and still
+  unread**: the shallow-clone rule at `agents/Agent Registry.md:505`, binding on the chairman since
+  2026-09-07, was applied correctly by that seat on 2026-09-23 (`64dead2`) and contradicted by the
+  same seat on 2026-09-25 in escalation 13 to Emory (`68f1987`, `6ef0688`), with `shallow` at **0
+  occurrences** across that 1,232-line record. **Latency and routing are two different defects and
+  this window produced one of each.** Filed as **D22**, and written into
+  [[council-chairman]] twice — a binding line in its Discipline highlights and a dated change-log
+  entry — because a lesson recorded only in a session record is the kind of memory this seat exists
+  to stop losing.
+  **A correction this seat can make because it holds the complete history:** `ae42639` is a commit,
+  dated **2026-08-06**, an ancestor of `HEAD`; at the head escalation 13 names (`73283fd`) the
+  guard reports **3 `STALE`, zero hard `FAIL`s**, not the 5 reported; and the remedy the escalation
+  asks Emory to build already ran and passed on that merge (`reanchor` run **146**, jobs `reanchor`
+  and `currency` both success).
+  **Seven adopted method rules filed** — D15 at occurrences fourteen through twenty — **and the
+  first hard evidence that filing works**: the integrity officer read the 2026-09-22 taxonomy
+  filing off the table on 2026-09-23 and described it exactly, extension `40a` included
+  (`analytics/daily-research/2026-09-23.md:799`).
+  **D6 — ninth first-person observation, day forty-one.** This session's runtime reports
+  `configured_model`, `session_context.model` and `external_metadata.last_served_model` all
+  **`claude-opus-5`**, against `.claude/agents/obsidian-archivist.md:3` and `:24` saying
+  *"Runs on Claude Opus 4.8."* **Rows again left unchanged**, because they record Emory's directive
+  and rewriting them would ratify a substitution nobody authorised. `check_models.py` cannot see
+  this and is not failing: it compares three declarations to each other, never a runtime.
+  **Environment, flagged a fifth time rather than allowed to diverge silently:** `gh` is not
+  installed in this container, so the standing instruction's `gh pr create` / `gh pr merge` were
+  executed through the GitHub MCP tools, which reach the same API.
+  *Audited against `b577683`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `analytics/`, `scripts/`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-09-22 (eighteenth deployment)** — Standing every-3-days session, audited against
   `1cf6108` (`main`, clean tree, complete history — **1,531** commits after `git fetch
   --unshallow`; the clone arrived shallow at **123**, the **tenth consecutive** session). Cadence

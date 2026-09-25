@@ -15,6 +15,69 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-09-25 (archivist session — nineteenth deployment)
+
+*Audited against `b577683` (`main`), on a complete **1,598**-commit history — the container's clone
+arrived shallow at **127**, the **eleventh consecutive** session, so every sha below was resolved
+only after `git fetch --unshallow`. Window `1cf6108..b577683` = **67** commits, three days. Paths:
+`.claude/agents/`, `prompts/`, `src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`,
+`scripts/site_templates/`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`,
+`views/isds-workflow-3d/workflow.json`, `scripts/`, `tests/`, `.github/`, `src/`.*
+
+- **Nothing outside the records moved — the second such window, not the first.** `git log
+  1cf6108..b577683` returns **zero** commits on
+  `.claude/agents/`, `prompts/`, `src/models.py`; **zero** on `scripts/`, `tests/`, `.github/`,
+  `src/`; and **zero** on `README.md`, `docs/`, `scripts/site_templates/`, `METHODOLOGY.md`,
+  `HANDOFF.md`, `COUNCIL.md` and `views/isds-workflow-3d/workflow.json`. The whole window is
+  `analytics/` (20 paths), `agents/` (6), `state/` (1) and `STATE_OF_THE_ANSWER.md`. **No seat's
+  contract was edited by anyone for the third consecutive session.**
+- **Seven adopted method rules filed into [[Agent Registry]]** — two from 2026-09-23 (`e05811d`,
+  `dbaa2c8`), three from 2026-09-24 (all `5fa964d`), two from 2026-09-25 (both `1ff7078`). **D15 at
+  occurrences fourteen through twenty.** Three sittings' worth; none had reached the vault.
+- **The 2026-09-22 filing was observed arriving and being used** — the integrity officer opened the
+  taxonomy table on 2026-09-23 and reported it at *"41 numbered rows, extensions 17a/32a/34a/40a,
+  five unnumbered pending patterns, next free number 42 — I read the table, I did not recite it"*
+  (`analytics/daily-research/2026-09-23.md:799`). **First time in this vault's record that a filing
+  of this seat's is demonstrably in a seat's hands on the next sitting.**
+- **NEW — D22, and it is the session's finding.** The rule at `agents/Agent Registry.md:505`,
+  binding on the chairman since 2026-09-07 (`34b3970`), requires `git rev-parse
+  --is-shallow-repository` before citing a `check_currency.py` *"is not a commit"* as a note defect.
+  The chairman ran it correctly on **2026-09-23** — *"All three are false, and the cause is this
+  session class"*, 117 commits against 1,541 (`analytics/daily-research/2026-09-23.md:1689-1694`,
+  `64dead2`) — and on **2026-09-25** escalated `ae42639` to Emory as *"not a commit in this
+  repository at all"* and *"unfixable by any re-anchor"* (`:1036`, `68f1987`; `:1152`, `6ef0688`),
+  with `shallow` at **0 occurrences** in a 1,232-line record. Measured here: `ae42639` is a commit,
+  **2026-08-06**, an ancestor of `HEAD`. **At the head the escalation names (`73283fd`) the guard
+  reports 3 failures, all `STALE`, zero hard `FAIL`s — not 5 — and `ae42639` contributes none.**
+  And `reanchor` run **146** at `0098a80` shows the remedy the escalation asks for already ran and
+  passed on that very merge: job `reanchor` success (committing `b577683`), job `currency`
+  **success**. Filed in [[Workflow Threads]] as **D22** and in [[council-chairman]] twice — once as
+  a binding line in Discipline highlights, once as a dated change-log entry.
+- **One caveat against the length report adopted 2026-09-25** (`1ff7078`, `:722`): its first entry
+  reports `analytics/daily-research/2026-09-25.md` at **118,390** bytes; the file on `main` is
+  **123,802**, the session having appended its post-merge addendum after writing the line. **A
+  4.4% understatement on the rule's first application.** Owner: council-chairman; not escalated.
+- **Guards at `b577683`:** `check_models.py` exit **0** over 12 cards; `check_currency.py` exit
+  **0** over 9 claims; `validate.mjs` exit **0** — 30 cards, 10 chips, 44 edges, SVG fresh against
+  its inputs-sha256, zero "Jack"; `build_graph.py --dry-run` **198 notes, 409 edges, 0 orphans**,
+  88 managed blocks would update, 17 WARNs (all the standing four-link cap, none drift).
+- **Carried, re-measured by execution rather than restated:** **D20** — `main` red at day **11**,
+  `pipeline-guards` run **246** head `0098a80`, job `suite` failed / job `guards` passed all 14
+  steps; the five drifted constants are **identical to 2026-09-22** (16→18, 492→520, 11→13,
+  191→219, 230→258), which is what a window containing no Monday digest should produce and
+  **confirms last session's stated growth law rather than merely repeating it**; ungated merges
+  since the red base now **29** (#192–#219), up from 20. **D18** — 1 of 3 days red, and the red
+  resolves again to [[Workflow Threads]]'s `analytics` declaration meeting a `[skip ci]` bot writer
+  (`6f8614a chore: scholar intake 2026-09-24`), **fifth consecutive session**. **D7** — unchanged:
+  `METHODOLOGY.md:33` says **eight** fixed Bing queries against `len(bing_news.QUERIES)` = **12**,
+  and nine channels against `len(all_sources())` = **10**; GDELT named in `README.md` 1,
+  `docs/` **10 files**, `scripts/site_templates/` 1, `METHODOLOGY.md` **0**. **D16** — **six** new
+  stranded branches, all six pure anchor edits (5 files, 5 insertions, 5 deletions each), no
+  substantive work stranded; 44 of 190 remote refs are not ancestors of `origin/main`, up from 38.
+  **D6** — ninth first-person observation, day **41**: this session's `configured_model`,
+  `session_context.model` and `external_metadata.last_served_model` are all **`claude-opus-5`**
+  while `.claude/agents/obsidian-archivist.md:3` and `:24` say Opus 4.8. Rows left unchanged.
+
 ## 2026-09-22 (archivist session — eighteenth deployment)
 
 *Audited against `1cf6108` (`main`), on a complete **1,531**-commit history — the container's clone

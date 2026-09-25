@@ -529,6 +529,13 @@ statements live in the seat's own note.
 | [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] | **Amendment 2 carries no qualifier — *every* nonzero screened term gets a referent clause, not every one a seat relies on.** Adopted after the qualifier's cost was measured on the day: the seat's own screen put `STATE_OF_THE_ANSWER.md:9` — the very finding it was arguing about — in front of it as a bare count, and it read past the column boundary. | 2026-09-21 | `analytics/daily-research/2026-09-21.md:1360-1363` (`da5cb53`) |
 | [[integrity-officer]] · [[research-analyst]] · **every seat** | **An absence claim about the tracked tree carries its exclusion inside the sentence — "no carrier other than this council's own screen records" — and names the screen-record loci** — *screen-record self-falsification*, **adopted unnumbered** and routed to the vault's pending block, the unwritable-table reason being given expressly. **Adopted with it, the analyst's narrower mechanical variant: a dedup screen record carries the line count of `analytics/insights.jsonl` at which it was run, and states that filing the entry falsifies it.** The variant was proposed against the analyst's own artefact after eight terms reported at 0 lines were all contained in the insight about to be appended. | 2026-09-22 | `analytics/daily-research/2026-09-22.md:946` (proposed by the officer, `a814d18`), `:1218` (analyst's variant, `a9bc44f`), §6.4 (both adopted unnumbered, `67ef197`) |
 | [[council-chairman]] · [[research-analyst]] · **every seat** | **A search artefact is read twice — once per call against that call's question, and once WHOLE, against every proposition the memo advances, before the memo is filed** — *one-pass artefact read*, **proposed by name and deliberately left unnumbered**, the chairman giving the reason in terms: *"a second number issued blind into the same unwritable table is how the entry-27 collision happened."* Instance: `0920-N5`. | 2026-09-20 | `analytics/daily-research/2026-09-20.md:1334` (proposed by name, no number taken, `1d6e3e7`) |
+| [[council-chairman]] · **every seat** | **Before any seat writes that a channel is unavailable, it names the instrument and probes THAT instrument.** *"'Fetch is dead' is a fact about `curl` and the fetch service. It is not a fact about retrieval."* Adopted after the chairman found that the one thing the session most needed verified — CI run conclusions and job logs — had been two API calls away for forty days while he had declared it out of reach. | 2026-09-23 | `analytics/daily-research/2026-09-23.md:1821` (adopted, binding from 2026-09-24, `e05811d`) |
+| [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] | **Every proposed pre-registration row carries the integrity officer's §4(2) test answered, or it is not proposed** — *does the row have a pre-registered outcome that would change a council decision, and a falsifier the council would act on?* Made standing at the analyst's request rather than left in one day's vetting note; the chairman adopted it as better than anything either seat brought to a pre-registration that day, and recorded that nobody had filed it as an objection. | 2026-09-23 | `analytics/daily-research/2026-09-23.md:1934`, `:1937` (adopted, `dbaa2c8`) |
+| [[research-analyst]] · [[council-chairman]] | **The register-window class test redrawn, the chairman's own wording overturned.** Class (A′) is no longer *"the window does not contain a case name, a document designation and a date"* — the analyst showed that a *"recently added"* panel carries exactly those three, so the test admitted the object it was written to exclude. **Adopted in its place: at least two complete register triples for different cases, the `find` literal sitting inside a case-number parenthetical, and a terminating boundary on at least one side.** | 2026-09-24 | `analytics/daily-research/2026-09-24.md:1083` (adopted, `5fa964d`) |
+| [[council-chairman]] · [[research-analyst]] · **every seat** | **The anchor-quote rule: a memo proposing an instrument parameter carries the carrying span inline, by file and `records[i]`, in the sentence making the proposal.** Adopted from the analyst after the chairman's attack on it failed. Expressly **not** a new rule — `prompts/carrying_span_rule.md` item 3 applied to a proposal rather than a proposition, a pinpoint in the wrong paragraph being the failure that rule already names. | 2026-09-24 | `analytics/daily-research/2026-09-24.md:1088` (adopted, `5fa964d`) |
+| [[council-chairman]] · **every seat** | **Six elements are the general form for every suspension in `state/research_log.json`**: date and actor; scope named narrowly; the failure in one clause; an **explicit non-null clause**; the last substantive observation pinned; and a checkable resumption condition. Adopted on the day the 2026-08-06 weekly cadence was suspended and thread 13's watch re-adopted at monthly, on the analyst's finding that **suspension and lapse are otherwise indistinguishable in the artefacts** and these six are what distinguish them. | 2026-09-24 | `analytics/daily-research/2026-09-24.md:1168` (adopted, `5fa964d`) |
+| [[council-chairman]] · [[research-analyst]] · [[integrity-officer]] | **A member's artefact may be handed off by path plus sha256 rather than pasted into the record — that is compliance, not a shortcut — provided the chairman verifies the hash on both sides and commits the file himself.** Adopted over the analyst's refusal to paste 22.8 KB into a record whose length was that day's own agenda item; the chairman verified `414ecdab…` before and after the copy and recorded that the one-author-of-record property then rests on a verified hash rather than on a paste. | 2026-09-25 | `analytics/daily-research/2026-09-25.md:644-646` (adopted, `1ff7078`) |
+| [[council-chairman]] | **A reporting-only length line in every close-out** — total bytes, the chairman-written share where attributable, `NOT ATTRIBUTABLE` where not, and the prior session's figures beside them. **No ceiling, no gate, no exemptions;** revisit a ceiling only after five sessions if the series has not bent, and if one is ever adopted the "errors against myself" sections are excluded by name. **Adopted in preference to a ceiling because the 2026-08-06 shortness instruction was measured to have produced a 6.2× rise** — *"a number attached to a failed exhortation is a failed exhortation with a number."* The adopted shape is the one the analyst argued has always bitten in this council: **not a rule but a measured figure a later session has to reproduce.** | 2026-09-25 | `analytics/daily-research/2026-09-25.md:722` (adopted, `1ff7078`); first entry at `:6.9`, and see the archivist's caveat of 2026-09-25 below |
 
 The taxonomy's canonical statement is the table in [[integrity-officer]], one
 citation per entry. It exists because the in-session recitation of the taxonomy was four to
@@ -537,6 +544,38 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-09-25 (archivist session)** — **No roster change and no contract change; seven rows added
+  to the adopted-method-rules table, and the finding of the session is a rule already in this table
+  being broken by the seat it names.** Measured rather than assumed: `git log 1cf6108..b577683 --
+  .claude/agents/ prompts/ src/models.py` returns **zero** commits across a **67-commit** window —
+  **no seat's contract was edited by anyone, for the third consecutive session** — and so do
+  `scripts/ tests/ .github/ src/` and the whole professor-facing set. `scripts/check_models.py`
+  exits **0** over 12 cards; `scripts/check_currency.py` exits **0** over 9 claims;
+  `node tools/isds-workflow-3d/validate.mjs` exits **0** (30 cards, 10 chips, 44 edges, SVG fresh,
+  zero "Jack").
+  **The seven rows** are the two rules adopted 2026-09-23 (`e05811d`, `dbaa2c8`), the three adopted
+  2026-09-24 (all `5fa964d`) and the two adopted 2026-09-25 (both `1ff7078`) — **D15 at occurrences
+  fourteen through twenty**, three sittings' worth, none of which had reached the vault.
+  **Against that, the one thing that went right:** entries 41 and 40a, filed by the 2026-09-22
+  session, were read off the table by the integrity officer on 2026-09-23, which reported it at
+  *"41 numbered rows, extensions 17a/32a/34a/40a, five unnumbered pending patterns, next free number
+  42 — I read the table, I did not recite it"* (`analytics/daily-research/2026-09-23.md:799`).
+  **That is the first session in which a filing of this seat's was observed arriving and being used,
+  and it is the argument for the routing, not against it.**
+  **New thread D22** in [[Workflow Threads]] and filed again in [[council-chairman]]: the rule at
+  `:505` of this note, binding from 2026-09-07, requires `git rev-parse
+  --is-shallow-repository` before any seat cites a `check_currency.py` *"is not a commit"* as a
+  defect in the note it names. The chairman ran exactly that screen on 2026-09-23 and wrote
+  *"All three are false, and the cause is this session class"* (`64dead2`); on 2026-09-25 he
+  escalated `ae42639` to Emory as *"not a commit in this repository at all"* (`68f1987`, `6ef0688`),
+  with `shallow` at **0 occurrences** in that record. **This seat verified the commit exists,
+  is dated 2026-08-06, and is an ancestor of `HEAD`.**
+  **One caveat entered against the length report adopted the same day, in the row above.** Its first
+  entry reports `analytics/daily-research/2026-09-25.md` at **118,390 bytes**; the file on `main` is
+  **123,802**, because the session appended its own post-merge addendum after writing the line.
+  **The first figure published under the new rule understates its own record by 5,412 bytes (4.4%)**
+  — stated here rather than as an escalation, because the rule is one sitting old and the fix is a
+  sentence about when in the close-out the line is measured. Owner: council-chairman.
 - **2026-09-22 (archivist session)** — **No roster change and no contract change. Six rows added
   to the adopted-method-rules table; the taxonomy heading in [[integrity-officer]] moved 40 → 41,
   extension `40a` filed with its parent, and the pending block grew from three unnumbered patterns

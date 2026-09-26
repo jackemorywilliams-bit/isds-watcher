@@ -1,0 +1,386 @@
+{
+ "date": "2026-09-26",
+ "seat": "research-analyst",
+ "repo_state": "e92bee7 (working tree clean at session open)",
+ "instrument": "WebSearch (one engine, one session). Chairman's session-open probe on NEUTRAL CONTROLS: direct curl egress DEAD (403 CONNECT at the gateway), WebFetch DEAD (EGRESS_BLOCKED on example.com), web search ALIVE. No relay row fired; no cadenced observation due before 2026-10-10. NO BODY WAS RETRIEVED BY ANY CALL IN THIS FILE.",
+ "schema_note": "One object per search call, in the schema established 2026-09-20. NEW AND APPLIED TODAY: result_blocks on every call (the convention in formation noted at 2026-09-25 next step 8), and query_shape / exact_phrase_count next to each row count (next step 9). All five calls hold the exact-phrase count at 2 so the row counts are comparable.",
+ "budget": {
+  "authorised": 5,
+  "spent": 5,
+  "relay_rows": 0,
+  "fetch_attempts": 0
+ },
+ "design_note": "CHAIRMAN'S PRIORITY FOCUS: Ring 2 in its JUDICIAL form - a court judgment, not a statute or a regulator's act, as the challenged measure, with an IP asset as the asserted investment (the Eli Lilly v Canada shape). All five queries pre-registered before the first call; none was designed from any engine output.",
+ "retrieved_body_note": "retrieved_body is false on all 45 rows. This seat opened no URL. A title is a LEAD, never a finding; no title is read as a holding.",
+ "engine_summary_note": "Every call returned engine synthesis prose and NONE of it is carried. Named here only so a successor can see what was refused: S1's prose named Republic of Korea v Elliott Associates LP [2026] EWHC 368 (Comm) and stated a local-remedies precondition for denial of justice; S2's prose stated doctrinal propositions about Loewen v United States and about whether denial of justice is a precondition to judicial expropriation; S3's prose stated a post-2004 US / post-1994 Canada investment-treaty carve-out for TRIPS-consistent IP revocation - a proposition that would appear to bear on the open nafta-article-1110-paragraph-7-ip-carve-out-unread gap, which is exactly why it is refused; S4's prose stated that a court judgment can constitute expropriation contingent on a denial-of-justice finding, and quoted a generic treaty definition of investment. NO returned title carries any of these propositions. None is proposed as a claim.",
+ "prior_art_screen": {
+  "cited_at": "e92bee7, and not thereafter (committing this record turns today's zero-carrier URLs into carriers)",
+  "method": "LC_ALL=C git grep -ril over the tracked tree; values are FILE COUNTS, not occurrence counts",
+  "counts": {
+   "judicial expropriation": 0,
+   "Judicial Acts and Investment Treaty Arbitration": 0,
+   "jusmundi.com/en/document/publication/en-judicial-expropriation": 0,
+   "international-arbitration-attorney": 0,
+   "bybil": 0,
+   "al-kindipublisher": 0,
+   "PMAC": 0,
+   "globalarbitrationnews": 0,
+   "Loewen": 22,
+   "icsidreview": 8,
+   "acerislaw": 6,
+   "When Intellectual Property Is the": 1,
+   "Watson Farley": 2,
+   "British Yearbook": 1,
+   "Elliott Associates": 3,
+   "compulsory licen": 5,
+   "Pillsbury": 4
+  },
+  "insight_ledger_counts_LC_ALL_C": {
+   "lines_total": 215,
+   "Loewen": 0,
+   "judicial expropriation": 0,
+   "denial of justice": 1,
+   "discovery instrument": 0,
+   "keyword search": 0,
+   "search term": 0
+  }
+ },
+ "premise_audit": {
+  "question": "Is Ring 2's judicial form under-searched, or has the chairman mis-measured his own archive?",
+  "measurement": "analytics/search-results/ contains exactly 5 files and exactly 28 call objects (2026-09-20: 7; 2026-09-21: 7; 2026-09-22: 5; 2026-09-24: 4; 2026-09-25: 5).",
+  "finding": "The '28 calls' is not a recent window - it is the ENTIRE artefact archive. The schema was established 2026-09-20, so the instrument has a hard floor at that date. Below the floor, at analytics/daily-research/2026-09-16.md:247, a query recorded VERBATIM does hit the limb: '\"denial of justice\" investment arbitration trademark OR patent court judgment 2026 tribunal jurisdiction \"abuse of process\" investor claim'. Verdict: the premise is TRUE as literally stated and MIS-SCOPED as an inference. The limb is thinly searched (one prior call, ten days old), not unsearched.",
+  "grep_trap": "'judicial measure' matches 51 of 98 daily-research files, but 39 of the 49 distinct matching lines are the boilerplate three-ring research-question statement and most of the remainder are negative findings ('no judicial measure'). A grep over this tree makes the limb look covered when it is not."
+ },
+ "calls": [
+  {
+   "id": "S1",
+   "order": 1,
+   "query": "\"denial of justice\" \"trade secret\" investment treaty arbitration tribunal court judgment 2026",
+   "query_shape": "2 conjoined exact phrases + free terms (HELD CONSTANT across all five calls, per 2026-09-25 next step 9)",
+   "exact_phrase_count": 2,
+   "rows": 9,
+   "result_blocks": 1,
+   "results": [
+    {
+     "title": "Proving Denial of Justice in Investor-State Disputes - Watson Farley & Williams",
+     "url": "https://www.wfw.com/articles/proving-denial-of-justice-in-investor-state-disputes/",
+     "host": "www.wfw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment treaty arbitration in the construction sector - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-construction-arbitration/sixth-edition/article/investment-treaty-arbitration-in-the-construction-sector",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment Tribunals as Courts of Appeal? Determining State Responsibility for Substantive Denial of Justice | British Yearbook of International Law | Oxford Academic",
+     "url": "https://academic.oup.com/bybil/advance-article/doi/10.1093/bybil/brad013/7319194",
+     "host": "academic.oup.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - The role of courts in investment treaty arbitration - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/the-role-of-courts-in-investment-treaty-arbitration",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Judicial Acts and Investment Treaty Arbitration",
+     "url": "https://www.cambridge.org/core/books/judicial-acts-and-investment-treaty-arbitration/E378FC7FD47D88CB2088D016837918C4",
+     "host": "www.cambridge.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Court considers investment treaty Tribunal’s jurisdiction | Hill Dickinson",
+     "url": "https://www.hilldickinson.com/our-view/articles/court-considers-investment-treaty-tribunal-s-jurisdiction/",
+     "host": "www.hilldickinson.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "United States: Investment Treaty Arbitration – Country Comparative Guides",
+     "url": "https://www.legal500.com/guides/chapter/united-states-investment-treaty-arbitration/",
+     "host": "www.legal500.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Biannual Review - Young IFILA Blog",
+     "url": "https://blog.ifila.org/2026/05/28/biannual-review/",
+     "host": "blog.ifila.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement | Congress.gov | Library of Congress",
+     "url": "https://www.congress.gov/crs-product/R43988",
+     "host": "www.congress.gov",
+     "retrieved_body": false
+    }
+   ],
+   "note": "Ring 2 judicial form x the project's distinct Ring 1 concern (trade secrets). HONEST NULL at title level: no returned title conjoins a trade-secret asset with a judicial measure. The engine's own synthesis stated the results do not link denial of justice to trade secrets. One new title-level lead: Cambridge, 'Judicial Acts and Investment Treaty Arbitration' (zero carriers in this tree at e92bee7)."
+  },
+  {
+   "id": "S2",
+   "order": 2,
+   "query": "\"judicial expropriation\" \"intellectual property\" investment treaty arbitration court decision measure tribunal",
+   "query_shape": "2 conjoined exact phrases + free terms (HELD CONSTANT across all five calls, per 2026-09-25 next step 9)",
+   "exact_phrase_count": 2,
+   "rows": 9,
+   "result_blocks": 1,
+   "results": [
+    {
+     "title": "Expropriation in Investment Treaty Arbitration | Oxford Law Pro | Oxford Academic",
+     "url": "https://academic.oup.com/oxford-law-pro/book/57807",
+     "host": "academic.oup.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Judicial Expropriation",
+     "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation-1",
+     "host": "jusmundi.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Judicial Expropriation in Investor-State Arbitration • Arbitration",
+     "url": "https://www.international-arbitration-attorney.com/judicial-expropriation-in-investor-state-arbitration/",
+     "host": "www.international-arbitration-attorney.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Indirect Expropriation in Investment Treaty Arbitrations*** ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Substantive protections: a comprehensive analysis of the complexities of expropriation in international investment law - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/substantive-protections-comprehensive-analysis-of-the-complexities-of-expropriation-in-international-investment-law",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+     "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+     "host": "www.acerislaw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "A Look at the Compulsory License in Investment Arbitration: The Case of Indirect Expropriation",
+     "url": "https://digitalcommons.wcl.american.edu/auilr/vol25/iss3/1/",
+     "host": "digitalcommons.wcl.american.edu",
+     "retrieved_body": false
+    },
+    {
+     "title": "Substantive Protections: Expropriation - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Intellectual Property Rights and Expropriation in Investment Arbitration | International Journal of Law and Politics Studies",
+     "url": "https://al-kindipublisher.com/index.php/ijlps/article/view/12901",
+     "host": "al-kindipublisher.com",
+     "retrieved_body": false
+    }
+   ],
+   "note": "THE SUBSTANTIVE CALL. 'judicial expropriation' has ZERO carriers in the entire tracked tree at e92bee7. The term returns a dedicated literature: ICSID Review (surfaced in S4), a Jus Mundi publication page, two practitioner explainers. Bodies unread; titles only."
+  },
+  {
+   "id": "S3",
+   "order": 3,
+   "query": "\"patent revocation\" \"investment treaty\" arbitration court invalidation claim against state tribunal 2026",
+   "query_shape": "2 conjoined exact phrases + free terms (HELD CONSTANT across all five calls, per 2026-09-25 next step 9)",
+   "exact_phrase_count": 2,
+   "rows": 9,
+   "result_blocks": 1,
+   "results": [
+    {
+     "title": "TRIPS COVID-19 Waiver, Patent Breaking and Investment Treaty Arbitration | Kluwer Patent Blog",
+     "url": "https://legalblogs.wolterskluwer.com/patent-blog/trips-covid-19-waiver-patent-breaking-and-investment-treaty-arbitration/",
+     "host": "legalblogs.wolterskluwer.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation – Investment Treaty News",
+     "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+     "host": "www.iisd.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "United States: Investment Treaty Arbitration",
+     "url": "https://www.pillsburylaw.com/en/news-and-insights/united-states-investment-treaty-arbitration-2026.html",
+     "host": "www.pillsburylaw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Between Courts and Clauses: The Arbitrability of Patent Validity Disputes in Germany – and What Other Jurisdictions Do - Global Arbitration News",
+     "url": "https://www.globalarbitrationnews.com/2026/03/03/between-courts-and-clauses-the-arbitrability-of-patent-validity-disputes-in-germany-and-what-other-jurisdictions-do/",
+     "host": "www.globalarbitrationnews.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment Treaty Arbitration and the Trips Patent Waiver: Indirect Expropriation Analysis of Covid-19 Vaccine Patents",
+     "url": "https://repository.uclawsf.edu/hastings_international_comparative_law_review/vol46/iss1/5/",
+     "host": "repository.uclawsf.edu",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment Arbitration: Jurisdiction and Admissibility - Icsid",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0215.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Guide to IP Arbitration - Fourth Edition - Patent, copyright and trademark disputes - IAM",
+     "url": "https://www.iam-media.com/guide/the-guide-ip-arbitration/fourth-edition/article/patent-copyright-and-trademark-disputes",
+     "host": "www.iam-media.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Guide to IP Arbitration - Fourth Edition - Patent, copyright and trademark disputes - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/fourth-edition/article/patent-copyright-and-trademark-disputes",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Draft PMAC Arbitration Rules: New Momentum for Patent Arbitration | Kluwer Arbitration Blog",
+     "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/the-draft-pmac-arbitration-rules-new-momentum-for-patent-arbitration/",
+     "host": "legalblogs.wolterskluwer.com",
+     "retrieved_body": false
+    }
+   ],
+   "note": "The Eli Lilly shape (a court invalidating a patent). Returned no ISDS case at the intersection. Re-surfaced the Grosse Ruse-Khan ITN article URL, whose slug is CLOSED as to the body - not reopened. Engine synthesis asserted a post-2004 US / post-1994 Canada treaty carve-out for TRIPS-consistent IP revocation; NO returned title carries it; REFUSED and not transcribed as a finding."
+  },
+  {
+   "id": "S4",
+   "order": 4,
+   "query": "\"court judgment\" \"covered investment\" investment arbitration intellectual property trademark expropriation tribunal 2026",
+   "query_shape": "2 conjoined exact phrases + free terms (HELD CONSTANT across all five calls, per 2026-09-25 next step 9)",
+   "exact_phrase_count": 2,
+   "rows": 9,
+   "result_blocks": 1,
+   "results": [
+    {
+     "title": "Expropriation in Investor-State Arbitration | Steptoe",
+     "url": "https://www.steptoe.com/en/news-publications/expropriation-in-investor-state-arbitration.html",
+     "host": "www.steptoe.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Substantive Protections: Expropriation - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment Arbitration Reporter | Investment Arbitration Reporter",
+     "url": "https://www.iareporter.com/",
+     "host": "www.iareporter.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Investment treaty arbitration in the construction sector - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-construction-arbitration/sixth-edition/article/investment-treaty-arbitration-in-the-construction-sector",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "When Intellectual Property Is the ‘Investment’: Arbitrating Against Sovereigns - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/second-edition/article/when-intellectual-property-the-investment-arbitrating-against-sovereigns",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Expropriation in Investment Arbitration • Aceris Law",
+     "url": "https://www.acerislaw.com/expropriation-in-investment-arbitration/",
+     "host": "www.acerislaw.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Judicial Expropriation | ICSID Review - Foreign Investment Law Journal | Oxford Academic",
+     "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+     "host": "academic.oup.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Subject-Matter Jurisdiction Issues in AI-Related Investment Treaty Cases – Daily Jus by Jus Mundi",
+     "url": "https://dailyjus.com/legal-tech/2026/06/subject-matter-jurisdiction-issues-in-ai-related-investment-treaty-cases",
+     "host": "dailyjus.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Jurisdiction: assessing the main elements in investment treaty arbitration - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+     "host": "globalarbitrationreview.com",
+     "retrieved_body": false
+    }
+   ],
+   "note": "Ring 2 judicial form x Ring 1 generally. Surfaced the ICSID Review 'Judicial Expropriation' article (39(3) 452) and the GAR IP-arbitration chapter 'When Intellectual Property Is the Investment'. Also re-surfaced the dailyjus.com AI subject-matter-jurisdiction item, which is under a standing zero-budget prohibition: not opened, nothing restated."
+  },
+  {
+   "id": "S5",
+   "order": 5,
+   "query": "\"denial of justice\" \"intellectual property\" ICSID award 2026 tribunal jurisdiction patent trademark decision",
+   "query_shape": "2 conjoined exact phrases + free terms (HELD CONSTANT across all five calls, per 2026-09-25 next step 9)",
+   "exact_phrase_count": 2,
+   "rows": 9,
+   "result_blocks": 1,
+   "results": [
+    {
+     "title": "ICSID Tribunal Rejects Renewable Energy Claims Against Germany Under the Energy Charter Treaty – ASIL",
+     "url": "https://asil.org/ilib/icsid-tribunal-rejects-renewable-energy-claims-against-germany-under-the-energy-charter-treaty/",
+     "host": "asil.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Singapore High Court reaffirms the finality of ICSID awards against sovereign states | Withers",
+     "url": "https://www.withersworldwide.com/en-gb/insight/read/the-singapore-high-court-reaffirms-the-finality-of-icsid-awards-against-sovereign-states",
+     "host": "www.withersworldwide.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Annulment of ICSID Arbitration Awards - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=da752fe0-5604-44eb-94ee-c5e04f14e4e4",
+     "host": "www.lexology.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "The Singapore High Court Reaffirms The Finality Of ICSID Awards Against Sovereign States - Arbitration & Dispute Resolution - Singapore",
+     "url": "https://www.mondaq.com/arbitration-dispute-resolution/1757012/the-singapore-high-court-reaffirms-the-finality-of-icsid-awards-against-sovereign-states",
+     "host": "www.mondaq.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Assignment of ICSID Awards Rejected: The English High Court Clarifies International Law Limits - Daily Jus",
+     "url": "https://dailyjus.com/world/2026/01/assignment-of-icsid-awards-rejected-the-english-high-court-clarifies-international-law-limits",
+     "host": "dailyjus.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "UK Supreme Court Confirms Sovereign Immunity Is No Defence To ICSID Award Enforcement | Thought Leadership | March 2026 | Baker Botts",
+     "url": "https://www.bakerbotts.com/thought-leadership/publications/2026/march/uk-supreme-court-confirms-sovereign-immunity-is-no-defence-to-icsid-award-enforcement",
+     "host": "www.bakerbotts.com",
+     "retrieved_body": false
+    },
+    {
+     "title": "Awards – Investment Treaty News",
+     "url": "https://www.iisd.org/itn/awards/",
+     "host": "www.iisd.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Report by the Committee on International Commercial Disputes",
+     "url": "https://www2.nycbar.org/pdf/report/uploads/20072262-ProceduresforAwardsunderICSID.pdf",
+     "host": "www2.nycbar.org",
+     "retrieved_body": false
+    },
+    {
+     "title": "Compliance with and Enforcement of ICSID Awards",
+     "url": "https://icsid.worldbank.org/sites/default/files/publications/Enforcement_Paper.pdf",
+     "host": "icsid.worldbank.org",
+     "retrieved_body": false
+    }
+   ],
+   "note": "HONEST NULL. Nine rows, all award-enforcement / annulment / sovereign-immunity content. No 2026 ICSID award at the Ring1 x Ring2-judicial intersection at title level."
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "date": "2026-09-27",
+ "seat": "research-analyst",
+ "repo_state": {
+  "commit_at_which_every_figure_in_this_file_was_measured": "0ef4f0f2ba863f6c12a458beea95e74bf032207a",
+  "branch": "council/daily-2026-09-27",
+  "note": "Measured at this commit and not thereafter. analytics/daily-research/ was UNMODIFIED in the working tree at measurement time; the only working-tree entries were the two scripts this seat wrote under analytics/. Committing this file and the day's record will add lines to analytics/search-results/ and analytics/daily-research/ and will therefore move any denominator computed over those directories."
+ },
+ "instrument": {
+  "fetch_layer": "DEAD (established by the chairman's two control probes at session open; NOT re-probed by this seat and NOT a statement about any research resource)",
+  "web_search": "ALIVE",
+  "relay_rows_booked": 0,
+  "fetch_attempts": 0,
+  "request_files_written": 0
+ },
+ "schema_note": "Follows the 2026-09-24/25/26 shape. NEW FIELD 'floor_date' IS PROPOSED, NOT APPROVED: its presence here is this seat's proposal for the project-wide convention and is NOT that convention being adopted. Until the operator rules, a reader must not treat floor_date as a settled field of the search-results schema.",
+ "floor_date": {
+  "value": "2026-09-20",
+  "status": "PROPOSED, NOT APPROVED",
+  "meaning": "The first date on which a search fired into a machine-readable artefact under analytics/search-results/. Queries fired before this date are recoverable, if at all, only from the prose of analytics/daily-research/.",
+  "derivation": "git log --diff-filter=A -- analytics/search-results/ : earliest added file is 2026-09-20.json at commit 906b2b8."
+ },
+ "budget": {
+  "authorised": 5,
+  "spent": 2,
+  "unspent": 3,
+  "relay_rows": 0,
+  "fetch_attempts": 0
+ },
+ "design_note": "Limb B was allowed to spend only where Limb A's measurement showed a hole that is (i) not under a standing zero-budget prohibition, (ii) not escalated to the operator, and (iii) a formulation class this project has never fired. Two such holes were found and two calls were fired. Three calls were returned unspent, with the reason recorded per call below.",
+ "method_rule_honoured": {
+  "rule": "analytics/insights.jsonl 2026-09-25 METHOD-row-count-is-a-joint-signal-hold-the-query-shape-constant",
+  "application": "Both calls were built to the SAME shape: exactly 2 exact phrases, no allowed_domains, blocked_domains = the two prohibited hosts, unrestricted otherwise. Row counts are therefore comparable to each other and to nothing else."
+ },
+ "blocked_domains_compliance": {
+  "passed_on_calls": 2,
+  "of_calls": 2,
+  "value": [
+   "dailyjus.com",
+   "unis.unvienna.org"
+  ],
+  "allowed_domains_passed_on_calls": 0,
+  "note": "analytics/insights.jsonl:199 records that allowed_domains and blocked_domains are mutually exclusive at the API level, so blocked_domains was used and allowed_domains was not passed on either call."
+ },
+ "engine_summary_note": "BOTH calls returned an engine summary paragraph. NEITHER WAS USED FOR ANY PURPOSE. Each refusal is itemised in 'engine_syntheses_refused' so a successor can see exactly what was refused rather than inferring it from silence.",
+ "engine_syntheses_refused": [
+  {
+   "call": "S1",
+   "refused": "The engine paragraph's statement that the tribunal 'rejected the claim that judicial invalidation of patents constituted a breach of either Article 1110 (Expropriation) or Article 1105 (Minimum Standard of Treatment) of NAFTA'.",
+   "ground": "Two independent grounds. (i) It describes NAFTA Article 1110 and Article 1105 by content; NO SEAT MAY DESCRIBE NAFTA ARTICLE 1110'S INTERNAL STRUCTURE - this project has never read it, and an engine synthesis offering exactly that was refused on 2026-09-26. (ii) It is a tribunal HOLDING offered by a search engine, which the candidate-claims contract permits only from a primary source."
+  },
+  {
+   "call": "S1",
+   "refused": "The engine paragraph's account of the tribunal's treatment of 'abus de droit' - that domestic-court determinations are unreviewable 'save in the extraordinary circumstance of gross procedural misconduct amounting to a denial of justice, or where court power ... is exercised in bad faith to mask a violation of international law'.",
+   "ground": "A holding, and a quotation, from a body no seat opened. It is also the exact doctrinal sentence that would answer an open question in the record, which is the strongest possible reason to refuse it rather than the weakest."
+  },
+  {
+   "call": "S1",
+   "refused": "Tribunal composition (van den Berg, presiding; Born; Bethlehem), the award date 16 March 2017, and the costs figure CAD 4.5 million.",
+   "ground": "Search-synthesis figures. The award date is separately already in living memory at STATE_OF_THE_ANSWER.md:884 from the project's own sourcing; this seat neither re-asserts it nor corroborates it from an engine paragraph. The costs figure has NO carrier in this repository and enters nothing."
+  },
+  {
+   "call": "S1",
+   "refused": "'The case is significant for establishing that investment tribunals have limited jurisdiction over intellectual property matters and domestic patent law determinations.'",
+   "ground": "An evaluative characterisation of a holding, from an engine. It is also precisely the proposition this project's Ring-3 work exists to test, and importing it as background would settle by repetition what the record has open."
+  },
+  {
+   "call": "S2",
+   "refused": "The engine paragraph's statements about what the European Medical Association 'has recognized' and 'has also concluded' regarding which clinical-trial data qualify as confidential commercial information, and about the American Chamber of Commerce's TRIPS warning.",
+   "ground": "Attributed institutional positions with no body opened. This is the project's central sub-question (clinical-trial data as a protectable asset) and is exactly where an unsourced synthesis would do the most damage."
+  },
+  {
+   "call": "S2",
+   "refused": "The engine paragraph's historical account of the customary-international-law minimum standard of treatment.",
+   "ground": "Treatise-level synthesis from an engine; no locator, no body."
+  }
+ ],
+ "prior_art_screen": {
+  "cited_at": "0ef4f0f2ba863f6c12a458beea95e74bf032207a",
+  "method": "LC_ALL=C git grep -Fil '<string>' HEAD -- . ; unit = TRACKED FILES at HEAD, counting this session's own uncommitted scripts not at all (they are not in HEAD).",
+  "counts_files": {
+   "uncomfortable liaison": 0,
+   "Patently Clear-Cut Dismissal": 0,
+   "elgaronline": 0,
+   "qmjip": 0,
+   "Queen Mary Journal of Intellectual Property": 0,
+   "canlii": 0,
+   "Highly anticipated NAFTA award": 0,
+   "hhrjournal": 0,
+   "infojustice": 0,
+   "mintz.com": 0,
+   "Incredible Shrinking Victory": 1,
+   "Geddes": 1,
+   "Journal of International Arbitration": 1,
+   "international.gc.ca": 5,
+   "parties_publications": 5,
+   "Minimum Standards of Treatment": 2,
+   "researchgate": 22,
+   "ncbi.nlm.nih.gov": 10,
+   "natlawreview": 10
+  },
+  "note": "The 'Minimum Standards of Treatment' hits at 2 are BOTH inside a quoted engine_summary of 2026-09-20 (analytics/daily-research/2026-09-20.md:364 and analytics/search-results/2026-09-20.json:173), i.e. inside quarantined synthesis, not inside anything this project asserts."
+ },
+ "calls": [
+  {
+   "id": "S1",
+   "order": 1,
+   "query": "\"Eli Lilly v. Canada\" \"abuse of right\" tribunal later award cited intellectual property jurisdiction investment treaty",
+   "query_shape": "2 exact phrases + 9 bare terms; unrestricted; blocked_domains only",
+   "exact_phrase_count": 2,
+   "purpose": "Test a formulation class this project has NEVER fired: a SEED-AWARD NAME as a query ingredient, used as a citator to reach later tribunals citing the seed award on the Ring-3 limb. Measured hole: across the 126 recoverable query strings (93 prose-recovered pre-floor + 33 post-floor JSON), 'Eli Lilly' occurs 0 times, 'Philip Morris' 0, 'Bridgestone' 0, 'UNCT/14/2' 0, 'ARB/16/34' 0, 'PCA 2012-12' 0.",
+   "rows": 10,
+   "result_blocks": 1,
+   "outcome": "HONEST NULL ON THE QUESTION ASKED, AND A METHOD FINDING. Not one of the ten rows is a later tribunal or award citing Eli Lilly v. Canada. Every row is the case itself or commentary on the case itself: the Government of Canada statement page, a CanLII commentary, IISD ITN's 2017 award report, the UNCTAD Navigator case page, a Lexology note, a ResearchGate PDF entry, an Elgar QMJIP article, a Kluwer JOIA article, an SSRN paper, and a RePEc World Trade Review entry. The seed-award NAME collapses the result set onto the seed award. The 2026-07-26 lesson (author-name + exact title beat keyword search) therefore does NOT transfer to case level as a citator: a case name is a strong retrieval key for the case and a useless one for its descendants.",
+   "new_title_level_leads": [
+    {
+     "title": "Eli Lilly v Canada: the uncomfortable liaison between intellectual property and international investment law",
+     "locator": "Queen Mary Journal of Intellectual Property vol 7 issue 3 (2017)",
+     "url": "https://www.elgaronline.com/view/journals/qmjip/7-3/qmjip.2017.03.02.xml",
+     "prior_art_files_at_HEAD": 0,
+     "body": "UNREAD"
+    },
+    {
+     "title": "Eli Lilly v. Canada: A Patently Clear-Cut Dismissal on the Facts, but Opening the Door for Future Claimants on the Law",
+     "locator": "Journal of International Arbitration 34(5)",
+     "url": "https://kluwerlawonline.com/journalarticle/Journal+of+International+Arbitration/34.5/JOIA2017040",
+     "prior_art_files_at_HEAD": 0,
+     "body": "UNREAD"
+    },
+    {
+     "title": "Highly anticipated NAFTA award rejects patent law-related claim against Canada",
+     "locator": "IISD Investment Treaty News, 12 June 2017, by Matthew Levine",
+     "url": "https://www.iisd.org/itn/2017/06/12/highly-anticipated-nafta-award-rejects-patent-law-related-claim-against-canada-matthew-levine/",
+     "prior_art_files_at_HEAD": 0,
+     "body": "UNREAD",
+     "relay_note": "www.iisd.org IS on ALLOWED_HOSTS (scripts/fetch_relay.py:48-69) and 2026-09-16 established that this host discriminates by PATH, so an /itn/ article path is a testable row class. NO ROW WAS BOOKED TODAY by the chairman's ruling; this is recorded as a carried locator only."
+    }
+   ],
+   "rows_named_but_asserted_from_nothing": [
+    "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/507/eli-lilly-v-canada - returned by the engine, NOT fired at; the standing no-re-fire prohibition on investmentpolicy.unctad.org is untouched and nothing is asserted from this row."
+   ],
+   "results": [
+    "https://www.international.gc.ca/trade-agreements-accords-commerciaux/topics-domaines/disp-diff/eli-statement-declaration.aspx?lang=eng",
+    "https://www.canlii.org/en/commentary/doc/2015CanLIIDocs66",
+    "https://www.iisd.org/itn/2017/06/12/highly-anticipated-nafta-award-rejects-patent-law-related-claim-against-canada-matthew-levine/",
+    "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/507/eli-lilly-v-canada",
+    "https://www.lexology.com/library/detail.aspx?g=17077fd1-0a24-4647-9c6f-21ffb23e004d",
+    "https://www.researchgate.net/publication/316071599_Eli_Lilly_v_Canada_The_uncomfortable_liaison_between_intellectual_property_and_international_investment_law",
+    "https://www.elgaronline.com/view/journals/qmjip/7-3/qmjip.2017.03.02.xml",
+    "https://kluwerlawonline.com/journalarticle/Journal+of+International+Arbitration/34.5/JOIA2017040",
+    "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3012538",
+    "https://ideas.repec.org/a/cup/wotrrv/v16y2017i04p733-736_00.html"
+   ]
+  },
+  {
+   "id": "S2",
+   "order": 2,
+   "query": "\"trade secrets\" \"minimum standard of treatment\" investment treaty tribunal covered investment clinical trial data claim",
+   "query_shape": "2 exact phrases + 9 bare terms; unrestricted; blocked_domains only",
+   "exact_phrase_count": 2,
+   "purpose": "Fire a designator that is VERBATIM in this project's own statement of the research question (prompts/research_analyst.txt:17, 'breach of the minimum standard of treatment') and that occurs ZERO times in the 126 recoverable query strings. Cell: R1+R2.",
+   "rows": 9,
+   "result_blocks": 1,
+   "outcome": "HONEST NULL AT CASE LEVEL. Nine rows, not one of them an investor-State claim in which trade secrets or clinical-trial data were asserted as a covered investment. The set is: two ICSID party-filed legal-authority PDFs titled 'Chapter 6 - Minimum Standards of Treatment', an OECD 2004 FET working paper, a treatise chapter on ResearchGate, and five domestic/policy items on trade-secret and clinical-data protection (NCBI, HHR Journal, National Law Review, Mintz, infojustice). SCOPE OF THIS NULL, STATED TIGHTLY: it is ONE call, ONE engine, ONE moment, title level only, no body opened. It is NOT a claim that no such case exists; per the cross-BIT consistency discipline the finding is 'not found in accessible sources'. The 'consecutive sessions' framing is expressly NOT available and was struck from this field before publication: the R1+R2 cell was fired on 2026-09-20 (1 call), 2026-09-24 (1), 2026-09-26 (4) and today (1) - four DATES, not four consecutive sessions, since 2026-09-21, 09-22 and 09-25 fired none. And this seat verified the returned-nothing outcome only for TODAY'S call and for 2026-09-26 as that record states it; it asserts nothing about what 09-20 or 09-24 returned.",
+   "locator_noted_not_fired": {
+    "urls": [
+     "https://icsid.worldbank.org/sites/default/files/parties_publications/C3765/Claimants'%20Amended%20Memorial/Legal%20Authorities/CL-0013.PDF",
+     "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0085-ENG%20-%20Minimum%20Standards%20of%20Treatment.pdf"
+    ],
+    "note": "icsid.worldbank.org IS on ALLOWED_HOSTS and the path family 'parties_publications' is already known to this corpus (5 files at HEAD). BUT: both are application/pdf, and analytics/insights.jsonl 2026-09-23 records that the reducer returns an EMPTY excerpt for any non-html/text content type (scripts/fetch_relay.py:124-125). A row here would buy a status code and a byte count and no text. NO ROW BOOKED. This is recorded so a successor does not spend a row discovering that."
+   },
+   "results": [
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C3765/Claimants'%20Amended%20Memorial/Legal%20Authorities/CL-0013.PDF",
+    "http://infojustice.org/archives/32904",
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/D%20-%20Statement%20of%20Claim%20-%2006.10.%202022/Legal%20Authorities/CL-0085-ENG%20-%20Minimum%20Standards%20of%20Treatment.pdf",
+    "https://www.researchgate.net/publication/228191041_Law_and_Practice_of_Investment_Treaties_Standards_of_Treatment_Chapter_1_Historical_Development_of_Investment_Treaty_Law",
+    "https://www.ncbi.nlm.nih.gov/books/NBK286001/",
+    "https://www.hhrjournal.org/2021/06/16/addressing-the-risks-that-trade-secret-protections-pose-for-health-and-rights/",
+    "https://natlawreview.com/article/trade-secret-protection-covid-19-cure-observations-federal-policy-making-potential",
+    "https://www.oecd.org/content/dam/oecd/en/publications/reports/2004/09/fair-and-equitable-treatment-standard-in-international-investment-law_g17a166b/675702255435.pdf",
+    "https://www.mintz.com/insights-center/viewpoints/2351/2025-11-06-can-you-keep-secret-trade-secret-tightrope-fda-regulated"
+   ]
+  }
+ ],
+ "calls_returned_unspent": [
+  {
+   "id": "S3",
+   "would_have_targeted": "The R2+R3 cell (a measure plus a jurisdictional doctrine, with no Ring-1 designator), which Limb A shows is the thinnest non-empty cell in the corpus: n=2 pre-floor, both incidental to docket lookups on 2026-08-20 and 2026-08-23, and n=0 post-floor.",
+   "reason_not_fired": "THE CELL IS OFF THE RESEARCH QUESTION BY CONSTRUCTION. The question's ring 1 is a required conjunct (prompts/research_analyst.txt:12-14). A query at R2+R3 without an IP designator would return general ISDS, and reporting it as coverage of this project's intersection would be exactly the relevance inflation council_calibration.md item 4 forbids. A thin cell is not automatically a hole."
+  },
+  {
+   "id": "S4",
+   "would_have_targeted": "'geographical indication', which occurs ZERO times in the 126 recoverable query strings although it is verbatim in the research question at prompts/research_analyst.txt:14.",
+   "reason_not_fired": "A real never-fired designator, but the project's declared substantive concern is 'centrally ... trade secrets and clinical-trial data' (same file, line 14-15). Spending a call on the peripheral member of the ring-1 list while the central member had just returned a null would have been budget spent on breadth this record cannot use. RECORDED AS A NAMED, UNSPENT, RE-FIREABLE TARGET so a successor can pick it up rather than rediscover it."
+  },
+  {
+   "id": "S5",
+   "would_have_targeted": "A re-fire at the Ring-2 judicial limb worked on 2026-09-26.",
+   "reason_not_fired": "Prohibited in substance by today's agenda and pointless in fact: five calls returned an honest null there yesterday, and a second observation of the same titles buys nothing. The judicial-expropriation slug is not dischargeable by search and was not allowed to convert into a search item."
+  }
+ ],
+ "limb_a_summary_pointer": "The coverage map, the recovery method, the classifiers and the ranked holes are in the seat's return in analytics/daily-research/2026-09-27.md. The scripts that produce every figure are analytics/recover_queries.py (first pass, superseded, retained because its --validate output is the evidence for the precision failure that motivated the second) and analytics/recover_queries2.py (the pass every figure is taken from).",
+ "verdict": "Two of five calls spent. Limb A found four holes; two were spendable and were spent, two were not and the reasons are recorded per call. Both calls returned an honest null on the question asked. S1 bought a METHOD finding (a seed-award name is not a citator through this engine) and three title-level bibliographic leads new to the corpus. S2 bought a title-level null at the R1+R2 trade-secret cell, scoped to one call at one moment and one negative instrument finding (two ALLOWED_HOSTS locators that would return an empty excerpt). No body was read. No holding is asserted. No engine synthesis was used."
+}

@@ -1,0 +1,433 @@
+{
+ "date": "2026-09-28",
+ "seat": "research-analyst",
+ "repo_state": {
+  "commit_at_which_every_figure_in_this_file_was_measured": "b70a3f3d9d14f001c1476d88ed396167117e87e7",
+  "porcelain_lines_at_measurement": [
+   "?? analytics/designator_census.py"
+  ],
+  "note": "Every figure in this file was measured at the commit named above and not thereafter. THIS FILE IS NOT INSIDE ANY POPULATION COUNTED IN IT: the designator census population is 'every calls[].query in every analytics/search-results/*.json AS COMMITTED AT b70a3f3', which is the 7 files 2026-09-20..2026-09-27 and 35 query strings. Committing this file will make it the 8th file and will take the census to 38 strings; the census figures here do NOT include today's three calls. Stated expressly because a validation triple moved four times on 2026-09-27 for exactly this reason."
+ },
+ "instrument": {
+  "curl_egress": "DEAD - CONNECT 403 at the proxy gateway on the neutral controls https://example.com AND https://en.wikipedia.org/wiki/Main_Page; proxy status endpoint logged both as connect_rejected at 2026-09-28T11:21:19Z. Probed by the chairman this morning; NOT re-probed by this seat.",
+  "webfetch": "DEAD - EGRESS_BLOCKED on the neutral control https://example.com. Probed by the chairman; NOT re-probed by this seat.",
+  "web_search": "ALIVE",
+  "tool_status_is_not_source_state": "Standing rule. The three lines above are statements about TOOLS in this session. Nothing about the availability of any award, docket or article may be inferred from them.",
+  "relay_rows_booked": 0,
+  "fetch_attempts": 0,
+  "request_files_written": 0,
+  "no_cadenced_observation_due": "thread 10 ~2026-10-10; thread 11 relay limb ~2026-10-13; thread 13 2026-10-18; thread 11 search limb ~2026-10-25. The empty analytics/fetch-results/2026-09-28 is the chairman's ruling, not a failure."
+ },
+ "schema_note": "Follows the 2026-09-24/25/26/27 shape. 'floor_date' IS WRITTEN AS ADOPTED, per the chairman's ruling at analytics/daily-research/2026-09-27.md §7.3(3): 'floor_date - ADOPTED as a record convention for council search artefacts ... from tomorrow it may be written as adopted.' Today is that tomorrow.",
+ "floor_date": {
+  "value": "2026-09-20",
+  "status": "ADOPTED (2026-09-27 §7.3(3))",
+  "meaning": "The first date on which a search fired into a machine-readable artefact under analytics/search-results/. Queries fired before this date are recoverable, if at all, only from the prose of analytics/daily-research/, which is NOT a census (2026-09-27 §7.3(2)).",
+  "derivation": "git log --diff-filter=A -- analytics/search-results/ : earliest added file is 2026-09-20.json at commit 906b2b8."
+ },
+ "budget": {
+  "authorised": 5,
+  "spent": 3,
+  "unspent": 2,
+  "relay_rows": 0,
+  "fetch_attempts": 0,
+  "request_files_written": 0
+ },
+ "era_scope_declaration": {
+  "rule": "Adopted binding 2026-09-27 §7.3(1).",
+  "text": "Every coverage figure in this file is measured over ERA 3 ONLY - the post-floor machine-readable corpus, 2026-09-20..2026-09-27. Era 1 (2026-06-23..2026-07-31, ~501 declared searches) is UNRECORDED AS TO CONTENT and no coverage claim about it is made or available. Era 2 (2026-08-01..2026-09-19) survives only as a prose-recovered LOWER BOUND and is used in this file for ONE purpose: reconciling today's census figure against the 2026-09-27 figure, which was taken over the union of that lower bound and the census."
+ },
+ "limb_a_designator_census": {
+  "program": "analytics/designator_census.py (WRITTEN TODAY, UNCOMMITTED at the time of writing; the chairman is asked to rule on committing it)",
+  "classifier_provenance": "The program RE-IMPLEMENTS NOTHING. RING1/RING2/RING3, the regex builder _mk() and the matcher rings() are IMPORTED from analytics/recover_queries2.py, which is TRACKED AT HEAD (committed 2026-09-27, e91f35d). 0927-C1 was sustained because a printed classifier was not the classifier that ran; here there is exactly one classifier and it is the committed one.",
+  "matching_rule": "Word-boundary-anchored on the left, prefix-open on the right; a designator containing a space matches across whitespace runs; case-insensitive. So 'patent' matches 'patents' and 'patentability'; 'ban' does NOT match 'urban' but DOES match 'Bank' (the false-firing defect the seat disclosed on 2026-09-27).",
+  "population_primary": {
+   "name": "POST-FLOOR CENSUS (canonical)",
+   "rule": "every calls[].query string in every analytics/search-results/*.json; prose not read",
+   "size_queries": 35,
+   "files": 7,
+   "date_window": [
+    "2026-09-20",
+    "2026-09-27"
+   ],
+   "commit": "b70a3f3d9d14f001c1476d88ed396167117e87e7"
+  },
+  "population_secondary": {
+   "name": "PRE-FLOOR PROSE LOWER BOUND - EXPRESSLY NOT A CENSUS",
+   "rule": "recover_queries2.recover(), pre-floor accepted spans",
+   "size_queries": 93,
+   "date_window": [
+    "2026-06-23",
+    "2026-09-19"
+   ],
+   "commit": "b70a3f3d9d14f001c1476d88ed396167117e87e7",
+   "warning": "The prose of a daily record is not a census of anything and may not be counted as one (2026-09-27 §7.3(2)). Used here only for the reconciliation below."
+  },
+  "result_over_census": {
+   "total_designators": 74,
+   "fired": 35,
+   "never_fired": 39,
+   "R1": {
+    "n": 26,
+    "fired": 7,
+    "never_fired": 19,
+    "never": [
+     "trade mark",
+     "copyright",
+     "geographical indication",
+     "clinical data",
+     "regulatory data protection",
+     "data protection period",
+     "plain packaging",
+     "tobacco",
+     "ipr",
+     "know-how",
+     "trips",
+     "compulsory licen",
+     "marketing authoris",
+     "marketing authoriz",
+     "orphan drug",
+     "market exclusivity",
+     "generic",
+     "originator",
+     "drug"
+    ]
+   },
+   "R2": {
+    "n": 24,
+    "fired": 12,
+    "never_fired": 12,
+    "never": [
+     "fair and equitable",
+     "supreme court",
+     "national court",
+     "annulment of a patent",
+     "legislation",
+     "statute",
+     "decree",
+     "plain packaging act",
+     "ban",
+     "seizure",
+     "licence revocation",
+     "fair and equitable treatment"
+    ]
+   },
+   "R3": {
+    "n": 24,
+    "fired": 16,
+    "never_fired": 8,
+    "never": [
+     "admissibilit",
+     "treaty-shopping",
+     "shell",
+     "preliminary objection",
+     "fork in the road",
+     "denial of benefits",
+     "standing",
+     "admissible"
+    ]
+   }
+  },
+  "result_over_union_census_plus_prose_lower_bound": {
+   "size_queries": 128,
+   "total_designators": 74,
+   "fired": 49,
+   "never_fired": 25,
+   "R1": {
+    "n": 26,
+    "fired": 16,
+    "never_fired": 10,
+    "never": [
+     "trade mark",
+     "geographical indication",
+     "tobacco",
+     "ipr",
+     "know-how",
+     "marketing authoris",
+     "marketing authoriz",
+     "orphan drug",
+     "market exclusivity",
+     "drug"
+    ]
+   },
+   "R2": {
+    "n": 24,
+    "fired": 14,
+    "never_fired": 10,
+    "never": [
+     "fair and equitable",
+     "supreme court",
+     "national court",
+     "annulment of a patent",
+     "statute",
+     "decree",
+     "plain packaging act",
+     "seizure",
+     "licence revocation",
+     "fair and equitable treatment"
+    ]
+   },
+   "R3": {
+    "n": 24,
+    "fired": 19,
+    "never_fired": 5,
+    "never": [
+     "treaty-shopping",
+     "shell",
+     "denial of benefits",
+     "standing",
+     "admissible"
+    ]
+   }
+  },
+  "CORRECTION_TO_A_PUBLISHED_FIGURE": {
+   "figure": "'Of 74 designators, 45 are exercised and 29 never fire on any of the 128 strings'",
+   "where_published": "analytics/daily-research/2026-09-27.md, analyst's reconvened answer under 'And a defect neither of us was looking for'; carried into STATE_OF_THE_ANSWER.md's 2026-09-27 COUNCIL UPDATE block as '29 of 74 ring designators have never fired on any string'; and restated in the chairman's convening instruction of 2026-09-28.",
+   "measured_today": "49 exercised, 25 never fired, over the same 128-string union.",
+   "why_the_published_totals_are_wrong": "They contradict the per-ring figures printed in the SAME sentence and the three enumerated dead lists printed immediately after them. 'R1 16/26, R2 14/24, R3 19/24' sums to 49 exercised, not 45; and the enumerated dead lists contain 10 + 10 + 5 = 25 designators, not 29.",
+   "what_reproduces_exactly": "All three per-ring splits (16/26, 14/24, 19/24) and all three enumerated dead lists reproduce designator-for-designator, in the same order, on two independent code paths. Only the two roll-up totals are wrong.",
+   "status": "PROPOSED CORRECTION. Memory mutation is the chairman's; this seat did not edit STATE_OF_THE_ANSWER.md or analytics/insights.jsonl."
+  }
+ },
+ "method_rule_honoured": {
+  "rule": "analytics/insights.jsonl 2026-09-25 METHOD-row-count-is-a-joint-signal-hold-the-query-shape-constant",
+  "application": "All three calls were built to the SAME shape AS EACH OTHER AND AS 2026-09-27's S1 and S2: exactly 2 exact phrases, 9-10 bare terms, no allowed_domains, blocked_domains = the two prohibited hosts, unrestricted otherwise. Row counts across the five shape-identical calls, in date order: 2026-09-27 S1 = 10, 2026-09-27 S2 = 9, 2026-09-28 S1 = 10, S2 = 9, S3 = 9. These five are comparable to each other and to nothing else. The range is 9-10 on all five, which is consistent with an engine page size rather than with a signal about the subject matter, and NO inference about subject-matter density is drawn from row count here."
+ },
+ "blocked_domains_compliance": {
+  "passed_on_calls": 3,
+  "of_calls": 3,
+  "value": [
+   "dailyjus.com",
+   "unis.unvienna.org"
+  ],
+  "allowed_domains_passed_on_calls": 0,
+  "note": "analytics/insights.jsonl:199 records that allowed_domains and blocked_domains are mutually exclusive at the API level."
+ },
+ "engine_summary_note": "ALL THREE calls returned an engine summary paragraph. NONE WAS USED FOR ANY PURPOSE. Each refusal is itemised in 'engine_syntheses_refused' so a successor can see exactly what was refused rather than inferring it from silence.",
+ "engine_syntheses_refused": [
+  {
+   "call": "S1",
+   "refused": "The engine paragraph's account of what arbitral tribunals 'must determine' about covered investors and covered investments, and its statement of the 'two basic requirements to arbitrate a dispute' (subject-matter jurisdiction from a covered investment under the IIA; personal jurisdiction from investor nationality).",
+   "ground": "Doctrinal synthesis from a search engine with no body opened and no locator. It states the content of a class of treaty provisions this seat has not read. Refused."
+  },
+  {
+   "call": "S1",
+   "refused": "The engine paragraph's enumeration of what investment treaties 'typically include' in the definition of an expropriable investment ('enterprises, shares, stock, construction contracts, licenses, authorizations, and permits').",
+   "ground": "An engine's composed generalisation about treaty text. It is also the precise proposition a geographical-indication query exists to test - whether a GI falls inside such an enumeration - so importing it would settle by repetition the question the call was fired to ask. Refused twice over."
+  },
+  {
+   "call": "S1",
+   "refused": "The engine's closing characterisation that the results 'do not specifically address geographical indications as covered investments'.",
+   "ground": "An engine's characterisation of its own result set is not an observation. What IS recorded below is this seat's own observation of the rows: 0 of 10 returned titles carries the string 'geographical indication'. That is a fact about ten titles, not a fact about the world."
+  },
+  {
+   "call": "S2",
+   "refused": "The engine paragraph's account of the ICSID Convention Article 25 'dual test' / 'double-barrelled test', and its statement that ICSID tribunals 'have the authority to assess whether a specific transaction qualifies as an investment under the ICSID Convention independently of the definition in a BIT'.",
+   "ground": "It describes ICSID Convention Article 25's operation by content from an engine paragraph, with no body opened. This is the same class of refusal as the standing prohibition on describing NAFTA Article 1110's or Article 1105's internal structure, and this seat applies it to Article 25 by parity. Refused."
+  },
+  {
+   "call": "S2",
+   "refused": "The engine paragraph's statement that 'tribunals have been unwilling to widen the application of MFN clauses to import a more favorable definition of investment from other treaties'.",
+   "ground": "An unattributed generalisation over unnamed tribunal holdings. A holding may enter only from a primary source. Refused."
+  },
+  {
+   "call": "S3",
+   "refused": "The engine paragraph's account of what data exclusivity is and does ('a limited duration of time during which only the owner or generator of preclinical and clinical trial data can use it for purposes of marketing authorization'), and its account of TRIPS-Plus conditions in US and EU free trade agreements.",
+   "ground": "This sits directly on the project's central sub-question (clinical-trial data as a protected investment), which is where an unsourced synthesis does the most damage. No body was opened. Refused - and refused the more firmly BECAUSE it is convenient."
+  },
+  {
+   "call": "S3",
+   "refused": "The engine paragraph's statement that 'investment treaties provide IP owners with direct access to investor-state arbitration' and its enumeration of substantive protections (FET, national and MFN treatment, protection against unlawful expropriation).",
+   "ground": "Treatise-level synthesis from an engine; no locator, no body. It is also a restatement of the project's own research premise and would read as corroboration of that premise while being nothing of the kind."
+  },
+  {
+   "call": "S3",
+   "refused": "The engine's closing characterisation that the results 'do not contain specific information about investment treaty arbitration tribunal cases that have addressed expropriation claims related to data exclusivity on clinical trial data'.",
+   "ground": "Same ground as the S1 closing characterisation. The recorded observation is this seat's own: 0 of 9 returned titles names an investor-State case or tribunal."
+  }
+ ],
+ "calls": [
+  {
+   "id": "S1",
+   "order": 1,
+   "query": "\"geographical indication\" \"covered investment\" investment treaty arbitration tribunal expropriation jurisdiction claim investor State",
+   "query_shape": "2 exact phrases + 9 bare terms; unrestricted; blocked_domains only",
+   "exact_phrase_count": 2,
+   "designator_spent": "geographical indication (Ring 1, fingerprint.yaml weight 3, seed tag theme_extension, verbatim in the research question at prompts/research_analyst.txt:13)",
+   "purpose": "Spend the CARRIED, NAMED, UNSPENT ONE-CALL STANDING ITEM created by the chairman's ruling of 2026-09-27 §7.3(7). Measured hole: 'geographical indication' occurs in 0 of the 35 post-floor census strings AND in 0 of the 93 pre-floor prose-recovered strings - never fired on any string this project can recover, in either population.",
+   "rows": 10,
+   "result_blocks": 1,
+   "outcome": "HONEST NULL AT CASE LEVEL, AND THE NULL IS INFORMATIVE. Not one of the ten rows is an investor-State case, award or docket in which a geographical indication is asserted as a covered investment. Zero of the ten returned titles contains the string 'geographical indication' at all - the exact phrase operator held, but every row is general covered-investment / jurisdiction / expropriation practitioner commentary. Six of the ten are Global Arbitration Review or Lexology guide chapters, one is a Jenner & Block PDF of a Lexology in-depth chapter, one is an ICSID party-filed legal-authority PDF. Scoped: one call, one engine, one moment, title level, NO BODY OPENED - not found in accessible sources, never 'no such case exists' and never 'a GI has never been claimed as an investment'.",
+   "observation_recorded_as_this_seats_own": "0 of 10 returned titles carries the string 'geographical indication'.",
+   "results": [
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0082.pdf",
+    "https://www.lexology.com/library/detail.aspx?g=7b18ec7a-8a1a-4cd5-8d0f-622c05934d39",
+    "https://www.jenner.com/a/web/fdSmV1EWsKdT8SXGHbGT3Z/lexology-in-depth-investment-treaty-arbitration-investment-treaty-arbitration_-covered-investors.pdf",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/substantive-protections-comprehensive-analysis-of-the-complexities-of-expropriation-in-international-investment-law",
+    "https://www.lexology.com/library/detail.aspx?g=d8d9f1fc-9d3d-400b-9fc9-f9edf0761574",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/first-edition/article/jurisdiction-main-elements",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+    "https://globalarbitrationreview.com/guide/the-guide-construction-arbitration/sixth-edition/article/investment-treaty-arbitration-in-the-construction-sector"
+   ],
+   "retrieved_body": false
+  },
+  {
+   "id": "S2",
+   "order": 2,
+   "query": "\"know-how\" \"covered investment\" trade secrets investment treaty tribunal jurisdiction ratione materiae ICSID claim",
+   "query_shape": "2 exact phrases + 10 bare terms; unrestricted; blocked_domains only",
+   "exact_phrase_count": 2,
+   "designator_spent": "know-how (Ring 1 designator in analytics/recover_queries2.py RING1; NOT a fingerprint.yaml phrase)",
+   "purpose": "Test the highest-value never-fired Ring-1 designator on the project's CENTRAL sub-question. Rationale: 'trade secret' has fired 7 times on the census and returned case-level nulls; 'know-how' is the term investment treaties themselves commonly use in the IP limb of the definition of investment, so a claim pleaded in the treaty's own words would not be retrieved by a 'trade secret' query. This is a coverage hole with a stated mechanism, not a sentinel.",
+   "rows": 9,
+   "result_blocks": 1,
+   "outcome": "HONEST NULL AT CASE LEVEL. Not one of the nine rows is an investor-State case, award or docket in which know-how or a trade secret is asserted as a covered investment. Zero of the nine returned titles contains 'know-how' or 'trade secret'. The set is: a Jus Mundi wiki note on jurisdiction ratione materiae, an UNCTAD official-document PDF on requirements ratione materiae, two Lexology 'covered investment' chapters, two Global Arbitration Review access-to-protection chapters, two ICSID party-filed legal-authority PDFs, and a Gibson Dunn PDF chapter. The mechanism hypothesis is NOT refuted by this call - it is untested, because the call returned the general covered-investment literature rather than any treaty-definition or case-level material. Scoped: one call, one engine, one moment, title level, no body opened.",
+   "observation_recorded_as_this_seats_own": "0 of 9 returned titles carries 'know-how' or 'trade secret'.",
+   "results": [
+    "https://jusmundi.com/en/document/publication/en-jurisdiction-ratione-materiae",
+    "https://unctad.org/system/files/official-document/edmmisc232add4_en.pdf",
+    "https://www.lexology.com/library/detail.aspx?g=7b18ec7a-8a1a-4cd5-8d0f-622c05934d39",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/accessing-investment-treaty-protection-early-planning-and-engagement-critical-investors",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/accessing-investment-treaty-protection-the-investors-perspective",
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0454.pdf",
+    "https://www.lexology.com/library/detail.aspx?g=60de83fb-c053-455c-8e56-20a2391e8fb8",
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0082.pdf",
+    "https://www.gibsondunn.com/wp-content/uploads/documents/publications/Benson-Madden-Knoebel-Chapter-1-Covered-Investment-The-Investment-Treaty-Arbitration-Review-Law-Business-Research-2016.pdf"
+   ],
+   "results_count_note": "The engine returned 9 Links entries for this call. rows = 9, counted as the number of returned Links entries, which is the same unit used for every other call in this corpus.",
+   "retrieved_body": false
+  },
+  {
+   "id": "S3",
+   "order": 3,
+   "query": "\"marketing authorisation\" \"data exclusivity\" investment treaty arbitration tribunal clinical trial data expropriation claim",
+   "query_shape": "2 exact phrases + 9 bare terms; unrestricted; blocked_domains only",
+   "exact_phrase_count": 2,
+   "designator_spent": "marketing authoris (Ring 1, never-fired in both populations); the query also carries the already-fired designators 'data exclusivity' and 'clinical trial'",
+   "purpose": "Test the never-fired Ring-1 regulatory-approval designator on the MEASURE side of the central sub-question. Rationale: data exclusivity attaches to a marketing authorisation, so refusal, revocation or reliance-on-data in granting a marketing authorisation is the concrete Ring-2 regulatory measure that would bite on Ring-1 clinical data. 'data exclusivity' has fired once on the census (2026-09-24); 'marketing authoris'/'marketing authoriz' never.",
+   "rows": 9,
+   "result_blocks": 1,
+   "outcome": "HONEST NULL AT CASE LEVEL, AND THE CLEANEST OF THE THREE. Not one of the nine rows is an investor-State case, award, docket or tribunal decision. The set is entirely pharmaceutical policy and IP scholarship: an IFPMA industry PDF, the English Wikipedia article on test data exclusivity, a Springer chapter, two copies of the same PMC/NCBI article, a Medicines Law & Policy PDF, a consultancy blog post, an NYU JIPEL article, and an Oxford JIPLP article. Zero of the nine titles names a tribunal, an award or a case. Scoped: one call, one engine, one moment, title level, no body opened.",
+   "observation_recorded_as_this_seats_own": "0 of 9 returned titles names an investor-State case, tribunal or award.",
+   "standing_prohibition_touched": "One row is https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/ . The standing carried rule is that THE VADI CITATION IS NEVER CITED WITHOUT RETRIEVAL. No body was retrieved, so nothing is cited from it and nothing is asserted from it. Prior art: 'Vadi' already has 16 carriers at HEAD, so this row is not new material either.",
+   "results": [
+    "https://www.ifpma.org/wp-content/uploads/2023/01/i2023_IFPMA_2011_Data_Exclusivity__En_Web.pdf",
+    "https://en.wikipedia.org/wiki/Test_data_exclusivity",
+    "https://link.springer.com/chapter/10.1007/978-3-030-83114-1_7",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5347964/",
+    "https://medicineslawandpolicy.org/wp-content/uploads/2019/06/European-Union-Review-of-Pharma-Incentives-Data-Exclusivity.pdf",
+    "https://www.scendea.com/articles/blog-post-title-one-25srn-58l3m-hef63",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5347964/",
+    "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+    "https://academic.oup.com/jiplp/article/20/12/783/8300189"
+   ],
+   "retrieved_body": false
+  }
+ ],
+ "calls_returned_unspent": [
+  {
+   "id": "S4",
+   "would_have_spent": "tobacco (Ring 1, never fired in either population), with plain packaging",
+   "not_fired_because": "REFUSED ON THE MERITS, not deferred. 'tobacco' is never-fired because the subject it names is the subject of a seed award this project has already extracted in full: working/one-pagers/philip-morris-v-australia.md is tracked at HEAD, 8,832 bytes, and the operator's read of that award is the project's Philip Morris material. Yesterday's method finding (2026-09-27 S1) established that a seed-shaped retrieval key collapses the result set onto the seed; 'tobacco' + 'plain packaging' is a seed-shaped key by SUBJECT rather than by NAME and the same collapse is predicted. Spending a call to re-retrieve the case whose one-pager is already in the repository is the relevance inflation council_calibration.md item 4 forbids. THIS IS A NEVER-FIRED DESIGNATOR THAT WAS CORRECTLY IGNORED."
+  },
+  {
+   "id": "S5",
+   "would_have_spent": "one of trade mark / ipr / orphan drug / market exclusivity / drug",
+   "not_fired_because": "ALL FIVE REFUSED ON THE MERITS, each for its own reason, and the reasons are different kinds. (i) 'trade mark' is the Commonwealth ORTHOGRAPHY of 'trademark', which has fired 4 times on the census; search engines fold the two, so the designator is a spelling sentinel and not a concept. The honest counter-argument - that Philip Morris v Australia is an Australian matter whose native sources use the Commonwealth spelling - is recorded and is not strong enough to buy a call, because the Australian matter is the one already extracted. (ii) 'ipr' collides head-on with 'inter partes review', a US patent-office procedure with a far larger corpus; firing it buys noise with a named mechanism. (iii) 'orphan drug' names a narrow EU/US exclusivity regime with no ISDS carrier anywhere in this repository. (iv) 'market exclusivity' is subsumed by 'data exclusivity', which fired today inside S3. (v) 'drug' is a bare noun subsumed by 'pharmaceutic' (fired 2026-09-24) and by every sharper term in the ring. FIVE NEVER-FIRED DESIGNATORS THAT WERE CORRECTLY IGNORED."
+  }
+ ],
+ "why_the_never_fired_set_is_two_different_things": "THE DAY'S ANSWER TO THE CHAIRMAN'S QUESTION. The never-fired Ring-1 set is not one object. (a) COVERAGE HOLES WITH A MECHANISM - a designator names a concept the fired designators do NOT retrieve. Exactly two of the ten qualify: 'geographical indication' (a distinct IP right, verbatim in the research question, no synonym among the fired seven) and 'know-how' (the treaty-text synonym for the project's central intangible, which a 'trade secret' query does not reach). 'marketing authoris/z' is a third, weaker case: it names the measure-side instrument rather than a distinct right. All three were fired. (b) SENTINELS CORRECTLY IGNORED - a designator is never-fired because firing it would buy a spelling variant ('trade mark'), a homonym ('ipr'), a subsumed term ('drug', 'market exclusivity'), a subject already extracted in full ('tobacco'), or a regime with no carrier ('orphan drug'). Six of the ten. SO THE ANSWER IS: SEVEN OF THE TEN NEVER-FIRED RING-1 DESIGNATORS ARE SENTINELS, AND THE NEVER-FIRED COUNT WAS NEVER A COVERAGE DEFICIT OF TEN. A long designator list that mostly never fires is not evidence of neglect; on this ring it is mostly evidence of correct triage, and the 2026-09-27 warning that it 'gives false comfort' cuts BOTH ways - it also invites a false alarm.",
+ "prior_art_screen": {
+  "rule": "LC_ALL=C git grep -Fil \"<string>\" HEAD -- . ; unit = tracked files at HEAD; run at commit b70a3f3d9d14f001c1476d88ed396167117e87e7",
+  "new_to_the_corpus_0_files": [
+   "Patent linkage, data exclusivity and public health",
+   "medicineslawandpolicy.org",
+   "ifpma.org",
+   "gibsondunn.com",
+   "jenner.com",
+   "scendea.com",
+   "CL-0454",
+   "CL-0082",
+   "Wiki Note: Jurisdiction Ratione Materiae",
+   "double-barrelled",
+   "Jurisdiction and Admissibility in International Investment Law"
+  ],
+  "already_held": {
+   "Towards a New Dialectics": 2,
+   "jipel.law.nyu.edu": 4,
+   "academic.oup.com": 29,
+   "Journal of Intellectual Property Law & Practice": 1,
+   "Test data exclusivity": 4,
+   "Vadi": 16
+  }
+ },
+ "title_level_leads_bodies_unread": [
+  {
+   "title": "Patent linkage, data exclusivity and public health: approaches for reform",
+   "locator": "Journal of Intellectual Property Law & Practice vol 20 issue 12 p 783",
+   "url": "https://academic.oup.com/jiplp/article/20/12/783/8300189",
+   "prior_art_files_at_HEAD": 0,
+   "body": "UNREAD",
+   "note": "Title-level only. Nothing is asserted from it. Relevance to the research question is a TITLE-LEVEL INFERENCE: the title names data exclusivity, which is a Ring-1 fingerprint phrase at weight 6, but nothing in the title names an investment treaty, a tribunal or a dispute, so the nexus may be nil."
+  },
+  {
+   "title": "Wiki Note: Jurisdiction Ratione Materiae",
+   "locator": "jusmundi.com publication page",
+   "url": "https://jusmundi.com/en/document/publication/en-jurisdiction-ratione-materiae",
+   "prior_art_files_at_HEAD": 0,
+   "body": "UNREAD",
+   "note": "Host is OFF ALLOWED_HOSTS. A Jus Mundi wiki note was already recorded unread on 2026-09-24 for the same reason. Not relay-reachable; carried as a locator and nothing more."
+  }
+ ],
+ "negative_instrument_finding_repeated_and_now_measured": {
+  "finding": "A SINGLE ICSID PARTY-FILED EXHIBIT BUNDLE IS THE DOMINANT ATTRACTOR FOR THIS PROJECT'S GENERAL-VOCABULARY QUERIES, AND IT IS UNREADABLE BY THIS INSTRUMENT.",
+  "measurement": {
+   "population": "every calls[].results[] URL in every analytics/search-results/*.json at b70a3f3d9d14f001c1476d88ed396167117e87e7",
+   "population_size_rows": 369,
+   "distinct_urls": 284,
+   "rows_under_parties_publications": 43,
+   "distinct_urls_under_parties_publications": 21,
+   "rows_under_case_C8394": 27,
+   "distinct_urls_under_case_C8394": 10,
+   "dates_hitting_C8394": [
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-24",
+    "2026-09-26"
+   ],
+   "rows_whose_url_ends_in_.pdf": 136,
+   "pct_of_rows": 36.9,
+   "distinct_pdf_urls": 102,
+   "todays_addition": "S1 and S2 returned CL-0082 (twice) and CL-0454, both under C8394, both NEW URLs, taking C8394 to 5 of the 8 dates once this file is committed."
+  },
+  "why_it_matters": "scripts/fetch_relay.py:124-125 reads `if \"html\" not in content_type and \"text\" not in content_type: return \"\"` - VERIFIED BY THIS SEAT BY GREP, not inherited. So 36.9% of every result row this instrument has ever recorded is a locator that the relay can reduce only to a status code and a byte count, with an EMPTY excerpt. The 7.3% of rows sitting in one claimant's exhibit folder are the sharpest instance.",
+  "what_is_NOT_claimed": "Nothing about the CONTENT of case C8394 or of any of the 10 URLs. No case name, no party, no subject matter. The case number is a path segment in a URL and this seat opened no body. It is not asserted that C8394 is or is not an IP matter."
+ },
+ "carrying_span_posture": {
+  "rule": "prompts/carrying_span_rule.md, as amended 2026-08-03; R7 extends it to this return and to the daily research records, not only the memos.",
+  "propositions_borne_by_repository_measurement": "Every figure in limb_a_designator_census, in prior_art_screen and in negative_instrument_finding_repeated_and_now_measured is borne by a measurement this seat executed over committed files, not by a cited source, so the P/Q/D/V apparatus does not attach. The programs are named and the population rules are printed.",
+  "rigid_designators_screened": [
+   "geographical indication",
+   "know-how",
+   "covered investment",
+   "data exclusivity",
+   "marketing authorisation",
+   "ratione materiae",
+   "C8394"
+  ],
+  "no_rigid_designator_available": "For the propositions about this repository's own query corpus there is NO rigid designator available at all - a query corpus has no name the field cannot paraphrase away - which is written down here as the rule requires, and which is why every coverage statement in this file is phrased as 'not found in [named population]' and never as 'was never searched'.",
+  "external_propositions": "The three external propositions in this file are title-level only and carry NO span. Each is recorded as a lead with access_status 'unavailable' and nothing is asserted from any of them."
+ },
+ "verdict": "THREE CALLS, THREE HONEST NULLS AT CASE LEVEL, AND THE SPEND BOUGHT A REAL ANSWER TO THE QUESTION IT WAS AUTHORISED FOR. The never-fired Ring-1 set is mostly sentinels, not a coverage hole: seven of ten are correctly ignored and are named with their reasons. The two-and-a-half genuine holes were fired and returned nulls at case level, which is the honest result and not a failure. The day's largest finding is not a search result at all - it is that the published '45 exercised / 29 never fired' figure contradicts the per-ring figures printed in the same sentence and is corrected here to 49 / 25, on two independent code paths, over the identical 128-string union.",
+ "relay_reachability_of_todays_rows": {
+  "rule": "host in scripts/fetch_relay.py ALLOWED_HOSTS (read by this seat at b70a3f3, 19 entries) AND url not ending .pdf (because scripts/fetch_relay.py:124-125 returns the empty string for any non-html/text content type)",
+  "rows_today": 28,
+  "distinct_urls_today": 26,
+  "on_ALLOWED_HOSTS": 4,
+  "on_ALLOWED_HOSTS_and_not_pdf": 0,
+  "detail": "The four allowlisted rows are three icsid.worldbank.org parties_publications PDFs under case C8394 and one unctad.org official-document PDF. All four are .pdf. The unctad.org row is additionally under the standing 'no bare unctad.org row' rule and was not fired at. SO: NOT ONE OF TODAY'S 28 RESULT ROWS IS A LOCATOR THIS COUNCIL'S RELAY COULD READ TEXT FROM.",
+  "what_is_NOT_claimed": "This is a statement about this council's own allowlist and its own excerpt function. It says nothing about whether any of the 26 documents is available in the world."
+ }
+}

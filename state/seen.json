@@ -711,6 +711,11 @@
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
       },
+      "https://www.law360.com/healthcare-authority/other/articles/2530357/teva-apotex-don-t-infringe-sleep-drug-patents-judge-finds": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.lelezard.com/en/news-22341193.html": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -761,6 +766,11 @@
       "https://www.iareporter.com/articles/analysis-icsid-ad-hoc-committee-rejects-perus-attempts-to-undo-tribunals-interpretation-of-mst-provision-finding-that-award-properly-identified-and-applied-customary-international/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/analysis-icsid-tribunal-in-banesco-v-panama-finds-no-fet-breach-in-state-conduct-based-on-ambiguous-legal-framework-and-excludes-composite-breach/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.iareporter.com/articles/analysis-icsid-tribunal-splits-on-ownership-and-control-requirement-in-cafta-dr-arbitration-against-honduras/": {
         "at": "2026-09-14T18:19:25.423756+00:00",
@@ -832,6 +842,11 @@
         "at": "2026-08-17T21:15:12.674375+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.iareporter.com/articles/chile-round-up-a-reported-arbitration-over-santiagos-subway-system-updates-on-a-salmon-dispute-a-potential-mining-claim-and-other-arbitration-related-developments-concerning-the-state/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.iareporter.com/articles/chinese-steelmaker-threatens-treaty-arbitration-against-the-uk/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
@@ -1026,6 +1041,11 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/icsid-tribunal-in-prospera-v-honduras-allows-four-amicus-submissions/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/icsid-tribunal-is-constituted-to-hear-austrian-trading-company-claims-against-ukraine/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
@@ -1046,6 +1066,11 @@
       "https://www.iareporter.com/articles/icsid-tribunal-orders-claimant-to-post-security-for-costs-in-third-arbitration-against-costa-rica/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/icsid-tribunal-refuses-to-exclude-panamas-counsel-from-arbitration/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.iareporter.com/articles/icsid-tribunal-rejects-belated-bifurcation-request-in-construction-arbitration-against-cameroon/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
@@ -1209,6 +1234,11 @@
         "outcome": "ok",
         "run": "2026-09-07"
       },
+      "https://www.iareporter.com/articles/russian-court-consults-foreign-affairs-ministry-on-polands-immunity-from-jurisdiction-in-dispute-over-sanctions-induced-sale-of-insulation-plant-owned-by-russian-businessmen/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/russian-court-restrains-germany-owned-energy-trader-from-pursuing-icc-arbitration-against-gazprom-export-under-threat-of-600-million-eur-penalty/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1278,6 +1308,11 @@
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/third-lithium-mining-arbitration-is-added-to-consolidation-proceedings-under-mexico-uk-bit/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/third-sanctions-related-arbitration-lodged-by-mikhail-fridman-comes-to-light-with-the-netherlands-as-respondent-jimenez-chaired-tribunal-is-already-in-place/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
@@ -1299,9 +1334,19 @@
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/tribunal-majority-declines-jurisdiction-over-multi-billion-dollar-oic-investment-agreement-claim/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/tribunal-majority-dismisses-banking-claim-against-portugal/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/troubled-real-estate-project-reportedly-puts-iraq-at-risk-of-diac-arbitration/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.iareporter.com/articles/uk-court-allows-attachment-of-state-owned-companys-bank-account-in-satisfaction-of-100-million-usd-award-against-djibouti/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
@@ -1345,6 +1390,11 @@
         "at": "2026-08-10T14:17:45.964749+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/uncitral-tribunal-renders-award-in-mining-arbitration-against-liberia/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/uncovered-detailed-review-of-still-unpublished-mainstream-v-germany-award-reveals-why-arbitrators-split-on-intra-eu-objection-full-tribunal-opines-that-no-fet-breach-can-occur-without-fault-by-the/": {
         "at": "2026-07-06T16:16:43.184529+00:00",
         "outcome": "legacy"
@@ -1372,6 +1422,11 @@
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/us-court-clears-way-for-execution-proceedings-against-argentinas-assets-to-satisfy-teinver-award/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iareporter.com/articles/us-court-confirms-air-canada-award-after-rejecting-objections-regarding-venezuelas-representation-following-change-in-government-recognition/": {
         "at": "2026-08-17T21:15:12.674375+00:00",
         "outcome": "ok",
@@ -1390,6 +1445,11 @@
       "https://www.iareporter.com/articles/us-court-grants-petition-to-enforce-billion-dollar-icsid-award-against-south-sudan-and-its-central-bank/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/us-court-lets-blasket-step-into-japanese-investors-shoes-to-enforce-icsid-award-against-spain-rejecting-argument-that-icsid-awards-cannot-be-assigned/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.iareporter.com/articles/us-court-postpones-ruling-on-whether-libyas-national-oil-corporation-is-an-alter-ego-of-the-state/": {
         "at": "2026-09-07T23:25:56.267336+00:00",
@@ -1538,6 +1598,61 @@
       }
     },
     "iisd_itn": {
+      "https://www.iisd.org/itn/2009/06/05/ecuador-continues-exit-from-icsid/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2012/04/13/venezuelas-withdrawal-from-icsid-what-it-does-and-does-not-achieve/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2012/10/30/inching-towards-consensus-an-update-on-the-uncitral-transparency-negotiations/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2012/11/27/sadc-model-bit/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2013/09/20/conoco-phillips-and-exxon-mobil-v-venezuela-using-investment-arbitration-to-rewrite-a-contract/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2016/08/10/india-takes-steps-to-reform-its-investment-policy-framework-after-approving-new-model-bit/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2018/04/24/comprehensive-and-progressive-agreement-for-trans-pacific-partnership-cptpp-signed/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2018/10/18/methanex-v-united-states/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2018/10/18/pac-rim-v-el-salvador/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2021/12/20/eco-oro-and-the-twilight-of-policy-exceptionalism/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
+      "https://www.iisd.org/itn/2024/01/13/unlocking-sustainable-development-in-central-asian-bilateral-investment-treaties/": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
+      },
       "https://www.iisd.org/itn/2026/04/21/chevron-collect-over-usd-200-million-decade-old-arbitration-ben-hefter/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -1931,6 +2046,11 @@
       "https://www.italaw.com/cases/9965": {
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
+      },
+      "https://www.italaw.com/cases/9971": {
+        "at": "2026-09-28T19:57:56.186541+00:00",
+        "outcome": "ok",
+        "run": "2026-09-28"
       },
       "https://www.italaw.com/cases/documents/1088": {
         "at": "2026-09-21T18:26:17.549906+00:00",

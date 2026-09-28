@@ -83,8 +83,9 @@ rules written into its definition:
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Three rules this seat adopted from three separate failures. They are one rule in three costumes,
-and each was learned only after the previous one failed to generalise:
+Four rules this seat adopted from four separate failures. The first three are one rule in three
+costumes, and each was learned only after the previous one failed to generalise; the fourth turns
+the same scepticism on this seat's own carried records:
 
 1. **2026-08-16** — *A guard's exit 0 licenses only the claim the guard actually tests.* Learned
    when this seat wrote "no model drift exists" on the strength of `check_models.py` exiting 0,
@@ -98,6 +99,17 @@ and each was learned only after the previous one failed to generalise:
    `scripts/check_currency.py`'s docstring was found to promise a bare-sha citation check
    (`:30-32`) that the implementation (`:184`) does not perform — and an unresolvable citation
    sat inside a **tracked** note for a month, on a surface that read as guarded.
+4. **2026-09-28** — *A label this seat puts on a carried item is a claim, and repeating it across
+   sessions is not evidence for it. Before carrying an item forward under the same gloss a fourth
+   time, test the thing the gloss asserts.* Learned when PR **#150** was carried in this seat's
+   open-PR table on 2026-09-16, 09-19, 09-22 and 09-25 — and at `Project Change Log.md:207` — as
+   **"anchor edits only"**, a description that is literally accurate and that reads as *harmless,
+   therefore optional*. Executing the merge this session showed it **conflicts on all five of its
+   files** and that its payload is twenty days superseded, so the correct action is **close**, not
+   the merge the label implies. **The gloss was never checked because it never looked like a
+   claim.** A carried item is not stable because its description is stable; a description that has
+   not been re-tested is as stale as an anchor that has not been re-measured.
+   ([[Workflow Threads]] **D23**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
@@ -600,6 +612,38 @@ see item 2 of the 2026-08-03 slice.)*
 > reads first**. That is a small instance of exactly the defect this seat exists to catch, and it
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
+
+- **2026-09-28 (twentieth deployment)** — Standing every-3-days session, audited against
+  `50482a4` (`main`), complete **1,645**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **113**, the **twelfth consecutive** session. Window `b577683..50482a4` =
+  **47** commits. **Zero commits to `.claude/agents/`, `prompts/` or `src/models.py`, zero to
+  `scripts/`, `tests/`, `.github/` or `src/`, and zero to every professor-facing surface** — the
+  **fourth** consecutive session with no contract drift, and the **third** consecutive window that
+  is records only. `check_models.py` exits **0** over 12 cards; all nine definitions declare
+  `model: opus`.
+  **The session's finding is against this seat's own records, which is the only reason it is worth
+  Emory's attention.** PR **#150** has been carried in the open-PR table four times — 2026-09-16,
+  09-19, 09-22, 09-25 — and at `Project Change Log.md:207`, every time as **"anchor edits only"**.
+  Executed rather than described this session, the merge **conflicts on all five of its files**,
+  every conflict the single currency-anchor line, and its `8974a55` is an ancestor of `main`'s
+  `91153e4` — twenty days superseded. **Resolved correctly it is an empty change; resolved by the
+  reflex "accept incoming" it re-breaks `check_currency.py` across all five tracked notes.** The
+  right action is **close**, not merge. Filed as **D23**, and adopted here as **method rule 4**:
+  a label this seat puts on a carried item is a claim, and repeating it is not evidence for it.
+  **This is the note that would have prevented it.** Had the 2026-09-16 table entry said
+  *superseded and unmergeable* instead of *anchor edits only*, the PR closes that week. Instead a
+  neutral gloss was copied forward through four sessions, and the item stayed visible in the record
+  while being invisible as a decision. **That is the 2026-08-03 failure mode with the polarity
+  reversed** — there a correct note was never read; here a read note was never re-tested — and both
+  are this seat's to own.
+  **Re-measured, not restated:** D20 at day fourteen, `pipeline-guards` runs **255** and **256**
+  both failing, live archive 18 / 520 / 13 against 16 / 492 / 11 pinned — identical to the last two
+  sessions, as that thread's growth law predicts for a window holding no Monday, which is now
+  **two consecutive surviving predictions**. New: `weekly.yml`'s cron says 13:00 UTC Mondays but its
+  last four runs committed at **18:23–23:32 UTC**, so a Monday re-measure of the constants made
+  before ~18:30 is stale within hours. Recorded because this session nearly filed the absent
+  nineteenth digest as a failed run at 15:15 UTC; today's `scholar-intake` ran **7h47m** late, and
+  **schedule lag on this repository is hours, not minutes.**
 
 - **2026-09-25 (nineteenth deployment)** — Standing every-3-days session, audited against
   `b577683` (`main`), complete **1,598**-commit history after `git fetch --unshallow`; the clone

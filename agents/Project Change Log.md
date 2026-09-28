@@ -15,6 +15,64 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-09-28 (archivist session — twentieth deployment)
+
+*Audited against `50482a4` (`main`), on a complete **1,645**-commit history — the container's clone
+arrived shallow at **113**, the **twelfth consecutive** session, so every sha below was resolved
+only after `git fetch --unshallow`. Window `b577683..50482a4` = **47** commits, three days. Paths:
+`.claude/agents/`, `prompts/`, `src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`,
+`scripts/site_templates/`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`,
+`views/isds-workflow-3d/workflow.json`, `scripts/`, `tests/`, `.github/`, `src/`.*
+
+- **Contract paths unmoved for the fourth consecutive session.** `git log b577683..50482a4 --
+  .claude/agents/ prompts/ src/models.py` returns **zero** commits; **zero** on `scripts/`,
+  `tests/`, `.github/`, `src/`; **zero** on `README.md`, `docs/`, `scripts/site_templates/`,
+  `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `views/isds-workflow-3d/workflow.json`. The
+  entire 47-commit window is records: **19** files under `analytics/`, **6** under `agents/`,
+  `STATE_OF_THE_ANSWER.md` and `state/research_log.json`.
+- **Models verified, not assumed.** All nine definitions in `.claude/agents/` declare
+  `model: opus`; `scripts/check_models.py` exits **0** over 12 cards. `src/models.py` unchanged:
+  `CHAIRMAN_MODEL` and `HEAVY_MODEL` `claude-opus-5`, `UTILITY_MODEL` and `FALLBACK_MODEL`
+  `claude-opus-4-8`, `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001`.
+- **NEW — D23: PR #150 is unmergeable and its payload is superseded; it must be closed, not
+  merged.** A real merge of `f73ac06` into `origin/main`, performed in a scratch worktree,
+  **conflicts on all five of its files**, every conflict the one currency-anchor line
+  (`8974a55` against `main`'s `91153e4`, which is twenty days newer —
+  `git merge-base --is-ancestor 8974a55 91153e4` → true). Resolved correctly the merge is empty;
+  resolved by the reflex "accept incoming" it re-breaks `check_currency.py` across all five
+  tracked notes. **This seat had logged it as "anchor edits only" on 2026-09-16, 09-19, 09-22 and
+  09-25 and at `Project Change Log.md:207`** — a neutral gloss that is the reason it has sat
+  twenty days. Correction filed in [[Workflow Threads]] **D23**.
+- **D20 re-measured; the growth law survives a second window, and its fix now has a timing
+  constraint.** `pipeline-guards` runs **255** (`913d37a`) and **256** (`91153e4`) both conclude
+  **failure**, job `suite`, `2 failed, 821 passed, 5 xfailed`. Live archive `runs` **18** /
+  `screened` **520** / `per_source` digests **13** against 16 / 492 / 11 pinned at
+  `tests/test_site_claims.py:155-156` and `:305-308` — identical to 2026-09-25 and 2026-09-22,
+  and the window again held no Monday. **New this session:** `.github/workflows/weekly.yml` has
+  cron `0 13 * * 1` but has committed at **18:23–23:32 UTC** on its last four runs (`4cfc45a`,
+  `238f0f4`, `1d559a7`, `1eb4235`), so a re-measure of the constants made on a Monday before
+  ~18:30 UTC is stale within hours. Day fourteen; owner unchanged (systems-designer /
+  site-experience).
+- **Orphan check: 47 of 194 remote branches are not ancestors of `origin/main`, and all but
+  three are the D16 anchor-line artefact.** Tested at content level rather than by sha: for each
+  unlanded branch, the lines it added were checked against `main`'s copy of the same file. **41
+  differ only on the machine-owned currency-anchor line**, superseded by a later `reanchor.yml`
+  run. The substantive remainder is the three open pull requests — **#110** (`de73f9f`, day 31),
+  **#150** (`f73ac06`, day 20, now D23), **#184** (`529c744`, day 15, D19) — plus three
+  2026-07-30/31/08-01 `claude/sweet-mccarthy-*` branches carrying unlanded `daily-research`
+  records, already on this seat's list as thread F1's neighbours. **No new work is stranded.**
+- **Guards at `50482a4`:** `check_models` **0**; **`check_currency` exits 1** — 9 claims,
+  **1 STALE**: `agents/Workflow Threads.md` against `91153e4`, touched by today's scholar intake
+  `50482a4`. Cleared by this session's close-out re-anchor, not by any edit. `check_lock`,
+  `check_headline_lane`, `check_claims`, `check_seen_integrity`, `check_telemetry_privacy` all
+  **0**; `node tools/isds-workflow-3d/validate.mjs` **0** (30 cards / 10 chips / 44 edges, SVG
+  fresh against `inputs-sha256`, zero "Jack" tokens); `build_graph.py --dry-run` **0**.
+- **"Jack" discipline:** professor-facing surfaces (`README.md`, `docs/`, `scripts/site_templates/`,
+  `METHODOLOGY.md`, `COUNCIL.md`, `HANDOFF.md`) **clean, 0 occurrences**. The two known live
+  defects are unchanged and both outside this seat's paths: `HUMAN_REVIEW.md:115` and
+  `prompts/council_roundtable.txt:73`. (`HUMAN_REVIEW.md:173` is the operator's own signature as
+  reviewer and is correct.)
+
 ## 2026-09-25 (archivist session — nineteenth deployment)
 
 *Audited against `b577683` (`main`), on a complete **1,598**-commit history — the container's clone

@@ -735,6 +735,47 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D23 — PR #150 has been open twenty days as "anchor edits only"; it is in fact unmergeable and its entire payload is superseded, and the safe action is to close it *(new 2026-09-28; owner: Emory — one click, but not the click the label implies)*
+
+- **What six consecutive records have said about it.** PR #150 (`chore/reanchor-2026-09-08`, tip
+  `f73ac06`) has appeared in this seat's open-PR table on 2026-09-16 (day 8), 09-19 (day 11),
+  09-22 (day 14), 09-25 (day 17) and in `Project Change Log.md:207`, every time with the same
+  neutral gloss — **"anchor edits only"**. That description is accurate and it is the reason
+  nobody has acted: it reads as harmless and therefore as optional.
+- **Tested this session rather than described.** A real merge of `f73ac06` into `origin/main`
+  was performed in a scratch worktree. **It conflicts on all five of its files** —
+  `STATE_OF_THE_ANSWER.md`, `agents/Agent Registry.md`, `agents/Claim Map.md`,
+  `agents/Project Change Log.md`, `agents/Workflow Threads.md` — and **every conflict is the same
+  single line**, the currency anchor:
+
+  ```
+  <<<<<<< HEAD
+  **Currency anchor.** *Audited against `91153e4`.* …
+  =======
+  **Currency anchor.** *Audited against `8974a55`.* …
+  >>>>>>> f73ac06
+  ```
+
+- **Its payload is twenty days superseded.** `8974a55` is an ancestor of `91153e4`
+  (`git merge-base --is-ancestor 8974a55 91153e4` → true). The PR's whole content is an anchor
+  move that `reanchor.yml` has since performed many times over. **Resolved correctly — taking
+  `main`'s side on all five hunks — the merge delivers an empty change.**
+- **And there is a wrong way to resolve it that is worse than leaving it.** The reflex resolution
+  on a conflict is to accept the incoming branch. Doing that here would set all five anchors back
+  to `8974a55` and re-break `check_currency.py` across the whole tracked set. **The PR cannot
+  deliver value and can deliver harm**, which is the opposite of what "anchor edits only" conveys
+  to a reader deciding whether to spend a click.
+- **The premise it was opened on is long discharged.** Its body says *"`main` is red and this
+  clears it"*, naming the staleness against `d88f325` from the 2026-09-08 council merge. That
+  staleness is gone: `check_currency.py` at `50482a4` reports **9 claims, 1 failed**, and the one
+  failure is `agents/Workflow Threads.md` against `91153e4` from `50482a4`, today's scholar
+  intake — unrelated to and unfixable by this PR.
+- **Next action — Emory: close PR #150, do not merge it.** One click either way; this record
+  exists so the click is the right one. **Correcting this seat's own six-session gloss:** the
+  table entry should have read *superseded and unmergeable*, not *anchor edits only*. A neutral
+  label on a stale PR is how a twenty-day-old branch stays invisible while being logged every
+  third day — which is the failure mode this session exists to catch, in the vault's own records.
+
 ### D22 — a rule adopted to stop exactly this was in force for eighteen days, the council proved the point itself on 2026-09-23, and on 2026-09-25 the same seat escalated the refuted claim to Emory as a permanent defect *(new 2026-09-25; owner: Emory for the routing question, council-chairman for the practice)*
 
 - **State — the sharpest instance of D5 this vault has recorded, and unlike the others it reached
@@ -1025,6 +1066,34 @@ still the only open PR in the repository before this session's own.
   thread on this list with a known growth rate.
 - **Still not the archivist's to fix**, unchanged: `tests/`, `scripts/` and `.github/` are all
   outside this seat's merge scope. Escalated for the third consecutive session.
+
+- **2026-09-28 — day fourteen, and this is the first Monday since the growth law was written, so
+  the law is under test today rather than merely restated.** `pipeline-guards` runs **255**
+  (`913d37a`, 11:53Z) and **256** (`91153e4`, 11:55Z) both conclude **failure**; job `suite`,
+  `2 failed, 821 passed, 5 xfailed`, read from run 256's own job log through the Actions API.
+  Re-measured against the live archive by execution: `runs` **18** vs 16 pinned, `screened`
+  **520** vs 492, digests carrying `per_source` **13** vs 11. **Identical to 2026-09-25 and to
+  2026-09-22** — the window again contained no Monday, so a zero delta is again what the law
+  predicts, and that is now **two consecutive windows the prediction has survived**.
+- **The timing trap, which is new and is operational rather than analytic.** The weekly writer is
+  `.github/workflows/weekly.yml`, cron `0 13 * * 1` — Mondays 13:00 UTC. **It has never committed
+  at 13:00.** Measured on the last four runs: `4cfc45a` 2026-08-31T19:29Z, `238f0f4`
+  2026-09-07T23:32Z, `1d559a7` 2026-09-14T18:23Z, `1eb4235` 2026-09-21T18:30Z — an observed
+  window of **18:23–23:32 UTC**. This session ran at **15:15 UTC on Monday 2026-09-28**, so the
+  nineteenth run had not yet landed (`digests/2026-09-28*` absent, archive still 18) and **will
+  land after this record is written**. Consequence for whoever fixes this: **a re-measure of the
+  five constants performed on a Monday before ~18:30 UTC is stale within hours of being
+  committed.** Either do it after the week's digest lands, or regenerate the constants in the same
+  job that writes the digest — which is the second-order remedy this thread has named since
+  2026-09-16 and which this measurement now prices.
+- **Not a false alarm, stated because it nearly was one.** At 15:15 UTC with the cron reading
+  13:00, the absent nineteenth digest looks like a failed weekly run. It is not: today's
+  `scholar-intake` (cron `30 6 * * *`) ran at **14:17 UTC, 7h47m late**, and the four-week landing
+  window above shows this writer has always committed in the evening. **Schedule lag on this
+  repository is hours, not minutes**, and a seat reading a cron expression as a landing time will
+  file a failure that did not happen. Recorded as a measurement convention, not as an incident.
+- **Still not the archivist's to fix**, unchanged: `tests/`, `scripts/` and `.github/` are all
+  outside this seat's merge scope. Escalated for the fourth consecutive session.
 
 ### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
 

@@ -1,0 +1,220 @@
+{
+  "date": "2026-09-29",
+  "seat": "research-analyst",
+  "measured_at_commit": "d09ae07841e4606365de9d3808aca62740a26429",
+  "note_on_own_write": "Every census figure in this file and in the seat's memo was computed on the committed corpus. The seat began at 069b973; HEAD MOVED MID-SESSION to d09ae07 ('council: daily meeting 2026-09-29 (part 1)'), which added analytics/daily-research/2026-09-29.md to the tracked set. Every figure stated was re-verified at d09ae07 and none moved: 8 files / 38 post-floor queries in analytics/search-results/; Servier tracked in exactly 2 files. THIS FILE IS THE NINTH AND ITS 4 QUERIES ARE OUTSIDE EVERY DENOMINATOR STATED. After this write the directory holds 9 files / 42 queries.",
+  "instrument": {
+    "fetch": "DEAD - no document body opened today. Not re-probed by this seat; the chairman's morning probe is relied on and not contradicted.",
+    "search": "ALIVE - WebSearch, the only retrieval instrument used.",
+    "relay": "Not fired. No cadenced observation due before 2026-10-10. No request file written."
+  },
+  "budget": {
+    "authorised": 4,
+    "fired": 4,
+    "returned_unspent": 0
+  },
+  "blocked_domains_on_every_call": [
+    "dailyjus.com",
+    "unis.unvienna.org"
+  ],
+  "allowed_domains_on_any_call": null,
+  "calls": [
+    {
+      "id": "S1",
+      "target": "carried target 1 - `marketing authoriz` (-z), retired in error 2026-09-28 and expressly unadjudicated",
+      "query": "\"marketing authorization\" \"data exclusivity\" investment treaty arbitration tribunal clinical trial data expropriation claim",
+      "design": "PAIRED MEASUREMENT. Yesterday's S3 fired the identical query with one token different: \"marketing authorisation\". Exactly one token changed (s->z). Query shape held constant per the 2026-09-25 method rule that a row count says nothing about the corpus unless the shape is held constant.",
+      "rows": 9,
+      "comparator_rows": 9,
+      "comparator": "analytics/search-results/2026-09-28.json call S3",
+      "url_overlap_with_comparator": 5,
+      "urls_unique_to_this_spelling": 4,
+      "urls_unique_to_the_-s_spelling": 4,
+      "results": [
+        "https://www.ifpma.org/wp-content/uploads/2023/01/i2023_IFPMA_2011_Data_Exclusivity__En_Web.pdf",
+        "https://www.researchgate.net/publication/322482375_Clinical_data_data_exclusivity_and_private_investment_protection_in_Europe",
+        "https://link.springer.com/chapter/10.1007/978-3-030-83114-1_7",
+        "https://abovethelaw.com/2018/03/trial-and-error-or-the-problem-of-clinical-trial-data-exclusivity/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5347964/",
+        "https://pubmed.ncbi.nlm.nih.gov/20431702/",
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5347964/",
+        "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+        "https://www.scendea.com/articles/blog-post-title-one-25srn-58l3m-hef63"
+      ],
+      "novelty_against_repo_at_069b973": "Of the 4 URLs unique to the -z spelling, 2 are already held in this repository (researchgate/322482375 at 2 loci; whitecase Strong Medicine at 5 loci, already in STATE_OF_THE_ANSWER.md and recorded there as body 403-blocked) and 2 are new to it (abovethelaw 2018; pubmed/20431702). NEITHER new row is a case-level lead.",
+      "what_may_be_concluded": "The two orthographies are NOT interchangeable as retrieval keys on this instrument in this frame: same shape, 9 rows each, 5 shared URLs, 4 distinct in each direction. The designator is live. It bought no new case-level lead today.",
+      "what_may_not_be_concluded": "Nothing about how the engine normalises strings; nothing about any body (none opened); nothing about publisher house style, which remains the seat's unverified caveat and was not tested."
+    },
+    {
+      "id": "S2",
+      "target": "carried target 2 - `trade mark` (two words)",
+      "query": "\"trade mark\" \"covered investment\" investment treaty arbitration tribunal expropriation jurisdiction claim investor State",
+      "design": "Frame held identical to 2026-09-28 call S1 (which carried \"geographical indication\" in the same nine trailing tokens), so the two are comparable at the row level.",
+      "rows": 9,
+      "comparator": "analytics/search-results/2026-09-28.json call S1 (10 rows)",
+      "titles_carrying_the_exact_string_trade_mark": 0,
+      "titles_carrying_trademark_one_word": 0,
+      "results": [
+        "https://www.lexisnexis.co.uk/legal/guidance/expropriation-investment-treaty-arbitration",
+        "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+        "https://academic.oup.com/oxford-law-pro/book/57807",
+        "https://www.lexology.com/library/detail.aspx?g=22993457-9b16-4143-9c7d-9a5ea87bc7e7",
+        "https://www.whitecase.com/insight-our-thinking/do-bits-and-bytes-bite-investment-treaty-arbitration-technology-disputes",
+        "https://law.stanford.edu/wp-content/uploads/2020/11/upreti_wp67.pdf",
+        "https://jusmundi.com/en/document/wiki/en-expropriation",
+        "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+        "https://uncitral.un.org/transparencyregistry"
+      ],
+      "what_may_be_concluded": "An exact-phrase `trade mark` query in this council's standard frame returns nine rows, none of whose titles carries either spelling, and no case-level lead. Honest null on substance.",
+      "what_may_not_be_concluded": "Whether the engine folds orthographies. That assumption is STILL untested by this call and remains untested. What S1 shows is only that on ONE other string pair the two spellings did not return the same set - which makes the premise of the 2026-09-28 refusal measurably doubtful without establishing its negation."
+    },
+    {
+      "id": "S3",
+      "target": "carried target 3 - the seed-subject collapse hypothesis, first test",
+      "query": "\"promise utility doctrine\" investment treaty arbitration tribunal award patent expropriation",
+      "design": "Keyed to a seed SUBJECT, not a seed NAME. `promise utility doctrine` is fingerprint.yaml Ring-1 weight 8, seed: eli_lilly, and has never appeared in any of the 38 post-floor query strings. PRE-REGISTERED PREDICTION, written before the call: if the hypothesis holds, the row set collapses onto Eli Lilly v Canada.",
+      "prediction": "collapse onto the seed",
+      "outcome": "PREDICTION FAILED AT TITLE LEVEL. 0 of 9 row titles name Eli Lilly; 4 of 9 URLs carry no seed marker and the remaining 5 carry none either - no row is the seed case or commentary on it. The comparator is 2026-09-27 call S1, keyed to the seed NAME, of which that day's record states at analytics/daily-research/2026-09-27.md:421, in its own words, 'All ten are the case itself or commentary on the case itself.' I rely on that seat's attested count rather than re-deriving it; 4 of its 10 URLs carry an Eli Lilly marker in the URL string alone (international.gc.ca .../eli-statement-declaration; iisd.org/itn/2017/06/12/highly-anticipated-nafta-award-rejects-patent-law-related-claim-against-canada...; investmentpolicy.unctad.org/.../cases/507/eli-lilly-v-canada; researchgate/316071599_Eli_Lilly_v_Canada...), which corroborates the direction without reproducing the figure.",
+      "rows": 9,
+      "results": [
+        "https://www.forbesindia.com/blog/economy-policy/foreign-patent-owners-can-challenge-domestic-judgments-under-international-investment-arbitration-294509.html",
+        "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+        "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/protecting-foreign-investment-and-public-health-through-arbitral-balancing-and-treaty-design/A145EC8D2A59AD446EEF6B80BA6E3A95",
+        "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/second-edition/article/when-intellectual-property-the-investment-arbitrating-against-sovereigns",
+        "https://www.iam-media.com/guide/the-guide-ip-arbitration-archived/1st-edition/article/when-intellectual-property-the-investment-arbitrating-against-sovereigns",
+        "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+        "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+        "https://academic.oup.com/icsidreview/article/40/1/174/8121539",
+        "https://www.congress.gov/crs-product/R43988"
+      ],
+      "novelty_against_repo_at_069b973": "4 of 9 rows are already held at those exact locators (iisd ITN 2014 at 6 loci; GAR IP-arbitration 2nd ed at 2; ICSID Review 40(1) 174 at 3; congress.gov R43988 at 2). 5 are new locators, none of them a case-level lead.",
+      "what_may_be_concluded": "On one call each: a seed NAME key collapsed the row set onto the seed; a seed SUBJECT key did not. Method result, n=1 per arm. Substantively the call is a null: no tribunal, award or docket other than through secondary literature this repository already holds.",
+      "what_may_not_be_concluded": "Anything about the Eli Lilly tribunal's reasoning. The engine's summary prose collapsed onto Eli Lilly and is REFUSED - see engine_syntheses_refused."
+    },
+    {
+      "id": "S4",
+      "target": "discretionary - locator for a matter this repository already holds at a caption but at no locator",
+      "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+      "design": "Triggered by reading lit-review/ferguson-memo.md as ordered. Ferguson's note 182 is quoted at ferguson-memo.md:38. analytics/locked_set/VALIDATION_RECORD.md:289 carries the matter as candidate row 1-02 with its numeric italaw case id expressly NOT VERIFIED. This call seeks a locator at title level only.",
+      "rows": 11,
+      "results": [
+        "https://arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
+        "https://demo.arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
+        "https://dev.arbitration.org/award/388",
+        "https://jusmundi.com/en/document/decision/en-les-laboratoires-servier-s-a-s-biofarma-s-a-s-arts-et-techniques-du-progres-s-a-s-v-republic-of-poland-award-tuesday-14th-february-2012",
+        "https://www.iareporter.com/articles/pdfdownloads/les-laboratoires-servier-and-others-v-poland-award-of-february-14-2012-partially-redacted/",
+        "https://www.italaw.com/cases/1179",
+        "https://www.italaw.com/countries/poland",
+        "https://arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic-0",
+        "https://oxia.ouplaw.com/abstract/10.1093/law:iic/604-2012.case.1/law-iic-604-2012",
+        "https://opil.ouplaw.com/abstract/10.1093/law:iic/604-2012.case.1/law-iic-604-2012"
+      ],
+      "novelty_against_repo_at_069b973": "0 of these locators occur anywhere in the tracked repository. The CAPTION occurs in exactly two tracked files (lit-review/ferguson-memo.md, analytics/locked_set/VALIDATION_RECORD.md) and in zero daily records, zero insight-ledger lines, zero lines of STATE_OF_THE_ANSWER.md and zero lines of analytics/council-log.md.",
+      "what_may_be_concluded": "At TITLE level: a case page bearing this caption exists at www.italaw.com/cases/1179; row titles give the award date as 14 February 2012 and describe it as redacted / partially redacted, consistent with ferguson-memo.md:38. The locked set's flagged-unverified numeric id now has a title-level candidate, 1179.",
+      "what_may_not_be_concluded": "The locator is IDENTIFIED, not VERIFIED - no body was opened and www.italaw.com is under a standing fetch prohibition in this council. Nothing about the award's holding, the treaty invoked, the ring-3 posture, or the disposition. TWO TITLE-LEVEL DISCREPANCIES ARE RECORDED AND NOT RESOLVED: (a) the OUP/OPIL row titles give the forum as 'Permanent Court of Arbitration [PCA]' while the arbitrationlaw.com, jusmundi and italaw row titles give 'UNCITRAL' and the locked set writes 'UNCITRAL (ad hoc)'; (b) the first claimant is rendered 'S.A.A.' in most row titles, 'S.A.S.' in the jusmundi row title and 'S.A.S.' in the locked set."
+    }
+  ],
+  "engine_syntheses_refused": [
+    {
+      "call": "S1",
+      "name": "The data-exclusivity definition paragraph",
+      "refused": "The engine's own account of what data exclusivity is and does. Same class as the account refused on 2026-09-28; refused again, asserted nowhere."
+    },
+    {
+      "call": "S1",
+      "name": "The Servier v Poland account",
+      "refused": "The engine's prose that Servier 'successfully brought a claim against Poland under the France-Poland BIT', that Poland 'declined to renew marketing authorization for two drugs ... while allowing local competitors to market generic alternatives', that 'the tribunal found that this amounted to indirect expropriation', and that damages were awarded. No row title carries any of it. NOTHING IN THE MEMO RESTS ON IT."
+    },
+    {
+      "call": "S2",
+      "name": "The IPR-as-covered-investment enumeration",
+      "refused": "The engine's claim that BITs refer to 'copyright, patents, trademarks, and trade names' and that IPRs protected nationally 'should be treated as investment'. Unattributed to any row; an enumeration of the exact kind refused on 2026-09-28."
+    },
+    {
+      "call": "S2",
+      "name": "The expropriation-definition paragraph",
+      "refused": "The engine's general account of what expropriation is and of what 'adequate' compensation requires."
+    },
+    {
+      "call": "S2",
+      "name": "The ISDS-explainer paragraph",
+      "refused": "The engine's description of investment-treaty protection standards and of what ISDS is."
+    },
+    {
+      "call": "S3",
+      "name": "The promise-doctrine definition",
+      "refused": "The engine's account of what Canadian courts do under the promise doctrine and when the doctrine arose."
+    },
+    {
+      "call": "S3",
+      "name": "The Eli Lilly claim-and-holding account",
+      "refused": "The engine's account of Eli Lilly's Strattera/Zyprexa patents, of what Eli Lilly alleged, and above all of what 'the Tribunal found' and that it 'rejected Eli Lilly's claims under NAFTA'. A holding may cite only the award. NOT ASSERTED. Note that this refused paragraph is the ONLY place in call S3 where the result set collapsed onto the seed."
+    },
+    {
+      "call": "S4",
+      "name": "The Servier case-overview and Article 5(2) account",
+      "refused": "The engine's prose that the claimants are French pharmaceutical companies, that arbitration was commenced under Article 8 of the France-Poland treaty of 14 February 1989 and Article 3 of the UNCITRAL Rules 1976, that the tribunal had subject-matter jurisdiction only over Article 5(2) expropriation claims, and that non-renewal of marketing authorisation 'constituted a divestment pursuant to Article 5(2)' giving rise to compensation. THIS IS A HOLDING FROM A REDACTED AWARD NOBODY HERE HAS READ. It is refused in full and asserted nowhere; it is recorded only so a successor can see what was rejected."
+    }
+  ],
+  "internal_measurements_no_search_spent": {
+    "ring1_fingerprint_seed_attribution_check": {
+      "measured_over": "lit-review/ferguson-memo.md and lit-review/kim-memo.md at 069b973, case-insensitive literal counts",
+      "data exclusivity": {
+        "ferguson": 0,
+        "kim": 0,
+        "fingerprint_seed_tag": "kim,ferguson",
+        "weight": 6
+      },
+      "trade secret": {
+        "ferguson": 81,
+        "kim": 17,
+        "fingerprint_seed_tag": "ferguson,kim",
+        "weight": 9
+      },
+      "clinical trial data": {
+        "ferguson": 0,
+        "kim": 8,
+        "fingerprint_seed_tag": "kim",
+        "weight": 8
+      },
+      "test data": {
+        "ferguson": 4,
+        "kim": 4,
+        "fingerprint_seed_tag": "kim",
+        "weight": 3
+      },
+      "unfair commercial use": {
+        "ferguson": 0,
+        "kim": 5,
+        "fingerprint_seed_tag": "ferguson,kim",
+        "weight": 5
+      },
+      "trips article 39": {
+        "ferguson": 3,
+        "kim": 8,
+        "fingerprint_seed_tag": "ferguson,kim",
+        "weight": 4
+      },
+      "sum_of_the_six_weights": 35
+    },
+    "ring1_post_floor_exercise": {
+      "population": "the 38 query strings in analytics/search-results/*.json at 069b973",
+      "exercised": 7,
+      "never_fired": 15,
+      "exercised_list": [
+        "covered investment",
+        "intellectual property",
+        "trademark",
+        "geographical indication",
+        "data exclusivity",
+        "trade secret",
+        "clinical trial data"
+      ],
+      "reconciliation": "This is the SEAT-SIDE figure of the 2026-09-28 pair (15) and not the chairman's (16); per that record's own next-step 7 the two are the same measurement taken either side of the 2026-09-28 write, which is now committed. This seat measured AFTER that write and therefore reproduces 15."
+    }
+  },
+  "gap_unresolved_opened": [
+    "servier-poland-2012-redacted-award-body-unread",
+    "servier-poland-2012-forum-pca-or-ad-hoc-uncitral"
+  ]
+}

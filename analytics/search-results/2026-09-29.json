@@ -66,7 +66,8 @@
         "https://uncitral.un.org/transparencyregistry"
       ],
       "what_may_be_concluded": "An exact-phrase `trade mark` query in this council's standard frame returns nine rows, none of whose titles carries either spelling, and no case-level lead. Honest null on substance.",
-      "what_may_not_be_concluded": "Whether the engine folds orthographies. That assumption is STILL untested by this call and remains untested. What S1 shows is only that on ONE other string pair the two spellings did not return the same set - which makes the premise of the 2026-09-28 refusal measurably doubtful without establishing its negation."
+      "what_may_not_be_concluded": "Whether the engine folds orthographies. That assumption is STILL untested by this call and remains untested. What S1 shows is only that on ONE other string pair the two spellings did not return the same set - which makes the premise of the 2026-09-28 refusal measurably doubtful without establishing its negation.",
+      "novelty_against_repo": "Full census at d09ae07: 3 held, 6 new of 9. As first filed the figure was correct but was computed over 7 of 9 rows; see 0929-S2."
     },
     {
       "id": "S3",
@@ -87,7 +88,7 @@
         "https://academic.oup.com/icsidreview/article/40/1/174/8121539",
         "https://www.congress.gov/crs-product/R43988"
       ],
-      "novelty_against_repo_at_069b973": "4 of 9 rows are already held at those exact locators (iisd ITN 2014 at 6 loci; GAR IP-arbitration 2nd ed at 2; ICSID Review 40(1) 174 at 3; congress.gov R43988 at 2). 5 are new locators, none of them a case-level lead.",
+      "novelty_against_repo_at_069b973": "CORRECTED under 0929-S1: 6 of 9 rows are already held at those exact locators (iisd ITN 2014 at 6 loci; GAR IP-arbitration 2nd ed at 2; ICSID Review 40(1) 174 at 3; congress.gov R43988 at 2; C8394 CL-0274 at 5; GAR substantive-protections-expropriation at 2). 3 are new locators, none of them a case-level lead. The figure as first filed ('4 already held ... 5 new') was computed over 7 of the 9 rows and is withdrawn.",
       "what_may_be_concluded": "On one call each: a seed NAME key collapsed the row set onto the seed; a seed SUBJECT key did not. Method result, n=1 per arm. Substantively the call is a null: no tribunal, award or docket other than through secondary literature this repository already holds.",
       "what_may_not_be_concluded": "Anything about the Eli Lilly tribunal's reasoning. The engine's summary prose collapsed onto Eli Lilly and is REFUSED - see engine_syntheses_refused."
     },
@@ -96,7 +97,7 @@
       "target": "discretionary - locator for a matter this repository already holds at a caption but at no locator",
       "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
       "design": "Triggered by reading lit-review/ferguson-memo.md as ordered. Ferguson's note 182 is quoted at ferguson-memo.md:38. analytics/locked_set/VALIDATION_RECORD.md:289 carries the matter as candidate row 1-02 with its numeric italaw case id expressly NOT VERIFIED. This call seeks a locator at title level only.",
-      "rows": 11,
+      "rows": 10,
       "results": [
         "https://arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
         "https://demo.arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
@@ -111,7 +112,8 @@
       ],
       "novelty_against_repo_at_069b973": "0 of these locators occur anywhere in the tracked repository. The CAPTION occurs in exactly two tracked files (lit-review/ferguson-memo.md, analytics/locked_set/VALIDATION_RECORD.md) and in zero daily records, zero insight-ledger lines, zero lines of STATE_OF_THE_ANSWER.md and zero lines of analytics/council-log.md.",
       "what_may_be_concluded": "At TITLE level: a case page bearing this caption exists at www.italaw.com/cases/1179; row titles give the award date as 14 February 2012 and describe it as redacted / partially redacted, consistent with ferguson-memo.md:38. The locked set's flagged-unverified numeric id now has a title-level candidate, 1179.",
-      "what_may_not_be_concluded": "The locator is IDENTIFIED, not VERIFIED - no body was opened and www.italaw.com is under a standing fetch prohibition in this council. Nothing about the award's holding, the treaty invoked, the ring-3 posture, or the disposition. TWO TITLE-LEVEL DISCREPANCIES ARE RECORDED AND NOT RESOLVED: (a) the OUP/OPIL row titles give the forum as 'Permanent Court of Arbitration [PCA]' while the arbitrationlaw.com, jusmundi and italaw row titles give 'UNCITRAL' and the locked set writes 'UNCITRAL (ad hoc)'; (b) the first claimant is rendered 'S.A.A.' in most row titles, 'S.A.S.' in the jusmundi row title and 'S.A.S.' in the locked set."
+      "what_may_not_be_concluded": "The locator is IDENTIFIED, not VERIFIED - no body was opened and www.italaw.com is under a standing fetch prohibition in this council. Nothing about the award's holding, the treaty invoked, the ring-3 posture, or the disposition. TWO TITLE-LEVEL DISCREPANCIES ARE RECORDED AND NOT RESOLVED: (a) the OUP/OPIL row titles give the forum as 'Permanent Court of Arbitration [PCA]' while the arbitrationlaw.com, jusmundi and italaw row titles give 'UNCITRAL' and the locked set writes 'UNCITRAL (ad hoc)'; (b) the first claimant is rendered 'S.A.A.' in most row titles, 'S.A.S.' in the jusmundi row title and 'S.A.S.' in the locked set.",
+      "rows_corrected_from": 11
     }
   ],
   "engine_syntheses_refused": [
@@ -216,5 +218,47 @@
   "gap_unresolved_opened": [
     "servier-poland-2012-redacted-award-body-unread",
     "servier-poland-2012-forum-pca-or-ad-hoc-uncitral"
+  ],
+  "corrections_filed_under_rule_2_reconvening": [
+    {
+      "id": "0929-C1",
+      "status": "CONCEDED IN FULL",
+      "field": "calls[3].rows",
+      "was": 11,
+      "is": 10,
+      "note": "The enumeration calls[3].results holds 10 entries and is correct; the roll-up field was wrong. S1, S2 and S3 each have rows == len(results) == 9. Raised by the chairman; not found by the seat. I cannot reconstruct how 11 arose and I do not construct a reason. One checkable asymmetry is recorded WITHOUT being offered as the cause: S4 is the only call of the four whose return contained two rows carrying byte-identical title strings (arbitrationlaw.com and demo.arbitrationlaw.com)."
+    },
+    {
+      "id": "0929-S1",
+      "status": "SELF-FOUND UNDER RECONVENING",
+      "field": "calls[2].novelty_against_repo_at_069b973",
+      "was": "4 of 9 rows are already held at those exact locators ... 5 are new locators",
+      "is": "6 of 9 rows are already held at those exact locators (iisd ITN 2014 at 6 loci; GAR IP-arbitration 2nd ed at 2; ICSID Review 40(1) 174 at 3; congress.gov R43988 at 2; the C8394 CL-0274 exhibit at 5; GAR substantive-protections-expropriation at 2). 3 are new locators: forbesindia, cambridge ICLQ, iam-media.",
+      "note": "CAUSE, STATED PLAINLY: the seat censused 7 of the 9 S3 rows and reported a figure over a denominator of 9. The two rows omitted from the census - the C8394 exhibit and the GAR second-edition expropriation chapter - are both held in the repository, so the omission moved the figure. This is the same defect class as 0929-C1 and as 0928-C1: a figure stated over a population that was not measured."
+    },
+    {
+      "id": "0929-S2",
+      "status": "SELF-FOUND UNDER RECONVENING - FIGURE SURVIVES, METHOD DOES NOT",
+      "field": "memo section 3, call S2, '6 of 9 locators are new to the repository'",
+      "was": "6 of 9 new (asserted)",
+      "is": "6 of 9 new (verified by full census: 3 held, 6 new)",
+      "note": "The number is right and the method was not. The same 7-of-9 census produced it; both omitted rows happened to be HELD rather than new, so the numerator was complete by accident. A statement implying a 9-row census the seat had not run."
+    },
+    {
+      "id": "0929-S3",
+      "status": "SELF-FOUND UNDER RECONVENING - LOCATION CLAIM IN INSIGHT 4 IS WRONG",
+      "field": "memo, INSIGHT 4",
+      "was": "fingerprint.yaml:45 ... 'under an inline comment introducing the block as \"Trade-secret / clinical-data branch, from the Ferguson & Kim seed memos\"'",
+      "is": "fingerprint.yaml:45 sits ABOVE that comment, which is at line 47. `data exclusivity` is not inside the block the comment introduces; it sits in the general-IP run at lines 43-46 between `geographical indication` (44) and `copyright` (46), both theme_extension.",
+      "note": "The correction STRENGTHENS the insight rather than weakening it: the phrase's physical placement outside the Ferguson/Kim block is consistent with working/FINGERPRINT_DRIFT.md:54 attributing it to 'China 2026 regime vocabulary', while its seed tag says \"kim,ferguson\". The seed tag and the placement disagree with each other as well as with the memos. The insight must be restated on the preamble's grammar alone, not on the comment."
+    },
+    {
+      "id": "0929-S4",
+      "status": "SELF-FOUND - S4 corroboration is narrower than ten rows suggest",
+      "field": "calls[3] what_may_be_concluded",
+      "was": "11 rows, 0 of which occur anywhere in the tracked repository",
+      "is": "10 rows, 0 of which occur anywhere in the tracked repository; they resolve to SIX distinct documents at most (arbitrationlaw.com library entry [3 rows: results 0,1,7, two of them on demo/duplicate paths], dev.arbitration.org/award/388, jusmundi decision page, iareporter PDF page, italaw case page 1179, OUP abstract [2 rows: oxia + opil, same abstract at two hosts]); www.italaw.com/countries/poland is a country index, not a locator for this caption.",
+      "note": "THE CANDIDATE NUMERIC ID 1179 RESTS ON EXACTLY ONE ROW. No other row carries the string 1179. The other rows corroborate the CAPTION, the DATE (14 February 2012) and the REDACTION; none corroborates the id. Two of the ten rows are on hosts named 'demo' and 'dev', which the seat did not discount when filing."
+    }
   ]
 }

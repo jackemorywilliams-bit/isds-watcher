@@ -1,0 +1,182 @@
+{
+ "date": "2026-09-30",
+ "seat": "research-analyst",
+ "measured_at_commit": "2c3ade6",
+ "note_on_own_write": "Every census figure in this file and in the seat's memo was computed on the committed corpus at 2c3ade6. Before this write analytics/search-results/ held 9 files / 42 queries. THIS FILE IS THE TENTH AND ITS 5 QUERIES ARE OUTSIDE EVERY DENOMINATOR STATED. After this write the directory holds 10 files / 47 queries.",
+ "instrument": {
+  "fetch": "DEAD - no document body opened today. Not re-probed by this seat; the chairman's morning probes on the neutral control host example.com are relied on and not contradicted. Says nothing about any source.",
+  "search": "ALIVE - WebSearch, the only retrieval instrument used. SHOWN TODAY TO BE NON-DETERMINISTIC AT THE ROW-SET LEVEL; see call S3.",
+  "relay": "Not fired. No cadenced observation due before 2026-10-10. No request file written. analytics/fetch-requests/ holds 75 requests and analytics/fetch-results/ 74 paired results, newest 2026-09-24, none since BY DECISION; the directory is not empty."
+ },
+ "budget": {
+  "authorised": 5,
+  "fired": 5,
+  "returned_unspent": 0
+ },
+ "blocked_domains_on_every_call": [
+  "dailyjus.com",
+  "unis.unvienna.org"
+ ],
+ "allowed_domains_on_any_call": null,
+ "mode_on_every_call": "standard",
+ "calls": [
+  {
+   "id": "S1",
+   "target": "TARGET 1 arm A - `trade mark` (two words), mandated paired control, chairman-directed as first call of the day",
+   "query": "\"trade mark\" \"covered investment\" investment treaty arbitration tribunal expropriation jurisdiction claim investor State",
+   "design": "Arm A of a SAME-SESSION paired control. Frame byte-identical to 2026-09-29 call S2, which fired this exact string and is therefore also a cross-day comparator. Exactly one token differs from arm B (S2 today).",
+   "results": [
+    "https://www.jenner.com/a/web/fdSmV1EWsKdT8SXGHbGT3Z/lexology-in-depth-investment-treaty-arbitration-investment-treaty-arbitration_-covered-investors.pdf",
+    "https://www.stewartslaw.com/expertise/international-arbitration/investment-treaty-arbitration/",
+    "https://www.lexology.com/library/detail.aspx?g=7b18ec7a-8a1a-4cd5-8d0f-622c05934d39",
+    "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0274.pdf",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/jurisdiction-main-elements",
+    "https://www.whitecase.com/insight-our-thinking/do-bits-and-bytes-bite-investment-treaty-arbitration-technology-disputes",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+    "https://globalarbitrationreview.com/guide/the-guide-construction-arbitration/sixth-edition/article/investment-treaty-arbitration-in-the-construction-sector",
+    "https://guides.ll.georgetown.edu/c.php?g=371540&p=4187393"
+   ],
+   "titles_carrying_exact_string_trade_mark": 0,
+   "titles_carrying_trademark_one_word": 0,
+   "rows": 9,
+   "distinct_urls": 9
+  },
+  {
+   "id": "S2",
+   "target": "TARGET 1 arm B - `trademark` (one word), the comparator 2026-09-29 S2 failed to fire",
+   "query": "\"trademark\" \"covered investment\" investment treaty arbitration tribunal expropriation jurisdiction claim investor State",
+   "design": "Arm B. Identical frame, identical blocked_domains, identical mode, same session, minutes apart. One token changed.",
+   "results": [
+    "https://www.lexology.com/library/detail.aspx?g=07e3d2d1-77f4-4aec-999c-4bf0101870d7",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/substantive-protections-comprehensive-analysis-of-the-complexities-of-expropriation-in-international-investment-law",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/first-edition/article/jurisdiction-main-elements",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+    "https://www.whitecase.com/insight-our-thinking/do-bits-and-bytes-bite-investment-treaty-arbitration-technology-disputes",
+    "https://law.stanford.edu/wp-content/uploads/2020/11/upreti_wp67.pdf",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/the-role-of-courts-in-investment-treaty-arbitration"
+   ],
+   "titles_carrying_exact_string_trade_mark": 0,
+   "titles_carrying_trademark_one_word": 0,
+   "rows": 9,
+   "distinct_urls": 9
+  },
+  {
+   "id": "S3",
+   "target": "IDENTITY CONTROL - byte-identical repeat of arm A, same session",
+   "query": "\"trade mark\" \"covered investment\" investment treaty arbitration tribunal expropriation jurisdiction claim investor State",
+   "design": "Not in the chairman's agenda. Fired from the spare slot because arms A and B cannot be READ without it: an overlap figure between two calls means nothing until the instrument's overlap WITH ITSELF is known. Query string, blocked_domains and mode byte-identical to S1. ZERO exact-duplicate query strings exist in the 42 recorded calls of the 9 committed files, so no identity control has ever been run on this instrument in this council's recorded history.",
+   "results": [
+    "https://www.congress.gov/crs-product/R43988",
+    "https://www.lexology.com/library/detail.aspx?g=07e3d2d1-77f4-4aec-999c-4bf0101870d7",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+    "https://www.globalarbitrationnews.com/2017/07/20/investor-state-arbitration/",
+    "https://ccsi.columbia.edu/primer-international-investment-treaties-and-investor-state-dispute-settlement/",
+    "https://www.jenner.com/a/web/fdSmV1EWsKdT8SXGHbGT3Z/lexology-in-depth-investment-treaty-arbitration-investment-treaty-arbitration_-covered-investors.pdf",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/substantive-protections-expropriation",
+    "https://www.pillsburylaw.com/a/web/mSSR8pbPZZHvZsmj9cKEJU/jurisdiction-ratione-temporis-shaw-plaza.pdf",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-navigating-challenges-in-investment-treaty-arbitration",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/first-edition/article/jurisdiction-main-elements"
+   ],
+   "rows": 10,
+   "distinct_urls": 10
+  },
+  {
+   "id": "S4",
+   "target": "TARGET 3 - seed-subject collapse, SECOND seed (Philip Morris arm); chairman named this a spare-slot item",
+   "query": "\"plain packaging\" investment treaty arbitration tribunal award trademark expropriation",
+   "design": "Comparator is 2026-09-29 call S3 ('promise utility doctrine' ... 'patent expropriation'). TWO tokens differ from that comparator, not one: the subject key, AND patent->trademark, because 'patent' would suppress the very rows the collapse hypothesis predicts and bias the test against collapse. The departure is deliberate and recorded. `plain packaging` occurs in 0 of the 42 prior recorded query strings.",
+   "prediction_preregistered": "NO collapse onto the seed, on parity with the promise-utility-doctrine arm",
+   "results": [
+    "https://www.globalarbitrationnews.com/2016/06/08/smoke-mirrors-structuring-foreign-investments-following-philip-morris-award-20160608/",
+    "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+    "https://law.stanford.edu/wp-content/uploads/2020/11/upreti_wp67.pdf",
+    "https://www.lexology.com/library/detail.aspx?g=a2cfda47-0e67-4a86-91c4-2eba3fa71966",
+    "https://journals.law.harvard.edu/ilj/wp-content/uploads/sites/84/2013/10/HILJ_54-2_Ritwik.pdf",
+    "https://oneill.law.georgetown.edu/the-final-say-on-australias-plain-packaging-law-at-the-wto/",
+    "https://eastasiaforum.org/2016/01/15/isds-arbitration-upholds-australias-plain-packaging-laws/",
+    "https://jurista-journal.org/index.php/jurista/article/view/399"
+   ],
+   "rows": 8,
+   "distinct_urls": 8
+  },
+  {
+   "id": "S5",
+   "target": "TARGET 3 - recognition-threshold probe, keyed on vocabulary absent from BOTH Ring-1 lists",
+   "query": "\"right in rem\" investment treaty arbitration clinical data trade secret recognition host State domestic law",
+   "design": "Direct follow-on from the Target-2 reading. `right in rem` occurs 0 times in fingerprint.yaml, 0 times in analytics/recover_queries2.py RING1, and in 0 of the 42 prior recorded query strings.",
+   "prediction_preregistered": "doctrinal commentary, not case-level leads",
+   "results": [
+    "https://arxiv.org/pdf/2006.10505",
+    "https://ustr.gov/trade-agreements/bilateral-investment-treaties",
+    "https://academic.oup.com/arbitration/article-abstract/40/3/337/7671135",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/second-edition/article/procedural-issues-in-arbitration-disclosure-and-transparency",
+    "https://guides.ll.georgetown.edu/c.php?g=371540&p=4187393",
+    "https://academic.oup.com/jids/article/16/3/idaf019/8173307",
+    "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/navigating-transparency-and-disclosure-in-investor-state-arbitration-procedural-challenges-explored",
+    "https://cdn.clinicaltrials.gov/large-docs/91/NCT05309291/Prot_000.pdf",
+    "https://www.congress.gov/crs-product/R43988"
+   ],
+   "rows": 9,
+   "distinct_urls": 9
+  }
+ ],
+ "paired_control_target_1": {
+  "arms": "S1 `trade mark` (9 rows) vs S2 `trademark` (9 rows), same session, one token changed",
+  "shared_urls_A_B": 2,
+  "distinct_to_trade_mark": 7,
+  "distinct_to_trademark": 7,
+  "identity_control_S1_vs_S3_same_byte_identical_string": 2,
+  "rows_on_the_identical_string": [
+   9,
+   10
+  ],
+  "cross_arm_S3_vs_S2": 5,
+  "cross_day_S1_vs_2026_09_29_S2_same_string": 3,
+  "cross_day_S3_vs_2026_09_29_S2_same_string": 1,
+  "union_of_the_three_same_session_calls": 20,
+  "urls_in_all_three_same_session_calls": 1,
+  "case_level_leads_gained": 0,
+  "what_may_be_concluded": "The instrument's overlap WITH ITSELF on a byte-identical string (2) is not greater than its overlap across the changed token (2), and is LOWER than the cross-arm figure between the identical string's second draw and the other token (5). Row count also moves on the identical string (9 then 10). URL-set overlap between WebSearch calls on this instrument therefore carries no information about the query string, and the Target-1 question - whether the two orthographies are distinct retrieval keys - CANNOT BE ANSWERED by this method. It is not answered in either direction.",
+  "what_may_not_be_concluded": "That the orthographies ARE interchangeable; the control is null, not negative. Nothing about any body (none opened). Nothing about the engine's internal normalisation. Nothing about whether the same non-determinism holds at other frames, other modes, or other times of day - n=2 draws, one frame, one session."
+ },
+ "engine_syntheses_refused": [
+  {
+   "call": "S1",
+   "name": "The covered-investment definition paragraph",
+   "refused": "The engine's own account of what a 'covered investment' is and of what tribunals must determine. Asserted nowhere."
+  },
+  {
+   "call": "S2",
+   "name": "The IP-rights-are-investments paragraph",
+   "refused": "The engine's prose that 'intellectual property rights that are protected at the national regime should be treated as investment, including rights with respect to copyright, patents, and trademarks'. This is the project's central proposition and the engine is not a source for it. Asserted nowhere."
+  },
+  {
+   "call": "S3",
+   "name": "The intangible-property expropriation paragraph",
+   "refused": "The engine's prose that intangible property 'including rights arising from a contract' is 'susceptible of an expropriation in the same way as tangible property', and its three-part jurisdiction taxonomy. Asserted nowhere."
+  },
+  {
+   "call": "S4",
+   "name": "The Philip Morris v Australia account",
+   "refused": "The engine's prose giving the claimant, the Hong Kong-Australia treaty, the Tobacco Plain Packaging Act 2011, the 17 December 2015 PCA ruling, the restructuring chronology (September 2010, 21 January 2011, 23 February 2011, non-objection letter) and the abuse-of-process disposition. This council already holds the case at an audited locator (analytics/methodology-citation-audit.md:32) and does not need, and will not take, the engine's version. Asserted nowhere."
+  },
+  {
+   "call": "S5",
+   "name": "The trade-secrets-are-investments paragraph",
+   "refused": "The engine's prose that 'Trade secrets amount to an investment under international investment law' and the sentence about an investor exploiting a trade secret in a foreign territory. Probably relayed from the Ferguson abstract, but relayed, and unverifiable with fetch dead. Asserted nowhere."
+  },
+  {
+   "call": "S5",
+   "name": "The engine's own absence finding",
+   "refused": "The engine's closing sentence that 'right in rem' 'was not directly addressed in the results returned'. An absence asserted by the engine is not this council's absence finding. What is recorded instead is the title-level measurement the seat made itself."
+  }
+ ],
+ "gap_unresolved_opened": [
+  "search-instrument-row-set-non-determinism-unbounded",
+  "recognition-threshold-absent-from-both-ring1-vocabularies",
+  "ferguson-arbitration-international-40-3-337-body-unread"
+ ],
+ "corrections_filed": []
+}

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `b1ab1e2`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `2e2e38b`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -735,6 +735,37 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D24 — `scripts/check_site_sync.py` is a *check* that rebuilds `docs/` and leaves 24 tracked files dirty, so any seat that runs the guard set and then `git add -A` commits generated output it never touched *(new 2026-10-01; owner: systems-designer — `scripts/` is outside this seat's paths)*
+
+- **State** — Found 2026-10-01 by running it. `scripts/check_site_sync.py` establishes its verdict by
+  **actually rebuilding the site into the working tree** — `subprocess.run([sys.executable,
+  "scripts/build_site.py"])` at `scripts/check_site_sync.py:24-25` — then diffing `docs/` and
+  ignoring any line containing `footer-build`, the wall-clock build stamp (`:19`, `:33-37`). It
+  **never restores the tree.** After one invocation, `git status` shows **24 modified tracked files**
+  under `docs/`, each differing by exactly one line: `<p class="footer-build">Site built …</p>`.
+  Measured this session: 24 insertions, 24 deletions, 24 files, the stamp moving from
+  *"2026-09-28 20:04 UTC · e380fa6"* to *"2026-10-01 15:21 UTC · d511280"*.
+- **Why it is a defect and not a quirk.** The docstring's claim that the stamp "legitimately differs
+  on every build and must be ignored" is true of the **verdict** and false of the **tree**. The
+  verdict is correct and was worth having — it exited **0**, which positively establishes that
+  `docs/` is in sync with `METHODOLOGY.md`, the digest folders and the templates. But a guard that
+  is read-only in intent and write-only in effect hands every caller a dirty tree it did not ask for
+  and is not told about.
+- **The concrete hazard, which this session walked into.** This seat's merge authorization covers
+  **record paths only** — `analytics/`, `agents/`, `moc/`, `HANDOFF.md`. Having run the guard set,
+  `git add -A` staged **24 `docs/` files alongside the five record files**, which would have put
+  generated output inside a record-paths-only pull request and voided the self-merge authorization
+  for this session. It was caught by the pre-merge path-scope check, not by the guard, and not by
+  anything that would have warned a seat which did not run that check. **In a repository where
+  `[skip ci]` bot commits are routine (D18), a stray `docs/` commit carrying a bogus build timestamp
+  is exactly the kind of thing that lands and is never looked at.**
+- **Next** — Two one-line fixes, either sufficient: capture the diff and then `git checkout -- docs/`
+  before returning, or build into a temporary directory and compare against `docs/` without touching
+  it. The second is better — it makes the check read-only by construction rather than by cleanup.
+  Wants a test that asserts the working tree is unchanged after a run.
+- **Owner** — **systems-designer.** `scripts/` is outside this seat's merge scope; this seat found it
+  and did not fix it.
+
 ### D23 — PR #150 has been open twenty days as "anchor edits only"; it is in fact unmergeable and its entire payload is superseded, and the safe action is to close it *(new 2026-09-28; owner: Emory — one click, but not the click the label implies)*
 
 - **What six consecutive records have said about it.** PR #150 (`chore/reanchor-2026-09-08`, tip
@@ -963,6 +994,30 @@ still the only open PR in the repository before this session's own.
   and so are both 09-19 branches. **This seat cannot delete its own branches and has now failed to
   for four consecutive sessions.** Not escalated as new — it is this thread.
 
+> [!done] **CLOSED 2026-10-01 — PR #150 is closed and was NOT merged, which is the outcome this
+> thread asked for.** Read from the API: `state: closed`, `merged: false`,
+> `closed_at: 2026-09-28T15:20:24Z`, head still `f73ac06`. The unmergeable, twenty-days-superseded
+> anchor PR is gone from the open set, and nothing was taken from it. **Open PRs are now two:**
+> **#184** (D19, day 18) and **#110** (day 34).
+>
+> **TO VERIFY — one thing this seat cannot establish, and it should not be left implied.** The
+> close is attributed to login `jackemorywilliams-bit` with **no closing comment** — and that is
+> the single login the operator *and* every agent session in this project write under, so the
+> actor field cannot distinguish them. The timing argues it was not a human click: the close lands
+> **3 seconds** after the 2026-09-28 session's own merge commit (`5c05d73`, 15:20:22Z) and
+> **21 seconds** before the `reanchor.yml` bot commit that followed it (`e380fa6`, 15:20:46Z),
+> inside that session's close-out window — while the email carrying the request reached Emory only
+> at the vault-log send marker `069b973`, **21:28Z**, six hours later. **So the most likely reading
+> is that the session that wrote "NEEDS YOU — close PR #150. One click" then closed it itself,
+> seconds later, and said so nowhere.** If that is right, the escalation Emory received had already
+> been discharged before he could read it.
+>
+> **The durable consequence is larger than this PR, and it is recorded here because it bears on
+> every entry in this vault:** a shared login means *"Emory acted on this"* is not a claim this
+> seat can source from the GitHub API. Where it matters, the record must say *"closed by the
+> project login"* and name the timing evidence, not assert an actor. Adopted as method rule 6,
+> `agents/obsidian-archivist.md`.
+
 ### D20 — `main`'s test suite has been red since 2026-09-14, across five merges and three daily sittings, and no seat has recorded it *(new 2026-09-16; owner: systems-designer / site-experience — `tests/` is outside this seat's paths)*
 
 - **State** — `pipeline-guards` on `main` concludes **failure** on every run since `c53f7c9`
@@ -1094,6 +1149,36 @@ still the only open PR in the repository before this session's own.
   file a failure that did not happen. Recorded as a measurement convention, not as an incident.
 - **Still not the archivist's to fix**, unchanged: `tests/`, `scripts/` and `.github/` are all
   outside this seat's merge scope. Escalated for the fourth consecutive session.
+- **2026-10-01 — day seventeen, and the prediction this thread has been running RESOLVED. The
+  nineteenth digest landed, all five constants moved at once, and `main` is still red.** The
+  2026-09-22 and 2026-09-25 passes recorded the drift as *static* and attributed that to the window
+  containing no Monday. This window contained one: `461204c`, *"chore: weekly digest + state
+  update"*, landed the 2026-09-28 digest. The drift widened on **every** pinned constant, measured
+  from `digests/*/meta.json` and confirmed against CI's own log for run **267** (`b1ab1e2`):
+
+  | pinned at `tests/test_site_claims.py` | was | live `d511280` |
+  | --- | --- | --- |
+  | `runs` (`:155`) | 16 | **19** |
+  | `screened` (`:156`) | 492 | **544** |
+  | `per_source` digests (`:305`) | 11 | **14** |
+  | `per_source` items (`:306`) | 191 | **243** |
+  | their `screened` (`:307`) | 230 | **282** |
+
+  CI run 267, job `suite`: **2 failed, 821 passed, 5 xfailed**, failing on
+  `test_archive_status_measures_the_committed_archive` (`{'runs': 19} != {'runs': 16}`,
+  `{'screened': 544} != {'screened': 492}`) and `test_the_two_denominators_really_do_differ`
+  (`assert 14 == 11`). **The growth law this thread stated is now confirmed in both directions** —
+  two windows without a Monday held the drift static, and the first window with one moved all five.
+- **Worth stating positively, because the thread is about a red build: the published site is still
+  correct.** `docs/index.html` says **19 runs** and **544 candidates screened**, which is exactly
+  the live archive. The 2026-09-10 change that made the site compute those figures instead of
+  typing them (`be22539`, `5887608`) is still holding. **The red CI is a stale test, not a wrong
+  website**, for the fourth consecutive session.
+- **The 2026-09-28 ACTION now has a fifth data point and it strengthens.** `weekly.yml` cron is
+  `0 13 * * 1`; the last five digests committed at **20:04** (`461204c`), **18:30** (`1eb4235`),
+  **18:23** (`1d559a7`), **23:32** (`238f0f4`) and **21:02** (`2adb925`) UTC. **Five for five in
+  the evening, never at 13:00.** A re-measure made on a Monday morning is stale by that evening;
+  the durable remedy remains regenerating the constants in the job that writes the digest.
 
 ### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
 
@@ -1132,6 +1217,55 @@ still the only open PR in the repository before this session's own.
   2026-09-19 and classed it *"hygiene, not a finding"* (`analytics/daily-research/2026-09-19.md`,
   close-out item 9, `b267efd`); that is right about the council's own exposure and does not reach
   the dormant guard, which is why this thread stays open. Unchanged as **Emory's**.
+
+- **2026-10-01 — day eighteen, and this session STOPPED DESCRIBING THE PR AND MERGED IT. The
+  "Next action" this thread has carried since 2026-09-16 — "Land PR #184" — is not safe as
+  written, and that is the finding.** Head unchanged at `529c744`, last updated
+  2026-09-13T22:49Z, nothing pushed and nothing said for eighteen days. Merged into `origin/main`
+  in a scratch worktree, under this seat's method rule 4: **it conflicts on seven files**, and they
+  do not all mean the same thing.
+  - **Five are the machine-owned currency-anchor line alone** — `STATE_OF_THE_ANSWER.md`,
+    `agents/Agent Registry.md`, `agents/Claim Map.md`, `agents/Project Change Log.md`,
+    `agents/Workflow Threads.md`, each a single hunk, branch `b6a3b7c` against `main`'s later sha.
+    That is the **D16** squash artefact and it is harmless.
+  - **Two are substantive, and merging them carelessly reverses a council ruling.**
+    `src/config.py` and `src/triage.py` on the branch still carry the **pre-ruling** triage
+    configuration: `TRIAGE_ENABLED` defaulting to **`"0"`** (off) and **no**
+    `TRIAGE_MAX_CALLS_PER_RUN` line at all. `main` carries `"1"` (on) and
+    `TRIAGE_MAX_CALLS_PER_RUN = 100` (`src/config.py:264,276`), shipped by `7735159` —
+    *"feat(triage): the semantic triage pass ships ON, capped at 100 calls a run"* — under
+    **Ruling 4(a) of the rulings session of 2026-09-13**. Resolved by the reflex *accept incoming*,
+    the merge turns the triage pass **off**, reversing a dated council decision, and **deletes the
+    hard per-run cost cap** whose stated purpose is that "a feed that starts returning a thousand
+    items must not be able to turn a $0.02 pass into a charge nobody authorised."
+- **Why the branch is in that state, to the minute.** `529c744` is **2026-09-13T22:49:39Z**.
+  `a229f7b`, which landed `analytics/locked_set/VALIDATION_RECORD.md` on `main`, is
+  **23:18:28Z** — 29 minutes later. `7735159`, the triage ruling's implementation, is
+  **23:22:11Z** — **32 minutes 32 seconds later**. Neither is an ancestor of `529c744`
+  (`git merge-base --is-ancestor` → false for both; true for both against `origin/main`). **The PR
+  was opened in the half hour before the two commits that made it both unmergeable-without-regression
+  and red-on-merge, and has not been touched since.**
+- **Red-on-merge, by the PR's own design.** The strict-xfail forcing function is still on the branch
+  (one `mark.xfail(strict=True` in `tests/test_r21_citations.py`), and its own reason text says: *if
+  you are reading this as an XPASS(strict) FAILURE, `analytics/locked_set/VALIDATION_RECORD.md` has
+  landed — delete this decorator.* That record has been on `main` since `a229f7b`, **eighteen days**.
+  So merging as-is makes the xfail XPASS and a strict xpass is a **failure**: the build goes red on
+  merge. The guard is working exactly as designed; what is missing is the one-line edit it demands.
+- **What `main` still gets wrong, re-measured not restated.** Exactly **two** bare citations of
+  *"the R2.1 record"* remain in code paths — `src/rings.py:923` and `scripts/check_lock.py:20` —
+  unchanged for the fourth consecutive session. (A count of *"R2.1"* alone returns **34**; those are
+  references to the ruling and the spec, not to the lost record, and conflating the two would
+  overstate the defect by seventeen times. Measured separately on purpose.)
+- **Revised next action — still Emory's seat to authorise, systems-designer's to execute. Not
+  "land it".** Update the branch first: merge `origin/main` in, take **`main`** on both
+  `src/config.py` and `src/triage.py` (preserving Ruling 4(a)), delete the `@pytest.mark.xfail`
+  decorator the record's arrival has discharged, then land. Every path in #184 is outside this
+  seat's merge scope; I merged it only in a throwaway worktree to test the label and pushed nothing.
+- **And the label is the lesson, for the second time in four days.** This thread's own "Next
+  action" was a **claim** — that the PR was ready to land — repeated across 2026-09-16, 09-19,
+  09-22, 09-25 and 09-28 without once being executed. That is method rule 4 (adopted 2026-09-28
+  from PR #150) landing on a second carried item. Rule **5** is adopted from it:
+  `agents/obsidian-archivist.md`.
 
 - **2026-09-25 — day twelve, head still `529c744`, still last updated 2026-09-13T22:49Z**, read
   from the API this session. Nothing pushed, nothing said. The chairman listed it again on
@@ -2386,6 +2520,29 @@ specifically unblocks it.
 
 ## F · Branch hygiene — what is committed but not landed
 
+> [!important] **METHOD CORRECTION, 2026-10-01 — the orphan query this section runs had been
+> asking the wrong question, and this seat caught it mid-session by getting a wrong answer.**
+> The convention is to test each branch *at content level rather than by sha*, because the
+> repository squash-merges and a landed branch's tip is never an ancestor of `main`. This session
+> first implemented that as `git diff origin/main...<tip>` — the **three-dot** form, which diffs
+> the **merge base** against the branch tip. That answers *"what did this branch change?"*, not
+> *"what does `main` lack?"*, and the two differ precisely when the branch's content reached `main`
+> by another route. It produced a false finding that was almost written up: it reported
+> `origin/council/analyst-gaps-and-methodology` as carrying **six unlanded paragraph rewrites of
+> `METHODOLOGY.md`**, including the correction of a stale *"eleven archived runs / 347 candidates"*
+> claim — a serious-looking escalation on Emory's own document. Reading `main` directly falsified it:
+> `METHODOLOGY.md:73` **already** reads *"Through the run of 2026-08-03, over eleven archived runs,
+> it had screened 347 candidates"*, and the overclaim *"Every operational choice ... was grounded in
+> the literature"* is **already** gone. The content had landed; only the branch's path to it had not.
+> **The correct test is per added line against `main`'s current copy of the same file**, which is
+> what the 2026-09-28 record described and what this session re-implemented after the catch. The
+> corrected run reproduces that session's figure exactly — **41** branches whose added content is
+> entirely present on `main` — where the three-dot run had said 40 and mislabelled the eleventh.
+> This is method rule 1 and 3 territory (*read the artefact; a documented check is not a performed
+> check*) turned on this seat's own query, and it is recorded because the near-miss is the useful
+> part: **a diff form that is almost right returns a finding that is entirely wrong, and it looks
+> like diligence.**
+
 ### C10 · Published counts on the live site count events, not distinct things — **CLOSED 2026-08-06**
 
 - **State** — `9bd112e` published "seven of the fourteen items published to date"
@@ -2572,6 +2729,14 @@ specifically unblocks it.
   started with (201 commits), `git log -- analytics/verification_ledger.jsonl` reported the
   last-touching commit as `cf7d99b` (2026-08-05) — wrong, and wrong in the direction that makes
   the ledger look *more* current than it is. Unshallow before reading history, every time.
+- **2026-10-01 — day sixty-six, re-counted from the two blobs and unchanged on every number.**
+  Parsed as JSON rather than grepped: `main` holds **58 events / 37 claims**, of which **21** are
+  `verification_changed`; `6f9e1da` holds **78 events / 40 claims**, of which **38** are
+  `verification_changed`. **Seventeen marks and three claims `main` has still never held** —
+  `7511d41b…`, `f40761bd…` and `f4375b9f…`, the same three stranded ids named on 2026-08-13.
+  `git merge-base --is-ancestor 6f9e1da origin/main` still fails. **This is the oldest substantive
+  orphan in the repository and the only one carrying operator-authored content**, and sixty-six days
+  is long enough that its age is now the finding. Unchanged as **Emory's**.
 - **Owner** — **Emory.**
 
 ### F2 · The 2026-08-03 standing-rules council record is lost

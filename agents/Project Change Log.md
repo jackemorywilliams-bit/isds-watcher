@@ -15,6 +15,86 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-01 (archivist session — twenty-first deployment)
+
+*Audited against `d511280` (`main`), on a complete **1,707**-commit history — the container's clone
+arrived shallow at **119**, the **thirteenth consecutive** session, so every sha below was resolved
+only after `git fetch --unshallow`. Window `50482a4..d511280` = **62** commits, three days. Paths:
+`.claude/agents/`, `prompts/`, `src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`,
+`scripts/site_templates/`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`,
+`views/isds-workflow-3d/workflow.json`, `scripts/`, `tests/`, `.github/`, `src/`.*
+
+- **Contract paths unmoved for the fifth consecutive session.** `git log 50482a4..d511280 --
+  .claude/agents/ prompts/ src/models.py` returns **zero** commits; **zero** on `scripts/`,
+  `tests/`, `.github/`, `src/`; **zero** on `README.md`, `scripts/site_templates/`,
+  `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `views/isds-workflow-3d/workflow.json`. The one
+  deliverable-surface commit is `461204c`, the weekly digest build, which rewrites `docs/` as
+  generated output. `scripts/check_models.py` exits **0** over 12 cards; `src/models.py` unchanged
+  at `claude-opus-5` / `claude-opus-4-8` / `claude-haiku-4-5-20251001` (`:26-35`).
+- **PR #184 is not landable as written, and five sessions of this log described it as though it
+  were.** Merged into `origin/main` in a scratch worktree: **seven conflicts**, five of them the
+  machine-owned anchor line (**D16**, harmless), two of them `src/config.py` and `src/triage.py`.
+  The branch tip `529c744` (2026-09-13T22:49:39Z) predates `7735159` (**23:22:11Z**, *"the semantic
+  triage pass ships ON, capped at 100 calls a run"*, council **Ruling 4(a)**) by 32m32s and has not
+  moved since, so it still carries `TRIAGE_ENABLED` default `"0"` and no
+  `TRIAGE_MAX_CALLS_PER_RUN`. Landing it carelessly reverses a dated council ruling and deletes the
+  per-run cost cap. It also goes **red on merge** by its own design: the strict xfail in
+  `tests/test_r21_citations.py` waits on `analytics/locked_set/VALIDATION_RECORD.md`, which landed
+  on `main` at `a229f7b` eighteen days ago. [[Workflow Threads]] **D19**; method rule 5.
+- **[[Agent Registry]]'s change log skipped 2026-09-28.** `git show --stat 5c05d73` shows that
+  session changed `agents/Agent Registry.md` by **one line** — its `reanchor.py` anchor — and
+  `59dff31`, the session's substantive commit, does not touch the file. Because that note instructs
+  the next session to distrust the anchor and query from *"the last dated snapshot block"*, the
+  effective anchor was **`b577683`** (2026-09-25), 47 commits stale. Both the missing 2026-09-28
+  entry and the 2026-10-01 entry are now written, the former marked ENTERED LATE.
+- **D23 closed — PR #150 is `closed`, `merged: false`** (`closed_at` 2026-09-28T15:20:24Z, head
+  `f73ac06`): the outcome the 2026-09-28 escalation asked for, with nothing taken from it. **Open
+  PRs are now two**, #184 (day 18) and #110 (day 34). **Who closed it is TO VERIFY** — the actor is
+  login `jackemorywilliams-bit`, shared by the operator and every agent session, and the close lands
+  3 seconds after that session's own merge commit, six hours before the email reached Emory. Method
+  rule 6 adopted: this seat may not attribute an action to Emory from the GitHub actor field.
+- **D20 — the nineteenth digest landed and all five pinned constants moved at once.** `461204c`
+  (2026-09-28T20:04:16Z) added `digests/2026-09-28_ISDS-Thematic-Watch/`. Against
+  `tests/test_site_claims.py`: runs 16→**19**, screened 492→**544**, `per_source` digests 11→**14**,
+  items 191→**243**, their screened 230→**282**. Confirmed from CI run **267** (`b1ab1e2`), job
+  `suite`: **2 failed, 821 passed, 5 xfailed**. `main` red for the seventeenth day. **The published
+  site is correct** — `docs/index.html` says 19 runs / 544 screened, matching the archive.
+- **F1 at day sixty-six, re-counted from the two blobs and unchanged:** `main` 58 events / 37
+  claims / **21** marks; `6f9e1da` 78 / 40 / **38**. **17 marks and 3 claims** (`7511d41b…`,
+  `f40761bd…`, `f4375b9f…`) `main` has never held. The oldest substantive orphan in the repository
+  and the only one carrying operator-authored content.
+- **Orphan check, with a corrected method.** 206 remote branches, **51** not ancestors of
+  `origin/main`; tested per added line against `main`'s current copy, **41** have their content
+  entirely on `main` and **10** carry content `main` lacks. **Nothing committed since 2026-09-13 has
+  failed to reach `main`** — the newest substantive orphan is PR #184's branch. The method itself was
+  corrected mid-session: `git diff origin/main...<tip>` answers *what did this branch change*, not
+  *what does `main` lack*, and it produced a false escalation about six unlanded `METHODOLOGY.md`
+  rewrites that reading `main` directly falsified (`METHODOLOGY.md:73` already carries the corrected
+  wording). [[Workflow Threads]] **F**, method correction 2026-10-01.
+- **"Jack" discipline:** `README.md`, `docs/`, `scripts/site_templates/`, `METHODOLOGY.md`,
+  `COUNCIL.md`, `HANDOFF.md`, `moc/`, `views/isds-workflow-3d/workflow.json` all **0 occurrences**.
+  The two known live defects are unchanged and both outside this seat's paths:
+  `HUMAN_REVIEW.md:115` and `prompts/council_roundtable.txt:73`. (`HUMAN_REVIEW.md:173` is Emory's
+  own reviewer signature and is correct.)
+- **Guards at `d511280`**, exit codes captured directly: `check_models` **0**; `check_currency`
+  **1** — 9 claims, **1 STALE**, `agents/Workflow Threads.md` against `b1ab1e2`, touched by the
+  scholar intake `d511280` and cleared by this session's close-out re-anchor; `check_lock`,
+  `check_headline_lane`, `check_claims`, `check_seen_integrity`, `check_telemetry_privacy`,
+  `check_site_sync` all **0**; `node tools/isds-workflow-3d/validate.mjs` **0** (30 cards, 10 chips,
+  44 edges, SVG fresh, zero "Jack"); `build_graph.py --dry-run` **0**.
+- **NEW — D24: `scripts/check_site_sync.py` is a check that writes.** It establishes its verdict by
+  rebuilding the site into the working tree (`scripts/check_site_sync.py:24-25`) and never restores
+  it, leaving **24 modified tracked files** under `docs/` that differ only in the `footer-build`
+  stamp. Its verdict is correct and worth having — exit **0**, so `docs/` *is* in sync with its
+  source — but after running the guard set, `git add -A` staged those 24 generated files alongside
+  this session's five record files, which would have voided a record-paths-only self-merge. Caught by
+  the pre-merge path-scope check, not by the guard. Owner **systems-designer**; `scripts/` is outside
+  this seat's merge scope. [[Workflow Threads]] **D24**.
+- **D5 unchanged at day forty-nine:** eight of nine definitions in `.claude/agents/` still do not
+  name the seat's own vault note, so rules recorded there sit outside that seat's read path.
+  [[integrity-officer]] remains the sole exception. Editing `.claude/agents/` is a contract change
+  and therefore Emory's.
+
 ## 2026-09-28 (archivist session — twentieth deployment)
 
 *Audited against `50482a4` (`main`), on a complete **1,645**-commit history — the container's clone

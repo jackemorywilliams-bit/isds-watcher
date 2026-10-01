@@ -41,6 +41,22 @@ observations from this seat, and the officer still disclosing it unasked at
 `analytics/daily-research/2026-08-23.md:723` and `2026-08-25.md:791`. Recorded in
 `HANDOFF.md`'s fallback table, which this seat maintains by hand because nothing else does.
 
+⚑ **Re-observed a fourth time 2026-10-01, thirty-seven days after the third, and unchanged.** The
+runtime reports **three** model fields now and all three agree: `configured_model` =
+**`claude-opus-5`**, `session_context.model` = **`claude-opus-5`**, and
+`external_metadata.last_served_model` = **`claude-opus-5`** — against a Model line stating Claude
+Opus 4.8 (`.claude/agents/obsidian-archivist.md:3,24`). `git log 50482a4..d511280 --
+.claude/agents/ src/models.py` returns **no commit** across 62 commits, so nothing in the
+repository has moved toward or away from the declaration. **One thing is worth separating that the
+earlier observations did not:** this seat has two execution paths, and they are not the same thing.
+Invoked as a sub-agent through the Agent tool it is governed by `.claude/agents/obsidian-archivist.md`;
+the standing every-3-days session that writes every record under `analytics/vault-sessions/` is a
+scheduled routine whose model comes from the session configuration, not from that file
+(`origin: scheduled_trigger`). **So the declaration and the runtime are not even reading the same
+setting**, which is why four observations have produced no convergence and why no edit to the
+definition would produce one either. The Model line stays as written, for the fourth time and the
+same reason. [[Workflow Threads]] **D6**.
+
 This makes the seat the **second independent confirmation** of the discrepancy
 [[integrity-officer]] has self-reported four times (2026-08-12, 08-14, 08-15, 08-16), and it
 closes the question of whether that seat's report was peculiar to it: it is not. Five seats are
@@ -109,6 +125,26 @@ the same scepticism on this seat's own carried records:
    the merge the label implies. **The gloss was never checked because it never looked like a
    claim.** A carried item is not stable because its description is stable; a description that has
    not been re-tested is as stale as an anchor that has not been re-measured.
+   ([[Workflow Threads]] **D23**.)
+5. **2026-10-01** — *Rule 4 again, and the lesson is that it did not generalise the first time.
+   A carried **"Next action"** is a claim of the same kind as a carried label, and "land it" is the
+   claim that it can be landed.* Learned on PR **#184**, carried in this seat's escalation table and
+   in [[Workflow Threads]] **D19** across 2026-09-16, 09-19, 09-22, 09-25 and 09-28 under the next
+   action *"Land PR #184."* Merging it this session showed that doing so would **reverse council
+   Ruling 4(a) of 2026-09-13** — the branch still carries `TRIAGE_ENABLED` defaulting to `"0"` and
+   no `TRIAGE_MAX_CALLS_PER_RUN`, against `main`'s `"1"` and `100` (`src/config.py:264,276`,
+   shipped by `7735159`) — and would turn the build **red** by the PR's own strict-xfail design,
+   because the record that xfail waits on landed on `main` eighteen days ago (`a229f7b`). **Rule 4
+   said to test a carried label. It did not occur to this seat that a carried instruction is a
+   label**, and four days after adopting rule 4 the same defect was sitting in the next row of the
+   same table. *Test the carried verb, not only the carried adjective.* ([[Workflow Threads]] **D19**.)
+6. **2026-10-01** — *Never attribute an action to Emory from the GitHub actor field. The operator
+   and every agent session in this project write under the single login
+   `jackemorywilliams-bit`, so the API cannot distinguish them.* Learned when PR **#150** was found
+   closed-and-not-merged — the outcome the 2026-09-28 record asked Emory for — attributed to that
+   login with no comment, **3 seconds** after that same session's own merge commit and six hours
+   before the email carrying the request reached him. The honest form is *"closed by the project
+   login"* plus the timing evidence; *"Emory closed it"* is an inference this seat cannot source.
    ([[Workflow Threads]] **D23**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
@@ -612,6 +648,36 @@ see item 2 of the 2026-08-03 slice.)*
 > reads first**. That is a small instance of exactly the defect this seat exists to catch, and it
 > is named rather than quietly backfilled: the two session records are the source of truth for
 > those dates, and the entry below resumes the log.
+
+- **2026-10-01 (twenty-first deployment)** — Standing every-3-days session, audited against
+  `d511280` (`main`), complete **1,707**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **119**, the **thirteenth consecutive** session. Window `50482a4..d511280` =
+  **62** commits, three days. Cadence held. **Zero commits to `.claude/agents/`, `prompts/` or
+  `src/models.py`, zero to `scripts/`, `tests/`, `.github/` or `src/` — the fifth consecutive
+  session with no contract drift**; `check_models.py` exit **0** over 12 cards. **The session's
+  finding is method rule 5, and it is against this seat's own escalation table:** PR **#184**,
+  carried five sessions under the next action *"Land PR #184"*, was merged in a scratch worktree for
+  the first time — it conflicts on seven files, two of them `src/config.py` and `src/triage.py`,
+  and landing it as written would **reverse council Ruling 4(a)** (triage on→off, and deletion of
+  the `TRIAGE_MAX_CALLS_PER_RUN = 100` cost cap) and turn the build **red** by its own strict-xfail
+  design. Four days after adopting rule 4 on PR #150, the same defect was in the next row of the
+  same table. **A second finding is against this note's sibling:** [[Agent Registry]]'s change log
+  **skipped 2026-09-28** — that session touched the registry only on its machine-owned anchor line
+  (`5c05d73`, one line) — so the "last dated snapshot block" that note instructs the next session to
+  trust was 47 commits stale; both the missing entry and this session's are now written.
+  **D23 closed:** PR #150 is `closed`, `merged: false`, the asked-for outcome; who closed it is
+  **TO VERIFY** and is the origin of method rule 6, since the operator and every agent share one
+  login. **D20 resolved its own prediction:** the nineteenth digest landed (`461204c`) and all five
+  pinned constants in `tests/test_site_claims.py` moved at once — 16→**19** runs, 492→**544**
+  screened, 11→**14**, 191→**243**, 230→**282** — confirmed against CI run **267**'s job log
+  (2 failed, 821 passed, 5 xfailed). The published site remains **correct** at 19 / 544. **F1 at
+  day sixty-six**, re-counted and unchanged: 17 marks and 3 claims `main` has never held.
+  **A near-miss recorded as the self-training slice:** this seat's own orphan query was found to be
+  using `git diff origin/main...<tip>`, which answers *what did this branch change* rather than
+  *what does `main` lack*; it produced a false escalation about unlanded `METHODOLOGY.md` rewrites
+  that reading `main` directly falsified. Corrected mid-session, and the corrected run reproduces
+  the 2026-09-28 figure of **41** exactly. Session record:
+  `analytics/vault-sessions/2026-10-01.md`.
 
 - **2026-09-28 (twentieth deployment)** — Standing every-3-days session, audited against
   `50482a4` (`main`), complete **1,645**-commit history after `git fetch --unshallow`; the clone

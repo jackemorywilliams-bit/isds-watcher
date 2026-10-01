@@ -544,6 +544,45 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-01 (archivist session — twenty-first deployment)** — **No roster change and no
+  contract change, for the fifth consecutive session.** Measured, not carried: `git log
+  50482a4..d511280 -- .claude/agents/ prompts/ src/models.py` returns **zero** commits across a
+  **62-commit**, three-day window, and **zero** on `scripts/`, `tests/`, `.github/` and `src/`.
+  `scripts/check_models.py` exits **0** over 12 cards. `src/models.py` unchanged:
+  `CHAIRMAN_MODEL` and `HEAVY_MODEL` `claude-opus-5` (`src/models.py:26-27`), `UTILITY_MODEL`
+  `claude-opus-4-8` (`:28`), `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001` (`:32`),
+  `FALLBACK_MODEL` `claude-opus-4-8` (`:35`). All nine definitions declare `model: opus`; the
+  description/DISCIPLINE split is unchanged at **4** Opus 5 (council-chairman, research-analyst,
+  site-experience, systems-designer) and **5** Opus 4.8 (analytics-officer, integrity-officer,
+  obsidian-archivist, research-editor, systems-researcher), re-counted from the files.
+  **D6 re-observed a fourth time from this seat** and unchanged — the runtime reports
+  `configured_model`, `session_context.model` and `external_metadata.last_served_model` all
+  **`claude-opus-5`** against an archivist Model line stating Claude Opus 4.8
+  (`.claude/agents/obsidian-archivist.md:3,24`). The Model line is left as written for the fourth
+  time and the same reason: it states the operator's directive, and editing it would ratify a
+  substitution nobody authorised.
+  *Audited against `d511280`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`.*
+
+- **2026-09-28 (archivist session — twentieth deployment) — ENTERED LATE, 2026-10-01, and the
+  lateness is the entry.** This note's change log skipped the 2026-09-28 session entirely. That
+  session ran a full agent-context audit and recorded it in
+  `analytics/vault-sessions/2026-09-28.md` §2 and in [[Project Change Log]], but the only change
+  it made to **this** note was its machine-owned currency-anchor line — `git show --stat 5c05d73`
+  shows `agents/Agent Registry.md | 2 +-`, one line, written by `scripts/reanchor.py`, while
+  `59dff31` (the session's own substantive commit) does not touch this file at all. **Why that is
+  not cosmetic:** the warning block at the head of this note tells the next session to distrust the
+  anchor sha and *"take the last dated snapshot block below as the real anchor and query from
+  there."* With no 2026-09-28 block, the newest block was **2026-09-25** (`b577683`), so a session
+  obeying this note's own instruction would have queried from the wrong commit and measured a
+  window 47 commits longer than the true one. The audit's substance, recorded here now from the
+  session record and its commits: **zero** commits to `.claude/agents/`, `prompts/` or
+  `src/models.py` across `b577683..50482a4` (**47** commits); `check_models.py` exit **0** over 12
+  cards; no model, prompt binding or contract changed. Entered under *supersede, never overwrite* —
+  the gap is named rather than backfilled silently.
+  *Audited against `50482a4`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`. Entered 2026-10-01.*
+
 - **2026-09-25 (archivist session)** — **No roster change and no contract change; seven rows added
   to the adopted-method-rules table, and the finding of the session is a rule already in this table
   being broken by the seat it names.** Measured rather than assumed: `git log 1cf6108..b577683 --

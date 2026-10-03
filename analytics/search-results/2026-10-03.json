@@ -1,0 +1,868 @@
+{
+ "date": "2026-10-03",
+ "seat": "research-analyst",
+ "measured_at_commit": "c5ec0c2",
+ "note_on_own_write": "Every census figure in this file and in the seat's memo was computed on the committed corpus at c5ec0c2, which is origin/main at session open and which `git cat-file -e c5ec0c2:analytics/daily-research/2026-10-03.md` proves does NOT contain today's record at all -- neither the chairman's Part 1 nor this seat's memo. THIS FILE IS THE ELEVENTH in analytics/search-results/ and its 6 queries are OUTSIDE every denominator stated. Before this write the directory held 10 files; after it, 11.",
+ "instrument": {
+  "fetch": "DEAD on both instruments. Not re-probed by this seat; the chairman's §1.3 probes on the neutral control host example.com are relied on and not contradicted. NO DOCUMENT BODY WAS OPENED TODAY BY THIS SEAT, by any means. This says nothing about any source, docket or publisher.",
+  "search": "ALIVE -- WebSearch, the only retrieval instrument used. SENSITIVITY TESTED FOR THE FIRST TIME TODAY; see call C1.",
+  "relay": "NOT FIRED and no request file written. Next cadenced observation 2026-10-10. analytics/fetch-requests/ holds 75 files and analytics/fetch-results/ 74 paired results; NEITHER DIRECTORY IS EMPTY."
+ },
+ "budget": {
+  "authorised": 6,
+  "composition": "1 control + 4 live + 1 conditional",
+  "fired": 6,
+  "returned_unspent": 0
+ },
+ "blocked_domains_on_every_call": [
+  "dailyjus.com",
+  "unis.unvienna.org",
+  "www.bing.com",
+  "pcacases.com"
+ ],
+ "blocked_domains_note": "Identical on all six calls, so the control and the live arm are parameter-identical in this respect. dailyjus.com and unis.unvienna.org are carried at ZERO search budget; www.bing.com was rejected on the merits; pcacases.com is not allowlisted.",
+ "allowed_domains_on_any_call": null,
+ "mode_on_every_call": "extended",
+ "mode_note": "extended on all six, matching the mode of the 2026-10-02 live arm whose template the control replicates. Mode is part of the template identity.",
+ "row_counts": {
+  "gross": 56,
+  "distinct_urls": 44,
+  "unit_warning": "A GROSS COUNT AND A DISTINCT COUNT ARE TWO UNITS FOR ONE QUANTITY. Both are stated; neither is used as the other's denominator.",
+  "urls_returned_more_than_once": {
+   "https://www.semanticscholar.org/paper/DENIAL-OF-JUSTICE-DISGUISED-INVESTMENT-ARBITRATION-Sattorova/58e4a9f93bcaa0e587821d8e6ac69e02bf0a81ef": 2,
+   "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120": 4,
+   "https://jusmundi.com/en/document/publication/en-denial-of-justice-in-fet": 2,
+   "https://www.cambridge.org/core/books/denial-of-justice-in-international-law/7FF27457D687D94438973DF8337DDE6B": 2,
+   "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/": 3,
+   "https://academic.oup.com/icsidreview/article/39/3/452/7753534": 3,
+   "https://jusmundi.com/en/document/publication/en-judicial-expropriation": 2,
+   "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841": 2
+  }
+ },
+ "prohibited_host_row_screen": {
+  "www.italaw.com": "ONE row returned at C1 ('Under the Arbitration Rules of the', https://www.italaw.com/sites/default/files/case-documents/italaw4046.pdf). Transcribed because the record requires every returned row; NOTHING is cited, asserted or inferred from it, and its appearance is not a finding. The standing prohibition is unreleased.",
+  "icsid.worldbank.org C8394 paths": "THREE rows across C4, C5, C6. C8394 is a path segment and NOTHING is asserted about that case.",
+  "investmentpolicy.unctad.org": "zero rows; not re-fired.",
+  "unctad.org (bare)": "zero rows."
+ },
+ "engine_syntheses_refused": [
+  {
+   "id": "Q-1003-S1",
+   "call": "C1",
+   "refused_content": "A multi-paragraph narrative of the known positive: a November 2012 initiation date, NAFTA Chapter 11, invalidation on inutility, a claim of at least CAD 100 million, a Zyprexa patent invalidation affirmed on appeal with leave refused, a second notice of intent, and a CAD 500 million figure across two medicines. NO date, figure, treaty provision, holding or disposition from this synthesis is asserted anywhere. The control's PASS rests on a row title alone."
+  },
+  {
+   "id": "Q-1003-S2",
+   "call": "C2",
+   "refused_content": "An author forename, a 16 February 2012 publication date, and a journal attribution for queue target 1, plus a two-sentence characterisation of the article's argument. ALL REFUSED. The surname used in C3 was taken from a returned row's own URL slug, independently of this synthesis."
+  },
+  {
+   "id": "Q-1003-S3",
+   "call": "C3",
+   "refused_content": "An institutional affiliation, a lectureship, a 16 February 2012 date, and a volume/issue/page citation (61(1) 223-246) for queue target 1; a characterisation of the article's subject matter; and FOUR AVAILABILITY CLAIMS ('the full PDF is available at the Cambridge Core platform', 'Available at SSRN', 'Indexed at Semantic Scholar', 'you can request the full text from the author'). THE AVAILABILITY CLAIMS ARE THE MOST DANGEROUS ITEM REFUSED TODAY: this seat reports only that rows returned at those URLs, and makes NO claim that any body is open, reachable, downloadable or requestable."
+  },
+  {
+   "id": "Q-1003-S4",
+   "call": "C4",
+   "refused_content": "A volume, issue, month, year and page range (70(1), January 2021, 165-195) for queue target 2, and a one-sentence statement of the article's thesis ('a sui generis approach is needed...'). ALL REFUSED. No author was offered and none is recorded."
+  },
+  {
+   "id": "Q-1003-S5",
+   "call": "C5",
+   "refused_content": "A named author, journal title, volume, issue, season, year and page range for queue target 4. ALL REFUSED. The firm-host locator is recorded WITHOUT any authorship claim."
+  },
+  {
+   "id": "Q-1003-S6",
+   "call": "C6",
+   "refused_content": "A named author, a Fall 2024 publication date and a page range for queue target 3. ALL REFUSED -- and the refusal is reinforced by prior art: the same surname was already screened by this council at analytics/daily-research/2026-10-01.md:996 and was NOT attributed to any article in that record either. An engine offering the same unattributable name on an independently formulated call two days later is a REPEAT OFFER, not corroboration."
+  }
+ ],
+ "prior_art_census": {
+  "unit": "FILES, via LC_ALL=C git grep -l -F (case-sensitive) and -il -F (case-insensitive), over the whole tracked tree at c5ec0c2",
+  "pairs_cs_ci": {
+   "Sattorova": [
+    0,
+    0
+   ],
+   "2007628": [
+    0,
+    0
+   ],
+   "semanticscholar.org": [
+    0,
+    0
+   ],
+   "derainsgharavi": [
+    0,
+    0
+   ],
+   "eui.eu": [
+    0,
+    0
+   ],
+   "Judicial Expropriations: Difficulties in Drawing the Line": [
+    0,
+    0
+   ],
+   "jurisafrica": [
+    0,
+    0
+   ],
+   "eapil.org": [
+    0,
+    0
+   ],
+   "icsidreview/issue-pdf/39/3": [
+    0,
+    0
+   ],
+   "citizen.org": [
+    0,
+    0
+   ],
+   "Volume 39 Number 3 Fall 2024": [
+    0,
+    0
+   ],
+   "researchgate.net/publication/256012810": [
+    0,
+    0
+   ],
+   "icsidreview/issue/39/3": [
+    1,
+    1
+   ],
+   "Kriebaum": [
+    1,
+    1
+   ],
+   "iisd.org/itn/2013": [
+    3,
+    3
+   ],
+   "Denial of Justice Disguised": [
+    0,
+    3
+   ],
+   "Judicial Expropriation in International Investment Law": [
+    0,
+    3
+   ],
+   "Discord Over Judicial Expropriation": [
+    3,
+    3
+   ],
+   "icsidreview/article/39/3/452": [
+    6,
+    6
+   ],
+   "icsidreview/article-abstract/33/2/349": [
+    3,
+    3
+   ],
+   "lk-k.com": [
+    3,
+    3
+   ],
+   "judicial expropriation": [
+    7,
+    8
+   ]
+  },
+  "divergent_pairs_called_out": "Three literals diverge between case modes and are written AS PAIRS, case-sensitive never exceeding case-insensitive: 'Denial of Justice Disguised' 0/3, 'Judicial Expropriation in International Investment Law' 0/3, 'judicial expropriation' 7/8. The first two diverge because this corpus carries those titles in UPPER CASE, as the publisher renders them.",
+  "two_non_zero_findings_against_this_seat": "(1) https://academic.oup.com/icsidreview/issue/39/3 is a RE-FIND, not a discovery: it was already returned on 2026-10-01 and sits at analytics/daily-research/2026-10-01.md:262 under that record's Search 3. (2) 'Kriebaum' already carries at analytics/daily-research/2026-10-01.md:996, where it was screened as a novelty candidate at 0 carriers -- so the surname C6's synthesis offered was already known to this council as a string and was never attributed to an article there."
+ },
+ "deliverable_summary": {
+  "open_locators_obtained": [
+   {
+    "queue_target": 1,
+    "title_of_row": "Denial of Justice Disguised?: Investment Arbitration and the Protection of Investors from Judicial Misconduct by Mavluda Sattorova :: SSRN",
+    "url": "https://www.ssrn.com/abstract=2007628",
+    "host_class": "SSRN, non-publisher, open landing page",
+    "access_signal": "Row returned on an open repository host. WHETHER A BODY IS REACHABLE IS UNTESTED and untestable in this session class. Body unread.",
+    "call": "C3"
+   },
+   {
+    "queue_target": 1,
+    "title_of_row": "PROFESSOR MAVLUDA SATTOROVA",
+    "url": "https://www.eui.eu/Content-Types-Assets/Uploads/People/CV/CV-Mavluda-Sattorova.pdf",
+    "host_class": "university host, author page (a CV, NOT a reprint of the article)",
+    "access_signal": "Static PDF path on an open institutional host. Untested. Body unread.",
+    "call": "C3"
+   },
+   {
+    "queue_target": 4,
+    "title_of_row": "Discord Over Judicial Expropriation",
+    "url": "https://www.derainsgharavi.com/2018/02/discord-over-judicial-expropriation/",
+    "host_class": "law-firm host, non-publisher -- the reprint channel predicted on 2026-10-01, now instantiated for a document this council's queue actually wants",
+    "access_signal": "Row returned on an open firm host at a date-structured path. WHETHER A BODY IS REACHABLE IS UNTESTED. Body unread. NO AUTHORSHIP ASSERTED.",
+    "call": "C5"
+   }
+  ],
+  "title_variance_recorded_not_resolved": "The Cambridge row title for queue target 1 reads 'PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT'; the SSRN and ResearchGate row titles read 'Protection of Investors from Judicial Misconduct' -- WITHOUT 'Foreign'. The difference between the two row titles is observed. WHETHER THE TWO ROWS DESIGNATE ONE DOCUMENT IS AN IDENTITY INFERENCE ABOUT TWO UNOPENED ITEMS and is filed as a LEAD, not a fact, on the same discipline the council applied to 33/2/349 versus 39/3/452.",
+  "nulls": "Queue targets 2 and 3 yielded NO author name at row level and NO open-access locator. The surname+title channel could not be opened for either, because the channel's first step -- a row-level author name -- did not return. This is a null at the ENABLER, not at the deliverable."
+ },
+ "row_set": [
+  {
+   "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+   "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+   "call": "C1"
+  },
+  {
+   "title": "U.S. Pharmaceutical Corporation Uses NAFTA Foreign ...",
+   "url": "https://www.citizen.org/wp-content/uploads/eli-lilly-investor-state-factsheet.pdf",
+   "call": "C1"
+  },
+  {
+   "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+   "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+   "call": "C1"
+  },
+  {
+   "title": "Under the Arbitration Rules of the",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4046.pdf",
+   "call": "C1"
+  },
+  {
+   "title": "Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration - ARIA - Vol. 29, No. 3",
+   "url": "https://arbitrationlaw.com/library/not-patently-investment-enforcing-intellectual-property-claims-investment-arbitration-aria",
+   "call": "C1"
+  },
+  {
+   "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study",
+   "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+   "call": "C1"
+  },
+  {
+   "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+   "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+   "call": "C1"
+  },
+  {
+   "title": "ROUNDTABLE: Resolving patent disputes — Financier Worldwide",
+   "url": "https://www.financierworldwide.com/roundtable-resolving-patent-disputes-oct15",
+   "call": "C1"
+  },
+  {
+   "title": "Extension of the term of validity of pharmaceutical patents by lawsuits: effects on centralized procurement and the private market",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11729365/",
+   "call": "C1"
+  },
+  {
+   "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+   "url": "https://www.semanticscholar.org/paper/DENIAL-OF-JUSTICE-DISGUISED-INVESTMENT-ARBITRATION-Sattorova/58e4a9f93bcaa0e587821d8e6ac69e02bf0a81ef",
+   "call": "C2"
+  },
+  {
+   "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+   "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3E03F50998681B4C4E152C39E03632E3/S0020589311000601a.pdf/div-class-title-denial-of-justice-disguised-investment-arbitration-and-the-protection-of-foreign-investors-from-judicial-misconduct-div.pdf",
+   "call": "C2"
+  },
+  {
+   "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+   "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+   "call": "C2"
+  },
+  {
+   "title": "Wiki Note: Denial of Justice in FET",
+   "url": "https://jusmundi.com/en/document/publication/en-denial-of-justice-in-fet",
+   "call": "C2"
+  },
+  {
+   "title": "Denial of Justice in International Law",
+   "url": "https://www.cambridge.org/core/books/denial-of-justice-in-international-law/7FF27457D687D94438973DF8337DDE6B",
+   "call": "C2"
+  },
+  {
+   "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+   "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+   "call": "C2"
+  },
+  {
+   "title": "The Intellectual Property Protection System of the Foreign Investment Law: Basic Structure, Motivation and Game Logic",
+   "url": "https://arxiv.org/pdf/2106.03467",
+   "call": "C2"
+  },
+  {
+   "title": "The Patterns of Digital Deception",
+   "url": "https://arxiv.org/pdf/2412.19850",
+   "call": "C2"
+  },
+  {
+   "title": "Securities claims identification, optimization and recovery system and methods",
+   "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11216895",
+   "call": "C2"
+  },
+  {
+   "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+   "url": "https://www.semanticscholar.org/paper/DENIAL-OF-JUSTICE-DISGUISED-INVESTMENT-ARBITRATION-Sattorova/58e4a9f93bcaa0e587821d8e6ac69e02bf0a81ef",
+   "call": "C3"
+  },
+  {
+   "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+   "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3E03F50998681B4C4E152C39E03632E3/S0020589311000601a.pdf/denial_of_justice_disguised_investment_arbitration_and_the_protection_of_foreign_investors_from_judicial_misconduct.pdf",
+   "call": "C3"
+  },
+  {
+   "title": "Denial of Justice Disguised?: Investment Arbitration and the Protection of Investors from Judicial Misconduct by Mavluda Sattorova :: SSRN",
+   "url": "https://www.ssrn.com/abstract=2007628",
+   "call": "C3"
+  },
+  {
+   "title": "Wiki Note: Denial of Justice in FET",
+   "url": "https://jusmundi.com/en/document/publication/en-denial-of-justice-in-fet",
+   "call": "C3"
+  },
+  {
+   "title": "PROFESSOR MAVLUDA SATTOROVA",
+   "url": "https://www.eui.eu/Content-Types-Assets/Uploads/People/CV/CV-Mavluda-Sattorova.pdf",
+   "call": "C3"
+  },
+  {
+   "title": "Denial of Justice Disguised?: Investment Arbitration and the Protection of Investors from Judicial Misconduct",
+   "url": "https://www.researchgate.net/publication/256012810_Denial_of_Justice_Disguised_Investment_Arbitration_and_the_Protection_of_Investors_from_Judicial_Misconduct",
+   "call": "C3"
+  },
+  {
+   "title": "1 AMERICAN UNIVERSITY OF ARMENIA ՀԱՅԱՍՏԱՆԷ ԱՄԵՐԿՅԱՆ ՀԱՄԱԼՍԱՐԱՆ LL.M. Program",
+   "url": "https://law.aua.am/wp-content/uploads/2018/09/Application-of-the-FET-standar-in-Armenia-and-United-States-BIT1992-in-case-of-denial-of-justice.pdf",
+   "call": "C3"
+  },
+  {
+   "title": "Denial of Justice in International Law",
+   "url": "https://www.cambridge.org/core/books/denial-of-justice-in-international-law/7FF27457D687D94438973DF8337DDE6B",
+   "call": "C3"
+  },
+  {
+   "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+   "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+   "call": "C3"
+  },
+  {
+   "title": "Mavluda Sattorova's research works",
+   "url": "https://www.researchgate.net/scientific-contributions/Mavluda-Sattorova-2029130580",
+   "call": "C3"
+  },
+  {
+   "title": "JUDICIAL EXPROPRIATION IN INTERNATIONAL INVESTMENT LAW",
+   "url": "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/judicial-expropriation-in-international-investment-law/FCE68CF6C4EE3F02A3F1AEC55EF91050",
+   "call": "C4"
+  },
+  {
+   "title": "International & Comparative Law Quarterly: Issue 1 of 2021",
+   "url": "https://eapil.org/2021/02/11/international-comparative-law-quarterly-issue-1-of-2021/",
+   "call": "C4"
+  },
+  {
+   "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+   "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+   "call": "C4"
+  },
+  {
+   "title": "Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+   "call": "C4"
+  },
+  {
+   "title": "INDIRECT EXPROPRIATION AND THE PROTECTION OF PUBLIC INTERESTS",
+   "url": "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/indirect-expropriation-and-the-protection-of-public-interests/0F5DF8774E1551D454F37EAE5D85B80B",
+   "call": "C4"
+  },
+  {
+   "title": "The Concept of Expropriation under the ETC and other ...",
+   "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+   "call": "C4"
+  },
+  {
+   "title": "Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation-1",
+   "call": "C4"
+  },
+  {
+   "title": "Wiki Note: Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+   "call": "C4"
+  },
+  {
+   "title": "Investment Disputes and Abnormal Volatility of Stocks",
+   "url": "https://arxiv.org/pdf/2006.10505",
+   "call": "C4"
+  },
+  {
+   "title": "Discord Over Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841",
+   "call": "C5"
+  },
+  {
+   "title": "Discord Over Judicial Expropriation",
+   "url": "https://www.derainsgharavi.com/2018/02/discord-over-judicial-expropriation/",
+   "call": "C5"
+  },
+  {
+   "title": "Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+   "call": "C5"
+  },
+  {
+   "title": "Wiki Note: Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+   "call": "C5"
+  },
+  {
+   "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+   "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+   "call": "C5"
+  },
+  {
+   "title": "The Intervention of Constitutional Courts in International Investment",
+   "url": "https://publications.lawschool.cornell.edu/cilj/wp-content/uploads/sites/7/2022/08/Linares-Cantillo-final.pdf",
+   "call": "C5"
+  },
+  {
+   "title": "ICSID Arbitration on Indirect Expropriation and the Emergence of International Administration Law by Zaheer Anwar :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID3083021_code2670157.pdf?abstractid=3083021&mirid=1",
+   "call": "C5"
+  },
+  {
+   "title": "ICSID Review, Vol. 33, No. 2 (2018), pp. 456–500 doi:10.1093/icsidreview/siy011",
+   "url": "https://www.jurisafrica.org/wp-content/uploads/2021/10/ICSID-AND-AFRICAN-STATES.pdf",
+   "call": "C5"
+  },
+  {
+   "title": "ICSID Review Roundup: New Double Issue (Volume 35, Issue 1-2)",
+   "url": "https://icsid.worldbank.org/news-and-events/news-releases/icsid-review-roundup-new-double-issue-volume-35-issue-1-2",
+   "call": "C5"
+  },
+  {
+   "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+   "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0356.pdf",
+   "call": "C5"
+  },
+  {
+   "title": "Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+   "call": "C6"
+  },
+  {
+   "title": "ICSID REVIEW Foreign Investment Law Journal Volume 39 Number 3 Fall 2024",
+   "url": "https://academic.oup.com/icsidreview/issue-pdf/39/3/63443573",
+   "call": "C6"
+  },
+  {
+   "title": "Now Available—New Issue of the ICSID Review (Volume 39, 3)",
+   "url": "https://icsid.worldbank.org/news-and-events/news-releases/now-available-new-issue-icsid-review-volume-39-3",
+   "call": "C6"
+  },
+  {
+   "title": "Volume 39 Issue 3",
+   "url": "https://academic.oup.com/icsidreview/issue/39/3",
+   "call": "C6"
+  },
+  {
+   "title": "Discord Over Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841",
+   "call": "C6"
+  },
+  {
+   "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+   "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+   "call": "C6"
+  },
+  {
+   "title": "Wiki Note: Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-expropriation",
+   "call": "C6"
+  },
+  {
+   "title": "International Centre for Settlement of Investment Disputes (ICSID)",
+   "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0254.pdf",
+   "call": "C6"
+  },
+  {
+   "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+   "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+   "call": "C6"
+  }
+ ],
+ "calls": [
+  {
+   "id": "C1",
+   "allocation": "the control, fired FIRST before any live call",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    0,
+    8
+   ],
+   "row_count": 9,
+   "returned_rows": [
+    {
+     "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+     "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+     "call": "C1"
+    },
+    {
+     "title": "U.S. Pharmaceutical Corporation Uses NAFTA Foreign ...",
+     "url": "https://www.citizen.org/wp-content/uploads/eli-lilly-investor-state-factsheet.pdf",
+     "call": "C1"
+    },
+    {
+     "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+     "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+     "call": "C1"
+    },
+    {
+     "title": "Under the Arbitration Rules of the",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4046.pdf",
+     "call": "C1"
+    },
+    {
+     "title": "Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration - ARIA - Vol. 29, No. 3",
+     "url": "https://arbitrationlaw.com/library/not-patently-investment-enforcing-intellectual-property-claims-investment-arbitration-aria",
+     "call": "C1"
+    },
+    {
+     "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study",
+     "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+     "call": "C1"
+    },
+    {
+     "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+     "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+     "call": "C1"
+    },
+    {
+     "title": "ROUNDTABLE: Resolving patent disputes — Financier Worldwide",
+     "url": "https://www.financierworldwide.com/roundtable-resolving-patent-disputes-oct15",
+     "call": "C1"
+    },
+    {
+     "title": "Extension of the term of validity of pharmaceutical patents by lawsuits: effects on centralized procurement and the private market",
+     "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11729365/",
+     "call": "C1"
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "allocation": "live 1 of 4",
+   "query": "\"Denial of Justice Disguised\" \"Protection of Foreign Investors from Judicial Misconduct\"",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    9,
+    17
+   ],
+   "row_count": 9,
+   "returned_rows": [
+    {
+     "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+     "url": "https://www.semanticscholar.org/paper/DENIAL-OF-JUSTICE-DISGUISED-INVESTMENT-ARBITRATION-Sattorova/58e4a9f93bcaa0e587821d8e6ac69e02bf0a81ef",
+     "call": "C2"
+    },
+    {
+     "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+     "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3E03F50998681B4C4E152C39E03632E3/S0020589311000601a.pdf/div-class-title-denial-of-justice-disguised-investment-arbitration-and-the-protection-of-foreign-investors-from-judicial-misconduct-div.pdf",
+     "call": "C2"
+    },
+    {
+     "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+     "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+     "call": "C2"
+    },
+    {
+     "title": "Wiki Note: Denial of Justice in FET",
+     "url": "https://jusmundi.com/en/document/publication/en-denial-of-justice-in-fet",
+     "call": "C2"
+    },
+    {
+     "title": "Denial of Justice in International Law",
+     "url": "https://www.cambridge.org/core/books/denial-of-justice-in-international-law/7FF27457D687D94438973DF8337DDE6B",
+     "call": "C2"
+    },
+    {
+     "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+     "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+     "call": "C2"
+    },
+    {
+     "title": "The Intellectual Property Protection System of the Foreign Investment Law: Basic Structure, Motivation and Game Logic",
+     "url": "https://arxiv.org/pdf/2106.03467",
+     "call": "C2"
+    },
+    {
+     "title": "The Patterns of Digital Deception",
+     "url": "https://arxiv.org/pdf/2412.19850",
+     "call": "C2"
+    },
+    {
+     "title": "Securities claims identification, optimization and recovery system and methods",
+     "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11216895",
+     "call": "C2"
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "allocation": "live 2 of 4",
+   "query": "Sattorova \"Denial of Justice Disguised\" pdf repository eprints",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    18,
+    27
+   ],
+   "row_count": 10,
+   "returned_rows": [
+    {
+     "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+     "url": "https://www.semanticscholar.org/paper/DENIAL-OF-JUSTICE-DISGUISED-INVESTMENT-ARBITRATION-Sattorova/58e4a9f93bcaa0e587821d8e6ac69e02bf0a81ef",
+     "call": "C3"
+    },
+    {
+     "title": "DENIAL OF JUSTICE DISGUISED? INVESTMENT ARBITRATION AND THE PROTECTION OF FOREIGN INVESTORS FROM JUDICIAL MISCONDUCT",
+     "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/3E03F50998681B4C4E152C39E03632E3/S0020589311000601a.pdf/denial_of_justice_disguised_investment_arbitration_and_the_protection_of_foreign_investors_from_judicial_misconduct.pdf",
+     "call": "C3"
+    },
+    {
+     "title": "Denial of Justice Disguised?: Investment Arbitration and the Protection of Investors from Judicial Misconduct by Mavluda Sattorova :: SSRN",
+     "url": "https://www.ssrn.com/abstract=2007628",
+     "call": "C3"
+    },
+    {
+     "title": "Wiki Note: Denial of Justice in FET",
+     "url": "https://jusmundi.com/en/document/publication/en-denial-of-justice-in-fet",
+     "call": "C3"
+    },
+    {
+     "title": "PROFESSOR MAVLUDA SATTOROVA",
+     "url": "https://www.eui.eu/Content-Types-Assets/Uploads/People/CV/CV-Mavluda-Sattorova.pdf",
+     "call": "C3"
+    },
+    {
+     "title": "Denial of Justice Disguised?: Investment Arbitration and the Protection of Investors from Judicial Misconduct",
+     "url": "https://www.researchgate.net/publication/256012810_Denial_of_Justice_Disguised_Investment_Arbitration_and_the_Protection_of_Investors_from_Judicial_Misconduct",
+     "call": "C3"
+    },
+    {
+     "title": "1 AMERICAN UNIVERSITY OF ARMENIA ՀԱՅԱՍՏԱՆԷ ԱՄԵՐԿՅԱՆ ՀԱՄԱԼՍԱՐԱՆ LL.M. Program",
+     "url": "https://law.aua.am/wp-content/uploads/2018/09/Application-of-the-FET-standar-in-Armenia-and-United-States-BIT1992-in-case-of-denial-of-justice.pdf",
+     "call": "C3"
+    },
+    {
+     "title": "Denial of Justice in International Law",
+     "url": "https://www.cambridge.org/core/books/denial-of-justice-in-international-law/7FF27457D687D94438973DF8337DDE6B",
+     "call": "C3"
+    },
+    {
+     "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+     "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+     "call": "C3"
+    },
+    {
+     "title": "Mavluda Sattorova's research works",
+     "url": "https://www.researchgate.net/scientific-contributions/Mavluda-Sattorova-2029130580",
+     "call": "C3"
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "allocation": "live 3 of 4",
+   "query": "\"Judicial Expropriation in International Investment Law\" International and Comparative Law Quarterly pdf",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    28,
+    36
+   ],
+   "row_count": 9,
+   "returned_rows": [
+    {
+     "title": "JUDICIAL EXPROPRIATION IN INTERNATIONAL INVESTMENT LAW",
+     "url": "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/judicial-expropriation-in-international-investment-law/FCE68CF6C4EE3F02A3F1AEC55EF91050",
+     "call": "C4"
+    },
+    {
+     "title": "International & Comparative Law Quarterly: Issue 1 of 2021",
+     "url": "https://eapil.org/2021/02/11/international-comparative-law-quarterly-issue-1-of-2021/",
+     "call": "C4"
+    },
+    {
+     "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+     "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+     "call": "C4"
+    },
+    {
+     "title": "Judicial Expropriation",
+     "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+     "call": "C4"
+    },
+    {
+     "title": "INDIRECT EXPROPRIATION AND THE PROTECTION OF PUBLIC INTERESTS",
+     "url": "https://www.cambridge.org/core/journals/international-and-comparative-law-quarterly/article/indirect-expropriation-and-the-protection-of-public-interests/0F5DF8774E1551D454F37EAE5D85B80B",
+     "call": "C4"
+    },
+    {
+     "title": "The Concept of Expropriation under the ETC and other ...",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0272.pdf",
+     "call": "C4"
+    },
+    {
+     "title": "Judicial Expropriation",
+     "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation-1",
+     "call": "C4"
+    },
+    {
+     "title": "Wiki Note: Judicial Expropriation",
+     "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+     "call": "C4"
+    },
+    {
+     "title": "Investment Disputes and Abnormal Volatility of Stocks",
+     "url": "https://arxiv.org/pdf/2006.10505",
+     "call": "C4"
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "allocation": "live 4 of 4",
+   "query": "\"Discord Over Judicial Expropriation\" ICSID Review 2018 author",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    37,
+    46
+   ],
+   "row_count": 10,
+   "returned_rows": [
+    {
+     "title": "Discord Over Judicial Expropriation",
+     "url": "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841",
+     "call": "C5"
+    },
+    {
+     "title": "Discord Over Judicial Expropriation",
+     "url": "https://www.derainsgharavi.com/2018/02/discord-over-judicial-expropriation/",
+     "call": "C5"
+    },
+    {
+     "title": "Judicial Expropriation",
+     "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+     "call": "C5"
+    },
+    {
+     "title": "Wiki Note: Judicial Expropriation",
+     "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+     "call": "C5"
+    },
+    {
+     "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+     "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+     "call": "C5"
+    },
+    {
+     "title": "The Intervention of Constitutional Courts in International Investment",
+     "url": "https://publications.lawschool.cornell.edu/cilj/wp-content/uploads/sites/7/2022/08/Linares-Cantillo-final.pdf",
+     "call": "C5"
+    },
+    {
+     "title": "ICSID Arbitration on Indirect Expropriation and the Emergence of International Administration Law by Zaheer Anwar :: SSRN",
+     "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID3083021_code2670157.pdf?abstractid=3083021&mirid=1",
+     "call": "C5"
+    },
+    {
+     "title": "ICSID Review, Vol. 33, No. 2 (2018), pp. 456–500 doi:10.1093/icsidreview/siy011",
+     "url": "https://www.jurisafrica.org/wp-content/uploads/2021/10/ICSID-AND-AFRICAN-STATES.pdf",
+     "call": "C5"
+    },
+    {
+     "title": "ICSID Review Roundup: New Double Issue (Volume 35, Issue 1-2)",
+     "url": "https://icsid.worldbank.org/news-and-events/news-releases/icsid-review-roundup-new-double-issue-volume-35-issue-1-2",
+     "call": "C5"
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0356.pdf",
+     "call": "C5"
+    }
+   ]
+  },
+  {
+   "id": "C6",
+   "allocation": "the conditional, licensed by the reprint hit at C5",
+   "query": "\"Judicial Expropriation\" \"ICSID Review\" \"Volume 39\" Issue 3 452 author",
+   "query_provenance": "Copied verbatim from the seat's filed memo, analytics/daily-research/2026-10-03.md Part 2 section 7 spend table, by the chairman during the 2026-10-03 session. The query strings were NOT present anywhere in this file as the seat wrote it.",
+   "row_set_indices": [
+    47,
+    55
+   ],
+   "row_count": 9,
+   "returned_rows": [
+    {
+     "title": "Judicial Expropriation",
+     "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+     "call": "C6"
+    },
+    {
+     "title": "ICSID REVIEW Foreign Investment Law Journal Volume 39 Number 3 Fall 2024",
+     "url": "https://academic.oup.com/icsidreview/issue-pdf/39/3/63443573",
+     "call": "C6"
+    },
+    {
+     "title": "Now Available—New Issue of the ICSID Review (Volume 39, 3)",
+     "url": "https://icsid.worldbank.org/news-and-events/news-releases/now-available-new-issue-icsid-review-volume-39-3",
+     "call": "C6"
+    },
+    {
+     "title": "Volume 39 Issue 3",
+     "url": "https://academic.oup.com/icsidreview/issue/39/3",
+     "call": "C6"
+    },
+    {
+     "title": "Discord Over Judicial Expropriation",
+     "url": "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841",
+     "call": "C6"
+    },
+    {
+     "title": "Judicial Expropriations: Difficulties in Drawing the Line Between Adjudication and Expropriation",
+     "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_120",
+     "call": "C6"
+    },
+    {
+     "title": "Wiki Note: Expropriation",
+     "url": "https://jusmundi.com/en/document/publication/en-expropriation",
+     "call": "C6"
+    },
+    {
+     "title": "International Centre for Settlement of Investment Disputes (ICSID)",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0254.pdf",
+     "call": "C6"
+    },
+    {
+     "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+     "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+     "call": "C6"
+    }
+   ]
+  }
+ ],
+ "schema_note": "SCHEMA REPAIR, made by the CHAIRMAN on 2026-10-03 after the Rule 2 reconvening, within the record paths this session may merge. NOTHING WRITTEN BY THE SEAT WAS ALTERED OR DELETED. (1) 'row_set' IS CANONICAL and is byte-equivalent to the seat's write: a flat, zero-based list of 56 objects {title, url, call}. The authoritative address of a row is row_set[i]. (2) The seat's filed memo cites this file as calls[n].returned_rows[m] in its sections 4.6 P1-P3 and in candidate claims A1, A3, A4, A5, A7, A8 and A10. THOSE PINPOINTS DID NOT RESOLVE: the key 'calls' was absent and the string 'returned_rows' occurred zero times. The defect is recorded as objection 1003-C1, conceded in full by the seat; its cause was the seat citing the schema of a scratch variable in its generating script rather than of the file the script serialised. (3) 'calls' is ADDED HERE as a grouped view derived from row_set, so that both addressing schemes now resolve. Its element order and its rows are taken from row_set and nothing is re-ordered. (4) THE QUERY STRINGS WERE ABSENT FROM THIS FILE AS WRITTEN. They are copied here from the seat's filed memo and each carries its own query_provenance field saying so. A row set without its query is not reproducible, which is a second gap in the artefact and is recorded at the chairman's section 7. (5) Call-to-index map: C1 row_set[0..8], C2 [9..17], C3 [18..27], C4 [28..36], C5 [37..46], C6 [47..55]. Human-readable form: 'call <ID> row <n>', n being 1-based within that call's block.",
+ "chairman_verified_targets": {
+  "note": "Each resolved by the chairman by URL-substring match against row_set, not by arithmetic.",
+  "PASS_carrier_control_C1": "row_set[5]",
+  "ssrn_locator_target_1": "row_set[20]",
+  "eui_author_CV_target_1": "row_set[22]",
+  "firm_host_locator_target_4": "row_set[38]",
+  "jurisafrica_channel_replication": "row_set[44]",
+  "title_variance_pair": [
+   "row_set[19]",
+   "row_set[20]"
+  ],
+  "enabler_null_target_2": "row_set[28..36]",
+  "enabler_null_target_3": "row_set[47..55]",
+  "springer_title_four_calls": [
+   "row_set[11]",
+   "row_set[26]",
+   "row_set[41]",
+   "row_set[52]"
+  ]
+ }
+}

@@ -544,6 +544,24 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-04 (archivist session — twenty-second deployment)** — **No roster change and no
+  contract change, for the sixth consecutive session.** `git log d511280..b773cf1 --
+  .claude/agents/ prompts/ src/models.py` returns **no commit** across 65 commits.
+  `scripts/check_models.py` exits **0** over 12 flowchart cards — every card names a configured
+  model, backed by a declared `model:` key, with no vault note contradicting its card. All nine
+  definitions declare `model: opus`; the "Runs on" prose still matches each seat's vault note seat
+  by seat (chairman, research-analyst, site-experience, systems-designer on Claude Opus 5;
+  analytics-officer, integrity-officer, obsidian-archivist, research-editor, systems-researcher on
+  Claude Opus 4.8). **D5 re-tested and unchanged at day fifty-two: eight of nine definitions still
+  never name their own vault note**, [[integrity-officer]] the lone exception, and the holdout
+  vocabulary is still absent from every file the research analyst reads — sixty-two days after the
+  failure that absence caused. **D6 moved to documented-and-closed** rather than re-escalated, on a
+  fifth identical runtime reading; the 2026-10-01 finding that the declaration and the runtime read
+  different settings is the resolution, not a step toward one. No registry row changed this
+  session; the audit is recorded because a clean result that is not written down is
+  indistinguishable from one nobody ran.
+  *Audited against `b773cf1`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`.*
 - **2026-10-01 (archivist session — twenty-first deployment)** — **No roster change and no
   contract change, for the fifth consecutive session.** Measured, not carried: `git log
   50482a4..d511280 -- .claude/agents/ prompts/ src/models.py` returns **zero** commits across a

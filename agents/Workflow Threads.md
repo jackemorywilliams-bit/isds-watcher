@@ -763,6 +763,15 @@ still the only open PR in the repository before this session's own.
   before returning, or build into a temporary directory and compare against `docs/` without touching
   it. The second is better — it makes the check read-only by construction rather than by cleanup.
   Wants a test that asserts the working tree is unchanged after a run.
+- **2026-10-04 — reproduced exactly, three days on, by walking into it a second time.** This
+  session ran `check_site_sync.py` as part of the guard set at `b773cf1`; it exited **0** (`docs/`
+  genuinely in sync) and left **24** modified tracked files under `docs/`. Verified stamp-only
+  before restoring — every changed line across all 24 files matches the build-stamp pattern, the
+  stamp moving from *"Site built 2026-09-28 20:04 UTC · e380fa6"* to *"2026-10-04 15:05 UTC ·
+  b773cf1"* — then `git checkout -- docs/` returned the tree to clean. **The hazard is unchanged
+  and so is its shape: the guard's verdict is trustworthy and its side effect is not.** Two
+  sessions in a row have now had to know about this to avoid committing generated output inside a
+  records-only pull request. The remedy is unchanged and still one line.
 - **Owner** — **systems-designer.** `scripts/` is outside this seat's merge scope; this seat found it
   and did not fix it.
 
@@ -1179,6 +1188,35 @@ still the only open PR in the repository before this session's own.
   **18:23** (`1d559a7`), **23:32** (`238f0f4`) and **21:02** (`2adb925`) UTC. **Five for five in
   the evening, never at 13:00.** A re-measure made on a Monday morning is stale by that evening;
   the durable remedy remains regenerating the constants in the job that writes the digest.
+- **2026-10-04 — day twenty, and the count is now 50 consecutive failed runs. Re-measured from
+  the Actions API across 158 runs on `main`, not carried.** Last green is run **199**
+  (`529e32d`, 2026-09-14T12:17:56Z); every push-triggered run since has failed, the latest being
+  run **278** (`3ccaffc`, 2026-10-04T12:03:59Z). Job `suite`: **2 failed, 821 passed, 5 xfailed**,
+  both failures in `tests/test_site_claims.py`.
+- **The important correction this session makes to this thread is to the SIZE of the fix, and it
+  is the difference between one red cycle and three.** The failing asserts short-circuit, so the
+  job log reveals only three stale numbers. Computed directly off the archive this session
+  against `scripts/build_site.py` (`collect_digests`, `archive_status`), **six** are stale:
+
+  | pin | location | pinned | actual |
+  |---|---|---|---|
+  | `runs` | `tests/test_site_claims.py:155` | 16 | **19** |
+  | `screened` | `:155` | 492 | **544** |
+  | `len(with_per_source)` | `:305` | 11 | **14** |
+  | `sum(per_source.values())` | `:306` | 191 | **243** |
+  | `sum(screened)` over those | `:307` | 230 | **282** |
+  | `sum(screened)` over all | `:308` | 492 | **544** |
+
+  The remaining six keys of `COMMITTED` are **correct and must not be touched** — `matches` 0,
+  `surfaced` 17, `distinct` 16, `rings_zero` 7, `rings_one` 8, `contradictory` 1 (the job log's
+  *"Omitting 6 identical items"*). **A seat that re-pins only the three numbers the log shows
+  will push, go red again on `:306`, and go red a third time on `:307`.** All six, or regenerate.
+- **One observation for the research seats rather than the systems designer, stated as measured
+  and not interpreted.** Across the three digest cycles that moved `runs` 16 → 19 and `screened`
+  492 → 544, `surfaced` stayed **17** and `distinct` stayed **16**. Fifty-two further candidates
+  screened, no new development surfaced. Whether that is the fingerprint behaving correctly or a
+  yield question is not this seat's call; it is recorded because the pinned constants make it
+  visible and nothing else does.
 
 ### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
 
@@ -1280,6 +1318,30 @@ still the only open PR in the repository before this session's own.
   about the council's exposure and still does not reach this thread**, whose subject is the
   dormant strict-xfail guard, not the PR's age. Every path in #184 is outside this seat's merge
   scope; I cannot land it and did not try.
+- **2026-10-04 — day twenty-one. Re-verified from the two blobs rather than carried, per method
+  rule 5, and every fact of the 2026-10-01 analysis holds.** Branch `src/config.py:223` still
+  defaults `TRIAGE_ENABLED` to **`"0"`** and still carries **no** `TRIAGE_MAX_CALLS_PER_RUN` line
+  at all; `main` carries **`"1"`** at `:264` and **`100`** at `:276`, shipped by `7735159` under
+  **Ruling 4(a) of 2026-09-13**. So the merge resolved by *accept incoming* still reverses a dated
+  council decision and still deletes the per-run cost cap. **Next action stays NOT "land it."**
+- **The conflict set has grown, and the growth is the part that needs Emory.** A merge-tree test
+  of `origin/main` against `origin/fix/repoint-r21-citations` now conflicts on **seven** files,
+  and they split exactly as before: five are the machine-owned currency anchor
+  (`STATE_OF_THE_ANSWER.md` and the four `agents/` notes — harmless, this seat's to resolve) and
+  **two are substantive** (`src/config.py`, `src/triage.py` — the triage configuration above).
+  **The PR has had no review and no check run in twenty-one days** (`reviews` empty; `check-runs`
+  on `529c744` empty; `updated_at` 2026-09-13T22:49:42Z), and `mergeable_state` reads `unknown`.
+- **The defect it repairs is still live on `main`, measured today.** A `git grep` for the R2.1
+  token over `origin/main -- src tests scripts PLAN.md` returns **34** occurrences across 10 files
+  (`src/rings.py` 17, `tests/test_rings.py` 5, `src/main.py` 3, `src/config.py` 2, `src/triage.py`
+  2, and one each in `scripts/check_lock.py`, `src/classify_v2.py`, `src/headline_lane.py`,
+  `tests/test_pipeline.py`, `PLAN.md`) against **11** on the branch tip. One is visible at
+  `src/config.py:277` — *"from the R2.1 costing table"* — three lines under the cost cap the merge
+  would delete. **And the dependency the PR was waiting on has landed:**
+  `analytics/locked_set/VALIDATION_RECORD.md` is on `main`. So the blocker is no longer a missing
+  record; it is the stale triage configuration and the absent review.
+- **`tests/test_r21_citations.py` (296 lines) is absent from `main`** — the one test file in the
+  repository that fails closed on this class of dangling citation exists only on this branch.
 
 ### D18 — a `[skip ci]` bot commit on `main` skips both the mover and the guard, and `main` ends the day stale 8 days in 10 *(new 2026-09-13; owner: systems-designer, one narrow bug for Emory)*
 
@@ -2737,6 +2799,44 @@ specifically unblocks it.
   `git merge-base --is-ancestor 6f9e1da origin/main` still fails. **This is the oldest substantive
   orphan in the repository and the only one carrying operator-authored content**, and sixty-six days
   is long enough that its age is now the finding. Unchanged as **Emory's**.
+- **2026-10-04 — day sixty-nine. Every number reproduces, and the thread acquires the finding it
+  has been missing for nine weeks: what the stranding actually cost.** Re-counted from the two
+  blobs as JSON: `main` **58 events / 37 claims / 21 marks**; `6f9e1da` **78 / 40 / 38**. The
+  seventeen marks and the same three claim ids (`7511d41b…`, `f40761bd…`, `f4375b9f…`) are still
+  absent, and `git merge-base --is-ancestor 6f9e1da origin/main` still fails. **The seventeen
+  break down as sixteen `operator_verified` and one `operator_rejected`, and the single rejection
+  is the one that mattered.** On **2026-07-27** Emory marked claim `7dd2f272f130…`
+  `operator_rejected`, with the note that the A&O Shearman page says the dismissal was on
+  *jurisdiction AND MERITS* grounds and does **not** support the failure-to-withdraw framing —
+  *"that framing was IAReporter title-mining, stays a lead."* **On 2026-08-23, twenty-seven days
+  later, the council found the same defect from scratch**, in the same case, on the same carrier
+  and with the same diagnosis — `analytics/daily-research/2026-08-23.md:792` calls it *"a
+  title-mined Hela Schwarz characterisation, the precise class this seat resisted before and was
+  vindicated on"* — and withdrew it as `0823-B8`. **That repair then took three sessions and six
+  instances** (`0823-B8`, then `0824-B1` finding a fifth, then `0825-B1` finding a sixth in the
+  numbered summary where no marker had reached).
+  **Why the mark was load-bearing, cited rather than asserted:** `src/integrity_gate.py:155-157`
+  drops a claim whose ledger status is `operator_rejected` from every asserted section and reports
+  it separately, and `prompts/research_analyst.txt:191` makes the ledger — *"the verification
+  ledger decides what may be asserted — you do not decide verification"* — binding on the analyst.
+  So the rejection was not a note in a drawer; it was an input to a gate the pipeline runs and to
+  the one prompt file the analyst actually reads.
+  **Two limits on that claim, stated so it is not read as more than it is.** (i) I cannot show the
+  gate *would* have blocked the six instances, because they live in `STATE_OF_THE_ANSWER.md`,
+  which seats maintain by hand and the gate does not police. (ii) The propositions are
+  overlapping, not identical: Emory rejected one sentence, `0823-B8` withdrew the broader reading
+  of the *"gives effect to"* title. **What is established without either limit is the thing worth
+  recording:** the project held a dated operator rejection of this framing, in a file its own
+  prompt declares authoritative, for twenty-seven days before re-deriving it at the cost of three
+  sessions — because the branch carrying it was never merged.
+  **One dated line above is now stale and is corrected here rather than edited there.** The
+  2026-08-04 entry reads *"the rejected framing does not appear in `STATE_OF_THE_ANSWER.md`
+  today."* True when written; **false now** — it appears at `:995`, `:1121` and `:1126`. But it
+  appears **correctly markered as withdrawn** in all three places, so the conclusion that entry
+  drew (the living memory is not carrying a rejected claim) still holds, by a different route than
+  the one it relied on. **The living record is right; the ledger is the surface that is wrong**, and
+  F1 is a records-integrity gap, not a live research defect. It should not be escalated as the
+  latter.
 - **Owner** — **Emory.**
 
 ### F2 · The 2026-08-03 standing-rules council record is lost
@@ -3010,6 +3110,29 @@ specifically unblocks it.
   commits. The scripted check reproduces: **eight NO, one YES**, [[integrity-officer]] still the
   only definition that names its own note. The adopted method rules each seat is bound by have
   now sat where that seat does not read for twelve days.
+- **Re-tested 2026-10-04 against `b773cf1` — day fifty-two, unchanged, and the scripted check is
+  now the cheapest query in this seat's session.** `git log d511280..b773cf1 -- .claude/agents/
+  prompts/ src/models.py` returns **no commit** across 65 commits. For each of the nine
+  definitions, does it name its own vault note (as `agents/<seat>.md` or as a wikilink naming the
+  seat)? **Eight NO, one YES** — [[integrity-officer]] still the only one. Identical to
+  2026-08-16, 08-25 and 09-04.
+- **The holdout gap specifically, re-tested and still open, because it is the one this standing
+  session was created over.** Grepping `holdout|hold-out|out-of-sample` across the analyst's
+  entire read path — `.claude/agents/research-analyst.md`, `prompts/research_analyst.txt`,
+  `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` — returns **nothing**, as it
+  did on 2026-09-04. **Sixty-two days after the 2026-08-03 failure in which the analyst asserted a
+  case was new to the project when it is one of the four out-of-sample holdout positives, the
+  vocabulary of that failure is still absent from every file that seat reads.** The four positives
+  (`loewen_v_us`, `mondev_v_us`, `apotex_v_us`, `pm_v_uruguay`) remain documented in
+  `scripts/holdout_set.json`, `METHODOLOGY.md`, this note and six analytics files — none of them in
+  the analyst's context. **The same seat could make the same error tomorrow and nothing in its
+  read path would stop it.** That is the sentence this thread has been trying to say since
+  2026-08-13, and it is the reason D5 outranks every other open item in this seat's table despite
+  being the cheapest to fix: one line per definition.
+- **A note on why this seat keeps re-testing rather than escalating harder.** Editing
+  `.claude/agents/` is a contract change and is Emory's; this seat has no path to it. What it can
+  do is make the gap a measured number rather than an assertion, and keep the number in front of
+  him. Fifty-two days, eight of nine, holdout vocabulary absent.
 
 ---
 

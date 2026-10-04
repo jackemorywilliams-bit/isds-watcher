@@ -1,0 +1,1108 @@
+{
+ "date": "2026-10-04",
+ "seat": "research-analyst",
+ "schema_note": "One object per RETURNED ROW in row_set, each carrying title and url VERBATIM, the producing call, AND THE QUERY STRING THAT CALL ASKED — the field the 2026-10-03 artefact lacked and that the chairman had to back-fill from prose. Every row also carries a stable row_id, so the artefact is addressable by identifier and not only by content. calls[] carries the per-call join (query, parameters, pre-registered rule, verdict, row_set_ids). NO FIELD OF THIS SCHEMA IS AN ADOPTED PROJECT CONVENTION; it is this seat's proposal and the operator rules on it.",
+ "id_normalisation": {
+  "this_file": "Every call object carries a non-null 'id'; every row carries a non-null 'row_id'. Zero null or empty identifiers.",
+  "the_archive_premise_AUDITED_AND_FALSE": "The convening brief and analytics/daily-research/2026-10-03.md section 8(6) both state that the 2026-09-20 call object carrying the PASS row has 'id: null'. EXECUTED AT 6fbca0f OVER ALL 11 FILES AND ALL 53 CALL OBJECTS: there are ZERO null-or-empty 'id' or 'call_id' values anywhere, at any nesting depth, and the literal '\"id\": null' occurs 0 times in every file. The object in question is calls[5] of 2026-09-20.json and the identifier it carries is call_id = 'S6', non-empty and resolving. THE REAL DEFECT IS KEY-NAME DRIFT, NOT A NULL VALUE: 5 files key the identifier 'call_id' and 6 files key it 'id'. The archive IS addressable; it is not UNIFORMLY addressable. That changes the build item from 'back-fill null ids' to 'alias one key'.",
+  "key_name_per_file": {
+   "2026-09-20.json": [
+    "call_id"
+   ],
+   "2026-09-21.json": [
+    "call_id"
+   ],
+   "2026-09-22.json": [
+    "call_id"
+   ],
+   "2026-09-24.json": [
+    "call_id"
+   ],
+   "2026-09-25.json": [
+    "call_id"
+   ],
+   "2026-09-26.json": [
+    "id"
+   ],
+   "2026-09-27.json": [
+    "id"
+   ],
+   "2026-09-28.json": [
+    "id"
+   ],
+   "2026-09-29.json": [
+    "id"
+   ],
+   "2026-09-30.json": [
+    "id"
+   ],
+   "2026-10-03.json": [
+    "id"
+   ]
+  },
+  "what_this_seat_could_not_do": "Normalising the OTHER TEN files is a write outside analytics/search-results/2026-10-04.json and is therefore forbidden to this seat. It is a proposal, not an action."
+ },
+ "instrument": {
+  "fetch": "DEAD on both instruments. Not re-probed by this seat; the chairman's probes on the neutral control host example.com are relied on and not contradicted. NO DOCUMENT BODY WAS OPENED TODAY BY THIS SEAT BY ANY MEANS. This says nothing whatever about any source, docket or publisher.",
+  "search": "ALIVE. AND SHOWN TODAY TO BE BIMODAL AND NON-DETERMINISTIC ON THE SENSITIVITY CONTROL ITSELF: see control_replication_series.",
+  "relay": "NOT FIRED and no request file written. Next cadenced observation 2026-10-10. analytics/fetch-requests/ holds 75 files and analytics/fetch-results/ 74; NEITHER IS EMPTY."
+ },
+ "measured_at_commit": {
+  "commit": "6fbca0f",
+  "proof_of_exclusion": "git cat-file -e 6fbca0f:analytics/daily-research/2026-10-04.md -> fatal, does not exist; git cat-file -e 6fbca0f:analytics/search-results/2026-10-04.json -> fatal, does not exist. Every repository figure in this artefact is measured at a commit that contains no line of today's record.",
+  "commit_count_after_unshallow": 1757
+ },
+ "budget": {
+  "ceiling": 5,
+  "fired": 4,
+  "handed_back_unspent": 1,
+  "allocation_as_briefed": "1 control + 2 live + 2 reprint",
+  "as_spent": "1 control (C1) + 1 control replication reallocated from live-arm call 1 (C2) + 2 reprint (C3, C4); live-arm call 2 HANDED BACK UNSPENT",
+  "reason_live_arm_handed_back": "The chairman fixed, before firing, that on a control FAIL 'no absence statement of any strength is licensed today' and 'section II's as-of date does not move'. C1 FAILED. The live arm's sole purchase, on the chairman's own reading and this seat's, was the CURRENCY of the headline proposition. With the as-of date frozen by the FAIL rule, that purchase is unavailable, so a live firing could only produce a null that no seat may characterise at any strength. SECOND AND INDEPENDENT REASON, discovered by C1/C2: a SINGLE firing of any template is now known to be an unreliable detector on this instrument, so one live call could not support a null even if the as-of date were free.",
+  "fetch_calls": 0,
+  "file_writes": 1,
+  "file_written": "analytics/search-results/2026-10-04.json"
+ },
+ "control_replication_series": {
+  "template": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+  "parameters_held_constant": {
+   "mode": "extended",
+   "blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org",
+    "www.bing.com",
+    "pcacases.com"
+   ],
+   "allowed_domains": null
+  },
+  "preregistered_pass_predicate": "at least one returned ROW TITLE containing 'Eli Lilly'; segment boundary = ONE ROW TITLE, alone; titles and URLs never concatenated",
+  "firings": [
+   {
+    "n": 1,
+    "when": "2026-10-03",
+    "call": "2026-10-03.json calls[0] id=C1",
+    "rows": 9,
+    "distinct_urls": 9,
+    "eli_lilly_title_hits_cs_ci": [
+     1,
+     1
+    ],
+    "verdict": "PASS"
+   },
+   {
+    "n": 2,
+    "when": "2026-10-04",
+    "call": "C1",
+    "rows": 10,
+    "distinct_urls": 10,
+    "eli_lilly_title_hits_cs_ci": [
+     0,
+     0
+    ],
+    "verdict": "FAIL"
+   },
+   {
+    "n": 3,
+    "when": "2026-10-04",
+    "call": "C2",
+    "rows": 9,
+    "distinct_urls": 9,
+    "eli_lilly_title_hits_cs_ci": [
+     1,
+     1
+    ],
+    "verdict": "PASS"
+   }
+  ],
+  "k_over_n": "2/3",
+  "pairwise_url_overlap_jaccard": {
+   "f1_vs_f2": 0.056,
+   "f1_vs_f3": 0.8,
+   "f2_vs_f3": 0.0
+  },
+  "shared_url_counts": {
+   "f1_vs_f2": 1,
+   "f1_vs_f3": 8,
+   "f2_vs_f3": 0
+  },
+  "union_distinct_urls_over_28_gross_rows": 19,
+  "bimodality": {
+   "finding": "Firings 1 and 3 share 8 of 10 union URLs. Firings 2 and 3 share ZERO, same string, same parameters, same session, minutes apart. This is not noise around a stable row set; it is a draw between two nearly disjoint result populations.",
+   "basin_characterisation_by_host_class": "Firing 2's row set is 9 of 10 scientific-literature hosts (arxiv.org x4, ncbi.nlm.nih.gov x3, image-ppubs.uspto.gov x2); its single legal row is globalarbitrationreview.com. Firings 1 and 3 are ISDS-literature row sets.",
+   "concentration_measured_against_the_archive": {
+    "archive_off_domain_rows": 20,
+    "archive_rows": 535,
+    "archive_share_pct": 3.74,
+    "firing_2_off_domain_rows": 9,
+    "firing_2_rows": 10,
+    "firing_2_share_pct": 90.0,
+    "unit": "ROW. A host-match count over the same population is 21, because one URL (https://pubmed.ncbi.nlm.nih.gov/20431702/) matches two host patterns. The two units are declared as a pair and neither is used as the other denominator.",
+    "archive_off_domain_HOST_MATCHES": 21
+   },
+   "what_this_does_NOT_license": "Nothing about how the engine normalises or routes a string, which this council has no way to inspect. The observation is about RESULT SETS only."
+  },
+  "FAIL_CONSEQUENCES_TREATED_AS_BINDING": "C1 failed and this seat treats the chairman's pre-registered FAIL consequences as binding notwithstanding that C2 then passed. Reading a later replication as curing a pre-registered FAIL is firing-until-you-pass, which is the exact defeat pre-registration exists to prevent. Both firings are reported; the FAIL stands; the as-of date does not move; no absence statement of any strength is made today.",
+  "failing_template_recorded_verbatim_so_it_is_never_re_fired_blind": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014"
+ },
+ "archive_sensitivity_screen": {
+  "question_as_asked": "On how many prior dated sessions did this instrument in fact return a row naming a known positive inside the target population, and under what queries?",
+  "answer": "THREE dated sessions under the 2026-10-03 PASS rule's own TITLE predicate — 2026-09-20, 2026-09-24 and 2026-10-03 — not one. A FOURTH, 2026-09-30, carries a seed-award designator in a row URL but CANNOT be evaluated under the PASS rule because that artefact stores no title for the row. Two further dates, 2026-09-27 and 2026-09-29, carry designator hits whose OWN QUERY contains the designator; they are self-answering and are excluded from the sensitivity history, not counted in it.",
+  "census": {
+   "population": "every *.json in analytics/search-results/ at 6fbca0f",
+   "files": 11,
+   "calls": 53,
+   "rows": 535,
+   "absent_dates_in_the_directory_not_null_in_it": [
+    "2026-09-23",
+    "2026-10-01",
+    "2026-10-02"
+   ],
+   "units": {
+    "FILE": "one JSON document",
+    "CALL": "one element of d['calls']",
+    "ROW": "one element of a call's row container"
+   },
+   "row_container_key_path_precedence": [
+    "calls[].results",
+    "calls[].returned_rows"
+   ],
+   "segment_boundary": "ONE ROW. Within a row: a title-bearing row is screened on row['title'] ALONE; a url-only row is screened on the whole URL string ALONE. A title match and a URL-slug match are different predicates and are reported separately.",
+   "query_segment": "calls[].query ALONE",
+   "files_whose_shape_differs_and_what_was_done": "All 11 files are dicts carrying a top-level 'calls' list, so none was excluded. The divergence is INSIDE the row container and it is material: 6 files store rows as objects with a title (2026-09-20/21/22/24/25/26 plus 2026-10-03 = 7 files) and 4 files store rows as BARE URL STRINGS with no title at all (2026-09-27/28/29/30)."
+  },
+  "row_title_field_THREE_STATES_unit_ROW": {
+   "absent": 129,
+   "present_null_or_empty": 0,
+   "present_nonempty": 406
+  },
+  "consequence_of_the_three_states": "129 of 535 archived rows have NO title field at all. The project's own PASS rule is a TITLE rule, so the archive cannot be screened under that rule for 24.1% of its rows; for those it degrades to a URL-slug proxy, which is weaker and asset-class-biased, because a slug carries a party name only where a publisher chose to put one there.",
+  "designator_tiers_reported_separately_never_merged": {
+   "A_seed_awards": [
+    "Eli Lilly",
+    "Philip Morris",
+    "Bridgestone"
+   ],
+   "B_pharma_regulatory_candidate": [
+    "Servier"
+   ],
+   "C_adjacent_named_filings": [
+    "Wingtech",
+    "Nexperia",
+    "Hela Schwarz",
+    "Huawei"
+   ]
+  },
+  "url_slug_forms_used_only_on_url_only_rows": {
+   "A_seed_awards": [
+    "eli-lilly",
+    "eli_lilly",
+    "elililly",
+    "philip-morris",
+    "philipmorris",
+    "bridgestone"
+   ],
+   "B_pharma_regulatory_candidate": [
+    "servier"
+   ],
+   "C_adjacent_named_filings": [
+    "wingtech",
+    "nexperia",
+    "hela-schwarz",
+    "helaschwarz",
+    "huawei"
+   ]
+  },
+  "title_predicate_hits": [
+   {
+    "file": "2026-09-20.json",
+    "call_key": "call_id",
+    "call_id": "S6",
+    "row_path": "calls[5].results[5]",
+    "tier": "A_seed_awards",
+    "designator": "Eli Lilly",
+    "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study – Investment Treaty News",
+    "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+    "query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-09-24.json",
+    "call_key": "call_id",
+    "call_id": "S2",
+    "row_path": "calls[1].results[1]",
+    "tier": "A_seed_awards",
+    "designator": "Bridgestone",
+    "title": "Investment disputes, trademarks and licenses, and ICSID tribunals-\"Bridgestone v. Panama\" - The IPKat",
+    "url": "https://ipkitten.blogspot.com/2018/03/investment-disputes-trademarks-and.html",
+    "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-09-24.json",
+    "call_key": "call_id",
+    "call_id": "S2",
+    "row_path": "calls[1].results[4]",
+    "tier": "A_seed_awards",
+    "designator": "Eli Lilly",
+    "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards | ArbitrationLaw.com",
+    "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+    "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-09-24.json",
+    "call_key": "call_id",
+    "call_id": "S2",
+    "row_path": "calls[1].results[4]",
+    "tier": "A_seed_awards",
+    "designator": "Philip Morris",
+    "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards | ArbitrationLaw.com",
+    "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+    "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-09-24.json",
+    "call_key": "call_id",
+    "call_id": "S2",
+    "row_path": "calls[1].results[4]",
+    "tier": "A_seed_awards",
+    "designator": "Bridgestone",
+    "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards | ArbitrationLaw.com",
+    "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+    "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-10-03.json",
+    "call_key": "id",
+    "call_id": "C1",
+    "row_path": "calls[0].returned_rows[5]",
+    "tier": "A_seed_awards",
+    "designator": "Eli Lilly",
+    "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study",
+    "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+    "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+    "query_carries_designator": false
+   }
+  ],
+  "url_slug_predicate_hits": [
+   {
+    "file": "2026-09-20.json",
+    "call_key": "call_id",
+    "call_id": "S6",
+    "row_path": "calls[5].results[5]",
+    "tier": "A_seed_awards",
+    "slug": "eli-lilly",
+    "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+    "title_in_artefact": true,
+    "query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-09-27.json",
+    "call_key": "id",
+    "call_id": "S1",
+    "row_path": "calls[0].results[3]",
+    "tier": "A_seed_awards",
+    "slug": "eli-lilly",
+    "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/507/eli-lilly-v-canada",
+    "title_in_artefact": false,
+    "query": "\"Eli Lilly v. Canada\" \"abuse of right\" tribunal later award cited intellectual property jurisdiction investment treaty",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-27.json",
+    "call_key": "id",
+    "call_id": "S1",
+    "row_path": "calls[0].results[5]",
+    "tier": "A_seed_awards",
+    "slug": "eli_lilly",
+    "url": "https://www.researchgate.net/publication/316071599_Eli_Lilly_v_Canada_The_uncomfortable_liaison_between_intellectual_property_and_international_investment_law",
+    "title_in_artefact": false,
+    "query": "\"Eli Lilly v. Canada\" \"abuse of right\" tribunal later award cited intellectual property jurisdiction investment treaty",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[0]",
+    "tier": "B_pharma_regulatory_candidate",
+    "slug": "servier",
+    "url": "https://arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
+    "title_in_artefact": false,
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[1]",
+    "tier": "B_pharma_regulatory_candidate",
+    "slug": "servier",
+    "url": "https://demo.arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic",
+    "title_in_artefact": false,
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[3]",
+    "tier": "B_pharma_regulatory_candidate",
+    "slug": "servier",
+    "url": "https://jusmundi.com/en/document/decision/en-les-laboratoires-servier-s-a-s-biofarma-s-a-s-arts-et-techniques-du-progres-s-a-s-v-republic-of-poland-award-tuesday-14th-february-2012",
+    "title_in_artefact": false,
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[4]",
+    "tier": "B_pharma_regulatory_candidate",
+    "slug": "servier",
+    "url": "https://www.iareporter.com/articles/pdfdownloads/les-laboratoires-servier-and-others-v-poland-award-of-february-14-2012-partially-redacted/",
+    "title_in_artefact": false,
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[7]",
+    "tier": "B_pharma_regulatory_candidate",
+    "slug": "servier",
+    "url": "https://arbitrationlaw.com/library/les-laboratoires-servier-saa-biofarma-sas-arts-et-techniques-du-progres-sas-v-republic-0",
+    "title_in_artefact": false,
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case",
+    "query_carries_designator": true
+   },
+   {
+    "file": "2026-09-30.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "row_path": "calls[3].results[0]",
+    "tier": "A_seed_awards",
+    "slug": "philip-morris",
+    "url": "https://www.globalarbitrationnews.com/2016/06/08/smoke-mirrors-structuring-foreign-investments-following-philip-morris-award-20160608/",
+    "title_in_artefact": false,
+    "query": "\"plain packaging\" investment treaty arbitration tribunal award trademark expropriation",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-10-03.json",
+    "call_key": "id",
+    "call_id": "C1",
+    "row_path": "calls[0].returned_rows[1]",
+    "tier": "A_seed_awards",
+    "slug": "eli-lilly",
+    "url": "https://www.citizen.org/wp-content/uploads/eli-lilly-investor-state-factsheet.pdf",
+    "title_in_artefact": true,
+    "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+    "query_carries_designator": false
+   },
+   {
+    "file": "2026-10-03.json",
+    "call_key": "id",
+    "call_id": "C1",
+    "row_path": "calls[0].returned_rows[5]",
+    "tier": "A_seed_awards",
+    "slug": "eli-lilly",
+    "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+    "title_in_artefact": true,
+    "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+    "query_carries_designator": false
+   }
+  ],
+  "url_slug_hit_count_cs_ci": [
+   10,
+   11
+  ],
+  "queries_that_carry_their_own_answer_EXCLUDED": [
+   {
+    "file": "2026-09-27.json",
+    "call_key": "id",
+    "call_id": "S1",
+    "tier": "A_seed_awards",
+    "designator": "Eli Lilly",
+    "query": "\"Eli Lilly v. Canada\" \"abuse of right\" tribunal later award cited intellectual property jurisdiction investment treaty"
+   },
+   {
+    "file": "2026-09-29.json",
+    "call_key": "id",
+    "call_id": "S4",
+    "tier": "B_pharma_regulatory_candidate",
+    "designator": "Servier",
+    "query": "\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case"
+   }
+  ],
+  "dates_with_a_clean_title_level_positive": [
+   "2026-09-20",
+   "2026-09-24",
+   "2026-10-03"
+  ],
+  "dates_with_a_clean_url_slug_positive": [
+   "2026-09-20",
+   "2026-09-30",
+   "2026-10-03"
+  ],
+  "dates_excluded_as_self_answering": [
+   "2026-09-27",
+   "2026-09-29"
+  ],
+  "bound_the_screen_cannot_escape": "The archive begins 2026-09-20. Every session before that date is INVISIBLE to this predicate — the artefact floor recorded at analytics/insights.jsonl INSTRUMENT-the-artefact-floor-created-a-second-blind-spot-pointing-the-opposite-way (2026-09-27). The denominator is 11 dated artefacts and 53 calls, NOT this project's session history. A rate computed on it is a rate over the archive, never over the project.",
+  "weakest_of_the_four_dates": "2026-09-30 calls[3] id=S4. Its query is '\"plain packaging\" investment treaty arbitration tribunal award trademark expropriation'. 'plain packaging' is not a party name, so the hit is not self-answering by name — but it IS the seed award's own subject matter, so the hit is weaker than a vocabulary-neutral one, and the artefact carries no title for the row in any event."
+ },
+ "the_sharpest_finding_is_against_this_council": {
+  "statement": "The 2026-09-24 session SAW its seed-award rows and wrote them down with the sign reversed. analytics/daily-research/2026-09-24.md:361 records, verbatim: 'S2 returned the seed corpus and nothing beyond it.' That is a NOVELTY complaint. The same two rows are the instrument's SENSITIVITY SIGNAL, and they are the strongest one in the archive because one call surfaced all three seed awards at title level under a vocabulary query carrying none of their names. The 2026-10-03 record's finding was that nobody looked. The screen shows something worse and more specific: somebody looked, recorded it, and read a positive as a failure.",
+  "carrying_rows": [
+   {
+    "path": "2026-09-24.json calls[1] call_id=S2 results[1]",
+    "title": "Investment disputes, trademarks and licenses, and ICSID tribunals-\"Bridgestone v. Panama\" - The IPKat",
+    "url": "https://ipkitten.blogspot.com/2018/03/investment-disputes-trademarks-and.html"
+   },
+   {
+    "path": "2026-09-24.json calls[1] call_id=S2 results[4]",
+    "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards | ArbitrationLaw.com",
+    "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through"
+   }
+  ],
+  "the_query_that_returned_them": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026",
+  "neither_row_title_was_transcribed_into_that_days_prose": "'Connecting the Dots' = 0 occurrences and 'IPKat' = 0 occurrences in analytics/daily-research/2026-09-24.md, measured at 6fbca0f. The rows exist only in the JSON."
+ },
+ "vocabulary_diversity_of_the_free_evidence": {
+  "finding": "The three clean title-level positives came from THREE DIFFERENT query vocabularies, none carrying a party name.",
+  "2026-09-20": {
+   "vocabulary": "trade-secret / clinical-data",
+   "query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure"
+  },
+  "2026-09-24": {
+   "vocabulary": "registered-IP (patent/trademark), recency-anchored",
+   "query": "ICSID tribunal intellectual property patent trademark covered investment jurisdiction decision September 2026"
+  },
+  "2026-10-03": {
+   "vocabulary": "the live-arm template, asset slot and date window substituted",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014"
+  },
+  "why_this_matters_more_than_the_paid_control": "Vocabulary-diverse hits do not depend on one call's stochastic draw. After today's 2/3 series, the FREE archive evidence is the STRONGER leg of the sensitivity case and the PAID single-firing control is the weaker leg. That inversion was not designed and is reported as it fell out.",
+  "the_bound_that_still_holds_and_is_not_relaxed": "All three positives are the SAME CASE CLASS: a registered patent right, publicly registered and ordinarily reported, and all three carriers are SECONDARY COMMENTARY, not a register, docket, notice or filing. Nothing here is a floor for a secrecy-defined asset."
+ },
+ "the_trade_secret_floor_is_not_merely_unmeasured": {
+  "proposition": "A sensitivity control requires a KNOWN POSITIVE. STATE_OF_THE_ANSWER.md section II asserts that no publicly known ISDS case has pharmaceutical trade secrets or clinical-trial data as the primary covered investment. If that sentence is true there is no known positive in the asset class, so NO sensitivity control for the trade-secret population can be constructed by this council at all. The floor is therefore UNMEASURABLE by this method, not merely unmeasured — and section II bound (3a)/(3d) says 'no floor' and 'unmeasured', which is weaker than the truth.",
+  "consequence": "The project's central negative can never be upgraded on the search track by firing more controls, however many. Only a primary-register interface — the section IV.2 limit (ii) gap — can move it.",
+  "the_nearest_constructible_proxy_NOT_FIRED_TODAY": "Les Laboratoires Servier and ors v Republic of Poland (Award, 14 February 2012, published only in redacted form), carried at analytics/locked_set/VALIDATION_RECORD.md:289 as candidate row 1-02. Its Ring-1 asset is pleaded as pharmaceutical MARKETING AUTHORISATIONS — a regulatory-dossier asset, nearer the clinical-data end than a patent — and it has the secrecy property, being published only redacted. The archive screen shows Servier has only ever been retrieved here by a SELF-ANSWERING name-key query (2026-09-29 calls[3] id=S4, query '\"Les Laboratoires Servier\" Poland UNCITRAL award 2012 marketing authorisation investment treaty case'), so it has NEVER been shown recoverable from a vocabulary query. A vocabulary-only Servier control is constructible and is a PROPOSAL FOR THE CHAIRMAN, NOT A CALL THIS SEAT FIRED: after the 2/3 series, a single-call control cannot measure anything, and firing one would repeat today's error one day later."
+ },
+ "reprint_channel": {
+  "enabler_restated": "An author name enters this record from a returned ROW TITLE or not at all.",
+  "method_refinement_this_seat_proposes": "The enabler is a HOST TITLE CONVENTION, not a query token. 2026-10-03 spent three of five non-control calls on 'author'/'pdf' tokens against publishers and harvested one name in three; the one that worked was an SSRN row whose page title is literally '<Title> by <Author> :: SSRN'. Today's two calls aimed at the convention and returned FOUR author-bearing row titles across two calls. THREE host classes carry the author at row level: SSRN ('<Title> by <Author> :: SSRN'), institutional thesis repositories ('<Surname>, <Forename> (<Year>) <Title>'), and firm/blog reprints. Publishers — Oxford Academic, Cambridge Core — carry NONE.",
+  "null_on_both_named_targets": {
+   "queue_target_3": {
+    "document": "Judicial Expropriation, ICSID Review 39(3) 452",
+    "result": "NO author name in any returned row title. THIRD consecutive query form to fail at this enabler (2026-10-03 C4, 2026-10-03 C6, today C3). The null is at the ENABLER, not the deliverable, and is not evidence that no open copy exists."
+   },
+   "queue_target_2": {
+    "document": "Judicial Expropriation in International Investment Law (ICLQ / Cambridge Core)",
+    "result": "NO author name in any returned row title. AND the target's own Cambridge publisher row, which returned at 2026-10-03 C4 r0, did not return at all on this firing — a second, independent instance of today's non-determinism finding."
+   }
+  },
+  "locators_obtained_NOT_the_ones_asked_for": [
+   {
+    "title_of_row": "Judicial Expropriation or Denial of Justice? A Note on Saipem v. Bangladesh by Mavluda Sattorova :: SSRN",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1632349",
+    "host_class": "SSRN, non-publisher, open landing page",
+    "author_at_row_level": "Mavluda Sattorova — FROM THE ROW TITLE, not from any synthesis",
+    "call": "C3",
+    "access_signal": "Row returned. Reachability UNTESTED. Body unread. Nothing asserted about contents.",
+    "why_it_matters": "Saipem had exactly ONE carrier in the tracked tree at 6fbca0f and that carrier is a REFUSAL: analytics/daily-research/2026-10-01.md quarantined a Saipem synthesis and recorded at :484 that 'a reader may think a judicial-expropriation corpus memo that never names the doctrine's apparently leading case is oddly shaped'. This council now holds an openly-hosted scholarly locator for that case with a named author, at title level, body unread."
+   },
+   {
+    "title_of_row": "Extricating the Illegality Requirement from Judicial Expropriation by Martin Jarrett :: SSRN",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3743971",
+    "host_class": "SSRN, non-publisher, open landing page",
+    "author_at_row_level": "Martin Jarrett — FROM THE ROW TITLE",
+    "call": "C3 and C4 (returned on both)",
+    "access_signal": "Row returned. Reachability UNTESTED. Body unread.",
+    "prior_art": "Jarrett 0 files / 0 files cs/ci at 6fbca0f, unit FILES, whole tracked tree.",
+    "explicit_non_inference": "THIS SEAT DOES NOT AND MAY NOT INFER THAT JARRETT IS THE AUTHOR OF EITHER WALLED TARGET. No row title attributes either target to him. The hypothesis is named only so a successor tests it at row level instead of assuming it."
+   },
+   {
+    "title_of_row": "The Boundaries of Regulatory Expropriation in International Law by Andrew Newcombe :: SSRN",
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=703244",
+    "host_class": "SSRN, non-publisher, open landing page",
+    "author_at_row_level": "Andrew Newcombe — FROM THE ROW TITLE",
+    "call": "C4",
+    "access_signal": "Row returned. Reachability UNTESTED. Body unread.",
+    "prior_art": "Newcombe 0 files / 0 files cs/ci at 6fbca0f."
+   },
+   {
+    "title_of_row": "Winters, Kevin (2015) Indirect and regulatory expropriation ...",
+    "url": "https://theses.gla.ac.uk/6177/1/2015wintersllm.pdf",
+    "host_class": "university thesis repository, open institutional host — a THIRD author-at-row-level convention, new to this record",
+    "author_at_row_level": "Kevin Winters — FROM THE ROW TITLE",
+    "call": "C4",
+    "access_signal": "Row returned. Reachability UNTESTED. Body unread.",
+    "prior_art": "theses.gla.ac.uk 0 files / 0 files cs/ci at 6fbca0f."
+   }
+  ],
+  "relevance_honesty_the_screen_nobody_asked_for": "Screened on the merits, at 6fbca0f, over both founding memos: 'judicial expropriation' = 0 occurrences in lit-review/ferguson-memo.md and 0 in lit-review/kim-memo.md, in both cases; 'Saipem' = 0 and 0. The four-target doctrinal retrieval queue this council has worked for three consecutive sessions is a doctrinal line that NEITHER FOUNDING MEMO NAMES. 'denial of justice' returns 1 occurrence in ferguson-memo.md, at :177, and that occurrence annotates the H&H v Egypt fork-in-the-road jurisdictional objection — Ring 3 — not the judicial-expropriation doctrine or the judicial-measure limb of Ring 2. The nexus between this queue and the Ferguson/Kim framework is therefore NOT established anywhere in the record this seat can read. That is reported as a thin nexus, not manufactured into a finding, and it is a question for the chairman."
+ },
+ "engine_syntheses_refused_and_quarantined_by_name": [
+  {
+   "id": "Q-1004-S1",
+   "call": "C1",
+   "offered": "2013-2014 investment-dispute data including a 'CIS Investor Rights Convention' and bilateral investment treaties; EU suits against China for ineffective IPR protection in international investment arbitration bodies; an Indian Supreme Court rejection on 1 April 2013 of a Novartis appeal to patent a modified Glivec (imatinib mesylate); Canadian 1998-2008 averages of 54 notices of application and 41 court applications per annum.",
+   "disposition": "REFUSED IN FULL. No returned row title carries any of it, no body was opened. It does NOT name Eli Lilly, so the 'synthesis names it' FAIL branch does not even arise; C1 is a clean, unambiguous FAIL."
+  },
+  {
+   "id": "Q-1004-S2",
+   "call": "C2",
+   "offered": "An entire narrative of the known positive: Eli Lilly initiating NAFTA proceedings in November 2012; invalidation of a Zyprexa patent affirmed by the Federal Court of Appeal; a second notice of intent claiming CAD 500 million in June 2013; a 'promise doctrine'; and the characterisation 'first attempt by a patent-holding pharmaceutical corporation to use the investor-state arbitration regime'. It also REPEATS the Uruguay pharmacy-sector ownership-concentration claim already quarantined as Q-1002-S1.",
+   "disposition": "REFUSED IN FULL. The C2 PASS rests on the ROW TITLE at R-1004-015 and on nothing in this synthesis. A repeated engine offer stays at ZERO weight: the Uruguay claim returned twice is one unverified attribution returned twice, not two sources."
+  },
+  {
+   "id": "Q-1004-S3",
+   "call": "C3",
+   "offered": "That the ICSID Review article 'Judicial Expropriation' sits at Volume 39, Issue 3, Fall 2024, pages 452-466, published 9 September 2024. Also an availability-adjacent statement that the results did not identify an SSRN working paper with author information for it.",
+   "disposition": "REFUSED. The page range 452-466 and the 9 September 2024 date are engine prose about an unopened page. The enabler null is recorded on this seat's OWN screen of the row titles, not on the synthesis's say-so."
+  },
+  {
+   "id": "Q-1004-S4",
+   "call": "C4",
+   "offered": "Jarrett attribution detail — 7 December 2020, 'Max Planck Institute for Comparative Public Law & International Law (MPIL) Research Paper No. 2020-50' — an abstract summary, a keyword list, and an apparent VERBATIM QUOTATION ('Judicial expropriation is the snow leopard of international investment law. Apparently it exists, but it is almost impossible to find.') plus 'last spotted back in 2009 in Saipem v Bangladesh'.",
+   "disposition": "REFUSED IN FULL, AND THE PURPORTED QUOTATION IS THE MOST DANGEROUS ITEM IN TODAY'S RETURN. It is engine prose purporting to quote the abstract of a page nobody opened. It is not reproduced as a quotation anywhere in this council's record and must never be. 'snow leopard' = 0 files / 0 files cs/ci at 6fbca0f and this seat does not change that."
+  }
+ ],
+ "prohibited_and_non_allowlisted_rows_transcribed_asserted_from_nothing": {
+  "www.italaw.com": "ONE row at C2 (R-1004-013, 'Under the Arbitration Rules of the', https://www.italaw.com/sites/default/files/case-documents/italaw4046.pdf). Transcribed because the record requires every returned row. NOTHING cited, asserted or inferred. The standing prohibition is unreleased. The identical URL returned at 2026-10-03 C1.",
+  "unctad.org (bare)": "ONE row at C4 (R-1004-035, 'EXPROPRIATION: A SEQUEL', https://unctad.org/system/files/official-document/unctaddiaeia2011d7_en.pdf). The standing rule forbids FIRING at the host and ASSERTING from a bare unctad.org row; it does not and cannot forbid the host returning one unbidden. Transcribed; nothing asserted.",
+  "investmentpolicy.unctad.org": "zero rows; not re-fired.",
+  "pcacases.com": "blocked on all four calls; zero rows.",
+  "www.bing.com": "blocked on all four calls; zero rows.",
+  "dailyjus.com": "blocked on all four calls; zero rows. Carried at zero search budget.",
+  "unis.unvienna.org": "blocked on all four calls; zero rows. Carried at zero search budget.",
+  "www.linkedin.com": "ONE row at C4 (R-1004-033). Not allowlisted. Transcribed; nothing asserted.",
+  "passport.law.columbia.edu": "ONE row at C4 (R-1004-036), a tokenised retrieval URL. Not allowlisted. Transcribed; nothing asserted; the token is reproduced verbatim as returned and is not exercised."
+ },
+ "standing_prohibitions_touched": {
+  "Vadi": "The Vadi citation returned again at R-1004-010 (C2 row 1). NOTHING is asserted from it. It is never cited without retrieval.",
+  "Kriebaum": "Not screened as a subject today. Noted only to carry forward that its 4 carriers at 6fbca0f are REFUSALS, not acceptances.",
+  "Saipem": "Its single carrier at 6fbca0f is a REFUSAL (2026-10-01). Today adds a LOCATOR at title level and NO assertion about the case, the award or the doctrine.",
+  "C8394": "zero rows today.",
+  "NAFTA Articles 1110 and 1105": "No seat may describe their internal structure and nothing in this artefact does.",
+  "monitored_author_check": "Anthea Roberts — CARRIED AT ZERO SEARCH BUDGET, NOT PERFORMED, and NOT reported as absent.",
+  "escalated_gaps": "zero search budget spent on any."
+ },
+ "row_counts": {
+  "gross_rows": 37,
+  "distinct_urls": 34,
+  "urls_returned_more_than_once": {
+   "https://academic.oup.com/icsidreview/article/39/3/452/7753534": 2,
+   "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3743971": 2,
+   "https://jusmundi.com/en/document/publication/en-judicial-expropriation": 2
+  },
+  "note": "Both units stated; neither used as the other's denominator. Computed in-script, not by hand."
+ },
+ "note_on_own_write": "This file is the twelfth in analytics/search-results/ and its own 4 queries and 37 rows are OUTSIDE every denominator in it. Strings this artefact introduces at 0 files / 0 files cs/ci at 6fbca0f and nonzero after: Jarrett, Newcombe, Winters, theses.gla.ac.uk, 3743971, 703244, 1632349, egregious-investor-state-attacks, snow leopard, Extricating the Illegality Requirement, Boundaries of Regulatory Expropriation, Judicial Expropriation or Denial of Justice, Glivec, PatRe, CDK inhibitors, PMC3073891, PMC3884017, 2601.17631, 2605.03571, investment-treaty-claims-tribunal-round, passport.law.columbia.edu, unctaddiaeia2011d7, linkedin.com/pulse/concept-expropriation, Antibody-drug conjugates, Patented Medicine Notice of Compliance, Q-1004-S1 through Q-1004-S4, R-1004-000 through R-1004-036. THIS ENUMERATION IS CERTAINLY SHORT — the 2026-10-02 and 2026-10-03 enumerations were each short, and that is the honest limit of the technique, not a defect this seat has escaped. And the reflexivity trap bites on Saipem exactly as it bit on Kriebaum: Saipem was at one refusal-carrier and this artefact raises its count, so a successor's screen will read differently.",
+ "calls": [
+  {
+   "id": "C1",
+   "allocation": "THE CONTROL — fired FIRST, pre-registered before its result was known",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "query_provenance": "Byte-identical to analytics/search-results/2026-10-03.json calls[0].query, read by execution (json.load) and not reconstructed from prose. Same string as analytics/daily-research/2026-10-03.md section 2.2.",
+   "mode": "extended",
+   "blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org",
+    "www.bing.com",
+    "pcacases.com"
+   ],
+   "allowed_domains": null,
+   "preregistered_pass_rule": "PASS iff at least one returned ROW TITLE contains the rigid designator 'Eli Lilly' (case-insensitive). A title naming only the respondent 'Canada' is NOT a pass. An engine synthesis naming the case is a FAIL.",
+   "prohibition_check": "String carries no party name, no claimant surname, no docket number, no case number. Verifiable by reading the query field.",
+   "verdict": "FAIL",
+   "eli_lilly_title_hits_cs_ci": [
+    0,
+    0
+   ],
+   "row_count": 10,
+   "row_set_ids": [
+    "R-1004-000",
+    "R-1004-001",
+    "R-1004-002",
+    "R-1004-003",
+    "R-1004-004",
+    "R-1004-005",
+    "R-1004-006",
+    "R-1004-007",
+    "R-1004-008",
+    "R-1004-009"
+   ]
+  },
+  {
+   "id": "C2",
+   "allocation": "CONTROL REPLICATION, firing 3 of 3 — REALLOCATED from live-arm call 1, declared as a deviation",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "query_provenance": "Identical string to C1 and to the 2026-10-03 firing. Parameters identical. This is a replication, not a variant.",
+   "mode": "extended",
+   "blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org",
+    "www.bing.com",
+    "pcacases.com"
+   ],
+   "allowed_domains": null,
+   "preregistered_pass_rule": "Same rule as C1, unchanged.",
+   "prohibition_check": "Same string as C1; same check passes.",
+   "verdict": "PASS",
+   "eli_lilly_title_hits_cs_ci": [
+    1,
+    1
+   ],
+   "row_count": 9,
+   "row_set_ids": [
+    "R-1004-010",
+    "R-1004-011",
+    "R-1004-012",
+    "R-1004-013",
+    "R-1004-014",
+    "R-1004-015",
+    "R-1004-016",
+    "R-1004-017",
+    "R-1004-018"
+   ]
+  },
+  {
+   "id": "C3",
+   "allocation": "REPRINT CHANNEL 1 of 2 — queue target 3 (Judicial Expropriation, ICSID Review 39(3) 452); objective = an AUTHOR NAME recoverable at ROW TITLE level",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "query_provenance": "Written by this seat. Design: aim at the HOST CONVENTION that produced the only author name obtained on 2026-10-03 ('<Title> by <Author> :: SSRN'), not at the publisher, whose row titles were shown on 2026-10-03 (C4 r0, C6 r0) to carry no author.",
+   "mode": "extended",
+   "blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org",
+    "www.bing.com",
+    "pcacases.com"
+   ],
+   "allowed_domains": null,
+   "verdict": "NULL ON THE NAMED TARGET; the channel fired for two DIFFERENT documents",
+   "row_count": 9,
+   "row_set_ids": [
+    "R-1004-019",
+    "R-1004-020",
+    "R-1004-021",
+    "R-1004-022",
+    "R-1004-023",
+    "R-1004-024",
+    "R-1004-025",
+    "R-1004-026",
+    "R-1004-027"
+   ]
+  },
+  {
+   "id": "C4",
+   "allocation": "REPRINT CHANNEL 2 of 2 — queue target 2 (Judicial Expropriation in International Investment Law, ICLQ/Cambridge); same objective",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "query_provenance": "Written by this seat. Same design as C3, with the target's exact title as the phrase anchor.",
+   "mode": "extended",
+   "blocked_domains": [
+    "dailyjus.com",
+    "unis.unvienna.org",
+    "www.bing.com",
+    "pcacases.com"
+   ],
+   "allowed_domains": null,
+   "verdict": "NULL ON THE NAMED TARGET — and the target's own publisher row did not return at all on this firing",
+   "row_count": 9,
+   "row_set_ids": [
+    "R-1004-028",
+    "R-1004-029",
+    "R-1004-030",
+    "R-1004-031",
+    "R-1004-032",
+    "R-1004-033",
+    "R-1004-034",
+    "R-1004-035",
+    "R-1004-036"
+   ]
+  }
+ ],
+ "row_set": [
+  {
+   "row_id": "R-1004-000",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Investment Disputes and Abnormal Volatility of Stocks",
+   "url": "https://arxiv.org/pdf/2006.10505",
+   "host": "arxiv.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-001",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "The Intellectual Property Protection System of the Foreign Investment Law: Basic Structure, Motivation and Game Logic",
+   "url": "https://arxiv.org/pdf/2106.03467",
+   "host": "arxiv.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-002",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Investment treaty claims - tribunal round-up - Global Arbitration Review",
+   "url": "https://globalarbitrationreview.com/article/investment-treaty-claims-tribunal-round",
+   "host": "globalarbitrationreview.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-003",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Representative Litigation Settlement Agreements in Artificial Intelligence Copyright Infringement Disputes: A Comparative Reflection Based on the U.S",
+   "url": "https://arxiv.org/pdf/2601.17631",
+   "host": "arxiv.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-004",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Extension of the term of validity of pharmaceutical patents by lawsuits: effects on centralized procurement and the private market",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11729365/",
+   "host": "www.ncbi.nlm.nih.gov",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-005",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Antibody-drug conjugates and immunotoxins",
+   "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10864278",
+   "host": "image-ppubs.uspto.gov",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-006",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Canada's Patented Medicine Notice of Compliance regulations: balancing the scales or tipping them?",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3073891/",
+   "host": "www.ncbi.nlm.nih.gov",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-007",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "PatRe: A Full-Stage Office Action and Rebuttal Generation Benchmark for Patent Examination",
+   "url": "https://arxiv.org/pdf/2605.03571",
+   "host": "arxiv.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-008",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "CDK inhibitors",
+   "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/9499564",
+   "host": "image-ppubs.uspto.gov",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-009",
+   "call": "C1",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "“To patent or not to patent? the case of Novartis’ cancer drug Glivec in India”",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3884017/",
+   "host": "www.ncbi.nlm.nih.gov",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-010",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+   "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+   "host": "jipel.law.nyu.edu",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-011",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "U.S. Pharmaceutical Corporation Uses NAFTA Foreign ...",
+   "url": "https://www.citizen.org/wp-content/uploads/eli-lilly-investor-state-factsheet.pdf",
+   "host": "www.citizen.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-012",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+   "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+   "host": "www.iisd.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-013",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Under the Arbitration Rules of the",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4046.pdf",
+   "host": "www.italaw.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-014",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration - ARIA - Vol. 29, No. 3",
+   "url": "https://arbitrationlaw.com/library/not-patently-investment-enforcing-intellectual-property-claims-investment-arbitration-aria",
+   "host": "arbitrationlaw.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-015",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study",
+   "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+   "host": "www.iisd.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-016",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Case Studies: Investor-State Attacks on Public Interest Policies",
+   "url": "https://www.citizen.org/wp-content/uploads/egregious-investor-state-attacks-case-studies_4.pdf",
+   "host": "www.citizen.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-017",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+   "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+   "host": "www.whitecase.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-018",
+   "call": "C2",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"pharmaceutical patents\" OR \"patent invalidation\" arbitration 2013 OR 2014",
+   "title": "ROUNDTABLE: Resolving patent disputes — Financier Worldwide",
+   "url": "https://www.financierworldwide.com/roundtable-resolving-patent-disputes-oct15",
+   "host": "www.financierworldwide.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-019",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+   "host": "academic.oup.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-020",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Wiki Note: Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-expropriation",
+   "host": "jusmundi.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-021",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Judicial Expropriation or Denial of Justice? A Note on Saipem v. Bangladesh by Mavluda Sattorova :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1632349",
+   "host": "papers.ssrn.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-022",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Extricating the Illegality Requirement from Judicial Expropriation by Martin Jarrett :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3743971",
+   "host": "papers.ssrn.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-023",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Wiki Note: Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+   "host": "jusmundi.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-024",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Discord Over Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article-abstract/33/2/349/5042841",
+   "host": "academic.oup.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-025",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "ICSID Arbitration on Indirect Expropriation and the Emergence of International Administration Law by Zaheer Anwar :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID3083021_code2670157.pdf?abstractid=3083021&mirid=1",
+   "host": "papers.ssrn.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-026",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Judicial Expropriation in Investor-State Arbitration • Aceris Law",
+   "url": "https://www.acerislaw.com/judicial-expropriation-in-investor-state-arbitration/",
+   "host": "www.acerislaw.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-027",
+   "call": "C3",
+   "query": "\"Judicial Expropriation\" ICSID Review 2024 SSRN abstract working paper by author",
+   "title": "Launching a Universal Standard for Indirect Expropriation",
+   "url": "https://scholarlycommons.law.case.edu/cgi/viewcontent.cgi?article=2709&context=jil",
+   "host": "scholarlycommons.law.case.edu",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-028",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Extricating the Illegality Requirement from Judicial Expropriation by Martin Jarrett :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3743971",
+   "host": "papers.ssrn.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-029",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "The Boundaries of Regulatory Expropriation in International Law by Andrew Newcombe :: SSRN",
+   "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=703244",
+   "host": "papers.ssrn.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-030",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation-1",
+   "host": "jusmundi.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-031",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Judicial Expropriation",
+   "url": "https://academic.oup.com/icsidreview/article/39/3/452/7753534",
+   "host": "academic.oup.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-032",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Wiki Note: Judicial Expropriation",
+   "url": "https://jusmundi.com/en/document/publication/en-judicial-expropriation",
+   "host": "jusmundi.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-033",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "THE CONCEPT OF EXPROPRIATION IN INTERNATIONAL INVESTMENT LAW",
+   "url": "https://www.linkedin.com/pulse/concept-expropriation-international-investment-law",
+   "host": "www.linkedin.com",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-034",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Winters, Kevin (2015) Indirect and regulatory expropriation ...",
+   "url": "https://theses.gla.ac.uk/6177/1/2015wintersllm.pdf",
+   "host": "theses.gla.ac.uk",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-035",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "EXPROPRIATION: A SEQUEL",
+   "url": "https://unctad.org/system/files/official-document/unctaddiaeia2011d7_en.pdf",
+   "host": "unctad.org",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  },
+  {
+   "row_id": "R-1004-036",
+   "call": "C4",
+   "query": "\"Judicial Expropriation in International Investment Law\" SSRN abstract by author repository preprint",
+   "title": "Document information Publication Introduction to Investor- State Arbitration",
+   "url": "https://passport.law.columbia.edu/_customtags/ct_DocumentRetrieve.cfm?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXlsb2FkIjp7InRpbWVzdGFtcCI6IjIwMjItMDctMTJUMTY6Mjc6NTkiLCJleHBpcmVMaW5rIjpmYWxzZSwiZmlsZUlkIjoyMTI4M319.kXDLx_fNzu013GYVNXb1gP4mEVVELcEVBxxjHwztIKg",
+   "host": "passport.law.columbia.edu",
+   "retrieved_body": false,
+   "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
+  }
+ ],
+ "pinpoint_resolution_note": "Every row_id cited in this artefact's prose fields was resolved INTO THE FILE AS WRITTEN, by json.load plus lookup, before the citation was filed — never against the building script or the structure the author believed he wrote. THREE citations were WRONG on first write and all three were caught by that execution: the C2 PASS row (written R-1004-014, is R-1004-015), the www.italaw.com row (written R-1004-012, is R-1004-013) and the Vadi row (written R-1004-009, is R-1004-010). The check cost one json.load and three lookups. This is the 2026-10-03 next step 3 firing on its author, and it is reported because a check only reported when it finds nothing is indistinguishable from a check nobody ran."
+}

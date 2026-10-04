@@ -57,6 +57,20 @@ setting**, which is why four observations have produced no convergence and why n
 definition would produce one either. The Model line stays as written, for the fourth time and the
 same reason. [[Workflow Threads]] **D6**.
 
+⚑ **Re-observed a fifth time 2026-10-04, and this time it is recorded as settled rather than
+re-escalated.** `configured_model` = **`claude-opus-5`**, `session_context.model` =
+**`claude-opus-5`**, `external_metadata.last_served_model` = **`claude-opus-5`**, with
+`origin: scheduled_trigger` — read from the runtime this session, not carried.
+`git log d511280..b773cf1 -- .claude/agents/ src/models.py` returns **no commit** across 65
+commits. **The 2026-10-01 observation explained why this will never converge, and that explanation
+is the resolution:** the declaration and the runtime read different settings, so the disagreement
+is not drift and no edit to either surface would close it. Five observations have produced five
+identical readings. **This item should be read as documented-and-closed, not as a live
+escalation** — it is carried below for information only, and this seat will stop re-testing it
+every session unless `.claude/agents/` or `src/models.py` changes. The Model line stays as
+written: editing it to `claude-opus-5` would ratify a substitution nobody authorised, and the
+line states the operator's directive of 2026-08-03 (`939deaa`). [[Workflow Threads]] **D6**.
+
 This makes the seat the **second independent confirmation** of the discrepancy
 [[integrity-officer]] has self-reported four times (2026-08-12, 08-14, 08-15, 08-16), and it
 closes the question of whether that seat's report was peculiar to it: it is not. Five seats are
@@ -99,9 +113,16 @@ rules written into its definition:
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Four rules this seat adopted from four separate failures. The first three are one rule in three
+Five rules this seat adopted from five separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
-the same scepticism on this seat's own carried records:
+the same scepticism on this seat's own carried records, and the fifth is the fourth again,
+because it did not generalise either.
+
+> **Count corrected 2026-10-04.** This sentence read "Four rules … from four separate failures"
+> while five were listed below it: rule 5 was appended by `2e2e38b` (2026-10-01) and the lead
+> sentence was not re-counted in the same change set. The rules themselves are unaltered. The
+> defect is this seat's own and is the smallest possible instance of rule 4 — a carried
+> description that stopped matching the artefact it describes.
 
 1. **2026-08-16** — *A guard's exit 0 licenses only the claim the guard actually tests.* Learned
    when this seat wrote "no model drift exists" on the strength of `check_models.py` exiting 0,
@@ -637,18 +658,57 @@ see item 2 of the 2026-08-03 slice.)*
 
 ## Change log
 
-> **This log skips 2026-08-28 and 2026-09-01, and the gap is itself the record. Noted
-> 2026-09-04.** The 2026-08-28 session's entry for this note exists — it is 32 of the 676
-> insertions still sitting on `origin/vault/archivist-2026-08-28` (`de73f9f`), PR **#110**, open
-> since 2026-08-28 and now at **day seven**. The 2026-09-01 session declined to cherry-pick those
-> edits, correctly: they are live statements about a repository that had moved 118 commits, and
-> re-deriving beats importing. But it also did not write its own entry here. So this seat's own
-> memory of its last two deployments lives in `analytics/vault-sessions/2026-08-28.md` and
-> `2026-09-01.md` — both on `main`, both readable — and **not in the note a future archivist
-> reads first**. That is a small instance of exactly the defect this seat exists to catch, and it
-> is named rather than quietly backfilled: the two session records are the source of truth for
-> those dates, and the entry below resumes the log.
+> **GAP CLOSED 2026-10-04 by re-derivation, not by import — and the note below is kept as the
+> record of why it was open for thirty-seven days.** The two missing entries are written in at
+> the foot of this log, sourced from the session records on `main`
+> (`analytics/vault-sessions/2026-08-28.md`, 350 lines; `2026-09-01.md`, 214 lines) rather than
+> cherry-picked from `origin/vault/archivist-2026-08-28`. That branch's note edits are now
+> **thirty-seven days and ~1,600 commits** stale, so importing them would re-assert live
+> statements about a repository that no longer exists. **The 2026-09-01 session's judgement that
+> re-deriving beats importing was right; what it missed was that re-deriving still has to
+> actually happen.** Declining to import is not the same act as closing the gap, and for twelve
+> sessions this log recorded the first as though it were the second.
+>
+> *Original note, 2026-09-04, preserved unedited:* The 2026-08-28 session's entry for this note
+> exists — it is 32 of the 676 insertions still sitting on `origin/vault/archivist-2026-08-28`
+> (`de73f9f`), PR **#110**, open since 2026-08-28 and now at **day seven**. The 2026-09-01
+> session declined to cherry-pick those edits, correctly: they are live statements about a
+> repository that had moved 118 commits, and re-deriving beats importing. But it also did not
+> write its own entry here. So this seat's own memory of its last two deployments lives in
+> `analytics/vault-sessions/2026-08-28.md` and `2026-09-01.md` — both on `main`, both readable —
+> and **not in the note a future archivist reads first**. That is a small instance of exactly the
+> defect this seat exists to catch, and it is named rather than quietly backfilled: the two
+> session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-10-04 (twenty-second deployment)** — Standing every-3-days session, audited against
+  `b773cf1` (`main`), complete **1,772**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **135**, the **fourteenth consecutive** session. Window `d511280..b773cf1` =
+  **65** commits, three days. Cadence held. **Zero commits to `.claude/agents/`, `prompts/`,
+  `src/models.py`, `src/`, `scripts/`, `tests/`, `.github/`, `docs/`, `views/`, `METHODOLOGY.md`,
+  `README.md`, `HANDOFF.md` or `COUNCIL.md` — the sixth consecutive session with no contract
+  drift**; `check_models.py` exit **0** over 12 cards, `check_site_sync.py` exit **0**,
+  `check_currency.py` **9 claims / 1 failed** (the one a `[skip ci]` intake commit, cleared by
+  `reanchor.yml` on merge). **The session's substantive finding is against [[Workflow Threads]]
+  F1 and it reframes that thread rather than re-reporting it:** the operator's `operator_rejected`
+  mark on claim `7dd2f272f130…`, made 2026-07-27 and still stranded on
+  `origin/chore/operator-marks-2026-07-27` (`6f9e1da`), rejected the *Hela Schwarz* disposition
+  framing as IAReporter title-mining **twenty-seven days before the council re-derived the same
+  defect independently** as `0823-B8` — a repair that then took three further sessions and six
+  instances (`0823-B8`, `0824-B1`, `0825-B1`). `src/integrity_gate.py:155-157` drops an
+  `operator_rejected` claim from every asserted section, and `prompts/research_analyst.txt:191`
+  makes the ledger — not the seat — the decider of what may be asserted, so the mark was
+  load-bearing where it never arrived. **Own drift fixed:** the adopted-method-rules lead sentence
+  read "Four rules" against five listed (rule 5 added by `2e2e38b`, lead not re-counted); and the
+  change-log gap for 2026-08-28 and 2026-09-01, open **thirty-seven days**, closed by
+  re-derivation from the two landed session records. **D6 recorded as documented-and-closed** on a
+  fifth identical reading. **D20 re-measured and it is worse than carried:** `pipeline-guards`
+  red for **50 consecutive runs** on `main`, last green run **199** (`529e32d`, 2026-09-14), and
+  **six** pinned constants are stale in `tests/test_site_claims.py`, not the three a
+  short-circuiting assert reveals. **D24 reproduced** — `check_site_sync.py` left 24 `docs/` files
+  dirty in this very session; diff confirmed stamp-only and the tree restored before staging.
+  *Audited against `b773cf1`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `analytics/`, `scripts/`, `tests/`, `docs/`, `views/isds-workflow-3d/workflow.json`.*
 - **2026-10-01 (twenty-first deployment)** — Standing every-3-days session, audited against
   `d511280` (`main`), complete **1,707**-commit history after `git fetch --unshallow`; the clone
   arrived shallow at **119**, the **thirteenth consecutive** session. Window `50482a4..d511280` =
@@ -871,6 +931,40 @@ see item 2 of the 2026-08-03 slice.)*
   `HANDOFF.md`, `docs/`, `scripts/site_templates/`, `state/council_log.json`, and every remote
   branch tip.*
 
+- **2026-09-01 (twelfth deployment)** — *Written 2026-10-04 by re-derivation from
+  `analytics/vault-sessions/2026-09-01.md` (214 lines, on `main`); not contemporaneous, and
+  marked so.* Standing every-3-days session. **Its headline was this seat's own failure:** the
+  2026-08-28 session had never landed, and the session could not land it — every archivist PR was
+  unmergeable by the archivist, filed as [[Workflow Threads]] **D11**. It declined to cherry-pick
+  the stranded note edits as live statements about a repository that had moved 118 commits, on the
+  reasoning that re-deriving beats importing — the judgement this log now acts on. Second finding,
+  **D10**: the currency anchor had stopped meaning "audited" and the staleness query was reporting
+  clean by construction. Agent-context audit clean, checked three independent ways —
+  `check_models.py` exit **0** over 12 cards, all nine definitions declaring `model: opus`, each
+  definition's "Runs on" prose matching its vault note seat by seat, `src/models.py` unchanged.
+  **D5** carried unchanged at nineteen days. **F1** carried at thirty-six days.
+- **2026-08-28 (twelfth-by-count, eleventh-by-this-log deployment)** — *Written 2026-10-04 by
+  re-derivation from `analytics/vault-sessions/2026-08-28.md` (350 lines, on `main`); not
+  contemporaneous, and marked so. The contemporaneous edits to this note remain unlanded on
+  `origin/vault/archivist-2026-08-28` (`de73f9f`, PR #110) and were deliberately not imported.*
+  Standing every-3-days session, audited against `b7d973d`. **The one piece of good news this
+  seat had been unable to write for ten days:** `pipeline-guards` green on `main`, ending a
+  **seventeen**-run red streak, fixed by `scripts/reanchor.py` (`a8bccbb`) and its CI wiring
+  (`93a69f7`). **Principal finding — a rule binding on two seats cited a file that has never
+  existed in this repository** (the **D10** record). **Thirteen "(uncommitted)" citations audited
+  across this seat's own surfaces; twelve were stale by seventeen days** — all had landed at
+  `667772c` (2026-08-11), with `.github/workflows/pipeline-guards.yml` last touched at `e8931ac`;
+  corrected in place at `agents/Agent Registry.md:430,431,433` and [[Workflow Threads]] C13, C14,
+  B6, B7, **one at a time**, because the thirteenth was the file that never existed and a blanket
+  replacement would have converted a stale-but-honest annotation into a false one. **Three thread
+  IDs found ambiguous** (`B5`, `C11`, `C12` each heading two threads; [[Claim Map]] running a
+  third `C11`); a disambiguation table added and the IDs **deliberately not renumbered**, since
+  renumbering would silently break every inbound citation. **D9 sharpened by measurement:** all
+  **35** unresolvable backticked hex tokens across the tracked notes read correctly in context, so
+  a naive bare-sha guard would fire 35 false positives — implement against citation modality, not
+  against every hex token. PR **#110** deliberately left unmerged, with the reason recorded in the
+  session file (`4135fd8`): `reanchor.yml` had pushed a `STATE_OF_THE_ANSWER.md`-only commit onto
+  the branch, outside this seat's record-path merge scope.
 - **2026-08-25 (eleventh deployment)** — Standing every-3-days session, audited against
   `ad66a96` (`main`, clean tree, complete history — 804 commits after `git fetch --unshallow`;
   the clone arrived shallow at 188 for the third consecutive session). **Cadence recovered:

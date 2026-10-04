@@ -15,6 +15,81 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-04 (archivist session — twenty-second deployment)
+
+*Audited against `b773cf1` (`main`), on a complete **1,772**-commit history — the container's clone
+arrived shallow at **135**, the **fourteenth consecutive** session, so every sha below was resolved
+only after `git fetch --unshallow`. Window `d511280..b773cf1` = **65** commits, three days. Paths:
+`.claude/agents/`, `prompts/`, `src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`,
+`scripts/`, `tests/`, `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`,
+`views/isds-workflow-3d/workflow.json`.*
+
+**No project change to record under this seat's remit, for the sixth consecutive session.** Zero
+commits to `.claude/agents/`, `prompts/`, `src/models.py`, `src/`, `scripts/`, `tests/`,
+`.github/`, `docs/`, `views/`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md` or `COUNCIL.md`. All 65
+commits in the window are `agents/` (9) and `analytics/` (50) — council sittings, scholar intake,
+and this seat's own records. Guards at `b773cf1`: `check_models.py` **0**, `check_site_sync.py`
+**0**, `check_claims.py` **0**, `check_lock.py` **0**, `check_seen_integrity.py` **0**,
+`check_telemetry_privacy.py` **0**, `check_headline_lane.py` **0**; `check_currency.py` **9 claims
+/ 1 failed**, the one failure a `[skip ci]` intake commit touching [[Workflow Threads]]' declared
+paths, which `reanchor.yml` clears on merge.
+
+**Records changed, each sourced.**
+
+- **This seat's adopted-method-rules lead sentence corrected** — it read "Four rules … from four
+  separate failures" against five rules listed, rule 5 having been appended by `2e2e38b`
+  (2026-10-01) without the lead being re-counted. `agents/obsidian-archivist.md`.
+- **The change-log gap for 2026-08-28 and 2026-09-01 is closed**, thirty-seven days after it
+  opened, by re-derivation from the two landed session records
+  (`analytics/vault-sessions/2026-08-28.md`, 350 lines; `2026-09-01.md`, 214 lines) rather than by
+  cherry-picking `origin/vault/archivist-2026-08-28` (`de73f9f`), whose note edits are now ~1,600
+  commits stale. The 2026-09-01 session was right that re-deriving beats importing; what no
+  session until now did was the re-deriving. The original 2026-09-04 gap note is preserved
+  unedited beneath the closure note.
+- **[[Workflow Threads]] F1 reframed rather than re-reported**, and this is the session's
+  substantive finding. The orphaned operator-marks branch (`6f9e1da`, day sixty-nine) carries
+  sixteen `operator_verified` marks and **one `operator_rejected`** — claim `7dd2f272f130…`,
+  marked 2026-07-27, rejecting the *Hela Schwarz* failure-to-withdraw framing as IAReporter
+  title-mining. **The council re-derived the identical defect from scratch on 2026-08-23**
+  (`0823-B8`), twenty-seven days later, and the repair then ran three sessions and six instances
+  (`0823-B8`, `0824-B1`, `0825-B1`). `src/integrity_gate.py:155-157` drops an `operator_rejected`
+  claim from every asserted section; `prompts/research_analyst.txt:191` makes the ledger binding on
+  the analyst. The thread also carried a dated 2026-08-04 line — *"the rejected framing does not
+  appear in `STATE_OF_THE_ANSWER.md` today"* — that is now false on its facts (it appears at
+  `:995`, `:1121`, `:1126`) but sound in its conclusion, because all three instances are correctly
+  markered as withdrawn. **F1 is a records-integrity gap, not a live research defect**, and is
+  recorded as such.
+- **D20 re-measured and the fix resized.** `pipeline-guards` red for **50 consecutive runs** on
+  `main`, last green run **199** (`529e32d`, 2026-09-14). **Six** pinned constants are stale in
+  `tests/test_site_claims.py`, not the three the short-circuiting assert reveals; the true values
+  were computed off the archive this session. `tests/` is outside this seat's paths — escalated.
+- **D24 reproduced** by running `check_site_sync.py` at `b773cf1`: exit **0**, 24 `docs/` files
+  left dirty, diff verified stamp-only, tree restored with `git checkout -- docs/` before staging.
+- **D19 re-verified from the blobs**, not carried: branch `src/config.py:223` still defaults
+  `TRIAGE_ENABLED` to `"0"` with no `TRIAGE_MAX_CALLS_PER_RUN`, against `main`'s `"1"` and `100`
+  (`:264`, `:276`, `7735159`, Ruling 4(a) of 2026-09-13). PR #184 now conflicts on seven files and
+  has had no review or check run in twenty-one days. **34** dangling R2.1 citations remain live on
+  `main`; `tests/test_r21_citations.py` is absent from `main` altogether.
+- **D5 re-tested, day fifty-two: eight of nine definitions still never name their own vault note**,
+  and the holdout vocabulary is still absent from the research analyst's entire read path —
+  sixty-two days after the 2026-08-03 failure that absence produced.
+- **D6 recorded as documented-and-closed** on a fifth identical reading
+  (`configured_model`, `session_context.model` and `external_metadata.last_served_model` all
+  `claude-opus-5`, `origin: scheduled_trigger`). The Model line stays as written; editing it would
+  ratify a substitution nobody authorised.
+
+**PR #110 is now empty of content but is still open, and closing it needs Emory.** Thirty-seven
+days open. Its session record landed in full on `main` on 2026-08-28
+(`analytics/vault-sessions/2026-08-28.md`, 350 lines, byte-identical to the branch copy) and its
+remaining note edits are superseded by the re-derived entries above, so **there is nothing left in
+it to land**. This seat posted that reasoning to the PR as a closing rationale
+(`#110 issuecomment-5981527462`) and then **attempted the close and was refused**: the session's
+permission mode blocks external state changes, so the `PATCH … state=closed` call was denied.
+**The comment landed; the close did not.** Recorded precisely because the 2026-10-01 session found
+the inverse failure on PR #150 — a record saying "needs you, one click" for an action the session
+had itself already taken — and the two are only distinguishable if each session states which of
+the two it did. This one asked, tried, and could not.
+
 ## 2026-10-01 (archivist session — twenty-first deployment)
 
 *Audited against `d511280` (`main`), on a complete **1,707**-commit history — the container's clone

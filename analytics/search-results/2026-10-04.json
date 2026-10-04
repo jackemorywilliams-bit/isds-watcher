@@ -1104,5 +1104,62 @@
    "access_signal": "A row returned at this URL. Reachability UNTESTED and untestable in this session class. Body unread. Nothing asserted about contents."
   }
  ],
- "pinpoint_resolution_note": "Every row_id cited in this artefact's prose fields was resolved INTO THE FILE AS WRITTEN, by json.load plus lookup, before the citation was filed — never against the building script or the structure the author believed he wrote. THREE citations were WRONG on first write and all three were caught by that execution: the C2 PASS row (written R-1004-014, is R-1004-015), the www.italaw.com row (written R-1004-012, is R-1004-013) and the Vadi row (written R-1004-009, is R-1004-010). The check cost one json.load and three lookups. This is the 2026-10-03 next step 3 firing on its author, and it is reported because a check only reported when it finds nothing is indistinguishable from a check nobody ran."
+ "pinpoint_resolution_note": "Every row_id cited in this artefact's prose fields was resolved INTO THE FILE AS WRITTEN, by json.load plus lookup, before the citation was filed — never against the building script or the structure the author believed he wrote. THREE citations were WRONG on first write and all three were caught by that execution: the C2 PASS row (written R-1004-014, is R-1004-015), the www.italaw.com row (written R-1004-012, is R-1004-013) and the Vadi row (written R-1004-009, is R-1004-010). The check cost one json.load and three lookups. This is the 2026-10-03 next step 3 firing on its author, and it is reported because a check only reported when it finds nothing is indistinguishable from a check nobody ran.",
+ "CORRECTION_1004_C1": {
+  "status": "OBJECTION 1004-C1 CONCEDED IN FULL BY THE SEAT. This block is ADDITIVE: the original figures are left in place at control_replication_series.bimodality.concentration_measured_against_the_archive so the chairman's section 4.3 pinpoints continue to resolve. Nothing is overwritten.",
+  "the_breach": "The off-domain baseline was the one load-bearing figure in the memo whose predicate was declared in PROSE, in the memo that made declare-your-predicate-as-code its own contribution. Three hosts were named; the enumerable list the count ran over was not.",
+  "predicate_WITHDRAWN_as_code": [
+   "arxiv.org",
+   "image-ppubs.uspto.gov",
+   "ncbi.nlm.nih.gov",
+   "pubmed",
+   "cdn.clinicaltrials.gov"
+  ],
+  "predicate_ADOPTED_as_code": [
+   "arxiv.org",
+   "image-ppubs.uspto.gov",
+   "ncbi.nlm.nih.gov"
+  ],
+  "unit": "ROW over the 11 archived files at 6fbca0f, excluding this artefact. HOST-MATCH stated as a pair, never as the other's denominator.",
+  "withdrawn_result": {
+   "rows": 20,
+   "host_matches": 21,
+   "share_pct_of_535": 3.74
+  },
+  "adopted_result": {
+   "rows": 17,
+   "host_matches": 17,
+   "share_pct_of_535": 3.18
+  },
+  "who_is_right": "THE CHAIRMAN. And for a stronger reason than the objection gave: the gap is not a list disagreement, it is a SUBSTANTIVE error. cdn.clinicaltrials.gov is the project's own asset class, and all three divergent rows were returned by the project's own asset-class vocabulary. Classing them 'off-domain' in a project about clinical-trial data as a covered investment was wrong on the merits.",
+  "the_three_rows_named": [
+   {
+    "pinpoint": "2026-09-20.json calls[5] call_id='S6' results[3]",
+    "url": "https://cdn.clinicaltrials.gov/large-docs/91/NCT05309291/Prot_000.pdf",
+    "title": "Theranova Randomized, Controlled, Trial (RCT) in China",
+    "returning_query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure"
+   },
+   {
+    "pinpoint": "2026-09-20.json calls[5] call_id='S6' results[7]",
+    "url": "https://cdn.clinicaltrials.gov/large-docs/04/NCT03287804/Prot_000.pdf",
+    "title": "APRIL CAR T Cells (AUTO2) Targeting BCMA and TACI for the Treatment of Multiple Myeloma",
+    "returning_query": "ISDS clinical trial data trade secrets covered investment expropriation regulatory measure"
+   },
+   {
+    "pinpoint": "2026-09-30.json calls[4] id='S5' results[7]",
+    "url": "https://cdn.clinicaltrials.gov/large-docs/91/NCT05309291/Prot_000.pdf",
+    "title": "(no title field in that artefact)",
+    "returning_query": "\"right in rem\" investment treaty arbitration clinical data trade secret recognition host State domestic law"
+   }
+  ],
+  "bare_pubmed_pattern_also_withdrawn": "The withdrawn list used bare 'pubmed'. It is looser than the chairman's 'pubmed.ncbi.nlm.nih.gov' and on this population both yield the same single double-match on https://pubmed.ncbi.nlm.nih.gov/20431702/. The adopted list drops the pattern entirely as redundant: any URL matching it already matches ncbi.nlm.nih.gov, so the chairman's 18-17=1 is a NECESSARY consequence of listing a subdomain of a pattern already in his list, not an independent corroboration of the structure.",
+  "effect_on_the_finding": "The numerator is untouched: firing 2's 9 off-domain rows contain no cdn.clinicaltrials.gov row. Only the baseline moves, 3.74% to 3.18%, so the concentration moves from 24-fold to 28-fold. THE SEAT DECLINES THE CREDIT: a ratio that grows because its denominator was corrected downward is not more evidence about the instrument. It is the same observation over a smaller, more honest baseline. The seat's error was conservative BY ACCIDENT, not by discipline."
+ },
+ "CORRECTION_1004_C3": {
+  "status": "OBJECTION 1004-C3 ACCEPTED. The generalisation 'three host classes carry the author at row level' is WITHDRAWN and replaced by one tested class, one hypothesis, and one class withdrawn outright.",
+  "firm_blog_class_WITHDRAWN_n_equals_ZERO_not_one": "The memo listed firm/blog reprints as an author-at-row-level convention. Re-executed: the only firm/blog instance in the record is 2026-10-03 C5 row 1, title 'Discord Over Judicial Expropriation' at derainsgharavi.com -- WHICH CARRIES NO AUTHOR. The sole author-bearing row of 2026-10-03 was SSRN ('... by Mavluda Sattorova :: SSRN'). The class is n=0 for this property. The seat was wrong at the CLASS level, not merely under-evidenced, and that is worse than the objection stated.",
+  "SSRN_class_UNDERCOUNTED_by_both_seats": "Re-executed by regex over this artefact's own row_set: FIVE author-bearing SSRN rows, not three -- R-1004-021, -022, -025 (Zaheer Anwar), -028 (the Jarrett duplicate at C4) and -029 -- across FOUR distinct documents today, plus Sattorova/Denial of Justice Disguised from 2026-10-03 = FIVE distinct documents across TWO sessions. The chairman's n=3 and the memo's implicit n=3 are both short by two rows and one document; both are floors, as the memo's own self-carrier confession predicted of enumerations.",
+  "thesis_repository_class": "n=1 document, n=1 session (R-1004-034). A HYPOTHESIS, named so a successor tests it, not relies on it -- the Jarrett form the chairman asked for.",
+  "minimum_evidence_bar_PROPOSED_for_calling_a_host_class_a_convention": "Author-in-row-title rows for >=3 DISTINCT DOCUMENTS across >=2 DISTINCT SESSIONS, with the row count and the document count stated separately because they diverge, AND at least one instance on a document the retrieval queue actually named rather than an adjacent one. SSRN meets limbs 1 and 2 (5 documents, 2 sessions) and FAILS limb 3: every author-bearing row to date is an ADJACENT document, and the channel has returned an author for ZERO of the four named queue targets. Thesis repositories fail all three. Firm/blog fails all three at n=0."
+ }
 }

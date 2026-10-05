@@ -1,0 +1,508 @@
+{
+ "date": "2026-10-05",
+ "seat": "research-analyst",
+ "measured_at_commit": "83ea54e33af353d93cbcdb99209850df1b358b85",
+ "note_on_own_write": "This file is this seat's own artefact and did not exist at the measurement commit; proved by a failing `git cat-file -e 83ea54e:analytics/search-results/2026-10-05.json` (exit 128).",
+ "schema_note": "Conforms to the 2026-10-03 container, which the 2026-10-04 chairman identified as the archive's authoritative convention: authoritative row objects inside calls[i].returned_rows, `query` on the call, `row_set` as a flat index. The 2026-10-04 seat's inverted shape is NOT reproduced. Its proposed remedy was PROPOSED to the operator and built by nobody; nothing here builds it.",
+ "instrument": "WebSearch only. Fetch dead on both instruments, proved on neutral controls before any spend; no HTTP status in this session is a fact about any source, and no success status is a fact about the world.",
+ "budget": {
+  "ceiling": 4,
+  "spent": 3,
+  "handed_back_unspent": 1
+ },
+ "blocked_domains_on_every_call": [
+  "dailyjus.com",
+  "unis.unvienna.org",
+  "www.bing.com",
+  "pcacases.com"
+ ],
+ "allowed_domains_on_any_call": null,
+ "mode_on_every_call": "extended",
+ "pre_registration": {
+  "recorded_before_first_firing": true,
+  "n": 3,
+  "pass_rule": "PASS iff a returned ROW TITLE contains the rigid designator 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+  "date_window": "2012 OR 2013 — ruled by the chairman 2026-10-04 section 7.8(1); not adjustable by this seat.",
+  "designed_by": "the 2026-10-04 research analyst; ruled and carried by the chairman",
+  "the_more_informative_outcome": "0/3 — first direct evidence that sensitivity degrades for a positive carrying the secrecy property."
+ },
+ "row_counts": {
+  "gross": 30,
+  "distinct_urls": 18,
+  "unit_warning": "A GROSS COUNT AND A DISTINCT COUNT ARE TWO UNITS FOR ONE QUANTITY. Both are stated; neither is used as the other's denominator.",
+  "urls_returned_more_than_once": {
+   "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life": 3,
+   "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/": 3,
+   "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf": 3,
+   "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration": 3,
+   "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf": 2,
+   "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad": 3,
+   "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf": 2
+  }
+ },
+ "result": {
+  "k_over_n": "0/3",
+  "verdict": "0/3 FAIL on the pre-registered title predicate",
+  "servier_title_hits_total": 0,
+  "servier_url_slug_hits_total": 0,
+  "predicate": "unit = ROW; SEGMENT BOUNDARY = ONE ROW; title predicate = 'servier' in row['title'].lower(); url predicate = 'servier' in row['url'].lower(); titles and URLs never concatenated; the two predicates reported separately.",
+  "licensed_form": "The template has been observed to return no Servier row title in three firings. NO RATE CLAIM is licensed at this n.",
+  "bound_that_travels": "A marketing authorisation is a granted, publicly notifiable administrative right. This control, pass or fail, is one rung above the patent bound and NO FLOOR WHATEVER for undisclosed test data or trade secrets."
+ },
+ "result_set_stability": {
+  "pairwise_shared_urls": {
+   "S1_S2": 6,
+   "S1_S3": 6,
+   "S2_S3": 5
+  },
+  "urls_in_all_three": 5,
+  "note": "Contrast with 2026-10-04, where two firings of the Eli Lilly template shared ZERO URLs. The per-call stochasticity measured there does NOT reproduce on this template. CUTS AGAINST THIS SEAT'S OWN SERIES: three firings sharing a 5-URL core are not three independent draws."
+ },
+ "prohibited_host_row_screen": {
+  "www.italaw.com": {
+   "rows": 7,
+   "status": "PROHIBITED HOST. Transcribed because the record requires every returned row. Nothing cited, quoted or inferred from any of them."
+  },
+  "icsid.worldbank.org": {
+   "rows": 1,
+   "status": "A party-publication exhibit path under C8394. Transcribed; nothing asserted about that case or that exhibit. C8394 returned zero rows on 2026-10-04."
+  },
+  "investmentpolicy.unctad.org": {
+   "rows": 0,
+   "status": "not re-fired, not returned"
+  },
+  "www.linkedin.com": {
+   "rows": 0
+  },
+  "passport.law.columbia.edu": {
+   "rows": 0
+  }
+ },
+ "engine_syntheses_refused": {
+  "Q-1005-S1": "Call S1's synthesis. Names Servier and attributes to the matter a treaty, a disposition and an outcome. REFUSED AND QUARANTINED IN FULL. Under the pre-registration a synthesis naming Servier is a FAIL, not a pass. Nothing in it is asserted, and no purported body-level wording from it is reproduced anywhere.",
+  "Q-1005-S2": "Call S2's synthesis. Names Servier and assigns the award a calendar date that DIVERGES from the date this project carries at lit-review/ferguson-memo.md:38. Both dates are refused; the divergence is recorded only as a fact about two tool outputs. Also narrates Novartis/Colombia, Apotex and Eli Lilly matters: all refused.",
+  "Q-1005-S3": "Call S3's synthesis. Names Servier and attributes a regulatory cause and an outcome. REFUSED AND QUARANTINED IN FULL. Also narrates an Apotex 'marketing authorizations' characterisation and a Uruguay pharmacy matter: all refused.",
+  "standing_rule": "Nothing may be asserted from an engine synthesis. Three of three firings produced one."
+ },
+ "monitored_author_note": "The monitored-author check (Anthea Roberts) is CARRIED, NOT PERFORMED, and is not reported as absent. Separately and unbidden, S1 returned a row whose URL SLUG carries the surname 'Roberts' (journals.law.harvard.edu/.../Roberts.pdf); the row TITLE names no author. A URL-slug match is a different predicate from a title match. No authorship is asserted; row returned; access untested; body unread. This is NOT a performance of the monitored-author check, which is a query on that author's page.",
+ "row_set": [
+  {
+   "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+   "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+   "call": "S1"
+  },
+  {
+   "title": "The Pharma Industry and Investment Arbitration: What chances for foreign investors?",
+   "url": "https://www.hoganlovells.com/en/publications/the-pharma-industry-and-investment-arbitration-what-chances-for-foreign-investors",
+   "call": "S1"
+  },
+  {
+   "title": "PCA Case No. 2012-12 IN THE MATTER OF AN ARBITRATION",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw7303_0.pdf",
+   "call": "S1"
+  },
+  {
+   "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+   "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+   "call": "S1"
+  },
+  {
+   "title": "Concurrent Investor-State Claims Before Domestic",
+   "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+   "call": "S1"
+  },
+  {
+   "title": "Dentons - Investment Treaty Arbitration",
+   "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+   "call": "S1"
+  },
+  {
+   "title": "PCA Case No. 2013-13",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+   "call": "S1"
+  },
+  {
+   "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+   "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+   "call": "S1"
+  },
+  {
+   "title": "IN THE MATTER OF AN ARBITRATION BEFORE THE INTERNATIONAL",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+   "call": "S1"
+  },
+  {
+   "title": "Volume 55, Number 1, Winter 2014 State-to-State Investment Treaty Arbitration:",
+   "url": "https://journals.law.harvard.edu/ilj/wp-content/uploads/sites/84/Roberts.pdf",
+   "call": "S1"
+  },
+  {
+   "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+   "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+   "call": "S2"
+  },
+  {
+   "title": "(PDF) Big Pharma and Investment Arbitration",
+   "url": "https://www.researchgate.net/publication/357329976_Big_Pharma_and_Investment_Arbitration",
+   "call": "S2"
+  },
+  {
+   "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+   "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+   "call": "S2"
+  },
+  {
+   "title": "Arbitration As A Cure For Pharmaceutical Disputes - Arbitration & Dispute Resolution - India",
+   "url": "https://www.mondaq.com/india/arbitration-dispute-resolution/1365328/arbitration-as-a-cure-for-pharmaceutical-disputes",
+   "call": "S2"
+  },
+  {
+   "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+   "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+   "call": "S2"
+  },
+  {
+   "title": "Concurrent Investor-State Claims Before Domestic",
+   "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+   "call": "S2"
+  },
+  {
+   "title": "Dentons - Investment Treaty Arbitration",
+   "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+   "call": "S2"
+  },
+  {
+   "title": "IN THE MATTER OF AN ARBITRATION BEFORE THE INTERNATIONAL",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+   "call": "S2"
+  },
+  {
+   "title": "IN THE MATTER OF AN AD HOC ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9605.pdf",
+   "call": "S2"
+  },
+  {
+   "title": "McGill Journal of Dispute Resolution Revue de règlement",
+   "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0082.pdf",
+   "call": "S2"
+  },
+  {
+   "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+   "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+   "call": "S3"
+  },
+  {
+   "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3324.pdf",
+   "call": "S3"
+  },
+  {
+   "title": "Cooling Off Period ( Investment Arbitration)",
+   "url": "https://www.mpi.lu/fileadmin/mpi/medien/research/MPEiPro/Cooling_Off_Periods__EiPro_Sample_Entry.pdf",
+   "call": "S3"
+  },
+  {
+   "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+   "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+   "call": "S3"
+  },
+  {
+   "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement",
+   "url": "https://www.congress.gov/crs-product/R43988",
+   "call": "S3"
+  },
+  {
+   "title": "Concurrent Investor-State Claims Before Domestic",
+   "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+   "call": "S3"
+  },
+  {
+   "title": "Dentons - Investment Treaty Arbitration",
+   "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+   "call": "S3"
+  },
+  {
+   "title": "PCA Case No. 2013-13",
+   "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+   "call": "S3"
+  },
+  {
+   "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+   "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+   "call": "S3"
+  },
+  {
+   "title": "Table of Contents",
+   "url": "https://2009-2017.state.gov/documents/organization/211942.pdf",
+   "call": "S3"
+  }
+ ],
+ "calls": [
+  {
+   "id": "S1",
+   "allocation": "the Servier control, pre-registered n=3 series, firing 1 of 3",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"marketing authorisation\" OR \"marketing authorization\" arbitration 2012 OR 2013",
+   "query_provenance": "Fired byte-identically as pre-registered by the 2026-10-04 seat at analytics/daily-research/2026-10-04.md Part 6 section 6.4(6) and ruled by the chairman at that record's section 7.8(1). NOT rebuilt by this seat.",
+   "row_set_indices": [
+    0,
+    9
+   ],
+   "row_count": 10,
+   "servier_title_hits": 0,
+   "servier_url_slug_hits": 0,
+   "verdict": "FAIL",
+   "returned_rows": [
+    {
+     "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+     "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+     "call": "S1"
+    },
+    {
+     "title": "The Pharma Industry and Investment Arbitration: What chances for foreign investors?",
+     "url": "https://www.hoganlovells.com/en/publications/the-pharma-industry-and-investment-arbitration-what-chances-for-foreign-investors",
+     "call": "S1"
+    },
+    {
+     "title": "PCA Case No. 2012-12 IN THE MATTER OF AN ARBITRATION",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw7303_0.pdf",
+     "call": "S1"
+    },
+    {
+     "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+     "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+     "call": "S1"
+    },
+    {
+     "title": "Concurrent Investor-State Claims Before Domestic",
+     "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+     "call": "S1"
+    },
+    {
+     "title": "Dentons - Investment Treaty Arbitration",
+     "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+     "call": "S1"
+    },
+    {
+     "title": "PCA Case No. 2013-13",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+     "call": "S1"
+    },
+    {
+     "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+     "call": "S1"
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION BEFORE THE INTERNATIONAL",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+     "call": "S1"
+    },
+    {
+     "title": "Volume 55, Number 1, Winter 2014 State-to-State Investment Treaty Arbitration:",
+     "url": "https://journals.law.harvard.edu/ilj/wp-content/uploads/sites/84/Roberts.pdf",
+     "call": "S1"
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "allocation": "the Servier control, pre-registered n=3 series, firing 2 of 3",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"marketing authorisation\" OR \"marketing authorization\" arbitration 2012 OR 2013",
+   "query_provenance": "Fired byte-identically as pre-registered by the 2026-10-04 seat at analytics/daily-research/2026-10-04.md Part 6 section 6.4(6) and ruled by the chairman at that record's section 7.8(1). NOT rebuilt by this seat.",
+   "row_set_indices": [
+    10,
+    19
+   ],
+   "row_count": 10,
+   "servier_title_hits": 0,
+   "servier_url_slug_hits": 0,
+   "verdict": "FAIL",
+   "returned_rows": [
+    {
+     "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+     "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+     "call": "S2"
+    },
+    {
+     "title": "(PDF) Big Pharma and Investment Arbitration",
+     "url": "https://www.researchgate.net/publication/357329976_Big_Pharma_and_Investment_Arbitration",
+     "call": "S2"
+    },
+    {
+     "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+     "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+     "call": "S2"
+    },
+    {
+     "title": "Arbitration As A Cure For Pharmaceutical Disputes - Arbitration & Dispute Resolution - India",
+     "url": "https://www.mondaq.com/india/arbitration-dispute-resolution/1365328/arbitration-as-a-cure-for-pharmaceutical-disputes",
+     "call": "S2"
+    },
+    {
+     "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+     "call": "S2"
+    },
+    {
+     "title": "Concurrent Investor-State Claims Before Domestic",
+     "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+     "call": "S2"
+    },
+    {
+     "title": "Dentons - Investment Treaty Arbitration",
+     "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+     "call": "S2"
+    },
+    {
+     "title": "IN THE MATTER OF AN ARBITRATION BEFORE THE INTERNATIONAL",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+     "call": "S2"
+    },
+    {
+     "title": "IN THE MATTER OF AN AD HOC ARBITRATION UNDER THE UNCITRAL ARBITRATION RULES",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw9605.pdf",
+     "call": "S2"
+    },
+    {
+     "title": "McGill Journal of Dispute Resolution Revue de règlement",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0082.pdf",
+     "call": "S2"
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "allocation": "the Servier control, pre-registered n=3 series, firing 3 of 3",
+   "query": "\"notice of dispute\" OR \"investment treaty claim\" pharmaceutical \"marketing authorisation\" OR \"marketing authorization\" arbitration 2012 OR 2013",
+   "query_provenance": "Fired byte-identically as pre-registered by the 2026-10-04 seat at analytics/daily-research/2026-10-04.md Part 6 section 6.4(6) and ruled by the chairman at that record's section 7.8(1). NOT rebuilt by this seat.",
+   "row_set_indices": [
+    20,
+    29
+   ],
+   "row_count": 10,
+   "servier_title_hits": 0,
+   "servier_url_slug_hits": 0,
+   "verdict": "FAIL",
+   "returned_rows": [
+    {
+     "title": "Strong Medicine: Using Investment Treaties to Mitigate Foreign Regulatory Risk in the Life Sciences",
+     "url": "https://www.whitecase.com/insight-alert/strong-medicine-using-investment-treaties-mitigate-foreign-regulatory-risk-life",
+     "call": "S3"
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3324.pdf",
+     "call": "S3"
+    },
+    {
+     "title": "Cooling Off Period ( Investment Arbitration)",
+     "url": "https://www.mpi.lu/fileadmin/mpi/medien/research/MPEiPro/Cooling_Off_Periods__EiPro_Sample_Entry.pdf",
+     "call": "S3"
+    },
+    {
+     "title": "Towards a New Dialectics: Pharmaceutical Patents, Public Health and Foreign Direct Investments",
+     "url": "https://jipel.law.nyu.edu/vol-5-no-1-4-vadi-2/",
+     "call": "S3"
+    },
+    {
+     "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement",
+     "url": "https://www.congress.gov/crs-product/R43988",
+     "call": "S3"
+    },
+    {
+     "title": "Concurrent Investor-State Claims Before Domestic",
+     "url": "https://static1.squarespace.com/static/5f0a3654a47d231c00ccd14f/t/663195915cddf512044d3384/1714525585705/64.3+Nottage+Stendel.pdf",
+     "call": "S3"
+    },
+    {
+     "title": "Dentons - Investment Treaty Arbitration",
+     "url": "https://www.dentons.com/en/find-your-dentons-team/practices/arbitration/investment-treaty-arbitration",
+     "call": "S3"
+    },
+    {
+     "title": "PCA Case No. 2013-13",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+     "call": "S3"
+    },
+    {
+     "title": "Investment Treaty Disputes in the Life Sciences Industry - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=e85b43dd-0074-44ca-8a48-e3274530ecad",
+     "call": "S3"
+    },
+    {
+     "title": "Table of Contents",
+     "url": "https://2009-2017.state.gov/documents/organization/211942.pdf",
+     "call": "S3"
+    }
+   ]
+  }
+ ],
+ "CORRECTION_1005_C1": {
+  "objection": "1005-C1, sustained. The per-call parameters were asserted in the memo's spend table and recorded in this artefact only at top level, so a successor could not verify from the artefact that S3 carried the same parameters as S1 — in the series whose whole authority is its pre-registration.",
+  "remedy": "STRICTLY ADDITIVE. The call objects are NOT mutated: the chairman's section 4.3 prints their key list as evidence and that evidence must stay reproducible. The per-call parameter record is placed here instead.",
+  "per_call_parameters_as_fired": {
+   "S1": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   },
+   "S2": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   },
+   "S3": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   }
+  },
+  "container_note": "The 2026-10-03 container I conformed to LACKS these fields; the 2026-10-04 container HAS them (mode, blocked_domains, allowed_domains, preregistered_pass_rule, prohibition_check). Conforming to the one a prior chair called authoritative silently discarded the evidence for my own premise. The schema proposal should carry a third limb: a pre-registered series records its parameters PER CALL, because a series is an assertion about repetition."
+ },
+ "CORRECTION_1005_C2": {
+  "objection": "1005-C2, sustained. The artefact's own row_counts.unit_warning says a gross count and a distinct count are two units for one quantity; prohibited_host_row_screen then published 'rows: 7' for www.italaw.com with no unit, and the memo repeated it.",
+  "remedy": "Additive. prohibited_host_row_screen is left exactly as written.",
+  "host_screen_with_units": {
+   "www.italaw.com": {
+    "gross_rows": 7,
+    "distinct_urls": 5,
+    "distinct_url_list": [
+     "https://www.italaw.com/sites/default/files/case-documents/italaw7303_0.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw9605.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw3324.pdf"
+    ],
+    "status": "PROHIBITED HOST. Nothing cited, quoted or inferred from any of them."
+   },
+   "icsid.worldbank.org": {
+    "gross_rows": 1,
+    "distinct_urls": 1
+   }
+  }
+ }
+}

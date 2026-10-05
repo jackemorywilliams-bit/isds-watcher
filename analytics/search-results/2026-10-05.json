@@ -436,5 +436,73 @@
     }
    ]
   }
- ]
+ ],
+ "CORRECTION_1005_C1": {
+  "objection": "1005-C1, sustained. The per-call parameters were asserted in the memo's spend table and recorded in this artefact only at top level, so a successor could not verify from the artefact that S3 carried the same parameters as S1 — in the series whose whole authority is its pre-registration.",
+  "remedy": "STRICTLY ADDITIVE. The call objects are NOT mutated: the chairman's section 4.3 prints their key list as evidence and that evidence must stay reproducible. The per-call parameter record is placed here instead.",
+  "per_call_parameters_as_fired": {
+   "S1": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   },
+   "S2": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   },
+   "S3": {
+    "mode": "extended",
+    "blocked_domains": [
+     "dailyjus.com",
+     "unis.unvienna.org",
+     "www.bing.com",
+     "pcacases.com"
+    ],
+    "allowed_domains": null,
+    "preregistered_pass_rule": "PASS iff a returned ROW TITLE contains 'Servier'. A title naming only 'Poland' is NOT a pass. An engine synthesis naming Servier is a FAIL.",
+    "prohibition_check": "verifiable by reading calls[].query: no party name, no claimant surname, no docket number, no case number",
+    "query_byte_identical_to_S1": true
+   }
+  },
+  "container_note": "The 2026-10-03 container I conformed to LACKS these fields; the 2026-10-04 container HAS them (mode, blocked_domains, allowed_domains, preregistered_pass_rule, prohibition_check). Conforming to the one a prior chair called authoritative silently discarded the evidence for my own premise. The schema proposal should carry a third limb: a pre-registered series records its parameters PER CALL, because a series is an assertion about repetition."
+ },
+ "CORRECTION_1005_C2": {
+  "objection": "1005-C2, sustained. The artefact's own row_counts.unit_warning says a gross count and a distinct count are two units for one quantity; prohibited_host_row_screen then published 'rows: 7' for www.italaw.com with no unit, and the memo repeated it.",
+  "remedy": "Additive. prohibited_host_row_screen is left exactly as written.",
+  "host_screen_with_units": {
+   "www.italaw.com": {
+    "gross_rows": 7,
+    "distinct_urls": 5,
+    "distinct_url_list": [
+     "https://www.italaw.com/sites/default/files/case-documents/italaw7303_0.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw3322.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw4285.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw9605.pdf",
+     "https://www.italaw.com/sites/default/files/case-documents/italaw3324.pdf"
+    ],
+    "status": "PROHIBITED HOST. Nothing cited, quoted or inferred from any of them."
+   },
+   "icsid.worldbank.org": {
+    "gross_rows": 1,
+    "distinct_urls": 1
+   }
+  }
+ }
 }

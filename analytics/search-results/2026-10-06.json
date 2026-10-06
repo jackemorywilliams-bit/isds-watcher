@@ -1,0 +1,512 @@
+{
+ "date": "2026-10-06",
+ "seat": "research-analyst",
+ "model": "claude-opus-5",
+ "schema_note": "Parameters are recorded PER CALL, never as a top-level field; 'title' is required on every row. This is the schema of the pending (UNAPPROVED) row-set proposal, adopted voluntarily in this artefact only.",
+ "instrument_state": {
+  "web_search": "WORKING",
+  "fetch_both_instruments": "DEAD - probed by the chairman on neutral controls before any spend; no HTTP status is stated anywhere in this artefact as a fact about any source",
+  "bodies_opened": 0
+ },
+ "budget": {
+  "ceiling": 4,
+  "spent": 4,
+  "handed_back": 0
+ },
+ "prior_string_census": {
+  "as_of": "2026-10-06",
+  "archived_artefacts": 13,
+  "distinct_strings_in_archive": 54,
+  "strings_recovered_from_unarchived_records": 9,
+  "records_lacking_an_artefact": [
+   "2026-09-23",
+   "2026-10-01",
+   "2026-10-02"
+  ],
+  "total_distinct_strings_screened": 63,
+  "novelty_screen": {
+   "undisclosed": 0,
+   "secreto": 0,
+   "CIADI": 0,
+   "confidential business": 0,
+   "shell": 0,
+   "mailbox": 0,
+   "any_non_ascii_character": 0
+  }
+ },
+ "limb_predicate": {
+  "asset_limb": "lowercased TITLE contains any of ['trade secret', 'trade secrets', 'know-how', 'confidential business information', 'undisclosed', 'secreto comercial', 'información no divulgada']",
+  "doctrine_limb": "lowercased TITLE contains any of ['jurisdiction', 'jurisdicción', 'abuse of process', 'abuse of right', 'treaty shopping', 'critical date', 'shell company', 'mailbox', 'admissibility', 'misconduct', 'ratione']",
+  "bare_host_title": "stripped lowercased TITLE equals the URL netloc, with or without a leading 'www.'",
+  "unit": "ROW, counted once per call; a row repeated across calls is counted in each call"
+ },
+ "quarantined_engine_syntheses": [
+  {
+   "id": "Q-1006-S1",
+   "call": "Q-1006-2",
+   "content": "percentage figures for cases missing claim information and for settled cases lacking disclosed settlement terms, and propositions about third-party-funding non-disclosure",
+   "disposition": "REFUSED - search-engine synthesis is not evidence; no row title carries them; no body opened; nothing asserted"
+  },
+  {
+   "id": "Q-1006-S2",
+   "call": "Q-1006-3",
+   "content": "a named claimant, a USD figure and a dated jurisdictional disposition in a CIADI proceeding against Mexico",
+   "disposition": "REFUSED - party, figure, date and disposition all from engine prose; nothing asserted"
+  },
+  {
+   "id": "Q-1006-S3",
+   "call": "Q-1006-4",
+   "content": "two case captions, a dated award, a one-day-before-announcement restructuring fact and a quoted passage on abuse of process",
+   "disposition": "REFUSED IN FULL - captions, date, facts and the quotation are all from engine prose, not from any returned row title; no body opened. Screened in this repository at 80e91e9 for information only: one caption 0 files, the other 0 files. NO ASSERTION is made that either matter exists or holds anything."
+  }
+ ],
+ "calls": [
+  {
+   "call_id": "Q-1006-1",
+   "order": 1,
+   "purpose": "MANDATED monitored-author check (prompts/research_analyst.txt:155-166), fired before any topical search",
+   "parameters": {
+    "tool": "WebSearch",
+    "query": "Anthea Roberts EJIL:Talk October 2026",
+    "mode": "standard",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "preregistered_hit": "a returned row TITLE naming a Roberts post not already carried in this repository",
+   "preregistered_null_licence": "no new dated Roberts post surfaced by this formulation on 2026-10-06; licenses NOTHING about the content of ejiltalk.org/author/aroberts/, whose body this project has never read",
+   "rigid_designator": "Anthea Roberts (personal name)",
+   "result": "NULL on the pre-registered hit",
+   "rows": [
+    {
+     "title": "EJIL: Talk!",
+     "url": "https://en.wikipedia.org/wiki/EJIL:_Talk!",
+     "host": "en.wikipedia.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Recent Posts",
+     "url": "https://opiniojuris.org/blog/page/276/",
+     "host": "opiniojuris.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Anthea Roberts",
+     "url": "https://www.managementboek.nl/auteur/79884",
+     "host": "www.managementboek.nl",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "uncitral and isds reform online crossing the chasm",
+     "url": "https://research-portal.st-andrews.ac.uk/en/publications/uncitral-and-isds-reform-online-crossing-the-chasm/",
+     "host": "research-portal.st-andrews.ac.uk",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "opiniojuris.org",
+     "url": "https://opiniojuris.org/category/featured/page/192",
+     "host": "opiniojuris.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": true
+    },
+    {
+     "title": "uncitral and isds reforms what makes something fly",
+     "url": "https://research-portal.st-andrews.ac.uk/en/publications/uncitral-and-isds-reforms-what-makes-something-fly/",
+     "host": "research-portal.st-andrews.ac.uk",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "why corporations should cease business activities with russia",
+     "url": "https://research.ou.nl/en/publications/why-corporations-should-cease-business-activities-with-russia/",
+     "host": "research.ou.nl",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "www.law.cam.ac.uk",
+     "url": "https://www.law.cam.ac.uk/node/261101",
+     "host": "www.law.cam.ac.uk",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": true
+    },
+    {
+     "title": "uncitral and isds reform chinas proposal",
+     "url": "https://researchportalplus.anu.edu.au/en/publications/uncitral-and-isds-reform-chinas-proposal/",
+     "host": "researchportalplus.anu.edu.au",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1006-2",
+   "order": 2,
+   "purpose": "REFUTATION ATTEMPT on the central negative - TRIPS art.39 vocabulary, 0 of 63 prior strings carry 'undisclosed'",
+   "parameters": {
+    "tool": "WebSearch",
+    "query": "\"undisclosed test data\" OR \"undisclosed information\" investment treaty arbitration tribunal jurisdiction objection covered investment claimant",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "preregistered_hit": "a returned row TITLE naming a specific ISDS matter in which undisclosed test data / undisclosed information is the pleaded covered investment, with a jurisdictional or admissibility posture",
+   "preregistered_null_licence": "not found in accessible sources under the TRIPS-art.39 vocabulary, at TITLE level, on ONE firing - an OBSERVATION, not a verdict (binding rule, insights 2026-10-04). Does NOT license 'no such case exists'.",
+   "rigid_designator": "NONE - terms of art, not a name; the verdict is therefore weaker (carrying-span rule)",
+   "result": "NULL on the pre-registered hit",
+   "rows": [
+    {
+     "title": "Confidentiality in Investment Treaty Arbitration",
+     "url": "https://arbitrationblog.kluwerarbitration.com/2010/03/03/confidentiality-in-investment-treaty-arbitration/",
+     "host": "arbitrationblog.kluwerarbitration.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Lack of Transparency for Arbitrations at ICSID May Persist Despite New Rules · Eye on Global Transparency",
+     "url": "https://eyeonglobaltransparency.net/2022/11/28/lack-of-transparency-for-arbitrations-at-icsid-may-persist-despite-new-rules/",
+     "host": "eyeonglobaltransparency.net",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Investment Disputes and Abnormal Volatility of Stocks",
+     "url": "https://arxiv.org/pdf/2006.10505",
+     "host": "arxiv.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Third-party funding in investment arbitration: how non-disclosure can cause harm for the sake of profit",
+     "url": "https://academic.oup.com/arbitration/article-abstract/33/1/109/2669347",
+     "host": "academic.oup.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Navigating transparency and disclosure in investor–state arbitration: procedural challenges explored - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/navigating-transparency-and-disclosure-in-investor-state-arbitration-procedural-challenges-explored",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Frequently Asked Questions on Transparency",
+     "url": "https://uncitral.un.org/en/texts/arbitration/transparency/faqs",
+     "host": "uncitral.un.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Consistency, efficiency and transparency in investment treaty arbitration",
+     "url": "https://uncitral.un.org/sites/uncitral.un.org/files/investment_treaty_report_2018_full.pdf",
+     "host": "uncitral.un.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Transparency and third-party funding",
+     "url": "https://www.ibanet.org/article/BBC1C665-EE2E-409D-897D-BB31AF3A6938",
+     "host": "www.ibanet.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "www.wipo.int",
+     "url": "https://www.wipo.int/wipolex/en/legislation/details/6785",
+     "host": "www.wipo.int",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": true
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1006-3",
+   "order": 3,
+   "purpose": "REFUTATION ATTEMPT - Spanish-language vocabulary; 0 of 63 prior strings contain any non-ASCII character or 'CIADI'",
+   "parameters": {
+    "tool": "WebSearch",
+    "query": "CIADI arbitraje de inversiones \"secreto comercial\" OR \"información no divulgada\" inversión protegida objeción a la jurisdicción laudo",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "preregistered_hit": "a returned row TITLE naming a caso/laudo in which a secreto comercial or información no divulgada is the pleaded inversión protegida with a jurisdictional objection",
+   "preregistered_null_licence": "not found in accessible sources in Spanish-language vocabulary, at TITLE level, ONE firing. Weakened in advance: the tool's own description states the index is 'US-only'.",
+   "rigid_designator": "CIADI (ICSID's Spanish proper name)",
+   "result": "NULL on the pre-registered hit",
+   "rows": [
+    {
+     "title": "CENTRO INTERNACIONAL DE ARREGLO DE DIFERENCIAS RELATIVAS A INVERSIONES",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/italaw182384.pdf",
+     "host": "www.italaw.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Responsabilidad internacional de los Estados frente a los ...",
+     "url": "https://dialnet.unirioja.es/descarga/articulo/6302492.pdf",
+     "host": "dialnet.unirioja.es",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "49 ARTÍCULOS EL ARBITRAJE INTERNACIONAL COMO CAUCE DE PROTECCIÓN",
+     "url": "https://www.uria.com/documentos/publicaciones/1381/documento/articuloUM.pdf?id=",
+     "host": "www.uria.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Equipo #13 VI Competencia de Arbitraje Internacional de Inversión",
+     "url": "https://www.american.edu/wcl/impact/initiatives-programs/arbitration/espanol/competencias/ediciones/analisis-del-caso/upload/mejor-memoria-demandante-19.pdf",
+     "host": "www.american.edu",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "CENTRO INTERNACIONAL DE ARREGLO DE DIFERENCIAS RELATIVAS A INVERSIONES",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C9734/G%20-%20Rejoinder%20-%2008.17.2023/02.%20Autoridades%20legales/RL-0095-ESP.pdf",
+     "host": "icsid.worldbank.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Cuadernos de Derecho Transnacional (Marzo 2023), Vol. 15, Nº 1, pp. 88-128",
+     "url": "https://e-revistas.uc3m.es/index.php/CDT/en/article/download/7534/5895/",
+     "host": "e-revistas.uc3m.es",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Análisis de la evolución interpretativa del término «inversión» en el arbitraje internacional de protección de inversiones extranjeras",
+     "url": "https://revistascientificas.uspceu.com/arbitraje/article/view/2228",
+     "host": "revistascientificas.uspceu.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "International Law: Revista Colombiana de Derecho Internacional ISSN: 1692-8156",
+     "url": "https://www.redalyc.org/pdf/824/82420290008.pdf",
+     "host": "www.redalyc.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Tribunal CIADI desestima arbitraje multimillonario y confirma la posición de México",
+     "url": "https://www.gob.mx/se/prensa/tribunal-ciadi-desestima-arbitraje-multimillonario-y-confirma-la-posicion-de-mexico?idiom=es-MX",
+     "host": "www.gob.mx",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "El Tribunal establecido en el arbitraje Inversionista Estado al amparo del TLCAN da a conocer su laudo final...",
+     "url": "https://www.gob.mx/se/articulos/el-tribunal-establecido-en-el-arbitraje-inversionista-estado-al-amparo-del-tlcan-da-a-conocer-su-laudo-final-283298",
+     "host": "www.gob.mx",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1006-4",
+   "order": 4,
+   "purpose": "REFUTATION ATTEMPT - both limbs of the conjunction in one string, asset limb swapped OUT of the registrable umbrella fired on 2026-09-20",
+   "parameters": {
+    "tool": "WebSearch",
+    "query": "\"trade secret\" OR \"know-how\" OR \"confidential business information\" covered investment tribunal declined jurisdiction \"abuse of process\" OR \"shell company\" OR \"critical date\" restructuring investor-State",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "preregistered_hit": "a returned row TITLE carrying BOTH limbs: a secrecy-defined asset as the pleaded covered investment AND one of the enumerated jurisdictional/admissibility doctrines",
+   "preregistered_null_licence": "not found in accessible sources with both limbs in one string, at TITLE level, ONE firing. Does NOT license 'no such case exists'.",
+   "rigid_designator": "NONE - the verdict is therefore weaker (carrying-span rule)",
+   "result": "NULL on the pre-registered hit",
+   "rows": [
+    {
+     "title": "ICSID tribunals address allegations of investor misconduct - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=7197161a-de2b-4295-9617-b204f5681cf9",
+     "host": "www.lexology.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": true,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Trade Secrets Year in Review: 2025",
+     "url": "https://www.gtlaw.com/en/insights/2026/2/trade-secrets-year-in-review-2025",
+     "host": "www.gtlaw.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": true,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Trade Secret Case Management Judicial Guide Federal Judicial Center 2023",
+     "url": "https://www.fjc.gov/sites/default/files/materials/08/Trade%20Secret%20final.pdf",
+     "host": "www.fjc.gov",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": true,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Frequently Asked Questions on Trade Secrets",
+     "url": "https://www.wipo.int/en/web/trade-secrets/tradesecrets_faqs",
+     "host": "www.wipo.int",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": true,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Navigating transparency and disclosure in investor–state arbitration: procedural challenges explored - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/navigating-transparency-and-disclosure-in-investor-state-arbitration-procedural-challenges-explored",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "59–006 114TH CONGRESS REPORT \" ! HOUSE OF REPRESENTATIVES 2d Session 114–529",
+     "url": "https://www.govinfo.gov/content/pkg/CRPT-114hrpt529/pdf/CRPT-114hrpt529.pdf",
+     "host": "www.govinfo.gov",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "WIPO Guide to Trade Secrets and Innovation - Part III: Basics of trade secret protection",
+     "url": "https://www.wipo.int/web-publications/wipo-guide-to-trade-secrets-and-innovation/en/part-iii-basics-of-trade-secret-protection.html",
+     "host": "www.wipo.int",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": true,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "Trade Secrets: What You Should Know From 2024 to Prepare for 2025 - McGuireWoods",
+     "url": "https://www.mcguirewoods.com/client-resources/alerts/2025/1/trade-secrets-what-you-should-know-from-2024-to-prepare-for-2025/",
+     "host": "www.mcguirewoods.com",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": true,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": false
+    },
+    {
+     "title": "www.cambridge.org",
+     "url": "https://www.cambridge.org/core/product/E56D104A2210A273A7F631DC4BA7BB38",
+     "host": "www.cambridge.org",
+     "access": "row returned; access untested; body unread",
+     "title_carries_asset_limb": false,
+     "title_carries_doctrine_limb": false,
+     "title_is_bare_host_string": true
+    }
+   ]
+  }
+ ],
+ "row_measurement": {
+  "total_rows": 37,
+  "per_call": [
+   {
+    "call_id": "Q-1006-1",
+    "rows": 9,
+    "asset_limb_titles": 0,
+    "doctrine_limb_titles": 0,
+    "BOTH_limbs": 0,
+    "bare_host_titles": 2,
+    "distinct_hosts": 7
+   },
+   {
+    "call_id": "Q-1006-2",
+    "rows": 9,
+    "asset_limb_titles": 0,
+    "doctrine_limb_titles": 0,
+    "BOTH_limbs": 0,
+    "bare_host_titles": 1,
+    "distinct_hosts": 8
+   },
+   {
+    "call_id": "Q-1006-3",
+    "rows": 10,
+    "asset_limb_titles": 0,
+    "doctrine_limb_titles": 0,
+    "BOTH_limbs": 0,
+    "bare_host_titles": 0,
+    "distinct_hosts": 9
+   },
+   {
+    "call_id": "Q-1006-4",
+    "rows": 9,
+    "asset_limb_titles": 5,
+    "doctrine_limb_titles": 1,
+    "BOTH_limbs": 0,
+    "bare_host_titles": 1,
+    "distinct_hosts": 8
+   }
+  ],
+  "rows_carrying_both_limbs_across_all_four_calls": 0
+ }
+}

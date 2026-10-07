@@ -1,0 +1,772 @@
+{
+ "date": "2026-10-07",
+ "seat": "research analyst",
+ "model": "claude-opus-5",
+ "schema_note": "identifier keyed call_id per the chairman's convening instruction. 'title' is required on every row (the pending, UNAPPROVED row-set proposal, adopted voluntarily here as in 2026-10-06). Every pre-registration field in each call object was written to a disk file BEFORE that call was fired; the firing order is 1,2,3,4 and each pre-registration file carries its own pre-firing timestamp.",
+ "instrument_state": {
+  "web_search": "WORKING",
+  "fetch_both_instruments": "DEAD - probed by the chairman on NEUTRAL hosts (example.com, en.wikipedia.org) before anything was spent; no HTTP status is stated anywhere in this artefact as a fact about any source",
+  "bodies_opened": 0,
+  "binding_consequence": "every row in this file is TITLE-ONLY. No row's body was opened. Nothing in this file characterises what any document contains."
+ },
+ "budget": {
+  "ceiling": 4,
+  "spent": 4,
+  "handed_back": 0,
+  "note": "call 1 was FIXED by the chairman. Calls 2-4 were discretionary and each was spent because each was designed from the preceding call's result, so no later call re-fired an earlier question. Call 4 exists only because call 3 produced an engine-composed block that had to be converted into a controlled arm."
+ },
+ "string_census_RE_MEASURED_AT_HEAD": {
+  "method": "recursive walk over analytics/search-results/*.json for keys in {query, query_string, string, query_fired, search_string}, length > 10, aliasing BOTH identifier keys",
+  "artefacts": 14,
+  "distinct_strings_in_archive": 58,
+  "key_drift_RE_MEASURED": "6 files key the identifier call_id (2026-09-20/21/22/24/25, 2026-10-06); 8 key it id (2026-09-26/27/28/29/30, 2026-10-03/04/05). The 2026-10-06 record's figure of 5 call_id / 6 id was correct at 11 files and is now stale at 14 - it is a snapshot, not a constant.",
+  "why_54_in_the_1006_record_and_58_here": "the 2026-10-06 artefact keys its query inside call.parameters.query rather than call.query, so a top-level-only harvest returns 54 at 14 files and misses its own four strings. The recursive harvest returns 58.",
+  "floor_not_ceiling": "58 + 9 recovered from the three records that wrote no artefact (2026-09-23, 2026-10-01, 2026-10-02) = 67 screened. This is a FLOOR. The census cannot see a session that wrote neither artefact nor record.",
+  "novelty_of_todays_four_strings": "'TLCAN' 0 prior carriers; 'contra Canad' 0; 'ratione materiae' as a fired string 0; 'trade mark' 0. One prior string carried 'Eli Lilly v. Canada' (2026-09-27 call S1)."
+ },
+ "NEW_ARCHIVE_DEFECT_MEASURED_TODAY_second_blind_spot_of_the_same_class": {
+  "finding": "a retrospective TITLE-level predicate over this archive is structurally blind to four consecutive sessions.",
+  "measurement": "titles preserved vs distinct URLs present in raw text, per artefact: 2026-09-27 3/19, 2026-09-28 2/27, 2026-09-29 0/35, 2026-09-30 0/34. Those four artefacts preserve 5 titles against 115 distinct URLs.",
+  "consequence": "every title-level figure in this file whose denominator is the archive is computed over the 10 artefacts that preserve titles, and is blind to those four. The 2026-10-06 schema_note ('title is required on every row') is the fix and it is an UNAPPROVED proposal voluntarily adopted in two artefacts.",
+  "relation_to_the_known_defect": "this is the SAME class as open_threads[49] (the string census blind to three sessions). The archive has two blind spots of one kind: strings missing where no artefact was written, titles missing where an artefact was written without them."
+ },
+ "WHOLE_ARCHIVE_LIMB_MEASUREMENT_free_no_budget_spent": {
+  "unit": "distinct (TITLE,URL) pair; 383 of them across the 10 title-preserving artefacts",
+  "asset_limb_titles": 6,
+  "doctrine_limb_titles": 28,
+  "BOTH_limb_titles": 0,
+  "asset_limb_hosts": 5,
+  "doctrine_limb_hosts": 19,
+  "host_intersection": 0,
+  "THE_CHANCE_LEVEL_SCREEN_THAT_DEFLATES_IT": "the archive holds 118 distinct hosts. Two host sets of size 5 and 19 drawn independently from 118 have an expected intersection of 0.805. An observed intersection of 0 is therefore AT CHANCE and carries almost no information. The 2026-10-06 finding's host-non-intersection limb does not survive this screen; its 0-of-9 both-limbs limb does.",
+  "what_DOES_survive_and_is_the_informative_part": "the composition. All 6 asset-limb titles are general trade-secret practice material - www.wipo.int x2, www.fjc.gov, practiceguides.chambers.com, www.gtlaw.com, www.mcguirewoods.com - and NOT ONE is on an investment-arbitration host. And of the seven asset terms in the predicate, only 'trade secret(s)' has any carrier at all: 'know-how' 0, 'confidential business information' 0, 'undisclosed' 0, 'secreto comercial' 0, 'información no divulgada' 0, over 383 titles.",
+  "a_base_rate_caveat_against_my_own_6_vs_28": "'jurisdiction' is a far commoner word in this field than 'trade secret', so the 6-vs-28 gap partly measures word frequency and not literature structure. The predicate is the council's, not mine, and I did not alter it."
+ },
+ "quarantined_engine_syntheses_REFUSED_IN_FULL": [
+  {
+   "id": "Q-1007-S1",
+   "call": "Q-1007-1",
+   "why_refused": "a Spanish-language synthesis asserting a damages figure, a filing month, two NAFTA article numbers, an award date, two product names and a holding about judicial measures. NOT ONE of those facts appears in any returned ROW TITLE. It also describes the content of NAFTA Articles 1110 and 1105, which no seat may do. Refused in full; nothing from it is carried anywhere in this file or in the memo."
+  },
+  {
+   "id": "Q-1007-S2",
+   "call": "Q-1007-2",
+   "why_refused": "a synthesis asserting a numbered article of a named national arbitration statute, the content of institutional rules, and a proposition about what investment tribunals 'have ruled' regarding document production. None of it in any returned ROW TITLE. Refused in full."
+  },
+  {
+   "id": "Q-1007-S3",
+   "call": "Q-1007-3",
+   "why_refused": "a two-part synthesis, the second part produced from a string the engine composed and I cannot reproduce. Refused in full."
+  },
+  {
+   "id": "Q-1007-S4",
+   "call": "Q-1007-4",
+   "why_refused": "a synthesis asserting what BITs 'generally' cover, the institutional character of ISDS, and two case characterisations (a trademark expropriation argument and a NAFTA Chapter 11 patent challenge). None of it in any returned ROW TITLE. Refused in full. The underlying captions have carriers elsewhere in this project's record; they are not sourced to this synthesis and are not asserted from it."
+  }
+ ],
+ "allowed_domains_IS_NOT_HONOURED": {
+  "measurement": "three calls set allowed_domains to the same six arbitration venues. Rows on hosts NOT among the six, unit = ROW: Q-1007-2 0 of 9; Q-1007-3 block1 0 of 9; Q-1007-3 block2 1 of 9 (arxiv.org); Q-1007-4 3 of 9 (image-ppubs.uspto.gov x2, arxiv.org x1). Total 4 of 36.",
+  "why_it_matters_beyond_today": "two of the three leaking hosts, arxiv.org and image-ppubs.uspto.gov, are two of the three hosts in the off-domain predicate the 2026-10-04 record used to characterise its FAILING control draw ('9 of 10 scientific-literature hosts'). If a domain filter can be ignored, that draw is re-readable as filter leakage rather than as stochastic instrument variance.",
+  "WHAT_I_DID_NOT_TEST_AND_WILL_NOT_INFER": "I tested allowed_domains. I did NOT test blocked_domains. The 2026-10-03/04 series used blocked_domains. Nothing here establishes that blocked_domains leaks, and no seat may read this entry as though it did. It is a hypothesis with a cheap test attached, not a finding about that series."
+ },
+ "english_vs_spanish_archive_identity_the_sharpest_single_figure": {
+  "unit": "ROW",
+  "four_english_blocks": "10 of 36 returned URLs were already held in analytics/search-results/*.json",
+  "one_spanish_block": "0 of 9",
+  "why_this_comparison_is_well_controlled": "same instrument, same session, same day, same fetch condition, four English blocks against one Spanish block. It does not depend on any cross-session baseline.",
+  "what_it_supports": "the Spanish-language return is a corpus DISJOINT from this project's holdings, not a translation layer over them. 5 of its 7 hosts are absent from the archive's 118.",
+  "what_it_does_NOT_support": "anything about what those Spanish documents contain, whether they can be reached, or whether the central negative is true or false. No body was opened.",
+  "denominator_tested_TWO_WAYS": "373 distinct URLs from title-bearing rows, and the wider 429-URL superset harvested from the raw text of all 14 PRIOR artefacts (which includes the four title-less ones). The figures are IDENTICAL under both denominators: 10 of 36 English, 0 of 9 Spanish.",
+  "a_near_miss_i_am_recording_against_myself": "my first superset run globbed analytics/search-results/*.json AFTER writing this file, so every row today scored as already held, 9 of 9 on every block. Self-contamination through my own artefact. Caught and re-run with 2026-10-07.json excluded. The figures above are from the corrected run. A successor computing archive identity MUST exclude its own artefact from the denominator."
+ },
+ "standing_prohibitions_touched": {
+  "www.italaw.com": "0 rows returned on it today; nothing cited from it",
+  "dailyjus.com": "excluded from allowed_domains under standing prohibition; 0 rows",
+  "Einarsson_terms": "RETIRED - none fired",
+  "escalated_gaps": "zero budget spent on any of them",
+  "fetch_request_file": "NONE WRITTEN. No cadenced observation is due before 2026-10-10 (thread 11 Wingtech ~10-10; thread 39 PCA register ~10-13; thread 14 ~10-18)."
+ },
+ "row_counts": {
+  "total_rows_returned_today": 45,
+  "unit": "ROW",
+  "per_call": {
+   "Q-1007-1": 9,
+   "Q-1007-2": 9,
+   "Q-1007-3": "18 across two blocks, 9 of which answer the pre-registered string",
+   "Q-1007-4": 9
+  },
+  "distinct_hosts_today": 15,
+  "a_hand_typed_figure_i_got_wrong_and_corrected": "I first wrote 17 here from memory rather than from execution. Executed: 15 distinct hosts over 45 rows (unit = HOST). Corrected before hand-back and recorded because a hand-typed count is the defect class this council keeps finding in itself."
+ },
+ "calls": [
+  {
+   "written_at_utc": "2026-10-07T11:26:57Z (pre-registration file written to disk BEFORE firing; firing followed)",
+   "call_id": "Q-1007-1",
+   "control_name": "language-partition-known-positive-control",
+   "authority": "analytics/daily-research/2026-10-06.md s7.3 ruling 17; state/research_log.json open_threads[45]",
+   "string_verbatim": "Eli Lilly contra Canadá TLCAN arbitraje de inversión patentes farmacéuticas laudo",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "rigid_designator": "Eli Lilly",
+   "proof_we_hold_the_case": "working/one-pagers/eli-lilly-v-canada.md:1",
+   "english_document_a_pass_requires": {
+    "title": "Threat of Pharmaceutical-Related IP Investment Rights in the Trans-Pacific Partnership Agreement: An Eli Lilly v. Canada Case Study",
+    "url": "https://www.iisd.org/itn/2013/09/20/threat-of-pharmaceutical-related-ip-investment-rights-in-the-trans-pacific-partnership-agreement-an-eli-lilly-v-canada-case-study/",
+    "held_at": [
+     "analytics/search-results/2026-09-20.json",
+     "analytics/search-results/2026-10-03.json"
+    ]
+   },
+   "PASS_A_rule": "PASS iff at least one returned ROW TITLE contains 'Eli Lilly' (case-insensitive, language-invariant). A title naming only 'Canada'/'Canadá' is NOT a pass. An engine synthesis naming the case is a FAIL.",
+   "PASS_B_rule": "PASS iff at least one returned row URL is string-identical to a URL already held in analytics/search-results/*.json (373 distinct URLs at today's harvest) whose held title is English.",
+   "PASS_B_STRICT_rule": "PASS iff the named IISD ITN URL above is among the returned rows.",
+   "FAIL_rule": "FAIL iff zero returned ROW TITLES contain 'Eli Lilly'. No synthesis rescues a FAIL.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1. Never a verdict, per STATE_OF_THE_ANSWER.md:1121 limb (1).",
+   "result": {
+    "rows_returned": 9,
+    "distinct_hosts": 7,
+    "PASS_A_title_level_per_1003_1004_precedent": "PASS",
+    "PASS_A_designator_hits": {
+     "case_sensitive": "3 of 9",
+     "case_insensitive": "4 of 9",
+     "note": "one row spells it 'Eli lilly'; the pre-registered rule is case-insensitive, so 4 of 9 governs. Both printed; neither printed alone."
+    },
+    "PASS_B_ruling_17_literal_returns_a_document_we_already_hold": "FAIL - 0 of 9 returned URLs is string-identical to any of the 373 URLs held in analytics/search-results/*.json",
+    "PASS_B_STRICT_named_IISD_ITN_article": "FAIL - not returned",
+    "hosts_new_to_the_archive": "5 of 7 (unit = HOST): revistas.indecopi.gob.pe, scielo.conicyt.cl, www.asuntoslegales.com.co, www.cmaj.ca, www.saludyfarmacos.org",
+    "hosts_already_held": "2 of 7: academic.oup.com, www.citizen.org",
+    "prohibited_host_rows": "NONE",
+    "strength": "OBSERVATION, n = 1. NOT a verdict. STATE_OF_THE_ANSWER.md:1121 limb (1) governs and the chairman's ruling of 2026-10-07 confirms it.",
+    "what_it_does_NOT_touch": "the central negative. This control tests the LANGUAGE partition, which has a known positive (our own archive). The asset class has none (STATE_OF_THE_ANSWER.md:1121 limb (2)). The two must not blur."
+   },
+   "rows": [
+    {
+     "title": "Eli Lilly: Alcance de un tribunal arbitral de inversión",
+     "url": "https://www.asuntoslegales.com.co/analisis/santiago-wills-2991912/eli-lilly-alcance-de-un-tribunal-arbitral-de-inversion-2500701",
+     "host": "www.asuntoslegales.com.co",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Arbitraje internacional de inversiones: Ataques y ...",
+     "url": "https://www.citizen.org/wp-content/uploads/informe-ataques-y-demandas-de-inversionistas-extranjeros.pdf",
+     "host": "www.citizen.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Canadá prevalece en el arbitraje con Eli lilly, el tribunal rechaza el reclamo de TLCAN",
+     "url": "https://www.saludyfarmacos.org/lang/en/boletin-farmacos/boletines/may201702/09_canada/",
+     "host": "www.saludyfarmacos.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Comentario sobre la sentencia del Tribunal Arbitral en el caso Eli Lilly y Compañía con el Gobierno de Canadá",
+     "url": "https://scielo.conicyt.cl/scielo.php?script=sci_arttext&pid=S0719-25842017000100092",
+     "host": "scielo.conicyt.cl",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "La industria farmacéutica en otros países “asesina y no le pasa nada” gracias a las políticas de Trump",
+     "url": "https://www.saludyfarmacos.org/lang/en/boletin-farmacos/boletines/nov201703/40_indus/",
+     "host": "www.saludyfarmacos.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Tratados de inversión: ¿Una nueva amenaza para la salud y las flexibilidades del ADPIC?",
+     "url": "https://www.saludyfarmacos.org/lang/es/boletin-farmacos/boletines/ago2013/p41937/",
+     "host": "www.saludyfarmacos.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "35 PATENTS, PROMISES AND DEFERENCE TO DOMESTIC COURT",
+     "url": "https://revistas.indecopi.gob.pe/index.php/rcpi/article/download/14/12",
+     "host": "revistas.indecopi.gob.pe",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Canada wins legal battle to set patent rules",
+     "url": "https://www.cmaj.ca/content/189/15/E578",
+     "host": "www.cmaj.ca",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Litigating patents in investment arbitration: Eli Lilly v Canada",
+     "url": "https://academic.oup.com/jiplp/article-abstract/12/10/815/4111248?redirectedFrom=PDF",
+     "host": "academic.oup.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1007-2",
+   "purpose": "TEST of the two-literatures proposition rather than a re-confirmation of it. The confound in the 2026-10-06 finding is HOST COMPOSITION: the asset limb was carried by IP/practice venues and the doctrine limb by arbitration venues, so disjointness may be an artefact of which venues the query reached. This call removes the confound BY CONSTRUCTION: it fires asset words ONLY, restricted by allowed_domains to investment-arbitration venues taken from this project's own archive, and asks the arbitration literature directly whether it carries the asset vocabulary at title level.",
+   "string_verbatim": "\"trade secrets\" OR \"trade secret\" OR \"know-how\" as covered investment investor-State tribunal",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": [
+     "jusmundi.com",
+     "globalarbitrationreview.com",
+     "legalblogs.wolterskluwer.com",
+     "iisd.org",
+     "arbitrationlaw.com",
+     "kluwerlawonline.com"
+    ],
+    "blocked_domains": null
+   },
+   "allowed_domains_provenance": "the six are investment-arbitration venues observed carrying DOCTRINE-limb titles in this project's own archive (measured today: 19 doctrine hosts over 383 distinct title rows). www.italaw.com and dailyjus.com are EXCLUDED under standing council prohibition, not on any judgement about their content.",
+   "preregistered_structural_PASS": "PASS iff at least one returned ROW TITLE on one of the six allowed hosts carries an asset-limb term under the 2026-10-06 limb predicate quoted verbatim. A PASS falsifies the strong reading of the two-literatures finding (that no investment-arbitration venue carries the asset vocabulary at title level).",
+   "preregistered_structural_FAIL": "FAIL iff zero returned ROW TITLES carry an asset-limb term. A FAIL is informative here BECAUSE the design removes the host-composition confound: it is the arbitration literature answering about itself.",
+   "preregistered_refutation_HIT": "a returned ROW TITLE naming a specific ISDS matter in which trade secrets, know-how or undisclosed clinical/test data is the pleaded covered investment.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1. No rate claim. No absence statement of any strength beyond the licensed form at STATE_OF_THE_ANSWER.md:1121.",
+   "result": {
+    "rows_returned": 9,
+    "distinct_hosts": 3,
+    "structural_limb": "FAIL - 0 of 9 asset-limb titles under the 2026-10-06 VERBATIM predicate, and 0 of 9 doctrine-limb titles as well",
+    "refutation_limb": "NULL on the pre-registered hit",
+    "where_the_asset_words_landed": "all nine titles are procedural: transparency, disclosure, confidentiality of proceedings, institutional wiki notes. Second instance in two sessions of one mechanism - 2026-10-06's 'undisclosed information' landed in third-party-funding disclosure; today's 'trade secret'/'know-how' at six arbitration venues landed in procedural confidentiality.",
+    "rows_outside_allowed_domains": 0,
+    "strength": "OBSERVATION, n = 1."
+   },
+   "rows": [
+    {
+     "title": "Chapter 3: Transparency in International Investment Arbitration",
+     "url": "https://jusmundi.com/en/document/publication/en-chapter-3-transparency-in-international-investment-arbitration",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Navigating transparency and disclosure in investor–state arbitration: procedural challenges explored - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/navigating-transparency-and-disclosure-in-investor-state-arbitration-procedural-challenges-explored",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "www.iisd.org/gsi State–State Dispute Settlement in Investment Treaties",
+     "url": "https://www.iisd.org/system/files/publications/best-practices-state-state-dispute-settlement-investment-treaties.pdf",
+     "host": "www.iisd.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: Investment Court System",
+     "url": "https://jusmundi.com/en/document/publication/en-investment-court-system",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Questions & Answers",
+     "url": "https://www.iisd.org/system/files/publications/investment_treaties_why_they_matter_sd.pdf",
+     "host": "www.iisd.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: International Chamber of Commerce (ICC)",
+     "url": "https://jusmundi.com/en/document/wiki/en-icc",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: Sovereign Investor",
+     "url": "https://jusmundi.com/en/document/publication/en-sovereign-investor",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Costa Rica (2025)",
+     "url": "https://jusmundi.com/en/document/publication/en-costa-rica-3",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Introduction: the evolution of investment treaty arbitration - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/introduction-the-evolution-of-investment-treaty-arbitration",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1007-3",
+   "purpose": "MATCHED-PAIR INVERSION of Q-1007-2, designed from Q-1007-2's own result. Q-1007-2 fired ASSET words at six arbitration venues and the asset words were absorbed by the procedural-confidentiality literature (0 of 9 asset-limb titles). The mechanism hypothesis that follows is that inside arbitration writing the asset nouns already denote 'a thing to be shielded during a proceeding', not 'a thing pleaded as the covered investment'. If that is right, the lever is the PLEADING RELATION, not the asset noun. This call holds the six hosts and the mode constant and inverts the anchor from asset to doctrine, so the pair differs in one variable.",
+   "string_verbatim": "\"covered investment\" OR \"ratione materiae\" intellectual property pleaded as the investment jurisdiction objection",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": [
+     "jusmundi.com",
+     "globalarbitrationreview.com",
+     "legalblogs.wolterskluwer.com",
+     "iisd.org",
+     "arbitrationlaw.com",
+     "kluwerlawonline.com"
+    ],
+    "blocked_domains": null
+   },
+   "preregistered_structural_PASS": "PASS iff at least one returned ROW TITLE carries BOTH limbs under the 2026-10-06 limb predicate applied VERBATIM. A both-limbs title has never been observed: 0 of 383 distinct archived title rows, and 0 of the 18 rows returned today before this call.",
+   "preregistered_secondary_measure": "doctrine-limb title count under the same verbatim predicate, reported against Q-1007-2's 0 asset-limb titles on the identical host set.",
+   "preregistered_third_measure_DECLARED_IN_ADVANCE_TO_FORECLOSE_PREDICATE_SHOPPING": "a SEPARATE, clearly labelled count under an IP-broadened asset predicate adding ['intellectual property','patent','trade mark','trademark','copyright']. This is NOT the 2026-10-06 predicate and any figure under it is labelled as the broadened measure wherever it is printed.",
+   "preregistered_refutation_HIT": "a returned ROW TITLE naming a specific ISDS matter in which trade secrets, know-how or undisclosed clinical/test data is the pleaded covered investment.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1.",
+   "result": {
+    "rows_returned": 18,
+    "INSTRUMENT_EVENT_RECORDED_BEFORE_ANY_SCORING": "the call returned TWO result blocks. Block 1 (9 rows) answers the pre-registered string. Block 2 (9 rows) was returned after the engine announced a SECOND retrieval of its own composition ('Let me search more specifically for intellectual property in investment arbitration'). I do not know that string, cannot reproduce it, and did not write it. Block 2 is therefore NOT a return from my pre-registered string and is NOT scored against the pre-registration. It is transcribed in full because the record requires every returned row.",
+    "block1_scored_against_the_prereg": {
+     "rows": 9,
+     "asset_limb_VERBATIM": "0 of 9",
+     "doctrine_limb_VERBATIM": "7 of 9",
+     "BOTH_VERBATIM": "0 of 9",
+     "IP_broadened_asset_LABELLED": "0 of 9",
+     "structural_PASS": "FAIL - no both-limbs title",
+     "rows_outside_allowed_domains": 0
+    },
+    "block2_engine_composed_NOT_scored": {
+     "rows": 9,
+     "asset_limb_VERBATIM": "0 of 9",
+     "doctrine_limb_VERBATIM": "0 of 9",
+     "IP_broadened_asset_LABELLED": "8 of 9",
+     "the_ninth": "'The Guide to IP Arbitration - Third Edition ...' uses the abbreviation 'IP', which the broadened predicate does not cover - the predicate UNDER-COUNTS abbreviations and the figure is a floor",
+     "rows_outside_allowed_domains": "1 (arxiv.org)"
+    },
+    "refutation_limb": "NULL on the pre-registered hit across both blocks",
+    "strength": "OBSERVATION. Block 2 is not even that - it is an unreproducible side-trip."
+   },
+   "rows_block1": [
+    {
+     "title": "Chapter 8: International Investment Law and Investment Structuring",
+     "url": "https://jusmundi.com/en/document/publication/en-chapter-8-international-investment-law-and-investment-structuring",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Oostergetel v. Slovakia, Decision on Jurisdiction, 30 Apr 2010",
+     "url": "https://jusmundi.com/en/document/decision/en-jan-oostergetel-and-theodora-laurentius-v-the-slovak-republic-decision-on-jurisdiction-friday-30th-april-2010",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Corruption Under Scrutiny: The Ratione Materiae Objection in Panamericana Televisión v. Peru",
+     "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/corruption-under-scrutiny-the-ratione-materiae-objection-in-panamericana-television-v-peru/",
+     "host": "legalblogs.wolterskluwer.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Safa v. Greece, Decision on Jurisdiction and Liability, 24 July 2020",
+     "url": "https://jusmundi.com/en/document/decision/en-iskandar-safa-and-akram-safa-v-hellenic-republic-decision-on-jurisdiction-and-liability-friday-24th-july-2020",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The UK Commercial High Court Rejects Czech Republic’s Jurisdictional Challenges Declining Setting Aside the Investment Award in Diag Human & Mr. Josef Stava v Czech Republic",
+     "url": "https://legalblogs.wolterskluwer.com/arbitration-blog/the-uk-commercial-high-court-rejects-czech-republics-jurisdictional-challenges-declining-setting-aside-the-investment-award-in-diag-human-mr-josef-stava-v-czech-republic/",
+     "host": "legalblogs.wolterskluwer.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: Jurisdiction Ratione Materiae",
+     "url": "https://jusmundi.com/en/document/publication/en-jurisdiction-ratione-materiae",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: Jurisdiction Ratione Personae",
+     "url": "https://jusmundi.com/en/document/wiki/en-jurisdiction-ratione-personae",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Wiki Note: Nationality of Investment",
+     "url": "https://jusmundi.com/en/document/publication/en-nationality-of-investment",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Meaning of ‘Investment’ as a Requirement for Jurisdiction Ratione Materiae of the ICSID Centre - Journal of International Arbitration",
+     "url": "https://kluwerlawonline.com/journalarticle/Journal+of+International+Arbitration/29.4/JOIA2012024",
+     "host": "kluwerlawonline.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    }
+   ],
+   "rows_block2_ENGINE_COMPOSED_STRING_UNKNOWN": [
+    {
+     "title": "When Intellectual Property Is the ‘Investment’: Arbitrating Against Sovereigns - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/second-edition/article/when-intellectual-property-the-investment-arbitrating-against-sovereigns",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Intellectual Property Rights and Investor-State Arbitration: Embracing Intellectual Property Rights as Protected “Investment” in International Investment Treaties - Chapter 2 - Investment Treaty Arbitration and International Law - Volume 11",
+     "url": "https://arbitrationlaw.com/library/intellectual-property-rights-and-investor-state-arbitration-embracing-intellectual-property",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Remedies in Intellectual Property Investment Arbitration: A Return to Restitutio in Integrum - Chapter 11 - Investment Treaty Arbitration and International Law - Volume 11",
+     "url": "https://arbitrationlaw.com/library/remedies-intellectual-property-investment-arbitration-return-restitutio-integrum-chapter-11",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Investor-State Dispute Settlement and Protection of Intellectual Property Rights and Other Business Interests of the Technology Sector: Never the Twain Shall Meet - Chapter 8 - Investment Treaty Arbitration and International Law - Volume 11",
+     "url": "https://arbitrationlaw.com/library/investor-state-dispute-settlement-and-protection-intellectual-property-rights-and-other",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards",
+     "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Intellectual Property Protection System of the Foreign Investment Law: Basic Structure, Motivation and Game Logic",
+     "url": "https://arxiv.org/pdf/2106.03467",
+     "host": "arxiv.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Introduction - Chapter 1 - Arbitration of Intellectual Property Disputes in the United States",
+     "url": "https://arbitrationlaw.com/library/introduction-chapter-1-arbitration-intellectual-property-disputes-united-states",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Arbitration of Intellectual Property Disputes in the United States",
+     "url": "https://arbitrationlaw.com/books/arbitration-intellectual-property-disputes-united-states",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Guide to IP Arbitration - Third Edition - Strategic considerations after a dispute has arisen - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/third-edition/article/strategic-considerations-after-dispute-has-arisen",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": false,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1007-4",
+   "purpose": "ONE-VARIABLE SUBSTITUTION ON Q-1007-2. Q-1007-3 returned a SECOND, ENGINE-COMPOSED result block whose string I did not write, cannot reproduce and do not know; its nine titles carried a generic-IP asset term 9 of 9 on the same venue class where my own trade-secret asset anchor carried 0 of 9. That contrast is currently between a string of mine and a string of the engine's, which is not an experiment. This call makes it one: the Q-1007-2 string is reproduced byte-for-byte with ONLY the asset-noun slot substituted. Everything else - the six allowed hosts, mode=extended, the trailing 'as covered investment investor-State tribunal' - is held identical.",
+   "string_verbatim": "\"intellectual property\" OR \"patent\" OR \"trade mark\" as covered investment investor-State tribunal",
+   "the_string_it_is_paired_with": "\"trade secrets\" OR \"trade secret\" OR \"know-how\" as covered investment investor-State tribunal",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": [
+     "jusmundi.com",
+     "globalarbitrationreview.com",
+     "legalblogs.wolterskluwer.com",
+     "iisd.org",
+     "arbitrationlaw.com",
+     "kluwerlawonline.com"
+    ],
+    "blocked_domains": null
+   },
+   "what_this_control_measures": "whether the ASSET-NOUN SLOT of a query is a working title-level retrieval key at investment-arbitration venues, with GENERIC IP as the known positive.",
+   "what_this_control_DOES_NOT_measure": "anything whatever about whether a pharmaceutical trade-secret or clinical-trial-data ISDS case exists. The known positive here is a VOCABULARY, not a case. This is the same two-things-must-not-blur discipline the chairman imposed on the language-partition control and it applies with equal force here.",
+   "preregistered_PASS": "PASS iff at least one returned ROW TITLE carries an IP-broadened asset term ['intellectual property','patent','trade mark','trademark','copyright']. The figure reported is the count out of the rows returned.",
+   "preregistered_contrast": "the paired figure is Q-1007-2's asset-limb count under the 2026-10-06 verbatim predicate on the identical host set. Both figures are printed; neither is printed alone.",
+   "preregistered_three_readings_fixed_BEFORE_the_result": "a high-vs-zero contrast is consistent with (i) no trade-secret-as-investment literature, (ii) such literature existing but not titled that way, (iii) index behaviour. The result does not distinguish them and no seat may write as though it does.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1 per arm. Never a verdict.",
+   "result": {
+    "rows_returned": 9,
+    "distinct_hosts": 7,
+    "PASS": "PASS - 9 of 9 returned ROW TITLES carry an IP-broadened asset term",
+    "the_paired_figure_printed_WITH_it_never_alone": "Q-1007-2, identical hosts, identical mode, identical trailing clause, asset-noun slot substituted: 0 of 9 asset-limb titles under the 2026-10-06 VERBATIM predicate",
+    "doctrine_limb_VERBATIM": "1 of 9",
+    "FIRST_BOTH_LIMBS_ROW_EVER_OBSERVED_BY_THIS_PROJECT_under_the_BROADENED_predicate_only": {
+     "title": "Litigating Intellectual Property Issues in Investor-State Dispute Settlement: A Jurisdictional Conflict - Global Trade and Customs Journal",
+     "url": "https://kluwerlawonline.com/journalarticle/Global+Trade+and+Customs+Journal/11.7/GTCJ2016046",
+     "note": "carries 'Intellectual Property' (IP-BROADENED asset limb) and 'Jurisdictional' (doctrine limb). Under the 2026-10-06 VERBATIM predicate it is NOT a both-limbs title - it carries no trade-secret term. Both scorings printed. The broadened predicate was declared in the pre-registration BEFORE firing, precisely to foreclose predicate shopping."
+    },
+    "rows_outside_allowed_domains": "3 of 9 (unit = ROW): image-ppubs.uspto.gov x2, arxiv.org x1 - none of the six allowed hosts",
+    "archive_identity": "5 of 9 returned URLs already held",
+    "three_readings_fixed_in_advance_and_UNDISTINGUISHED_by_this_result": "(i) no trade-secret-as-investment literature; (ii) such literature exists but is not titled that way; (iii) index behaviour.",
+    "strength": "OBSERVATION, n = 1 per arm."
+   },
+   "rows": [
+    {
+     "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+     "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+     "host": "www.iisd.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Intellectual Property Rights in Investor-State Dispute Settlement: Connecting the Dots through the Philip Morris, Eli Lilly and Bridgestone Awards",
+     "url": "https://arbitrationlaw.com/library/intellectual-property-rights-investor-state-dispute-settlement-connecting-dots-through",
+     "host": "arbitrationlaw.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Protection of Intellectual Property Rights through International Investment Agreements",
+     "url": "https://jusmundi.com/en/document/publication/en-the-protection-of-intellectual-property-rights-through-international-investment-agreements",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Litigating Intellectual Property Issues in Investor-State Dispute Settlement: A Jurisdictional Conflict - Global Trade and Customs Journal",
+     "url": "https://kluwerlawonline.com/journalarticle/Global+Trade+and+Customs+Journal/11.7/GTCJ2016046",
+     "host": "kluwerlawonline.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "When Intellectual Property Is the ‘Investment’: Arbitrating Against Sovereigns - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-ip-arbitration/second-edition/article/when-intellectual-property-the-investment-arbitrating-against-sovereigns",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "Intellectual property trading exchange",
+     "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8180711",
+     "host": "image-ppubs.uspto.gov",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Wiki Note: Intellectual Property Issues in ISDS",
+     "url": "https://jusmundi.com/en/document/publication/en-ip-issues-in-isds",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": false
+    },
+    {
+     "title": "The Intellectual Property Protection System of the Foreign Investment Law: Basic Structure, Motivation and Game Logic",
+     "url": "https://arxiv.org/pdf/2106.03467",
+     "host": "arxiv.org",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": true,
+     "host_outside_allowed_domains": true
+    },
+    {
+     "title": "Intellectual property trading exchange and a method for trading intellectual property rights",
+     "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/8554687",
+     "host": "image-ppubs.uspto.gov",
+     "access": "row returned; body unread; access untested",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_IP_BROADENED_asset_limb_LABELLED_MEASURE": true,
+     "url_already_held_in_archive": false,
+     "host_outside_allowed_domains": true
+    }
+   ]
+  }
+ ]
+}

@@ -544,6 +544,46 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-07 (archivist session — twenty-third deployment)** — **No roster change and no
+  contract change, for the SEVENTH consecutive session.** `git log b773cf1..bc35cfb --
+  .claude/agents/ prompts/ src/models.py` returns **no commit** across a **66-commit**, three-day
+  window, and zero on `src/`, `scripts/`, `tests/`, `.github/`, `docs/`, `views/`, `README.md`,
+  `METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md` and `fingerprint.yaml`. All 66 commits are
+  `analytics/` (54), `agents/` (44), `STATE_OF_THE_ANSWER.md` (13) and `state/` (4), counted by
+  touched top-level path. `scripts/check_models.py` exits **0** over 12 flowchart cards.
+  `src/models.py` unchanged: `CHAIRMAN_MODEL` and `HEAVY_MODEL` `claude-opus-5` (`:26-27`),
+  `UTILITY_MODEL` `claude-opus-4-8` (`:28`), `DIGEST_CLASSIFIER_MODEL`
+  `claude-haiku-4-5-20251001` (`:32`), `FALLBACK_MODEL` `claude-opus-4-8` (`:35`). All nine
+  definitions declare `model: opus`; the description split is unchanged at **4** Opus 5
+  (council-chairman, research-analyst, site-experience, systems-designer) and **5** Opus 4.8
+  (analytics-officer, integrity-officer, obsidian-archivist, research-editor, systems-researcher),
+  re-counted from the files this session. All nine seat notes carry a Model line agreeing with
+  their definition. **D6 was NOT re-tested**, and that is the 2026-10-04 decision honoured rather
+  than an omission: it was recorded documented-and-closed on a fifth identical reading, on the
+  stated condition that it be re-tested only if `.claude/agents/` or `src/models.py` moved. Neither
+  did.
+  **D5 re-measured, day fifty-five: eight of nine definitions still never name their own vault
+  note**, [[integrity-officer]] the lone exception, identical to 2026-08-16, 08-25, 09-04 and
+  10-04; and `grep -niE "holdout|hold-out|out-of-sample"` across the research analyst's **entire**
+  read path returns **0**, while the four out-of-sample positives are carried in **13** files
+  elsewhere in the tree.
+  **The read-path gap is now wider than this note has recorded it, and the refinement is the
+  council's.** The 2026-08-13 qualification above measures whether a definition names the seat's
+  own *note*. The chairman's census of 2026-10-07 measures whether a definition names the
+  *content files a seat must read*, and this seat re-executed it rather than carrying it: over all
+  nine definitions, `lit-review/ferguson-memo.md` **0**, `lit-review/kim-memo.md` **0**,
+  `agents/Workflow Threads.md` **0**, `analytics/search-results/` **0**;
+  `state/research_log.json` **1** (`council-chairman.md` only, never the analyst's);
+  `analytics/insights.jsonl` **1** (`research-analyst.md`); `STATE_OF_THE_ANSWER` **2**. **That
+  census reproduces the chairman's exactly** (`analytics/daily-research/2026-10-07.md:161-199`,
+  `:1726-1737`), including his withdrawal of the inherited *"0 of 9 definitions"* figure as false
+  on its own enumeration. `analytics/search-results/` is additionally named in **0** of the files
+  under `prompts/`. **Four content paths with no carrier in any definition, plus one misfiled to
+  the wrong seat — not six.** Recorded here because read-path membership is this note's subject;
+  the remedy is a contract edit and remains Emory's.
+  *Audited against `bc35cfb`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`.*
+
 - **2026-10-04 (archivist session — twenty-second deployment)** — **No roster change and no
   contract change, for the sixth consecutive session.** `git log d511280..b773cf1 --
   .claude/agents/ prompts/ src/models.py` returns **no commit** across 65 commits.

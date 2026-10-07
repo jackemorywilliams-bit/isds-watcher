@@ -113,16 +113,39 @@ rules written into its definition:
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Five rules this seat adopted from five separate failures. The first three are one rule in three
+Seven rules this seat adopted from seven separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
-the same scepticism on this seat's own carried records, and the fifth is the fourth again,
-because it did not generalise either.
+the same scepticism on this seat's own carried records, the fifth is the fourth again because it
+did not generalise either, the sixth is about attribution rather than about carried records, and
+the seventh is about the orphan sweep's own predicate. **This count was read back against the
+enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
+six to seven** — the discipline named in the block that follows, performed rather than cited.
 
-> **Count corrected 2026-10-04.** This sentence read "Four rules … from four separate failures"
-> while five were listed below it: rule 5 was appended by `2e2e38b` (2026-10-01) and the lead
-> sentence was not re-counted in the same change set. The rules themselves are unaltered. The
-> defect is this seat's own and is the smallest possible instance of rule 4 — a carried
-> description that stopped matching the artefact it describes.
+> **Count corrected 2026-10-04 — and the correction was itself wrong. Re-corrected 2026-10-07.**
+> The original sentence read "Four rules … from four separate failures". On 2026-10-04 this seat
+> changed it to **five** and wrote, in the block below, that *"five were listed below it: rule 5 was
+> appended by `2e2e38b` (2026-10-01)"*. **Six were listed. `2e2e38b` appended rules 5 AND 6**, which
+> `git log -S` on either rule's own text shows is the same commit. So the 2026-10-04 correction
+> undercounted by one — **by the identical mechanism it had just diagnosed, in the sentence
+> diagnosing it, while citing the commit that disproves it.** The rules themselves are unaltered and
+> have been throughout; only the count was ever wrong.
+>
+> **The original 2026-10-04 wording, preserved rather than rewritten:** *"This sentence read 'Four
+> rules … from four separate failures' while five were listed below it: rule 5 was appended by
+> `2e2e38b` (2026-10-01) and the lead sentence was not re-counted in the same change set. The rules
+> themselves are unaltered. The defect is this seat's own and is the smallest possible instance of
+> rule 4 — a carried description that stopped matching the artefact it describes."*
+>
+> **What the second instance adds to the first, and it is why this is worth the space.** The
+> 2026-10-04 diagnosis was right about the class and still got the number wrong, so *naming* rule 4
+> is not *performing* it. The performance is one command — count the enumeration — and this seat
+> did not run it either time. The council has a binding writing discipline for exactly this, adopted
+> 2026-09-12 and recorded at [[Agent Registry]]: **a count of a set the same paragraph enumerates is
+> read back against that enumeration before the paragraph closes** (`639c16e`,
+> `2026-09-12.md:1483`); the officer's taxonomy carries the same pattern as *self-contradicting
+> adjacent enumeration*. **That rule is binding on every seat, it is three weeks old, and this seat
+> breached it twice in one paragraph about its own reliability.** Recorded here rather than only in
+> the session note, because this is the file the next archivist session reads.
 
 1. **2026-08-16** — *A guard's exit 0 licenses only the claim the guard actually tests.* Learned
    when this seat wrote "no model drift exists" on the strength of `check_models.py` exiting 0,
@@ -167,6 +190,25 @@ because it did not generalise either.
    before the email carrying the request reached him. The honest form is *"closed by the project
    login"* plus the timing evidence; *"Emory closed it"* is an inference this seat cannot source.
    ([[Workflow Threads]] **D23**.)
+
+7. **2026-10-07** — *`git merge-base --is-ancestor <tip> origin/main` does not test whether a
+   commit landed. In a squash-merging repository it cannot, because a squash-merged tip is never an
+   ancestor of `main`. The orphan sweep's verdict is a CONTENT test or it is not a verdict.* The
+   refutation is the chairman's, at `analytics/daily-research/2026-10-02.md:1657-1661` — *"that
+   reading is FALSE, because this repository squash-merges, so a squash-merged tip is never an
+   ancestor of `main`"*, demonstrated at that record's §3.3 — and this seat reproduced it rather
+   than carrying it: at `bc35cfb`, **216** remote heads, **55** non-ancestors, and the newest
+   non-ancestor `origin/council/2026-10-04` (`1b50267`) has **exactly one** line `main` lacks, the
+   `Audited against` sha in `STATE_OF_THE_ANSWER.md`, while its substance landed as the squash
+   commit `3ccaffc`. **Forty-six of the 55 are that same artefact.** The standing instruction for
+   this session names `--is-ancestor` as the orphan test; it is kept as the cheap *screen* and the
+   verdict now comes from the added-line comparison against `main`'s current copy of each file.
+   **And the first run of that comparison this session was itself wrong** — comparing whole files
+   instead of diff-added lines returned 538 unlanded lines for
+   `council/analyst-gaps-and-methodology` against the true **9**, and inverted the band histogram.
+   It was caught only because the bands disagreed with the previous session's, which is the
+   argument for carrying the prior session's figures as a control rather than as a quotation.
+   ([[Workflow Threads]] **F3**, **F4**, **D16**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
@@ -680,6 +722,49 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-10-07 (twenty-third deployment)** — Standing every-3-days session, audited against
+  `bc35cfb` (`main`, clean tree), complete **1,838**-commit history after `git fetch --unshallow`;
+  the clone arrived shallow at **151**, the **fifteenth consecutive** session. Window
+  `b773cf1..bc35cfb` = **66** commits, three days. Cadence held. **Zero commits to
+  `.claude/agents/`, `prompts/`, `src/models.py`, `src/`, `scripts/`, `tests/`, `.github/`,
+  `docs/`, `views/`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md`, `COUNCIL.md` or
+  `fingerprint.yaml` — the seventh consecutive session with no contract drift.** Guards:
+  `check_models.py` **0** (12 cards), `check_claims.py` **0** (15 facts / 39 restatements),
+  `check_site_sync.py` **0**, `check_lock.py` **0**, `check_seen_integrity.py` **0** (504 entries),
+  `check_telemetry_privacy.py` **0**, `check_headline_lane.py` **0**, `check_currency.py`
+  **9 claims / 1 failed** — [[Workflow Threads]]' anchor outrun by the one `[skip ci]` scholar-intake
+  commit `bc35cfb`, which `reanchor.yml` clears on merge. **`jinja2` and `pytest` were absent from
+  this container and were installed, which is why `check_claims.py` and `check_site_sync.py` ran at
+  all and why the test suite ran locally for the first time in three sessions** — a container
+  difference, not a repository change.
+  **The session's substantive finding is a namespace this seat never recorded.** The council
+  adopted eleven durable `esc-*` escalation slugs on 2026-10-02 and `agents/Workflow Threads.md` —
+  the note whose stated job is every open thread with its owner — carried **zero** of them for five
+  days. Opened as **D25** with a sourced concordance: six resolve to an existing thread, **five name
+  live escalations with no entry in that note at all**, three of those five among the most-carried
+  slugs in the set. The concordance is written; five new threads are **not**, because four of the
+  five unmapped slugs live in `src/`, `scripts/` and `fingerprint.yaml` and only the owning seat can
+  state their state.
+  **Two findings against this note itself, and the second is the first one repeating.** The
+  2026-10-04 count correction was wrong: it moved the lead from "Four rules" to "Five" and asserted
+  five were listed, when **six** were, `2e2e38b` having appended rules 5 and 6 in one commit.
+  **That is rule 4's defect committed inside the sentence diagnosing rule 4's defect**, and it
+  breaches the council's read-back discipline of 2026-09-12 (`639c16e`, `2026-09-12.md:1483`), which
+  is binding on every seat. Both corrections now sit beside the preserved original. **Method rule 7
+  adopted** — `--is-ancestor` is not a landing test in a squash-merging repository — and adding it
+  immediately falsified the just-fixed count a third time; **the read-back caught that one in the
+  same change set**, which is the first time this seat has performed the rule rather than cited it.
+  **Orphan check:** 216 remote heads, 55 non-ancestors, and on the added-line test **1 at zero,
+  46 in 1–5, 3 in 6–20, 5 above twenty** — bands identical to 2026-10-04's. Every branch carrying
+  content `main` lacks dates from **2026-09-13 or earlier**; my own 2026-10-04 record is on `main`
+  byte-identical (sha256 `c2e18348…`), so **the 2026-07-31 failure this standing session exists to
+  catch has not recurred.** D20 re-measured by **executing the suite** rather than reading the CI
+  log: **55** consecutive push-triggered `pipeline-guards` failures, and all six stale constants
+  reproduce the 2026-10-04 table exactly. D24 reproduced a third session; `docs/` restored before
+  commit.
+  *Audited against `bc35cfb`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `analytics/`, `views/isds-workflow-3d/workflow.json`, and every remote branch tip.*
 
 - **2026-10-04 (twenty-second deployment)** — Standing every-3-days session, audited against
   `b773cf1` (`main`), complete **1,772**-commit history after `git fetch --unshallow`; the clone

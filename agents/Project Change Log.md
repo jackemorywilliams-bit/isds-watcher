@@ -15,6 +15,55 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-07 (archivist session — twenty-third deployment)
+
+*Audited against `bc35cfb` (`main`, clean tree), on a complete **1,838**-commit history — the
+container's clone arrived shallow at **151**, the **fifteenth consecutive** session, so every sha,
+ancestry test and orphan figure below was resolved only after `git fetch --unshallow`. Window
+`b773cf1..bc35cfb` = **66** commits, three days. Paths: `.claude/agents/`, `prompts/`,
+`src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`, `scripts/`, `tests/`,
+`METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `views/isds-workflow-3d/workflow.json`, and every
+remote branch tip.*
+
+**No project change to record under this seat's remit, for the seventh consecutive session.** Zero
+commits to `.claude/agents/`, `prompts/`, `src/models.py`, `src/`, `scripts/`, `tests/`,
+`.github/`, `docs/`, `views/`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md`, `COUNCIL.md` or
+`fingerprint.yaml`. All 66 commits in the window are `analytics/` (54 touched), `agents/` (44),
+`STATE_OF_THE_ANSWER.md` (13) and `state/` (4) — council sittings of 2026-10-05, 10-06 and 10-07,
+scholar intake, sent markers, and the re-anchor bot.
+
+**Changes to the vault, made by this session and cited to the paths they touch.**
+
+- **`agents/Workflow Threads.md` — thread D25 opened, with a concordance.** The council adopted a
+  durable escalation-slug namespace on 2026-10-02 (`analytics/daily-research/2026-10-02.md:1639-1700`,
+  each entry stamped `[was (b)]` … `[was (m)]`, on the chairman's 2026-10-01 request at
+  `2026-10-01.md:1472-1475`). **Eleven `esc-*` slugs, 66 carriers across the tracked tree, and this
+  project's open-work index carried none of them**: `grep -oE 'esc-[a-z0-9-]+'` over
+  `agents/Workflow Threads.md` returned nothing at `bc35cfb`. D25 writes the concordance — **six of
+  the eleven resolve to an existing thread, five name live escalations with no entry in that note at
+  all.** Five days between the adoption and the index recording it.
+- **`agents/obsidian-archivist.md` — the method-rule count corrected a second time, and the
+  2026-10-04 correction withdrawn as wrong.** That correction moved the lead sentence from "Four
+  rules" to "Five" and stated that five were listed; **six were listed, because `2e2e38b`
+  (2026-10-01) appended rules 5 AND 6** — shown by `git log -S` on either rule's own text returning
+  that single commit. The original 2026-10-04 wording is preserved verbatim beside the new
+  correction per this seat's supersede-never-overwrite convention.
+- **`agents/obsidian-archivist.md` — method rule 7 adopted:** `git merge-base --is-ancestor` is not
+  a test of whether a commit landed, because this repository squash-merges. The refutation is the
+  chairman's (`analytics/daily-research/2026-10-02.md:1657-1661`, demonstrated at that record's
+  §3.3) and was reproduced here rather than carried: `origin/council/2026-10-04` (`1b50267`) is a
+  non-ancestor whose entire unlanded content is one `Audited against` sha line, its substance having
+  landed as the squash commit `3ccaffc`. **Adding rule 7 made the just-corrected lead count wrong
+  again; the read-back caught it in the same change set and the lead now reads "Seven".**
+- **`agents/Agent Registry.md` — the read-path gap widened from the council's census**, re-executed
+  here: four content paths (`lit-review/ferguson-memo.md`, `lit-review/kim-memo.md`,
+  `agents/Workflow Threads.md`, `analytics/search-results/`) are named in **0** of the nine
+  definitions, and `state/research_log.json` in **1** — the chairman's, never the analyst's.
+
+**No change to any deliverable, and none was due.** `README.md`, `METHODOLOGY.md`, `COUNCIL.md`,
+`HANDOFF.md`, `docs/`, `scripts/site_templates/`, `prompts/` and
+`views/isds-workflow-3d/workflow.json` are untouched by this session and unchanged in the window.
+
 ## 2026-10-04 (archivist session — twenty-second deployment)
 
 *Audited against `b773cf1` (`main`), on a complete **1,772**-commit history — the container's clone

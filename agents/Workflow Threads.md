@@ -735,6 +735,61 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D25 — the council adopted a durable escalation-slug namespace on 2026-10-02 and this note, the project's open-work index, resolves none of its eleven ids *(new 2026-10-07; owner: archivist — fixed in part here; **Emory** for the five slugs that have no thread at all)*
+
+- **State** — On 2026-10-01 the chairman established that the letter-series escalation labels had
+  become unusable: *"the label `(f)` CHANGED REFERENT BETWEEN CONSECUTIVE DAYS"*
+  (`analytics/daily-research/2026-10-01.md:1465-1467`), and asked for *"one decision: give each
+  escalation a durable slug — `esc-validation-status-only`, `esc-shallow-clone-currency`,
+  `esc-pipeline-guards-red` — and retire both series"* (`:1472-1475`). On 2026-10-02 the council
+  adopted the slugs and retired the letter series in the same record
+  (`analytics/daily-research/2026-10-02.md:1639-1700`, each entry stamped `[was (b)]`, `[was (f)]`,
+  `[was (i)]`–`[was (m)]`).
+- **The measurement, run at `bc35cfb`** — **eleven** `esc-*` slugs are now in use, carried **66**
+  times across the tracked tree: `analytics/daily-research/` (7 files), `state/research_log.json`
+  and `analytics/insights.jsonl`. **This note carries zero of the eleven.**
+  `grep -oE 'esc-[a-z0-9-]+' "agents/Workflow Threads.md"` returns nothing.
+- **So a reader who follows a slug out of a council record, out of the research log, or out of the
+  insights ledger into this note — the one note whose stated job is "every open thread in the
+  project as one linear chain … who owns the next action" — finds nothing.** That is not the
+  council's defect. This note is mine, and a namespace change five days old that never reached it
+  is the same class of failure as the stale agent memory this seat was created to prevent.
+- **Concordance, written here so the ids resolve.** Each row is the slug, the thread that holds the
+  same subject under different words, and the basis for saying so. **Read a thread by its title,
+  not by its number** — the standing convention at the head of this note.
+
+  | `esc-` slug (council, since 2026-10-02) | thread in this note | basis |
+  | --- | --- | --- |
+  | `esc-pipeline-guards-red` | **D20** | same subject: `main`'s suite red since 2026-09-14, both failures in `tests/test_site_claims.py` |
+  | `esc-open-pr-set` | **D19** (#184) · **D11** (#110's unmergeability) | the slug's own text names #184 and #110 (`2026-10-02.md:1650-1653`) |
+  | `esc-binding-rules-unreachable` | **D5** | both state one defect: a binding rule recorded where the seat bound by it never reads |
+  | `esc-lit-review-unreachable-from-agent-definitions` | **D5** · **D15** | read-path membership and routing latency respectively |
+  | `esc-ferguson-kim-bodies-need-library-access` | **D2**, in part | D2 is the literature layer's ledger gap; the access blocker itself is not in D2 |
+  | `esc-stale-branches` | **F3** · **F4** | both are branch-hygiene threads of 2026-08 vintage, written at **3** and **17** branches against the slug's 214 / 21 — stale, not absent |
+  | `esc-shallow-clone-currency` | **NONE** | `shallow` occurs here only as session-header narrative (`:22`, `:109`) and one ruled-out diagnosis (`:700`) |
+  | `esc-validation-status-only` | **NONE** | `_handwritten_sections` has **0** carriers here against **23** files elsewhere in the tree |
+  | `esc-gap-counter-conflates-failed-with-unattempted` | **NONE** | `conflates` **0**, `unattempted` **0** here |
+  | `esc-fingerprint-no-scoring-phrase` | **NONE** | `scoring phrase` **0** here |
+  | `esc-quarantine-contaminates-future-screens` | **NONE** | nearest is **S14**, which is triage/V2-shadow and a different subject |
+
+- **Six of eleven resolve; five name live escalations that have no entry in this note at all.** The
+  five are the ones to read as the finding: `esc-shallow-clone-currency` (13 carriers),
+  `esc-validation-status-only` (13), `esc-gap-counter-conflates-failed-with-unattempted` (10),
+  `esc-quarantine-contaminates-future-screens` (1) and `esc-fingerprint-no-scoring-phrase` (1).
+  **Three of those five are among the most-carried slugs in the set**, which is the part that makes
+  it a navigability defect rather than a tidiness one.
+- **What this session did, and what it deliberately did not** — the concordance above is written,
+  so every slug now resolves to something, including to an honest **NONE**. **I did not open five
+  new threads for the five unmapped slugs.** Writing a thread means stating state, evidence,
+  recorded-at and owner from the record, and four of those five sit in `src/`, `scripts/` and
+  `fingerprint.yaml` — paths outside this seat's and whose state only the owning seat can assert.
+  An entry that cannot be sourced is not written; that is this note's own rule at `:12-14`.
+- **Owner** — **archivist** for the concordance (done here) and for keeping it current as the
+  council issues slugs. **Emory** for the one decision underneath: whether the `esc-*` namespace
+  supersedes this note's `C`/`D`/`F`/`S` ids or runs alongside them. It cannot be answered from
+  the record, because the 2026-10-01 request asked to *"retire both series"* and the 2026-10-02
+  adoption retired only the letters — this note's numbered series was never addressed either way.
+
 ### D24 — `scripts/check_site_sync.py` is a *check* that rebuilds `docs/` and leaves 24 tracked files dirty, so any seat that runs the guard set and then `git add -A` commits generated output it never touched *(new 2026-10-01; owner: systems-designer — `scripts/` is outside this seat's paths)*
 
 - **State** — Found 2026-10-01 by running it. `scripts/check_site_sync.py` establishes its verdict by

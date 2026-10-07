@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-10-07",
+  "at": "2026-10-07T13:42:11.008044+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 4,
+    "newest_alert_date": "2026-10-07T01:37:55+00:00",
+    "newest_alert_subject": "\"denial of justice\" (\"investment arbitration\" OR ... - new results",
+    "alert_dates": [
+      "2026-10-07",
+      "2026-10-02",
+      "2026-09-17",
+      "2026-09-08"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 1,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://books.google.com/books?hl=en&lr=lang_en&id=sTwUEgAAQBAJ&oi=fnd&pg=PR1&dq=%22denial+of+justice%22+(%22investment+arbitration%22+OR+%22investor-state%22+OR+ISDS+OR+ICSID)&ots=hyGGaRSixE&sig=VaIhTkm9sT4DJPgS4eK2P61XY_g"
+  ]
+}

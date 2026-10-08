@@ -1,0 +1,604 @@
+{
+ "date": "2026-10-08",
+ "seat": "research-analyst",
+ "model": "claude-opus-5",
+ "schema_note": "'title' is required on every row and the domain parameters are recorded on every call object. This is the schema of the pending row-set proposal, which is UNAPPROVED. It is adopted voluntarily here, as in 2026-10-06.json and 2026-10-07.json, and it remains unapproved - this is the third voluntary adoption and the zeroth approval.",
+ "instrument_state": {
+  "fetch": "DEAD on both instruments. Probed by the chairman at session open on NEUTRAL CONTROLS ONLY (example.com, en.wikipedia.org/wiki/Main_Page): curl -> 'CONNECT tunnel failed, response 403'; the proxy status endpoint logs both as 'connect_rejected / gateway answered 403 to CONNECT'; the fetch service returned EGRESS_BLOCKED on example.com. THIS SEAT DID NOT RE-PROBE: the measurement was already made and re-probing spends budget to learn nothing. NO TOOL-LAYER STATUS IS CONVERTED INTO A CLAIM ABOUT ANY RESOURCE.",
+  "consequence": "EVERY ROW IN THIS FILE IS A TITLE. NO BODY WAS OPENED BY ANY MEANS. 25 rows across 3 blocks, all titles only, bodies unread.",
+  "retrieval": "WebSearch only.",
+  "relay": "fetch-relay.yml is committed and working. NO REQUEST FILE WAS WRITTEN: no cadenced observation is due before 2026-10-10 (thread 11 Wingtech ~10-10; thread 11's relay limb and the PCA register row for thread 39 ~10-13; thread 14 ~10-18). analytics/fetch-requests/ holds 75 files and analytics/fetch-results/ 74; NEITHER IS EMPTY. A fetch-dependent item is never 'stranded' as a matter of capability, only unscheduled."
+ },
+ "budget": {
+  "ceiling": "3 RETRIEVALS, counted in BLOCKS not calls (the chair re-drafted the unit after 2026-10-07 spent 5 against a ceiling of 4 drafted in calls)",
+  "spent": "3 blocks across 3 calls. ONE BLOCK PER CALL - no call returned an engine-composed second block, so the 2026-10-07 overspend did not recur.",
+  "per_block": [
+   {
+    "block": 1,
+    "call": "Q-1008-1",
+    "rows": 9
+   },
+   {
+    "block": 2,
+    "call": "Q-1008-2",
+    "rows": 7
+   },
+   {
+    "block": 3,
+    "call": "Q-1008-3",
+    "rows": 9
+   }
+  ],
+  "rows_total": 25,
+  "handbacks": "NONE. Block 3 was pre-registered as CONDITIONAL and the condition fired, so it was spent as designed rather than handed back. Had block 2 shown either blocked host returning, block 3 would have been handed back unspent."
+ },
+ "monitored_author_clause": "SUSPENDED BY THE CHAIR for this session (prompts/research_analyst.txt:155-166). NO MONITORED-AUTHOR QUERY WAS FIRED. The omission is the chair's, recorded as the chair's, and is not a lapse of this seat. The chair's stated grounds: on a 3-block day the clause would consume the budget, and its second half - 'fetch and cite the body before any claim' - cannot be performed at all on a session class where fetch is dead.",
+ "prior_art_screen_standing_discipline_1": {
+  "rule": "Before writing any heading naming a tool, parameter, schema or response shape, grep analytics/insights.jsonl AND the record tree for the literal identifier and print the carrier count beside the finding, zero included.",
+  "re_executed_not_inherited": "The chair supplied counts for convenience and asked that they be re-executed if relied on. They were. ALL SIX REPRODUCE EXACTLY.",
+  "insights_jsonl": {
+   "allowed_domains": 5,
+   "blocked_domains": 3,
+   "\"mode\"": 0,
+   "title": 43,
+   "steps": 4,
+   "runner_id": 2,
+   "bare_host_title": 0,
+   "limb_predicate": 1,
+   "string_verbatim": 0,
+   "WebSearch": 4,
+   "pre-emption": 0
+  },
+  "record_tree_analytics_daily_research": {
+   "blocked_domains": "146 lines across 19 files",
+   "bare_host_title": "0 lines across 0 files",
+   "pre-emption": "10 lines across 2 files"
+  },
+  "THE_SCREEN_CHANGED_THE_DESIGN_OF_BLOCK_2_BEFORE_IT_FIRED": "The chair's count for blocked_domains was 3, which is correct for insights.jsonl. The RECORD TREE carries 146 lines across 19 files, and one of them governs this test. analytics/daily-research/2026-09-20.md:296 carries, verbatim: 'blocked_domains on S7 is untested, not validated. Zero dailyjus.com rows came back, but S7 is not the query that surfaced that host - S5 was, unfiltered. A zero on a different query is not evidence the block works.' THE PROJECT ALREADY HELD THE RULE THAT MAKES A ONE-BLOCK VERSION OF THE CHAIR'S ITEM 2 UNINFORMATIVE ON A ZERO. That is why block 3 was pre-registered as a conditional second arm BEFORE block 2 fired. The screen earned its keep on the first day it was mandatory."
+ },
+ "pre_registrations_verbatim": [
+  {
+   "written_at_utc": "2026-10-08T11:22:23Z (pre-registration file written to disk BEFORE firing; firing followed)",
+   "call_id": "Q-1008-1",
+   "authority": "analytics/daily-research/2026-10-07.md s7.9 item 1; the 1007-C2 discriminating test proposed by the research-analyst seat at 2026-10-07.md:1124 and ranked first by the chair",
+   "string_verbatim": "\"trade secrets\" OR \"trade secret\" OR \"know-how\" as covered investment investor-State tribunal",
+   "string_identity_claim": "BYTE-IDENTICAL to Q-1007-2's string_verbatim as stored at analytics/search-results/2026-10-07.json $.calls[1].string_verbatim. Verified by programmatic byte comparison BEFORE firing, result recorded in this file.",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null,
+    "note": "mode 'extended' is what the 2026-10-07 call carried (2026-10-07.json $.calls[1].parameters.mode) AND what every 2026-10-06 call carried (2026-10-06.json $.calls[*].parameters.mode, 3 of 4 'extended', the monitored-author call 'standard'). allowed_domains is passed NOT AT ALL, i.e. no domain parameter in the request."
+   },
+   "experimental_design": "ONE VARIABLE against each of two anchors. Against 2026-10-06: only the VOCABULARY differs (10-06 fired treaty words 'undisclosed test data'/'undisclosed information'; today fires asset words), parameters identical. Against 2026-10-07 Q-1007-2: only the DOMAIN RESTRICTION differs (six-host allowlist -> none), string and mode identical.",
+   "PREREGISTERED_SCORING_RULE_FIXED_BY_THE_CHAIR_AND_NOT_RENEGOTIABLE": {
+    "cell_A_pre_emption_SURVIVES": "the returned ROW TITLES land AGAIN in procedural/disclosure material - transparency of proceedings, confidentiality orders, document production, third-party-funding disclosure, institutional wiki notes on procedure.",
+    "cell_B_pre_emption_IS_DEAD": "the returned ROW TITLES land in GENERAL TRADE-SECRET PRACTICE material - the class where all six archived asset-limb titles sit (www.wipo.int x2, www.fjc.gov, practiceguides.chambers.com, www.gtlaw.com, www.mcguirewoods.com). On this outcome the DESIGN account ('the engine returns the nearest thing the permitted hosts hold') explains both 2026-10-06 and 2026-10-07, and the pre-emption account is DEAD."
+   },
+   "THIRD_AND_FOURTH_CELLS_ADDED_BY_THE_SEAT_BEFORE_FIRING_AND_BEFORE_SEEING_ANY_ROW": {
+    "why_this_is_not_a_renegotiation": "I am not altering, weakening or re-reading either chair-registered cell. I am registering that the chair's pair is EXHAUSTIVE ONLY IF a third cell is empty, and I am fixing in advance what it means if it is not. Registered before firing precisely so it cannot be scored into existence afterwards.",
+    "cell_C_BOTH_REGISTERED_ACCOUNTS_FAIL": "the returned ROW TITLES land in INVESTMENT-LAW TRADE-SECRET material - i.e. scholarship or commentary whose title couples a trade-secret/know-how asset term WITH an investment-treaty, expropriation or ISDS term. The project's own seed corpus contains exactly this class: lit-review/ferguson-memo.md:1 annotates Alexander Ferguson, 'Trade Secrets at Risk - The Protection Against Expropriation of a Trade Secret'. If unrestricted asset words reach THAT class, then neither 'the words are owned by the procedural literature' (cell A) nor 'the engine returned the nearest thing the six permitted hosts held' (cell B) is the operative mechanism: the operative factor was the SIX-HOST ALLOWLIST starving a vocabulary that is otherwise productive unrestricted. Cell C is also the ONLY cell that would be a substantive hit-class on this project's central sub-question rather than an instrument observation.",
+    "cell_D_INDETERMINATE": "any landing in which no single class reaches a STRICT MAJORITY of the returned rows (>=5 of 9 at a 9-row block; >= ceil(n/2)+... stated generally as strictly more than half of n). On cell D the result DISCRIMINATES NOTHING and both accounts remain live. A split return may NOT be read as a verdict for whichever class happens to be largest.",
+    "classification_method": "every returned row is assigned to exactly one of A/B/C/unclassifiable by a READER'S JUDGEMENT ON THE TITLE, stated per row, never by a mechanical keyword predicate. This is standing discipline 4 of today's brief applied to the scoring classes as well as to the doctrine limb."
+   },
+   "secondary_measures_registered_in_advance": [
+    "asset-limb title count under the 2026-10-06 limb_predicate applied VERBATIM, printed beside Q-1007-2's 0 of 9 on the restricted host set.",
+    "doctrine-limb title count under the same verbatim predicate, with the referential step stated per title (standing discipline 4).",
+    "ARCHIVE IDENTITY: count of returned URLs string-identical to a URL already held in analytics/search-results/*.json. Denominator measured BEFORE firing at 408 distinct URLs / 123 distinct hosts over 659 title-bearing rows across 15 artefacts, EXCLUDING today's own artefact (self-contamination rule). The same harvest excluding 2026-10-07.json reproduces yesterday's published 373 URLs / 118 hosts EXACTLY, which is an independent re-execution of that baseline.",
+    "off-host census: hosts returned, and whether any of the six 2026-10-07 allowlist hosts return when NOT requested."
+   ],
+   "preregistered_refutation_HIT": "a returned ROW TITLE naming a SPECIFIC ISDS matter in which trade secrets, know-how or undisclosed clinical/test data is the pleaded covered investment. This is the only thing in today's budget that could disturb STATE_OF_THE_ANSWER.md:1121's central negative, and it can only destroy it, never strengthen it.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1 per arm. TITLES ONLY - fetch is dead on both instruments today, measured by the chair on neutral controls, so NO BODY WILL BE OPENED and no claim about any returned document's contents may be made from this block. Any engine-composed synthesis accompanying this block is QUARANTINED AND REFUSED IN FULL before it is read for content.",
+   "what_this_block_CANNOT_measure": "anything about whether a pharmaceutical trade-secret or clinical-data ISDS case exists. The block tests the INSTRUMENT's vocabulary behaviour. Cell C is the single exception and even there the finding would be 'a title exists', not 'a case exists'."
+  },
+  {
+   "written_at_utc": "2026-10-08T11:26:19Z (pre-registration file written to disk BEFORE firing block 2; firing followed. Block 3's arm is registered HERE, before block 2 fires, so that its decision rule cannot be composed after seeing block 2.)",
+   "call_ids": [
+    "Q-1008-2 (fires now)",
+    "Q-1008-3 (fires ONLY on the ambiguous branch defined below)"
+   ],
+   "authority": "analytics/daily-research/2026-10-07.md s7.9 item 1 ranked first (spent as Q-1008-1); the chair's ITEM 2 for 2026-10-08, which is the research-analyst's own question 3 of 2026-10-07 (2026-10-07.md:782 and the GAP-UNRESOLVED line at :855)",
+   "string_verbatim": "\"intellectual property\" OR \"patent\" OR \"trade mark\" as covered investment investor-State tribunal",
+   "string_identity_claim": "BYTE-IDENTICAL to analytics/search-results/2026-10-07.json $.calls[3].string_verbatim, sha256 b2d221c307efa1b4, verified programmatically BEFORE firing.",
+   "parameters_Q_1008_2": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": [
+     "arxiv.org",
+     "image-ppubs.uspto.gov"
+    ]
+   },
+   "parameters_Q_1008_3_IF_FIRED": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null
+   },
+   "THIS_IS_NOT_A_ONE_VARIABLE_PAIR_WITH_Q_1007_4_AND_I_SAY_SO_IN_MY_OWN_SCORING": {
+    "why": "analytics/insights.jsonl:199 records a SCHEMA-LEVEL mutual exclusion, verbatim 'Error: Cannot specify both allowed_domains and blocked_domains in the same request', verified by two seats on two disjoint domain pairs. So this call CANNOT carry Q-1007-4's six-host allowlist. Against Q-1007-4 TWO variables therefore move at once: the allowlist is REMOVED and a blocklist is ADDED. Any difference in the return may be caused by either. It is NOT a one-variable pair and no figure from it may be printed as though it were.",
+    "and_block_1_of_today_makes_that_confound_LARGE_not_small": "Q-1008-1 measured, today, that removing a six-host allowlist changes the return composition completely: asset-limb titles went 0 of 9 (allowlist) to 6 of 9 (no allowlist) on a BYTE-IDENTICAL string, and 0 of 6 of the allowlist hosts returned when not requested. The allowlist is the dominant term. So the allowlist-removal confound in this call is known to be large."
+   },
+   "PRIOR_ART_SCREEN_EXECUTED_BEFORE_FIRING_standing_discipline_1": {
+    "literal_identifier": "blocked_domains",
+    "carriers_insights_jsonl": 3,
+    "carriers_record_tree_daily_research": "146 lines across 19 files (grep -r -c). The chair's count of 3 is the insights.jsonl count and is correct for that file; the record tree carries far more and I screened it.",
+    "the_carrier_that_GOVERNS_THIS_TEST_S_DESIGN_and_which_I_did_not_know_before_the_screen": "analytics/daily-research/2026-09-20.md:296, verbatim: 'blocked_domains on S7 is untested, not validated. Zero dailyjus.com rows came back, but S7 is not the query that surfaced that host - S5 was, unfiltered. A zero on a different query is not evidence the block works.'",
+    "second_carrier": "analytics/daily-research/2026-10-03.md:512, verbatim: 'Zero blocked-domain leakage. blocked_domains was identical on all six calls and no row from any of the four blocked hosts returned. That is one clean observation, not a finding about the parameter's reliability.'",
+    "consequence_I_am_bound_by": "THE PROJECT ALREADY HOLDS THE RULE THAT MAKES A ONE-BLOCK VERSION OF THIS TEST UNINFORMATIVE ON A ZERO. A zero is evidence the block works ONLY if the SAME string surfaces the blocked hosts UNFILTERED. Q-1007-4 surfaced arxiv.org and image-ppubs.uspto.gov under an ALLOWLIST condition (as leakage), never unfiltered. So the sequential second arm is not my embellishment of the chair's item - it is the chair's item made capable of answering, under this project's own 2026-09-20 standard.",
+    "efficacy_status_before_today": "NEVER TESTED. Both prior zero-leak observations are self-labelled untested/not-a-finding. insights.jsonl:199 records blocked_domains ALONE returning 10 rows, so the parameter is ALIVE as a parameter; its EFFICACY is what is open."
+   },
+   "PREREGISTERED_SEQUENTIAL_DECISION_RULE_fixed_before_block_2_fires": {
+    "branch_LEAK": "IF either arxiv.org or image-ppubs.uspto.gov appears among Q-1008-2's returned row hosts -> blocked_domains IS NOT HONOURED, on a direct observation. DECISIVE IN ONE BLOCK. Block 3 is then HANDED BACK UNSPENT and the handback is reported as a handback.",
+    "branch_ZERO_AMBIGUOUS": "IF neither host appears -> THE RESULT IS AMBIGUOUS AND MAY NOT BE REPORTED AS EFFICACY, per 2026-09-20.md:296. Block 3 then fires the SAME string with NO domain parameter at all, as the unfiltered baseline.",
+    "block_3_scoring_IF_FIRED": {
+     "3a_EFFICACY_MEASURED_POSITIVE": "IF the unfiltered baseline RETURNS arxiv.org or image-ppubs.uspto.gov while the blocked arm did not -> this is the FIRST efficacy measurement of blocked_domains this project has ever had, and it is POSITIVE (the parameter works on these hosts, n=1 string). Strength ceiling: OBSERVATION, n = 1 string, 2 hosts. Never a guarantee.",
+     "3b_TEST_IS_DEAD_AND_I_SAY_SO": "IF the unfiltered baseline ALSO returns neither host -> the hosts had no reason to return absent the allowlist condition, EFFICACY REMAINS UNTESTED, and the correct report is that the test is dead on this string. This reproduces the 2026-09-21 flaw the chair warned of (a pair blocked with no reason to return) and I will report it as a reproduction of that flaw, not as a result.",
+     "3c_what_3b_would_still_buy": "a positive finding of a different kind: that Q-1007-4's three off-domain rows on 2026-10-07 were specific to the ALLOWLIST condition rather than to the string's unfiltered ranking. That bears directly on 2026-10-07 Finding 3's reach and on whether the 2026-10-04 '9 of 10 scientific-literature hosts' draw is re-readable as filter leakage."
+    }
+   },
+   "secondary_measures_registered_in_advance": [
+    "full host census of every returned row",
+    "asset-limb and doctrine-limb counts under the 2026-10-06 limb_predicate applied VERBATIM, with the doctrine limb's referential step stated PER TITLE and never inherited from the predicate (standing discipline 4)",
+    "ARCHIVE IDENTITY per block against 408 distinct URLs / 123 hosts over 659 title-bearing rows, 15 artefacts, TODAY'S OWN ARTEFACT EXCLUDED",
+    "bare_host_title count under the 2026-10-06 predicate's fourth class. Prior-art note: 'bare_host_title' has 0 carriers in analytics/insights.jsonl and 0 in analytics/daily-research/; it is DEFINED in 2026-10-06.json's limb_predicate and has never been reported. Any count is therefore a first report of a defined-but-unused class, not a new class."
+   ],
+   "preregistered_refutation_HIT": "a returned ROW TITLE naming a SPECIFIC ISDS matter in which trade secrets, know-how or undisclosed clinical/test data is the pleaded covered investment.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1 per arm. TITLES ONLY; fetch is dead on both instruments, measured by the chair on neutral controls, so no body is opened and nothing is asserted about any returned document's contents. Any engine-composed synthesis is QUARANTINED AND REFUSED IN FULL.",
+   "what_this_block_CANNOT_measure": "anything about the 2026-10-03/04 control series' validity directly. It can only make that series' off-domain draw re-readable or not. It measures a PARAMETER, not the world, and nothing in it bears on STATE_OF_THE_ANSWER.md:1121's central negative except through the refutation limb."
+  }
+ ],
+ "calls": [
+  {
+   "call_id": "Q-1008-1",
+   "block": 1,
+   "string_verbatim": "\"trade secrets\" OR \"trade secret\" OR \"know-how\" as covered investment investor-State tribunal",
+   "byte_identity_to_Q_1007_2": "VERIFIED BEFORE FIRING. 93 bytes each; sha256 of both strings begins 54aa50151a037d5e.",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null,
+    "domain_parameters_passed": "NONE - no domain parameter was included in the request at all"
+   },
+   "answers_the_registered_string": "YES. One block, 9 rows, responsive to the registered string; no engine-composed block.",
+   "result": {
+    "rows": 9,
+    "distinct_hosts": 8,
+    "PREREGISTERED_VERDICT": "CELL B AT A STRICT MAJORITY - 6 of 9. THE DESIGN ACCOUNT EXPLAINS BOTH DAYS AND THE PRE-EMPTION ACCOUNT IS DEAD.",
+    "cell_counts": {
+     "A_procedural_disclosure": "0 of 9",
+     "B_general_trade_secret_practice": "6 of 9",
+     "C_investment_law_trade_secret": "1 of 9 (row 8, identified by URL against state/research_log.json:45)",
+     "UNCLASSIFIABLE_ON_TITLE": "2 of 9 (rows 3 and 9)",
+     "D_indeterminate": "NOT TRIGGERED - cell B's 6 of 9 is a strict majority of 9"
+    },
+    "asset_limb_2026_10_06_VERBATIM_predicate": "6 of 9",
+    "THE_PAIRED_FIGURE_PRINTED_WITH_IT_NEVER_ALONE": "Q-1007-2, BYTE-IDENTICAL string, same mode, six-host arbitration allowlist: 0 of 9 asset-limb titles. Unrestricted: 6 of 9. ONLY THE DOMAIN RESTRICTION MOVED.",
+    "doctrine_limb_2026_10_06_VERBATIM_predicate": "0 of 9. REFERENTIAL STEP STATED PER TITLE as standing discipline 4 requires: I read all nine titles and none refers to adjudicatory competence, admissibility or any of the predicate's doctrine terms. The figure is not inherited from the predicate; it was read.",
+    "both_limbs": "0 of 9",
+    "bare_host_title": "2 of 9 (rows 8 and 9). FIRST REPORT of a class DEFINED in 2026-10-06.json's limb_predicate and never once reported: 0 carriers in insights.jsonl, 0 in analytics/daily-research/.",
+    "refutation_limb": "NULL. No returned ROW TITLE names a specific ISDS matter in which trade secrets, know-how or undisclosed clinical/test data is the pleaded covered investment. STATE_OF_THE_ANSWER.md:1121's central negative IS UNDISTURBED.",
+    "archive_identity_PRIMARY": "2 of 9 string-identical against 408 distinct URLs / 123 hosts over 659 title-bearing rows across 15 artefacts, THIS SEAT'S OWN ARTEFACT EXCLUDED.",
+    "archive_identity_VARIANTS_separately_labelled": {
+     "raw_text_normalised_464_URL_denominator": "2 of 9",
+     "whole_tree_holdings_1463_normalised_locators_over_287_files": "3 of 9"
+    },
+    "the_two_held_URLs_are_the_sharpest_datum_in_the_block": "Both came from analytics/search-results/2026-10-06.json WITH BYTE-IDENTICAL TITLES: 'Trade Secret Case Management Judicial Guide Federal Judicial Center 2023' (www.fjc.gov) and 'WIPO Guide to Trade Secrets and Innovation - Part III: Basics of trade secret protection' (www.wipo.int). The chair's cell-B definition was written as 'the class where all six archived asset-limb titles sit'. TWO OF THOSE SIX LITERAL ROWS RETURNED, title and URL identical, on a DIFFERENT STRING two days later. Cell B is satisfied not merely by class resemblance but by partial row identity.",
+    "hosts": [
+     "www.fjc.gov",
+     "www.wipo.int",
+     "en.wikipedia.org",
+     "news.bloomberglaw.com",
+     "www.nycbar.org",
+     "wolfgreenfield.com",
+     "repository.law.uic.edu",
+     "data.consilium.europa.eu"
+    ],
+    "SIX_2026_10_07_ALLOWLIST_HOSTS_RETURNING_WHEN_NOT_REQUESTED": "0 of 6. BUT SEE BLOCK 2: on a different string two of the six DID return unrequested, so this zero is STRING-SPECIFIC and may NOT be read as a general property. I constrain my own inference here deliberately.",
+    "www_italaw_com": "0 rows. Standing fetch prohibition untouched and unapproached.",
+    "engine_synthesis": "QUARANTINED AND REFUSED IN FULL as Q-1008-S1. It attributed to row 8 an author, a year, a journal, a case study and a substantive conclusion; it attributed a holding and two federal-court dispositions to row 3; and it attributed definitional content to rows 6 and 9. NOT ONE of those propositions is in any returned row title. The most seductive refusal of the day: row 8's attributed author is an author of this project's own seed corpus."
+   },
+   "rows": [
+    {
+     "title": "Trade Secret Case Management Judicial Guide Federal Judicial Center 2023",
+     "url": "https://www.fjc.gov/sites/default/files/materials/08/Trade%20Secret%20final.pdf",
+     "host": "www.fjc.gov",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "HELD - string-identical AND title-identical to a row in analytics/search-results/2026-10-06.json",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret practice: domestic litigation case-management guidance. Host is one of the five hosts the chair's cell-B definition names."
+    },
+    {
+     "title": "Trade Secrets",
+     "url": "https://www.wipo.int/en/web/trade-secrets",
+     "host": "www.wipo.int",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "host held; this URL not held",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret practice: an IP-office topic landing page. Host is one of the five the chair's cell-B definition names."
+    },
+    {
+     "title": "ZF Automotive U.S., Inc. v. Luxshare, Ltd.",
+     "url": "https://en.wikipedia.org/wiki/ZF_Automotive_U.S.,_Inc._v._Luxshare,_Ltd.",
+     "host": "en.wikipedia.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "host held; this URL not held",
+     "scoring_cell": "UNCLASSIFIABLE-ON-TITLE",
+     "cell_reason": "a bare case caption carrying neither a trade-secret term nor an investment-treaty term. I decline to classify it: the engine synthesis asserts it is a section 1782 discovery matter, that synthesis is REFUSED, and classifying it from my own background knowledge would be a claim with no in-session carrier. Honest verdict: unclassifiable without a body, and the body cannot be opened today."
+    },
+    {
+     "title": "Identifying Trade Secrets in Early Litigation Is a Tricky Task",
+     "url": "https://news.bloomberglaw.com/legal-exchange-insights-and-commentary/identifying-trade-secrets-in-early-litigation-is-a-tricky-task",
+     "host": "news.bloomberglaw.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "NOT held; host not among the archive's 123",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret litigation practice commentary."
+    },
+    {
+     "title": "New York City Trade Secrets Lawyer",
+     "url": "https://www.nycbar.org/get-legal-help/article/intellectual-property/trade-secrets/",
+     "host": "www.nycbar.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "NOT held; host not among the archive's 123",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret practice: a bar-association public legal-help page."
+    },
+    {
+     "title": "WIPO Guide to Trade Secrets and Innovation - Part III: Basics of trade secret protection",
+     "url": "https://www.wipo.int/web-publications/wipo-guide-to-trade-secrets-and-innovation/en/part-iii-basics-of-trade-secret-protection.html",
+     "host": "www.wipo.int",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "HELD - string-identical AND title-identical to a row in analytics/search-results/2026-10-06.json",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret practice: the basics chapter of an IP-office guide."
+    },
+    {
+     "title": "The Basic of Trade Secret Litigation",
+     "url": "https://wolfgreenfield.com/resources/what-are-the-basics-of-trade-secret-litigation",
+     "host": "wolfgreenfield.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": true,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": false,
+     "archive_identity": "NOT held; host not among the archive's 123",
+     "scoring_cell": "B",
+     "cell_reason": "general trade-secret practice: a law-firm practice explainer."
+    },
+    {
+     "title": "repository.law.uic.edu",
+     "url": "https://repository.law.uic.edu/ripl/vol15/iss2/3",
+     "host": "repository.law.uic.edu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": true,
+     "archive_identity": "NOT held in analytics/search-results/ (0 occurrences of 'ripl/vol15' in that directory) BUT HELD ELSEWHERE IN THE TREE SINCE 2026-06-27 - see identification",
+     "scoring_cell": "C",
+     "cell_reason": "IDENTIFIED BY URL AGAINST THE PROJECT'S OWN RECORDS, NOT FROM THE ENGINE SYNTHESIS. state/research_log.json:45 carries, as a literal substring, 'Kim, 15 J. Marshall Rev. Intell. Prop. L. 228 (2016), at repository.law.uic.edu/ripl/vol15/iss2/3/. Locator held and audited; BODY NEVER OPENED BY THIS COUNCIL.' The returned URL is identical to that held locator except for a trailing slash. lit-review/kim-memo.md:12 gives the article: Daria Kim, 'Protecting Trade Secrets under International Investment Law: What Secrets Investors Should Not Tell States', 15 J. Marshall Rev. Intell. Prop. L. 228 (2016). That title couples a trade-secret asset term with international investment law, which is cell C by construction.",
+     "WHAT_IS_NOT_CLAIMED": "The BODY IS STILL UNREAD and GAP-UNRESOLVED: kim-jmarshall-ripl-15-228-body-unread (open thread 41) IS NOT CLOSED BY THIS ROW. Nothing about the article's contents is asserted from this return. The RETURNED TITLE is the bare string 'repository.law.uic.edu' and carries nothing. The UIC/John-Marshall institutional succession that would explain the host is MY OWN BACKGROUND KNOWLEDGE WITH NO IN-SESSION CARRIER and is not relied on: the identification rests on the URL matching a held locator, which needs no such premise.",
+     "ENGINE_SYNTHESIS_ATTACHED_TO_THIS_ROW_AND_REFUSED_IN_FULL": "The synthesis accompanying block 1 attributed to this row an author, a year, a journal, a case study (pharmaceutical regulatory data) and a substantive conclusion about how investor-State arbitration would treat disclosed data. ALL OF IT IS REFUSED. It is the day's sharpest quarantine because it was the day's most plausible synthesis AND it named an author of this project's own seed corpus. A bare-hostname title cannot carry an author, a year, a journal or a holding."
+    },
+    {
+     "title": "data.consilium.europa.eu",
+     "url": "https://data.consilium.europa.eu/doc/document/PE-76-2015-INIT/en/pdf",
+     "host": "data.consilium.europa.eu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "bare_host_title": true,
+     "archive_identity": "NOT held; host not among the archive's 123",
+     "scoring_cell": "UNCLASSIFIABLE-ON-TITLE",
+     "cell_reason": "bare_host_title. The returned title is the hostname. The engine synthesis characterises it as an EU directive on undisclosed know-how; that characterisation is REFUSED and no document identity is asserted."
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1008-2",
+   "block": 2,
+   "string_verbatim": "\"intellectual property\" OR \"patent\" OR \"trade mark\" as covered investment investor-State tribunal",
+   "byte_identity_to_Q_1007_4": "VERIFIED BEFORE FIRING. 97 bytes; sha256 begins b2d221c307efa1b4.",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": [
+     "arxiv.org",
+     "image-ppubs.uspto.gov"
+    ]
+   },
+   "THIS_IS_NOT_A_ONE_VARIABLE_PAIR_WITH_Q_1007_4_AND_I_SAY_SO_IN_MY_OWN_SCORING": "insights.jsonl:199 records a SCHEMA-LEVEL mutual exclusion, verbatim 'Error: Cannot specify both allowed_domains and blocked_domains in the same request', verified by two seats on two disjoint domain pairs. So this call could not carry Q-1007-4's six-host allowlist. Against Q-1007-4, TWO variables move: the allowlist is removed AND a blocklist is added. AND BLOCK 1 MEASURED THAT THE ALLOWLIST TERM IS LARGE, NOT SMALL (asset-limb 0 of 9 -> 6 of 9 on a byte-identical string). No figure from this call may be printed as a one-variable comparison with 2026-10-07.",
+   "answers_the_registered_string": "YES. One block, 7 rows, responsive; no engine-composed block.",
+   "result": {
+    "rows": 7,
+    "distinct_hosts": 7,
+    "PREREGISTERED_BRANCH_TAKEN": "ZERO_AMBIGUOUS. Neither arxiv.org nor image-ppubs.uspto.gov appeared. Per the pre-registration this MAY NOT be reported as efficacy, and block 3's conditional arm fired.",
+    "blocked_hosts_returning": "0 of 2",
+    "asset_limb_2026_10_06_VERBATIM": "0 of 7",
+    "doctrine_limb_2026_10_06_VERBATIM": "0 of 7 (read per title; referential step stated)",
+    "both_limbs": "0 of 7",
+    "ip_broadened_asset_SEPARATELY_LABELLED_2026_10_07_predicate": "6 of 7",
+    "bare_host_title": "0 of 7",
+    "degenerate_or_truncated_titles": "1 of 7 (row 3, '1 Stanford')",
+    "refutation_limb": "NULL",
+    "archive_identity_PRIMARY": "3 of 7",
+    "archive_identity_VARIANTS": {
+     "raw_text_normalised_464": "4 of 7",
+     "whole_tree_1463": "4 of 7"
+    },
+    "SIX_2026_10_07_ALLOWLIST_HOSTS_RETURNING_WHEN_NOT_REQUESTED": "2 of 6 - jusmundi.com and iisd.org. THIS CONSTRAINS BLOCK 1'S 0 of 6 AND I REPORT IT AGAINST MY OWN READING.",
+    "engine_synthesis": "QUARANTINED AND REFUSED IN FULL as Q-1008-S2. It named three matters, a doctrine, an ICSID Convention article, two treaties, a treaty-definition quotation and several holdings. None is in any row title. The engine itself labelled one proposition as its own background knowledge rather than a search result; that self-labelling is noted as an instrument observation and does NOT make the proposition usable."
+   },
+   "rows": [
+    {
+     "title": "Intellectual Property under the Scrutiny of Investor-State Tribunals",
+     "url": "https://www.jipitec.eu/jipitec/article/download/232/227/1040",
+     "host": "www.jipitec.eu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held"
+    },
+    {
+     "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+     "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+     "host": "www.iisd.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD",
+     "note": "host iisd.org is one of the SIX 2026-10-07 allowlist hosts and returned here WITHOUT being requested"
+    },
+    {
+     "title": "1 Stanford",
+     "url": "https://law.stanford.edu/wp-content/uploads/2020/11/upreti_wp67.pdf",
+     "host": "law.stanford.edu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": false,
+     "archive_identity": "NOT held",
+     "note": "DEGENERATE TITLE. Not a bare_host_title ('1 Stanford' != 'law.stanford.edu'), so the 2026-10-06 predicate's fourth class does NOT catch it. It is a third kind of unusable title and it is reported, not scored."
+    },
+    {
+     "title": "International Intellectual Property Law as Applicable Law in Investment Disputes",
+     "url": "https://academic.oup.com/icsidreview/article/40/1/174/8121539",
+     "host": "academic.oup.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD"
+    },
+    {
+     "title": "Investment treaty tribunal confirms trademark licences can be qualifying investments entitled to treaty protection",
+     "url": "https://www.reedsmith.com/en/perspectives/2018/04/investment-treaty-tribunal-confirms-trademark-licences",
+     "host": "www.reedsmith.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held",
+     "note": "THE TITLE ITSELF ASSERTS A PROPOSITION and is a LEAD, NOT A HOLDING. It names no matter, no tribunal and no treaty. Under the carrying-span rule and the backsource-from-the-title rule this is a title to be backsourced, and fetch is dead, so NOTHING is asserted from it. It is ALSO a GENERIC-IP (trademark) item and therefore does NOT touch the trade-secret / undisclosed-data sub-class at the centre of this project."
+    },
+    {
+     "title": "Wiki Note: Intellectual Property Issues in ISDS",
+     "url": "https://jusmundi.com/en/document/publication/en-ip-issues-in-isds",
+     "host": "jusmundi.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD",
+     "note": "host jusmundi.com is one of the SIX 2026-10-07 allowlist hosts and returned here WITHOUT being requested"
+    },
+    {
+     "title": "SelectUSA Investor Guide - Intellectual Property",
+     "url": "https://www.trade.gov/sites/default/files/2021-05/Chapter%208%20-%20Intellectual%20Property.pdf",
+     "host": "www.trade.gov",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false,
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held"
+    }
+   ]
+  },
+  {
+   "call_id": "Q-1008-3",
+   "block": 3,
+   "string_verbatim": "\"intellectual property\" OR \"patent\" OR \"trade mark\" as covered investment investor-State tribunal",
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null,
+    "domain_parameters_passed": "NONE"
+   },
+   "status": "CONDITIONAL ARM, pre-registered before block 2 fired, fired because block 2 took the ZERO_AMBIGUOUS branch. It is the UNFILTERED BASELINE that analytics/daily-research/2026-09-20.md:296 requires before any zero can be read as efficacy.",
+   "answers_the_registered_string": "YES. One block, 9 rows, responsive; no engine-composed block.",
+   "result": {
+    "rows": 9,
+    "distinct_hosts": 9,
+    "PREREGISTERED_BRANCH_TAKEN": "3b - THE TEST IS DEAD AND I SAY SO. Neither arxiv.org nor image-ppubs.uspto.gov returns UNFILTERED either. blocked_domains EFFICACY REMAINS UNTESTED. This reproduces, on a THIRD domain pair, the exact flaw the chair identified in the 2026-09-21 precedent: hosts were blocked that had no reason to return.",
+    "blocked_pair_hosts_present_unfiltered": "0 of 2",
+    "WHAT_3b_STILL_BOUGHT_pre_registered_as_3c": "Q-1007-4's three off-domain rows of 2026-10-07 (image-ppubs.uspto.gov x2, arxiv.org x1) were SPECIFIC TO THE ALLOWLIST CONDITION. The same string, unfiltered, returns NEITHER host. CONFOUND NAMED: the allowlist arm is 2026-10-07 and the two arms here are 2026-10-08, so the allowlist comparison is CROSS-SESSION while the blocklist-vs-unfiltered comparison is within-session.",
+    "SUBSET_RELATION": "Block 2's 7 URLs are a STRICT SUBSET of block 3's 9. 7 of 7 contained; 0 of block 2's URLs absent from block 3. Block 3 adds escholarship.org and unctad.org, NEITHER a blocked host. So passing blocked_domains removed nothing that would otherwise have returned, and the only measurable difference is a 2-row reduction in rows that are not on the blocked hosts. AT n=1 THIS IS UNDISTINGUISHED between (a) the parameter perturbing the ranking and (b) ordinary row-count variance, and I assert neither.",
+    "RANK_ORDER_NOT_STABLE": "The 7 common URLs returned in DIFFERENT RANK ORDER in blocks 2 and 3, minutes apart, on a byte-identical string. Prior art: 'rank order' 0 carriers in insights.jsonl, 1 line in analytics/daily-research/; 'row order' 0 and 1. Reported as an observation at n=1, not as a finding.",
+    "asset_limb_2026_10_06_VERBATIM": "0 of 9",
+    "doctrine_limb_2026_10_06_VERBATIM": "0 of 9 (read per title)",
+    "both_limbs": "0 of 9",
+    "ip_broadened_asset_SEPARATELY_LABELLED": "6 of 9",
+    "degenerate_or_truncated_titles": "3 of 9 (rows 2, 8, 9)",
+    "refutation_limb": "NULL",
+    "archive_identity_PRIMARY": "3 of 9",
+    "archive_identity_VARIANTS": {
+     "raw_text_normalised_464": "4 of 9",
+     "whole_tree_1463": "4 of 9"
+    },
+    "SIX_ALLOWLIST_HOSTS_RETURNING_UNREQUESTED": "2 of 6 - jusmundi.com and iisd.org, reproducing block 2",
+    "engine_synthesis": "QUARANTINED AND REFUSED IN FULL as Q-1008-S3. It named matters, holdings, an ICSID Convention article, a purported treaty-definition quotation and two award outcomes, two of which it expressly labelled as its own background knowledge. All refused."
+   },
+   "rows": [
+    {
+     "title": "Intellectual Property under the Scrutiny of Investor-State Tribunals",
+     "url": "https://www.jipitec.eu/jipitec/article/download/232/227/1040",
+     "host": "www.jipitec.eu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "1 Stanford",
+     "url": "https://law.stanford.edu/wp-content/uploads/2020/11/upreti_wp67.pdf",
+     "host": "law.stanford.edu",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": false,
+     "archive_identity": "NOT held",
+     "note": "degenerate title, second occurrence today",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "International Intellectual Property Law as Applicable Law in Investment Disputes",
+     "url": "https://academic.oup.com/icsidreview/article/40/1/174/8121539",
+     "host": "academic.oup.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "Litigating Intellectual Property Rights in Investor-State Arbitration: From Plain Packaging to Patent Revocation",
+     "url": "https://www.iisd.org/itn/2014/11/18/litigating-intellectual-property-rights-in-investor-state-arbitration-from-plain-packaging-to-patent-revocation/",
+     "host": "www.iisd.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "Investment treaty tribunal confirms trademark licences can be qualifying investments entitled to treaty protection",
+     "url": "https://www.reedsmith.com/en/perspectives/2018/04/investment-treaty-tribunal-confirms-trademark-licences",
+     "host": "www.reedsmith.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "SelectUSA Investor Guide - Intellectual Property",
+     "url": "https://www.trade.gov/sites/default/files/2021-05/Chapter%208%20-%20Intellectual%20Property.pdf",
+     "host": "www.trade.gov",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "NOT held",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "Wiki Note: Intellectual Property Issues in ISDS",
+     "url": "https://jusmundi.com/en/document/publication/en-ip-issues-in-isds",
+     "host": "jusmundi.com",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": true,
+     "archive_identity": "HELD",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "A Collision Course Between TRIPS Flexibilities and ...",
+     "url": "https://escholarship.org/content/qt8b11w8h9/qt8b11w8h9.pdf?t=qx22n3",
+     "host": "escholarship.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": false,
+     "archive_identity": "NOT held",
+     "note": "TRUNCATED TITLE ('...'). A third unusable-title form. NEW IN BLOCK 3 - absent from block 2.",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    },
+    {
+     "title": "UNCTAD/WEB/ITE/IIA/2007/1 UNITED NATIONS CONFERENCE ON TRADE AND DEVELOPMENT",
+     "url": "https://unctad.org/system/files/official-document/webiteiia20071_en.pdf",
+     "host": "unctad.org",
+     "access": "row returned; TITLE ONLY; body unread; access untested (fetch dead on both instruments)",
+     "ip_broadened_asset": false,
+     "archive_identity": "NOT held; host held",
+     "note": "NEW IN BLOCK 3 - absent from block 2. Title is a document symbol plus an institution name; it carries no subject matter.",
+     "asset_limb_verbatim": false,
+     "doctrine_limb_verbatim": false
+    }
+   ]
+  }
+ ],
+ "whole_archive_measurement_free_no_budget_spent": {
+  "baseline_reproduced_independently": "Harvesting analytics/search-results/*.json over STRUCTURED rows that carry both a title and a url, EXCLUDING 2026-10-07.json and this file, yields EXACTLY 373 distinct URLs and 118 distinct hosts over 612 title-bearing rows - reproducing the figures 2026-10-07 published, by an independent re-execution. The 429-URL raw-text superset also reproduces exactly.",
+  "todays_denominator": "INCLUDING 2026-10-07.json and excluding this file: 408 distinct URLs, 123 distinct hosts, 659 title-bearing rows, 15 artefacts.",
+  "THE_DENOMINATOR_IS_THE_WRONG_ONE_AND_IT_FAILED_ON_THE_DAY_S_MOST_IMPORTANT_ROW": "Archive identity as instructed is computed over analytics/search-results/ only. 'ripl/vol15' occurs 0 times in that directory, so block 1 row 8 scored NOT HELD. The project has in fact held that locator SINCE 2026-06-27 and carries an OPEN GAP SLUG on it (thread 41). RE-MEASURED EXACTLY, excluding .git and this file: the URL in ANY form occurs 10 times across 8 files - analytics/daily-research/2026-06-27.md:108, 2026-06-28.md:112, 2026-06-29.md:93, 2026-09-30.md:250 and :1120, 2026-10-01.md:1513, 2026-10-02.md:1670, analytics/methodology-citation-audit.md:28 and :68, and state/research_log.json:45; the exact trailing-slash form occurs 5 of those 10 times. CORRECTION TO MY OWN FIRST DRAFT OF THIS FIELD, WHICH I AM RECORDING RATHER THAN SILENTLY FIXING: I first listed STATE_OF_THE_ANSWER.md:1192, METHODOLOGY.md:97 and analytics/locked_set/RETRIEVAL_LEDGER.md:15 among the carriers. THEY ARE NOT. Each carries the CITATION ('15 J. Marshall Rev. Intell. Prop. L. 228') and NOT the URL - grep -c 'repository.law.uic.edu' returns 0 on all three. I had conflated 'the project holds this citation' with 'the project holds this locator', which is the SAME conflation this finding is about, committed by me inside the finding itself. SEARCH-ARTEFACT DENOMINATOR 464 normalised URLs; WHOLE-TREE DENOMINATOR 1463 normalised locators over 287 files. The measure answers 'has a search artefact returned this before', NOT 'does the project hold this', and those two were being conflated.",
+  "A_HYPOTHESIS_OF_MINE_THAT_MY_OWN_NEXT_MEASUREMENT_KILLED": "I first supposed the miss was a trailing-slash false negative, since the held string carries a trailing slash and the returned URL does not. I re-measured under normalisation and the gain was ZERO on all three blocks: the URL is absent from analytics/search-results/ under any normalisation. The trailing slash is irrelevant. The defect is the DENOMINATOR, not the string comparison. Recorded because I nearly filed the wrong finding.",
+  "AND_THIS_IS_NOT_A_FIRST_RETURN_EITHER": "analytics/daily-research/2026-09-07.md:401 records, verbatim, 'Returns already in the record: the UIC/J. Marshall 2016 piece'. A search surfaced this document on or before 2026-09-07, in the era BEFORE search artefacts were written. Had I judged novelty from analytics/search-results/ alone I would have called today a first return and been wrong. This is a CONCRETE INSTANCE of the archive blind spot the project already holds at open_threads[49] and at 2026-10-07 Finding 4, costing a correct novelty judgement; it strengthens that thread and discovers nothing new."
+ },
+ "quarantined_engine_syntheses_REFUSED_IN_FULL": {
+  "ids": [
+   "Q-1008-S1",
+   "Q-1008-S2",
+   "Q-1008-S3"
+  ],
+  "refused_content_named_so_it_cannot_leak_back_in": "an author, a year, a journal and a case study attributed to a bare-hostname row; two federal-court dispositions and a statutory discovery holding; EU and WIPO definitional content; three named ISDS matters and their outcomes; a named patent doctrine; an ICSID Convention article and its content; two treaty instruments; a purported verbatim treaty definition of 'covered investment'; a tribunal's treatment of trademark licences; and two award outcomes the engine itself labelled as its own background knowledge.",
+  "the_single_most_tempting_item_and_it_is_refused_in_full": "Q-1008-S2 and Q-1008-S3 both assert that some investment agreements expressly list UNDISCLOSED INFORMATION in the definition of investment. That proposition is at the exact centre of this project's research question and it has NO ROW-TITLE CARRIER in any of the 25 rows returned today. IT IS REFUSED. If it is true it must be established from a document this council has opened, and no document was opened today.",
+  "no_seat_may_describe_NAFTA_Article_1110_or_1105_internal_structure": "nothing in this file does."
+ },
+ "standing_prohibitions_touched": {
+  "www_italaw_com": "PROHIBITED - 0 rows across all 3 blocks. Kept that way.",
+  "dailyjus_com": "0 rows",
+  "unis_unvienna_org": "0 rows",
+  "zero_budget_carried_and_unreleased": "the EU Pharma-Package Ring-2 object (UNKNOWN, NOT foreclosed); the struck Achmea ground; the Grosse Ruse-Khan slug (closed as to the body); the Ecuador slug (paywalled-body synthesis quarantined); A/81/17; threads 2, 34, 37, 42, 43; the Einarsson search terms RETIRED; all Spentech synthesis passes quarantined; Vadi never cited without retrieval; the ARB/24/16 docket off the agenda. NOTHING TODAY RELEASES ANY OF THEM.",
+  "judicial_expropriation_queue": "IN SCOPE under Ring 2, demoted on budget grounds ONLY. fingerprint.yaml allocates 73 of Ring 2's 100 points to the judicial limb across 11 of 17 keyword entries. NO SUCCESSOR MAY READ THAT QUEUE AS OFF-THEME.",
+  "Servier": "candidate hit on the central sub-question HELD AT MODAL STRENGTH ONLY. Never a hit, never again a sourced near-miss. 'Servier' is 0 of 69,884 bytes in lit-review/kim-memo.md on an executed negative with four positive controls, so the second framework memo is not a hidden carrier. NOT TOUCHED TODAY.",
+  "refusals_that_are_not_acceptances": "Kriebaum, snow leopard, Saipem, Apotex, Novartis/Colombia, the Uruguay pharmacy matter, Vanda (20+ carriers, well known, no gap, no finding), and every caption inside Q-1007-S1..S4 appear in the record as REFUSALS. Nothing today revives any of them. The captions inside today's Q-1008-S1..S3 join that list.",
+  "2026_10_07_Finding_1": "cited today ONLY in its Part 6B restatement - 'a statement about how this instrument behaves when one slot of a query is substituted, and it is nothing else.' The three sentences about what the arbitration venues hold remain WITHDRAWN BY NAME and are not revived here. The claim about the two literatures remains withdrawn in BOTH directions."
+ },
+ "row_counts": {
+  "blocks": 3,
+  "rows_gross": 25,
+  "distinct_urls": 18,
+  "distinct_hosts": 17,
+  "titles_preserved": "25 of 25",
+  "bodies_opened": 0,
+  "note": "CORRECTED BEFORE FILING. My first draft of this field said 21 distinct URLs and 20 distinct hosts; re-executed over the filed rows it is 18 and 17. The error was arithmetic: blocks 2 and 3 share 7 URLs (block 2 is a strict subset of block 3), so the three blocks' 25 gross rows collapse to 18 distinct documents. TWO UNITS FOR ONE QUANTITY AND NEITHER IS USED AS THE OTHER'S DENOMINATOR."
+ },
+ "files_written_by_this_seat": [
+  "analytics/search-results/2026-10-08.json"
+ ],
+ "files_NOT_written": {
+  "state/council_log.json": "NOT WRITTEN. SEVENTEENTH SESSION DECLINING, AND A SAFETY DECISION, NOT AN OMISSION. _write calls _render_md on every append; _render_md writes to a module-level path and returns None; appending destroys 95,276 hand-written characters at 12 dates. Not approached. DISTINCT BY PATH from analytics/council-log.md, which IS written and is the chairman's to write.",
+  "others": "STATE_OF_THE_ANSWER.md, analytics/insights.jsonl, state/research_log.json and analytics/locked_set/VALIDATION_RECORD.md are UNTOUCHED. Thread and claim recommendations in the return are PROPOSALS TO THE CHAIR.",
+  "built_nothing": "src/, scripts/, tests/, prompts/, .github/, docs/ and fingerprint.yaml untouched. Every operator approval remains PENDING, not granted. pytest is not installed and no local test reproduction was planned or attempted."
+ }
+}

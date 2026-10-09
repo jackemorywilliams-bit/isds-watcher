@@ -1,0 +1,380 @@
+{
+ "date": "2026-10-09",
+ "seat": "research analyst",
+ "model": "claude-opus-5",
+ "schema_note": "Row titles only. NO BODY WAS OPENED BY ANYONE TODAY. Fetch is dead on BOTH instruments, probed by the chairman at session open before anything was spent, on TWO neutral controls (example.com, en.wikipedia.org); the failure MODE has changed from EGRESS_BLOCKED/403 to DNS non-resolution (getaddrinfo ENOTFOUND) and the capability is equally dead either way. A fetch-layer status is never a claim about a resource. Nothing in this file may be read as a statement about any document's contents.",
+ "instrument_state": {
+  "fetch": "DEAD on both instruments (curl -> 'curl: (56) CONNECT tunnel failed, response 403'; fetch service -> getaddrinfo ENOTFOUND on example.com AND en.wikipedia.org). Probed by the chairman BEFORE any spend; not re-probed on budget by this seat.",
+  "search_track": "ALIVE. The only retrieval instrument available today.",
+  "relay": "fetch-relay.yml committed and working. analytics/fetch-requests/ 75 files, analytics/fetch-results/ 74 at session open. A fetch-dependent item is never stranded as a matter of capability, only unscheduled. This seat WROTE one request today and will not receive its result in this session."
+ },
+ "digest_of_record": "Digest 2026-09-28: 24 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). ELEVEN DAYS OLD and unchanged. gdelt carries a DEGRADATION WARNING (6 zero runs); unctad_isds NOT-READ (403); iisd_itn and italaw RECOVERED via Internet Archive only.",
+ "budget": {
+  "ceiling": "THREE search blocks, hard ceiling, one block per call, each pre-registered to disk before firing.",
+  "registered_and_fired": 1,
+  "retrievals_actually_consumed": 2,
+  "ceiling_disposition": "TREATED AS REACHED after block 1, per the chairman's binding instruction ('if you observe the engine composing an unregistered retrieval, treat the ceiling as reached and say so') AND per this seat's own engine_composed_retrieval_rule, registered to disk at 2026-10-09T11:28:03Z BEFORE firing. BLOCKS 2 AND 3 WERE NOT FIRED. The Wingtech monthly standing watch (agenda item C) is handed back UNFIRED on the search track and substituted, at zero retrieval, by a written relay request.",
+  "spent": 1,
+  "unspent_by_forfeit": 2
+ },
+ "pre_registrations_verbatim": [
+  {
+   "call_id": "Q-1009-1",
+   "written_at_utc": "2026-10-09T11:28:03Z (pre-registration file written to disk BEFORE firing; firing followed)",
+   "string_verbatim": "\"covered investment\" OR \"ratione materiae\" intellectual property pleaded as the investment jurisdiction objection",
+   "string_bytes": 113,
+   "string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+   "string_identity_claim": "BYTE-IDENTICAL to Q-1007-3's string_verbatim as stored at analytics/search-results/2026-10-07.json $.calls[2].string_verbatim. The string fired is not retyped: it is READ OUT OF the stored artefact and passed through unchanged, and the byte comparison is executed and printed in this file BEFORE firing.",
+   "byte_comparison_executed_before_firing": {
+    "fired_string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+    "stored_string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+    "fired_bytes": 113,
+    "stored_bytes": 113,
+    "python_string_equality": true,
+    "verdict": "IDENTICAL"
+   },
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null,
+    "domain_parameters_passed": "NONE - no domain parameter is included in the request at all",
+    "note": "mode 'extended' is what Q-1007-3 carried (2026-10-07.json $.calls[2].parameters.mode)."
+   },
+   "the_string_this_block_is_to_answer": "On a DOCTRINE-anchored string, is the six-host allowlist a SUPPRESSOR of the return (as 2026-10-08 measured it to be on the ASSET-anchored string Q-1007-2, asset limb 0 of 9 -> 6 of 9) or a SELECTOR that buys one limb at the cost of the other? Registered answer form: YES-SUPPRESSOR / YES-SELECTOR / NEITHER.",
+   "why_this_string_and_not_another": "Q-1007-3 is the ONLY string in this project's search-artefact archive that has been fired under a DOMAIN-RESTRICTED condition and NEVER fired unrestricted. Q-1007-2 and Q-1007-4 were both already re-fired unrestricted on 2026-10-08 (as Q-1008-1 and Q-1008-3). So this is the last unexamined member of the 2026-10-07 allowlist set, and it is the one whose anchor is the DOCTRINE limb rather than the ASSET limb - which is what makes the measurement non-redundant rather than a second instance of yesterday's.",
+   "one_variable_declaration": "Against Q-1007-3 exactly ONE variable moves: the domain restriction (six-host allowlist -> no domain parameter at all). String bytes identical, mode identical, tool identical. This IS a one-variable pair and may be printed as one.",
+   "limb_predicate_applied_VERBATIM_from_2026-10-06": {
+    "asset_limb": "lowercased TITLE contains any of ['trade secret', 'trade secrets', 'know-how', 'confidential business information', 'undisclosed', 'secreto comercial', 'información no divulgada']",
+    "doctrine_limb": "lowercased TITLE contains any of ['jurisdiction', 'jurisdicción', 'abuse of process', 'abuse of right', 'treaty shopping', 'critical date', 'shell company', 'mailbox', 'admissibility', 'misconduct', 'ratione']",
+    "bare_host_title": "stripped lowercased TITLE equals the URL netloc, with or without a leading 'www.'",
+    "unit": "ROW, counted once per call; a row repeated across calls is counted in each call"
+   },
+   "preregistered_cells": {
+    "cell_SUPPRESSOR": "The DOCTRINE limb holds or RISES unrestricted (>= 7 of N, matching or exceeding the allowlisted 7 of 9) AND/OR the ASSET limb rises above its allowlisted 0 of 9. On this outcome the allowlist only ever subtracted, and 2026-10-08's suppressor reading generalises from the asset anchor to the doctrine anchor.",
+    "cell_SELECTOR": "The DOCTRINE limb FALLS unrestricted (<= 3 of N against the allowlisted 7 of 9) while the ASSET limb does not fall. On this outcome the restriction term HAS A SIGN THAT DEPENDS ON THE VOCABULARY: the six arbitration hosts were CONCENTRATING doctrine vocabulary, not starving it, and 7.10 item 2's confound is worse than a suppression - it is a trade, and no cross-session comparison spanning domain conditions can be signed at all.",
+    "cell_NEITHER": "Both limbs fall, or no class reaches a strict majority of returned rows. The block DISCRIMINATES NOTHING and both readings stay live.",
+    "classification_method": "Every returned row is assigned by applying the 2026-10-06 limb predicate VERBATIM to the lowercased title, per row, printed per row. No mechanical reclassification, no new predicate, and the bare-host/degenerate/truncated title classes are marked as STRUCTURAL n rather than scored as false."
+   },
+   "preregistered_structural_PASS": "PASS iff at least one returned ROW TITLE carries BOTH limbs under the 2026-10-06 predicate applied verbatim. Prior art, stated before firing: a both-limbs title has NEVER been observed in this archive - 0 of 684 title-bearing rows across 16 artefacts at today's denominator. This block is the best-configured shot the archive has ever had at one (unrestricted asset words reached 6 of 9 on 2026-10-08; this string's doctrine anchor reached 7 of 9 under the allowlist), and I expect it to FAIL.",
+   "preregistered_refutation_HIT": "A returned ROW TITLE naming an ISDS claim, notice or award in which pharmaceutical trade secrets or undisclosed clinical-trial data are the primary covered investment. Registered as the refutation limb of STATE_OF_THE_ANSWER.md section II's core sentence. Expected NULL.",
+   "strength_ceiling_fixed_in_advance": "OBSERVATION, n = 1 string per arm. TITLES ONLY. NO BODY WILL BE OPENED BY ANYONE TODAY - fetch is dead on both instruments on neutral controls, probed at session open before anything was spent. Nothing may be asserted about any returned document's contents. Row count is NOT fixed at 9 and no figure in the scoring carries 9 as a hard-coded denominator; every figure is printed over the N actually returned.",
+   "engine_composed_retrieval_rule": "If the engine announces or returns a retrieval of its own composition, that block is NOT scored against this pre-registration, the budget ceiling is treated as REACHED, and the event is reported as an instrument event. Prior art: Q-1007-3 itself did exactly this on 2026-10-07 (rows_block2_ENGINE_COMPOSED_STRING_UNKNOWN, 9 rows, string unknown and unreproducible). THAT IS A REASON TO EXPECT IT AGAIN ON THIS STRING AND IT IS REGISTERED HERE BEFORE FIRING."
+  }
+ ],
+ "search_artefact_identity_denominator_today": {
+  "method": "Harvest every structured object in analytics/search-results/*.json carrying BOTH a 'title' and a 'url'; normalise by stripping a trailing slash; host = urlsplit(url).netloc lowercased. Excludes this seat's own artefact.",
+  "artefacts": 16,
+  "title_bearing_rows": 684,
+  "distinct_normalised_urls": 421,
+  "distinct_hosts": 133,
+  "control_excluding_2026_10_08": "15 artefacts, 659 rows, 408 URLs, 123 hosts - REPRODUCES 2026-10-08's published figure EXACTLY, by an independent re-execution, for a SECOND consecutive day.",
+  "what_this_measure_answers": "'Has a search artefact returned this URL before.' It does NOT answer 'does the project hold this'. The phrase 'archive identity' is RETIRED and the two measures are named separately."
+ },
+ "project_holdings_identity_denominator_today": {
+  "published_figure_being_checked": "1,463 normalised locators over 287 files (analytics/daily-research/2026-10-08.md FINDING 4).",
+  "result": "NOT REPRODUCIBLE FROM THE PUBLISHED DESCRIPTION. Five method variants over the tracked tree at today's tip, all with the same URL regex and the same trailing-slash normalisation: all tracked files 2,354 locators / 471 files; md+json+jsonl+yaml+txt 2,208 / 354; .md only 1,325 / 155; analytics/ only 1,570 / 293; excluding src,tests,scripts,docs,.github 2,224 / 396. NONE lands on 1,463 / 287.",
+  "what_is_and_is_not_claimed": "This is a statement about REPRODUCIBILITY FROM THE METHOD AS PUBLISHED. It is NOT a claim that the published figure is wrong, and no figure here supersedes it. The defect is that 2026-10-08 section 7.10 item 3 makes this denominator a STANDING, always-reported figure while publishing no method sufficient to re-derive it."
+ },
+ "title_level_screen_limit_standing": "THE TITLE FIELD CANNOT CARRY THE SCREENS BUILT ON IT. Today: bare_host_title 0 of 9 under the 2026-10-06 predicate, BUT by a reader's judgement 6 of 9 titles cannot identify their document - two identical party-less caption preambles ('In the Matter of an Arbitration Under the UNCITRAL Arbitration Rules', rows 1 and 8, different documents on different hosts), one institutional letterhead ('INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES WASHINGTON, D.C.'), one PDF-metadata string ('Document information Publication Investor-State Arbitration (Second Edition)'), one section number ('2.5 Requirements Ratione Materiae') and one journal-volume header ('The Law and Practice of International Courts and Tribunals 16 (2017) 3-20'). NOT ONE of the six is caught by any existing predicate. On row 9 the URL carried the identity the title lost (the file name reads 'Jurisdiction and Admissibility in Investment Arbitration. A View from the Bridge at the Practice'), which is an observation about the URL field and NOT a reading of the document.",
+ "doctrine_limb_token_exposure": {
+  "ruling_being_honoured": "2026-10-07 item 5: limb_predicate's doctrine limb IS NOT A MECHANICAL SCREEN; bare 'jurisdiction' cannot separate adjudicatory competence from countries, and every determination needs a reader's judgement per title.",
+  "today": "4 of 9 mechanical doctrine hits; 4 of 4 survive the reader's judgement; and 4 of 4 are independently carried by the token 'ratione', the predicate's strongest token. 0 of 9 rows hit via bare 'jurisdiction' alone. TODAY'S DOCTRINE FIGURE IS NOT EXPOSED TO THE 2026-10-07 DEFECT AT ALL.",
+  "archive_contrast_free_no_budget": "Over the 684 prior title-bearing rows: 55 doctrine-limb hits, of which 7 carry 'ratione' and 24 are reachable ONLY through bare 'jurisdiction'/'jurisdiccion'. SO 24 OF 55 ARCHIVED DOCTRINE HITS (44%) SIT IN THE CLASS THE CHAIR RULED NON-MECHANICAL, AND TODAY'S 4 ARE 0 OF 4 IN IT."
+ },
+ "calls": [
+  {
+   "call_id": "Q-1009-1",
+   "purpose": "Agenda item B. SCORE A VOCABULARY UNRESTRICTED. Q-1007-3 is the ONLY string in this archive fired under a domain-restricted condition and never fired unrestricted; Q-1007-2 and Q-1007-4 were both re-fired unrestricted on 2026-10-08. Its anchor is the DOCTRINE limb, not the ASSET limb, which is what makes the measurement non-redundant.",
+   "string_verbatim": "\"covered investment\" OR \"ratione materiae\" intellectual property pleaded as the investment jurisdiction objection",
+   "string_bytes": 113,
+   "string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+   "byte_identity_verified_before_firing": {
+    "fired_string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+    "stored_string_sha256": "f39d81be05c154cb3320968ef58b7385ff0f37c82224599df9b57bd54924b931",
+    "fired_bytes": 113,
+    "stored_bytes": 113,
+    "python_string_equality": true,
+    "verdict": "IDENTICAL"
+   },
+   "parameters": {
+    "tool": "WebSearch",
+    "mode": "extended",
+    "allowed_domains": null,
+    "blocked_domains": null,
+    "domain_parameters_passed": "NONE - no domain parameter is included in the request at all",
+    "note": "mode 'extended' is what Q-1007-3 carried (2026-10-07.json $.calls[2].parameters.mode)."
+   },
+   "result": {
+    "retrievals_returned_by_this_one_call": 2,
+    "INSTRUMENT_EVENT_RECORDED_BEFORE_ANY_SCORING": "The call returned TWO result blocks. Block 1 (9 rows) answers the pre-registered string. Block 2 (9 rows) is a retrieval of the ENGINE'S OWN COMPOSITION: its string is unknown, this seat did not write it, it cannot be reproduced, and the engine's prose describes a second, different search ('search for ICSID awards involving patents, copyrights, or know-how'). Block 2 is NOT scored against the pre-registration. It is transcribed in full because the record requires every returned row. THE SAME STRING DID EXACTLY THIS ON 2026-10-07 (2026-10-07.json $.calls[2].rows_block2_ENGINE_COMPOSED_STRING_UNKNOWN) AND THAT RECURRENCE WAS REGISTERED IN ADVANCE AT 11:28:03Z AS A REASON TO EXPECT IT.",
+    "block1_scored_against_the_prereg": {
+     "rows": 9,
+     "asset_limb_VERBATIM": "0 of 9",
+     "doctrine_limb_VERBATIM": "4 of 9",
+     "doctrine_limb_after_readers_judgement": "4 of 4 mechanical hits confirmed genuine",
+     "BOTH_limbs": "0 of 9",
+     "structural_PASS": "FAIL - no both-limbs title, as predicted before firing",
+     "bare_host_title_1006_predicate": "0 of 9",
+     "hosts_in_the_2026_10_07_six_host_allowlist": "1 of 9 (jusmundi.com)",
+     "urls_already_returned_by_a_prior_search_artefact": "2 of 9",
+     "PREREGISTERED_VERDICT": "cell_NEITHER. The doctrine limb FELL from the allowlisted 7 of 9 to 4 of 9, which is a real fall and is directionally consistent with cell_SELECTOR, BUT 4 IS NOT <= 3 AND THE REGISTERED THRESHOLD WAS 3. cell_SUPPRESSOR also fails (4 is not >= 7 and the asset limb did not rise off its 0 floor). No class reaches a strict majority of 9. THE BLOCK LANDED IN A DEAD BAND THIS SEAT REGISTERED ITSELF, AND IT DISCRIMINATES NOTHING ON THE QUESTION AS REGISTERED."
+    },
+    "block2_engine_composed_NOT_SCORED": {
+     "rows": 9,
+     "note": "Transcribed, not scored, not relied on. Mechanical figures printed only so a successor cannot recompute them as if they were a result: asset 0 of 9, doctrine 3 of 9, both 0 of 9, allowlist hosts 1 of 9, already in archive 4 of 9."
+    },
+    "refutation_limb": "NULL across BOTH blocks. No returned ROW TITLE names an ISDS claim, notice or award with pharmaceutical trade secrets or undisclosed clinical-trial data as the primary covered investment.",
+    "strength": "OBSERVATION, n = 1 string per arm. TITLES ONLY."
+   },
+   "rows_block1": [
+    {
+     "title": "In the Matter of an Arbitration Under the UNCITRAL Arbitration Rules",
+     "url": "https://www.italaw.com/sites/default/files/case-documents/ita0798.pdf",
+     "host": "www.italaw.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Jurisdictional Objections and Defenses (Ratione Personae, Ratione Materiae, and Ratione Temporis)",
+     "url": "https://link.springer.com/rwe/10.1007/978-981-13-3615-7_67",
+     "host": "link.springer.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Wiki Note: Jurisdiction Ratione Materiae",
+     "url": "https://jusmundi.com/en/document/publication/en-jurisdiction-ratione-materiae",
+     "host": "jusmundi.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": true
+    },
+    {
+     "title": "Exploring Jurisdiction in Investment Arbitration: Interdependence of Jurisdiction Ratione Materiae and Ratione Temporis",
+     "url": "https://dailyjus.com/world/2025/02/exploring-jurisdiction-in-investment-arbitration-interdependence-of-jurisdiction-ratione-materiae-and-ratione-temporis",
+     "host": "dailyjus.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "2.5 Requirements Ratione Materiae",
+     "url": "https://unctad.org/system/files/official-document/edmmisc232add4_en.pdf",
+     "host": "unctad.org",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES WASHINGTON, D.C.",
+     "url": "http://icsidfiles.worldbank.org/icsid/icsidblobs/OnlineAwards/C63/DC3352_en.pdf",
+     "host": "icsidfiles.worldbank.org",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Document information Publication Investor-State Arbitration (Second Edition)",
+     "url": "https://passport.law.columbia.edu/_customtags/ct_DocumentRetrieve.cfm?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXlsb2FkIjp7InRpbWVzdGFtcCI6IjIwMjItMDctMTJUMTY6Mjc6NTkiLCJleHBpcmVMaW5rIjpmYWxzZSwiZmlsZUlkIjoyMTI4Mn19.t4wlp1texyCkVQCrRht8QEFk83y-_HBO5QyxJAJ-ffQ",
+     "host": "passport.law.columbia.edu",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "In the Matter of an Arbitration Under the UNCITRAL Arbitration Rules",
+     "url": "https://icsid.worldbank.org/sites/default/files/parties_publications/C8394/Claimants'%20documents/CL%20-%20Exhibits/CL-0244.pdf",
+     "host": "icsid.worldbank.org",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "The Law and Practice of International Courts and Tribunals 16 (2017) 3–20",
+     "url": "https://www.law.ed.ac.uk/sites/default/files/2019-07/Jurisdiction%20and%20Admissibility%20in%20Investment%20Arbitration.%20A%20View%20from%20the%20Bridge%20at%20the%20Practice.pdf",
+     "host": "www.law.ed.ac.uk",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    }
+   ],
+   "rows_block2_ENGINE_COMPOSED_STRING_UNKNOWN": [
+    {
+     "title": "Covered Investment in Investment Treaty Arbitration Provisions - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=7b18ec7a-8a1a-4cd5-8d0f-622c05934d39",
+     "host": "www.lexology.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Investment treaty tribunal confirms trademark licences can be qualifying investments entitled to treaty protection",
+     "url": "https://www.reedsmith.com/en/perspectives/2018/04/investment-treaty-tribunal-confirms-trademark-licences",
+     "host": "www.reedsmith.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "3 Chapter 1 COVERED INVESTMENT Cyrus Benson, Penny Madden and Ceyda Knoebel 1",
+     "url": "https://www.gibsondunn.com/wp-content/uploads/documents/publications/Benson-Madden-Knoebel-Chapter-1-Covered-Investment-The-Investment-Treaty-Arbitration-Review-Law-Business-Research-2016.pdf",
+     "host": "www.gibsondunn.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Covered Investment - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=2af45be2-cae3-4083-ac87-2ee6bfa51c4e",
+     "host": "www.lexology.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Court considers investment treaty Tribunal’s jurisdiction - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=e3fb0f59-01c8-4e80-92bf-a220d67af974",
+     "host": "www.lexology.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Covered Investments - Lexology",
+     "url": "https://www.lexology.com/library/detail.aspx?g=197ddb26-a00b-4779-92e5-d817d61c94cb",
+     "host": "www.lexology.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": false,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "The Guide to Investment Treaty Protection and Enforcement - Third Edition - Jurisdiction: assessing the main elements in investment treaty arbitration - Global Arbitration Review",
+     "url": "https://globalarbitrationreview.com/guide/the-guide-investment-treaty-protection-and-enforcement/third-edition/article/jurisdiction-assessing-the-main-elements-in-investment-treaty-arbitration",
+     "host": "globalarbitrationreview.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": true
+    },
+    {
+     "title": "Court considers investment treaty Tribunal’s jurisdiction",
+     "url": "https://www.hilldickinson.com/our-view/articles/court-considers-investment-treaty-tribunal-s-jurisdiction/",
+     "host": "www.hilldickinson.com",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": true,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    },
+    {
+     "title": "Issues in International Trade: A Legal Overview of Investor-State Dispute Settlement",
+     "url": "https://www.congress.gov/crs-product/R43988",
+     "host": "www.congress.gov",
+     "access": "row returned; body unread; NO BODY OPENED BY ANYONE TODAY",
+     "title_carries_asset_limb_VERBATIM_1006_predicate": false,
+     "title_carries_doctrine_limb_VERBATIM_1006_predicate": false,
+     "title_carries_BOTH_limbs": false,
+     "bare_host_title_1006_predicate": false,
+     "url_already_returned_by_a_prior_search_artefact": true,
+     "host_in_the_2026_10_07_six_host_allowlist": false
+    }
+   ]
+  }
+ ],
+ "prohibited_and_zero_budget_hosts_that_RETURNED_UNREQUESTED": {
+  "www.italaw.com": "1 of 9 rows in block 1 (row 1, https://www.italaw.com/sites/default/files/case-documents/ita0798.pdf). The host is PROHIBITED to this council. IT WAS NOT REQUESTED, NOT OPENED AND IS NOT RELIED ON. 2026-10-08 recorded 'www.italaw.com PROHIBITED - 0 rows across all three blocks'; that zero was a property of the strings fired, NOT of the prohibition, and today's 1 row shows it. A conduct prohibition on this council does not keep a host out of an unrestricted return.",
+  "dailyjus.com": "1 of 9 rows in block 1 (row 4). At ZERO BUDGET by standing instruction. Returned unrequested; not opened; not relied on. 2026-10-08 recorded 0 rows for it.",
+  "the_general_point": "On an UNRESTRICTED call this seat does not control which hosts occupy rows. Reporting a zero-row count for a prohibited host as if the prohibition produced it is a category error, and this file does not."
+ },
+ "quarantined_engine_syntheses_REFUSED_IN_FULL": {
+  "Q-1009-S1": {
+   "what_it_is": "The engine's prose summary returned with Q-1009-1, in full, together with its two result blocks.",
+   "why_refused": "The engine's prose summary is not a source and row titles are the evidence. REFUSED IN FULL, BY NAME, exactly as 2026-10-08 refused Q-1008-S1 to S3.",
+   "WHY_THIS_ONE_IS_THE_HIGHEST_RISK_OBJECT_OF_THE_SESSION": "It offers a TRIBUNAL HOLDING on the exact Ring-1 proposition that already carries a withdrawn quotation in this project's own record. Its prose states that in a matter concerning trademark licences under the U.S.-Panama Trade Promotion Agreement 'the tribunal viewed the mere act of registration of a trademark as not amounting to or having the characteristics of an investment under the BIT' and that a licence 'needed to confer rights on the licence holder under the law of the host state, in this case, Panama, to qualify'. That is the Bridgestone v. Panama (ICSID ARB/16/34) Ring-1 point. STATE_OF_THE_ANSWER.md's Bridgestone lead-in already carries a QUOTATION WITHDRAWN 2026-08-25 and an unrepaired lead-in recorded 2026-08-28. An engine synthesis offering a fresh unsourced holding on precisely that point is the single most tempting object in this session and it is REFUSED. No seat may cite it. NOTHING about what the Bridgestone tribunal held is asserted here, and this council has not read that decision.",
+   "other_propositions_refused_with_it": [
+    "that a covered investment must independently satisfy ICSID Convention Article 25 and that this was 'first proposed by the Fedax v. Venezuela tribunal'",
+    "that under 'the 2012 Model BIT' an investment 'may include an enterprise; stock; derivatives; construction contracts; or intellectual property rights'",
+    "that 'it is now generally accepted that there is no uniform definition of the term investment as suggested by the Salini test'",
+    "that tribunals 'have been reluctant to let investors import a broader investment definition from other treaties through MFN clauses'",
+    "that 'any illegality or breach of local law in the making of the investment would act as a jurisdictional bar'"
+   ],
+   "note_on_captions": "Fedax v. Venezuela, Salini and the U.S.-Panama TPA appear in this record ONLY inside this refusal. They are REFUSALS, not acceptances, and a successor reading this entry has read a quarantine."
+  }
+ },
+ "section_II_withdrawal_grep_executed_as_instructed": {
+  "instruction": "2026-10-08 section 7.10 item 10: before asserting anything from STATE_OF_THE_ANSWER.md section II, grep for a later withdrawal of it.",
+  "executed": "Yes. Section II's core sentence carries its 2026-10-03 withdrawal inline and in terms ('the sentence this limb carried until 2026-10-03 ... IS WITHDRAWN AS FALSIFIED'), so on THAT sentence the withdrawal HAS propagated to the document that carries the text.",
+  "what_this_seat_asserts_from_section_II": "NOTHING NEW. The refutation limb was run against its core sentence and returned NULL on both blocks.",
+  "and_the_as_of_date_DOES_NOT_MOVE_AND_THIS_SEAT_DECLINES_TO_MOVE_IT": "Today's null was produced by ONE doctrine-anchored string with no asset vocabulary in it at all (asset limb 0 of 9 BY CONSTRUCTION - the string contains no asset term). A null from a string that cannot express the proposition is not evidence about the proposition. No re-anchoring is proposed and a successor may not read today's NULL as a re-test.",
+  "line_15": "NOT EDITED. The chairman records that STATE_OF_THE_ANSWER.md:15 still asserts a claim withdrawn on 2026-10-07. This seat did not reconstruct which claim is meant and therefore changed nothing there; per the standing instruction a silent rewrite is forbidden and only a dated amendment is permitted."
+ },
+ "standing_prohibitions_honoured": "No host was blocked on any call - blocked_domains was not passed at all, and its efficacy remains PERMANENTLY UNMEASURED and is not used anywhere to support a negative. No allowlist was passed. No body was opened. No search-synthesis figure is carried. www.italaw.com was not requested (it returned unrequested; see above). Zero budget spent on dailyjus.com, unis.unvienna.org, threads 2/34/37/42/43, A/81/17, the EU Pharma-Package Ring-2 object (UNKNOWN, not foreclosed), the Einarsson terms (RETIRED), the ARB/24/16 docket, the Grosse Ruse-Khan body, the Ecuador slug and every Spentech pass (both remain QUARANTINED), and the Vadi citation (not cited). Servier is not mentioned as a hit or a near-miss and no row today bears on it. NAFTA Article 1110's and 1105's internal structure is not described anywhere in this file. state/council_log.json WAS NOT WRITTEN (nineteenth session declining). Nothing was built and nothing was applied; every operator approval remains PENDING."
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "date": "2026-10-09",
+  "at": "2026-10-09T13:35:17.858309+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 3,
+    "newest_alert_date": "2026-10-07T01:37:55+00:00",
+    "newest_alert_subject": "\"denial of justice\" (\"investment arbitration\" OR ... - new results",
+    "alert_dates": [
+      "2026-10-07",
+      "2026-10-02",
+      "2026-09-17"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 0,
+  "already_seen": 0,
+  "already_queued": 1,
+  "queued_urls": []
+}

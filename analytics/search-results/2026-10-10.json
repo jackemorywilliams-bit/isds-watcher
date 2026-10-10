@@ -1,0 +1,155 @@
+{
+ "date": "2026-10-10",
+ "seat": "research analyst",
+ "model": "claude-opus-5",
+ "schema_note": "ROW TITLES ONLY. NO BODY WAS OPENED BY ANYONE TODAY. Nothing in this file may be read as a statement about any document's contents. A fetch-layer status is never a claim about a resource.",
+ "pre_registration": {
+  "path": "analytics/search-results/2026-10-10-preregistration.json",
+  "written_at_utc": "2026-10-10T11:24:19Z",
+  "sha256_at_write": "9e9be70d89834e8dc64cbccf00765ada78e86947d123fa44513bac2309a63aa4",
+  "ordering_claim": "WRITTEN TO DISK AT 11:24:19Z AND VERIFIED ON DISK AT 11:25:10Z, BEFORE THE FIRST CALL OF THIS SEAT WAS FIRED. The file is committed, so the ordering is checkable from the commit contents and does not rest on this sentence.",
+  "committed_in_flight_by_the_chairman": "Commit 4fe9884, 'council: daily meeting 2026-10-10 - the seat's pre-registration, committed IN FLIGHT and before its return was read'. The working-tree copy is BYTE-IDENTICAL to HEAD at that path (git diff HEAD returns empty), so the registered expectations sit in a commit the chairman made before reading any result of this seat's. The ordering claim therefore rests on the commit graph and not on this seat's assertion."
+ },
+ "instrument_state": {
+  "fetch": "DEAD on both instruments. curl to neutral hosts -> 'CONNECT tunnel failed, response 403', corroborated gateway-side at 2026-10-10T11:10:44Z; WebFetch to neutral hosts -> 'getaddrinfo ENOTFOUND', a NEW signature where prior sessions recorded EGRESS_BLOCKED. Probed by the chairman before any spend; NOT re-probed on this seat's budget.",
+  "search_track": "ALIVE. The only retrieval instrument this seat had.",
+  "relay": "COMMITTED AND WORKING. 76 requests / 75 paired results at session open. This seat WROTE analytics/fetch-requests/2026-10-10-daily.json and will NOT receive its result in this session: the workflow fires on the chairman's push. UNSCHEDULED, NOT STRANDED."
+ },
+ "digest_of_record": "Digest 2026-09-28: 24 candidates evaluated, 0 items surfaced (0 matches, 0 watch-list leads). TWELVE DAYS OLD. The 2026-10-05 scheduled collection run (#38) FAILED and no manual dispatch has occurred.",
+ "budget": {
+  "ceiling": "FOUR web-search retrievals for this seat.",
+  "registered_blocks": 4,
+  "fired": 4,
+  "engine_composed_retrievals_observed": 0,
+  "scored": 4,
+  "unspent": 0,
+  "engine_composition_note": "CORRECTED 2026-10-10 AFTER THE CHAIRMAN'S RULE 2 ADDENDUM (item 7), BY THE SEAT THAT WROTE IT, BEFORE COMMIT. THE WITHDRAWN WORDS WERE: 'THE CONTRAST WITH 2026-10-09 IS MEASURABLE AND IS THIS SEAT'S METHOD NOTE: the two engine-composed retrievals this council has on record (Q-1009-1; the chairman's own probe today) both followed LONG multi-operator strings with quoted phrases and OR-groups; all four of today's strings were short and operator-free, and none was recomposed. One session is not a result, but the design is cheap and is now registered as a hypothesis with a prediction.' WHY WITHDRAWN: the chairman's probe was NOT an engine-composed retrieval and this seat had the text that says so. The agenda's own §1.8 reads 'The result block carried an engine-composed SYNTHESIS' and 'exactly the class of unsourced engine-composed HOLDING' - never 'retrieval'. This seat converted synthesis into retrieval and then built a pair on it. THE TWO FAILURE MODES ARE DISTINCT AND THIS COUNCIL MAINTAINS THE DISTINCTION: an engine-composed RETRIEVAL is an uncommissioned fetch that spends budget and escapes pre-registration; a SYNTHESIS LAYER asserting holdings is what this council refuses as a source. The chairman's probe was the second. CORRECTED POPULATION: ZERO engine-composed retrievals were observed today, by this seat or the chair. The only one on record remains Q-1009-1, so n=1 and no claim about what recomposed cases have in common is supported. AND THE HYPOTHESIS WAS DUPLICATIVE AS WELL AS UNSUPPORTED: STATE_OF_THE_ANSWER.md's 2026-10-09 block already records 'ENGINE-COMPOSED MULTI-BLOCK RETRIEVAL IS REPRODUCIBLE ON ONE STRING AND ON NO OTHER - 2 of 2 firings of the string fired today, 0 of 10 firings of nine others', which is a STRING-LEVEL measurement at 2 firings and is stronger than this seat's length-level guess. WHAT SURVIVES, AT ITS true strength: the chairman's 7-word operator-free string and this seat's four short strings were none of them recomposed, which is CONSISTENT WITH the existing string-level finding and adds five non-recomposed firings to its denominator. NOTHING IS CLAIMED ABOUT STRING LENGTH AS A CAUSE."
+ },
+ "window_question": {
+  "window": "2026-09-28 .. 2026-10-10, twelve days no collection run has sampled or will sample (#38 failed; Monday's scheduled run at its default 7d reaches back only to 10-05).",
+  "verdict": "NULL. Nothing in the window reached the three-ring intersection on four blocks. STATED AS A NULL AND NOT INFLATED (calibration rule 4).",
+  "near_misses_named_as_near_misses": [
+   "Novartis / Vymada / India patent revocation: RINGS 1 AND 2 at title level, RING 3 ABSENT (no proceeding named in 20 rows), and OUT OF WINDOW on a URL slug date token of 2025-09-16. A prospective-exposure commentary cluster, not a dispute.",
+   "ARIA 29(3) 'Not Patently an Investment': on-theme, PRIOR ART since 2026-09-07, body unread, both known locators outside ALLOWED_HOSTS."
+  ]
+ },
+ "prior_art_screens_executed_at_zero_retrieval": {
+  "Vymada": "0 files in the repository",
+  "survival clause": "0 files",
+  "sunset": "2 files; the ONLY prose instance is analytics/daily-research/2026-06-23.md:65 and it is expressly about the USMCA sunset, 'North America-specific'",
+  "India-Switzerland": "0 files",
+  "section 3(d)": "0 files",
+  "evergreening": "0 files",
+  "India": "15 files, but ZERO occurrences in STATE_OF_THE_ANSWER.md, ZERO of 59 open_threads, and ZERO in src/, alerts.yaml or fingerprint.yaml",
+  "Novartis": "present in STATE_OF_THE_ANSWER.md ONLY as a Swiss pharmaceutical investor named under the China-Switzerland BIT Ring-1 analysis; a Novartis Indian patent matter (Glivec / imatinib mesylate, 2013) is ALREADY REFUSED AND QUARANTINED at analytics/daily-research/2026-10-04.md as engine synthesis Q-1004-S1, and this seat does not revive it",
+  "India BIT compulsory-licensing carve-outs": "PRIOR ART and already refused: India-Colombia Art. 6.7, India-ASEAN Art. 8(7), India-Japan FTA Art. 92.5 at analytics/daily-research/2026-09-19.md and analytics/insights.jsonl, each at 0 carriers, nothing asserted"
+ },
+ "quarantined_engine_syntheses_REFUSED_IN_FULL": [
+  "Q-1010-S1 (B1): Roberts's editorial boards and affiliation.",
+  "Q-1010-S2 (B2): Legal 500 EMEA practice descriptions, named lateral hires, Geneva office, a 25 September 2025 departure.",
+  "Q-1010-S3 (B3): the Novartis sunset-clause argument's content; CSOB v Slovakia's reading of 'investment'; AND an engine-composed statement of the Eli Lilly v Canada tribunal's holding on legitimate expectations.",
+  "Q-1010-S4 (B4): the September 2025 revocation's stated grounds, section 3(d), 'India-Switzerland BITs', 58 terminations in 2017, the 15-year/2032 arithmetic, the 2007 filing and 2022 grant, CSOB as 'potentially decisive', and a section 117A appeal.",
+  "CARRIED FORWARD AND NOT REVIVED: every caption inside the chairman's own §1.8 probe synthesis - the ICSID annulment committee on Peru, the US court on a Slovak Republic award, the H1-2026 registration count, and the '$25 million award against a Bangladesh oil and gas company dated Oct. 14'. TREATED AS A REFUSAL, NOT AN ACCEPTANCE."
+ ],
+ "standing_prohibitions_honoured": [
+  "No www.italaw.com or bare italaw.com row or query.",
+  "No investmentpolicy.unctad.org or bare unctad.org row.",
+  "No dailyjus.com spend.",
+  "No ARB/24/16 row.",
+  "No block touching threads 2, 34, 42 or 43.",
+  "ESCALATED gaps given zero search budget: servier-poland-2012-redacted-award-body-unread; ferguson-arbitration-international-40-3-337-body-unread; kim-jmarshall-ripl-15-228-body-unread; icsid-review-39-3-452-judicial-expropriation-authorship; iclq-judicial-expropriation-in-iil-authorship."
+ ],
+ "calls": [
+  {
+   "call_id": "Q-1010-B1",
+   "fired_at_utc": "2026-10-10T~11:26Z",
+   "registered": true,
+   "string_verbatim": "Anthea Roberts EJIL:Talk October 2026",
+   "string_sha256": "24f23377d3912a56c5f699ed8899bb05d2e2a7cba01f65340bd90693054120d5",
+   "engine_composed_retrieval": false,
+   "scored": true,
+   "outcome": "NULL, AS PRE-REGISTERED. Nine rows. NO row title or date places a new Anthea Roberts EJIL:Talk! post inside 2026-09-28..2026-10-10. The only dated EJIL:Talk! items among the rows are pre-window (11 February 2020 and 17 February 2021, co-written with Taylor St John, on ISDS reform) and are of a class already known to the project. ejiltalk.org/author/aroberts/ was NOT opened and cannot be: the site's WAF returns 403 to identified non-browser clients and fetch is dead on both instruments today.",
+   "row_titles_verbatim": [
+    "EJIL: Talk!",
+    "Recent Posts",
+    "Anthea Roberts",
+    "opiniojuris.org",
+    "uncitral and isds reform online crossing the chasm",
+    "uncitral and isds reforms what makes something fly",
+    "why corporations should cease business activities with russia",
+    "uncitral and isds reform chinas proposal",
+    "www.law.cam.ac.uk"
+   ],
+   "synthesis_refused": "The result carried engine-composed prose about Roberts's editorial-board memberships and affiliation. REFUSED. No body opened. None of it is asserted anywhere in this seat's return."
+  },
+  {
+   "call_id": "Q-1010-B2",
+   "fired_at_utc": "2026-10-10T~11:27Z",
+   "registered": true,
+   "string_verbatim": "Squire Patton Boggs international dispute resolution update September 2026",
+   "string_sha256": "8daabeaaead483a47fa3a0840760793de167ccd5196e11156d280ce8d3f1b343",
+   "engine_composed_retrieval": false,
+   "scored": true,
+   "outcome": "THE LEAD DID NOT RESOLVE, AND THIS SEAT'S OWN PRE-REGISTERED EXPECTATION IS REFUTED ON ITS FIRST LIMB. The expectation registered at 11:25:10Z was 'the title resolves to a real Squire Patton Boggs publication'. It did not. Ten rows returned; ZERO is an international dispute resolution update dated September 2026. All ten are firm press releases, Legal 500 recognition pages, or Global Arbitration Review lateral-hire and office-opening items. HONEST FORM, BINDING: the publication the chairman's §1.8 handed over at title level is NOT FOUND IN ACCESSIBLE SOURCES ON ONE REGISTERED CALL. IT IS NEVER STATED THAT IT DOES NOT EXIST - the chairman saw the row in his own probe and this seat does not impeach that; one call on a differently-worded string did not reach it.",
+   "row_titles_verbatim": [
+    "squire patton boggs recognized in legal 500 emea 2026",
+    "From O'Melveny & Myers to Squire Patton Boggs",
+    "Law Firm: Squire Patton Boggs",
+    "Squire Patton Boggs continues Singapore expansion with twin disputes hires",
+    "Squire Patton Boggs hires from Freshfields",
+    "Law Firm: Squire Patton Boggs",
+    "Squire Patton Boggs Expands International Disputes Capabilities with Partner Addition",
+    "New Partner for International Dispute Resolution Practice in London",
+    "Squire Patton Boggs opens in Geneva",
+    "Squire Patton Boggs Strengthens International Arbitration Practice in London"
+   ],
+   "synthesis_refused": "The result carried engine prose about Legal 500 EMEA 2026 practice descriptions, named lateral hires and their prior firms, a Geneva office opening, and a departure dated 25 September 2025. REFUSED IN FULL. None of it is three-ring material and none of it is asserted."
+  },
+  {
+   "call_id": "Q-1010-B3",
+   "fired_at_utc": "2026-10-10T~11:28Z",
+   "registered": true,
+   "string_verbatim": "investment treaty tribunal decision jurisdiction patent trade secret September 2026",
+   "string_sha256": "e97e870066db5409c015ebfd9df040d91361f5fbd7e790b364b81b3add6632cd",
+   "engine_composed_retrieval": false,
+   "scored": true,
+   "outcome": "NULL ON THE WINDOW, AS PRE-REGISTERED. Ten rows. ZERO row titles name a tribunal decision dated inside 2026-09-28..2026-10-10. ZERO mention trade secrets. The block nonetheless NAMED ONE CAPTION NEW TO THIS PROJECT - 'Vymada Patent Revocation: A BIT Of A Problem For Novartis?' - which triggered the reserved block B4. One row is PRIOR ART and is reported as such rather than as a find: 'Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration', ARIA vol. 29 no. 3, is already carried at STATE_OF_THE_ANSWER.md:349 from 2026-09-07, title-level, body unread, aria.law.columbia.edu outside ALLOWED_HOSTS. The ONE new datum on it is a SECOND locator, arbitrationlaw.com/node/65452, which is also outside ALLOWED_HOSTS, so reachability is unchanged and the gap does not narrow.",
+   "row_titles_verbatim": [
+    "Vymada Patent Revocation: A BIT Of A Problem For Novartis?",
+    "Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration* - Vol. 29 No. 3",
+    "Not Patently an Investment: Enforcing Intellectual Property Claims in Investment Arbitration - ARIA - Vol. 29, No. 3",
+    "article 102152 en",
+    "a transatlantic law and political economy approach to the protection of intellectual property rights under international investment agreements",
+    "iareporter.com",
+    "Lentner Eli Lilly v Canada",
+    "stanford.edu",
+    "Investor State Dispute Settlement and the Relationship between IP and Investment Chapters TTLF",
+    "Vymada Patent Revocation: A BIT Of A Problem For Novartis?"
+   ],
+   "synthesis_refused": "The result carried engine prose asserting: the content of a Novartis India sunset-clause argument including a 15-year survival period to 2032 and a pre-2017 investment cut-off; that CSOB v Slovakia adopted a broad reading of investment; and that the Eli Lilly v Canada tribunal 'decided that changes to Canada's patent law over time ... did not defeat the company's legitimate expectations'. REFUSED IN FULL. The Eli Lilly characterisation is an engine-composed statement of a tribunal's holding, which is precisely the class refused at 2026-10-09 §19 and at this agenda's §1.8, and this council holds the award unread in this session class."
+  },
+  {
+   "call_id": "Q-1010-B4",
+   "fired_at_utc": "2026-10-10T~11:30Z",
+   "registered": true,
+   "registration_form": "RESERVED with a CONTINGENT string, registered at 11:25:10Z as 'the caption named by B2 or B3'. B3 named one; the contingency fired; the string actually used is recorded verbatim here.",
+   "string_verbatim": "Novartis India Vymada patent revocation bilateral investment treaty claim",
+   "string_sha256": "d82780b7181fb9b346adc3ce7483a9a7e542a8c54f5630a5cf606a4cef499335",
+   "engine_composed_retrieval": false,
+   "scored": true,
+   "outcome": "BACKSOURCED TO A BOUNDED TWO-RING NEAR-MISS WITH RING 3 ABSENT. Ten rows, four independent carriers naming the matter at title level. WHAT THE ROW TITLES AND URL SLUGS THEMSELVES CARRY, WITH NO RELIANCE ON THE SYNTHESIS LAYER: (i) a patent revocation concerning Novartis's Vymada in India, named in four carriers' titles - RING 2, an administrative measure, at title level; (ii) a patent as the asset - RING 1 at title level; (iii) the businesstoday.in row's URL path carries the token '494211-2025-09-16', which places the measure in SEPTEMBER 2025 and therefore OUTSIDE the unsampled window - a slug token is not a body-verified date and is reported as a slug token; (iv) the livelaw row's slug ends '-and-patent-act-analysis-' and its title is in question form, so the carrier is self-described at slug level as ANALYSIS. WHAT IS ABSENT, AND IT IS RING 3: across TWENTY rows over two calls, ZERO row titles name a notice of dispute, a filed claim, a tribunal, an ICSID or PCA docket number, a registered proceeding, or any jurisdictional or admissibility doctrine inside a proceeding. The treaty limb exists in this return ONLY as refused engine prose. SO THIS IS NOT A THREE-RING MATTER AND IS NOT OFFERED AS ONE.",
+   "row_titles_verbatim": [
+    "Vymada Patent Revocation: A BIT Of A Problem For Novartis?",
+    "Vymada Patent Revocation: A BIT Of A Problem For Novartis?",
+    "Vymada Patent Revocation: A BIT Of A Problem For Novartis?",
+    "Indian Patent Office denies Novartis patent for Vymada, clears way for generics",
+    "on the heels of novartis victory taming evergreening of patents on medicines european investment clause proposals in eu india fta threaten to undo all gains",
+    "Revocation of Novartis' Vymada Patent in India: A Legal Analysis",
+    "Revocation of Novartis' Vymada Patent in India: A Legal Analysis",
+    "Pilman An Editorial Journal by Tapan Ray | Pharmaceuticals & Healthcare",
+    "Pilman An Editorial Journal by Tapan Ray | Pharmaceuticals & Healthcare"
+   ],
+   "synthesis_refused": "The result carried engine prose asserting: that the Indian Patent Office revoked the patent in September 2025 for want of novelty or inventive step and under section 3(d); that Novartis 'has long been protected by the India-Switzerland BITs'; that India terminated BITs with 58 countries in 2017; the 15-year/2032 survival arithmetic and the pre-2017 cut-off; that the underlying application was filed in 2007 and the grant made in 2022; that CSOB v Slovakia is 'potentially decisive'; and that Novartis's next step is a section 117A High Court appeal. REFUSED IN FULL. NO BODY WAS OPENED - livelaw.in, livelawbiz.com, businesstoday.in, atblegal.com, tapanray.in and act.healthgap.org are NONE of them on ALLOWED_HOSTS and fetch is dead on both instruments. Every element above is UNSOURCED TO ANY BODY THIS COUNCIL HAS READ and none of it may be revived as a finding. It is named here only so a successor can see it was seen and declined."
+  }
+ ]
+}

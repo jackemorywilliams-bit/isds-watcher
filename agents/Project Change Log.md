@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `96ba537`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `b03381e`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,41 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-10-10 (archivist session — twenty-fourth deployment)
+
+*Audited against `7f10729` (`origin/main`, clean tree), on a complete **1,928**-commit history —
+the container's clone arrived shallow at **162**, the **sixteenth consecutive** session, so every
+sha, ancestry test and orphan figure below was resolved only after `git fetch --unshallow`. Window
+`bc35cfb..7f10729` = **90** commits, three days. Paths: `.claude/agents/`, `prompts/`,
+`src/models.py`, `agents/`, `analytics/`, `README.md`, `docs/`, `scripts/`, `tests/`,
+`METHODOLOGY.md`, `HANDOFF.md`, `COUNCIL.md`, `views/isds-workflow-3d/workflow.json`, and every
+remote branch tip.*
+
+**No project change to record under this seat's remit, for the eighth consecutive session.** Zero
+commits in the 90-commit window touched `.claude/agents/`, `prompts/`, `src/models.py`, `src/`,
+`scripts/`, `tests/`, `.github/`, `docs/`, `views/`, `METHODOLOGY.md`, `README.md`, `HANDOFF.md`
+or `COUNCIL.md`. All 90 are council records and their bot close-outs. The roster, the nine seat
+definitions and every model binding are unchanged since `bc35cfb`.
+
+**Vault changes made this session, all within the record paths this seat may self-merge.**
+
+- **The 2026-09-07 shallow-clone method rule written into the two bound seats' notes that
+  lacked it.** `agents/integrity-officer.md` and `agents/research-analyst.md` each gained the
+  rule in their *Adopted method rules* sections. Screened before writing: `shallow` returned
+  **0** occurrences in both notes and **0** in both seat definitions. The rule binds three
+  seats — [[council-chairman]], [[research-analyst]], [[integrity-officer]] — per the
+  [[Agent Registry]] method-rules table, binding 2026-09-07, `34b3970`.
+- **A distinct defect from D5, recorded against the one seat D5 exempts.**
+  `.claude/agents/integrity-officer.md:50` already points at `agents/integrity-officer.md`
+  ("The taxonomy's home is …") — it is the single seat whose definition points at its own vault
+  note. The pointer was live and the rule was **absent at the destination**: carrier present,
+  cargo missing. That is the archivist's to fix and it is now fixed.
+- **A currency anchor added to `HANDOFF.md`**, which had none, with its own limit stated in the
+  note: `scripts/check_currency.py`'s `TRACKED` map covers five notes and `HANDOFF.md` is not
+  among them (`HANDOFF` returns 0 occurrences in that script at this head), so the anchor is
+  recorded but not machine-checked. Adding it to `TRACKED` is a `scripts/` edit and escalated,
+  not taken.
 
 ## 2026-10-07 (archivist session — twenty-third deployment)
 

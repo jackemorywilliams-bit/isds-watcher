@@ -100,6 +100,30 @@ edit.
   least one of them retrievable. Source: Observation 4, same commit; consequences flagged to
   the chairman as retrospective on the whole record.
 
+- **A `check_currency.py` "FAIL … is not a commit" is a statement about the clone, not about
+  the note** — adopted 2026-09-07, binding, and naming this seat third of three
+  ([[Agent Registry]] method-rules table, `34b3970`; archivist confirmation
+  `analytics/vault-sessions/2026-09-07.md`). No seat may cite that guard's output as a defect
+  in the note it names without first running `git rev-parse --is-shallow-repository`; if it
+  returns `true`, run `git fetch --unshallow` and re-run the guard before writing a word.
+  Adopted after the guard reported three failures against commits that all exist —
+  `373cce6`, `9efafb0`, `ae42639` — on a shallow clone.
+  **Why it is written here, on 2026-10-10, thirty-three days after adoption.** This seat is
+  one of the three the rule binds, and until today the rule appeared **nowhere this seat
+  reads**: `shallow` returned 0 occurrences in `.claude/agents/integrity-officer.md` and 0 in
+  this note. That is not the ordinary [[Workflow Threads]] **D5** gap, because this seat is
+  the one exception to D5 — `.claude/agents/integrity-officer.md:50` already points here
+  ("The taxonomy's home is `agents/integrity-officer.md`"). **The carrier existed and the
+  cargo was missing**, which is a distinct defect from D5 and the archivist's to fix.
+  **Where this note would have prevented a recorded failure.** On 2026-09-25 the chairman
+  cited this exact guard's `ae42639` output as a defect in a note and sent it to Emory as
+  **escalation 13**, calling it *"pre-existing and unfixable by any re-anchor"*
+  (`analytics/daily-research/2026-09-25.md:1036`, `68f1987`; repeated at `:1152`, `6ef0688`).
+  The required probe was never run — `shallow` occurs **0 times** in that 1,232-line record.
+  The commit exists: `ae42639` is 2026-08-06 *feat(guard): check_sources.py — a quotation must
+  exist in the source it names*. This seat is the verification gate and was bound by the rule;
+  had the rule been in front of it, the false escalation was one command from being stopped.
+
 ### Fabrication taxonomy — the canonical table
 
 **Read this table; do not recite the taxonomy from memory.** The reason this table exists is

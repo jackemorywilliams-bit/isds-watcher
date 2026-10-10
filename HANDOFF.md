@@ -8,6 +8,15 @@
   is commented out in `src/config.py` and can be restored).
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
+**Currency anchor.** *Audited against `7f10729`; paths: `.github/workflows/`, `src/config.py`,
+`scripts/`, `.claude/agents/`.* Added 2026-10-10 by the archivist. This file had **no** anchor
+of its own until that date, so staleness in it was a judgement call rather than a query — the
+one thing the snapshot-anchor convention exists to prevent. Note the honest limit: this anchor
+is **not machine-checked**, because `scripts/check_currency.py`'s `TRACKED` map covers five
+notes and `HANDOFF.md` is not among them (`HANDOFF` returns 0 occurrences in that script at
+this head). Adding it there is a `scripts/` edit and therefore not the archivist's; escalated
+in `analytics/vault-sessions/2026-10-10.md`.
+
 ## What runs, when
 - **scholar-intake** — daily 06:30 UTC (`.github/workflows/scholar-intake.yml`): reads the Scholar alert mailbox, queues new papers for Monday's classification, commits `state/deferred.json` + `analytics/scholar-intake/<date>.json` `[skip ci]`. Added 2026-09-08 because only the weekly run read that mailbox and a Tuesday alert waited six days.
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),

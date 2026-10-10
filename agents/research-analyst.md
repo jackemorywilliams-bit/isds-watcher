@@ -116,6 +116,33 @@ recorded here because they are now part of this seat's working context.
 > **Emory's** (`analytics/optimization-log.md:65`). This note records the rule; it does not
 > pretend the rule is sufficient.
 
+- **A `check_currency.py` "FAIL … is not a commit" is a statement about the clone, not about
+  the note** — adopted 2026-09-07, binding, and naming this seat second of three
+  ([[Agent Registry]] method-rules table, `34b3970`; archivist confirmation
+  `analytics/vault-sessions/2026-09-07.md`). No seat may cite that guard's output as a defect
+  in the note it names without first running `git rev-parse --is-shallow-repository`; if it
+  returns `true`, run `git fetch --unshallow` and re-run the guard before writing a word.
+  Adopted after the guard reported three failures against commits that all exist —
+  `373cce6`, `9efafb0`, `ae42639` — on a shallow clone.
+  **Recorded here on 2026-10-10, and recorded with its limit.** Screened on this date, the
+  rule appeared in **neither** of this seat's memories: `shallow` returned 0 occurrences in
+  `.claude/agents/research-analyst.md` and 0 in this note. Writing it here fixes the second
+  of those and **not** the first — by the enumeration at the head of this section, this file
+  is outside this seat's read path, so this rule now joins the other ten that are *recorded
+  here and nowhere the seat reads*. That is **D5**, the fix is a contract edit and therefore
+  **Emory's**, and this entry does not pretend otherwise.
+  **Where the rule, had it been reachable, would have prevented a recorded failure.** On
+  2026-09-25 the chairman — bound first by this same rule — cited the guard's `ae42639`
+  output as a defect in a note and sent it to Emory as **escalation 13**, calling it
+  *"pre-existing and unfixable by any re-anchor"* (`analytics/daily-research/2026-09-25.md:1036`,
+  `68f1987`; repeated at `:1152`, `6ef0688`). The required probe was never run — `shallow`
+  occurs **0 times** in that 1,232-line record — and the commit exists: `ae42639` is
+  2026-08-06 *feat(guard): check_sources.py — a quotation must exist in the source it names*.
+  **The archivist re-ran the whole screen on 2026-10-10 and it holds a third time:** this
+  container's clone reported `is-shallow-repository` **true** at **162** of **1,928** commits,
+  the guard returned **4 failed** including those same three hard `FAIL`s, and after
+  `git fetch --unshallow` it returned **1 failed** — a lone `STALE`. All three shas resolve.
+
 - **Fetch-first** — adopted 2026-07-30. Attempt the direct fetch before reconstructing a
   document from search results; fall back to quoted-phrase reconstruction only once a fetch
   has actually failed. A search snippet is never cited in place of a document an unattempted

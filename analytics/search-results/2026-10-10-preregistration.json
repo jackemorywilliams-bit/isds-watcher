@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-10",
+  "seat": "research analyst",
+  "model": "claude-opus-5",
+  "artefact_class": "PRE-REGISTRATION. Written to disk BEFORE any search call of this seat's was fired. Nothing below is a finding; every line is an expectation fixed in advance so that it cannot be chosen after the result.",
+  "written_at_utc": "2026-10-10T11:24:19Z",
+  "ceiling": "FOUR web-search retrievals, total, for this seat. The chairman fired one call himself as the §1.3 liveness probe and charged it against the day, not against this seat's four.",
+  "standing_rule_registered": "ENGINE-COMPOSED RETRIEVAL. If a single registered call returns a retrieval of the engine's own composition rather than the registered string, that retrieval is NOT SCORED and counts against the ceiling as ONE BLOCK. It does NOT forfeit the remaining registered blocks. This is the narrow form the chairman restated today and it is the form registered here. The 2026-10-09 wide form (ceiling treated as REACHED on the first such observation) is NOT in force today.",
+  "ordering_rule_registered": "prompts/research_analyst.txt:158-170 requires one query per monitored author BEFORE any topical keyword search. Block 1 is therefore the monitored-author check and not a window query, and that ordering is fixed here rather than chosen later.",
+  "design_rationale": "The record measures that generic three-ring keyword strings have returned nulls for more than ten consecutive sessions (census: analytics/search-results/2026-09-28..2026-10-09). The 2026-07-26 lesson is that author-name+title beat keyword search. The window question the chairman set - what, if anything, in 2026-09-28..2026-10-10 reaches the three-ring intersection - is a LISTING question, not a keyword question, so blocks 2 and 3 prefer NAMED OBJECTS (an author page, a dated practitioner digest the chairman handed over at title level) over thematic keywords, and block 4 is deliberately RESERVED for backsourcing whatever blocks 2-3 name rather than pre-committed to discovery.",
+  "blocks": [
+    {
+      "block_id": "Q-1010-B1",
+      "string_verbatim": "Anthea Roberts EJIL:Talk October 2026",
+      "purpose": "MANDATED MONITORED-AUTHOR CHECK (prompts/research_analyst.txt:166, ejiltalk.org/author/aroberts/, UNCITRAL ISDS reform series). Fired FIRST, before any topical string, as that clause requires.",
+      "expectation": "No new Roberts post dated inside 2026-09-28..2026-10-10 is surfaced. The archived series items already known to the project recur.",
+      "what_would_refute_it": "A result row whose title and date place a NEW Roberts post inside the window. That would be a LEAD only: ejiltalk.org is unfetchable to this council (WAF 403 to identified non-browser clients) and fetch is dead on both instruments today, so no body can be opened and no claim about its contents may be made."
+    },
+    {
+      "block_id": "Q-1010-B2",
+      "string_verbatim": "Squire Patton Boggs international dispute resolution update September 2026",
+      "purpose": "BACKSOURCE FROM THE TITLE (prompts/research_analyst.txt:81-91) on the ONE title-level lead the chairman handed over from his own liveness probe. A dated practitioner digest is a LISTING surface covering part of the unsampled window, so its value is the case captions it names, never its own prose.",
+      "expectation": "The title resolves to a real Squire Patton Boggs publication. NO case caption it names reaches all three rings. Any IP-as-investment caption, if one appears, is a near-miss on ring 3 or ring 2.",
+      "what_would_refute_it": "A named caption in which an IP right is pleaded as the covered investment AND a regulatory or judicial measure is the challenged conduct AND a jurisdictional/admissibility doctrine is litigated. The PDF body is unreadable in this session class, so even a refuting caption enters the record as a LEAD with the body marked unread."
+    },
+    {
+      "block_id": "Q-1010-B3",
+      "string_verbatim": "investment treaty tribunal decision jurisdiction patent trade secret September 2026",
+      "purpose": "THE WINDOW LIMB. One recency-scoped three-ring probe, kept SHORT deliberately: the two engine-composed retrievals this council has recorded (2026-10-09 Q-1009-1, and the chairman's own probe today) both followed long multi-operator strings, so a short string is registered here as the cheaper design.",
+      "expectation": "NULL. No row dated inside the window names a tribunal decision in which an IP right is pleaded as the covered investment. The seed-award line (Philip Morris v Australia, Eli Lilly v Canada, Bridgestone v Panama) and generic ISDS news recur.",
+      "what_would_refute_it": "A row whose title names a tribunal decision, dated inside the window, on an IP-as-covered-investment jurisdictional objection."
+    },
+    {
+      "block_id": "Q-1010-B4",
+      "string_verbatim": "RESERVED. String not fixed in advance BY DESIGN: this block exists to backsource a caption named by B2 or B3, and its string is the caption. If B2 and B3 name no caption worth backsourcing, THIS BLOCK IS NOT FIRED and is handed back unspent.",
+      "purpose": "Backsourcing reserve. The contract's instruction is that a title is a seed to research outward from; a reserve block is the only way to honour that inside a four-call ceiling.",
+      "expectation": "Either unfired, or fired on a caption and returning a docket/party/doctrine identification WITHOUT a readable body.",
+      "what_would_refute_it": "N/A - this block has no world-claim of its own. Its string is contingent and will be recorded verbatim after the fact, with the contingency disclosed."
+    }
+  ],
+  "null_is_the_expected_answer": "Calibration rule 4. Three of the four blocks register NULL as their expectation. A null on the window is an acceptable and expected result and will be stated as one, not inflated into a finding. Near-misses will be named as near-misses.",
+  "refusals_registered_IN_ADVANCE": [
+    "NO SEARCH-SYNTHESIS FIGURE OR HOLDING ENTERS THIS SEAT'S RETURN. The chairman's §1.8 disclosed that his own probe's result block carried an engine-composed synthesis asserting tribunal and court dispositions (an ICSID annulment committee on Peru; a US court on a Slovak Republic award; an H1-2026 registration count; a '$25 million award against a Bangladesh oil and gas company dated Oct. 14' whose year the engine could not state). He refused all of it. EVERY CAPTION INSIDE IT IS TREATED HERE AS A REFUSAL, NOT AN ACCEPTANCE, and none of it may be revived by this seat even if a block of mine returns it again.",
+    "No body is opened today by anyone: curl returns 'CONNECT tunnel failed, response 403' and WebFetch returns 'getaddrinfo ENOTFOUND' on neutral controls. Every row this seat records is TITLE-LEVEL. A fetch-layer status is never a claim about a resource."
+  ],
+  "standing_prohibitions_acknowledged_before_firing": [
+    "www.italaw.com and bare italaw.com: PROHIBITED.",
+    "dailyjus.com: zero budget.",
+    "threads 2, 34, 42, 43: zero budget.",
+    "investmentpolicy.unctad.org and bare unctad.org: no relay row.",
+    "no ARB/24/16 row.",
+    "ESCALATED gaps get zero search budget (prompts/research_analyst.txt:141-147): servier-poland-2012-redacted-award-body-unread, ferguson-arbitration-international-40-3-337-body-unread, kim-jmarshall-ripl-15-228-body-unread, icsid-review-39-3-452-judicial-expropriation-authorship, iclq-judicial-expropriation-in-iil-authorship. NONE of the four blocks above targets any of them."
+  ]
+}

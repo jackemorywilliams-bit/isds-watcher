@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-11",
+  "seat": "research analyst",
+  "model": "claude-opus-5",
+  "artefact_class": "PRE-REGISTRATION. Written to disk BEFORE any search call of this seat was fired. Nothing below is a finding; every line is an expectation fixed in advance so it cannot be chosen after the result.",
+  "ceiling": "FOUR WebSearch retrievals, total, for this seat. The chairman fired none against this seat's budget.",
+  "census_executed_at_head": {
+    "method": "recursive walk of analytics/search-results/*.json for keys {query,q,query_string,string,query_fired,search_string,formulation,string_verbatim}; executed before any call",
+    "result": "every string fired 2026-09-20 through 2026-10-10 was printed and read. The four strings of 2026-10-10 are held: 'Anthea Roberts EJIL:Talk October 2026'; 'Squire Patton Boggs international dispute resolution update September 2026'; 'investment treaty tribunal decision jurisdiction patent trade secret September 2026'; 'Novartis India Vymada patent revocation bilateral investment treaty claim'. NONE of the four is re-fired below."
+  },
+  "ordering_rule_registered": "prompts/research_analyst.txt:158-170 requires one query per monitored author BEFORE any topical keyword search. Block 1 is therefore the monitored-author check. The chairman's instruction not to repeat yesterday's four and the standing monitored-author mandate are reconciled by firing a DIFFERENT URL for the SAME author: open_threads[0-based 48] records that the clause monitors ONE author URL while the author publishes at TWO, and that justsecurity.org/author/robertsanthea/ has been on this record since 2026-09-1x and is NOT the monitored URL. Block 1 fires the unmonitored limb, which is a formulation the record does not hold.",
+  "blocks": [
+    {
+      "block_id": "B1",
+      "role": "MONITORED AUTHOR (mandated, fires first)",
+      "string_verbatim": "Anthea Roberts Just Security author investor-State dispute settlement 2026",
+      "expectation": "NULL as to a new post. A listing title is a LEAD and no body can be opened today (fetch dead on both instruments). Scored only on whether a Just Security Roberts item dated after 2026-09-01 appears as a row title.",
+      "what_a_hit_founds": "a TITLE, and a lead for the operator. Nothing about any body.",
+      "what_it_cannot_found": "anything about what Roberts wrote; anything about ejiltalk.org, which is a different URL and was checked yesterday."
+    },
+    {
+      "block_id": "B2",
+      "role": "THE UNSAMPLED WINDOW, AT DESIGNATOR LEVEL - entry 1",
+      "string_verbatim": "\"Lombard North Central\" Turkiye ICSID arbitration ARB/26/40",
+      "basis": "The party name and case number are carried verbatim by analytics/fetch-results/2026-10-10-daily.json records idx 4 and 5 (icsid.worldbank.org/cases/recent, sha256 61006c73bddc..., control_ok true). This is a RECORD-CARRIED designator, not a discovered one.",
+      "expectation": "NULL as to the three rings. Prior: a UK asset-finance claimant against Türkiye has no IP-as-investment prior in this record. A row title naming the asset class would be the finding; its absence is the expected result and is reported as such.",
+      "what_a_hit_founds": "a TITLE naming the matter and, at most, a title-level characterisation of the dispute's subject. NEVER a pleaded asset, a holding, a registration date or a disposition.",
+      "what_it_cannot_found": "that the matter was registered inside 2026-09-28 -> 2026-10-11; the date type is unresolved (see the relay request of today)."
+    },
+    {
+      "block_id": "B3",
+      "role": "THE UNSAMPLED WINDOW, AT DESIGNATOR LEVEL - entry 2",
+      "string_verbatim": "\"Sopam Energie\" Mali ICSID arbitration ARB/26/39",
+      "basis": "Same byte stream and same two relay rows as B2.",
+      "expectation": "NULL as to the three rings. An energy claimant against Mali has no IP prior in this record.",
+      "what_a_hit_founds": "a TITLE only, on the same terms as B2.",
+      "what_it_cannot_found": "the same limits as B2."
+    },
+    {
+      "block_id": "B4",
+      "role": "RESERVED. String NOT fixed in advance BY DESIGN: this block exists only to backsource a caption named by B2 or B3, and its string would be that caption. If B2 and B3 name no caption worth backsourcing, THIS BLOCK IS NOT FIRED and is handed back unspent.",
+      "string_verbatim": "RESERVED",
+      "expectation": "most likely NOT FIRED."
+    }
+  ],
+  "engine_composed_retrieval_rule_registered": "If a single registered call returns a retrieval of the engine's own composition rather than the registered string, that retrieval is NOT SCORED and counts against the ceiling as ONE BLOCK; it does not forfeit the remaining blocks. This is the narrow form in force since 2026-10-10.",
+  "no_search_synthesis_figures": "No number stated only in an engine's summary enters this record as a finding. Row titles and row URLs only.",
+  "blocked_domains_registered": "dailyjus.com is at ZERO BUDGET by standing prohibition and is not queried. No domain parameters are passed on any call below; that is recorded so the 2026-10-07 parameter-recording defect is not repeated."
+}

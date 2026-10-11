@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-11",
+  "seat": "research analyst",
+  "model": "claude-opus-5",
+  "schema_note": "ROW TITLES ONLY. NO BODY WAS OPENED BY ANY MEANS. Nothing in this file may be read as a statement about any document's contents. A tool-layer status is never a claim about a resource.",
+  "pre_registration": {
+    "path": "analytics/search-results/2026-10-11-preregistration.json",
+    "written_at_utc": "2026-10-11T11:26:07Z",
+    "sha256_at_write": "4ddffb1e8fce80a20f9a746dfa0b8b99344653740596571ef78a93985eedb536",
+    "ordering_claim": "written and hashed on disk BEFORE the first call of this seat was fired; the file is uncommitted at the time of this return and the chairman commits it, so the ordering rests on his commit contents and not on this seat's assertion."
+  },
+  "instrument_state": {
+    "fetch": "DEAD on both instruments, established by the chairman at session open on neutral controls. NOT RE-PROBED by this seat: the measurement was already made and re-probing spends budget to learn nothing.",
+    "search_track": "ALIVE. The only retrieval instrument this seat used.",
+    "relay": "one request WRITTEN, analytics/fetch-requests/2026-10-11-daily.json, 12 rows. No result exists in this session; the workflow fires on the chairman's push."
+  },
+  "budget": {"ceiling": 4, "spent": 3, "handed_back": 1, "note": "B4 was RESERVED by pre-registration and IS NOT FIRED, because B2 and B3 named no caption worth backsourcing. This is the pre-registered outcome, not an omission."},
+  "calls": [
+    {
+      "call_id": "B1",
+      "role": "MONITORED AUTHOR, mandated, fired first per prompts/research_analyst.txt:158-170",
+      "string_verbatim": "Anthea Roberts Just Security author investor-State dispute settlement 2026",
+      "domain_parameters": "none passed",
+      "why_this_string": "the mandated clause monitors ejiltalk.org/author/aroberts/ ONLY; open_threads[0-based 48] records that the author publishes at TWO URLs and that justsecurity.org/author/robertsanthea/ is the unmonitored one. 2026-10-10 fired the EJIL:Talk limb; this fires the limb the clause has never covered. The record does not hold this formulation.",
+      "rows_titles_verbatim": [
+        "Content Join OGEMID | https://www.transnational-dispute-management.com/journal-author-articles.asp?key=2355",
+        "LNB News 06/07/2026 | https://www.lexisnexis.co.uk/legal/news/uncitral-finalises-investor-state-dispute-settlement-reforms",
+        "se 415087 | https://www.ibanet.org/save-to-calendar/ics/se_415087",
+        "5.10. Ending Investor State Dispute Settlement mechanisms final 2 | https://ccsi.columbia.edu/wp-content/uploads/2026/07/5.10.-Ending-Investor-State-Dispute-Settlement-mechanisms_final-2.pdf",
+        "2600063e 1 | https://uncitral.un.org/sites/uncitral.un.org/files/media-documents/uncitral/en/2600063e_1.pdf",
+        "POWER PLAYERS | https://www.financierworldwide.com/power-players-investor-state-arbitration-2026-distinguished-advisers",
+        "Anthea Roberts | https://justsecurity.org/author/robertsanthea",
+        "Investor-State Dispute Settlement - The Latest Reforms Examined | https://account.mblseminars.com/Outline/Investor-State-Dispute-Settlement---The-Latest-Reforms-Examined---Webinar/20533",
+        "IBA Annual Conference Copenhagen 2026 | https://prod-bo.ibanet.org/session-details/se_415087"
+      ],
+      "verdict": "NULL as to a new post. The unmonitored author URL justsecurity.org/author/robertsanthea RETURNED AS A ROW for the first time in this project's search record, so the limb is reachable by this instrument; but NO row title names a dated 2026 Roberts item. The engine's prose about her affiliation and about older TDM articles is ENGINE SYNTHESIS and is NOT adopted; no body was opened.",
+      "not_adopted": "the engine asserted, in prose and not in any row title, that UNCITRAL 'finalised the draft Statute of the Advisory Centre' and 'adopted the Supplementary Provisions as a standalone instrument'. STATE_OF_THE_ANSWER.md:1119 already carries the 59th-session final-day record, so this is NOT NEW; and an engine-asserted adoption is in any case not a finding. The LexisNexis row is recorded as a TITLE only."
+    },
+    {
+      "call_id": "B2",
+      "role": "the unsampled window at designator level, entry 1",
+      "string_verbatim": "\"Lombard North Central\" Turkiye ICSID arbitration ARB/26/40",
+      "domain_parameters": "none passed",
+      "rows_titles_verbatim": [
+        "arbitration in t%c3%bcrkiye 2025 year in review | https://webiis10.mondaq.com/turkey/trials-appeals-compensation/1728256/arbitration-in-t%c3%bcrkiye-2025-year-in-review",
+        "www.mondaq.com | https://www.mondaq.com/arbitration-in-t%C3%BCrkiye-%E2%80%93-2025-year-in-review/1728256",
+        "Region: Turkey | https://globalarbitrationreview.com/regions/turkey?page=2",
+        "Turkmenistan defeats one ICSID claim and is hit with another | https://globalarbitrationreview.com/turkmenistan-defeats-one-icsid-claim-and-hit-another",
+        "Turkey and Peru face ICSID claims | https://globalarbitrationreview.com/article/turkey-and-peru-face-icsid-claims",
+        "30310 lexist secures icsid victory for republic of turkiye in dispute with enel | https://www.ceelm.com/turkey/30310-lexist-secures-icsid-victory-for-republic-of-turkiye-in-dispute-with-enel",
+        "May 28, 2006 | https://erenlaw.com/blog/international-arbitration/",
+        "Region: Turkey | https://globalarbitrationreview.com/regions/turkey",
+        "ICSID Discontinues Investment Arbitration Against Republic Of Turkey | https://www.lexislegalnews.com/mealeys/amp/articles/1611642"
+      ],
+      "verdict": "NULL. ZERO of nine row titles carries 'Lombard North Central' or 'ARB/26/40'. The matter is NOT FOUND IN ACCESSIBLE SOURCES at title level; nothing is asserted about whether it exists, what it concerns, or any ring.",
+      "not_adopted": "the engine's prose asserted an early-dismissal application and its rejection in an 'Encore v. Türkiye' matter and a settlement in an Alamos matter. NO ROW TITLE CARRIES EITHER. Both are engine-asserted dispositions and are refused in full - adopting an engine-asserted disposition is the exact class the standing refusal list was built from. Neither is recorded as a lead."
+    },
+    {
+      "call_id": "B3",
+      "role": "the unsampled window at designator level, entry 2",
+      "string_verbatim": "\"Sopam Energie\" Mali ICSID arbitration ARB/26/39",
+      "domain_parameters": "none passed",
+      "rows_titles_verbatim": [
+        "Canadian gold miner launches claim against Mali | https://globalarbitrationreview.com/article/canadian-gold-miner-launches-claim-against-mali",
+        "ICC Africa director to defend Mali in mining dispute | https://globalarbitrationreview.com/article/icc-africa-director-defend-mali-in-mining-dispute",
+        "www.italaw.com | https://www.italaw.com/cases/12446",
+        "Barrick asks World Bank to intervene in Mali court proceedings | https://www.miningmx.com/news/gold/61331-barrick-asks-world-bank-to-intervene-in-mali-court-proceedings/",
+        "Region: Mali | https://globalarbitrationreview.com/regions/mali",
+        "investor state arbitration | https://globalarbitrationreview.com/work-area/investor-state-arbitration?page=62",
+        "Barrick seeks interim relief over Mali gold project | https://globalarbitrationreview.com/article/barrick-seeks-interim-relief-over-mali-gold-project",
+        "Barrick turns to Asafo and Debevoise for claim against Mali | https://globalarbitrationreview.com/article/barrick-turns-asafo-and-debevoise-claim-against-mali",
+        "Barrick's Fast-Track Arbitration Bid Rejected in Mali Mining Dispute | https://miningfocusafrica.com/?p=11873"
+      ],
+      "verdict": "NULL. ZERO of nine row titles carries 'Sopam Energie' or 'ARB/26/39'. Not found in accessible sources at title level.",
+      "not_adopted": "engine prose about Barrick Gold's claim, its withdrawal and a fast-track bid. The miningfocusafrica row TITLE does carry 'Fast-Track Arbitration Bid Rejected', which touches open_threads[0-based 11]'s subject matter (codified early-determination gates) - but the matter is a gold mine and names NO IP as investment, so it does not reach this project's theme and is NOT carried as a lead. Reported as a near-miss on one ring only, honestly, and not inflated."
+    },
+    {
+      "call_id": "B4",
+      "role": "RESERVED",
+      "string_verbatim": "NOT FIRED",
+      "verdict": "HANDED BACK UNSPENT per the pre-registration: B2 and B3 named no caption worth backsourcing at the three-ring intersection."
+    }
+  ],
+  "day_verdict": "THE WINDOW IS NULL AT THE THREE-RING INTERSECTION FOR THE SECOND CONSECUTIVE SESSION, AND IT IS NOW NULL ON A DIFFERENT KIND OF QUERY. 2026-10-10 established the null on topical keyword strings over 2026-09-28..2026-10-10. Today establishes it on RIGID DESIGNATORS - two party names and two ICSID case numbers taken verbatim from this council's own relay excerpt of the ICSID register. Neither designator returns a single row. So the two matters the register surfaced inside or adjacent to the collector's blind spot are not yet in the accessible secondary corpus at all, and the search track CANNOT recover this window: only the register can, which is what today's relay request is aimed at.",
+  "no_search_synthesis_figures": "no number, date, disposition or holding stated only in an engine summary is recorded anywhere in this file as a finding."
+}

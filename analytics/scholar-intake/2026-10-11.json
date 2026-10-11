@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-10-11",
+  "at": "2026-10-11T13:15:11.986669+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 4,
+    "newest_alert_date": "2026-10-10T15:01:48+00:00",
+    "newest_alert_subject": "\"denial of justice\" (\"investment arbitration\" OR ... - new results",
+    "alert_dates": [
+      "2026-10-10",
+      "2026-10-07",
+      "2026-10-02",
+      "2026-09-17"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 1,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://academic.oup.com/arbitration/advance-article/doi/10.1093/arbint/aiag005/8875947"
+  ]
+}

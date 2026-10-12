@@ -1,0 +1,80 @@
+{
+  "request": "2026-10-12-zz-fornan-arb-24-45.json",
+  "note": "2026-10-12 analyst batch, PROPOSED BY THE RESEARCH ANALYST AND COMMITTED ONLY UNDER THE CHAIRMAN'S HAND. FOUR ROWS, one URL, within MAX_URLS = 12 (scripts/fetch_relay.py:76) and alongside the chairman's six-row 2026-10-12-daily batch; two of the day's twelve slots are left deliberately unspent. THE ONE QUESTION: does ICSID's own case-detail page for ICSID Case No. ARB/24/45 render labelled prose identifying a matter brought by Philippine claimants against the Kingdom of Spain, and what do its 'Subject of Dispute' and 'Instrument(s) Invoked' fields say? PROVENANCE OF THE LEAD, STATED HONESTLY BECAUSE IT IS WEAK: on 2026-10-12 a web search for the Teramura & Nottage Sulu article's Section 8 ISDS limb returned, at TITLE AND URL LEVEL ONLY, https://www.italaw.com/sites/default/files/case-html-files/italaw1827237_Fornan-v-Spain_Award-Redacted_2025-11-06.html titled 'INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES'; a second call returned italaw taxonomy and node pages. The case number ARB/24/45 and the caption 'Nurhima Kiram Fornan and others v. Kingdom of Spain' reached this council ONLY as SEARCH-ENGINE SYNTHESIS PROSE about pages NO SEAT OPENED, and under this council's standing rule that is REFUSED AS A FINDING. NO BODY WAS READ BY ANYONE: WebFetch returned getaddrinfo ENOTFOUND on a neutral control and curl returned CONNECT tunnel failed 403, both probed before anything was spent. This batch exists precisely because the lead cannot be verified any other way: www.italaw.com and bare italaw.com are under this council's standing relay prohibition, so the document itself is unreachable by this instrument and only ICSID's own docket surface is available. WHY THE ROWS ARE WORTH SPENDING: 'Subject of Dispute' is ICSID's own characterisation of the asserted investment and is therefore a PRIMARY-FIELD test of this project's Ring 1 on this matter, where the alternative is the analyst's reading of a Google Scholar snippet; 'Instrument(s) Invoked' is where ICSID names the treaty, against a snippet asserting 'the 1993 Philippines-Spain bilateral investment treaty'. WHAT THIS BATCH MAY NEVER BE WRITTEN UP AS: a holding, a disposition, or any statement about what any tribunal decided. G16 bars a docket-summary surface from founding a disposition and G10 bars reading a document designation as a tribunal's characterisation. IT ALSO DOES NOT TOUCH THREAD 11: a Rule 41 limb appears ONLY in the refused engine prose, and even if true it could not move thread 11, whose closure requires the stated ground to be whether an IP right is a covered investment - and on the analyst's ruling today this matter asserts no IP at all, so it does not even reach thread 11's third 'gate fired / IP asserted / non-IP ground' bucket. PRIOR ART, SCREENED BY THE ANALYST OVER ALL 606 ROWS IN 78 analytics/fetch-results/*.json FILES (178 of them case-detail URLs) AND NOT TAKEN FROM ANY PRIOR NOTE, per thread 51: 'ARB/24/45' HAS NEVER BEEN FETCHED AND APPEARS IN NO REPOSITORY FILE - this is a first firing on this matter; 'Subject of Dispute' on case-detail URLs is 31 fired / 31 TRUE; 'Status of Proceeding' is 63 fired / 63 TRUE; 'Claimant(s)/Nationality(ies)' is 1 fired / 1 TRUE; 'Fornan' has NEVER been fired as a find on any host. NOTE ON THE CORPUS FIGURE: the 2026-10-12-daily note's '586 prior relay rows' with 30/30 and 62/62 reconciles to a 599-row corpus (586 + the 13-row 2026-10-11 batch); on exactly 586 rows the figures are 28/28 and 60/60. The counts in that note are correct measurements; the corpus size beside them is 599. URL FORM: the UNENCODED 'CaseNo=ARB/24/45' form is used, because the unencoded form is certified 200 on this host by 2026-09-18-daily.json idx 7 and by today's 2026-10-12-daily.json rows 1-6; the percent-encoded form has never been fired on this matter. OUTCOME CLASSES THAT ARE FACTS ABOUT THE INSTRUMENT AND MAY NEVER BE WRITTEN AS FINDINGS ABOUT ICSID OR ABOUT ANY MATTER: control_ok false (whole batch VOID); refused / 403 / 202 / timeout / no_contact; host_not_allowed / scheme_not_https; and A 404 OR A REDIRECT, WHICH IS NEVER A STATEMENT THAT THE CASE DOES NOT EXIST - it would mean only that this designator does not resolve on this surface at this instant, and the project's absence rule is 'not found in accessible sources'. A FALSE ON ROW 3 IS NOT A STATEMENT THAT THIS CAPTION IS WRONG: excerpt_of searches with body.lower().find() (scripts/fetch_relay.py:131) and is case-insensitive but exact as to form, and ICSID may render only a lead claimant - which is why row 4 exists. NO PDF ROW: find_matched is bool(find) and bool(excerpt_of(...)) at :181 and excerpt_of returns '' for any content type that is neither html nor text (:124), so no PDF can ever return a relay TRUE. DIFF ON sha256, NEVER ON bytes. CADENCE: THIS BATCH TOUCHES AND RE-ANCHORS NOTHING. It is NOT the ICSID Decisions on Manifest Lack of Legal Merit register row (thread 11's relay limb, due on or around 2026-10-13, find must span a cell boundary, anchored on the right edge 'Petaquilla Minerals Ltd. v. R'); it is NOT the Servier/Poland forum row queued to that batch; it is NOT thread 11's search limb (due on or around 2026-10-25); it is NOT the monthly watch on threads 10 / 25 (no 'Wingtech', no 'Yuching'). STANDING PROHIBITIONS HONOURED: no www.italaw.com or bare italaw.com row; no investmentpolicy.unctad.org or bare unctad.org row; no ARB/24/16 row; no dailyjus.com row; no IISD path-family row; no www.bing.com row; no row touching threads 2, 34, 42 or 43. THREAD SUBSCRIPTS are 0-BASED indices into state/research_log.json $.open_threads, 72 rows at session head. The control https://example.com/ is prepended by the relay itself (scripts/fetch_relay.py: records = [fetch_one(CONTROL_URL)]) and is not written below. Host icsid.worldbank.org is on ALLOWED_HOSTS at scripts/fetch_relay.py:48. || CHAIRMAN'S APPROVAL, APPENDED WITHOUT ALTERING A WORD OF THE SEAT'S NOTE ABOVE: APPROVED AS WRITTEN AND COMMITTED UNDER MY HAND, 2026-10-12. I checked the four things that could have made it wrong and each checks out. (1) HOST AND SCOPE: all four rows are icsid.worldbank.org, on ALLOWED_HOSTS at scripts/fetch_relay.py:48, all on one URL, and ARB/24/45 is not ARB/24/16 and is touched by no standing prohibition. (2) LEXICOGRAPHIC ORDER, which is the defect this project learned on 2026-09-03: newest_request() is sorted(glob('*.json'))[-1] (scripts/fetch_relay.py:newest_request), and '2026-10-12-zz-fornan-arb-24-45.json' sorts above '2026-10-12-daily.json' because 'z' > 'd', so this batch - and not the already-answered daily batch - is what the runner picks up. (3) THE CONTROL DESIGN IS RIGHT AND IT IS THE REASON I APPROVED FOUR ROWS RATHER THAN CUTTING IT TO ONE: row 3 ('Fornan') is the only row that can legitimately null, excerpt_of returns the empty string on a miss (:132-133) so a null row hands back no window at all, and rows 1, 2 and 4 are its same-run companions on the same URL per analytics/fetch-requests/README.md. Row 4 is what separates 'the case number is wrong' from 'ICSID renders a different caption', and without it row 3's null would be uninterpretable. (4) THE PROVENANCE IS WEAK AND THE SEAT SAID SO FIRST. The designator reached this council only as search-engine synthesis prose about pages no seat opened; that is REFUSED AS A FINDING and stays refused. A 404 or a redirect on this URL is NEVER a statement that the matter does not exist - it would mean only that this designator does not resolve on this surface at this instant. I ALSO ADOPT THE SEAT'S REASONING FOR WHAT IT DID NOT PROPOSE: it worked up a pca-cpa.org index probe for the Philip Morris Asia PCA docket and dropped it because the index path is unattested and a probe of it would be a DISCOVERY use, which scripts/fetch_relay.py's own header forbids. That is the right call and I am not overriding it; recovering that numeric id is operator-side or search-side work. ONE LIMIT I ADD IN MY OWN NAME: this batch tests a lead the seat itself generated, which the seat flagged against itself as the weakest kind of question to spend a slot on. I approve it anyway because both outcomes are results - a TRUE converts a refused engine caption into a primary-field fact, and a FALSE with its controls green refutes the lead - but no successor may read a TRUE here as vindicating the engine prose this council refused today, which asserted a Rule 41 objection, a hearing date, a claimant count, an arbitrator's criminal sentence and two national-court dates. NONE of that is founded by any row below and all of it remains refused.",
+  "fetched_at": "2026-10-12T11:51:41.878697+00:00",
+  "environment": "github-actions-runner (run 38245319396)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "find": "Subject of Dispute",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "content_type": "text/html",
+      "bytes": 87548,
+      "sha256": "e1aa9f55431c2c18ecef3daeeed3f0a64fc7725fca277f7c8cc33ecb4d6502b2",
+      "excerpt": "B/24/45) Proceeding Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Other Economic Sector: Other Industry Instrument(s) Invoked: (i) BIT Philippines - Spain 1993 Applicable Rules: ICSID Convention - Arbitration Rules (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Nurhima Kiram Fornan (Philippine), Fuad A. Kiram (Philippine), Permaisuli",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "content_type": "text/html",
+      "bytes": 87548,
+      "sha256": "e1aa9f55431c2c18ecef3daeeed3f0a64fc7725fca277f7c8cc33ecb4d6502b2",
+      "excerpt": "try of Justice of the Government of Spain, Madrid, Spain Language(s) of Proceeding: English,Spanish Status of Proceeding: Concluded Outcome of Proceeding: November 6, 2025 - The Tribunal renders its award.&nbsp; (a) Original Proceeding Published Decisions Award (As redacted by the Parties) Available on the ICSID Website Award (As redacted by the Parties) (November 6, 2025) English (Original) ; Spa",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "find": "Fornan",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "content_type": "text/html",
+      "bytes": 87548,
+      "sha256": "e1aa9f55431c2c18ecef3daeeed3f0a64fc7725fca277f7c8cc33ecb4d6502b2",
+      "excerpt": "Cases Overview Cases Database Pending Cases Concluded Cases Recent Cases Case Details Nurhima Kiram Fornan and others v. Kingdom of Spain (ICSID Case No. ARB/24/45) Proceeding Materials Procedural Details Proceeding Proceeding Materials Procedural Details Subject of Dispute: Other Economic Sector: Other Industry Instrument(s) Invoked: (i) BIT Philippines - Spain 1993 Applicable Rules: ICSID Conven",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "find": "Claimant(s)/Nationality(ies)",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/24/45",
+      "content_type": "text/html",
+      "bytes": 87548,
+      "sha256": "e1aa9f55431c2c18ecef3daeeed3f0a64fc7725fca277f7c8cc33ecb4d6502b2",
+      "excerpt": "ippines - Spain 1993 Applicable Rules: ICSID Convention - Arbitration Rules (a) Original Proceeding Claimant(s)/Nationality(ies): (i) Nurhima Kiram Fornan (Philippine), Fuad A. Kiram (Philippine), Permaisuli Kiram (Philippine), Sheramar Kiram (Philippine), Jenny Sampang (Philippine), Widz-Raunda Sampang (Philippine), Taj-Mahal Kiram Tarsum-Nuqui (Philippine) Respondent(s): Kingdom of Spain (Spanis",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

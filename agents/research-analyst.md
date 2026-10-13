@@ -223,6 +223,46 @@ re-quoted against the current file before it enters any ledger.
   (`scope_ok: false`). Named by the chairman as the seat's standing watch item in the
   2026-07-31 accountability record (`f03a90e`).
 
+### The eleven council-wide rules, added 2026-10-13 — and the measurement that says why they were not here
+
+**Finding, 2026-10-13 (archivist).** [[Agent Registry]]'s *Adopted method rules by seat* table
+carries **eleven** rows the council adopted as binding on **every seat**, all between 2026-09-04
+and 2026-09-24. This seat is named expressly on seven of them. Screened on this date, **none of
+the eleven appears in any of the twenty-two files that make up every seat's read path** — the
+nine `.claude/agents/` definitions plus the thirteen files under `prompts/` — and none appeared
+in this note either. [[council-chairman]] carried **0 of 11**; [[integrity-officer]] carried
+**5 of 11**, being the one seat whose definition names its own note by path.
+
+**The same limit as the shallow-clone rule above, stated again rather than glossed.** By the
+read-path enumeration at the head of this section, this file is not in this seat's read path.
+Writing the eleven here fixes the record and not the reach: they now join the other eleven rules
+*recorded here and nowhere the seat reads*. That is [[Workflow Threads]] **D5**, day sixty-one,
+and the remedy is a contract edit and therefore Emory's.
+
+| # | Rule, in short | Adopted | Provenance |
+| --- | --- | --- | --- |
+| 1 | **Screen before you assert novelty** — a novelty assertion is an absence claim about the project's own record and carries the same burden; state the literals tried, the synonyms, the file count, the scope and the commit in the sentence that makes it | 2026-09-04 | `1fcc1ab` / `analytics/optimization-log.md:65`; adopted `687cfde` / `analytics/daily-research/2026-09-04.md:1148` |
+| 2 | **Executed output or `UNTESTED`** — any claim in a daily record about what a code path does, or would do, carries that path's actual output run against a scratch copy and quoted, or is marked `UNTESTED` in the sentence that makes it | 2026-09-11 | `28c0db8` / `analytics/daily-research/2026-09-11.md:1006-1016` |
+| 3 | **Read the count back to the enumeration** — a count of a set the same paragraph enumerates is checked against that enumeration before the paragraph closes; the cheapest check in the set | 2026-09-12 | `639c16e` / `analytics/daily-research/2026-09-12.md:1483` |
+| 4 | **The population is printed by the pass that produces the hits**, in the same output, adjacent to them — never re-derived in a second command, never carried between sessions | 2026-09-18 | `018c1f1` / `analytics/daily-research/2026-09-18.md:1191-1199` |
+| 5 | **Zero-screen counted as a carrier** — an occurrence count offered in support of a proposition excludes loci whose content is a screen record for the same term, and says how many were excluded. Adopted unnumbered | 2026-09-19 | `b267efd` / `analytics/daily-research/2026-09-19.md:879`, `:1323-1326` |
+| 6 | **One-pass artefact read** — a search artefact is read twice: once per call against that call's question, and once WHOLE against every proposition the memo advances, before the memo is filed. Adopted unnumbered | 2026-09-20 | `1d6e3e7` / `analytics/daily-research/2026-09-20.md:1334` |
+| 7 | **Three procedures** — (a) every string inside a `supporting_quote` or a `Q` mark is pasted back into the named file and its occurrence count printed before filing; (b) every nonzero cell in a dedup screen has its lines enumerated by locator with their headline, never characterised; (c) every count in prose is computed in the session or deleted | 2026-09-21 | `da5cb53` / `analytics/daily-research/2026-09-21.md:1353-1359` |
+| 8 | **Screen-record self-falsification** — an absence claim about the tracked tree carries its exclusion inside the sentence ("no carrier other than this council's own screen records") and names the screen-record loci. Adopted unnumbered | 2026-09-22 | `67ef197` / `analytics/daily-research/2026-09-22.md:946`, `:1218` |
+| 9 | **Probe the instrument you name** — before any seat writes that a channel is unavailable, it names the instrument and probes THAT instrument. *"'Fetch is dead' is a fact about `curl` and the fetch service. It is not a fact about retrieval."* | 2026-09-23 | `e05811d` / `analytics/daily-research/2026-09-23.md:1821` |
+| 10 | **The anchor-quote rule** — a memo proposing an instrument parameter carries the carrying span inline, by file and `records[i]`, in the sentence making the proposal | 2026-09-24 | `5fa964d` / `analytics/daily-research/2026-09-24.md:1088` |
+| 11 | **Six elements for every suspension** in `state/research_log.json`: date and actor; scope named narrowly; the failure in one clause; an explicit non-null clause; the last substantive observation pinned; a checkable resumption condition — because suspension and lapse are otherwise indistinguishable in the artefacts | 2026-09-24 | `5fa964d` / `analytics/daily-research/2026-09-24.md:1168` |
+
+**Where these rules bite on this seat in particular.** Rule 7(a) — every `supporting_quote`
+string pasted back into the named file and its occurrence count printed before filing — was
+*"proposed by the analyst against itself"* (`analytics/daily-research/2026-09-21.md:1353-1359`,
+`da5cb53`). Rule 5 *"fired on the analyst the day it was named"*
+(`analytics/daily-research/2026-09-19.md:1323-1326`, `b267efd`), and rule 8's mechanical variant
+was proposed against this seat's own artefact *"after eight terms reported at 0 lines were all
+contained in the insight about to be appended"* (`analytics/daily-research/2026-09-22.md:1218`,
+`a9bc44f`). Three of the eleven were written by this seat about this seat, and none of the three
+is in a file this seat opens.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.

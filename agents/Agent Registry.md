@@ -544,6 +544,52 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-13 (archivist session — twenty-fifth deployment)** — **No roster change and no
+  contract change, for the NINTH consecutive session.** The window is `7f10729..5c26738`, **97**
+  commits over three days; `git log 7f10729..HEAD -- .claude/agents/ prompts/ src/models.py`
+  returns **no commit**. Two commits in the window touched anything outside the record paths, and
+  neither is a contract change: `240ef1a` is the weekly digest (`digests/`, `docs/`, `state/`,
+  `analytics/`) and `b03381e` is the prior archivist session. `src/models.py` unchanged:
+  `CHAIRMAN_MODEL` and `HEAVY_MODEL` `claude-opus-5` (`:26-27`), `UTILITY_MODEL`
+  `claude-opus-4-8` (`:28`), `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001` (`:32`),
+  `FALLBACK_MODEL` `claude-opus-4-8` (`:35`). `scripts/check_models.py` exits **0** over 12
+  flowchart cards. All nine definitions declare `model: opus`; the description split is unchanged
+  at **4** Opus 5 and **5** Opus 4.8, re-counted from the files. The one `claude-fable-5`
+  occurrence outside `agents/` is `HANDOFF.md:211`, and it is **correct**: a dated record of the
+  2026-07-29 directive that names the blanket-replacement error in terms. **D6 not re-tested**,
+  the 2026-10-04 condition (re-test only if `.claude/agents/` or `src/models.py` moved) being
+  unmet.
+  **The new measurement is on the every-seat rules, and it generalises D5 from one rule to
+  eleven.** This table's *Adopted method rules by seat* section carries **11** rows adopted as
+  binding on **every seat** (2026-09-04 to 2026-09-24). Screened against the **22** files that
+  make up every seat's read path — 9 `.claude/agents/` definitions + 13 `prompts/` files — **all
+  eleven appear in none of them**; the three designator hits returned were unrelated
+  (`prompts/carrying_span_rule.md:93`, three `dedup` hits on cross-feed dispute dedup and the
+  idea bank, and the `access_status` enum at `prompts/research_analyst.txt:198`). Against the
+  seats' own notes: [[council-chairman]] **0 of 11**, [[research-analyst]] **0 of 11**,
+  [[integrity-officer]] **5 of 11** — the officer again the one seat whose definition names its
+  note. **Fixed this session in the two notes that are the archivist's**; the read-path half is a
+  contract edit and remains Emory's. The only carrier of this note's own path in any read-path
+  file is `prompts/daily_council_protocol.md:79-81`, inside a `git add` argument list — a path a
+  seat commits, not a path a seat is told to open.
+  *Audited against `5c26738`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`.*
+
+- **2026-10-10 (archivist session — twenty-fourth deployment) — ENTERED LATE, 2026-10-13, and the
+  lateness is the entry's own finding.** That session recorded its deployment in
+  [[Project Change Log]] (`b03381e`) and **never wrote one here**, breaking a streak this log had
+  held for twenty-three consecutive deployments; `2026-10-10` returned **0** occurrences in this
+  file at `5c26738`, and the only commits touching it since `b03381e` are bot re-anchor commits.
+  Its own "Changes made this session" list names four files and this note is not among them, so
+  the omission was silent rather than declared. **Contract state as that session measured it:** no
+  roster change and no contract change, the eighth consecutive session;
+  `scripts/check_models.py` ok over 12 cards; `src/models.py` unchanged; D5 re-measured at day
+  fifty-five, eight of nine definitions still never naming their own note. Its substantive finding
+  was outside this table — `src/email_shell.py:83-89` drops bolded operator callouts, 36 across 12
+  session records, 3 ever counted — and is carried as escalation 1.
+  *Audited against `7f10729`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`
+  (entered 2026-10-13 against `5c26738`, under which none of those paths had moved).*
+
 - **2026-10-07 (archivist session — twenty-third deployment)** — **No roster change and no
   contract change, for the SEVENTH consecutive session.** `git log b773cf1..bc35cfb --
   .claude/agents/ prompts/ src/models.py` returns **no commit** across a **66-commit**, three-day

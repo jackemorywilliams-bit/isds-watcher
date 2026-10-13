@@ -15,6 +15,54 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-13 (archivist session — twenty-fifth deployment)
+
+*Audited against `5c26738` (`origin/main`, clean tree), on a complete **2,025**-commit history —
+the container's clone arrived shallow at **139** commits, the **seventeenth consecutive** session,
+so every sha, ancestry test and orphan figure below was resolved only after `git fetch
+--unshallow`. Window `7f10729..5c26738` = **97** commits, three days; cadence held. Paths:
+`.claude/agents/`, `prompts/`, `src/models.py`, `agents/`, `analytics/`,
+`views/isds-workflow-3d/workflow.json`, `README.md`, `METHODOLOGY.md`, `COUNCIL.md`, `HANDOFF.md`,
+`docs/`, `tests/`.*
+
+**Contract state: no roster change and no contract change, the ninth consecutive session.**
+`git log 7f10729..HEAD -- .claude/agents/ prompts/ src/models.py` returns no commit.
+`scripts/check_models.py`, `scripts/check_claims.py`, `scripts/check_site_sync.py` and
+`scripts/check_lock.py` all exit 0; `scripts/check_currency.py` reports **1 failed**, a lone
+`STALE` on [[Workflow Threads]] from the day's scholar-intake commit `5c26738`, which the bot
+moves.
+
+**The every-seat rule gap, measured and half-fixed.** Eleven rows in [[Agent Registry]]'s
+*Adopted method rules by seat* table were adopted as binding on **every seat** between 2026-09-04
+and 2026-09-24. All eleven appear in **0** of the **22** files that make up every seat's read
+path; [[council-chairman]]'s note carried **0 of 11** and [[research-analyst]]'s **0 of 11**,
+against [[integrity-officer]]'s **5 of 11**. Both notes now carry all eleven with provenance and
+with the read-path limit stated rather than glossed. The remaining half is a contract edit and is
+Emory's — [[Workflow Threads]] **D5**, day sixty-one.
+
+**This log's companion had skipped a deployment.** [[Agent Registry]]'s change log ended at
+2026-10-07 and `2026-10-10` returned 0 occurrences in it; the twenty-fourth deployment was
+recorded here and nowhere there. Both the missed entry and this one are now in the registry,
+the former marked entered-late.
+
+**The project's own test suite has been red for twenty-nine days and the figure drift widened on
+schedule.** `tests/test_site_claims.py` pins `runs: 16`, `screened: 492` and 11 per-source
+digests; the committed archive now holds **20**, **579** and **15**. The 2026-10-10 record
+predicted the next break at 2026-10-12 and the weekly digest `240ef1a` landed that day and
+produced it. **The built site is correct** — `docs/index.html` states 20 runs and 579 screenings
+and `check_site_sync.py` passes — so nothing Dr. Benavides reads is wrong; the stale literals live
+only in the test. `tests/` is the systems designer's and is escalated, not edited.
+
+**The 3D flowchart does not carry the project's guard layer or three of its email deliverables.**
+`views/isds-workflow-3d/workflow.json` holds 30 nodes whose `evidence` arrays cite scripts and
+workflow files by path. Measured at `5c26738`: of the **15** files in `.github/workflows/`, **4**
+are cited anywhere in it (`weekly.yml`, `daily-update.yml`, `fetch-relay.yml`, `site-sync.yml`);
+`check_currency`, `check_models`, `check_marks`, `check_claims`, `reanchor`, `send_aggregate`,
+`send_archived`, `send_vault_log` and `scholar_intake` return **0** occurrences each, and no node
+represents the guard layer. The manifest is the systems designer's; escalated, not edited.
+
+**Full record:** `analytics/vault-sessions/2026-10-13.md`.
+
 ## 2026-10-10 (archivist session — twenty-fourth deployment)
 
 *Audited against `7f10729` (`origin/main`, clean tree), on a complete **1,928**-commit history —

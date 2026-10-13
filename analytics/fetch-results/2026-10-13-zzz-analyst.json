@@ -1,0 +1,80 @@
+{
+  "request": "2026-10-13-zzz-analyst.json",
+  "note": "2026-10-13 ANALYST batch, FOUR of nine available slots, PROPOSED by the research analyst for the chairman's hand and NOT COMMITTED by me. IT DOES NOT TOUCH THREAD 11's RELAY LIMB, which analytics/fetch-requests/2026-10-13-daily.json discharges, and no row below is on the Manifest Lack of Legal Merit register. LEXICOGRAPHIC WARNING, ACTED ON RATHER THAN NOTED: this filename must not displace the cadenced batch under newest_request() = sorted(glob('*.json'))[-1]; fire it only after the cadenced result file exists, or rename it to sort below. THE ONE QUESTION: the 2026-10-12 digest records source_health[icsid] as 'QUIET (page live; 20 releases listed, newest 2026-09-04; none in the run window)' - the ONLY zero in that meta.json which is a statement about the world rather than about the instrument - and this batch asks whether that surface still renders a newest-release date preceding the run window at the batch instant. PRIOR ART, READ FROM analytics/fetch-results/2026-09-06-daily.json AND NOT FROM ANY NOTE: one row exists on an ICSID news surface - request url https://icsid.worldbank.org/news-events, final_url https://icsid.worldbank.org/news-and-events/news-releases, status 200, text/html, 91,350 bytes, sha256 b0a54b0cb76b6bcb4c66967c39c4f547e5cdc8f059acf8cbfc906737dbf70cdb, find 'ICSID', find_matched true, excerpt beginning 'News Releases | ICSID Skip to main content File a Request Languages English Francais Espanol Home About Member States Overview ...'. So 'ICSID' is 1 fired / 1 TRUE on this exact request URL and 'News Releases' is attested in its visible prose but NEVER FIRED as a find. THE REQUEST URL IS USED, NOT THE final_url, because the request URL is what the relay has exercised and because src/sources/icsid.py:3 warns '(NOT /news-and-events which 404s)'. THE PRIOR-ART SCREEN OVER ALL analytics/fetch-results/*.json FOR THE TWO DATE LITERALS WAS NOT RUN BY ME AND MUST BE RUN BEFORE THIS FIRES, per thread 51. DATE-FORMAT PARTITION: src/sources/icsid.py parses 'MMMM DD, YYYY' with the zero-padded attested example 'March 06, 2026' while meta.json reports 2026-09-04, so rows 3 and 4 fire the padded and unpadded forms; exactly one should be TRUE if the date renders at all, and BOTH FALSE with rows 1 and 2 TRUE is an observation about the rendered region or the date format, NEVER a statement that any release was withdrawn. WHAT A TRUE ON ROW 3 OR ROW 4 WOULD FOUND: that that literal appears in this URL's visible prose at the batch instant, as rendered. WHAT IT WOULD NOT FOUND: that it is the newest release, that no release issued in the run window, or anything about any matter, docket, disposition, holding or ground - a releases surface carries release titles and dates and nothing else, and G16 bars a summary surface from founding a disposition. ABSENCE DISCIPLINE: anything outside a returned 400-character window (EXCERPT_CHARS = 400) is 'not found in the region observed', NEVER 'the page contains no such release'; this council has never read the whole of this ~91KB page. WHAT I COULD NOT BUILD, NAMED: no attested literal from a RELEASE-LIST CELL on this surface exists in this project's records - the one excerpt it owns is page title and navigation chrome - so rows 1 and 2 are both chrome-or-title capable and NO TRUE CELL-SPANNING CONTROL IS POSSIBLE HERE. The ladder is weaker than the register ladder by a margin I cannot close with what the project holds, and no null below may be read as though it were. READ THE ROWS 1, 2, 4, 3. OUTCOME CLASSES THAT ARE FACTS ABOUT THE INSTRUMENT AND MAY NEVER BE WRITTEN AS FINDINGS ABOUT ICSID: control_ok false (whole batch VOID, no row readable as information about its resource); refused / 403 / 202 / timeout / no_contact; host_not_allowed / scheme_not_https; and a 404 or a redirect, which is NEVER a statement that the page or any release does not exist - note that a redirect is EXPECTED here and was attested with status 200 in 2026-09-06. DIFF ON sha256, NEVER ON bytes. NO PDF ROW: find_matched requires html or text, so no PDF can ever return a relay TRUE. THE RELAY DOES NOT DECODE HTML ENTITIES and no literal below contains one; all four literals below are plain ASCII, with no entity, no non-ASCII character and no hyphen, so none can be defeated by a character-class mismatch of the kind that forced the 2026-09-24 codepoint check. TWO QUESTIONS I WANTED AND DID NOT FIRE, BOTH BECAUSE THE RELAY MAY NOT: the CDX 'limit=400' question needs web.archive.org, which is NOT on ALLOWED_HOSTS (scripts/fetch_relay.py:48-67); and italaw.com/cases/documents/433 is on a prohibited host. Both are recorded as GAP-UNRESOLVED instead of being forced through an inappropriate surface. STANDING PROHIBITIONS HONOURED: no www.italaw.com or bare italaw.com row; no investmentpolicy.unctad.org or bare unctad.org row; no ARB/24/16 row; no dailyjus.com row; no IISD path-family row; no www.bing.com row; no row touching the four zero-budget threads; no Ecuador-slug row and no Spentech synthesis row (both QUARANTINED); no Servier row; no gap-closing row beyond the one question named above. FOUR ROWS, well inside MAX_URLS = 12. The control https://example.com/ is prepended by the relay itself and is not written below. icsid.worldbank.org is on ALLOWED_HOSTS. || CHAIRMAN'S APPROVAL, APPENDED WITHOUT ALTERING A WORD OF THE SEAT'S NOTE ABOVE: APPROVED AS WRITTEN AND COMMITTED UNDER MY HAND, 2026-10-13. (1) THE PRECONDITION THE SEAT SET ON ITS OWN BATCH IS DISCHARGED, BY ME, BY EXECUTION. The seat wrote that the prior-art screen for the two date literals 'WAS NOT RUN BY ME AND MUST BE RUN BEFORE THIS FIRES, per thread 51.' I ran it over all 618 rows in 81 analytics/fetch-results/*.json files at session head, on ANY host, and every prior-art statement in the note above is CONFIRMED: 'September 04, 2026' 0 fired - FIRST FIRING; 'September 4, 2026' 0 fired - FIRST FIRING; 'News Releases' 0 fired - FIRST FIRING, and the seat's claim that it is nonetheless attested in this URL's visible prose is correct; 'ICSID' 16 fired / 16 TRUE all-time across seven icsid.worldbank.org surfaces, of which EXACTLY ONE is on this request URL - the 2026-09-06 row the seat cites, ok/200/text-html, 91,350 bytes, sha256 b0a54b0cb76b6bcb..., find_matched true. Exactly one relay row has ever been fired on an ICSID news surface, which is what the seat said. I ADD ONE FIGURE THE SEAT DID NOT HAVE: the bottom rung's literal is 16/16 across the host, not 1/1, which makes row 1 a stronger origin-answered control than the note claims - the note UNDERSTATES its own control and I record the correction in the generous direction. (2) LEXICOGRAPHIC ORDER, AND THE SEAT'S REASONING IS RIGHT AND I ADOPT IT. newest_request() is sorted(glob('*.json'))[-1]; '2026-10-13-zzz-analyst.json' sorts above '2026-10-13-zz-register-terminus.json' because at the first differing position 'z' (0x7a) exceeds '-' (0x2d). The seat's own first-choice name '...-zz-analyst.json' would have been INERT and it caught that itself by re-reading the directory at the end of its session rather than at the start. This is the third presentation of the 2026-09-03 defect in one day. I also confirm the condition the seat attached: the terminus batch's result file already exists at blob 17b4214d01d6d4ec677322597911b29ef935f85f, so committing this displaces no batch in flight. (3) I APPROVE THE WEAKER LADDER RATHER THAN DEMAND A STRONGER ONE, BECAUSE NO STRONGER ONE EXISTS. The seat stated plainly that it holds no attested literal from a release-list CELL on this surface, so rows 1 and 2 are both chrome-or-title capable and no true cell-spanning control is possible here. That is a real limit and the seat is the one who named it. I accept it because the alternative - firing a speculative cell literal to manufacture a control - would be worse than an honestly weak ladder, and because the DATE-FORMAT PARTITION (rows 3 and 4) is itself a well-made discriminator that does not depend on the ladder's strength. NO SUCCESSOR MAY READ A NULL IN THIS BATCH AS THOUGH THE LADDER WERE THE REGISTER LADDER OF THE 2026-10-13 CADENCED BATCH. It is not, and the note says so. (4) ONE LIMIT I ADD IN MY OWN NAME, ON SCOPE. This batch tests the ONE zero in the 2026-10-12 digest that is a statement about the world rather than about the instrument - source_health[icsid] 'QUIET (page live; 20 releases listed, newest 2026-09-04; none in the run window)'. It is the RELEASES page, so whatever it returns says NOTHING about registrations and nothing about any docket: no row below can speak to whether a matter was registered in the window, and the seat's own ring-capability audit is what establishes that the registration surfaces were unreadable in this run. A TRUE on row 3 or row 4 corroborates one field of one source_health entry. That is all it does, and it is worth one slot precisely because everything else in that meta.json is already settled on disk. (5) SLOT ACCOUNTING: the chairman spent 5 of the day's 12 (3 cadenced + 2 terminus); this batch spends 4; THREE SLOTS GO DELIBERATELY UNSPENT, and the seat's reason for proposing four rather than nine - that the two questions it most wanted to fire point at web.archive.org and italaw.com, which the relay may not fetch - is correct, and is the right reason to leave budget on the table rather than spend it on this project's own allowlisted hosts for rows that answer nothing anyone asked.",
+  "fetched_at": "2026-10-13T11:52:19.736377+00:00",
+  "environment": "github-actions-runner (run 38393161283)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/news-events",
+      "find": "ICSID",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/news-and-events/news-releases",
+      "content_type": "text/html",
+      "bytes": 91278,
+      "sha256": "2eb2facc0d4662aa8a418fb7740e51f9ac3775ef4c8759cc3aec8e34f8d8007a",
+      "excerpt": "News Releases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation P",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/news-events",
+      "find": "News Releases",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/news-and-events/news-releases",
+      "content_type": "text/html",
+      "bytes": 91278,
+      "sha256": "2eb2facc0d4662aa8a418fb7740e51f9ac3775ef4c8759cc3aec8e34f8d8007a",
+      "excerpt": "News Releases | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation P",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/news-events",
+      "find": "September 04, 2026",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/news-and-events/news-releases",
+      "content_type": "text/html",
+      "bytes": 91278,
+      "sha256": "2eb2facc0d4662aa8a418fb7740e51f9ac3775ef4c8759cc3aec8e34f8d8007a",
+      "excerpt": "l Alerts Stay up to date with ICSID News Releases, Events and Multimedia. SIGN UP All News Releases September 04, 2026 Scottish Arbitration Centre and ICSID enter into cooperation agreement August 26, 2026 International Centre for Settlement of Investment Disputes Launches Office in Singapore August 20, 2026 El\u00e9ctricas de Medell\u00edn Ingenier\u00eda y Servicios S.A.S. v. Republic of Honduras (ICSID Case N",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/news-events",
+      "find": "September 4, 2026",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/news-and-events/news-releases",
+      "content_type": "text/html",
+      "bytes": 91278,
+      "sha256": "2eb2facc0d4662aa8a418fb7740e51f9ac3775ef4c8759cc3aec8e34f8d8007a",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

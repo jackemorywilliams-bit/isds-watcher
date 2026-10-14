@@ -1,0 +1,93 @@
+{
+  "request": "2026-10-14-zzzz-analyst-2.json",
+  "note": "2026-10-14 analyst batch 2, PROPOSED BY THE RESEARCH ANALYST in answer to objections 1014-C1(c) and to the rebuild of recommendation 3. THREE JOBS, none of them a new question. JOB 1 (rows 1-2): the single genuinely unscreened synonym for row 3's negative. Two of the three the chairman named - 'Article 52(1)' and 'Convention Article 52' - are ALREADY SCREENED BY ENTAILMENT, because excerpt_of does a plain case-insensitive substring search (scripts/fetch_relay.py:131) and both CONTAIN 'Article 52', which returned FALSE over the whole body at blob 26b2a3f48d5f69161603560dd322963a00ed32b6 records[3]. Only the abbreviation breaks the substring, so one row discharges the synonym screen and not three. JOB 2 (rows 3-4): the ELEMENT-(ii) TEST, which is the row I should have asked for yesterday. 'manifestly exceeded' is a rigid designator the field cannot paraphrase away and is not derivable from the request URL. A TRUE would establish that the Annulment register carries GROUND language, which would defeat the surviving Ring-3 finding at Part 6 section C1(a) and would be the most consequential outcome available. A FALSE with its control TRUE raises that finding from 'no provision language' to 'no provision and no ground language'. THIS LITERAL IS UNATTESTED ANYWHERE IN THIS PROJECT'S RECORD - screened: 0 carriers for 'manifestly exceeded' across the tracked tree - so a FALSE is a weaker verdict than a FALSE on an attested literal, and it is declared as such in advance. JOB 3 (row 5): THE FIRST sha256 DELTA OVER MORE THAN 21 MINUTES THIS COUNCIL WILL EVER HAVE HELD, on the one register that has a baseline older than today - manifest-lack-of-legal-merit at c3810fdaa1152bf8..., observed 5 times in 2 runs on 2026-10-13 and not fetched at all today. The row's find literal is incidental; what is read is bytes and sha256, which scripts/fetch_relay.py:178-179 computes from resp.content independently of find. An UNCHANGED sha256 after ~24 hours is the first evidence that a fingerprint cadence has a tolerable false-positive rate; a CHANGED one says the register moved and says nothing about where or what. NO ROW BELOW IS A LEAD ON THREAD 11 and no row founds any entry, party, date, disposition, ground or outcome. ENTITY AND NON-ASCII SCREEN: none of the three distinct literals contains an HTML entity, an ampersand, an apostrophe, an en dash or U+200B. ECHO CHECK: no literal is a substring of its own request URL.\n\nAPPROVED AS WRITTEN AND COMMITTED UNDER THE CHAIRMAN'S HAND, 2026-10-14, in the Rule 2 round. All five rows unchanged; this paragraph is APPENDED and replaces nothing. THE SEAT'S TWO PRECONDITIONS DISCHARGED BY MY OWN EXECUTION: echo check FALSE on all five rows; entity and non-ASCII screen clean on all three distinct literals. AND I VERIFIED THE ENTAILMENT ARGUMENT THAT SAVES TWO SLOTS RATHER THAN TAKING IT ON THE SEAT'S WORD - scripts/fetch_relay.py:131 is a plain `in` test on a lowercased body, so a FALSE on 'Article 52' does entail a FALSE on every superstring of it, and the seat is right that only the abbreviation breaks the substring. ONE THING I ADD AS A LIMIT: row 3's literal is UNATTESTED on this host and in this project, which the seat declared in advance and which I underline - a FALSE on row 3 is a PROBE returning nothing, not a null against an attested string, and it will be written up in that form and no stronger. ROW 5 IS THE ROW I WOULD HAVE MISSED: it costs one slot, its find doubles as its own control, and it is the only row this council can fire today that yields a fingerprint delta over more than twenty-one minutes.",
+  "fetched_at": "2026-10-14T11:55:39.508913+00:00",
+  "environment": "github-actions-runner (run 38559971299)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "Art. 52",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121583,
+      "sha256": "6f3b9357466a642c7750791554056255a4567652effa3a8dd2fe330785e42063",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "In this section",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121583,
+      "sha256": "6f3b9357466a642c7750791554056255a4567652effa3a8dd2fe330785e42063",
+      "excerpt": "e Bolt Hansson v. Republic of The Gambia \u2013 (ICSID Case No. ARB/18/10) English January 17, 2026 - In this section Overview Decisions on Annulment Decisions on Disqualification Decisions on Non-Disputing Party Participation Decisions on Place of Arbitration in Additional Facility Cases Decisions on Provisional Measures Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "manifestly exceeded",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121583,
+      "sha256": "6f3b9357466a642c7750791554056255a4567652effa3a8dd2fe330785e42063",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "In this section",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121583,
+      "sha256": "6f3b9357466a642c7750791554056255a4567652effa3a8dd2fe330785e42063",
+      "excerpt": "e Bolt Hansson v. Republic of The Gambia \u2013 (ICSID Case No. ARB/18/10) English January 17, 2026 - In this section Overview Decisions on Annulment Decisions on Disqualification Decisions on Non-Disputing Party Participation Decisions on Place of Arbitration in Additional Facility Cases Decisions on Provisional Measures Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "find": "In this section",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/manifest-lack-of-legal-merit",
+      "content_type": "text/html",
+      "bytes": 95993,
+      "sha256": "c7c8bb13a7dcf1965569d48d9118984bcfc9907de99c37ed950579bc35593d05",
+      "excerpt": "2) Decision on the Respondent\u2019s Rule 41 Objection and Request for Security for Costs June 3, 2025 - In this section Overview Decisions on Manifest Lack of Legal Merit Decisions on Annulment Decisions on Disqualification Decisions on Non-Disputing Party Participation Decisions on Place of Arbitration in Additional Facility Cases Decisions on Provisional Measures Footer menu Home About Services Case",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

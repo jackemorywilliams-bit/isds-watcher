@@ -1,0 +1,65 @@
+{
+  "note": "2026-10-14 daily batch. WRITTEN BY THE CHAIRMAN and fired at session open, before the research analyst was convened, for the same reason the 2026-10-13 batch was: the relay runs on a GitHub runner and its latency is not under this session's control, so a batch committed after the seat's return risks landing after the record closes.\n\nWHY THIS IS NOT CHOOSING THE TEST AFTER THE HYPOTHESIS. The question was pre-registered and committed to main yesterday, before this session existed: analytics/daily-research/2026-10-13.md next-steps item 3 reads 'ICSID PUBLISHES SIX TABLES-OF-DECISIONS REGISTERS AND THIS COUNCIL HAS READ ONE', names the five unread labels, states that 'the tag-strip destroys every href, so this council holds six labels and not one URL', and pre-registers the method: 'reaching the five requires constructing paths by analogy and certifying each by its own HTTP 200. That is a designed batch against a stated question.' The same item is state/research_log.json $.open_threads[80] (0-based), OPENED 2026-10-13 BY THE CHAIRMAN. This file selects the specific URLs and literals that satisfy that fixed design and adds controls. It changes nothing about the question.\n\nTHERE IS NO CADENCED ITEM DUE TODAY. Thread 11's relay limb was discharged on 2026-10-13 and re-anchored to 2026-11-13; its search limb is due on or around 2026-10-25; the standing-dockets thread resumes 2026-10-18. No row below is a search, no row below carries the Wingtech or Yuching designators, and no row below is a right-edge-advance row on the Manifest Lack of Legal Merit register - that strategy was retired yesterday.\n\nWHAT SEARCH CONTRIBUTED, AND ITS STATUS. Two of the five paths below are not analogies: they were returned as result URLs by two web searches fired by the chairman in this session, which is TITLE-LEVEL EVIDENCE ONLY and is exactly what this batch exists to certify. One of them FALSIFIES the analogy rule this batch was pre-registered to use, and that is the day's cheapest finding: the label 'Decisions on Non-Disputing Party Participation' does NOT map to the slug 'non-disputing-party-participation' but to '/ndp'. Had this batch guessed all five by analogy it would have scored a false negative on that register and this council would have recorded a path as absent when it exists. The analogy rule (drop 'Decisions on', lowercase, hyphenate) is therefore NOT assumed below: it is one hypothesis under test on three of the five, and its one known counterexample is named here so no successor re-derives it.\n\nA THIRD URL IS NEW AND WAS NOT IN THE PRE-REGISTERED DESIGN: https://icsid.worldbank.org/cases/content/tables-of-decisions, a HUB page returned by both searches. If it resolves, it is the parent of all six registers and a better instrument than six guesses - though note honestly that the tag-strip destroys its hrefs too, so even a hub TRUE yields labels and not slugs, and cannot retire the certification rows below.\n\nWHAT A TRUE FOUNDS ON EVERY ROW: that the constructed or search-returned path resolved at the batch instant with the status recorded, and that the named literal appears in that URL's visible prose as rendered. NOTHING ELSE. No row below founds any entry, party, designator, date, disposition, holding, ground or outcome in any of the five registers, and no row below is a reading of any register's contents - 400 characters is no reading of a register. A FALSE on an identity row with its companion control TRUE is an observation that the page's heading language differs from the navigation label; it is NEVER a statement that the register does not exist. A 404 is an observation about the PATH, never about the register.\n\nSTANDING QUALIFICATIONS ON EVERY NULL BELOW: excerpt_of strips script and style bodies and then every remaining tag before the search runs (scripts/fetch_relay.py:78-79, 126-131), so markup, attributes and hrefs are unreachable to any find; on a miss excerpt_of returns the empty string rather than a head excerpt (:132-133), which is why every URL here carries a companion control row; and the relay does not decode HTML entities, so a sought string containing one produces a false negative. None of the twelve literals below contains an entity.",
+  "urls": [
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions",
+      "find": "Tables of Decisions",
+      "purpose": "ROW 1 - THE HUB, AND THE HIGHEST-VALUE ROW IN THE BATCH. Not in yesterday's pre-registered design; returned as the first result URL by both of this session's searches. FIRST FIRING of this URL on this relay - no prior art exists on this path, only on its manifest-lack-of-legal-merit child. The literal is the page's own title language as the search rendered the title ('tables of decisions'), matched case-insensitively. A TRUE establishes that a PARENT path exists above the one register this council has read, and its 400-character window should carry the section's label inventory. WHAT IT DOES NOT ESTABLISH: any slug, because hrefs are stripped; and because the literal is title and navigation language rather than cell content, a TRUE does not show that any table was reached. Paired with row 2 as this URL's companion control."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions",
+      "find": "In this section",
+      "purpose": "ROW 2 - COMPANION CONTROL FOR ROW 1. The literal is attested in visible prose on this host's manifest-lack-of-legal-merit page, carried character-for-character by this project's own reduction at blob 17b4214d01d6d4ec677322597911b2 (2026-10-13-zz-register-terminus.json records[1].excerpt, which reads 'In this section Overview Decisions on Manifest Lack of Legal Merit...'). It is section navigation chrome, so it is expected on any page in this section at 200 and is INDEPENDENT of any table's state - which is what makes a null on row 1 interpretable rather than indistinguishable from an instrument failure. A FALSE HERE WITH A 200 VOIDS THE READING OF ROW 1'S NULL. Note its weakness honestly: because navigation chrome also renders on error pages, a TRUE here does NOT establish that the hub page was reached - that is row 1's job, and status plus final_url do the rest."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "Decisions on Annulment",
+      "purpose": "ROW 3 - IDENTITY ROW, SEARCH-ATTESTED PATH. This exact URL was returned by this session's first search under the title 'Decisions on Annulment'; that is title-level evidence and this row is its certification. The literal is the navigation label recorded verbatim in yesterday's record from the Manifest page's own navigation strip, so the label is attested on this host and only its presence on THIS path is in question. A TRUE certifies the path by its own HTTP response and establishes that this page carries that register's heading language. IT FOUNDS NO ENTRY: nothing about Amco v. Indonesia or any other proceeding, nothing about any annulment outcome, and nothing about how many entries the table holds. Annulment is a different instrument from the four jurisdictional gates thread 11 watches, so NO ROW IN THIS BATCH IS A LEAD ON THREAD 11."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "In this section",
+      "purpose": "ROW 4 - COMPANION CONTROL FOR ROW 3, on the same terms and with the same attestation and the same weakness as row 2. A FALSE here with a 200 voids the reading of row 3's null."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/ndp",
+      "find": "Decisions on Non-Disputing Party Participation",
+      "purpose": "ROW 5 - IDENTITY ROW, SEARCH-ATTESTED PATH, AND THE COUNTEREXAMPLE THAT FALSIFIES THE ANALOGY RULE. This URL was returned by this session's second search under the title 'Decisions on Non-Disputing Party Participation'. Its slug is '/ndp' - NOT the 'non-disputing-party-participation' that yesterday's analogy method would have constructed. This row is therefore doing two jobs: certifying a path, and certifying the counterexample itself, which is the reason rows 7, 9 and 11 below are described as hypotheses rather than addresses. A TRUE founds the path and the heading language. IT FOUNDS NO ENTRY - nothing about Aguas del Tunari, nothing about any Suez matter, and nothing about whether any amicus request was granted or denied, all of which a search engine offered and none of which is claimed here."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/ndp",
+      "find": "In this section",
+      "purpose": "ROW 6 - COMPANION CONTROL FOR ROW 5, on the same terms as row 2."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/disqualification",
+      "find": "Decisions on Disqualification",
+      "purpose": "ROW 7 - CONSTRUCTED PATH, HYPOTHESIS UNDER TEST. No search returned this URL and no instrument has ever requested it; the path is the analogy rule applied to the navigation label 'Decisions on Disqualification', and that rule has one known counterexample (row 5). So the three outcomes are all informative and must not be conflated: a 200 with the literal TRUE certifies the path; a 404 is an observation THAT THIS CONSTRUCTED PATH DOES NOT RESOLVE and is NEVER a statement that the Disqualification register does not exist - the label is attested on the Manifest page's navigation strip and row 5 proves the slug can differ from the label; a 200 with the literal FALSE and row 8 TRUE locates the difference in the heading language, not in the register's existence."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/disqualification",
+      "find": "In this section",
+      "purpose": "ROW 8 - COMPANION CONTROL FOR ROW 7. Required precisely because row 7 is the row most likely to null: without it, a 200-with-empty-excerpt could not be told from an instrument failure."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/provisional-measures",
+      "find": "Decisions on Provisional Measures",
+      "purpose": "ROW 9 - CONSTRUCTED PATH, HYPOTHESIS UNDER TEST, on exactly the terms of row 7. Provisional Measures is a different instrument from the four gates thread 11 watches and this row is not a lead on it. It founds no entry: nothing about non-aggravation, nothing about any stay of parallel proceedings, and nothing from the BIICL study a search engine surfaced - which is a study of several rule sets and not of this register, and is not relied on here."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/provisional-measures",
+      "find": "In this section",
+      "purpose": "ROW 10 - COMPANION CONTROL FOR ROW 9, on the same terms as row 8."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/place-of-arbitration-in-additional-facility-cases",
+      "find": "Decisions on Place of Arbitration in Additional Facility Cases",
+      "purpose": "ROW 11 - CONSTRUCTED PATH, HYPOTHESIS UNDER TEST, and the LEAST LIKELY of the three to resolve: it is the longest label of the six and therefore the one most likely to carry an abbreviated slug, which is the shape of row 5's counterexample. A 404 here is the expected outcome under the row-5 lesson and is an observation about the path only."
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/place-of-arbitration-in-additional-facility-cases",
+      "find": "In this section",
+      "purpose": "ROW 12 - COMPANION CONTROL FOR ROW 11, on the same terms as row 8. This is the twelfth and last requested row; MAX_URLS is 12 (scripts/fetch_relay.py:76) and the neutral control at https://example.com/ is prepended by the runner as records[0] rather than counted here (:199), so the batch is at the cap exactly and nothing was silently truncated."
+    }
+  ]
+}

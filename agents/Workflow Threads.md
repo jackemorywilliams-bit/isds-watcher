@@ -3121,6 +3121,15 @@ specifically unblocks it.
   `STATE_OF_THE_ANSWER.md` to this seat's authorised record paths, the bot's only change to it
   being the anchor that `main`'s own push-triggered run already writes. Owner: **Emory**. Until
   one lands the recurrence is expected, not preventable from this seat.
+- **PARTIAL MITIGATION, found by using it the same day — pin the merge to the verified sha.** The
+  merge endpoint takes a `sha` the head must still match. Pinned to the commit the path check
+  verified, a bot push in the blind window returns **409 Head branch was modified** rather than
+  merging the newer head. Demonstrated on #273: the first pinned attempt at `e178d2c` was refused
+  409 (the bot had fired, as on #272); after a revert and re-check the second attempt merged at
+  `7c459cb`, whose diff against its first parent is five paths, all in scope. Procedure: path-check,
+  note the head, merge pinned, and on 409 revert-push-repeat. It terminated in two attempts.
+  **This does not retire the escalation** — the out-of-scope commit is still generated on every push
+  and the manual revert is still required. It makes a silent breach loud.
 - **State** — carried as escalation 11 since 2026-10-04; seven caught occurrences
   (four on earlier PRs, two on #264, two on #272), one landed.
 

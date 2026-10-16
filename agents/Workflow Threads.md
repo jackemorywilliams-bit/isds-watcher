@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `de2a9e6`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `7c459cb`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -3130,6 +3130,16 @@ specifically unblocks it.
   note the head, merge pinned, and on 409 revert-push-repeat. It terminated in two attempts.
   **This does not retire the escalation** — the out-of-scope commit is still generated on every push
   and the manual revert is still required. It makes a silent breach loud.
+- **THE PATH CHECK AS SPECIFIED IS WRONG IN BOTH DIRECTIONS, and the second direction was found on
+  #274.** The specified form is `git diff --name-only origin/main...HEAD`. **Three dots diffs from
+  the merge base** and ignores main's own side, so a path reverted to main's exact content is still
+  listed: on #274, after the revert, three-dot listed `STATE_OF_THE_ANSWER.md` while
+  `git diff --quiet origin/main HEAD -- STATE_OF_THE_ANSWER.md` reported **identical**. A
+  revert-and-recheck loop on the three-dot form ran five times without converging. **The two-dot
+  form `git diff --name-only origin/main HEAD` is what the merge actually changes on `main`.** So:
+  three-dot cries wolf on a restored path; an unpinned merge cannot see a bot push landing after
+  the check. **The correct pair is the two-dot diff plus the pinned sha.** This does not excuse the
+  #272 landing, which is established by `git diff 5beba04^1 5beba04` — a two-dot comparison.
 - **State** — carried as escalation 11 since 2026-10-04; seven caught occurrences
   (four on earlier PRs, two on #264, two on #272), one landed.
 

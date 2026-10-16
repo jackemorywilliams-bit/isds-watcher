@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `5beba04`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `c8aee85`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -3096,6 +3096,33 @@ specifically unblocks it.
 - **Next** — When (and only when) the CFC takings matter is added to that list, reword the
   clause and re-examine the inference it supports. No action until then.
 - **Owner** — [[research-analyst]].
+
+### Re-anchor scope race · the out-of-scope file LANDED, 2026-10-16
+
+- **FIRST LANDED OCCURRENCE, 2026-10-16, after seven caught ones.** `STATE_OF_THE_ANSWER.md` is in
+  merge commit `5beba04` (PR #272), landed under this seat's record-paths-only authorisation, which
+  covers `analytics/`, `agents/`, `moc/` and `HANDOFF.md` only. Timeline from the commit
+  timestamps: the final pre-merge path check read `815abfd` (15:25:09Z) and returned 7 paths, all
+  in scope; `.github/workflows/reanchor.yml` fired its **eighth** commit `9cc0f884` at 15:25:37Z,
+  **28 seconds later**; the merge at 15:27:27Z read `9cc0f884`.
+- **The finding is structural, and it retires the remedy five records relied on.** `reanchor.yml`
+  fires on `pull_request: [opened, synchronize, reopened]`, so every push to an open archivist
+  branch draws a fresh commit, and the merge API reads the head at merge time. **A pre-merge path
+  check cannot close a race; a later check only moves the window.** The 2026-10-13 record framed
+  this as a discipline gap (*"the last push is the one nobody re-checks"*). It is not one.
+- **What landed, and why it is not being reverted.** The entire diff is two lines: the
+  machine-owned currency anchor, `a5326ed` to `815abfd`. No content. `reanchor.yml` also runs on
+  `push: branches: [main]` since 2026-09-08 (`HANDOFF.md:264`), so `main` would have written the
+  same line itself seconds later. `scripts/check_currency.py` on the merged `main`: 5 notes, 9
+  claims, 0 failed. A hand revert would redden the guard and be a second out-of-scope edit to the
+  same file — a worse breach than the one it undid.
+- **Remedy — one line, two shapes, either sufficient.** (1) Give `scripts/reanchor.py` a scope
+  filter so it writes only the notes inside the merging seat's path set; or (2) add
+  `STATE_OF_THE_ANSWER.md` to this seat's authorised record paths, the bot's only change to it
+  being the anchor that `main`'s own push-triggered run already writes. Owner: **Emory**. Until
+  one lands the recurrence is expected, not preventable from this seat.
+- **State** — carried as escalation 11 since 2026-10-04; seven caught occurrences
+  (four on earlier PRs, two on #264, two on #272), one landed.
 
 ### D5 · Adopted method rules are recorded where the seat that must obey them never reads
 

@@ -3121,6 +3121,25 @@ specifically unblocks it.
   `STATE_OF_THE_ANSWER.md` to this seat's authorised record paths, the bot's only change to it
   being the anchor that `main`'s own push-triggered run already writes. Owner: **Emory**. Until
   one lands the recurrence is expected, not preventable from this seat.
+- **PARTIAL MITIGATION, found by using it the same day — pin the merge to the verified sha.** The
+  merge endpoint takes a `sha` the head must still match. Pinned to the commit the path check
+  verified, a bot push in the blind window returns **409 Head branch was modified** rather than
+  merging the newer head. Demonstrated on #273: the first pinned attempt at `e178d2c` was refused
+  409 (the bot had fired, as on #272); after a revert and re-check the second attempt merged at
+  `7c459cb`, whose diff against its first parent is five paths, all in scope. Procedure: path-check,
+  note the head, merge pinned, and on 409 revert-push-repeat. It terminated in two attempts.
+  **This does not retire the escalation** — the out-of-scope commit is still generated on every push
+  and the manual revert is still required. It makes a silent breach loud.
+- **THE PATH CHECK AS SPECIFIED IS WRONG IN BOTH DIRECTIONS, and the second direction was found on
+  #274.** The specified form is `git diff --name-only origin/main...HEAD`. **Three dots diffs from
+  the merge base** and ignores main's own side, so a path reverted to main's exact content is still
+  listed: on #274, after the revert, three-dot listed `STATE_OF_THE_ANSWER.md` while
+  `git diff --quiet origin/main HEAD -- STATE_OF_THE_ANSWER.md` reported **identical**. A
+  revert-and-recheck loop on the three-dot form ran five times without converging. **The two-dot
+  form `git diff --name-only origin/main HEAD` is what the merge actually changes on `main`.** So:
+  three-dot cries wolf on a restored path; an unpinned merge cannot see a bot push landing after
+  the check. **The correct pair is the two-dot diff plus the pinned sha.** This does not excuse the
+  #272 landing, which is established by `git diff 5beba04^1 5beba04` — a two-dot comparison.
 - **State** — carried as escalation 11 since 2026-10-04; seven caught occurrences
   (four on earlier PRs, two on #264, two on #272), one landed.
 

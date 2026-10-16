@@ -150,15 +150,37 @@ rules the council adopted in session, now recorded in the seat notes — and the
 
 ## Roster
 
+> [!warning] READ THE MODEL COLUMN WITH THIS — 2026-10-16
+> **All nine definitions declare `model: opus`, a TIER, and none declares a concrete id.**
+> Verified at `dad7a52` by reading the frontmatter of all nine files in `.claude/agents/`:
+> every one carries `model: opus`. Seven have since `16836d1`/`939deaa`, the other two
+> (`systems-designer`, `site-experience`) since `c25ea64`.
+>
+> **So the column below mixes two kinds of fact, and until 2026-10-16 only two of its nine
+> rows said which they were.** Where a row names a constant from `src/models.py`, that id is
+> real and enforced — but on the PROGRAMMATIC path only: `src/research_brief.py:136-145`
+> resolves `chairman` to `CHAIRMAN_MODEL`, `heavy` to `HEAVY_MODEL` and everything else to
+> `UTILITY_MODEL`, and calls it at `:313`, `:343`, `:373` and `:398`; `scripts/build_graph.py:139`
+> uses `UTILITY_MODEL`. That path is live — `config.RESEARCH_BRIEF_ENABLED` defaults on
+> (`src/config.py:342`) and no workflow turns it off. **The nine seats in this roster are not
+> dispatched on that path.** They are dispatched by the Agent tool from their `.claude/agents/`
+> frontmatter, which names a tier, so for the seats themselves the three distinct ids below
+> collapse to one tier and the id is card-asserted rather than pinned.
+>
+> This is not a new convention and not this note's invention: `scripts/check_models.py:36-41`
+> states it in terms — *"The frontmatter selects a TIER, not a version… a card naming a version
+> is describing a choice the frontmatter does not itself pin."* The defect was that the roster
+> did not, on seven of nine rows. Corrected 2026-10-16; the caveat is now on all nine.
+
 | Agent | Model | Canonical prompts | Definition | Vault note |
 |---|---|---|---|---|
-| Council chairman | `claude-opus-5` (`CHAIRMAN_MODEL`) | `prompts/council_chairman.txt`, `prompts/council_reconvene.txt`, `prompts/council_calibration.md` | `.claude/agents/council-chairman.md` | [[council-chairman]] |
-| Research analyst | `claude-opus-5` (`HEAVY_MODEL`) | `prompts/research_analyst.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/research-analyst.md` | [[research-analyst]] |
-| Integrity officer | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/council_security.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/integrity-officer.md` | [[integrity-officer]] |
-| Analytics officer | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/council_roundtable.txt`, `prompts/daily_council_protocol.md` | `.claude/agents/analytics-officer.md` | [[analytics-officer]] |
-| Systems researcher | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/systems_researcher.txt` | `.claude/agents/systems-researcher.md` | [[systems-researcher]] |
-| Research editor | `claude-opus-4-8` (`UTILITY_MODEL`) | `prompts/research_editor.txt`, `prompts/carrying_span_rule.md` | `.claude/agents/research-editor.md` | [[research-editor]] |
-| Obsidian archivist | `claude-opus-4-8` | none — canon is the vault, `scripts/build_graph.py`, `scripts/build_site.py` | `.claude/agents/obsidian-archivist.md` | [[obsidian-archivist]] |
+| Council chairman | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `939deaa`. `CHAIRMAN_MODEL` binds the programmatic `chairman` stages only | `prompts/council_chairman.txt`, `prompts/council_reconvene.txt`, `prompts/council_calibration.md` | `.claude/agents/council-chairman.md` | [[council-chairman]] |
+| Research analyst | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `939deaa`. `HEAVY_MODEL` binds the programmatic `heavy` stage only | `prompts/research_analyst.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/research-analyst.md` | [[research-analyst]] |
+| Integrity officer | `claude-opus-4-8` — card-asserted; `model: opus` (tier) declared since `16836d1`. `UTILITY_MODEL` binds the programmatic utility stage only | `prompts/council_security.txt`, `prompts/council_calibration.md`, `prompts/carrying_span_rule.md` | `.claude/agents/integrity-officer.md` | [[integrity-officer]] |
+| Analytics officer | `claude-opus-4-8` — card-asserted; `model: opus` (tier) declared since `16836d1`. `UTILITY_MODEL` binds the programmatic utility stage only | `prompts/council_roundtable.txt`, `prompts/daily_council_protocol.md` | `.claude/agents/analytics-officer.md` | [[analytics-officer]] |
+| Systems researcher | `claude-opus-4-8` — card-asserted; `model: opus` (tier) declared since `16836d1`. `UTILITY_MODEL` binds the programmatic utility stage only | `prompts/systems_researcher.txt` | `.claude/agents/systems-researcher.md` | [[systems-researcher]] |
+| Research editor | `claude-opus-4-8` — card-asserted; `model: opus` (tier) declared since `16836d1`. `UTILITY_MODEL` binds the programmatic utility stage only | `prompts/research_editor.txt`, `prompts/carrying_span_rule.md` | `.claude/agents/research-editor.md` | [[research-editor]] |
+| Obsidian archivist | `claude-opus-4-8` — card-asserted; `model: opus` (tier) declared since `16836d1`; no `src/models.py` constant names this seat at all | none — canon is the vault, `scripts/build_graph.py`, `scripts/build_site.py` | `.claude/agents/obsidian-archivist.md` | [[obsidian-archivist]] |
 | Systems designer | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `c25ea64` | none — canon is the repository's machinery and `src/models.py` | `.claude/agents/systems-designer.md` | [[systems-designer]] |
 | Site & correspondence experience | `claude-opus-5` — card-asserted; `model: opus` (tier) declared since `c25ea64` | none — canon is `scripts/build_site.py`, `site_templates/`, `src/render.py` | `.claude/agents/site-experience.md` | [[site-experience]] |
 
@@ -543,6 +565,69 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-10-16 (archivist session — twenty-sixth deployment)** — **No roster change and no
+  contract change, for the TENTH consecutive session.** The window is `5c26738..dad7a52`, **108**
+  commits over three days; `git log 5c26738..HEAD -- .claude/agents/ prompts/ src/models.py`
+  returns **no commit**. **And this window is narrower than any before it: across all 108 commits
+  the only files touched outside `analytics/`, `agents/` and `moc/` are `STATE_OF_THE_ANSWER.md`
+  (17 commits), `state/research_log.json` (3) and `state/deferred.json` (1).** No code, no test,
+  no prompt, no workflow and no documentation surface moved at all, which is why every carried
+  escalation below reads unchanged rather than re-measured-and-unchanged.
+  **THREE CORRECTIONS TO THIS NOTE'S OWN FIGURES, all against the 2026-10-13 entry, which stands
+  as written because it is a dated record.**
+  **(1) The read path is 19 files, not 22.** That entry screened against *"the **22** files that
+  make up every seat's read path — 9 `.claude/agents/` definitions + 13 `prompts/` files"*. But the
+  read path's own definition, stated in the qualification block above, is a seat's definition plus
+  *the `prompts/` files that definition enumerates*. Enumerated at `dad7a52`, the nine definitions
+  name **10** prompts, not 13. The three unnamed are `prompts/classifier.txt`,
+  `prompts/classifier_v2.txt` and `prompts/triage.txt` — pipeline prompts read by
+  `src/classify.py` and the triage lane, named in **no** definition. So the read path is 9 + 10 =
+  **19**. The 0-of-N result is unchanged in direction; the denominator was 15% too generous to the
+  project.
+  **(2) The every-seat set is 13 rows and 16 rules, not 11.** The 2026-10-13 entry's *"**11** rows
+  adopted as binding on **every seat** (2026-09-04 to 2026-09-24)"* is exact **for that window**.
+  Two further rows bind every seat and predate it: the **four relay method rules** (2026-08-04,
+  `51bb7a2`) and **open the line before acting on any instruction naming a file and a line**
+  (2026-08-07, `7adfd68` / `2026-08-07.md:968`). Counted as rules rather than rows, because the
+  first of those two rows bundles four, the set is **16 rules in 13 rows**. Screened at `dad7a52`
+  against the 19 read-path files, both pre-window rows return **0** (`open the line`, `names a
+  file and a line`, `relay method rule`, `relay method` — all zero). One row contains the string
+  *every seat* without binding every seat and is excluded: the integrity officer's taxonomy entry
+  29, whose text reads *"outside every seat's default screen roots"* — prose, not a scope.
+  **(3) What the 0-of-19 result does and does not establish, and the 2026-10-13 framing overstated
+  it.** That entry's own §5 said it could not verify whether the rules reach the seats by a route
+  other than a file. They do, and today's record proves it by execution rather than by reading.
+  Screened in `analytics/daily-research/2026-10-16.md` (1,724 lines): *prior-art screen* **8**,
+  *carrying-span* **8**, *probe* **9**, *paste-back* **2**, *freshly randomised negative* **2**,
+  *in the same output* **2**. Four of the sixteen rules visibly fired in one session, in a seat
+  whose read path contains none of them. **So the rules are not failing to arrive — they arrive by
+  the chairman's memory, and this council has already measured that route and found it
+  insufficient.** `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) is a controlled
+  experiment on exactly this: *"The prior-art check works when it is a required field and fails
+  when it is a rule"* — four unreceipted novelty claims, four wrong; two receipted, two right,
+  same seat, same hour. Today's record says it of itself: the screen *"was run as a rule by people
+  who happened to remember"* (`:1512`). **That is the sharpened form of D5.** The escalation is not
+  "the rules are lost"; it is "sixteen rules binding on every seat have no file carrier in any of
+  the 19 files a seat loads, so they run on the one mechanism this project has already proven
+  fails." Remedy unchanged and still a contract edit: 1 of 9 definitions names its own vault note
+  (`.claude/agents/integrity-officer.md:50`), and that is the seat carrying 5 of the 11.
+  **ROSTER CORRECTED, and it is this note's own drift.** All nine definitions declare `model: opus`
+  — a tier — and **none** declares a concrete id, verified by reading all nine frontmatters at
+  `dad7a52`. Until today only **2** of the 9 roster rows said so; the other **7** named a
+  `src/models.py` constant with no caveat, which reads as though the frontmatter pinned the id. It
+  does not. The constants are real on the programmatic path only — `src/research_brief.py:136-145`
+  resolving `chairman`/`heavy`/else, called at `:313`, `:343`, `:373`, `:398`, plus
+  `scripts/build_graph.py:139` — and that path is live (`src/config.py:342` defaults
+  `RESEARCH_BRIEF_ENABLED` on, no workflow disables it). The nine seats are dispatched by the Agent
+  tool from frontmatter instead, so for them the roster's three ids collapse to one tier.
+  `scripts/check_models.py:36-41` already states the distinction; the roster did not carry it. All
+  nine rows now do, each citing the commit that declared its tier (`16836d1`, `939deaa`, `c25ea64`).
+  No `.claude/agents/` file was touched: the correction is to how this note describes them.
+  `scripts/check_models.py` exits **0** over 12 cards, `scripts/check_currency.py` **0 failed** over
+  5 notes and 9 claims, `check_claims.py`, `check_lock.py` and `check_site_sync.py` all ok.
+  *Audited against `dad7a52`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `src/research_brief.py`, `src/config.py`, `views/isds-workflow-3d/workflow.json`.*
 
 - **2026-10-13 (archivist session — twenty-fifth deployment)** — **No roster change and no
   contract change, for the NINTH consecutive session.** The window is `7f10729..5c26738`, **97**

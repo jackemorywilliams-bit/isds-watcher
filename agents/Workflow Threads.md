@@ -3099,6 +3099,39 @@ specifically unblocks it.
 
 ### D5 · Adopted method rules are recorded where the seat that must obey them never reads
 
+- **RE-TESTED 2026-10-16 — day sixty-four, and the thread's own statement of itself is now too
+  weak.** The script test is unchanged at `dad7a52`: **1 of 9** definitions names the seat's own
+  vault note (`.claude/agents/integrity-officer.md:50`), **8 do not**, and
+  `git log 5c26738..HEAD -- .claude/agents/ prompts/ src/models.py` returns no commit over the
+  window's 108 commits. **Three measurements sharpen it.**
+  **(a) The read path is 19 files, not 22.** By this thread's own definition of a read path — a
+  definition plus the `prompts/` files it enumerates — the nine definitions name **10** prompts.
+  `prompts/classifier.txt`, `prompts/classifier_v2.txt` and `prompts/triage.txt` are named in no
+  definition. The 2026-10-13 archivist session used 22 (all of `prompts/`); that record stands and
+  this is the correction.
+  **(b) The every-seat set is 13 rows and 16 rules, not 11.** Two rows in [[Agent Registry]]'s
+  *Adopted method rules by seat* table bind every seat and predate the 2026-09-04 to 2026-09-24
+  window the 2026-10-13 session screened: the **four relay method rules** (2026-08-04, `51bb7a2`)
+  and **open the line before acting on any instruction naming a file and a line** (2026-08-07,
+  `7adfd68`). Both return **0** across the 19 files.
+  **(c) The rules DO reach the seats, and that makes this thread worse rather than better.** The
+  2026-10-13 record could not verify any route but a file. `analytics/daily-research/2026-10-16.md`
+  (1,724 lines) verifies one: *prior-art screen* **8** occurrences, *carrying-span* **8**, *probe*
+  **9**, *paste-back* **2**, *freshly randomised negative* **2**, *in the same output* **2** — four
+  of the sixteen rules visibly firing in a seat whose read path holds none of them. The carrier is
+  the chairman's memory, and this council has already run the controlled experiment on that
+  carrier: `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) — *"The prior-art check
+  works when it is a required field and fails when it is a rule"*, four unreceipted novelty claims
+  four wrong against two receipted two right, from the same seat in the same hour. The 2026-10-16
+  record says it of itself at `:1512`: the screen *"was run as a rule by people who happened to
+  remember"*.
+  **So the thread is restated.** It is not "the rules are unreachable" — four of sixteen demonstrably
+  reach. It is **"sixteen rules binding on every seat have no carrier in any of the 19 files a seat
+  loads, so they depend on a mechanism this project measured and found insufficient two months
+  ago."** The remedy is unchanged and unchanged in owner: one line per definition naming that
+  seat's note, in the form `.claude/agents/integrity-officer.md:50` already uses. A contract edit,
+  and **Emory's**. Recorded in [[council-chairman]] and [[research-analyst]] as dated addenda the
+  same day.
 - **RE-TESTED 2026-09-04 — day twenty-two, unchanged, and today it acquired its best single
   illustration.** The script test was re-run over all nine definitions: **eight of nine still
   never name the seat's own vault note**; [[integrity-officer]] remains the only one that does.

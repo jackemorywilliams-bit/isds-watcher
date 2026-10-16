@@ -263,6 +263,33 @@ contained in the insight about to be appended"* (`analytics/daily-research/2026-
 `a9bc44f`). Three of the eleven were written by this seat about this seat, and none of the three
 is in a file this seat opens.
 
+**ADDENDUM 2026-10-16 (archivist) — three corrections to the finding above. The finding stands as
+written; it is dated.**
+
+**The read path is 19 files, not twenty-two.** By the read path's own definition — a seat's
+definition plus *the `prompts/` files that definition enumerates* — the nine definitions name
+**10** prompts at `dad7a52`. `prompts/classifier.txt`, `prompts/classifier_v2.txt` and
+`prompts/triage.txt` are named in none of them. The result's direction is unchanged; the
+denominator was 15% too generous.
+
+**The set is 13 rows and 16 rules, not eleven**, and one of the two additions is this seat's own
+instrument. Eleven is exact for the stated 2026-09-04 to 2026-09-24 window. Predating it: the
+**four relay method rules** (2026-08-04, `51bb7a2`, this seat's own, governing the relay) and
+**open the line before acting on any instruction that names a file and a line** (2026-08-07,
+`7adfd68`). Screened at `dad7a52` across the 19 files, both return **0** — so the four rules that
+govern this seat's own instrument are, like the eleven, recorded only here.
+
+**And the rules do reach this seat.** `analytics/daily-research/2026-10-16.md`, 1,724 lines:
+*carrying-span* **8** occurrences, *prior-art screen* **8**, *probe* **9**, *paste-back* **2**,
+*freshly randomised negative* **2**. This seat applied the carrying-span rule against this file's
+own citation and found a real failure in `STATE_OF_THE_ANSWER.md` and `analytics/insights.jsonl`
+line 144 — correction 3 of that day's answer-file block. **So the rules work when they fire; what
+has no carrier is the firing.** `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) is
+this council's controlled experiment on exactly that: *"The prior-art check works when it is a
+required field and fails when it is a rule"* — four unreceipted novelty claims four wrong, two
+receipted two right, same seat, same hour. The remedy for D5 is a field or a file, never a better
+memory. Day **sixty-four**; a contract edit, and Emory's.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.

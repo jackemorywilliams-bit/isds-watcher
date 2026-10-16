@@ -15,6 +15,50 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-16 (archivist session — twenty-sixth deployment)
+
+*Audited against `dad7a52` (`origin/main`, clean tree), on a complete **2,133**-commit history —
+the container's clone arrived shallow at **160** commits, the **eighteenth consecutive** session,
+so every sha, ancestry test and orphan figure was re-derived after `git fetch --unshallow`.*
+
+- **No roster change and no contract change, the tenth consecutive session.** Window
+  `5c26738..dad7a52`, **108** commits; `git log 5c26738..HEAD -- .claude/agents/ prompts/
+  src/models.py` returns no commit. **The window is the narrowest yet measured: the only files
+  touched outside `analytics/`, `agents/` and `moc/` are `STATE_OF_THE_ANSWER.md` (17 commits),
+  `state/research_log.json` (3) and `state/deferred.json` (1).** No code, test, prompt, workflow or
+  documentation surface moved, so escalations 1, 5, 8, 9 and 11 are unchanged by mechanism, not by
+  re-measurement.
+- **Roster drift corrected in [[Agent Registry]] — this seat's own note.** All nine
+  `.claude/agents/` definitions declare `model: opus`, a tier, and none declares a concrete id
+  (read at `dad7a52`; seven since `16836d1`/`939deaa`, two since `c25ea64`). Seven of nine roster
+  rows had cited a `src/models.py` constant with no caveat. Those constants bind the programmatic
+  path only — `src/research_brief.py:136-145`, called at `:313`, `:343`, `:373`, `:398`, and
+  `scripts/build_graph.py:139` — which is live (`src/config.py:342`). The nine seats are dispatched
+  from frontmatter instead. `scripts/check_models.py:36-41` already stated the distinction; the
+  roster did not. All nine rows now carry it. No `.claude/agents/` file was edited.
+- **Three corrections to the 2026-10-13 archivist entry's figures**, which stands as written
+  because it is a dated record. The read path is **19** files, not 22 — the nine definitions name
+  **10** prompts, and `prompts/classifier.txt`, `prompts/classifier_v2.txt` and
+  `prompts/triage.txt` are named in none of them. The every-seat rule set is **13 rows / 16
+  rules**, not 11 — two rows predate that entry's 2026-09-04 window: the four relay method rules
+  (2026-08-04, `51bb7a2`) and *open the line* (2026-08-07, `7adfd68`), both returning **0** in the
+  19 read-path files. And the 0-of-N result establishes less than that entry claimed: four of the
+  sixteen rules visibly fired in `analytics/daily-research/2026-10-16.md` (prior-art screen 8,
+  carrying-span 8, probe 9, paste-back 2), so the rules arrive — by the chairman's memory, the
+  route `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) already measured as
+  insufficient. **D5 sharpened, day 64.**
+- **Orphan check clean.** Over **241** remote branches, **70** are not ancestors of `origin/main`;
+  **59** carry nothing but the bot's re-anchor close-out and **11** carry genuinely unlanded
+  non-bot commits, newest **2026-09-13**. All eleven were already recorded in the vault, each
+  verified by name before this line was written. Nothing committed since 2026-09-13 has failed to
+  land; the prior session's four commits (`ef91c3a`, `6c88fd3`, `e415b28`, `86afa6a`) are all
+  ancestors of `origin/main`.
+- **Escalation 10 resolved in practice, by the chairman's own seat.** `STATE_OF_THE_ANSWER.md`
+  carries `COUNCIL UPDATE` blocks for 2026-10-14, 10-15 and 10-16 — three consecutive days since
+  the convention was flagged as intermittent on 2026-10-13. The older gaps (10-11, 10-12, 10-07,
+  10-01 to 10-04) are left as they are.
+- Session record: `analytics/vault-sessions/2026-10-16.md`.
+
 ## 2026-10-13 (archivist session — twenty-fifth deployment)
 
 *Audited against `5c26738` (`origin/main`, clean tree), on a complete **2,025**-commit history —

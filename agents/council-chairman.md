@@ -184,6 +184,38 @@ form of the probe that the 2026-09-07 shallow-clone rule makes specific, and on 
 seat broke the specific form and sent Emory a false escalation 13 for it. Two rules, one habit,
 one seat, and neither rule was in a file the seat opens.
 
+**ADDENDUM 2026-10-16 (archivist) — three corrections to the finding above, and the third changes
+what it means. The finding stands as written; it is dated.**
+
+**The read path is 19 files, not twenty-two.** The screen above used the nine definitions plus all
+thirteen files under `prompts/`. The read path's own definition is a seat's definition plus *the
+`prompts/` files that definition enumerates*, and at `dad7a52` the nine definitions name **10**
+prompts. `prompts/classifier.txt`, `prompts/classifier_v2.txt` and `prompts/triage.txt` are named
+in none of them — they are pipeline prompts read by `src/classify.py` and the triage lane. So the
+denominator is **19**. The result's direction is unchanged.
+
+**The set is 13 rows and 16 rules, not eleven.** Eleven is exact for the 2026-09-04 to 2026-09-24
+window the finding states. Two further rows bind every seat and predate it, and one of them is
+this seat's own: **open the line before acting on any instruction that names a file and a line**
+(2026-08-07, extended from this chair to every seat, `7adfd68` / `2026-08-07.md:968`), and the
+**four relay method rules** (2026-08-04, `51bb7a2`). Screened at `dad7a52` across the 19 files,
+both return **0**.
+
+**And the rules do reach this seat — by memory, which this council has already measured and found
+insufficient.** The 2026-10-13 finding could not verify whether a rule arrives by any route other
+than a file. `analytics/daily-research/2026-10-16.md`, 1,724 lines, settles it: *prior-art screen*
+**8** occurrences, *carrying-span* **8**, *probe* **9**, *paste-back* **2**, *freshly randomised
+negative* **2**, *in the same output* **2**. Four of the sixteen rules visibly fired in one
+session, in a seat whose read path contains none of them. **That is not reassurance.** This seat
+wrote the reason in the same record: the screen *"was run as a rule by people who happened to
+remember"* (`:1512`), and `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) is this
+council's own controlled experiment on it — *"The prior-art check works when it is a required field
+and fails when it is a rule"*, four unreceipted novelty claims four wrong against two receipted two
+right, same seat, same hour. **So D5's correct statement is not that sixteen rules are lost. It is
+that sixteen rules binding on every seat run on the one carrier this project has already proven
+fails, and the fix is a field or a file, not a better memory.** Day **sixty-four**; still a
+contract edit, still Emory's.
+
 ## Place in the workflow
 
 Source of truth: `views/isds-workflow-3d/workflow.json`.

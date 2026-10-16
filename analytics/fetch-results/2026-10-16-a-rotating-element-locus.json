@@ -1,0 +1,93 @@
+{
+  "request": "2026-10-16-a-rotating-element-locus.json",
+  "note": "2026-10-16 batch A, designed and fired by the chairman, adopting the research analyst's design of 2026-10-15 (its section 6, item (iv): 'Any row aimed at locating the rotating element... needs two time points ~23 hours apart and cannot resolve today; it is tomorrow's first item'). THE QUESTION, PRE-REGISTERED: WHERE on an ICSID tables-of-decisions register page does the element that rotates on a roughly 22-24 hour cycle actually live - in a region of the tag-stripped VISIBLE PROSE this instrument can sample, or in markup, attributes or script that scripts/fetch_relay.py:78-79 and :126-127 destroy before any find executes? It addresses GAP-UNRESOLVED: icsid-worldbank-rotating-element-locus-markup-or-prose. ONE REGISTER ONLY, /annulment, chosen because it is the most-observed register in the corpus and because the element-(ii) doctrinal negative of 2026-10-14 is bounded to its content state. THE PRIORS THIS BATCH IS COMPARED AGAINST, cited by blob and not from memory: (1) blob aec2fa0feba5c6199d9f9d8a2a3b8ad8dd619912, analytics/fetch-results/2026-10-14-daily.json, fetched 2026-10-14T11:21:19Z, control_ok true, records[3] and records[4], /annulment at 121583 bytes and sha256 6f3b9357466a642c...; records[3] holds the OPENING 400 characters of the stripped body (its find 'Decisions on Annulment' matches at index 0, so start = max(0, 0 - 100) = 0 and the window is body[0:400], identical to a no-find window); records[4] holds the table-to-navigation BOUNDARY window for find 'In this section'. (2) blob 449b26e6d0e01b39dfcd1d39404fa21a1384f54d, analytics/fetch-results/2026-10-15-a-fingerprint-interval.json, fetched 2026-10-15T11:14:14Z, records[2], /annulment at 121580 bytes and sha256 9f2242f8ab74c516... - so across 23h04m22s the byte count moved by -3 and the whole-body digest changed, WHILE THE BOUNDARY WINDOW STRING WAS CHARACTER-IDENTICAL to the 2026-10-14 one. (3) blob 68694c4b1094e0ee498740c85885a8252d6aa0cf, same register, fetched 2026-10-15T11:45:54Z, 121580 bytes and the same digest - unchanged across 31m39s. THE OPENING WINDOW WAS NOT SAMPLED ON 2026-10-15, so row 1 below is a comparison across TWO rotation cycles (about 48 hours) and not one. WHAT EACH OUTCOME WOULD MEAN, declared before the fetch rather than selected after it: if row 1 returns a string character-identical to the 2026-10-14 opening window while this run's byte count or digest differs from both priors, then the rotating element is in NEITHER of the two prose regions this council has ever sampled, and the live hypothesis becomes that it is in markup, an attribute, a script body or a region of prose between the two windows - the first of which is structurally unreachable to this instrument by removal before observation. If row 1 returns a DIFFERENT string, the element is located in the opening 400 characters and the GAP closes with a positive. Rows 2 and 4 extend prose coverage beyond the two sampled windows so that a null on row 1 is not immediately converted into a markup conclusion: row 2 samples a region never sampled on this register, and its 110-character overlap with row 1 is deliberate, because the overlap is what certifies the offset arithmetic rather than assuming it. WHAT NO ROW BELOW FOUNDS: nothing about any ICSID matter, party, date, document, disposition, holding or ground; nothing about ICSID Convention Article 52 or the grounds it enumerates, which this project has never read from a primary source; nothing about thread 11's four gates; and nothing about the research question. These are instrument-locus rows on one page's chrome and navigation. STANDING QUALIFICATIONS, re-derived from the committed code rather than recited: excerpt_of strips script and style bodies and then every remaining tag before the search runs (:78-79, :126-127), so markup, attributes and hrefs are unreachable to any find on any byte stream; on a miss it returns the empty string rather than a head excerpt (:132-133); it computes its match index on body.lower() at :130 and slices the original body at :132-133, so every length-expanding character before a match shifts the returned window LEFT by one and a true row can return a window not containing its own literal - the defect escalated to the operator on 2026-10-15 and still unrepaired, which is why row 1 carries no find at all and is therefore immune to it; the relay does not decode HTML entities. EVERY LITERAL BELOW IS ASCII-ONLY and each was checked for a curly apostrophe, an accented capital, an en dash, a non-breaking-space entity and a zero-width space: the held /annulment windows contain U+2013 and U+00E7 and &amp; and &nbsp;, and no find below goes near one. NO NEW HOST AND NO NEW PATH: icsid.worldbank.org and this exact URL are long established, so no robots.txt pre-flight is triggered. CADENCE: nothing is due today - thread 11's relay limb was discharged 2026-10-13 and its search limb is due on or around 2026-10-25, the standing-dockets thread resumes 2026-10-18, and the Wingtech and Yuching monthly watches carry no designator below. No row below is a search, a fingerprint row on any other register, an icsidfiles.worldbank.org row, a ground-language probe, or a right-edge-advance row; www.italaw.com and investmentpolicy.unctad.org and bare italaw.com and bare unctad.org remain prohibited and are absent; ARB/24/16 is off the agenda and absent; every ARB/24/45 particular refused on 2026-10-12 stays refused and ARB/24/45 is absent. This request file is named to sort last under the lexicographic sorted(glob('*.json'))[-1] at :233-235, verified by executing sorted() over the actual directory before the push rather than by reasoning about it. The commit carrying it bears no marker that would suppress the workflow, checked by command before the push. Expect a later merge to re-fire this workflow and overwrite the result file in place, so cite the reduction BY BLOB.",
+  "fetched_at": "2026-10-16T11:16:55.500327+00:00",
+  "environment": "github-actions-runner (run 38892673281)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "Decisions on Annulment | ICSID Skip to main content File a Request Languages English Fran\u00e7ais Espa\u00f1ol Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Desi",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "Qualifications for the Panels",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "ariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Procedure Young ICSID Contact Frequently Asked Questions Services Case Administration Overview Appointments &amp; Challenges Overview Hearing Facilities Overview Administrative Registry Overview Cost of Proceedings Overview RULES &amp; REGULATIONS ICSID Conv",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "In this section",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "e Bolt Hansson v. Republic of The Gambia \u2013 (ICSID Case No. ARB/18/10) English January 17, 2026 - In this section Overview Decisions on Annulment Decisions on Disqualification Decisions on Non-Disputing Party Participation Decisions on Place of Arbitration in Additional Facility Cases Decisions on Provisional Measures Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "Contact Us",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "isions on Provisional Measures Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an ICSID Arbitrator Managing Case Finances For Journalists News Releases FOLLOW US P: +1 (202) 458-1534 E: ICSIDsecretariat@worldbank.org",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "NCTL159a15e692",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

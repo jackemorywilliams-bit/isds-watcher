@@ -1,0 +1,67 @@
+{
+  "request": "2026-10-16-b-interior-table-discriminator.json",
+  "note": "2026-10-16 batch B, designed and fired by the chairman. THE QUESTION, PRE-REGISTERED AND IT IS THE ONE DISCRIMINATOR BATCH A LEFT UNMADE: batch A established that the /annulment register's whole-body byte count fell by 152 and its sha256 changed across 23h31m01s, while BOTH prose windows this council can compare across that boundary - the opening body[0:400] and the table-to-navigation boundary window - are CHARACTER-IDENTICAL. That leaves a two-limb disjunction open at GAP-UNRESOLVED: icsid-worldbank-rotating-element-locus-markup-or-prose: the moving element is either in the UNSAMPLED INTERIOR OF THE TABLE, or in markup, an attribute or a script body, which scripts/fetch_relay.py:78-79 and :126-127 strip before any search runs and which is therefore unreachable to this instrument by removal before observation rather than by sampling limit. NOTHING IN BATCH A DISCRIMINATES THOSE TWO LIMBS. Batch B does, because a prose window INSIDE the table body already exists in this council's held corpus and was fired before the change: blob 26b2a3f4 records[1], fetched 2026-10-14T11:41:47Z at 121583 bytes and sha256 6f3b9357466a642c..., find 'Decision on', find_matched true, which returned two complete proceeding rows of the annulment table. Row 1 below re-fires that exact literal. WHAT EACH OUTCOME MEANS, declared before the fetch: if row 1 returns a CHARACTER-IDENTICAL string, then no length-changing difference exists anywhere at or before the first occurrence of 'Decision on' in the tag-stripped body, which places the 152-byte movement below that point in the table or outside the prose entirely, and the markup limb strengthens without being established; if row 1 returns a DIFFERENT string, a change is localised at or before that point and the table-interior limb is established as the locus of something, though not necessarily of the rotating element. ROW 1's INTERPRETIVE LIMIT IS DECLARED RATHER THAN DISCOVERED LATER AND IT IS REAL: find matches the FIRST occurrence, so a row inserted or removed ABOVE the first 'Decision on' would move the match to a different proceeding row and change the window completely, while a change BELOW it is invisible to this row. A DIFFERENT string is therefore ambiguous between 'the content of this window changed' and 'the window slid because something earlier changed', and both readings localise a change at or before this point, which is what the row is asked for and all it is asked for. SECOND DECLARED LIMIT, and it is the coordinate defect this council escalated yesterday: the held window contains a curly apostrophe at 'Committee's' and FOUR zero-width spaces, and excerpt_of computes its index on body.lower() at :130 while slicing the original body at :132-133, so the returned window is already shifted left by the length-expanding characters preceding the match. That shift is CONSTANT between two runs over identical bytes, so it does not disturb a verbatim comparison; it does mean the absolute offset of this window in the body is unknown and no sentence may state one. ROW 2 is a LEFT-EXTENDED BOUNDARY window anchored on a longer literal whose held prior is blob 21d09011 records[3], fetched 2026-10-14T11:27:41Z at 121583 bytes, which begins about 33 characters earlier than the plain boundary window and shows the second-to-last table row rather than only the last; it extends tail coverage slightly and replicates the boundary result from a different anchor, so an agreement between rows 2 and batch A's row 3 is a check on the anchor and not a second observation of the page. WHAT NO ROW BELOW FOUNDS: nothing about any ICSID matter, party, date, document, disposition, holding or ground; nothing about ICSID Convention Article 52 or the grounds it enumerates, which this project has never read from a primary source; nothing about thread 11's four gates; and nothing about the research question. The captions these windows happen to contain are the register's rendered prose and are reproduced for comparison, not read as findings, and no matter named in them has any established connection to the three-ring intersection. NO NEW HOST AND NO NEW PATH: this exact URL is long established and no robots.txt pre-flight is triggered. CADENCE: nothing is due today - thread 11's search limb is due on or around 2026-10-25 and the standing-dockets thread resumes 2026-10-18; no row below is a search, a ground-language probe, an icsidfiles.worldbank.org row, a fingerprint row on any other register, or a right-edge-advance row; www.italaw.com and investmentpolicy.unctad.org and their bare forms remain prohibited and are absent; ARB/24/16 is off the agenda and absent; every ARB/24/45 particular refused on 2026-10-12 stays refused and ARB/24/45 is absent. Filename verified to sort last by executing sorted() over the actual directory before the push, not by reasoning about it - the error that wasted two runs on 2026-10-15. The commit carrying it bears no marker that would suppress the workflow, checked by command. Cite the reduction BY BLOB: a later merge re-fires this workflow and overwrites result files in place.",
+  "fetched_at": "2026-10-16T11:30:25.569301+00:00",
+  "environment": "github-actions-runner (run 38894163726)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "Decision on",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": " v. Bolivarian Republic of Venezuela (ICSID Case No. ARB/11/25) \u2013 Annulment - Ad hoc Committee\u2019s Decision on the Application for Annulment of the Bolivarian Republic of Venezuela \u200bEnglish &amp; Spanish \u200bDecember 6, 2018 - \u200bTenaris S.A. and Talta - Trading e Marketing Sociedade Unipessoal Lda. v. Bolivarian Republic of Venezuela (ICSID Case No. ARB/11/26) \u200b English &amp; Spanish \u200bAugust 8, 2018 Ann",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "January 17, 2026 - In this section",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "t Hansson and Martje Bolt Hansson v. Republic of The Gambia \u2013 (ICSID Case No. ARB/18/10) English January 17, 2026 - In this section Overview Decisions on Annulment Decisions on Disqualification Decisions on Non-Disputing Party Participation Decisions on Place of Arbitration in Additional Facility Cases Decisions on Provisional Measures Footer menu Home About Services Cases Resources News &amp; Eve",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "find": "NCTL5b3284a4d0",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/content/tables-of-decisions/annulment",
+      "content_type": "text/html",
+      "bytes": 121428,
+      "sha256": "1624bbdb6b38ce1df02b77adf32a9c4550df11a747fff1174bfc8551d74c6604",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

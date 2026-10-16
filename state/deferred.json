@@ -1,1 +1,46 @@
-{}
+{
+  "gmail_scholar": {
+    "https://corpus.ulaval.ca/bitstreams/a8f630ea-f6b8-4350-87e1-2103f45c6632/download": {
+      "attempts": 0,
+      "first_deferred": "2026-10-16T11:44:01.552679+00:00",
+      "intake": {
+        "at": "2026-10-16T11:44:01.552679+00:00",
+        "by": "scholar-intake",
+        "window_days": 3
+      },
+      "last_outcome": "intake",
+      "published": "2026-10-16T03:40:32+00:00",
+      "summary": "S El Khanza - 2026 Cette th\u00e8se de doctorat examine les conditions dans lesquelles les parlements nationaux mobilisent leurs pouvoirs et proc\u00e9dures constitutionnels afin de limiter la capacit\u00e9 de l'Union europ\u00e9enne \u00e0 conclure et \u00e0 ratifier les accords commerciaux dits\u00a0\u2026 Save",
+      "title": "From legal strength to parliamentary contestation: a study on the impact of domestic parliaments on EU trade policy through CETA",
+      "url": "https://corpus.ulaval.ca/bitstreams/a8f630ea-f6b8-4350-87e1-2103f45c6632/download"
+    },
+    "https://internationallaw.jurisocial.org/index.php/JJIL/article/download/8/8": {
+      "attempts": 0,
+      "first_deferred": "2026-10-16T11:44:01.552679+00:00",
+      "intake": {
+        "at": "2026-10-16T11:44:01.552679+00:00",
+        "by": "scholar-intake",
+        "window_days": 3
+      },
+      "last_outcome": "intake",
+      "published": "2026-10-16T03:40:32+00:00",
+      "summary": "MS Malik, M Ayaz\u00a0- Jurisocial journal of International Law, 2026 \u2026 The article thus proposes a layered drafting approach: narrowly define substantive obligations to preserve legitimate regulatory change, preserve meaningful protection against discrimination and denial of justice , and align ISDS \u2026 Save",
+      "title": "International Investment Law and the Right to Regulate: Treaty Design, Arbitral Interpretation and ISDS Reform",
+      "url": "https://internationallaw.jurisocial.org/index.php/JJIL/article/download/8/8"
+    },
+    "https://www.researchgate.net/profile/Brian-Egenriether/publication/415545831_Flight_Test_Instrumentation_and_Data_Analysis_for_Separating_Triboelectric_and_Exogenous_Charging_in_Severe_Precipitation_Static_Environments/links/6acad937b183a8437cab4d7b/Flight-Test-Instrumentation-and-Data-Analysis-for-Separating-Triboelectric-and-Exogenous-Charging-in-Severe-Precipitation-Static-Environments.pdf": {
+      "attempts": 0,
+      "first_deferred": "2026-10-16T11:44:01.552679+00:00",
+      "intake": {
+        "at": "2026-10-16T11:44:01.552679+00:00",
+        "by": "scholar-intake",
+        "window_days": 3
+      },
+      "last_outcome": "intake",
+      "published": "2026-10-16T03:40:32+00:00",
+      "summary": "D Tuck, J Heeter, BC Airplanes, WA Everett\u2026 \u2026 Flight test data were collected using triboelectric charging patches and instrumented static dischargers ( ISDs ) installed on the aircraft to characterize the electrostatic charging environment during operations in severe precipitation\u00a0\u2026 Save Quick read",
+      "title": "Flight Test Instrumentation and Data Analysis for Separating Triboelectric and Exogenous Charging in Severe Precipitation Static Environments",
+      "url": "https://www.researchgate.net/profile/Brian-Egenriether/publication/415545831_Flight_Test_Instrumentation_and_Data_Analysis_for_Separating_Triboelectric_and_Exogenous_Charging_in_Severe_Precipitation_Static_Environments/links/6acad937b183a8437cab4d7b/Flight-Test-Instrumentation-and-Data-Analysis-for-Separating-Triboelectric-and-Exogenous-Charging-in-Severe-Precipitation-Static-Environments.pdf"
+    }
+  }
+}

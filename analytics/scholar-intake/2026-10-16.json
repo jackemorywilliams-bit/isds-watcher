@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-10-16",
+  "at": "2026-10-16T11:44:01.552679+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 7,
+    "newest_alert_date": "2026-10-16T03:40:32+00:00",
+    "newest_alert_subject": "(\"clinical trial data\" OR \"test data\" OR \"regulatory ... - new\r\n results",
+    "alert_dates": [
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-10",
+      "2026-10-07",
+      "2026-10-02",
+      "2026-09-17"
+    ]
+  },
+  "papers_in_window": 3,
+  "queued_new": 3,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://www.researchgate.net/profile/Brian-Egenriether/publication/415545831_Flight_Test_Instrumentation_and_Data_Analysis_for_Separating_Triboelectric_and_Exogenous_Charging_in_Severe_Precipitation_Static_Environments/links/6acad937b183a8437cab4d7b/Flight-Test-Instrumentation-and-Data-Analysis-for-Separating-Triboelectric-and-Exogenous-Charging-in-Severe-Precipitation-Static-Environments.pdf",
+    "https://internationallaw.jurisocial.org/index.php/JJIL/article/download/8/8",
+    "https://corpus.ulaval.ca/bitstreams/a8f630ea-f6b8-4350-87e1-2103f45c6632/download"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "request": "2026-10-18-daily.json",
+  "note": "2026-10-18 CADENCED BATCH, COMMITTED UNDER THE CHAIRMAN'S HAND. THE ONE QUESTION: has ICSID's own case-detail docket for ICSID Case No. ARB/22/2 (Huawei Technologies Co., Ltd. v. Kingdom of Sweden) recorded any event after the pinned 'July 10, 2025 - Each party files a reply submission on costs.'? WHY TODAY: this is the monthly resumption of the standing-dockets thread (state/research_log.json $.open_threads[0-based 13]), whose suspension of 2026-09-24 fixed its own resumption in element (vi) in these words - 'RE-ADOPTED AT MONTHLY, resuming 2026-10-18, pulled forward by any digest item or search-track title naming ARB/22/2'. It is due today on the thread's own clock and is not pulled forward: the last observation on this page is 2026-09-18, thirty days back. FOUR ROWS, ONE URL, within MAX_URLS = 12 (scripts/fetch_relay.py:76); the control https://example.com/ is prepended by the relay itself and is not written below. Host icsid.worldbank.org is on ALLOWED_HOSTS (scripts/fetch_relay.py:48). The UNENCODED 'CaseNo=ARB/22/2' form is used, certified 200 on this host by all seven prior rows on this page. THE BASELINE THIS BATCH IS READ AGAINST, pinned by thread 13 element (v) and re-derived in session from the result files rather than from any note: seven prior rows exist on this exact URL across five dates. 2026-08-06 (run 31098057244, bytes 94717, sha256 5ca4689cecf16b88): 'Status of Proceeding: Pending', 'Latest Development: July 10, 2025 - Each party files a reply submission on costs.', Procedural Orders Nos. 1-8 listed, and 'Procedural Order No. 9' NOT in the rendered text (FALSE). 2026-09-05 (33965638459, 94751, 9f197f396c34d838), 2026-09-06 (34032179583, 94751, 7240665dce917949) and 2026-09-18 (35344063678, 94750, 753d853b62f71098) each return the identical Status and Latest Development span on a 'Status of Proceeding' find. THE DIGEST MOVES WHILE THE PROSE DOES NOT: four distinct sha256 values across four dates on a page whose watched fields never changed, so a DIFFERING DIGEST OR BYTE COUNT IS NOT MOVEMENT and may never be written as movement. Diff on the prose, never on sha256 or bytes. PRIOR ART, SCREENED IN SESSION OVER ALL 691 ROWS IN 91 analytics/fetch-results/*.json FILES AND NOT TAKEN FROM ANY PRIOR NOTE (thread 51): this URL carries 7 rows on 5 dates; 'Status of Proceeding' is 67 fired / 67 TRUE corpus-wide; 'Latest Development' is 2 fired / 2 TRUE; 'Procedural Order No. 9' is 1 fired / 0 TRUE (the 2026-08-06 null); the empty find is 135 fired / 0 TRUE, which is an INSTRUMENT FACT and not a null - find_matched is 'bool(find) and bool(excerpt_of(...))' at scripts/fetch_relay.py:181, so an empty find can never report TRUE and row 1's FALSE says nothing about row 1's page. WHAT THIS BATCH MAY NEVER BE WRITTEN UP AS: a disposition, a holding, a ground, or any statement about what any tribunal decided (G16 bars a docket-summary surface from founding a disposition; G10 bars reading a document designation as a tribunal's characterisation). A continuing null on 'Procedural Order No. 9' supports ONLY that the list headed 'Published Decisions' does not name one - never that no PO 9 issued. A continuing 'July 10, 2025' supports ONLY that the docket RECORDS no later event - never that no award has been rendered, awards being dispatched to parties before publication, and this record holds NO measurement of ICSID's docket-update latency. OUTCOME CLASSES THAT ARE FACTS ABOUT THE INSTRUMENT AND MAY NEVER BE WRITTEN AS FINDINGS ABOUT ICSID OR ABOUT THIS MATTER: control_ok false (whole batch VOID); refused / 403 / 202 / timeout / no_contact; host_not_allowed / scheme_not_https; and A 404 OR A REDIRECT, WHICH IS NEVER A STATEMENT THAT THE CASE DOES NOT EXIST - it would mean only that this designator does not resolve on this surface at this instant, and the project's absence rule is 'not found in accessible sources'. RING STATUS, STATED SO NO SUCCESSOR INFLATES IT: on this council's own held reduction of 2026-09-04, 'Subject of Dispute: Telecommunication license agreements' and 'Instrument(s) Invoked: (i) BIT Sweden - China 1982'. RING 1 IS NOT ESTABLISHED ON THIS MATTER - no patent, trademark, GI, trade secret or clinical-trial data is pleaded as the covered investment on any body this council has read - and nothing in this batch can establish it. The thread's question is whether movement REACHES THE JURISDICTIONAL GATE ON AN IP OR DATA INVESTMENT, and a null on movement cannot. CADENCE: THIS BATCH TOUCHES AND RE-ANCHORS NOTHING ELSE. It is NOT thread 11's search limb (due on or around 2026-10-25, deliberately not pulled forward); it is NOT thread 11's relay row into the Decisions on Manifest Lack of Legal Merit register; it is NOT the Servier/Poland forum row; it is NOT the monthly watch on threads 10 / 25 (no 'Wingtech', no 'Yuching'). It does NOT touch ARB/12/1, ARB/17/19 or UNCT/20/6, which thread 13 names as watched at NO ADOPTED CADENCE AT ALL. STANDING PROHIBITIONS HONOURED: no www.italaw.com or bare italaw.com row; no investmentpolicy.unctad.org or bare unctad.org row; no ARB/24/16 row; no ARB/24/45 row; no dailyjus.com row; no IISD path-family row; no www.bing.com row; no row touching threads 2, 34, 42 or 43. Nothing is built by this batch and no approval item is exercised by it.",
+  "fetched_at": "2026-10-18T11:19:05.192520+00:00",
+  "environment": "github-actions-runner (run 39122712266)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "content_type": "text/html",
+      "bytes": 94429,
+      "sha256": "72230d746eaa4b731d3bc522b2e95f119385d479c7b9b7a61274e07e55fb57ca",
+      "excerpt": "Case Details | ICSID Skip to main content File a Request Languages English Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Procedure Young ICS",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "content_type": "text/html",
+      "bytes": 94429,
+      "sha256": "72230d746eaa4b731d3bc522b2e95f119385d479c7b9b7a61274e07e55fb57ca",
+      "excerpt": "weden The Office of the Chancellor of Justice, Stockholm, Sweden Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: July 10, 2025 - Each party files a reply submission on costs. (a) Original Proceeding Published Decisions Procedural Order No. 1 Procedural Order No. 2 Procedural Order No. 3 Procedural Order No. 4 Procedural Order No. 5 Procedural Order No. 6 Proced",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "find": "Procedural Order No. 9",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "content_type": "text/html",
+      "bytes": 94429,
+      "sha256": "72230d746eaa4b731d3bc522b2e95f119385d479c7b9b7a61274e07e55fb57ca",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "find": "Latest Development",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/22/2",
+      "content_type": "text/html",
+      "bytes": 94429,
+      "sha256": "72230d746eaa4b731d3bc522b2e95f119385d479c7b9b7a61274e07e55fb57ca",
+      "excerpt": "llor of Justice, Stockholm, Sweden Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: July 10, 2025 - Each party files a reply submission on costs. (a) Original Proceeding Published Decisions Procedural Order No. 1 Procedural Order No. 2 Procedural Order No. 3 Procedural Order No. 4 Procedural Order No. 5 Procedural Order No. 6 Procedural Order No. 7 Procedural Or",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

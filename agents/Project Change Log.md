@@ -47,7 +47,12 @@ chain enumerated to fourteen consecutive sittings at
 `analytics/daily-research/2026-09-14.md:1010-1011` and audited intact by the officer at `:554`.
 Recorded procedurally at `STATE_OF_THE_ANSWER.md:33` (objection `1017-C10`) but carried **nowhere**
 under `agents/`: `Rule 0` returned 0 occurrences in [[Workflow Threads]] across 11,944 lines of 13
-notes. **This seat records the chairman's resolution as correct and the gap as its own defect.**
+notes. **This seat records the chairman's resolution as correct and the gap as its own defect.** This
+session also found that `agents/obsidian-archivist.md`'s change log was missing **six** of the **25**
+distinct dates carried by the 26 dated records under `analytics/vault-sessions/` — 2026-08-13,
+2026-09-07, 2026-09-13, 2026-10-10, 2026-10-13, 2026-10-16 — the same class the 2026-10-13 entry
+caught in [[Agent Registry]]'s log, which had likewise stopped at 2026-10-07. The three recent are
+written in from the records on `main`; the three older are named and left open.
 The contract text is a `prompts/` edit and therefore Emory's; opened as **D26** in
 [[Workflow Threads]].
 

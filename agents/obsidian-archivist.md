@@ -783,13 +783,15 @@ see item 2 of the 2026-08-03 slice.)*
   while their shape held**: **D20** red **35** days, now 20 runs / 579 screened / 15 digests against
   the 17 / 499 / 12 recorded, read from CI run `39252488795` (2 failed, 821 passed); **D24** now
   **25** dirty `docs/` files not 24, the addition `docs/digests/2026-10-12.html`. **And this log's
-  own six-session gap found and part-closed** — see the block below. `pytest` absent from the
+  own gap of six dates found and part-closed** — see the block below. `pytest` absent from the
   container, so the suite was not run locally and CI's output was read instead.
   Record: `analytics/vault-sessions/2026-10-19.md`.
 
 > **GAP FOUND AND PART-CLOSED 2026-10-19 — this log was missing SIX of its own sessions, three of
-> them the three most recent.** Measured, not noticed: the dates of the **26** committed records
-> under `analytics/vault-sessions/` were diffed against the dated bullets in this log at `f7e4bf5`,
+> them the three most recent.** Measured, not noticed: the **26** dated record files under
+> `analytics/vault-sessions/` carry **25** distinct dates (2026-08-04 has two files, a session record
+> and a council record), and those dates were diffed against the dated bullets in this log at
+> `f7e4bf5`,
 > and **2026-08-13, 2026-09-07, 2026-09-13, 2026-10-10, 2026-10-13 and 2026-10-16** had no entry.
 > The log ended at 2026-10-07 while three further sessions had run, landed and been emailed. **This
 > is the defect this seat names in its own definition — *"stale agent memory is a defect you

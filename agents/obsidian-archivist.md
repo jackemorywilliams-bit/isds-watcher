@@ -99,6 +99,47 @@ rules written into its definition:
 3. `scripts/build_site.py` — verified, not assumed, at each deployment: the public site is
    generated from `METHODOLOGY.md` and `digests/` only.
 
+### Landing a session: the merge procedure, and it is binding — written here 2026-10-19
+
+**Why this is in the seat note and not only in a dated record.** On 2026-10-16 this seat landed
+`STATE_OF_THE_ANSWER.md` on `main` inside a record-paths-only self-merge — the first LANDED
+instance of [[Workflow Threads]] **D11** after seven caught near-misses. The same session then
+found and demonstrated the fix. **But it wrote the fix into
+`analytics/vault-sessions/2026-10-16.md` only**, and a dated record is not a read path: screened at
+`f7e4bf5`, this note carried **zero** occurrences of `expectedHeadSha`, `match-head-commit` or the
+two-dot finding before this block was added. **A session that did not happen to read its
+predecessor's record would have repeated the breach with a procedure sitting one file away.** That
+is thread **D15**'s mechanism — a rule routed somewhere the bound seat does not read — turned on
+this seat itself, and it is the defect this seat exists to prevent. Provenance:
+`analytics/vault-sessions/2026-10-16.md`, the amendment and the section *"The procedural fix, found
+by using it"*.
+
+1. **Check scope with the TWO-dot diff, `git diff --name-only origin/main HEAD`.** That is what the
+   merge will actually change on `main`. **The three-dot form over-reports** — it diffs from the
+   merge base, so it lists a path the branch touched even after that path has been restored to
+   `main`'s exact content, and a revert-and-recheck loop built on it ran five times on PR #274
+   without converging. Run both if you like; the two-dot one decides.
+2. **Note the head sha the check read, and merge pinned to it** — `expectedHeadSha` on the merge
+   call (`gh pr merge --match-head-commit <sha>`). **A pre-merge path check alone cannot close this,
+   and that is a property of the mechanism, not of how carefully the check is run:**
+   `.github/workflows/reanchor.yml` fires on `pull_request: [opened, synchronize, reopened]`, so
+   every push to an open archivist branch draws a fresh bot commit, and the merge API reads the head
+   *at merge time*. On #272 the bot fired **28 seconds** after the push the final check had just
+   cleared. No number of re-checks closes a race; a later check only moves the window. The pin
+   converts a silent out-of-scope landing into a loud **409 Head branch was modified**.
+3. **On a 409, revert the bot's out-of-scope path, push, and repeat from step 1.** It terminates —
+   2026-10-16's took two attempts, twenty minutes apart.
+4. **Never pre-empt by running `scripts/reanchor.py` yourself.** It writes the same
+   `STATE_OF_THE_ANSWER.md` edit into this seat's own commit, so both roads reach the same
+   violation. Leave the file untouched rather than touched-and-reverted: its declared path is
+   itself, so leaving it alone keeps its anchor honest while a revert commit counts as drift
+   against it.
+
+**None of this retires D11.** It converts a defect that lands silently into one that costs a retry.
+The out-of-scope commit is still generated on every push and the remedy is still Emory's or the
+systems designer's: a scope filter in `scripts/reanchor.py`, or `STATE_OF_THE_ANSWER.md` added to
+this seat's record paths.
+
 ## Discipline highlights
 
 - "Accuracy over completeness-theater: every registry and changelog line cites its commit
@@ -723,6 +764,86 @@ see item 2 of the 2026-08-03 slice.)*
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
 
+- **2026-10-19 (twenty-seventh deployment)** — Standing every-3-days session, audited against
+  `f7e4bf5` on a complete **2,201**-commit history; the clone arrived shallow (**6** graft points,
+  `origin/main` stale at `240ef1a` and `HEAD` detached), the **nineteenth** consecutive recurrence,
+  so every sha and ancestry figure was re-derived after `git fetch --unshallow`. Window
+  `dad7a52..f7e4bf5`, **68** commits. **No roster and no contract change, the eleventh consecutive
+  session**, on the narrowest window yet measured: only `STATE_OF_THE_ANSWER.md` and
+  `state/research_log.json` moved outside `agents/` and `analytics/`. **D5 re-measured, not carried
+  — unchanged at 0 of 19 read-path files** (18 designators screened, the single hit an unrelated
+  `Q`-mark rule at `prompts/carrying_span_rule.md:165`); 1 of 9 definitions still names its own
+  note. **Opened D26**: `prompts/daily_council_protocol.md:12` and `:14-15` direct a council
+  composition the daily council has not used for over a month — declared in 12 of 121 records, the
+  September chain enumerated to fourteen consecutive sittings — and `Rule 0` returned **0**
+  occurrences in [[Workflow Threads]]. The chairman's resolution is recorded as correct; the
+  contract text is Emory's. **Fixed in `HANDOFF.md`**: three of the six scheduled workflows were
+  undocumented in *"What runs, when"*, `vault-log.yml` — the job that emails this seat's own record
+  — appearing **nowhere** in the file. **Re-measured two carried threads whose figures had drifted
+  while their shape held**: **D20** red **35** days, now 20 runs / 579 screened / 15 digests against
+  the 17 / 499 / 12 recorded, read from CI run `39252488795` (2 failed, 821 passed); **D24** now
+  **25** dirty `docs/` files not 24, the addition `docs/digests/2026-10-12.html`. **And this log's
+  own six-session gap found and part-closed** — see the block below. `pytest` absent from the
+  container, so the suite was not run locally and CI's output was read instead.
+  Record: `analytics/vault-sessions/2026-10-19.md`.
+
+> **GAP FOUND AND PART-CLOSED 2026-10-19 — this log was missing SIX of its own sessions, three of
+> them the three most recent.** Measured, not noticed: the dates of the **26** committed records
+> under `analytics/vault-sessions/` were diffed against the dated bullets in this log at `f7e4bf5`,
+> and **2026-08-13, 2026-09-07, 2026-09-13, 2026-10-10, 2026-10-13 and 2026-10-16** had no entry.
+> The log ended at 2026-10-07 while three further sessions had run, landed and been emailed. **This
+> is the defect this seat names in its own definition — *"stale agent memory is a defect you
+> own"* — occurring in the one note whose subject is this seat's own history**, and it is the same
+> class the 2026-10-13 entry of [[Project Change Log]] caught in [[Agent Registry]]'s log, which had
+> likewise ended at 2026-10-07. **The three recent ones are written in below from the committed
+> records on `main`, not from memory.** The three older ones — 2026-08-13, 2026-09-07, 2026-09-13 —
+> are **NOT closed here** and are left named rather than quietly carried: their records are
+> `analytics/vault-sessions/2026-08-13.md`, `2026-09-07.md` and `2026-09-13.md`, and re-deriving
+> three sessions from two months ago to this log's standard is more than this session could do
+> honestly alongside the rest of its audit. Next archivist session: close them from those files.
+
+- **2026-10-16 (twenty-sixth deployment)** — Standing every-3-days session, audited against
+  `dad7a52` on a complete 2,133-commit history (clone arrived shallow at 160, the eighteenth
+  consecutive recurrence). Window `5c26738..dad7a52`, **108** commits. **No roster and no contract
+  change, the tenth consecutive session.** Corrected **three** of the prior session's own figures:
+  the read path is **19** files not 22 (9 definitions + the **10** prompts they enumerate, the three
+  unnamed being `prompts/classifier.txt`, `classifier_v2.txt`, `triage.txt`); the every-seat set is
+  **16 rules in 13 rows** not 11; and the 0-of-N result understated the escalation rather than
+  overstating it — the rules **do** reach the seats, by the chairman's memory, a route
+  `analytics/daily-research/2026-08-22.md:1614-1620` (`761faee`) already proved insufficient in a
+  controlled experiment. **Roster drift of this note's own fixed:** all nine definitions declare
+  `model: opus`, a tier, and none pins an id, but only **2** of 9 rows said so — all nine now carry
+  the caveat. **And this session breached its own authorisation:** `STATE_OF_THE_ANSWER.md` landed
+  on `main` in merge `5beba04` (PR #272) when the re-anchor bot fired **28 seconds** after the final
+  path check, the first LANDED instance of **D11** after seven caught near-misses. It then found and
+  demonstrated the remedy on its own PRs #273 and #274 — the pinned-sha merge and the two-dot diff,
+  now written into this note's binding section above. Record:
+  `analytics/vault-sessions/2026-10-16.md`.
+- **2026-10-13 (twenty-fifth deployment)** — Standing every-3-days session, audited against
+  `5c26738` on a complete 2,025-commit history (clone arrived shallow at 139, the seventeenth
+  consecutive recurrence). Window `7f10729..5c26738`, **97** commits, of which two touched anything
+  outside the record paths and neither was a contract change. **No roster and no contract change,
+  the ninth consecutive session.** **The substance was the every-seat rule gap**: eleven rules the
+  council had adopted as binding on every seat appeared in **none** of the files any seat reads, and
+  in neither [[council-chairman]]'s nor [[research-analyst]]'s own note (**0 of 11** each, against
+  [[integrity-officer]]'s **5 of 11** — the one seat whose definition names its note). Fixed in the
+  two notes that are this seat's; the read-path half is a contract edit and remains Emory's
+  ([[Workflow Threads]] **D5**). Also confirmed the 2026-10-10 mailer fix worked — that day's email
+  read *"6 items that need you"* rather than *"Nothing needs you"* — and found that the project's
+  flowchart does not show its own guard layer. Record: `analytics/vault-sessions/2026-10-13.md`.
+- **2026-10-10 (twenty-fourth-by-date, and the entry [[Agent Registry]]'s log also skipped)** —
+  Standing every-3-days session, audited against `7f10729` on a complete 1,928-commit history (clone
+  arrived shallow at 162, the sixteenth consecutive recurrence). Window `bc35cfb..7f10729`, **90**
+  commits, **all** of them council records and bot close-outs — zero touched `.claude/agents/`,
+  `prompts/`, `src/models.py`, `src/`, `scripts/`, `tests/`, `.github/`, `docs/`, `views/`,
+  `METHODOLOGY.md`, `README.md`, `HANDOFF.md` or `COUNCIL.md`, the eighth consecutive session
+  without contract drift. **The finding was in this seat's own deliverable and is the worst class
+  this standing session exists to catch: the archivist's emails had been reporting that nothing
+  needed Emory on days when the record carried items marked for him.** Counted by execution:
+  **36** operator-action callouts across **12** session records were written in a form the mailer
+  does not recognise, and only **3** had ever counted. Fixed on this seat's side the same session —
+  one character class — and verified by the next session's subject line. This session also gave
+  `HANDOFF.md` its first currency anchor. Record: `analytics/vault-sessions/2026-10-10.md`.
 - **2026-10-07 (twenty-third deployment)** — Standing every-3-days session, audited against
   `bc35cfb` (`main`, clean tree), complete **1,838**-commit history after `git fetch --unshallow`;
   the clone arrived shallow at **151**, the **fifteenth consecutive** session. Window

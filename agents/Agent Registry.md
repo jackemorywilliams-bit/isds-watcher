@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `4afa127`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `8ca9fed`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -565,6 +565,57 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-10-19 (archivist session — twenty-seventh deployment)** — **No roster change and no
+  contract change, for the ELEVENTH consecutive session.** The window is `dad7a52..f7e4bf5`, **68**
+  commits over three days; `git log dad7a52..HEAD -- .claude/agents/ prompts/ src/models.py` returns
+  **no commit**. The window is narrower still than the one the 2026-10-16 entry called the narrowest
+  ever measured: across all 68 commits the **only** files touched outside `agents/` and `analytics/`
+  are `STATE_OF_THE_ANSWER.md` and `state/research_log.json` — two paths, where the previous window
+  had three. No code, no test, no prompt, no workflow, no documentation surface and no view moved.
+  `src/models.py` unchanged and re-read at `f7e4bf5`: `CHAIRMAN_MODEL` and `HEAVY_MODEL`
+  `claude-opus-5` (`:26-27`), `UTILITY_MODEL` `claude-opus-4-8` (`:28`), `DIGEST_CLASSIFIER_MODEL`
+  `claude-haiku-4-5-20251001` (`:32`), `FALLBACK_MODEL` `claude-opus-4-8` (`:35`).
+  **The roster's 2026-10-16 correction re-verified by reading all nine frontmatters, not inherited.**
+  All nine `.claude/agents/*.md` declare `model: opus` — a tier — and none declares a concrete id,
+  so the caveat added to all nine rows on 2026-10-16 stands. The description split is unchanged at
+  **4** Opus 5 (`council-chairman`, `research-analyst`, `systems-designer`, `site-experience`) and
+  **5** Opus 4.8 (`analytics-officer`, `integrity-officer`, `obsidian-archivist`, `research-editor`,
+  `systems-researcher`), re-counted from the files. **One method note against this seat's own
+  screen:** a case-sensitive grep for *"Runs on Claude"* returned **no** model statement for
+  `research-analyst`, which would have read as drift; the file says *"runs on Claude Opus 5"*
+  lowercase at `.claude/agents/research-analyst.md:3`, with the discipline line at `:37`. The
+  project's own rule that a zero-hit screen is not absence until the synonym is tried (2026-08-07,
+  `7adfd68`) is what caught it, and it is recorded because the near-miss is the useful part.
+  **D5 re-measured rather than carried, and it is unchanged.** The read path is **19** files — 9
+  definitions plus the **10** `prompts/` files they enumerate, re-enumerated at `f7e4bf5`; the three
+  unnamed remain `prompts/classifier.txt`, `prompts/classifier_v2.txt`, `prompts/triage.txt`.
+  Eighteen distinct designators drawn from the every-seat rows were screened across all 19 files and
+  **17 return zero**; the one hit is `prompts/carrying_span_rule.md:165`, an unrelated `Q`-mark
+  pasteback rule, so the carrier count for the every-seat rules remains **0 of 19**. **1 of 9**
+  definitions names its own vault note (`.claude/agents/integrity-officer.md`), unchanged. Remedy is
+  still a contract edit and still Emory's: [[Workflow Threads]] **D5**.
+  **NEW THREAD OPENED, and it is a contract-versus-practice disagreement over a month old.**
+  `prompts/daily_council_protocol.md:12` directs that exactly `research-analyst` and
+  `council-chairman` be convened and `:14-15` that the integrity challenge not be a separately
+  convened seat; the daily council instead convenes `research-analyst` and `integrity-officer` with
+  the chairman in his own seat, because the operator's rule against a performed seat forbids the
+  alternative. Declared in **12** of the **121** records in `analytics/daily-research/`, with the
+  September chain enumerated to **fourteen consecutive sittings** at
+  `analytics/daily-research/2026-09-14.md:1010-1011` and audited intact by the officer at `:554`.
+  `Rule 0` returned **0** occurrences in [[Workflow Threads]] and the only two hits under `agents/`
+  were this note's own — `:530` in the unrelated optimization-item sense and `:911` describing the
+  2026-09-10 special session's different, one-off departure. Opened as **D26**; the contract text is
+  Emory's.
+  Guards at `f7e4bf5`: `check_models.py` **0** (12 cards), `check_claims.py` **0** (15 facts / 39
+  restatements), `check_site_sync.py` **0**, `check_lock.py` **0**, `check_seen_integrity.py` **0**
+  (539 entries, 187 legacy), `check_telemetry_privacy.py` **0** (488 telemetry + 4 tail-audit),
+  `check_headline_lane.py` **0** (nothing on disk to check), `check_currency.py` **9 claims / 1
+  failed** — the lone `STALE` being [[Workflow Threads]] outrun by the day's `[skip ci]`
+  scholar-intake commit `f7e4bf5`, the third recorded instance of a known self-clearing recurrence.
+  *Audited against `f7e4bf5`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `.github/workflows/`, `tests/test_site_claims.py`, `HANDOFF.md`, `docs/`,
+  `analytics/daily-research/`, `analytics/vault-sessions/`.*
 
 - **2026-10-16 (archivist session — twenty-sixth deployment)** — **No roster change and no
   contract change, for the TENTH consecutive session.** The window is `5c26738..dad7a52`, **108**

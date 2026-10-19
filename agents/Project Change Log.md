@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `4afa127`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `8ca9fed`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,79 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-10-19 (archivist session — twenty-seventh deployment)
+
+*Audited against `f7e4bf5` (`origin/main`, clean tree), on a complete **2,201**-commit history —
+the container's clone arrived shallow at **6** graft points (5 after a first `--deepen=300`; the
+arrival commit count was not recorded before deepening, so it is not stated) with `origin/main`
+stale at `240ef1a`
+(2026-10-12) and `HEAD` detached, so every sha, ancestry test and orphan figure below was
+re-derived after `git fetch --unshallow`. Paths: `.claude/agents/`, `prompts/`, `src/models.py`,
+`agents/`, `.github/workflows/`, `tests/test_site_claims.py`, `HANDOFF.md`, `docs/`,
+`analytics/`, `state/`.*
+
+**Contract state: no roster change and no contract change, the eleventh consecutive session.**
+`git log dad7a52..HEAD -- .claude/agents/ prompts/ src/models.py` returns no commit across a
+**68**-commit window. The window touched **two** paths outside `agents/` and `analytics/` —
+`STATE_OF_THE_ANSWER.md` and `state/research_log.json` — making it narrower than the 2026-10-16
+window, which the previous entry called the narrowest ever measured. All nine definitions re-read at
+`f7e4bf5` declare `model: opus`; the 4 Opus 5 / 5 Opus 4.8 description split is unchanged.
+`scripts/check_models.py`, `check_claims.py`, `check_site_sync.py`, `check_lock.py`,
+`check_seen_integrity.py`, `check_telemetry_privacy.py` and `check_headline_lane.py` all exit 0;
+`check_currency.py` reports **1 failed**, the known self-clearing `STALE` on [[Workflow Threads]]
+from the day's scholar-intake commit `f7e4bf5`.
+
+**D26 opened — the daily council's Rule 0 composition.** `prompts/daily_council_protocol.md:12`
+directs that exactly `research-analyst` and `council-chairman` be convened, and `:14-15` that the
+integrity challenge not be separately convened. The council has instead convened
+`research-analyst` and `integrity-officer` with the chairman in his own seat, on the ground that
+the operator's rule against a performed seat forbids the alternative — the chairman's reasoning at
+`analytics/daily-research/2026-10-19.md:25-26`. Declared in 12 of 121 daily records, the September
+chain enumerated to fourteen consecutive sittings at
+`analytics/daily-research/2026-09-14.md:1010-1011` and audited intact by the officer at `:554`.
+Recorded procedurally at `STATE_OF_THE_ANSWER.md:33` (objection `1017-C10`) but carried **nowhere**
+under `agents/`: `Rule 0` returned 0 occurrences in [[Workflow Threads]] across 11,944 lines of 13
+notes. **This seat records the chairman's resolution as correct and the gap as its own defect.** This
+session also found that `agents/obsidian-archivist.md`'s change log was missing **six** of the **25**
+distinct dates carried by the 26 dated records under `analytics/vault-sessions/` — 2026-08-13,
+2026-09-07, 2026-09-13, 2026-10-10, 2026-10-13, 2026-10-16 — the same class the 2026-10-13 entry
+caught in [[Agent Registry]]'s log, which had likewise stopped at 2026-10-07. The three recent are
+written in from the records on `main`; the three older are named and left open.
+The contract text is a `prompts/` edit and therefore Emory's; opened as **D26** in
+[[Workflow Threads]].
+
+**Two carried threads re-measured, and both had drifted in their figures while holding in their
+shape.** **D20** — `pipeline-guards` is still red on `main`, now **35 days** since 2026-09-14, read
+from CI run **#357** (`39252488795`, on `4afa127`): **2 failed, 821 passed, 5 xfailed**. The two
+`tests/test_site_claims.py` failures are the same two, but the archive has moved from the 17 / 499
+/ 12 this thread recorded to **20 runs / 579 screened / 15 digests**, so the re-measurement its next
+action asks for grows with every weekly digest. **D24** — `scripts/check_site_sync.py` left
+**25** modified tracked files under `docs/` this session, not the 24 recorded since 2026-10-01; the
+addition is `docs/digests/2026-10-12.html`, published by `240ef1a` and the only `docs/` html file
+added since 2026-10-04. Stamp-only confirmed by arithmetic — 25 insertions, 25 deletions, 25 files
+— then restored. Both remain the systems designer's; `tests/` and `scripts/` are outside this
+seat's paths.
+
+**HANDOFF.md corrected, and the omission was this seat's to find.** `.github/workflows/` holds 15
+workflows, **6** of them scheduled. The *"What runs, when"* section documented **3**.
+`daily-update` and `heartbeat` were named elsewhere in the file without their schedules, and
+**`vault-log` appeared nowhere in the file at all** — the daily 16:00 UTC job
+(`.github/workflows/vault-log.yml`) that emails the archivist's own session record, which is to say
+the one channel by which these sessions reach Emory. All three are now documented with their crons
+quoted from the `cron:` lines, and the section carries an explicit statement of its own edges
+naming the 9 event-driven workflows it does not cover. The file's own currency anchor advanced
+`7f10729` → `f7e4bf5` on a measurement: its four declared paths returned **no commit** in the
+window, so its content was true as written.
+
+**Orphan check clean, by the established classification rather than by the raw ancestry test.**
+Over **250** remote branches, `git merge-base --is-ancestor` returns **78** that are not ancestors
+of `origin/main`; **67** carry nothing but the bot's `chore(currency): re-anchor tracked notes`
+close-out and are cosmetic, and **11** carry genuinely unlanded non-bot commits. The eleven are the
+same eleven the 2026-10-16 entry named, and the newest unlanded non-bot work is still **2026-09-13**
+— so nothing committed in the five weeks since has failed to reach `main`, and the 2026-07-31
+failure this standing session exists to catch has not recurred. Counts moved only in the cosmetic
+column, 59 → 67.
 
 ## 2026-10-16 (archivist session — twenty-sixth deployment)
 

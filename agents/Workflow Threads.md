@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `4afa127`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `8ca9fed`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -735,6 +735,67 @@ still the only open PR in the repository before this session's own.
 - **Owner** — archivist for the Claim Map half (done); the branch itself is dead weight and
   **Emory** may delete it.
 
+### D26 — the daily council has departed from Rule 0's composition on at least twelve declared occasions, the departure is the right call, and this note — the project's open-work index — carries no thread for it *(new 2026-10-19; owner: Emory for the contract text; council-chairman for the practice)*
+
+- **The conflict, stated as the two rules that collide.**
+  `prompts/daily_council_protocol.md:12` directs: *"**Convene exactly two agents:**
+  `research-analyst` and `council-chairman`. Nothing else"*, and `:14-15` adds that the integrity
+  challenge *"is not a separately convened seat and does not file its own return."* Against that
+  stands the operator's permanent rule that a council member is a real subagent and never a voice
+  the chairman performs. **Honouring Rule 0's letter requires the chairman to write the integrity
+  challenge himself, which the second rule forbids.** There is no composition that satisfies both.
+- **How the chairman has resolved it, in his own words.** He convenes `research-analyst` and
+  `integrity-officer` and fills his own seat: *"Between a rule about the meeting's size and the rule
+  against fabricating a member's words, I give way to the second"*
+  (`analytics/daily-research/2026-10-19.md:25-26`). Rule 0's costless concessions are kept every
+  time — no `analytics-officer`, no `systems-researcher`, the digest sentence copied from
+  `meta.json`, the optimization item one paragraph.
+  **This seat records the resolution as correct.** The cost of the alternative is a fabricated seat,
+  which is the one failure class this council treats as unrecoverable.
+- **The measurement, with its population and its limit both stated.** Screened at `f7e4bf5` over all
+  **121** records in `analytics/daily-research/`: the literals *Rule 0 departure* and *Rule 0's
+  composition* return **12** files — `2026-09-14` through `2026-09-19`, `2026-09-22`, `2026-09-23`,
+  `2026-09-24`, then `2026-10-17`, `2026-10-18`, `2026-10-19`. **For the September run the chain is
+  enumerated rather than asserted, and it was audited by the officer.** The 2026-09-14 record's
+  procedural caveats call it the *"fourteenth consecutive session"* and enumerate the members —
+  *"09-11 eleventh, 09-12 twelfth, 09-13 thirteenth, 09-14 fourteenth, on the 09-10 record's
+  verified ten"* (`analytics/daily-research/2026-09-14.md:1010-1011`, the practice itself declared at
+  `:20`). The officer tested that counter under `0910-N2`'s rule that a periodic count is stated with
+  its members, and reported: *"I went looking for a broken chain and found an intact one"*
+  (`:554`). So the departure ran unbroken for at least fourteen sittings to 2026-09-14 and recurs
+  through 2026-10-19. **What this screen does NOT establish is continuity across
+  2026-09-25..2026-10-16.** A bare `Rule 0` count over those records returns 3 to 15 hits each, but
+  those are dominated by the routine one-optimization-item reference, and the count does not
+  discriminate composition from citation. **So no total run length is asserted here.** The floor is
+  **25 sittings**, and the arithmetic is given so it can be checked against the enumeration beside
+  it: **14** enumerated through 2026-09-14, plus the **8** further September records that declare the
+  departure (`2026-09-15`, `-16`, `-17`, `-18`, `-19`, `-22`, `-23`, `-24`), plus the **3** October
+  ones (`2026-10-17`, `-18`, `-19`). The true figure is higher, because the
+  2026-09-25..2026-10-16 window was not resolved either way.
+- **Why it is a thread and not merely a note.** The departure is recorded — in the daily records, and
+  procedurally at `STATE_OF_THE_ANSWER.md:33` from objection `1017-C10`, raised by the officer
+  against its own convening before the chairman disclosed it. It is **not** recorded here. Screened
+  at `f7e4bf5`: `Rule 0` returns **0** occurrences in this note across the **11,944** lines of the
+  **13** `agents/` notes, and the only two hits anywhere under `agents/` are in
+  [[Agent Registry]] — one the unrelated Rule 0 *optimization-item* sense at `:530`, and one at
+  `:911` describing the **2026-09-10 special session's** four-subagent departure, which is a
+  different, one-off event with the operator's own convening instruction as its precedence. **No
+  `esc-` slug covers it either:** eleven slugs are in use across the tracked tree and none names
+  this subject.
+- **So the standing contract in `prompts/` and the standing practice of the council have disagreed
+  for over a month, every seat that reads Rule 0 reads a composition the council does not use, and
+  the index a reader consults for open work says nothing.** That is this seat's defect, and opening
+  this thread is the fix for that half.
+- **FOR EMORY — this is a one-sentence ruling, not a build.** Either Rule 0's two-seat composition
+  is amended to name the composition the council actually uses — chairman in his own seat,
+  `research-analyst` and `integrity-officer` convened — or the chairman is directed to stop
+  departing and some other way is found to seat the integrity challenge without performing it.
+  **Editing `prompts/` is a contract change and is yours, not this seat's**, which is why the text is
+  untouched. Until you rule, the chairman's resolution stands and this thread carries it.
+- **Next** — **Emory**: rule on Rule 0's composition. **[[council-chairman]]**: keep declaring the
+  departure in Part 1 before the seats are convened, which 2026-10-19 did and 2026-10-18 did not
+  (`1018-C1`, sustained).
+
 ### D25 — the council adopted a durable escalation-slug namespace on 2026-10-02 and this note, the project's open-work index, resolves none of its eleven ids *(new 2026-10-07; owner: archivist — fixed in part here; **Emory** for the five slugs that have no thread at all)*
 
 - **State** — On 2026-10-01 the chairman established that the letter-series escalation labels had
@@ -827,6 +888,20 @@ still the only open PR in the repository before this session's own.
   and so is its shape: the guard's verdict is trustworthy and its side effect is not.** Two
   sessions in a row have now had to know about this to avoid committing generated output inside a
   records-only pull request. The remedy is unchanged and still one line.
+- **2026-10-19 — reproduced a third time, and the file count has grown from 24 to 25.** This session
+  ran `check_site_sync.py` as part of the guard set at `f7e4bf5`; it exited **0** (*"OK: docs/ is in
+  sync with source (only the build stamp differs)"*) and left **25** modified tracked files under
+  `docs/` — one more than the 24 this thread has recorded since 2026-10-01, the addition being
+  `docs/digests/2026-10-12.html`, the weekly digest published on 2026-10-12 (`240ef1a`). Verified
+  stamp-only before restoring, by arithmetic rather than by eye: `git diff --numstat docs/` totals
+  **25 insertions and 25 deletions across 25 files** — exactly one changed line each — with the
+  stamp moving from *"Site built 2026-10-12 21:38 UTC · b4749e9"* to *"2026-10-19 15:08 UTC ·
+  f7e4bf5"*; `git restore docs/` then returned the tree to clean. **The figure in this thread's own
+  title is now wrong, and it will keep going wrong:** the count is not a constant but the size of
+  the published archive, so every weekly digest increments it. The title is left as written because
+  it is a dated finding; the live number is this bullet's. **Three consecutive archivist sessions
+  have now had to know about this to avoid committing generated output into a records-only pull
+  request.**
 - **Owner** — **systems-designer.** `scripts/` is outside this seat's merge scope; this seat found it
   and did not fix it.
 
@@ -1116,6 +1191,19 @@ still the only open PR in the repository before this session's own.
   no path in either change set (`agents/`, `analytics/`) can reach `tests/test_site_claims.py` — but
   **this seat did not know that at the moment it merged.** That is exactly the state the 2026-09-07
   session warned about when it said a routinely-false red is a red nobody acts on.
+- **RE-MEASURED 2026-10-19 BY THE ARCHIVIST, AND THE SHAPE HOLDS WHILE EVERY FIGURE HAS MOVED.**
+  `pipeline-guards` on `main` still concludes **failure**; the six most recent runs on `main`
+  (2026-10-17 through 2026-10-19) are failures without exception, the newest being run **#357**,
+  id `39252488795`, on `4afa127`. Read from that run's failed `suite` job rather than re-run
+  locally — `pytest` is absent from this container, so the figures below are CI's own output, not
+  this seat's: **2 failed, 821 passed, 5 xfailed in 34.61s.** The two failures are the same two
+  tests, and the drift has widened: `test_archive_status_measures_the_committed_archive` expects
+  `runs: 16, screened: 492` against an archive now returning **20** and **579** (this thread
+  recorded 17 and 499), and `test_the_two_denominators_really_do_differ` expects **11** digests
+  carrying `per_source` against **15** on disk (this thread recorded 12). **Red since 2026-09-14 is
+  now 35 days.** Nothing in the diagnosis changes — the constants are a deliberate snapshot and the
+  archive is supposed to grow — but each weekly digest widens the gap, so the re-measurement the
+  next action calls for gets larger, never smaller.
 - **Next action** — **systems-designer or site-experience**: re-measure the eight constants at
   `tests/test_site_claims.py:155-156` and the four at `:305-308` against the archive as committed,
   and update them in the same change set. **Emory**, the second-order question: a weekly digest is a

@@ -8,8 +8,12 @@
   is commented out in `src/config.py` and can be restored).
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
-**Currency anchor.** *Audited against `7f10729`; paths: `.github/workflows/`, `src/config.py`,
-`scripts/`, `.claude/agents/`.* Added 2026-10-10 by the archivist. This file had **no** anchor
+**Currency anchor.** *Audited against `f7e4bf5`; paths: `.github/workflows/`, `src/config.py`,
+`scripts/`, `.claude/agents/`.* **Re-anchored 2026-10-19 by the archivist on a measurement, not a
+stamp:** `git log 7f10729..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
+returns **no commit**, so nothing this file declares had moved since 2026-10-10 and the content
+below was true as written. The anchor advances because it was re-audited, not because a session
+ran. Added 2026-10-10 by the archivist. This file had **no** anchor
 of its own until that date, so staleness in it was a judgement call rather than a query — the
 one thing the snapshot-anchor convention exists to prevent. Note the honest limit: this anchor
 is **not machine-checked**, because `scripts/check_currency.py`'s `TRACKED` map covers five
@@ -19,6 +23,26 @@ in `analytics/vault-sessions/2026-10-10.md`.
 
 ## What runs, when
 - **scholar-intake** — daily 06:30 UTC (`.github/workflows/scholar-intake.yml`): reads the Scholar alert mailbox, queues new papers for Monday's classification, commits `state/deferred.json` + `analytics/scholar-intake/<date>.json` `[skip ci]`. Added 2026-09-08 because only the weekly run read that mailbox and a Tuesday alert waited six days.
+- **daily-update** — `0 12,15,18 * * *` plus a `0 21 * * *` fallback
+  (`.github/workflows/daily-update.yml`): emails the day's chairman + researcher meeting record
+  once it exists, de-duplicating through a marker committed to
+  `analytics/daily-research/.sent/<DATE>`. SMTP only, no model API. It runs several times a day
+  deliberately — the routine finishes at an unpredictable hour and commits with `[skip ci]`, which
+  GitHub honours by SKIPPING workflows, so the `on: push` trigger does **not** fire on the
+  routine's own commit and the cron is the real delivery path. The 21:00 run escalates with an
+  ALERT subject if the day's record never landed.
+- **vault-log** — daily `0 16 * * *` (`.github/workflows/vault-log.yml`): emails the Obsidian
+  archivist's session record from `analytics/vault-sessions/<DATE>.md`, marker at
+  `analytics/vault-sessions/.sent/<DATE>`. Scheduled after the archivist's 15:00 window, and for
+  the same `[skip ci]` reason as daily-update it is a cron rather than a push trigger. **This is
+  the channel by which an archivist session reaches you at all**, so a silent failure here looks
+  exactly like a session that found nothing. As of 2026-10-19 it is healthy: 25 dated records under
+  `analytics/vault-sessions/` and 25 markers, with no unsent dated record.
+- **heartbeat** — daily `0 22 * * *` (`.github/workflows/heartbeat.yml`): a dead-man's switch for
+  the daily meeting. If the newest `analytics/daily-research/*.md` is older than ~36h, or none
+  exists, it emails an ALERT. The workflow states its own limit in terms: the alert travels over
+  the **same SMTP path** as the thing it watches, so if SMTP is down the alert is lost with it. It
+  also re-checks branch protection daily (see below).
 - GitHub Actions workflow `.github/workflows/weekly.yml`, cron `0 13 * * 1` (Mondays 13:00 UTC),
   plus manual `workflow_dispatch`. Concurrency group `isds-watcher` prevents overlap.
 - `.github/workflows/human-review.yml` (the operator's Monday review packet) fires at
@@ -43,6 +67,18 @@ in `analytics/vault-sessions/2026-10-10.md`.
   appended to this file automatically. Issues land in `briefs/<date>.html`; the full council deliberation is
   preserved at `briefs/<date>-memo.md`. Continuity: each issue's open threads persist in
   `state/research_log.json` and feed the next week's chairman.
+
+**What this section covers, stated so the next reader knows its edges — added 2026-10-19 by the
+archivist.** `.github/workflows/` holds **15** workflows. The **6** that run on a schedule are all
+listed above: `scholar-intake`, `daily-update`, `vault-log`, `heartbeat`, `weekly` and
+`human-review`. **Three of those six — `daily-update`, `vault-log` and `heartbeat` — were absent
+from this section until today, and `vault-log` appeared nowhere in this file at all**, which meant
+the operator's handbook did not name the job that delivers the archivist's own session record. The
+remaining **9** are event-driven, not scheduled, and are described where they are relevant rather
+than here: `aggregate` and `send-digest` (`workflow_dispatch` only), `claims-consistency`,
+`model-consistency`, `pipeline-guards`, `reanchor` and `site-sync` (on `push` and/or
+`pull_request`), `fetch-relay` (`push`), `lit-review` (`pull_request`). Verified by reading every
+`on:` block at `f7e4bf5`; the schedules above are quoted from the `cron:` lines themselves.
 
 ## Website stays in sync with source (guardrail)
 The website (`docs/`) is generated from source (`METHODOLOGY.md`, the digest folders, the

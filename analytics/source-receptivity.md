@@ -1,21 +1,21 @@
 # Source receptivity — analytics
 
-Across **20** archived run(s); per-source candidate counts available for **15** of them (older runs predate per-source recording).
+Across **21** archived run(s); per-source candidate counts available for **16** of them (older runs predate per-source recording).
 
 _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist._
 
 | Source | Fresh candidates | Surfaced | Receptivity | Note |
 |--------|------------------|----------|-------------|------|
-| bing_news | 5 | 1 | 20% |  |
+| bing_news | 6 | 1 | 17% |  |
 | gdelt | 37 | 0 | 0% |  |
-| gmail_scholar | 9 | 0 | 0% |  |
+| gmail_scholar | 12 | 0 | 0% |  |
 | google_alerts | 16 | 0 | 0% | operator RSS alerts; quiet but live. |
 | google_news_rss | 0 | 0 | n/a |  |
-| iareporter_headlines | 142 | 12 | 8% | headline-only (paywalled body) — capped at watch-list leads. |
-| icsid | 7 | 0 | 0% |  |
-| iisd_itn | 23 | 0 | 0% | only fetch-time full-text feed; intermittently empty. |
-| italaw | 19 | 4 | 21% |  |
-| pca_press | 14 | 0 | 0% |  |
+| iareporter_headlines | 154 | 12 | 8% | headline-only (paywalled body) — capped at watch-list leads. |
+| icsid | 8 | 0 | 0% |  |
+| iisd_itn | 27 | 0 | 0% | only fetch-time full-text feed; intermittently empty. |
+| italaw | 29 | 4 | 14% |  |
+| pca_press | 15 | 0 | 0% |  |
 | unctad_isds | 5 | 0 | 0% |  |
 
 ## Reading this

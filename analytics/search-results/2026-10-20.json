@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-20",
+  "seat": "research analyst",
+  "model": "claude-opus-5",
+  "schema_note": "ROW TITLES ONLY. NO BODY WAS OPENED BY ANY MEANS — this seat had no body-reading channel today (direct fetch DEAD on both instruments, established by the chairman at session open on neutral controls and NOT re-probed). Nothing in this file may be read as a statement about any document's contents. A tool-layer status is never a claim about a resource.",
+  "pre_registration": {
+    "path": null,
+    "ordering_claim": "NONE. No pre-registration file was written by this seat today; the budget was 2 and was set by the chairman in the convening instruction. S1's string was fixed before firing; S2's string was chosen AFTER S1 returned null, and that ordering is disclosed rather than claimed otherwise."
+  },
+  "instrument_state": {
+    "fetch": "DEAD on both instruments (proxy CONNECT/403 on curl; getaddrinfo ENOTFOUND on the fetch service). Established by the chairman at session open; NOT re-probed by this seat.",
+    "search_track": "ALIVE. The only retrieval instrument this seat used.",
+    "relay": "ALIVE. analytics/fetch-requests/2026-10-20-daily.json was fired by the chairman before this seat was convened; results LANDED at analytics/fetch-results/2026-10-20-daily.json (control_ok true, void false, 4 requested / 4 completed, all four finds matched). This seat requested no relay rows of its own."
+  },
+  "budget": {
+    "ceiling": 2,
+    "spent": 2,
+    "handed_back": 0,
+    "note": "Both calls fired; both NULL on the proposition. S1 was wasted by this seat's own query construction (see why_this_string_failed). The zero-budget monitored-author item (Anthea Roberts) was NOT fired, per the 2026-09-13 ruling carried at agents/Workflow Threads.md:3764; this seat does not contest that ruling."
+  },
+  "calls": [
+    {
+      "call_id": "S1",
+      "role": "PRIORITY 3, register member UNCT/20/6 — does any accessible secondary source report the March 2025 hearing, an award, or a 2026 development?",
+      "string_verbatim": "\"Einarsson\" \"UNCT/20/6\" Canada award 2026",
+      "domain_parameters": "none passed",
+      "why_this_string": "two rigid designators in quotes — the party name and the docket number — plus the two tokens the proposition turns on.",
+      "rows_titles_verbatim": [
+        "2026 Canada Gairdner Awards Announcement | https://www.gairdner.org/event-item/2026-canada-gairdner-awards-announcement",
+        "Published on Research Alerts (https://www.uoguelph.ca/research/alerts) | https://www.uoguelph.ca/research/alerts/print/content/governor-generals-international-award-canadian-studies-2026",
+        "product year awards | https://ccentral.ca/business-topic/awards/product-year-awards",
+        "rsc-src.ca | https://rsc-src.ca/en/node/100014",
+        "Canada Awards 2022 | https://uibk.ac.at/canada/studierende/preise/zks/canada-pr.html",
+        "E.g., 07/21/2026 | https://www.mcgill.ca/channels/news/science-beaks-243287?page=6",
+        "E.g., 06/24/2026 | https://www.mcgill.ca/channels/news/_commandreference/CMD_insertobj.html?page=4",
+        "E.g., 06/17/2026 | https://www.mcgill.ca/channels/news/partenariat-entre-mcgill-et-intellectual-ventures-pour-la-commercialisation-d%E2%80%99inventions-217454?page=3",
+        "U. of T. watches 'godfather of AI' Geoffrey Hinton awarded Nobel Prize | https://globalnews.ca/video/10911767/u-of-t-watches-godfather-of-ai-geoffrey-hinton-awarded-nobel-prize/"
+      ],
+      "verdict": "TOTAL NULL. 0 of 9 rows name Einarsson, UNCT/20/6, ICSID, NAFTA or any investor-State matter; 9 of 9 concern academic or commercial prizes. The null is VOID as evidence about the docket, because the query, not the docket, produced it.",
+      "why_this_string_failed": "METHOD NOTE FOR THE SELF-TRAINING RECORD: on a title-level channel the token 'award' is POISONED for arbitration queries — it collides with prize semantics and swamps both quoted rigid designators. The engine honoured neither quoted designator.",
+      "not_adopted": "the engine asserted in prose that 'UNCT/20/6 looks like a UN Dispute Tribunal case reference'. That is engine prose, it is WRONG on this council's own primary record (icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6 answered 200 today), and it is recorded here only as a caution about this channel's designator handling."
+    },
+    {
+      "call_id": "S2",
+      "role": "PRIORITY 3, same proposition, reformulated after S1's null.",
+      "string_verbatim": "\"Einarsson and others v. Canada\"",
+      "domain_parameters": "none passed",
+      "why_this_string": "the bare quoted CAPTION and nothing else — maximum rigid-designator density, zero dilutable tokens, applying S1's lesson within the same session. The 2026-07-26 lesson (author-name + title beats keyword search) generalises: the exact caption beats the caption plus context words.",
+      "rows_titles_verbatim": [
+        "geophysical service | https://www.international.gc.ca/trade-commerce/trade_topics-domaines_commerce/disp-diff/geophysical-service.aspx?lang=eng",
+        "www.italaw.com | https://www.italaw.com/cases/8154",
+        "www.italaw.com | https://www.italaw.com/node/8154",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/6787",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/7525",
+        "www.italaw.com | https://www.italaw.com/node/8523",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/8054",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/10635",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/10634",
+        "www.italaw.com | https://www.italaw.com/taxonomy/term/8730"
+      ],
+      "verdict": "NULL ON THE PROPOSITION, AND NOTHING NEW TO THE RECORD. The caption is reachable by this instrument: two on-theme surfaces returned (a Global Affairs Canada dispute page at a 'geophysical-service' path, and italaw case node 8154). BUT no row title names an award, a decision, the March 2025 hearing, or any 2026 development; and BOTH surfaces are PRIOR ART — international.gc.ca at STATE_OF_THE_ANSWER.md:258 and in analytics/search-results/2026-09-27.json and 2026-09-29.json; italaw 8154 in STATE_OF_THE_ANSWER.md and state/research_log.json. Eight of ten rows carry a path-derived or host-only title that identifies no document at all.",
+      "not_adopted": "the engine asserted in prose a damages figure, two NAFTA article numbers, a notice-of-intent date, a Federal Court judgment date, and a status of 'active'. NONE is adopted and NONE is recorded as a finding: no body was opened by any means today, and an engine summary is not a source. The two on-theme rows are recorded as TITLES and URLs only.",
+      "corroboration_not_finding": "S2 landed independently on the host-class wall STATE_OF_THE_ANSWER.md:258 already describes — international.gc.ca is NOT on scripts/fetch_relay.py's ALLOWED_HOSTS. That corroborates a standing position; it is not a new finding, and the record expressly retired further searching on it as a plan."
+    }
+  ],
+  "day_verdict": "THE TITLE-LEVEL CHANNEL IS NULL ON UNCT/20/6 FOR A SECOND KIND OF REASON. S1 was null because of this seat's query construction; S2 was null on a correctly constructed query against the exact caption, which is the stronger null. Taken with today's relay — which re-observed 324 characters of the published-document list as character-identical after 47 days, reached 236 new characters of it, and found NO decision-stage document and no entry for Procedural Order No. 11 or No. 12 — the docket and the secondary literature agree in showing no award and no 2026 development in accessible sources. Absence is 'not found in accessible sources' and is never 'does not exist'.",
+  "no_search_synthesis_figures": "No number, date, disposition, holding, damages figure, treaty article or status stated only in an engine summary is recorded anywhere in this file as a finding."
+}

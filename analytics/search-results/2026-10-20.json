@@ -64,5 +64,39 @@
     }
   ],
   "day_verdict": "THE TITLE-LEVEL CHANNEL IS NULL ON UNCT/20/6 FOR A SECOND KIND OF REASON. S1 was null because of this seat's query construction; S2 was null on a correctly constructed query against the exact caption, which is the stronger null. Taken with today's relay — which re-observed 324 characters of the published-document list as character-identical after 47 days, reached 236 new characters of it, and found NO decision-stage document and no entry for Procedural Order No. 11 or No. 12 — the docket and the secondary literature agree in showing no award and no 2026 development in accessible sources. Absence is 'not found in accessible sources' and is never 'does not exist'.",
-  "no_search_synthesis_figures": "No number, date, disposition, holding, damages figure, treaty article or status stated only in an engine summary is recorded anywhere in this file as a finding."
+  "no_search_synthesis_figures": "No number, date, disposition, holding, damages figure, treaty article or status stated only in an engine summary is recorded anywhere in this file as a finding.",
+  "chairman_corrections": {
+    "note": "Entered by the chairman AFTER the integrity round, as an additive block. The seat's own text above is left VERBATIM and unedited — a member's words are not silently rewritten — and these are the corrections that bind any reader of it.",
+    "corrections": [
+      {
+        "objection": "1020-C5",
+        "field": "day_verdict",
+        "seat_wrote": "reached 236 new characters of it",
+        "correct_value": "240",
+        "derivation": "The 2026-09-03 window (analytics/fetch-results/2026-09-03-daily2.json, 400 chars) has its last 45 characters at offset 494 of today's 779-character stitched region; 779 - 539 = 240. Re-derived independently by the chairman and again by the integrity officer; both got 240."
+      },
+      {
+        "objection": "1020-C4",
+        "field": "(the seat's memo §4 and candidate claim #2, carried into the record)",
+        "seat_wrote": "560 characters of this list now observed",
+        "correct_value": "540 from 'Published Decisions' to the region's end, or 564 from '(a) Original Proceeding'",
+        "derivation": "Offsets in the 779-character region: '(a) Original Proceeding' at 215 (-> 564), 'Published Decisions' at 239 (-> 540). The seat's 560 measures from 'Original Proceeding' at offset 219, dropping the '(a) ' prefix, which is an anchor no label in the record names. The figure the seat labels 'the Published Decisions document list' measures 540."
+      },
+      {
+        "objection": "1020-C14",
+        "field": "calls[1].verdict (S2)",
+        "seat_wrote": "Nine rows, two on-theme (in the seat's memo prose)",
+        "correct_value": "TEN rows",
+        "derivation": "This file's own rows_titles_verbatim for S2 lists ten entries, and its own verdict says 'Eight of ten rows carry a path-derived or host-only title', which reconciles to ten. The memo prose undercounted its own enumeration; this file is correct and the memo is not."
+      },
+      {
+        "objection": "1020-C14 (secondary)",
+        "field": "calls[0].verdict (S1)",
+        "seat_wrote": "nine rows about Canadian prizes (in the seat's memo prose)",
+        "correct_value": "this file's '9 of 9 concern academic or commercial prizes' is the accurate wording",
+        "derivation": "One row is a Nobel Prize item and one an Austrian university page, so 'Canadian prizes' is loose. The artefact's own wording is accurate and governs."
+      }
+    ],
+    "uncorrected_and_sound": "The chairman and the integrity officer each independently re-derived and CONFIRMED: the 324-character span from '(a) Original Proceeding Published Decisions' to 'Expert Report of “Chip” Gordon' is character-identical to the 2026-09-03 window; the 779-character region and its 261/317/243 overlaps; and the two engine-synthesis refusals recorded under not_adopted. The officer's assessment of this file, recorded in the day's record, is that its only defects are the two figures corrected above."
+  }
 }

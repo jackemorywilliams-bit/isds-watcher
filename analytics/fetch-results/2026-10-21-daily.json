@@ -1,0 +1,93 @@
+{
+  "request": "2026-10-21-daily.json",
+  "note": "2026-10-21 DAILY BATCH, committed under the chairman's hand before any seat was convened. ONE QUESTION, ONE DOCKET, AND IT IS A DIFFERENT QUESTION FROM YESTERDAY'S BECAUSE YESTERDAY'S IS ALREADY ANSWERED IN THIS COUNCIL'S OWN ARCHIVE. WHAT I FOUND BEFORE WRITING THIS BATCH, AND IT OVERTURNS THE PREMISE OF THE LAST THREE. Screening analytics/fetch-results/ on the unquote(url) predicate adopted by objection 0826-C6 -- the predicate the 2026-10-20 optimization item (that record, section 5.4) was written to mechanise, and which that same record's own batch note did not use -- this URL carries 41 rows across 16 result-file dates and 17 distinct sha256 page states. The raw-literal screen that the 2026-10-20 batch note ran returns 29 rows across 8 dates. The 12 rows the literal screen cannot see include an eight-day consecutive walk of the '(a) Original Proceeding / Published Decisions' document list, 2026-08-13 through 2026-08-20, whose 400-character windows OVERLAP end to end and reconstruct that list in full. CONSEQUENCES, EACH OF WHICH I STATE AGAINST MY OWN PREDECESSOR'S RECORD AND MY OWN: (1) The 2026-10-20 note's 'ONE prior Published Decisions row exists on this URL' is false -- there are 3 fired / 3 TRUE on this URL (2026-08-14, 2026-09-03, 2026-10-20). (2) Its 'Expert Report of Nigel Bankes: 0 fired' is false -- it fired TRUE on 2026-08-15, and yesterday's row 4, billed as 'THE DEEPEST REACH THIS COUNCIL HAS EVER TAKEN INTO THIS LIST', returned a window CHARACTER-IDENTICAL to the one held since 2026-08-15. Its real value was a 66-day stability null, not a reach. (3) Its 'THE LIST'S ONLY PROCEDURAL-ORDER ENTRY IN ANY HELD WINDOW IS THE BARE, UNNUMBERED STRING Procedural Order' is false. The 2026-08-17/08-18/08-19 windows show, in evident list context, 'Counter-Memorial on Jurisdiction, Merits and Damages Procedural Order No. 2 Procedural Order No. 2 - Annex A Procedural Order No. 2 - Annex B Procedural Order No. 3 Procedural Order No. 3 - Annex A Procedural Order No. 4 Procedural Order No. 5 Procedural Order No. 6 Procedural Order No. 7 Procedural Order No. 8 Procedural Order No. 9 Procedural Order No. 10 Rebuttal Memorial on Jurisdiction, Merits, and Damages'. The list DOES number its procedural orders; its numbered run ran 2 through 10 in August and named no No. 11 and no No. 12. (4) Therefore the 2026-10-19 close-out's premise -- that 'the numbered run ends at No. 10' -- described THIS LIST and was CORRECT, and the 2026-10-20 chairman's strike of it as 'the chronology, not this list' is withdrawn by me here. A FIFTH INSTANCE of the predicate failure the 2026-10-20 optimization item names. Nothing is built for it in this session; scripts/ is outside this session's merge scope and every operator approval remains pending. ORDERING PROPERTY THIS BATCH RELIES ON, AND IT IS DERIVED FROM HELD ROWS RATHER THAN ASSUMED: excerpt_of returns the FIRST occurrence in visible prose only (scripts/fetch_relay.py:128-133). The finds 'Procedural Order No. 4' (2026-08-19) and 'Procedural Order No. 5' (2026-08-18) BOTH returned LIST text, while 'Procedural Order No. 11' (2026-10-19) returned CHRONOLOGY text. The list region therefore precedes the chronology region in this page's visible prose, and a numbered find returns the chronology only when the list does not name that number. That is what makes rows 2 and 5 below interpretable. WHAT THIS BATCH ASKS. (A) Has the list's numbered procedural-order run grown past No. 10 since August -- i.e. does an entry for No. 11 or No. 12 now sit where row 2 would see it? (B) What does the list say AFTER its August frontier, which is the truncated string 'Cumulative Index of su' held since 2026-08-20 and unread beyond that point by anything? (C) What does the chronology record AFTER 14 March 2025, given that the docket-summary 'Latest Development' field reads 16 December 2025 and the held chronology window stops at March 2025? PRIOR ART, screened on the unquote predicate: 41 rows / 16 dates / 17 page states on this URL, last observed 2026-10-20 (twice -- runs 39414756406 and 39420602634, field-identical). This is a one-day re-observation justified by questions (A), (B) and (C), not by any cadence. PER-FIND COUNTS, measured corpus-wide over all 710 rows in 94 result files: 'Status of Proceeding' 71 fired / 71 TRUE (14/14 on this URL); 'Procedural Order No. 10' 0 fired; 'Procedural Order No. 12' 0 fired; 'Expert Report of Mr. Robert Hobbes' 0 fired; 'Cumulative Index' 0 fired. FIVE ROWS, ONE URL, within MAX_URLS = 12 (scripts/fetch_relay.py:76). The control https://example.com/ is prepended by the relay itself and is not written below; if it fails the batch is VOID and no row may be read as information about this docket. Host icsid.worldbank.org is on ALLOWED_HOSTS (scripts/fetch_relay.py:48). The UNENCODED 'CaseNo=' form is used: certified 200 by every unencoded row on this URL. COMPANION CONTROLS: rows 2 through 5 may null, and their companion control is ROW 1 ON THE SAME URL IN THE SAME RUN, as analytics/fetch-requests/README.md requires -- a missed find returns the empty string rather than a head excerpt (:132-133), so a null row hands back no window and is uninterpretable alone. DIFF ON THE PROSE, NEVER ON sha256 OR bytes: this URL holds 17 distinct sha256 values across 16 dates on a page whose watched span changed once in that time. A DIFFERING DIGEST OR BYTE COUNT IS NOT MOVEMENT and may never be written as movement. WHAT THIS BATCH MAY NEVER BE WRITTEN UP AS: a disposition, a holding, a ground, or any statement about what any tribunal decided. G16 bars a docket-summary surface from founding a disposition; G10 bars reading a document DESIGNATION as a tribunal's characterisation -- so 'Procedural Order No. 11 concerning the organization of the hearing', and a hearing recorded as 'on jurisdiction and the merits', support ONLY that the docket so records them, never that the tribunal bifurcated, joined, or decided anything. A list entry's presence supports ONLY that a document so titled is named as published; its contents remain wholly unread by this council. An ABSENCE in the list supports ONLY that the list does not name such an entry in the retrieved window -- never that no such procedural order issued, and never that it is unpublished. RING STATUS, STATED SO NO SUCCESSOR INFLATES IT: on this council's own held reduction the covered investment on UNCT/20/6 is recorded as a 'Seismic data enterprise' under NAFTA. THAT IS A DATA-ASSET DESIGNATION ON A DOCKET-SUMMARY FIELD AND IT IS NOT AN ESTABLISHED RING-1 PLEADING -- no patent, trademark, GI, trade secret or clinical-trial data is pleaded as the covered investment on any body this council has retrieved, and nothing in this batch can establish one. OUTCOME CLASSES THAT ARE FACTS ABOUT THE INSTRUMENT AND MAY NEVER BE WRITTEN AS FINDINGS ABOUT ICSID OR ABOUT THIS MATTER: control_ok false (whole batch VOID); refused / 403 / 202 / timeout / no_contact; host_not_allowed / scheme_not_https; and a 404 OR A REDIRECT, which is never a statement that a case does not exist -- it would mean only that this designator does not resolve on this surface at this instant, and the project's absence rule is 'not found in accessible sources'. CADENCE AND SCOPE: this batch touches and re-anchors NOTHING ELSE. It is NOT thread 11's search limb (due on or around 2026-10-25, deliberately not pulled forward); it is NOT thread 11's relay row into the Decisions on Manifest Lack of Legal Merit register; it is NOT locked-set row 1-02's forum row; it is NOT the monthly watch on threads 10 or 25; it does NOT touch ARB/22/2 (monthly, next due 2026-11-18), ARB/17/19 or ARB/12/1. STANDING PROHIBITIONS HONOURED: no www.italaw.com or bare italaw.com row; no investmentpolicy.unctad.org or bare unctad.org row; no ARB/24/16 row; no ARB/24/45 row; no dailyjus.com row; no IISD path-family row; no www.bing.com row; no row touching threads 2, 34, 42 or 43; and no caption is named for any unverified matter. Nothing is built by this batch and NO OPERATOR APPROVAL ITEM IS EXERCISED BY IT.",
+  "fetched_at": "2026-10-21T11:24:56.990424+00:00",
+  "environment": "github-actions-runner (run 39591718263)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105769,
+      "sha256": "770d97f5c21015d76d59dab5120c032359448a5ac221d56389600d2b865d2f0f",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Procedural Order No. 10",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105769,
+      "sha256": "770d97f5c21015d76d59dab5120c032359448a5ac221d56389600d2b865d2f0f",
+      "excerpt": "r No. 5 Procedural Order No. 6 Procedural Order No. 7 Procedural Order No. 8 Procedural Order No. 9 Procedural Order No. 10 Rebuttal Memorial on Jurisdiction, Merits, and Damages CER-04, Expert Report of Cameron Hutchison CER-05, Expert Report of \u201cChip\u201d Gordon C. Gill CER-06, Expert Report of Paul Sharp (PricewaterhouseCoopers LLP) CER-07, Expert Report of Victor Ancira (Troika USA) CWS-09, Witnes",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Expert Report of Mr. Robert Hobbes",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105769,
+      "sha256": "770d97f5c21015d76d59dab5120c032359448a5ac221d56389600d2b865d2f0f",
+      "excerpt": "Canada\u2019s Rejoinder on the Merits Expert Report of Mr. Doug Uffen Expert Report of The Brattle Group Expert Report of Mr. Robert Hobbes Cumulative Index of supporting documentation Combined Hearing Transcripts Available on the ICSID Website Witness Statement of Theodore David Einarsson (Public Version) (December 2, 2019) English (Original) Procedural Order (May 10, 2022) English (Original) Statemen",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Cumulative Index",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105769,
+      "sha256": "770d97f5c21015d76d59dab5120c032359448a5ac221d56389600d2b865d2f0f",
+      "excerpt": "pert Report of Mr. Doug Uffen Expert Report of The Brattle Group Expert Report of Mr. Robert Hobbes Cumulative Index of supporting documentation Combined Hearing Transcripts Available on the ICSID Website Witness Statement of Theodore David Einarsson (Public Version) (December 2, 2019) English (Original) Procedural Order (May 10, 2022) English (Original) Statement of Defence (June 9, 2022) English",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Procedural Order No. 12",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105769,
+      "sha256": "770d97f5c21015d76d59dab5120c032359448a5ac221d56389600d2b865d2f0f",
+      "excerpt": "ion and the merits in person in Calgary and by video conference. March 14, 2025 The Tribunal issues Procedural Order No. 12 concerning procedural matters. May 29, 2025 Each party files a post-hearing brief. June 19, 2025 Each party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Hom",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

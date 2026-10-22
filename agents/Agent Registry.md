@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `339f75e`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `df94153`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -566,6 +566,34 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-22 (archivist session — twenty-eighth deployment)** — **No roster change and no
+  contract change, for the TWELFTH consecutive session.** The window is `f7e4bf5..7834fe2`, **53**
+  commits over three days; `git log f7e4bf5..HEAD -- .claude/agents/ prompts/ src/models.py`
+  returns **no commit**. Cadence held.
+  **Models re-measured, not inherited.** `src/models.py` at `7834fe2`: `CHAIRMAN_MODEL` and
+  `HEAVY_MODEL` `claude-opus-5` (`:26-27`), `UTILITY_MODEL` `claude-opus-4-8` (`:28`),
+  `DIGEST_CLASSIFIER_MODEL` `claude-haiku-4-5-20251001` (`:32`), `FALLBACK_MODEL`
+  `claude-opus-4-8` (`:35`). All nine `.claude/agents/*.md` frontmatters declare `model: opus` — a
+  **tier**, not a concrete id — so the caveat the 2026-10-16 session put on all nine roster rows
+  stands. The description split is unchanged at **4** Opus 5 (`council-chairman`,
+  `research-analyst`, `site-experience`, `systems-designer`) and **5** Opus 4.8.
+  **Definitions cross-checked against the vault notes for the first time as a nine-row table**,
+  rather than seat by seat: for each of the nine, the model stated in `.claude/agents/<n>.md` and
+  the model stated in `agents/<n>.md` were extracted and compared. **All nine match.** The first
+  pass printed **5 of 9 MISMATCH** and was wrong — a greedy pattern captured the sentence-ending
+  period in `Claude Opus 4.8.` where the vault notes have none. Recorded because the near-miss is
+  the useful part, and because it is the second consecutive session in which this seat's own
+  screen lied and the every-seat *zero-hit* rule (D5) caught it.
+  Guards at `7834fe2`, all under `python3.13`: `check_models.py` **0** (12 cards),
+  `check_claims.py` **0** (15 facts / 39 restatements), `check_site_sync.py` **0**,
+  `check_lock.py` **0**, `check_seen_integrity.py` **0**, `check_telemetry_privacy.py` **0**,
+  `check_headline_lane.py` **0**, `check_currency.py` **0 — 5 notes, 9 claims, all current** (its
+  three `is not a commit` failures on arrival were the shallow clone, discharged by
+  `git fetch --unshallow`, per the rule binding since 2026-09-07).
+  *Audited against `7834fe2`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `.github/workflows/`, `tests/test_site_claims.py`, `HANDOFF.md`, `docs/`,
+  `analytics/verification_ledger.jsonl`, `analytics/daily-research/`,
+  `analytics/vault-sessions/`.*
 - **2026-10-19 (archivist session — twenty-seventh deployment)** — **No roster change and no
   contract change, for the ELEVENTH consecutive session.** The window is `dad7a52..f7e4bf5`, **68**
   commits over three days; `git log dad7a52..HEAD -- .claude/agents/ prompts/ src/models.py` returns

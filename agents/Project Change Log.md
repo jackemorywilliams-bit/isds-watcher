@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `339f75e`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `df94153`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,43 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-10-22 (archivist session — twenty-eighth deployment)
+
+*Audited against `7834fe2` (`origin/main`, clean tree), on a complete **2,254**-commit history —
+the container's clone arrived shallow at **110** commits with `HEAD` detached, the **twentieth
+consecutive** session, so every sha, ancestry test and orphan figure below was re-derived after
+`git fetch --unshallow`. Window `f7e4bf5..7834fe2` = **53** commits, three days; cadence held.*
+
+**No roster change and no contract change, for the twelfth consecutive session.**
+`git log f7e4bf5..HEAD -- .claude/agents/ prompts/ src/models.py` returns no commit. The nine
+definitions and the nine vault notes were compared as a table for the first time and **all nine
+models match**; the first pass reported five mismatches and was a defect in this seat's own regex,
+not in the vault (`agents/Agent Registry.md`, 2026-10-22 entry).
+
+**Three gaps in this seat's own change log are closed, and they were the ones named rather than
+carried.** The 2026-10-19 session measured that `agents/obsidian-archivist.md` had no entry for
+**2026-08-13**, **2026-09-07** or **2026-09-13**, wrote the three recent gaps it could, and
+directed these three to the next session instead of quietly dropping them. All three are now
+written from the committed records on `main` — `67c80f7`/`322a846` PR #78, `4eb3fc9`/`1f41604`
+PR #144, `262e531`/`7a3d14a` PR #174 — and re-measured: **26** session-record dates, **26**
+with a change-log entry, **0** missing.
+
+**F1 re-measured at day eighty-seven and checked by content, not only by ancestry.**
+`origin/chore/operator-marks-2026-07-27` still carries **20** ledger lines — **17 operator marks
+and 3 claims** — that `main` has never held, confirmed by a line-level `comm` of the two blobs,
+not by the `--is-ancestor` test alone. `main`'s `analytics/verification_ledger.jsonl` has not been
+written since `8891c21` (2026-07-27). No open pull request exists for the branch.
+
+**D20 gained a constant, and it is a change in kind.** `matches` moved **0 → 1** between CI runs
+`39252488795` (2026-10-19) and `39776796237` (2026-10-22): the **2026-10-19 weekly digest**
+recorded the first above-threshold match in the committed archive
+(`digests/2026-10-19_ISDS-Thematic-Watch/meta.json`, `bc2eff4`). The published site states this
+correctly; the pinned test constants do not. Site verified right, tests verified wrong.
+
+**D5 at day seventy, D24 reproduced a fourth time at 26 files, D26's floor raised 25 → 28.**
+All re-measured, all unchanged in owner. Full record and escalations:
+`analytics/vault-sessions/2026-10-22.md`.
 
 ## 2026-10-19 (archivist session — twenty-seventh deployment)
 

@@ -764,6 +764,24 @@ see item 2 of the 2026-08-03 slice.)*
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
 
+- **2026-10-22 (twenty-eighth deployment)** — Standing every-3-days session, audited against
+  `7834fe2` (`origin/main`, clean tree), complete **2,254**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **110** with `HEAD` detached, the
+  **twentieth consecutive** session. Window `f7e4bf5..7834fe2` = **53** commits. Cadence held.
+  **The three change-log gaps the 2026-10-19 session named and directed here are closed** —
+  2026-08-13, 2026-09-07 and 2026-09-13, each written from the committed record on `main` with
+  its landing commit, merge commit and PR number, not from memory. Re-measured after writing:
+  **26** session-record dates, **26** carrying an entry, **0** missing. The predecessor named what
+  it could not finish instead of carrying it silently, and that is the only reason this closed.
+  **F1 re-measured at day eighty-seven and by content rather than ancestry** — 20 ledger lines
+  still on the branch alone, `main`'s ledger unwritten since 2026-07-27, no open PR. **D20 gained
+  a third diverged constant** (`matches` 0 → 1, the archive's first above-threshold match); the
+  published site states it correctly and the pinned tests do not. **D5 day seventy**, with this
+  seat's own regex near-miss as its sharpest illustration: the *zero-hit screen* rule that caught
+  it has exactly one carrier in the 19-file read path, and it is not in this seat's.
+  **D24 reproduced a fourth time at 26 files; D26's declared floor raised 25 → 28.**
+  No roster change and no contract change, the twelfth consecutive session.
+
 - **2026-10-19 (twenty-seventh deployment)** — Standing every-3-days session, audited against
   `f7e4bf5` on a complete **2,201**-commit history; the clone arrived shallow (**6** graft points,
   `origin/main` stale at `240ef1a` and `HEAD` detached), the **nineteenth** consecutive recurrence,
@@ -1097,6 +1115,39 @@ see item 2 of the 2026-08-03 slice.)*
 > is doing the thing the convention already says. Today's entry is written before the session
 > record, not after it.
 
+- **2026-09-13 (fifteenth deployment)** — Standing every-3-days session, audited against `349ca12`
+  (`main`), complete **1,226**-commit history after `git fetch --unshallow`; the clone arrived
+  shallow at **133**, the **seventh consecutive** session. Window `4bbe5cb..349ca12` = **178**
+  commits — the largest this seat has covered, because the scheduled sitting of **2026-09-10 did
+  not run**, making it six days rather than three. Landed `262e531`, merged `7a3d14a`, PR #174.
+  **Backfilled 2026-10-22 from the committed record at
+  `analytics/vault-sessions/2026-09-13.md`.**
+  **Headline — an open pull request had cost the project a sitting's memory.** PR #170 had been
+  open since 2026-09-11 carrying the entire **2026-09-10 special session**, 1,267 lines, and
+  `main` could not see it. Three days of daily councils then numbered their taxonomy adoptions
+  off a table accurate for `main` and wrong for the project, so **numbers 30, 31 and 32 each
+  named two different patterns**. This is the orphan-check failure class exactly, caught by the
+  check that exists for it.
+  **D16 largely remedied** — the re-anchor machinery asked for on 09-07 was built and works.
+  **Residual escalated:** a `[skip ci]` bot commit skips both the anchor mover and the guard, and
+  `main` ended **8 of the last 10 days red**. Agent context: no contract drift.
+
+- **2026-09-07 (fourteenth deployment)** — Standing every-3-days session, audited against
+  `4bbe5cb` (`main`), complete **1,048**-commit history after `git fetch --unshallow`; the clone
+  arrived shallow at **170**, the **sixth consecutive** session. Window `c2558d9..4bbe5cb` = **65**
+  commits. Landed `4eb3fc9`, merged `1f41604`, PR #144. **Backfilled 2026-10-22 from the committed
+  record at `analytics/vault-sessions/2026-09-07.md`.**
+  **Headline — the machinery built to keep the vault's anchors current was a no-op, and it lost by
+  seconds.** `.github/workflows/reanchor.yml` had not worked since 2026-08-29: of every
+  `chore(currency): re-anchor tracked notes to HEAD [skip ci]` commit `github-actions[bot]` had
+  ever authored, **2 landed on `main` and 14 never did**, both survivors dated 2026-08-29
+  (`08380af`, `e8b0f71`). The bot lost a race with the squash-merge by **eight to sixteen
+  seconds**. That explained a red `currency` guard three sessions had fought without naming its
+  cause — and it is the direct ancestor of thread **D11**, still open today.
+  **Second finding, the same shape as 2026-08-25 and 2026-09-04:** taxonomy entry **29** was
+  routed to this seat by name on 2026-09-05 and had reached no note two days later. Agent-context
+  audit clean: zero external commits touched the contracts across the 65.
+
 - **2026-09-04 (thirteenth deployment)** — Standing every-3-days session, audited against
   `c2558d9` (`main`, clean tree, complete history — **983** commits after `git fetch
   --unshallow`; the clone arrived shallow at **173**, the **fifth consecutive** session). Cadence
@@ -1239,6 +1290,26 @@ see item 2 of the 2026-08-03 slice.)*
   `scripts/check_models.py`, `scripts/check_currency.py`, `scripts/build_graph.py`,
   `analytics/daily-research/`, `analytics/council-log.md`, `HANDOFF.md`,
   `views/isds-workflow-3d/workflow.json`.*
+
+- **2026-08-13 (eighth deployment)** — Standing every-3-days session, audited against `8ea2ee1`
+  (`main`, clean tree), complete **584**-commit history after `git fetch --unshallow`. Landed
+  `67c80f7`, merged `322a846`, PR #78. **Backfilled 2026-10-22 from the committed record at
+  `analytics/vault-sessions/2026-08-13.md`, not from memory; it was one of three dates the
+  2026-10-19 session measured as missing from this log and named rather than carried.**
+  **Headline — the vault recorded as accomplished fact a merge that had not happened.** The
+  2026-08-11 entry in [[Project Change Log]] stated *"F1's seventeen verification marks reach
+  `main` with this merge."* They did not. Counted from the two blobs directly: `origin/main` 37
+  `claim_created` / 21 `verification_changed`, `origin/chore/operator-marks-2026-07-27` 40 / 38 —
+  **17 marks and 3 claims `main` has never held**, all made by Emory in the 2026-07-27
+  chat-verification sweep. The false line was struck and the thread re-measured
+  (`agents/Workflow Threads.md` F1).
+  **Opened D5** — the binding rules each seat has adopted are written in that seat's vault note,
+  and eight of nine `.claude/agents/` definitions never name their own note, so the rules sit
+  outside the context of the agent bound by them. Still open today as the oldest live thread in
+  this seat's table.
+  **Also:** the orphan-check convention was corrected (the raw `--is-ancestor` test over-reports,
+  because a bot close-out pushed after a squash leaves the tip ahead of `main` forever), and every
+  test count in the project was flagged as a reading from CI rather than a local measurement.
 
 - **2026-08-09 (seventh deployment)** — Final reconciliation of the vault with the completed
   2026-08-09 audit-response work. Audited against `2686422` plus the uncommitted working tree

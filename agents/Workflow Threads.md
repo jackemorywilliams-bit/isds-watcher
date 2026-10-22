@@ -737,6 +737,19 @@ still the only open PR in the repository before this session's own.
 
 ### D26 — the daily council has departed from Rule 0's composition on at least twelve declared occasions, the departure is the right call, and this note — the project's open-work index — carries no thread for it *(new 2026-10-19; owner: Emory for the contract text; council-chairman for the practice)*
 
+- **RE-MEASURED 2026-10-22 — the floor rises from 25 declared sittings to 28, and the departure
+  is now declared daily before any seat reports.** The three records in this window each open
+  with it at line 13 and name it at :17-18 — `analytics/daily-research/2026-10-20.md`
+  (*"Rule 0's count honoured by one convened agent rather than two, and I convene the integrity
+  …"*), `2026-10-21.md` (*"a direct departure from Rule 0's third limb"*) and `2026-10-22.md`
+  (*"a departure from Rule 0's third limb, taken for the third …"*), with the procedural note
+  carried into `STATE_OF_THE_ANSWER.md:19`. So the floor of **25** declared sittings recorded on
+  2026-10-19 becomes **28**, and the three added here are enumerated rather than asserted.
+  **The unresolved span is unchanged:** 2026-09-25..2026-10-16 still cannot be resolved either
+  way by a bare `Rule 0` count, which is dominated by the routine one-optimization-item
+  reference, so no total is asserted. The chairman's resolution — that a performed seat is worse
+  than an oversized meeting — stands recorded as correct, and the contract text is untouched
+  because editing `prompts/` is Emory's.
 - **The conflict, stated as the two rules that collide.**
   `prompts/daily_council_protocol.md:12` directs: *"**Convene exactly two agents:**
   `research-analyst` and `council-chairman`. Nothing else"*, and `:14-15` adds that the integrity
@@ -853,6 +866,18 @@ still the only open PR in the repository before this session's own.
 
 ### D24 — `scripts/check_site_sync.py` is a *check* that rebuilds `docs/` and leaves 24 tracked files dirty, so any seat that runs the guard set and then `git add -A` commits generated output it never touched *(new 2026-10-01; owner: systems-designer — `scripts/` is outside this seat's paths)*
 
+- **REPRODUCED 2026-10-22 — a fourth consecutive session, and the count is 26.** Run under
+  `python3.13`, `scripts/check_site_sync.py` exits **0** ("docs/ is in sync with source") and
+  leaves **26** modified tracked files under `docs/`. Stamp-only confirmed by arithmetic rather
+  than by eye: `git diff --numstat docs/` totals **26 files, 26 insertions, 26 deletions** —
+  exactly one changed line each, the build stamp moving from *"Site built 2026-10-19 19:10 UTC ·
+  294b38f"* to *"2026-10-22 15:13 UTC · 7834fe2"*. The addition since the 25 recorded on
+  2026-10-19 is `docs/digests/2026-10-19.html`, published by `bc2eff4` and the only `docs/` html
+  file added in the window. Restored with `git restore docs/` before anything was staged.
+  **The number in this thread's title is not a constant** — it is the size of the published
+  archive and will keep going wrong; the live figure is here in the body. Four archivist sessions
+  have now had to know about this to avoid committing generated output into a records-only pull
+  request. Owner unchanged — systems-designer.
 - **State** — Found 2026-10-01 by running it. `scripts/check_site_sync.py` establishes its verdict by
   **actually rebuilding the site into the working tree** — `subprocess.run([sys.executable,
   "scripts/build_site.py"])` at `scripts/check_site_sync.py:24-25` — then diffing `docs/` and
@@ -1159,6 +1184,40 @@ still the only open PR in the repository before this session's own.
 
 ### D20 — `main`'s test suite has been red since 2026-09-14, across five merges and three daily sittings, and no seat has recorded it *(new 2026-09-16; owner: systems-designer / site-experience — `tests/` is outside this seat's paths)*
 
+- **RE-MEASURED 2026-10-22 — day thirty-eight red, and a constant has diverged that is a change
+  in kind rather than a counter drifting.** `pipeline-guards` concludes **failure** on all **8**
+  most recent `main` runs; read from run **#370**, id `39776796237`, on `339f75e`: **2 failed,
+  821 passed, 5 xfailed in 32.87s** — the same two tests in `tests/test_site_claims.py`, and the
+  line references `:155-156` and `:305-308` are still exact.
+  **This session measured the archive directly rather than only reading CI**, by importing
+  `scripts/build_site.py` under `python3.13` and calling `archive_status(collect_digests())`.
+  The two agree exactly, which is why the figures below are asserted rather than relayed:
+
+  | key | pinned at `:155-156` | measured 2026-10-22 | at the 2026-10-19 session |
+  |---|---|---|---|
+  | `runs` | 16 | **21** | 20 |
+  | `screened` | 492 | **611** | 579 |
+  | `matches` | 0 | **1** | **0 — not diverged** |
+
+  **`matches` is new.** In run **#357** (2026-10-19, id `39252488795`) `'matches': 0` sat in the
+  *unchanged* block of the diff; in run #370 it reads `{'matches': 1} != {'matches': 0}`. The
+  source is the **2026-10-19 weekly digest** (`digests/2026-10-19_ISDS-Thematic-Watch/meta.json`,
+  published by `bc2eff4`): `screened: 32`, `matches: 1`, `accepted: 0` — **the first
+  above-threshold match in the committed archive.** The second test's four pins have all moved
+  too: 16 digests carry `per_source` against **11** pinned, summing **309** against 191, **349**
+  screened against 230, **611** against 492.
+  **What is NOT broken, checked before being reported.** The published site is correct and
+  internally consistent: `docs/index.html` renders *"1 above-threshold match"* and *"No item has
+  reached the three-ring intersection in 21 runs across 611 screenings"* (`:199`, `:522`) — an
+  above-threshold match is not a three-ring intersection, and both statements hold. A *"0
+  matches"* string at `docs/index.html:607` is a JavaScript conditional branch, not a claim, and
+  is **not** a contradiction. The council also logged the match correctly and verified it against
+  `meta.json` (`analytics/daily-research/2026-10-22.md:53,946`). **The site is right and the
+  tests are wrong** — the stale carriers are the constants, plus the now-false docstring prose at
+  `tests/test_site_claims.py:160` (*"16 runs / 492 screened / 0 matches / 17 surfaced"*).
+  **The second-order cause is unchanged and is the thing worth fixing.** `bc2eff4` is a
+  `[skip ci]` commit: the scheduled weekly writer changed a published figure and the suite never
+  ran on the commit that invalidated it. Owner unchanged — systems-designer / site-experience.
 - **State** — `pipeline-guards` on `main` concludes **failure** on every run since `c53f7c9`
   (2026-09-14 14:28Z). The last green on `main` is `529e32d0` (2026-09-14 12:17Z). Two tests fail,
   both in `tests/test_site_claims.py`: `test_archive_status_measures_the_committed_archive`
@@ -2859,6 +2918,24 @@ specifically unblocks it.
 
 ### F1 · Seventeen operator ledger marks never merged
 
+- **RE-MEASURED 2026-10-22 — day eighty-seven, and every figure is identical to the day it was
+  found.** `origin/chore/operator-marks-2026-07-27` still fails
+  `git merge-base --is-ancestor <tip> origin/main`, and this session checked it **by content as
+  well as by ancestry**, because ancestry alone cannot tell a stranded branch from one whose
+  substance landed by another route. `git show` on both blobs: `origin/main` **37**
+  `claim_created` / **21** `verification_changed` / 37 distinct ids;
+  `origin/chore/operator-marks-2026-07-27` **40** / **38** / 40. A line-level `comm` of the two
+  files returns **20 lines present only on the branch** — exactly the **17 marks and 3 claims**
+  this thread recorded on 2026-08-04 and re-counted on 2026-08-13. Nothing has moved in either
+  direction.
+  **`main`'s ledger has not been written since the day the branch was cut.** Its last commit is
+  `8891c21` (2026-07-27, *"21 operator-verified marks + China-France BIT gap resolved"*); no
+  commit has touched `analytics/verification_ledger.jsonl` on `main` in the **87** days since.
+  **There is no open pull request for this branch** — the two open PRs today are #110 and #184 —
+  so nothing is waiting on review and nothing will land it by itself. Of the **six** branches
+  carrying genuinely unlanded non-bot work (classified in
+  `analytics/vault-sessions/2026-10-22.md` §4), this is the oldest
+  and the only one carrying the operator's own verification decisions.
 - **State** — Found 2026-08-04 by testing every remote branch tip with
   `git merge-base --is-ancestor <tip> origin/main`.
   `origin/chore/operator-marks-2026-07-27` (`6f9e1da`, 2026-07-27) fails that test and is the
@@ -3233,6 +3310,33 @@ specifically unblocks it.
 
 ### D5 · Adopted method rules are recorded where the seat that must obey them never reads
 
+- **RE-TESTED 2026-10-22 — day seventy, structurally unchanged, and this session found the
+  sharpest illustration the thread has yet had, in its own near-miss.** The script test is
+  unchanged at `7834fe2`: **1 of 9** definitions names the seat's own vault note
+  (`.claude/agents/integrity-officer.md`), **8 do not**, and
+  `git log f7e4bf5..HEAD -- .claude/agents/ prompts/ src/models.py` returns **no commit** over the
+  window's 53. The read path re-enumerated today is **19** files — 9 definitions plus the **10**
+  `prompts/` files they name — with the same three unnamed (`prompts/classifier.txt`,
+  `prompts/classifier_v2.txt`, `prompts/triage.txt`).
+  **The illustration, and it is this seat's own.** The rule *"a zero-hit screen is not absence
+  until the synonym is tried"* (2026-08-07, `7adfd68`) binds every seat. Screened across the 19
+  files today it has **exactly one carrier**, `.claude/agents/integrity-officer.md:32` — the one
+  definition that points at its own note. **Every other seat is bound by that rule and cannot
+  read it.** The 2026-10-19 session was saved by remembering it: a case-sensitive grep for *"Runs
+  on Claude"* returned nothing for `research-analyst`, whose file says *"runs on"* lowercase, and
+  trusting the zero would have reported a contract defect that does not exist. **This session
+  reproduced the same failure in a different shape and caught it the same way** — a greedy model
+  regex matched `Claude Opus 4.8` *including the sentence-ending period* in the definitions but
+  not in the vault notes, printing **5 of 9 MISMATCH** against a reality of **0**. Re-run with a
+  bounded pattern, all nine match. Twice in two sessions the screen lied and the rule caught it,
+  and the rule lives in a file neither seat loads.
+  **Two apparent carriers checked and rejected rather than counted.** *probe* hits
+  `prompts/daily_council_protocol.md:22,29` — but as a **ban** on an instrument-probe table, not
+  the probe rule; *backsourcing* hits `.claude/agents/research-analyst.md:3` in the `description:`
+  frontmatter as a capability word, not the method. The carrying-span rule remains the one
+  genuinely carried every-seat rule, and only because the council gave it its own prompt file.
+  **Remedy and owner unchanged: one line per definition naming that seat's note. A contract edit,
+  and Emory's.**
 - **RE-TESTED 2026-10-16 — day sixty-four, and the thread's own statement of itself is now too
   weak.** The script test is unchanged at `dad7a52`: **1 of 9** definitions names the seat's own
   vault note (`.claude/agents/integrity-officer.md:50`), **8 do not**, and

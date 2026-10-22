@@ -8,11 +8,13 @@
   is commented out in `src/config.py` and can be restored).
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
-**Currency anchor.** *Audited against `f7e4bf5`; paths: `.github/workflows/`, `src/config.py`,
-`scripts/`, `.claude/agents/`.* **Re-anchored 2026-10-19 by the archivist on a measurement, not a
-stamp:** `git log 7f10729..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
-returns **no commit**, so nothing this file declares had moved since 2026-10-10 and the content
-below was true as written. The anchor advances because it was re-audited, not because a session
+**Currency anchor.** *Audited against `7834fe2`; paths: `.github/workflows/`, `src/config.py`,
+`scripts/`, `.claude/agents/`.* **Re-anchored 2026-10-22 by the archivist on a measurement, not a
+stamp:** `git log f7e4bf5..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
+returns **no commit** across the window's 53, so nothing this file declares has moved since
+2026-10-19 and the content is true as written. The 2026-10-19 re-anchoring applied the same test
+over `7f10729..f7e4bf5` and likewise returned **no commit**, so the content
+below was true as written then too. The anchor advances because it was re-audited, not because a session
 ran. Added 2026-10-10 by the archivist. This file had **no** anchor
 of its own until that date, so staleness in it was a judgement call rather than a query — the
 one thing the snapshot-anchor convention exists to prevent. Note the honest limit: this anchor

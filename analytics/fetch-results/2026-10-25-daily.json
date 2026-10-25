@@ -1,0 +1,80 @@
+{
+  "request": "2026-10-25-daily.json",
+  "note": "2026-10-25 DAILY BATCH, committed under the chairman's hand before any seat was convened. AUTHORITY. Yesterday's close-out (analytics/daily-research/2026-10-24.md section 5.6(1)) authorised exactly four rows for today -- R-a, R-b, R-c, R-d -- and expressly did NOT authorise R-e ('Date of Constitution of Tribunal' on ARB/25/54). This batch is those four rows and nothing else. I add NO row of my own. That is deliberate: objection 1024-C2 found that yesterday I fired an anchor the previous day's adopted close-out had rejected by name, and the outcome being good made it a worse precedent rather than a better one. The cure for that is a batch that matches its authorisation exactly, and this is it. PROVENANCE CONVENTION (adopted 2026-10-24 section 2.3, sixth consecutive day of the underlying defect). Merging a request file to main is itself a push to analytics/fetch-requests/**, so the merge RE-FIRES this workflow and overwrites analytics/fetch-results/2026-10-25-daily.json with a later run id and fetched_at. Today's record therefore cites this batch by sha256 and byte count, which survive the re-fire, and treats run id and fetched_at as provenance that will be overwritten. No workflow change is proposed; .github/ is outside this session's merge scope. THE FOUR ROWS. R-a -- find = '' on ?CaseNo=ARB/25/54. The head-baseline companion control the relay README's own design rule calls for, and the first empty-find row this council has fired on this URL. CARRYING OBJECTION 1024-C4 FORWARD RATHER THAN RE-ASSERTING THE CLAIM IT STRUCK: the analyst's proposal said this row 'cannot null'. THAT IS FALSE AS A STRUCTURAL CLAIM. excerpt_of returns '' for a non-text content_type BEFORE the find branch (scripts/fetch_relay.py:117-118), so an empty-find row CAN return status 200 with an empty excerpt, and eight such rows in this corpus did. The row is safe on THIS host by MEASUREMENT -- zero non-text content_type rows in 394 on icsid.worldbank.org -- not by structure. SECOND LIMB OF 1024-C4: find_matched is FALSE BY CONSTRUCTION for an empty find (scripts/fetch_relay.py:182, bool(find) and ...), so a successor must read content_type and the excerpt, and must NOT read find_matched == false on this row as a miss. THREAD 34 CLEARANCE, MEASURED: the empty-find branch returns body[:400], i.e. the page head, and 'Subject of Dispute' occurs at offset -1 in the head window on 4 of 4 case-detail firings in this corpus (2026-08-13-zz-einarsson-docket.json records[2] and [5]; 2026-10-18-daily.json records[1]; 2026-10-19-daily.json records[1]). ASSUMPTION DECLARED, as the analyst declared it: those four firings are on UNCT/20/6 and ARB/22/2, NOT on ARB/25/54. The head region is host navigation chrome and should be page-independent, but that is an inference from a different page state and it travels as an assumption, not as content. R-b -- find = 'Status of Proceeding' on ?CaseNo=ARB/25/54. Yesterday's R1 repeated. 1/1 TRUE at offset 100; 'Subject of Dispute' count 0 in that window. IT CARRIES THE RING-3 TRIGGER FOR FREE. PRE-REGISTERED, IN THE FORM CORRECTED AT 2026-10-24 section 5.2(f) AND NOT IN THE FORM ORIGINALLY REGISTERED: the trigger is any Latest Development naming a jurisdictional or admissibility event, OR the disappearance of the literal 'No References Available', whichever comes first -- READ THE FIELD, NOT ONLY THE LITERAL. The continued PRESENCE of 'No References Available' is EQUALITY AND IS NOT PROGRESS, and no successor may read it as such. Yesterday's window carried Latest Development 'August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters.' and 'No References Available.' R-c -- find = 'Status of Proceeding' on ?CaseNo=UNCT/20/6. Thread 88's field half, and the CROSS-URL DISCRIMINATOR without which a null on ARB/25/54 is uninterpretable. 18/18 TRUE, offset 100 every firing. Fires every day under section 8.2(f) until the terminus changes: cadence, not design. R-d -- find = 'December 16, 2025 Each party' on ?CaseNo=UNCT/20/6. Thread 88's chronology-terminus half. 2 fired / 2 TRUE. PRE-REGISTERED NULL MEANING, carried forward in substance: a null here while R-c hits means EITHER the chronology entry moved OR an HTML entity entered the locus -- '&nbsp;' is undecoded by excerpt_of and this page emits it in this region -- NEVER 'the literal is absent'. PRECONDITION A SUCCESSOR MUST CHECK BEFORE READING R-c AND R-d AS A CO-OBSERVATION (the analyst's addition at 2026-10-24 section 4.2, adopted): verify sha256 EQUALITY between the R-c and R-d records. The precondition has failed once in 96 run-groups -- 2026-09-06-daily.json, 067468ce at 96,668 bytes against 8ceadd3c at 105,703 on the same URL in the same run -- and section 8.2(f) is silent on what to do when it does. NOT FIRED, AND WHY. R-e ('Date of Constitution of Tribunal' on ARB/25/54) is NOT AUTHORISED and is not in this batch. Yesterday's ruling, which I adopt without re-litigating: its exposure being lower than R5's is not the test; it is another rightward content-bearing anchor on a geometry whose header field block this council has still never observed, and 1024-C1/1024-C2 are one day old. It may be fired only after R-a has established the head baseline AND a window has actually observed the ARB/25/54 header field block, or on Emory's ruling. R-a is in this batch precisely so that precondition can begin to be satisfied. R2 ('Applicable Rules' on ARB/25/54) remains BARRED (2026-10-23 section 8.2(e)); the margin arithmetic is on the record and is not re-derived. 'Travizory' party-name row: still withheld. It reads thread 34's field at a measured offset of 269 of 400, a direct read. The collision it created is SPENT on the facts -- a field-clean anchor returned the party identity incidentally -- but spent is not resolved, and the licence question (escalation 1) is open. 'Instrument(s) Invoked' row: NOT PROPOSED and NOT FIRED. Measured on UNCT/20/6's header this label sits between 'Economic Sector' and 'Applicable Rules', so a 100-character left margin from it opens inside the 'Subject of Dispute' / 'Economic Sector' region. The treaty name is NOT OBTAINABLE by any row this council can design that clears thread 34. That is why escalation 2 asks Emory for Swiss SR number 0.975.247.2 on the Fedlex portal instead. No row requests 'Subject of Dispute' or 'Economic Sector' (thread 34). COMPLIANCE, SCREENED BEFORE THIS NOTE WAS WRITTEN RATHER THAN AFTER (the section 8.3(7) screen-before-not-after rule, imposed by objection 1021-C18). All four rows are on icsid.worldbank.org, which is on the relay's ALLOWED_HOSTS. NO row touches www.italaw.com, investmentpolicy.unctad.org or any IISD path-family host -- all three remain under standing prohibition pending the operator's ruling (escalations 3 and 4). NO row touches ARB/24/16, ARB/24/45, ARB/22/2 (monthly, next due 2026-11-18), ARB/12/1 or ARB/17/19 (named and not cured, zero budget by design). web.archive.org is NOT requested: it is absent from ALLOWED_HOSTS and adding it is a scripts/ change outside this session's merge scope -- the operator's open escalation 3, not this session's to grant. No PDF row: PDF rows are structurally empty (analytics/insights.jsonl:167). Four rows plus the mandatory https://example.com/ control = 5 fetches, under MAX_URLS 12, leaving seven slots unspent.",
+  "fetched_at": "2026-10-25T11:18:38.702963+00:00",
+  "environment": "github-actions-runner (run 40188279838)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 4,
+  "completed": 4,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85351,
+      "sha256": "bf51e5ed53027913a053f03aea01eda78e6becc4a31356fc1a13c3a17e618613",
+      "excerpt": "Case Details | ICSID Skip to main content File a Request Languages English Home About Member States Overview Role of Member States Administrative Council Database of Member States Joining ICSID Secretariat Overview Secretary General Secretariat Staff Internships Panel of Arbitrators and of Conciliators Overview Database of Panel Members Qualifications for the Panels Designation Procedure Young ICS",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85351,
+      "sha256": "bf51e5ed53027913a053f03aea01eda78e6becc4a31356fc1a13c3a17e618613",
+      "excerpt": "and the Department of Justice, Republic of Kenya, Nairobi, Kenya Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters. No References Available. (a) Original Proceeding Date Development December 16, 2025 The Secretary-General registers a reques",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106083,
+      "sha256": "4ba834ab60bae014977b58cb22df726a266754d3899e3bf0f5509a1bb2504fe2",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "December 16, 2025 Each party",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106083,
+      "sha256": "4ba834ab60bae014977b58cb22df726a266754d3899e3bf0f5509a1bb2504fe2",
+      "excerpt": "ach party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

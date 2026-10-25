@@ -325,6 +325,30 @@ it to the vault's own change log, and the change log failed the check.
    this branch land", `git cherry` is the honest query. **A shallow clone silently weakens every
    ancestry claim this seat makes, and checking for one is now part of the query.**
 
+   > **CORRECTED 2026-10-25, and the text above is preserved unedited because it is a dated
+   > record.** Two of its claims are false and both were load-bearing. **(1) "Superseded, not
+   > stranded" was inferred from line counts, and a larger file is not a superset.** Tested by
+   > content on 2026-10-25: `claude/sweet-mccarthy-i95s3k`'s Finding 4 — *United Therapeutics
+   > Corp. v. Liquidia Technologies, Inc.*, 2025 NCBC 37 — appears in **zero** commits of
+   > `main` across the complete 2,324-commit history (`git log -S"United Therapeutics"
+   > origin/main` is empty; same for `Liquidia`, `2025 NCBC 37`, `treprostinil`,
+   > `Cranfill Sumner`). The 07-30 and 08-01 branches do check out by content; the 07-31 branch
+   > does not. The lead was never queued by the 2026-08-01 rulings either — ruling (b) at
+   > `analytics/daily-research/2026-08-01.md:452` queued only the China–Switzerland findings.
+   > Opened as a new thread in [[Workflow Threads]] and escalated to Emory; recorded in full at
+   > `analytics/vault-sessions/2026-10-25.md` §1. **(2) "`git cherry` is the honest query" does
+   > not hold in this repository.** A squash rewrites the patch-id as surely as it breaks
+   > ancestry, so on 2026-10-25 `git cherry` reported **86** branches and **94** commits against
+   > `--is-ancestor`'s **90** — both over-report. PR `merged_at` over all 293 PRs reports **7**,
+   > and *under*-reports: it misses commits pushed to a branch after its PR merged, which is
+   > exactly F1 (`chore/operator-marks-2026-07-27`, PR #27 merged 2026-07-27, two commits pushed
+   > after it and never landed).
+   >
+   > **Rule adopted 2026-10-25, binding on this seat: no branch is called superseded without a
+   > content comparison — a blob diff or a search for its distinctive strings. A line count is
+   > not evidence of containment.** The honest landing query is PR state *plus* `git cherry`
+   > *plus* a content check; no one of the three is sufficient alone.
+
 4. **Not restamped, deliberately.** [[Claim Map]]'s anchor (`a22f4cb`) is three commits stale on
    its declared paths, and all three touch `STATE_OF_THE_ANSWER.md` only — `.claude/agents/`,
    `prompts/`, `METHODOLOGY.md`, `lit-review/` and `scripts/site_templates/` are untouched. This
@@ -763,6 +787,32 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-10-25 (twenty-ninth deployment)** — Standing every-3-days session, audited against
+  `72e21a0` (`origin/main`, clean tree) on the complete **2,324**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **128** with `HEAD` detached, the
+  **twenty-first consecutive** session. Window `40df1bf..72e21a0` = **2** commits. Cadence held.
+  **No roster change and no contract change, the thirteenth consecutive session.**
+  **This seat's own orphan convention failed an audit of itself and is corrected above.** A
+  verified research lead — *United Therapeutics Corp. v. Liquidia Technologies*, 2025 NCBC 37, on
+  `origin/claude/sweet-mccarthy-i95s3k` — has **zero** occurrences on `main` in 2,324 commits and
+  has been invisible for **86 days**, because this note claimed at `:323` that the three
+  2026-07-30/31/08-01 branches were "superseded, not stranded" on the evidence of line counts
+  (247, 506, 496 against 164, 166, 246). Three correct numbers that established nothing. Opened as
+  a new thread, escalated to Emory for the one ruling that closes it; the lead was never entered
+  into canon by this seat, which is not this seat's to do. **The three landing queries were
+  measured against each other for the first time** — `--is-ancestor` **90**, `git cherry` **86**,
+  PR `merged_at` **7** — and all three are wrong alone; F1 (`chore/operator-marks-2026-07-27`,
+  PR #27 merged, two commits pushed after) is the standing proof that the PR test under-reports.
+  **Backlog corrected 6 → 5**: `working/gap-bridge-2026-08-29` is byte-identical to `main` at 215
+  lines and comes off the list. **D20 measured for the first time** — `pytest` installs into
+  `python3.13`, absent only from `python3` — at **6 failed / 830 passed / 5 xfailed**, of which 2
+  are real (`tests/test_site_claims.py:165`, `:305`, stale pinned constants) and 4 are a container
+  artifact of poppler-present / gitignored-`seeds`-absent. **D24 reproduced a fifth time at 26
+  files; D5 unchanged at 1 of 9 (day 73); D6 persists on a fourth runtime query** (`model` and
+  `last_served_model` both `claude-opus-5`) with the roster again left unrewritten. `README.md:56`
+  verified accurate against `all_sources()` = 10. Session record:
+  `analytics/vault-sessions/2026-10-25.md`.
 
 - **2026-10-22 (twenty-eighth deployment)** — Standing every-3-days session, audited against
   `7834fe2` (`origin/main`, clean tree), complete **2,254**-commit history after

@@ -15,6 +15,50 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-10-25 (archivist session — twenty-ninth deployment)
+
+Audited against `72e21a0` (`origin/main`, clean tree), complete **2,324**-commit history after
+`git fetch --unshallow`; clone arrived shallow at **128**, `HEAD` detached. Window
+`40df1bf..72e21a0` = **2** commits. No roster or contract change
+(`git log 40df1bf..origin/main -- .claude/agents/ prompts/ src/models.py` → no commit).
+
+**D27 opened — a verified research lead stranded 86 days, and this seat's own method hid it.**
+*United Therapeutics Corp. v. Liquidia Technologies*, 2025 NCBC 37, on
+`origin/claude/sweet-mccarthy-i95s3k` (`dee99ab`, 2026-07-31), has **zero** occurrences on
+`main` across 2,324 commits (`git log -S` empty for `United Therapeutics`, `Liquidia`,
+`2025 NCBC 37`, `treprostinil`, `Cranfill Sumner`). Never queued by the 2026-08-01 rulings —
+`analytics/daily-research/2026-08-01.md:452` ruling (b) queued only the China–Switzerland
+findings. Certified "superseded" by four sessions on the evidence of line counts
+(`agents/obsidian-archivist.md:323`; `analytics/vault-sessions/2026-10-22.md:215`). Escalated to
+Emory for one ruling; **not** entered into canon, which is not this seat's to do.
+
+**D28 opened and closed in the same pass — the landing query is corrected.** Across 262 remote
+branches and 293 PRs: `--is-ancestor` **90**, `git cherry` **86**, PR `merged_at` **7**. All three
+wrong alone; F1 (`chore/operator-marks-2026-07-27`, PR #27 merged 2026-07-27, `7514a65` and
+`6f9e1da` pushed after and never landed) proves the PR test under-reports. Convention is now PR
+state **plus** `git cherry` **plus** a content check. Backlog corrected **6 → 5**:
+`working/gap-bridge-2026-08-29` is byte-identical to `main` at 215 lines and comes off the list.
+
+**D20 measured for the first time in three sessions.** `pytest` and the suite's imports install
+into `python3.13` (bare `pip` targets 3.13, bare `python3` is 3.11.17 — the trap that stalled the
+three previous attempts). Full run **6 failed / 830 passed / 5 xfailed**; under CI's own command
+(`pytest tests -q --ignore=tests/test_one_pagers.py`, `pipeline-guards.yml:241`) **2 failed / 821
+passed / 5 xfailed**. The two are the stale pinned constants at `tests/test_site_claims.py:165`
+(computed `{runs: 21, screened: 611, matches: 1}` vs pinned `{runs: 16, screened: 492,
+matches: 0}`) and `:305` (16 vs 11). `pipeline-guards` red on `main` at run `40192370097`, job
+`suite`, on `5ced0f0` today and `ba8ba77` yesterday. The four `tests/test_one_pagers.py` failures
+are **not** the project's: `seeds/` is gitignored by standing rule and CI excludes the file by
+design (`pipeline-guards.yml:217-221`), already recorded at `agents/Workflow Threads.md:1990`.
+
+**Unchanged, re-measured:** `check_currency.py` 5 notes / 9 claims / **0** failed (three hard
+`FAIL`s discharged as shallow-clone artifacts, as on prior sessions); D24 reproduced a **fifth**
+time at **26** files, tree restored with `git checkout -- docs/` before staging; D5 at 1 of 9
+(day 73); D6 on a fourth runtime query; `README.md:56`'s "ten sources" verified against
+`all_sources()` = 10; `scripts/build_graph.py:195-197` still replaces from the first start marker
+with no `count=1`, so the no-quoting discipline remains load-bearing.
+
+Session record: `analytics/vault-sessions/2026-10-25.md`.
+
 ## 2026-10-22 (archivist session — twenty-eighth deployment)
 
 *Audited against `7834fe2` (`origin/main`, clean tree), on a complete **2,254**-commit history —

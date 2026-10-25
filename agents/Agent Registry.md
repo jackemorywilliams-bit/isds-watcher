@@ -566,6 +566,28 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-25 (archivist session — twenty-ninth deployment)** — **No roster change and no
+  contract change, the thirteenth consecutive session.** Audited against `72e21a0`
+  (`origin/main`, clean tree) on the complete **2,324**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **128** with `HEAD` detached, the
+  twenty-first consecutive recurrence. `git log 40df1bf..origin/main -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across the 2-commit window.
+  `scripts/check_models.py` exits 0 over **12** flowchart cards, which licenses only the claim
+  that the declarations agree with one another. `COUNCIL.md:65-68` cross-checked against
+  `src/models.py` line by line and they match exactly — chairman and heavy-reasoning
+  `claude-opus-5`, utility `claude-opus-4-8`, digest classifier `claude-haiku-4-5-20251001`;
+  no contract-to-code drift.
+  **D6 persists and the roster is again left unrewritten.** This seat's own runtime was queried
+  for the **fourth** time: `session_context.model` and `last_served_model` both
+  `claude-opus-5`, against `.claude/agents/obsidian-archivist.md`, which states Claude Opus 4.8.
+  The rows and Model lines are **not** changed, for the reason given on 2026-08-16 — rewriting
+  them would ratify a substitution nobody authorised. Already carried at `:260`, `:828` and
+  `:1043`; not re-escalated as new.
+  **D5 unchanged at 1 of 9, day 73** — re-tested by script over `.claude/agents/`: only
+  `integrity-officer.md` names its own vault note. This session paid for that directly: the
+  retired line-count orphan proxy (D27) lived in a note this seat does not read.
+  Session record: `analytics/vault-sessions/2026-10-25.md`.
+
 - **2026-10-22 (archivist session — twenty-eighth deployment)** — **No roster change and no
   contract change, for the TWELFTH consecutive session.** The window is `f7e4bf5..7834fe2`, **53**
   commits over three days; `git log f7e4bf5..HEAD -- .claude/agents/ prompts/ src/models.py`

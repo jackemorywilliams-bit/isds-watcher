@@ -1,0 +1,101 @@
+{
+ "date": "2026-10-25",
+ "seat": "research analyst",
+ "model": "claude-opus-5",
+ "written_by": "council chairman (claude-opus-5), in the daily session, as the partial cure to integrity objection 1025-C3",
+ "schema_note": "PARTIAL ARTEFACT, AND THE PARTIALITY IS THE POINT. This file is NOT a captured engine return. The research analyst reported its three query strings and its per-host link tallies in the text of its return; it did NOT enumerate the twenty-seven individual links to the chairman, and the chairman does not hold them. Every field below is therefore the SEAT'S REPORT, transcribed from analytics/daily-research/2026-10-25.md section 3, and not an engine artefact. A successor can re-derive the query strings and the tallies from this file; it CANNOT re-derive the link lists, because nobody committed them. WHY THIS FILE EXISTS: integrity objection 1025-C3 established that this council fired bounded search on 2026-10-23, 2026-10-24 and 2026-10-25 with NO committed analytics/search-results/ artefact for any of the three, the newest file in that directory being 2026-10-20.json, and that the omission was undeclared for three sittings. The standing cure is the chairman's optimization item at section 5.5 of today's record: the firing seat reports the full link list and the chairman commits the artefact in the same part as the return. NO BODY WAS OPENED BY ANY MEANS. Direct fetch was DEAD on both instruments, re-probed on a neutral control at session open. Nothing in this file may be read as a statement about any document's contents, and a tool-layer status is never a claim about a resource.",
+ "instrument_state": {
+  "fetch": "DEAD on both instruments, RE-PROBED on a neutral control at session open: curl https://example.com/ returned 'curl: (56) CONNECT tunnel failed, response 403', logged by the agent proxy at 2026-10-25T11:16:18.711Z as connect_rejected; the fetch service on the same control returned getaddrinfo ENOTFOUND example.com. A capability fact about this session, NOT a statement about any resource.",
+  "search_track": "ALIVE. The only retrieval instrument the analyst seat used.",
+  "relay": "ALIVE. analytics/fetch-requests/2026-10-25-daily.json fired by the chairman BEFORE any seat was convened; results at analytics/fetch-results/2026-10-25-daily.json (control_ok true, void false, 4 requested / 4 completed). The analyst requested no relay rows of its own for today."
+ },
+ "budget": {
+  "cap": 3,
+  "fired": 3,
+  "reported": 3,
+  "set_by": "chairman, in the convening brief"
+ },
+ "grep_first_screen": {
+  "commit": "f7915e1",
+  "note": "Run BEFORE any query, per the analyst's standing discipline. File counts from `grep -rilF`, commit-pinned so the zeros stay true after this record is committed.",
+  "terms": {
+   "Rule 51(1)": 25,
+   "Additional Facility": 34,
+   "Supplementary Provisions": 47,
+   "Article 30": 21,
+   "early dismissal": 18,
+   "biometric": 0,
+   "traveller data": 0,
+   "source code": 8,
+   "Travizory": 11
+  },
+  "kill_bought": "The ICSID Additional Facility manifest-lack-of-legal-merit page returned by Q1 looked like a new register address; `grep -rilF` on the full path returns 5 files and it has been held since 2026-07-27. The screen stopped a held address being proposed as new."
+ },
+ "queries": [
+  {
+   "id": "Q1",
+   "axis": "thread 11 search limb — the procedural rule, by name",
+   "query": "\"ICSID Additional Facility\" \"Rule 51\" manifest lack of legal merit intellectual property patent trade secret investment decision 2026",
+   "allowed_domains": null,
+   "links_returned": 9,
+   "links_enumerated_in_this_file": false,
+   "host_tally": {
+    "icsid.worldbank.org": 2,
+    "uncitral.un.org": 3,
+    "asil.org": 2,
+    "www.acerislaw.com": 2
+   },
+   "prohibited_host_links": 0,
+   "outcome": "NULL on thread 11. Nothing returned reports an application of any named gate on an IP-as-covered-investment ground. Both of the thread's closure elements fail: the instrument is named, the ground is not. No body opened; no rule text stated.",
+   "first_coverage": "First cycle ever to cover ICSID AF Rule 51(1) by name. A coverage gain, not a formulation gain."
+  },
+  {
+   "id": "Q2",
+   "axis": "Ring 1 on ARB/25/54 — the asset axis",
+   "query": "\"Travizory\" Kenya arbitration claim what asset software platform traveller data intellectual property trade secret contract termination expropriation",
+   "allowed_domains": null,
+   "links_returned": 9,
+   "links_enumerated_in_this_file": false,
+   "host_tally": {
+    "www.italaw.com": 4,
+    "bilaterals.org": 1,
+    "isds.bilaterals.org": 1,
+    "www.nation.africa": 1,
+    "beta.nation.co.ke": 1,
+    "capitalfm.africa": 1
+   },
+   "prohibited_host_links": 4,
+   "outcome": "PRODUCTIVE AND QUARANTINED ON PROVENANCE GROUNDS. The engine's synthesis attributes to press reporting that the ARB/25/54 claimant alleges intellectual-property theft and that its platform's design and technology were replicated by a replacement vendor. NOTHING IN IT IS ESTABLISHED AND NO SEAT ASSERTS ANY OF IT: it is a search synthesis of press reports of a party's position, over bodies nobody opened, on hosts not on ALLOWED_HOSTS or under standing prohibition. It is not a pleading and not a tribunal characterisation; G16 and G10 both bar it. Ring 1 remains UNESTABLISHED; Ring 2 remains UNTOUCHED. What changed is the GAP's status, not the answer: 'no accessible indication of the asset's character' becomes 'one quarantined, unread, non-primary indication that intellectual property may be among the asserted investment'.",
+   "counter_cut_recorded_by_the_seat": "The same reporting describes a procurement replacement, a contract termination and copying by a commercial competitor — commercial acts, not state measures — so on the quarantined description taken at its most favourable, Ring 2 still has nothing in it. The seat expressly declined to assert that Ring 2 fails, noting the counter-argument that a state's switch of its own electronic travel-authorisation system could be an administrative measure."
+  },
+  {
+   "id": "Q3",
+   "axis": "thread 11 search limb — the decision-document's own title convention",
+   "query": "ICSID 2026 \"Decision on the Respondent's Objection\" Rule 41(5) intellectual property patent covered investment upheld",
+   "allowed_domains": null,
+   "links_returned": 9,
+   "links_enumerated_in_this_file": false,
+   "host_tally": {
+    "www.italaw.com": 6,
+    "italaw.com": 2,
+    "www.acerislaw.com": 1
+   },
+   "prohibited_host_links": 8,
+   "outcome": "NULL on thread 11, and QUARANTINED ENTIRELY ON PROVENANCE GROUNDS. The synthesis named matters, case numbers, dates and outcomes; no seat asserts any of them. Per integrity objection 1025-C7: 'Optima Ventures v. United States (ARB/21/11)' is an ENGINE-SYNTHESISED PARTY/DOCKET PAIRING with no accessible support and no verification of any kind, held in ZERO files in this repository before today. The only carrier of that literal, and of 'Ershova' and 'ARB/21/11', in this repository is the quarantine itself — a successor must treat a future grep hit on any of them as a hit on the quarantine and NOT as corroboration."
+  }
+ ],
+ "instrument_finding": {
+  "claim": "Across three queries on one research subject in one session, the share of links on a host under standing prohibition rises with how directly the formulation targets a PRIMARY DOCUMENT: Q1 (the procedural rule by name) 0 of 9; Q2 (party name plus asset vocabulary) 4 of 9; Q3 (the decision document's own title convention) 8 of 9.",
+  "mechanism": "www.italaw.com publishes case documents at paths that embed the decision's title verbatim, so a query built from a decision-title convention matches that host's filenames by construction. The mechanism, not the three observations, is what carries the finding.",
+  "no_rate_claimed": "NO RATE IS STATED. n = 3 shows the gradient and licenses no frequency (objection 1024-C19).",
+  "consequence": "The standing host prohibition, as currently scoped, operates as a near-total bar on primary-document DISCOVERY by search, not merely on retrieval. This is a statement about the search instrument's link composition. It is NOT a statement about whether any document exists, and NOT a statement about whether the prohibition is right. Escalated to the operator at section 5.10(4) of today's record.",
+  "caveat_1025_C3": "The URL the analyst's candidate claim 9 nominated as its load-bearing element (a www.italaw.com case-html-files path) WAS NEVER RETRIEVED BY ANYONE and is held in zero files in this repository. Whether it resolves is UNESTABLISHED. The claim was refiled with access_status 'none' and source_authority 'unverified_secondary' per the chairman's ruling at section 5.2(c)."
+ },
+ "not_spent": {
+  "fedlex.admin.ch under allowed_domains": "ZERO slots in any language — standing bar, measured zero on three structurally different formulations.",
+  "Swiss SR 0.975.247.2": "ZERO slots — escalation 2, the operator's manual query.",
+  "monitored-author check (Anthea Roberts / EJIL:Talk)": "NOT fired, NOT retargeted, NOT pulled forward. Due Monday 2026-10-26, budgeted outside the cap.",
+  "ARB/12/1, ARB/17/19": "ZERO budget — named and not cured.",
+  "UNCITRAL Supplementary Provisions early-dismissal track": "Deliberately not fired: the governing artefact is held in 24 files with its access question already CLOSED as an access artefact (origin 404). Spending a slot to re-reach a closed artefact would be padding."
+ }
+}

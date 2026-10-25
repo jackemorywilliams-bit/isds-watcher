@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `40df1bf`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `27cf233`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -585,6 +585,82 @@ the chair owes the record a committed sitting record, and until it lands this va
 
 ---
 
+### D27 — a verified research lead has been stranded on an unmerged branch for 86 days, and four sessions certified it "superseded" from line counts *(new 2026-10-25; owner: Emory — one ruling)*
+
+- **State** — `origin/claude/sweet-mccarthy-i95s3k` (`dee99ab`, 2026-07-31), one of the three
+  cloud-run records from the week the scheduled routine fired invisibly to unmerged branches,
+  carries as its Finding 4 *United Therapeutics Corp. v. Liquidia Technologies, Inc.*,
+  **2025 NCBC 37** (NC Business Court): a trade-secret action in which the contested material was
+  a bundle including **pharmaceutical clinical trial data**, and in which the court denied summary
+  judgment and sent the trade-secret claims to trial.
+- **Measured 2026-10-25 on the complete 2,324-commit history.** The lead appears in **zero**
+  commits of `main`. `git log -S"United Therapeutics" origin/main` is empty; so are `Liquidia`,
+  `2025 NCBC 37`, `treprostinil` and `Cranfill Sumner` (its source chain). It exists in exactly
+  one place in this project, and that place is a branch nobody merged.
+- **Why it was never seen.** `analytics/daily-research/2026-08-01.md:452` ruling (a) set the 07-30
+  and 07-31 cloud records aside as *"parallel to complete canonical records … historical
+  artifacts"*; ruling (b) queued **only** the China–Switzerland findings of the 08-01 record for
+  canonical vetting. The 07-31 record's lead was never queued, never vetted and never ruled on.
+- **Why this seat did not catch it.** `agents/obsidian-archivist.md:323` (2026-08-13 audit slice,
+  now carrying a dated correction) claimed the three branches *"carry content `main` already holds
+  in longer form — 247, 506 and 496 lines against the branches' 164, 166 and 246 — so they are
+  superseded, not stranded."* `analytics/vault-sessions/2026-10-22.md:215` restated it. **A larger
+  file is not a superset.** Tested by content, the 07-30 branch (Einarsson PO No. 9, "Updated
+  Party Representatives", italaw 8154 — 3, 6 and 51 commits on `main`) and the 08-01 branch
+  (Montenero v. China — `2026-07-19.md`, `analytics/locked_set/VALIDATION_RECORD.md`) both check
+  out. The 07-31 branch does not.
+- **Scope discipline.** This is a **background lead, not a finding**, and it is not entered into
+  canon here — that is not this seat's to do. Its own cloud session's integrity officer had
+  already corrected it downward: the summary-judgment denial shows only a genuine issue of
+  material fact, not that clinical trial data is a cognizable trade secret; the clinical-data
+  framing is this project's inference, not a holding; it is North Carolina state law, not treaty
+  law; Ring-1-**adjacent**, not Ring 1 support; opinion body 403-blocked; one law-firm blog
+  syndicated to JDSupra, counting as one source. Its own text routed it to operator/library
+  access.
+- **Next action** — **Emory**, one ruling, any of three closes it: route it to
+  [[research-analyst]] for canonical vetting through the normal entry path; rule it out of scope
+  as domestic law and have this seat record the ruling; or send it to library access as its own
+  text proposed. The branch is **not** to be merged — the 2026-08-01 non-canonical ruling stands,
+  and the lead should enter, if at all, through vetting rather than by landing a superseded
+  record.
+- **Rule adopted here, binding on this seat** — no branch is called superseded without a content
+  comparison: a blob diff, or a search for its distinctive strings. A line count is not evidence
+  of containment. Recorded in [[obsidian-archivist]] and at
+  `analytics/vault-sessions/2026-10-25.md` §1.
+
+---
+
+### D28 — the three landing queries disagree by 83 branches, and the one this seat prescribed under-reports *(new 2026-10-25; owner: archivist — convention fixed here)*
+
+- **Measured 2026-10-25** across **262** remote branches and all **293** PRs:
+
+  | query | answer | failure mode |
+  | --- | --- | --- |
+  | `git merge-base --is-ancestor <tip> origin/main` | **90** not-ancestors | squash merge breaks ancestry; `reanchor.py` then pushes a close-out commit so the tip outruns `main` forever |
+  | `git cherry origin/main <branch>` | **86** branches / **94** commits | squash rewrites the patch-id too — over-reports for the same reason |
+  | PR `merged_at` | **7** branches | **under**-reports: blind to commits pushed after a PR merged |
+
+- **F1 is the standing counter-example.** `chore/operator-marks-2026-07-27` had PR **#27 merged**
+  2026-07-27T21:42:58Z, so the PR test calls it landed — yet `7514a65` and `6f9e1da` were pushed
+  **after** that merge and never landed, stranding 20 ledger lines. The note's earlier claim that
+  *"`git cherry` is the honest query"* (`agents/Workflow Threads.md:1998`, dated snapshot,
+  preserved) does not hold in a squash-merge repository.
+- **Convention, corrected** — the landing question takes **PR state, plus `git cherry`, plus a
+  content check**; no one of the three is sufficient. A shallow clone invalidates all three, so
+  `.git/shallow` is checked first (it was present again today, the twenty-first consecutive
+  session).
+- **Backlog corrected 6 → 5.** `working/gap-bridge-2026-08-29` was listed among the six on
+  2026-10-22; `git cherry` reports **zero** unlanded patches for it and
+  `working/gap-bridge-2026-08-29.md` is **byte-identical** to `main`'s at 215 lines. It is landed
+  and comes off the list. The five are `chore/operator-marks-2026-07-27` (F1),
+  `vault/archivist-2026-08-28` (#110), `fix/repoint-r21-citations` (#184),
+  `council/analyst-gaps-and-methodology` (#165, closed unmerged, `mergeable_state: dirty`) and
+  `feat/research-council` (`af00584`, 2026-06-22, no PR).
+- **Next action** — none for Emory. The convention is this seat's and is fixed in
+  [[obsidian-archivist]]; the five branches are tracked under F1, D11 and D19.
+
+---
+
 ### D10 — the currency anchor no longer means "audited" *(new 2026-09-01; owner: systems-designer / Emory)*
 
 Since `2e87700` (2026-08-27) the anchor is machine-owned. `.github/workflows/reanchor.yml`
@@ -865,6 +941,14 @@ still the only open PR in the repository before this session's own.
   adoption retired only the letters — this note's numbered series was never addressed either way.
 
 ### D24 — `scripts/check_site_sync.py` is a *check* that rebuilds `docs/` and leaves 24 tracked files dirty, so any seat that runs the guard set and then `git add -A` commits generated output it never touched *(new 2026-10-01; owner: systems-designer — `scripts/` is outside this seat's paths)*
+
+- **REPRODUCED 2026-10-25 — a fifth time, day twenty-four, still 26 files.** The script prints
+  *"OK: docs/ is in sync with source (only the build stamp differs)"* and exits **0**, then leaves
+  **26** tracked files under `docs/` modified. Restored with `git checkout -- docs/` before
+  anything was staged, which is the only reason this session's pull request is records-only — and
+  `docs/` is outside this seat's self-merge path set, so committing it would have blocked the
+  merge outright. **Five archivist sessions have now had to know this in order to avoid
+  committing generated output. Owner unchanged: systems-designer.**
 
 - **REPRODUCED 2026-10-22 — a fourth consecutive session, and the count is 26.** Run under
   `python3.13`, `scripts/check_site_sync.py` exits **0** ("docs/ is in sync with source") and
@@ -1183,6 +1267,29 @@ still the only open PR in the repository before this session's own.
 > `agents/obsidian-archivist.md`.
 
 ### D20 — `main`'s test suite has been red since 2026-09-14, across five merges and three daily sittings, and no seat has recorded it *(new 2026-09-16; owner: systems-designer / site-experience — `tests/` is outside this seat's paths)*
+
+- **MEASURED 2026-10-25 — day forty-one, and for the first time from an actual run rather than
+  from CI's red dot.** Three sessions recorded that `pytest` was absent from both interpreters
+  here. It installs: `python3.13 -m pip install pytest pyyaml feedparser`. The trap that stalled
+  the earlier attempts is that bare `pip` targets **3.13** while bare `python3` is **3.11.17**, so
+  installing one way and running the other both look like failure.
+  **Full suite: `6 failed, 830 passed, 5 xfailed`. Under CI's own command**
+  (`pytest tests -q --ignore=tests/test_one_pagers.py`, `pipeline-guards.yml:241`):
+  **`2 failed, 821 passed, 5 xfailed`.** The two are this thread's stale pinned constants —
+  `tests/test_site_claims.py:165` computes `{runs: 21, screened: 611, matches: 1}` against pinned
+  `{runs: 16, screened: 492, matches: 0}`, and `:305` computes **16** digests carrying
+  `per_source` against pinned **11**. The code computes the current figure; the test pins an old
+  one; **the published site is right and the tests are wrong**, the same direction as before, now
+  with exact numbers. Red on `main` at run `40192370097`, job `suite`, on `5ced0f0` (today) and
+  `ba8ba77` (yesterday); the whole-suite job dates from `731eb96` (2026-09-10), four days before
+  this thread's start date. The other four failures are **not** the project's — `seeds/` is
+  gitignored by the 2026-08-03 standing rule and CI excludes `tests/test_one_pagers.py` by design
+  (`pipeline-guards.yml:217-221`), as `:1990` of this note already recorded; they surfaced here
+  only because `pdftotext` is installed in this container, so the module's tool-guard passed and
+  the fixture-absence then failed instead of skipping.
+  **Not verifiable from here:** the CI logs themselves — `actions/jobs/<id>/logs` redirects to
+  `productionresultssa0.blob.core.windows.net`, which the agent proxy answers **403**. CI pins
+  Python **3.12**; this was measured on **3.13**.
 
 - **RE-MEASURED 2026-10-22 — day thirty-eight red, and a constant has diverged that is a change
   in kind rather than a counter drifting.** `pipeline-guards` concludes **failure** on all **8**
@@ -2917,6 +3024,16 @@ specifically unblocks it.
 ---
 
 ### F1 · Seventeen operator ledger marks never merged
+
+- **RE-MEASURED 2026-10-25 — day ninety, and the thread gains the reason it kept slipping past
+  the landing query.** The 20 branch-only lines are unchanged: `main`'s
+  `analytics/verification_ledger.jsonl` is **58** lines, the branch's **78**, and `main`'s copy
+  has not been written since `8891c21` (2026-07-27). What is new is *why* a PR-state sweep calls
+  this landed: **PR #27 for `chore/operator-marks-2026-07-27` was merged** at
+  2026-07-27T21:42:58Z, and `7514a65` and `6f9e1da` were pushed to the branch **after** that
+  merge. So the PR test reports it clean, `git cherry` reports 2 unlanded commits, and only a
+  content check settles it. F1 is now the standing counter-example in **D28**, and that is a
+  second reason to land it. **Owner unchanged: Emory, one merge.**
 
 - **RE-MEASURED 2026-10-22 — day eighty-seven, and every figure is identical to the day it was
   found.** `origin/chore/operator-marks-2026-07-27` still fails

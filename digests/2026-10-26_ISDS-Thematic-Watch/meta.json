@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-26",
+  "screened": 13,
+  "matches": 1,
+  "held_for_review": 1,
+  "validation_status_only": true,
+  "watch_list_leads": 0,
+  "accepted": 0,
+  "per_source": {
+    "iisd_itn": 0,
+    "google_alerts": 0,
+    "gmail_scholar": 0,
+    "italaw": 0,
+    "icsid": 0,
+    "iareporter_headlines": 12,
+    "unctad_isds": 0,
+    "pca_press": 1,
+    "bing_news": 0,
+    "gdelt": 0
+  },
+  "accepted_by_source": {},
+  "source_health": [
+    {
+      "name": "iisd_itn",
+      "status": "NOT-READ (403)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://www.iisd.org/itn/feed/",
+          "outcome": "refused",
+          "detail": "403"
+        },
+        {
+          "url": "https://www.iisd.org/itn/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 2
+    },
+    {
+      "name": "google_alerts",
+      "status": "QUIET (feeds live; 1 entries, none in the run window)",
+      "count": 0
+    },
+    {
+      "name": "gmail_scholar",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "italaw",
+      "status": "NOT-READ (403)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://www.italaw.com/",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "icsid",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "iareporter_headlines",
+      "status": "HEADLINE-ONLY",
+      "count": 13
+    },
+    {
+      "name": "unctad_isds",
+      "status": "DEGRADED (4 zero runs)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement",
+          "outcome": "refused",
+          "detail": "403"
+        }
+      ],
+      "refusal_count": 1
+    },
+    {
+      "name": "pca_press",
+      "status": "RETURNED",
+      "count": 2
+    },
+    {
+      "name": "bing_news",
+      "status": "RETURNED",
+      "count": 0
+    },
+    {
+      "name": "gdelt",
+      "status": "DEGRADED (9 zero runs)",
+      "count": 0,
+      "refusals": [
+        {
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22investor-state%20arbitration%22%20OR%20%22investment%20treaty%20arbitration%22%20OR%20%22ICSID%20tribunal%22%20OR%20%22arbitral%20award%22%20OR%20%22treaty%20shopping%22%20OR%20%22covered%20investment%22%20OR%20%22promise%20doctrine%22%29%20sourcelang%3Aenglish&mode=artlist&maxrecords=75&timespan=8d&sort=datedesc&format=json",
+          "outcome": "refused",
+          "detail": "429"
+        }
+      ],
+      "refusal_count": 1
+    }
+  ],
+  "health_warnings": [
+    "SOURCE DEGRADATION WARNING \u2014 documented-active sources with 3+ consecutive zero-item runs: unctad_isds (DEGRADED (4 zero runs)), gdelt (DEGRADED (9 zero runs)). Their fetchers likely no longer match the live site; zero items from them is NOT evidence of a quiet week."
+  ],
+  "reserved_excluded": 0,
+  "triage_calls": 13,
+  "triage_cost_usd": 0.0182,
+  "tail_audit_cost_usd": 0.0
+}

@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-26",
+  "provenance": "Transcribed by the chairman from the research analyst's verbatim return at analytics/daily-research/2026-10-26.md Part 3. THIS IS A SEAT'S REPORT OF ITS OWN CALLS, NOT A CAPTURED ENGINE ARTEFACT. Unlike 2026-10-20.json and 2026-10-25.json, the individual links ARE present: the seat was instructed to report the full link list and did, which is the cure to objection 1025-C3 that yesterday's artefact could only record as absent.",
+  "cap": 3,
+  "capped_calls_fired": 3,
+  "calls_outside_cap": 1,
+  "calls_total": 4,
+  "links_total": 39,
+  "prohibited_host_links_total": 0,
+  "prohibited_hosts": [
+    "iisd.org",
+    "investmentpolicy.unctad.org",
+    "italaw.com",
+    "unctad.org",
+    "www.iisd.org",
+    "www.italaw.com"
+  ],
+  "filter_note": "blocked_domains was passed on ALL FOUR calls. allowed_domains and blocked_domains are mutually exclusive at the schema level (ledger entry 0921-V1), so only one was passed. READABILITY CONDITION, per analytics/daily-research/2026-09-20.md:296 ('a zero on a different query is not evidence the block works'): only Q3 has an unfiltered same-string comparator with a measured nonzero prohibited-host return, so only Q3's zero is readable as efficacy. The other three zeros are NOT offered as evidence that the filter works. CONFOUND DECLARED BEFORE FIRING: the two Q3 arms are one day and one seat-instance apart and engine result sets are not stable over time, so this is a one-call observation against a next-day comparator and not a controlled experiment.",
+  "body_opened_anywhere": false,
+  "strength_cap": "Every finding derived from these calls is capped at TITLE-AND-URL strength. No body was opened by any means on 2026-10-26.",
+  "comparator_2026_10_25": {
+    "calls": 3,
+    "blocked_domains_passed": 0,
+    "links": 27,
+    "prohibited_host_links": 12,
+    "per_call": "0 of 9, 4 of 9, 8 of 9",
+    "links_enumerated_in_record": 0
+  },
+  "calls": [
+    {
+      "id": "monitored-author",
+      "outside_cap": true,
+      "query": "Anthea Roberts EJIL:Talk October 2026",
+      "links": [
+        "https://www.ejiltalk.org/new-addition-to-our-team-of-editors/",
+        "https://www.linkedin.com/pulse/joint-symposium-ejil-talk-opinio-juris-anthea-roberts-anthea-roberts",
+        "https://academic.oup.com/ejil/article-abstract/33/4/1153/6968918",
+        "https://www.linkedin.com/in/anthea-roberts-a8596b142/",
+        "https://www.ejiltalk.org/uncitral-and-isds-reform-what-to-expect-when-youre-expecting/",
+        "https://www.ejiltalk.org/author/aroberts/",
+        "https://www.justsecurity.org/author/robertsanthea/",
+        "https://www.ejiltalk.org/author/aroberts/?pagenum=5",
+        "https://www.ejiltalk.org/ejil-the-podcast-episode-29-echoes-from-the-invisible-college/",
+        "https://www.ejiltalk.org/is-international-law-international-continuing-the-conversation/"
+      ],
+      "outcome": "NULL. No October 2026 post by the monitored author established at title strength; no body opened (ejiltalk.org returns 403 to identified non-browser clients and this project does not masquerade as a browser). Absence is 'not found in accessible sources'.",
+      "blocked_domains": [
+        "www.italaw.com",
+        "italaw.com",
+        "investmentpolicy.unctad.org",
+        "unctad.org",
+        "www.iisd.org",
+        "iisd.org",
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "host_tally": {
+        "www.ejiltalk.org": 6,
+        "www.linkedin.com": 2,
+        "academic.oup.com": 1,
+        "www.justsecurity.org": 1
+      },
+      "links_returned": 10,
+      "prohibited_host_links": 0,
+      "body_opened": false,
+      "returned_titles": [
+        "New Addition to our Team of Editors",
+        "Joint Symposium by EJIL: Talk! and Opinio Juris on Anthea Roberts’ Is International Law International?",
+        "Originality of Outsiders: Innovation in the Investment Treaty System",
+        "Anthea Roberts - Dragonfly Thinking",
+        "UNCITRAL and ISDS Reform: What to Expect When You’re Expecting",
+        "Anthea Roberts",
+        "Anthea Roberts",
+        "Anthea Roberts",
+        "EJIL: The Podcast! Episode 29: Echoes from the Invisible College",
+        "Is International Law International? Continuing the Conversation"
+      ]
+    },
+    {
+      "id": "Q1",
+      "outside_cap": false,
+      "query": "\"Travizory\" Kenya High Court petition judgment eTA electronic travel authorisation procurement",
+      "links": [
+        "https://new.kenyalaw.org/akn/ke/judgment/kehc/2026/7018/eng@2026-04-29/source.pdf",
+        "https://www.afronomicslaw.org/sites/default/files/pdf/BBI%20Consolidated%20Judgment%20-%20Final%20Version%20-%20As%20Delivered.pdf",
+        "https://globalfreedomofexpression.columbia.edu/wp-content/uploads/2021/10/Petition_56_58__59_of_2019_Consolidated.pdf",
+        "https://www.travizory.com/arbitration-travizory-republic-of-kenya",
+        "https://naturaljustice.org/wp-content/uploads/2018/05/Final-Judgment.pdf",
+        "https://kenya-today.com/report-eacc-obtains-high-court-order-to-freeze-assets-in-sh24497-million-procurement-case-16182/",
+        "https://kenyalaw.org/caselaw/cases/view/203303/",
+        "https://visasnews.com/en/kenya-mandatory-travel-insurance-now-available-separately-from-eta-court-upholds-requirement/",
+        "https://reproductiverights.org/wp-content/uploads/2022/03/CONTITUTIONAL-PETITION-E009-OF-2020-JUDGMENT-MALINDI-FINAL.pdf",
+        "https://www.ombudsman.go.ke/sites/default/files/2025-07/COMPENDIUM%20OF%20JUDGMENTS%20FOR%20THE%20FINANCIAL%20YEAR%202024-2025_0.pdf"
+      ],
+      "outcome": "RING 2: NULL. No Kenyan court decision, gazette notice or administrative instrument naming Travizory in these ten links. Link 4 is a NEW locator on the claimant's own domain, title 'Travizory Border Security SA v. Republic of Kenya - Travizory'; host absent from the relay's ALLOWED_HOSTS; NEVER RETRIEVED BY ANYONE; body unread; nothing asserted about its contents.",
+      "blocked_domains": [
+        "www.italaw.com",
+        "italaw.com",
+        "investmentpolicy.unctad.org",
+        "unctad.org",
+        "www.iisd.org",
+        "iisd.org",
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "host_tally": {
+        "new.kenyalaw.org": 1,
+        "www.afronomicslaw.org": 1,
+        "globalfreedomofexpression.columbia.edu": 1,
+        "www.travizory.com": 1,
+        "naturaljustice.org": 1,
+        "kenya-today.com": 1,
+        "kenyalaw.org": 1,
+        "visasnews.com": 1,
+        "reproductiverights.org": 1,
+        "www.ombudsman.go.ke": 1
+      },
+      "links_returned": 10,
+      "prohibited_host_links": 0,
+      "body_opened": false,
+      "returned_titles": [
+        "Public Procurement Administrative Review Board & 2 ...",
+        "Petition No. E282 of 2020 (Consolidated). Page 1 REPUBLIC OF KENYA",
+        "Nubian Rights Forum & 2 others v Attorney General & 6 ...",
+        "Travizory Border Security SA v. Republic of Kenya  - Travizory",
+        "1 REPUBLIC OF KENYA IN THE HIGH COURT OF KENYA AT NAIROBI",
+        "EACC obtains High Court order to freeze assets in Sh244.97 million procurement case",
+        "Constitutional Petition 159 of 2018 & 201 of 2019 (Consolidated) - Kenya Law",
+        "Kenya: Mandatory travel insurance now available separately from ETA, court upholds requirement - VisasNews",
+        "MALINDI HC CONST PET NO. E009 OF 2020 - JUDGMENT 1 REPUBLIC OF KENYA",
+        "1 SUBJECT : COMPENDIUM OF JUDGMENTS FOR THE YEAR 2024-2025"
+      ]
+    },
+    {
+      "id": "Q2",
+      "outside_cap": false,
+      "query": "\"trade secrets\" \"covered investment\" investment treaty arbitration 2026 tribunal jurisdiction decision clinical trial data",
+      "links": [
+        "https://repository.law.uic.edu/cgi/viewcontent.cgi?article=1377&context=ripl",
+        "https://www.dreyfus.fr/en/2025/12/10/complete-reference-guide-trade-secrets-in-2026/",
+        "https://www.pillsburylaw.com/a/web/e1NGdyYKEWSo52pAkjQ9pR/2026-investment-treaty-arbitration-investment-treaty-arbitration_-jurisdiction-ratione-temporis-1.pdf",
+        "https://www.mondaq.com/china/trade-secrets/1809942/afd-china-newsletter-june-2026",
+        "https://www.hilldickinson.com/our-view/articles/court-considers-investment-treaty-tribunal-s-jurisdiction/",
+        "https://repository.law.uic.edu/ripl/vol15/iss2/3/",
+        "https://practiceguides.chambers.com/practice-guides/trade-secrets-2026",
+        "https://arxiv.org/pdf/2006.10505",
+        "https://blog.ifila.org/2026/10/06/quarterly-review-may-september-2026/"
+      ],
+      "outcome": "NULL on the three-ring intersection. Nothing returned is a decision document. Links 1 and 6 are the Kim RIPL article, PRIOR ART (repository.law.uic.edu 14 files) -- the seat withdrew its own drafted finding on them. No body opened.",
+      "blocked_domains": [
+        "www.italaw.com",
+        "italaw.com",
+        "investmentpolicy.unctad.org",
+        "unctad.org",
+        "www.iisd.org",
+        "iisd.org",
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "host_tally": {
+        "repository.law.uic.edu": 2,
+        "www.dreyfus.fr": 1,
+        "www.pillsburylaw.com": 1,
+        "www.mondaq.com": 1,
+        "www.hilldickinson.com": 1,
+        "practiceguides.chambers.com": 1,
+        "arxiv.org": 1,
+        "blog.ifila.org": 1
+      },
+      "links_returned": 9,
+      "prohibited_host_links": 0,
+      "body_opened": false,
+      "returned_titles": [
+        "Protecting Trade Secrets Under International Investment Law",
+        "Reference guide: trade secrets in 2026 - dreyfus",
+        "IN-DEPTH Investment Treaty Arbitration JURISDICTION RATIONE TEMPORIS",
+        "AFD China Newsletter - June 2026 - Trade Secrets - China",
+        "Court considers investment treaty Tribunal’s jurisdiction",
+        "Protecting Trade Secrets Under International Investment Law: What Secrets Investors Should Not Tell States, 15 J. Marshall Rev. Intell. Prop. L. 228 (2016)",
+        "Trade Secrets 2026",
+        "Investment Disputes and Abnormal Volatility of Stocks",
+        "Quarterly Review: May"
+      ]
+    },
+    {
+      "id": "Q3",
+      "outside_cap": false,
+      "query": "ICSID 2026 \"Decision on the Respondent's Objection\" Rule 41(5) intellectual property patent covered investment upheld",
+      "pre_registered": "Character-identical re-fire of 2026-10-25 Q3, which fired UNRESTRICTED and returned 8 of 9 links on prohibited hosts and zero on icsidfiles.worldbank.org. Three branches pre-registered before firing, with the one-day/one-instance confound declared in advance. Branch (i) obtained.",
+      "links": [
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11823/DS21394_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11541/DS20967_En.pdf",
+        "https://jusmundi.com/en/document/publication/en-claim-manifestly-without-legal-merits",
+        "https://www.lexology.com/library/detail.aspx?g=f22a6552-bff7-4f36-bcb2-6bbdd4a83888",
+        "https://jusmundi.com/en/document/publication/en-decision-in-investment-arbitration",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C10899/DS19936_En.pdf",
+        "https://www.lexology.com/library/detail.aspx?g=14bf2669-fb47-4cdd-90a2-3f19a3c99834",
+        "https://files.lbr.cloud/public/2023-04/2023.03.29%20-%20ICSID%20ARB-15-28-Revision%20-%20Decision.pdf?VersionId=ds3Sgw3m_k_nf97EorOb_xtKuyJ7llOF",
+        "https://jusmundi.com/en/document/decision/en-watkins-holdings-s-a-r-l-and-others-v-kingdom-of-spain-revision-proceeding-pending-tuesday-23rd-may-2023",
+        "https://www.transnationalmatters.com/icsid-pending-cases/"
+      ],
+      "outcome": "RESEARCH NULL: no 2026 ICSID Rule 41(5) decision on intellectual property or a patent as a covered investment in these ten links. INSTRUMENT RESULT: 8 of 9 -> 0 of 10 on the identical string, no leak, and three icsidfiles.worldbank.org decision PDFs surfaced where the unrestricted arm returned none. One call per arm; no mechanism claimed.",
+      "blocked_domains": [
+        "www.italaw.com",
+        "italaw.com",
+        "investmentpolicy.unctad.org",
+        "unctad.org",
+        "www.iisd.org",
+        "iisd.org",
+        "dailyjus.com",
+        "unis.unvienna.org"
+      ],
+      "host_tally": {
+        "icsidfiles.worldbank.org": 3,
+        "jusmundi.com": 3,
+        "www.lexology.com": 2,
+        "files.lbr.cloud": 1,
+        "www.transnationalmatters.com": 1
+      },
+      "links_returned": 10,
+      "prohibited_host_links": 0,
+      "body_opened": false,
+      "returned_titles": [
+        "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+        "PROCEDURAL ORDER NO. 5 ON RESPONDENT'S ...",
+        "Wiki Note: Claim Manifestly without Legal Merit",
+        "Objection of Manifest Lack of Legal Merit of Claims: ICSID Arbitration Rule 41(5) - Lexology",
+        "Wiki Note: Decision in Investment Arbitration",
+        "INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+        "Objection of Manifest Lack of Legal Merit of Claims under the ICSID Arbitration Rules - Lexology",
+        "2023.03.29 - ICSID ARB-15-28-Revision - Decision.pdf",
+        "Watkins Holdings v. Spain, Decision on the Claimants’ Preliminary Objections Pursuant to ICSID Arbitration Rule 41(5), 22 Jan 2024",
+        "ICSID Pending Cases 2026: How to Track the Docket"
+      ]
+    }
+  ],
+  "returned_titles_note": "ADDED AFTER THE VETTING ROUND, as the chairman's half of integrity objection 1026-C11. The first version of this file recorded links as bare strings with no title field, so the two findings in the record that turn on a RETURNED TITLE -- the fourth form of title-level screen failure (Q3 link 9) and the travizory.com locator (Q1 link 4) -- rested on a datum no successor could re-read. All 39 titles are now here, in call order, index-aligned with 'links'. PROVENANCE AND GRADE: these are the FIRING SEAT'S REPORT OF ITS OWN CALLS, on the same footing as the link lists and the host tallies, and NOT a captured engine artefact -- no second party can verify them against anything, because no engine return was captured. They make both findings checkable as TRANSCRIPTIONS and do not make them independently recorded. THREE CHARACTER-LEVEL FACTS the seat flagged so a transcription would not silently normalise them, all preserved here: Q1 title 4 contains TWO consecutive spaces before the hyphen, and the seat disclosed that its own memo at Part 3 section 2.4 rendered it with one, which is a transcription inexactness in the memo that no objection had charged; four titles carry a CURLY apostrophe U+2019 (monitored-author 2 and 5, Q2 title 5, Q3 title 9) while Q3 title 2 carries a STRAIGHT U+0027; and Q3 titles 1 and 6 differ from each other -- 'FOR SETTLEMENT' against 'FOR THE SETTLEMENT'. Several titles are TRUNCATED as returned (Q1 1 and 3, Q3 2 and 7 end in an ellipsis or a cut phrase) and several carry no subject matter at all (Q1 title 5), which is the basis on which the analyst withdrew its per-link subject characterisations under 1026-C13."
+}

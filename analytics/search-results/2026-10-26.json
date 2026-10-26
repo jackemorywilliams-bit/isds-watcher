@@ -62,7 +62,19 @@
       },
       "links_returned": 10,
       "prohibited_host_links": 0,
-      "body_opened": false
+      "body_opened": false,
+      "returned_titles": [
+        "New Addition to our Team of Editors",
+        "Joint Symposium by EJIL: Talk! and Opinio Juris on Anthea Roberts’ Is International Law International?",
+        "Originality of Outsiders: Innovation in the Investment Treaty System",
+        "Anthea Roberts - Dragonfly Thinking",
+        "UNCITRAL and ISDS Reform: What to Expect When You’re Expecting",
+        "Anthea Roberts",
+        "Anthea Roberts",
+        "Anthea Roberts",
+        "EJIL: The Podcast! Episode 29: Echoes from the Invisible College",
+        "Is International Law International? Continuing the Conversation"
+      ]
     },
     {
       "id": "Q1",
@@ -105,7 +117,19 @@
       },
       "links_returned": 10,
       "prohibited_host_links": 0,
-      "body_opened": false
+      "body_opened": false,
+      "returned_titles": [
+        "Public Procurement Administrative Review Board & 2 ...",
+        "Petition No. E282 of 2020 (Consolidated). Page 1 REPUBLIC OF KENYA",
+        "Nubian Rights Forum & 2 others v Attorney General & 6 ...",
+        "Travizory Border Security SA v. Republic of Kenya  - Travizory",
+        "1 REPUBLIC OF KENYA IN THE HIGH COURT OF KENYA AT NAIROBI",
+        "EACC obtains High Court order to freeze assets in Sh244.97 million procurement case",
+        "Constitutional Petition 159 of 2018 & 201 of 2019 (Consolidated) - Kenya Law",
+        "Kenya: Mandatory travel insurance now available separately from ETA, court upholds requirement - VisasNews",
+        "MALINDI HC CONST PET NO. E009 OF 2020 - JUDGMENT 1 REPUBLIC OF KENYA",
+        "1 SUBJECT : COMPENDIUM OF JUDGMENTS FOR THE YEAR 2024-2025"
+      ]
     },
     {
       "id": "Q2",
@@ -145,7 +169,18 @@
       },
       "links_returned": 9,
       "prohibited_host_links": 0,
-      "body_opened": false
+      "body_opened": false,
+      "returned_titles": [
+        "Protecting Trade Secrets Under International Investment Law",
+        "Reference guide: trade secrets in 2026 - dreyfus",
+        "IN-DEPTH Investment Treaty Arbitration JURISDICTION RATIONE TEMPORIS",
+        "AFD China Newsletter - June 2026 - Trade Secrets - China",
+        "Court considers investment treaty Tribunal’s jurisdiction",
+        "Protecting Trade Secrets Under International Investment Law: What Secrets Investors Should Not Tell States, 15 J. Marshall Rev. Intell. Prop. L. 228 (2016)",
+        "Trade Secrets 2026",
+        "Investment Disputes and Abnormal Volatility of Stocks",
+        "Quarterly Review: May"
+      ]
     },
     {
       "id": "Q3",
@@ -184,7 +219,20 @@
       },
       "links_returned": 10,
       "prohibited_host_links": 0,
-      "body_opened": false
+      "body_opened": false,
+      "returned_titles": [
+        "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+        "PROCEDURAL ORDER NO. 5 ON RESPONDENT'S ...",
+        "Wiki Note: Claim Manifestly without Legal Merit",
+        "Objection of Manifest Lack of Legal Merit of Claims: ICSID Arbitration Rule 41(5) - Lexology",
+        "Wiki Note: Decision in Investment Arbitration",
+        "INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+        "Objection of Manifest Lack of Legal Merit of Claims under the ICSID Arbitration Rules - Lexology",
+        "2023.03.29 - ICSID ARB-15-28-Revision - Decision.pdf",
+        "Watkins Holdings v. Spain, Decision on the Claimants’ Preliminary Objections Pursuant to ICSID Arbitration Rule 41(5), 22 Jan 2024",
+        "ICSID Pending Cases 2026: How to Track the Docket"
+      ]
     }
-  ]
+  ],
+  "returned_titles_note": "ADDED AFTER THE VETTING ROUND, as the chairman's half of integrity objection 1026-C11. The first version of this file recorded links as bare strings with no title field, so the two findings in the record that turn on a RETURNED TITLE -- the fourth form of title-level screen failure (Q3 link 9) and the travizory.com locator (Q1 link 4) -- rested on a datum no successor could re-read. All 39 titles are now here, in call order, index-aligned with 'links'. PROVENANCE AND GRADE: these are the FIRING SEAT'S REPORT OF ITS OWN CALLS, on the same footing as the link lists and the host tallies, and NOT a captured engine artefact -- no second party can verify them against anything, because no engine return was captured. They make both findings checkable as TRANSCRIPTIONS and do not make them independently recorded. THREE CHARACTER-LEVEL FACTS the seat flagged so a transcription would not silently normalise them, all preserved here: Q1 title 4 contains TWO consecutive spaces before the hyphen, and the seat disclosed that its own memo at Part 3 section 2.4 rendered it with one, which is a transcription inexactness in the memo that no objection had charged; four titles carry a CURLY apostrophe U+2019 (monitored-author 2 and 5, Q2 title 5, Q3 title 9) while Q3 title 2 carries a STRAIGHT U+0027; and Q3 titles 1 and 6 differ from each other -- 'FOR SETTLEMENT' against 'FOR THE SETTLEMENT'. Several titles are TRUNCATED as returned (Q1 1 and 3, Q3 2 and 7 end in an ellipsis or a cut phrase) and several carry no subject matter at all (Q1 title 5), which is the basis on which the analyst withdrew its per-link subject characterisations under 1026-C13."
 }

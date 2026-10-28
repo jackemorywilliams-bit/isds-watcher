@@ -154,13 +154,25 @@ this seat's record paths.
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Seven rules this seat adopted from seven separate failures. The first three are one rule in three
+Nine rules this seat adopted from nine separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
 the same scepticism on this seat's own carried records, the fifth is the fourth again because it
-did not generalise either, the sixth is about attribution rather than about carried records, and
-the seventh is about the orphan sweep's own predicate. **This count was read back against the
-enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
+did not generalise either, the sixth is about attribution rather than about carried records, the
+seventh is about the orphan sweep's own predicate, the eighth is the seventh's unfinished half,
+and the ninth is about whether a rule reaches the list at all. **This count was read back against
+the enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
 six to seven** — the discipline named in the block that follows, performed rather than cited.
+
+> **Corrected 2026-10-28, and the correction is this session's own finding turned on itself.**
+> The sentence above read *"Seven rules … from seven separate failures"* for three days while the
+> rule adopted on 2026-10-25 — *no branch is called superseded without a content comparison* — sat
+> at `:347-350` of this note, inside a dated change-log entry, and **not in this enumeration**. The
+> 2026-10-25 record states that the rule was *"written into this seat's note rather than only into
+> this record"*, and that is true of the note and false of the list a successor reads as the
+> canonical set. It is promoted to **rule 8** below, with its original wording preserved at
+> `:347-350` as written. **Rule 9 is the generalisation:** this is the same defect as
+> [[Workflow Threads]] **D30**, one level down — a correct rule in a place nobody reads is the
+> vault-note form of an escalation that lives only in last session's closing table.
 
 > **Count corrected 2026-10-04 — and the correction was itself wrong. Re-corrected 2026-10-07.**
 > The original sentence read "Four rules … from four separate failures". On 2026-10-04 this seat
@@ -250,6 +262,27 @@ six to seven** — the discipline named in the block that follows, performed rat
    It was caught only because the bands disagreed with the previous session's, which is the
    argument for carrying the prior session's figures as a control rather than as a quotation.
    ([[Workflow Threads]] **F3**, **F4**, **D16**.)
+
+8. **2026-10-25** — *No branch is called superseded without a content comparison — a blob diff or a
+   search for its distinctive strings. A line count is not evidence of containment.* Promoted into
+   this list 2026-10-28; adopted and reasoned at `:347-350` of this note, whose wording is
+   preserved there. The failure it corrects cost **86 days**: four sessions, this one included,
+   certified three cloud-run branches "superseded" on the evidence that `main`'s files were larger
+   — 247, 506 and 496 lines against 164, 166 and 246 — and **a larger file is not a superset**. Two
+   of the three were genuinely contained; the third, `claude/sweet-mccarthy-i95s3k`, holds a
+   citation-verified research lead with **zero** occurrences anywhere on `main`. The honest landing
+   question is **PR state, plus `git cherry`, plus a content check**, and no one of the three is
+   sufficient alone. ([[Workflow Threads]] **D27**, **D28**.)
+
+9. **2026-10-28** — *A rule or an escalation that exists only in a session record is already half
+   lost. It reaches the enumeration in this note, or a thread with a designator in
+   [[Workflow Threads]], before the record is written.* Measured, not supposed: of the eleven rows
+   on the 2026-10-16 escalation table, the ten that survived to 2026-10-25 are **exactly** the ones
+   carrying a designator, and the three that vanished — the callout-pattern defect, the
+   insights-schema pointer, and the flowchart's coverage — carried none. The selection was by name,
+   not by importance, age or owner. Rule 8's own three-day delay is the same defect one level down:
+   a correct rule, written in the right file, in the section a successor does not read as
+   canonical. ([[Workflow Threads]] **D29**, **D30**, **D31**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
@@ -787,6 +820,39 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-10-28 (thirtieth deployment)** — Standing every-3-days session, audited against
+  `bb3cfc91` (`origin/main`, clean tree) on the complete **2,397**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **135** with `HEAD` detached, the
+  **twenty-second consecutive** session. Window `72e21a0..bb3cfc91` = **73** commits. Cadence held
+  at three days. **No roster change and no contract change, the fourteenth consecutive session**
+  (`git log 72e21a0..origin/main -- .claude/agents/ prompts/ src/models.py` returns no commit).
+  **The finding is a carrying failure, and it is this seat's.** Of the eleven rows on the
+  2026-10-16 escalation table, the ten that survived to 2026-10-25 are exactly the ones with a
+  designator; three without one — the callout-pattern defect at `src/email_shell.py:83-89`, the
+  insights-schema pointer at `COUNCIL.md:126-128`, and the flowchart's lane coverage — were
+  dropped silently by three consecutive sessions and were never ruled on, fixed or closed. All
+  three re-verified live at this head and restored as **D29**, **D30** and **D31**. The callout
+  defect re-measured larger than recorded: **156** marker lines dropped across 22 records against
+  **42** counted, in three forms (36 bold, 71 blockquoted-bold, 49 heading) where 2026-10-10
+  measured only the first; **19** records reached Emory with a subject line saying nothing needed
+  him; and the regex's `re.I` flag makes it over-count prose beginning with the word *action*,
+  which it did once, at `analytics/vault-sessions/2026-10-01.md`. Own drift fixed: rule **8** —
+  2026-10-25's content-comparison rule — had never reached the adopted-rules enumeration, and the
+  count sentence still said seven; promoted, with the original wording preserved at `:347-350`.
+  Rule **9** adopted from this session's own finding. Carried threads all re-run rather than
+  restated: F1 day 93, D5 day 76 (1 of 9), D6 fifth observation, D11 day 61, D19 day 45, D20 day
+  44 with the drift widened to 22/624/2 and 17, D24 reproduced a sixth time at 27 files, D27 day 89.
+  Orphan sweep on the corrected method: **five** branches unchanged, and two apparent new orphans
+  discharged by content check. Escalated, not edited: `src/email_shell.py` and
+  `scripts/send_vault_log.py` (site-experience), `views/isds-workflow-3d/workflow.json`
+  (systems-designer), `README.md` and `scripts/site_templates/how_it_works.html.j2`
+  (site-experience), `COUNCIL.md` (chairman), `scripts/check_currency.py` and
+  `scripts/check_site_sync.py` (systems-designer). No external PKM research this session; the
+  slice was internal and is not dressed as anything else.
+  *Audited against `bb3cfc91`; paths: `.claude/agents/`, `agents/`, `prompts/`, `src/models.py`,
+  `src/email_shell.py`, `scripts/`, `README.md`, `HANDOFF.md`, `COUNCIL.md`,
+  `views/isds-workflow-3d/workflow.json`, `.github/workflows/`, `analytics/vault-sessions/`.*
 
 - **2026-10-25 (twenty-ninth deployment)** — Standing every-3-days session, audited against
   `72e21a0` (`origin/main`, clean tree) on the complete **2,324**-commit history after

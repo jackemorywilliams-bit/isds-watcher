@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `8483aa3`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `72388d2`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,58 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-10-28 (archivist session — thirtieth deployment)
+
+Audited against `bb3cfc91` (`origin/main`, clean tree), complete **2,397**-commit history after
+`git fetch --unshallow`; clone arrived shallow at **135**, `HEAD` detached, the twenty-second
+consecutive recurrence. Window `72e21a0..bb3cfc91` = **73** commits. No roster or contract change
+— the fourteenth consecutive session (`git log 72e21a0..origin/main -- .claude/agents/ prompts/
+src/models.py`, no commit).
+
+**Three open escalations were restored after three sessions dropped them, and the selection
+mechanism is now named.** Of the eleven rows on the 2026-10-16 escalation table
+(`analytics/vault-sessions/2026-10-16.md:299`ff), the ten that reached 2026-10-25 are exactly the
+ones carrying a designator. The three that did not — the callout-pattern defect at
+`src/email_shell.py:83-89`, the insights-schema pointer at `COUNCIL.md:126-128`, and the
+flowchart's lane coverage at `views/isds-workflow-3d/workflow.json` — vanished from
+`2026-10-19.md`, `2026-10-22.md` and `2026-10-25.md` entirely, with `grep -c` returning 0 on each.
+All three re-verified live at this head and opened as [[Workflow Threads]] **D29**, **D30**
+and **D31**.
+
+**The callout defect is larger than it was recorded.** `src/email_shell.py:83-89` matches its
+marker only at line start after whitespace, and the body renderer reaches that test only after the
+blockquote and heading branches have returned. Measured across all 29 committed session records:
+**156** marker lines dropped (36 bold, 71 blockquoted-bold, 49 heading) against **42** counted,
+and **19** records were emailed with a subject line saying nothing needed Emory. Proved by
+rendering — `email_shell.render()` on `analytics/vault-sessions/2026-10-07.md` emits **0** callout
+divs. The 2026-10-10 figure of 36 was correct for the one form it measured. The regex is also
+`re.I`, so it over-counts prose beginning with the word *action*, as at
+`analytics/vault-sessions/2026-10-01.md`. Owner: site-experience; `src/` was not edited.
+
+**Own drift fixed.** The content-comparison rule adopted 2026-10-25 had never reached the
+adopted-rules enumeration in `agents/obsidian-archivist.md`, whose count sentence still read
+"Seven rules"; promoted to rule **8** with its original wording preserved at `:347-350`, and rule
+**9** adopted from this session's own carrying failure. Count corrected to nine.
+
+**Carried threads, each re-run:** F1 day 93 (unchanged, `7514a655` and `6f9e1da0`); D5 day 76,
+still 1 of 9; D6 fifth observation, runtime `claude-opus-5` against a definition stating Opus 4.8;
+D11 day 61 (PR #110, 2 substantive unlanded commits); D19 day 45 (PR #184, head `529c744358`); D20
+day 44, drift widened to `{runs: 22, screened: 624, matches: 2}` against pinned
+`{16, 492, 0}` and 17 `per_source` digests against pinned 11, with `pipeline-guards` run
+`40685250936` red in job `suite` and green in job `guards`; D24 reproduced a sixth time at **27**
+files; D27 day 89, still zero occurrences on `main` across 2,397 commits.
+
+**Orphan sweep on the corrected method (PR state + `git cherry` + content check): five branches,
+unchanged.** Two apparent new orphans were discharged by the content check rather than by
+inference — `council/2026-08-13` and `council/2026-08-26` each carry an unlanded
+`daily-update sent marker` commit whose file is present on `main`, landed under a different sha.
+A further measured fact with no re-send risk: `analytics/daily-research/.sent/` holds 120 markers
+on `main` and is missing `2026-07-30` and `2026-08-01`, the two days whose sends happened on the
+unmerged cloud branches; `scripts/send_daily_update.py` keys its marker on the run's own date, so
+historical gaps cannot cause a re-send.
+
+Session record: `analytics/vault-sessions/2026-10-28.md`.
 
 ## 2026-10-25 (archivist session — twenty-ninth deployment)
 

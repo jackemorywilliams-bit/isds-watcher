@@ -18,6 +18,49 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
+**Board re-measured — 2026-10-28, at `bb3cfc91` on `origin/main`, clean tree, on the complete
+**2,397**-commit history after `git fetch --unshallow`; the clone arrived shallow at **135** with
+`HEAD` detached, the twenty-second consecutive recurrence.** *Audited against `bb3cfc91`; window
+`72e21a0..bb3cfc91` = **73** commits; paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `src/sources/`, `src/email_shell.py`, `README.md`, `HANDOFF.md`, `COUNCIL.md`,
+`docs/`, `scripts/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`,
+`.github/workflows/`, `analytics/vault-sessions/`, and every remote branch tip.* **No roster change
+and no contract change, the fourteenth consecutive session:**
+`git log 72e21a0..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+Carried threads, each re-run rather than restated:
+
+- **F1** — day **93**. `chore/operator-marks-2026-07-27` still carries `7514a655` and `6f9e1da0`
+  as its only non-bot unlanded commits. Unchanged.
+- **D5** — day **76**, still **1 of 9**. Re-run over `.claude/agents/`: only
+  `integrity-officer.md` names its own vault note.
+- **D6** — fifth observation from this seat. `get_session` returns `configured_model`,
+  `session_context.model` and `external_metadata.last_served_model` all **`claude-opus-5`**,
+  against a definition stating Claude Opus 4.8. The Model lines stay as written, for the reason
+  given 2026-08-16.
+- **D11** — day **61**. PR **#110** open, head `de73f9fa`, **6** unlanded commits of which **2**
+  are substantive (`ccd47e93`, `4135fd85`) and 4 are re-anchor residue.
+- **D19** — day **45**. PR **#184** open, head still `529c744358`, **3** unlanded commits of which
+  **2** are substantive.
+- **D20** — day **44**, and the drift has widened again. CI's own command
+  (`python3.13 -m pytest tests -q --ignore=tests/test_one_pagers.py`) returns **2 failed, 820
+  passed, 1 skipped, 5 xfailed**. `tests/test_site_claims.py:165` computes
+  `{runs: 22, screened: 624, matches: 2}` against pinned `{runs: 16, screened: 492, matches: 0}`;
+  `:305` computes **17** digests carrying `per_source` against pinned **11**. On 2026-10-25 the
+  same assertions read 21/611/1 and 16. `pipeline-guards` run `40685250936` on `8483aa3a` is red
+  in job `suite`, step *"The whole suite, not a named subset"*, while job `guards` is **green** on
+  all ten of its steps.
+- **D24** — reproduced a **sixth** time, now **27** files rather than 26; the added file is
+  `docs/digests/2026-10-26.html`, the digest that landed since. `scripts/check_site_sync.py` prints
+  *"OK: docs/ is in sync"* and exits **0** having rewritten them. Restored with
+  `git checkout -- docs/` before anything was staged. One container note that is not the defect: on
+  `python3` (3.11.17) `jinja2` is absent and the guard fails closed with exit **1**, correctly; the
+  dirtying behaviour appears on `python3.13`, where `jinja2` 3.1.6 is present. CI pins 3.12.
+- **D27** — day **89**, unchanged. No commit on `main` touches `United Therapeutics`, `Liquidia`,
+  `2025 NCBC 37`, `treprostinil` or `Cranfill Sumner` in 2,397 commits. Still waiting on one ruling.
+- **D28** — the corrected landing method was used for this session's orphan sweep and discharged
+  two false positives on its own terms; see the orphan paragraph in
+  `analytics/vault-sessions/2026-10-28.md`.
+
 **Snapshot refreshed — 2026-09-04, at `c2558d9` on `main`, on a complete 983-commit history
 (`git fetch --unshallow`; the clone arrived shallow at **173**, the fifth consecutive
 recurrence).** *Audited against `c2558d9`; true window `7bc5fc0..c2558d9` = **61** commits;
@@ -582,6 +625,142 @@ the chair owes the record a committed sitting record, and until it lands this va
 - **Next** — one council ruling on the disposition of the nine, after which the rows are assigned
   and the certificate re-run. **Owner: [[council-chairman]]**, on the record drafted by
   [[research-analyst]] and certified by [[integrity-officer]].
+
+---
+
+### D30 — this note's escalation table dropped every item that had no designator, and kept every item that had one *(new 2026-10-28; owner: archivist — the carrying rule is fixed here; the three restored items have their own owners)*
+
+- **The measurement.** The 2026-10-16 session record closed with an eleven-row escalation table
+  (`analytics/vault-sessions/2026-10-16.md:299`ff). Nine days later the 2026-10-25 table carries
+  ten rows and **every one of them is a designator** — D27, D28, F1, D5, D11, D19, D20, D24, D10,
+  D26. Counting occurrences across the three intervening records:
+
+  | 2026-10-16 row | string counted | 10-19 | 10-22 | 10-25 |
+  | --- | --- | --- | --- | --- |
+  | 1 · callout pattern | `email_shell` | 0 | 0 | 0 |
+  | 4 · insights-schema pointer | `thread_id` | 0 | 0 | 0 |
+  | 9 · flowchart coverage | `workflow.json` | 2 | 2 | **0** |
+  | 2, 3, 6, 8, 11 · PR #184, PR #110, D5, suite, reanchor | — | carried | carried | carried as D19, D11, D5, D20, D11 |
+
+  **The selection is not by importance, age or owner. It is by whether the item had a name.** An
+  item with a designator has a section in this note that a successor reads; an item without one
+  lives only in the previous record's closing table, and a successor who writes a fresh table from
+  the current board writes it without them.
+- **This is the 2026-08-03 failure class in its quietest form.** Nothing was asserted falsely and
+  no branch went unmerged. Three live escalations simply stopped being mentioned, and the project's
+  open-work index — this note — never held them, so nothing contradicted their absence.
+- **Carrying rule, adopted 2026-10-28 and binding on this seat:** *an escalation that survives one
+  session gets a designator and a section in this note before the record is written.* A closing
+  table is a view of the board, never the board itself. An item that exists only in a session
+  record's table is already half-dropped.
+- **The three are restored here, each re-verified at `bb3cfc91` rather than carried on trust:**
+  - **Row 1 → D29** (above). Still live; re-measured larger than recorded.
+  - **Row 4 — the insight ledger's schema pointer still has no destination.** `COUNCIL.md:126-128`
+    tells a reader the schema `{date, thread_id, ring, insight, sources, confidence}` is
+    *"documented in `STATE_OF_THE_ANSWER.md`, since JSONL has no comment syntax"*. `thread_id`
+    returns **0** occurrences in that file, while `analytics/insights.jsonl` uses the key on **253**
+    lines. The ledger is real and the pointer to its documentation is not. *(owner:
+    council-chairman / Emory — `COUNCIL.md` is not this seat's file.)*
+  - **Row 5 — `HANDOFF.md`'s currency anchor is not machine-checked, and today that costs nothing.**
+    `scripts/check_currency.py`'s `TRACKED` map names five notes and `HANDOFF.md` is not among them
+    (**0** occurrences), yet `HANDOFF.md:11` carries an `Audited against` anchor like any tracked
+    note. Re-verified by hand today: the anchor is `7834fe2` (2026-10-22) and
+    `git log 7834fe2..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/` returns
+    **no commit** across the window's 143, so the file is true as written. **The defect is that
+    this had to be a hand measurement.** *(owner: systems-designer — `scripts/`.)*
+  - **Row 9 — the flowchart, re-measured and narrowed.** See D31.
+- **Next action** — none for Emory on this thread itself. The carrying rule is this seat's and is
+  fixed; the three restored items are tracked under D29, D31 and the two owners named above.
+
+---
+
+### D31 — the chart that claims to show "the entire system" has no node for six automated lanes, and three human-facing surfaces repeat the claim *(new 2026-10-28 as a designator; the finding is 2026-10-13's, owner: systems-designer for the manifest, site-experience for the three claims)*
+
+- **Measured at `bb3cfc91`.** `views/isds-workflow-3d/workflow.json` holds **30** nodes, of which
+  **11** are role cards covering all nine definitions in `.claude/agents/` plus the minutes and
+  daily-researcher seats. `scripts/check_models.py` exits **0** over its 12 model-bearing cards, so
+  the chart's *model* layer is correct. Its *lane* layer is not.
+- **Six workflow files were added after the chart's last content change and none has a node.**
+  The manifest was last edited `74bd60c5` (2026-09-11, a sources change) and `a7a6d143`
+  (2026-09-11); its `meta.version` still reads **2.2** and its `meta.note` still describes the
+  2026-08-03 relay addition as the latest change, so the chart under-describes its own currency.
+  Against `git log --diff-filter=A` on `.github/workflows/`:
+
+  | workflow | added | on the chart |
+  | --- | --- | --- |
+  | `vault-log.yml` | 2026-08-03 | **no** — this is the mailer that delivers this record |
+  | `claims-consistency.yml` | 2026-08-04 | no |
+  | `lit-review.yml` | 2026-08-04 | no |
+  | `model-consistency.yml` | 2026-08-04 | no |
+  | `pipeline-guards.yml` | 2026-08-11 | **no** — and it is the check that is red on `main` today |
+  | `reanchor.yml` | 2026-08-27 | **no** — and it is the mechanism behind D10 and D11 |
+  | `scholar-intake.yml` | 2026-09-08 | no — `Scholar Alerts` on the chart is the *source* chip `src-scholar`, not the intake lane |
+
+  Keyword counts over the whole manifest: `reanchor` **0**, `lit-review` **0**, `heartbeat` **0**;
+  `guard` **1**, and that one is prose inside the systems-designer role card, not a node.
+- **Three human-facing surfaces carry the claim.** `README.md:56` — *"The entire system on one
+  chart"*; `scripts/site_templates/how_it_works.html.j2:3` and `:17` — *"The whole instrument on
+  one chart"* / *"The whole system on one chart"*; and the built, professor-facing
+  `docs/how-it-works.html:7` and `:48`, which is what Dr. Benavides actually reads. Each sentence
+  then enumerates what it shows, and the enumeration is accurate — the gap is between the opening
+  claim and the enumeration, not inside the enumeration.
+- **Not edited here.** The manifest is the systems designer's and the README and templates are
+  site-experience's. The figures above are executable and go straight into either brief.
+- **Next action** — systems-designer: add the missing lanes, or narrow `meta.note` and the three
+  claims to what the chart actually covers. Either closes it; the present state is the only one
+  that misdescribes.
+
+---
+
+### D29 — the escalation about the channel that carries every escalation fell out of this note's own table, three sessions running *(new 2026-10-28 as a designator; the finding is 2026-10-10's, owner: site-experience for `src/email_shell.py`, Emory for one ruling)*
+
+- **What happened.** On 2026-10-10 this seat found that `src/email_shell.py:83-89` drops operator
+  callouts written in bold, measured **36** across **12** records, and escalated it
+  (`analytics/vault-sessions/2026-10-10.md:93`, `:288`). It was carried in the escalation tables of
+  **2026-10-13** (`:301`) and **2026-10-16** (`:299`, `:328`). Then it stopped:
+  `grep -c "email_shell" analytics/vault-sessions/2026-10-19.md 2026-10-22.md 2026-10-25.md`
+  returns **0, 0, 0**. Three consecutive sessions dropped an open escalation that had never been
+  ruled on, fixed, or closed — and no session noticed, because the thing that fell out was the only
+  item on the board with no designator to fall out of.
+- **It is still live at `bb3cfc91`.** `_ACTION_RE` (`src/email_shell.py:83-89`) matches
+  `^\s*` then the marker. The body renderer reaches that test only after the blockquote branch
+  (`:170-171`) and the heading branch have both `continue`d, so a marker inside a quote or a
+  heading is never even offered to it.
+- **Re-measured today across all 29 committed session records, decomposed by form** — the
+  2026-10-10 figure was correct and measured one of three forms:
+
+  | form written | lines | counted |
+  | --- | --- | --- |
+  | `**NEEDS YOU …` (bold at line start) | **36** | 0 |
+  | `> **NEEDS YOU …` (bold inside a blockquote) | **71** | 0 |
+  | `## n. NEEDS YOU …` (section heading) | **49** | 0 |
+  | **total dropped** | **156** | — |
+  | counted across all 29 records | — | **42** |
+
+  **156 marker lines dropped against 42 counted**, and **19 records reached Emory with a subject
+  line saying nothing needed him** while carrying marker lines — among them `2026-10-04` (9) and
+  `2026-10-07` (11). Proved by rendering, not inferred: `email_shell.render()` on
+  `analytics/vault-sessions/2026-10-07.md` emits **0** `div.act` callouts; on `2026-10-25.md`,
+  written unbolded at line start, it emits **8** and `action_line_count` returns **8**.
+- **And it over-counts in the other direction, which is new.** `_ACTION_RE` is compiled `re.I`
+  (`src/email_shell.py:87`), so any prose line beginning with the word *action* counts as an
+  operator callout. `analytics/vault-sessions/2026-10-01.md` scored **1**, and that one line is
+  prose — *"action \*\"Land PR #184.\"\* I merged it this session."* The subject-line count has
+  been wrong in both directions, with a measured instance of each.
+- **A separate, smaller defect in the same lane.** `scripts/send_vault_log.py::_sessions()`
+  accepts a filename only if its stem matches `\d{4}-\d{2}-\d{2}` exactly, so
+  `analytics/vault-sessions/2026-08-04-council.md` can never be discovered. It has no sent marker
+  and has never been emailed — the one record of 29 in that state, **85 days** on.
+- **What this seat fixed and what it did not.** The writing convention is this seat's and has held
+  since 2026-10-13: every callout unbolded at line start, which is why `2026-10-19` through
+  `2026-10-28` all count correctly. The carrying failure is also this seat's and is fixed by this
+  designator existing. The regex is `src/` and is not this seat's to edit.
+- **Next action** — one ruling from Emory, unchanged since 2026-10-10 and now with a bigger
+  number behind it: either `src/email_shell.py:83` tolerates leading emphasis, quote and heading
+  punctuation (which makes all 156 historical lines count the next time anything re-renders them),
+  or the unbolded line-start convention is declared and the 22 affected records stay as written.
+  This seat recommends the first: the records are append-only history and reformatting twelve weeks
+  of them to satisfy a regex is the wrong direction. Execution is site-experience's.
 
 ---
 

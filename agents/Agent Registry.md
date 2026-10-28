@@ -566,6 +566,34 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-10-28 (archivist session — thirtieth deployment)** — **No roster change and no
+  contract change, the fourteenth consecutive session.** Audited against `bb3cfc91`
+  (`origin/main`, clean tree) on the complete **2,397**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **135** with `HEAD` detached, the
+  twenty-second consecutive recurrence. `git log 72e21a0..origin/main -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across the 73-commit window.
+  `scripts/check_models.py` exits 0 over **12** flowchart cards, which licenses only the claim
+  that the declarations agree with one another. `COUNCIL.md:61-68` cross-checked against
+  `src/models.py` line by line and they match exactly — chairman and heavy-reasoning
+  `claude-opus-5`, utility `claude-opus-4-8`, digest classifier `claude-haiku-4-5-20251001`;
+  no contract-to-code drift.
+  **D6 persists and the roster is again left unrewritten.** This seat's own runtime was queried
+  for the **fifth** time: `configured_model`, `session_context.model` and
+  `external_metadata.last_served_model` are all `claude-opus-5`, against
+  `.claude/agents/obsidian-archivist.md`, which states Claude Opus 4.8. The rows and Model lines
+  are **not** changed, for the reason given on 2026-08-16 — rewriting them would ratify a
+  substitution nobody authorised. Already carried at `:260`, `:828` and `:1043`; not re-escalated
+  as new.
+  **D5 re-run and unchanged at 1 of 9, day 76.** Of the nine definitions in `.claude/agents/`,
+  only `integrity-officer.md` names its own vault note, so eight seats — this one included —
+  cannot read the file that carries their adopted rules. This session's own finding is what that
+  costs: the content-comparison rule adopted 2026-10-25 sat in `agents/obsidian-archivist.md` for
+  three days without reaching the enumeration a successor reads as canonical
+  ([[Workflow Threads]] **D30**).
+  **The flowchart's role layer is correct and its lane layer is not** — all nine definitions have
+  a card, and six workflow files added since the manifest's last content change have none
+  ([[Workflow Threads]] **D31**). The manifest is the systems designer's and was not edited.
+
 - **2026-10-25 (archivist session — twenty-ninth deployment)** — **No roster change and no
   contract change, the thirteenth consecutive session.** Audited against `72e21a0`
   (`origin/main`, clean tree) on the complete **2,324**-commit history after

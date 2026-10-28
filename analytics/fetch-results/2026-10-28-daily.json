@@ -1,0 +1,67 @@
+{
+  "request": "2026-10-28-daily.json",
+  "note": "2026-10-28 DAILY BATCH, committed under the chairman's hand before any seat was convened. AUTHORITY: yesterday's close-out (analytics/daily-research/2026-10-27.md section 6.5(1)) authorised exactly three rows for today -- Row 1, Row 2, Row 3 -- and 6.5(2) and 6.5(5) ruled out every other row by name. This batch is those three and nothing else; I add NO row of my own. THE DROPPED ROWS ARE AS DELIBERATE AS THE FIRED ONES. No Row 4 on find = 'Available on the ICSID Website': DROPPED at 6.5(2) on the analyst's own measurement against its own row -- 226 of its 300 trail characters are already committed at analytics/fetch-results/2026-10-21-daily.json records[4], marginal yield about 74 characters. A deeper anchor inside the same dated block is TODAY'S DESIGN WORK, to be designed by the analyst and fired no earlier than tomorrow; I do not fire an undesigned row. No R-a: NOT superseded and NOT reopened; it stands on the MONTHLY cadence per 6.2(c), and any future chrome-change trigger must be phrased on the EXCERPT TEXT -- never on the sha256 and never on the byte count. A successor who writes 'on the first batch after any observed change in a case-detail window' is reviving a limb withdrawn on 2026-10-26 and restated wrongly on 2026-10-27. No R-e (escalation 4: a decision for the operator, not a deferred row); no R2 (barred, 2026-10-23 section 8.2(e)); no 'Instrument(s) Invoked' (measured unreachable by any anchor clearing thread 34); no 'Travizory' party-name row (escalation 2, licence/ALLOWED_HOSTS question open and the operator's); and NO PDF ROW -- specifically not the two icsidfiles.worldbank.org decision URLs. The ground is the predicate named at 6.2(j), P1: content_type == 'application/pdf', 10 records, 10 of 10 at status 200, 0 of 10 with a nonempty excerpt. Name P1 when relying on it; the '!= text/html' reading (79 records) is NOT the predicate and cannot bear the proposition, 67 of its members having returned no body at all. JOINS RE-DERIVED IN SESSION, NOT CARRIED, per 6.5(1) and the taxonomy-40 ruling: measured at pin 664d687390850a0d72c596005b402112cfdafe90 by git rev-parse HEAD, over 101 files / 751 records of analytics/fetch-results/*.json. UNIT: records. ADMISSION PREDICATE: unquote(url) contains the CaseNo literal AND find equals the exact string. Row 1 = 4 fired / 4 TRUE; Row 2 = 21 fired / 21 TRUE; Row 3 = 5 fired / 5 TRUE. All three reproduce yesterday's adopted figures file by file and index by index. CO-OBSERVATION PRECONDITION, VERIFIED BY ME IN THE SAME MEASUREMENT: sha256 equality between the Row 2 and Row 3 records holds on all FIVE co-observation days -- 2026-10-23 91a5c03e, -24 bd1f07d0, -25 4ba834ab, -26 8717a789, -27 de7baca3, each pair identical. A successor must re-verify it on today's batch before reading Rows 2 and 3 as a co-observation, and must publish NO failure rate for that precondition (the denominator was withdrawn at 2026-10-27 section 6.2(c)'s predecessor ruling; restating '1 in 97' repeats a sustained defect). PREDICATE LETTERS ARE BINDING ON THREAD 88, per 6.2(f): Predicate A (a record in the run-group carries find = 'December 16, 2025 Each party' with find_matched true) stands at 5 through 2026-10-27; Predicate B (the terminus string present in any UNCT/20/6 window of the run-group, whatever it was anchored on, alongside a field-row hit) stands at 6. A figure on this thread carries its predicate letter or it is not readable, and 5 and 6 are not a disagreement. ROW 1 PRE-REGISTRATION, quoted in full in the corrected 2026-10-24 section 5.2(f) form -- all THREE sentences, the third having been dropped without an ellipsis on 2026-10-27 (objection 1027-C10): 'The Ring-3 trigger fires on any Latest Development naming a jurisdictional or admissibility event, OR the disappearance of the literal \"No References Available\", whichever comes first. READ THE FIELD, NOT ONLY THE LITERAL. The continued PRESENCE of that literal is EQUALITY AND IS NOT PROGRESS, and no successor may read it as such.' ROW 3 PRE-REGISTERED NULL MEANING, in the amended 2026-10-25 section 5.2(d) text and not the text first registered (which objection 1025-C4 struck for a silently swapped entity): a null here while Row 2 hits means EITHER the chronology entry moved OR an undecoded HTML entity entered the locus -- NEVER 'the literal is absent'. The named entity is '&nbsp;' and the demonstration is the find = 'Procedural Order No. 11' windows at analytics/fetch-results/2026-10-19-daily.json records[4] and 2026-10-22-daily.json records[6]. The '&amp;' substitution and the 2026-10-21 locator are STRUCK and must not be re-imported. PROHIBITION SCREEN, RUN BEFORE THE ROWS WERE WRITTEN rather than after (the screen-before-not-after rule, objection 1021-C18): all three rows are on icsid.worldbank.org, on ALLOWED_HOSTS; no row touches www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org or any IISD path-family host (standing prohibition, escalation 5); no row requests 'Subject of Dispute' or 'Economic Sector' (thread 34, licence-suspended); no row touches ARB/24/16, ARB/24/45, ARB/22/2 (monthly, next due 2026-11-18), ARB/12/1 or ARB/17/19 (named and not cured, zero budget by design); no fedlex.admin.ch row and nothing touching Swiss SR 0.975.247.2 (escalation 3, Emory's manual query); web.archive.org and travizory.com are NOT requested, both absent from ALLOWED_HOSTS, and I propose no change to scripts/fetch_relay.py -- that file is outside this session's merge scope and the question is the operator's. COMPANION-CONTROL RULE (analytics/fetch-requests/README.md) is not triggered: it fires only on a row EXPECTED TO PRODUCE A NULL, and all three rows below are expected to hit on the joins above. PROVENANCE CONVENTION (adopted 2026-10-24 section 2.3; NINTH consecutive sitting of the underlying defect): merging a request file to main is itself a push to analytics/fetch-requests/**, so the merge RE-FIRES this workflow and overwrites analytics/fetch-results/2026-10-28-daily.json with a later run id and fetched_at. Today's record therefore cites this batch by sha256 and byte count, which survive the re-fire, and treats run id and fetched_at as provenance that will be overwritten. No workflow change is proposed. BUDGET: three rows plus the runner's mandatory https://example.com/ control = 4 fetches, under MAX_URLS 12, leaving eight slots unspent. The spare capacity is blocked by licence and page geometry, not by budget, and no fourth row exists today that this council may both fire and read.",
+  "fetched_at": "2026-10-28T11:19:27.437970+00:00",
+  "environment": "github-actions-runner (run 40678987450)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85016,
+      "sha256": "6c7fc37867b5e6ab077bbb0919358064a3c0ea18a4865c1e371b6caa8bd523e0",
+      "excerpt": "and the Department of Justice, Republic of Kenya, Nairobi, Kenya Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters. No References Available. (a) Original Proceeding Date Development December 16, 2025 The Secretary-General registers a reques",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105748,
+      "sha256": "9b34347c784abb41566a79aaf697cefcba3b6a399f1dd517483721cd0f797c98",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "December 16, 2025 Each party",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 105748,
+      "sha256": "9b34347c784abb41566a79aaf697cefcba3b6a399f1dd517483721cd0f797c98",
+      "excerpt": "ach party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-29",
+  "seat": "research analyst",
+  "model": "claude-opus-5",
+  "schema_note": "ZERO CALLS FIRED. This file is written EXPLICITLY EMPTY rather than omitted, and the choice is deliberate: on 2026-10-28 the chairman's brief told this seat to write nothing, so no analytics/search-results/2026-10-28.json exists and that day's two queries cannot be audited by any successor (the chairman records this as his own defect at analytics/daily-research/2026-10-28.md section 6.5(7)). An omitted file makes 'no searches were fired' indistinguishable from 'no decision was recorded'. This file records the DECISION and its grounds so the decision itself is auditable. NO BODY WAS OPENED BY ANY MEANS. Nothing here may be read as a statement about any document's contents.",
+  "pre_registration": {
+    "path": null,
+    "ordering_claim": "NONE. No pre-registration file was written by this seat today. The budget of TWO was set by the chairman in the convening instruction, adopting this seat's own 2026-10-28 section 9(2) recommendation. The prior-art screens recorded below were run BEFORE any query string was composed, and no query string was composed."
+  },
+  "instrument_state": {
+    "fetch": "DEAD on both direct instruments. Measured by the chairman at session open on neutral controls: curl returned 'CONNECT tunnel failed, response 403' on example.com and en.wikipedia.org; the agent proxy's own status endpoint independently recorded both as 'connect_rejected - gateway answered 403 to CONNECT' at 2026-10-29T11:18:28Z; the separate fetch service returned ENOTFOUND on example.com. NOT re-probed by this seat - the probes are spent and the answer is on the record. THIS IS NOT A STATE CHANGE. A dead instrument is a fact about this session, NEVER a fact about a resource.",
+    "search_track": "NOT EXERCISED TODAY. Its liveness is therefore UNMEASURED by this seat, and no sentence in this file or in this seat's return rests on the search track being either alive or dead.",
+    "relay": "ALIVE AND FIRED. analytics/fetch-requests/2026-10-29-daily.json was committed and pushed by the chairman before this seat was convened; results LANDED at analytics/fetch-results/2026-10-29-daily.json on the first pull (control_ok true, void false, 4 requested / 4 completed, truncated false, all four finds matched). This seat requested no relay rows of its own and spent no relay budget."
+  },
+  "budget": {
+    "ceiling": 2,
+    "spent": 0,
+    "handed_back": 2,
+    "note": "BOTH SLOTS RETURNED UNSPENT. The chairman's section 6.5(3) named the formulation to test and instructed: 'so your return must say whether any OTHER held docket number can seed it. If none can, RETURN THE SLOT AND SAY SO - that is a result, not a failure.' The answer is stronger than the instruction anticipated and it runs against this seat: the named formulation is NOT UNFIRED. It was fired on 2026-10-20, twice, seeded from a held docket number (UNCT/20/6), and its second firing was the maximum-rigid-designator form. The premise of the instruction was a claim in THIS SEAT's own 2026-10-28 method note, and the refutation was already in the corpus when the note was written."
+  },
+  "calls": [],
+  "formulation_dispositions": [
+    {
+      "formulation": "party/claimant-name, seeded from a docket number this council already holds",
+      "status": "PRIOR ART - FIRED AND SATURATED. NOT FIRED AGAIN.",
+      "prior_art_pin": "analytics/search-results/2026-10-20.json, calls[0] call_id S1 and calls[1] call_id S2",
+      "prior_art_verbatim_strings": [
+        "\"Einarsson\" \"UNCT/20/6\" Canada award 2026",
+        "\"Einarsson and others v. Canada\""
+      ],
+      "prior_art_outcome": "S1 recorded 'TOTAL NULL' and declared VOID as evidence about the docket, because the query and not the docket produced it (the token 'award' is recorded there as POISONED on a title-level channel, colliding with prize semantics). S2 - the bare quoted caption, zero dilutable tokens, maximum rigid-designator density - recorded 'NULL ON THE PROPOSITION, AND NOTHING NEW TO THE RECORD': ten rows, two on-theme, BOTH prior art, eight carrying a path-derived or host-only title identifying no document at all.",
+      "why_not_refired": "S2 is the strongest available form of this formulation and it has already been fired on the only seed that is available today. A third firing would re-put a question this corpus has answered twice."
+    },
+    {
+      "formulation": "expert-witness-name, seeded from a document-availability block this council measured itself (candidate seed: 'Nigel Bankes', exposed again in today's Row 4 window)",
+      "status": "PRIOR ART - FIRED. NOT FIRED AGAIN.",
+      "prior_art_pin": "analytics/daily-research/2026-08-15.md lines 523 and 526, and section 3.1 at line 536",
+      "prior_art_verbatim_strings": [
+        "\"Nigel Bankes\" University of Calgary Faculty of Law professor natural resources law",
+        "\"Nigel Bankes\" \"Chair in Natural Resources Law\""
+      ],
+      "prior_art_outcome": "Recorded at that day's section 3.1 as 'TITLE-CARRIED. NEW TO THE RECORD.' and returning author-profile pages (rsc-src.ca, profiles.ucalgary.ca, researchgate.net, engage.ucalgary.ca). The person is identified; nothing in that return reaches the three-ring intersection.",
+      "screen_defect_disclosed": "THIS SEAT'S FIRST SCREEN FOR THIS FORMULATION WAS RUN OVER THE WRONG POPULATION AND RETURNED A FALSE ZERO. Screening 'Bankes' over analytics/search-results/ (24 files) returns 0 files. Generalising that to 'never searched' would have been the exact defect the chairman's section 6.5(4) directed this draft to be screened for. The corpus analytics/search-results/ begins at 2026-09-20 and the council has written daily records since 2026-06-23; 91 daily-research files predate the first search artefact. The wider screen over analytics/daily-research/ refutes the narrow one. This blind spot is PRIOR ART in terms at analytics/insights.jsonl line 218 (2026-09-27), which states: 'A reader using only analytics/search-results/ undercounts everything before 2026-09-20.'"
+    },
+    {
+      "formulation": "designator-on-the-doctrine",
+      "status": "NOT FIRED. NO REASON STATED IN ADVANCE, THEREFORE NO THIRD FIRING.",
+      "ground": "Section 6.5(3) permits a third firing only on a reason stated IN ADVANCE in this seat's return. This seat has no such reason. Its own 2026-10-28 section 4 measured this formulation's ceiling: four queries across two days on four unrelated doctrinal formulations produced ONE locator new to the corpus and ZERO instruments at the three-ring intersection. A measured ceiling is not a reason to fire again."
+    },
+    {
+      "formulation": "asset-quoted",
+      "status": "DEAD. MAY NOT BE FIRED. NOT FIRED.",
+      "ground": "Nulled twice - 2026-08-24 S4 and 2026-10-26 Q2 - and the chairman's convening instruction states it 'may not be fired a third time.'"
+    }
+  ],
+  "held_docket_numbers_screened_as_seeds": {
+    "predicate": "Can this held docket number seed a party/claimant-name formulation that is BOTH unfired AND within today's budget?",
+    "rows": [
+      {"docket": "ARB/25/54", "answer": "NO - FORECLOSED TWICE OVER. The pleaded-asset question is zero-budget by the chairman's section 6.5(9), and section 6.5(6) ruled out a 'Travizory' party-name row by name."},
+      {"docket": "UNCT/20/6", "answer": "NO - ALREADY FIRED, 2026-10-20 S1 and S2, in the strongest form of the formulation. Saturated."},
+      {"docket": "ARB/22/2", "answer": "NO - OFF CADENCE. Monthly, next due 2026-11-18."},
+      {"docket": "ARB/12/1", "answer": "NO - zero budget, named and not cured."},
+      {"docket": "ARB/17/19", "answer": "NO - zero budget, named and not cured."},
+      {"docket": "ARB/24/16", "answer": "NO - excluded by name in the batch's own prohibition screen."},
+      {"docket": "ARB/24/45", "answer": "NO - excluded by name in the batch's own prohibition screen."},
+      {"docket": "ARB/16/34 (Bridgestone v Panama)", "answer": "NO - decided seed award. It is the project's baseline, not a discovery target; a party-name search on it is prior art by construction."},
+      {"docket": "UNCT/14/2 (Eli Lilly v Canada)", "answer": "NO - decided seed award, same ground."},
+      {"docket": "PCA 2012-12 (Philip Morris v Australia)", "answer": "NO - decided seed award, same ground."}
+    ],
+    "verdict": "NO HELD DOCKET NUMBER CAN SEED AN UNFIRED PARTY-NAME FORMULATION TODAY. Ten screened, ten negative, and the two negatives that matter are of different kinds: ARB/25/54 is foreclosed by ruling, UNCT/20/6 is foreclosed by having already been asked."
+  },
+  "zero_budget_surfaces_honoured": "No query was composed or fired, so every zero-budget surface is honoured trivially and in full: the ARB/25/54 pleaded-asset question; fedlex.admin.ch and Swiss SR 0.975.247.2 in any language or formulation; ARB/12/1; ARB/17/19; ARB/22/2 (monthly, next due 2026-11-18); thread 11 (recorded, nothing asked, nothing spent). THE MONITORED-AUTHOR CHECK (Anthea Roberts, ejiltalk.org/author/aroberts/) IS NEXT DUE MONDAY 2026-11-02. It was not fired and it is NOT DUE today, and 'not due' is not 'resolved'.",
+  "standing_prohibitions_honoured": "No host was blocked because no call was made, so blocked_domains efficacy remains UNMEASURED by this seat and is not used anywhere to support a negative. No allowlist was passed. No prohibited host (www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org, the IISD path family) was contacted, requested or returned.",
+  "day_verdict": "THE SEARCH LIMB RETURNS BOTH SLOTS, AND THE RESULT IS A REFUTATION OF THIS SEAT'S OWN METHOD NOTE RATHER THAN A NULL FROM AN ENGINE. The 2026-10-28 method note asserted that the party-name formulation seeded from a held docket number was the shape worth testing next and that 'the only such seed is the ARB/25/54 pleaded-asset question, which is zero-budget.' That second assertion is FALSE and was false when written: UNCT/20/6 is a held docket number, it was used as exactly that seed on 2026-10-20, and both firings are committed in analytics/search-results/2026-10-20.json. The chairman adopted the note into a binding instruction at section 6.5(3) and budgeted two slots on it. The defect therefore travelled one full day and two seats before any screen caught it, and it was caught only because the instruction required this seat to answer a question about the premise. NO ENGINE WAS CONSULTED TODAY AND NO PROPOSITION IN THIS FILE RESTS ON ONE.",
+  "no_search_synthesis_figures": "VACUOUSLY SATISFIED AND SAID TO BE VACUOUS RATHER THAN IMPLIED: no engine was called today, so no number, date, disposition, holding, damages figure, treaty article, caption, docket number, sector or status from any engine summary could enter this file. access_status for everything not retrieved is NEVER RETRIEVED.",
+  "writes_by_this_seat": "This file and nothing else. No other repository file was written, no branch created, no commit made, nothing pushed. Scratchpad files created outside the repository are disclosed by absolute path in this seat's return so that its measurements can be re-run."
+}

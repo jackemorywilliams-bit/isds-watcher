@@ -1,0 +1,67 @@
+{
+  "request": "2026-10-30-daily.json",
+  "note": "2026-10-30 DAILY BATCH, committed under the chairman's hand before any seat was convened. AUTHORITY: yesterday's close-out (analytics/daily-research/2026-10-29.md section 6.6(1)) authorised exactly THREE rows for today -- Rows 1, 2 and 3 unchanged -- and RETIRED ROW 4 AFTER ONE FIRING in terms: 'ROW 4 IS RETIRED AFTER ONE FIRING AND I ADOPT THE ANALYST'S RECOMMENDATION AGAINST ITS OWN ROW ... Do not re-fire it as cadence.' This batch is those three and nothing else; I add NO row of my own. THE DROPPED ROWS ARE AS DELIBERATE AS THE FIRED ONES. Row 4 is dropped BECAUSE IT SUCCEEDED, not because it failed: its anchor is validated on its lead, the block's dated forms are committed, and a second firing re-reads a block measured at rest, buys no new character, and cannot bear on any ring by its own pre-registration. 6.6(2) forbids a ROW 4 SUCCESSOR today: the analyst's proposed find = 'Expert Report of Nigel Bankes' on ?CaseNo=UNCT/20/6 has NOT run the four-requirement design round, and two further conditions are the chairman's -- the string is already a committed find from 2026-08-15 and 2026-10-20 so its first-occurrence hazard must be RE-MEASURED on current page geometry rather than carried, and per objection 1029-C10 its pre-registration may rest NO weight on the returned offset (the instrument forces 100) and must be phrased on lead text alone. 6.6(7) rules out by name: no R-e, no R2, no 'Instrument(s) Invoked', no 'Travizory' party-name row, and NO PDF ROW -- specifically not the two icsidfiles.worldbank.org decision URLs. The ground for the PDF refusal is the predicate named P1: content_type == 'application/pdf', 10 records, 10 of 10 at status 200, 0 of 10 with a nonempty excerpt. Name P1 when relying on it; the '!= text/html' reading is NOT the predicate and cannot bear the proposition. No R-a: per 6.6(6) R-a is NOT superseded and NOT reopened and stands on the MONTHLY cadence. Any chrome-change trigger must be phrased on the EXCERPT TEXT -- never on the sha256 and never on the byte count; the shared +335 across both dockets on 2026-10-29, restoring both to values they held on 2026-10-26, is PRIOR ART IN EVERY ELEMENT and a successor must not re-discover it. JOINS RE-DERIVED IN SESSION, NOT CARRIED: measured at pin c9ef7a98fe8f4f607fa363efbeb235c59c58952e (git rev-parse HEAD) over 103 files / 760 records of analytics/fetch-results/*.json. UNIT: records. ADMISSION PREDICATE: unquote(url) contains the CaseNo literal AND find is exactly equal to the row's find string. Row 1 = 6 fired / 6 TRUE; Row 2 = 23 fired / 23 TRUE; Row 3 = 7 fired / 7 TRUE. Each is exactly one above yesterday's adopted figure (5, 22, 6), which is what yesterday's batch landing predicts, and I checked that rather than assuming it. The retired Row 4 stands at 1 fired / 1 TRUE and is SAID to be 1/1 rather than implied. SHALLOW-CLONE CHECK RUN BEFORE ANY HISTORY-DERIVED FIGURE, per escalation N14's standing rule and 6.6(9): git rev-parse --is-shallow-repository returned TRUE at session open (133 commits), the clone was unshallowed to 2,424 commits, and every history figure in today's record is computed after that. A successor in a fresh container starts shallow again and must re-run the check rather than inherit this sentence. CO-OBSERVATION PRECONDITION, VERIFIED BY ME IN SESSION ON TODAY'S CORPUS: sha256 equality between the Row 2 and Row 3 records holds on all SEVEN co-observation days -- 2026-10-23 91a5c03e, -24 bd1f07d0, -25 4ba834ab, -26 8717a789, -27 de7baca3, -28 9b34347c, -29 60627eb5 -- each pair identical and each pair at equal byte length. Yesterday's six reproduce exactly and 2026-10-29 adds the seventh. A successor must re-verify it on today's batch before reading Rows 2 and 3 as a co-observation, and must publish NO failure rate for that precondition -- the denominator was withdrawn and restating '1 in 97' repeats a sustained defect. PREDICATE LETTERS ARE BINDING ON THREAD 88: Predicate A (a record in the run-group carries find = 'December 16, 2025 Each party' with find_matched true) stood at 7 through 2026-10-29; Predicate B (the terminus string present in any UNCT/20/6 window of the run-group, whatever it was anchored on, alongside a field-row hit) stood at 8. A figure on this thread carries its predicate letter or it is not readable, and 7 and 8 are not a disagreement. ROW 1 PRE-REGISTRATION, quoted in full in its corrected THREE-sentence form (the third sentence was dropped without an ellipsis on 2026-10-27, objection 1027-C10): 'The Ring-3 trigger fires on any Latest Development naming a jurisdictional or admissibility event, OR the disappearance of the literal \"No References Available\", whichever comes first. READ THE FIELD, NOT ONLY THE LITERAL. The continued PRESENCE of that literal is EQUALITY AND IS NOT PROGRESS, and no successor may read it as such.' ROW 3 PRE-REGISTERED NULL MEANING, in the amended 2026-10-25 section 5.2(d) text and not the text first registered (which objection 1025-C4 struck for a silently swapped entity): a null here while Row 2 hits means EITHER the chronology entry moved OR an undecoded HTML entity entered the locus -- NEVER 'the literal is absent'. The named entity is '&nbsp;' and the demonstration is the find = 'Procedural Order No. 11' windows at analytics/fetch-results/2026-10-19-daily.json records[4] and 2026-10-22-daily.json records[6]. PROHIBITION SCREEN, RUN BEFORE THE ROWS WERE WRITTEN rather than after (the screen-before-not-after rule, objection 1021-C18): all three rows are on icsid.worldbank.org, which is on ALLOWED_HOSTS; no row touches www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org or any IISD path-family host (standing prohibition); no row requests 'Subject of Dispute' or 'Economic Sector' (thread 34, licence-suspended); no row touches ARB/24/16, ARB/24/45, ARB/22/2 (monthly, next due 2026-11-18), ARB/12/1 or ARB/17/19 (named and not cured, zero budget by design); no fedlex.admin.ch row and nothing touching Swiss SR 0.975.247.2 (escalation 4, Emory's manual query); web.archive.org and travizory.com are NOT requested, both absent from ALLOWED_HOSTS, and I propose no change to scripts/fetch_relay.py -- that file is outside this session's merge scope and the question is the operator's. COMPANION-CONTROL RULE (analytics/fetch-requests/README.md): it fires only on a row EXPECTED TO PRODUCE A NULL. All three rows are expected to hit on the joins above, so no companion control is owed. Row 2 remains Row 3's cross-URL and same-URL discriminator in any event. That is the rule satisfied, not the rule waived. PROVENANCE CONVENTION (ELEVENTH consecutive sitting of the underlying defect): merging a request file to main is itself a push to analytics/fetch-requests/**, so the merge RE-FIRES this workflow and overwrites analytics/fetch-results/2026-10-30-daily.json with a later run id and fetched_at. Today's record therefore cites this batch by sha256 and byte count, which survive the re-fire, and treats run id and fetched_at as provenance that will be overwritten. No workflow change is proposed. SEARCH BUDGET: ZERO, per 6.6(3), adopted from the analyst's own recommendation over its alternative of one. Three of the four formulation shapes are measured dead, saturated or ceiling-bound and the fourth is foreclosed; six queries across three days bought one near-miss locator and zero instruments at the intersection. A seventh query chosen to spend a budget is the exact failure the council spent 2026-10-29 diagnosing. BUDGET: three rows plus the runner's mandatory https://example.com/ control = 4 fetches, under MAX_URLS 12, leaving eight slots unspent. The spare capacity is blocked by licence, page geometry and an unmet design round -- not by budget. INSTRUMENT STATUS MEASURED THIS MORNING, NOT ASSUMED: two neutral-host curl probes (example.com, en.wikipedia.org) both failed 'CONNECT tunnel failed, response 403', the proxy's own status endpoint recorded both as connect_rejected at 2026-10-30T11:22:46Z, and the separate fetch service returned ENOTFOUND on the neutral control example.com. BOTH DIRECT INSTRUMENTS ARE DEAD AND THAT IS NOT A STATE CHANGE. This relay is the one live retrieval instrument and nothing is stranded today for want of fetch. A dead instrument is a fact about this session, NEVER a fact about a resource.",
+  "fetched_at": "2026-10-30T11:25:56.699717+00:00",
+  "environment": "github-actions-runner (run 41047987544)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85353,
+      "sha256": "9d9b301c76c464d186799e1c287cb39b79b3f3b6ad5b3262636075cfcab76f9d",
+      "excerpt": "and the Department of Justice, Republic of Kenya, Nairobi, Kenya Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters. No References Available. (a) Original Proceeding Date Development December 16, 2025 The Secretary-General registers a reques",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106085,
+      "sha256": "6028f8058c1d751e16b1bd9c778d2a01e8c914c03e4aaeb0cd0918c7719e015a",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "December 16, 2025 Each party",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106085,
+      "sha256": "6028f8058c1d751e16b1bd9c778d2a01e8c914c03e4aaeb0cd0918c7719e015a",
+      "excerpt": "ach party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `67bece3a`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `a4de0387`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -1364,12 +1364,8 @@ still the only open PR in the repository before this session's own.
   single line**, the currency anchor:
 
   ```
-  <<<<<<< HEAD
-  **Currency anchor.** *Audited against `91153e4`.* …
-  =======
-  **Currency anchor.** *Audited against `8974a55`.* …
-  >>>>>>> f73ac06
-  ```
+    **Currency anchor.** *Audited against `8974a55`.* …
+    ```
 
 - **Its payload is twenty days superseded.** `8974a55` is an ancestor of `91153e4`
   (`git merge-base --is-ancestor 8974a55 91153e4` → true). The PR's whole content is an anchor

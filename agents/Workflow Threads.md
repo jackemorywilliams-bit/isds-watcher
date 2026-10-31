@@ -1364,8 +1364,12 @@ still the only open PR in the repository before this session's own.
   single line**, the currency anchor:
 
   ```
-    **Currency anchor.** *Audited against `8974a55`.* …
-    ```
+  <<<<<<< HEAD
+  **Currency anchor.** *Audited against `91153e4`.* …
+  =======
+  **Currency anchor.** *Audited against `8974a55`.* …
+  >>>>>>> f73ac06
+  ```
 
 - **Its payload is twenty days superseded.** `8974a55` is an ancestor of `91153e4`
   (`git merge-base --is-ancestor 8974a55 91153e4` → true). The PR's whole content is an anchor

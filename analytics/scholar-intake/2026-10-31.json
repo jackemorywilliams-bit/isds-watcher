@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-10-31",
+  "at": "2026-10-31T12:55:21.301841+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 6,
+    "newest_alert_date": "2026-10-16T03:40:32+00:00",
+    "newest_alert_subject": "(\"clinical trial data\" OR \"test data\" OR \"regulatory ... - new\r\n results",
+    "alert_dates": [
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-10",
+      "2026-10-07",
+      "2026-10-02"
+    ]
+  },
+  "papers_in_window": 0,
+  "queued_new": 0,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": []
+}

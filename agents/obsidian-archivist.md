@@ -297,7 +297,15 @@ six to seven** — the discipline named in the block that follows, performed rat
    note has no footer block, and the next generator run splits that bullet mid-sentence. The test
    that exists (`tests/test_build_graph.py:51`) asserts the invariant only over a synthetic
    fixture. **So the sweep is by span: for every start delimiter, the matching end must be exactly
-   two lines below it.** A warning this seat issues to itself and never executes against the vault
+   two lines below it** — **and by count in the same pass, because neither test alone is
+   sufficient.** Corrected the same day it was adopted, by running the stated method against the
+   three violations that produced it: the span test catches `2026-09-11.md` (span 0) and **misses
+   both** `2026-08-05.md` and `2026-09-29.md`, which carry two complete pairs each at span 2 and are
+   caught only by the count test; the count test in turn passes `2026-09-11.md`, which holds exactly
+   one of each delimiter. **A note is conformant only if it carries exactly one start delimiter,
+   exactly one end delimiter, and a span of two between them.** The first wording of this rule would
+   have run an incomplete sweep and reported two of its own three instances clean — rule 9's failure
+   mode, in a rule adopted the same session. A warning this seat issues to itself and never executes against the vault
    is not a discipline, it is a slogan. ([[Workflow Threads]] **D32**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording

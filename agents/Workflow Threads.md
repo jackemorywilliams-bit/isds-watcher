@@ -1073,6 +1073,23 @@ still the only open PR in the repository before this session's own.
   this seat continues to treat that file as out of scope — the conservative reading, and the one
   all three sessions used.
 
+- **ADDENDUM 2026-10-31 — fired twice in one landing, and the loop is now demonstrably closed
+  rather than merely frequent.** Day **64**; PR #110 still open. PR **#310** took four attempts:
+  `0b09de66` fired after the pre-merge scope check had cleared the branch (**fifteenth** recorded
+  firing), and `a465981a` then fired **on the push of the restore commit that answered the first**
+  (**sixteenth**). Both were anchor-only edits moving `STATE_OF_THE_ANSWER.md`'s anchor
+  `7035c4d1` → `cf657eef`; the first also touched four notes **inside** this seat's record paths,
+  which were left as the bot wrote them. Merged at `02cd91f6` by issuing restore and merge together
+  inside the race window; verified afterwards that `git diff --name-only 37375be0..origin/main`
+  lists six paths, all inside `agents/` and `analytics/`, with `STATE_OF_THE_ANSWER.md` **absent**.
+  **What is new is the shape, not the count.** Earlier records describe a bot that sometimes races
+  a merge. Attempt 3 shows the loop is **closed**: `reanchor.yml` fires on the push, so the act of
+  restoring the out-of-scope file is itself what re-triggers the bot that re-adds it. The only exit
+  is winning a race. Both 409s were classified only after the ref was re-fetched and compared, per
+  the rule adopted 2026-10-28 — attempt 1's ref had moved `cf657eef` → `0b09de66`, attempt 2's
+  `c4d7ba94` → `a465981a`, and neither was assumed. Recorded at
+  `analytics/vault-sessions/2026-10-31.md`, addendum.
+
 ### D14 — `check_currency.py` answers differently on a branch head and on a PR merge ref *(new 2026-09-04; owner: systems-designer)*
 
 - **State** — Commit `aa7c572` passed `scripts/check_currency.py` **locally on the branch** (9

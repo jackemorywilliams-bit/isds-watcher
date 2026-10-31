@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `7035c4d1`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `cf657eef`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,64 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-10-31 (archivist session — thirty-first deployment)
+
+Audited against `37375be0` (`origin/main`, clean tree), complete **2,462**-commit history after
+`git fetch --unshallow`; clone arrived shallow at **127**, `HEAD` detached, the twenty-third
+consecutive recurrence. Window `bb3cfc91..37375be0` = **65** commits. No roster or contract change
+— the fifteenth consecutive session (`git log bb3cfc91..origin/main -- .claude/agents/ prompts/
+src/models.py`, no commit).
+
+**The instrument has not changed in 47 days, and that is this session's governing measurement.**
+All 65 commits in the window touch only `agents/`, `analytics/`, `STATE_OF_THE_ANSWER.md` and
+`state/research_log.json`. Widened to the whole period since the last code commit (`09f62c19`,
+2026-09-14), `git diff --name-only 09f62c19..HEAD` filtered to everything outside the record paths
+returns **0 files across 1,131 commits**. Last commit per path: `src/` and `scripts/` `4814b4b7`
+(2026-09-13); `tests/` and `.github/workflows/` `09f62c19` (2026-09-14); `views/` and `README.md`
+`a7a6d143` (2026-09-11); `prompts/` `93a69f71` (2026-08-27); `.claude/agents/` `ae1f04b3`
+(2026-08-05); `COUNCIL.md` `939deaaa` (2026-08-03).
+
+**D32 opened — three notes violate the managed-block invariant and no guard can see any of them.**
+Swept over the 119 notes carrying a managed block, by delimiter *span* rather than count.
+`analytics/daily-research/2026-09-11.md:619` quotes both delimiters inline in one prose bullet, so
+it passes a count check while carrying no footer block; simulating `apply_block`
+(`scripts/build_graph.py:192-199`) splits bullet `0911-N1` mid-sentence, +3 lines, and leaves the
+note unlinked from the graph — which is what that bullet was itself reporting.
+`analytics/daily-research/2026-08-05.md:806-810` quotes a complete block inside a code fence and is
+benign only because the end delimiter was quoted too; the start alone would have destroyed ~223
+lines. `analytics/daily-research/2026-09-29.md:1222` carries a stranded block, count 0 → 1 at
+`a5a3d32e` and 1 → 2 at `14b0e212` when a post-merge addendum was appended past the footer.
+`tests/test_build_graph.py:51` asserts the invariant only over a synthetic fixture; no
+`scripts/check_*.py` guard mentions the delimiters. `build_graph` runs in **no** workflow, so the
+defect is latent rather than firing. Escalated to [[systems-designer]] for the script and the
+guard; the three notes are the council's dated records and were not edited.
+
+**D27 upgraded — two adopted fabrication-taxonomy entries never landed, which makes the thread
+method rather than research.** `claude/sweet-mccarthy-i95s3k` (`dee99ab5`, 2026-07-31, day **92**)
+carries a council session whose integrity officer adopted "#6 SYNDICATION-AS-CORROBORATION" and
+"#7 POSTURE ERASURE", called "the productive correction output" in that record's own accountability
+section. Both return **0** files across `origin/main`; the canonical taxonomy
+(`agents/integrity-officer.md:138`, 41 entries) gives 6 and 7 to different patterns, so a merge
+would now collide. `15c8131` landed entries 7-10 the same day from a **different lineage**
+(`git merge-base --is-ancestor` non-zero) and mentions neither pattern. `Liquidia` now returns 5
+files on `main` — all five this seat's own escalation records; **0** across every research surface.
+Routed to [[integrity-officer]] for re-adoption at free numbers, Emory for the lead.
+
+**D31 refined — the missing set is 11 lanes, not the 7 the thread enumerated.** The headline figure
+"4 of 15" was recorded correctly on 2026-10-16; what was short was the enumeration of which lanes
+are absent, which 2026-10-28 gave as seven. Four more were never named: `aggregate.yml`, `send-digest.yml` (2026-06-16),
+`heartbeat.yml` (2026-06-23), `human-review.yml` (2026-06-29) — three predating every lane already
+listed. The professor-facing SVG in `docs/how-it-works.html` names the same four as the 3D manifest
+and no others, so this is one gap in shared source data, not two renderer defects.
+
+**Rule 10 adopted in [[obsidian-archivist]]**: the managed-block invariant is swept vault-wide every
+session, by delimiter span and not by count. Count read back against the enumeration — ten rules,
+numbered 1-10, no gaps. Carried and re-run unchanged: F1 (day 96, exactly 20 ledger lines on branch
+absent from `main`, 0 the other way), D5 (day 79, 1 of 9), D6 (sixth observation), D10 (day 60),
+D11 (day 64, PR #110 open), D19 (day 48, PR #184 open), D20 (day 47, 2 failed / 821 passed on CI's
+pinned 3.12), D24 (day 30, seventh reproduction, 27 files), D29 (day 21, re-measured 159 dropped /
+50 counted), D30. Session record: `analytics/vault-sessions/2026-10-31.md`.
 
 ## 2026-10-28 (archivist session — thirtieth deployment)
 

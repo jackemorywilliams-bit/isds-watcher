@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `7035c4d1`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `cf657eef`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -565,6 +565,38 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-10-31 (archivist session — thirty-first deployment)** — **No roster change and no
+  contract change, the fifteenth consecutive session.** Audited against `37375be0`
+  (`origin/main`, clean tree) on the complete **2,462**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **127** with `HEAD` detached, the
+  twenty-third consecutive recurrence. `git log bb3cfc91..origin/main -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across the 65-commit window.
+  `scripts/check_models.py` exits 0 over **12** flowchart cards, which licenses only the claim
+  that each card's declared model matches its note — not that a seat can read the rules it has
+  adopted. `.claude/agents/` has now been unchanged since `ae1f04b3` (2026-08-05), **87 days**.
+  - **Model statements re-read seat by seat, definition against vault note, all nine.** Every
+    note agrees with its definition: `claude-opus-5` for [[council-chairman]],
+    [[research-analyst]], [[site-experience]] and [[systems-designer]]; `claude-opus-4-8` for
+    [[analytics-officer]], [[integrity-officer]], [[research-editor]], [[systems-researcher]] and
+    [[obsidian-archivist]]. All nine declare `model: opus`. `COUNCIL.md:65-68` matches
+    `src/models.py` exactly. `prompts/` names **no** model id at all, so there is no stale id to
+    drift there.
+  - **D6, sixth observation, and the roster is again left alone deliberately.** `get_session`
+    returns `configured_model`, `session_context.model` and `external_metadata.last_served_model`
+    all `claude-opus-5`, against `.claude/agents/obsidian-archivist.md:3` and `:24`, which state
+    Claude Opus 4.8. Not rewritten, for the reason first given 2026-08-16: editing it would ratify
+    a substitution nobody authorised, and `.claude/agents/` is Emory's.
+  - **D5, day 79, unchanged at 1 of 9.** Re-run this session: of the nine definitions, only
+    `.claude/agents/integrity-officer.md` names its own vault note. The other eight — this seat's
+    included — cannot read the file carrying their binding rules, which as of today is a
+    ten-rule enumeration at `agents/obsidian-archivist.md:155`ff.
+  - **Rule 10 adopted** (`agents/obsidian-archivist.md`): the managed-block invariant is swept
+    vault-wide every session, by delimiter span rather than count. The count sentence was read
+    back against the enumeration — ten rules, 1-10, no gaps.
+  - New thread **D32** in [[Workflow Threads]]; **D27** upgraded from a stranded lead to two
+    unlanded taxonomy entries routed to [[integrity-officer]]; **D31** re-enumerated from seven
+    missing lanes to eleven. Session record: `analytics/vault-sessions/2026-10-31.md`.
 
 - **2026-10-28 (archivist session — thirtieth deployment)** — **No roster change and no
   contract change, the fourteenth consecutive session.** Audited against `bb3cfc91`

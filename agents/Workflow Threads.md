@@ -677,6 +677,13 @@ the chair owes the record a committed sitting record, and until it lands this va
     addendum): §8 was appended *after* the footer block and a second block written at the new
     foot. `apply_block` cannot repair this — `pat.sub` with no `count=1` replaces **both** matches
     with identical content, so the duplicate is permanent and one copy stays buried mid-record.
+- **The conformance test, stated exactly, because the first version of it was wrong.** A note is
+  conformant only if it carries **exactly one** start delimiter, **exactly one** end delimiter, and
+  a **span of two** between them. All three conditions are load-bearing: the span test alone catches
+  `2026-09-11.md` (span 0) and **misses** `2026-08-05.md` and `2026-09-29.md`, which carry two
+  complete pairs each at span 2; the count test alone catches those two and **passes**
+  `2026-09-11.md`, which holds exactly one of each. Measured against all three violations on
+  2026-10-31 rather than reasoned about.
 - **Why nothing caught it.** The invariant *is* asserted — `tests/test_build_graph.py:51` checks
   `after.count(BLOCK_START) == 1` — but only against a synthetic `tmp_path` fixture vault, never
   against the real notes, and `grep -l` over `scripts/check_*.py` returns **no** guard that

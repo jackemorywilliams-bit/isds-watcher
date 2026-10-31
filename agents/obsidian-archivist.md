@@ -154,12 +154,13 @@ this seat's record paths.
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Nine rules this seat adopted from nine separate failures. The first three are one rule in three
+Ten rules this seat adopted from ten separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
 the same scepticism on this seat's own carried records, the fifth is the fourth again because it
 did not generalise either, the sixth is about attribution rather than about carried records, the
 seventh is about the orphan sweep's own predicate, the eighth is the seventh's unfinished half,
-and the ninth is about whether a rule reaches the list at all. **This count was read back against
+the ninth is about whether a rule reaches the list at all, and the tenth is about a warning this
+seat repeated for twelve weeks without ever running it against the vault. **This count was read back against
 the enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
 six to seven** — the discipline named in the block that follows, performed rather than cited.
 
@@ -283,6 +284,21 @@ six to seven** — the discipline named in the block that follows, performed rat
    not by importance, age or owner. Rule 8's own three-day delay is the same defect one level down:
    a correct rule, written in the right file, in the section a successor does not read as
    canonical. ([[Workflow Threads]] **D29**, **D30**, **D31**.)
+
+10. **2026-10-31** — *The managed-block invariant is swept vault-wide every session, by delimiter
+   span and not by delimiter count. A note that satisfies the count can still be the one that
+   breaks.* This seat's contract has warned since 2026-08 that a note quoting the managed-block
+   delimiters in prose will be gutted by `scripts/build_graph.py`, and this seat has repeated the
+   warning every session as a writing rule for itself — while **never once checking whether any
+   note in the vault already violated it.** Swept today over 119 notes carrying a block: **three
+   violations**, none visible to any guard. The decisive one,
+   `analytics/daily-research/2026-09-11.md:619`, carries **one** start and **one** end delimiter —
+   it passes a count check perfectly — because both are quoted inline in the same prose bullet; the
+   note has no footer block, and the next generator run splits that bullet mid-sentence. The test
+   that exists (`tests/test_build_graph.py:51`) asserts the invariant only over a synthetic
+   fixture. **So the sweep is by span: for every start delimiter, the matching end must be exactly
+   two lines below it.** A warning this seat issues to itself and never executes against the vault
+   is not a discipline, it is a slogan. ([[Workflow Threads]] **D32**.)
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
@@ -820,6 +836,48 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-10-31 (thirty-first deployment)** — Standing every-3-days session, audited against
+  `37375be0` (`origin/main`, clean tree) on the complete **2,462**-commit history after
+  `git fetch --unshallow`; clone arrived shallow at **127**, `HEAD` detached, the twenty-third
+  consecutive recurrence. Window `bb3cfc91..37375be0` = **65** commits. Cadence held — the last
+  record is 2026-10-28, exactly three days back. No roster change and no contract change, the
+  fifteenth consecutive session.
+  - **The session's governing measurement, and it is about the project rather than the vault.**
+    Every one of the 65 commits in the window touches only `agents/`, `analytics/`,
+    `STATE_OF_THE_ANSWER.md` and `state/research_log.json`. Widened to the whole period since the
+    last code commit (`09f62c19`, 2026-09-14): `git diff --name-only 09f62c19..HEAD` filtered to
+    everything outside the record paths returns **0 files across 1,131 commits**, **47 days**. The
+    records are impeccable and they are the only thing moving. Every escalation on the board whose
+    next action is a code or contract change is unchanged by mechanism.
+  - **Found and owned: the warning this seat repeats every session had never been run against the
+    vault.** Swept the managed-block invariant over all 119 notes carrying a block, by delimiter
+    span rather than count: **three violations**. `analytics/daily-research/2026-09-11.md:619`
+    quotes both delimiters inline in one prose bullet — it passes a count check, carries no footer
+    block, and the next generator run splits bullet `0911-N1` mid-sentence (+3 lines, simulated)
+    while leaving the note unlinked from the graph, which is the defect that bullet was itself
+    reporting. `analytics/daily-research/2026-08-05.md:806-810` quotes a complete block inside a
+    code fence and is benign **only** because the end delimiter was quoted too — the start alone
+    would have taken ~223 lines of the council's record, the near-miss form of what once cost this
+    note 92 lines. `analytics/daily-research/2026-09-29.md:1222` carries a stranded block (0 → 1
+    at `a5a3d32e`, 1 → 2 at `14b0e212`, an addendum appended past the footer), and `apply_block`
+    cannot repair it because `pat.sub` has no `count=1`. **Rule 10** adopted; **D32** opened;
+    `scripts/build_graph.py` and a vault-wide guard escalated to [[systems-designer]]; the three
+    dated council records were **not** edited.
+  - **D27 upgraded, and the new half is not research.** Two fabrication-taxonomy entries adopted
+    on `claude/sweet-mccarthy-i95s3k` on 2026-07-31 — "#6 SYNDICATION-AS-CORROBORATION" and
+    "#7 POSTURE ERASURE", called "the productive correction output" by that record's own
+    accountability section — return **0** files across `origin/main`, while numbers 6 and 7 in the
+    canonical 41-entry taxonomy name different patterns. `15c8131` landed entries 7-10 the same day
+    from a **different lineage**. Routed to [[integrity-officer]].
+  - **D31 re-enumerated** from seven missing lanes to eleven, with the SVG and the 3D manifest shown
+    to name the same four — one gap in shared source data, not two renderer defects.
+  - **Rule 8 earned its keep twice more.** `working/gap-bridge-2026-08-29` (**not** in the previous
+    session's table) and `council/analyst-gaps-and-methodology` both looked like new orphans and
+    were both discharged by content: the first byte-identical to `main` (15,145 bytes, 215 lines
+    either side), the second with every distinctive string present on `main` and `state/research_log.json`
+    at seq **138** against the branch's **77**. Under the retired line-count method the first would
+    have been indistinguishable from D27's stranded lead.
 
 - **2026-10-28 (thirtieth deployment)** — Standing every-3-days session, audited against
   `bb3cfc91` (`origin/main`, clean tree) on the complete **2,397**-commit history after

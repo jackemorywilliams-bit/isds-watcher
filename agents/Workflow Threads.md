@@ -18,6 +18,26 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
+**Board re-measured — 2026-10-31, at `37375be0` on `origin/main`, clean tree, on the complete
+**2,462**-commit history after `git fetch --unshallow`; the clone arrived shallow at **127** with
+`HEAD` detached, the twenty-third consecutive recurrence.** *Audited against `37375be0`; window
+`bb3cfc91..37375be0` = **65** commits; paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `src/email_shell.py`, `README.md`, `HANDOFF.md`, `COUNCIL.md`, `METHODOLOGY.md`,
+`docs/`, `scripts/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`,
+`.github/workflows/`, `tests/`, `analytics/vault-sessions/`, and every remote branch tip.* **No
+roster change and no contract change, the fifteenth consecutive session:**
+`git log bb3cfc91..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+
+**The window's defining measurement, and it governs every row below.** All 65 commits touch only
+`agents/`, `analytics/`, `STATE_OF_THE_ANSWER.md` and `state/research_log.json`. Widened to the
+whole period since the last code commit (`09f62c19`, 2026-09-14):
+`git diff --name-only 09f62c19..HEAD` filtered to everything outside the record paths returns
+**0 files across 1,131 commits** — **47 days** in which not one file under `src/`, `scripts/`,
+`tests/`, `.github/`, `views/`, `prompts/`, `docs/` source, `README.md`, `METHODOLOGY.md` or
+`COUNCIL.md` changed. **Every open thread on this board whose next action is a code or contract
+change is therefore unchanged by mechanism, not by neglect of measurement** — and each was still
+re-run rather than restated. New this session: **D32**.
+
 **Board re-measured — 2026-10-28, at `bb3cfc91` on `origin/main`, clean tree, on the complete
 **2,397**-commit history after `git fetch --unshallow`; the clone arrived shallow at **135** with
 `HEAD` detached, the twenty-second consecutive recurrence.** *Audited against `bb3cfc91`; window
@@ -628,6 +648,56 @@ the chair owes the record a committed sitting record, and until it lands this va
 
 ---
 
+### D32 — three notes violate the managed-block invariant, the invariant is tested but never over the real vault, and one of the three is primed to break a council record mid-sentence *(new 2026-10-31; owner: archivist for the writing rule and the sweep, **systems-designer** for `scripts/build_graph.py` and a guard)*
+
+- **The invariant.** `scripts/build_graph.py` maintains exactly one managed graph block per note,
+  at the foot. `apply_block` (`scripts/build_graph.py:192-199`) rewrites the block if one is
+  present and appends one if not, matching start-delimiter `.*?` end-delimiter under `re.DOTALL`
+  with `pat.sub(block, text)` and **no** `count=1`. The delimiters are deliberately not quoted
+  anywhere in this entry, for the reason the entry is about.
+- **The sweep, run today at `37375be0`.** 119 notes carry a managed block. **Three violate the
+  invariant**, and no guard in the project can see any of them:
+  - `analytics/daily-research/2026-09-11.md:619` — **the live one.** Bullet `0911-N1` quotes the
+    start and end delimiters **inline, in prose, inside backticks**, to describe the 76 characters
+    that `src/council_log.py::_render_md` was deleting from `analytics/council-log.md`. The note
+    carries **no footer block** today. Simulating `apply_block` on it: the inline quote is the only
+    match, so it is replaced in place, the bullet is **split across three lines and broken
+    mid-sentence**, and because a block now appears to exist the note **never receives a footer
+    block** — leaving it unlinked from the Obsidian graph, which is the very thing bullet `0911-N1`
+    was reporting. Measured delta `+3` lines, 1192 → 1195.
+  - `analytics/daily-research/2026-08-05.md:806-810` — a **complete** block quoted inside a fenced
+    code span (fence opened at `:806`; 11 fence markers precede it, so the quote is inside a
+    fence), used to show the uniform 76-character delta across ~25 days. It is benign **only
+    because the author quoted the end delimiter as well as the start**: the non-greedy match stops
+    inside the fence. Had the quote carried the start alone, `apply_block` would have spanned
+    `:807` to the real end delimiter at `:1032` and destroyed **~223 lines** of the council's
+    record. This is the near-miss form of the defect that once cost this seat's own note 92 lines.
+  - `analytics/daily-research/2026-09-29.md:1222-1224` — a **stranded real block**. Block count on
+    that file goes 0 → 1 at `a5a3d32e` (part 6 close-out) and 1 → **2** at `14b0e212` (post-merge
+    addendum): §8 was appended *after* the footer block and a second block written at the new
+    foot. `apply_block` cannot repair this — `pat.sub` with no `count=1` replaces **both** matches
+    with identical content, so the duplicate is permanent and one copy stays buried mid-record.
+- **Why nothing caught it.** The invariant *is* asserted — `tests/test_build_graph.py:51` checks
+  `after.count(BLOCK_START) == 1` — but only against a synthetic `tmp_path` fixture vault, never
+  against the real notes, and `grep -l` over `scripts/check_*.py` returns **no** guard that
+  mentions the delimiters at all. The project tests that the function preserves the invariant and
+  never asks whether the vault satisfies it.
+- **Blast radius today is bounded, and saying so matters.** `grep -rn build_graph .github/workflows/`
+  returns **no** workflow: the generator is invoked by hand and by tests only, so nothing fires on
+  a merge and `2026-09-11.md` is intact as committed. The defect is **latent, not firing** — it
+  waits for the next seat that runs the script.
+- **Recorded** — `analytics/vault-sessions/2026-10-31.md` §3, with the simulation and the
+  per-commit block counts.
+- **Next** — two separable actions. (a) `apply_block` should ignore delimiters inside backticks and
+  fenced spans and should collapse to a single block at the foot; a vault-wide invariant check
+  belongs in `scripts/check_*.py` where the other four guards live. **Owner:
+  [[systems-designer]]** — `scripts/` is outside this seat's record paths. (b) The three notes are
+  the council's dated records and this seat does not edit another seat's dated prose; the repair of
+  `2026-09-11.md:619` needs one ruling on whether a machine-hazard fix counts as an edit to a dated
+  record. **Owner: Emory**, one sentence.
+
+---
+
 ### D30 — this note's escalation table dropped every item that had no designator, and kept every item that had one *(new 2026-10-28; owner: archivist — the carrying rule is fixed here; the three restored items have their own owners)*
 
 - **The measurement.** The 2026-10-16 session record closed with an eleven-row escalation table
@@ -709,6 +779,25 @@ the chair owes the record a committed sitting record, and until it lands this va
 - **Next action** — systems-designer: add the missing lanes, or narrow `meta.note` and the three
   claims to what the chart actually covers. Either closes it; the present state is the only one
   that misdescribes.
+- **ADDENDUM 2026-10-31 — re-measured exhaustively: the missing set is eleven lanes, not the seven
+  this thread enumerated.** (The headline "4 of 15" recorded on 2026-10-13/10-16 was right; the
+  enumeration of *which* lanes are absent was short by four.) Day **18**, at `37375be0`; `views/isds-workflow-3d/workflow.json` is unchanged
+  (**0** commits in the window, last edited `a7a6d143`/`74bd60c5`, both 2026-09-11), 30 nodes,
+  `meta.version` still **2.2**, `meta.note` still describing the 2026-08-03 relay addition.
+  Counted exhaustively against the 15 files in `.github/workflows/`, rather than against the seven
+  this thread happened to name: the chart carries **4 of 15** lanes — `weekly.yml`, `site-sync.yml`,
+  `daily-update.yml`, `fetch-relay.yml`. **Eleven are absent**, the seven already recorded
+  (`vault-log`, `claims-consistency`, `lit-review`, `model-consistency`, `pipeline-guards`,
+  `reanchor`, `scholar-intake`) **plus four this thread never named** — `aggregate.yml` and
+  `send-digest.yml` (both 2026-06-16), `heartbeat.yml` (2026-06-23) and `human-review.yml`
+  (2026-06-29). Three of the four predate every lane already listed, so this is not drift that
+  accumulated since: the chart never covered them.
+- **And it is one gap, not two — which narrows the fix.** The professor-facing SVG in
+  `docs/how-it-works.html` names exactly the **same four** workflow files and no others, matching
+  the 3D JSON manifest lane for lane. The two renderers do not disagree; they share incomplete
+  source data. A single correction upstream fixes both surfaces, and neither renderer is at fault.
+  **Owner unchanged: [[systems-designer]]** for the manifest, [[site-experience]] for the three
+  claims — but the manifest is now the whole of the work.
 
 ---
 
@@ -806,6 +895,50 @@ the chair owes the record a committed sitting record, and until it lands this va
   comparison: a blob diff, or a search for its distinctive strings. A line count is not evidence
   of containment. Recorded in [[obsidian-archivist]] and at
   `analytics/vault-sessions/2026-10-25.md` §1.
+- **ADDENDUM 2026-10-31 — the thread is materially larger than a stranded lead, and the new part is
+  binding method, not research.** Re-derived at `37375be0` on the complete 2,462-commit history,
+  day **92**. The branch `claude/sweet-mccarthy-i95s3k` (`dee99ab5`, 2026-07-31) carries a full
+  council session whose integrity officer **adopted two new fabrication-taxonomy entries**, and the
+  record's own accountability section calls them *"the productive correction output"*
+  (`analytics/daily-research/2026-07-31.md` on that branch, Claim 3 verdict and close-out):
+  - **"#6 SYNDICATION-AS-CORROBORATION"** — republished copies of one secondary source counted as
+    independent corroboration; countermeasure, trace every converging summary to its originating
+    author. Generated by the Cranfill Sumner → JDSupra → aggregator chain behind the lead.
+  - **"#7 POSTURE ERASURE"** — an interlocutory ruling that a fact question exists, restated as a
+    merits confirmation; countermeasure, every domestic-court finding carries its procedural
+    posture in the same sentence as the holding.
+  **Neither reached the canonical taxonomy, and the numbers they claimed are now taken.**
+  `agents/integrity-officer.md:138` records **41 entries as of 2026-09-20**; its table at `:244`ff
+  gives **6 = "Image-embedded primary text"** and **7 = "Tool-status-as-source-state"** — different
+  patterns. Searched over all of `origin/main`: `"SYNDICATION-AS-CORROBORATION"` **0** files,
+  `"POSTURE ERASURE"` **0** files, `"Index propagation is not source independence"` **0**,
+  `"procedural posture in the same sentence"` **0**, and in the canonical taxonomy note itself
+  `syndicat` **0** lines and `posture` **0** lines. The nearest landed entries — 12
+  *Capability-as-corroboration*, 16 *Second-instrument corroboration fallacy*, 2 *Inverted
+  dispositions*, 4 *Title-as-holding* — are adjacent families, not these patterns; entry 41's own
+  text shows the taxonomy distinguishes at exactly this grain.
+- **The 2026-07-31 session's output was split, and this is the proof.** `15c8131` (2026-07-31,
+  **on `main`**) landed taxonomy entries **7-10** and mentions neither syndication nor posture
+  (`git show 15c8131 | grep -ic 'syndicat|posture'` = **0**).
+  `git merge-base --is-ancestor 15c8131 origin/claude/sweet-mccarthy-i95s3k` returns **non-zero** —
+  **different lineage**. Two parallel 2026-07-31 council records exist: the one on `main` (506
+  lines) and the one on the branch (166 lines). `main`'s is longer and carries **none** of the
+  lead: `Liquidia`, `United Therapeutics` and `NCBC` each return **0** in
+  `origin/main:analytics/daily-research/2026-07-31.md`.
+- **Where the lead now appears on `main`, stated precisely because it changes the count.** `Liquidia`
+  returns **5 files** on `main` — `agents/Project Change Log.md`, `agents/Workflow Threads.md`,
+  `agents/obsidian-archivist.md`, `analytics/vault-sessions/2026-10-25.md`,
+  `analytics/vault-sessions/2026-10-28.md`. **All five are this seat's own escalation records.**
+  Across every research surface — `analytics/daily-research/`, `STATE_OF_THE_ANSWER.md`,
+  `analytics/insights.jsonl`, `briefs/`, `digests/`, `analytics/council-log.md`, `lit-review/`,
+  `analytics/verification_ledger.jsonl` — it returns **0**. The only thing on `main` that knows
+  about the lead is the note complaining it is missing.
+- **Next action, revised** — the three options above still close the research half. The taxonomy
+  half is new and is **not** the operator's to adjudicate alone: two entries vetted and adopted by
+  [[integrity-officer]] on 2026-07-31 are absent from the taxonomy that seat owns, and a merge of
+  the branch would now **collide** at 6 and 7. **Owner: [[integrity-officer]]** to re-adopt or
+  reject them at the next free numbers, on the branch record as evidence; **Emory** for the one
+  ruling on the lead.
 
 ---
 

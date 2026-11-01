@@ -611,7 +611,7 @@ All six are **C15**, and C10 should not be closed until C15 is.
 
 ---
 
-## C11 — Source count
+## C11 — Source count — **RE-READ 2026-11-01: CONVERGENT on every cell this project's own seats own; the single residual is `METHODOLOGY.md`, which is [[Workflow Threads]] D7**
 
 | Stated in | What it currently says |
 |---|---|
@@ -637,6 +637,35 @@ banner "**THE 10 SOURCES**" with ten chips. The prose and the picture it introdu
 each other, roughly forty lines apart, and have done since `44550ca` landed on **2026-08-17** —
 five days. `check_site_sync.py` cannot catch it: the template and the built page agree with each
 other perfectly, and both are wrong.
+
+> **Re-read cell by cell 2026-11-01 at `d358c426`. The row above is FALSE, and has been for
+> fifty-one days.** The 2026-08-22 reading is preserved exactly as written, per the
+> supersede-never-overwrite convention; what follows is the file as it stands today, read rather
+> than carried.
+>
+> | Cell | 2026-08-22 reading | 2026-11-01 reading |
+> | --- | --- | --- |
+> | `scripts/site_templates/how_it_works.html.j2:27` | **STILL "the nine public sources"** | **templated** — `{{ sources \| length }}`, so the number cannot drift from the catalogue |
+> | `scripts/site_templates/how_it_works.html.j2:3` | **STILL** "the **nine** public sources" | **templated** — same expression in the meta description |
+> | `docs/how-it-works.html:58` | "the first band is the nine public sources checked" | "The first band is the **10** sources" |
+> | `docs/how-it-works.html:7` | meta description "the **nine** public sources" | meta description "the **10** sources it reads — 8 open repositories and 2 feeds" |
+> | `README.md:56` | "the **ten** sources" | unchanged — "the ten sources" |
+> | `views/isds-workflow-3d/workflow.json` | 10 chips | unchanged — `node tools/isds-workflow-3d/validate.mjs` exits 0: "10 source chips, 30 cards, 44 edges" |
+> | `src/sources/` | `all_sources()` returns 10 | unchanged — 10, verified by import |
+> | `METHODOLOGY.md` | nine channels, GDELT omitted; Bing News "eight" queries against 12 | **unchanged and still wrong** — `grep -ci gdelt METHODOLOGY.md` = **0**; `len(bing_news.QUERIES)` = **12** against the file's "eight". Emory's document; [[Workflow Threads]] **D7** |
+>
+> **Fixed by `74bd60c5` (2026-09-11), *"feat(sources): one catalogue, and two of the ten are not
+> public"*** — which did not edit the number but removed it, replacing the hardcoded word with a
+> length taken from the source catalogue. That is the durable form this row kept asking for.
+>
+> **And the closure was recorded at the time, in the wrong place.** This seat's own session record
+> of 2026-09-13 closes it explicitly — `analytics/vault-sessions/2026-09-13.md:342` carries the
+> line *"~~C11 (site)~~ — nine and ten on one page | **CLOSED** by site-experience (§6) | closed
+> today"*, and that record's §6 cites `b6edc44`, `74bd60c`, `e78ebda` and `a7a6d14`. **It never
+> reached this note.** Four later archivist sessions cited C11 — 09-16, 09-19, 09-22, 09-25 — and
+> every one of them meant the *taxonomy* C11 or the thread-ID collision, so none of them re-read
+> this row. The canonical note went on asserting a professor-facing contradiction for fifty-one
+> days after this seat had verified it gone. [[Workflow Threads]] **D33**.
 
 **Why this row failed to catch it, recorded against this seat.** `44550ca`'s commit message
 states "Every nine-sources surface moves to ten in the same change ... README, rebuilt
@@ -912,7 +941,7 @@ exists.
 
 ---
 
-## C15 — The fill-toward-six rule, and what a zero-match cycle publishes — **NEW 2026-08-08; PARTIALLY REPAIRED 2026-08-09 — five of eight closed, THREE STILL OPEN**
+## C15 — The fill-toward-six rule, and what a zero-match cycle publishes — **NEW 2026-08-08; PARTIALLY REPAIRED 2026-08-09 — five of eight closed, THREE STILL OPEN; RE-READ 2026-11-01: two of those three are repaired, the third's citation no longer resolves**
 
 **Added the day the divergence was created, which is what maintenance rule 4 asks for.** On
 2026-08-08 the fill-toward-six rule was suspended by default in code. Seven other files still
@@ -977,9 +1006,32 @@ environment variable with a default, not a constant. If the fill is ever restore
 these two sets of statements is wrong**, and the only durable fix is prose that names the flag
 rather than describing one of its settings as the behaviour.
 
+> **Re-read 2026-11-01 at `d358c426`, eighty-four days after the status line above was written.**
+> Two of the three ⚠ **STILL OPEN** cells are repaired, in the prose this row asked for, and the
+> third is not a divergence but a citation that has stopped resolving.
+>
+> - ✔ **`fingerprint.yaml`** — the threshold comment now reads *"since 2026-08-08/09 that fill is
+>   suspended (FILL_FLOOR_SUSPENDED) and all publication is gated at any score
+>   (VALIDATION_STATUS_ONLY) pending validation"* (`fingerprint.yaml:6-8`). It names both flags
+>   rather than describing one setting as the behaviour, which is exactly the durable form the
+>   closing paragraph above specified.
+> - ✔ **The `quality-bar` card** in `views/isds-workflow-3d/workflow.json` — `desc` now reads
+>   *"Design: 40+ enters; 25+ may fill as leads. Currently gated: nothing publishes pending
+>   validation."* and `meta` reads *"40 pass / 25 floor — publication gated"*.
+> - ⚠ **`src/main.py:687-690` no longer resolves.** Those lines are now triage cost accounting.
+>   The behaviour this row cites lives at **`src/main.py:262-303`** (`select_surfaced`, whose
+>   docstring at `:268` states the gate and its independence from the fill flag) and
+>   **`:1048-1053`** (`held_for_review`, `validation_status_only` into the stats dict).
+>   **Repointed here rather than re-verified as a divergence**, because a moved line number is a
+>   stale citation, not a false claim — the distinction this note exists to keep.
+>
+> **Why this sat for eighty-four days.** Nothing prompted a re-reading. The row asked for a
+> coordinated pass by [[systems-designer]]; the pass happened in pieces, and no part of the
+> project tells this note when a cell it watches has moved. [[Workflow Threads]] **D33**.
+
 ---
 
-## C16 — What a cycle publishes while `VALIDATION_STATUS_ONLY` is on — **NEW 2026-08-09, DIVERGENT**
+## C16 — What a cycle publishes while `VALIDATION_STATUS_ONLY` is on — **NEW 2026-08-09, DIVERGENT; RE-READ 2026-11-01: all five prose cells repaired, including both professor-facing pages**
 
 **Added the day the divergence was created, per maintenance rule 4 — and the day *five other
 files were repaired into it*.** On 2026-08-09 a second, stronger publication gate went in.
@@ -1017,6 +1069,28 @@ to prevent, occurring inside a single session rather than across days. The lesso
 than "coordinate better": **when a change adds a gate upstream of an existing gate, every
 sentence describing the downstream gate becomes a claim about the pair**, and the row for the
 old gate is the place that has to notice.
+
+> **Re-read 2026-11-01 at `d358c426`. Every one of the five ⚠ prose cells is repaired, and the
+> two that mattered most are the two a professor reads.** The 2026-08-09 reading stands above as
+> written; this is the file today.
+>
+> | Cell | 2026-08-09 reading | 2026-11-01 reading |
+> | --- | --- | --- |
+> | `METHODOLOGY.md:49` | "**only items at or above forty are surfaced**" — contradicting `:69` twenty lines below | now *"superseded 2026-08-09 by a stronger gate: while VALIDATION_STATUS_ONLY holds — the current default — no item is surfaced at any score, including at or above forty"*. **Agrees with `:69`** |
+> | `scripts/site_templates/index.html.j2` step 5 | "Those that meet the threshold make the digest." — false and overstating | `:198` now continues *"While the classifier is under validation, publication is gated entirely: no item is published at any score, and each cycle sends a status note…"* |
+> | `docs/index.html` step 5 | the same sentence on the public homepage | `:224` carries the identical repaired text — template and built page agree, and both are now right |
+> | `README.md:80-86` | "a cycle with nothing at or above 40 sends a status note instead" — reads as though matches are sent | `:99-100` now states *"publication is gated entirely while the classifier is under validation (`VALIDATION_STATUS_ONLY`, with the fill separately suspended…)"* |
+> | `fingerprint.yaml:1-3` | "reported as a **MATCH**, with no upper cap" | `:6-8` now names both flags — see C15's re-reading above |
+>
+> The code cells are unchanged and still hold: `config.VALIDATION_STATUS_ONLY` is **True** by
+> default (`src/config.py:73-74`), independent of `FILL_FLOOR_SUSPENDED`, both verified by import
+> today.
+>
+> **The row was right about the mechanism and wrong about the duration.** It predicted that a
+> gate added upstream of an existing gate makes every downstream sentence a claim about the pair,
+> and that the old gate's row is where that has to be noticed. It was noticed and repaired. What
+> failed is the last step: nothing wrote the repair into this note, so the row kept telling every
+> reader that the public homepage was false. [[Workflow Threads]] **D33**.
 
 **A fix here must also change** all five ⚠ rows in one change set, **together with C15's three
 remaining rows** — the two lists overlap at `fingerprint.yaml`, and `METHODOLOGY.md:49` is a

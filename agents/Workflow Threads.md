@@ -18,6 +18,49 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
+**Board re-measured — 2026-11-01, at `d358c426` on `origin/main`, clean tree, on the complete
+**2,499**-commit history after `git fetch --unshallow`; the clone arrived shallow at **120** with
+`HEAD` detached, the twenty-fourth consecutive recurrence.** *Audited against `d358c426`; window
+`37375be0..d358c426` = **37** commits; paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `src/config.py`, `src/main.py`, `src/email_shell.py`, `src/sources/`,
+`README.md`, `HANDOFF.md`, `COUNCIL.md`, `METHODOLOGY.md`, `fingerprint.yaml`, `docs/`,
+`scripts/`, `scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`,
+`.github/workflows/`, `tests/`, `analytics/vault-sessions/`, and every remote branch tip.* **No
+roster change and no contract change, the sixteenth consecutive session:**
+`git log 37375be0..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+
+**The cadence sentence this board has opened with for two months is not safe to write, and this
+is the first session to check why.** The trigger is named *"ISDS vault archivist — every 3 days"*
+and its schedule is `0 15 */3 * *` — a **day-of-month** step, which resets on the 1st. The
+interval is three days inside a month and **one day** across any boundary after a 31-day month,
+seven times a year. This sitting is **one day** after 2026-10-31; the next is 2026-11-04, three
+days. `2026-10-01.md`'s *"three days. Cadence held"* was true only because September has thirty
+days. Adopted as rule 12 in [[obsidian-archivist]]: read the interval from the two record dates,
+never from the schedule's name. **No action for Emory** — the schedule is adequate and the defect
+was only ever in the sentence.
+
+**The window's defining measurement, carried forward and made exact.** All 37 commits touch only
+`agents/`, `analytics/`, `STATE_OF_THE_ANSWER.md` and `state/research_log.json`. Widened to the
+last authored source commit (`09f62c19`, 2026-09-14): across **1,168** commits and **48** days,
+`git diff --name-only 09f62c19..HEAD` restricted to `src/`, `scripts/`, `tests/`, `.github/`,
+`views/`, `prompts/`, `README.md`, `METHODOLOGY.md`, `COUNCIL.md`, `fingerprint.yaml` and
+`.claude/` returns **0 files**. **52** files outside the record paths did change — 25 under
+`digests/` and 27 under `docs/` — and all 52 are generated output from the weekly runs and the
+site build, not authored change. The previous session's "0 files" and this session's "52 files"
+are the same measurement under two filters, and the honest statement is the narrow one: **no
+authored source file has changed in 48 days.**
+
+**A qualification this board owes the previous session's §1, which is the only part of it that
+needs correcting.** 2026-10-31 wrote that *"the escalation channel has a measured delivery rate
+of zero over seven weeks."* True of the seven weeks it measured, and misleading as a verdict on
+the channel: **three of the professor-facing items this seat was carrying as open had in fact been
+delivered** — `74bd60c5` and `b6edc44` (2026-09-11), the repairs to
+`scripts/site_templates/index.html.j2`, `README.md`, `fingerprint.yaml`,
+`views/isds-workflow-3d/workflow.json` and `METHODOLOGY.md:49` — landing in the days immediately
+*before* the freeze began. The channel delivered; [[Claim Map]] never recorded it, and this seat
+went on escalating closed items. That is **D33**, and it reverses the direction of the complaint.
+New this session: **D33**.
+
 **Board re-measured — 2026-10-31, at `37375be0` on `origin/main`, clean tree, on the complete
 **2,462**-commit history after `git fetch --unshallow`; the clone arrived shallow at **127** with
 `HEAD` detached, the twenty-third consecutive recurrence.** *Audited against `37375be0`; window
@@ -647,6 +690,47 @@ the chair owes the record a committed sitting record, and until it lands this va
   [[research-analyst]] and certified by [[integrity-officer]].
 
 ---
+
+### D33 — three [[Claim Map]] rows asserted false statuses for 51 to 84 days, the closures were recorded in session records and never in the note, and the note's machine-moved anchor reported it current throughout *(new 2026-11-01; owner: archivist — repaired this session; **Emory** for one residual and systems-designer for the anchor's meaning)*
+
+[[Claim Map]] exists because the external review of 2026-08-04 found ten contradictions in what
+the project says about itself. Its job is to hold, per claim, every file that states it and what
+each file currently says. **Three of its sixteen rows were lying, in the direction that matters:
+they asserted that professor-facing surfaces contradict each other when the contradictions had
+been repaired.**
+
+| row | status it carried | the file today | days wrong |
+| --- | --- | --- | --- |
+| **C11** — Source count | *"DIVERGENT as of 2026-08-22 — the divergence is visible to Dr. Benavides on a single screen"* | `docs/how-it-works.html:7` and `:58` read **10**; the template is `{{ sources \| length }}`; `all_sources()` = 10; `validate.mjs` exits 0 at 10 chips | **51** |
+| **C16** — publication under `VALIDATION_STATUS_ONLY` | **DIVERGENT**, five prose cells, *"two of them are the pages a professor reads"* | all five repaired — `METHODOLOGY.md:49` now agrees with `:69`; `docs/index.html:224` and its template carry the gating sentence; `README.md:99-100` names the flag; `fingerprint.yaml:6-8` names both | **84** |
+| **C15** — the fill rule | *"five closed, THREE STILL OPEN"* | two repaired in the row's own specified wording (`fingerprint.yaml:6-8`, the `quality-bar` card); the third was a line number that moved — `src/main.py:687-690` → `:262-303`, `:1048-1053` | **84** |
+
+**C11 is the one that should not have been possible, and it is the finding.** This seat did not
+miss the closure. It **found and recorded it**: `analytics/vault-sessions/2026-09-13.md:342` reads
+*"~~C11 (site)~~ — nine and ten on one page | **CLOSED** by site-experience (§6) | closed today"*,
+and that record's §6 cites `b6edc44`, `74bd60c`, `e78ebda`, `a7a6d14`. The closure reached the
+session record and the session's own escalation table. **It never reached the canonical note.**
+Then four later sessions — 09-16, 09-19, 09-22, 09-25 — each cited "C11", and every one of them
+meant the *taxonomy* C11 or the thread-ID collision pair. **The collision warned about at `:111`
+of this note since 2026-09-04 did real damage for the first time:** four sessions typed the
+designator of the row that needed re-reading and none of them re-read it.
+
+**Why no guard could see it.** [[Claim Map]]'s currency anchor reads `fa4b1b83` — today's commit —
+because `scripts/reanchor.py` moves it on every PR. `scripts/check_currency.py` therefore reports
+the note current, and did so on every session for eleven weeks. The note's newest **human**
+row-reading is `c1ef8b8b`, 2026-08-22 — **71 days**. This is **D10** with a measured cost instead
+of a mechanism: the anchor means *the bot ran*, and nothing in the project distinguishes that from
+*a seat read the cells*.
+
+**Repaired this session**, by dated re-reading with every 2026-08 reading preserved unedited:
+all three rows carry a 2026-11-01 cell-by-cell table, C11's and C16's headings restate the status,
+C15's moved citation is repointed. **Rule 11** adopted in [[obsidian-archivist]] — a closure that
+reaches only a session record is as lost as a rule that does, and a Claim Map row is re-read
+against the files it names as a session step.
+
+TO VERIFY — one residual, and it is the only cell in all three rows that is still wrong: `METHODOLOGY.md` enumerates nine channels and omits GDELT (`grep -ci gdelt METHODOLOGY.md` = **0**) and says Bing News is polled through *"eight fixed, fingerprint-derived queries"* where `len(bing_news.QUERIES)` = **12**. It is your document and it is a two-number edit, carried as **D7** since 2026-08-22. Every other cell in C11, C15 and C16 now agrees with the code.
+
+ACTION — systems-designer: the anchor's ambiguity is now costed. `check_currency.py` cannot tell a bot re-anchor from a human audit, and eleven weeks of green ran over a note whose central row was false. The narrow fix is a second, hand-written field — an `Audited by hand <date>` line per note, checked for age rather than for ancestry — so that a note can report *stale reading* separately from *stale sha*. This is **D10**'s remedy, and D33 is what it costs to not have it.
 
 ### D32 — three notes violate the managed-block invariant, the invariant is tested but never over the real vault, and one of the three is primed to break a council record mid-sentence *(new 2026-10-31; owner: archivist for the writing rule and the sweep, **systems-designer** for `scripts/build_graph.py` and a guard)*
 

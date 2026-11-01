@@ -15,6 +15,46 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-11-01 (archivist session — thirty-second deployment)
+
+Audited against `d358c426` (`origin/main`, clean tree) on the complete **2,499**-commit history
+after `git fetch --unshallow`; clone arrived shallow at **120**, `HEAD` detached, the
+twenty-fourth consecutive recurrence. Window `37375be0..d358c426` = **37** commits, all of them
+inside `agents/`, `analytics/`, `STATE_OF_THE_ANSWER.md` and `state/research_log.json`.
+
+- **[[Claim Map]] rows C11, C15 and C16 repaired** — each had been asserting a false status about
+  the professor-facing surfaces, C11 for **51** days and C15/C16 for **84**. Every 2026-08
+  reading preserved unedited; each row now carries a 2026-11-01 cell-by-cell table. C11 was closed
+  by `74bd60c5` (2026-09-11); C16's five prose cells by `b6edc44`, `74bd60c`, `e78ebda`,
+  `a7a6d14` and the `METHODOLOGY.md:49` amendment; C15's two by the `fingerprint.yaml` comment and
+  the `quality-bar` card in `views/isds-workflow-3d/workflow.json`. C15's third cell was a line
+  citation that had moved and is repointed `src/main.py:687-690` → `:262-303`, `:1048-1053`.
+  (`agents/Claim Map.md`, rows at `## C11`, `## C15`, `## C16`.)
+- **[[Workflow Threads]] D33 opened** — the generalisation: a closure recorded in a session record
+  and not in the canonical note is lost, and [[Claim Map]]'s machine-moved currency anchor reports
+  the note current regardless. C11's closure was recorded by this seat at
+  `analytics/vault-sessions/2026-09-13.md:342` and never written into the note; four later
+  sessions cited "C11" meaning the colliding taxonomy thread instead. Carries one **TO VERIFY**
+  for Emory (`METHODOLOGY.md`, the last wrong cell, **D7**) and one **ACTION** for the systems
+  designer (a hand-written audit field so a note can report a stale *reading* separately from a
+  stale sha — **D10**'s remedy). (`agents/Workflow Threads.md`, `### D33`.)
+- **Rules 11 and 12 adopted** in [[obsidian-archivist]]'s canonical enumeration; lead count read
+  back against the enumeration and corrected ten → **twelve** in the same change set.
+  (`agents/obsidian-archivist.md`, `### Adopted method rules`.)
+- **Cadence correction, recorded rather than escalated.** The trigger named *"every 3 days"* runs
+  `0 15 */3 * *`, a day-of-month step that resets on the 1st, so this sitting is **one day** after
+  2026-10-31 and the next is 2026-11-04. Seven such compressions a year. No action for Emory; the
+  defect was in the sentence every record opens with, and rule 12 ends it.
+- **Two orphan branches cleared that the previous session could not.**
+  `origin/claude/sweet-mccarthy-8mouy6` is contained — 38 ledger entries, **0** absent from `main`
+  by `(date, thread_id)`. `origin/claude/sweet-mccarthy-d5kgmw` holds three 2026-08-01 ledger
+  entries absent from `main`'s ledger and is nonetheless correctly unlanded:
+  `analytics/daily-research/2026-08-01.md:452` rules the record non-canonical and bars its output
+  from `analytics/insights.jsonl` except through canonical vetting, and `:454`'s queued 2026-08-02
+  vetting ran.
+- **No roster change and no contract change**, the sixteenth consecutive session.
+  (`git log 37375be0..origin/main -- .claude/agents/ prompts/ src/models.py` → no commit.)
+
 ## 2026-10-31 (archivist session — thirty-first deployment)
 
 Audited against `37375be0` (`origin/main`, clean tree), complete **2,462**-commit history after

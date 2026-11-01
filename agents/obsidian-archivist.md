@@ -154,13 +154,17 @@ this seat's record paths.
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Ten rules this seat adopted from ten separate failures. The first three are one rule in three
+Twelve rules this seat adopted from twelve separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
 the same scepticism on this seat's own carried records, the fifth is the fourth again because it
 did not generalise either, the sixth is about attribution rather than about carried records, the
 seventh is about the orphan sweep's own predicate, the eighth is the seventh's unfinished half,
-the ninth is about whether a rule reaches the list at all, and the tenth is about a warning this
-seat repeated for twelve weeks without ever running it against the vault. **This count was read back against
+the ninth is about whether a rule reaches the list at all, the tenth is about a warning this
+seat repeated for twelve weeks without ever running it against the vault, the eleventh is the
+ninth's mirror image — a *closure* that reaches only a session record — and the twelfth is about
+not taking a schedule's name for its behaviour. **The count was read back against the enumeration
+below on 2026-11-01 before this paragraph was closed**, per the council's binding discipline, and
+it reads twelve. **This count was read back against
 the enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
 six to seven** — the discipline named in the block that follows, performed rather than cited.
 
@@ -307,6 +311,34 @@ six to seven** — the discipline named in the block that follows, performed rat
    have run an incomplete sweep and reported two of its own three instances clean — rule 9's failure
    mode, in a rule adopted the same session. A warning this seat issues to itself and never executes against the vault
    is not a discipline, it is a slogan. ([[Workflow Threads]] **D32**.)
+
+11. **2026-11-01** — *Rule 9 in the other direction. A **closure** that reaches only a session
+   record is as lost as a rule that does. Every row in [[Claim Map]] is re-read against the files
+   it names on a stated cadence, and a row is not closed until this note says so.* Learned from
+   three rows at once. **C11** carried the status *"DIVERGENT as of 2026-08-22 — and the divergence
+   is visible to Dr. Benavides on a single screen"* for **fifty-one days** after `74bd60c5`
+   (2026-09-11) removed the divergence — and this seat had **already found and recorded the
+   closure**, at `analytics/vault-sessions/2026-09-13.md:342`, citing four commits. **C16**, whose
+   two worst cells were the public homepage and `METHODOLOGY.md`, had all five prose cells repaired
+   and carried **DIVERGENT** for **eighty-four days**. **C15** carried *"three still open"* when two
+   of the three were repaired in the exact prose the row specified and the third was only a line
+   number that had moved. The mechanism is the same in all three: a row records what *another* seat
+   must change, nothing tells the row when that seat changes it, and the re-reading was never a
+   session step. Four later sessions cited "C11" and all four meant a different C11 — the thread-ID
+   collision doing real damage for the first time. *A note whose anchor is machine-moved reports
+   itself current forever; only a human re-reading can close a row.* ([[Workflow Threads]] **D33**,
+   **D10**.)
+
+12. **2026-11-01** — *Never take a schedule's name for its behaviour. Read the interval from the
+   two record dates, not from the trigger's title.* This session's trigger is named *"ISDS vault
+   archivist — every 3 days"* and its cron is `0 15 */3 * *`, which steps the **day of the month**
+   and resets on the 1st. The interval is therefore three days *within* a month and **one day**
+   across any boundary following a 31-day month — seven such compressions a year. Today's sitting
+   came **one day** after 2026-10-31, and the next is 2026-11-04. Every record opens with a
+   cadence sentence, and this seat uses that sentence as a control on its own staleness window;
+   `2026-10-01.md` wrote *"three days. Cadence held"* correctly only because September has thirty
+   days. The rule is cheap: the window is `git log <last record's sha>..HEAD`, and the gap is the
+   difference of two filenames. Neither is the trigger's name.
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
@@ -844,6 +876,53 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-11-01 (thirty-second deployment)** — Standing session, audited against `d358c426`
+  (`origin/main`, clean tree) on the complete **2,499**-commit history after
+  `git fetch --unshallow`; clone arrived shallow at **120**, `HEAD` detached, the twenty-fourth
+  consecutive recurrence. Window `37375be0..d358c426` = **37** commits. **Cadence did NOT hold,
+  and the schedule is why** — see rule 12: the trigger's cron is `0 15 */3 * *`, which steps the
+  day of the month, so this sitting is **one day** after 2026-10-31, not three. No roster change
+  and no contract change, the sixteenth consecutive session
+  (`git log 37375be0..origin/main -- .claude/agents/ prompts/ src/models.py` returns no commit).
+  - **The session's finding, and it is drift this seat owns: three [[Claim Map]] rows have been
+    asserting false statuses about the professor-facing surfaces, two of them for eleven and
+    twelve weeks.** **C11** read *"DIVERGENT as of 2026-08-22 — the divergence is visible to
+    Dr. Benavides on a single screen"*; `74bd60c5` (2026-09-11) ended it by replacing the
+    hardcoded source count with a length taken from the catalogue, and **this seat recorded that
+    closure itself** at `analytics/vault-sessions/2026-09-13.md:342` — and never wrote it into the
+    note. **51 days.** **C16** read **DIVERGENT** over five prose cells including the public
+    homepage and `METHODOLOGY.md:49`; all five are repaired, verified cell by cell today.
+    **84 days.** **C15** read *"three still open"*; two are repaired in the exact prose the row
+    asked for (`fingerprint.yaml:6-8`, the `quality-bar` card), and the third was a line citation
+    that had moved (`src/main.py:687-690` → `:262-303` and `:1048-1053`). All three rows repaired
+    by dated re-reading with the 2026-08 readings preserved; **rule 11** adopted;
+    [[Workflow Threads]] **D33** opened.
+  - **D10 now has a measured cost rather than a mechanism.** This note's sibling [[Claim Map]]
+    reports its currency anchor as `fa4b1b83` — today's — because `scripts/reanchor.py` moves it;
+    its newest *human* row-reading is 2026-08-22 (`c1ef8b8b`), **71 days** old. The guard layer
+    was green over a note whose central row was wrong for fifty-one days. Nothing in the project
+    can see the difference between "the bot ran" and "a seat read it".
+  - **The two `claude/sweet-mccarthy` branches that 2026-10-31 §7.4 could not clear are cleared.**
+    `-8mouy6`: 96 unlanded lines, **38** ledger entries, **0** absent from `main` by
+    `(date, thread_id)` — contained. `-d5kgmw`: 147 unlanded lines **including three insight-ledger
+    entries dated 2026-08-01** absent from `main`'s ledger, which read as the stranded-ledger
+    failure this session exists to catch and **is not one**:
+    `analytics/daily-research/2026-08-01.md:452` rules the cloud record non-canonical and bars its
+    output from `analytics/insights.jsonl` except through canonical vetting, and `:454` queues the
+    China–Switzerland findings for 2026-08-02 — which ran. Correctly unlanded.
+  - **Board re-run, not restated.** **D32** unchanged: the span-and-count sweep over **297** tracked
+    notes (**120** carrying a block) returns the same **3** violations. **D20** reproduces with
+    identical numbers — `{runs: 22, screened: 624, matches: 2}` against pinned `{16, 492, 0}`, and
+    **17** `per_source` against pinned **11**; 6 local failures of which the 4 one-pager quote
+    tests are excluded from CI by `pipeline-guards.yml:241`, so CI sees exactly 2. **D24** an
+    eighth reproduction, 27 files, exit 0 — and newly in the guard's favour, it **fails closed**
+    (exit 1) when `build_site.py` cannot import. **D31** 4 of 15 lanes, 11 missing, enumerated.
+    **D5** 1 of 9. **D6** seventh observation, all three model fields `claude-opus-5`.
+    **D7** confirmed live: `grep -ci gdelt METHODOLOGY.md` = 0, `len(bing_news.QUERIES)` = 12
+    against the file's "eight". **D30** rows 4 and 5 unchanged.
+  - **Rules 11 and 12 adopted**; lead count read back against the enumeration and corrected ten →
+    **twelve** before the paragraph closed.
 
 - **2026-10-31 (thirty-first deployment)** — Standing every-3-days session, audited against
   `37375be0` (`origin/main`, clean tree) on the complete **2,462**-commit history after

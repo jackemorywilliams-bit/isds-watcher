@@ -1122,6 +1122,27 @@ in `TRACKED` — so it is never maintenance. **The seat cannot pre-empt it eithe
 roads lead to the same violation, which is why "just remember to re-anchor first" is not a
 remedy.
 
+**2026-11-01 — seventeenth firing, and the first one that WON. An out-of-scope path landed
+through a scope check that passed.** PR **#315**. The pre-merge check ran against `45ea936d` and
+returned six paths, all in scope. The merge then succeeded on the first attempt — and the merge
+commit `408006a2`'s second parent is **`3eaed080`**, not `45ea936d`: `reanchor.yml` pushed an
+anchor-only commit onto the branch inside the race window, so `STATE_OF_THE_ANSWER.md` landed.
+`git diff --name-only d358c426..origin/main` lists **seven** paths where the branch carried six.
+**Every earlier firing produced a refused merge — the path test working noisily. This one produced
+a clean merge carrying the file the test exists to exclude**, because there is no merge call that
+pins the sha the scope check cleared. Not reverted: `3eaed080` is one line per file in the block
+each note labels machine-owned, and reverting restores a stale sha and re-fires the bot.
+
+**And the ruling this thread has been waiting for already exists for the other seat, in the file at
+issue.** `STATE_OF_THE_ANSWER.md`'s currency-machinery block of **2026-08-27** records that the
+2026-08-19 *"knowingly left STALE, because `agents/` is outside the daily session's approved merge
+scope"* is superseded, because **"the scope rule now admits the mechanical, anchor-only re-anchor
+commit, substance still out of scope."** That is the archivist's question with the files swapped,
+answered sixty-six days ago for the council seat. It does **not** name this seat and is not read
+here as deciding this seat's case — but it means the question has not been open and novel for
+sixty-five days; it has been open and *already answered one seat over*. The symmetric sentence for
+the archivist closes this thread, unblocks PR #110, and costs one line.
+
 **The narrowest fix, stated so it can be implemented without re-deriving it:** give
 `scripts/reanchor.py` a `--only <path>...` filter and pass the four `agents/` notes from
 `reanchor.yml` when the PR head branch matches `vault/*`. That leaves the workflow's behaviour

@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `fa4b1b83`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `45ea936d`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -565,6 +565,39 @@ thirteen entries short on 2026-08-02, 08-03 and 08-04 — the seat is directed t
 table rather than restate the list from memory.
 
 ## Change log
+
+- **2026-11-01 (archivist session — thirty-second deployment)** — **No roster change and no
+  contract change, the sixteenth consecutive session.** Audited against `d358c426`
+  (`origin/main`, clean tree) on the complete **2,499**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **120** with `HEAD` detached, the
+  twenty-fourth consecutive recurrence. `git log 37375be0..origin/main -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across the 37-commit window. `.claude/agents/` has now been
+  unchanged since `ae1f04b3` (2026-08-05), **88 days**.
+  - **Model statements re-read seat by seat, definition against vault note, all nine — and the
+    read was done by hand rather than inferred from the guard, per rule 1.** Every note agrees
+    with its definition: `claude-opus-5` for [[council-chairman]], [[research-analyst]],
+    [[site-experience]] and [[systems-designer]]; `claude-opus-4-8` for [[analytics-officer]],
+    [[integrity-officer]], [[obsidian-archivist]], [[research-editor]] and
+    [[systems-researcher]]. All nine declare `model: opus`, which selects a tier and not a
+    version — the whole of **D6**. `scripts/check_models.py` exits 0 over **12** flowchart cards;
+    `COUNCIL.md:65-68` matches `src/models.py:26-32` exactly; `prompts/` names **no** model id, so
+    there is nothing there to drift.
+  - **D6, seventh observation from this seat.** `get_session` reports `configured_model`,
+    `session_context.model` and `external_metadata.last_served_model` all **`claude-opus-5`**,
+    against `.claude/agents/obsidian-archivist.md:3` and `:24` stating Claude Opus 4.8. Left as
+    written for the reason given 2026-08-16 and settled 2026-10-04: this session's model comes from
+    the trigger (`origin: scheduled_trigger`, and the trigger's own stored `model` field reads
+    `claude-opus-5`), not from the definition, so the two are not reading the same setting and no
+    edit to the definition would reconcile them.
+  - **D5 unchanged at 1 of 9, re-run seat by seat.** Only
+    `.claude/agents/integrity-officer.md` names its own vault note. The other eight — this seat's
+    included — cannot read the file carrying their binding rules, which as of today is a
+    **twelve**-rule enumeration. Day 80.
+  - **Two rules added to [[obsidian-archivist]]'s canonical enumeration** (11: a closure that
+    reaches only a session record is as lost as a rule that does; 12: read a cadence from the
+    record dates, never from the schedule's name), and the lead count read back against the
+    enumeration and corrected ten → twelve before the paragraph closed — the discipline adopted
+    2026-09-12 (`639c16e`), performed rather than cited.
 
 - **2026-10-31 (archivist session — thirty-first deployment)** — **No roster change and no
   contract change, the fifteenth consecutive session.** Audited against `37375be0`

@@ -1,6 +1,6 @@
 # Source receptivity — analytics
 
-Across **22** archived run(s); per-source candidate counts available for **17** of them (older runs predate per-source recording).
+Across **23** archived run(s); per-source candidate counts available for **18** of them (older runs predate per-source recording).
 
 _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist._
 
@@ -11,7 +11,7 @@ _Receptivity = surfaced ÷ fresh candidates, where per-source fresh counts exist
 | gmail_scholar | 12 | 0 | 0% |  |
 | google_alerts | 16 | 0 | 0% | operator RSS alerts; quiet but live. |
 | google_news_rss | 0 | 0 | n/a |  |
-| iareporter_headlines | 166 | 12 | 7% | headline-only (paywalled body) — capped at watch-list leads. |
+| iareporter_headlines | 177 | 12 | 7% | headline-only (paywalled body) — capped at watch-list leads. |
 | icsid | 8 | 0 | 0% |  |
 | iisd_itn | 27 | 0 | 0% | only fetch-time full-text feed; intermittently empty. |
 | italaw | 29 | 4 | 14% |  |

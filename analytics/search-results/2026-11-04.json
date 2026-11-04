@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-04",
+  "provenance": "Written by the RESEARCH ANALYST in session, daily sitting 2026-11-04. Schema: the 'calls' key, which is the PREVAILING schema -- 22 of 25 committed files in this directory carry it, 1 carries 'queries' (2026-10-25.json) and 2 carry neither (the 2026-10-10 and 2026-10-11 pre-registration files). Chosen on that census, re-derived by me at pin 3ed6977a0b0c74a9e0185ad5c3635a0e5812dd9d. THIS IS A SEAT'S REPORT OF ITS OWN CALL, NOT A CAPTURED ENGINE ARTEFACT.",
+  "pin": "3ed6977a0b0c74a9e0185ad5c3635a0e5812dd9d",
+  "clone_state_that_read_the_corpus": "git rev-parse --is-shallow-repository = false, 2531 commits, research analyst's container",
+  "authority": "2026-11-02 close-out 5.8(8) -- the icsidfiles.worldbank.org allowed_domains arm becomes eligible '2026-11-03 or later' and must be 're-screened at its own pin on the day'. Chairman's brief of 2026-11-04 authorises exactly ONE call and expressly bars proposing a relay row for a PDF.",
+  "cap": 1,
+  "calls_total": 1,
+  "novelty_screen_re_derived_by_the_analyst": {
+    "population": "analytics/search-results/*.json at pin 3ed6977a",
+    "files": 25,
+    "call_objects": 89,
+    "schemas": {"calls": 22, "queries": 1, "neither": 2},
+    "calls_with_nonempty_allowed_domains": 17,
+    "calls_restricting_to_icsidfiles_worldbank_org": 0,
+    "character_identical_Q3_carriers": 2,
+    "carriers": ["2026-10-25.json Q3 (unrestricted)", "2026-10-26.json Q3 (blocked_domains)"],
+    "REFINEMENT_THE_CHAIRMAN_S_SCREEN_DID_NOT_NAME": "Two calls in 2026-09-22.json carry the PARENT domain 'worldbank.org' in allowed_domains and their result sets contain icsidfiles.worldbank.org rows -- call 0 returns 1 such row, call 1 returns 4. Because allowed_domains matches subdomains (analytics/insights.jsonl, 2026-09-21 entry INSTRUMENT-websearch-allowed-domains-admits-subdomains-including-non-allowlisted-hosts), the corpus ALREADY contains icsidfiles rows admitted under an allowed_domains restriction. What is novel today is the HOST-EXACT SINGLE-ENTRY restriction, NOT the admission of the host. The arm's novelty survives this refinement; its description does not."
+  },
+  "pre_registered_BEFORE_FIRING": {
+    "written_at": "before the call was issued, in this file, committed form",
+    "branches": {
+      "i_admitted_and_readable": "At least one returned link on icsidfiles.worldbank.org whose URL does not end in .pdf. Reading: an HTML-bearing icsidfiles locator exists. NO relay row is proposed on this branch either -- 5.8(3) bars a new row and any row would owe an assembled-stitched price under 2026-09-15 Ruling 1.",
+      "ii_admitted_and_unreadable_THE_EXPECTED_CASE": "Every returned icsidfiles link ends .pdf. Reading: confirms retrievable-and-allowed-but-UNREADABLE on this relay. Ground P1 (content_type == 'application/pdf', 10 records, 10 of 10 at status 200, 0 of 10 with a nonempty excerpt) re-derived by me at this pin. NO relay row proposed -- expressly barred.",
+      "iii_zero_links": "Empty result set. Reading: this engine returned nothing for THIS string under THIS restriction on THIS day. NEVER 'the host carries nothing' -- the fedlex.admin.ch precedent in the ledger (allowed_domains ['fedlex.admin.ch'], zero links on three structurally different formulations) is the registered form of that error.",
+      "iv_leak": "At least one returned link on a host that is not a suffix-match of icsidfiles.worldbank.org. Reading: an n+1 confirmation of the measured allowed_domains leak (insights.jsonl :198 and the 2026-09-21 subdomain entry). No mechanism claimed."
+    },
+    "research_branch_orthogonal_to_all_four": "Any returned title or URL identifying a 2026 ICSID Rule 41(5) decision on intellectual property or a patent as a covered investment. EXPECTED: null, because the same string returned a research null on both prior arms.",
+    "CONFOUND_DECLARED_IN_ADVANCE": "The comparator is NINE DAYS and several seat-instances old (2026-10-25 and 2026-10-26) and engine result sets are not stable over time. This is ONE call. Whatever it returns is a ONE-CALL OBSERVATION AGAINST A STALE COMPARATOR AND NOT A CONTROLLED EXPERIMENT. No rate, no mechanism, no 'the parameter works' claim is available from it.",
+    "schema_constraint_acknowledged": "allowed_domains and blocked_domains are mutually exclusive at the schema level (ledger 0921-V1, verified across four invocations). allowed_domains only is passed.",
+    "prohibited_host_screen_registered_in_advance": "A single-entry allowed_domains excludes www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org, www.iisd.org, iisd.org, dailyjus.com and unis.unvienna.org BY CONSTRUCTION -- but insights.jsonl:198 records that allowed_domains did not constrain one multi-host result set, so exclusion-by-construction is NOT a guarantee. Every returned row will be screened and the count reported.",
+    "body_opened": false,
+    "strength_cap": "Every finding derived from this call is capped at TITLE-AND-URL strength. Both direct fetch instruments are dead in this session and no body can be opened by any means."
+  },
+  "calls": []
+}

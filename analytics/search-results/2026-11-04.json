@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-04",
+  "provenance": "Written by the RESEARCH ANALYST in session, daily sitting 2026-11-04. Schema: the 'calls' key, which is the PREVAILING schema -- 22 of 25 committed files in this directory carry it, 1 carries 'queries' (2026-10-25.json) and 2 carry neither (the 2026-10-10 and 2026-10-11 pre-registration files). Chosen on that census, re-derived by me at pin 3ed6977a0b0c74a9e0185ad5c3635a0e5812dd9d. THIS IS A SEAT'S REPORT OF ITS OWN CALL, NOT A CAPTURED ENGINE ARTEFACT.",
+  "pin": "3ed6977a0b0c74a9e0185ad5c3635a0e5812dd9d",
+  "clone_state_that_read_the_corpus": "git rev-parse --is-shallow-repository = false, 2531 commits, research analyst's container",
+  "authority": "2026-11-02 close-out 5.8(8) -- the icsidfiles.worldbank.org allowed_domains arm becomes eligible '2026-11-03 or later' and must be 're-screened at its own pin on the day'. Chairman's brief of 2026-11-04 authorises exactly ONE call and expressly bars proposing a relay row for a PDF.",
+  "cap": 1,
+  "calls_total": 1,
+  "novelty_screen_re_derived_by_the_analyst": {
+    "population": "analytics/search-results/*.json at pin 3ed6977a",
+    "files": 25,
+    "call_objects": 89,
+    "schemas": {
+      "calls": 22,
+      "queries": 1,
+      "neither": 2
+    },
+    "calls_with_nonempty_allowed_domains": 17,
+    "calls_restricting_to_icsidfiles_worldbank_org": 0,
+    "character_identical_Q3_carriers": 2,
+    "carriers": [
+      "2026-10-25.json Q3 (unrestricted)",
+      "2026-10-26.json Q3 (blocked_domains)"
+    ],
+    "REFINEMENT_THE_CHAIRMAN_S_SCREEN_DID_NOT_NAME": "Two calls in 2026-09-22.json carry the PARENT domain 'worldbank.org' in allowed_domains and their result sets contain icsidfiles.worldbank.org rows -- call 0 (S1) returns 2 such rows of 10 and call 1 (S2) returns 8 of 10 -- CORRECTED IN PLACE: an earlier draft of this field read '1' and '4', which was my own undercount from a partial read of the results arrays; re-measured per-row by host at this pin and independently by the chairman, both giving 2 of 10 and 8 of 10, which is also the figure the 2026-11-03 analyst published. Because allowed_domains matches subdomains (analytics/insights.jsonl, 2026-09-21 entry INSTRUMENT-websearch-allowed-domains-admits-subdomains-including-non-allowlisted-hosts), the corpus ALREADY contains icsidfiles rows admitted under an allowed_domains restriction. What is novel today is the HOST-EXACT SINGLE-ENTRY restriction, NOT the admission of the host. The arm's novelty survives this refinement; its description does not."
+  },
+  "pre_registered_BEFORE_FIRING": {
+    "written_at": "before the call was issued, in this file, committed form",
+    "branches": {
+      "i_admitted_and_readable": "At least one returned link on icsidfiles.worldbank.org whose URL does not end in .pdf. Reading: an HTML-bearing icsidfiles locator exists. NO relay row is proposed on this branch either -- 5.8(3) bars a new row and any row would owe an assembled-stitched price under 2026-09-15 Ruling 1.",
+      "ii_admitted_and_unreadable_THE_EXPECTED_CASE": "Every returned icsidfiles link ends .pdf. Reading: confirms retrievable-and-allowed-but-UNREADABLE on this relay. Ground P1 (content_type == 'application/pdf', 10 records, 10 of 10 at status 200, 0 of 10 with a nonempty excerpt) re-derived by me at this pin. NO relay row proposed -- expressly barred.",
+      "iii_zero_links": "Empty result set. Reading: this engine returned nothing for THIS string under THIS restriction on THIS day. NEVER 'the host carries nothing' -- the fedlex.admin.ch precedent in the ledger (allowed_domains ['fedlex.admin.ch'], zero links on three structurally different formulations) is the registered form of that error.",
+      "iv_leak": "At least one returned link on a host that is not a suffix-match of icsidfiles.worldbank.org. Reading: an n+1 confirmation of the measured allowed_domains leak (insights.jsonl :198 and the 2026-09-21 subdomain entry). No mechanism claimed."
+    },
+    "research_branch_orthogonal_to_all_four": "Any returned title or URL identifying a 2026 ICSID Rule 41(5) decision on intellectual property or a patent as a covered investment. EXPECTED: null, because the same string returned a research null on both prior arms.",
+    "CONFOUND_DECLARED_IN_ADVANCE": "The comparator is NINE DAYS and several seat-instances old (2026-10-25 and 2026-10-26) and engine result sets are not stable over time. This is ONE call. Whatever it returns is a ONE-CALL OBSERVATION AGAINST A STALE COMPARATOR AND NOT A CONTROLLED EXPERIMENT. No rate, no mechanism, no 'the parameter works' claim is available from it.",
+    "schema_constraint_acknowledged": "allowed_domains and blocked_domains are mutually exclusive at the schema level (ledger 0921-V1, verified across four invocations). allowed_domains only is passed.",
+    "prohibited_host_screen_registered_in_advance": "A single-entry allowed_domains excludes www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org, www.iisd.org, iisd.org, dailyjus.com and unis.unvienna.org BY CONSTRUCTION -- but insights.jsonl:198 records that allowed_domains did not constrain one multi-host result set, so exclusion-by-construction is NOT a guarantee. Every returned row will be screened and the count reported.",
+    "body_opened": false,
+    "strength_cap": "Every finding derived from this call is capped at TITLE-AND-URL strength. Both direct fetch instruments are dead in this session and no body can be opened by any means."
+  },
+  "calls": [
+    {
+      "id": "Q1",
+      "query": "ICSID 2026 \"Decision on the Respondent's Objection\" Rule 41(5) intellectual property patent covered investment upheld",
+      "query_character_identical_to": "2026-10-25.json Q3 and 2026-10-26.json Q3 (verified by string equality at this pin)",
+      "allowed_domains": [
+        "icsidfiles.worldbank.org"
+      ],
+      "blocked_domains": null,
+      "mode": "standard",
+      "links": [
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C9753/DS17175_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C12308/DS21194_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C254/DC750_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11541/DS20967_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11823/DS20445_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11541/DS20453_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C10899/DS19935_En.pdf",
+        "http://icsidfiles.worldbank.org/icsid/icsidblobs/onlineawards/C5946/DC10956_en.pdf",
+        "http://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C2000/DC4466_En.pdf",
+        "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11823/DS20495_En.pdf"
+      ],
+      "returned_titles": [
+        "ICSID Case No. ARB/21/26 DECISION ON ...",
+        "INTERNATIONAL CENTRE FOR SETTLEMENT OF INVESTMENT DISPUTES",
+        "THE INTERNATIONAL CENTRE FOR THE SETTLEMENT OF INVESTMENT DISPUTES",
+        "PROCEDURAL ORDER NO. 5 ON RESPONDENT'S ...",
+        "International Centre for Settlement of Investment Disputes Case No. ARB/24/8",
+        "DECISION ON THE RESPONDENT'S RULE 41 OBJECTION",
+        "ICSID CASE NO. ARB/22/30 BANK OF NOVA SCOTIA Claimant, v. REPUBLIC OF PERU",
+        "UNDER THE RULES OF ARBITRATION OF THE INTERNATIONAL CENTRE FOR",
+        "ICSID Case No ARB/12/2 EMMIS INTERNATIONAL HOLDING, B.V.",
+        "Respondent's Reply on Manifest Lack of Legal Merit under ..."
+      ],
+      "links_returned": 10,
+      "host_tally": {
+        "icsidfiles.worldbank.org": 10
+      },
+      "pdf_links": 10,
+      "non_pdf_links": 0,
+      "prohibited_host_links": 0,
+      "out_of_set_links": 0,
+      "body_opened": false,
+      "BRANCH_OBTAINED": "ii_admitted_and_unreadable_THE_EXPECTED_CASE. 10 of 10 links on icsidfiles.worldbank.org; 10 of 10 end .pdf; 0 non-PDF; 0 out-of-set; 0 prohibited-host. Branch (i) NOT obtained, branch (iii) NOT obtained, branch (iv) NOT obtained -- NO LEAK on a host-exact single-entry allowed_domains list.",
+      "research_outcome": "RESEARCH NULL, at TITLE-AND-URL STRENGTH ONLY. No returned title or URL identifies a 2026 ICSID Rule 41(5) decision on intellectual property or a patent as a covered investment. Two titles are on-topic LEADS and nothing more: C11541/DS20453_En.pdf 'DECISION ON THE RESPONDENT'S RULE 41 OBJECTION' and C11823/DS20495_En.pdf \"Respondent's Reply on Manifest Lack of Legal Merit under ...\". NEITHER BODY WAS OPENED BY ANY MEANS and no holding, date, party or docket number is asserted from either. Both are PDFs on a relay that returns 0 of 10 nonempty excerpts on content_type application/pdf (ground P1), and the chairman expressly bars proposing a relay row for a PDF.",
+      "SEARCH_SYNTHESIS_HAZARD_RECORDED_AND_REFUSED": "The engine returned, alongside the ten links, a prose synthesis containing apparent verbatim spans and dispositions attributed to named cases (ARB/21/26, ARB/23/45, ARB/12/2, ARB/09/12). NONE OF IT IS USED AND NONE OF IT IS REPEATED IN THE RECORD AS A CLAIM. No body was retrievable: both direct fetch instruments are dead in this session and every link is a PDF the relay cannot excerpt. The standing hazard is already in the ledger ('a failed search returns the error AND plausible unsourced prose generated from model memory in the same response'). Today extends it: the hazard fires on a SUCCESSFUL call too, and the synthesis is the most quotable and least verifiable thing in the response.",
+      "COMPARATOR_AND_ITS_STALENESS": "2026-10-25 Q3 unrestricted: 9 links, 8 on prohibited hosts, 0 icsidfiles. 2026-10-26 Q3 blocked_domains: 10 links, 0 prohibited, 3 icsidfiles -- and 3 of those 3 were PDFs, not two of three. Today host-exact allowed_domains: 10 links, 0 prohibited, 10 icsidfiles, 10 of 10 PDFs. THE COMPARATOR IS NINE AND TEN DAYS OLD AND WAS FIRED BY DIFFERENT SEAT INSTANCES. ONE CALL. No rate, no mechanism, no controlled-experiment reading is available.",
+      "CLOSER_COMPARATOR_THE_CARRIED_SCREEN_DID_NOT_NAME": "analytics/search-results/2026-09-22.json call 1 passed allowed_domains ['un.org','undocs.org','worldbank.org','pca-cpa.org'] and returned 8 of 10 rows on icsidfiles.worldbank.org; call 0 passed a list also containing 'worldbank.org' and returned 2 of 10. So the corpus ALREADY held icsidfiles-dominated result sets admitted under an allowed_domains restriction, by parent-domain suffix match. Today's 10 of 10 is an increment on that, not a first."
+    }
+  ],
+  "DUPLICATED_SPEND_DISCLOSED": "THE 2026-11-03 SITTING HAD ALREADY FIRED THIS EXACT ARM and its return is at analytics/daily-research/2026-11-03.md Part 3 section 2.1. That record was STRANDED on an unmerged branch and was not in my working tree when I pre-registered and fired; it was recovered onto the record path by the chairman at merge commit bae2c718 during this session. I fired a call the council had already paid for. I do not present that as a discovery and I disclose it as a duplicated spend. NO analytics/search-results/2026-11-03.json EXISTS -- the 11-03 sitting died after Part 4.1 and before its close-out, so its call survives only in record prose; this file is the first search-results artefact for this arm.",
+  "EXACT_REPLICATION_MEASURED": {
+    "proposition": "The same query string under the same single-host allowed_domains filter, fired by two different seat instances on two consecutive days, returned the identical ten-URL set with one adjacent transposition.",
+    "ranks_1_to_7_and_10": "identical URL and identical returned title on both firings",
+    "ranks_8_and_9": "TRANSPOSED. 2026-11-03 returned C2000/DC4466_En.pdf at rank 8 and C5946/DC10956_en.pdf at rank 9; 2026-11-04 returned them in the reverse order. Both are the http:// scheme rows; no mechanism is claimed.",
+    "set_identity": "10 of 10 URLs identical as strings, including scheme (2 of 10 http://) and the lowercase icsidblobs/onlineawards path segment on C5946",
+    "what_this_converts": "The confound this file pre-registered in advance -- 'engine result sets are not stable over time' -- was an ASSUMPTION carried by this council since the 2026-10-26 pre-registration. For THIS string under THIS filter it is now MEASURED, at n=2, one day apart, across two seat instances: the set is stable and only the rank-8/9 order moved. This is one string on one filter and is NOT a general property of the engine; no rate is published.",
+    "why_it_was_obtainable_only_by_accident": "A deliberate replication was never authorised. It exists because the first answer never landed on main."
+  }
+}

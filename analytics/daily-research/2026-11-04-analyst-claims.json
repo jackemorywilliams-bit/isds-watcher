@@ -1,0 +1,154 @@
+{
+ "candidate_claims": [
+  {
+   "claim_text": "At commit ba66e11a181705f6ab8da48129457ff1c3e0f637, analytics/fetch-results/ holds 109 JSON files and 785 records, and on the admission predicate 'unquote(url) contains the CaseNo literal AND find is exactly equal to the row string' Row 1 (ARB/25/54, 'Status of Proceeding') is 12 fired / 12 TRUE, Row 2 (UNCT/20/6, 'Status of Proceeding') is 29 / 29, and Row 3 (UNCT/20/6, 'December 16, 2025 Each party') is 13 / 13.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/fetch-results/",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "machine census over all 109 files at pin ba66e11a; clone not shallow, 2,543 commits"
+  },
+  {
+   "claim_text": "Over the same 785 records, no record has an outcome field equal to 'timeout' or 'no_contact'; the complete outcome census is ok 718, refused 64, robots_disallowed 3.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/fetch-results/",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "outcome-field census, 109 files, pin ba66e11a"
+  },
+  {
+   "claim_text": "The literal string 'timeout' occurs in 14 files of analytics/fetch-results/ and 'no_contact' in 18, their union being 18 files, and every occurrence of either string in all 18 files lies in the echoed request 'note' field and in no other JSON key.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/fetch-results/",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "refused / 403 / 202 / timeout / no_contact; host_not_allowed / scheme",
+   "supporting_locator": "e.g. analytics/fetch-results/2026-10-19-daily.json, key '.note'; recursive walk of every string value in all 109 files"
+  },
+  {
+   "claim_text": "The 2026-11-04 relay batch (fetched_at 2026-11-04T11:22:14.984510+00:00, run 41820250680, 3 requested / 3 completed, control_ok true, void false) returned the UNCT/20/6 Row 2 and Row 3 records with identical sha256 ad57db98ca7235ee and identical byte length 106,085, so the same-batch co-observation precondition holds.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/fetch-results/2026-11-04-daily.json",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "December 16, 2025 Each party files a reply statement of costs.",
+   "supporting_locator": "records[2] and records[3]; excerpt of records[3]"
+  },
+  {
+   "claim_text": "On 2026-11-04 the ICSID case-detail page for ARB/25/54 returned, within the relay's 400-character window, 'Status of Proceeding: Pending', 'Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters.' and the literal 'No References Available.'",
+   "source_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+   "access_status": "partial",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Status of Proceeding: Pending Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters. No References Available.",
+   "supporting_locator": "analytics/fetch-results/2026-11-04-daily.json records[1].excerpt; 400-char window only, the full page was not read"
+  },
+  {
+   "claim_text": "Across the 785-record corpus every record whose content_type is 'application/pdf' numbers 10, all 10 at status 200, and 0 of the 10 carries a nonempty excerpt.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/fetch-results/",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "ground P1 re-derived at pins b4a492c6 and ba66e11a, identical at both"
+  },
+  {
+   "claim_text": "The 2026-11-02 pre-merge reduction, blob b1f7e05418d3e99f5fdf226652e93b157a32dee8, records fetched_at 2026-11-02T11:31:20.177102+00:00 with 3 requested / 2 completed and its Row 3 record at status 'timeout', outcome 'no_contact', sha256 null, bytes null and the find_matched key absent entirely, so Row 3 stood at 11 fired / 10 TRUE before the merge re-fire.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5712d39a/analytics/fetch-results/2026-11-02-daily.json",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "git cat-file -p b1f7e054, records[3]; read at a non-shallow clone of 2,531 commits"
+  },
+  {
+   "claim_text": "A WebSearch call fired on 2026-11-04 with the 117-character query string character-identical to analytics/search-results/2026-10-26.json call Q3, under allowed_domains ['icsidfiles.worldbank.org'] and nothing else passed, returned 10 links, 10 of 10 on icsidfiles.worldbank.org, 10 of 10 ending '.pdf', 0 on hosts under standing prohibition and 0 out of filter.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/search-results/2026-11-04.json",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "calls[0]; host_tally {'icsidfiles.worldbank.org': 10}; pdf_links 10"
+  },
+  {
+   "claim_text": "The ten links returned by that 2026-11-04 call are identical as strings, including URL scheme and path casing, to the ten enumerated in the 2026-11-03 analyst return at section 2.1, with ranks 1-7 and 10 in the same order and ranks 8 and 9 transposed, giving pairwise URL Jaccard 1.000 between two firings a day apart by different seat instances.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/daily-research/2026-11-03.md",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Count: 10 links; 10 of 10 on `icsidfiles.worldbank.org`; 0 prohibited-host links; 0 out-of-filter rows; 2 of 10 on the `http://` scheme.",
+   "supporting_locator": "analytics/daily-research/2026-11-03.md Part 3 section 2.1, enumerated items 1-10, compared string-by-string against analytics/search-results/2026-11-04.json calls[0].links"
+  },
+  {
+   "claim_text": "analytics/search-results/2026-09-22.json call S1 passed allowed_domains including the parent domain 'worldbank.org' and returned 2 of 10 rows on icsidfiles.worldbank.org, and call S2 passed ['un.org','undocs.org','worldbank.org','pca-cpa.org'] and returned 8 of 10 rows on that host, so the corpus already held icsidfiles-dominated result sets admitted under an allowed_domains restriction by parent-domain suffix match.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/search-results/2026-09-22.json",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "calls[0].results and calls[1].results, per-row host field; figures re-measured by the chairman independently and published by the 2026-11-03 analyst under objection 1103-S5"
+  },
+  {
+   "claim_text": "The 2026-11-03 sitting existed, is recorded at analytics/daily-research/2026-11-03.md, and at its section 1.6 declined to adopt the 2026-11-02T12:13:03Z fetch as the council's own observation of the UNCT/20/6 chronology terminus while expressly not calling predicate A at 11 false.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/daily-research/2026-11-03.md",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "procedural",
+   "assertion_status": "candidate",
+   "supporting_quote": "I decline to adopt it, for the reason §7.3 itself supplied: that fetch landed after the vetting gate of its sitting had closed, and no seat examined it.",
+   "supporting_locator": "analytics/daily-research/2026-11-03.md section 1.6"
+  },
+  {
+   "claim_text": "STATE_OF_THE_ANSWER.md publishes the UNCT/20/6 terminus-equality figure as a count of consecutive comparisons rather than of calendar days, carrying '8 consecutive comparisons' in its 2026-11-01 block and '7' in an earlier one, with no field on the page recording the calendar span those comparisons cover.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/STATE_OF_THE_ANSWER.md",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "the terminus is identical to the previous run's on all **8** consecutive comparisons, and the condition can only be met on a day the terminus moves",
+   "supporting_locator": "STATE_OF_THE_ANSWER.md, 2026-11-01 council-update block; the 7 appears in the 2026-10-30 block"
+  },
+  {
+   "claim_text": "analytics/insights.jsonl line 233 (dated 2026-10-04) records that a byte-identical re-fire of one query string minutes apart in one session produced firings sharing zero URLs, with pairwise URL Jaccard f2^f3 = 0.000 and 19 distinct URLs across three firings, and concludes that sensitivity is a per-call stochastic property rather than a standing one.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/insights.jsonl",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "The two same-session firings share ZERO URLs (pairwise URL Jaccard f1^f2 = 0.056, f1^f3 = 0.800, f2^f3 = 0.000); 19 distinct URLs across three firings of one string.",
+   "supporting_locator": "analytics/insights.jsonl:233, thread_id INSTRUMENT-a-byte-identical-re-fire-flipped-a-pre-registered-sensitivity-verdict-and-the-two-draws-were-disjoint"
+  },
+  {
+   "claim_text": "A document titled 'DECISION ON THE RESPONDENT'S RULE 41 OBJECTION' is indexed by the search engine at https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11541/DS20453_En.pdf; the title is the engine's indexed title and not the document's own, no part of the body was retrieved by any instrument in this session, and no party, date, docket number or holding is asserted from it.",
+   "source_url": "https://icsidfiles.worldbank.org/icsid/ICSIDBLOBS/OnlineAwards/C11541/DS20453_En.pdf",
+   "access_status": "unavailable",
+   "source_authority": "unknown",
+   "claim_type": "lead",
+   "assertion_status": "lead",
+   "supporting_quote": null,
+   "supporting_locator": "returned at rank 6 of the 2026-11-04 call and rank 6 of the 2026-11-03 call; body unretrievable - both direct fetch instruments dead this session and the relay returns 0 of 10 nonempty excerpts on application/pdf"
+  },
+  {
+   "claim_text": "No 2026 ICSID decision on a Rule 41(5) objection concerning intellectual property or a patent as a covered investment was identified in any returned title or URL of the 2026-11-04 call, and this is a research null at title-and-URL strength only, not a finding that no such decision exists.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/ba66e11a181705f6ab8da48129457ff1c3e0f637/analytics/search-results/2026-11-04.json",
+   "access_status": "full",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "calls[0].research_outcome; no body opened by any means"
+  }
+ ]
+}

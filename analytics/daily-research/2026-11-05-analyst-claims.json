@@ -1,0 +1,257 @@
+{
+ "candidate_claims": [
+  {
+   "claim_text": "The 2026-11-05 relay batch (blob b298de0b18d6c06ef3727617a942b0826b7f852d at commit 5ed147b0, run 42018327226, fetched_at 2026-11-05T11:22:07.734849+00:00) reports control_ok true, void false, requested 3 / completed 3 and truncated false, with the https://example.com/ control row at status 200, 577 bytes and sha256 25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results/2026-11-05-daily.json",
+   "access_status": "full",
+   "access_method": "local git read of the blob; clone not shallow, 2,565 commits",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "\"control_ok\": true",
+   "supporting_locator": "top-level keys control_ok / void / requested / completed / truncated; records[0]"
+  },
+  {
+   "claim_text": "On 2026-11-05 the ICSID case-detail page for ARB/25/54 reported 'Status of Proceeding: Pending' and 'Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters.', with the literal 'No References Available.' present exactly once in the returned 400-character window.",
+   "source_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+   "access_status": "partial",
+   "access_method": "NOT retrieved by this seat; a 400-character excerpt returned by the committed GitHub Actions fetch relay (run 42018327226) and read by this seat from the committed blob. The page itself was never opened by this seat: both direct fetch instruments are dead on a neutral control.",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Status of Proceeding: Pending Latest Development: August 6, 2026 - The Tribunal issues Procedural Order No. 1 concerning procedural, transparency, and confidentiality matters. No References Available.",
+   "supporting_locator": "analytics/fetch-results/2026-11-05-daily.json records[1].excerpt, blob b298de0b at commit 5ed147b0"
+  },
+  {
+   "claim_text": "A screen of that 400-character ARB/25/54 window on seventeen operative terms (jurisdic, admissib, objection, bifurcat, preliminary, competence, abuse, ratione, patent, trade secret, trademark, intellectual, clinical, rule 41, manifest, critical date, treaty) returns zero occurrences of all seventeen.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results/2026-11-05-daily.json",
+   "access_status": "full",
+   "access_method": "local git read; case-insensitive substring count over records[1].excerpt",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "records[1].excerpt, 400 characters; seventeen-term count run in session at pin 5ed147b0"
+  },
+  {
+   "claim_text": "Across all 13 committed firings of find = 'Status of Proceeding' against ?CaseNo=ARB/25/54 (2026-10-24 through 2026-11-05) the returned 400-character excerpt is ONE distinct string on exact equality, while the reported page byte length takes three distinct values: 85,016, 85,351 and 85,353.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; machine census over all 110 JSON files at pin 5ed147b0, unit = records; clone not shallow, 2,565 commits",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "13 records in 13 files; admission predicate unquote(url) contains 'ARB/25/54' AND find exactly equal"
+  },
+  {
+   "claim_text": "In the 2026-11-05 batch the UNCT/20/6 Row 2 record (find 'Status of Proceeding') and Row 3 record (find 'December 16, 2025 Each party') carry identical sha256 c488e939ae91bf5eddc96171375ce253f9beb633d8c6303a76226fc523bf1b2d and identical byte length 106,085, so the same-batch co-observation precondition holds on both legs.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results/2026-11-05-daily.json",
+   "access_status": "full",
+   "access_method": "local git read",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "December 16, 2025 Each party files a reply statement of costs.",
+   "supporting_locator": "records[2] and records[3]; sha256 and bytes fields of both"
+  },
+  {
+   "claim_text": "On 2026-11-05 the UNCT/20/6 case-detail page reported 'Latest Development: December 16, 2025 - Each party files a reply statement of costs.' and a chronology entry 'December 16, 2025 Each party files a reply statement of costs.', so the summary field and the chronology terminus are equal and the field/chronology closure condition is not met.",
+   "source_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+   "access_status": "partial",
+   "access_method": "NOT retrieved by this seat; two 400-character excerpts returned by the fetch relay (run 42018327226) and read from the committed blob",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Latest Development: December 16, 2025 - Each party files a reply statement of costs.",
+   "supporting_locator": "records[2].excerpt and records[3].excerpt, blob b298de0b at commit 5ed147b0"
+  },
+  {
+   "claim_text": "At commit 67b3857d7bb5097433d3e6ca3bc2c3ab20067ca7, analytics/fetch-results/ holds 109 JSON files and 785 records, and on the admission predicate 'unquote(url) contains the CaseNo literal AND find is exactly equal' Row 1 is 12 fired / 12 TRUE, Row 2 is 29 / 29 and Row 3 is 13 / 13, with 13 same-batch pairs present and 13 passing the sha256-and-byte-length precondition.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/67b3857d7bb5097433d3e6ca3bc2c3ab20067ca7/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; machine census over all 109 files at that pin; clone not shallow, 2,565 commits",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "unit = records"
+  },
+  {
+   "claim_text": "At commit 5ed147b0a0516aff3fee69800ac0b83e4b519d26, analytics/fetch-results/ holds 110 JSON files and 789 records, and on the same predicate Row 1 is 13 fired / 13 TRUE, Row 2 is 30 / 30 and Row 3 is 14 / 14, with 14 same-batch pairs present and 14 passing the precondition; the same figures reproduce unchanged at commit ee7ccc7b.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; machine census at both pins; clone not shallow, 2,565 then 2,568 commits",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "unit = records; self-inclusion declared, the 2026-11-05 batch being in-tree at this pin"
+  },
+  {
+   "claim_text": "At commit 5ed147b0 the 30 Row 2 records are distributed over only 25 files, with analytics/fetch-results/2026-09-07-daily.json holding six of them, whereas Row 1 and Row 3 are one record per file (13 records in 13 files; 14 in 14).",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; per-file record census",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "2026-09-07-daily.json, six records matching the Row 2 predicate"
+  },
+  {
+   "claim_text": "The complete outcome-field census over the 789 records at commit 5ed147b0 is ok 722, refused 64 and robots_disallowed 3, with zero records carrying an outcome equal to 'timeout' or 'no_contact'.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; census on the outcome field, not a grep",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "110 files, 789 records"
+  },
+  {
+   "claim_text": "The fetch-relay workflow has 200 runs with 200 distinct run_numbers, of which 194 concluded success, 5 concluded failure and 1 was cancelled; the five failures are run_numbers 19, 51, 78, 132 and 199 and all five carry head_branch 'main'; no run on a council/* branch has ever concluded failure.",
+   "source_url": "https://api.github.com/repos/jackemorywilliams-bit/isds-watcher/actions/workflows/fetch-relay.yml/runs?per_page=100&page=1",
+   "access_status": "full",
+   "access_method": "three paged gh api calls by this seat against the live Actions API; run 19's job logs were NOT opened and nothing is claimed from them",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "workflow_runs[].run_number / .conclusion / .head_branch, pages 1-3"
+  },
+  {
+   "claim_text": "The branch base rates for fetch-relay failures are 5 failures over 79 runs on main, 0 over 109 runs on council/* branches, and 0 over 12 runs on twelve other branches.",
+   "source_url": "https://api.github.com/repos/jackemorywilliams-bit/isds-watcher/actions/workflows/fetch-relay.yml/runs?per_page=100&page=1",
+   "access_status": "full",
+   "access_method": "gh api, three pages, tallied in session",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "200 run objects"
+  },
+  {
+   "claim_text": "There is one non-success fetch-relay run on a council/* branch that did not conclude failure: run_number 152, id 38556617812, head_branch council/daily-2026-10-14, created 2026-10-14T11:26:50Z, conclusion 'cancelled'.",
+   "source_url": "https://api.github.com/repos/jackemorywilliams-bit/isds-watcher/actions/workflows/fetch-relay.yml/runs?per_page=100&page=2",
+   "access_status": "full",
+   "access_method": "gh api; the run's job logs were not opened and no cause is claimed",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "workflow_runs entry run_number 152"
+  },
+  {
+   "claim_text": "Today's batch is fetch-relay run_number 200, id 42018327226, head_branch council/daily-2026-11-05, created 2026-11-05T11:21:36Z, conclusion success, matching the environment field of the committed results file.",
+   "source_url": "https://api.github.com/repos/jackemorywilliams-bit/isds-watcher/actions/workflows/fetch-relay.yml/runs?per_page=100&page=1",
+   "access_status": "full",
+   "access_method": "gh api cross-checked against the committed blob's environment field",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "\"environment\": \"github-actions-runner (run 42018327226)\"",
+   "supporting_locator": "workflow_runs entry run_number 200; results file top-level 'environment'"
+  },
+  {
+   "claim_text": "At commit 5ed147b0 analytics/fetch-requests/ and analytics/fetch-results/ each hold exactly 110 JSON files, with zero request filenames lacking a results file and zero results filenames lacking a request file, so a fetch-relay write-back failure leaves no one-sided pair or other marker in the committed corpus.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-requests",
+   "access_status": "full",
+   "access_method": "local git read; set difference on basenames of both directories at one pin",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "both directories compared at pin 5ed147b0; the sibling directory is analytics/fetch-results/"
+  },
+  {
+   "claim_text": "analytics/fetch-results/2026-11-04-daily.json carries exactly two commits (3ed6977a at 2026-11-04T11:22:15Z and 8b7ccb70 at 11:52:23Z); the blob at 3ed6977a holds the page digests ad57db98 and 74d2ec38 that the 2026-11-04 analyst filed, while the path at commit 5ed147b0 holds 11cdd3a5 and 3ba083e4 at identical byte lengths of 106,085 and 85,353.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/3ed6977a/analytics/fetch-results/2026-11-04-daily.json",
+   "access_status": "full",
+   "access_method": "local git read of both the 3ed6977a blob and the path at 5ed147b0; git log on the path",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "\"fetched_at\": \"2026-11-04T11:22:14.984510+00:00\"",
+   "supporting_locator": "records[1] and records[2] sha256 and bytes at each version"
+  },
+  {
+   "claim_text": "On 2026-11-05 one web-search call with the string 'Anthea Roberts Just Security investor-State dispute settlement arbitration reform post November 2026' restricted to allowed_domains ['justsecurity.org'] returned ten links, all ten on www.justsecurity.org, with the monitored author's author path https://www.justsecurity.org/author/robertsanthea/ at rank 1 under the returned title 'Anthea Roberts', and no returned title or locator carrying an October or November 2026 date; the result is recorded as not found in accessible sources and no body was opened.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/council/daily-2026-11-05/analytics/search-results/2026-11-05.json",
+   "access_status": "full",
+   "access_method": "file written by this seat in session and read back; the source_url is a BRANCH-ref URL and resolves only once the chairman commits the completed file, the pre-registration half being already committed at ee7ccc7b with sha256 ae83e7b5ddc7397b8c327534abc793bb16ca363717a087b65a8a84af86517abe. This is the firing seat's report of its own call and no engine return was captured.",
+   "source_authority": "unknown",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Anthea Roberts",
+   "supporting_locator": "calls[0].links[0] and calls[0].returned_titles[0]; ten links index-aligned with ten titles"
+  },
+  {
+   "claim_text": "The body of https://www.justsecurity.org/author/robertsanthea/ was not retrieved by any instrument on 2026-11-05, and justsecurity.org and ejiltalk.org are both absent from the ALLOWED_HOSTS set in scripts/fetch_relay.py, so no instrument this council holds could have retrieved it.",
+   "source_url": "https://www.justsecurity.org/author/robertsanthea/",
+   "access_status": "not_attempted",
+   "access_method": "NOT ATTEMPTED on any instrument. 'not_attempted' is used per the quoted 1104-S11 / 1103-S6 condition and is outside the documented access_status enum; the conflict is flagged, not resolved. The ALLOWED_HOSTS half was verified by this seat at scripts/fetch_relay.py:48-69, pin 5ed147b0.",
+   "source_authority": "unknown",
+   "claim_type": "factual",
+   "assertion_status": "lead",
+   "supporting_quote": null,
+   "supporting_locator": "scripts/fetch_relay.py lines 48-69 at commit 5ed147b0 for the ALLOWED_HOSTS half"
+  },
+  {
+   "claim_text": "The 2026-11-01 daily record's close-out adopted a fortnight on the EJIL:Talk limb of the Roberts monitored-author check in the words 'The Roberts check is discharged today and the analyst recommends not re-firing it for a fortnight. I adopt that.', and the recommendation it adopted is scoped at :353 to 'the Roberts author page'.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/daily-research/2026-11-01.md",
+   "access_status": "full",
+   "access_method": "local git read of the committed record",
+   "source_authority": "official_secondary",
+   "claim_type": "procedural",
+   "assertion_status": "candidate",
+   "supporting_quote": "The Roberts check is discharged today** and the analyst recommends not re-firing it for\n   a fortnight. I adopt that.",
+   "supporting_locator": "analytics/daily-research/2026-11-01.md:790-792; and :353"
+  },
+  {
+   "claim_text": "The 2026-11-04 research analyst return states 'Row 3's window ends …December 16, 2025 Each party files a reply statement of costs.', whereas the Row 3 excerpt in the 2026-11-04 results file and in all fourteen committed firings continues past that sentence and ends '… ICSID Panels For Arbitrators Becoming an IC', with the undecoded entity '&amp;' inside the window at 'News &amp; Events'.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/daily-research/2026-11-04.md",
+   "access_status": "full",
+   "access_method": "local git read of the record at :742 and of the Row 3 excerpt in all 14 committed results files at pin 5ed147b0",
+   "source_authority": "official_secondary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+   "supporting_locator": "2026-11-04.md:742 for the quoted sentence; analytics/fetch-results/2026-11-04-daily.json records[3].excerpt for the carrying span"
+  },
+  {
+   "claim_text": "On UNCT/20/6 the committed corpus holds 33 readings with 33 distinct sha256 values and no digest repeated, including seven distinct digests at the single byte length 106,085, and two readings 30 minutes apart on 2026-11-04 (ad57db98 at 11:22:14Z, 11cdd3a5 at 11:52:23Z) with equal byte length and a character-identical 400-character window.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "local git read; census over all UNCT/20/6 records at pin 5ed147b0",
+   "source_authority": "primary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "all records whose unquoted url contains 'UNCT/20/6'; 11 distinct byte lengths, 33 distinct digests"
+  },
+  {
+   "claim_text": "The council's adopted provenance cure of citing a commit and a blob cannot reach a relay reading whose write-back failed, because such a reading is fetched successfully and never committed, leaves no blob, no path and no trace in the committed corpus, and cannot be reconstructed from any later fetch of the same page given that no two committed readings of these pages share a digest.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/tree/5ed147b0a0516aff3fee69800ac0b83e4b519d26/analytics/fetch-results",
+   "access_status": "full",
+   "access_method": "interpretive, resting on this seat's own corpus censuses at pin 5ed147b0 and on the chairman's reading of the run 199 job logs, which this seat did not open; the run-list half was independently verified by this seat via gh api",
+   "source_authority": "primary",
+   "claim_type": "interpretive",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "screened against analytics/insights.jsonl (312 lines), STATE_OF_THE_ANSWER.md and analytics/optimization-log.md at pin 5ed147b0; 'write-back', 'cannot lock ref', 'concurrent push', 'push rejection', 'silently discarded' all zero"
+  },
+  {
+   "claim_text": "The string 'thread 88' does not occur in agents/Workflow Threads.md, and that file's 4,601 lines contain zero occurrences of 'UNCT/20/6', although 'thread 88' occurs in STATE_OF_THE_ANSWER.md and in twelve files under analytics/daily-research/.",
+   "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/5ed147b0a0516aff3fee69800ac0b83e4b519d26/agents/Workflow%20Threads.md",
+   "access_status": "full",
+   "access_method": "local git read; literal screen over the whole file, not a truncated screen",
+   "source_authority": "official_secondary",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "whole-file screen at pin 5ed147b0; 4,601 lines"
+  }
+ ]
+}

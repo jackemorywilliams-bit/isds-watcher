@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-05",
+  "written_before_firing": true,
+  "seat": "research-analyst",
+  "pin": "5ed147b0a0516aff3fee69800ac0b83e4b519d26",
+  "clone_depth_that_read_it": 2565,
+  "shallow": false,
+  "cap": 1,
+  "authority": "analytics/daily-research/2026-11-04.md section 5.8(5): 'SPEND THE ONE AUTHORISED SEARCH ON THE ROBERTS SURFACE.' Re-imposed in the chairman's brief for this sitting.",
+  "surface": "Anthea Roberts, monitored author (prompts/research_analyst.txt:159-170). The clause names ejiltalk.org/author/aroberts/; open_threads records a SECOND author URL, justsecurity.org/author/robertsanthea/.",
+  "limb_chosen": "justsecurity.org",
+  "why_this_limb_and_not_the_ejiltalk_limb": "The 2026-11-01 close-out at :790-792 adopted the then-analyst's recommendation in terms: 'The Roberts check is discharged today and the analyst recommends not re-firing it for a fortnight. I adopt that.' The recommendation's own words (2026-11-01.md:353) scope it to 'the Roberts author page' -- the EJIL:Talk limb fired that day with allowed_domains ['ejiltalk.org']. That fortnight closes 2026-11-15 and today is day 4 of it. The 2026-11-04 close-out orders the one search spent on the Roberts SURFACE, which the chairman's brief for this sitting enumerates as 'ejiltalk.org/author/aroberts/, Just Security'. Firing the Just Security limb discharges the later order WITHOUT re-firing inside the earlier fortnight. The Just Security limb was last fired 2026-10-11 (analytics/search-results/2026-10-11.json), 25 days ago, on a DIFFERENT string.",
+  "string_verbatim": "Anthea Roberts Just Security investor-State dispute settlement arbitration reform post November 2026",
+  "string_is_novel": "Screened against every \"query\" and \"string_verbatim\" value in analytics/search-results/*.json. The record holds 'Anthea Roberts EJIL:Talk October 2026' (2026-10-06, -10, -26), 'Anthea Roberts EJIL:Talk! author page October November 2026' (2026-11-01, in the record not in a search-results file) and 'Anthea Roberts Just Security author investor-State dispute settlement 2026' (2026-10-11). This string is character-identical to none of them.",
+  "allowed_domains": ["justsecurity.org"],
+  "filter_rationale": "allowed_domains and blocked_domains are mutually exclusive at the schema level (ledger entry 0921-V1), so only one is passed. Host-exact to justsecurity.org makes the prohibited-host leak count ZERO BY CONSTRUCTION and is therefore NOT offered as evidence that the block works. It also inherits the confound named at analytics/daily-research/2026-11-04.md Part 3 section 4: a host-exact restriction may saturate a finite responsive population, so a null from it is a null about a restricted draw and not about the surface.",
+  "rigid_designator": "Anthea Roberts (personal name) -- a name the field cannot paraphrase away. Secondary designator: robertsanthea (the author-path slug).",
+  "proposition_under_test": "Anthea Roberts published a new piece on Just Security in October or November 2026 bearing on investor-State dispute settlement.",
+  "preregistered_branches": {
+    "i_HIT": "A returned title index-aligned to a justsecurity.org locator carrying an October or November 2026 date AND naming an ISDS/investment-arbitration subject. This is a LEAD at title strength only; the body is claimed only if opened, and no instrument this council holds today can open it -- both direct fetch instruments are dead on a neutral control and justsecurity.org is absent from the relay's ALLOWED_HOSTS (scripts/fetch_relay.py). A hit therefore proposes a slug, not a finding.",
+    "ii_NULL_ON_DATE": "Locators on justsecurity.org return, including the author path, but no returned title or locator carries an October or November 2026 date. MEANING: 'NOT FOUND IN ACCESSIBLE SOURCES' -- expressly NOT 'no new post exists', and expressly NOT a statement about the content of justsecurity.org/author/robertsanthea/, whose body this project has never read.",
+    "iii_EMPTY": "Zero links returned. MEANING: an instrument result about the restricted draw and NOTHING about the author or the surface. No research inference is licensed at all.",
+    "iv_LEAK": "Any link on www.italaw.com, italaw.com, investmentpolicy.unctad.org, unctad.org, www.iisd.org or iisd.org. Impossible under a host-exact allowed_domains; if it occurs it is an INSTRUMENT finding about the filter and is reported as such."
+  },
+  "what_a_null_does_not_license": "A null here licenses nothing about the EJIL:Talk limb, which is not queried today; nothing about the author's output generally; and nothing about the content of either author page. Per the 2026-11-01 V mark, a search-result listing is not a document.",
+  "no_engine_synthesis": "No figure, date, holding, title or characterisation taken from the engine's own prose summary will be adopted as a finding or reported as a measurement. Only returned titles and links, verbatim and index-aligned, are recorded.",
+  "body_opened_anywhere": false,
+  "strength_cap": "Every finding derived from this call is capped at TITLE-AND-URL strength."
+}

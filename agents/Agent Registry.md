@@ -566,6 +566,36 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-11-07 (archivist session — thirty-third deployment)** — **No roster change and no
+  contract change, the seventeenth consecutive session.** Audited against `f272ce32`
+  (`origin/main`, clean tree) on the complete **2,600**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **139**, the twenty-fifth consecutive
+  recurrence. `git log d358c426..origin/main -- .claude/agents/ prompts/ src/models.py` returns
+  **no commit** across the 101-commit window. `.claude/agents/` unchanged since `ae1f04b3`
+  (2026-08-05), **94 days**.
+  - **All nine Model lines re-read by hand, definition against vault note, per rule 1** — and all
+    nine agree: `claude-opus-5` for [[council-chairman]], [[research-analyst]],
+    [[site-experience]], [[systems-designer]]; `claude-opus-4-8` for [[analytics-officer]],
+    [[integrity-officer]], [[obsidian-archivist]], [[research-editor]], [[systems-researcher]].
+    `scripts/check_models.py` exits **0** over 12 flowchart cards independently. **No model
+    drift.**
+  - **D6, seventh observation** — `get_session` returns `configured_model`,
+    `session_context.model` and `external_metadata.last_served_model` all **`claude-opus-5`**,
+    against a definition stating Claude Opus 4.8. Model lines stay as written, per 2026-08-16.
+  - **D5 re-run, still 1 of 9** — only `.claude/agents/integrity-officer.md` names its own vault
+    note. The method rules each seat has adopted are recorded in `agents/`, which no definition
+    but that one points at.
+  - **Rule 13 adopted** in [[obsidian-archivist]] — *a census of a falsified mechanism's carriers
+    is incomplete until it has swept `agents/`.* Earned: the 2026-11-06 council counted four
+    carriers of the squash-merge mechanism and missed [[Workflow Threads]] **D28**, this seat's
+    own, landed `27cf2339` seven weeks after the 2026-09-07 falsification. Corrected in place
+    today with the parent-count measurement (**201 of 206** PR landings on `main` are two-parent).
+  - **Two threads opened** — **D34** (this seat produced nothing on its scheduled 2026-11-04 step
+    day: no record, no branch, no commit, while the council landed a 168,525-byte record that day)
+    and **D35** (`scripts/build_graph.py` reports five files with links to nonexistent notes, of
+    which three are parser artifacts — escaped pipes at `:83`, un-stripped inline code at `:81` —
+    and the one real defect at `think-tank/website/interactive-upgrade-spec.md:23,:43` is now 112
+    days old).
 - **2026-11-01 (archivist session — thirty-second deployment)** — **No roster change and no
   contract change, the sixteenth consecutive session.** Audited against `d358c426`
   (`origin/main`, clean tree) on the complete **2,499**-commit history after

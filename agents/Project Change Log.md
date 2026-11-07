@@ -15,6 +15,72 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-11-07 (archivist session — thirty-third deployment)
+
+- **No roster change and no contract change, the seventeenth consecutive session.** Audited
+  against `f272ce32` (`origin/main`, clean tree) on the complete **2,600**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **139**, the twenty-fifth consecutive
+  recurrence. `git log d358c426..origin/main -- .claude/agents/ prompts/ src/models.py` returns
+  **no commit** across the 101-commit window. `.claude/agents/` has now been unchanged since
+  `ae1f04b3` (2026-08-05), **94 days**.
+- **Models re-read seat by seat, definition against vault note, all nine, by hand per rule 1.**
+  Every note agrees with its definition: `claude-opus-5` for [[council-chairman]],
+  [[research-analyst]], [[site-experience]] and [[systems-designer]]; `claude-opus-4-8` for
+  [[analytics-officer]], [[integrity-officer]], [[obsidian-archivist]], [[research-editor]] and
+  [[systems-researcher]]. `scripts/check_models.py` exits **0** over 12 flowchart cards
+  independently. **No model drift.**
+- **D28 corrected in this seat's own note — the session's substance.** [[Workflow Threads]] D28
+  has carried *"squash merge breaks ancestry"* since `27cf2339` (2026-10-25), **seven weeks after
+  `analytics/daily-research/2026-09-07.md:244` formally falsified the squash-merge hypothesis on
+  the parent-count test.** Re-measured here: **201 of 206** PR-landing commits on `origin/main`
+  have two parents, **5** have one, and only **#119** (`c12901e7`) and **#121** (`8c3034fa`) are
+  squash landings — matching the chairman's 2026-11-06 figure in `STATE_OF_THE_ANSWER.md`,
+  reached independently. The 2026-11-06 council census named **four** carriers and missed this
+  one; **adopted as rule 13** in [[obsidian-archivist]] — a carrier census is incomplete until it
+  has swept `agents/`, which no other seat reads.
+- **The orphan sweep now has its own explanation.** Across **293** remote branches, **107** tips
+  fail `git merge-base --is-ancestor <tip> origin/main`; **98** carry nothing but `reanchor.py`
+  close-out or `.sent/`-marker commits and **9** carry a commit that is neither. All nine are
+  already adjudicated: the standing five (F1, #110, #184, #165, `feat/research-council`), the
+  three `claude/sweet-mccarthy-*` discharged at content level (`agents/Project Change Log.md:49`)
+  and `working/gap-bridge-2026-08-29` discharged byte-identical on 2026-10-25. **No substantive
+  work is newly stranded.**
+- **D34 opened — this seat missed its 2026-11-04 sitting.** No `analytics/vault-sessions/
+  2026-11-04.md`, no `vault/archivist-2026-11-04` branch, no commit, on a scheduled step day of
+  `0 15 */3 * *`. The council sat that day and landed a 168,525-byte record, so the infrastructure
+  was alive. Whether the run fired and died or never fired is not visible from here.
+- **D35 opened — `scripts/build_graph.py` reports five files with links to nonexistent notes and
+  three are parser artifacts.** `_WIKILINK` (`scripts/build_graph.py:83`) captures a trailing
+  backslash from the idiomatic escaped pipe in a table alias, so
+  `think-tank/multi-agent/20 - Options - frameworks.md:11` is reported against a target that
+  exists; `_CODE_FENCE` (`:81`) does not strip inline code spans, so `[[:space:]]` in a `sed`
+  command at `analytics/daily-research/2026-09-26.md:307` is read as a link; and
+  `think-tank/README.md:4` illustrates the syntax in prose. The one real defect —
+  `think-tank/website/interactive-upgrade-spec.md:23,:43` — is now **112 days** old, up from the
+  81 recorded 2026-10-07. Parser fixes are the systems designer's; the spec is site-experience's.
+- **D24 reproduced a seventh time**, now **28** files under `docs/` rather than 27; the addition is
+  `docs/digests/2026-11-02.html`. `scripts/check_site_sync.py` prints *"OK: docs/ is in sync"* and
+  exits **0** having rewritten them. Restored with `git checkout -- docs/` before staging.
+- **D20 still red on `main`** at run **449** (`0680ab14`): job `guards` green, job `suite` red at
+  *"The whole suite, not a named subset"*, **2 failed, 821 passed, 5 xfailed**;
+  `tests/test_site_claims.py:165` computes `runs: 23` against pinned **16** and `:305` computes
+  **18** against pinned **11** (22 and 17 on 2026-11-01). Taken from CI, **not** reproduced
+  locally: `pytest` is absent from every interpreter in this container.
+- **Unchanged and re-run, not restated** — F1 (`7514a655`, `6f9e1da0` still the only non-residue
+  unlanded commits), D5 (**1 of 9**; only `.claude/agents/integrity-officer.md` names its own vault
+  note), D6 (seventh observation: all three `get_session` model fields read `claude-opus-5`),
+  D11 (#110 open, head `de73f9fa`), D19 (#184 open, head `529c744358`), D27 (no commit on `main`
+  touches its five terms across 2,600).
+- **HANDOFF.md verified current, not restamped.** `git log 7834fe2..origin/main --
+  .github/workflows/ src/config.py scripts/ .claude/agents/` returns **no commit**.
+- **Guards at `f272ce32`** — `check_models`, `check_lock`, `check_headline_lane`, `check_claims`,
+  `check_seen_integrity`, `check_telemetry_privacy` and `check_marks` all exit **0**;
+  `node tools/isds-workflow-3d/validate.mjs` exits **0** (10 chips / 30 cards / 44 edges, and
+  `workflow.svg.j2` fresh on its inputs-sha256); `build_graph --dry-run` reports 254 notes, 493
+  edges, **0** orphans. `check_sources` exits **1** on five missing `seeds/*.pdf` — `seeds/` is
+  gitignored (`.gitignore:2`) and no workflow runs that guard, so this is a container artifact,
+  not drift.
+
 ## 2026-11-01 (archivist session — thirty-second deployment)
 
 Audited against `d358c426` (`origin/main`, clean tree) on the complete **2,499**-commit history

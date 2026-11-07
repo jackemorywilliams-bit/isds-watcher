@@ -18,6 +18,136 @@ work can be read in one pass instead of reconstructed from five files.
 
 Roster and models: [[Agent Registry]] · dated history: [[Project Change Log]].
 
+**Board re-measured — 2026-11-07, at `f272ce32` on `origin/main`, clean tree, on the complete
+**2,600**-commit history after `git fetch --unshallow`; the clone arrived shallow at **139**, the
+twenty-fifth consecutive recurrence.** *Audited against `f272ce32`; window `d358c426..f272ce32` =
+**101** commits; paths: `agents/`, `.claude/agents/`, `prompts/`, `src/models.py`,
+`README.md`, `HANDOFF.md`, `COUNCIL.md`, `METHODOLOGY.md`, `docs/`, `scripts/`,
+`scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, `.github/workflows/`,
+`tests/`, `analytics/vault-sessions/`, and every remote branch tip.* **No roster change and no
+contract change, the seventeenth consecutive session:**
+`git log d358c426..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+
+**Interval read from the two record dates, per rule 12, and it is six days — because this seat
+missed a sitting.** The previous record is `analytics/vault-sessions/2026-11-01.md`; the trigger's
+schedule `0 15 */3 * *` steps day-of-month, so **2026-11-04 was a scheduled step day** and
+`next_run_at` is 2026-11-10. **Nothing from a 2026-11-04 sitting exists anywhere**: no
+`analytics/vault-sessions/2026-11-04.md`, no `vault/archivist-2026-11-04` branch among the 293
+remote branches, no commit. The infrastructure was alive that day — the council sat and landed
+`analytics/daily-research/2026-11-04.md` at 168,525 bytes. **Only this seat produced nothing.**
+Logged as **D34**; the record dates are the only evidence this seat can see, and whether the run
+fired at all is in the routine's own history, which this session cannot read.
+
+**This session's substance is a correction to this note.** D28 has carried the squash-merge
+mechanism since `27cf2339` (2026-10-25), seven weeks after the project formally falsified it, and
+the 2026-11-06 council's census of four carriers missed it because no seat reads `agents/` to take
+that census. Corrected in place below with the parent-count measurement — **201 of 206 PR
+landings on `main` are two-parent merges, 2 are squash** — and with this session's own orphan
+sweep, which proves the true mechanism: **98 of the 107 non-ancestor tips carry nothing but
+re-anchor and marker residue.** New this session: **D34**, **D35**.
+
+Carried threads, each re-run rather than restated:
+
+- **F1** — `chore/operator-marks-2026-07-27` still carries `7514a655` and `6f9e1da0` as its only
+  non-residue unlanded commits. Unchanged.
+- **D5** — still **1 of 9**. Re-run over `.claude/agents/`: only `integrity-officer.md` names its
+  own vault note.
+- **D6** — seventh observation from this seat. `get_session` returns `configured_model`,
+  `session_context.model` and `external_metadata.last_served_model` all **`claude-opus-5`**,
+  against a definition stating Claude Opus 4.8. The Model lines stay as written, for the reason
+  given 2026-08-16.
+- **Models, all nine seats** — `scripts/check_models.py` exits **0** over 12 flowchart cards, and
+  every one of the nine `agents/*.md` Model lines matches its `.claude/agents/` definition
+  (4.8: analytics-officer, integrity-officer, obsidian-archivist, research-editor,
+  systems-researcher; Opus 5: council-chairman, research-analyst, site-experience,
+  systems-designer). **No model drift.**
+- **D11** — PR **#110** open, head still `de73f9fa`, **6** unlanded commits of which **2** are
+  substantive (`ccd47e93`, `4135fd85`). Unchanged.
+- **D19** — PR **#184** open, head still `529c744358`, **3** unlanded commits of which **2** are
+  substantive. Unchanged.
+- **D20** — still red on `main`, and the drift has widened again by exactly one day's digest. The
+  latest `pipeline-guards` run on `main` is **449** on `0680ab14`: job `guards` **green**, job
+  `suite` **red** at step *"The whole suite, not a named subset"*, **2 failed, 821 passed, 5
+  xfailed**. `tests/test_site_claims.py:165` computes `runs: 23` against pinned **16**; `:305`
+  computes **18** digests carrying `per_source` against pinned **11**. On 2026-11-01 the same
+  assertions read 22 and 17. **Not reproduced locally this session** — see the unverified list.
+- **D24** — reproduced a **seventh** time, now **28** files rather than 27; the added file is
+  `docs/digests/2026-11-02.html`, the digest that landed since. `scripts/check_site_sync.py`
+  prints *"OK: docs/ is in sync with source (only the build stamp differs)"* and exits **0**
+  having rewritten them. Restored with `git checkout -- docs/` before anything was staged.
+- **D27** — unchanged. No commit on `main` touches `United Therapeutics`, `Liquidia`,
+  `2025 NCBC 37`, `treprostinil` or `Cranfill Sumner` across 2,600 commits. Still waiting on one
+  ruling.
+- **D28** — corrected from this seat today; see the dated correction in the thread below.
+- **D33** — not re-run this session; the delivery question it reverses belongs to [[Claim Map]] and
+  no record path moved on it in the window.
+
+---
+
+### D35 — three of the five "links to nonexistent notes" are parser artifacts, and the noise buried a real defect for 112 days *(new 2026-11-07; owner: systems-designer)*
+
+- `python3.13 scripts/build_graph.py --dry-run` reports **254** notes, **493** edges, **0**
+  orphans, **144** blocks it would update, **17** cap WARNs (the standing four-link convention,
+  not drift) and **5** files with links to nonexistent notes. **Only one of the five is a
+  defect in a note.**
+- **False positive 1 — escaped pipes in a table alias.**
+  `think-tank/multi-agent/20 - Options - frameworks.md:11` writes
+  `[[30 - The Max plus Agent SDK path\|Claude Agent SDK subagents]]`. The target **exists** at
+  `think-tank/multi-agent/30 - The Max plus Agent SDK path.md`. `_WIKILINK` at
+  `scripts/build_graph.py:83` is `\[\[([^\]|#]+)(?:[#|][^\]]*)?\]\]`, whose first group admits a
+  backslash, so it captures the target with a trailing `\` and fails to resolve it. Escaping the
+  pipe is the idiomatic way to keep a wikilink alias from breaking a Markdown table, so the
+  parser penalises correct Obsidian.
+- **False positive 2 — inline code is not stripped.**
+  `analytics/daily-research/2026-09-26.md:307` contains `sed 's/^[[:space:]]*//'` inside a code
+  span; `[[:space:]]` is a POSIX character class. `_CODE_FENCE` (`:81`) strips fenced blocks only,
+  not backtick spans.
+- **False positive 3 — prose about the syntax.** `think-tank/README.md:4` writes
+  *"Markdown notes with `[[wikilinks]]`"*, illustrating the convention rather than linking.
+- **Correctly written, not drift.** `analytics/vault-sessions/2026-10-07.md:268` quotes the two
+  broken links it diagnosed. A dated record citing a defect verbatim is doing its job.
+- **The one real defect, still open and now older.**
+  `think-tank/website/interactive-upgrade-spec.md:23` and `:43` link `[[site-source-sync]]` and
+  `[[score-ceiling-and-dedup-reality]]`, which have never existed in this repository's history.
+  Present since `b87c838` (2026-07-18): **112 days**, up from the 81 recorded on 2026-10-07.
+- **Why it is one thread and not two.** A report in which 3 of 5 entries are artifacts is a report
+  nobody acts on, and the one real entry has now sat unactioned through four archivist sittings
+  that each saw it listed. **The remedy is in `scripts/build_graph.py`, not in the notes:** strip a
+  trailing backslash from the captured target, and strip inline code spans alongside fenced
+  blocks.
+- **Next action** — **systems-designer**, two small parser fixes. The spec's two broken links
+  remain **site-experience**'s, untouched here for the reason given on 2026-10-07:
+  `think-tank/` is outside this seat's self-merge scope.
+
+---
+
+### D34 — the seat that catches missed work missed its own sitting *(new 2026-11-07; owner: Emory to verify, archivist to record)*
+
+- **2026-11-04 was a scheduled step day and produced nothing.** `analytics/vault-sessions/`
+  runs 10-07, 10-10, 10-13, 10-16, 10-19, 10-22, 10-25, 10-28, 10-31, 11-01 — then a gap — then
+  this record. No `2026-11-04.md`, no `vault/archivist-2026-11-04` branch among 293 remote
+  branches, no commit authored that day on any branch by this seat.
+- **The container and the schedule were both healthy.** The trigger is `enabled: true` with
+  `last_fired_at` 2026-11-07T15:09:08Z and `next_run_at` 2026-11-10T15:08:02Z, and the council's
+  own 2026-11-04 sitting landed a 168,525-byte record. So this is not a dead routine.
+- **What this seat cannot determine.** Whether the 2026-11-04 run fired and died before its first
+  commit, or never fired. `list_triggers` returns only `last_run`, which is this session. The
+  distinguishing evidence is the routine's run history and Emory's inbox — the routine notifies on
+  push **and** email, so a fired-and-failed run is more likely to have left a trace there than
+  here.
+- **Why it is worth his minute.** A sitting that dies before its first commit is **invisible by
+  construction**: it leaves no branch, no record and no alert, and the only signal is a gap
+  between two dates that nobody is counting. This seat was reading its own cadence sentence
+  wrongly for two months until rule 12 (2026-11-01), and would not have caught this before then.
+  **The same class of silence is what N16 — the container restart that killed the integrity
+  officer's first convening on 2026-11-06 — looks like when it lands on a solo seat.**
+- **Next action** — **TO VERIFY, Emory:** whether a 2026-11-04 archivist run exists in the
+  routine's history, and whether anything arrived by email that day. If it fired and failed, that
+  is an instance of N16 on this seat and belongs with it; if it never fired, the schedule is
+  dropping steps and that is a different defect.
+
+---
+
 **Board re-measured — 2026-11-01, at `d358c426` on `origin/main`, clean tree, on the complete
 **2,499**-commit history after `git fetch --unshallow`; the clone arrived shallow at **120** with
 `HEAD` detached, the twenty-fourth consecutive recurrence.** *Audited against `d358c426`; window
@@ -1061,6 +1191,43 @@ ACTION — systems-designer: the anchor's ambiguity is now costed. `check_curren
   `feat/research-council` (`af00584`, 2026-06-22, no PR).
 - **Next action** — none for Emory. The convention is this seat's and is fixed in
   [[obsidian-archivist]]; the five branches are tracked under F1, D11 and D19.
+- **CORRECTED 2026-11-07 — the mechanism named in the table above is one this project formally
+  falsified, and this note is its fifth carrier.** The *"squash merge breaks ancestry"* and
+  *"squash rewrites the patch-id too"* cells, and the closing words *"in a squash-merge
+  repository"*, all landed here at `27cf2339` (2026-10-25) — **seven weeks after
+  `analytics/daily-research/2026-09-07.md:244`, headed *"The squash-merge hypothesis is
+  FALSIFIED"*, disposed of it on the parent-count test.** Re-measured from this seat today: of
+  **206** commits on `origin/main` whose message carries a PR number, **201 have two parents and
+  5 have one**, and only **#119** (`c12901e7`) and **#121** (`8c3034fa`, both 2026-08-31) are
+  squash landings — the same figure the chairman published in `STATE_OF_THE_ANSWER.md` for
+  2026-11-06, reached here independently. **This is a merge-commit repository with two historical
+  exceptions, not a squash-merge repository.**
+- **The true mechanism was already in the same table cell, doing none of the work.** This
+  session's sweep is the proof. Across **293** remote branches, **107** tips fail
+  `git merge-base --is-ancestor <tip> origin/main`; **98** of those carry nothing but
+  `reanchor.py` close-out or `.sent/`-marker commits, and **9** carry a commit that is neither.
+  Under a squash mechanism every merged branch would read as wholly unlanded, substantive commits
+  included. The non-ancestry is `reanchor.py`'s close-out commit landing one commit past its own
+  pull request — what `prompts/daily_council_protocol.md:90` describes, and what the 2026-11-06
+  council established on its own evidence.
+- **The nine are all adjudicated; the standing backlog is still five.** The five are those named
+  above. Of the other four, the three `claude/sweet-mccarthy-*` branches were discharged at
+  content level (`agents/Project Change Log.md:49` — 38 ledger entries, 0 absent from `main`) and
+  `working/gap-bridge-2026-08-29` was discharged byte-identical on 2026-10-25
+  (`agents/Workflow Threads.md:1055`). **No substantive work is newly stranded this session.**
+- **Why this line matters beyond itself.** The 2026-11-06 council counted **four** uncorrected
+  carriers of the falsified mechanism — `2026-10-02.md:1659`, `2026-11-05.md:575`, that sitting's
+  own §1.4, and `prompts/daily_council_protocol.md:90` (landed `93a69f71`, 2026-08-27, so never a
+  re-entry but an original never corrected). **It did not count this one, because no seat reads
+  `agents/` to take that census.** In post-falsification chronology D28 is second — 2026-10-02,
+  then this note on 2026-10-25, then 2026-11-05 and 2026-11-06 — so it was on disk, in a note
+  every archivist sitting is ordered to read first, before the two later carriers were written.
+  **Availability is all this seat will assert.** The council struck *"re-derived from first
+  principles"* for want of evidence and ruled inheritance at least as likely (`1106-S5`); the
+  claim in the other direction is no better sourced, and this seat does not get to make it because
+  the carrier is its own.
+- **Had this note been current, the 2026-11-06 census would have been complete at five.** That is
+  the failure this session exists to catch, now recorded in the note that carried it.
 
 ---
 

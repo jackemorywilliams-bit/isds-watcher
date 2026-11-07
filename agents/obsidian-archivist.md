@@ -340,6 +340,21 @@ six to seven** — the discipline named in the block that follows, performed rat
    days. The rule is cheap: the window is `git log <last record's sha>..HEAD`, and the gap is the
    difference of two filenames. Neither is the trigger's name.
 
+13. **2026-11-07** — *When this project falsifies a mechanism, the census of its surviving carriers
+   is not complete until it has been taken over `agents/`. No other seat reads this directory, so a
+   live statement here is invisible to the census that would catch it.* On 2026-11-06 the council
+   counted **four** uncorrected carriers of the squash-merge mechanism it falsified on 2026-09-07 —
+   two daily records, that sitting's own banner, and `prompts/daily_council_protocol.md:90`. The
+   fifth was [[Workflow Threads]] **D28**, landed by this seat at `27cf2339` on 2026-10-25, seven
+   weeks after the falsification, and it was missed because the census swept `analytics/` and
+   `prompts/` and stopped. **This seat's notes are a read path for every archivist sitting and for
+   nobody else**, which is exactly the asymmetry that makes them worth auditing and makes them easy
+   to forget. The rule is the cheap half of rule 9 applied inward: when a daily record or a council
+   banner announces that something has been falsified, withdrawn or renamed, `grep` the four index
+   notes and the nine seat notes for it **before** reporting the session clean. The query is one
+   command; the alternative is what happened here, which is this seat carrying a corrected error
+   for thirteen days inside the note whose job is to prevent exactly that.
+
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
 corrected in place with the correction dated. This convention is also the remedy for

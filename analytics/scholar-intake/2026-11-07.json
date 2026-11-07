@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "date": "2026-11-07",
+  "at": "2026-11-07T13:23:49.477049+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 5,
+    "newest_alert_date": "2026-11-07T03:01:12+00:00",
+    "newest_alert_subject": "\"treaty shopping\" (ICSID OR ISDS OR \"investment ... - new results",
+    "alert_dates": [
+      "2026-11-07",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-10"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 1,
+  "already_seen": 0,
+  "already_queued": 0,
+  "queued_urls": [
+    "https://repo.uum.edu.my/id/eprint/34623/1/UUM%20JLS%20V17%20N1%202026%201%2019.pdf"
+  ]
+}

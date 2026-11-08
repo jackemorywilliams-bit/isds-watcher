@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "at": "2026-11-08T13:44:09.931222+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 5,
+    "newest_alert_date": "2026-11-07T03:01:12+00:00",
+    "newest_alert_subject": "\"treaty shopping\" (ICSID OR ISDS OR \"investment ... - new results",
+    "alert_dates": [
+      "2026-11-07",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-16",
+      "2026-10-10"
+    ]
+  },
+  "papers_in_window": 1,
+  "queued_new": 0,
+  "already_seen": 0,
+  "already_queued": 1,
+  "queued_urls": []
+}

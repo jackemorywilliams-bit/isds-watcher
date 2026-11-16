@@ -52,6 +52,11 @@
       }
     },
     "gdelt": {
+      "http://colombogazette.com/2026/11/12/sri-lanka-at-chogm-2026-advancing-partnerships-unlocking-opportunities": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "http://www.africaleader.com/news/279280921/fm-sitharaman-pushes-deeper-global-economic-ties-private-capital-mobilisation-at-g20-meetings": {
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "keyword_only_by_design",
@@ -251,6 +256,11 @@
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
+      },
+      "https://indiankanoon.org/doc/47846421/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://indiankanoon.org/doc/70775712/": {
         "at": "2026-09-07T18:03:18.924162+00:00",
@@ -552,6 +562,11 @@
         "outcome": "keyword_only_by_design",
         "run": "2026-09-07"
       },
+      "https://www.riotimesonline.com/venezuela-regions-provinces-explained-2026/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://www.standard.net.au/story/9343528/russian-ship-seized-to-enforce-42b-compensation-claim/": {
         "at": "2026-09-07T18:03:18.924162+00:00",
         "outcome": "keyword_only_by_design",
@@ -837,6 +852,11 @@
         "outcome": "ok",
         "run": "2026-09-28"
       },
+      "https://www.iareporter.com/articles/analysis-icsid-tribunal-in-hamburg-commercial-bank-v-italy-dismisses-states-intra-eu-objection-but-finds-no-ect-breach-holding-that-german-bank-financing-renewable-energy-project-was-not-a/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://www.iareporter.com/articles/analysis-icsid-tribunal-splits-on-ownership-and-control-requirement-in-cafta-dr-arbitration-against-honduras/": {
         "at": "2026-09-14T18:19:25.423756+00:00",
         "outcome": "ok",
@@ -937,6 +957,11 @@
         "at": "2026-08-17T21:15:12.674375+00:00",
         "outcome": "ok",
         "run": "2026-08-17"
+      },
+      "https://www.iareporter.com/articles/canadian-miner-announces-dismissal-of-application-to-annul-10-million-usd-costs-award-that-favored-romania/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/chile-round-up-a-reported-arbitration-over-santiagos-subway-system-updates-on-a-salmon-dispute-a-potential-mining-claim-and-other-arbitration-related-developments-concerning-the-state/": {
         "at": "2026-09-28T19:57:56.186541+00:00",
@@ -1084,6 +1109,11 @@
       "https://www.iareporter.com/articles/ghanaian-investor-reportedly-initiates-icc-arbitration-against-nigerian-authorities/": {
         "at": "2026-08-10T14:17:45.964749+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/ghanaian-president-announces-negotiated-roadmap-with-uk-oil-company-following-dismissal-of-393-million-usd-claim-in-icc-arbitration/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/gold-miner-announces-agreement-for-payment-of-icsid-award-against-peru/": {
         "at": "2026-08-10T14:17:45.964749+00:00",
@@ -1369,6 +1399,11 @@
         "outcome": "unreadable",
         "run": "2026-09-14"
       },
+      "https://www.iareporter.com/articles/portugal-reportedly-ordered-to-pay-55-million-eur-in-arbitration-lodged-by-highway-concessionaire/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://www.iareporter.com/articles/power-plant-investor-files-for-provisional-measures-in-icsid-arbitration-against-panama-following-arrest-of-claimants-ceo/": {
         "at": "2026-08-03T15:40:23.447046+00:00",
         "outcome": "legacy"
@@ -1419,6 +1454,11 @@
         "at": "2026-10-12T21:31:41.475357+00:00",
         "outcome": "ok",
         "run": "2026-10-12"
+      },
+      "https://www.iareporter.com/articles/revealed-uk-company-is-pursuing-treaty-arbitration-against-russia-over-alleged-expropriation-of-its-oil-and-gas-investment/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/russia-fails-to-dislodge-stephan-schill-from-uniper-v-russia-bit-arbitration-before-hong-kong-court-tribunals-hearing-twin-arbitrations-are-revealed/": {
         "at": "2026-10-26T18:59:56.731820+00:00",
@@ -1487,6 +1527,11 @@
         "at": "2026-08-10T14:17:45.964749+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/singapore-court-upholds-service-on-irans-nioc-in-proceedings-to-enforce-arbitral-award-finding-that-iranian-state-owned-oil-company-is-not-a-government-department/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://www.iareporter.com/articles/solar-investors-withdraw-us-enforcement-bid-against-spain-following-partial-annulment-of-ect-award/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
@@ -1535,6 +1580,11 @@
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/swiss-and-chilean-investors-move-to-enforce-airport-concession-award-against-venezuela/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://www.iareporter.com/articles/swiss-federal-tribunal-dismisses-chinas-request-to-set-aside-26-million-usd-treaty-award/": {
         "at": "2026-10-12T21:31:41.475357+00:00",
         "outcome": "ok",
@@ -1560,6 +1610,11 @@
       "https://www.iareporter.com/articles/three-are-in-place-to-hear-29-billion-usd-mining-claim-against-the-republic-of-guinea/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/three-are-in-place-to-hear-construction-dispute-with-egypt/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/three-are-in-place-to-hear-cyprus-attempt-to-partially-annul-award-in-mass-banking-arbitration/": {
         "at": "2026-09-14T18:19:25.423756+00:00",
@@ -1592,6 +1647,11 @@
       "https://www.iareporter.com/articles/tribunal-majority-dismisses-banking-claim-against-portugal/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/trio-of-under-the-radar-arbitrations-against-albania-surface/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/troubled-real-estate-project-reportedly-puts-iraq-at-risk-of-diac-arbitration/": {
         "at": "2026-09-28T19:57:56.186541+00:00",
@@ -1678,6 +1738,11 @@
         "at": "2026-10-12T21:31:41.475357+00:00",
         "outcome": "ok",
         "run": "2026-10-12"
+      },
+      "https://www.iareporter.com/articles/uruguay-announces-settlement-of-second-icsid-arbitration-stemming-from-port-dispute/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://www.iareporter.com/articles/uruguay-claims-success-on-remand-in-defending-against-set-aside-of-uncitral-award-that-declined-jurisdiction-over-mining-claim/": {
         "at": "2026-11-02T22:04:33.480730+00:00",
@@ -2586,6 +2651,11 @@
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
       },
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2019-28-dispute-concerning-the-detention-of-ukrainian-naval-vessels-and-servicemen-ukraine-v-the-russian-federation-5/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
+      },
       "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2022-13-kn-holding-llc-and-severgroup-llc-v-the-french-republic-2/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -2652,6 +2722,11 @@
         "at": "2026-09-07T23:25:56.267336+00:00",
         "outcome": "ok",
         "run": "2026-09-07"
+      },
+      "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-republic-of-poland/": {
+        "at": "2026-11-16T22:42:46.255534+00:00",
+        "outcome": "ok",
+        "run": "2026-11-16"
       },
       "https://pca-cpa.org/en/news/pca-press-release-permanent-court-of-arbitration-enters-into-host-country-agreement-with-the-slovak-republic/": {
         "at": "2026-09-14T13:57:16.666992+00:00",

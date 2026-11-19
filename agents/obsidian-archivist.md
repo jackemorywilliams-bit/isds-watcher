@@ -163,17 +163,25 @@ this seat's record paths.
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Twelve rules this seat adopted from twelve separate failures. The first three are one rule in three
+Fourteen rules this seat adopted from fourteen separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
 the same scepticism on this seat's own carried records, the fifth is the fourth again because it
 did not generalise either, the sixth is about attribution rather than about carried records, the
 seventh is about the orphan sweep's own predicate, the eighth is the seventh's unfinished half,
 the ninth is about whether a rule reaches the list at all, the tenth is about a warning this
 seat repeated for twelve weeks without ever running it against the vault, the eleventh is the
-ninth's mirror image — a *closure* that reaches only a session record — and the twelfth is about
-not taking a schedule's name for its behaviour. **The count was read back against the enumeration
-below on 2026-11-01 before this paragraph was closed**, per the council's binding discipline, and
-it reads twelve. **This count was read back against
+ninth's mirror image — a *closure* that reaches only a session record — the twelfth is about
+not taking a schedule's name for its behaviour, the thirteenth turns a falsified mechanism's
+census inward onto `agents/`, and the fourteenth is rule 10's lesson in a smaller syntax: a
+nonexistent note named in link syntax becomes another broken link. **The count was read back against the enumeration
+below on 2026-11-19 before this paragraph was closed**, per the council's binding discipline, and
+it reads **fourteen**. **Corrected 2026-11-19, and the correction is this seat's own discipline
+failing on this seat's own paragraph.** This sentence read *"twelve"* with a 2026-11-01 read-back
+date for twelve days while the enumeration below held **thirteen** items: the 2026-11-07 sitting
+added rule 13 and recorded doing so in [[Agent Registry]], but never re-read the lead count
+against the list — the one command the block below insists is the difference between performing
+the discipline and citing it. The 2026-11-01 sitting did perform it, and moved the count ten
+→ twelve. Found today by counting the enumeration rather than trusting the sentence. **This count was read back against
 the enumeration below on 2026-10-07 after rule 7 was added, and the read-back is what moved it from
 six to seven** — the discipline named in the block that follows, performed rather than cited.
 
@@ -363,6 +371,34 @@ six to seven** — the discipline named in the block that follows, performed rat
    notes and the nine seat notes for it **before** reporting the session clean. The query is one
    command; the alternative is what happened here, which is this seat carrying a corrected error
    for thirteen days inside the note whose job is to prevent exactly that.
+
+14. **2026-11-19** — *A nonexistent note named in a **live index note** goes in inline code, not
+   in link syntax — but check the parser before blaming the author, because this vault's graph
+   builder flags correctly-written inline code too.* `scripts/build_graph.py --dry-run` reports
+   links to nonexistent notes in **eight** files today against the **five** of 2026-11-07, and all
+   **three** new carriers are this seat's own. **Only one of the three is this seat's fault, and
+   the first draft of this rule got that wrong before counting.** [[Workflow Threads]]`:167-168`
+   writes the two genuinely missing targets of **D35** in bare bare double-bracket link syntax syntax while diagnosing
+   them — avoidable, corrected in place today, and the reason this rule exists. The other two,
+   [[Project Change Log]]`:56` and `analytics/vault-sessions/2026-11-07.md:162`, had already
+   written `[[:space:]]` *inside inline code*, which is correct authorship; they are flagged only
+   because `_CODE_FENCE` at `scripts/build_graph.py:81` strips fenced blocks and not backtick
+   spans, which is **D35's own named remedy and the systems-designer's**. So the honest division is
+   **one writing defect and two parser artefacts**, not three of either. The 2026-11-07 sitting
+   diagnosed D35's five carriers correctly and became a sixth in the same commit — and its
+   judgement that `analytics/vault-sessions/2026-10-07.md:268`, a **dated record** quoting the two
+   broken links it diagnosed, *"is doing its job"* stands and is not overturned here: a dated
+   record is testimony and keeps its wording, while a live index note is read as current vault
+   structure and must not carry a link it is only describing. **The rule's second clause is the
+   one that cost something:** a seat auditing a report of defects must establish, per rule 1, which
+   entries the reporting tool got wrong before attributing any of them to an author — including
+   when the author is itself. **And a third instance, earned inside this very rule:** the first
+   draft of the paragraph you are reading wrote the double-bracket form *as* a double bracket to
+   name it, which made `scripts/build_graph.py` resolve a link to a note called `…` and added
+   [[obsidian-archivist]] itself as a **ninth** carrier. Caught by re-running the dry-run after the
+   edit rather than before it. The trap is not that the syntax is easy to forget — it is that
+   naming the syntax *uses* the syntax, so the rule's own statement is the hardest place to obey
+   it. **Re-run the builder after writing about the builder.**
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are

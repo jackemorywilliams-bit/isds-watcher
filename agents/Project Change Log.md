@@ -15,6 +15,57 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-11-19 (archivist session — thirty-fourth deployment)
+
+Audited against `bc55080` (`origin/main`, clean tree) on the complete **2,820**-commit history
+after `git fetch --unshallow`; clone arrived shallow at **167**, `HEAD` detached, the
+twenty-sixth consecutive recurrence. Window `f272ce32..bc55080` = **220** commits.
+
+- **No roster change and no contract change, the eighteenth consecutive session.**
+  `git log f272ce32..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+  `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05), **106 days**. All nine Model lines
+  re-read by hand; `scripts/check_models.py` exits 0 over 12 flowchart cards; `COUNCIL.md:65-68`
+  matches `src/models.py:26-32`. **No model drift.**
+- **Currency.** `scripts/check_currency.py` reports **5 notes, 9 currency claims, all current, 0
+  failed**. The four index notes and `STATE_OF_THE_ANSWER.md` are anchored at `17160ec2` by
+  `scripts/reanchor.py` (machine-owned; `bc55080` is that re-anchor commit and carries `[skip ci]`
+  as maintenance, which `check_currency.py` excludes from drift). **`HANDOFF.md` re-anchored
+  `7834fe2` → `bc55080` on a measurement, not a stamp:** `git log 7834fe2..HEAD --
+  .github/workflows/ src/config.py scripts/ .claude/agents/` returns **no commit** across the
+  window's **566**, so nothing that file declares has moved since 2026-10-22.
+- **Deliverable-drift sweep: no drift is possible, and the measurement is the finding.**
+  `git diff --name-only 09f62c19..HEAD` restricted to `src/`, `scripts/`, `tests/`, `.github/`,
+  `views/`, `prompts/`, `README.md`, `METHODOLOGY.md`, `COUNCIL.md`, `fingerprint.yaml` and
+  `.claude/` returns **0 files** across **1,489** commits and **66** days. The human-facing
+  documents cannot have drifted from the machinery because the machinery has not moved since
+  2026-09-14. `docs/` last changed at `cb90151a` (2026-11-16) and `digests/` likewise — both
+  generated output from the weekly runs, not authored change. **Nothing escalated to
+  site-experience or the systems designer on drift grounds.**
+- **Orphan check: no orphaned work, on a content test rather than an ancestry test.** All
+  **312** remote branch tips tested with `git merge-base --is-ancestor <tip> origin/main`. Per
+  rule 7, every November non-ancestor was then diffed against `main`: each one's entire unlanded
+  delta is a stale `Audited against` anchor line left by the re-anchor workflow. The single branch
+  carrying apparent content, `origin/council/2026-11-11-addendum` (`6125c377`, 87 lines of
+  `analytics/daily-research/2026-11-11.md`), is **byte-identical** to `main`'s copy —
+  `git diff origin/main:<path> origin/council/2026-11-11-addendum:<path>` is empty — so it landed
+  by squash. **Nothing committed is unlanded.**
+- **This seat's own 2026-11-07 entry carried a counting defect, now fixed.** It recorded rule 13's
+  adoption correctly and the rule did reach the enumeration in
+  `.claude/agents/`-adjacent `agents/obsidian-archivist.md`, but the enumeration's lead sentence
+  was never re-read against the list and said *"Twelve rules"* for twelve days over a
+  thirteen-item list. Corrected to **fourteen** today with the read-back performed.
+- **Rule 14 adopted**, and earned three times in one sitting — see the registry entry. Net effect
+  on **D35**: real-defect carriers **3 → 2**; total listed files **8 → 9**, the increase being
+  correctly-written inline code that `scripts/build_graph.py:81` does not strip.
+- **D34 escalates from one missed sitting to four**, and is the session's headline. See
+  [[Workflow Threads]] **D34** and the session record at
+  `analytics/vault-sessions/2026-11-19.md`.
+
+*Audited against `bc55080`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+`views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `README.md`, `METHODOLOGY.md`, `HANDOFF.md`,
+`docs/`, `scripts/`, `scripts/site_templates/`, `.github/workflows/`, `tests/`,
+`analytics/vault-sessions/`, and every remote branch tip.*
+
 ## 2026-11-07 (archivist session — thirty-third deployment)
 
 - **No roster change and no contract change, the seventeenth consecutive session.** Audited

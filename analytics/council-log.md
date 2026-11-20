@@ -2,6 +2,48 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-20 — daily council (record: `analytics/daily-research/2026-11-20.md`)
+
+**Chairman** `claude-opus-5`. **Seats convened: 3 against Rule 0's cap of 2** — the chairman in session,
+`research-analyst` and `integrity-officer`, both REAL subagents filed verbatim. `analytics-officer` and
+`systems-researcher` NOT convened (Rule 0; and the systems queue holds no ungated work).
+
+**Instruments.** Both direct retrieval layers re-probed on TWO neutral controls before any access statement
+and both dead — `curl` 403 CONNECT on `example.com` and on `www.iana.org`, fetch service `getaddrinfo
+ENOTFOUND` — which is the documented condition of this session class and NOT a state change. The committed
+relay carried the day: run **44726637077**, 5 requested / 5 completed, `control_ok` true, `void` false.
+
+**The day's result.** **ICSID `ARB/22/28` is fully identified at the primary register** — `Instrument(s)
+Invoked: (i) BIT Mauritius - Portugal 1997` and the claimant head `Suffolk (Mauritius) Limited`, the exact
+span the 2026-11-19 window truncated. The **`1119-S18` slug caveat is RETIRED by positive act**: the caption
+*Suffolk (Mauritius) Limited, Mansfield (Mauritius) Limited and Silver Point Mauritius v. Portuguese
+Republic* is register fact. **ZERO established rings** — Ring 1 unestablished and expressly NOT absent, Ring
+2 unestablished, Ring 3's substrate legible and the doctrine unestablished — so the matter's identification
+questions **CLOSE** and it is demoted to a zero-budget watch as a Ring-3 comparator. A nine-leg forecast was
+met in full at the pin its author named, the third consecutive sitting.
+
+**Vetting: 26 objections (`1120-S1`–`S26`), 8 BLOCKING, ALL 26 SUSTAINED — 15 against the chairman.**
+`1120-S1` withdrew the chairman's Ring-1 likelihood sentence in full under `insights.jsonl:105` (*"a value
+that is NOT an IP term establishes NOTHING about Ring 1 in either direction"*), an inference he had refused
+on Ring 3 four paragraphs earlier. `1120-S2`–`S4` corrected his §3.3: PR #341 changes **eight** files not six
+with `STATE_OF_THE_ANSWER.md` among them; PR #332 is not "empty of content"; and there are **four** open pull
+requests, not two. `1120-S5` struck a false November cadence superlative. Against the analyst, `1120-S16`
+struck three phrases that let an uncertified headline become this council's finding on who prevailed;
+`1120-S17` defeated a first-pricing claim with `insights.jsonl:132`; `1120-S18` corrected a nine-file
+population to 27.
+
+**Accountability.** Chairman **POOR** — four of five blocking objections were figures he held and did not
+take. Analyst **STRONG with three blocking defects**. Integrity officer **EXEMPLARY** — no web search, a
+positive control before any access question, one objection filed against its own existence in this sitting,
+and a refusal to be recorded as having cleared a matter it had not tested.
+
+**Carried.** Thread 86 amended on seven limbs; one new thread opened on the Mauritius–Portugal BIT (1997).
+Taxonomy entry **42 (threshold-fitted uniqueness)** adopted and routed, not built. Thread 16 amended: the
+truncation consequence did not arise on this push, `daily-update.yml` checking out the default branch, while
+its absent `branches:` filter, date-addressed marker and current-UTC-date constraint stay live. **Fifteen
+escalations**, led by four open pull requests carrying unlanded session records, the oldest **84 days**.
+**Nothing built; every operator approval still pending.**
+
 ## 2026-11-19 — daily council (record: `analytics/daily-research/2026-11-19.md`)
 
 **Filed at the TOP, which is where this file's own line 3 says the newest entry goes.** I note, and did not repair, that the `2026-11-08` and `2026-11-17` headings still sit at this file's END, below two months of older material, so a reader applying the stated convention reads `2026-11-14` as the council's most recent sitting before 11-18. Relocating another sitting's text in an append-only ledger is not mine to do silently; it is escalation 7 of today's list.

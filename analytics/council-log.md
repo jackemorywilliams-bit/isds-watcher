@@ -2,6 +2,84 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-21 — daily council (record: `analytics/daily-research/2026-11-21.md`)
+
+**Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is
+Rule 0's cap exactly** — `research-analyst`, a REAL Agent-tool subagent, memo filed VERBATIM. No
+`integrity-officer`, no `analytics-officer`, no `systems-researcher` (Rule 0). The integrity challenge was
+discharged inside the Part 5 dialogue by the chairman AND by the seat against its own strongest assertion.
+**The routine's stored prompt directs four seats; the protocol says it wins; the conflict is escalated, not
+re-argued.** Seat frontmatter pins the ALIAS `model: opus`, so **no sitting can state which model served the
+seat** — recorded as a caveat rather than asserted.
+
+**Instruments.** Both direct layers re-probed on neutral controls before any access statement and both dead
+— `curl` 403 CONNECT on `example.com` AND `example.org`, fetch service `getaddrinfo ENOTFOUND`. **The fetch
+service's failure MECHANISM has changed** from the historical 403 to a DNS/allowlist refusal; **the status
+has not**, and nothing is drawn from it. Web search **LIVE**. The committed relay carried the day: run
+**44898400979**, 3 requested / 3 completed, `control_ok` true, `void` false, outcome `ok` on all four records.
+**Three rows fired and eight slots left unspent — blocked by licence, page geometry and sequencing, not by
+budget.**
+
+**The day's result. A NULL DAY at the intersection, and an honestly MEASURED null rather than an unsearched
+one** — the search instrument was alive, fired five times, and came back empty over **39 enumerated rows**
+with synonyms tried and a referent clause on every nonzero term. No new three-ring candidate; no new
+two-ring candidate; four near-misses with the failing ring named on each. **The day's one substantive find
+was killed by the mandated backsource step and that is the result:** a GAR headline carrying a seed-case
+party name AND this project's central asset class — *Eli Lilly*, trade secrets — backsourced to a
+**seven-year-old private commercial arbitration brought by Adocia, reaching ZERO rings.** The established
+asymmetry is reproduced, not disturbed.
+
+**What moved, and it is not the answer.** `ARB/25/54` carries `Latest Development: November 13, 2026 - The
+Claimant files a memorial on the merits`, unchanged today and 8 days old. **The document that would answer
+this council's single most important open question now EXISTS on the register and is no more readable than
+before.** Ring 1 **UNESTABLISHED and EXPRESSLY NOT ABSENT**; the gap's status changed, the gap did not close.
+The chairman traced the movement across the corpus: **22 consecutive at-rest observations** before it, and a
+**+161** byte jump at it.
+
+**Instrument finding, net of its own refutation.** Both dockets returned a **byte delta of exactly ZERO with
+both sha256 rotated**, while the control reproduced its hash exactly — which **isolates the variance to the
+origin** and excludes the relay, the hash call and the byte count. **The tempting corollary was drafted,
+tested on the second docket and DEFEATED by the chairman himself:** two true positives in the whole corpus
+(+161, +380) against 41 no-movement pairs of which six fire at a ≥161 threshold, and the 9,035-byte range
+that makes the drift look wild is **one observation** (drop it: 36 bytes). **A byte delta is a trigger to
+read, never a test. Only the FIELD is authority. No calibrated threshold on two positives.**
+**A nine-leg forecast was met in full at the pin its author named — the fourth consecutive sitting** — and
+the PATH-unit batch-count check ran first and held for the **sixth**.
+
+**Vetting: 4 objections (`1121-C1`–`C4`), ALL FOUR SUSTAINED, one with the chairman's own over-reach
+sustained against him in the same round.** `1121-C1` (BLOCKING) withdrew the words *"two independently-hosted
+URL path segments"* as two attestations of a date — the seat had cited `insights.jsonl:291` as its own prior
+art and then used, three sections earlier, the inference that line's sustained hedge denies. **The seat then
+cut the objection's REACH and was right:** the `1020-C17` mechanism is a *within-host* path-reuse collision
+and does not explain cross-host agreement, so it denies the pattern the right to certify itself and does not
+refute the date. **The chairman's wider implication is withdrawn.** `1121-C2` corrected `biicl` from four
+carriers to **six** — a correction that **strengthens** the seat's own holding, since all six are
+self-propagated. `1121-C3` corrected `ALLOWED_HOSTS` to `fetch_relay.py:48-69`. `1121-C4` was **sustained in
+full including a limb the seat charged against itself and the chairman had not found**: *"prior sittings
+recorded it returning"* is **false in the plural** — exactly one record asserts it and the 11-18 record
+expressly records no contact.
+
+**Accountability.** Analyst **STRONG**: it killed its own best find, refused engine synthesis in four places,
+attacked its own strongest assertion unprompted, sustained all four objections, went further than the
+chairman on one, cut his over-reach on another, and proposed the day's optimization item against its own
+conduct. **Three sustained defects, all of one kind — counts retyped rather than pasted — none affecting a
+holding.** Chairman **three errors, recorded**: an unsupported "eleventh consecutive sitting" figure
+withdrawn before publication; **an objection nearly filed on his own defective grep** (one URL literal where
+the record names the thing by title); and `1121-C1` drafted wider than the evidence.
+
+**Carried.** One insight ACCEPTED as narrowed (the seat's) and one banked by the chairman **with its own
+refutation inside it**. Two gap slugs: `clinical-data-private-investment-protection-europe-body-unread`
+re-emitted with a measured attempt behind it, and
+`biicl-technology-based-disputes-2026-document-identity-and-body-unread` newly slugged — a first slug for a
+gap carried unslugged since 2026-07-04. **The day's optimization item (Rule 0) is the SEAT'S, not the
+chairman's:** every count is pasted from the screen's own output, never retyped — adopted for the chairman's
+seat too. **Twelve escalations**, led by the `ARB/25/54` memorial now existing and unreadable, four open pull
+requests with the oldest at **85 days**, and an undelivered-record escalation **corrected by enumeration from
+one record to three**. **A SECOND protocol conflict is new today:** the close-out's re-anchor step orders four
+`agents/` paths committed that this session's merge scope forbids — resolved by committing only the in-scope
+path and leaving the rest to the machinery, and escalated. **Nothing built; every operator approval still
+pending.**
+
 ## 2026-11-20 — daily council (record: `analytics/daily-research/2026-11-20.md`)
 
 **Chairman** `claude-opus-5`. **Seats convened: 3 against Rule 0's cap of 2** — the chairman in session,

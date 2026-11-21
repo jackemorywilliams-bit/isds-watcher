@@ -1,0 +1,131 @@
+{
+ "date": "2026-11-21",
+ "filed_by": "research-analyst (real Agent-tool subagent; seat frontmatter pins the ALIAS 'model: opus', so the serving model cannot be stated)",
+ "ruled_by": "council chairman, in session, Claude Opus 5 per the operator's 2026-08-03 directive",
+ "record": "analytics/daily-research/2026-11-21.md",
+ "vetting": "Rule 0 of prompts/daily_council_protocol.md convenes no separate integrity officer for the daily meeting; the integrity challenge was discharged inside the Part 5 dialogue by the chairman AND by the seat against its own strongest assertion at memo section J. Four objections filed (1121-C1..C4); ALL FOUR SUSTAINED, one of them with the chairman's own over-reach sustained against him in the same round.",
+ "note": "claim_text and all seat-authored fields are the analyst's VERBATIM words except where a chairman_ruling states a narrowing; the chairman wrote no claim and edited none except as a recorded ruling.",
+ "candidate_claims": [
+  {
+   "claim_text": "A web-search call on 2026-11-21 returned a Global Arbitration Review result row titled 'Eli Lilly defeats billion-dollar claim over trade secrets' at https://globalarbitrationreview.com/article/1196687/eli-lilly-defeats-billion-dollar-claim-over-trade-secrets; the title names no State, no treaty, no forum and no date, and the body was not read.",
+   "source_url": "https://globalarbitrationreview.com/article/1196687/eli-lilly-defeats-billion-dollar-claim-over-trade-secrets",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "lead",
+   "assertion_status": "lead",
+   "supporting_quote": "Eli Lilly defeats billion-dollar claim over trade secrets",
+   "supporting_locator": "search-result title row, call S3, 2026-11-21; body unread",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "A web-search call on 2026-11-21 returned a Law360 result row titled \"Adocia's $1.8B Claim Against Eli Lilly Dies In Arbitration\", which names Adocia as claimant and Eli Lilly as respondent in an arbitration over trade secrets between two private companies.",
+   "source_url": "https://law360.com/articles/1191874",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "lead",
+   "assertion_status": "lead",
+   "supporting_quote": "Adocia's $1.8B Claim Against Eli Lilly Dies In Arbitration",
+   "supporting_locator": "search-result title row, call S4, 2026-11-21; body unread",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "Two result rows returned on 2026-11-21 carry URL paths containing the components '/2019/08/' (cov.com) and '/2019/08/26/' (law.com/litigationdaily). That the Adocia / Eli Lilly trade-secrets arbitration was reported and disposed of in August 2019 is STRONGLY INDICATED AND NOT ESTABLISHED; no seat may state the year as fact.",
+   "source_url": "https://www.cov.com/en/news-and-insights/news/2019/08/covington-successfully-defends-lilly-in-1-billion-trade-secret-arbitration",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": "covington successfully defends lilly in 1 billion trade secret arbitration",
+   "supporting_locator": "search-result title row plus URL path segment 2019/08, call S4, 2026-11-21; body unread",
+   "chairman_ruling": "NARROWED on objection 1121-C1 (SUSTAINED). The words 'two independently-hosted URL path segments', in the sense of TWO ATTESTATIONS OF A DATE, are WITHDRAWN: per analytics/insights.jsonl:291 (objection 1020-C17, sustained) a path date segment need not name the item's date, proved by a different article at an identical /2018/10/18/ path. Status label taken from that line's own words: strongly indicated, not established. THE OBJECTION'S REACH IS CUT as the seat asked: the 1020-C17 mechanism is a WITHIN-HOST path-reuse collision and does NOT explain cross-host agreement, so it denies the pattern the right to certify itself and does not refute the date. The chairman's draft implied otherwise and that implication is withdrawn."
+  },
+  {
+   "claim_text": "The matter named by the Adocia / Eli Lilly titles reaches none of the project's three rings: no State, treaty or covered-investment assertion is named (Ring 1), no regulatory or judicial measure is named (Ring 2), and no jurisdictional or admissibility doctrine is named (Ring 3), on any title returned in either of the two calls that produced them.",
+   "source_url": "https://law360.com/articles/1191874",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "interpretive",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "screen over the 26 returned titles of calls S3 and S4, 2026-11-21",
+   "chairman_ruling": "ACCEPTED AS FILED and ruled SEPARATELY from the date claim at the seat's request. UNAFFECTED by 1121-C1: the zero-ring verdict rests on the absence of any State, treaty, measure or doctrine from every title returned in both calls, and holds at any date. Remove the date entirely and the finding stands unaltered."
+  },
+  {
+   "claim_text": "Whether Global Arbitration Review article 1196687 concerns the Adocia matter is NOT established: the GAR title carries no counterparty, no forum and no date, and the tie rests on two shared designators (Eli Lilly; a billion-scale trade-secret claim defeated in arbitration) plus co-occurrence in a result set.",
+   "source_url": "https://globalarbitrationreview.com/article/1196687/eli-lilly-defeats-billion-dollar-claim-over-trade-secrets",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "interpretive",
+   "assertion_status": "candidate",
+   "supporting_quote": "Eli Lilly defeats billion-dollar claim over trade secrets",
+   "supporting_locator": "search-result title row, calls S3 and S4, 2026-11-21",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "A web-search call on 2026-11-21 returned a BIICL-hosted PDF locator, https://www.biicl.org/documents/206_tech_disputes_and_investment_treaty_arbitration_2026.pdf, under the title '206 tech disputes and investment treaty arbitration 2026'; the title carries no author, no date and no document title, and the body was not read.",
+   "source_url": "https://www.biicl.org/documents/206_tech_disputes_and_investment_treaty_arbitration_2026.pdf",
+   "access_status": "unavailable",
+   "source_authority": "academic_secondary",
+   "claim_type": "lead",
+   "assertion_status": "lead",
+   "supporting_quote": "206 tech disputes and investment treaty arbitration 2026",
+   "supporting_locator": "search-result title row, call S2, 2026-11-21; body unread",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "That this BIICL PDF is the report 'Technology-Based Disputes and Investment Treaty Arbitration' which this council has carried since 2026-07-04 as body-blocked at biicl.org/publications/ is INDICATED by host and path literal and is NOT identified; the report's authorship and 23 April 2026 date have zero independent carriers in the 2026-11-21 return.",
+   "source_url": "https://www.biicl.org/publications/technology-based-disputes-and-investment-treaty-arbitration",
+   "access_status": "blocked",
+   "source_authority": "academic_secondary",
+   "claim_type": "interpretive",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "comparison of the 2026-11-21 result row against the locator carried at analytics/daily-research/2026-07-04.md section G; the latter excluded as a carrier under 1114-S13",
+   "chairman_ruling": "ACCEPTED AS FILED, with the carrier figure CORRECTED on objection 1121-C2 (SUSTAINED): 'biicl' carries SIX files, not four -- the 2026-07-04, 2026-07-05 and 2026-10-14 records, the 2026-10-14 request file, AND the two 2026-10-15 fingerprint-interval request files. All six are self-propagated and all six are excluded under 1114-S13, so the correction makes the exclusion do MORE work: the report's authorship and its 23 April 2026 date still have ZERO independent carriers in today's return. Indicated, not identified, stands."
+  },
+  {
+   "claim_text": "A web-search call on 2026-11-21 returned a Global Arbitration Review result row titled 'Panama tyre dispute leads to milestone trademark ruling' at https://globalarbitrationreview.com/article/1152218/panama-tyre-dispute-leads-to-milestone-trademark-ruling; the title names no party, no docket and no date, so its tie to Bridgestone v. Panama (ICSID ARB/16/34) is indicated by subject matter alone and is not identified.",
+   "source_url": "https://globalarbitrationreview.com/article/1152218/panama-tyre-dispute-leads-to-milestone-trademark-ruling",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "lead",
+   "assertion_status": "lead",
+   "supporting_quote": "Panama tyre dispute leads to milestone trademark ruling",
+   "supporting_locator": "search-result title row, call S2, 2026-11-21; body unread",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "Across the 39 result rows of the three topical calls of 2026-11-21, no title and no URL path segment carries a date token later than 2026/10, and no row names a tribunal decision at the intersection of IP-as-covered-investment, a regulatory or judicial measure, and a live jurisdictional or admissibility doctrine.",
+   "source_url": "https://www.acerislaw.com/wp-content/uploads/2026/10/Cyrus-v-Mexico.pdf",
+   "access_status": "unavailable",
+   "source_authority": "unknown",
+   "claim_type": "factual",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "enumeration of all 39 rows of calls S2, S3 and S5, 2026-11-21; the cited URL is the latest-dated path segment in the set",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "An exact-phrase web-search call on 2026-11-21 for the title 'Clinical data, data exclusivity and private investment protection in Europe' returned ten rows, none of which carries that title, so the article's author, journal and year remain unestablished and researchgate.net/publication/322482375 remains its only known carrier.",
+   "source_url": "https://www.researchgate.net/publication/322482375_Clinical_data_data_exclusivity_and_private_investment_protection_in_Europe",
+   "access_status": "unavailable",
+   "source_authority": "academic_secondary",
+   "claim_type": "procedural",
+   "assertion_status": "candidate",
+   "supporting_quote": null,
+   "supporting_locator": "enumeration of the ten rows of call S5, 2026-11-21; body unread",
+   "chairman_ruling": "ACCEPTED AS FILED at the assertion_status the seat proposed; no ring claim rests on it."
+  },
+  {
+   "claim_text": "The monitored-author check for Anthea Roberts returned null on 2026-11-21: no row among the ten returned carries a 2026 post by her, the newest dated EJIL:Talk title in the return is 'Two Weeks in Review: 27 July-7 August 2026', and no row carries the author page ejiltalk.org/author/aroberts/. The 2026-11-20 record states that the author page returned on that sitting; that is a statement about that record and not an independent attestation of instrument behaviour. Whether today's return is weaker than any prior sitting's is UNAUDITABLE.",
+   "source_url": "https://www.justsecurity.org/author/robertsanthea/",
+   "access_status": "unavailable",
+   "source_authority": "media",
+   "claim_type": "procedural",
+   "assertion_status": "candidate",
+   "supporting_quote": "Anthea Roberts",
+   "supporting_locator": "search-result title row, call S1, 2026-11-21; this is a statement about ten returned titles and not about the author page",
+   "chairman_ruling": "NARROWED on objection 1121-C4 (SUSTAINED IN FULL, including a limb the seat charged against itself and the chairman had not found). 'Prior sittings recorded it returning' is FALSE IN THE PLURAL and is WITHDRAWN: verified at source, EXACTLY ONE record (2026-11-20 section F) asserts the return, the 2026-11-18 record expressly records that no instrument contacted the URL (1118-S23, line 1481), and 2026-11-17 and 2026-11-19 assert no return. The comparison is unauditable because analytics/search-results/ has been dark since 2026-11-05. GENERAL RULE ADOPTED from the seat's own distinction: this council's records are excluded as independent carriers of propositions about THE WORLD and are the primary, proper source for propositions about THE RECORDS."
+  }
+ ]
+}

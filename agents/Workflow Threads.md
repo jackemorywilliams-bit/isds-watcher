@@ -5,7 +5,7 @@ hub: Council
 ---
 # Workflow Threads
 
-**Currency anchor.** *Audited against `a396c45d`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `1433ba52`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Every open thread in the project as **one linear chain**: what it is → where it stands →
 where that is recorded → who owns the next action. One thread, one chain, no branching. If
@@ -2357,6 +2357,32 @@ still the only open PR in the repository before this session's own.
   Monday; **two** landed in the fifteen days since 2026-11-07 and both figures moved by exactly
   **+2**. The mechanism in that record — absolute counts pinned against a growing archive — was
   right; only the cadence was overstated, by a factor of seven.
+- **CORRECTED 2026-11-22, same day, after reading CI — the entry above flattens a distinction the
+  council expressly said must not be flattened, and this seat owns the error.** The paragraph above
+  recorded one drifting key and called the whole failure *"a test-design question, not a
+  regression"*. CI run **492** on `a396c45d` prints **three** differing keys, not one:
+  `runs` **25** against asserted **16**, `screened` **662** against **492**, and `matches` **2**
+  against **0**. **The third is not staleness.** `analytics/daily-research/2026-11-19.md:1588-1592`
+  states it in capitals — *"ONE LEG IS NOT STALENESS … `matches` 2 against an asserted 0 is **the
+  assertion working** — it has been detecting the two gate-held matches correctly the whole time. A
+  successor must not 'fix' that leg by bumping the constant"* — and carries it forward from the
+  **2026-11-13** record, which made the point first. **So the remedy differs by leg:** the `runs`,
+  `screened` and digest-count pins are stale constants over a growing archive; the `matches` pin is
+  a live assertion that is currently correct and whose failure is signal. Bumping all three
+  together would destroy the one that works.
+- **Why this seat missed it, stated plainly.** Two causes, both mine. The local `pytest` output
+  truncated the dict diff to the `runs` key, so only one leg was visible here — and **this seat did
+  not read `analytics/daily-research/`**, which its own binding contract names as a required read
+  before anything else. The correct analysis had been on `main` for **nine days**, in the council's
+  11-13 and 11-19 records and in the body of the **#340** merge commit. **This is D15's mechanism
+  turned on this seat** — a finding routed where the bound seat does not read — and the sibling of
+  rule 13: a census of a thread is incomplete until it has swept the council's own records, not
+  only the vault's.
+- **Red on the base, so not this session's.** `pipeline-guards` is `failure` on `main` at run
+  **489** (`61632949`, the base this session branched from) and at every council merge back to
+  2026-11-19 — runs 479, 481, 483, 484, 486, 487, 489 — and run **492** on this session's own merge
+  is the same two assertions, `2 failed, 821 passed, 5 xfailed`. This session's diff is Markdown
+  notes only and touches nothing those tests read. **No new test failure was introduced.**
 - **Four of today's six local failures are a container artifact, not drift, and must not be
   counted into this thread.** `tests/test_one_pagers.py` fails three quote-substring cases and
   `test_missing_pdf_skips_case` solely because `seeds/` is absent — it is gitignored

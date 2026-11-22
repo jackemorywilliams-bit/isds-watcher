@@ -5,7 +5,7 @@ hub: Council
 ---
 # Agent Registry
 
-**Currency anchor.** *Audited against `61632949`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `e70b0b44`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 The roster at a glance: every durable agent definition in `.claude/agents/`, the model it
 runs on, the canonical prompt files it binds, and its vault note. Nine agents, all
@@ -566,6 +566,70 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-11-22 (archivist session — thirty-fifth deployment)** — **No roster change and no
+  contract change, the nineteenth consecutive session.** Audited against `1ca3e196`
+  (`origin/main`, clean tree) on the complete **2,884**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **139** with `HEAD` detached, the
+  twenty-seventh consecutive recurrence.
+  `git log f272ce32..1ca3e196 -- .claude/agents/ prompts/ src/models.py` returns **no commit**
+  across the **284**-commit window. `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05),
+  **108 days**. All nine seats re-read by hand, definition against vault note: `claude-opus-5` for
+  council-chairman, research-analyst, site-experience and systems-designer; `claude-opus-4-8` for
+  analytics-officer, integrity-officer, obsidian-archivist, research-editor and systems-researcher.
+  All nine declare `model: opus`, which selects a tier and not a version. `scripts/check_models.py`
+  exits **0** over 12 flowchart cards; `COUNCIL.md:62-68` matches `src/models.py:26-32`.
+  **No model drift.**
+  **The session's finding is not in the roster but in the landing:** the **2026-11-19** sitting was
+  stranded on `origin/vault/archivist-2026-11-19` behind the still-open **PR #341**, and is landed
+  here as `b9224999` by cherry-picking its own in-scope commit `e2d60664` alone. New thread
+  **D36** in [[Workflow Threads]]; **rule 15** adopted in [[obsidian-archivist]]; **step 5** added
+  to that note's binding merge procedure. **D5 unchanged, still 1 of 9** — only
+  `.claude/agents/integrity-officer.md` names its own vault note, so for eight of nine seats the
+  adopted method rules live in a file the definition never points at. **D6, eighth observation** —
+  `get_session` returns all three model fields as `claude-opus-5` against a definition stating
+  Claude Opus 4.8; Model lines stay as written per the 2026-08-16 decision.
+
+- **2026-11-19 (archivist session — thirty-fourth deployment)** — **No roster change and no
+  contract change, the eighteenth consecutive session.** Audited against `bc55080`
+  (`origin/main`, clean tree, `HEAD` == `origin/main` after fetch) on the complete **2,820**-commit
+  history after `git fetch --unshallow`; the clone arrived shallow at **167** with `HEAD`
+  detached, the twenty-sixth consecutive recurrence.
+  `git log f272ce32..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**
+  across the 220-commit window. `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05),
+  **106 days**.
+  - **All nine Model lines re-read by hand, definition against vault note, per rule 1** — and all
+    nine agree: `claude-opus-5` for [[council-chairman]], [[research-analyst]],
+    [[site-experience]], [[systems-designer]]; `claude-opus-4-8` for [[analytics-officer]],
+    [[integrity-officer]], [[obsidian-archivist]], [[research-editor]], [[systems-researcher]].
+    All nine declare `model: opus`, a tier alias and not a version — the whole of **D6**.
+    `scripts/check_models.py` exits **0** over 12 flowchart cards; `COUNCIL.md:65-68` matches
+    `src/models.py:26-32` exactly; `prompts/` names no model id. **No model drift.**
+  - **D6, eighth observation** — this session's trigger
+    (`trig_01AxNWepeGr38i7D4Nq6jDVV`) stores `model: claude-opus-5`, against
+    `.claude/agents/obsidian-archivist.md:3` and `:24` stating Claude Opus 4.8. Model lines stay as
+    written, per 2026-08-16 and settled 2026-10-04: the routine's model comes from the trigger and
+    the definition governs the subagent seat, so the two are not reading the same setting.
+  - **D5 re-run, still 1 of 9** — only `.claude/agents/integrity-officer.md` names its own vault
+    note. Day **98** by the count this entry has kept since 2026-11-01.
+  - **A defect in this note's own 2026-11-07 entry, found and fixed.** That entry records *"Rule 13
+    adopted in [[obsidian-archivist]]"* and the rule did land in the enumeration — but the
+    enumeration's **lead count was never re-read against it**, so that note opened with *"Twelve
+    rules"* for twelve days while holding thirteen. Corrected today to **fourteen** with the
+    read-back performed, which is the one command the discipline from `639c16e` requires. **Rule 9's
+    failure mode, one layer in:** the rule reached the list, and the sentence that counts the list
+    did not reach the rule.
+  - **Rule 14 adopted** in [[obsidian-archivist]] — *a nonexistent note named in a live index
+    note goes in inline code, not link syntax; and check the parser before blaming the author.*
+    Earned three times in one sitting: [[Workflow Threads]] had carried **D35**'s two missing
+    targets in bare link syntax since 2026-11-07, this seat's first draft of the rule
+    mis-attributed two parser artefacts to their authors, and the draft then created a broken link
+    to a note called `…` by naming the syntax in the syntax.
+  - **Two threads escalate, none opened** — **D34** (one missed sitting is now **four**:
+    11-04, 11-10, 11-13, 11-16, a **twelve-day** blind window, and the council sat on three of
+    those four days, which newly discriminates *trigger dropping steps* from *run died*) and
+    **D35** (nine carriers, of which **two** are defects; the real one is **124** days old).
+  *Audited against `bc55080`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+  `views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `analytics/vault-sessions/`.*
 - **2026-11-07 (archivist session — thirty-third deployment)** — **No roster change and no
   contract change, the seventeenth consecutive session.** Audited against `f272ce32`
   (`origin/main`, clean tree) on the complete **2,600**-commit history after

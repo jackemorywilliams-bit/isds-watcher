@@ -5,7 +5,7 @@ hub: Council
 ---
 # Project Change Log
 
-**Currency anchor.** *Audited against `61632949`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
+**Currency anchor.** *Audited against `e70b0b44`.* Machine-owned; `scripts/reanchor.py` moves the sha to the session's last substantive commit in a notes-only close-out commit that `scripts/check_currency.py` excludes from drift as maintenance. Do not hand-edit the sha; the dated snapshot-anchor narrative below is preserved unedited as history.
 
 Dated entries for material changes to the project's agents, models, sources, workflow, and
 vault. **Every line cites a commit hash** — or, where a change is recorded before it is
@@ -14,6 +14,115 @@ left to be inferred. Anything that can be cited neither way is not written here.
 first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
+
+## 2026-11-22 (archivist session — thirty-fifth deployment)
+
+Audited against `1ca3e196` (`origin/main`, clean tree) on the complete **2,884**-commit history
+after `git fetch --unshallow`; the clone arrived **shallow at 139** with `HEAD` detached, the
+**twenty-seventh** consecutive recurrence. Window `f272ce32..1ca3e196` = **284** commits.
+
+- **The 2026-11-19 sitting was stranded and is landed here — the failure this seat exists to
+  catch, committed by this seat.** `origin/vault/archivist-2026-11-19` (tip `5c40df63`) failed
+  `git merge-base --is-ancestor <tip> origin/main`, and **PR #341** has been open since
+  `2026-11-19T15:24:26Z`. It carried a complete sitting: `analytics/vault-sessions/2026-11-19.md`
+  at **177** lines plus corrections to five notes, **413** insertions over **8** files. Landed by
+  cherry-picking the archivist's own commit `e2d60664` alone as `b9224999`, excluding the
+  re-anchor bot's `5c40df63`, so this session's scope stays inside the record set. New thread
+  **D36**; **rule 15** adopted; **step 5** added to the binding merge procedure in
+  `agents/obsidian-archivist.md`. PR #341 is superseded at content level and should be closed.
+- **The cause is D11, unfixed, third instance — and the new part is that no in-sitting discipline
+  can close it.** `e2d60664` (15:23:57) touched **six** paths, all authorised;
+  `.github/workflows/reanchor.yml` added `5c40df63` (15:24:44) touching `STATE_OF_THE_ANSWER.md`,
+  which is not; the pull request's `updated_at` is **twenty seconds** after its `created_at` and
+  nothing followed. Steps 1–3 of the merge procedure are the remedy for that exact bot commit and
+  **the session was gone before it could run them.** 2026-11-07 survived and won the race with a
+  pin; 2026-11-19 did not survive and lost it. **Fourth request** for a scope filter in
+  `scripts/reanchor.py`, or `STATE_OF_THE_ANSWER.md` added to this seat's record paths.
+- **D34 — the fired-and-died mode is now proven, and `suspension_reason` is a new testable
+  mechanism.** 2026-11-19 demonstrably fired, did its whole job, and left nothing on `main`, which
+  is a third outcome neither earlier entry considered. Separately, `list_triggers` reports
+  *Morning brief* and *Heartbeat* both `enabled: false` with `suspension_reason: "owner_idle"` —
+  a platform-level mechanism that silently disables a routine and is invisible from inside the
+  repository. The archivist trigger's own reason is **empty** today. Offered as a hypothesis, not
+  a finding: it would fit a gap with no branch and no record and the council's own 11-15/11-16
+  gap, but it does **not** fit 11-10 and 11-13, when the council sat normally.
+- **No roster change and no contract change, the nineteenth consecutive session.**
+  `git log f272ce32..1ca3e196 -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+  `.claude/agents/` has been unchanged since `ae1f04b3` (2026-08-05) — **108 days**.
+- **No model drift.** All nine Model lines re-read by hand, definition against vault note, and
+  against `src/models.py:26-32` and `COUNCIL.md:62-68`. `scripts/check_models.py` exits **0** over
+  12 flowchart cards. **D6, eighth observation** — `get_session` returns `configured_model`,
+  `session_context.model` and `external_metadata.last_served_model` all `claude-opus-5` against a
+  definition stating Claude Opus 4.8; Model lines stay as written per the 2026-08-16 decision.
+- **D20 reproduced locally for the first time, and this seat's own rate claim corrected.**
+  `python3.13` carries `pytest` 9.1.1 and `jinja2` 3.1.6, reversing the 2026-11-07 finding that
+  pytest was absent from every interpreter here. `tests/test_site_claims.py:165` computes
+  `runs: 25` against pinned **16**; `:305` computes **20** against pinned **11**. The 2026-11-07
+  record's *"widens by one digest a day"* is **wrong** — `digests/` is weekly, two landed since,
+  and both figures moved **+2**. Four further local failures in `tests/test_one_pagers.py` are the
+  absent gitignored `seeds/` directory, not drift.
+- **D24 reproduced an eighth time at 30 files** (28 on 2026-11-07); **D35 re-measured at nine
+  files, seven of them parser artifacts**, and the thread's age convention — days since
+  `b87c8381` (2026-07-18), when the link became detectable — written down for the first time, at
+  **127** days today.
+- **No deliverable drift is possible.** No authored source file has changed since `09f62c19`
+  (2026-09-14) — **69 days**. `README.md` and `METHODOLOGY.md` last changed 2026-09-11,
+  `COUNCIL.md` 2026-08-03, `views/isds-workflow-3d/workflow.json` 2026-09-11. **Nothing escalated
+  to site-experience or the systems designer on drift grounds.**
+- **A garbled sentence in this seat's own rule 14, fixed.** `agents/obsidian-archivist.md` read
+  *"in bare bare double-bracket link syntax syntax"* — a doubled-word artifact of the 2026-11-19
+  substitution that removed the live link. Repaired; no claim in the entry was altered.
+
+## 2026-11-19 (archivist session — thirty-fourth deployment)
+
+Audited against `bc55080` (`origin/main`, clean tree) on the complete **2,820**-commit history
+after `git fetch --unshallow`; clone arrived shallow at **167**, `HEAD` detached, the
+twenty-sixth consecutive recurrence. Window `f272ce32..bc55080` = **220** commits.
+
+- **No roster change and no contract change, the eighteenth consecutive session.**
+  `git log f272ce32..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+  `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05), **106 days**. All nine Model lines
+  re-read by hand; `scripts/check_models.py` exits 0 over 12 flowchart cards; `COUNCIL.md:65-68`
+  matches `src/models.py:26-32`. **No model drift.**
+- **Currency.** `scripts/check_currency.py` reports **5 notes, 9 currency claims, all current, 0
+  failed**. The four index notes and `STATE_OF_THE_ANSWER.md` are anchored at `17160ec2` by
+  `scripts/reanchor.py` (machine-owned; `bc55080` is that re-anchor commit and carries `[skip ci]`
+  as maintenance, which `check_currency.py` excludes from drift). **`HANDOFF.md` re-anchored
+  `7834fe2` → `bc55080` on a measurement, not a stamp:** `git log 7834fe2..HEAD --
+  .github/workflows/ src/config.py scripts/ .claude/agents/` returns **no commit** across the
+  window's **566**, so nothing that file declares has moved since 2026-10-22.
+- **Deliverable-drift sweep: no drift is possible, and the measurement is the finding.**
+  `git diff --name-only 09f62c19..HEAD` restricted to `src/`, `scripts/`, `tests/`, `.github/`,
+  `views/`, `prompts/`, `README.md`, `METHODOLOGY.md`, `COUNCIL.md`, `fingerprint.yaml` and
+  `.claude/` returns **0 files** across **1,489** commits and **66** days. The human-facing
+  documents cannot have drifted from the machinery because the machinery has not moved since
+  2026-09-14. `docs/` last changed at `cb90151a` (2026-11-16) and `digests/` likewise — both
+  generated output from the weekly runs, not authored change. **Nothing escalated to
+  site-experience or the systems designer on drift grounds.**
+- **Orphan check: no orphaned work, on a content test rather than an ancestry test.** All
+  **312** remote branch tips tested with `git merge-base --is-ancestor <tip> origin/main`. Per
+  rule 7, every November non-ancestor was then diffed against `main`: each one's entire unlanded
+  delta is a stale `Audited against` anchor line left by the re-anchor workflow. The single branch
+  carrying apparent content, `origin/council/2026-11-11-addendum` (`6125c377`, 87 lines of
+  `analytics/daily-research/2026-11-11.md`), is **byte-identical** to `main`'s copy —
+  `git diff origin/main:<path> origin/council/2026-11-11-addendum:<path>` is empty — so it landed
+  by squash. **Nothing committed is unlanded.**
+- **This seat's own 2026-11-07 entry carried a counting defect, now fixed.** It recorded rule 13's
+  adoption correctly and the rule did reach the enumeration in
+  `.claude/agents/`-adjacent `agents/obsidian-archivist.md`, but the enumeration's lead sentence
+  was never re-read against the list and said *"Twelve rules"* for twelve days over a
+  thirteen-item list. Corrected to **fourteen** today with the read-back performed.
+- **Rule 14 adopted**, and earned three times in one sitting — see the registry entry. Net effect
+  on **D35**: real-defect carriers **3 → 2**; total listed files **8 → 9**, the increase being
+  correctly-written inline code that `scripts/build_graph.py:81` does not strip.
+- **D34 escalates from one missed sitting to four**, and is the session's headline. See
+  [[Workflow Threads]] **D34** and the session record at
+  `analytics/vault-sessions/2026-11-19.md`.
+
+*Audited against `bc55080`; paths: `.claude/agents/`, `prompts/`, `src/models.py`, `agents/`,
+`views/isds-workflow-3d/workflow.json`, `COUNCIL.md`, `README.md`, `METHODOLOGY.md`, `HANDOFF.md`,
+`docs/`, `scripts/`, `scripts/site_templates/`, `.github/workflows/`, `tests/`,
+`analytics/vault-sessions/`, and every remote branch tip.*
 
 ## 2026-11-07 (archivist session — thirty-third deployment)
 

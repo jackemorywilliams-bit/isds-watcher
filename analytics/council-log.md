@@ -2,6 +2,73 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-22 — daily council (record: `analytics/daily-research/2026-11-22.md`)
+
+**Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is
+Rule 0's cap exactly** — `research-analyst`, a REAL Agent-tool subagent, memo filed VERBATIM. No
+integrity-officer, analytics-officer or systems-researcher seat: Rule 0 abolishes them for the daily
+meeting, and the integrity challenge was discharged in the Part 5 dialogue **under the chairman's own
+name and labelled as such**, so no member's voice was performed. **The seat's model cannot be stated** —
+its definition pins `model: opus`, an alias and not a version.
+
+**Instruments.** Both direct fetch layers DEAD, re-probed at session open on neutral controls before any
+access statement (`curl` 403 CONNECT on `example.com` and on `icsid.worldbank.org`; the fetch service
+`getaddrinfo ENOTFOUND example.com`). **Not a state change, and never a fact about a resource.** Web
+search LIVE. The committed relay carried the day: run **227**, 3 requested / 3 completed, `control_ok`
+true, `void` false, outcome `ok` on all four records. Three rows fired, **eight slots left unspent** —
+blocked by page geometry, licence and sequencing, not by budget.
+
+**Research result: NULL DAY at the intersection, and an honestly MEASURED null.** Five analyst searches
+of five, **20 enumerated rows, ZERO reaching the three-ring intersection and ZERO reaching any two-ring
+combination including Ring 1.** Four Ring-3-only near-misses, one Ring-2-only, one asset-class-adjacent,
+and one matter in which no ring is established and none refuted. **Four Ring-3 rows against zero Ring-1
+rows in one screen**, reproducing the established asymmetry. **The one research-side movement is an
+ADDRESS, not a fact:** the full italaw primary-document locator for the Qatar Pharma English judgment
+(`2026 EWHC 2447 (Comm)`) returned for the first time, its path literals carrying **zero** prior carriers
+at the seat's own pin — a PDF on a prohibited host, unread by every seat. **New slug opened and accepted;
+operator retrieval.**
+
+**Instrument finding (the chairman's).** The same ICSID page returns a **different `sha256` at an
+identical byte length inside 25 minutes 15 seconds**, reproduced across **three independent same-day
+pairs** and **four case pages**, with the neutral control reproducing its hash in all six runs; and
+**27 of 27 corpus observations of one row carry distinct hashes over only 6 byte lengths.** So **neither
+the hash nor the byte count is a movement test** and only the `Latest Development` FIELD is authority.
+**The MECHANISM is NOT established:** the chairman withdrew his own "the origin rotates its hash" and
+banked a fixed-width-varying-field account as an untestable hypothesis.
+
+**New defect, escalated and NOT built.** The relay result path is **overwritten at merge** by the
+post-merge re-fire, so each meeting's own observation survives only in git history and not at `HEAD`.
+That **vindicates rather than impeaches** the 2026-11-21 record's hashes, makes the join corpus a census
+of re-fires, and costs one redundant third-party fetch per sitting.
+
+**Vetting: six objections `1122-C1`–`C6`. FIVE SUSTAINED; ONE REFUSED AS FRAMED with its direction
+corrected; and TWO of the chairman's own replacement figures CUT by the seat on screens the chairman then
+verified** — including a correction reaching back into yesterday's sustained `1121-C2`, whose "six" was a
+`biicl`-literal figure used as an authorship figure when the narrowest defensible set is **two** files,
+both sourcing a page marked `[body inaccessible]`. **The seat refused a join that would have flattered
+its own finding**, on the ground that both sides of it were refused engine prose.
+
+**The day's insight, accepted over two others the same seat proposed:** this council's record is a good
+carrier of propositions and a **poor index of dispositions**. The council refused substantially the same
+OIC-agreement gloss on **2026-10-02** and again on **2026-11-22**, fifty-one days apart, both times
+correctly and both times blind — **and what hid the first refusal was one capital letter.**
+
+**Optimization item (the seat's, taken over the chairman's for the second day running):** before refusing
+an engine gloss, screen the tree for the gloss's own **rigid designator**, case-insensitively and at a
+word boundary. One `grep`, no code, no approval.
+
+**And `state/seen.json` holds 233 IAReporter locators, 20 ring-relevant, unscreened as a lead source** —
+ruled **in scope as a locator set and out of scope for dispositions**. Escalated, because it bears on
+where the daily search budget should be spent.
+
+**Accountability. Research analyst — DISCHARGED, the strongest return seen from this seat:** zero edits
+and zero commits, verified independently; eight named refusals of engine synthesis; it sustained five of
+six objections, cut two of the chairman's figures, charged itself with two defects the chairman had not
+reached, and declined a flattering join. Three sustained defects plus two self-charged, **all of one kind
+— a summary figure asserted over a list it was holding — and none touching a holding.**
+**Chairman — DISCHARGED WITH SIX ERRORS**, two of them caught by the seat, and one of them the very
+defect he adopted a rule against yesterday.
+
 ## 2026-11-21 — daily council (record: `analytics/daily-research/2026-11-21.md`)
 
 **Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is

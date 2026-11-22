@@ -1,0 +1,67 @@
+{
+  "request": "2026-11-22-daily.json",
+  "note": "2026-11-22 DAILY BATCH, committed under the chairman's hand BEFORE any seat was convened, so the runner works in parallel with the meeting. PIN: 9e7671d8727710a3b67fabb94e0c5cbd70cfe453 (origin/main at session open, after an explicit `git fetch origin main` taken BEFORE the first read of the ref). MY OWN BATCH IS NOT IN-TREE AT MY PIN, by construction -- it is this file. SHALLOW-CLONE CHECK RUN BEFORE ANY HISTORY-DERIVED FIGURE: .git/shallow EXISTS (287 bytes); this container reaches 143 commits and bottoms out at 81c165a 2026-11-12T07:17:59-05:00. Shallowness is a CONTAINER property, not a sitting property, so every history-derived figure below is named against a SHA and never against a count; the file and record counts below are TREE-derived at my pin and are unaffected by it. INSTRUMENT STATUS, RE-PROBED THIS MORNING ON NEUTRAL CONTROLS BEFORE ANY ACCESS STATEMENT. curl: 'CONNECT tunnel failed, response 403' on https://example.com AND on https://icsid.worldbank.org. The separate fetch service returned 'getaddrinfo ENOTFOUND example.com' on the same neutral control -- the DNS/allowlist mechanism first seen on 2026-11-21, unchanged from yesterday and still a refusal. BOTH DIRECT INSTRUMENTS ARE DEAD AND THAT IS NOT A STATE CHANGE. A dead instrument is a fact about this session, NEVER a fact about a resource. The web-search track is LIVE (probed on a neutral ISDS query at session open). THIS RELAY IS THE ONE LIVE RETRIEVAL INSTRUMENT AND NOTHING IS STRANDED TODAY FOR WANT OF FETCH. NO GAP TO DECLARE: the last record on main is 2026-11-21, mine is 2026-11-22, and the days are consecutive. DUPLICATE GUARD RUN: no 2026-11-22 record exists on main at my pin. JOINS RE-DERIVED IN SESSION, NEVER CARRIED, AND EVERY COUNT BELOW IS PASTED FROM THE SCREEN'S OWN OUTPUT RATHER THAN RETYPED (the 2026-11-21 optimization item, adopted for this seat). UNIT: RECORDS, not days and not files. ADMISSION PREDICATE: unquote(url) contains the CaseNo literal AND the record's `find` field is EXACTLY EQUAL to the row's find string. TRUE is counted on the `find_matched` FIELD and on no proxy. FIND LITERALS PUBLISHED so every figure is re-derivable: Row 1 find = 'Status of Proceeding'; Row 2 find = 'Status of Proceeding'; Row 3 find = 'December 16, 2025 Each party'. AT PIN 9e7671d, over 123 files / 848 records -- A POPULATION THAT DOES NOT INCLUDE THIS SITTING'S OWN BATCH: Row 1 = 26 fired / 26 TRUE / 0 FALSE across 26 files; Row 2 = 43 fired / 43 TRUE / 0 FALSE across 38 FILES; Row 3 = 27 fired / 27 TRUE / 0 FALSE across 27 files; co-observation pairs 27 present / 27 precondition-PASS. OUTCOME CENSUS over the whole corpus at my pin, on the FIELD and not on a grep: ok 780, refused 65, robots_disallowed 3, and nothing else; ZERO records carry timeout or no_contact. `find_matched` key absent entirely on 75 of 848 records; NO ADMITTED ROW RECORD IS AFFECTED. THE FORECAST TEST. The 2026-11-21 close-out item 1 forecast, for MY SESSION OPEN: 123 files / 848 records, fired 26 / 43 / 27, pairs 27 / 27 PASS, Row 2 across 38 files, census ok 780 / refused 65 / robots_disallowed 3, find_matched absent on 75. MY FIGURE IS IDENTICAL ON EVERY ONE OF THOSE NINE LEGS, and its stated CONDITION (that merging re-fire the relay and return ok on all four rows) was satisfied and recorded in that record's own addendum -- run 44900404018, 3 requested / 3 completed, control_ok true, void false, outcome ok on all four records, find_matched True on all three admitted rows. I test the forecast at the pin its author named for it -- MY SESSION OPEN -- and at no later pin. AND I RAN THE BATCH-COUNT CHECK ON THE PATH UNIT: `git diff --name-only 9270486 9e7671d -- analytics/fetch-results/` returns EXACTLY ONE path (2026-11-21-daily.json) while `git log --oneline 9270486..9e7671d -- analytics/fetch-results/` returns TWO COMMITS (ecc4f6d and b3fc3e8) because the merge of the 11-21 request re-fired the relay onto the same path. ON THE PATH UNIT ONE BATCH LANDED. A SUCCESSOR COUNTING COMMITS WOULD AGAIN HAVE READ TWO BATCHES. The refinement is vindicated on its SEVENTH consecutive live test. CO-OBSERVATION PRECONDITION -- the amended single-conjunct form, CARRIED and not re-decided by me, and RE-VERIFIED AT SOURCE this sitting rather than assumed. At `scripts/fetch_relay.py:178` 'bytes' is len(content) and at :179 'sha256' is hashlib.sha256(content).hexdigest(), with `content` assigned at :171 from resp.content -- so both are functions of ONE variable and sha256 equality entails byte-length equality. I read all three assignments at my own pin. IF THAT IMPLEMENTATION EVER TAKES bytes FROM A Content-Length HEADER, THE SECOND CONJUNCT REVIVES AND THE AMENDMENT IS VOID. The precondition is a LIVE GATE and not a theorem: sha256 equality holds on ALL TWENTY-SEVEN co-observation records at my pin. PUBLISH NO FAILURE RATE: the denominator was withdrawn by standing ruling. COMPANION-CONTROL RULE (analytics/fetch-requests/README.md): it fires on a row EXPECTED TO PRODUCE A NULL. I DESIGNED THIS BATCH SO THAT NO ROW IS EXPECTED TO NULL, which is why the rule is inapplicable on its own terms rather than waived. Rows 1-3 hit on the joins above, 26/26, 43/43 and 27/27 respectively. Rows 2 and 3 are additionally each other's same-stream witness. I FIRE THREE ROWS AND STOP, WHICH IS WHAT THE 2026-11-21 CLOSE-OUT ITEM 2 AUTHORISES AND NO MORE. It authorises NO NEW ROW, and its reason is page geometry rather than budget: ARB/25/54's memorial on the merits, ARB/22/28's award and dissent, and the Mauritius-Portugal BIT all sit behind a content type this relay returns EMPTY, so no row can reach them and firing one would buy a byte count and a content type. A FOURTH ROW WOULD NEED A MEASURED PAGE-GEOMETRY WARRANT AND I HAVE NONE, so I do not fire one. PROHIBITION SCREEN, RUN BEFORE THE ROWS WERE WRITTEN rather than after: all three rows are on icsid.worldbank.org, verified on ALLOWED_HOSTS at scripts/fetch_relay.py:49 (the single line; the set itself is :48-69 and carries 19 hosts, enumerated at my own pin). No row requests 'Subject of Dispute' or 'Economic Sector' (licence-suspended on the four slugs). No row touches ARB/24/16, ARB/24/45, ARB/12/1 or ARB/17/19 (named and not cured, zero budget by design). NO row is fired on any PDF: fetch_relay.py returns the empty string for any content type without 'html' or 'text', so a PDF row establishes existence, byte length and type and CANNOT discharge a carrying-span screen. No fedlex.admin.ch row and nothing touching Swiss SR 0.975.247.2 (Emory's manual query, zero budget), which also forecloses the Kenya-Switzerland route. web.archive.org, travizory.com and biicl.org are NOT requested and all three are ABSENT from ALLOWED_HOSTS, which I verified at my own pin across all 19 hosts. NO SIX-REGISTER ROW: that cadence is SUSPENDED in the governing thread and I fired nothing on it. NO ARB/22/2 ROW: its monthly is next due 2026-12-18 and is NOT owed today -- I decline to round a monthly backwards into my own sitting just because a slot is free. OPERATOR APPROVALS REMAIN PENDING, NOT GRANTED, and nothing on that list is built or applied here: the source_analytics.py patch, the health column, the polite_get diagnostic CLI, the IAReporter feed swap, the Kluwer source, the category signal, the build_graph fix, and any ledger amendment. src/, scripts/, tests/, prompts/, .github/, docs/ and agents/ are untouched by this session. BUDGET: three rows plus the runner's mandatory https://example.com/ control = 4 fetches, under MAX_URLS 12. EIGHT SLOTS STAND UNSPENT AND THE SPARE CAPACITY IS BLOCKED BY LICENCE, PAGE GEOMETRY AND SEQUENCING -- NOT BY BUDGET. An unspent slot is not a failure; firing a row with no warrant to spend it would be.",
+  "fetched_at": "2026-11-22T11:19:06.835010+00:00",
+  "environment": "github-actions-runner (run 45016669277)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85506,
+      "sha256": "1f6f5348acc06611df04baa548aca5db4e00cbf8273cb638e8dcb0513d5bf69e",
+      "excerpt": "and the Department of Justice, Republic of Kenya, Nairobi, Kenya Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: November 13, 2026 - The Claimant files a memorial on the merits. No References Available. (a) Original Proceeding Date Development December 16, 2025 The Secretary-General registers a request for the institution of arbitration proceedings.&nbsp; Febru",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106103,
+      "sha256": "1f18f2c6b620216782fa425868ec945ffb8b925653f8d08e6da27686a935a489",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "December 16, 2025 Each party",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106103,
+      "sha256": "1f18f2c6b620216782fa425868ec945ffb8b925653f8d08e6da27686a935a489",
+      "excerpt": "ach party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

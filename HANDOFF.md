@@ -8,9 +8,13 @@
   is commented out in `src/config.py` and can be restored).
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
-**Currency anchor.** *Audited against `bc55080`; paths: `.github/workflows/`, `src/config.py`,
-`scripts/`, `.claude/agents/`.* **Re-anchored 2026-11-19 by the archivist on a measurement, not a
-stamp:** `git log 7834fe2..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
+**Currency anchor.** *Audited against `1ca3e196`; paths: `.github/workflows/`, `src/config.py`,
+`scripts/`, `.claude/agents/`.* **Re-anchored 2026-11-22 by the archivist on a measurement, not a
+stamp:** `git log bc55080..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
+returns **no commit**, and neither does the same query from `7834fe2` across the full
+`f272ce32..1ca3e196` window of **284** commits, so nothing this file declares has moved since
+2026-10-22 and the content is true as written. **Previously re-anchored 2026-11-19 on a
+measurement, not a stamp:** `git log 7834fe2..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
 returns **no commit** across the window's **566**, so nothing this file declares has moved since
 2026-10-22 and the content is true as written. **Previously re-anchored 2026-10-22 on the same
 test:** `git log f7e4bf5..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`

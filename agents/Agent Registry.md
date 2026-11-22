@@ -566,6 +566,29 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-11-22 (archivist session — thirty-fifth deployment)** — **No roster change and no
+  contract change, the nineteenth consecutive session.** Audited against `1ca3e196`
+  (`origin/main`, clean tree) on the complete **2,884**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **139** with `HEAD` detached, the
+  twenty-seventh consecutive recurrence.
+  `git log f272ce32..1ca3e196 -- .claude/agents/ prompts/ src/models.py` returns **no commit**
+  across the **284**-commit window. `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05),
+  **108 days**. All nine seats re-read by hand, definition against vault note: `claude-opus-5` for
+  council-chairman, research-analyst, site-experience and systems-designer; `claude-opus-4-8` for
+  analytics-officer, integrity-officer, obsidian-archivist, research-editor and systems-researcher.
+  All nine declare `model: opus`, which selects a tier and not a version. `scripts/check_models.py`
+  exits **0** over 12 flowchart cards; `COUNCIL.md:62-68` matches `src/models.py:26-32`.
+  **No model drift.**
+  **The session's finding is not in the roster but in the landing:** the **2026-11-19** sitting was
+  stranded on `origin/vault/archivist-2026-11-19` behind the still-open **PR #341**, and is landed
+  here as `b9224999` by cherry-picking its own in-scope commit `e2d60664` alone. New thread
+  **D36** in [[Workflow Threads]]; **rule 15** adopted in [[obsidian-archivist]]; **step 5** added
+  to that note's binding merge procedure. **D5 unchanged, still 1 of 9** — only
+  `.claude/agents/integrity-officer.md` names its own vault note, so for eight of nine seats the
+  adopted method rules live in a file the definition never points at. **D6, eighth observation** —
+  `get_session` returns all three model fields as `claude-opus-5` against a definition stating
+  Claude Opus 4.8; Model lines stay as written per the 2026-08-16 decision.
+
 - **2026-11-19 (archivist session — thirty-fourth deployment)** — **No roster change and no
   contract change, the eighteenth consecutive session.** Audited against `bc55080`
   (`origin/main`, clean tree, `HEAD` == `origin/main` after fetch) on the complete **2,820**-commit

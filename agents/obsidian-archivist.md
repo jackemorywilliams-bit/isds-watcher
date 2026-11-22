@@ -144,6 +144,18 @@ by using it"*.
    itself, so leaving it alone keeps its anchor honest while a revert commit counts as drift
    against it.
 
+5. **Confirm the landing, and treat the record as the thing being delivered — added 2026-11-22.**
+   After the merge call returns, run `git fetch origin` and
+   `git merge-base --is-ancestor <your head sha> origin/main`. **An unverified merge is
+   indistinguishable from no merge**, and steps 1–4 are all written for a session that is still
+   alive to run them: on 2026-11-19 this seat opened **PR #341** and ended twenty seconds later,
+   leaving a complete and correct record invisible for three days
+   (`analytics/vault-sessions/2026-11-19.md`, landed 2026-11-22). **So land the record first and
+   improve it afterwards** — a note correction that dies with the session costs nothing, while an
+   unlanded record costs the project the sitting. If the ancestry test fails, say so in the final
+   message with the PR number, because the next sitting's orphan check opens with this seat's own
+   branches precisely so that a stranded sitting is found by someone.
+
 **None of this retires D11.** It converts a defect that lands silently into one that costs a retry.
 The out-of-scope commit is still generated on every push and the remedy is still Emory's or the
 systems designer's: a scope filter in `scripts/reanchor.py`, or `STATE_OF_THE_ANSWER.md` added to
@@ -163,7 +175,7 @@ this seat's record paths.
 
 ### Adopted method rules — read the artefact, not the description of the artefact
 
-Fourteen rules this seat adopted from fourteen separate failures. The first three are one rule in three
+Fifteen rules this seat adopted from fifteen separate failures. The first three are one rule in three
 costumes, and each was learned only after the previous one failed to generalise; the fourth turns
 the same scepticism on this seat's own carried records, the fifth is the fourth again because it
 did not generalise either, the sixth is about attribution rather than about carried records, the
@@ -378,7 +390,7 @@ six to seven** — the discipline named in the block that follows, performed rat
    links to nonexistent notes in **eight** files today against the **five** of 2026-11-07, and all
    **three** new carriers are this seat's own. **Only one of the three is this seat's fault, and
    the first draft of this rule got that wrong before counting.** [[Workflow Threads]]`:167-168`
-   writes the two genuinely missing targets of **D35** in bare bare double-bracket link syntax syntax while diagnosing
+   writes the two genuinely missing targets of **D35** in bare double-bracket link syntax while diagnosing
    them — avoidable, corrected in place today, and the reason this rule exists. The other two,
    [[Project Change Log]]`:56` and `analytics/vault-sessions/2026-11-07.md:162`, had already
    written `[[:space:]]` *inside inline code*, which is correct authorship; they are flagged only
@@ -399,6 +411,27 @@ six to seven** — the discipline named in the block that follows, performed rat
    edit rather than before it. The trap is not that the syntax is easy to forget — it is that
    naming the syntax *uses* the syntax, so the rule's own statement is the hardest place to obey
    it. **Re-run the builder after writing about the builder.**
+
+15. **2026-11-22** — *A sitting is not landed until a later sitting can prove it. The merge
+   procedure has no step that survives this session's own death, so the orphan check must start
+   with this seat's own previous branches and open pull requests — the predecessor cannot report
+   its own stranding.* On 2026-11-19 this seat completed a full audit, wrote a 177-line record,
+   pushed, opened **PR #341** — and then stopped. Its own commit `e2d60664` (15:23:57) was
+   correctly scoped to six record paths; `.github/workflows/reanchor.yml` added `5c40df63`
+   (15:24:44) carrying `STATE_OF_THE_ANSWER.md`; and the pull request's `updated_at` is
+   **twenty seconds** after its `created_at`, after which nothing further happened. Steps 1–3 of
+   the merge procedure above are exactly the remedy for that bot commit, and **the session was
+   gone before it could run them.** The record sat unread for three days. **That is the
+   2026-07-31 defect this seat was created to prevent, committed by this seat, for the second
+   time** — and the 2026-11-19 sitting's own orphan sweep could not have caught it, because it
+   swept all 312 branches *before its own branch existed*. **The detector is structurally the
+   next sitting, and only if the next sitting looks here first.** Two consequences, both binding.
+   **(a) Land the record before polishing it** — the record is the deliverable, and a session that
+   dies holding an unmerged improvement has delivered nothing. **(b) The orphan check opens with
+   `vault/archivist-*` tips and this seat's open pull requests**, not with the 300-branch sweep in
+   which one stranded sitting is a single line among 119 non-ancestors. Landed here today by
+   cherry-picking `e2d60664` alone onto this branch (`b9224999`), deliberately excluding the bot's
+   out-of-scope commit, which is why this session could self-merge what 2026-11-19 could not.
 
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are

@@ -1,0 +1,124 @@
+{
+  "candidate_claims": [
+    {
+      "claim_text": "On 2026-11-23 the project's fetch relay (run 45164121702) retrieved https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/ unauthenticated and received HTTP 200, content type text/html, 67,118 bytes, sha256 9933a74e9ff7ac5b6302ddbaa773e542fb40cda2923545bc4e26ed149ceab0d2; this is the first measurement of www.iareporter.com page geometry in a relay corpus of 852 prior records.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "partial",
+      "source_authority": "media",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "ICSID tribunal issues decision in dispute between Iraq and pharmaceutical companies | Investment Arbitration Reporter X User Login: User Name Password Remember me",
+      "supporting_locator": "analytics/fetch-results/2026-11-23-daily.json, row 4 (find 'Iraq', find_matched true), 400-character excerpt, read at repository pin 69a23136"
+    },
+    {
+      "claim_text": "The retrieved text of that IAReporter page does not contain the literal string 'ICSID Case No'; the relay's companion control on the same URL in the same run matched 'Iraq', so prose survived the tag-strip and the null is interpretable rather than vacuous.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "partial",
+      "source_authority": "media",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "analytics/fetch-results/2026-11-23-daily.json, row 5: find 'ICSID Case No', find_matched false, excerpt empty; pin 69a23136. Narrow: other formulations of a case number are unscreened because the relay stores only a 400-character excerpt."
+    },
+    {
+      "claim_text": "UNCTAD's Investment Dispute Settlement Navigator carries a case record numbered 1201 whose URL slug is 'gms-ventures-v-iraq' and whose returned title is 'gms ventures v iraq'; the path literals 'cases/1201' and 'gms-ventures' had zero prior carriers in the isds-watcher repository.",
+      "source_url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1201/gms-ventures-v-iraq",
+      "access_status": "unavailable",
+      "source_authority": "official_secondary",
+      "claim_type": "lead",
+      "assertion_status": "lead",
+      "supporting_quote": "gms ventures v iraq",
+      "supporting_locator": "search-result title and URL row, calls S2-S5, 2026-11-23; page body not retrieved. Novelty established by case-insensitive literal grep over the whole tree excluding .git at pin 69a23136."
+    },
+    {
+      "claim_text": "Global Arbitration Review publishes an article titled 'Iraq partially liable in pharma plant dispute'; the only asset-denoting word available at title level in any accessible source about an Iraq pharmaceutical ISDS matter is 'plant', a physical facility, and no accessible source names any intellectual-property asset as the covered investment.",
+      "source_url": "https://globalarbitrationreview.com/article/iraq-partially-liable-in-pharma-plant-dispute",
+      "access_status": "paywalled",
+      "source_authority": "media",
+      "claim_type": "lead",
+      "assertion_status": "lead",
+      "supporting_quote": "Iraq partially liable in pharma plant dispute",
+      "supporting_locator": "search-result title row, calls S2/S4/S5, 2026-11-23; body unread. The headline's words are the publisher's and are not a disposition (ruling 1120-S16)."
+    },
+    {
+      "claim_text": "The identification of the matter behind the IAReporter headline with the UNCTAD record 'gms ventures v iraq' is refused: the join rests on exactly two generic elements (Iraq, pharmaceutical) and the pharmaceutical characterisation of the UNCTAD matter reaches this council only through refused search-engine synthesis prose.",
+      "source_url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1201/gms-ventures-v-iraq",
+      "access_status": "unavailable",
+      "source_authority": "official_secondary",
+      "claim_type": "interpretive",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "sections 1.2 and 3 of this memo, 2026-11-23; refusals G2, G3 and G5"
+    },
+    {
+      "claim_text": "Rings 1, 2 and 3 are each UNESTABLISHED and expressly NOT ABSENT for the matter behind the IAReporter Iraq-pharmaceutical headline: no source read by any seat names the asset asserted as the covered investment, the measure challenged, or any jurisdictional or admissibility doctrine.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "partial",
+      "source_authority": "media",
+      "claim_type": "interpretive",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "section 1.3 of this memo, 2026-11-23"
+    },
+    {
+      "claim_text": "Of the 233 distinct iareporter.com article locators in state/seen.json's iareporter_headlines store, the chairman's IP-ONLY regex returns exactly 1 and his WIDE regex returns exactly 32, reproduced independently at pin 69a23136; the single IP-ONLY hit matches on the literal 'pharma', which denotes the parties' industry and not an asset.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "full",
+      "source_authority": "unknown",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "supporting_locator": "state/seen.json at pin 69a23136, byte-identical to the chairman's pin aa15e67a (git diff --stat returns empty); regexes as published in analytics/fetch-requests/2026-11-23-daily.json"
+    },
+    {
+      "claim_text": "An asset-only screen of all 233 locators on patent|trade.?secret|know.?how|intellectual|copyright|trademark|trade.?mark|clinical|data.?exclusiv|geographical.?indication|generic|biosimilar|\\bdrug|medicine|plain.?pack|tobacco|counterfeit|brand|royalt|\\bip\\b|\\btrips\\b|marketing.?authoris|dossier returns exactly one hit, 'royalt' in a Freeport-McMoRan v. Peru locator concerning mining royalty-related penalties; net of that homonym, zero locators carry any intellectual-property asset designator, making the intake's ring asymmetry 31 Ring-3 literals to 0 Ring-1 literals.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "full",
+      "source_authority": "unknown",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "split-tribunal-in-freeport-mcmoran-v-peru-admits-states-interpretation-request-but-rules-that-claim-stemming-from-royalty-related-penalties-and-interest-was-rejected-on-the-merits-not-on-j",
+      "supporting_locator": "repository screen over state/seen.json sources.iareporter_headlines at pin 69a23136. Limits: the screen is on URL slugs, not full headlines; slug length min 31 / max 199 / mean 117.2, with 5 of 233 at the 199-character cap and therefore truncated."
+    },
+    {
+      "claim_text": "The 233 locators carry 21 distinct first-sighting dates from 2026-06-16 to 2026-11-16, twenty of which are Mondays, with no locators at 2026-08-24 or 2026-10-05; 93 of the 233 carry outcome 'legacy', which src/state.py defines as the pre-migration shape meaning the project does not know how those items ended, so 'legacy' is not a record that an item was screened and rejected.",
+      "source_url": "https://www.iareporter.com/",
+      "access_status": "full",
+      "source_authority": "unknown",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "\"legacy\" is a truthful label — we genuinely do not know how those items ended",
+      "supporting_locator": "src/state.py:19-22 and state/seen.json, both at pin 69a23136; outcome census: legacy 93, ok 119, keyword_only_by_design 10, unreadable 11"
+    },
+    {
+      "claim_text": "Across both of today's screens — the 233-locator reservoir and the five web-search calls — zero rows reach the three-ring intersection and zero rows reach any two-ring combination including Ring 1; the reservoir's ring-relevant set comprises approximately 19 Ring-3-only rows, 1 Ring-2-only row (Slot Group v Poland, gambling regulatory regime) and 0 Ring-1 rows.",
+      "source_url": "https://investmentpolicy.unctad.org/investment-dispute-settlement/cases/1201/gms-ventures-v-iraq",
+      "access_status": "unavailable",
+      "source_authority": "official_secondary",
+      "claim_type": "interpretive",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "section 2 of this memo, 2026-11-23, enumerated in full"
+    },
+    {
+      "claim_text": "No EJIL:Talk! post authored by Anthea Roberts in November 2026 was found in accessible sources on 2026-11-23; the returned listing rows were the blog's 'Two Weeks in Review' aggregates, which expose no author bylines, and this is a statement about accessible sources and never a statement that no such post exists.",
+      "source_url": "https://www.ejiltalk.org/?p=25975",
+      "access_status": "unavailable",
+      "source_authority": "academic_secondary",
+      "claim_type": "procedural",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "monitored-author check, call S1, 2026-11-23; ejiltalk.org remains uncrawlable by this project (WAF 403 to identified non-browser clients)"
+    },
+    {
+      "claim_text": "Six search-engine synthesis glosses were refused on 2026-11-23, and a repository prior-art screen run on each gloss's own rigid designator before refusal found zero prior carriers for 'pharma plant', 'ARB/22/8', 'Nolan', 'Jordan-Iraq', 'Itisaluna', 'ARB/17/10' and 'GMS Ventures', so none of the six was a repeat of a prior blind refusal.",
+      "source_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "access_status": "full",
+      "source_authority": "unknown",
+      "claim_type": "procedural",
+      "assertion_status": "candidate",
+      "supporting_quote": null,
+      "supporting_locator": "section 3 of this memo; case-insensitive grep over the whole tree excluding .git at pin 69a23136"
+    }
+  ]
+}

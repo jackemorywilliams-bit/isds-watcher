@@ -1,0 +1,93 @@
+{
+  "request": "2026-11-23-daily.json",
+  "note": "2026-11-23 DAILY BATCH, committed under the chairman's hand BEFORE any seat was convened, so the runner works in parallel with the meeting. PIN: aa15e67a7e6102b3d61455ccd2423b0d39d02237 (origin/main at session open, taken after an explicit `git fetch origin main` run BEFORE the first read of the ref). MY OWN BATCH IS NOT IN-TREE AT MY PIN by construction -- it is this file. SHALLOW-CLONE CHECK RUN BEFORE ANY HISTORY-DERIVED FIGURE: .git/shallow EXISTS (287 bytes); this container reaches 132 commits and bottoms out at 102602d 2026-11-18T11:33:30+00:00. Shallowness is a CONTAINER property, not a sitting property. Every figure below is TREE-derived at my pin and is unaffected by it; no figure below is derived from commit history. INSTRUMENT STATUS, RE-PROBED THIS MORNING ON NEUTRAL CONTROLS BEFORE ANY ACCESS STATEMENT WAS MADE ABOUT ANYTHING. curl: 'CONNECT tunnel failed, response 403' on https://example.com AND on https://icsid.worldbank.org -- identical on the neutral control and on the research host, so the refusal is the gateway and not the resource. The separate fetch service returned 'getaddrinfo ENOTFOUND example.com' on the same neutral control -- the DNS/allowlist mechanism first seen 2026-11-21, unchanged for a third consecutive sitting and still a refusal. BOTH DIRECT INSTRUMENTS ARE DEAD AND THAT IS NOT A STATE CHANGE. A dead instrument is a fact about this session and NEVER a fact about a resource. The web-search track is LIVE (probed at session open on a neutral ISDS query that returned sixteen result rows). THIS RELAY IS THE ONE LIVE RETRIEVAL INSTRUMENT AND NOTHING IS STRANDED TODAY FOR WANT OF FETCH. NO GAP TO DECLARE: the last record on main at my pin is 2026-11-22, mine is 2026-11-23, and the days are consecutive. DUPLICATE GUARD RUN AGAINST THE REF AND NOT THE WORKTREE: `git ls-tree origin/main analytics/daily-research/` carries no 2026-11-23 path. THE FORECAST TEST -- the nine legs the 2026-11-22 close-out (item 1 of its next steps) forecast for MY session open, tested at MY pin and at no later pin, on the PATH unit, with the admission predicate unchanged: unquote(url) contains the CaseNo literal AND the record's `find` field is EXACTLY EQUAL to the row's find string, with TRUE counted on the `find_matched` FIELD and on no proxy. FIND LITERALS PUBLISHED so every figure is re-derivable: Row 1 find = 'Status of Proceeding'; Row 2 find = 'Status of Proceeding'; Row 3 find = 'December 16, 2025 Each party'. MEASURED AT aa15e67a over 124 files / 852 records: Row 1 = 27 fired / 27 TRUE / 0 FALSE across 27 files; Row 2 = 44 fired / 44 TRUE / 0 FALSE across 39 FILES; Row 3 = 28 fired / 28 TRUE / 0 FALSE across 28 files; co-observation pairs 28 present / 28 precondition-PASS; OUTCOME CENSUS on the FIELD and not on a grep: ok 784, refused 65, robots_disallowed 3, and nothing else -- ZERO records carry timeout or no_contact; `find_matched` key absent entirely on 75 of 852 records, NO ADMITTED ROW AFFECTED. THE FORECAST IS VINDICATED ON ALL NINE LEGS, EXACTLY, and its stated condition (that merging the 11-22 record re-fire the relay and return ok on all four rows) was satisfied and is recorded in that record's own addendum -- run 45019808362, 3 requested / 3 completed, control_ok true, void false. CO-OBSERVATION PRECONDITION -- the amended single-conjunct form, CARRIED and not re-decided by me, and RE-VERIFIED AT SOURCE this sitting rather than assumed. At scripts/fetch_relay.py:178 'bytes' is len(content) and at :179 'sha256' is hashlib.sha256(content).hexdigest(), with `content` assigned at :171 from resp.content -- both are functions of ONE variable, so sha256 equality entails byte-length equality. I read all three assignments at my own pin. IF THAT IMPLEMENTATION EVER TAKES bytes FROM A Content-Length HEADER THE SECOND CONJUNCT REVIVES AND THE AMENDMENT IS VOID. The precondition is a LIVE GATE and not a theorem: sha256 equality holds on ALL TWENTY-EIGHT co-observation records at my pin. PUBLISH NO FAILURE RATE: the denominator was withdrawn by standing ruling. ROWS 1-3 ARE THE CARRIED ROWS, UNCHANGED, and they are what the 2026-11-22 close-out authorised. ROWS 4 AND 5 ARE NEW AND I SUPPLY THE MEASURED PAGE-GEOMETRY WARRANT THAT CLOSE-OUT DEMANDED BEFORE ANY FOURTH ROW COULD BE FIRED. THE WARRANT, re-derivable at my pin by grouping every record in analytics/fetch-results/ on urlparse(url).hostname: the corpus of 852 records touches ELEVEN hosts -- icsid.worldbank.org 481, example.com 190, uncitral.un.org 66, investmentpolicy.unctad.org 39, www.iisd.org 25, www.italaw.com 20, pca-cpa.org 14, undocs.org 8, digitallibrary.un.org 6, icsidfiles.worldbank.org 2, www.pca-cpa.org 1 -- and www.iareporter.com has ZERO ROWS IN THE ENTIRE CORPUS while sitting on ALLOWED_HOSTS at scripts/fetch_relay.py:62-63. Its page geometry under this relay is therefore WHOLLY UNMEASURED. That is a measurement about the INSTRUMENT, it is the kind of warrant the close-out asked for (geometry, not frequency), and it costs two slots of eight that stood unspent. WHY THIS URL AND NOT ANOTHER: it is not discovery. It is already in this project's own screening store at state/seen.json under sources.iareporter_headlines, which holds 233 locators. Screened at my pin on two published literal sets: an IP-ONLY set (patent|trade.?secret|pharma|intellectual|copyright|trademark|clinical|data.?exclusiv|licens, case-insensitive) returns EXACTLY ONE locator of 233; a WIDE set adding the jurisdictional-ring literals (jurisdiction|admissibilit|abuse.?of.?right|treaty.?shop|annul|critical.?date|denial.?of.?benefit|expropriat) returns 32 of 233. Row 4/5's URL IS THAT SINGLE IP-RING LOCATOR. I publish both regexes because a screen on a chosen string is not a screen on a proposition, and my figure of 1 is a figure on MY literal set -- it does not contradict and does not confirm the 'twenty ring-relevant' figure recorded on 2026-11-22, which was taken on a literal set that record did not publish. WHAT MAY AND MAY NOT BE READ OFF ROWS 4-5, declared before the rows fire. MAY: whether the host answers polite_get at all, the status, the content type, the byte length, the sha256, and whether ANY visible prose survives excerpt_of's tag-strip. MAY NOT: any disposition about the Iraq matter or any other matter. The slug contains the words 'issues decision' and THOSE ARE NOT THIS COUNCIL'S WORDS ABOUT ANY MATTER (the 1120-S16 line, and the 2026-11-22 ruling that the seen.json reservoir is in scope as a LOCATOR SET and expressly out of scope as a source of DISPOSITIONS). A SLUG IS NOT A HOLDING. COMPANION-CONTROL RULE (analytics/fetch-requests/README.md) IS ENGAGED AND HONOURED, not waived: Row 5 ('ICSID Case No') is expected to be capable of nulling, so Row 4 ('Iraq') is its companion control on the SAME URL in the SAME RUN -- 'Iraq' is in the publisher's own headline and must appear if any prose survives the strip at all. Without it a null on Row 5 would be uninterpretable. Rows 1-3 need no companion: none is expected to null (26/26, 43/43, 27/27 historically, and 27/27, 44/44, 28/28 at my pin), and Rows 2 and 3 are additionally each other's same-stream witness. PAYWALL COMPLIANCE, stated because METHODOLOGY Part III is explicit that no information behind a subscription or authentication barrier has ever been used: this row requests the publisher's public page unauthenticated through the unmodified polite_get, which applies the same robots.txt evaluation, the same per-domain interval and the same identifying User-Agent as every other row. METHODOLOGY records IAReporter as a HEADLINE-ONLY tier because the publisher itself publishes titles and leads openly, and the project's own weekly iareporter_headlines source already reads it at that tier. No body is requested, no body may be written (the relay caps every excerpt at 400 characters and writes no document anywhere), and if robots.txt disallows the path the row will return robots_disallowed and THAT IS THE ANSWER, not an obstacle to route around. PROHIBITION SCREEN, RUN BEFORE THE ROWS WERE WRITTEN RATHER THAN AFTER, and run on the designators rather than on my memory of the list. Rows 1-3 are on icsid.worldbank.org and Rows 4-5 on www.iareporter.com, both verified present on ALLOWED_HOSTS at scripts/fetch_relay.py (19 hosts, enumerated at my own pin; iareporter at :62-63). No row requests 'Subject of Dispute' or 'Economic Sector' (licence-suspended on the four slugs). No row touches ARB/24/16, ARB/24/45, ARB/12/1 or ARB/17/19 (named, not cured, zero budget by design). NO ROW IS FIRED ON ANY PDF: fetch_relay.py returns the empty string for any content type without 'html' or 'text', so a PDF row buys existence, byte length and type and CANNOT discharge a carrying-span screen -- which is why ARB/25/54's memorial, the Qatar Pharma English judgment, ARB/22/28's award and dissent and the Mauritius-Portugal BIT are NOT requested and remain operator items. No fedlex.admin.ch row and nothing touching Swiss SR 0.975.247.2 (Emory's manual query, zero budget), which also forecloses the Kenya-Switzerland route. web.archive.org, travizory.com and biicl.org are NOT requested and all three are ABSENT from ALLOWED_HOSTS, verified at my pin. www.italaw.com is under standing relay prohibition and is NOT requested. NO SIX-REGISTER ROW: that cadence remains SUSPENDED. NO ARB/22/2 ROW: its monthly is next due 2026-12-18 and is not owed today -- I decline to round a monthly backwards because a slot is free. OPERATOR APPROVALS REMAIN PENDING, NOT GRANTED, and nothing on that list is built or applied here: the source_analytics.py patch, the health column, the polite_get diagnostic CLI, the IAReporter feed swap, the Kluwer source, the category signal, the build_graph fix, and any ledger amendment. NOTE EXPRESSLY: Rows 4-5 are a one-off relay probe of an already-stored locator and are NOT the pending IAReporter feed swap, which would change src/ and is untouched. src/, scripts/, tests/, prompts/, .github/, docs/ and agents/ are untouched by this session. BUDGET: five rows plus the runner's mandatory https://example.com/ control = 6 fetches, under MAX_URLS 12. SIX SLOTS STAND UNSPENT and the spare capacity is blocked by licence, page geometry and sequencing -- not by budget. An unspent slot is not a failure; firing a row with no warrant to spend it would be.",
+  "fetched_at": "2026-11-23T11:19:46.858185+00:00",
+  "environment": "github-actions-runner (run 45164121702)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 5,
+  "completed": 5,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/25/54",
+      "content_type": "text/html",
+      "bytes": 85506,
+      "sha256": "f7fc847503e27e14355cd54f554cdb7794c6559c4d4dae48e47a749c35993ae4",
+      "excerpt": "and the Department of Justice, Republic of Kenya, Nairobi, Kenya Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: November 13, 2026 - The Claimant files a memorial on the merits. No References Available. (a) Original Proceeding Date Development December 16, 2025 The Secretary-General registers a request for the institution of arbitration proceedings.&nbsp; Febru",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106103,
+      "sha256": "90740537454e5b8561fa3e3b363d870ee2df8da30fda54c26762614d91c5dd58",
+      "excerpt": "dent(s): Trade Law Bureau, Global Affairs Canada, Ottawa, Canada Language(s) of Proceeding: English Status of Proceeding: Pending Latest Development: December 16, 2025 - Each party files a reply statement of costs. (a) Original Proceeding Published Decisions Witness Statement of Theodore David Einarsson (Public Version) Procedural Order Statement of Defence Confidentiality Order Witness Statement ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "find": "December 16, 2025 Each party",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=UNCT/20/6",
+      "content_type": "text/html",
+      "bytes": 106103,
+      "sha256": "90740537454e5b8561fa3e3b363d870ee2df8da30fda54c26762614d91c5dd58",
+      "excerpt": "ach party files a reply post-hearing brief. December 2, 2025 Each party files a statement of costs. December 16, 2025 Each party files a reply statement of costs. Footer menu Home About Services Cases Resources News &amp; Events Contact Us FOR STATES Role of Member States How to Join ICSID FOR JOB SEEKERS Jobs Internships FOR PARTIES Overview of Services ICSID Panels For Arbitrators Becoming an IC",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "find": "Iraq",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "content_type": "text/html",
+      "bytes": 67118,
+      "sha256": "9933a74e9ff7ac5b6302ddbaa773e542fb40cda2923545bc4e26ed149ceab0d2",
+      "excerpt": "ICSID tribunal issues decision in dispute between Iraq and pharmaceutical companies | Investment Arbitration Reporter X User Login: User Name Password Remember me This will keep you logged in for 2 weeks. Login RSS Menu Last Week Last Month Last Year All Dates Custom Range Press Esc to close From: To: Done Search Tips --> Login Login Last Week Last Month Last Year All Dates Custom Range Press Esc ",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "find": "ICSID Case No",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://www.iareporter.com/articles/icsid-tribunal-issues-decision-in-dispute-between-iraq-and-pharmaceutical-companies/",
+      "content_type": "text/html",
+      "bytes": 67118,
+      "sha256": "9933a74e9ff7ac5b6302ddbaa773e542fb40cda2923545bc4e26ed149ceab0d2",
+      "excerpt": "",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    }
+  ]
+}

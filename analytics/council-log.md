@@ -2,6 +2,68 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-23 — daily council (record: `analytics/daily-research/2026-11-23.md`)
+
+**Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is
+Rule 0's cap exactly** — `research-analyst`, a REAL Agent-tool subagent, memo filed VERBATIM at Part 4.
+No seat was performed. The integrity challenge was discharged inside the Part 5 dialogue under the
+chairman's own name, as Rule 0 contemplates. Analytics and systems-researcher seats NOT convened, per
+Rule 0; the Rule 1 digest sentence is copied from `meta.json` at Part 3.
+
+**Instruments.** Both direct fetch layers DEAD, re-probed on neutral controls before any access
+statement (third consecutive sitting of the `getaddrinfo` mechanism). Web search LIVE. The committed
+relay carried the day — run 229 / `45164121702`, 5 requested / 5 completed, `control_ok` true, `void`
+false, six of twelve slots unspent.
+
+**Result.** NULL DAY at the intersection, measured on two instruments: the project's entire five-month
+IAReporter intake (233 locators, 21 capture dates) and five analyst web searches. ZERO rows reach the
+three-ring intersection; ZERO reach any two-ring combination including Ring 1. The day's principal item
+— the matter behind the IAReporter "Iraq and pharmaceutical companies" headline — reached NO RING, and
+the join to UNCTAD's `gms-ventures-v-iraq` record was INDICATED AND REFUSED by the seat against its own
+interest. First measurement of `www.iareporter.com` in an 852-record relay corpus: 200 / 67,118 bytes /
+headline plus login form, with a document-level null on `ICSID Case No` and a passing companion control.
+The 2026-11-22 nine-leg forecast was VINDICATED EXACTLY, the eighth consecutive sitting.
+
+**Insight ledger.** NO NEW INSIGHT ON THE RESEARCH QUESTION; standing watch — recommended by the analyst
+seat against its own work. ONE entry banked as an instrument/method constraint at MEDIUM confidence:
+every slug-level screen in this record runs on a unit that provably drops ring vocabulary, demonstrated
+in-corpus on a 188-character slug ending `rits-not-on-j`, with the loss NOT boundable from slug length.
+CORRECTION `1123-A` entered against the 2026-11-22 reservoir figure: its single non-jurisdictional hit
+matches on `pharma`, a SECTOR word, and is NOT a Ring-1 lead.
+
+**Accountability — research analyst: DISCHARGED.** Zero edits, zero commits, zero pushes, verified
+independently by the chairman rather than accepted. Five searches of five, each with a question
+attached; zero fetches with the dead instrument declared rather than worked around; zero relay rows,
+none authorised. SIX engine glosses refused and named, each prior-art screened on its own rigid
+designator BEFORE refusal. Under challenge it sustained ALL SEVEN objections, charged FOUR further
+defects against itself that the chairman had not reached, FALSIFIED ITS OWN STRONGEST PUBLISHED NUMBER,
+named the exact mechanism of its worst figure (`| head -8` read as a population — the third instance of
+one defect in its own day), STRUCK its own inference on the ground that a measurement both hypotheses
+predict is evidence for neither, and RECOMMENDED THE WITHDRAWAL OF ITS OWN INSIGHT. It also disclosed,
+unprompted, that it had read the prior naming of the chairman's principal item that morning and failed
+to say so. Its three sustained defects are all one kind — a truncated or approximated display read as a
+complete population — and not one touched a holding.
+
+**Accountability — chairman: DISCHARGED WITH FIVE ERRORS.** The worst, and the most serious defect in
+the sitting by either seat: he set the day's principal item WITHOUT screening the record for its own
+designator, and the 2026-11-22 record had already named that locator with its outcome and its date. He
+told the seat in writing that the store "has never been read as a lead source" (false), and wrote in the
+record that yesterday's literal set was unpublished (false — it is in `state/research_log.json`;
+withdrawn in place). His first carrier-count command returned zero for everything including its control
+and was caught only by the control. He nearly published a sixty-day figure taken from mtime in a fresh
+checkout. He had adopted the designator-screen rule for his own seat an hour earlier and ran it on a
+small finding but not on the day's principal item.
+
+**Harness note, carried and sharper for a third sitting.** The chairman both sets the agenda and vets
+the return, so he cannot prove he did not shape the answers — and today his framing demonstrably did
+shape them, because a false premise in his brief sent the seat to a carried item as though it were new.
+
+**One optimization item (Rule 0), chairman's, PROPOSED ONLY as a written rule since `prompts/` is out of
+scope:** screen the record — and `state/research_log.json` specifically — for the rigid designator of
+the item the AGENDA is about, before the brief is written. Existing rules screen before a gloss is
+refused and before a claim is filed; neither reaches the agenda-setting step. It would have prevented
+three of the chairman's five errors.
+
 ## 2026-11-22 — daily council (record: `analytics/daily-research/2026-11-22.md`)
 
 **Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is

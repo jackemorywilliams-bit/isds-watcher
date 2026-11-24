@@ -1,0 +1,24 @@
+{
+  "candidate_claims": [
+    {
+      "claim_text": "Across the 77 committed files in analytics/scholar-intake/ at repository pin a49c642717d08635dbcd6c340dc0ca57ddddb52a, the field $.mailbox.newest_alert_subject takes seven distinct values; the 35 files dated on or before 2026-10-12 carry exactly four of them, and three further subjects are first attested on 2026-10-16 (clinical trial data / test data / regulatory), 2026-11-07 (treaty shopping (ICSID OR ISDS OR investment)) and 2026-11-23 (TRIPS (\"Article 39\" OR \"Art 39\" OR \"Art. 39)), which are the three branches analytics/insights.jsonl line 264 recorded as absent on 2026-10-12.",
+      "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/a49c642717d08635dbcd6c340dc0ca57ddddb52a/analytics/scholar-intake/2026-11-23.json",
+      "access_status": "full",
+      "source_authority": "primary",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "\"newest_alert_subject\": \"TRIPS (\\\"Article 39\\\" OR \\\"Art 39\\\" OR \\\"Art. 39 ... - new results\"",
+      "supporting_locator": "analytics/scholar-intake/2026-11-23.json $.mailbox.newest_alert_subject; census over analytics/scholar-intake/*.json (77 files) by distinct value of that field, run in session with python3 -I. LIMITS, binding: alerts_30d counts alert emails in a 30-day window and not saved alerts, so a first-attestation date is an upper bound on a creation date and NOT evidence that any alert was created then; Scholar truncates each subject at 'OR ...', so the full query string for each of the three is not in this repository; the TRIPS limb rests on exactly one file of 77. The 35-file figure differs by one from the 34 reported at insights.jsonl:264 and the two were not reconciled at that entry's own pin."
+    },
+    {
+      "claim_text": "The gmail_scholar item queued on 2026-11-23 at https://academic.oup.com/jiplp/advance-article/doi/10.1093/jiplp/jpag099/9104307 is titled 'Assessing the scope of trade secrets definition under the UK common law and statute: a case for greater clarity?', attributed by the Scholar alert to S Nashkova in the Journal of Intellectual Property Law & Practice (2026); the sha256 of that 112-character title is 672e968120d912e94263150389a2458b3cd8d39c9f1de3ba1df5a711da5ab5a8, which equals access.title_sha256 on the 2026-11-24 telemetry row gmail_scholar:a11ce8b1592bf4ed, whose access.fetch_outcome is 'refused' and whose body was not fetched.",
+      "source_url": "https://academic.oup.com/jiplp/advance-article/doi/10.1093/jiplp/jpag099/9104307",
+      "access_status": "blocked",
+      "source_authority": "unknown",
+      "claim_type": "lead",
+      "assertion_status": "lead",
+      "supporting_quote": "\"title\": \"Assessing the scope of trade secrets definition under the UK common law and statute: a case for greater clarity?\"",
+      "supporting_locator": "state/deferred.json at commit 734edd256e808c15484f02c18d11c8030ec50865 (2,068 bytes), $.gmail_scholar[\"https://academic.oup.com/jiplp/advance-article/doi/10.1093/jiplp/jpag099/9104307\"].title; hash identity verified by execution against analytics/candidate_telemetry.jsonl row gmail_scholar:a11ce8b1592bf4ed, run_date 2026-11-24. NARROW: the title and the author string are Google Scholar's rendering as captured by scripts/scholar_intake.py, not the publisher's page, which was not read; NO statement is made about the article's contents, argument or conclusions. state/deferred.json is 3 bytes '{}' at HEAD and at the origin/main pin 6f49d41, so this title is not recoverable at HEAD."
+    }
+  ]
+}

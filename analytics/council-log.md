@@ -2,6 +2,69 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-24 — daily council (record: `analytics/daily-research/2026-11-24.md`)
+
+**Chairman** configured `claude-opus-5`; **no model attestation is available for either seat** — the agent
+definitions pin `model: opus`, an alias that cannot express 4.8 against 5 (escalation 12). **Seats
+convened: 1 member plus the chairman in session, which is Rule 0's cap exactly** — `research-analyst`, a
+REAL Agent-tool subagent, memo filed VERBATIM at Part 4. **No seat was performed.** The integrity
+challenge was discharged inside the Part 5 dialogue under the chairman's own name, as Rule 0
+contemplates. Analytics and systems-researcher seats NOT convened, per Rule 0; the Rule 1 digest sentence
+is copied from `meta.json` at Part 3. **The seat returned twice and the second, fuller return was filed;
+the chairman misread a finished seat as stalled and prompted it, and says so at §6.6 item 1.**
+
+**Instruments.** Both direct fetch layers DEAD, re-probed on two neutral controls before any access
+statement (fourth consecutive sitting of the `getaddrinfo` mechanism). Web search LIVE. The committed
+relay carried the day — run number **231** / `45383179708`, 5 requested / **3 completed**, `control_ok`
+true, `void` false, six of twelve slots unspent.
+
+**Result.** **NULL DAY at the intersection, and the day's product is an instrument measurement that
+CLOSES A ROUTE.** The one authorised new row — the UNCTAD ISDS Navigator record for case 1201, whose
+`Subject of dispute` field thread `[0]` named as what would discharge Ring 1 — **refused 403 on the
+question AND on its companion control, with the neutral control passing.** That measures the Navigator's
+`cases/<id>/<slug>` sub-path at **0 `ok` of 6 attempts across four dates and three case records**, against
+`ok` 15 / `refused` 20 on the same host's treaty class. **Both ICSID dockets AT REST, established on the
+`Latest Development` FIELD and not on the checksum**, with a published positive control (29 of 31, 49 of
+121). `Digest 2026-11-24: 18 candidates evaluated, 0 items surfaced` — the **fourth consecutive**
+zero-surfaced digest, with three of ten sources unread. The analyst screened **all 18 items with the
+failing ring named per item: 0 of 18 reach the three-ring intersection and 0 reach any two-ring
+combination including Ring 1.** The 2026-11-23 nine-leg forecast was **VINDICATED EXACTLY, the ninth
+consecutive sitting.**
+
+**Insight ledger.** **ONE entry banked** (`analytics/insights.jsonl` line 334): this project's academic
+alert set has grown from **four attested subjects to seven**, the three additions are **exactly the three
+branches `insights.jsonl:264` recorded as absent** — including the clinical-trial-data / TRIPS Art. 39
+branch, the project's distinct substantive concern — **and no record noticed for 39 days.** Census
+re-derived independently by the chairman before banking; three limits travel with the entry, including
+that the TRIPS limb rests on **one file of 77**. **One clause of the seat's own insight was STRUCK by
+ruling `1124-C7`.** A second, measured insight was **held, not banked, on the seat's own recommendation**
+and escalated instead: four cross-ring phrase containments in `fingerprint.yaml`, one load-bearing above
+`PRESENT_FLOOR`. **No insight on the research question. THE ANSWER DOES NOT MOVE.**
+
+**Vetting.** **Seven objections, `1124-C1`–`1124-C7`.** Two sustained **against the chairman** and both
+raised by the seat; one more sustained against the chairman and **found by the chairman against himself**;
+one sustained against the seat; one partly sustained; one where the claim survived but the method
+criticism stood; **and one the chairman filed against the seat, measured, found wrong and WITHDREW on the
+record.**
+
+**Accountability.** **ANALYST — DISCHARGED, the strongest return yet vetted in that seat.** Every
+re-derivable figure reproduced exactly; zero edits and zero commits verified independently against the
+worktree and branch log; eleven screened gloss refusals with three caught as one-day-old repeats by the
+L329 cure; the Iraq join refused for a second sitting **against its own interest**; a second insight
+measured and deliberately not filed to avoid padding; **five defects charged against itself**, one caught
+pre-publication; three of ten search calls declined; and **two real defects found in the chairman's
+work.** **CHAIRMAN — DISCHARGED WITH FIVE ERRORS REDUCING TO TWO HABITS:** an absence claim stated one
+abstraction level above its own screen, **committed twice** — the second time in a bar that would have
+killed the day's best recommendation — and **a schema assumed instead of read, three times**, twice
+returning a silent zero on every row including the mandatory control. He also grounded a live bar on a
+forbidden cross-publisher analogy: **his conclusion survived and both of his reasons fell.**
+
+**The sitting's own lesson, carried forward as next step 12:** all three real defects found in this
+sitting, in either direction, were **absence or attribution claims stated wider than the evidence that
+produced them**, and none changed a disposition. **This council's failures are no longer failures of
+diligence but failures of SCOPE.**
+
+
 ## 2026-11-23 — daily council (record: `analytics/daily-research/2026-11-23.md`)
 
 **Chairman** configured `claude-opus-5`. **Seats convened: 1 member plus the chairman in session, which is

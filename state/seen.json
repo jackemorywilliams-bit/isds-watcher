@@ -639,6 +639,11 @@
         "outcome": "ok",
         "run": "2026-10-12"
       },
+      "https://academic.oup.com/jiplp/advance-article/doi/10.1093/jiplp/jpag099/9104307": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://access.heinonline.com/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jnloitl10&section=8": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -668,6 +673,11 @@
         "at": "2026-10-19T18:57:18.960908+00:00",
         "outcome": "ok",
         "run": "2026-10-19"
+      },
+      "https://helda.helsinki.fi/server/api/core/bitstreams/feb1281d-349c-493c-bc8a-f29435791790/content": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://internationallaw.jurisocial.org/index.php/JJIL/article/download/8/8": {
         "at": "2026-10-19T18:57:18.960908+00:00",
@@ -732,6 +742,11 @@
         "outcome": "ok",
         "run": "2026-09-14"
       },
+      "https://globaladvisoryexperts.com/news/regulatory-data-protection-belgium-8-2-1-exclusivity-guide": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://interestingengineering.com/culture/apple-openai-trade-secrets-hardware-lawsuit": {
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
@@ -780,6 +795,11 @@
         "at": "2026-09-07T23:25:56.267336+00:00",
         "outcome": "ok",
         "run": "2026-09-07"
+      },
+      "https://www.openpr.com/news/4697172/generalized-pustular-psoriasis-market-vanda-s-imsidolimab": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.youtube.com/shorts/-ZRoLCHqivM": {
         "at": "2026-07-13T15:44:09.443682+00:00",
@@ -847,6 +867,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/analysis-icsid-tribunal-declines-to-test-investors-nationality-at-the-time-of-alleged-breach-and-finds-that-matrimonial-property-is-protected-form-of-ownership-dismissing-georgias/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://www.iareporter.com/articles/analysis-icsid-tribunal-in-banesco-v-panama-finds-no-fet-breach-in-state-conduct-based-on-ambiguous-legal-framework-and-excludes-composite-breach/": {
         "at": "2026-09-28T19:57:56.186541+00:00",
         "outcome": "ok",
@@ -856,6 +881,11 @@
         "at": "2026-11-16T22:42:46.255534+00:00",
         "outcome": "ok",
         "run": "2026-11-16"
+      },
+      "https://www.iareporter.com/articles/analysis-icsid-tribunal-in-petaquilla-gold-v-panama-declines-to-bifurcate-the-proceedings-and-allows-canada-to-file-non-disputing-party-submission-on-treaty-interpretation/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/analysis-icsid-tribunal-splits-on-ownership-and-control-requirement-in-cafta-dr-arbitration-against-honduras/": {
         "at": "2026-09-14T18:19:25.423756+00:00",
@@ -977,6 +1007,11 @@
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/cjeu-advocate-general-recommends-annulment-of-state-aid-finding-in-relation-to-payment-of-micula-award-eu-bar-to-enforcement-should-stay-in-effect/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://www.iareporter.com/articles/ck-hutchison-makes-good-on-its-threat-to-lodge-1-5-billion-usd-arbitration-against-panama-over-canal-ports-dispute/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
@@ -1002,6 +1037,11 @@
       "https://www.iareporter.com/articles/cyprus-files-for-partial-annulment-of-still-unpublished-banking-award/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
         "outcome": "legacy"
+      },
+      "https://www.iareporter.com/articles/dc-appeals-court-confirms-that-intra-eu-ect-award-set-aside-at-swedish-seat-wont-be-enforced-in-the-us/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/delhi-high-court-grants-enforcement-of-duo-of-decade-old-awards-in-oil-and-gas-dispute-between-vedanta-and-india/": {
         "at": "2026-07-13T15:44:09.443682+00:00",
@@ -1088,6 +1128,11 @@
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "unreadable",
         "run": "2026-09-14"
+      },
+      "https://www.iareporter.com/articles/french-aerospace-company-reportedly-initiates-arbitration-against-airbus-over-eurodrone-program/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/french-cour-de-cassation-rejects-shipyard-investors-bid-to-enforce-icc-award-against-assets-of-greeces-growthfund-finding-that-seizure-would-jeopardize-eu-measures-objectives/": {
         "at": "2026-06-22T17:28:18.632973+00:00",
@@ -1210,6 +1255,11 @@
         "at": "2026-07-13T15:44:09.443682+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/icsid-tribunal-is-constituted-to-hear-real-estate-dispute-between-jordanian-investor-and-uae/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://www.iareporter.com/articles/icsid-tribunal-is-in-place-to-hear-electricity-arbitration-against-colombia/": {
         "at": "2026-10-19T18:57:18.960908+00:00",
         "outcome": "ok",
@@ -1272,6 +1322,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://www.iareporter.com/articles/irish-mining-company-reports-agreement-with-mozambique-in-dispute-that-gave-rise-to-prior-arbitration-threat/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/italian-engineering-group-claims-victory-in-icc-arbitration-against-russian-company/": {
         "at": "2026-08-31T19:21:30.989947+00:00",
@@ -1446,6 +1501,11 @@
         "at": "2026-06-29T16:37:09.074379+00:00",
         "outcome": "legacy"
       },
+      "https://www.iareporter.com/articles/revealed-previously-unpublished-2003-decision-in-azurix-v-argentina-1-saw-icsid-tribunal-reject-request-for-provisional-measures-concerning-argentine-water-concessionaires-reorganization/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://www.iareporter.com/articles/revealed-previously-unpublished-2007-decision-in-cit-group-v-argentina-saw-arbitrators-dismiss-states-reliance-on-monetary-gold-principle-distinguish-between-treaty-claims-and-contract-cla/": {
         "at": "2026-07-20T15:07:41.474925+00:00",
         "outcome": "legacy"
@@ -1589,6 +1649,11 @@
         "at": "2026-10-12T21:31:41.475357+00:00",
         "outcome": "ok",
         "run": "2026-10-12"
+      },
+      "https://www.iareporter.com/articles/swiss-federal-tribunal-dismisses-north-macedonian-claimants-request-to-set-aside-treaty-award-that-dismissed-her-claims-against-austria/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/swiss-federal-tribunal-reportedly-dismisses-mining-companys-attempt-to-set-aside-award-that-declined-jurisdiction-over-its-multi-billion-dollar-claim-against-australia/": {
         "at": "2026-08-10T14:17:45.964749+00:00",
@@ -1821,10 +1886,20 @@
         "outcome": "ok",
         "run": "2026-11-09"
       },
+      "https://www.iareporter.com/articles/us-court-stays-enforcement-of-380-million-usd-telefonica-award-pending-colombias-annulment-bid-despite-icsid-committees-lifting-of-stay/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://www.iareporter.com/articles/us-court-stays-proceedings-to-enforce-yukos-shareholders-awards-against-russia-pending-appeal-in-related-yukos-capital-case-declining-to-order-security/": {
         "at": "2026-11-09T22:50:55.507231+00:00",
         "outcome": "ok",
         "run": "2026-11-09"
+      },
+      "https://www.iareporter.com/articles/us-poultry-producer-lodges-usmca-claim-against-mexico-amid-tax-dispute/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://www.iareporter.com/articles/us-power-plant-investors-lodge-icsid-arbitration-against-colombia/": {
         "at": "2026-07-27T15:39:11.994974+00:00",
@@ -2656,6 +2731,11 @@
         "outcome": "ok",
         "run": "2026-11-16"
       },
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2019-28-dispute-concerning-the-detention-of-ukrainian-naval-vessels-and-servicemen-ukraine-v-the-russian-federation-6/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2022-13-kn-holding-llc-and-severgroup-llc-v-the-french-republic-2/": {
         "at": "2026-06-16T21:59:27.957730+00:00",
         "outcome": "legacy"
@@ -2704,6 +2784,11 @@
         "outcome": "ok",
         "run": "2026-10-19"
       },
+      "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2026-35-conciliation-between-the-kingdom-of-cambodia-and-the-kingdom-of-thailand-5/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
+      },
       "https://pca-cpa.org/en/news/pca-press-release-pca-case-no-2026-35-conciliation-between-the-kingdom-of-cambodia-and-the-kingdom-of-thailand/": {
         "at": "2026-09-14T13:57:16.666992+00:00",
         "outcome": "ok",
@@ -2750,6 +2835,11 @@
         "at": "2026-08-31T19:21:30.989947+00:00",
         "outcome": "keyword_only_by_design",
         "run": "2026-08-31"
+      },
+      "https://pca-cpa.org/en/news/seminaire-consacre-a-la-langue-et-la-tradition-juridique-francaises-dans-les-procedures-administrees-par-la-cour-permanente-darbitrage/": {
+        "at": "2026-11-24T00:33:02.557321+00:00",
+        "outcome": "ok",
+        "run": "2026-11-24"
       },
       "https://pca-cpa.org/en/news/third-in-person-meeting-of-the-expert-group-on-the-future-development-of-the-permanent-court-of-arbitration/": {
         "at": "2026-07-06T16:16:43.184529+00:00",

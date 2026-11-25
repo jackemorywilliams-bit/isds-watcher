@@ -1,0 +1,24 @@
+{
+  "candidate_claims": [
+    {
+      "claim_text": "Across the 18 rows of analytics/candidate_telemetry.jsonl with run_date 2026-11-24 at repository pin 9571a9a6c6bc4e6f02408b222d9be78e00818d6d, the set of rows with a non-zero $.verdict_v2.rings.ip_as_investment.lexical_subtotal (3 rows: 13, 12, 9) and the set of rows whose $.verdict_v2.nexus is 'established' or 'asserted' (4 rows: three pca_press notices at 'established' and one iareporter_headlines tribunal-constitution notice at 'asserted') are disjoint, with an intersection of 0; the single row whose ip_as_investment strength is 'present' on a body the instrument read carries nexus 'absent'.",
+      "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/9571a9a6c6bc4e6f02408b222d9be78e00818d6d/analytics/candidate_telemetry.jsonl",
+      "access_status": "full",
+      "source_authority": "primary",
+      "claim_type": "factual",
+      "assertion_status": "candidate",
+      "supporting_quote": "\"nexus\": \"established\"",
+      "supporting_locator": "analytics/candidate_telemetry.jsonl, rows with run_date == '2026-11-24', fields $.verdict_v2.nexus and $.verdict_v2.rings.ip_as_investment.lexical_subtotal; rows matched to locators in state/seen.json by sha256_hex(url) per src/telemetry.py:183; run in session with python3 -I. LIMITS, binding: (1) this is ONE run of 18 rows and is NOT a claim about the all-time 488-row telemetry corpus, which was not measured; (2) it is NOT a defect claim -- every value is correct by the field's own definitions at prompts/classifier_v2.txt:162-174, where 'established' requires an identified proceeding and 'absent' may be returned only from a read body; (3) the strong-nexus side has n=4, three of them one source on one day, and no probability model is offered because the 18 are not a random draw; (4) the access-regime explanation (that no row in the run both identifies a proceeding and exposes a readable body) is an explanation of these 18 rows and would be falsified by any corpus row that does both, which was not screened for."
+    },
+    {
+      "claim_text": "At repository pin 9571a9a6c6bc4e6f02408b222d9be78e00818d6d the committed relay corpus holds 126 files and 864 records; 487 of those records are on icsid.worldbank.org (484 ok, 3 refused) and 155 distinct 'find' literals have been fired on that host, of which NONE contains the string 'Iraq'; corpus-wide exactly 1 of 204 distinct find literals contains it. The path https://icsid.worldbank.org/cases/recent returns ok on 24 of 24 records and serves full case captions with ICSID designators into the searchable text, demonstrated by find_matched true on 'ARB/' and 'ICSID Case No.' with the in-corpus excerpt 'October 6, 2026 Lombard North Central PLC v. Republic of Turkiye (ICSID Case No. ARB/26/40)'. By contrast https://icsid.worldbank.org/cases/pending returns ok at about 74 KB while 'ARB/' and 'ICSID Case No.' both return find_matched false on two separate dates.",
+      "source_url": "https://github.com/jackemorywilliams-bit/isds-watcher/blob/9571a9a6c6bc4e6f02408b222d9be78e00818d6d/analytics/fetch-results/2026-10-10-daily.json",
+      "access_status": "full",
+      "source_authority": "primary",
+      "claim_type": "procedural",
+      "assertion_status": "candidate",
+      "supporting_quote": "cluded Constituted October 6, 2026 Lombard North Central PLC v. Republic of Türkiye (ICSID Case No. ARB/26/40) October 6, 2026 Sopam Energie - SA v. Republic of Mali (ICSID Case No. ARB/26/39) September 23, 2026 Maksim Vladimirovi",
+      "supporting_locator": "analytics/fetch-results/2026-10-10-daily.json, the record with url 'https://icsid.worldbank.org/cases/recent' and find 'ARB/', field $.records[].excerpt; census over analytics/fetch-results/*.json (126 files, 864 records) grouped by host, path and outcome, with the record array read from the key 'records' as the committed schema names it. LIMITS, binding: (1) the capability limb is NOT new -- analytics/insights.jsonl:158 (2026-09-09) already holds that /cases/recent serves respondent-State names into the searchable text, and this claim applies that finding rather than discovering it; (2) /cases/recent is a union of four recency feeds per insights.jsonl:263 and NO date on it may be read as a registration date; (3) the cases/pending measurement is a statement about the SERVED byte-stream and is expressly NOT a claim that the page is empty for a browser; (4) the 'never asked about Iraq' limb is a statement about this committed corpus at this pin and about nothing else."
+    }
+  ]
+}

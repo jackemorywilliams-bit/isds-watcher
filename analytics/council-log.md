@@ -2,6 +2,76 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-25 — daily council (record: `analytics/daily-research/2026-11-25.md`)
+
+**Chairman** configured `claude-opus-5`; **no model attestation is available for the seat** — all nine agent
+definitions pin `model: opus`, an alias that cannot express 4.8 against 5 (escalation 12). The seat reports
+Opus 5 at its §4.12 and that report is recorded, not verified. **Seats convened: 1 member plus the chairman
+in session, which is Rule 0's cap exactly** — `research-analyst`, a REAL Agent-tool subagent, **three
+written returns, all filed VERBATIM** (memo at Part 4, both vetting answers at Part 5). **No seat was
+performed; no PROCEDURAL FAILURE this sitting.** The integrity challenge was discharged inside the Part 5
+dialogue under the chairman's own name, as Rule 0 contemplates; analytics and systems-researcher seats NOT
+convened, and the Rule 1 digest sentence is copied from `meta.json` at Part 3. **The conflict between the
+standing convening prompt and Rule 0 was adjudicated against the prompt under Rule 0's own Precedence
+clause, for the second consecutive sitting (escalation 11).**
+
+**Instruments.** Both direct fetch layers DEAD, re-probed on two neutral controls before any access
+statement — fifth consecutive sitting of the `getaddrinfo` mechanism, and **not a state change.** Web search
+LIVE. The committed relay carried the day: run number **233** / `45603239549`, 5 requested / **3
+completed**, `control_ok` true, `void` false, seven of twelve slots unspent for want of warrant.
+
+**Result.** **NULL DAY at the intersection, and the day's product is a measurement that REVERSES THE
+DIRECTION OF ITS OWN AUTHOR'S CONCLUSION.** The analyst found the asset and proceeding measurements
+disjoint on the 18-row run and suggested the gap might be an artefact of which sources are readable. **It
+named the falsifier in writing and did not run it; the chairman ran it.** Over the **578** ring-carrying
+rows of `analytics/candidate_telemetry.jsonl`, `nexus ∈ {established, asserted}` numbers **147**, non-zero
+`ip_as_investment.lexical_subtotal` numbers **28**, **intersection 0**; restricting to rows whose body was
+read gives **118** whose asset-subtotal value set is exactly **{0}**; and **the two host sets share exactly
+one member — `www.iisd.org`, at 10 and 2.** The access-artefact explanation is **FALSIFIED**, the seat
+**conceded in full**, struck its own §4.10 sentence, supplied the replacement, and supplied the binding
+G19/truncation qualification against the chairman's wider claim. **The one authorised relay row — the UNCTAD
+`country/99/iraq/respondent` LISTING page, authorised precisely because it was UNMEASURED — REFUSED 403 on
+the question AND on its companion control, with the neutral control passing**, taking that host's
+`investment-dispute-settlement/` branch to **0 `ok` of 10** against 15 of 35 on its treaty branch, and
+**closing the last route the Iraq thread had on the host it was written around.** Per `1124-C1` that is
+UNTESTED-TO-FAILING, not closed. **Both ICSID dockets AT REST on the `Latest Development` FIELD with
+`find_matched` TRUE and a visible-prose excerpt.** `Digest 2026-11-24: 18 candidates evaluated, 0 items
+surfaced` — the **fourth consecutive** zero-surfaced digest, with three of ten sources unread by the
+digest's own health warnings. The analyst screened all 18 with the failing ring named per item: **R1 1/18,
+R2 5/18, R3 6/18, both conjunctions 0**, reproducing 2026-11-24 exactly. **The 2026-11-24 nine-leg forecast
+was VINDICATED EXACTLY — the tenth consecutive sitting, the second at nine of nine.**
+
+**Insight ledger.** **ONE entry banked** (`analytics/insights.jsonl` line **335**) and **it is the
+chairman's corpus measurement, not the seat's filing** — banked on the seat's own recommendation that its
+18-row cross-tab be dropped as a strictly weaker instance. Three limits travel with it, G19 first. **A
+second observation of the chairman's own was measured and deliberately NOT banked**: `December 16, 2025`
+appears on both watched docket pages naming different events, on 31 of 32 `ARB/25/54` observations, so Row
+3's `Each party` suffix is load-bearing — but a shape screen found it to be an instance of
+`insights.jsonl:74`, and the chairman found that prior art only by running the screen he had just required
+of the seat.
+
+**Accountability.** **Research analyst — the strongest return this seat has filed.** All five briefed
+priorities on **5 of 10** searches; every figure the chairman re-derived reproduced exactly, including every
+narrowing figure the seat offered against the chairman's own objection. It broke a three-sitting null with a
+new query formulation and then **refused the join that formulation tempted it toward, for the third
+consecutive sitting, against its own principal priority**; it corrected its predecessor in the direction of
+less caution for itself; it asked the chairman to make its own thread **harder** to close; and it
+recommended its own insight **not** be banked. **Against it: five objections, five conceded** — two of them
+carried-figure and denominator defects of exactly the class it charged its predecessor with on the same day,
+and `1125-C1` the falsifier it named in its own attack section and did not run. **One objection OVERRULED
+in its favour** (`1125-C5`), its exit correct on the evidence it had and superseded by evidence the chairman
+recovered from commit `86dff2d`. **Chairman — four errors, three of them one fault**: a key or denominator
+assumed rather than asserted, twice in one sitting on the day he circulated a written warning about it to
+the seat, plus a procedural failure that cost a round — objections sent to a still-running seat, which the
+seat correctly refused to be read as having answered, and which had to be re-sent.
+
+**Escalations.** **Sixteen stand, every figure re-measured in session rather than carried.** The Iraq
+thread's missing route ranks first and two one-line decisions on it are owed for the second day. **Standing
+escalation 13's surviving ICSID arm has converged with the seat's own best recommendation — they are the
+same surface** (`https://icsid.worldbank.org/cases/recent`), authorised for the next sitting with a
+pre-registered expectation of `find_matched: false`. **Nothing was built and every operator approval remains
+pending.**
+
 ## 2026-11-24 — daily council (record: `analytics/daily-research/2026-11-24.md`)
 
 **Chairman** configured `claude-opus-5`; **no model attestation is available for either seat** — the agent

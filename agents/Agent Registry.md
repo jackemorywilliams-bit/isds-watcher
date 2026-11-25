@@ -566,6 +566,38 @@ table rather than restate the list from memory.
 
 ## Change log
 
+- **2026-11-25 (archivist session — thirty-sixth deployment)** — **No roster change and no
+  contract change, the twentieth consecutive session.** Audited against `a015ff2a`
+  (`origin/main`, clean tree) on the complete **2,951**-commit history after
+  `git fetch --unshallow`; the clone arrived shallow at **118** with `HEAD` detached, the
+  twenty-eighth consecutive recurrence. `git log 1ca3e196..a015ff2a -- .claude/agents/ prompts/
+  src/models.py` returns **no commit** across the 67-commit window, and `.claude/agents/` has been
+  unchanged since `ae1f04b3` (2026-08-05) — **112 days**. All nine Model lines re-read by hand,
+  definition against vault note: `claude-opus-5` for council-chairman, research-analyst,
+  site-experience and systems-designer; `claude-opus-4-8` for analytics-officer,
+  integrity-officer, obsidian-archivist, research-editor and systems-researcher. All nine declare
+  `model: opus`, a tier and not a version. `scripts/check_models.py` exits **0** over 12 flowchart
+  cards. **A new check this session, and it passed:** every one of the ten `prompts/` files the
+  nine definitions enumerate exists on disk — `carrying_span_rule.md`, `council_calibration.md`,
+  `council_chairman.txt`, `council_reconvene.txt`, `council_roundtable.txt`, `council_security.txt`,
+  `daily_council_protocol.md`, `research_analyst.txt`, `research_editor.txt`,
+  `systems_researcher.txt` — so **no definition binds a prompt that is not there**. (The three
+  `prompts/` files no definition names are `classifier.txt`, `classifier_v2.txt` and `triage.txt`,
+  which belong to the pipeline's lanes rather than to a seat.) **D6 was deliberately not
+  re-tested**, per its own documented-and-closed condition that the runtime be re-queried only if
+  `.claude/agents/` or `src/models.py` changes; both returned zero commits.
+  **The session's finding is not in the roster but in a seat's read path and a seat's domain.**
+  **D5** was re-tested at day 114 and, for the first time, measured against
+  `scripts/holdout_set.json` **case by case** rather than by vocabulary: two of the four
+  out-of-sample positives (`loewen_v_us`, `mondev_v_us`) have **zero** occurrences anywhere in the
+  research analyst's context, and the two that appear (`apotex_v_us`, `pm_v_uruguay`) appear for
+  unrelated reasons and are never identified as holdout positives — so the precondition of the
+  2026-08-03 failure is intact. Definitions naming their own vault note: still **1 of 9**.
+  Separately, **D37** was opened for a `fetch-relay` write-back race the council had diagnosed
+  three times and the vault had never recorded. Full record:
+  `analytics/vault-sessions/2026-11-25.md`; threads [[Workflow Threads]]; dated history
+  [[Project Change Log]].
+
 - **2026-11-22 (archivist session — thirty-fifth deployment)** — **No roster change and no
   contract change, the nineteenth consecutive session.** Audited against `1ca3e196`
   (`origin/main`, clean tree) on the complete **2,884**-commit history after

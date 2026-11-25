@@ -141,6 +141,101 @@ Carried threads, each re-run rather than restated:
 
 ---
 
+**Board re-measured — 2026-11-25, at `a015ff2a` on `origin/main`, clean tree, on the complete
+**2,951**-commit history after `git fetch --unshallow`; the clone arrived shallow at **118** with
+`HEAD` detached, the twenty-eighth consecutive recurrence.** *Audited against `a015ff2a`; window
+`1ca3e196..a015ff2a` = **67** commits; paths: `agents/`, `.claude/agents/`, `prompts/`,
+`src/models.py`, `README.md`, `HANDOFF.md`, `COUNCIL.md`, `METHODOLOGY.md`, `docs/`, `scripts/`,
+`scripts/site_templates/`, `views/isds-workflow-3d/workflow.json`, `.github/workflows/`,
+`tests/`, `moc/`, `analytics/vault-sessions/`, and every remote branch tip.* **No roster change
+and no contract change, the twentieth consecutive session:**
+`git log 1ca3e196..origin/main -- .claude/agents/ prompts/ src/models.py` returns **no commit**.
+
+**The interval read from the two record dates, per rule 12, is THREE DAYS — the schedule's own
+step, with nothing missed.** The previous record is `analytics/vault-sessions/2026-11-22.md`, and
+both it and the sitting it rescued were delivered: `.sent/2026-11-19` and `.sent/2026-11-22` are
+both on `main`. **D36's remedy worked end to end**, which is the first thing this board has been
+able to say about that thread.
+
+- **Orphan sweep — nothing new, for the first time since D36 opened.** **327** remote tips,
+  **125** non-ancestors, **13** substantive after the rule-7 content reduction, **0** of them
+  newer than 2026-11-19. Four pull requests open (`#341`, `#332`, `#184`, `#110`), all four
+  adjudicated before today.
+- **Models, all nine seats** — `scripts/check_models.py` exits **0** over 12 flowchart cards, and
+  every one of the nine `agents/*.md` Model lines matches its `.claude/agents/` definition
+  (4.8: analytics-officer, integrity-officer, obsidian-archivist, research-editor,
+  systems-researcher; Opus 5: council-chairman, research-analyst, site-experience,
+  systems-designer). **No model drift.** All ten `prompts/` files the definitions name exist.
+- **D6** — **deliberately not re-tested**, per its own documented-and-closed condition: re-query
+  the runtime only if `.claude/agents/` or `src/models.py` changes, and both returned zero
+  commits. Recorded so the silence is not read as an omission.
+- **D5** — **1 of 9**, unchanged, and now measured case by case rather than by vocabulary. See
+  the dated entry in the thread below: two of the four holdout positives are **unreachable** from
+  the analyst's context and the other two are present for unrelated reasons.
+- **D11** — PR **#110** open, head still `de73f9fa`. Unchanged.
+- **D19** — PR **#184** open, head still `529c744358`. Unchanged.
+- **D20** — red on `main` for the **seventh** consecutive run; run **506** on `9dc82ea5` is
+  **2 failed, 821 passed, 5 xfailed**. See the dated entry below; the `matches` leg is still the
+  assertion working.
+- **D24** — reproduced a **ninth** time, now **31** files; the added one is the 2026-11-23 weekly
+  digest. Restored with `git checkout -- docs/` in the same command that ran the guard.
+- **D34** — quiet. Nothing missed since 2026-11-16; the question of whether 11-10, 11-13 and
+  11-16 fired is still unanswerable from inside a session.
+- **D36** — **delivered, remedy still absent.** `scripts/reanchor.py` unchanged since `a8bccbbc`
+  (2026-08-27, **90** days), still no scope filter (`:106` iterates all of
+  `check_currency.TRACKED`, and `STATE_OF_THE_ANSWER.md` is one of the five at
+  `scripts/check_currency.py:70`). Fifth request.
+- **D37** — **NEW, and it is losing data.** See immediately below.
+
+---
+
+### D37 · `fetch-relay` discards a batch it has already fetched whenever it loses a push race on `main` — and until today the vault carried no record of it *(new 2026-11-25; owner: systems-designer / Emory for the fix, archivist for the routing gap)*
+
+- **What it is.** `.github/workflows/fetch-relay.yml:59-60` is one
+  `git pull --rebase --autostash origin "${GITHUB_REF_NAME}"` followed by one
+  `git push origin "HEAD:${GITHUB_REF_NAME}"`, with **no retry and no loop**. Any concurrent push
+  to `main` inside that window makes the push fail with `cannot lock ref 'refs/heads/main'`, the
+  runner is reclaimed, and the already-fetched batch is **gone with no trace and no alert**.
+- **Today's occurrence, from the run log.** Run **234** (`45610284519`, 2026-11-25T12:04:27Z)
+  committed **`cb54546`** — *"chore: fetch-relay results"*, **1 file changed, 5 insertions(+),
+  5 deletions(-)** under `analytics/fetch-results/` — rebased onto `f6aaaae9` and was refused:
+  `! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at e126f5fb… but
+  expected f6aaaae9…)`. **`git cat-file -t cb54546` returns `fatal: Not a valid object name`.**
+- **The winner is named, and it repeats.** `e126f5fb` is *"chore: daily-update sent marker"*,
+  pushed at **12:04:57 +0000**. On 2026-11-11 run **210** lost to `26d142be`, **the same commit
+  class** (`analytics/daily-research/2026-11-12.md:363-368`). `daily-update.yml`'s marker push and
+  `fetch-relay.yml`'s result push both open a window at roughly 12:04–12:16 daily.
+- **The whole history, counted.** **234** runs: **226** success, **7** failure, **1** cancelled.
+  **All seven failures are on `main`** — runs **19** (2026-08-06), **51** (08-19), **78** (08-31),
+  **132** (09-22), **199** (11-04), **210** (11-11), **234** (2026-11-25). **Four in the first
+  198 runs (2.0%); three in the last 36 (8.3%).**
+- **The council found it first and named the line.** `analytics/daily-research/2026-11-05.md:845-860`
+  quotes the four surviving run logs as literals and states the cause at source; `:924` adopts the
+  diagnostic rule *"if a batch is ever missing, the first hypothesis is a lost push race"*;
+  `:984` records the channel as discarding batches *"five times in 199 runs"*.
+  `analytics/daily-research/2026-11-06.md:106` and `2026-11-12.md:354,:363,:1610` carry it forward.
+- **The file has never been changed.** `git log -- .github/workflows/fetch-relay.yml` returns
+  exactly one commit: `fe02f395`, 2026-08-03, its creation. **114 days.**
+- **The routing gap, which is this seat's and is closed by this entry.** Grepping
+  `push race|cannot lock ref|remote rejected|non-fast-forward` across `agents/`,
+  `analytics/vault-sessions/`, `HANDOFF.md` and `moc/` on 2026-11-25 returned **zero carriers**;
+  the only hit outside `analytics/daily-research/` was `STATE_OF_THE_ANSWER.md`, which is the
+  *analyst's* read path and not the systems designer's. **A mechanism-level defect diagnosed three
+  times in one month had no thread, no entry in the owning seat's note, and no change-log line.**
+  That is **D15**'s mechanism, and the sibling of the error recorded in the 2026-11-22 addendum.
+  Entered in [[systems-designer]] in this change set; the council-record sweep is adopted as
+  **rule 16** in [[obsidian-archivist]].
+- **ACTION — Emory or the systems designer: a retry loop on that push.** Specified by the council
+  twenty days ago, a few lines in one file, and two batches lost since. **The only open thread on
+  this board that is costing the project data while it waits.**
+- **What is not claimed.** The landed `analytics/fetch-results/2026-11-25-daily.json`
+  (`69a3d62e`, 11:19:10Z) reads `"requested": 5, "completed": 3`, with two
+  `investmentpolicy.unctad.org` rows refused at HTTP **403** and a duplicated ICSID row. A 5/5
+  insert-delete is the shape of a retry or a de-duplication of exactly those rows — **but the
+  commit does not exist and cannot be read**, so whether it would have raised `completed` is
+  unknown and is not asserted.
+---
+
 ### D36 — the 2026-11-19 sitting completed its audit, opened a pull request, and died twenty seconds later, leaving a correct record invisible for three days *(new 2026-11-22; owner: archivist — landed here; **Emory** for the two remedies, both already asked for)*
 
 - **The facts, all on `origin`.** `origin/vault/archivist-2026-11-19` (tip `5c40df63`) fails
@@ -183,6 +278,20 @@ Carried threads, each re-run rather than restated:
   never writes `STATE_OF_THE_ANSWER.md` into an archivist branch, **or** that path added to this
   seat's record set. This is the **fourth** sitting to ask. Nothing inside a sitting closes it:
   2026-11-07 survived and won the race with a pin; 2026-11-19 did not survive, and lost it.
+
+- **DELIVERED 2026-11-25, and the remedy is still absent — fifth request.** Both
+  `analytics/vault-sessions/.sent/2026-11-19` and `.sent/2026-11-22` are on `main`, so the
+  rescued sitting and the sitting that rescued it both reached Emory by email. **The failure mode
+  this thread opened on is discharged.** What is not: `scripts/reanchor.py` is unchanged since
+  `a8bccbbc` (2026-08-27, **90** days) and still has no scope filter — `:106` iterates every note
+  in `check_currency.TRACKED`, and `STATE_OF_THE_ANSWER.md` is one of the five
+  (`scripts/check_currency.py:70`). So the bot will write an out-of-scope path into this sitting's
+  pull request too, and the revert-and-pin procedure at [[obsidian-archivist]] steps 1-3 still only
+  works while a session survives to execute it. **2026-11-19 remains the proof that that is luck
+  rather than discipline.**
+- **The orphan sweep of 2026-11-25 found nothing new** — 327 tips, 125 non-ancestors, 13
+  substantive, none newer than 2026-11-19 — the first clean sweep since this thread opened, and
+  evidence that **rule 15** and **step 5** are doing their work.
 
 ---
 
@@ -273,6 +382,36 @@ Carried threads, each re-run rather than restated:
   is **127**. The links themselves were written earlier, in `8aea8617` (2026-06-29), which is
   **146** days. Both numbers are correct on their own basis; the detectable-since basis is the one
   this thread has always used, and it is stated here so no later sitting silently switches it.
+
+- **RE-MEASURED 2026-11-25 — still nine files, and for the first time this thread can say which
+  fix clears which file.** `python3.13 scripts/build_graph.py --dry-run`, run after the tree was
+  confirmed clean: **274** notes (268 on 2026-11-22), **514** edges, **0** orphans, **164** blocks
+  it would update, **19** cap WARNs, **9** files with links to nonexistent notes. All eleven
+  flagged occurrences were read with their surrounding bytes rather than counted as rows.
+  - **Seven of the nine files are cleared by the inline-code strip alone** (`:81`, strip backtick
+    spans alongside fenced blocks). Every `[[:space:]]` occurrence is inside a backtick span —
+    `agents/Project Change Log.md`, `agents/Workflow Threads.md`, `agents/obsidian-archivist.md`,
+    `analytics/daily-research/2026-09-26.md`, `analytics/vault-sessions/2026-11-07.md` — as are
+    both `wikilinks` occurrences (`agents/Workflow Threads.md:208`, `think-tank/README.md:4`)
+    **and both targets in `analytics/vault-sessions/2026-10-07.md:268`**, which that sitting wrote
+    in inline code precisely so they would not be read as links.
+  - **The eighth needs the trailing-backslash strip** (`:83`):
+    `think-tank/multi-agent/20 - Options - frameworks.md:11`, a live table link whose escaped pipe
+    is captured into the target, and whose target **exists**.
+  - **The ninth is the only genuine broken link in the vault**:
+    `think-tank/website/interactive-upgrade-spec.md:23,:43`, two notes that have never existed
+    across all 2,951 commits. **128** days detectable on the `b87c8381` basis recorded here.
+- **This refines rather than corrects the 2026-11-22 figure.** Nine files of which seven are
+  artifacts was right; so is this. What is new is the decision content: **one of the two parser
+  fixes removes 78% of the report**, and until it lands every honest record of this thread raises
+  the count it is reporting.
+- **And this sitting's own record became the tenth carrier, re-measured after writing rather than
+  before, per rule 14.** `analytics/vault-sessions/2026-11-25.md` is flagged for the POSIX class it
+  had to name to describe the defect, written inside a backtick span. Under rule 14 a **dated
+  record is testimony and keeps its wording**, so this is correct authorship flagged by the parser.
+  **None of the four live index notes edited in that change set gained a new carrier.** This is the
+  cleanest demonstration the thread has: **the report cannot be driven to zero by authorship,
+  only by the fix at `scripts/build_graph.py:81`.**
 
 ---
 
@@ -1830,6 +1969,13 @@ still the only open PR in the repository before this session's own.
   `docs/` is outside this seat's self-merge set, so leaving it dirty would have made this
   session's pull request unmergeable.
 
+- **REPRODUCED a ninth time 2026-11-25 — now 31 files.** `python3.13 scripts/check_site_sync.py`
+  prints *"OK: docs/ is in sync with source (only the build stamp differs)"* and exits **0** having
+  rewritten **31** tracked files under `docs/` — 24 at opening, then 27, 28 on 2026-11-07, 30 on
+  2026-11-22 — the growth being the 2026-11-23 weekly digest, consistent with the one-per-Monday
+  cadence recorded in **D20**. Restored with `git checkout -- docs/` **in the same command that ran
+  the guard**, and the tree confirmed clean before anything was staged.
+
 ### D23 — PR #150 has been open twenty days as "anchor edits only"; it is in fact unmergeable and its entire payload is superseded, and the safe action is to close it *(new 2026-09-28; owner: Emory — one click, but not the click the label implies)*
 
 - **What six consecutive records have said about it.** PR #150 (`chore/reanchor-2026-09-08`, tip
@@ -2390,6 +2536,24 @@ still the only open PR in the repository before this session's own.
   `seeds/Philip_Morris_v_Australia_Award_2015-12-17.pdf`. Same class as `scripts/check_sources.py`
   exiting 1 here. **CI's 2 failed is the authoritative count; this container's 6 is 2 real plus 4
   missing-PDF.** Recorded so a later sitting does not read a widening suite failure into it.
+
+- **RE-MEASURED 2026-11-25 from CI run 506, and reproduced locally for the first time with all
+  three legs visible.** `pipeline-guards` is red on `main` for the **seventh** consecutive run;
+  run **506** on `9dc82ea5` is **2 failed, 821 passed, 5 xfailed**, printing `runs` **26** against
+  pinned 16, `screened` **680** against 492, `matches` **2** against **0**, and
+  `with_per_source` **21** against 11.
+- **The 2026-11-22 addendum's loose end is closed.** That record explained its own incomplete
+  figure by the container truncating the dict diff to the `runs` key. Today
+  `python3.13 -m pytest -q tests/test_site_claims.py` prints **all three** keys and agrees with CI
+  exactly, so the container is no longer a reason to read CI second-hand.
+- **The cadence claim is now verified twice rather than asserted.** One weekly digest landed since
+  2026-11-22 (the 2026-11-23 build), and `runs` moved 25 → **26** while `with_per_source` moved
+  20 → **21**: **+1 each per weekly digest**, exactly as the 2026-11-22 record predicted after it
+  corrected the earlier "one a day" overstatement.
+- **The `matches` leg is still the assertion working**, per the council's ruling of 2026-11-13
+  carried forward at `analytics/daily-research/2026-11-19.md:1588-1592`. **Do not close this
+  thread by bumping all three constants.** Stated again because this is the second consecutive
+  record that has had to say it.
 
 ### D19 — PR #184 carries the systems designer's execution of Ruling 1 and has not landed; `main` still holds two of the dangling citations it repairs *(new 2026-09-16; owner: Emory — land it or say why not)*
 
@@ -4440,6 +4604,34 @@ specifically unblocks it.
   `.claude/agents/` is a contract change and is Emory's; this seat has no path to it. What it can
   do is make the gap a measured number rather than an assertion, and keep the number in front of
   him. Fifty-two days, eight of nine, holdout vocabulary absent.
+
+- **RE-TESTED 2026-11-25 against `a015ff2a` — day 114, still 1 of 9, and the holdout half is now
+  measured case by case rather than by vocabulary.** `git log 1ca3e196..a015ff2a --
+  .claude/agents/ prompts/ src/models.py` returns **no commit** across 67 commits. For each of the
+  nine definitions, does it name its own vault note? **Eight NO, one YES** —
+  [[integrity-officer]] still the only one, identical to every reading since 2026-08-16.
+- **The vocabulary test has been hiding both a mitigation and a hole, and this sitting separated
+  them.** Every prior reading grepped `holdout|hold-out|out-of-sample` across the analyst's read
+  path and found nothing. That is still true. But `prompts/research_analyst.txt:39-40` embeds
+  `STATE_OF_THE_ANSWER.md` into the prompt as LIVING MEMORY, so the living memory **is** inside
+  that seat's context — and the right question is therefore not whether the *word* is reachable
+  but whether the four cases are. Searched by name against the four `label: 1` rows of
+  `scripts/holdout_set.json`:
+
+  | holdout positive | occurrences in living memory | how it appears |
+  |---|---|---|
+  | `loewen_v_us` | **0** | nowhere in the analyst's context |
+  | `mondev_v_us` | **0** | nowhere in the analyst's context |
+  | `apotex_v_us` | 1 | *"Apotex outer limit"*, a doctrinal citation inside a literature summary (`STATE_OF_THE_ANSWER.md:1218`) |
+  | `pm_v_uruguay` | 3 | a corpus increment (`:1184`), an operator-reported case (`:1499`), a calibration case (`:1586`) |
+
+- **Not one of the four is ever identified as a holdout positive**, so the coverage that exists is
+  accidental: the two that appear are there for unrelated reasons, and **Loewen and Mondev cannot
+  be learned about from that seat's context at all**. The four are named together only in
+  `scripts/holdout_set.json`, `METHODOLOGY.md` and this `agents/` tree. **The precondition of the
+  2026-08-03 failure is intact at day 114**, and the fix is still one line in
+  `.claude/agents/research-analyst.md` — name the holdout set, or name the vault note as
+  [[integrity-officer]]'s definition does. Contract text is Emory's; recorded, not corrected.
 
 ---
 

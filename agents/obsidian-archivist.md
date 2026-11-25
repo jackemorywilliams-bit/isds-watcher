@@ -433,6 +433,25 @@ six to seven** — the discipline named in the block that follows, performed rat
    cherry-picking `e2d60664` alone onto this branch (`b9224999`), deliberately excluding the bot's
    out-of-scope commit, which is why this session could self-merge what 2026-11-19 could not.
 
+16. **2026-11-25** — *A thread's census is not complete until it has swept
+   `analytics/daily-research/`. The council's records are the project's largest body of
+   mechanism-level findings and this seat's read path does not include them, so a defect the
+   council diagnoses can live there indefinitely with no thread, no entry in the owning seat's
+   note, and no change-log line.* Grepping `push race|cannot lock ref|remote rejected|
+   non-fast-forward` across `agents/`, `analytics/vault-sessions/`, `HANDOFF.md` and `moc/`
+   returned **zero carriers** — while the council had established, at source and three separate
+   times (`analytics/daily-research/2026-11-05.md:845-860,:924,:984`, `2026-11-06.md:106`,
+   `2026-11-12.md:354,:363,:1610`), that `fetch-relay` discards an already-fetched batch whenever
+   it loses a push race on `main`, and had named the line that causes it. In the twenty days since,
+   the defect recurred **twice** and `.github/workflows/fetch-relay.yml` was never edited. **This
+   is rule 13's mechanism and rule 9's, turned on the one note class this seat does not read**, and
+   it is the second time in four days that this seat has had to record it: the 2026-11-22 addendum
+   confessed the same failure after mis-characterising **D20** from a container's truncated output
+   when the correct analysis had been on `main` for nine days. **So: before closing a sweep, grep
+   the council's records for the thread's own vocabulary, and open a thread for anything the
+   council has diagnosed that the vault does not carry.** Opened as **D37** and entered in
+   [[systems-designer]] in the same change set.
+
 **Supersede, never overwrite.** A correction sits beside the original with the original wording
 preserved and dated; dated records are not rewritten to match a later fact. Live statements are
 corrected in place with the correction dated. This convention is also the remedy for
@@ -969,6 +988,84 @@ see item 2 of the 2026-08-03 slice.)*
 > defect this seat exists to catch, and it is named rather than quietly backfilled: the two
 > session records are the source of truth for those dates, and the entry below resumes the log.
 
+
+- **2026-11-25 (thirty-sixth deployment)** — Standing every-3-days session, audited against
+  `a015ff2a` (`origin/main`, clean tree) on the complete **2,951**-commit history after
+  `git fetch --unshallow`; clone arrived shallow at **118**, `HEAD` detached, the twenty-eighth
+  consecutive recurrence. Window `1ca3e196..a015ff2a` = **67** commits. **No roster change and no
+  contract change, the twentieth consecutive session.** Record:
+  `analytics/vault-sessions/2026-11-25.md`. **The headline is a defect in another seat's domain
+  that had no home in the vault:** `fetch-relay` discarded an already-fetched batch for the
+  seventh time in 234 runs (`cb54546`, lost to `e126f5fb` at 12:04:57 +0000), the council had
+  diagnosed the cause three times, and **no `agents/` note carried it** — opened as **D37**,
+  entered in [[systems-designer]], and generalised as **rule 16**. **D5** re-tested at day 114 and
+  measured case by case for the first time: two of the four holdout positives are unreachable from
+  the analyst's context and the other two appear for unrelated reasons; recorded in
+  [[research-analyst]]. **D35** refined to say which parser fix clears which file (seven of nine
+  by the inline-code strip alone). **D20** taken from CI run 506 and reproduced locally with all
+  three legs visible, closing the 2026-11-22 addendum's loose end. **D24** ninth reproduction, 31
+  files. **D36** delivered — both `.sent/2026-11-19` and `.sent/2026-11-22` are on `main` — with
+  its remedy still absent at 90 days, fifth request. **Orphan sweep clean**: 327 tips, 125
+  non-ancestors, 13 substantive, **none newer than 2026-11-19**. **D6 deliberately not re-tested**
+  per its own documented-and-closed condition. *Audited against `a015ff2a`; paths: `agents/`,
+  `.claude/agents/`, `prompts/`, `src/`, `scripts/`, `scripts/site_templates/`,
+  `views/isds-workflow-3d/workflow.json`, `tools/`, `tests/`, `.github/workflows/`, `README.md`,
+  `METHODOLOGY.md`, `COUNCIL.md`, `HANDOFF.md`, `docs/`, `moc/`, `analytics/vault-sessions/`,
+  `analytics/fetch-results/`, and every remote branch tip.*
+
+> [!warning] THE GAP THIS LOG CLOSED ON 2026-10-04 HAD REOPENED, AND IT IS NAMED HERE RATHER THAN
+> QUIETLY BACKFILLED — 2026-11-25
+> **Three deployments ran, wrote records, and left no entry in this log.** Before today its newest
+> entry was **2026-11-01 (thirty-second deployment)**, while
+> `analytics/vault-sessions/2026-11-07.md` (286 lines), `2026-11-19.md` (177 lines) and
+> `2026-11-22.md` (304 lines) are all on `main`. Those three sittings *did* update this note —
+> rules 13, 14 and 15 and merge-procedure steps 2 and 5 were all written in that window — **so the
+> omission was selective: the binding sections moved and the dated log did not.** That is the same
+> defect the 2026-10-04 note below describes, and the same correction applies: the three entries
+> are written in immediately beneath this block, **re-derived from the session records on `main`**
+> rather than imported from any branch, per the precedent that re-deriving beats importing. The
+> source of truth for those dates remains the three session records, which are cited in each entry.
+> **One thing this block does not claim.** `agents/Project Change Log.md` **did** carry all three
+> dates — `## 2026-11-07`, `## 2026-11-19` and `## 2026-11-22`, one archivist-session heading each.
+> So the project's dated history was intact and only **this seat's own note** was missing them. That
+> makes the omission smaller than the 2026-10-04 gap it resembles, and it does not make it
+> acceptable: this is the note a future archivist reads first.
+
+- **2026-11-22 (thirty-fifth deployment, written in 2026-11-25)** — Standing session, audited
+  against `1ca3e196` on the complete **2,884**-commit history after `git fetch --unshallow`; clone
+  shallow at **139**, the twenty-seventh consecutive recurrence. Window `f272ce32..1ca3e196` =
+  **284** commits. **No roster change and no contract change, the nineteenth consecutive session.**
+  Record: `analytics/vault-sessions/2026-11-22.md`. **It found the 2026-11-19 sitting stranded
+  behind the still-open PR #341 and landed it** by cherry-picking `e2d60664` alone onto its own
+  branch as `b9224999`, excluding the bot's out-of-scope `5c40df63` — opening **D36**, adding
+  **rule 15** and merge-procedure **step 5**. Also: **D20**'s cadence corrected from "one digest a
+  day" to one per **weekly** digest; four of six local test failures identified as a
+  missing-`seeds/` container artifact rather than drift; **D35** re-measured at nine files; **D24**
+  eighth reproduction at 30 files; **D6** recorded at its eighth observation. **Its addendum
+  corrected its own body**: `matches` 2 against 0 is the assertion working, not staleness — a
+  ruling that had been on `main` for nine days in the council's records, which that sitting had
+  not read.
+- **2026-11-19 (thirty-fourth deployment, written in 2026-11-25)** — Standing session, audited
+  against `bc55080` on the complete **2,820**-commit history after `git fetch --unshallow`; clone
+  shallow at **167**, the twenty-sixth consecutive recurrence. Window `f272ce32..bc55080` = **220**
+  commits. **No roster change and no contract change, the eighteenth consecutive session.** Record:
+  `analytics/vault-sessions/2026-11-19.md`. Its headline was that this seat had **missed four of
+  its last six sittings** — 11-04, 11-10, 11-13, 11-16 — and was blind for twelve days, widening
+  **D34** from one miss to four. It corrected five notes, repaired the **D35** broken links in
+  `agents/Workflow Threads.md`, and adopted **rule 14**. **It then opened PR #341 and ended twenty
+  seconds later**, leaving the whole sitting unlanded and unemailed for three days; the payload
+  reached `main` on 2026-11-22 as `b9224999` and the pull request is still open. See **D36**.
+- **2026-11-07 (thirty-third deployment, written in 2026-11-25)** — Standing session, audited
+  against `f272ce32` on the complete **2,600**-commit history after `git fetch --unshallow`; clone
+  shallow at **139**, the twenty-fifth consecutive recurrence. Window `d358c426..f272ce32` =
+  **101** commits, 293 remote branch tips swept. **No roster change and no contract change, the
+  seventeenth consecutive session.** Record: `analytics/vault-sessions/2026-11-07.md`. It reported
+  that this seat **missed its 2026-11-04 sitting entirely** and that the miss is invisible by
+  design, because the emailer sends nothing for a sitting that never wrote a record — opened as
+  **D34**. It landed **D11**'s `STATE_OF_THE_ANSWER.md` payload inside PR **#324** but did so with
+  an **unpinned merge**, letting the re-anchor bot's third commit through; the merge procedure's
+  step 2 was amended the same day to name the tool that carries `expectedHeadSha`. It also adopted
+  **rule 13** and reproduced **D24** at 28 files.
 
 - **2026-11-01 (thirty-second deployment)** — Standing session, audited against `d358c426`
   (`origin/main`, clean tree) on the complete **2,499**-commit history after

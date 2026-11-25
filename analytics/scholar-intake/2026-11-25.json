@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "at": "2026-11-25T17:29:30.157104+00:00",
+  "window_days": 3,
+  "mailbox": {
+    "status": "ok",
+    "alerts_30d": 2,
+    "newest_alert_date": "2026-11-23T04:11:42+00:00",
+    "newest_alert_subject": "TRIPS (\"Article 39\" OR \"Art 39\" OR \"Art. 39 ... - new results",
+    "alert_dates": [
+      "2026-11-23",
+      "2026-11-07"
+    ]
+  },
+  "papers_in_window": 2,
+  "queued_new": 0,
+  "already_seen": 2,
+  "already_queued": 0,
+  "queued_urls": []
+}

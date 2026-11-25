@@ -15,6 +15,77 @@ first; dates are commit dates on the mainline of history.
 
 Roster: [[Agent Registry]]. Open work by thread and owner: [[Workflow Threads]].
 
+## 2026-11-25 (archivist session — thirty-sixth deployment)
+
+- **A defect in the instrument's retrieval channel recurred for the seventh time and had never
+  been entered in the vault.** `.github/workflows/fetch-relay.yml:59-60` — one
+  `git pull --rebase --autostash` followed by one `git push`, **no retry, no loop** — discards an
+  already-fetched batch whenever a concurrent push to `main` wins the race. Run **234**
+  (`45610284519`, 2026-11-25T12:04:27Z) built `cb54546` (*"chore: fetch-relay results"*, 1 file
+  changed, 5 insertions(+), 5 deletions(-) under `analytics/fetch-results/`) and was refused with
+  `cannot lock ref 'refs/heads/main'`; `git cat-file -t cb54546` returns
+  `fatal: Not a valid object name`. Winner: `e126f5fb` (*"chore: daily-update sent marker"*,
+  12:04:57 +0000) — the same commit class that beat run **210** on 2026-11-11 (`26d142be`).
+  Whole-history count: **234 runs, 226 success, 7 failure, 1 cancelled, all seven failures on
+  `main`** (runs 19, 51, 78, 132, 199, 210, 234) — four in the first 198, **three in the last 36**.
+  Cause established at source by the council on 2026-11-05
+  (`analytics/daily-research/2026-11-05.md:845-860`, rule at `:924`, count at `:984`) and carried
+  in `2026-11-06.md:106` and `2026-11-12.md:354,:363,:1610`. The workflow file has one commit in
+  its entire history: `fe02f395`, 2026-08-03. Opened as **D37** in `agents/Workflow Threads.md`,
+  entered in `agents/systems-designer.md`, generalised as **rule 16** in
+  `agents/obsidian-archivist.md`. **ACTION: a retry loop on that push** — Emory or the systems
+  designer.
+- **The routing gap that hid it, named as this seat's own.** `push race|cannot lock ref|remote
+  rejected|non-fast-forward` across `agents/`, `analytics/vault-sessions/`, `HANDOFF.md` and
+  `moc/` returned **zero carriers** on 2026-11-25; the only hit outside
+  `analytics/daily-research/` was `STATE_OF_THE_ANSWER.md`, which is the analyst's read path. A
+  mechanism-level defect diagnosed three times in one month had no thread, no owning-seat entry
+  and no line here. **D15**'s mechanism; **rule 16** is the remedy.
+- **D5 re-tested at day 114 and measured case by case for the first time.** Searched by name
+  against the four `label: 1` rows of `scripts/holdout_set.json`: `loewen_v_us` **0** occurrences
+  and `mondev_v_us` **0** in the analyst's entire context including the living memory embedded by
+  `prompts/research_analyst.txt:39-40`; `apotex_v_us` **1**, as *"Apotex outer limit"* inside a
+  literature summary (`STATE_OF_THE_ANSWER.md:1218`); `pm_v_uruguay` **3**, as a corpus increment,
+  an operator-reported case and a calibration case (`:1184`, `:1499`, `:1586`). **None of the four
+  is ever identified as a holdout positive.** Recorded in `agents/research-analyst.md`. Definitions
+  naming their own vault note: still **1 of 9**. Contract text is Emory's; escalated, not
+  corrected.
+- **D35 refined to say which parser fix clears which file.** `python3.13 scripts/build_graph.py
+  --dry-run` at `a015ff2a`: 274 notes, 514 edges, 0 orphans, 164 managed blocks, 19 cap WARNs,
+  **9** files with links to nonexistent notes. **Seven of the nine** are cleared by the
+  inline-code strip at `scripts/build_graph.py:81` alone — every `[[:space:]]` and `wikilinks`
+  occurrence and both targets in `analytics/vault-sessions/2026-10-07.md:268` are inside backtick
+  spans. The eighth needs the trailing-backslash strip at `:83`
+  (`think-tank/multi-agent/20 - Options - frameworks.md:11`, target exists). The ninth is the one
+  real broken link, `think-tank/website/interactive-upgrade-spec.md:23,:43`, **128** days
+  detectable.
+- **D20 re-measured from CI run 506 (`9dc82ea5`) and reproduced locally with all three legs
+  visible**, closing the 2026-11-22 addendum's stated cause: `runs` 26/16, `screened` 680/492,
+  `matches` **2/0 — the assertion working**, `with_per_source` 21/11; **2 failed, 821 passed, 5
+  xfailed**, seventh consecutive red run on `main`. The +1-per-**weekly**-digest cadence is now
+  verified twice.
+- **D24 reproduced a ninth time, 31 files** under `docs/` rewritten by
+  `scripts/check_site_sync.py` while it exits 0; restored in the same command.
+- **D36 delivered, remedy still absent at 90 days — fifth request.**
+  `analytics/vault-sessions/.sent/2026-11-19` and `.sent/2026-11-22` are both on `main`.
+  `scripts/reanchor.py` unchanged since `a8bccbbc` (2026-08-27), still no scope filter (`:106`
+  iterates all of `check_currency.TRACKED`; `STATE_OF_THE_ANSWER.md` is one of the five at
+  `scripts/check_currency.py:70`).
+- **No roster change and no contract change, the twentieth consecutive session.**
+  `git log 1ca3e196..a015ff2a -- .claude/agents/ prompts/ src/models.py` returns no commit;
+  `.claude/agents/` unchanged since `ae1f04b3` (2026-08-05, **112** days);
+  `scripts/check_models.py` exits 0 over 12 flowchart cards; all ten `prompts/` files the
+  definitions name exist. **D6 deliberately not re-tested**, per its own documented-and-closed
+  condition.
+- **Orphan sweep clean — the first since D36 opened.** 327 remote tips, 125 non-ancestors, 13
+  substantive after the content reduction, **none newer than 2026-11-19**. Four open pull requests
+  (`#341`, `#332`, `#184`, `#110`), all adjudicated before today. The three 2026-07-30..08-01
+  `claude/sweet-mccarthy-*` branches characterised for the first time as shorter renderings of
+  meetings `main` already holds in fuller form (+178/−95, +427/−87, +382/−132 against the branch),
+  **not reconciled line by line and so not formally discharged**.
+- Session record: `analytics/vault-sessions/2026-11-25.md`.
+
+
 ## 2026-11-22 (archivist session — thirty-fifth deployment)
 
 Audited against `1ca3e196` (`origin/main`, clean tree) on the complete **2,884**-commit history

@@ -8,8 +8,13 @@
   is commented out in `src/config.py` and can be restored).
 - **Threshold:** 40. **Default classifier:** Claude Haiku (`MODEL_PROVIDER=claude`).
 
-**Currency anchor.** *Audited against `1ca3e196`; paths: `.github/workflows/`, `src/config.py`,
-`scripts/`, `.claude/agents/`.* **Re-anchored 2026-11-22 by the archivist on a measurement, not a
+**Currency anchor.** *Audited against `a015ff2a`; paths: `.github/workflows/`, `src/config.py`,
+`scripts/`, `.claude/agents/`.* **Re-anchored 2026-11-25 by the archivist on a measurement, not a
+stamp:** `git log 1ca3e196..a015ff2a -- .github/workflows/ src/config.py scripts/
+.claude/agents/` returns **no commit** across the 67-commit window, so nothing this file declares
+has moved and the content is true as written. **One behaviour of a declared workflow is newly
+documented below** — `fetch-relay`'s write-back can silently discard a batch — which is a fact
+about the workflow, not a change to it. **Previously re-anchored 2026-11-22 on a measurement, not a
 stamp:** `git log bc55080..HEAD -- .github/workflows/ src/config.py scripts/ .claude/agents/`
 returns **no commit**, and neither does the same query from `7834fe2` across the full
 `f272ce32..1ca3e196` window of **284** commits, so nothing this file declares has moved since
@@ -88,6 +93,30 @@ than here: `aggregate` and `send-digest` (`workflow_dispatch` only), `claims-con
 `model-consistency`, `pipeline-guards`, `reanchor` and `site-sync` (on `push` and/or
 `pull_request`), `fetch-relay` (`push`), `lit-review` (`pull_request`). Verified by reading every
 `on:` block at `f7e4bf5`; the schedules above are quoted from the `cron:` lines themselves.
+
+> [!warning] `fetch-relay` CAN DISCARD A BATCH IT HAS ALREADY FETCHED — recorded 2026-11-25
+> **This is the only one of the event-driven workflows above with a known data-losing failure
+> mode, and the handbook should say so.** `.github/workflows/fetch-relay.yml:59-60` is one
+> `git pull --rebase --autostash` followed by one `git push`, with **no retry and no loop**. If any
+> other job pushes to `main` between that rebase and that push, the push fails with
+> `cannot lock ref 'refs/heads/main'`, the runner is reclaimed, and the fetched batch is **gone
+> with no trace, no alert and no entry in `analytics/fetch-results/`**.
+>
+> **Counted across the workflow's whole history on 2026-11-25: 234 runs, 226 success, 7 failure,
+> 1 cancelled — and all seven failures are on `main`** (runs 19, 51, 78, 132, 199, 210, 234). Four
+> occurred in the first 198 runs; **three in the last 36**. The most recent is run **234**
+> (2026-11-25T12:04:27Z), whose commit `cb54546` — 1 file changed, 5 insertions(+), 5 deletions(-)
+> under `analytics/fetch-results/` — no longer exists anywhere (`git cat-file -t cb54546` returns
+> `fatal: Not a valid object name`). It lost to `e126f5fb`, *"chore: daily-update sent marker"*,
+> pushed at 12:04:57 +0000; run **210** lost to the same commit class on 2026-11-11.
+>
+> **Practical consequence for whoever reads this file:** if a daily relay batch is ever missing
+> from `analytics/fetch-results/`, **the first hypothesis is a lost push race, not a fetch
+> failure** — the council's own adopted diagnostic rule
+> (`analytics/daily-research/2026-11-05.md:924`). The cause was established at source by the
+> council on 2026-11-05 (`:845-860`), and `.github/workflows/fetch-relay.yml` has been edited
+> exactly once in its existence (`fe02f395`, 2026-08-03). **ACTION — Emory or the systems
+> designer: a retry loop on that push.** Thread **D37** in `agents/Workflow Threads.md`.
 
 ## Website stays in sync with source (guardrail)
 The website (`docs/`) is generated from source (`METHODOLOGY.md`, the digest folders, the

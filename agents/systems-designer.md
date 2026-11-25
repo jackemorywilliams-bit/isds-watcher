@@ -118,6 +118,34 @@ stands — no mandate is invented here.
 
 ## Change log
 
+- **2026-11-25** — **A defect in this seat's own domain had been diagnosed three times by the
+  council and had never reached this note, and it cost the project a second batch of data today.**
+  `.github/workflows/fetch-relay.yml:59-60` is one `git pull --rebase --autostash` followed by one
+  `git push`, with **no retry and no loop**, so any concurrent push to `main` inside that window
+  makes the push fail with `cannot lock ref 'refs/heads/main'` and the already-fetched batch is
+  discarded with no trace and no alert. **Counted across the workflow's entire history: 234 runs,
+  226 success, 7 failure, 1 cancelled — and all seven failures are on `main`** (runs **19**
+  2026-08-06, **51** 08-19, **78** 08-31, **132** 09-22, **199** 11-04, **210** 11-11, **234**
+  2026-11-25). Four in the first 198 runs; **three in the last 36**. Today's run 234 built
+  `cb54546` — *"chore: fetch-relay results"*, 1 file changed, 5 insertions(+), 5 deletions(-) under
+  `analytics/fetch-results/` — and `git cat-file -t cb54546` now returns
+  `fatal: Not a valid object name`. The race winner was `e126f5fb`, *"chore: daily-update sent
+  marker"*, pushed at 12:04:57 +0000; run 210 lost to `26d142be`, **the same commit class**.
+  **The cause was established at source by the council on 2026-11-05**
+  (`analytics/daily-research/2026-11-05.md:845-860`, with the diagnostic rule at `:924` and the
+  five-in-199 count at `:984`), carried forward in `2026-11-06.md:106` and
+  `2026-11-12.md:354,:363,:1610`. **The file has been edited exactly once in its existence** —
+  `fe02f395`, 2026-08-03, its creation, 114 days ago. **Why this note did not have it:** a grep for
+  `push race|cannot lock ref|remote rejected|non-fast-forward` across `agents/`,
+  `analytics/vault-sessions/`, `HANDOFF.md` and `moc/` returned **zero carriers** — the finding
+  lived only in the council's daily records, which this seat's read path does not include. **That
+  is D15's mechanism, and the gap is the archivist's, not this seat's.** Recorded here now, with
+  the remedy the council specified: **a retry loop on that push.** No change to this seat's model,
+  definition or prompt bindings; `git log 1ca3e196..a015ff2a -- .claude/agents/ prompts/
+  src/models.py` returns no commit. Threads: [[Workflow Threads]] **D37**.
+  *Audited against `a015ff2a`; paths: `.claude/agents/systems-designer.md`,
+  `.github/workflows/`, `scripts/`, `tools/`, `views/isds-workflow-3d/`, `src/models.py`.*
+
 - **2026-08-09** — **Workstreams D/E, F and G all built in one session, and every one of them
   shipped switched off.** Uncommitted, on `fix/restore-council-label`; suite **564 passed /
   5 xfailed**, re-run by [[obsidian-archivist]] rather than copied from the session report.

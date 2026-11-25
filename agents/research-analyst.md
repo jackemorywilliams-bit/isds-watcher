@@ -312,6 +312,37 @@ sharpening beyond the seed corpus."
 
 ## Change log
 
+- **2026-11-25** — **The 2026-08-03 holdout failure's precondition is intact at day 114, and this
+  sitting measured it case by case for the first time rather than by vocabulary.** Every reading
+  since 2026-08-13 has grepped `holdout|hold-out|out-of-sample` across this seat's read path and
+  found nothing; that is still true. But it missed both a mitigation and a hole.
+  **The mitigation:** `prompts/research_analyst.txt:39-40` embeds `STATE_OF_THE_ANSWER.md` into
+  this seat's prompt as LIVING MEMORY, so the living memory **is** in context.
+  **The hole:** searched by name against the four `label: 1` rows of `scripts/holdout_set.json` —
+
+  | holdout positive | occurrences in living memory | how it appears |
+  |---|---|---|
+  | `loewen_v_us` | **0** | nowhere in this seat's context |
+  | `mondev_v_us` | **0** | nowhere in this seat's context |
+  | `apotex_v_us` | 1 | *"Apotex outer limit"*, a doctrinal citation inside a literature summary (`STATE_OF_THE_ANSWER.md:1218`) |
+  | `pm_v_uruguay` | 3 | a corpus increment (`:1184`), an operator-reported case (`:1499`), a calibration case (`:1586`) |
+
+  **Not one of the four is ever identified as a holdout positive.** The two that do appear are
+  there for unrelated reasons, so the coverage is accidental; **Loewen and Mondev cannot be learned
+  about from this seat's context at all.** The four are named together only in
+  `scripts/holdout_set.json`, `METHODOLOGY.md` and the `agents/` tree — none of which this seat
+  reads. **Had this note been in this seat's read path on 2026-08-03, the failure in which it
+  asserted a case was new to the project when it is one of the four out-of-sample holdout
+  positives would have been prevented**; it still is not, and the definition continues not to name
+  it. One line in `.claude/agents/research-analyst.md` closes it — name the holdout set, or name
+  this note as `.claude/agents/integrity-officer.md:56-62` does. **Contract text is Emory's, so
+  this is recorded and escalated, not corrected.** No change to this seat's model, definition or
+  prompt bindings across the window. Threads: [[Workflow Threads]] **D5**.
+  *Audited against `a015ff2a`; paths: `.claude/agents/research-analyst.md`,
+  `prompts/research_analyst.txt`, `prompts/council_calibration.md`,
+  `prompts/carrying_span_rule.md`, `scripts/holdout_set.json`, `STATE_OF_THE_ANSWER.md`,
+  `src/models.py`.*
+
 - **2026-08-13** — **Read-path audit: this seat's binding adopted rules are not in its
   context.** Ten of the eleven rules in "Adopted method rules" appear nowhere in
   `.claude/agents/research-analyst.md`, `prompts/research_analyst.txt`,

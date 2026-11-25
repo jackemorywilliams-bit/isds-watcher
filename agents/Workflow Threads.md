@@ -292,6 +292,27 @@ able to say about that thread.
 - **The orphan sweep of 2026-11-25 found nothing new** — 327 tips, 125 non-ancestors, 13
   substantive, none newer than 2026-11-19 — the first clean sweep since this thread opened, and
   evidence that **rule 15** and **step 5** are doing their work.
+- **TWO NEW FACTS from the 2026-11-25 merge, and both make the scope filter cheaper than the
+  workaround.** The procedure worked first time — the pinned merge to `758a73fd` was refused
+  **409 Head branch was modified**, the bot's `704cfb0b` (one of whose five anchor lines is in
+  `STATE_OF_THE_ANSWER.md`) was reverted as `3cfc01be`, the PR's own file list re-checked at 8
+  files all in scope, and the merge re-pinned and accepted as `7636ff52`. But:
+  **(1) `reanchor.yml` fires on every push to the branch, not once per pull request.** After the
+  revert was pushed it ran again and wrote **`084ffdd3`** (15:30:15Z), the same five anchor lines.
+  The merge had already captured `3cfc01be`, so it landed nowhere. **The pin wins the merge; it
+  cannot stop the branch accumulating another bot commit behind it**, so a session that reverted
+  twice would be racing a loop.
+  **(2) This session class cannot delete its own merged branch.**
+  `git push origin --delete` returns `fatal: the remote end hung up unexpectedly` and
+  `DELETE /repos/.../git/refs/heads/...` returns **403 — "Write access to this GitHub API path is
+  not permitted through this proxy."** So `origin/vault/archivist-2026-11-25` survives at tip
+  `084ffdd3` and will read as a non-ancestor to the next sweep.
+  **Adjudicated in advance, per rule 8, on a content comparison:** `git diff
+  origin/main...084ffdd3` is **five anchor lines in five notes and nothing else**, every one
+  pointing at `758a73fd`, which **is** on `main`; the maintenance was redone correctly on `main`
+  by `f89936ae`. **It carries no project content and is a bot artifact, not a stranded sitting.**
+  A successor should not spend a sitting on it. **Branch deletion is Emory's**, here and for
+  `vault/archivist-2026-11-19`.
 
 ---
 

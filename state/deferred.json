@@ -1,1 +1,18 @@
-{}
+{
+  "gmail_scholar": {
+    "https://kluwerlawonline.com/journalarticle/Journal+of+International+Arbitration/43.6%20[pre-publication]/JOIA2026032": {
+      "attempts": 0,
+      "first_deferred": "2026-11-26T17:11:14.013465+00:00",
+      "intake": {
+        "at": "2026-11-26T17:11:14.013465+00:00",
+        "by": "scholar-intake",
+        "window_days": 3
+      },
+      "last_outcome": "intake",
+      "published": "2026-11-26T09:06:10+00:00",
+      "summary": "A Mourre\u00a0- Journal of International Arbitration, 2026 \u2026 ISDS was born and developed out of the need to supersede diplomatic protection and to offer a depoliticized way to protect foreign \u2026 the traditional forms of state interference like direct expropriation and denial of justice into the much more\u00a0\u2026 Save",
+      "title": "ISDS Should Adapt to Climate Change [pre-publication]",
+      "url": "https://kluwerlawonline.com/journalarticle/Journal+of+International+Arbitration/43.6%20[pre-publication]/JOIA2026032"
+    }
+  }
+}

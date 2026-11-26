@@ -2,6 +2,79 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-26 — daily council (record: `analytics/daily-research/2026-11-26.md`)
+
+**Chairman** configured `claude-opus-5`; **no model attestation is available for the seat** — all nine agent
+definitions pin `model: opus`, an alias that cannot express 4.8 against 5 (escalation 6). The seat reports
+Opus 5 in its own status line and that report is **recorded, not verified**. **Seats convened: 1 member plus the
+chairman in session, which is Rule 0's cap exactly** — `research-analyst`, a REAL Agent-tool subagent, **two
+written returns, both filed VERBATIM** (memo at Part 4, vetting answers at Part 5). **No seat was performed; no
+PROCEDURAL FAILURE this sitting.** The integrity challenge was discharged inside the Part 5 dialogue under the
+chairman's own name, as Rule 0 contemplates; `analytics-officer` and `systems-researcher` NOT convened, and the
+Rule 1 digest sentence is copied from `meta.json` at Part 3. **The conflict between the convening prompt and
+Rule 0 is declared and not re-argued, for the THIRD consecutive sitting** (§6.6 items 1–2, escalation 7), and
+the convening prompt is additionally stale in describing the relay as something to look for rather than as the
+council's established instrument.
+
+**Accountability — research analyst: EXCEPTIONAL, with two defects found by the next reader and a third it
+found itself.** Briefed to hunt the named-but-unrun test, it **declined to re-run a falsifier that had already
+fired** as theatre and found a better defect in the council's own ledger: `insights.jsonl:146`, a countermeasure
+adopted as binding practice on 2026-09-06 with a **last attested exercise of 2026-09-07**. It ran that rule **two
+independent ways that agree exactly** (226 blobs / 226 triples / 1,514 records / 128 paths), reconciled its
+worktree leg to the chairman's independently measured 127/870, **falsified `insights.jsonl:332`'s universal** on
+that entry's own unit, and **dated a third party's behaviour change to the 2026-10-31/11-01 boundary** (24 of 27
+same-day pairs hash-identical before, 0 of 36 after). It **refused the UNCTAD case-1201 join for a FOURTH
+consecutive sitting, against its own principal priority**; attacked its own strongest claim in five numbered
+limbs, one drawn from the ledger against itself; supplied unasked the qualification that bounds every ring
+verdict in its own screen (11 of 18 items measured on a title, one `read body` of 82 characters); **declined
+credit the chairman offered it** on the ground that it had never computed the relevant reading; **declined the
+chairman's praise with reasons the chairman had to accept**; and **volunteered a third defect — a published pair
+total of 59 against a table summing to 62 — that neither the objections nor the chairman's independent
+verification had reached.** Against that: `1126-C1` and `1126-C2` were cheaply discoverable before filing, and
+one of them failed to use a predicate published in the very note it was quoting. **Budget 3 of 10 searches; zero
+relay rows fired; nothing built; nothing in the repository created, edited or deleted beyond its own two
+artefacts.** Priorities (a)–(f) all reached. **Both its insights banked, one on corrected figures.**
+
+**Accountability — chairman: six errors, five reducing to ONE fault.** I fired the relay before convening
+anyone and it returned the day's state change; I ran the named-but-unrun test and `insights.jsonl:335` survived
+it, all five legs reproduced exactly and corroborated from a second layer; I caught my own co-observation
+misdefinition **before** publishing, by arithmetic on my predecessor's prior record rather than by re-running my
+own code; and I found `L338` by applying the seat's revived rule to my own pre-registered forecast, **which cost
+me a leg**. Against that: my §1.4 floor disclosure was over-broad about `--all` and is withdrawn; my batch note
+stripped the scope from its source; my contingent instruction on a second Iraq row was wrong and the seat
+corrected it; my compliance with yesterday's reduction-count discipline was **vacuous** (the two counts are
+identically equal in the tree by construction); my `1126-C2` diagnosis was refuted at zero such cells; and
+`1126-C4` was raised against an artefact I had **already committed myself**. **The one fault: a conclusion whose
+predicate was not the predicate in force.** I wrote no part of the seat's contribution and edited none of it.
+
+**Rulings: `1126-C1` SUSTAINED** (figure withdrawn, predicate published, two defects — a tuple unit instead of
+records, and a raw substring test missing 21 percent-encoded records); **`1126-C2` SUSTAINED as to the integers
+with the chairman's own diagnosis OVERRULED**; **`1126-C3` SUSTAINED and the seat's wording ADOPTED OVER THE
+CHAIR'S**, including its monotonicity clause; **`1126-C4` NOT SUSTAINED**, the seat's answer governing. **Four
+ledger entries banked (336–339)**: two the seat's, one the chairman's (`L338` — the overwrite has erased an
+entire outcome class, one `no_contact` record in history and none in the tree), one shared (`L339` — four
+instances of one predicate-identity defect in a single sitting, three of them the chairman's). **`L335` is NOT
+withdrawn and is strengthened.**
+
+**Instruments:** both direct retrieval instruments DEAD on neutral controls for a sixth consecutive sitting
+(**not a state change, and never a fact about any resource**); web search LIVE; the committed relay the one live
+retrieval channel, **fired before anyone was convened** — run 235 / `45809585501`, 5 requested / 5 completed,
+`control_ok` true, all six records `ok`. **Nothing was stranded for want of fetch.** Five of twelve slots spent,
+seven unspent for want of warrant rather than budget.
+
+**Escalations to Emory (ranked, §6.9):** the push-retry cure is **six lines already running at
+`.github/workflows/weekly.yml:100-106`** while `fetch-relay.yml` has none; the overwrite now measured at 42.1% of
+the corpus and shown to erase an outcome class; **the `ARB/22/8` case-detail row — the single most valuable open
+test on the oldest thread — deliberately NOT self-authorised**; `pipeline-guards` red at run 513 with the
+`matches` leg **working** and not to be "fixed"; eleven unread-material hosts off the allowlist, now shown to be
+**the same gap as the Ring-1 gap** on three of today's eighteen rows; the model aliases; the two one-sentence
+rule decisions; the search archive dark 21 days; four unlanded PRs; the council-log JSON 65/122 days stale;
+`ARB/25/54` (a claim against **Kenya**) 13 days without a readable memorial; **the delivery-marker figure
+corrected from 3 to "3 post-June, 9 all-time"**; the classifier containment defect; the branch residue.
+
+**Nothing built. Every operator approval still PENDING, NOT GRANTED.** `src/`, `scripts/`, `tests/`, `prompts/`,
+`.github/`, `docs/` and `agents/` untouched by this session.
+
 ## 2026-11-25 — daily council (record: `analytics/daily-research/2026-11-25.md`)
 
 **Chairman** configured `claude-opus-5`; **no model attestation is available for the seat** — all nine agent

@@ -1,0 +1,22 @@
+{"candidate_claims": [
+  {
+    "claim_text": "The response that https://icsid.worldbank.org/cases/recent served to this project's relay at 2026-11-27T11:22:44.269155+00:00 (status 200, 364,565 bytes, sha256 4f9271cd521fbe16d21ccd0490349e999464887b2970a9bd9c80e90128c0e8e1) contains, in its tag-stripped prose, the caption 'AHG Industry GmbH & Co. KG v. Republic of Iraq (ICSID Case No. ARB/20/21)' with the adjacent date 'February 2, 2023', so that view's served prose carries at least two distinct Iraq captions and the caption carrying a 2020s designator is ARB/20/21 — a matter this council had already surfaced on 2026-11-25 and recorded as not a pharmaceutical matter. The caption, the State, the designator and the date are LOCATORS ONLY, the date may not be read as a registration date, and nothing here bears on the identity of the IAReporter pharmaceutical matter.",
+    "source_url": "https://icsid.worldbank.org/cases/recent",
+    "access_status": "partial",
+    "source_authority": "primary",
+    "claim_type": "factual",
+    "assertion_status": "candidate",
+    "supporting_quote": "onduras (ICSID Case No. ARB/23/2) February 2, 2023 AHG Industry GmbH &amp; Co. KG v. Republic of Iraq (ICSID Case No. ARB/20/21) February 1, 2023 PowerChina HuaDong Engineering Corporation and China Railway 18th Bureau Group Company Ltd v. Socialist Republic of Viet Nam (ICSID Case No. ADM/23/1) January 19, 2023 Amerra Capital Management LLC and others v. United Mexican States (ICSID Case No. UNCT",
+    "supporting_locator": "analytics/fetch-results/2026-11-27-daily.json $.records[6].excerpt (find 'Iraq (ICSID Case No. ARB/2', find_matched true), at commit 1bb9e17b8e45d5227aeb96cb9e91d4aeda64685f; companion control $.records[7] (find 'ICSID Case No.') find_matched true on the identical url, bytes and sha256; batch control_ok true, void false"
+  },
+  {
+    "claim_text": "The response that https://icsid.worldbank.org/cases/recent?type=published&view=RECPUBLISHED served to this project's relay at 2026-11-27T11:22:44.269155+00:00 (status 200, 1,387,528 bytes, sha256 8d992aa4159829e9950f329259efe7752a418f09d9e18c24f526ab129b0dbf39) contains no occurrence in any case of the literal 'Iraq' in its tag-stripped prose, while a companion control row on the identical url, byte length and sha256 matched 'ICSID Case No.' inside a rendered entry caption; and that document is distinct from the default view served in the same run (364,565 bytes, sha256 4f9271cd52...). The absence is an absence from that view's served prose on that date and is expressly NOT evidence that no ICSID decision involving Iraq exists or was issued.",
+    "source_url": "https://icsid.worldbank.org/cases/recent?type=published&view=RECPUBLISHED",
+    "access_status": "partial",
+    "source_authority": "primary",
+    "claim_type": "factual",
+    "assertion_status": "candidate",
+    "supporting_quote": "ed Published Concluded Constituted November 25, 2026 Sauna UK BidCo Limited v. Republic of Finland (ICSID Case No. ARB/24/38) Decision on the Denial of Benefits Objection (August 31, 2026) November 25, 2026 Suomi Power Networks TopCo B.V., Supernova II Bidco BV and AMF Tjänstepension AB v. Republic of Finland (ICSID Case No. ARB/24/37) Procedural Order No. 9 (September 9, 2026) November 25, 2026 S",
+    "supporting_locator": "analytics/fetch-results/2026-11-27-daily.json: $.records[4] (find 'Iraq') find_matched false with excerpt '' on bytes 1387528 / sha256 8d992aa415..., and $.records[5] (find 'ICSID Case No.') find_matched true with the quoted excerpt on the identical url, bytes and sha256; at commit 1bb9e17b8e45d5227aeb96cb9e91d4aeda64685f; batch control_ok true, void false, neutral control https://example.com/ at 200/577 bytes"
+  }
+]}

@@ -2,6 +2,82 @@
 
 Each council session is recorded here, newest first: the weekly reconvene (per-member assessment, next steps, escalations) and daily researcher check-ins. This is the chairman's written record for holding the council accountable.
 
+## 2026-11-27 — daily council (record: `analytics/daily-research/2026-11-27.md`)
+
+**Chairman** configured `claude-opus-5`; **no model attestation is available for any seat** — all nine agent
+definitions under `.claude/agents/` pin `model: opus`, an alias that cannot express 4.8 against 5
+(escalation 8). The seat's own model report is **recorded, not verified**. **Seats convened: one member plus
+the chairman in session, which is Rule 0's cap exactly** — `research-analyst`, a **REAL Agent-tool
+subagent** spawned from the committed definition, with **THREE written returns, all filed VERBATIM**: its
+memo at Part 4, its vetting answers at Part 5, and its reading of the second batch at Part 5b. **No seat was
+performed; no PROCEDURAL FAILURE this sitting.** The integrity challenge was discharged inside the Part 5
+dialogue as Rule 0 requires, as five numbered objections.
+
+**Instruments.** Both direct retrieval instruments probed on **neutral controls before any access
+statement**: `curl` **DEAD** (403 CONNECT tunnel on `example.com`), the separate fetch service **DEAD**
+(`getaddrinfo ENOTFOUND` on the neutral control — a **sixth** consecutive sitting on that mechanism). Not a
+state change; never a fact about a resource. Web search **LIVE**, probed by both the chairman and the seat.
+**The committed relay fired TWICE** — runs **45989881984** (7 rows, before any seat was convened) and
+**45994195402** (3 rows, authorised after the vetting round produced them) — both `conclusion: success`,
+both `control_ok` true / `void` false, every row `ok`/200. **Eleven fetches of a possible twenty-four.** The
+second batch carried a **distinct filename**, and **both batches survive in the tree (130 files / 888
+records)**, which demonstrates the zero-build half of the overwrite cure in production.
+
+**Digest numbers, copied from `meta.json` per Rule 1.** `Digest 2026-11-24: 18 candidates evaluated, 0
+items surfaced (0 matches, 0 watch-list leads).` Unchanged from the prior sitting; **sixth consecutive
+zero**, and an honest one.
+
+**Forecast.** The 2026-11-26 **tree-unit** forecast is **VINDICATED ON ALL NINE LEGS, EXACTLY** — 128 files
+/ 876 records, rows 31/48/32 all TRUE with 0 FALSE, row 2 across 43 files, 32 co-observation pairs / 32
+PASS, census `ok` 804 / `refused` 69 / `robots_disallowed` 3, `find_matched` absent on 79 of 876. Eleventh
+consecutive sitting. Its **blob-set legs are recorded as NOT GRADEABLE** in a four-ref container rather than
+as a miss — and were in fact graded correctly by the session that published them.
+
+**Substance.** The published-decisions view is a **distinct document and not a superset** of the default
+recency view (1,387,528 against 364,565 bytes; the pure-sort hypothesis **falsified** by a substring
+argument inside one run), and it carries **no occurrence of `Iraq`** on a same-stream-controlled null —
+which **closes route (ii)** of the Iraq thread without being any evidence that the decision does not exist.
+The chairman's own pre-registration was **falsified** by the row he fired, surfacing `ARB/20/21` — **prior
+art this council had written off on an unsourced gloss.** Objection `1127-C2` was **conceded in full**, the
+candidate went **LIVE**, and a second batch fired the same sitting established on primary evidence that
+`ARB/20/21`'s **`(a)` original proceeding ended with an award of 30 September 2022** (excluded) while its
+**`(b)` annulment proceeding, registered 2 February 2023, is NOT excluded** and its posture is
+unestablished. `G21` (`insights.jsonl:111`) was found **eleven weeks dormant with limb (d) never once
+exercised**; executing it discharged limb (d) for this host to the instrument's limit on four legs and
+**convicted the same morning's pre-registration on limb (b)**.
+
+**Accountability.** **Research analyst — exceptional**, and the strongest showing by this seat in the
+sittings this chairman can read: all six briefed priorities reached, the pharmaceutical join refused for a
+**fifth** consecutive sitting against its own principal priority, a fabrication caught in itself and
+reported unprompted, three of five objections conceded in full, **one push-back sustained against the
+chairman**, the row that turned the day proposed and correctly rated above the one it was asked to specify,
+and **the chairman corrected three times with the source in hand each time**. Four web searches of ten, two
+claims of two, no row added or attempted, no file touched outside its brief. The one surviving criticism is
+its own: it disclosed the "cement factory" gloss was unsourced and then used it as fact three times in the
+same document. **Chairman — a bad day on substance and an adequate one on process, in that order.** Three
+of his contributions were defeated (§2.3 by the novelty screen, §2.6's premise by his own row, his `L263`
+citation by a supersession forty-six days old), and he committed the `L339` across-day-composite defect
+**inside the objection written to enforce it**. What he did: probed before asserting, fired the relay before
+convening anyone so the runner worked in parallel twice, graded his predecessor's forecast honestly
+including two legs declared ungradeable, verified every figure the seat published before adopting any of it,
+authorised two decisive rows and declined a third that would have been spending, and kept `ARB/22/8`
+unfired. **Four ledger entries banked (340–343) and NOT ONE IS HIS.**
+
+**Ledger and the one optimization item.** Four entries at `analytics/insights.jsonl` **340–343**; **no new
+insight on the research question — standing watch.** One optimization item, measured and zero build: **a
+supersession in this ledger is unfindable from the superseded side** — 19 of 339 entries carry a
+supersession marker and only three name their target by a machine-findable reference — so **before citing a
+ledger entry as binding, grep the ledger for that entry's own `thread_id`, not its line number.** The test
+flags 37 of 339 and catches `L263` → `L268` exactly.
+
+**Escalations.** **Item 1 is new, is the highest-value item on the list, and the SEAT raised it rather than
+the chairman: the Iraq thread's seed document is behind an AUTHENTICATION wall, not an allowlist wall.**
+`www.iareporter.com` is on the allowlist and answered (`ok`/200/67,118 bytes) with a **login wall**; the
+article has been in intake **151 days** and has **zero** classifier telemetry rows; the remedy is **one
+authenticated human read.** `case-detail?CaseNo=ARB/22/8` remains **reserved, unfired and un-routed-around.**
+Sixteen items in all; thirteen carried and every carried figure re-measured in session. **Nothing was
+built; every operator approval remains pending.**
+
 ## 2026-11-26 — daily council (record: `analytics/daily-research/2026-11-26.md`)
 
 **Chairman** configured `claude-opus-5`; **no model attestation is available for the seat** — all nine agent

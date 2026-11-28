@@ -1,0 +1,54 @@
+{
+  "request": "2026-11-28-zzz-falsifier.json",
+  "note": "2026-11-28 THIRD BATCH ('zzz-falsifier'), fired under the chairman's hand DURING the vetting round, to test the analyst seat's OWN STRONGEST ASSERTION against the falsifier the seat itself named and then did not request. PIN 13b59c58a9a4729df7086329a705d719f87aca50. Instrument status unchanged: both direct instruments dead, re-probed on neutral controls at session open (curl 403 CONNECT tunnel; fetch service getaddrinfo ENOTFOUND on the NEUTRAL CONTROL). Never a fact about any resource. WHY IT IS FIRED. The seat's memo asserts at its priority (a) that 'ARB/20/21 is excluded in both limbs on primary evidence', and at its priority (e) it names, correctly and against itself, the two things that would falsify that: a THIRD lettered block carrying a 2026 development (ARB/12/1 is attested at insights.jsonl L119 to carry a third lettered block, a revision proceeding), or a `Latest Development` line sitting after the (b) outcome. It then states that ONE row cures both -- find 'January 13, 2025' -- and did not ask for it. A seat that names a cheap falsifier for its own headline and declines to fire it leaves the chairman to choose between ruling on an untested claim and withholding a ruling. I choose neither: I fire the row. This is the vetting round doing its job, and the warrant is the seat's own \u00a75. ROW 1: case-detail?CaseNo=ARB/20/21, find 'January 13, 2025'. The literal is VERBATIM-CONFIRMED PRESENT in this morning's own byte stream (sha256 8538b8a8..., 95,144 bytes, pinned at blob cafd58e52207af7b596509d2d810e07ea36596f9) and is not inferred, not guessed and not a completion of the truncated 'ord'. The window is idx-100 over 400 characters, anchored on the (b) block's OUTCOME DATE, so roughly 290 characters run PAST it -- which is the span in which a third lettered block header or a (b)-block `Latest Development` line would appear if either exists. PRE-REGISTERED, NAMING THE FIELD: adjudication on $.records[].find_matched for the record whose $.records[].find is exactly 'January 13, 2025'. I pre-register TRUE on the field. I pre-register NO VALUE WHATEVER for what the window shows beyond it -- no block inventory, no development line, no disposition, no instrument name. G21 limb (b) binds and this row exists precisely because a pre-registration must not smuggle in the answer it is testing. WHAT THE ROW CANNOT DO, STATED BEFORE IT RUNS SO NO READING OVERCLAIMS IT: a 400-character window is not a block inventory. If no third block header appears inside it, that is NOT evidence that none exists -- it is one window on a 95,144-byte document, and the seat's own gap marker on this page's block inventory stays OPEN either way. The row can FALSIFY the exclusion; it cannot CONFIRM it. Asymmetry stated deliberately. ROW 2 is the MANDATORY COMPANION CONTROL on the same URL in the same run, find 'Status of Proceeding', pre-registered TRUE. A FALSE or an absent key on Row 2 makes Row 1 UNINTERPRETABLE and is an instrument failure on that stream, not a finding about the case. L179 BINDS: a status read from one lettered block is NEVER the matter's status. If a third block appears, nothing in it may be read as ARB/20/21's posture either. WHY A SEPARATE FILE AGAIN: the relay fetches ONE request file per run, selected by LEXICOGRAPHIC FILENAME SORT and not by time (scripts/fetch_relay.py:233-235). That fact is NOT new and I do not present it as new -- it is prior art at insights.jsonl L131 (2026-09-03) and L174 (2026-09-13), which this record's own 2.6 establishes against yesterday's addendum. 'zzz-' sorts above 'zz-', so this file is fetched on its own push and becomes the post-merge re-fire target; both earlier batches are already pinned by BLOB in the record per L174's standing rule, so nothing this record reasons from can be lost to that re-fire. PROHIBITIONS HONOURED: both rows on icsid.worldbank.org, verified present on ALLOWED_HOSTS at my pin. No ARB/22/8 row -- reserved to Emory, and the seat surfaced that designator in engine prose today and correctly stopped. No PDF row. No /cases/pending row. No investmentpolicy.unctad.org row. No fedlex.admin.ch row. No www.italaw.com row -- which is also why the seat's Rule 41(5) title lead stays UNREAD and unasserted. No limb-(d) row. NOTHING BUILT; every operator approval still pending; src/, scripts/, tests/, prompts/, .github/, docs/ and agents/ untouched. BUDGET: two rows plus the mandatory https://example.com/ control = 3 fetches, under MAX_URLS 12.",
+  "fetched_at": "2026-11-28T11:44:26.342310+00:00",
+  "environment": "github-actions-runner (run 46141250768)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 2,
+  "completed": 2,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "find": "January 13, 2025",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "content_type": "text/html",
+      "bytes": 95144,
+      "sha256": "6d54e5c264882dee8269f192540fd58940d311f16366e1ae297915382d632d8d",
+      "excerpt": "don, U.K. Language(s) of Proceeding: English Status of Proceeding: Concluded Outcome of Proceeding: January 13, 2025 - The Secretary-General issues an order taking note of the discontinuance of the proceeding pursuant to ICSID Administrative and Financial Regulation 16(2)(c). (a) Original Proceeding Published Decisions Award of the Tribunal ( English; ) (a) Original Proceeding Date Development Jun",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "content_type": "text/html",
+      "bytes": 95144,
+      "sha256": "6d54e5c264882dee8269f192540fd58940d311f16366e1ae297915382d632d8d",
+      "excerpt": "pondent(s): Baker Botts (UK), London, U.K. Kadhims, London, U.K. Language(s) of Proceeding: English Status of Proceeding: Concluded Outcome of Proceeding: September 30, 2022 - The Tribunal renders its award. (b) Annulment Proceeding Applicant(s)/Requesting Party(ies): (i) Claimant(s) Date Registered: February 2, 2023 (Claimant(s)) Date of Constitution of ad hoc Committee: April 20, 2023 Compositio",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "request": "2026-11-28-zz-breaker.json",
+  "note": "2026-11-28 SECOND BATCH ('zz-breaker'), fired under the chairman's hand immediately after the daily batch returned and BEFORE the analyst seat's vetting round. PIN: 13b59c58a9a4729df7086329a705d719f87aca50. Instrument status unchanged and re-probed on neutral controls this morning: curl 'CONNECT tunnel failed, response 403' on https://example.com/; the separate fetch service 'getaddrinfo ENOTFOUND example.com' on the NEUTRAL CONTROL. Both direct instruments dead, seventh consecutive sitting, NOT a state change, and never a fact about any resource. WHY THIS IS A SEPARATE FILE AND NOT MORE ROWS IN THE DAILY BATCH: the relay fetches ONE request file per run and selects it by LEXICOGRAPHIC FILENAME SORT, not by time (scripts/fetch_relay.py:233-235, read at source by the 11-27 addendum, the function's name notwithstanding). Rows added to an already-fetched file would never be fetched; a separate later-sorting file is fetched on its own push, AND it becomes the file the post-merge re-fire overwrites, so the daily batch's in-meeting reading survives at HEAD. ROW 1 IS THE BREAKER THE 11-27 CLOSE-OUT ITEM 2 AUTHORISED IN TERMS: case-detail?CaseNo=ARB/23/2, find 'Date Registered'. The warrant, restated: ARB/23/2 is the entry rendered immediately before AHG's on the default /cases/recent view and, as the second ARB case of 2023, is independently likely to have been registered in the same window of weeks -- so 'February 2, 2023' is ambiguous between the two pairings and this row collapses it. ARB/23/2 has NEVER been fired anywhere in this corpus; the case-detail path class stands at 330 ok of 330. No companion control is needed: 'Date Registered' is near-certain on that path class, and if it nulls the row is uninterpretable and that is an instrument result, not a finding. PRE-REGISTERED, NAMING THE FIELD: adjudication on $.records[].find_matched for the record whose $.records[].find is exactly 'Date Registered'. I pre-register TRUE on the field and NO VALUE WHATEVER for the date string -- that is G21 limb (b), which a chairman breached on 2026-11-27 and which I am not going to breach on the row that exists to cure it. ROWS 2 AND 3 ARE THE 11-27 CLOSE-OUT ITEM 4 ROW, RE-DESIGNED AFTER MY OWN ROW FAILED ITS GEOMETRY THIS MORNING, AND I DISCLOSE THE FAILURE RATHER THAN QUIETLY REPLACING THE LITERAL. In the daily batch I fired 'Compositio' on ARB/20/21 believing it would land inside the (b) annulment block. It did not. `find` takes the FIRST case-insensitive occurrence (scripts/fetch_relay.py:130), and the first 'Compositio' on that page is 'Composition of Tribunal' in the (a) block -- so the row bought an (a)-block window. The companion row on 'April 20, 2023' did reach into the (b) block but ran out inside 'Party Representatives', so the (b) block's own Status of Proceeding and Outcome of Proceeding fields are STILL out of reach and ARB/20/21's annulment posture remains UNESTABLISHED and expressly NOT absent. Row 2 therefore fires 'Bertha COOPER-ROUSSEAU' -- verbatim-confirmed present in THIS MORNING's own byte stream (sha256 8538b8a8..., 95,144 bytes), not inferred and not guessed -- chosen because she is the LAST ad hoc Committee member listed and is therefore the furthest-reaching confirmed literal inside the (b) block. The window is idx-100 over 400 characters, so it should clear 'Party Representatives' where the April row stalled. PRE-REGISTERED: TRUE on $.records[].find_matched for the record whose find is exactly 'Bertha COOPER-ROUSSEAU'; NO VALUE WHATEVER pre-registered for any status, outcome, date or disposition the window may reveal. Row 3 is the MANDATORY COMPANION CONTROL on the same URL in the same run, find 'Status of Proceeding', pre-registered TRUE. A FALSE or an absent key on Row 3 makes Row 2 UNINTERPRETABLE and is an instrument failure on that stream, not a finding about the case. L179 BINDS AND I STATE IT BEFORE THE ROWS RUN: a status read from one lettered block is NEVER the matter's status. The 'Concluded' and the 'September 30, 2022' award already in hand belong to the (a) block and are not ARB/20/21's posture. If Row 2's window reveals a (b)-block status, it is the ANNULMENT proceeding's status and must be stated as such or not at all. WHAT A RESULT HERE WOULD NOT LICENSE: nothing about the pharmaceutical or 'cement factory' characterisation, which remains UNSOURCED; no identification of the Iraq matter on a date or a locator alone (ruling 1124-C3 and L268 bind -- identity elements are LOCATORS ONLY, and L263 is SUPERSEDED). PROHIBITIONS HONOURED, screened on the designators at my pin and not on memory: all three rows are on icsid.worldbank.org, verified present on ALLOWED_HOSTS. No ARB/22/8 row (reserved to Emory, 11-26 close-out item 2). No row on any PDF, on /cases/pending, under investment-dispute-settlement/ on investmentpolicy.unctad.org or its cases/<id>/<slug> sub-path, on ?type=concluded&view=RECCONCLUDED, on fedlex.admin.ch, or on www.italaw.com. No row on the limb-(d) residue (11-27 item 3: structurally unclosable). web.archive.org, travizory.com and biicl.org are absent from ALLOWED_HOSTS and are not requested. NOTHING IS BUILT. Every pending operator approval remains pending and ungranted. src/, scripts/, tests/, prompts/, .github/, docs/ and agents/ are untouched by this session. BUDGET: three rows plus the runner's mandatory https://example.com/ control = 4 fetches, under MAX_URLS 12.",
+  "fetched_at": "2026-11-28T11:22:21.973812+00:00",
+  "environment": "github-actions-runner (run 46139534130)",
+  "control_url": "https://example.com/",
+  "control_ok": true,
+  "void": false,
+  "requested": 3,
+  "completed": 3,
+  "truncated": false,
+  "excerpt_chars": 400,
+  "records": [
+    {
+      "url": "https://example.com/",
+      "find": "",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://example.com/",
+      "content_type": "text/html",
+      "bytes": 577,
+      "sha256": "25ddf2c883e0d1958ea971d279a7e4f0fd446724ee3db7db19dadabd4a62e484",
+      "excerpt": "Example Domain This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": false
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/2",
+      "find": "Date Registered",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/23/2",
+      "content_type": "text/html",
+      "bytes": 108084,
+      "sha256": "b787a790526535d64ed8a31f30dd120bacdd0eb8f8a4ff4b8b86321a943aa081",
+      "excerpt": "y LLC (U.S.), Pr\u00f3spera Arbitration Center LLC (U.S.) Respondent(s): Republic of Honduras (Honduran) Date Registered: February 3, 2023 Date of Constitution of Tribunal: January 29, 2024 Composition of Tribunal President: Juan FERN\u00c1NDEZ-ARMESTO (Spanish) - Appointed by the Secretary-General Arbitrators: David W. RIVKIN (U.S.) - Appointed by the Claimant(s) Ra\u00fal E. VINUESA (Argentine, Spanish) - Appo",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "find": "Bertha COOPER-ROUSSEAU",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "content_type": "text/html",
+      "bytes": 95144,
+      "sha256": "8538b8a8d6ab45a4e0893e846de163ff890617c1d714525560b5b8544121b889",
+      "excerpt": "uncil) President: Carita WALLGREN-LINDHOLM (Finnish) Members: Tina M. CICCHETTI (Canadian, Italian) Bertha COOPER-ROUSSEAU (Bahamian) Party Representatives Claimant(s): Bracewell, NY, USA Respondent(s): Baker Botts (UK), London, U.K. Kadhims, London, U.K. Language(s) of Proceeding: English Status of Proceeding: Concluded Outcome of Proceeding: January 13, 2025 - The Secretary-General issues an ord",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    },
+    {
+      "url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "find": "Status of Proceeding",
+      "outcome": "ok",
+      "status": 200,
+      "final_url": "https://icsid.worldbank.org/cases/case-database/case-detail?CaseNo=ARB/20/21",
+      "content_type": "text/html",
+      "bytes": 95144,
+      "sha256": "8538b8a8d6ab45a4e0893e846de163ff890617c1d714525560b5b8544121b889",
+      "excerpt": "pondent(s): Baker Botts (UK), London, U.K. Kadhims, London, U.K. Language(s) of Proceeding: English Status of Proceeding: Concluded Outcome of Proceeding: September 30, 2022 - The Tribunal renders its award. (b) Annulment Proceeding Applicant(s)/Requesting Party(ies): (i) Claimant(s) Date Registered: February 2, 2023 (Claimant(s)) Date of Constitution of ad hoc Committee: April 20, 2023 Compositio",
+      "user_agent": "isds-watcher/1.0 (+https://github.com/jackemorywilliams-bit/isds-watcher)",
+      "find_matched": true
+    }
+  ]
+}

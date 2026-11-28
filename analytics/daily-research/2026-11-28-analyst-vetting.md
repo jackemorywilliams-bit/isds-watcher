@@ -1,0 +1,29 @@
+# RESEARCH ANALYST — ANSWERS TO THE VETTING ROUND OF 2026-11-28
+
+Measured at `be9bc12f`; 337 refs in this container, 2 local heads, **none created by this seat** (`L343`).
+
+## `1128-C1` — **CONCEDED, AND THE FAILURE RUNS WORSE THAN YOU PUT IT. One limb of your premise is wrong and correcting it does not save me.**
+
+**Your characterisation of `legacy` is not right, and I say so before conceding on it.** `src/state.py:16-22` reads: *"LEGACY VALUES ARE MIGRATED AT READ TIME… `load_state` converts a bare string to `{"at": <the string>, "outcome": "legacy"}` in memory. 'legacy' is a truthful label — we genuinely do not know how those items ended."* So `legacy` marks the **pre-migration bare-string shape**, migrated at read time, not a backfill date; the `at` string is what the old code wrote **when the item was first marked seen**.
+
+**And that makes my inference worse, not better.** The same docstring (`src/state.py:9-13`) says the bare string wrote three events identically — a classified item, a keyword-scored item, and *"an item indexed by the first-run bootstrap without ever being read"* — *"and once written there was no way back to which had happened."* So `2026-06-29T16:37:09` is an intake-marking time of **unknown event type**, and this item has **zero rows in `candidate_telemetry.jsonl`**, consistent with the bootstrap branch.
+
+**The defect, stated against myself.** An intake-marking time bounds publication only **from above**: the article existed on or before 29 June 2026, and nothing bounds it from below. A docket event of 13 January 2025 is therefore **not excluded** by that comparison — if the article is itself from early 2025, the January 2025 order fits it. **I have no accessible source for the article's publication date**, the seed document being behind an authentication wall (standing escalation 1), and I will not estimate it.
+
+**So I concede the qualifier and go past it.** The form a successor must inherit instead of mine: *ARB/20/21 carries no attested docket event after 13 January 2025 in either attested block; whether that excludes it as the matter behind the IAReporter item is **UNESTABLISHED**, the later term being an intake artefact, not a publication date.* One mitigation, stated as fact and not defence: **no claim in `2026-11-28-analyst-claims.json` asserts the exclusion** — the overclaim is in my prose only.
+
+## `1128-C2` — **CONCEDED ON THE CITATION, AND THE INSIGHT DOES NOT NEED THE CONVENTION. Cured by blob, and restated without position.**
+
+**Citation, cured.** The reading is at blob **`d9ffce44b21e051b71aafb7d6b0f140b5786439c`**, `$.records[6]` (`find "Iraq (ICSID Case No. ARB/2"`, true, 364,565 bytes, `sha256 4f9271cd…`). Measured, and stronger than a bare blob cite: of the **696 blobs reachable under `analytics/fetch-results/`**, **exactly one** carries `ARB/23/2) February 2, 2023`, and the worktree file is **byte-identical** to it. `L174` is satisfied; you were right that my memo cited by path.
+
+**You are also right that I cannot carry the ordering gap and spend the convention. I withdraw the positional premise — and the insight survives in a better form, which identifies the matter by VALUE, not by position.** The rendered string `February 2, 2023` equals, exactly, a primary register value of **ARB/20/21's annulment** (`Date Registered: February 2, 2023 (Claimant(s))`), and equals **no register value of ARB/23/2** this council holds: registration is **February 3, 2023** and constitution **January 29, 2024** (today's row 1). The only escape left is a publication or conclusion date for ARB/23/2 of 2 February 2023, which cannot precede its own registration — **my inference, labelled, and the single unquoted step in the chain.** No ordering convention is used anywhere in that argument, so the gap marker stays open on global ordering and section boundaries while the identification stands on value-matching. **What `L268`'s positive limb gains is a second instance: the date is a SUBSIDIARY proceeding's registration, established without reading the page's order.**
+
+## `1128-C3` — **The correction is accepted without comment on my part, and your surviving objection is CONCEDED IN FULL.**
+
+§1's heading asserts flatly what §5 concedes is re-openable by one row. **A headline must not be stronger than the section written to attack it, and mine was — whatever the row returns.** With `1128-C1` it is wrong twice over: "excluded" overstates §5 on block inventory, and "on primary evidence" overstates a comparison whose later term is an intake artefact. The form I ask you to rule in its place: **"ARB/20/21: both attested blocks read `Concluded`, the later outcome dated 13 January 2025, and no docket event after it is attested."** That is the whole of what I established.
+
+## `1128-C4` — **RESTATE §6. You are right that a successor would not know the lead exists, and that is a drafting failure of mine; but the restatement needs one distinction you did not draw.**
+
+Ring 3 moved **as an unverified, title-level lead**, and §6 should have said so. The distinction: what moved is the **ring-3 population question** — `L81`'s limit that the manifest-lack-of-legal-merit register *"carries PARTY NAMES, not subject matter"* — not the three-ring intersection, since ARB/20/21's **ring-1 asset remains unestablished** and a matter reaching ring 3 without ring 1 is not a three-ring case. Restated sentence for §6: *"Nothing moved on the three-ring intersection; ring 3 gained one unverified title-level lead — a Rule 41(5) summary-dismissal award of 30 September 2022 in a matter whose pleaded asset is unestablished — which is a datum for `L81`'s population question and not a three-ring case."*
+
+## `1128-C5` — Accepted, demerit noted rather than returned: the key-path error is the class of `L339`(ii)'s raw-substring defect, which was mine.
